@@ -72,7 +72,7 @@ class pcm.Partial  {
 }
 
 class pcm.DateValue : pcm.Value {
-    value : EDate
+    value : String
 }
 
 class pcm.Version : pcm.Value {
