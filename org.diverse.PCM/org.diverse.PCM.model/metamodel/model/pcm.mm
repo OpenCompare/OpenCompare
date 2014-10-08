@@ -8,6 +8,7 @@ class pcm.PCM  {
 }
 
 class pcm.AbstractFeature  {
+    name : String
 }
 
 class pcm.Product  {
@@ -17,12 +18,11 @@ class pcm.Product  {
 }
 
 class pcm.Feature : pcm.AbstractFeature {
-    name : String
 }
 
 class pcm.FeatureGroup : pcm.AbstractFeature {
     @contained
-    subfeatures : pcm.AbstractFeature
+    subFeatures : pcm.AbstractFeature[0,*]
 }
 
 class pcm.Cell  {

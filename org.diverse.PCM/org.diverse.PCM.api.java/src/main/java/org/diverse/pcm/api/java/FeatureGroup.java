@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface FeatureGroup extends AbstractFeature {
 
-	List<FeatureGroup> getFeatures();
-	void addFeature(Feature feature);
-	void removeFeature(Feature feature);
+	List<AbstractFeature> getFeatures();
+	void addFeature(AbstractFeature feature);
+	void removeFeature(AbstractFeature feature);
 	
 }

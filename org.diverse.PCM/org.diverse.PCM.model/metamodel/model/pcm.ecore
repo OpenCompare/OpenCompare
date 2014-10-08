@@ -8,18 +8,18 @@
         eType="#//AbstractFeature" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractFeature" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractFeature" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Product">
     <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
         eType="#//Cell" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature"/>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureGroup" eSuperTypes="#//AbstractFeature">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subfeatures" lowerBound="1"
-        upperBound="-1" eType="#//AbstractFeature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subFeatures" upperBound="-1"
+        eType="#//AbstractFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell">
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
