@@ -13,15 +13,18 @@ public class Main {
     {
          DefaultPcmFactory myFactory = new DefaultPcmFactory();
         ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
-     //   swsp.getAllExistingCategories();
-        swsp.printProducts(87);
-        PCM m = swsp.getPcm(87) ;
+        ShoppingWebSitePrinter swspr = new ShoppingWebSitePrinter();
+      //  swsp.printAllCat();
+        swspr.printProducts(1725);
+        PCM m = swsp.getPcm(1725) ;
         JSONModelSerializer jms = myFactory.createJSONSerializer() ;
 
 
           System.out.println(  jms.serialize(m));
       //  DefaultPcmFactory d = new DefaultPcmFactory();
 
+//
+  //      swsp.getAllExistingCategories();
 
     }
 }
