@@ -83,3 +83,9 @@ class pcm.Dimension : pcm.Value {
 
 class pcm.NotApplicable : pcm.Value {
 }
+
+class pcm.Unit : pcm.Value {
+    unit : String
+    @contained
+    value : pcm.Value
+}

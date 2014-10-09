@@ -62,4 +62,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#//Value"/>
   <eClassifiers xsi:type="ecore:EClass" name="Dimension" eSuperTypes="#//Value"/>
   <eClassifiers xsi:type="ecore:EClass" name="NotApplicable" eSuperTypes="#//Value"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>
