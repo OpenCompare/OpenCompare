@@ -1,6 +1,12 @@
 package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.*;
+import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
+import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
+import org.diverse.pcm.api.java.impl.value.StringValueImpl;
+import org.diverse.pcm.api.java.value.BooleanValue;
+import org.diverse.pcm.api.java.value.IntegerValue;
+import org.diverse.pcm.api.java.value.StringValue;
 import pcm.factory.DefaultPcmFactory;
 import pcm.factory.PcmFactory;
 
@@ -34,5 +40,20 @@ public class PCMFactoryImpl implements PCMFactory {
     @Override
     public Product createProduct() {
         return new ProductImpl(kFactory.createProduct());
+    }
+
+    @Override
+    public BooleanValue createBooleanValue() {
+        return new BooleanValueImpl(kFactory.createBooleanValue());
+    }
+
+    @Override
+    public IntegerValue createIntegerValue() {
+        return new IntegerValueImpl(kFactory.createIntegerValue());
+    }
+
+    @Override
+    public StringValue createStringValue() {
+        return new StringValueImpl(kFactory.createStringValue());
     }
 }

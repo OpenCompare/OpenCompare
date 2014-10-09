@@ -1,7 +1,9 @@
 package org.diverse.pcm.api.java;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.diverse.pcm.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,7 +73,33 @@ public abstract class PCMTest {
 
     @Test
     public void testProduct() throws Exception {
+        Product product = factory.createProduct();
+        assertEquals(product.getCells().size(), 0);
 
+        product.setName("product name");
+        assertEquals(product.getName(), "product name");
+
+        Cell cell = factory.createCell();
+        product.addCell(cell);
+        assertEquals(product.getCells().size(), 1);
+
+        product.removeCell(cell);
+        assertEquals(product.getCells().size(), 0);
+    }
+
+    @Test
+    public void testCell() throws Exception {
+        Cell cell = factory.createCell();
+
+        cell.setContent("content");
+        assertEquals(cell.getContent(), "content");
+
+        BooleanValue value = factory.createBooleanValue();
+        value.setValue(true);
+        cell.setInterpretation(value);
+
+        assertThat(cell.getInterpretation(), CoreMatchers.instanceOf(BooleanValue.class));
+        assertEquals(((BooleanValue) cell.getInterpretation()).getValue(), true);
 
     }
 }

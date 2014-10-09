@@ -7,4 +7,5 @@ import org.diverse.pcm.api.java.Value;
  */
 public interface BooleanValue extends Value {
     boolean getValue();
+    void setValue(boolean value);
 }

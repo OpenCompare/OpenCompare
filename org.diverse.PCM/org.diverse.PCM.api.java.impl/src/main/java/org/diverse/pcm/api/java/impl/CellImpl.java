@@ -33,7 +33,9 @@ public class CellImpl implements Cell {
     @Override
     public Value getInterpretation() {
         pcm.Value kInterpretation = kCell.getInterpretation();
-        if (kInterpretation instanceof BooleanValue) {
+        if (kInterpretation == null) {
+            return null;
+        } else if (kInterpretation instanceof BooleanValue) {
             return new BooleanValueImpl((BooleanValue) kInterpretation);
         } else {
             throw new UnsupportedOperationException(kInterpretation.getClass() + " interpretation type is not yet supported");

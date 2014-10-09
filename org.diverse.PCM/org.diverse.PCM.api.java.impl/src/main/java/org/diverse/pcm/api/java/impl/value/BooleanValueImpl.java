@@ -1,15 +1,17 @@
 package org.diverse.pcm.api.java.impl.value;
 
+import org.diverse.pcm.api.java.impl.ValueImpl;
 import org.diverse.pcm.api.java.value.BooleanValue;
 
 /**
  * Created by gbecan on 09/10/14.
  */
-public class BooleanValueImpl implements BooleanValue {
+public class BooleanValueImpl extends ValueImpl implements BooleanValue {
 
     private pcm.BooleanValue kBooleanValue;
 
     public BooleanValueImpl(pcm.BooleanValue kBooleanValue) {
+        super(kBooleanValue);
         this.kBooleanValue = kBooleanValue;
     }
 
@@ -20,5 +22,10 @@ public class BooleanValueImpl implements BooleanValue {
     @Override
     public boolean getValue() {
         return kBooleanValue.getValue();
+    }
+
+    @Override
+    public void setValue(boolean b) {
+        kBooleanValue.setValue(b);
     }
 }

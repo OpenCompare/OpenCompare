@@ -38,4 +38,14 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
         }
         return cells;
     }
+
+    @Override
+    public void addCell(Cell cell) {
+        kProduct.addValues(((CellImpl) cell).getkCell());
+    }
+
+    @Override
+    public void removeCell(Cell cell) {
+        kProduct.removeValues(((CellImpl) cell).getkCell());
+    }
 }

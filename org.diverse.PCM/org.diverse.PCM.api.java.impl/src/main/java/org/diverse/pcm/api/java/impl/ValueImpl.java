@@ -7,6 +7,14 @@ import org.diverse.pcm.api.java.Value;
  */
 public abstract class ValueImpl implements Value {
 
-    public abstract pcm.Value getkValue();
+    private pcm.Value kValue;
 
+    protected ValueImpl(pcm.Value kValue) {
+        this.kValue = kValue;
+    }
+
+    public pcm.Value getkValue() {
+        return kValue;
+    }
 }
+

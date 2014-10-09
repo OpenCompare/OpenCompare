@@ -8,4 +8,6 @@ public interface Product {
 	void setName(String name);
 
 	List<Cell> getCells();
+    void addCell(Cell cell);
+    void removeCell(Cell cell);
 }
