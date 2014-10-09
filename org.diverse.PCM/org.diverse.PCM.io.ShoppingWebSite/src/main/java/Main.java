@@ -11,10 +11,11 @@ public class Main {
     {
         ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
         swsp.getAllExistingCategories();
-      //  swsp.printProducts(87);
-        swsp.printProductFeature("137684914");
-        System.out.println(swsp.cpt);
-        DefaultPcmFactory d = new DefaultPcmFactory();
+     //   swsp.printProducts(87);
+   //     swsp.printProductFeature("137684914");
+//        System.out.println(swsp.cpt);
+      //  DefaultPcmFactory d = new DefaultPcmFactory();
+
 
     }
 }

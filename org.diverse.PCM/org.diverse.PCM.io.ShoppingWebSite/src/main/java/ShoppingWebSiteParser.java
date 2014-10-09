@@ -3,6 +3,7 @@ import com.shopping.api.sdk.SdcQuery;
 import com.shopping.api.sdk.SdcQueryException;
 import com.shopping.api.sdk.SdkConfiguration;
 import com.shopping.api.sdk.response.*;
+import pcm.factory.DefaultPcmFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +17,9 @@ import java.util.ResourceBundle;
  */
 public class ShoppingWebSiteParser {
 
+
+    private DefaultPcmFactory myFactory ;
+
     SdkConfiguration config ;
     public int cpt = 0 ;
 
@@ -24,6 +28,8 @@ public class ShoppingWebSiteParser {
         File propertiesFile = new File(url.getFile());
         try {
             config = new SdkConfiguration(propertiesFile);
+            myFactory = new DefaultPcmFactory() ;
+
         }catch (Exception e)
         {
             System.err.println(e.toString());
@@ -70,6 +76,20 @@ public class ShoppingWebSiteParser {
         }
     }
 
+    private boolean hasProduct(CategoryType category){
+       ItemListType lst = category.getItems() ;
+        if(lst != null) {
+            if (lst.getProductOrOffer().size() > 0) {
+                return true;
+            } else {
+                return false;
+
+            }
+        }else {
+            return false;
+        }
+    }
+
     private  void printTreeBranch(CategoryListType list, int indent) {
         if (list != null) {
             for (CategoryType category : list.getCategories()) {
@@ -77,12 +97,15 @@ public class ShoppingWebSiteParser {
                     System.out.print(' ');
                 }
 
+                System.err.println(category.getName());
 
+                System.err.println("--- printing pdt---");
                     printProducts(category.getId());
+                System.err.println("--- ending pdt---");
 
-                System.out.println(category.getName());
 
                 printTreeBranch(category.getCategories(), indent + 2);
+                System.err.println("--- the end pdt---");
             }
         }
     }
@@ -114,6 +137,8 @@ public class ShoppingWebSiteParser {
             }
         }
     }
+
+
 
     private void printProducts(CategoryListType categories)
     {
