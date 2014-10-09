@@ -1,13 +1,16 @@
 package org.diverse.pcm.api.java.impl;
 
+import pcm.AbstractFeature;
+
 /**
  * Created by gbecan on 08/10/14.
  */
-public class FeatureImpl implements org.diverse.pcm.api.java.Feature {
+public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.api.java.Feature {
 
     private pcm.Feature kFeature;
 
     public FeatureImpl(pcm.Feature kFeature) {
+        super(kFeature);
         this.kFeature = kFeature;
     }
 

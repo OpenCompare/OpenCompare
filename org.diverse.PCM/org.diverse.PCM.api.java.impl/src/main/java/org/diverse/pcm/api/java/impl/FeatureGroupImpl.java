@@ -9,11 +9,12 @@ import java.util.List;
 /**
  * Created by gbecan on 08/10/14.
  */
-public class FeatureGroupImpl implements org.diverse.pcm.api.java.FeatureGroup {
+public class FeatureGroupImpl extends AbstractFeatureImpl implements org.diverse.pcm.api.java.FeatureGroup {
 
     private pcm.FeatureGroup kFeatureGroup;
 
     public FeatureGroupImpl(pcm.FeatureGroup kFeatureGroup) {
+        super(kFeatureGroup);
         this.kFeatureGroup = kFeatureGroup;
     }
 
@@ -36,12 +37,12 @@ public class FeatureGroupImpl implements org.diverse.pcm.api.java.FeatureGroup {
 
     @Override
     public void addFeature(AbstractFeature feature) {
-        kFeatureGroup.addSubFeatures(((AbstractFeatureImpl) kFeatureGroup).getkAbstractFeature());
+        kFeatureGroup.addSubFeatures(((AbstractFeatureImpl) feature).getkAbstractFeature());
     }
 
     @Override
     public void removeFeature(AbstractFeature feature) {
-        kFeatureGroup.removeSubFeatures(((AbstractFeatureImpl) kFeatureGroup).getkAbstractFeature());
+        kFeatureGroup.removeSubFeatures(((AbstractFeatureImpl) feature).getkAbstractFeature());
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.diverse.pcm.api.java.AbstractFeature;
 import org.diverse.pcm.api.java.Product;
+import pcm.FeatureGroup;
 
 
 /**
@@ -53,8 +54,8 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
         for (pcm.AbstractFeature kFeature : kpcm.getFeatures()) {
             if (kFeature instanceof pcm.Feature) {
                 features.add(new FeatureImpl((pcm.Feature) kFeature));
-            } else if (kFeature instanceof FeatureGroupImpl) {
-                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
+            } else if (kFeature instanceof FeatureGroup) {
+                features.add(new FeatureGroupImpl((FeatureGroup) kFeature));
             }
         }
         return features;
@@ -67,6 +68,6 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
     @Override
     public void removeFeature(AbstractFeature abstractFeature) {
-       kpcm.removeFeatures(((AbstractFeatureImpl) abstractFeature).getkAbstractFeature());
+        kpcm.removeFeatures(((AbstractFeatureImpl) abstractFeature).getkAbstractFeature());
     }
 }
