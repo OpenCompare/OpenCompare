@@ -2,6 +2,7 @@ package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.Cell;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,10 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
 
     @Override
     public List<Cell> getCells() {
-        return null; // TODO : continue the implementation of the wrapper
+        List<Cell> cells = new ArrayList<Cell>();
+        for (pcm.Cell kCell : kProduct.getValues()) {
+            cells.add(new CellImpl(kCell));
+        }
+        return cells;
     }
 }
