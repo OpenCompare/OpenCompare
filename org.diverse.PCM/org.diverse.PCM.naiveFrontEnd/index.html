@@ -90,7 +90,7 @@ var modelElm = null;
 
 var compare = factory.createModelCompare();
 
-$.getJSON('./../PCM_data/Boomboxes.json', function(data) {
+$.getJSON('/org.diverse.PCM/org.diverse.PCM.naiveFrontEnd/PCM_data/Boomboxes.json', function(data) {
 
     console.log(data);
     <!-- Loading the model -->
@@ -104,6 +104,11 @@ $.getJSON('./../PCM_data/Boomboxes.json', function(data) {
     console.log( + kPCM.products.size());
     <!-- Number of Abstract feature -->
     console.log( + kPCM.features.size());
+
+    // Test type (a better solution exists...)
+    var aFeature = kPCM.features.get(0);
+    console.log("pcm.FeatureGroup" === aFeature.metaClassName())
+
     <!-- Go other all the products -->
     var products = kPCM.products ;
     for (var i = 0; i < products.size(); i++) {
@@ -115,7 +120,7 @@ $.getJSON('./../PCM_data/Boomboxes.json', function(data) {
     kPCM.name = "new name" ;
     console.log(kPCM.name);
 
-    var modelData = saver.serialize(kPCM);
+    var jsonModelData = saver.serialize(kPCM);
     // to do implement the saveusing https://github.com/eligrey/FileSaver.js
 
 
