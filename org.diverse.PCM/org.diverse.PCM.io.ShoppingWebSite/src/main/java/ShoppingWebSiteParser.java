@@ -3,14 +3,14 @@ import com.shopping.api.sdk.SdcQuery;
 import com.shopping.api.sdk.SdcQueryException;
 import com.shopping.api.sdk.SdkConfiguration;
 import com.shopping.api.sdk.response.*;
+import com.sun.tools.javac.util.Pair;
 import org.kevoree.modeling.api.json.JSONModelSerializer;
 import pcm.*;
 import pcm.factory.DefaultPcmFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -23,6 +23,23 @@ public class ShoppingWebSiteParser {
     private DefaultPcmFactory myFactory ;
     private SdkConfiguration config ;
 
+
+    public void savePcmToFile(PCM m, File f)
+    {
+        JSONModelSerializer jml = myFactory.createJSONSerializer() ;
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(f);
+            jml.serializeToStream(m,fos);
+            fos.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public ShoppingWebSiteParser()  {
         URL url = this.getClass().getResource("sdk.properties") ;
@@ -39,25 +56,47 @@ public class ShoppingWebSiteParser {
 
     public PCM getPcm(int categoryId){
         PCM pcmRes = myFactory.createPCM() ;
-        System.out.println("Dealing with : " + categoryId) ;
         populatePCM(pcmRes, categoryId);
         return pcmRes ;
     }
 
 
-    public void printAllCat()
+    public LinkedList<Pair<String,String>> getAllCat()
     {
+       LinkedList<Pair<String,String>> res = new  LinkedList<Pair<String,String>>() ;
         SdcCategories  categories = null;
+
         try {
             categories = new SdcCategories(config);
             categories.setCategoryId(0);
             categories.setShowAllDescendants(true);
             CategoryTreeResponseType   tree = categories.submit();
-            printTree(tree);
+            getTree(tree, res);
         } catch (SdcQueryException e) {
             e.printStackTrace();
         }
+        return res ;
     }
+
+
+    private  void getTreeBranch(CategoryListType list,LinkedList<Pair<String,String>> r)
+    {
+        if (list != null) {
+            for (CategoryType category : list.getCategories()) {
+                r.add(new Pair<String, String>(category.getName(),String.valueOf(category.getId())));
+                getTreeBranch(category.getCategories(), r);
+
+            }
+        }
+    }
+
+    public  void getTree(CategoryTreeResponseType tree,LinkedList<Pair<String,String>> r) {
+        CategoryListType categories = tree.getCategory().getCategories();
+        getTreeBranch(categories, r);
+
+    }
+
+
 
     public CategoryTreeResponseType getAllExistingCategories()  {
         CategoryTreeResponseType resultTree = null;
@@ -90,14 +129,12 @@ public class ShoppingWebSiteParser {
             {
 
                 if(feature instanceof Feature) {
-                    System.out.println(FeatureName + " found");
                     f = (Feature) feature;
                 }
             }
         }
         if (f == null)
         {
-            System.out.println(FeatureName + " not found" ) ;
             f = myFactory.createFeature() ;
             f.setName(FeatureName);
             _pcm.addFeatures(f);
