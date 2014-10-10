@@ -1,0 +1,196 @@
+os
+version
+claimed ipv6-ready
+installed by default
+dhcpv6
+nd rdnss
+notes
+aix
+4.3
+yes
+yes
+yes
+no
+
+android
+4.4.4 (kitkat)
+partial
+yes
+no
+no
+lacks support for dhcpv6 and nd-rdnss due to the use of an outdated version of dhcpcd. suffers from intermittent loss of its unicast address on some phones.
+cisco ios
+15.3
+yes
+yes
+yes
+yes
+support for rdnss option as of 15.4(1)t, 15.3(2)s.
+fedora
+13
+yes
+yes
+yes
+yes
+
+freebsd
+9.0
+yes
+yes
+addon
+yes
+
+hp-ux
+11i
+yes
+yes
+yes
+yes
+
+ibm i
+7.1
+yes
+yes
+yes
+no
+
+ios
+4.1
+yes
+yes
+yes
+yes
+ios supports stateless dhcpv6 since version 4 and stateful dhcpv6 since 4.3.1.
+juniper junos
+14.1
+yes
+yes
+yes
+yes
+rdnss support introduced in junos 14.1
+mac os x
+10.7 (lion)
+yes
+yes
+yes
+yes
+versions 10.7 and later often prefer ipv4 even when working ipv6 connectivity is available.
+meego
+1.2
+no
+yes
+no
+yes
+
+openbsd
+5.2
+yes
+yes
+addon
+yes
+rdnss is only supported for rtadvd so far.
+openvms
+8.3
+yes
+yes
+no
+no
+
+red hat enterprise linux
+6
+yes
+yes
+yes
+yes
+
+solaris
+10
+yes
+yes
+yes
+no
+
+suse linux enterprise server
+11
+yes
+yes
+yes
+yes
+
+symbian
+7.0
+yes
+yes
+no
+no
+
+ubuntu
+11.04 to 13.10
+yes
+yes
+yes
+yes
+rdnss support available so long as networkmanager uses ipv6 "automatic" setting, otherwise "rdnssd" package required.
+webos
+2.1.0
+no
+no
+no
+no
+
+windows nt
+5.1 (xp)
+yes
+no
+addon
+no
+windows xp users can use dibbler, an open source dhcpv6 implementation
+windows nt
+6.x (vista),(7),(8)
+yes
+yes
+yes
+addon
+rdnssd-win32 provides an open source implementation of nd rdnss
+windows mobile
+6.5
+yes
+yes
+lite
+no
+if the oem explicitly unsets the sysgen_tcpip6 pre-processor symbol, the built image will not have any ipv6 capabilities.
+windows phone
+7.5
+no
+no
+no
+no
+8 might have some support.
+windows phone
+8(.1)
+yes
+yes
+yes
+no
+private lab research. no privacy extensions (rfc4941).
+z/os
+v1r4.0
+yes
+yes
+no
+
+
+z/vm
+v5r1.0
+yes
+yes
+no
+no
+
+z/vse
+v4r2
+addon
+no
+
+
+via a third party tcp/ip stack, ip6/vse from barnard software, inc.

@@ -1,0 +1,49 @@
+''Note: The following content requires a knowledge of [[database]] technologies.''
+
+The following is a comparison of two different database access technologies from [[Microsoft]], namely, [[ActiveX Data Objects|ActiveX Data Objects (ADO)]] and [[ADO.NET]]. Before comparing the two technologies, it is essential to get an overview of [[Microsoft Data Access Components]] (MDAC) and the [[.NET Framework]]. [[Microsoft Data Access Components]] provide a uniform and comprehensive way of developing applications for accessing almost any data store entirely from [[Managed code#Managed and unmanaged|unmanaged code]]. The [[.NET Framework]] is an [[Virtual machine#Application virtual machine|application virtual machine]]-based software environment that provides security mechanisms, [[memory management]], and [[exception handling]] and is designed so that developers need not consider the capabilities of the specific CPU that will execute the .NET application. The .NET [[Virtual machine#Application virtual machine|application virtual machine]] turns [[intermediate language]] (IL) into machine code. High-level language compilers for [[C Sharp (programming language)|C#]], [[Visual Basic .NET|VB.NET]] and [[C++]] are provided to turn source code into IL. [[ADO.NET]] is shipped with the Microsoft NET Framework.
+
+[[ActiveX Data Objects|ADO]] relies on [[Component Object Model|COM]] whereas [[ADO.NET]] relies on managed-providers defined by the .NET [[Common Language Runtime|CLR]]. ADO.NET does not replace ADO for the COM programmer; rather, it provides the .NET programmer with access to relational data sources, XML, and application data.
+
+{| class="wikitable"
+|-
+! 
+! ADO
+! ADO.NET
+|-
+| Business Model
+| Connection-oriented Models used mostly
+| Disconnected models are used:Message-like Models.
+|-
+| Disconnected Access
+| Provided by Record set
+| Provided by Data Adapter and Data set
+|-
+| [[XML]] Support
+| Limited
+| Robust Support
+|-
+|Connection Model
+|Client application needs to be connected always to data-server while working on the data, unless using client-side cursors or a disconnected Record set
+|Client disconnected as soon as the data is processed. DataSet is disconnected at all times.
+|-
+|Data Passing
+|ADO objects communicate in binary mode.
+|ADO.NET uses XML for passing the data.
+|-
+|Control of data access behaviors
+|Includes implicit behaviors that may not always be required in an application and that may therefore limit performance.
+|Provides well-defined, factored components with predictable behavior, performance, and semantics.
+|-
+|Design-time support
+|Derives information about data implicitly at run time, based on metadata that is often expensive to obtain.
+|Leverages known metadata at design time in order to provide better run-time performance and more consistent run-time behavior.
+|}
+
+== References ==
+* [http://msdn2.microsoft.com/en-us/library/ms973217.aspx ADO.NET for the ADO programmer]
+
+[[Category:Data management]]
+[[Category:.NET framework]]
+[[Category:Microsoft application programming interfaces]]
+[[Category:SQL data access]]
+[[Category:Software comparisons|ADO and ADO.NET]]

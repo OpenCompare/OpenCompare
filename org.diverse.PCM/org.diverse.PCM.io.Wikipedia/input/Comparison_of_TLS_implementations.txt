@@ -1,0 +1,2984 @@
+The [[Transport Layer Security]] (TLS) protocol provides the ability to secure communications across networks. This '''comparison of TLS implementations''' compares several of the most notable [[software library|libraries]]. There are several TLS implementations which are [[free and open source software]].
+
+All comparison categories use the stable version of each implementation listed in the overview section. The comparison is limited to features that directly relate to the TLS protocol.
+
+== Overview ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Developed by
+! Open source
+! Software license
+! Copyright owner
+! Latest stable version / release date
+! Origin
+|-
+| [[Botan (programming library)|Botan]]
+| Jack Lloyd
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Simplified BSD License]]
+| Jack Lloyd
+| 1.10.8 <small>(April&nbsp;10, 2014<span class="noprint">&#059;&#032;5 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-04-10</span>)</span><ref>{{cite web
+ | url = http://botan.randombit.net/relnotes/1_10_8.html
+ | title = Version 1.10.8, 2014-04-10 — Botan
+ | date = 2014-04-10
+ | accessdate = 2014-06-16}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Botan&action=edit &#91;±&#93;]</small>
+| US (Vermont)
+|-
+|-
+| [[cryptlib]]
+| [[Peter Gutmann (computer scientist)|Peter Gutmann]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Sleepycat License]] and commercial license
+| [[Peter Gutmann (computer scientist)|Peter Gutmann]]
+| 3.4.2 <small>(December&nbsp;17, 2012<span class="noprint">&#059;&#032;21 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2012-12-17</span>)</span> <ref>{{cite web
+  |title = cryptlib 3.4.2 released
+  |url = http://article.gmane.org/gmane.comp.encryption.cryptlib/2593
+  |date = 2012-12-17
+  |accessdate = 2014-06-16}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/cryptlib&action=edit &#91;±&#93;]</small>
+| NZ
+|-
+|-
+| [[CyaSSL]]
+| wolfSSL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]] and commercial license
+| wolfSSL Inc.
+| 3.2.0 <small>(September&nbsp;10, 2014<span class="noprint">&#059;&#032;30 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-10</span>)</span><ref>{{cite web
+  |title = CyaSSL ChangeLog
+  |url = http://www.wolfssl.com/yaSSL/Docs-cyassl-changelog.html
+  |date = 2014-09-10
+  |accessdate = 2014-09-10}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/CyaSSL&action=edit &#91;±&#93;]</small>
+| US
+|-
+| [[GnuTLS]]
+| [[GnuTLS|GnuTLS project]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[LGPL]]
+| [[Free Software Foundation]]
+| 3.2.18 <small>(September&nbsp;18, 2014<span class="noprint">&#059;&#032;22 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-18</span>)</span> <ref>{{cite web
+ | url= http://gnutls.org/news.html
+ | title= GnuTLS
+ | date=2014-09-18
+ | accessdate=2014-09-22}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/GnuTLS&action=edit &#91;±&#93;]</small><br/>
+3.1.26 <small>(August&nbsp;24, 2014<span class="noprint">&#059;&#032;47 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-24</span>)</span> <ref>{{cite web
+ | url= http://gnutls.org/news.html
+ | title= GnuTLS
+ | date=2014-08-24
+ | accessdate=2014-09-09}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/GnuTLS&action=edit &#91;±&#93;]</small>
+| EU (Greece and Sweden)
+|-
+| [[MatrixSSL]]
+| PeerSec Networks
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]] and commercial license
+| PeerSec Networks
+| 3.6.2 <small>(September&nbsp;5, 2014<span class="noprint">&#059;&#032;35 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-05</span>)</span> <ref>{{cite web
+  |title = MatrixSSL - News
+  |url = http://www.matrixssl.org/news.html
+  |date = 2014-09-05
+  |accessdate = 2014-09-15}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/MatrixSSL&action=edit &#91;±&#93;]</small>
+| US
+|-
+| [[Network Security Services]]
+| [[Mozilla]], [[AOL]], [[Red Hat]], [[Sun Microsystems|Sun]], [[Oracle Corporation|Oracle]], [[Google]] and others
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Mozilla Public License]] 2.0
+| NSS contributors
+| 3.17.1 <small>(October&nbsp;2, 2014<span class="noprint">&#059;&#032;8 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-02</span>)</span><ref name="release">{{cite web
+  | url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.17.1_release_notes
+  | title = NSS 3.17.1 release notes
+  | publisher = [[Mozilla]]
+  | date = 2014-10-02
+  | accessdate = 2014-10-03}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Network_Security_Services&action=edit &#91;±&#93;]</small><br/>
+3.16.5 <small>(October&nbsp;2, 2014<span class="noprint">&#059;&#032;8 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-02</span>)</span><ref>{{cite web
+  | url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.16.5_release_notes
+  | title = NSS 3.16.5 release notes
+  | publisher = [[Mozilla]]
+  | date = 2014-10-02
+  | accessdate = 2014-10-03}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Network_Security_Services&action=edit &#91;±&#93;]</small><br/>
+3.16.2.1 <small>(October&nbsp;2, 2014<span class="noprint">&#059;&#032;8 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-02</span>)</span><ref>{{cite web
+  | url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.16.2.1_release_notes
+  | title = NSS 3.16.2.1 release notes
+  | publisher = [[Mozilla]]
+  | date = 2014-10-02
+  | accessdate = 2014-10-03}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Network_Security_Services&action=edit &#91;±&#93;]</small>
+| US
+|-
+| [[OpenSSL]]
+| [[OpenSSL|OpenSSL project]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[OpenSSL license#Licensing|OpenSSL / SSLeay dual-license]]
+| Eric Young, Tim Hudson, Sun, OpenSSL project, and others
+| 1.0.1i <small>(6&nbsp;August 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-06</span>)</span><ref name="newsflash">{{cite web
+  |url=https://www.openssl.org/news/
+  |title=OpenSSL: News, Project Newsflash
+  |accessdate=6 August 2014}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/OpenSSL&action=edit &#91;±&#93;]</small><br/>
+1.0.0n <small>(6&nbsp;August 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-06</span>)</span><ref name="newsflash"/>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/OpenSSL&action=edit &#91;±&#93;]</small><br/>
+0.9.8zb <small>(6&nbsp;August 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-06</span>)</span><ref name="newsflash"/>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/OpenSSL&action=edit &#91;±&#93;]</small>
+| Australia/EU
+|-
+| [[LibreSSL]]
+| [[OpenBSD|OpenBSD Project]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[OpenSSL license#Licensing|OpenSSL / SSLeay dual-license]]
+| Eric Young, Tim Hudson, Sun, OpenSSL project, OpenBSD Project, and others
+| 2.0.5 <small>(August&nbsp;8, 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-08</span>)</span> <ref>{{cite web
+   | title = LibreSSL 2.0.5 released
+   | url = https://marc.info/?l=openbsd-announce&m=140752800525709
+   | date = 2014-08-08
+   | accessdate = 2014-08-08}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/LibreSSL&action=edit &#91;±&#93;]</small>
+| 
+|-
+| [[PolarSSL]]
+| Offspark
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]] and commercial license
+| Brainspark B.V. (brainspark.nl)
+| 1.3.8 <small>(July&nbsp;11, 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-07-11</span>)</span> <ref name=polar-download>{{cite web|title=Download overview - PolarSSL|url=https://polarssl.org/download-archive|date=2014-07-11 |accessdate=2014-07-13}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/PolarSSL&action=edit &#91;±&#93;]</small><br/>
+1.2.11 <small>(July&nbsp;11, 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-07-11</span>)</span> <ref name=polar-download/>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/PolarSSL&action=edit &#91;±&#93;]</small>
+| EU (Netherlands)
+|-
+| [[RSA BSAFE]]
+| [[RSA Security]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[RSA Security]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| US
+|-
+| [[SChannel]]
+| [[Microsoft]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| Microsoft Inc.
+| Windows 8.1 / 2013-11-13
+| US
+|-
+| Secure Transport
+| [[Apple Inc.]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Apple Public Source License|APSL 2.0]]
+| Apple Inc.
+| 55471.14 ([[OS X]] 10.9.2) / 2014-02-25
+| US
+|-
+| [[SharkSSL]]
+| Realtimelogic LLC
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| Realtimelogic LLC
+| 2.1 / 2014-01-12
+| US
+|-
+| [[JSSE]]
+| [[Oracle Corporation|Oracle]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]] and commercial license
+| Oracle
+| JDK 8 / 2014-03-18
+| US
+|-
+| [[Bouncy Castle (cryptography)|Bouncy Castle]]
+| The Legion of the Bouncy Castle Inc.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[MIT License]]
+| Legion of the Bouncy Castle Inc.
+| 1.51 (Java) <small>(July&nbsp;27, 2014<span class="noprint">&#059;&#032;2 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-07-27</span>)</span> <ref>{{cite web
+  |title = Latest Java Releases - bouncycastle.org
+  |url = http://www.bouncycastle.org/latest_releases.html
+  |date = 2014-07-27
+  |accessdate = 2014-07-29}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Bouncy_Castle&action=edit &#91;±&#93;]</small><br/>
+1.7 (C#) <small>(April&nbsp;7, 2011<span class="noprint">&#059;&#032;3 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2011-04-07</span>)</span> <ref>{{cite web
+  |title = The Legion of the Bouncy Castle C# Cryptography APIs
+  |url = http://www.bouncycastle.org/csharp/
+  |date = 2011-04-07
+  |accessdate = 2014-06-16}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Bouncy_Castle&action=edit &#91;±&#93;]</small>
+| Australia
+|-
+|-class="sortbottom"
+! Implementation
+! Developed by
+! Open source
+! Software license
+! Copyright owner
+! Latest stable version / release date
+! Origin
+|}
+
+== Protocol support ==
+Several versions of the TLS protocol exist. SSL 2.0 is a deprecated protocol version with significant weaknesses.  SSL 3.0 (1996) and TLS 1.0 (1999) are successors with two weaknesses in CBC-padding that were explained in 2001 by Serge Vaudenay.  TLS 1.1 (2006) fixed only one of the problems, by switching to random IVs for CBC block ciphers, whereas the more problematic use of mac-pad-encrypt instead of the secure pad-mac-encrypt was ignored and is still present in TLS 1.2 today.  A workaround for SSL 3.0 and TLS 1.0, roughly equivalent to random IVs from TLS 1.1, was widely adopted by many implementations in late 2011, so from a security perspective, all existing version of TLS 1.0, 1.1 and 1.2 provide equivalent strength in the base protocol and are suitable for 128-bit security according to NIST SP800-57 up to at least 2030.  TLS 1.2 (2008) is the latest published version of the base protocol, introducing a means to identify the hash used for digital signatures.  While permitting the use of stronger hash functions for digital signatures in the future (rsa,sha256/sha384/sha512) over the SSL 3.0 conservative choice (rsa,sha1+md5), the TLS 1.2 protocol change inadvertently and substantially weakened the default digital signatures and provides (rsa,sha1) and even (rsa,md5).
+
+[[Datagram Transport Layer Security]] (DTLS or Datagram TLS) 1.0 is a modification of TLS 1.1 for a packet-oriented transport layer, where packet loss and packet reordering have to be tolerated.  The revision DTLS 1.2 based on TLS 1.2 was published in January 2012
+
+Note that there are known vulnerabilities in SSL 2.0.  With the exception of the predictable IVs (for which an easy workaround exists) all currently known vulnerabilities affect SSL 3.0 and all version of TLS 1.0/1.1/1.2 alike.
+
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[Transport Layer Security|SSL 2.0]]<br/>(insecure)
+! [[Transport Layer Security|SSL 3.0]]
+! [[Transport Layer Security|TLS 1.0]]
+! [[Transport Layer Security|TLS 1.1]]
+! [[Transport Layer Security|TLS 1.2]]
+! [[Datagram Transport Layer Security|DTLS 1.0]]
+! [[Datagram Transport Layer Security|DTLS 1.2]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[OpenSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel XP / 2003]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Disabled by default in MSIE 7
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Enabled by default in MSIE 7
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel Vista / 2008]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel 7 / 2008R2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Enabled by default in MSIE 11
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Enabled by default in MSIE 11
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[SChannel|SChannel 8 / 2012]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[SChannel|SChannel 8.1 / 2012R2, 10 Technical Preview]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| Secure Transport OS X 10.2-10.7 / iOS 1-4
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport OS X 10.8-10.10 / iOS 5-8
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_b_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_b_grp_protocolsupportsecuretransport|[b]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup id="ref_b_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_b_grp_protocolsupportsecuretransport|[b]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup id="ref_b_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_b_grp_protocolsupportsecuretransport|[b]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup id="ref_b_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_b_grp_protocolsupportsecuretransport|[b]]]</sup>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No<sup id="ref_a_grp_protocolsupportsecuretransport_1" class="reference">[[#cnote_a_grp_protocolsupportsecuretransport|[a]]]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! SSL 2.0<br/>(insecure)
+! SSL 3.0
+! TLS 1.0
+! TLS 1.1
+! TLS 1.2
+! DTLS 1.0
+! DTLS 1.2
+|}
+<div class="references-small" style=""><ol class="references" style="list-style-type:lower-alpha;">
+<li id="cnote_a_grp_protocolsupportsecuretransport" name="cnote_a_grp_protocolsupportsecuretransport"  >'''[[#ref_a_grp_protocolsupportsecuretransport_1|^]]'''  SSL 2.0 client hello is supported even though SSL 2.0 is not supported or is disabled because of the backward compatibilities.</li>
+<li id="cnote_b_grp_protocolsupportsecuretransport" name="cnote_b_grp_protocolsupportsecuretransport"  >'''[[#ref_b_grp_protocolsupportsecuretransport_1|^]]'''  Secure Transport: SSL 2.0 was discontinued in OS X 10.8. TLS 1.1, 1.2 and DTLS are available on iOS 5.0 and later, and OS X 10.8 and later.</li>
+</ol></div>
+
+== NSA Suite B Cryptography ==
+Required components for [[NSA Suite B Cryptography]] (RFC 6460) are:
+* [[Advanced Encryption Standard]] (AES) with key sizes of 128 and 256 bits. For traffic flow, AES should be used with either the Counter Mode (CTR) for low bandwidth traffic or the [[Galois/Counter Mode]] (GCM) mode of operation for high bandwidth traffic (see [[Block cipher modes of operation]]) — [[symmetric encryption]]
+* [[Elliptic Curve Digital Signature Algorithm]] (ECDSA) — [[digital signature]]s
+* [[Elliptic Curve Diffie–Hellman]]  (ECDH) — [[key agreement]]
+* [[SHA-2|Secure Hash Algorithm 2]] (SHA-256 and SHA-384) — [[message digest]]
+
+Per CNSSP-15, the 256-bit elliptic curve (specified in FIPS 186-2), SHA-256, and AES with 128-bit keys are sufficient for protecting classified information up to the [[Security clearance#Secret|Secret]] level, while the 384-bit elliptic curve (specified in FIPS 186-2), SHA-384, and AES with 256-bit keys are necessary for the protection of [[Security clearance#Top Secret|Top Secret]] information.
+
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[Transport Layer Security|TLS 1.2]] [[NSA Suite B Cryptography|Suite B]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[OpenSSL]]
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+|-
+| [[LibreSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[SChannel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|-class="sortbottom"
+! Implementation
+! TLS 1.2 Suite B
+|}
+
+== Certifications ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Certified version
+! [[FIPS 140-2]]
+! [[Common Criteria]]
+|-
+| [[Botan (programming library)|Botan]]
+|
+|
+|
+|-
+| [[cryptlib]]
+|
+|
+|
+|-
+| [[CyaSSL]]
+|
+|
+|
+|-
+| [[GnuTLS]]
+|
+|
+|
+|-
+| [[MatrixSSL]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Level 1
+|
+|-
+| [[Network Security Services|NSS]]
+| Netscape Security Module 1, 1.01, NSS 3.2.2, 3.11.4, 3.12.4
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Level 2
+|
+|-
+| [[OpenSSL]]
+| 1.0, 1.1.1, 1.1.2, 1.2, 1.2.1, 1.2.2, 1.2.3, 1.2.4, 2.0, 2.0.1, 2.0.2, 2.0.3, 2.0.4, 2.0.5
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Level 1
+|
+|-
+| [[LibreSSL]]
+|
+|
+|
+|-
+| [[PolarSSL]]
+|
+|
+|
+|-
+| [[SChannel]]
+| Windows CE, Embedded, XP, Vista, 7, 8, RT, Server 2003, Server 2008 R2, and Server 2012
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Level 1
+|
+|-
+| Secure Transport
+| Mac OS X 10.6 Snow Leopard, Mac OS X 10.7 Lion, Mac OS X 10.8 Mountain Lion, OS X 10.9 Mavericks, iOS 6.0, iOS 7.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Level 1
+|
+|-
+| [[SharkSSL]]
+|
+|
+|
+|-
+| [[JSSE]]
+|
+|
+|
+|-
+|-class="sortbottom"
+! Implementation
+! Certified version
+! FIPS 140-2
+! Common Criteria
+|}
+
+
+== Key exchange algorithms (certificate-only) ==
+This section lists the certificate verification functionality available in the various implementations.
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[RSA (cryptosystem)|RSA]]
+! [[RSA (cryptosystem)|RSA]]-EXPORT (insecure)
+! [[Diffie–Hellman key exchange|DHE]]-[[RSA (cryptosystem)|RSA]] ([[forward secrecy]])
+! [[Diffie–Hellman key exchange|DHE]]-[[Digital Signature Algorithm|DSS]] ([[forward secrecy]])
+! [[Elliptic curve Diffie–Hellman|ECDH]]-[[Elliptic Curve DSA|ECDSA]]
+! [[Elliptic curve Diffie–Hellman|ECDHE]]-[[Elliptic Curve DSA|ECDSA]] ([[forward secrecy]])
+! [[Elliptic curve Diffie–Hellman|ECDH]]-[[RSA (cryptosystem)|RSA]]
+! [[Elliptic curve Diffie–Hellman|ECDHE]]-[[RSA (cryptosystem)|RSA]] ([[forward secrecy]])
+! [[GOST|VKO GOST R 34.10-2001]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Client side only
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Client side only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel XP/2003]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 1024 bit
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel&nbsp;Vista/2008,&nbsp;7/2008R2,&nbsp;8/2012]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 1024 bit
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel 8.1/2012R2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|GCM only
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 1024 bit
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[SChannel|SChannel 10 Technical Preview]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|GCM only
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 1024 bit
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+| Secure Transport
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 2048 bit
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Max 2048 bit
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! RSA
+! RSA EXPORT (insecure)
+! DHE-RSA (forward secrecy)
+! DHE-DSS (forward secrecy)
+! ECDH-ECDSA
+! ECDHE-ECDSA (forward secrecy)
+! ECDH-RSA
+! ECDHE-RSA (forward secrecy)
+! VKO GOST R 34.10-2001
+|}
+
+== Key exchange algorithms (alternative key-exchanges) ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[Secure Remote Password protocol|SRP]]
+! [[Secure Remote Password protocol|SRP]]-[[Digital Signature Algorithm|DSS]]
+! [[Secure Remote Password protocol|SRP]]-[[RSA (cryptosystem)|RSA]]
+! [[Pre-shared key|PSK]]-[[RSA (cryptosystem)|RSA]]
+! [[Pre-shared key|PSK]]
+! [[Diffie–Hellman key exchange|DHE]]-[[Pre-shared key|PSK]] ([[forward secrecy]])
+! [[Elliptic curve Diffie–Hellman|ECDHE]]-[[Pre-shared key|PSK]] ([[forward secrecy]])
+! [[Diffie–Hellman key exchange|DH]]-ANON (insecure)
+! [[Elliptic curve Diffie–Hellman|ECDH]]-ANON (insecure)
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+|-
+| [[cryptlib]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[SChannel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default in Java 8 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default in Java 8
+|-
+|-class="sortbottom"
+! Implementation
+! SRP
+! SRP-DSS
+! SRP-RSA
+! PSK-RSA
+! PSK
+! DHE-PSK (forward secrecy)
+! ECDHE-PSK (forward secrecy)
+! DH-ANON (insecure)
+! ECDH-ANON (insecure)
+|}
+
+== Certificate verification methods ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Application-defined
+! PKIX path validation
+! [[Revocation list|CRL]]
+! [[Online Certificate Status Protocol|OCSP]]
+! [[DNS-based Authentication of Named Entities|DANE]] (DNSSEC)
+! Trust on First Use (TOFU)
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[LibreSSL]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! Application-defined
+! PKIX
+! CRL
+! OCSP
+! DANE
+! TOFU
+|}
+
+== Encryption algorithms ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! rowspan="2"|Implementation !! None !! colspan="13"|[[Block cipher]] with [[Block cipher mode of operation|mode of operation]] !! colspan="3"|[[Stream cipher]] !! Other
+|-
+! NULL<br/>(insecure)
+! <span class="nowrap">[[Triple DES|3DES EDE]]</span> [[Cipher block chaining|CBC]]
+! [[Advanced Encryption Standard|AES]] [[Cipher block chaining|CBC]]
+! [[Advanced Encryption Standard|AES]] [[Galois/Counter Mode|GCM]]<br/>
+! [[Advanced Encryption Standard|AES]] [[CCM mode|CCM]]<br/>
+! [[Camellia (cipher)|CAMELLIA]] [[Cipher block chaining|CBC]]<br/>
+! [[Camellia (cipher)|CAMELLIA]] [[Galois/Counter Mode|GCM]]<br/>
+! [[SEED]] [[Cipher block chaining|CBC]]<br/>
+! [[ARIA (cipher)|ARIA]] [[Cipher block chaining|CBC]]<br/>
+! [[ARIA (cipher)|ARIA]] [[Galois/Counter Mode|GCM]]<br/>
+! [[International Data Encryption Algorithm|IDEA]] [[Cipher block chaining|CBC]]
+! [[Data Encryption Standard|DES]] [[Cipher block chaining|CBC]]<br/>(insecure)
+! [[Data Encryption Standard|DES]]-40 [[Cipher block chaining|CBC]]<br/>(EXPORT, insecure)
+! [[RC2]]-40 [[Cipher block chaining|CBC]]<br/>(EXPORT, insecure)
+! [[ChaCha20|CHACHA20]]-[[Poly1305|POLY1305]]<br/>
+! [[RC4]]-128<br/>(insecure)
+! [[RC4]]-40<br/>(EXPORT, insecure)
+! [[GOST 28147-89]]<br/>
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by Default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|PartialAs of June 2014<sup class="plainlinks noprint asof-tag update" style="display:none;">[//en.wikipedia.org/w/index.php?title=ExpandTemplates&action=edit &#91;update&#93;]</sup>, only available on private version of NSS integrated into [[Chromium (web browser)|Chromium]] and derived browsers ([[Google Chrome]] and [[Opera (web browser)|Opera]]). Patch for NSS upstream has been submitted and under review.<ref name="NSS-CHACHA20-POLY1305" group="">06</ref>
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Lowest priority by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|PartialAs of June 2014<sup class="plainlinks noprint asof-tag update" style="display:none;">[//en.wikipedia.org/w/index.php?title=ExpandTemplates&action=edit &#91;update&#93;]</sup>, only available on private version of OpenSSL integrated into [[Chromium (web browser)|Chromium]] and derived browsers ([[Google Chrome]] and [[Opera (web browser)|Opera]]).<ref name="openssl-CHACHA20-POLY1305" group="">06</ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default at compile time
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default at compile time
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Lowest priority by default 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel XP/2003]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|2003 only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel Vista/2008]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel 7/2008R2,  8/2012]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|ECDHE_ECDSA only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|RC4 can be disabled through registry settings
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel 8.1/2012R2]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|except ECDHE_RSA
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Disabled except as a fallback if no other enabled algorithm works
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[SChannel|Schannel 10 Technical Preview]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Disabled except as a fallback if no other enabled algorithm works
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! rowspan="2"|Implementation
+! NULL<br/>(insecure)
+! <span class="nowrap">3DES EDE</span> CBC
+! AES CBC
+! AES GCM
+! AES CCM
+! CAMELLIA CBC
+! CAMELLIA GCM
+! SEED CBC
+! ARIA CBC
+! ARIA GCM
+! IDEA CBC
+! DES CBC<br/>(insecure)
+! DES-40 CBC<br/>(EXPORT, insecure)
+! RC2-40 CBC<br/>(EXPORT, insecure)
+! CHACHA20-POLY1305
+! RC4-128<br/>(insecure)
+! RC4-40<br/>(EXPORT, insecure)
+! GOST28147-89
+|-
+! None !! colspan="13"|Block cipher with mode of operation !! colspan="3"|Stream cipher !! Other
+|}
+
+== Supported elliptic curves ==
+This section lists the supported elliptic curves by each implementation.
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Arbitrary prime curves
+! Arbitrary char2 curves
+! sect163k1 (1)
+! sect163r1 (2)
+! sect163r2 (3)
+! sect193r1 (4)
+! sect193r2 (5)
+! sect233k1 (6)
+! sect233r1 (7)
+! sect239k1 (8)
+! sect283k1 (9)
+! sect283r1 (10)
+! sect409k1 (11)
+! sect409r1 (12)
+! sect571k1 (13)
+! sect571r1 (14)
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[OpenSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel Vista/2008, 7/2008R2, 8/2012, 8.1/2012R2, 10 Technical Preview]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| JSSE
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|-class="sortbottom"
+! Implementation
+! Arbitrary prime curves
+! Arbitrary char2 curves
+! sect163k1
+! sect163r1
+! sect163r2
+! sect193r1
+! sect193r2
+! sect233k1
+! sect233r1
+! sect239k1
+! sect283k1
+! sect283r1
+! sect409k1
+! sect409r1
+! sect571k1
+! sect571r1
+|}
+
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! secp160k1 (15)
+! secp160r1 (16)
+! secp160r2 (17)
+! secp192k1 (18)
+! secp192r1 prime192v1 (19)
+! secp224k1 (20)
+! secp224r1 (21)
+! secp256k1 (22)
+! secp256r1 prime256v1 (23)
+! secp384r1 (24)
+! secp521r1 (25)
+! brainpoolP256r1 (26)
+! brainpoolP384r1 (27)
+! brainpoolP512r1 (28)
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[SChannel|SChannel Vista/2008, 7/2008R2, 8/2012, 8.1/2012R2, 10 Technical Preview]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| JSSE
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! secp160k1
+! secp160r1
+! secp160r2
+! secp192k1
+! secp192r1 prime192v1
+! secp224k1
+! secp224r1
+! secp256k1
+! secp256r1 prime256v1
+! secp384r1
+! secp521r1
+! brainpoolP256r1
+! brainpoolP384r1
+! brainpoolP512r1
+|}
+
+== Data integrity ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[HMAC]]-[[MD5]]
+! [[HMAC]]-[[SHA-1|SHA1]]
+! [[HMAC]]-[[SHA-2|SHA256/384]]
+! [[AEAD block cipher modes of operation|AEAD]]
+! [[GOST 28147-89|GOST28147-89-MAC]]
+! [[GOST (hash function)|GOST 34.11-94]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel XP/2003, Vista/2008]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|XP SP3, 2003 SP2 via hotfix
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel 7/2008R2, 8/2012]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|ECDHE_ECDSA only
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| [[SChannel|SChannel 8.1/2012R2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Except ECDHE_RSA
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|3rd Party
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[SChannel|SChannel 10 Technical Preview]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+| Secure Transport
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! HMAC-MD5
+! HMAC-SHA1
+! HMAC-SHA256/384
+! AEAD
+! GOST28147-89-MAC
+! GOST 34.11-94
+|}
+
+== Compression ==
+Note the [[CRIME (security exploit)|CRIME security exploit]] takes advantage of TLS compression, so conservative implementations do not enable compression at the TLS level. [[HTTP compression]] is unrelated and unaffected by this exploit, but is exploited by the related [[BREACH (security exploit)|BREACH attack]].
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! DEFLATE<br/>(insecure)
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[OpenSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Disabled by default
+|-
+| [[SChannel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| Secure Transport
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+|-
+|-class="sortbottom"
+! Implementation
+! DEFLATE
+|}
+
+== Extensions ==
+In this section the extensions each implementation supports are listed. Note that the Secure Renegotiation extension is critical for HTTPS client security <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (August 2014)">citation needed</span>]]</i>&#93;</sup>. TLS clients not implementing it are vulnerable to attacks, irrespective of whether the client implements TLS renegotiation.
+
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Secure<br/>Renegotiation
+! Server Name<br/>Indication
+! [[Application-Layer Protocol Negotiation|ALPN]]
+! [[OCSP stapling|Certificate Status<br/>Request]]
+! [[OpenPGP]]
+! Supplemental Data
+! Session Ticket
+! Keying Material Exporter
+! Maximum Fragment Length
+! Truncated [[HMAC]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[SChannel|SChannel XP/2003]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel Vista/2008]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel 7/2008R2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel 8/2012]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Client side only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel|SChannel 8.1/2012R2, 10 Technical Preview]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! Secure Renegotiation
+! Server Name Indication
+! ALPN
+! Certificate Status Request
+! OpenPGP 
+! Supplemental Data 
+! Session Ticket 
+! Keying Material Exporter 
+! Maximum Fragment Length 
+! Truncated HMAC 
+|}
+
+== Assisted cryptography ==
+This section lists the known ability of an implementation to take advantage of CPU instruction sets that optimize encryption, or utilize system specific devices that allow access to underlying cryptographic hardware for acceleration or for data separation.
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[PKCS11|PKCS #11 device]]
+! [[AES instruction set|Intel AES-NI]]
+! [[VIA PadLock]]
+! [http://www.st.com/web/en/catalog/mmc/FM141/SC1169/SS1575 STM32F2]
+! [http://www.cavium.com/processor_security_nitroxPX.html Cavium NITROX]
+! [http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=CAUAP Freescale CAU/mmCAU]
+! [[ARM architecture#ARMv8-A|ARMv8-A]]
+! [https://www.microchip.com/pagehandler/en-us/technology/embeddedsecurity/technology/hardwarecryptoengine.html Microchip PIC32MZ]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[Network Security Services|NSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[LibreSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[PolarSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+| [[JSSE]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-class="sortbottom"
+! Implementation
+! PKCS #11 device
+! Intel AES-NI
+! VIA PadLock
+! STM32F2
+! Cavium NITROX
+! Freescale CAU/mmCAU
+! ARMv8-A
+! Microchip PIC32MZ
+|}
+
+== System-specific backends ==
+This section lists the ability of an implementation to take advantage of the available operating system specific backends, or even the backends provided by another implementation.
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [http://home.gna.org/cryptodev-linux/ /dev/crypto]
+! [[Cryptographic Service Provider|Windows CSP]]
+! [http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/Common%20Crypto.3cc.html CommonCrypto]
+! [[OpenSSL|OpenSSL engine]]
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [[PolarSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SChannel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Secure Transport
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+| [[JSSE]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! /dev/crypto
+! Windows CSP
+! CommonCrypto
+! OpenSSL engine
+|}
+
+== Cryptographic module/token support ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! [[Trusted Platform Module|TPM]] support
+! Hardware token support
+! Objects identified via
+|-
+| [[Botan (programming library)|Botan]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+|-
+| [[cryptlib]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]]
+| User-defined label
+|-
+| [[CyaSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+| [[GnuTLS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]]
+| PKCS #11 URLs
+|-
+| [[MatrixSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]]
+| 
+|-
+| [[Network Security Services|NSS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]]
+|
+|-
+| [[OpenSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[PKCS11]] (via 3rd party module)
+| Custom method
+|-
+| [[LibreSSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[PKCS11]] (via 3rd party module)
+| Custom method
+|-
+| [[PolarSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]] (via libpkcs11-helper) or standard hooks
+| Custom method
+|-
+| [[SChannel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Microsoft CryptoAPI]]
+| UUID, User-defined label
+|-
+| Secure Transport
+| 
+| 
+| 
+|-
+| [[SharkSSL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| 
+|-
+| [[JSSE]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PKCS11]] [[Java Cryptography Architecture]]/<br/>[[Java Cryptography Extension]]
+| 
+|-
+|-class="sortbottom"
+! Implementation
+! TPM support
+! Hardware token support
+! Objects identified via
+|}
+
+== Code size and dependencies ==
+The size is given in [[Kilo-|k]]SLOC (1000 [[source lines of code]]).
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! data-sort-type="number" | Code size
+! Dependencies
+! Optional<br/>dependencies
+|-
+| [[Botan (programming library)|Botan]]
+| 32 kSLOC
+| C++11
+| [[sqlite]], [[zlib]] (compression), [[bzip2]]  (compression), [[XZ Utils|liblzma]] (compression)
+|-
+|-
+| [[CyaSSL]]
+| 67 kSLOC
+| None
+| libc, zlib (compression)
+|-
+| [[GnuTLS]]
+| 138 kSLOC
+| libc<br/>nettle<br/>gmp
+| zlib (compression)<br/>p11-kit (PKCS #11)<br/>trousers (TPM)
+|-
+| [[MatrixSSL]]
+| 22 kSLOC
+| none
+| zlib (compression)
+|-
+| [[MatrixSSL|MatrixSSL-open]]
+| 18 kSLOC
+| libc or newlib
+|
+|-
+| [[Network Security Services|NSS]]
+| 400 kSLOC
+| libc<br/>libnspr4<br/>libsoftokn3<br/>libplc4<br/>libplds4
+| zlib (compression)
+|-
+| [[OpenSSL]]
+| 159 kSLOC
+| libc
+| zlib (compression)<br/>
+|-
+| [[PolarSSL]]
+| 14 kSLOC
+| libc
+| libpkcs11-helper (PKCS #11)<br/>zlib (compression)
+|-
+| [[SharkSSL]]
+| 35 kSLOC
+| None
+|
+|-
+| [[JSSE]]
+| 37 kSLOC<br/>
+(Framework and Oracle provider)
+| Java
+|
+|-
+|-class="sortbottom"
+! Implementation
+! Code size
+! Dependencies
+! Optional<br/>dependencies
+|}
+
+== Development environment ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Namespace
+! Build tools
+! API manual
+! Crypto back-end
+! <span class="clarify-content" style="background-color: #fff9f9; color: DarkSlateGray; border: 1px solid #ffdcdc;">OpenSSL compatibility Layer</span><sup class="noprint Inline-Template Template-Clarify" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Please clarify|<span title="This passage needs to be better explained. (November 2013)">clarify</span>]]</i>&#93;</sup>
+|-
+| [[Botan (programming library)|Botan]]
+| Botan::TLS
+| Makefile
+| Sphinx
+| Included (monolithic)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[cryptlib]]
+| crypt*
+| makefile, MSVC project workspaces
+| Programmers reference manual (PDF), architecture design manual (PDF)
+| Included (monolithic)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[CyaSSL]]
+| CyaSSL_*<br/>
+SSL_*
+| Autoconf, automake, libtool, MSVC project workspaces, XCode projects, CodeWarrior projects, MPLAB X projects, Keil, IAR, Clang, GCC
+| Manual and API Reference (HTML, PDF)
+| Included (monolithic)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (about 10% of API)
+|-
+| [[GnuTLS]]
+| gnutls_*
+| Autoconf, automake, libtool
+| Manual and API reference (HTML, PDF)
+| External, [[libnettle]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (limited)
+|-
+| [[MatrixSSL]]
+| matrixSsl_*<br/>
+ps*
+| Makefile, MSVC project workspaces, Xcode projects for Mac OS X and iOS
+| API Reference (PDF), Integration Guide
+| Included (pluggable)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Subset: SSL_read, SSL_write, etc.)
+|-
+| [[Network Security Services|NSS]]
+| CERT_*<br/>
+SEC_*<br/>
+SECKEY_*<br/>
+NSS_*<br/>
+PK11_*<br/>
+SSL_*<br/>
+...
+| Makefile
+| Manual (HTML)
+| Included, PKCS#11 based
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (separate package called nss_compat_ossl)
+|-
+| [[OpenSSL]]
+| SSL_*<br/>
+SHA1_*<br/>
+MD5_*<br/>
+EVP_*<br/>
+...
+| Makefile
+| Man pages
+| Included (monolithic)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|-
+| [[PolarSSL]]
+| ssl_*<br/>
+sha1_*<br/>
+md5_*<br/>
+x509parse_*<br/>
+...
+| Makefile, [[CMake]], MSVC project workspaces
+| API Reference + High Level and Module Level Documentation (HTML)
+| Included (monolithic)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[SharkSSL]]
+| SharkSsl*
+| Makefile
+| (online) HTML Manual and API Reference
+| Included (monolithic)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [[JSSE]]
+| javax.net.ssl
+| Makefile
+| API Reference (HTML) +
+[http://docs.oracle.com/javase/7/docs/ Java SE 7]
+| [[Java Cryptography Architecture]]/<br/>[[Java Cryptography Extension]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|-class="sortbottom"
+! Implementation
+! Namespace
+! Build tools
+! API manual
+! Crypto back-end
+! OpenSSL compatibility layer
+|}
+
+== Portability concerns ==
+{| class="wikitable sortable" style="text-align: left; font-size: smaller"
+|-
+! Implementation
+! Platform requirements
+! Network requirements
+! Thread safety
+! Random seed
+! Able to cross-compile
+! No OS (bare metal)
+! Supported operating systems
+|-
+| [[Botan (programming library)|Botan]]
+| C++11
+| None
+| Thread-safe
+| Platform-dependent
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| Most Windows and POSIX systems
+|-
+|-
+| [[cryptlib]]
+| C89
+| POSIX send() and recv(). API to supply your own replacement
+| Thread-safe
+| Platform-dependent, including hardware sources
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| AMX, BeOS, ChorusOS, DOS, eCOS, FreeRTOS/OpenRTOS, uItron, MVS, OS/2, Palm OS, QNX Neutrino, RTEMS, Tandem NonStop, ThreadX, uC/OS II, Unix (AIX, FreeBSD, HPUX, Linux, OS X, Solaris, etc.), VDK, VM/CMS, VxWorks, Win16, Win32, Win64, WinCE/PocketPC/etc, XMK
+|-
+| [[CyaSSL]]
+| C89
+| POSIX send() and recv(). API to supply your own replacement.
+| Thread-safe, needs mutex hooks if PThreads or WinThreads not available, can be turned off
+| Random seed set through CTaoCrypt
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Win32/64, Linux, Mac OS X, Solaris, ThreadX, VxWorks, FreeBSD, NetBSD, OpenBSD, embedded Linux, Haiku, OpenWRT, iPhone (iOS), Android, Nintendo Wii and Gamecube through DevKitPro, QNX, MontaVista, OpenCL, NonStop, TRON/ITRON/µITRON, Micrium's µC OS, FreeRTOS, SafeRTOS, Freescale MQX, Nucleus, TinyOS, HP/UX, Keil RTX, TI-RTOS
+|-
+| [[GnuTLS]]
+| C89
+| POSIX send() and recv(). API to supply your own replacement.
+| Thread-safe, needs custom mutex hooks if neither POSIX nor Windows threads are available.
+| Platform dependent
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Generally any POSIX platforms or Windows, commonly tested platforms include GNU/Linux, Win32/64, Mac OS X, Solaris, OpenWRT, FreeBSD, NetBSD, OpenBSD.
+|-
+| [[MatrixSSL]]
+| C89
+| None
+| Thread-safe
+| Platform dependent
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| All
+|-
+| [[Network Security Services|NSS]]
+| C89, NSPR
+| NSPR PR_Send() and PR_Recv(). API to supply your own replacement.
+| Thread-safe
+| Platform dependent
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (but cumbersome)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| AIX, Android, FreeBSD, NetBSD, OpenBSD, BeOS, HP-UX, IRIX, Linux, Mac OS X, OS/2, Solaris, OpenVMS, Amiga DE, Windows, WinCE, Sony PlayStation
+|-
+| [[OpenSSL]]
+| C89?
+| ?
+| Needs mutex callbacks
+| Set through native API
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Unix, DOS (with djgpp), Windows, OpenVMS, MacOS, NetWare
+|-
+| [[PolarSSL]]
+| C89
+| POSIX read() and write(). API to supply your own replacement.
+| Threading layer available (POSIX or own hooks)
+| Random seed set through entropy pool
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Known to work on: Win32/64, Linux, Mac OS X, Solaris, FreeBSD, NetBSD, OpenBSD, OpenWRT, iPhone (iOS), Xbox, Android, SeggerOS
+|-
+| [[SharkSSL]]
+| C89
+| None: Transport agnostic API
+| Thread-safe: multiple ports
+| Random seed set through entropy pool and/or HW
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| INTEGRITY, MQX, SMX, ThreadX, VxWorks, SeggerOS, OSE, Android, Win 32/64, Linux 32/64, uCLinux, Mac OS X, OpenBSD, DD-WRT, OpenWrt
+|-
+| [[JSSE]]
+| Java
+| Java SE network components
+| Thread-safe
+| Depends on java.security.SecureRandom
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| Java based, platform-independent
+|-
+|-class="sortbottom"
+! Implementation
+! Platform requirements
+! Network requirements
+! Thread safety
+! Random seed
+! Able to cross-compile
+! No OS (bare metal)
+! Supported operating systems
+|}
+
+==See also==
+* [[SCTP]] — with DTLS support
+* [[DCCP]] — with DTLS support
+* [[Secure Real-time Transport Protocol|SRTP]] — with DTLS support (DTLS-SRTP) and Secure Real-Time Transport Control Protocol (SRTCP)
+
+== References ==
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+
+
+[[Category:Cryptographic software]]
+[[Category:Software comparisons|TLS implementations]]

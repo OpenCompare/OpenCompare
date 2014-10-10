@@ -1,0 +1,807 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>General information</h1>
+      <table border="1">
+        <tr>
+          <td> Function </td>
+          <td> Year </td>
+          <td> Designer </td>
+          <td> Derived from </td>
+          <td> Reference </td>
+        </tr>
+        <tr>
+          <td> HAVAL </td>
+          <td> 1992 </td>
+          <td>
+            Yuliang Zheng
+            <br/>
+            Josef Pieprzyk
+            <br/>
+            Jennifer Seberry
+          </td>
+          <td> </td>
+          <td> Website </td>
+        </tr>
+        <tr>
+          <td> MD2 </td>
+          <td> 1989 </td>
+          <td> Ronald Rivest </td>
+          <td> </td>
+          <td> RFC 1319 </td>
+        </tr>
+        <tr>
+          <td> MD4 </td>
+          <td> 1990 </td>
+          <td> Ronald Rivest </td>
+          <td> </td>
+          <td> RFC 1320 </td>
+        </tr>
+        <tr>
+          <td> MD5 </td>
+          <td> 1992 </td>
+          <td> Ronald Rivest </td>
+          <td>
+            MD4
+            <br/>
+            RFC 1321 page 1
+          </td>
+          <td> RFC 1321 </td>
+        </tr>
+        <tr>
+          <td> MD6 </td>
+          <td> 2008 </td>
+          <td> Ronald Rivest </td>
+          <td> </td>
+          <td> md6_report.pdf </td>
+        </tr>
+        <tr>
+          <td> RIPEMD </td>
+          <td> 1990 </td>
+          <td> The RIPE Consortium </td>
+          <td> MD4 </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>
+            RIPEMD-128
+            <br/>
+            RIPEMD-256
+            <br/>
+            RIPEMD-160
+            <br/>
+            RIPEMD-320
+          </td>
+          <td> 1996 </td>
+          <td>
+            Hans Dobbertin
+            <br/>
+            Antoon Bosselaers
+            <br/>
+            Bart Preneel
+          </td>
+          <td> RIPEMD </td>
+          <td> Website </td>
+        </tr>
+        <tr>
+          <td> SHA-0 </td>
+          <td> 1993 </td>
+          <td> NSA </td>
+          <td> </td>
+          <td> SHA-0 </td>
+        </tr>
+        <tr>
+          <td> SHA-1 </td>
+          <td> 1995 </td>
+          <td> NSA </td>
+          <td> SHA-0 </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td>
+            SHA-256
+            <br/>
+            SHA-512
+            <br/>
+            SHA-384
+          </td>
+          <td> 2002 </td>
+          <td> NSA </td>
+          <td> </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> SHA-224 </td>
+          <td> 2004 </td>
+          <td> NSA </td>
+          <td> </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> GOST R 34.11-94 </td>
+          <td> 1994 </td>
+          <td> FAPSI and VNIIstandart </td>
+          <td> GOST 28147-89 </td>
+          <td> RFC 5831, RFC 4357 </td>
+        </tr>
+        <tr>
+          <td> Tiger </td>
+          <td> 1995 </td>
+          <td>
+            Ross Anderson
+            <br/>
+            Eli Biham
+          </td>
+          <td> </td>
+          <td> Website </td>
+        </tr>
+        <tr>
+          <td> Whirlpool </td>
+          <td> 2004 </td>
+          <td>
+            Vincent Rijmen
+            <br/>
+            Paulo Barreto
+          </td>
+          <td> </td>
+          <td> Website </td>
+        </tr>
+        <tr>
+          <td> SHA-3 (Keccak) </td>
+          <td> 2008 </td>
+          <td>
+            Guido Bertoni
+            <br/>
+            Joan Daemen
+            <br/>
+            Michaël Peeters
+            <br/>
+            Gilles Van Assche
+          </td>
+          <td> </td>
+          <td> Website </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Compression function</h1>
+      <table border="1">
+        <tr>
+          <td> Function </td>
+          <td> Size (bit) </td>
+          <td> Size (bit) </td>
+          <td> Size (bit) </td>
+          <td> Size (bit) </td>
+          <td> Size (bit) </td>
+          <td> Size (bit) </td>
+          <td>
+            Words ×
+            <br/>
+            Passes =
+            <br/>
+            Rounds
+          </td>
+          <td> Operations </td>
+          <td> Endian </td>
+          <td> Specification </td>
+        </tr>
+        <tr>
+          <td> Function </td>
+          <td> Word </td>
+          <td> Digest </td>
+          <td>
+            Chaining
+            <br/>
+            values
+          </td>
+          <td>
+            Computation
+            <br/>
+            values
+          </td>
+          <td> Block </td>
+          <td> Length </td>
+          <td>
+            Words ×
+            <br/>
+            Passes =
+            <br/>
+            Rounds
+          </td>
+          <td> Operations </td>
+          <td> Endian </td>
+          <td> Specification </td>
+        </tr>
+        <tr>
+          <td> HAVAL-3-128 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 9632 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-3-160 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 9632 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-3-192 </td>
+          <td> 32 </td>
+          <td> = 192×6 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 9632 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-3-224 </td>
+          <td> 32 </td>
+          <td> = 224×7 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 9632 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-3-256 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 9632 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-4-128 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 12832 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-4-160 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 12832 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-4-192 </td>
+          <td> 32 </td>
+          <td> = 192×6 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 12832 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-4-224 </td>
+          <td> 32 </td>
+          <td> = 224×7 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 12832 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-4-256 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 12832 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-5-128 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 16032 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-5-160 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 16032 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-5-192 </td>
+          <td> 32 </td>
+          <td> = 192×6 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 16032 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-5-224 </td>
+          <td> 32 </td>
+          <td> = 224×7 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 16032 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> HAVAL-5-256 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 1,024×32 </td>
+          <td> 64 </td>
+          <td> = 16032 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> HAVAL </td>
+        </tr>
+        <tr>
+          <td> MD2 </td>
+          <td> 8 </td>
+          <td> = 128×16 </td>
+          <td> = 256×32 </td>
+          <td> = 384×48 </td>
+          <td> = 128×16 </td>
+          <td> None </td>
+          <td> = 86448 × 18 </td>
+          <td> B </td>
+          <td> N/A </td>
+          <td> RFC 1319 </td>
+        </tr>
+        <tr>
+          <td> MD4 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 4816 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RFC 1320 </td>
+        </tr>
+        <tr>
+          <td> MD5 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 6416 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RFC 1321 </td>
+        </tr>
+        <tr>
+          <td> RIPEMD </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 256×8 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 4816 × 3 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-128 </td>
+          <td> 32 </td>
+          <td> = 128×4 </td>
+          <td> = 128×4 </td>
+          <td> = 256×8 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 6416 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RIPEMD-160 </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-256 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 6416 × 4 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RIPEMD-160 </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-160 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 160×5 </td>
+          <td> = 320×10 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RIPEMD-160 </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-320 </td>
+          <td> 32 </td>
+          <td> = 320×10 </td>
+          <td> = 320×10 </td>
+          <td> = 320×10 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Little </td>
+          <td> RIPEMD-160 </td>
+        </tr>
+        <tr>
+          <td> SHA-0 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 160×5 </td>
+          <td> = 160×5 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> /!\ Not defined /!\ </td>
+        </tr>
+        <tr>
+          <td> SHA-1 </td>
+          <td> 32 </td>
+          <td> = 160×5 </td>
+          <td> = 160×5 </td>
+          <td> = 160×5 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> SHA-256 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 6416 × 4 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> SHA-224 </td>
+          <td> 32 </td>
+          <td> = 224×7 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 512×16 </td>
+          <td> 64 </td>
+          <td> = 6416 × 4 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> SHA-512 </td>
+          <td> 64 </td>
+          <td> = 512×8 </td>
+          <td> = 512×8 </td>
+          <td> = 512×8 </td>
+          <td> = 1024×16 </td>
+          <td> 128 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> SHA-384 </td>
+          <td> 64 </td>
+          <td> = 384×6 </td>
+          <td> = 512×8 </td>
+          <td> = 512×8 </td>
+          <td> = 1024×16 </td>
+          <td> 128 </td>
+          <td> = 8016 × 5 </td>
+          <td> A B S </td>
+          <td> Big </td>
+          <td> FIPS 180--3 </td>
+        </tr>
+        <tr>
+          <td> GOST R 34.11-94 </td>
+          <td> 32 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> = 256×8 </td>
+          <td> 32 </td>
+          <td> 4 </td>
+          <td> A B L S </td>
+          <td> Little </td>
+          <td> RFC 5831 </td>
+        </tr>
+        <tr>
+          <td> Tiger-192 </td>
+          <td> 64 </td>
+          <td> = 192×3 </td>
+          <td> = 192×3 </td>
+          <td> = 192×3 </td>
+          <td> = 512×8 </td>
+          <td> 64 </td>
+          <td> = 248 × 3 </td>
+          <td> A B L S </td>
+          <td> Little </td>
+          <td> Tiger </td>
+        </tr>
+        <tr>
+          <td> Tiger-160 </td>
+          <td> 64 </td>
+          <td> ×2.5=160 </td>
+          <td> = 192×3 </td>
+          <td> = 192×3 </td>
+          <td> = 512×8 </td>
+          <td> 64 </td>
+          <td> = 248 × 3 </td>
+          <td> A B L S </td>
+          <td> Little </td>
+          <td> Tiger </td>
+        </tr>
+        <tr>
+          <td> Tiger-128 </td>
+          <td> 64 </td>
+          <td> = 128×2 </td>
+          <td> = 192×3 </td>
+          <td> = 192×3 </td>
+          <td> = 512×8 </td>
+          <td> 64 </td>
+          <td> = 248 × 3 </td>
+          <td> A B L S </td>
+          <td> Little </td>
+          <td> Tiger </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Cryptanalysis</h1>
+      <table border="1">
+        <tr>
+          <td> Function </td>
+          <td>
+            Digest
+            <br/>
+            size
+          </td>
+          <td> Rounds </td>
+          <td>
+            Best known attacks
+            <br/>
+            (complexity:rounds)
+          </td>
+          <td>
+            Best known attacks
+            <br/>
+            (complexity:rounds)
+          </td>
+          <td>
+            Best known attacks
+            <br/>
+            (complexity:rounds)
+          </td>
+        </tr>
+        <tr>
+          <td> Function </td>
+          <td>
+            Digest
+            <br/>
+            size
+          </td>
+          <td> Rounds </td>
+          <td> Collision </td>
+          <td>
+            Second
+            <br/>
+            preimage
+          </td>
+          <td> Preimage </td>
+        </tr>
+        <tr>
+          <td> RIPEMD </td>
+          <td> 128 </td>
+          <td> 48 </td>
+          <td> 2 </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-160 </td>
+          <td> 160 </td>
+          <td> 80 </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> RIPEMD-160-Reduced </td>
+          <td> 160 </td>
+          <td> 80 </td>
+          <td> 2:48 </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> MD2 </td>
+          <td> 128 </td>
+          <td> 864 </td>
+          <td> 2 </td>
+          <td> </td>
+          <td> 2 </td>
+        </tr>
+        <tr>
+          <td> MD4 </td>
+          <td> 128 </td>
+          <td> 48 </td>
+          <td> 3 </td>
+          <td> 2 </td>
+          <td> 2 </td>
+        </tr>
+        <tr>
+          <td> MD5 </td>
+          <td> 128 </td>
+          <td> 64 </td>
+          <td> 2 </td>
+          <td> </td>
+          <td> 2 </td>
+        </tr>
+        <tr>
+          <td> SHA-0 </td>
+          <td> 160 </td>
+          <td> 80 </td>
+          <td> 2 </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SHA-1 </td>
+          <td> 160 </td>
+          <td> 80 </td>
+          <td> 2 </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SHA-256 </td>
+          <td> 256 </td>
+          <td> 64 </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SHA-256-Reduced </td>
+          <td> 256 </td>
+          <td> 64 </td>
+          <td> 2:31 </td>
+          <td> </td>
+          <td> 2:42 </td>
+        </tr>
+        <tr>
+          <td> SHA-512 </td>
+          <td> 512 </td>
+          <td> 80 </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SHA-512-Reduced </td>
+          <td> 512 </td>
+          <td> 80 </td>
+          <td> 2:24 </td>
+          <td> </td>
+          <td> 2:42 </td>
+        </tr>
+        <tr>
+          <td> GOST </td>
+          <td> 256 </td>
+          <td> 256 </td>
+          <td> 2 </td>
+          <td> 2 </td>
+          <td> 2 </td>
+        </tr>
+        <tr>
+          <td> Tiger </td>
+          <td> 192 </td>
+          <td> 24 </td>
+          <td> 2:19 </td>
+          <td> </td>
+          <td> 2 </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

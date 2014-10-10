@@ -1,0 +1,257 @@
+This is a comparison of operating systems in regard to their support of the [[IPv6]] protocol.
+
+{| class="wikitable sortable" style="font-size: 85%;"
+|-
+! OS !! Version !! Claimed IPv6-ready !! Installed by Default !! [[DHCPv6]] !! [[Neighbor Discovery Protocol|ND]] RDNSS || Notes
+|-
+|[[IBM AIX|AIX]]
+|4.3
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+|[[Android (operating system)|Android]]
+|4.4.4 (KitKat)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Lacks support for DHCPv6 and ND-RDNSS due to the use of an outdated version of dhcpcd. Suffers from intermittent loss of its unicast address on some phones.
+|-
+|[[Cisco IOS]]
+|15.3
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Support for RDNSS option as of 15.4(1)T, 15.3(2)S.
+|-
+| [[Fedora (operating system)|Fedora]]
+| 13 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+| [[FreeBSD]]
+| 9.0 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Addon
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|[[HP-UX]]
+| 11i
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|[[IBM i]]
+|7.1
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+|[[iOS]]
+|4.1
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|iOS supports stateless DHCPv6 since version 4 and stateful DHCPv6 since 4.3.1.
+|-
+|[[Juniper JUNOS]]
+|14.1
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|RDNSS support introduced in JUNOS 14.1
+|-
+| [[Mac OS X]]
+| 10.7 (Lion)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Versions 10.7 and later often prefer IPv4 even when working IPv6 connectivity is available.
+|-
+|[[MeeGo]]
+|1.2
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+| [[OpenBSD]]
+| 5.2 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Addon
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|RDNSS is only supported for rtadvd so far.
+|-
+|[[OpenVMS]]
+|8.3
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+| [[Red Hat Enterprise Linux]]
+| 6 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|[[Solaris (operating system)|Solaris]]
+|10
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+| [[SUSE Linux Enterprise Server]]
+| 11
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|[[Symbian]]
+|7.0
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[http://sw.nokia.com/id/f9363497-5d96-4354-b071-e212ab204c63/Nokia_Views_on_IPv6_Transition_v2_0_en.pdf]
+|-
+| [[Ubuntu (operating system)|Ubuntu]]
+| 11.04 to 13.10
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| RDNSS support available so long as NetworkManager uses IPv6 "Automatic" setting, otherwise "rdnssd" package required.
+|-
+|[[webOS]]
+|2.1.0
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|- 
+|rowspan="2" | [[Windows NT]]
+| 5.1 ([[Windows XP|XP]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Addon
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Windows XP users can use Dibbler, an open source DHCPv6 implementation 
+|-
+| 6.X ([[Windows Vista|Vista]]),([[Windows 7|7]]),([[Windows 8|8]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Addon
+| rdnssd-win32 provides an open source implementation of ND RDNSS
+|- 
+|[[Windows Mobile]]
+| 6.5
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Lite
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| If the OEM explicitly unsets the '''SYSGEN_TCPIP6''' pre-processor symbol, the built image will not have any IPv6 capabilities.
+|- 
+|rowspan="2" | [[Windows Phone]]
+| 7.5
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 8 might have some support.
+|-
+| 8(.1)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Private lab research. No privacy extensions (RFC4941).
+|-
+|[[z/OS]]
+|V1R4.0
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+|[[z/VM]]
+|V5R1.0
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+|[[VSE (operating system)|z/VSE]]
+|V4R2
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Addon
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|Via a third party TCP/IP stack, IP6/VSE from Barnard Software, Inc.
+|}
+
+== Notes ==
+* Operating systems (such as Android) that do not support either DHCPv6 or ND RDNSS cannot automatically configure [[name server]]s in an IPv6-only environment.
+
+== References ==
+<references />
+
+==External links==
+* [http://wiki.chapters.isoc.org/tiki-index.php?page=IPv6+FAQ ISOC IPv6 FAQ] with OS tips
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:IPv6|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:IPv6|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:IPv6&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Internet Protocol]] [[IPv6|version 6]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[IPv6]]
+*[[IPv6 address]]
+*[[IPv6 packet]]
+*[[Mobile IPv6]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Deployment</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[IPv6 deployment]]
+*[[World IPv6 Day and World IPv6 Launch Day]]
+*[[Comparison of IPv6 application support]]
+*[[Comparison of IPv6 support in routers]]
+*[[Comparison of IPv6 support in operating systems]]
+*[[Comparison of IPv6 support by major transit providers]]
+*[[List of IPv6 tunnel brokers]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">IPv4 to IPv6 topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[IPv4 address exhaustion]]
+*[[IPv6 transition mechanisms]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related protocols</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[DHCPv6]]
+*[[ICMPv6]]
+**[[Neighbor Discovery Protocol]]
+**[[Secure Neighbor Discovery]]
+**[[Multicast Router Discovery]]
+*[[Site Multihoming by IPv6 Intermediation]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:IPv6]]
+[[Category:Computing comparisons]]

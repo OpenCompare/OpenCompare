@@ -1,0 +1,249 @@
+<table class="metadata plainlinks ambox ambox-style ambox-confusing" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''may be [[Wikipedia:Vagueness|confusing or unclear]] to readers'''.<span class="hide-when-compact"> Please help us [[Wikipedia:Please clarify|clarify the article]]; suggestions may be found on the [[|talk page]].</span>  <small>''(February 2008)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<table class="vertical-navbox nowraplinks" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Comparison of programming languages|General comparison]]
+* [[Comparison of programming languages (syntax)|Basic syntax]]
+* [[Comparison of programming languages (basic instructions)|Basic instructions]]
+* [[Comparison of programming languages (array)|Arrays]]
+* [[Comparison of programming languages (mapping)|Associative arrays]]
+* [[Comparison of programming languages (strings)|String operations]]
+* [[Comparison of programming languages (string functions)|String functions]]
+* [[Comparison of programming languages (list comprehension)|List comprehension]]
+* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
+* [[Constructor (object-oriented programming)|Object-oriented constructors]]
+* [[Comparison of database access|Database access]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Evaluation strategy]]
+* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Comparison of web application frameworks|Web application frameworks]]
+* [[Comparison of the Java and .NET platforms]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* Comparison of individual programming languages
+** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
+** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
+** [[Comparison of ALGOL 68 and C++]]
+** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
+** [[Compatibility of C and C++]]
+** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
+** [[Comparison of Object Pascal and C]]
+** [[Comparison of Pascal and C]]
+** [[Comparison of Java and C++]]
+** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
+** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
+** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
+</tr><tr><td style="text-align:right;font-size:115%;"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template" style=";">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template" style=";">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template" style=";">e</span>]</li></ul></div></td></tr></table>
+'''A comprehensive comparison of current:database Management Systems, and corresponding Programming Languages;
+               including: Command, Semantic, and Syntax references.''' 
+
+== Database input commands ==
+
+=== Database and table management ===
+{| class="wikitable"
+!Database
+!Create database
+!Delete database
+!List databases
+!Use a db
+!Create table
+!Delete table
+!List tables
+!List table fields
+|-
+| [[MySQL]]
+| <tt>create database ''dbname'';</tt>
+| <tt>drop database ''dbname'';</tt>
+| <tt>show databases;</tt>
+| <tt>use ''dbname'';</tt>
+| <tt>create table ''tbname'';</tt>
+| <tt>drop table ''tbname'';</tt>
+| <tt>show tables;</tt>
+| <tt>describe ''tbname'';</tt>
+|-
+| [[PostgreSQL]]
+| <tt>create database ''dbname'';</tt>
+| <tt>drop database ''dbname'';</tt>
+| <tt>\l <small>(in psql)</small></tt>
+| <tt>\c ''dbname'' (in psql)<br><small>For schemas (a similar feature):</small><br> set search_path = ''schema_name'';</tt>
+| <tt>create table ''tbname'' (''field1'' ''value_type1'', ''field2'' ''value_type2'', ... );</tt>
+| <tt>drop table ''tbname'';</tt>
+| <tt>\d <small>(in psql)</small></tt>
+| <tt>\d ''tbname'' (in psql)</small></tt>
+|-
+| [[Sqlite]] ver 3
+| <tt>? </tt>
+| <tt>? </tt>
+| <tt>? </tt>
+| <tt>$ sqlite3 ''filename''</tt>
+| <tt>create table ''tbname'' (''field1'' ''value_type1'', ''field2'' ''value_type2'', ... )</tt>
+| <tt>drop table ''tbname''</tt>
+| <tt>.tables</tt>
+| <tt>.schema</tt>
+|-
+|}
+
+=== Using data in a table ===
+{| class="wikitable"
+!Database
+!show all data in all fields
+!show all data in some fields
+!show filtered data in all fields
+|-
+| [[MySQL]]
+| <code   ><syntaxhighlight lang="mysql" enclose="none">select * from "tbname";</syntaxhighlight></code>
+| <code   ><syntaxhighlight lang="mysql" enclose="none">select "fields" from "tbname";</syntaxhighlight></code>
+| <code   ><syntaxhighlight lang="mysql" enclose="none">select * from "tbname" where "filter_expr";</syntaxhighlight></code>
+|}
+
+=== Filtering expressions ===
+
+=== Altering tables ===
+
+{| class="wikitable"
+!Database
+!Add new column
+!Delete column
+!Change column
+!Add element
+!Delete element
+|-
+| [[MySQL]]
+| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
+add column "column_name";</syntaxhighlight>
+| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
+drop column "column_name";</syntaxhighlight>
+| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
+change "old" "new" "newtype";</syntaxhighlight>
+| <syntaxhighlight lang="mysql" enclose="div">insert into "tbname" ("fields") 
+values ("values");</syntaxhighlight>
+| <syntaxhighlight lang="mysql" enclose="div">delete from "tbname" 
+where "expr";</syntaxhighlight>
+|}
+
+=== Managing users and permissions ===
+
+== MySQL databases ==
+{| class="wikitable"
+![[Programming Language|Prog Language]]
+!Access server
+!Use database
+!List databases
+!List tables
+|-
+|raw MySQL access
+|
+|<tt>use ''db'';</tt>
+|<code   ><syntaxhighlight lang="mysql" enclose="none">show databases;</syntaxhighlight></code>
+|<code   ><syntaxhighlight lang="mysql" enclose="none">show tables;</syntaxhighlight></code>
+|-valign="top"
+|[[PHP]]
+|<code   ><syntaxhighlight lang="php" enclose="none">$link = mysql_connect(host, user, password);</syntaxhighlight></code>
+or
+
+<code   ><syntaxhighlight lang="php" enclose="none">$db = new mysqli(host, user, password);</syntaxhighlight></code>
+
+or
+
+<code   ><syntaxhighlight lang="php" enclose="none">$db = new PDO('mysql:host=hostname;dbname=dbname', 'username', 'password');</syntaxhighlight></code>
+|<code   ><syntaxhighlight lang="php" enclose="none">mysql_select_db(''name'', $link);</syntaxhighlight></code>
+or
+
+<code   ><syntaxhighlight lang="php" enclose="none">$db = new mysqli(host, user, password, ''name'');</syntaxhighlight></code>
+
+or
+
+<code   ><syntaxhighlight lang="php" enclose="none">$db->select_db(''name'');</syntaxhighlight></code>
+|
+|
+|-
+|[[Python (programming language)|Python]]
+|<syntaxhighlight lang="python" enclose="div">db = MySQLdb.connect(
+      host="hostname", 
+      user="username", 
+      passwd="password", 
+      db="dbname", 
+      connect_timeout=5)</syntaxhighlight>
+|<code   ><syntaxhighlight lang="python" enclose="none">import MySQLdb</syntaxhighlight></code>
+|<syntaxhighlight lang="python" enclose="div">c = db.cursor()
+c.execute("show databases")
+c.fetchall()</syntaxhighlight>
+|<syntaxhighlight lang="python" enclose="div">c = db.cursor()
+c.execute("show tables")
+c.fetchall()</syntaxhighlight>
+|}
+
+=== Reading from tables ===
+{| class="wikitable"
+![[Programming Language|Prog Language]]
+!Describe
+!List table content
+!Search
+|-
+|raw MySQL access
+|<tt>describe ''tablename'';</tt>
+|<tt>select ''field'' from ''tablename'';</tt>
+|
+|-
+|[[PHP]]
+|
+|
+|
+|}
+
+== Databases in Object-Relational mapping systems ==
+<div class="hatnote boilerplate seealso">See also: [[Object-relational mapping]]</div>
+There are ORMs to manage a database:
+* [[django (web framework)]]
+* [[SQLObject]]
+* others
+
+=== Defining the object ===
+
+==== Django ====
+
+This class represents a row of a table named "Table"
+
+<source lang="python">
+class Table(models.Model):
+     field1_name = models."field_name"()
+     field2_name = models."field_name"()
+
+     # More explicit examples
+     integer_field = models.IntegerField()
+     char_field = models.CharField(max_length=1000)
+</source>
+
+=== Using a table ===
+
+{| class="wikitable"
+!
+! Read value
+! Change value
+! Search
+! Inserting
+|-valign="top"
+|django 
+| <syntaxhighlight lang="python" enclose="div">table_var."field_name"</syntaxhighlight>
+| <syntaxhighlight lang="python" enclose="div">table_var."field_name" = \
+"value"</syntaxhighlight>
+| <syntaxhighlight lang="python" enclose="div">table_var = \
+Table.objects.filter( "expr" )</syntaxhighlight>
+| <syntaxhighlight lang="python" enclose="div">table_var = Table()
+table_var.save()</syntaxhighlight>
+|}
+
+== See also ==
+*[[ODBC]]
+*[[JDBC]]
+*[[MySQL]]
+*[[PostgreSQL]]
+
+[[Category:Database APIs| ]]
+[[Category:Free database management systems]]
+[[Category:Programming languages]]
+[[Category:SQL data access]]
+
+
+<table class="metadata plainlinks stub" style="background: transparent;"  role="presentation"><tr>
+<td>[[File:Crystal Clear app database.png|32px|alt=Stub icon]]</td>
+<td>''This [[database]]-related article  is a [[Wikipedia:stub|stub]].  You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].''<div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Database-stub|<span title="View this template" style="">v</span>]]</li><li class="nv-talk">[[Template talk:Database-stub|<span title="Discuss this template" style="">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Database-stub&action=edit <span title="Edit this template" style="">e</span>]</li></ul></div></td>
+</tr></table>

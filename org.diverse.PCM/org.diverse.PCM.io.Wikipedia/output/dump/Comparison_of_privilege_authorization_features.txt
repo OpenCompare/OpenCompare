@@ -1,0 +1,22 @@
+user account control prompt dialog box
+user account control (uac): included with windows vista and later microsoft windows operating systems, uac prompts the user for authorization when an application tries to perform an administrator task.
+user account control prompt dialog box
+runas: a command-line tool introduced with windows 2000 that allows running a program, control panel applet, or a mmc snap-in as a different user. runas makes use of the "secondary login" windows service, also introduced with windows 2000. this service provides the capability to allow applications running as a separate user to interact with the logged-in user's desktop. this is necessary to support drag-and-drop, clipboard sharing, and other interactive login features.
+
+mac os x includes the authenticate dialog, which prompts the user to input their password in order to perform administrator tasks. this is essentially a graphical front-end of command.
+
+policykit/pkexec: a privilege authorization feature, designed to be independent of the desktop environment in use and already adopted by gnome in contrast to earlier systems, applications using policykit never run with privileges above those of the current user. instead, they indirectly make requests of the policykit daemon, which is the only program that runs as root.
+sudo, running in terminal window in ubuntu
+su: a command line tool for unix. su (substitute user) allows users to switch the terminal to a different account by entering the username and password of that account. if no user name is given, the operating system's superuser account (known as "root") is used, thus providing a fast method to obtain a login shell with full privileges to the system. issuing an exit command returns the user to their own account.
+sudo, running in terminal window in ubuntu
+sudo: created around 1980, sudo is a highly configurable unix command line tool similar to su, but it allows certain users to run programs with root privileges without spawning a root shell or requiring root's password.
+
+gksu and gksudo: gtk+ graphical frontend to su and sudo. gksu comes up automatically when a supported application needs to perform an action requiring root privileges. a replacement, "gksu policykit", which uses policykit rather than su/sudo, is being developed as part of gnome.
+
+kdesu: a qt graphical front-end to the su command for kde.
+
+kdesudo: a qt graphical front-end to sudo that has replaced kdesu in kubuntu, starting with kubuntu 7.10.
+border|120px|ktsuss
+ktsuss: ktsuss stands for "keep the su simple, stupid", and is a graphical version of su. the idea of the project is to remain simple and bug free.
+
+beesu: a graphical front-end to the su command that has replaced gksu in red hat based operating systems. it has been developed mainly for rhel and fedora.

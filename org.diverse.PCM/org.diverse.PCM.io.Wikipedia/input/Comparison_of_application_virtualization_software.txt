@@ -1,0 +1,486 @@
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(October 2011)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+'''Application virtualization software''' refers to both application [[virtual machine]]s and software responsible for implementing them. Application virtual machines are typically used for allowing application [[bytecode]] to be portably run on many different computer architectures and operating systems.  The application is usually run on the computer using an [[Interpreter (computing)|interpreter]] or [[just-in-time compilation]]. There are often several implementations of a given virtual machine, each covering a different functionality footprint.
+
+==Comparison of virtual machines==
+The table here summarizes elements for which the virtual machine designs are intended to be efficient, not the list of capabilities present in any implementation.
+
+{| class="wikitable sortable"
+|-
+!Virtual machine
+!Machine model
+!Memory management
+!Code security
+!Interpreter
+!JIT
+!Precompilation
+!Shared libraries
+!Common Language Object Model
+!Dynamic typing
+|-
+! [[Common Language Runtime|CLR]]
+| [[Stack machine|stack]]
+| automatic or manual
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Dis virtual machine|Dis]] ([[Inferno (operating system)|Inferno]])
+| [[Register machine|register]]
+| automatic
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[DotGNU]] [[Portable.NET]]
+| [[Stack machine|stack]]
+| automatic or manual
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Java Virtual Machine]] (JVM)
+| [[Stack machine|stack]]
+| automatic
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[JikesRVM]]
+| [[Stack machine|stack]]
+| automatic
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[LLVM]]
+| [[Register machine|register]]
+| manual
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Mono (software)|Mono]]
+| [[Stack machine|stack]]
+| automatic or manual
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Parrot virtual machine|Parrot]]
+| [[Register machine|register]]
+| automatic
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Dalvik virtual machine|Dalvik]]
+| [[Register machine|register]]
+| automatic
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Squeak]]
+| [[Stack machine|stack]]
+| automatic
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|source to bytecode
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+Virtual machine instructions process data in local variables using a main '''[[model of computation]]''', typically that of a [[stack machine]], [[register machine]], or [[random access machine]] often called the memory machine. Use of these three techniques is motivated by different tradeoffs in virtual machines vs physical machines, such as ease of interpretation, compilation, and verifiability for security.
+
+'''[[Memory management]]''' in these portable virtual machines is addressed at a higher level of abstraction than in physical machines. Some virtual machines, such as the popular JVM, are involved with addresses in such a way as to require safe automatic memory management by allowing the virtual machine to trace pointer references, and disallow machine instructions from manually constructing pointers to memory. Other virtual machines, such as LLVM, are more like traditional physical machines, allowing direct use and manipulation of pointers. [[Common Intermediate Language|CIL]] offers a hybrid in between, offering both controlled use of memory (like the JVM, which allows safe automatic memory management), while also offering an 'unsafe' mode that allows direct manipulation of pointers in ways that can violate type boundaries and permission.
+
+'''Code security''' generally refers to the ability of the portable virtual machine to run code while only offering it a prescribed set of capabilities. For example, the virtual machine might only allow the code access to a certain set of functions or data. The same controls over pointers which make automatic memory management possible and allow the virtual machine to ensure typesafe data access are used to assure that a code fragment is only allowed to certain elements of memory and cannot sidestep the virtual machine itself. Other security mechanisms are then layered on top as code verifiers, stack verifiers, and other techniques.
+
+An '''[[Interpreter (computing)|interpreter]]''' allows programs made of virtual instructions to be loaded and immediately run without a potentially costly compilation into native machine instructions. Any virtual machine which can be run can be interpreted, so the column designation here refers to whether the design includes provisions for efficient interpretation (for common usage).
+
+[[Just-in-time compilation]] or '''JIT''', refers to a method of compiling to native instructions at the latest possible time, usually immediately before or during the running of the program. The challenge of JIT is more one of implementation than of virtual machine design, however, modern designs have begun to make considerations to help efficiency. The simplest JIT techniques simply perform compilation to a code-fragment similar to an offline compiler. However, more complicated techniques are often employed, which specialize compiled code-fragments to parameters that are known only at runtime (see [[Adaptive optimization]]).
+
+'''Precompiling''' refers to the more classical technique of using an offline compiler to generate a set of native instructions which do not change during the runtime of the program. Because aggressive compilation and optimization can take time, a precompiled program may launch faster than one which relies on JIT alone for execution. JVM implementations have mitigated this startup cost by using interpretation initially to speed launch times, until native code-fragments can be generated through JIT.
+
+'''[[Shared library|Shared libraries]]''' are a facility to reuse segments of native code across multiple running programs. In modern operating systems, this generally means using [[virtual memory]] to share the memory pages containing a shared library across different processes which are protected from each other via [[memory protection]]. It is interesting that aggressive JIT techniques such as adaptive optimization often produce code-fragments unsuitable for sharing across processes or successive runs of the program, requiring a tradeoff be made between the efficiencies of precompiled and shared code and the advantages of adaptively specialized code. For example, several design provisions of CIL are present to allow for efficient shared libraries, possibly at the cost of more specialized JIT code. The JVM implementation on [[Mac OS X]] uses a Java Shared Archive ([http://developer.apple.com/mac/library/documentation/Java/Conceptual/Java14Development/00-Intro/JavaDevelopment.html apple docs]) to provide some of the benefits of shared libraries.
+
+==List of application virtual machine implementations==
+
+In addition to the portable virtual machines described above, virtual machines are often used as an execution model for individual scripting languages, usually by an interpreter. This table lists specific virtual machine implementations, both of the above portable virtual machines, and of scripting language virtual machines.
+
+{| class="wikitable sortable"
+|-
+! Virtual machine
+! Languages
+! Comments
+! Interpreter
+! [[Just-in-time compilation|JIT]]
+! Implementation Language
+! [[Source lines of code|SLoC]]
+|-
+! [[Common Language Runtime|CLR]]
+| [[C Sharp (programming language)|C#]], [[C++/CLI]], [[F Sharp (programming language)|F#]], [[Visual Basic .NET|VB.NET]]
+| bytecode is [[Common Intermediate Language|CIL]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| 
+| 
+|-
+! [[Adobe Flash Player]] (aka [[Tamarin (JavaScript engine)|Tamarin]])
+| [[ActionScript]], [[SWF]] (file format)
+| interactive web authoring tool. bytecode is named "ActionScript Byte Code (.abc)"
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++
+| 135k (initially released)
+|-
+! [[Dis virtual machine|Dis]] ([[Inferno (operating system)|Inferno]])
+| [[Limbo (programming language)|Limbo]]
+| [http://doc.cat-v.org/inferno/4th_edition/dis_VM_specification Dis Virtual Machine Specification]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C
+| 15k + 2850 per JIT arch + 500 per host OS
+|-
+! [[DotGNU]]/[[Portable.NET]]
+| [[List of CLI languages|CLI languages]] including: [[C Sharp (programming language)|C#]]
+| Clone of Common Language Runtime
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C, C#
+|
+|-
+! [[Forth virtual machine|Forth]]
+| [[Forth (programming language)|Forth]]
+| Features are simplified, usually include assembler, compiler, text-level and binary-level interpreters, sometimes editor, debugger and OS. Compilation speeds are >20 SKLOC/S and behave much like JIT.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Forth, Forth Assembler
+| 2.8K to 5.6K; advanced, professional implementations are smaller.
+|-
+! [[Glulx]]
+| [[Glulx]], [[Z-machine|Z-code]]
+|
+|
+|
+|
+|
+|-
+|-
+! [[HHVM]]
+| [[PHP]], [[HACK]]
+| Is an open-source virtual machine designed for executing programs written in Hack and PHP.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++, OCaml
+|
+|-
+! [[Icon (programming language)|Icon]]
+| [[Icon (programming language)|Icon]]
+|
+|
+|
+|
+|
+|-
+! [[Java Virtual Machine|JVM]]
+| [[Java (programming language)|Java]], [[Jython]], [[Groovy (programming language)|Groovy]], [[JRuby]], [[C (programming language)|C]], [[C++]], [[Clojure]], [[Scala (programming language)|Scala]] and [http://www.is-research.de/info/vmlanguages/ several others]
+| [http://java.sun.com/javase/ Reference implementation] by Sun ; [[OpenJDK]]: code under [[GPL]] ; [[IcedTea]]: code and tools under [[GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[JDK]], [[OpenJDK]] & [[IcedTea]] with regular JIT : Java, C, ASM ; [[IcedTea]] with the "Zero" JIT : Java, C
+| JVM is around 6500k lines; [[Technology Compatibility Kit|TCK]] is 80k tests and around 1000k lines
+|-
+! [[LLVM]]
+| [[C (programming language)|C]], [[C++]], [[Objective-C]], [[Ada (programming language)|Ada]], [[Fortran]], and [[Rust (programming language)|Rust]]
+| MSIL, C and C++ output are supported. ActionScript Byte Code output is supported by Adobe Alchemy. bytecode is named "LLVM Bytecode (.bc)". assembly is named "LLVM Assembly Language (*.ll)".
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++
+| 811k 
+|-
+! [[Lua (programming language)|Lua]]
+| [[Lua (programming language)|Lua]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [http://luajit.org/ LuaJIT]
+| C
+| 13k + 7k LuaJIT
+|-
+! [[MMIX]]
+| [[MMIX]]AL
+|
+|
+|
+|
+|
+|-
+! [[Mono (software)|Mono]]
+| [[List of CLI languages|CLI languages]] including: [[C Sharp (programming language)|C#]], [[VB.NET]], [[IronPython]], [[IronRuby]], and others
+| clone of Common Language Runtime.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C#, C
+| 2332k
+|-
+! [[Mozart Programming System|Oz]]
+| [[Oz (programming language)|Oz]], [[Alice (programming language)|Alice]]
+|
+|
+|
+|
+|
+|-
+! [[NekoVM]]
+| currently [[NekoVM|Neko]] and [[Haxe]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| x86 only
+| C
+| 46k
+|-
+! [[O-code machine]]
+| [[BCPL]]
+|
+|
+|
+|
+|
+|-
+! [[p-code machine]]
+| [[Pascal (programming language)|Pascal]]
+| UCSD Pascal, widespread in late 70s including Apple II
+|
+|
+|
+|
+|-
+! [[Parrot virtual machine|Parrot]]
+| Perl ([[Perl 6|6]] & [[Perl#2000–present|5]]), NQP-rx, [[Parrot intermediary language|PIR]], [[Parrot assembler language|PASM]], [[bytecode|PBC]], [[BASIC]], [[bc programming language|bc]], [[C99|C]], [[ECMAScript]], [[Lisp (programming language)|Lisp]], [[Lua (programming language)|Lua]], [[GNU m4|m4]], [[Tcl]], [[WMLScript]], [[Simple API for XML#XML processing with SAX|XML]], and others
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C, Perl
+| 111k&nbsp;C, 240k&nbsp;Perl
+|-
+! [[Perl virtual machine]]
+| [[Perl]]
+| [[op-code]] tree walker
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| C, Perl
+| 175k&nbsp;C, 9k&nbsp;Perl
+|-
+! [[CPython]]
+| [[Python (programming language)|Python]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Psyco]]
+| C
+| 387k&nbsp;C, 368k&nbsp;Python, 10k&nbsp;ASM, 31k&nbsp;Psyco
+|-
+! [[PyPy]]
+| [[Python (programming language)|Python]]
+| [[Self-hosting]] implementation of Python, next generation of [[Psyco]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Python
+|
+|-
+! [[Rubinius]]
+| [[Ruby (programming language)|Ruby]]
+| Virtual machine for another [[Ruby (programming language)|Ruby]] implementation
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++, Ruby
+|
+|-
+! [[Silverlight]]
+| [[C Sharp (programming language)|C#]], [[VB.NET]]
+| A Micro-version of Microsoft .NET Framework to let applications run sandboxed inside browser
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++
+| 7MB (initially released)
+|-
+! [[ScummVM]]
+| [[Scumm]]
+| Computer game engine
+|
+|
+|
+|
+|-
+! [[SECD machine|SECD]]
+| [[ISWIM]], [[Lispkit Lisp]]
+|
+|
+|
+|
+|
+|-
+! [[Squirrel (programming language)|Squirrel]]
+| [[Squirrel (programming language)|Squirrel]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Squirrel_JIT
+| C++
+| 12k
+|-
+! [[Smalltalk]]
+| [[Smalltalk]]
+|
+|
+|
+|
+|
+|-
+! [[SQLite]]
+| SQLite opcodes
+| Virtual database engine
+|
+|
+|
+|
+|-
+! [[Squeak]]
+| [[Squeak]] [[Smalltalk]]
+| [[Self hosting]] implementation of [[Squeak]] virtual machine.  Rich multi-media support.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Cog [http://www.mirandabanda.org/cog/] & Exupery
+| Smalltalk/[http://wiki.squeak.org/squeak/2267 Slang]
+| 110k Smalltalk, ~300K C
+|-
+! [[TraceMonkey]]
+| JavaScript
+| Based on [[Tamarin (JavaScript engine)|Tamarin]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C++
+| 173k
+|-
+! [[TrueType]]
+| [[TrueType#Hinting language|TrueType]]
+| Font rendering engine
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| C (typically)
+|
+|-
+! [[Valgrind]]
+| [[x86]]/[[x86-64]] binaries
+| Checking of memory accesses and leaks under [[Linux]]
+|
+| 
+| C
+| 467k 
+|-
+! [[VisualWorks]]
+| [[Smalltalk]]
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| C
+|
+|-
+! [[Vx32|Vx32 virtual machine]]
+| [[x86]] binaries
+| Application-level virtualization for native code
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! [[SuperWaba|Waba]]
+|
+| Virtual machine for small devices, similar to [[Java (programming language)|Java]]
+|
+|
+|
+|
+|-
+! [[YARV|Yet Another Ruby VM (YARV)]]
+| [[Ruby (programming language)|Ruby]]
+| Virtual machine of the reference implementation for [[Ruby (programming language)|Ruby]] 1.9 and newer versions
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|C
+|
+|-
+! [[Z-machine]]
+| [[Z-machine|Z-Code]]
+|
+|
+|
+|
+|
+|-
+! [[Zend Engine]]
+| [[PHP]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| C
+| 75k
+|}
+
+==See also==
+* [[Application virtualization]]
+* [[Language binding]]
+* [[Foreign function interface]]
+* [[Calling convention]]
+* [[Name mangling]]
+* [[Application programming interface]] (API)
+* [[Application Binary Interface]] (ABI)
+* [[Comparison of platform virtualization software]]
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+*[http://lists.gnu.org/archive/html/dotgnu-libjit/2004-05/index.html "libJIT vs LLVM discussion" Rhys Weatherley (libJIT) and Chris Lattner (LLVM)]
+*[http://java-virtual-machine.net/other.html List of Java Virtual Machines (JVMs), Java Development Kits (JDKs), Java Runtime Environments (JREs)]
+
+[[Category:Software comparisons|application virtualization software]]
+[[Category:Virtualization software| ]]
+
+[[pt:Comparação entre aplicações de virtualização de máquinas]]

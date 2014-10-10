@@ -1,0 +1,432 @@
+name
+creator/maintainer
+based on
+standardized?
+specification
+binary?
+human-readable?
+supports reference?
+schema/idl?
+standard api
+apache avro
+apache software foundation
+n/a
+yes
+apache avro™ 1.7.5 specification
+yes
+no
+n/a
+yes (built-in)
+n/a
+asn.1
+iso, iec, itu-t
+n/a
+yes
+iso/iec 8824; x.680 series of itu-t recommendations
+yes (ber, der, per, oer, or custom via ecn)
+yes (xer, gser, or custom via ecn)
+partial
+yes (built-in)
+n/a
+bencode
+bram cohen (creator) bittorrent, inc. (maintainer)
+n/a
+yes
+part of bittorrent protocol specification
+partially (numbers and delimiters are ascii)
+partially
+no
+no
+no
+bson
+mongodb
+json
+yes
+bson specification
+yes
+no
+no
+no
+no
+candle markup
+henry luo
+xml, json, javafx
+yes
+candle markup reference
+no
+yes
+yes (xpointer, xpath)
+yes (candle pattern reference)
+yes (xquery, xpath)
+comma-separated values (csv)
+rfc author: yakov shafranovich
+n/a
+partial (myriad informal variants used)
+rfc 4180 (among others)
+no
+yes
+no
+no
+no
+d-bus message protocol
+freedesktop.org
+n/a
+yes
+d-bus specification
+yes
+yes (type signatures)
+no
+no
+yes (see d-bus)
+json
+douglas crockford
+javascript syntax
+yes
+rfc 4627 (ancillary: rfc 6901, rfc 6902)
+no, but see ubjson, bson
+yes
+yes (json pointer (rfc 6901); alternately: jsonpath, jpath, jspon, json:select())
+partial (json schema proposal, kwalify, rx, itemscript schema)
+partial (clarinet, jsonquery, jsonpath)
+messagepack
+sadayuki furuhashi
+json (loosely)
+yes
+messagepack format specification
+yes
+no
+no
+no
+no
+netstring
+dan bernstein
+n/a
+yes
+netstrings.txt
+yes
+yes
+no
+no
+no
+ogdl
+rolf veen
+?
+yes
+specification
+yes (binary specification)
+yes
+yes (path specification)
+yes (schema wd)
+
+openddl
+eric lengyel
+c, php
+yes
+openddl.org
+no
+yes
+yes
+no
+yes (openddl library)
+php's &
+php group
+n/a
+yes
+no
+yes
+yes
+yes
+no
+yes
+data::dumper format (core perl module)
+gurusamy sarathy (activestate developer)
+perl data types
+yes
+no
+?
+yes
+no
+?
+yes
+property list
+next (creator) apple (maintainer)
+?
+partial
+public dtd for xml format
+yes
+yes
+no
+?
+cocoa, corefoundation, openstep, gnustep
+protocol buffers
+google
+n/a
+partial
+developer guide: encoding
+yes
+partial
+no
+yes (built-in)
+
+root
+cern & fnal
+n/a
+no
+n/a
+yes
+yes (optional xml output for debugging)
+yes
+yes (c++ object persistency framework)
+yes (native c++ api, bindings for python, ruby, and others)
+s-expression
+internet draft author: ron rivest
+lisp, netstring
+partial (largely de facto)
+"s-expressions" internet draft
+yes ("canonical representation")
+yes ("advanced transport representation")
+no
+no
+
+smile
+tatu saloranta
+json
+yes
+smile format specification
+yes
+no
+no
+no
+no
+structured data exchange format
+max wildgrube
+n/a
+yes
+rfc 3072
+yes
+no
+no
+no
+
+thrift
+facebook (creator) apache (maintainer)
+n/a
+no
+original whitepaper
+yes
+partial
+no
+yes (built-in)
+
+ubjson
+the buzz media, llc
+json, bson
+no
+
+yes
+no
+no
+no
+no
+external data representation (xdr)
+sun microsystems (creator) ietf (maintainer)
+n/a
+yes
+rfc 4506
+yes
+no
+yes
+yes
+yes
+xml
+w3c
+sgml
+yes
+w3c recommendation: 1.0 (fifth edition) 1.1 (second edition)
+partial (binary xml)
+yes
+yes (xpointer, xpath)
+yes (xml schema, relax_ng)
+yes (dom, sax, xquery, xpath)
+xml-rpc
+dave winer
+xml, soap
+yes
+xml-rpc specification
+no
+yes
+no
+no
+no
+yaml
+clark evans, ingy döt net, and oren ben-kiki
+c, java, perl, python, ruby, email, html, mime, uri, xml, sax, soap, json
+yes
+version 1.2
+no
+yes
+yes
+partial (kwalify, rx, built-in language type-defs)
+no
+format
+null
+boolean true
+boolean false
+integer
+floating-point
+string
+array
+associative array/object
+asn.1 (xml encoding rules)
+
+
+
+
+
+
+
+an object (the key is a field name):a data mapping (the key is a data value):
+candle markup
+
+
+
+
+
+
+
+or
+csv
+(or an empty element in the row)
+
+
+
+
+
+
+
+netstring
+
+
+
+
+
+
+
+
+json
+
+
+
+
+
+
+
+
+ogdl
+
+
+
+
+
+
+
+
+openddl
+
+
+
+
+
+
+homogeneous array:heterogeneous array:
+
+php's &
+
+
+
+
+
+
+
+associative array: object:
+property list (plain text format)
+n/a
+
+
+
+
+
+
+
+property list (xml format)
+n/a
+
+
+
+
+
+
+
+s-expression
+
+
+
+
+
+
+
+
+yaml
+
+
+
+
+
+
+
+
+xml
+a
+
+
+
+
+
+
+
+xml-rpc
+
+
+
+
+
+
+
+
+format
+null
+boolean
+integer
+floating-point
+string
+array
+associative array/object
+asn.1 (ber, per or oer encoding)
+null type
+boolean; ber: as 1 byte in binary form; per: as 1 bit; oer: as 1 byte
+integer; ber: variable-length big-endian binary representation (up to 2^(2^1024) bits); per unaligned: a fixed number of bits if the integer type has a finite range; a variable number of bits otherwise; per aligned: a fixed number of bits if the integer type has a finite range and the size of the range is less than 65536; a variable number of octets otherwise; oer: one, two, or four octets (either signed or unsigned) if the integer type has a finite range that fits in that number of octets; a variable number of octets otherwise
+real; base-10 real values are represented as character strings in iso 6093 format; binary real values are represented in a binary format that includes the mantissa, the base (2, 8, or 16), and the exponent; the special values nan, -inf, +inf, and negative zero are also supported
+multiple valid types (visiblestring, printablestring, generalstring, universalstring, utf8string)
+data specifications set of (unordered) and sequence of (guaranteed order)
+user definable type
+bson
+null type - 0 bytes for value
+true: one byte false:
+int32: 32-bit little-endian 2's complement or int64: 64-bit little-endian 2's complement
+double: little-endian binary64
+utf-8 encoded, preceded by int32 encoded string length in bytes
+bson embedded document with numeric keys
+bson embedded document
+concise binary object representation (cbor)
+
+true: false:

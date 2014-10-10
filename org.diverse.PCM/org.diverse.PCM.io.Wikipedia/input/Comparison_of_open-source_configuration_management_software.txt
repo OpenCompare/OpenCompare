@@ -1,0 +1,574 @@
+<table class="metadata plainlinks ambox ambox-style ambox-citation_style" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''has an unclear citation style'''.<span class="hide-when-compact"> The references used may be made clearer with a different or consistent style of [[Wikipedia:Citing sources|citation]], [[Help:Footnotes|footnoting]], or [[Wikipedia:External links|external linking]].</span>  <small>''(November 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+This is a comparison of notable [[Free software|free]] and [[Open-source software|open source]] [[software configuration management|configuration management software]], suitable for tasks typically performed by a [[system administrator]].
+
+
+==Basic properties==
+"Verify mode" refers to having an ability to determine whether a node is conformant with a guarantee of not modifying it, and typically involves the exclusive use of an internal language supporting read-only mode for all potentially system-modifying operations. "[[Mutual authentication|Mutual auth]]" refers to the client verifying the server and vice-versa. "Agent" describes whether additional [[Daemon (computing)|Software Daemons]] are required. Depending on the management software these agents are usually deployed on the target system or on one or many central "controller" servers.
+
+{| class="wikitable sortable" style="text-align: center; width: 95%"
+|- style="background: #ececec;"
+! style="width:12em" |
+! Language
+! License
+! [[mutual authentication|Mutual auth]]
+! [[encryption|Encrypts]]
+! Verify mode
+! Agent
+! First release
+! Latest stable release
+|-	 
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ansible (software)|Ansible]]	 
+| [[Python (programming language)|Python]]
+| [[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="text-align:left;"| 2012-03-08 
+| style="text-align:left;"| 2014-09-24 1.7.2
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Bcfg2]]
+| Python
+| BSD
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2004-08-11
+| style="text-align:left;"|2014-02-25 1.3.4
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[cdist]]
+| Python
+| [[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="text-align:left;"|2010
+| style="text-align:left;"|2012-06-05 2.0.13
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Chef (software)|Chef]]
+| [[Ruby (programming language)|Ruby]]
+| [[Apache License|Apache]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2009-01-15 0.5.0
+| style="text-align:left;"|2014-02-20 11.10.4, 2013-02-15 11.0.6 (server)
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CFEngine]]
+| [[C (programming language)|C]]
+| GPL, COSL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"| 1993
+| style="text-align:left;"| 2014-07-28 3.6.1
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ISconf]]
+| Python
+| GPL
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="text-align:left;"|1998
+| style="text-align:left;"|2006-08-13 4.2.8.233
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Juju (software)|Juju]]
+| Python, [[Go (programming language)|Go]]
+| [[Affero General Public License]]
+| 
+|
+|
+|
+| style="text-align:left;"|2010-09-17
+| style="text-align:left;"|2013-04-03 0.7
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Local ConFiGuration system ([[LCFG]])
+| Perl
+| GPL
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| 
+|
+| style="text-align:left;"|1994
+| style="text-align:left;"|Weekly Releases
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[OCS Inventory]] NG with GLPI
+| Perl, PHP, [[C++]]
+| GPL
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="text-align:left;"|2003
+| style="text-align:left;"|2011-09-13
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Open pc server integration ([[Opsi]])
+| Python, Java
+| GPL
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2004
+| style="text-align:left;"|2013-03-01 4.0.3
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[PIKT]]
+| C
+| GPL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|1998
+| style="text-align:left;"|2007-09-10 1.19.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Puppet (software)|Puppet]]
+| Ruby
+| Apache from 2.7.0, GPL before then
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2005-08-30
+| style="text-align:left;"|2014-06-10  3.6.2
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Quattor]]
+| Perl, Python
+| Apache 2.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="text-align:left;"|2005-04-01
+| style="text-align:left;"|2014-09-08 14.8.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Radmind]]
+| C
+| BSD
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2002-03-26
+| style="text-align:left;"|2008-10-08 1.13.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rex (software)|Rex]]	 
+| [[Perl (programming language)|Perl]]
+| [[Apache License|Apache]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="text-align:left;"| 2010-11-05 0.9.0
+| style="text-align:left;"| 2014-07-14 0.50.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rudder (software)|Rudder]]
+| [[C (programming language)|C]] and [[Scala (programming language)|Scala]]
+| GPL and Affero GPL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"| 2011
+| style="text-align:left;"| 2014-08-28 2.10.5
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rundeck (software)|Rundeck]]
+| Java
+| Apache 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="text-align:left;"|2010-05-01 1.0.0
+| style="text-align:left;"|2014-06-27 2.1.3
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SmartFrog]]
+| Java
+| [[GNU Lesser General Public License|LGPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2004-02-11
+| style="text-align:left;"|2009-01-26 3.16.004
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Salt (software)|Salt]]
+| Python
+| Apache
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|2011-03-17 0.6.0
+| style="text-align:left;"|2014-07-15 2014.7
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Spacewalk (software)|Spacewalk]]
+| Java (C, Perl, Python, [[PL/SQL]])
+| GPLv2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"| 2008-06
+| style="text-align:left;"| 2013-07-19 2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[STAF]]
+| [[C++]]
+| [[Common Public License|CPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="text-align:left;"|1998-02-16
+| style="text-align:left;"|2012-12-16 3.4.16 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Synctool]]
+| Python
+| GPLv2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="text-align:left;"|2003
+| style="text-align:left;"|2014-06-15 6.1
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vagrant_(software)|Vagrant]]
+| Ruby
+| MIT License
+| 
+|
+| 
+| 
+| style="text-align:left;"|2010-01-21
+| style="text-align:left;"|2014-05-06 1.6.1
+|}
+
+==Platform support==
+Note: This means platforms on which a recent version of the tool has actually been used successfully, not platforms where it should theoretically work since it's written in good portable C/C++ or an interpreted language. It should also be listed as a supported platform on the project's web site.
+
+{| class="wikitable sortable" style="text-align: center; width: 95%"
+|-
+! style="width:12em" |
+! [[IBM AIX (operating system)|AIX]]
+! [[Berkeley Software Distribution|*BSD]]
+! [[HP-UX]]
+! [[Linux]]
+! [[Mac OS X]]
+! [[Solaris (operating system)|Solaris]]
+! [[Microsoft Windows|Windows]]
+! Others
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ansible (software)|Ansible]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Bcfg2]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CFEngine]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[cdist]]
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Chef (software)|Chef]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ISconf]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Juju (software)|Juju]]
+| 
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| 
+| 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Local ConFiGuration system ([[LCFG]])
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |  [[OCS Inventory NG]] 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Open pc server integration ([[Opsi]])
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[PIKT]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Puppet (software)|Puppet]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Quattor]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Radmind]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rex (software)|Rex]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rudder (software)|Rudder]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |  [[Rundeck (software)|Rundeck]] 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SmartFrog]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Salt (Software)|Salt]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Spacewalk (software)|Spacewalk]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[STAF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Synctool]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vagrant_(software)|Vagrant]]
+| 
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|}
+
+==Short descriptions==
+Not all tools have the same goal and the same feature set. To help distinguish between all of these software packages, here is a short description of each one.
+
+;[[Ansible (software)|Ansible]]
+:Combines multi-node deployment, ad-hoc task execution, and configuration management in one package. Manages nodes over SSH and does not require any additional remote software (except python 2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any language. Uses YAML to express reusable descriptions of systems.
+
+;[[Bcfg2]]
+:Software to manage the configuration of a large number of computers using a central configuration model and the [[client–server model|client–server paradigm]]. The system enables reconciliation between clients' state and the central configuration specification. Detailed reports provide a way to identify unmanaged configuration on hosts. Generators enable code or template based generation of configuration files from a central data repository.
+
+;[[CFEngine]]
+:Lightweight agent system. Manages configuration of a large number of computers using the client–server paradigm or stand-alone. Any client state which is different from the policy description is reverted to the desired state. Configuration state is specified via a declarative language. CFEngine's paradigm is convergent "computer immunology".
+
+;[[cdist]]
+:cdist is a zero dependency configuration management system: It requires only ssh on the target host, which is usually enabled on all Unix-like machines. Only the administration host needs to have Python 3.2 installed.
+
+;[[Chef (software)|Chef]]
+:Chef is a configuration management tool written in Ruby, and uses a pure Ruby [[Domain-specific language|DSL]] for writing configuration "recipes". These recipes contain resources that should be put into the declared state. Chef can be used as a client–server tool, or used in "solo" mode.
+
+;[[ISconf]]
+:Tool to execute commands and replicate files on all nodes. The nodes do not need to be up; the commands will be executed when they boot. The system has no central server so commands can be launched from any node and they will replicate to all nodes.
+
+;[[Juju (software)|Juju]]
+:Juju concentrates on the notion of service, abstracting the notion of machine or server, and defines relations between those services that are automatically updated when two linked services observe a notable modification.
+
+;Local ConFiGuration system ([[LCFG]])
+:LCFG manages the configuration with a central description language in XML, specifying resources, aspects and profiles. Configuration is deployed using the client–server paradigm. Appropriate scripts on clients (called ''components'') transcribe the resources into configuration files and restart services as needed.
+
+;Open pc server integration ([[Opsi]])
+:Open pc server integration (Opsi) is [[desktop management]] software for [[Microsoft Windows|Windows]] clients based on [[Linux]] servers. It provides automatic [[software deployment]] (distribution), [[installation (computer programs)#Types|unattended installation]] of OS, [[patch (computing)|patch]] management, hard- and software inventory, license management and [[software asset management]], and administrative tasks for the [[configuration management]].
+
+;[[PIKT]]
+:PIKT is foremost a monitoring system that also does configuration management. "''PIKT consists of a sophisticated, [[feature-rich]] file preprocessor; an innovative scripting language with unique labor-saving features; a flexible, centrally directed process scheduler; a customizing file installer; a collection of powerful command-line extensions; and other useful tools.''"
+
+;[[Puppet (software)|Puppet]]
+:Puppet consists of a custom declarative language to describe system configuration, distributed using the client–server paradigm (using [[XML-RPC]] protocol in older versions, with a recent switch to [[Representational State Transfer|REST]]), and a library to realize the configuration. The resource abstraction layer enables administrators to describe the configuration in high-level terms, such as users, services and packages. Puppet will then ensure the server's state matches the description. There was brief support in Puppet for using a pure Ruby DSL as an alternative configuration language starting at version 2.6.0. This feature was deprecated, however, beginning with version 3.1.
+
+;[[Quattor]]
+:The quattor information model is based on the distinction between the desired state and the actual state. The desired state is registered in a fabric-wide configuration database, using a specially designed configuration language called [[Pan (programming language)|Pan]] for expressing and validating configurations, composed out of reusable hierarchical building blocks called templates. Configurations are propagated to and cached on the managed nodes.
+
+;[[Radmind]]
+:Radmind manages hosts configuration at the file system level. In a similar way to [[Tripwire (software)|Tripwire]] (and other configuration management tools), it can detect external changes to managed configuration, and can optionally reverse the changes. Radmind does not have higher-level configuration element (services, packages) abstraction. A graphical interface is available (only) for Mac OS X.
+
+;[[Rex (software)|Rex]]
+:Rex is a remote execution system with integrated configuration management and software deployment capabilities. The admin provides configuration instructions via so-called ''Rexfiles''. They are written in a small [[Domain-specific language|DSL]] but can also contain arbitrary Perl. It integrates well with an automated build system used in [[Continuous integration|CI]] environments.
+
+;[[Rudder (software)|Rudder]]
+: Rudder is an easy to use, web-driven, role-based solution for IT infrastructure Automation & Compliance. A lightweight agent installed on all managed hosts applies configuration and verifies it regularly, centralising reporting data to a main server. Pre-defined modules enable quick and simple configuration for many scenarios, and a web-based interface allows you to build extra modules.
+
+;[[Rundeck (software)|Rundeck]]
+: Rundeck is an open-source software Job scheduler and Run Book Automation system for automating routine processes across development and production environments. It combines task scheduling, multi-node command execution, workflow orchestration and logs everything that happens. Access control policy governs who executes actions across nodes via the configured "node executor" (default for unix uses SSH) and does not require any additional remote software.[1] to be installed on them. Jobs and plugins can be written in scripting languages or Java. The workflow system can be extended by creating custom step plugins to interface external tools and services.
+
+;[[Salt (software)|Salt]]
+:Salt started out as a tool for remote server management.  As its usage has grown, it has gained a number of extended features, including a more comprehensive mechanism for host configuration.  This is a relatively new feature facilitated through the Salt States component.  With the traction that Salt has gotten in the last bit, the support for more features and platforms might continue to grow.
+  
+;[[SmartFrog]]
+:Java-based tool to deploy and configure applications distributed across multiple machines. There is no central server; you can deploy a .SF configuration file to any node and have it distributed to peer nodes according to the distribution information contained inside the deployment descriptor itself.
+
+;[[Spacewalk (software)|Spacewalk]]
+:Spacewalk is an open source Linux and Solaris systems management solution and is the upstream project for the source of Red Hat Network Satellite. Spacewalk works with RHEL, Fedora, and other RHEL derivative distributions like CentOS, Scientific Linux, etc. There are ongoing efforts on getting it packaged for inclusion in Fedora. Spacewalk provides systems inventory (hardware and software information, installation and updates of software, collection and distribution of custom software packages into manageable groups, provision systems, management and deployment of configuration files, system monitoring, virtual guest provisioning, starting/stopping/configuring virtual guests and delegating all of these actions to local or LDAP users and system entitlements).
+
+;[[Software Testing Automation Framework|STAF]]
+:The Software Testing Automation Framework (STAF) enables users to create cross-platform, distributed software test environments. STAF removes the tedium of building an automation infrastructure, thus enabling users to focus on building their automation solution. The STAF framework provides the foundation upon which to build higher level solutions, and provides a pluggable approach supported across a large variety of platforms and languages.
+
+;[[Synctool]]
+:Synctool aims to be easy to understand, learn and use. It is written in Python and makes use of SSH (passwordless, with host based or key based authentication) and rsync. No specific language is needed to configure Synctool. Synctool has dry run capabilities that enable surgical precision.
+
+;[[Vagrant_(software)|Vagrant]]
+:Vagrant is free and open-source software for creating and configuring virtual development environments.[1] It can be considered a wrapper around virtualization software such as VirtualBox and configuration management software such as Chef, Salt and Puppet.
+
+==References==
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+
+
+[[Category:Configuration management| ]]
+[[Category:Software comparisons|Open source configuration management software]]
+[[Category:Free software lists and comparisons|Configuration management software]]

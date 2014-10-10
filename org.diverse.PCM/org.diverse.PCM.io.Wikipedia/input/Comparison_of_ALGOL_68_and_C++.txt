@@ -1,0 +1,153 @@
+<table class="metadata plainlinks ambox ambox-style ambox-No_footnotes" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[file:text document with red question mark.svg|50x40px|alt=|link=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article includes a [[Wikipedia:Citing sources|list of references]], related reading or [[Wikipedia:External links|external links]], but '''its sources remain unclear because it lacks [[Wikipedia:Citing sources#Inline citations|inline citations]]'''.<span class="hide-when-compact"> Please [[Wikipedia:WikiProject Fact and Reference Check|improve]] this article by introducing more precise citations.</span>  <small>''(June 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<table class="vertical-navbox nowraplinks" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Comparison of programming languages|General comparison]]
+* [[Comparison of programming languages (syntax)|Basic syntax]]
+* [[Comparison of programming languages (basic instructions)|Basic instructions]]
+* [[Comparison of programming languages (array)|Arrays]]
+* [[Comparison of programming languages (mapping)|Associative arrays]]
+* [[Comparison of programming languages (strings)|String operations]]
+* [[Comparison of programming languages (string functions)|String functions]]
+* [[Comparison of programming languages (list comprehension)|List comprehension]]
+* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
+* [[Constructor (object-oriented programming)|Object-oriented constructors]]
+* [[Comparison of database access|Database access]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Evaluation strategy]]
+* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* [[Comparison of web application frameworks|Web application frameworks]]
+* [[Comparison of the Java and .NET platforms]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+* Comparison of individual programming languages
+** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
+** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
+** [[Comparison of ALGOL 68 and C++]]
+** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
+** [[Compatibility of C and C++]]
+** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
+** [[Comparison of Object Pascal and C]]
+** [[Comparison of Pascal and C]]
+** [[Comparison of Java and C++]]
+** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
+** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
+** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
+</tr><tr><td style="text-align:right;font-size:115%;"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template" style=";">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template" style=";">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template" style=";">e</span>]</li></ul></div></td></tr></table>
+
+C++ doesn't have:
+* [[ALGOL_68#proc:_Procedures|PROC]] - first class [[nested function]]s (emulation due to local definitions of class-types, which then could be [[Function object|functors]], also new [[C++11]] has [[C++11#Lambda_functions_and_expressions|lambda functions]]),
+* [[ALGOL_68#op: Operators|OP and PRIO]] - definable operator symbols and priorities,
+* garbage collection (could be emulated with help of [[Smart_pointer#C.2B.2B_smart_pointers|smart pointers]]),
+* ''use before define'',
+* [[ALGOL_68#formatted transput|formatted transput]] using complex formatting declarations,
+* [[ALGOL 68#Standard dyadic operators with associated priorities|:=]] - assignment operation symbol (to avoid confusion with equal sign),
+* [[ALGOL_68#struct.2C_union_.26_.5B:.5D:_Structures.2C_unions_and_arrays|array]] (and slice operations on them, but in layered libraries),
+* automatic [[ALGOL_68#struct.2C_union_.26_.5B:.5D:_Structures.2C_unions_and_arrays|UNION]]s,
+* [[ALGOL_68#Expressions_and_compound_statements|CASE expressions]],
+* nonlocal [[ALGOL_68#Code sample|GOTO]]
+* intuitive declaration syntax due to its origin from [[C Programming Language|C]].
+
+ALGOL 68 doesn't have:
+* public/private struct member access protection,
+* [[Function overloading|overloaded procedures]] (in contrast to operators),
+* explicit memory deallocation, 
+* forward declarations (use before definition is allowed)
+* textual [[Preprocessor|preprocessing]] (e.g. macros), 
+* distinct reference and pointer types,
+* [[ALGOL_68#pr_.26_co:_Pragmats_and_Comments|comment]] lines (only bracketed comments),
+* [[C%2B%2B#Objects|struct inheritance, struct member functions, virtual functions]].
+* destructors, exceptions, templates, namespaces, structured loop exits
+
+==Comparison of the assignment and equality operators==
+{|border="1" style="border-collapse: collapse;"
+!bgcolor=#cccccc|Intent ||bgcolor=#cccccc|ALGOL 68 ||bgcolor=#cccccc|C++
+|-
+|Assign a value 888 to a variable ''x'' || <code   ><syntaxhighlight lang="algol68" enclose="none">x:=888;</syntaxhighlight></code> || <source lang="cpp" enclose="none">x = 888;</source>
+|-
+|Compare two values || <tt>'''if''' x = 888 '''then''' ... '''fi'''</tt> || <source lang="cpp" enclose="none">if (x == 888) { ...</source>}
+|-
+|Define a constant || <tt>'''int''' x=888;</tt> || <source lang="cpp" enclose="none">const int x = 888;</source>
+|-
+|Initialise a variable || <tt>'''int''' x:=888;</tt> || <source lang="cpp" enclose="none">int x = 888;</source>
+|-
+|Allocate a variable from the '''heap''' || <tt>'''ref''' '''int''' x = '''heap''' '''int''';</tt><br>or simply:<br><tt>'''heap''' '''int''' x;</tt> || <source lang="cpp" enclose="none">int* x = new int;</source>
+|-
+|Compare address of two pointers || <tt> '''ref''' '''int''' x, y;  <br>'''if''' x :=: y '''then''' ... '''fi'''</tt> || <source lang="cpp" enclose="none">int* x; int* y;</source><br/>
+<source lang="cpp" enclose="none">if (x == y) { ... }</source>
+|-
+|Compare value referenced by two pointers || <tt> '''ref''' '''int''' x, y; <br>'''if''' x = y '''then''' ... '''fi'''</tt> || <source lang="cpp" enclose="none">int* x; int* y;</source><br/>
+<source lang="cpp" enclose="none">if (*x == *y) { ... }</source>
+|-
+|Name a new type || <tt>'''mode''' '''longreal''' = '''long''' '''real''';</tt> || <source lang="cpp" enclose="none">typedef double longreal;</source>
+|-
+|Name a new record type || <tt>'''mode''' '''cust''' = '''struct'''('''string''' name, address);</tt> || <source lang="cpp" enclose="none">struct cust { std::string name, address; };</source> 
+|-
+|Name a new union type || <tt>'''mode''' '''taggedu''' = '''union'''('''string''' s, '''real''' r);</tt> || <source lang="cpp" enclose="none">union u { std::string s; float f; };</source> 
+|-
+|Name a procedure or function || <tt>'''proc''' f = ('''real''' x) '''real''': ( code; result );</tt> || <source lang="cpp" enclose="none">float f(float x) { code; return result; }</source>
+|-
+|Procedure default parameters|| <tt>'''proc''' p = ('''union''' ('''real''', '''void''') in x)'''void''': 
+&nbsp;&nbsp;&nbsp;&nbsp;( '''real''' x = (in x|('''real''' x):x|888); code ); </tt>
+| <source lang="cpp" enclose="none">void p(float x=888) { code; }</source>
+|-
+|Name a new operator || '''op''' ↑ = ('''real''' x,y) '''real''': x**y; || style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|-
+|Set priority on a new operator || '''prio''' ↑ = 9; || style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|-
+|Duplication by assignment || <code   ><syntaxhighlight lang="algol68" enclose="none">a:=b:=c:=d;</syntaxhighlight></code> || <source lang="cpp" enclose="none">a = b = c = d;</source>
+|-
+|Displacement operator - [[ALGOL 68C]] only || <code   ><syntaxhighlight lang="algol68" enclose="none">a:=:=b:=:=c:=:=d;</syntaxhighlight></code> || <source lang="cpp" enclose="none">a = b; b = c; c = d;</source>
+|-
+| Append "substr" to a variable ''str'' || <code   ><syntaxhighlight lang="algol68" enclose="none">str +:= "substr";</syntaxhighlight></code> || <source lang="cpp" enclose="none">str += "substr";</source>
+|-
+| Prefix "substr" to a variable ''str'' || <code   ><syntaxhighlight lang="algol68" enclose="none">"substr" +=: str;</syntaxhighlight></code> || <source lang="cpp" enclose="none">str = "substr" + str;</source>
+|-
+|}
+
+==Code Examples==
+
+===Union declaration and use===
+Assigning values into an A68 '''union''' variable is automatic, 
+the type is "tagged" to the variable, but pulling the value back out is 
+syntactically awkward as a ''conformity-clause'' is required.
+
+'''ALGOL 68 example:'''
+<code>
+  '''union'''('''int''', '''char''') x:=666;
+  printf(($3d l$, (x|('''int''' i):i) ))</code>
+'''C/C++ example:'''
+<source lang="cpp">
+  union { int i; char c; } x = { 666 };
+  std::cout << x.i << std::endl; 
+</source>
+The net effect of "type-tagging" is that Algol68's strong typing
+"half" encroaches into the '''union'''.
+
+===Mode declaration===
+A new mode (type) may be declared using a <u>mode</u> declaration:
+
+ <code>'''int''' max=99;
+ '''mode''' '''newtype''' = [0:9][0:max]'''struct''' (
+    '''long''' '''real''' a, b, c, '''short''' '''int''' i, j, k, '''ref''' '''real''' r
+ );</code>
+
+This has the similar effect as the following C++ code:
+<source lang="cpp">
+const int max=99;
+typedef struct { 
+    double a, b, c; short i, j, k; float& r;
+} newtype[9+1][max+1];
+</source>
+Note that for ALGOL 68 only the newtype name appears to the left of the equality, and most notably the construction is made - and can be read - from left to right without regard to priorities.
+
+== External references ==
+* [http://comjnl.oxfordjournals.org/cgi/content/abstract/21/4/316 A comparison of PASCAL and ALGOL 68] - [[Andrew S. Tanenbaum]] - June 1977.
+* [http://remus.rutgers.edu/cs314/s2004/ryder/lectures/intro-1-2upNew.pdf Orthogonal language design] - Apr 2004 - retrieved May 10, 2007
+* [http://remus.rutgers.edu/cs314/s2004/ryder/lectures/formal-4-2upNew.pdf How Solve the Dangling Else?] - Apr 2004 - retrieved May 10, 2007
+* [http://remus.rutgers.edu/cs314/s2004/ryder/lectures/Types2-23New-2up.pdf A comparison of Pascal, C, C++ and Algol68: Types, cont Type system, Type checking, Type safety, Type conversion, Primitive types, Aggregate types: arrays] - Apr 2004 - retrieved May 10, 2007
+* [http://remus.rutgers.edu/cs314/s2004/ryder/lectures/Types-22-425-2up.pdf Arrays in Algol68] - Apr 2004 - retrieved May 10, 2007
+
+
+
+[[Category:Programming language comparisons|ALGOL 68 and C++]]
+[[Category:Articles with example ALGOL 68 code]]
+[[Category:Articles with example C++ code]]

@@ -1,0 +1,204 @@
+subject
+tryton
+odoo
+editor
+community
+odoo sa
+project type
+community open source
+commercial open source
+professional service providers (january 2013)
+12
+400
+partnership eligibility
+merit and contributions
+partner contract
+software license
+gnu general public license
+gnu affero general public license (agplv3)
+subject
+tryton
+odoo
+e-mail integration
+no/partial up to version 2.8
+yes
+accounting & financial management
+yes
+yes
+document management system
+yes (document size limit: filesystem limit)
+yes (document size limit: filesystem limit or postgresql 1gb)
+analytic accounting
+yes
+yes
+payroll management
+yes
+yes
+integrated w/ google drive, calendar, spreadsheet
+no
+yes
+oob integration with payment acquirers adyen, ogone, paypal
+no
+yes
+portals
+yes
+yes
+sales management
+yes
+yes
+warehouse management
+yes
+yes
+project management
+basics (no gantt)
+yes
+purchase management
+yes
+yes
+manufacturing management
+yes
+yes
+human resources
+yes
+yes
+crm
+basics
+yes
+point of sale
+yes
+yes
+e-commerce(useful general discussions about integrating any such webapp, versus building a front-end )
+nereid based integrated e-commerce store.community integration: magento flask-tryton
+yes community integration: jera® b2c e-commerce suite magento prestashop oscommerce zen cart odoo e-sale
+voip
+support sip and "call to" url widgets.
+no standard modules.community integration: asterisk
+website/cms integration
+nereid based integrated e-commerce store.
+yes community integration: joomla! cms integration using jera® framework
+subject
+tryton
+odoo
+accounting
+uses decimal
+uses floats
+password storage
+sha1-hash (salted since version 1.4) or bcrypt
+cleartext by default, salted hmac-md5 hash with base_crypt module
+code review
+all commits through rietveld
+bugfix/feature branches reviewed by r&d on launchpad
+float/integer representation
+limited to float or long because using gtk.entry without limit
+limited to sys.maxint of python because using gtk.spinbutton
+date representation
+uses datetime.datetime and datetime.date
+uses strings to represent dates
+subject
+tryton
+openerp
+language
+python (>=2.6)
+python (>=2.4) for 5.x series, python (>=2.5) for 6.0, python (>=2.6) for 6.1 and 7.x series
+versions maintained
+2.5 years
+3x major releases = 4.5 years.
+release cycle
+release process
+major version (i.e. 7.0) = approximately every 12 months
+version policy
+no api changes in series, no xml change in series
+none
+number of modules
+600+ (60+ standard)
+3800+ (220+ official ones bundled in the distribution)
+repository organisation
+1 repository per module
+1 repository for official modules, community modules in their author's repositories
+version control system
+mercurial (hg)
+bazaar (bzr), hosted on launchpad
+active contributors (october 2011/april 2014)
+42/80
+822/1040
+automatic upgrades/migrations
+available
+available for minor versions, under maintenance contract as services.
+python packaging
+available on pypi
+not available on pypi
+python module
+server can be imported as python module
+as of 6.1 series, server can be imported as python module
+distribution package
+debian, gentoo, ubuntu, arch linux, fedora, foresight linux, windows (only client), os x (only client), openbsd, opensuse
+debian (no longer maintained), ubuntu, windows, os x (community packaging), plus generic .deb and tarball, fedora
+code auto-reload
+available
+not available
+architecture
+three-tier
+three-tier
+supported database
+postgresql, mysql, sqlite
+postgresql
+desktop clients
+gtk based desktop client
+gtk based desktop client (up to version 6.1) kde/qt client (community, up to version 5)
+web based clients
+based on jquery (work in progress)
+5.0 series: official web client based on cherrypy, mako and mochikit 6.0 series: official web client (partially rewritten) based on cherrypy, mako and jquery 6.1 series: official web client (rewritten from scratch) based on html5, jquery and dhtmlx
+mobile clients
+under development
+available
+client libraries
+proteus
+ooor, ooop, oersted, openobject-library
+standalone clients
+neso
+not available
+native gantt charts
+not available
+available in web client only
+native calendar view
+available and also through caldav
+available in all clients
+native diagram view
+not available
+available in 6.0 series
+reporting engines
+relatorio based openoffice wysiwyg reports or any custom, jasperreports (community)
+rml-based (official), webkit based (official), aeroo reports — wysiwyg html/openoffice reports, relatorio based (community), jasperreports (community), mako (work in progress), pdf forms (in progress)
+native bar/pie chart view
+available (with drill down)
+available
+dashboard view
+available (customizable) with communication between views
+available
+caldav
+available
+available
+webdav
+available
+available as of 6.0 series
+carddav
+available
+under development
+unit testing
+covers server, proteus, client and all modules
+covers official server, modules and reports
+functional testing
+proteus and unit test based
+official yaml based tests in 6.x series, oerpscenario based (community)
+client-side scripting
+pyson
+python only
+ipv6 compatibility
+available
+not available
+historization
+available
+planned for 6.1
+translations
+8
+translation teams assigned for 30 languages, but not all 100% translated

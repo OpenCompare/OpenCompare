@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Introduction to implementations</h1>
+      <table border="1">
+        <tr>
+          <td> User Account Control prompt dialog box </td>
+          <td>
+            User Account Control (UAC):
+            <br/>
+            Included with Windows Vista and later Microsoft Windows operating systems, UAC prompts the user for authorization when an application tries to perform an administrator task.
+          </td>
+        </tr>
+        <tr>
+          <td> User Account Control prompt dialog box </td>
+          <td>
+            Runas:
+            <br/>
+            A command-line tool introduced with Windows 2000 that allows running a program, control panel applet, or a MMC snap-in as a different user. Runas makes use of the &quot;Secondary Login&quot; Windows service, also introduced with Windows 2000. This service provides the capability to allow applications running as a separate user to interact with the logged-in user's desktop. This is necessary to support drag-and-drop, clipboard sharing, and other interactive login features.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Introduction to implementations</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td>
+            Mac OS X includes the Authenticate dialog, which prompts the user to input their password in order to perform administrator tasks. This is essentially a graphical front-end of  command.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Introduction to implementations</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td>
+            PolicyKit/pkexec:
+            <br/>
+            A privilege authorization feature, designed to be independent of the desktop environment in use and already adopted by GNOME In contrast to earlier systems, applications using PolicyKit never run with privileges above those of the current user. Instead, they indirectly make requests of the PolicyKit daemon, which is the only program that runs as root.
+          </td>
+        </tr>
+        <tr>
+          <td> Sudo, running in Terminal window in Ubuntu </td>
+          <td>
+            su:
+            <br/>
+            A command line tool for Unix. su (substitute user) allows users to switch the terminal to a different account by entering the username and password of that account. If no user name is given, the operating system's superuser account (known as &quot;root&quot;) is used, thus providing a fast method to obtain a login shell with full privileges to the system. Issuing an exit command returns the user to their own account.
+          </td>
+        </tr>
+        <tr>
+          <td> Sudo, running in Terminal window in Ubuntu </td>
+          <td>
+            sudo:
+            <br/>
+            Created around 1980, sudo is a highly configurable Unix command line tool similar to su, but it allows certain users to run programs with root privileges without spawning a root shell or requiring root's password.
+          </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>
+            GKSu and GKsudo:
+            <br/>
+            GTK+ Graphical frontend to su and sudo. GKsu comes up automatically when a supported application needs to perform an action requiring root privileges.  A replacement, &quot;gksu PolicyKit&quot;, which uses PolicyKit rather than su/sudo, is being developed as part of GNOME.
+          </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>
+            kdesu:
+            <br/>
+            A Qt graphical front-end to the su command for KDE.
+          </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>
+            kdesudo:
+            <br/>
+            A Qt graphical front-end to sudo that has replaced kdesu in Kubuntu, starting with Kubuntu 7.10.
+          </td>
+        </tr>
+        <tr>
+          <td> border|120px|Ktsuss </td>
+          <td>
+            ktsuss:
+            <br/>
+            ktsuss stands for &quot;keep the su simple, stupid&quot;, and is a graphical version of su. The idea of the project is to remain simple and bug free.
+          </td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td>
+            beesu:
+            <br/>
+            A graphical front-end to the su command that has replaced gksu in Red Hat based operating systems. It has been developed mainly for RHEL and Fedora.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

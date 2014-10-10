@@ -1,0 +1,505 @@
+The following tables compare general and technical information for a number of [[cryptographic hash function]]s.
+
+== General information ==
+Basic general information about the [[cryptographic hash function]]s: year, designer, references, etc. 
+{| class="wikitable sortable" style="text-align: center"
+|-
+! Function
+! Year
+! Designer
+! Derived from
+! Reference
+|-
+| [[HAVAL]]
+| 1992
+| [[Yuliang Zheng]]<br />[[Josef Pieprzyk]]<br />[[Jennifer Seberry]]
+|
+| [http://labs.calyptix.com/haval.php Website]
+|-
+| [[MD2 (cryptography)|MD2]]
+| 1989
+| rowspan="4"|[[Ronald Rivest]]
+| 
+| RFC 1319
+|-
+| [[MD4]]
+| 1990
+| 
+| RFC 1320
+|-
+| [[MD5]]
+| 1992
+| [[MD4]]<br />RFC 1321 page 1
+| RFC 1321
+|-
+| [[MD6]]
+| 2008
+|
+| [http://groups.csail.mit.edu/cis/md6/submitted-2008-10-27/Supporting_Documentation/md6_report.pdf md6_report.pdf]
+|-
+| [[RIPEMD]]
+| 1990
+| The RIPE Consortium [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html#What]
+| [[MD4]]
+|
+|-
+| [[RIPEMD-128]]<br />[[RIPEMD-256]]<br />[[RIPEMD-160]]<br />[[RIPEMD-320]]
+| 1996
+| [[Hans Dobbertin]]<br />[[Antoon Bosselaers]]<br />[[Bart Preneel]]
+| [[RIPEMD]][http://homes.esat.kuleuven.be/~bosselae/ripemd160.html#What]
+| [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html Website]
+|-
+| [[SHA-0]]
+| 1993
+| rowspan="4"|[[National Security Agency|NSA]]
+|
+| [http://w2.eff.org/Privacy/Digital_signature/?f=fips_sha_shs.info.txt SHA-0]
+|-
+| [[SHA-1]]
+| 1995
+| [[SHA-0]]
+| rowspan="3"|[http://csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf FIPS 180--3]
+|-
+| [[SHA-256]]<br />[[SHA-512]]<br />[[SHA-384]]
+| 2002
+| rowspan="2"|
+|-
+| [[SHA-224]]
+| 2004
+|-
+| [[GOST (hash function)|GOST R 34.11-94]]
+| 1994
+| [[FAPSI]] and VNIIstandart
+| [[GOST (block cipher)|GOST 28147-89]]
+| RFC 5831, RFC 4357
+|-
+| [[Tiger (cryptography)|Tiger]]
+| 1995
+| [[Ross J. Anderson|Ross Anderson]]<br />[[Eli Biham]]
+|
+| [http://www.cs.technion.ac.il/~biham/Reports/Tiger/ Website]
+|-
+| [[Whirlpool (cryptography)|Whirlpool]]
+| 2004
+| [[Vincent Rijmen]]<br />[[Paulo S. L. M. Barreto|Paulo Barreto]]
+|
+| [http://www.larc.usp.br/~pbarreto/WhirlpoolPage.html Website]
+|-
+| [[SHA-3]] (Keccak)
+| 2008
+| [[Guido Bertoni]]<br />[[Joan Daemen]]<br />[[Michaël Peeters]]<br />[[Gilles Van Assche]]
+|
+| [http://keccak.noekeon.org Website]
+|}
+
+=== Notes ===
+<references group="gi" />
+
+== Compression function ==
+The following tables compare technical information for [[One-way compression function|compression function]]s of [[cryptographic hash function]]s. The information comes from the specifications, please refer to them for more details. 
+{| class="wikitable" style="text-align: center"
+|-
+! rowspan="2" | Function
+! colspan="6" | Size ([[bit]]s)
+! rowspan="2" | Words × <br />Passes = <br />Rounds
+! rowspan="2" | Operations
+! rowspan="2" | [[Endianness|Endian]]
+! rowspan="2" | Specification
+|-
+! [[Word (data type)|Word]]
+! [[Cryptographic hash function|Digest]]
+! [[Merkle–Damgård construction|Chaining <br />values]]
+! Computation<br />values
+! [[Merkle–Damgård construction|Block]]
+! [[Merkle–Damgård construction#Security characteristics|Length]]<br />
+|-
+|                [[HAVAL|HAVAL-3-128]]
+| rowspan="15" | 32
+|                = 128<span class="nowrap">×4 </span>
+| colspan="2" rowspan="15" | = 256<span class="nowrap">×8 </span>
+| rowspan="15" | = 1,024<span class="nowrap">×32 </span>
+| rowspan="15" | 64
+| rowspan="5"  | = 96<span class="nowrap">32 × 3 </span>
+| rowspan="15" | A B S
+| rowspan="15" | Little
+| rowspan="15" | [http://labs.calyptix.com/files/haval-paper.pdf HAVAL]
+|-
+| [[HAVAL|HAVAL-3-160]]
+| = 160<span class="nowrap">×5 </span>
+|-
+| [[HAVAL|HAVAL-3-192]]
+| = 192<span class="nowrap">×6 </span>
+|-
+| [[HAVAL|HAVAL-3-224]]
+| = 224<span class="nowrap">×7 </span>
+|-
+| [[HAVAL|HAVAL-3-256]]
+| = 256<span class="nowrap">×8 </span>
+|-
+| [[HAVAL|HAVAL-4-128]]
+| = 128<span class="nowrap">×4 </span>
+| rowspan="5" | = 128<span class="nowrap">32 × 4 </span>
+|-
+| [[HAVAL|HAVAL-4-160]]
+| = 160<span class="nowrap">×5 </span>
+|-
+| [[HAVAL|HAVAL-4-192]]
+| = 192<span class="nowrap">×6 </span>
+|-
+| [[HAVAL|HAVAL-4-224]]
+| = 224<span class="nowrap">×7 </span>
+|-
+| [[HAVAL|HAVAL-4-256]]
+| = 256<span class="nowrap">×8 </span>
+|-
+| [[HAVAL|HAVAL-5-128]]
+| = 128<span class="nowrap">×4 </span>
+| rowspan="5" | = 160<span class="nowrap">32 × 5 </span>
+|-
+| [[HAVAL|HAVAL-5-160]]
+| = 160<span class="nowrap">×5 </span>
+|-
+| [[HAVAL|HAVAL-5-192]]
+| = 192<span class="nowrap">×6 </span>
+|-
+| [[HAVAL|HAVAL-5-224]]
+| = 224<span class="nowrap">×7 </span>
+|-
+| [[HAVAL|HAVAL-5-256]]
+| = 256<span class="nowrap">×8 </span>
+|-
+| [[MD2 (cryptography)|MD2]]
+| 8
+| = 128<span class="nowrap">×16 </span>
+| = 256<span class="nowrap">×32 </span>
+| = 384<span class="nowrap">×48 </span>
+| = 128<span class="nowrap">×16 </span>
+| None
+| = 864<span class="nowrap">48 × 18 </span>
+| B
+| N/A
+| RFC 1319
+|-
+| [[MD4]]
+| rowspan="2" | 32
+| colspan="3" rowspan="2"| = 128<span class="nowrap">×4 </span>
+| rowspan="2" | = 512<span class="nowrap">×16 </span>
+| rowspan="2" | 64
+|               = 48<span class="nowrap">16 × 3 </span>
+| rowspan="2" | A B S
+| rowspan="2" | Little
+| RFC 1320
+|-
+| [[MD5]]
+| = 64<span class="nowrap">16 × 4 </span>
+| RFC 1321
+|-
+| [[RIPEMD]]
+| rowspan="5" | 32
+| colspan="2" rowspan="2" | = 128<span class="nowrap">×4 </span>
+| rowspan="3" | = 256<span class="nowrap">×8 </span>
+| rowspan="5" | = 512<span class="nowrap">×16 </span>
+| rowspan="5" | 64
+| = 48<span class="nowrap">16 × 3 </span>
+| rowspan="5" | A B S
+| rowspan="5" | Little
+|
+|-
+| [[RIPEMD-128]]
+| rowspan="2" | = 64<span class="nowrap">16 × 4 </span>
+| rowspan="4" | [http://www.esat.kuleuven.ac.be/~cosicart/pdf/AB-9601/AB-9601.pdf RIPEMD-160]
+|-
+| [[RIPEMD-256]]
+| colspan="2" | = 256<span class="nowrap">×8 </span>
+|-
+| [[RIPEMD-160]]
+| colspan="2" | = 160<span class="nowrap">×5 </span>
+| rowspan="2" | = 320<span class="nowrap">×10 </span>
+| rowspan="2" | = 80<span class="nowrap">16 × 5 </span>
+|-
+| [[RIPEMD-320]]
+| colspan="2" | = 320<span class="nowrap">×10 </span>
+|-
+| [[SHA-0]]
+| rowspan="4" | 32
+| colspan="3" rowspan="2" | = 160<span class="nowrap">×5 </span>
+| rowspan="4" | = 512<span class="nowrap">×16 </span>
+| rowspan="4" | 64
+| rowspan="2" | = 80<span class="nowrap">16 × 5 </span>
+| rowspan="6" | A B S
+| rowspan="6" | Big
+|-
+| [[SHA-1]]
+| rowspan="5" | [http://csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf FIPS 180--3]
+|-
+| [[SHA-256]]
+| = 256<span class="nowrap">×8 </span>
+| colspan="2" rowspan="2" | = 256<span class="nowrap">×8 </span>
+| rowspan="2" | = 64<span class="nowrap">16 × 4 </span>
+|-
+| [[SHA-224]]
+| = 224<span class="nowrap">×7 </span>
+|-
+| [[SHA-512]]
+| rowspan="2" | 64
+| = 512<span class="nowrap">×8 </span>
+| colspan="2" rowspan="2" | = 512<span class="nowrap">×8 </span>
+| rowspan="2" | = 1024<span class="nowrap">×16 </span>
+| rowspan="2" | 128
+| rowspan="2" | = 80<span class="nowrap">16 × 5 </span>
+|-
+| [[SHA-384]]
+| = 384<span class="nowrap">×6 </span>
+|-
+| [[GOST (hash function)|GOST R 34.11-94]]
+| 32
+| colspan="3" | = 256<span class="nowrap">×8 </span>
+| = 256<span class="nowrap">×8 </span>
+| 32
+| 4
+| A B L S
+| Little
+| RFC 5831
+|-
+| [[Tiger (cryptography)|Tiger-192]]
+| rowspan="3" | 64
+| = 192<span class="nowrap">×3 </span>
+| colspan="2" rowspan="3" | = 192<span class="nowrap">×3 </span>
+| rowspan="3" | = 512<span class="nowrap">×8 </span>
+| rowspan="3" | 64
+| rowspan="3" | = 24<span class="nowrap">8 × 3 </span>
+| rowspan="3" | A B L S
+| rowspan="3" | Little
+| rowspan="3" | [http://www.cs.technion.ac.il/~biham/Reports/Tiger/tiger/node3.html#SECTION00030000000000000000 Tiger]
+|-
+| [[Tiger (cryptography)|Tiger-160]]
+| ×2.5=160
+|-
+| [[Tiger (cryptography)|Tiger-128]]
+| = 128<span class="nowrap">×2 </span>
+|}
+
+=== Notes ===
+<references group="cf" />
+
+== Cryptanalysis ==
+The following tables compare [[cryptanalysis]] status of [[cryptographic hash function]]s. This table is probably out of date. (last edited May, 2013)
+{| class="wikitable" style="text-align: center"
+|-
+! rowspan="2"|Function
+! rowspan="2"|Digest <br />size
+! rowspan="2"|Rounds
+! colspan="3"|Best known attacks <br />(complexity:rounds)
+|-
+! [[Birthday attack|Collision]]
+! [[Preimage attack|Second<br />preimage]]
+! [[Preimage attack|Preimage]]
+|-
+| [[RIPEMD]]
+| 128
+| 48
+| [http://www.springerlink.com/content/n5vrtdha97a2udkx/ 2<sup>18</sup>]
+|
+|
+|-
+| [[RIPEMD|RIPEMD-160]]
+| 160
+| 80
+| 
+|
+|
+|-
+| [[RIPEMD|RIPEMD-160-Reduced]]
+| 160
+| 80
+| [http://www.springerlink.com/content/3540l03h1w31n6w7 2<sup>51</sup>:48]
+|
+|
+|-
+| [[MD2 (cryptography)|MD2]]
+| 128
+| 864
+| [http://www.springerlink.com/content/n5vrtdha97a2udkx/ 2<sup>63.3</sup>]
+|
+| [http://eprint.iacr.org/2008/089.pdf 2<sup>73</sup>]
+|-
+| [[MD4]]
+| 128
+| 48
+| [http://www.springerlink.com/content/v6526284mu858v37/ 3]
+| [http://eprint.iacr.org/2010/016.pdf 2<sup>69.4</sup>]
+| [http://eprint.iacr.org/2010/016.pdf 2<sup>78.4</sup>]
+|-
+| [[MD5]]
+| 128
+| 64
+| [http://eprint.iacr.org/2009/223.pdf 2<sup>20.96</sup>]
+|
+| [http://springerlink.com/content/d7pm142n58853467/ 2<sup>123.4</sup>]
+|-
+| [[SHA-0]]
+| 160
+| 80
+| [http://www.springerlink.com/content/3810jp9730369045/ 2<sup>33.6</sup>]
+|
+|
+|-
+| [[SHA-1]]
+| 160
+| 80
+| [http://2012.sharcs.org/slides/stevens.pdf 2<sup>60</sup>]
+|
+|
+|-
+| [[SHA-256]]
+| 256
+| 64
+| 
+|
+| 
+|-
+| [[SHA-256-Reduced]]
+| 256
+| 64
+| [http://dx.doi.org/10.1007/978-3-642-38348-9_16 2<sup>65.5</sup>:31]
+|
+| [http://eprint.iacr.org/2010/016.pdf 2<sup>248.4</sup>:42]
+|-
+| [[SHA-512]]
+| 512
+| 80
+| 
+|
+| 
+|-
+| [[SHA-512-Reduced]]
+| 512
+| 80
+| [http://eprint.iacr.org/2008/270.pdf 2<sup>32.5</sup>:24]
+|
+| [http://eprint.iacr.org/2010/016.pdf 2<sup>494.6</sup>:42]
+|-
+| [[GOST (hash function)|GOST]]
+| 256
+| 256
+| [http://www.springerlink.com/content/2514122231284103/ 2<sup>105</sup>]
+| [http://www.springerlink.com/content/2514122231284103/ 2<sup>192</sup>]
+| [http://www.springerlink.com/content/2514122231284103/ 2<sup>192</sup>]
+|-
+| [[Tiger (cryptography)|Tiger]]
+| 192
+| 24
+| [http://www.springerlink.com/content/u762587644802p38/ 2<sup>62</sup>:19]
+|
+| [http://eprint.iacr.org/2010/016.pdf 2<sup>184.3</sup>]
+|}
+
+=== Notes ===
+<references group="c" />
+
+== See also ==
+*[[List of hash functions]]
+*[[Word (data type)]]
+
+==Notes==
+<references/>
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+== External links ==
+# [http://www.larc.usp.br/~pbarreto/hflounge.html The Hash Function Lounge] - A list of hash functions and known attacks, by Paulo Barreto
+# [http://ehash.iaik.tugraz.at/wiki/The_eHash_Main_Page The eHash Main Page] - A wiki for cryptographic hash functions
+# [http://csrc.nist.gov/groups/ST/hash/sha-3/index.html The NIST Hash Competition Main Page] - The competition to become SHA-3
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Cryptography hash|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Cryptography hash|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Cryptography_hash&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><span style="float:right;width:6em;">&nbsp;</span><div style="font-size:110%;">[[Cryptographic hash function|Hash functions]] & [[message authentication code]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>[[Hash function security summary|Security summary]]</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Common functions</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[MD5]]
+*[[SHA-1]]
+*[[SHA-2]]
+*[[SHA-3|SHA-3/Keccak]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[NIST hash function competition|SHA-3 finalists]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[BLAKE (hash function)|BLAKE]]
+*[[Grøstl]]
+*[[JH (hash function)|JH]]
+*[[Skein (hash function)|Skein]]
+*[[SHA-3|Keccak (winner)]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other functions</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Fast Syndrome Based Hash|FSB]]
+*[[Elliptic curve only hash|ECOH]]
+*[[GOST (hash function)|GOST]]
+*[[HAS-160]]
+*[[HAVAL]]
+*[[LM hash]]
+*[[MDC-2]]
+*[[MD2 (cryptography)|MD2]]
+*[[MD4]]
+*[[MD6]]
+*[[N-Hash]]
+*[[RadioGatún]]
+*[[RIPEMD]]
+*[[RTR0]]
+*[[SipHash]]
+*[[Snefru]]
+*[[SWIFFT]]
+*[[Tiger (cryptography)|Tiger]]
+*[[Very smooth hash|VSH]]
+*[[Whirlpool (cryptography)|WHIRLPOOL]]
+*[[Crypt (C)|crypt(3)]] (DES)
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">MAC algorithms</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Data Authentication Algorithm|DAA]]
+*[[CBC-MAC]]
+*[[HMAC]]
+*[[One-key MAC|OMAC]]/[[CMAC]]
+*[[PMAC (cryptography)|PMAC]]
+*[[VMAC]]
+*[[UMAC]]
+*[[Poly1305-AES]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Authenticated encryption|Authenticated<br/>encryption]] modes</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[CCM mode|CCM]]
+*[[CWC mode|CWC]]
+*[[EAX mode|EAX]]
+*[[Galois/Counter Mode|GCM]]
+*[[IAPM (mode)|IAPM]]
+*[[OCB mode|OCB]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Attacks</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Collision attack]]
+*[[Preimage attack]]
+*[[Birthday attack]]
+*[[Brute force attack]]
+*[[Rainbow table]]
+*[[Distinguishing attack]]
+*[[Side-channel attack]]
+*[[Length extension attack]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Design</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Avalanche effect]]
+*[[Collision (computer science)|Hash collision]]
+*[[Merkle–Damgård construction]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Standardization</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[CRYPTREC]]
+*[[NESSIE]]
+*[[NIST hash function competition]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Utilization</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Salt (cryptography)|Salt]]
+*[[Key stretching]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Cryptography navbox|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Cryptography navbox|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Cryptography_navbox&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><span style="float:right;width:6em;">&nbsp;</span><div style="font-size:110%;">[[Cryptography]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[History of cryptography]]
+* [[Cryptanalysis]]
+* [[Portal:Cryptography|Cryptography portal]]
+* [[Outline of cryptography]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Symmetric-key algorithm]]
+* [[Block cipher]]
+* [[Stream cipher]]
+* [[Public-key cryptography]]
+* [[Cryptographic hash function]]
+* [[Message authentication code]]
+* [[Cryptographically secure pseudorandom number generator|Random numbers]]
+* [[Steganography]]
+</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+
+[[Category:Cryptography]]
+[[Category:Cryptographic primitives]]
+[[Category:Cryptographic hash functions| ]]
+[[Category:Hashing]]
+[[Category:Cryptography lists and comparisons|Hash functions]]

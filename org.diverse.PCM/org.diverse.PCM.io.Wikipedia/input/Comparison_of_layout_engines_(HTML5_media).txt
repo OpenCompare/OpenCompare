@@ -1,0 +1,574 @@
+<table class="vertical-navbox nowraplinks" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:auto;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;padding-bottom:0.3em;border-bottom:1px solid #aaa;;">[[HTML]]</th></tr><tr><td style="padding:0.2em 0 0.4em;">HTML5.svg</td></tr><tr><td class="plainlist" style="padding:0 0.1em 0.4em;padding-top:0.25em;;padding-top:0.5em;;">
+* <div class="hlist"><ul><li>[[HTML]]</li><li>[[HTML5]]</li><li>[[HTML editor]]</li></ul></div>
+* [[Dynamic HTML]]
+* <div style="padding:0.2em 0.4em; line-height:1.2em; ">[[XHTML]] <div class="hlist"><ul><li>([[XHTML Basic|Basic]]</li><li>[[XHTML Mobile Profile|Mobile Profile]]</li><li>[[C-HTML]])</li></ul></div> </div>
+* <div style="padding:0.2em 0.4em; line-height:1.2em; ">[[HTML element]] <div class="hlist"><ul><li>([[span and div]])</li></ul></div> </div>
+* [[HTML attribute]]
+* <div class="hlist"><ul><li>[[Character encodings in HTML|Character encodings]]</li><li>[[Unicode and HTML|Unicode]]</li></ul></div>
+* [[Language code]]
+* [[Document Object Model]]
+* [[Browser Object Model]]
+* <div class="hlist"><ul><li>[[Style sheet (web development)|Style sheets]]</li><li>[[Cascading Style Sheets|CSS]]</li></ul></div>
+* <div class="hlist"><ul><li>[[Font family (HTML)|Font family]]</li><li>[[Web colors]]</li></ul></div>
+* <div class="hlist"><ul><li>[[HTML scripting]]</li><li>[[JavaScript]]</li></ul></div>
+* <div class="hlist"><ul><li>[[World Wide Web Consortium|W3C]]</li><li>[[WHATWG]]</li><li>[[W3C Markup Validation Service|Validator]]</li></ul></div>
+* [[Quirks mode]]
+* [[Framing (World Wide Web)|HTML Frames]]
+* <div class="hlist"><ul><li>[[Canvas element|HTML5 Canvas]]</li><li>[[WebGL]]</li><li>[[WebCL]]</li></ul></div>
+* <div class="hlist"><ul><li>[[HTML5 Audio]]</li><li>[[HTML5 video]]</li></ul></div>
+* [[Web storage]]
+* [[Web browser engine|Web browser (layout) engine]]</td>
+</tr><tr><th style="padding:0.1em;border-bottom:1px solid #aaa;;">
+Comparisons</th></tr><tr><td class="plainlist" style="padding:0 0.1em 0.4em;padding-top:0.25em;;">
+* [[Comparison of document markup languages|Document markup languages]]
+* [[Comparison of web browsers|Web browsers]]
+* <div class="hlist" style="padding-top:0.3em;"><ul><li>Layout engine support<br/>[[Comparison of layout engines (HTML)|HTML]]</li><li>[[Comparison of layout engines (non-standard HTML)|Non-standard HTML]]</li></ul></div>
+* [[Comparison of layout engines (XHTML)|XHTML]]&nbsp;([[Comparison of layout engines (XHTML 1.1)|1.1]])
+* [[Comparison of layout engines (HTML5)|HTML5]]&nbsp;([[Comparison of layout engines (HTML5 canvas)|canvas]])
+* [[Comparison of layout engines (HTML5 media)|HTML5 media (audio/video)]]</td>
+</tr><tr><td style="text-align:right;font-size:115%;border-top:1px solid #aaa;;"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:HTML|<span title="View this template" style=";">v</span>]]</li><li class="nv-talk">[[Template talk:HTML|<span title="Discuss this template" style=";">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:HTML&action=edit <span title="Edit this template" style=";">e</span>]</li></ul></div></td></tr></table>
+The [[HTML5]] draft specification defines several [[HTML element|tags]] which allow video and audio to be included natively and [[Semantic HTML|semantically]] in HTML markup. This page compares support for aspects of this specification among layout engines.
+
+== Explanation of the tables ==
+=== Engine nomenclature ===
+
+Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
+
+{| class="wikitable"
+! Layout engine
+! Release version
+! Preview version
+! Used by
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
+| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Amaya (web browser)|Amaya]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
+| 537.36
+| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
+|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+) and [[Yandex Browser|Yandex]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
+| 
+;Stable
+32.0.3 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/32.0.3/releasenotes/
+  | title                  = Firefox — Notes (32.0.3) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;ESR
+ESR 31.1.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/31.1.1/releasenotes/
+  | title                  = Firefox — Notes (31.1.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small><br/>
+ESR 24.8.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/24.8.1/releasenotes/
+  | title                  = Firefox — Notes (24.8.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+| 
+;Beta
+33.0 RC 1 <small>(October&nbsp;8, 2014<span class="noprint">&#059;&#032;2 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-08</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/33.0beta/releasenotes/
+ | title = Firefox — Beta Notes (33.0beta) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-09-05
+}}</ref><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/beta/all/
+ | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
+ | accessdate = 2014-10-01
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;Aurora
+34.0a2 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/34.0a2/auroranotes/
+ | title = Firefox — Aurora Notes (34.0a2) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+;Nightly
+35.0a1 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+  | url = https://wiki.mozilla.org/RapidRelease/Calendar
+  | title = RapidRelease/Calendar - MozillaWiki
+  | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
+| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Konqueror]]<ref group="note" name="switch" />
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
+| 2.12.388
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
+| (IE 5.2.3 for Mac)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
+| 7.0 (IE 11)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
+| 534.20
+| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
+|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
+
+===Values===
+Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
+
+{| class="wikitable"
+|-
+! Value
+! Meaning
+|-
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Indicates that the layout engine fully supports this property/element when valid values are used.
+|-
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Indicates that the property/element is completely ignored.
+|-
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+|-
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| Indicates that the property/element is no longer supported.
+|-
+| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
+| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+|-
+|}
+
+==Element attributes==
+Media elements allow some attributes to be set directly in the tag.
+{| style="text-align: center; width: 95%" class="wikitable"
+|-
+!
+! style="width: 18%;" | [[Trident (layout engine)|Trident]]
+! style="width: 18%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 18%;" | [[WebKit]]
+! style="width: 18%;" | [[Presto (layout engine)|Presto]]
+|-
+! colspan="5" | <code>&lt;audio&gt;</code> attributes
+|-
+! style="text-align: left;" | <code>src</code>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>preload</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+|-
+! style="text-align: left;" | <code>autoplay</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>loop</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|11.0
+|-
+! style="text-align: left;" | <code>controls</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! colspan="5" | <code>&lt;video&gt;</code> attributes
+|-
+! style="text-align: left;" | <code>src</code>
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>preload</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+|-
+! style="text-align: left;" | <code>autoplay</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>loop</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|11.0
+|-
+! style="text-align: left;" | <code>controls</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>poster</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.2
+|-
+! style="text-align: left;" | <code>width</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>height</code>
+|-
+! colspan="5" | <code>&lt;source&gt;</code> attributes
+|-
+! style="text-align: left;" | <code>src</code>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>type</code>
+|-
+! style="text-align: left;" | <code>media</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|15.0
+|-
+! colspan="5" | <code>&lt;track&gt;</code> attributes
+|-
+! style="text-align: left;" | <code>kind</code>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="4" style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|24.0
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | <code>label</code>
+|-
+! style="text-align: left;" | <code>src</code>
+|-
+! style="text-align: left;" | <code>srclang</code>
+|-
+|}
+
+==DOM attributes==
+Some attributes related to media elements are exposed in the [[Document Object Model|DOM.]]
+{| style="text-align: center; width: 95%" class="wikitable"
+|-
+!
+! style="width: 18%;" | [[Trident (layout engine)|Trident]]
+! style="width: 18%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 18%;" | [[WebKit]]
+! style="width: 18%;" | [[Presto (layout engine)|Presto]]
+|-
+! colspan="5" | Error state
+|-
+! style="text-align: left;" | <code>MediaError</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0  
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! colspan="5" | Network state
+|-
+! style="text-align: left;" | <code>src</code>
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="6" | ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>currentSrc</code>
+|-
+! style="text-align: left;" | <code>networkState</code>
+|-
+! style="text-align: left;" | <code>preload</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | <code>buffered</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="text-align: left;" | <code>load()</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>canPlayType()</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|533
+|-
+! colspan="5" | Ready state
+|-
+! style="text-align: left;" | <code>readyState</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="2" | ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>seeking</code>
+|-
+! colspan="5" | Playback state
+|-
+! style="text-align: left;" | <code>currentTime</code>
+| rowspan="13" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="13" | ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>startTime</code>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | <code>duration</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>paused</code>
+|-
+! style="text-align: left;" | <code>defaultPlaybackRate</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|20.0
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | <code>playbackRate</code>
+|-
+! style="text-align: left;" | <code>played</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|15.0
+|-
+! style="text-align: left;" | <code>seekable</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|8.0
+|-
+! style="text-align: left;" | <code>ended</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>autoplay</code>
+|-
+! style="text-align: left;" | <code>loop</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|11.0
+|-
+! style="text-align: left;" | <code>play()</code>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>pause()</code>
+|-
+! colspan="5" | Controls
+|-
+! style="text-align: left;" | <code>controls</code>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="3" | ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | <code>volume</code></code>
+|-
+! style="text-align: left;" | <code>muted</code>
+|-
+|}
+
+==DOM events==
+Media elements introduce new events to handle conditions which apply only to those elements, such as pausing/resuming.
+{| style="text-align: center; width: 95%" class="wikitable"
+|-
+!
+! style="width: 18%;" | [[Trident (layout engine)|Trident]]
+! style="width: 18%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 18%;" | [[WebKit]]
+! style="width: 18%;" | [[Presto (layout engine)|Presto]]
+|-
+! style="text-align: left;" | <code>loadstart</code>
+| rowspan="22" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="22" | ?
+| rowspan="22" | ?
+|-
+! style="text-align: left;" | <code>progress</code>
+|-
+! style="text-align: left;" | <code>suspend</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.2
+|-
+! style="text-align: left;" | <code>abort</code>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>error</code>
+|-
+! style="text-align: left;" | <code>emptied</code>
+|-
+! style="text-align: left;" | <code>stalled</code>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|8.0
+|-
+! style="text-align: left;" | <code>play</code>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>pause</code>
+|-
+! style="text-align: left;" | <code>loadedmetadata</code>
+|-
+! style="text-align: left;" | <code>loadeddata</code>
+|-
+! style="text-align: left;" | <code>waiting</code>
+|-
+! style="text-align: left;" | <code>playing</code>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | <code>canplay</code>
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+|-
+! style="text-align: left;" | <code>canplaythrough</code>
+|-
+! style="text-align: left;" | <code>seeking</code>
+|-
+! style="text-align: left;" | <code>seeked</code>
+|-
+! style="text-align: left;" | <code>timeupdate</code>
+|-
+! style="text-align: left;" | <code>ended</code>
+|-
+! style="text-align: left;" | <code>ratechange</code>
+|-
+! style="text-align: left;" | <code>durationchange</code>
+|-
+! style="text-align: left;" | <code>volumechange</code>
+|-
+|}
+
+==Video format support==
+<div class="hatnote relarticle mainarticle">Main article: [[HTML5 video]]</div>
+This table documents support for video codecs by the <code>&lt;video&gt;</code> element.
+{| style="text-align: center; width: 95%" class="wikitable"
+|-
+!
+! style="width: 18%;" | [[Trident (layout engine)|Trident]]
+! style="width: 18%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 18%;" | [[WebKit]]
+! style="width: 18%;" | [[Presto (layout engine)|Presto]]
+|-
+! style="text-align: left;" | [[Ogg]] [[Theora]]
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Manual install<ref group="note" name="ie-codecs">Google released a WebM component for Media Foundation to allow the playback of WebM files in IE9 through the standard HTML5 <video> tag. [[Xiph.org]] distributes [[OpenCodecs]] package, which amends Google's VP8 decoder with [[DirectShow]]-based codecs for Ogg Theora and Ogg Vorbis. [[VLC media player]] comes with "Web plugin" that uses VLC for playing multimedia from <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> tags, enabling support for all formats VLC supports.</ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends<ref group="note" name="webkit-codecs">WebKit on Mac OS X uses [[QuickTime]], and supports whatever formats that does.  By default, this includes H.264, MP3, AAC and WAV PCM, but not Ogg Theora or Vorbis.  These are supported only if installed as third-party codecs, such as [[XiphQT]].  Google Chrome supports Theora, Vorbis, WebM, and MP3. Chromium can be compiled to support anything that [[FFmpeg]] supports, and may or may not support patented formats such as H.264 and MP3. [[Origyn Web Browser]] for [[MorphOS]] uses also [[FFmpeg]] for playing HTML5 media content.</ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | [[H.264]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends (525)
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends<ref group="note" name="opera-av">On Linux and FreeBSD, Presto 2.5 uses the system version of the [[GStreamer]] library, and is able to play any formats supported by GStreamer (including H.264, MP3, AAC and others, if codecs are installed). On other platforms, it only supports Ogg Theora for video; and Ogg Vorbis and WAVE PCM for sound.</ref>
+|-
+! style="text-align: left;" | [[WebM]] [[VP8]]
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Manual install
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends (534)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.6.30
+|-
+|}
+
+==Audio format support==
+<div class="hatnote relarticle mainarticle">Main article: [[HTML5 Audio]]</div>
+This table documents support for audio codecs by the <code>&lt;audio&gt;</code> element.
+{| style="text-align: center; width: 95%" class="wikitable"
+|-
+!
+! style="width: 18%;" | [[Trident (layout engine)|Trident]]
+! style="width: 18%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 18%;" | [[WebKit]]
+! style="width: 18%;" | [[Presto (layout engine)|Presto]]
+|-
+! style="text-align: left;" | Ogg [[Vorbis]]
+| rowspan="2" style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Manual install
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5
+|-
+! style="text-align: left;" | [[WAV]] [[Pulse-code modulation|PCM]]
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="text-align: left;" | [[MP3]]
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+|-
+! style="text-align: left;" | [[Advanced Audio Coding|AAC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | [[Speex]]
+| rowspan="2" style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Manual install
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left;" | [[Opus (codec)|Opus]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|15.0
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|}
+
+==See also==
+* [[HTML5 video]]
+* [[Use of Ogg formats in HTML5]]
+* [[HTML5 in mobile devices]]
+
+==Notes==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"></references></div>
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+===Trident references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="t"></references></div>
+
+===Gecko references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="g"></references></div>
+
+===WebKit references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="w"></references></div>
+
+===Presto references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="p"></references></div>
+
+==External links==
+* [http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html HTML5 - The Video Element]
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Layout engine]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Blink (layout engine)|Blink]]
+*[[Gecko (software)|Gecko]]
+*[[KHTML]]
+*[[MARTHA (layout engine)|MARTHA]]
+*[[Presto (layout engine)|Presto]]
+*[[Prince (software)|Prince]]
+*[[Servo (layout engine)|Servo]]
+*[[Trident (layout engine)|Trident]]
+*[[WebKit]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Amaya (web browser)|Amaya]]
+*[[Boxely]]
+*[[Gazelle (web browser)|Gazelle]]
+*[[GtkHTML]]
+*[[HTMLayout]]
+*[[iCab]]
+*[[Mariner (layout engine)|Mariner]]
+*[[Tasman (layout engine)|Tasman]]
+*[[Tkhtml]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Comparison of layout engines (HTML)|HTML]]
+**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
+*[[Comparison of layout engines (HTML5)|HTML5]]
+**[[Comparison of layout engines (HTML5 media)|media]]
+**[[Comparison of layout engines (HTML5 canvas)|canvas]]
+*[[Comparison of layout engines (XML)|XML]]
+**[[Comparison of layout engines (XHTML)|XHTML]]
+***[[Comparison of layout engines (XHTML 1.1)|1.1]]
+**[[Comparison of layout engines (MathML)|MathML]]
+**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
+*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
+*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
+*[[Comparison of layout engines (Document Object Model)|DOM]]
+*[[Comparison of layout engines (graphics)|Graphics]]
+*[[Comparison of layout engines (web typography)|Typography]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Layout engine comparisons]]

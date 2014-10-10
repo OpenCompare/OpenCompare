@@ -1,0 +1,94 @@
+This page is a '''comparison of [[Windows Vista]] and [[Windows XP]]'''. Windows XP and Windows Vista differ considerably in regards to their security architecture, networking technologies, management and administration, shell  and user interface, and mobile computing. Windows XP has suffered criticism for security problems and issues with performance. Vista has received criticism for issues with performance and product activation. Another common criticism of Vista concerns the integration of new forms of [[digital rights management]] (DRM) into the operating system, and [[User Account Control]] (UAC) security technology.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (August 2008)">citation needed</span>]]</i>&#93;</sup>
+
+==Compatibility==
+Windows Vista faces [[backward compatibility]] problems with many of the [[video game|games]] and utility programs that work in Windows XP. As of July 2007, there were about 2,000 applications that specifically carried the 'Vista Compatibility Logo', although the majority of applications without the logo will run without any problems. This number is low compared to the number of programs that can currently work under XP, either natively or in simulation modality.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (July 2008)">citation needed</span>]]</i>&#93;</sup>
+
+==Performance==
+Initial performance tests have demonstrated that Windows XP outperforms Vista in several productivity areas. File copy operations are speculated to be one area where Vista performs better than XP.<span class="cleanup-needed-content" style="background-color: #fff9f9; color: DarkSlateGray; border: 1px solid #ffdcdc;"></span><sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Please clarify|<span title="The text near this tag may need clarification or removal of jargon. (June 2011)">clarification needed</span>]]</i>&#93;</sup> In a test run by CRN Test Center, a 1.25 GB file was copied from a network share to each desktop. For XP, it took 2 minutes and 54 seconds, for Vista with SP1 it took 2 minutes and 29 seconds.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (June 2011)">citation needed</span>]]</i>&#93;</sup>  The Vista implementation of the file copy is arguably<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Manual of Style/Words to watch#Unsupported attributions|<span title="The material near this tag possibly uses too-vague attribution or weasel words. (June 2011)">who?</span>]]</i>&#93;</sup> more complete and correct as the file does not register as being transferred until it has completely transferred; in Windows XP, the file completed dialogue box is displayed prior to the file actually finishing its copy or transfer, with the file completing after the dialogue is displayed. This can cause an issue if the storage device is ejected prior to the file being successfully transferred or copied in Windows XP due to the dialogue box's premature prompt.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (June 2011)">citation needed</span>]]</i>&#93;</sup>
+
+Another test was performed by [[Tom's Hardware]] in January 2007. Applications such as [[Unreal Tournament 2004]] and the graphics [[benchmarking]] suite SPECviewperf 9.03 suffered heavily from the lack of support for the [[OpenGL]] graphics library under Vista. They reached the conclusion that Windows Vista clearly is not a great new performer when it comes to [[execute|executing]] single applications at maximum speed. On the other hand, they did not find evidence that Windows Vista's [[Desktop Window Manager]] consumes more energy than Windows XP's window manager. All of the tests were performed on a computer with an 2.93&nbsp;GHz [[Intel Core 2 Extreme]] X6800 processor, 2x 1024 MB DDR2-800 [[RAM]], HIS Radeon X1900XTX IceQ3 [[graphics card]], 150 GB [[Western Digital]] WD1500ADFD [[hard drive]] and a [[Gigabyte Technology|Gigabyte]] GA-965P-DQ6 [[motherboard]].
+
+Scientific paper about [http://www.jucs.org/jucs_18_2/performance_evaluation_of_recent performance evaluation of recent Windows operating system performance] concludes that Windows Vista doesn't provide a better overall performance on the high-end computer system compared to Windows XP. Some performance improvements can be seen in memory management and graphics display, but other parts of OS have equal or lower performance than Windows XP. On the low-end computer system, Windows XP outperforms Windows Vista in most tested areas. Windows OS network performance depends on the packet size and used protocol. However, in general, Windows Vista compared to Windows XP shows better network performance particularly for the medium sized packets. 
+
+==Security==
+Security was a top priority during [[Development of Windows Vista|Windows Vista development]]. In Windows XP, every user is set up as an [[Superuser#Windows NT|administrator]] by default (unless added through Computer Management). As a result, most home users ran all their software with Administrator access. However, this left most users unwittingly open to potential security threats, such as hacking and [[malware]] downloads. A large amount of existing software doesn’t run well as a standard user, due to developers not implementing the [[principle of least privilege]] in their design and testing. For example, many poorly written applications often assume incorrectly that they will have read and write access to the entire filesystem and system [[Windows Registry|Registry]].  Denying such an application access to any of these assumed rights can cause the application to fail. Sometimes, a person logged on as a standard user under Windows XP can't perform user-specific tasks such as changing the [[system clock]] and calendar, changing the computer's [[time zone]], or changing the computer's [[power management]] settings due to so-called "LUA bugs".
+
+[[User Account Control]] in Windows Vista improves this by limiting [[application software]] to standard user privileges until an administrator authorizes an increase in privilege level. In this way, UAC prevents users from making inadvertent changes to system settings and locks down the computer to prevent unauthorized applications from installing or performing malicious actions. Windows Vista is able to work around many LUA bugs in third party applications with its file and Registry virtualisation feature, as well as application compatibility [[Shim (computing)|shims]].  [[Internet Explorer 7]]'s Protected Mode utilizes User Account Control to isolate IE from other applications and prevent it from writing content to any location, except the ''Temporary Internet Files'' folder. Internet Explorer 7 is available for XP, but does not support Protected Mode on XP. Windows Vista also includes [[Windows Defender]], a spyware scanning and removal tool that is also available for Windows XP for free. Enterprise and Ultimate [[Windows Vista editions|editions of Windows Vista]] include [[BitLocker Drive Encryption]], which aims to help protect data in the case of stolen devices.
+
+Vista implements [[address space layout randomization]], that makes it considerably more difficult for malicious code to exploit [[Return-to-libc attack]]s than on previous versions of Windows, particularly on 64-bit systems. Furthermore, Vista implements heap management enhancements that make it much more difficult to carry out [[buffer overflow]] attacks.
+
+64-bit editions of Windows Vista require all kernel-mode drivers to be digitally signed, initially making it difficult for [[rootkit]]s to install until [[Alureon]] managed to overcome this obstacle in 2010 by subverting the [[master boot record]].
+<br style="clear:both;" />
+
+The firewall in Vista has been rewritten, allowing both outbound as well as inbound traffic to be blocked.
+
+{| border="1" cellpadding="1" cellspacing="0" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: 100%;" class="wikitable sortable"
+|-
+! Feature
+! Windows XP
+! Windows Vista
+! Windows 7
+! Windows 8
+|-
+| [[Windows Defender]]
+| Available as a free download
+| Yes
+| Yes
+| Yes (added antivirus capabilities, available in older versions as the Microsoft Security Essentials download)
+|-
+| [[Windows Firewall]]
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+| [[Windows Security Center]]
+| Yes (starting w/ SP2)
+| Yes
+| Yes (replaced by Action Center)
+| Yes (replaced by Action Center)
+|-
+| [[BitLocker Drive Encryption]]
+| No
+| Yes (Enterprise and Ultimate only)
+| Yes (Enterprise and Ultimate only)
+| Yes (Pro and Enterprise only)
+|-
+| [[Parental controls]]
+| Some ([[Internet Explorer]] allows parental control of web browsing)
+| Yes
+| Yes
+| Yes (replaced by Family Safety)
+|-
+| [[User Account Control]]
+| No
+| Yes
+| Yes
+| Yes
+|-
+| [[Data Execution Prevention]]
+| Yes (starting w/ SP2)
+| Yes
+| Yes
+| Yes
+|}
+
+==Shell and user interface==
+===Visual styles===
+[[Luna (theme)|Luna]] is the default [[visual style]] in [[Windows XP]]. It is available in three color schemes: Blue (default), Olive Green, and Silver. Windows XP Media Center Edition comes with [[Royale (theme)|Royale]] as the default theme.
+
+In most editions of Windows Vista, the default theme is [[Windows Aero]]. Aero offers translucent window effects, as well as live thumbnails, animated transitions and [[Flip 3D]]. However, it requires a compatible graphics card, with a WDDM driver, [[DirectX]] 9 support and [[32-bit]] color; otherwise, Windows Vista is displayed using the "Windows Vista Basic" visual style.
+
+== References ==
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+==See also==
+*[[Comparison of operating systems]]
+*[[Comparison of Microsoft Windows versions]]
+*[[Features new to Windows Vista]]
+*[[Features removed from Windows Vista]]
+
+[[Category:Windows Vista]]
+[[Category:Windows XP]]
+[[Category:Operating system comparisons|Windows Vista and Windows XP]]

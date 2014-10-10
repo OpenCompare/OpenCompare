@@ -1,0 +1,344 @@
+<table class="metadata plainlinks ambox ambox-content ambox-Unreferenced" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''does not [[Wikipedia:Citing sources|cite]] any [[Wikipedia:Verifiability|references or sources]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and [[Wikipedia:Verifiability#Burden of evidence|removed]].</span>  <small>''(June 2010)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+The following tables provide a comparison of '''[[linear algebra]] [[Library (computing)|software libraries]]''', either specialized or general purpose libraries with significant linear algebra coverage.
+
+== Dense linear algebra ==
+=== General information ===
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! style="width: 12em"|
+! Creator
+! Language
+! First public release
+! Latest stable version
+! Cost ([[United States dollar|USD]])
+! License
+! Notes
+|-
+! [[ALGLIB]]
+| Sergey Bochkanov
+| C++, C#, FreePascal, VBA
+| 2006
+| 2.6.0 / 06.2010
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| GPL
+| General purpose numerical analysis library. Uses automatic code generation to support several programming languages.
+|-
+! [[Automatically Tuned Linear Algebra Software|ATLAS]]
+| R. Clint Whaley et al.
+| C
+| 2001
+| 3.8.3 / 02.2009
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| BSD
+| Automatically tuned implementation of BLAS. Also includes LU and Cholesky decompositions.
+|-
+ 
+−	
+! [https://rtmath.net/products/finmath/ FinMath]
+| [https://rtmath.net/ RTMath]
+| C / C#
+| October 2011
+| 1.4.28.00 / 03.2013
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Proprietary
+| General purpose numerical library for [[.NET Framework|.NET]].
+|-
+! [[GNU Scientific Library]]
+| GNU Project
+| C
+| 1996
+| 1.16 / 07.2013 
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[GNU General Public License|GPL]]
+| General purpose numerical analysis library. Includes some support for linear algebra.
+|-
+! [[IMSL Numerical Libraries]]
+| Rogue Wave Software
+| C, Java, C#, Fortran, Python
+| 1970
+| many components
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Proprietary
+| General purpose numerical analysis library.
+|-
+! [[LAPACK]]
+| 
+| Fortran
+| 1992
+| 3.4.0 / 11.2011
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD licenses|3-clause BSD]]
+| Numerical linear algebra library with long history
+|-
+! [[Math Kernel Library|MKL]]
+| Intel
+| C++, Fortran
+| 2003
+| 10.3 update 8 / 2011
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Proprietary
+| Numerical analysis library optimized for Intel CPUs
+|-
+! [[NAG Numerical Library]]
+| [[Numerical Algorithms Group|The Numerical Algorithms Group]]
+| C, Fortran
+| 1971
+| many components
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Proprietary
+| General purpose numerical analysis library.
+|-
+! [[NMath]]
+| [[CenterSpace Software]]
+| C#
+| 2003
+| 4.0 / November 2009
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Proprietary
+| Math and statistical libraries for the [[.NET Framework]]
+|-
+! [[SciPy]]
+| [[Enthought]]
+| Python
+|
+| 0.8.0 / 2010
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD licenses|BSD]]
+| based on Python
+|-
+! [[Eigen (C++ library)|Eigen]]
+| Benoît Jacob
+| C++
+| 2008
+| 3.2 / 2013
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Mozilla Public License|MPL2]]
+| Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+|-
+! [[Armadillo (C++ library)|Armadillo]]
+| [[NICTA]]
+| C++
+| 2009
+| 3.900 / 2013
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Mozilla Public License|MPL2]]
+| C++ template library for linear algebra; includes various decompositions and factorisations; syntax ([[Application programming interface|API]]) is similar to [[MATLAB]].
+|}
+
+=== Matrix types and operations ===
+Matrix types (special types like bidiagonal/tridiagonal are not listed):
+* ''Real'' - general (nonsymmetric) real
+* ''Complex'' - general (nonsymmetric) complex
+* ''SPD'' - symmetric positive definite (real)
+* ''HPD'' - Hermitian positive definite (complex)
+* ''SY'' - symmetric (real)
+* ''HE'' - Hermitian (complex)
+* ''BND'' - band
+
+Operations:
+* ''TF'' - triangular factorizations (LU, Cholesky)
+* ''OF'' - orthogonal factorizations (QR, QL, generalized factorizations)
+* ''EVD'' - eigenproblems
+* ''SVD'' - singular value decomposition
+* ''GEVD'' - generalized EVD
+* ''GSVD'' - generalized SVD
+
+{| class="wikitable sortable" style="text-align: center; width: auto;"
+|-
+! style="width: 12em" |
+! Real
+! Complex
+! SPD
+! HPD
+! SY
+! HE
+! BND
+! TF
+! OF
+! EVD
+! SVD
+! GEVD
+! GSVD
+|-
+! [[ALGLIB]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Automatically Tuned Linear Algebra Software|ATLAS]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GNU Scientific Library]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [https://rtmath.net/products/finmath/ FinMath]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[ILNumerics.Net]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[IMSL Numerical Libraries]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[LAPACK]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Math Kernel Library|MKL]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[NAG Numerical Library]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[NMath]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[SciPy]] (Python packages)
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Eigen (C++ library)|Eigen]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! ?
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! ?
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! ?
+|}
+
+[[Category:Numerical libraries|*ExpandTemplates]]

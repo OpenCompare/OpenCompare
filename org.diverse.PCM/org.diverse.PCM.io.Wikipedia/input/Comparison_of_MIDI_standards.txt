@@ -1,0 +1,145 @@
+This table provides summary of comparison of various [[MIDI]] enhancement standards by various parameters.
+
+{|class="wikitable"
+|-
+!
+! [[Roland MT-32|MT-32]]
+! [[General MIDI|GM]]
+! [[Roland GS|GS]]
+! [[Yamaha XG|XG]] level 1
+! XG level 2
+! XG level 3
+! [[General MIDI Level 2|GM level 2]]
+|-
+| Entry date
+| 1987
+| 1991
+| 1991
+| 1994
+| 1997
+| 1998
+| 1999
+|-
+| Organization
+| [[Roland Corporation|Roland]]
+| [[MIDI Manufacturers Association|MMA]]
+| [[Roland Corporation|Roland]]
+| colspan=3 | [[Yamaha Corporation|Yamaha]]
+| [[MIDI Manufacturers Association|MMA]]
+|-
+! colspan=8 | Minimum equipment requirements
+|-
+| Simultaneous voices
+| 8 or more (up to 32 partials)
+| 24
+| 24
+| 32
+| 64
+| 128
+| 32
+|-
+| Simultaneous melodic voices
+| rowspan="2" | N/A
+| 16
+| 16
+| rowspan="2" colspan="3" style="text-align: center"| N/A<br/>XG synths have no separate limits on melodic / percussion sounds
+| 16
+|-
+| Simultaneous percussion voices
+| 8
+| 8
+| 16
+|-
+| MIDI channels allocation
+| 8 channels, 1 rhythm channel
+| 16 channels, #10 is fixed for percussion
+| 16 channels, one channel can be set to play drum kits
+| 16 channels, every channel can play drum kits with Bank Select MSB (CC#0) set to 7FH
+| 32 channels, 2 ports, drums as in XG&nbsp;level&nbsp;1
+| 64 channels, 4 ports, drums as in XG&nbsp;level&nbsp;1
+| 16 channels, #10 and #11 are used for percussion
+|-
+| Channel recommendations
+|
+|
+|
+| colspan=3 | #1:&nbsp;melody; #2:&nbsp;melody&nbsp;(duet); #3:&nbsp;bass; #4:&nbsp;pad; #5:&nbsp;riff; #10:&nbsp;drums
+|
+|-
+! colspan=8 | Sounds banks available
+|-
+| Melodic instruments
+| 128
+| 128
+| 226
+| 480
+| 1074
+| 1149
+| 256
+|-
+| Drum kits
+| 1
+| 1
+| 8 + 1 SFX&nbsp;kit
+| 9 + 2 SFX&nbsp;kits
+| 34 + 2 SFX&nbsp;kits
+| 35 + 2 SFX&nbsp;kits
+| 9
+|-
+| Drum sounds per kit
+| 30
+| 47
+| 61
+| colspan=3 | 72 
+| 61
+|-
+! colspan=8 | Controls available
+|-
+| Special CC
+| 2
+| 6 (MT32+4)
+| 
+| 
+| 
+| 
+| 6 (GM)
+|-
+| Parametric effect CC
+| 4
+| 5 
+| 16 (GM+11) 
+| colspan=3 | 51 (GM+46) 
+| 12 (GM+7) 
+|-
+| RPNs
+| 0
+| 5
+| 
+| 
+| 
+| 
+| 6 (GM+1) 
+|-
+| SysEx messages
+|
+| 2
+|
+|
+|
+|
+| 14
+|}
+
+== References ==
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+<div class="refbegin  " style="">
+* <span class="citation web">Yamaha Corporation (1996). [http://web.archive.org/web/20060926124939/http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf "Yamaha XG format specifications, v1.26"] (PDF). Archived from [http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf the original] on 2006-09-26<span class="reference-accessdate">. Retrieved 2008-04-23</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aulast=Yamaha+Corporation&rft.au=Yamaha+Corporation&rft.btitle=Yamaha+XG+format+specifications%2C+v1.26&rft.date=1996&rft.genre=book&rft_id=http%3A%2F%2Fwww.yamaha.co.uk%2Fxg%2Freading%2Fpdf%2Fxg_spec.pdf&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">Yamaha Corporation (1999-02-02). [http://web.archive.org/web/20060926122423/http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf "Recommendations for producing XG song data, v2.00"] (PDF). Archived from [http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf the original] on 2006-09-26<span class="reference-accessdate">. Retrieved 2008-04-23</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aulast=Yamaha+Corporation&rft.au=Yamaha+Corporation&rft.btitle=Recommendations+for+producing+XG+song+data%2C+v2.00&rft.date=1999-02-02&rft.genre=book&rft_id=http%3A%2F%2Fwww.yamaha.co.uk%2Feurohome%2Flibrary%2Fmidi%2Fxgformat.pdf&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* [http://home.roadrunner.com/~jgglatt/tutr/roland.htm Roland Sound Cards], an extensive guide to various models and their capabilities
+* [http://www.emusician.com/news/0766/gm-modules-for-the-masses/144589 GM modules for the masses], a comparison article
+</dl></div>
+
+[[Category:MIDI standards|*]]
+[[Category:Computing comparisons|MIDI standards]]

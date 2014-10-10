@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> ADO </td>
+          <td> ADO.NET </td>
+        </tr>
+        <tr>
+          <td> Business Model </td>
+          <td> Connection-oriented Models used mostly </td>
+          <td> Disconnected models are used:Message-like Models. </td>
+        </tr>
+        <tr>
+          <td> Disconnected Access </td>
+          <td> Provided by Record set </td>
+          <td> Provided by Data Adapter and Data set </td>
+        </tr>
+        <tr>
+          <td> XML Support </td>
+          <td> Limited </td>
+          <td> Robust Support </td>
+        </tr>
+        <tr>
+          <td> Connection Model </td>
+          <td>
+            Client application needs to be connected always to data-server while working on the data, unless using client-side cursors or a disconnected Record set
+          </td>
+          <td>
+            Client disconnected as soon as the data is processed. DataSet is disconnected at all times.
+          </td>
+        </tr>
+        <tr>
+          <td> Data Passing </td>
+          <td> ADO objects communicate in binary mode. </td>
+          <td> ADO.NET uses XML for passing the data. </td>
+        </tr>
+        <tr>
+          <td> Control of data access behaviors </td>
+          <td>
+            Includes implicit behaviors that may not always be required in an application and that may therefore limit performance.
+          </td>
+          <td>
+            Provides well-defined, factored components with predictable behavior, performance, and semantics.
+          </td>
+        </tr>
+        <tr>
+          <td> Design-time support </td>
+          <td>
+            Derives information about data implicitly at run time, based on metadata that is often expensive to obtain.
+          </td>
+          <td>
+            Leverages known metadata at design time in order to provide better run-time performance and more consistent run-time behavior.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

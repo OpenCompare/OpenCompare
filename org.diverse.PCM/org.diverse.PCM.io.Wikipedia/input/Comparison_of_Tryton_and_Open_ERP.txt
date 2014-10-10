@@ -1,0 +1,200 @@
+
+
+
+[[Tryton]] is a community fork of the commercial open source project [[Odoo]], formerly OpenERP, and began development in November 2008.  This article compares both projects from technical, business and conceptual perspectives.
+
+==Business model==
+{| class="wikitable"
+|-
+! Subject !! Tryton !! Odoo
+|-
+| Editor || [http://www.tryton.org/  Community] || [http://odoo.com/  Odoo SA]
+|-
+| Project type || Community Open source  || Commercial Open Source
+|-
+|style=white-space:nowrap| Professional Service Providers (January 2013) || 12 || 400
+|-
+| Partnership Eligibility
+|style=white-space:nowrap| Merit and contributions
+| Partner contract
+|-
+| Software License || [[GNU General Public License]] || [[Affero General Public License|GNU Affero General Public License (AGPLv3)]]
+|}
+
+==Functionality==
+The functionality description here is based on the official modules of both projects. Unofficial modules with the functionality may exist, but is beyond the scope of this comparison as any such content would be difficult to maintain.
+
+{| class="wikitable sortable"
+|-
+! Subject !! Tryton !! Odoo
+|-
+| E-mail integration || No/partial up to version 2.8   || Yes
+|-
+| Accounting & Financial Management || Yes || Yes
+|- valign="top" ! scope="row"
+| Document Management System || Yes<br/>(document size limit: [[Filesystem]] limit) || Yes<br/>(document size limit: [[Filesystem]] limit <br/> or PostgreSQL 1GB)
+|-
+| Analytic accounting || Yes || Yes
+|-
+| Payroll Management || Yes || Yes
+|-
+| Integrated w/ Google Drive, Calendar, Spreadsheet || No || Yes
+|-
+| OOB integration with payment acquirers Adyen, Ogone, Paypal || No || Yes
+|-
+| Portals || Yes || Yes
+|-
+| Sales Management || Yes || Yes
+|-
+| Warehouse Management || Yes || Yes
+|-
+| Project Management || Basics (no Gantt) || Yes
+|-
+| Purchase Management || Yes || Yes
+|-
+| Manufacturing Management || Yes || Yes
+|-
+| Human Resources || Yes || Yes
+|-
+| CRM  || Basics || Yes
+|-
+| [[point of sale|Point of Sale]] || Yes  || Yes
+|- valign="top" ! scope="row"
+| E-commerce
+(useful general discussions about <br/> integrating any such ''webapp'', <br/> versus building a ''front-end'' )
+|| Nereid based integrated e-commerce store.
+Community integration:
+* Magento
+* Flask-Tryton
+|| Yes  
+Community integration:
+* JERA® B2C E-commerce Suite
+* Magento
+* Prestashop
+* OSCommerce<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2012)">citation needed</span>]]</i>&#93;</sup>
+* Zen Cart<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2012)">citation needed</span>]]</i>&#93;</sup>
+* Odoo e-Sale
+|-
+| VoIP
+|| Support SIP and "Call To" URL widgets.
+|| No standard modules.
+Community integration:
+* Asterisk 
+|-
+| Website/CMS integration  
+|| Nereid based integrated e-commerce store.
+|| Yes 
+Community integration:
+* [[Joomla|Joomla!]] [[Web content management system|CMS]] integration using JERA® Framework
+|}
+
+==Concepts and approach==
+{| class="wikitable sortable"
+|-
+! Subject !! Tryton !! Odoo
+|-
+| Accounting || Uses decimal|| Uses floats
+|-
+| Password Storage || [[SHA1]]-hash (salted since version 1.4) or [[bcrypt]] || Cleartext by default, salted [[HMAC]]-[[MD5]] hash with base_crypt module
+|-
+| [[Code review]] || All commits through Rietveld || Bugfix/Feature branches reviewed by R&D on Launchpad
+|-
+| float/integer representation || Limited to float or long because using gtk.Entry without limit || Limited to sys.maxint of [[Python (programming language)|Python]] because using gtk.SpinButton
+|-
+| Date representation || Uses datetime.datetime and datetime.date || Uses strings to represent dates
+|}
+
+==More==
+{| class="wikitable"
+|-
+! Subject !! Tryton !! OpenERP
+|-
+| Language || Python (>=2.6) || Python (>=2.4) for 5.x series, Python (>=2.5) for 6.0, Python (>=2.6) for 6.1 and 7.x series 
+|-
+| Versions maintained || 2.5 years || 3x major releases = 4.5 years.
+|-
+| Release cycle || Release Process || Major Version (i.e. 7.0) = approximately every 12 months
+|-
+| Version Policy || No API changes in series, No XML change in series || None
+|-
+| Number of Modules || 600+ (60+ standard) || 3800+ (220+ official ones bundled in the distribution)
+|-
+| Repository Organisation || 1 repository per module || 1 repository for official modules, community modules in their author's repositories
+|-
+| Version Control System || [[Mercurial (software)|Mercurial (HG)]] || [[Bazaar (software)|Bazaar (BZR)]], hosted on [[Launchpad (website)|Launchpad]]
+|-
+| Active contributors (October 2011/April 2014) || 42/80 || 822/1040
+|-
+| Automatic Upgrades/Migrations || Available || Available for minor versions, under Maintenance Contract as services.
+|-
+| Python Packaging || Available on PyPi || Not available on PyPi
+|-
+| Python Module || Server can be imported as Python module || As of 6.1 series, server can be imported as Python module
+|-
+| Distribution Package || [[Debian]], [[Gentoo Linux|Gentoo]], [[Ubuntu (operating system)|Ubuntu]], [[Arch Linux]], [[Fedora (operating system)|Fedora]], Foresight Linux, [[Windows]] (only client), [[OS X]] (only client), [[OpenBSD]], [[OpenSUSE]] || [[Debian]] (no longer maintained), [[Ubuntu (operating system)|Ubuntu]], [[Windows]], [[OS X]] (community packaging), plus generic [[Deb (file format)|.deb]] and [[Tar (file format)|tarball]], [[Fedora (operating system)|Fedora]]
+|-
+| Code Auto-Reload || Available || Not available
+|-
+| Architecture || [[Multi-tier architecture|Three-tier]] || [[Multi-tier architecture|Three-tier]]
+|-
+| Supported Database || [[PostgreSQL]], [[MySQL]], [[SQLite]] || [[PostgreSQL]]
+|-
+| Desktop Clients ||
+* GTK Based Desktop Client
+||
+* GTK Based Desktop Client (up to version 6.1)
+* KDE/QT Client (Community, up to version 5)
+|-
+| Web based Clients ||
+* Based on [[jQuery]] (work in progress)
+||
+* 5.0 series: official web client based on [[CherryPy]], [[Mako (template engine)|Mako]] and [[Mochikit]]
+* 6.0 series: official web client (partially rewritten) based on [[CherryPy]], [[Mako (template engine)|Mako]] and [[JQuery]]
+* 6.1 series: official web client (rewritten from scratch) based on [[HTML5]], [[JQuery]] and [[Dhtmlx]]
+|-
+| Mobile Clients ||
+Under development
+||
+Available
+|-
+| Client Libraries || Proteus || ooor, ooop, oersted, openobject-library
+|-
+| Standalone Clients  || Neso || Not available
+|-
+| Native Gantt Charts || Not available || Available in web client only
+|-
+| Native Calendar View || Available and also through [[CalDAV]] || Available in all clients
+|-
+| Native Diagram View || Not available || Available in 6.0 series
+|-
+| Reporting Engines || Relatorio based Openoffice WYSIWYG reports or any custom, JasperReports (Community) || RML-based (official), [[Webkit]] based (official), Aeroo Reports — WYSIWYG HTML/Openoffice reports, Relatorio based (Community), JasperReports (Community), MAKO (work in progress), PDF forms (in progress)
+|-
+| Native Bar/Pie Chart View || Available (with drill down) || Available
+|-
+| Dashboard View || Available (customizable) with communication between views || Available
+|-
+| CalDAV || Available || Available
+|-
+| [[WebDAV]] || Available || Available as of 6.0 series
+|-
+| CardDAV || Available || Under development<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (July 2011)">citation needed</span>]]</i>&#93;</sup>
+|-
+| [[Unit testing]] || Covers server, proteus, client and all modules || Covers official server, modules and reports
+|-
+| Functional Testing || Proteus and unit test based || Official YAML based tests in 6.x series, OERPScenario based (Community)
+|-
+| Client-Side Scripting || Pyson || Python only
+|-
+| [[IPv6]] Compatibility || Available || Not available<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (January 2013)">citation needed</span>]]</i>&#93;</sup>
+|-
+| Historization || Available || Planned for 6.1<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (July 2011)">citation needed</span>]]</i>&#93;</sup>
+|-
+| Translations || 8 || translation teams assigned for 30 languages, but not all 100% translated
+|}
+
+==References==
+<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+[[Category:Computing comparisons]]
+[[Category:Free ERP software]]

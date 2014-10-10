@@ -1,0 +1,3096 @@
+
+
+These tables compare [[free software]] / [[open-source software|open-source]] [[operating system]]s. Where not all of the non-[[end-of-life (product)|EOL]] versions support a feature, the first version which supports it is listed.
+
+== General information ==
+
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto; clear:both;"
+|-
+! Name
+! [[software license|License]]
+! [[kernel (computing)|Kernel]] type
+! Kernel [[programming language]]
+! Kernel [[thread (computing)|thread]] support
+! OS family
+! Oldest non-[[end-of-life (product)|EOL]] version<ref name="a1" group="Note"></ref>
+! [[fork (software development)|Forks]]
+|-
+! [[Linux]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]/[[GNU Lesser General Public License|LGPL]]
+| [[monolithic kernel|Monolithic]] with modules
+| [[C (programming language)|C]]
+| 1:1
+| [[Unix-like]]
+| 2.6.32.61
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FreeBSD]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]; GPL, LGPL software usually included
+| Monolithic with modules
+| C
+| 1:1
+| [[Berkeley Software Distribution|BSD]], Unix-like
+| 8.4
+| DragonFly BSD
+|-
+! [[OpenBSD]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| Monolithic with modules<ref name="a2" group="Note"></ref>
+| C
+| 1:1
+| BSD, Unix-like
+| 5.4
+| [[MirOS]]
+|-
+! [[NetBSD]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| Monolithic with modules
+| C
+| 1:1
+| BSD, Unix-like
+| 5.0
+| OpenBSD
+|-
+! [[DragonFly BSD]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| [[hybrid kernel|Hybrid]]
+| C
+| 
+| BSD, Unix-like
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[OpenSolaris]], [[OpenIndiana]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Common Development and Distribution License|CDDL]]
+| Monolithic with modules
+| C
+| 1:1, M:N
+| [[Unix]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[AuroraUX]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD/[[CDDL]]
+| Monolithic with modules
+| C, [[Ada (programming language)|Ada]]
+| 1:1, M:N
+| Unix
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]], [[PureDarwin]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Apple Public Source License|APSL]]
+| Hybrid
+| C, [[C++]]<ref name="a3" group="Note"></ref>
+| 1:1
+| BSD, Unix, Unix-like, [[OS X]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[MINIX]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| [[Microkernel]]
+| C
+| 
+| Unix-like
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[FreeDOS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL
+| Monolithic
+| C
+| 
+| [[DOS]]
+| 1.1
+| 
+|-
+! [[Haiku (operating system)|Haiku]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[MIT License|MIT]]
+| Hybrid
+| | C, C++
+| 
+| [[BeOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [http://tiltos.com TiltOS]
+|-
+! [[House (operating system)|House]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| 
+| | [[Haskell (programming language)|Haskell]]
+| 
+| own/original
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[KolibriOS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL
+| Monolithic
+| [[assembly language|ASM]]
+| 
+| [[MenuetOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[MenuetOS]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[http://www.menuetos.net/m64l.txt Menuet 64], commerce excluded
+| Monolithic
+| ASM
+| 
+| own/original
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| KolibriOS
+|-
+! [[GNU]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL
+| <span class="url">[https://www.gnu.org/software/hurd/faq/multiserver_microkernel.html Multiserver Microkernel]</span> ([[Hurd]] kernel) or Monolithic ([[Linux-libre]] kernel, fork of [[Linux kernel]], and other kernels that it's not part of the [[GNU Project]])
+| [[C (programming language)|C]]
+| 1:1
+| [[Unix-like]]
+| 2.4 on [[Linux-libre]] kernel (no on [[Hurd]] kernel)
+| [[Linux]]
+|-
+! [[ReactOS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL, LGPL
+| Hybrid
+| C, C++
+| 
+| [[Microsoft Windows|Windows-like]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Some GPL, some BSD
+| Microkernel
+| C++
+| 
+| L4
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Lucent Public License|LPL]]
+| Hybrid
+| C
+| 1:1, 1:M [[Cothread]] style.
+| own, Unix informed
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Inferno, Plan B
+|-
+! [[Amiga Research Operating System|AROS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://www.aros.org/license.html APL]
+| Exokernel
+| C
+| 
+| [[AmigaOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[Syllable (operating system)|Syllable]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL
+| Monolithic with modules
+| C, C++
+| 1:1
+| Unix-like, BeOS, AmigaOS, [[POSIX]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|GPL, LGPL; MIT
+| 
+| C
+| 
+| [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[OzInferno]]
+|-
+! [[FreeRTOS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://www.freertos.org/a00114.html modified GPL]
+| [[real-time operating system|RTOS]]
+| C
+| 
+| RTOS
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[eCos]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://ecos.sourceware.org/license-overview.html modified GPL, eCos]
+| RTOS
+| C, C++
+| 
+| RTOS
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[RTEMS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://www.rtems.org/license modified GPL], BSD, Stanford
+| RTOS
+| C and ASM with native support for other languages including C++ and Ada
+| POSIX, RTEID/ORKID, uITRON
+| RTOS
+| 4.7.1
+| 
+|-
+! [[HelenOS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD
+| Microkernel
+| C
+| M:N
+| own/original
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! E/OS
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]]
+| Monolithic
+| ASM, C
+| 1:1
+| BeOS, Unix-like
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+
+|- class="sortbottom"
+! Name
+! License
+! Kernel type
+! Kernel programming language
+! Kernel thread support
+! OS family
+! Oldest non-EOL version
+! Forks
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Supported architectures ==
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[x86]], [[Intel 80386|i386]], [[IA-32]]
+! x86 [[symmetric multiprocessing|SMP]]
+! [[Xen]]
+! [[IA-64]]
+! [[x86-64]]
+! [[PowerPC]]
+! PowerPC SMP
+! [[SPARC]]32
+! SPARC SMP
+! [[DEC Alpha|Alpha]]
+! [[MIPS architecture|MIPS]]
+! [[ARM architecture|ARM]]
+! [[XScale]]
+! M[[68k]]
+! [[PA-RISC]]
+! [[OpenRISC]]
+! other
+! hosted mode
+|-
+! [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[FR-V]], [[Cell (microprocessor)|Cell]], [[ETRAX CRIS]], [[M32R]], [[Xtensa]], [[Hitachi H8|h8]], [[IBM eServer zSeries|s390]], [[SuperH]]
+| [[User-mode Linux|UML]], [[Cooperative Linux|coLinux]], [[MkLinux]], [http://www.ertos.nicta.com.au/software/virtualisation/lol.pml Itanium Linux-on-Linux], [http://www.ertos.nicta.com.au/software/kenge/wombat/latest/ wombat]
+|-
+! [[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[PC-9801|PC98]]
+|
+|-
+! [[OpenBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="b1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| SuperH, [[VAX]], [[Motorola 88000|m88k]]
+|
+|-
+! [[NetBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| SuperH, [[NS320xx|ns32k]], VAX
+|
+|-
+! [[DragonFly BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| [http://lwn.net/Articles/228404/ vkernel]
+|-
+! [[OpenSolaris]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[AuroraUX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b1" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| [http://www.ertos.nicta.com.au/software/darbat/ L4/Darwin]
+|-
+! [[MINIX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[FreeDOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[Haiku (operating system)|Haiku]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="b1" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[KolibriOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[MenuetOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[GNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b4" group="Note"></ref>
+| [[FR-V]], [[Cell (microprocessor)|Cell]], [[ETRAX CRIS]], [[M32R]], [[Xtensa]], [[Hitachi H8|h8]], [[IBM eServer zSeries|s390]], [[SuperH]]<ref name="b4" group="Note"></ref>
+| [[User-mode Linux|UML]], [http://www.ertos.nicta.com.au/software/virtualisation/lol.pml Itanium Linux-on-Linux]<ref name="b5" group="Note"></ref>
+|-
+! [[ReactOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="b1" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="b1" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="b1" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b3" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b3" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b3" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| See
+| [[lguest]], [[vx32]]
+|-
+! [[Amiga Research Operating System|AROS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| [http://www.aros.org/introduction/ports.php#aros-i386-linux i386-linux], [http://www.aros.org/introduction/ports.php#aros-i386-freebsd i386-freebsd]
+|-
+! [[Syllable (operating system)|Syllable]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="b3" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[AMD Am29000]],<ref name="b3" group="Note"></ref> [[Texas Instruments OMAP]]
+| [[Microsoft Windows]], Linux, FreeBSD, Plan 9, [[OS X]], [[Solaris (operating system)|Solaris]], [[Irix]], [[UnixWare]],<ref name="b3" group="Note"></ref> [[HP-UX]],<ref name="b3" group="Note"></ref> [[Internet Explorer]]
+|-
+! [[FreeRTOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Atmel AVR|AVR]], [[PIC microcontroller|PIC]], [[TI MSP430|MSP430]], [[Freescale 68HC12|HCS12]], [[Intel 8051|8052]], [[MicroBlaze]], Cortex-M3, [[H8 Family|H8S]]
+|
+|-
+! [[eCos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [http://ecos.sourceware.org/hardware.html#CalmRISC CalmRISC], [[ColdFire]], [[FR-V]], [[Hitachi H8|h8]], [http://ecos.sourceware.org/hardware.html#Matsushita%20AM3x Matsushita AM3x], [[Nios II]], [http://ecos.sourceware.org/hardware.html#NEC%20V8xx NEC V8xx], SuperH
+| Microsoft Windows, Linux
+|-
+! [[RTEMS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Xen]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Blackfin]], Nios II, [[Freescale Coldfire|Coldfire]], [[Texas Instruments TMS320|Texas Instruments C3x/C4x]], SuperH, [[H8 Family|H8S]]
+| Linux, Solaris, [[Cygwin]], FreeBSD, multiple CPU simulators
+|-
+! [[HelenOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! E/OS
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+
+|- class="sortbottom"
+! Name
+! x86, i386, IA-32
+! x86 SMP
+! Xen
+! IA-64
+! x86-64
+! PowerPC
+! PowerPC SMP
+! SPARC32
+! SPARC SMP
+! Alpha
+! MIPS
+! ARM
+! XScale
+! M68k
+! PA-RISC
+! OpenRISC
+! other
+! hosted mode
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Supported hardware ==
+
+=== General ===
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[Advanced Technology Attachment|ATA]]
+! [[Serial ATA|SATA]]
+! [[SCSI]]
+! [[Universal Serial Bus|USB]] 2.0
+! USB 1.1
+! [[FireWire]]
+! [[PC card|PCMCIA/PC card]]
+! [[Accelerated Graphics Port|AGP]]
+! [[Nvidia]] official driver IA-32
+! Nvidia official driver IA-64
+! Nvidia official driver AMD64
+! [[ATI Technologies|ATI]] official driver x86
+! ATI official driver x86-64
+! ATI r200 free software driver
+! ATI r300 free software driver
+! Nvidia free software driver
+! [[sound card|Audio]]
+! [[TV tuner card|TV tuner]], [[video editing card|video editing]], or [[webcam]]
+|-
+! [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,nv(2d only), [[nouveau (graphics)|nouveau]](3d with mesa)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Open Sound System|OSS]], [[Advanced Linux Sound Architecture|ALSA]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Video4Linux|V4L]],V4L2
+|-
+! [[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2d only
+| 2d only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[NetBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[DragonFly BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[OpenSolaris]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|V4L2
+|-
+! [[AuroraUX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[MINIX]]
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[FreeDOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Haiku (operating system)|Haiku]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[KolibriOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MenuetOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[GNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c2" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c3" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="c3" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+|-
+! [[ReactOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Amiga Research Operating System|AROS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| own
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| 2D only
+|
+|
+|-
+! [[Syllable (operating system)|Syllable]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[FreeRTOS]]
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[eCos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[RTEMS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[HelenOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! E/OS
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<sup class="reference plainlinks nourlexpansion" id="ref_11">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_11]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+
+|- class="sortbottom"
+! Name
+! ATA
+! SATA
+! SCSI
+! USB 2.0
+! USB 1.1
+! FireWire
+! PCMCIA/PC card
+! AGP
+! Nvidia official driver IA-32
+! Nvidia official driver IA-64
+! Nvidia official driver AMD64
+! ATI official driver x86
+! ATI official driver x86-64
+! ATI r200 free software driver
+! ATI r300 free software driver
+! Nvidia free software driver
+! Audio
+! TV tuner, video editing, or webcam
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+=== Networking ===
+
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[computer networking|Networking support]]
+! [[Realtek|NE2000/RTL8029]]
+! RTL8139
+! [[Gigabit Ethernet]]
+! [[10 Gigabit Ethernet]]
+! [[Wireless LAN]]
+! [[Bluetooth]]
+! [[Infrared Data Association|IrDA]]
+|-
+! [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[NetBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[DragonFly BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! [[OpenSolaris]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[AuroraUX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[MINIX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|-
+! [[FreeDOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|-
+! [[Haiku (operating system)|Haiku]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! [[KolibriOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[MenuetOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[ReactOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Amiga Research Operating System|AROS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|-
+! [[Syllable (operating system)|Syllable]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FreeRTOS]]
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[eCos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[RTEMS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[HelenOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! E/OS
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<sup class="reference plainlinks nourlexpansion" id="ref_11">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_11]</sup>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|- class="sortbottom"
+! Name
+! Networking support
+! NE2000/RTL8029
+! RTL8139
+! Gigabit Ethernet
+! 10 Gigabit Ethernet
+! Wireless LAN
+! Bluetooth
+! IrDA
+|}
+
+== Network technologies ==
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[firewall (networking)|Firewall]]
+! [[Internet protocol suite|TCP/IP]]
+! [[IPv6]]
+! [[IPX]]
+! [[Point-to-Point Protocol|PPP]]
+! [[Point-to-Point Protocol over Ethernet|PPPoE]]
+! [[Dynamic Host Configuration Protocol|DHCP]]
+! [[bridging (networking)|bridge]]
+! [[TUN/TAP]]
+! [[Secure Shell|ssh]]
+! [[OpenVPN]]
+|-
+! [[Linux]]
+| [[netfilter]] [[iptables]]/[[nftables]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[FreeBSD]]
+| [[IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenBSD]]
+| [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[NetBSD]]
+| [[IPFilter]], [[NPF (firewall)|NPF]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="e1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[DragonFly BSD]]
+| [[IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[OpenSolaris]]
+| [[IPFilter]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="e2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[AuroraUX]]
+| [[IPFilter]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+| [[Ipfirewall|IPFW]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[MINIX]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[FreeDOS]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[Haiku (operating system)|Haiku]]
+| None
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[KolibriOS]]
+| None
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+! [[MenuetOS]]
+| None
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|-
+! [[GNU]]
+| [[netfilter]] [[iptables]]/[[nftables]] (with [[Linux-libre]] and [[Linux kernel]])<ref name="e3" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="e4" group="Note"></ref>
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="e5" group="Note"></ref>
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[ReactOS]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| ipmux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Amiga Research Operating System|AROS]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[Syllable (operating system)|Syllable]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[Inferno (operating system)|Inferno]]
+| ipmux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FreeRTOS]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[eCos]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[RTEMS]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! [[HelenOS]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! E/OS
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|- class="sortbottom"
+! Name
+! Firewall
+! TCP/IP
+! IPv6
+! IPX
+! PPP
+! PPPoE
+! DHCP
+! bridge
+! TUN/TAP
+! ssh
+! OpenVPN
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Supported file systems ==
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[File Allocation Table|FAT16, dosfs]]; [[File Allocation Table|FAT32, vfat]]
+! [[NTFS]]
+! [[Ext2]]
+! [[Ext3]]
+! [[XFS]]
+! [[ReiserFS]]
+! [[Unix File System|UFS]]
+! UFS2
+! [[Hierarchical File System|HFS]]
+! [[HFS Plus|HFS+]]
+! [[MINIX file system|MINIXfs]]
+! [[Be File System|BFS]]
+! [[ISO 9660]]
+! [[Universal Disk Format|UDF]]
+! [[Network File System|NFS]]
+! [[Server Message Block|SMBFS]]
+! [[RAM disk]], [[tmpfs]]
+! [[ZFS]]
+| [[HAMMER]]
+! Other special [[file system]]s
+|-
+! [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f5" group="Note"></ref><ref name="f7" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f9" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[9P]],<ref name="f3" group="Note"></ref> [[Filesystem in Userspace|FUSE]],<ref name="f3" group="Note"></ref> [[sysfs]],<ref name="f3" group="Note"></ref> [[configfs]],<ref name="f3" group="Note"></ref> [[Reiser4]],<ref name="f3" group="Note"></ref><ref name="f4" group="Note"></ref> [[IBM Journaled File System 2 (JFS2)|JFS]], [[Btrfs]], [[UnionFS]], [[Ext4]]
+|-
+! [[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref><ref name="f7" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f5" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| FUSE, [[nullfs]], UnionFS
+|-
+! [[NetBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref><ref name="f7" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[PUFFS]], [[Log-structured file system|LFS]], [[Extent File System|EFS]]
+|-
+! [[OpenBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Andrew File System|AFS]]
+|-
+! [[DragonFly BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[HAMMER]], nullfs
+|-
+! [[OpenSolaris]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes <ref name="f7" group="Note"></ref><ref name="f8" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[CIFS]] (native), [[QFS]]
+|-
+! [[AuroraUX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes <ref name="f7" group="Note"></ref><ref name="f8" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| CIFS (native), QFS
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref><ref name="f7" group="Note"></ref>
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[MINIX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[FreeDOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[Haiku (operating system)|Haiku]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes <ref name="f7" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes <ref name="f12" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes <ref name="f12" group="Note"></ref>
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="f11" group="Note"></ref>
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! [[KolibriOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[MenuetOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[GNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f13" group="Note"></ref>
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f14" group="Note"></ref>
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[ReactOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Fossil (file system)|Fossil]], [[Venti]], most system services
+|-
+! [[Amiga Research Operating System|AROS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Smart File System|SFS]], [[Amiga Fast File System|AFFS]]
+|-
+! [[Syllable (operating system)|Syllable]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[AtheOS File System|AFS]]
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| kfs, most system services
+|-
+! [[FreeRTOS]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[eCos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f2" group="Note"></ref>
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| MMFS, ROMfs, [[JFFS2]], [[YAFFS]]
+|-
+! [[RTEMS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| TarFS, TFTP FS, IMFS, miniIMFS
+|-
+! [[HelenOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f10" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| locfs, exFAT
+|-
+! E/OS
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="f6" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+
+|- class="sortbottom"
+! Name
+! FAT16, dosfs; FAT32, vfat
+! NTFS
+! Ext2
+! Ext3
+! XFS
+! ReiserFS
+! UFS
+! UFS2
+! HFS
+! HFS+
+! MINIXfs
+! BFS
+! ISO 9660
+! UDF
+! NFS
+! SMBFS
+! RAM disk, tmpfs
+! ZFS
+! HAMMER
+! Other special file systems
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Supported file system features ==
+{| class="sortable wikitable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! Name
+! [[RAID]]
+! [[disk quota|quota]]
+! Resource access control
+! [[encryption]]
+! other special [[file system]] features
+|-
+! [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[filesystem permissions|Unix]], [[access control list|ACL]], [[mandatory access control|MAC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Logical Volume Manager (Linux)|LVM]], [[Enterprise Volume Management System|EVMS]]
+|-
+! [[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix, ACL, MAC
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GEOM]], snapshots, background [[fsck]], user-mountable file systems
+|-
+! [[OpenBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[NetBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix, [[Veriexec]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[DragonFly BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[HAMMER]], Snapshots, Checksumming, Deduplication
+|-
+! [[OpenSolaris]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix, ACL, MAC
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Solaris Volume Manager]], [[ZFS]], [[snapshot (computer storage)|snapshots]], transparent data repair
+|-
+! [[AuroraUX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix, ACL, MAC
+|
+| Solaris Volume Manager, ZFS, snapshots, transparent data repair
+|-
+! [[Darwin (operating system)|Darwin]], [[OpenDarwin]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix, ACL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[MINIX]]
+|
+|
+| Unix
+|
+|
+|-
+! [[FreeDOS]]
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[KolibriOS]]
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[MenuetOS]]
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[GNU]]
+|
+|
+| Unix
+|
+|
+|-
+! [[ReactOS]]
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! [[L4 microkernel family|L4]], [[L4 microkernel family#L4/Fiasco|Fiasco]], [[L4 microkernel family#L4Ka::Pistachio|Pistachio]]
+|
+|
+|
+|
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[filesystem permissions|Unix-like]], no root
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| snapshots, [[venti]] archival storage, per-process namespace, user-mountable file systems
+|-
+! [[Amiga Research Operating System|AROS]]
+|
+|
+|
+|
+|
+|-
+! [[Syllable (operating system)|Syllable]]
+|
+|
+| Unix
+|
+| [[64-bit]], [[Journaling file system|journaling]], [[Metadata (computing)|extended file attributes]]
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Unix-like, no root
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| per-process namespace, user-mountable file systems
+|-
+! [[FreeRTOS]]
+|
+|
+|
+|
+|
+|-
+! [[eCos]]
+|
+|
+|
+|
+|
+|-
+! [[RTEMS]]
+|
+|
+|
+|
+|
+|-
+! [[HelenOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! E/OS
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Unix
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|- class="sortbottom"
+! Name
+! RAID
+! quota
+! Resource access control
+! encryption
+! other special file system features
+|}
+
+== Security features ==
+
+{| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto"
+|-
+! Operating system
+![[Mandatory access control]]
+!Software [[executable space protection]]
+![[Operating system-level virtualization]]
+!Virtualisation
+!Userspace protection
+!Others
+|-
+![[Linux]]
+|<ref name="z1" group="Note"></ref> style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z1
+|<ref name="z1" group="Note"></ref> [[PaX]]<ref name="z1" group="Note"></ref> style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z1
+|<ref name="z4" group="Note"></ref> [[Linux-VServer]],<ref name="z1" group="Note"></ref> [[OpenVZ]]<ref name="z1" group="Note"></ref>
+style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z1
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Kernel-based Virtual Machine|KVM]]
+|[[IPFilter]], [[Iptables]]
+|[[grsecurity]],<ref name="z1" group="Note"></ref> [[RSBAC]]<ref name="z1" group="Note"></ref>
+|-
+![[FreeBSD]]
+|<ref name="z2" group="Note"></ref><ref name="z3" group="Note"></ref>style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z3 [[TrustedBSD]]
+|<ref name="z5" group="Note"></ref>style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z5
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeBSD jail|jail]]
+|
+|[[Ipfirewall|IPFW]], [[PF (firewall)|PF]]
+|
+|-
+![[Darwin (operating system)|Darwin]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[SEDarwin]], TrustedBSD
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|jail
+|
+|IPFW
+|
+|-
+![[OpenBSD]]
+|
+|<ref name="z6" group="Note"></ref>style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|z6
+|
+|
+|PF
+|
+|-
+![[OpenSolaris]]
+|TrustedBSD
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Solaris Containers]]
+|[[Kernel-based Virtual Machine|KVM]] 
+|IPFilter
+|RBAC
+|-
+![[AuroraUX]]
+|TrustedBSD
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Solaris Containers
+|
+|IPFilter
+|
+|-
+! [[Plan 9 from Bell Labs|Plan 9]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|per-process namespaces
+|
+|
+|
+|-
+! [[Inferno (operating system)|Inferno]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|per-process namespaces
+|
+|
+|
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== See also ==
+{| class=" multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;"    
+<p></p>
+|style="width: 33.33%;" align="left" valign="top" |  
+* [[Berkeley Software Distribution]]
+* [[Comparison of operating systems]]
+* [[Comparison of Linux distributions]]
+* [[Comparison of BSD operating systems]]
+* [[Comparison of kernels]]
+<p></p>
+|style="width: 33.33%;" align="left" valign="top" |  
+* [[Comparison of file systems]]
+* [[Comparison of platform virtual machines]]
+* [[Comparison of DOS operating systems]]
+* [[List of operating systems]]
+* [[Live CD]]
+<p></p>
+|style="width: 33.33%;" align="left" valign="top" |  
+<div class="noprint tright portal" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em;">
+<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px;">
+<tr valign="middle"><td style="text-align:center;">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold;">[[Portal:Free software|Free software portal]]</td></tr></table></div>
+* [[Microsoft Windows]]
+* [[RTEMS]]
+* [[Unix]]
+* [[Unix-like]]
+<p></p>
+|}
+
+==References==
+<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+{| class=" multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;"    
+<p></p>
+| style="width:50%; text-align:left; vertical-align:top;" |  
+* [http://www.levenez.com/unix/ Unix History]
+* [http://www.levenez.com/windows/ Windows History]
+* [http://www.freebsd.org The FreeBSD home page]
+* [http://www.osdata.com/oses/freebsd.htm Info on FreeBSD] (last updated 21 March 2004)
+* [http://www.openbsd.org The OpenBSD home page]
+* [http://www.osdata.com/oses/openbsd.htm Info on OpenBSD] (last updated 17 February 2002)
+* [http://www.netbsd.org The NetBSD home page]
+* [http://www.osdata.com/oses/netbsd.htm Info on NetBSD] (last updated 17 February 2002)
+<p></p>
+| style="width:50%; text-align:left; vertical-align:top;" | 
+* [http://www.apple.com/macosx/ Apple's Mac OS X site]
+* [http://www.osdata.com/oses/macosx.htm Info on Mac OS X] (last updated 4 March 2002)
+* [http://www.osdata.com/oses/mxs.htm Info on Mac OS X Server] (last updated 14 February 2002)
+* [http://www.dragonflybsd.org/ The DragonFly BSD home page]
+* [http://www.rtems.org The RTEMS home page]
+* [http://www.osdata.com/ Operating System Technical Comparison]
+<p></p>
+|}
+
+=== Emulator images ===
+* [http://haiku-os.org/factory/ Haiku Build Factory]
+
+=== Software and packages ===
+{| class=" multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;"
+<p></p>
+| style="width:50%; text-align:left; vertical-align:top;" |
+*[http://www.freecode.com/ Freecode] – mostly Linux
+*[http://www.freebsd.org/ports/index.html FreeBSD Ports] – FreeBSD
+*[http://www.freshports.org/ FRESHports] – FreeBSD
+*[http://www.openbsd.org/faq/faq15.html OpenBSD packages and ports] – OpenBSD
+*[http://www.netbsd.org/Documentation/software/packages.html pkgsrc] – NetBSD, Linux, FreeBSD, Solaris, Darwin
+*[http://opensolaris.org/os/downloads/ OpenSolaris Download Center] – OpenSolaris
+*[http://www.gnusolaris.org/gswiki/Packages Nexenta OS packages] – OpenSolaris
+*[http://autopackage.org/ Autopackage] – Linux
+*[http://klik.atekon.de/ Klik] – Linux
+<p></p>
+| style="width:50%; text-align:left; vertical-align:top;" |
+*[http://www.openpkg.org/ OpenPKG] – Linux, FreeBSD, NetBSD, Solaris
+*[http://darwinports.opendarwin.org/ DarwinPorts] – Darwin
+*[http://www.minix3.org/software/ MINIX 3 – Software] – MINIX
+*[http://freedos.sourceforge.net/freedos/software/ FreeDOS – Software] – FreeDOS
+*[http://directory.fsf.org/ FSF/UNESCO Free Software Directory] – GNU Mach/GNU Hurd, Linux
+*[http://www.reactos.org/support/ ReactOS Support Database] – ReactOS
+*[http://www.rtems.org/wiki/index.php/FreeSoftware Free Software ported to RTEMS]
+*[http://kamidake.other-space.com/ Kamidake (site gone)] [https://web.archive.org/web/20070114203948/http://kamidake.other-space.com/ Kamidake] at the [[Wayback Machine]]&#32;(archived January 14, 2007) – Syllable
+<p></p>
+|}
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:FOSS|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:FOSS|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:FOSS&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Free and open-source software]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Alternative terms for free software]]
+*[[Comparison of open source and closed source]]
+*[[Comparison of open-source software hosting facilities]]
+*[[List of formerly proprietary software|Formerly proprietary software]]
+*[[List of free and open-source Android applications|Free and open-source Android applications]] 
+*[[List of free and open-source software packages|Free and open-source software packages]]
+*[[Free software]]
+*[[List of free-software events|Free software events]]
+*[[Free software movement]]
+*[[List of free software project directories|Free software project directories]]
+*[[List of free software web applications|Free software web applications]] 
+*[[Gratis versus libre]] 
+*[[Long-term support]]
+*[[Open-source software]]
+*[[Outline of free software|Outline]]
+*[[Software Package Data Exchange|SPDX]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of open-source operating systems|Operating system<br/> families]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[AROS Research Operating System|AROS]] 
+*[[Berkeley Software Distribution|BSD]] 
+*[[Darwin (operating system)|Darwin]] 
+*[[eCos]] 
+*[[FreeDOS]] 
+*[[GNU]] 
+*[[Haiku (operating system)|Haiku]] 
+*[[Inferno (operating system)|Inferno]] 
+*[[Linux]] 
+*[[Mach (kernel)|Mach]] 
+*[[MINIX]] 
+*[[OpenSolaris]] 
+*[[Plan 9 from Bell Labs|Plan 9]] 
+*[[ReactOS]]
+*[[TUD:OS]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Open-source software development|Development]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Basic For Qt]] 
+*[[Eclipse (software)|Eclipse]] 
+*[[Free Pascal]]
+*[[FreeBASIC]]
+*[[Gambas]]
+*[[GNU Compiler Collection|GCC]]
+*[[Java (programming language)|Java]] 
+*[[LLVM]] 
+*[[Lua (programming language)|Lua]] 
+*[[NetBeans]] 
+*[[Open64]] 
+*[[Perl]] 
+*[[PHP]] 
+*[[Python (programming language)|Python]] 
+*[[ROSE (compiler framework)|ROSE]] 
+*[[Ruby (programming language)|Ruby]] 
+*[[Tcl]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of free and open-source software|History]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[GNU#History|GNU]] 
+*[[History of Haiku (operating system)|Haiku]] 
+*[[History of Linux|Linux]] 
+*[[Mozilla]] 
+**[[History of Mozilla Application Suite|Application Suite]] 
+**[[History of Firefox|Firefox]] 
+**[[History of Mozilla Thunderbird|Thunderbird]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Organizations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Android (operating system)|Android Open Source Project]] 
+*[[Apache Software Foundation]] 
+*[[Blender Foundation]]
+*[[The Document Foundation]]
+*[[Eclipse Foundation]] 
+*[[Free Software Foundation]]
+**[[Free Software Foundation Europe|Europe]] 
+**[[Free Software Foundation of India|India]] 
+**[[Free Software Foundation Latin America|Latin America]]
+*[[FreeBSD Foundation]] 
+*[[freedesktop.org]] 
+*[[Free Software Movement of India|FSMI]] 
+*[[GNOME Foundation]] 
+*[[GNU Project]] 
+*[[Google Code]] 
+*[[KDE e.V.]] 
+*[[Linux Foundation]] 
+*[[Mozilla Foundation]] 
+*[[Open Knowledge Foundation]]
+*[[Open Source Geospatial Foundation]] 
+*[[Open Source Initiative]] 
+*[[Software Freedom Conservancy]] 
+*[[SourceForge]] 
+*[[Symbian Foundation]] 
+*[[Ubuntu Foundation]]
+*[[VideoLAN|VideoLAN Organization]] 
+*[[Wikimedia Foundation]] 
+*[[X.Org Foundation]]
+*[[Xiph.Org Foundation]] 
+*[[XMPP Standards Foundation]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Free software license|Licenses]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Apache License|Apache]] 
+*[[Artistic License|Artistic]] 
+*[[Beerware]]
+*[[Boost Software License|Boost]]
+*[[BSD licenses|BSD]]
+*[[CC0]] 
+*[[GNU General Public License|GNU GPL]] 
+*[[GNU Lesser General Public License|GNU LGPL]] 
+*[[ISC license|ISC]] 
+*[[MIT License|MIT]] 
+*[[Mozilla Public License|MPL]] 
+*[[Shared source#Open Source licenses|Ms-PL/RL]] 
+*[[WTFPL]]
+*[[zlib License|zlib]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">License types<br/> and standards</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Comparison of free and open-source software licenses]]
+*[[Contributor License Agreement]] 
+*[[Copyfree]]
+*[[Copyleft]]
+*[[Debian Free Software Guidelines]] 
+*[[Definition of Free Cultural Works]]
+*[[Free license]]
+*[[The Free Software Definition]]
+*[[The Open Source Definition]]
+*[[Open-source license]]
+*[[Permissive free software licence]]
+*[[Public domain]]
+*[[Viral license]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Challenges</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Binary blob]] 
+*[[Digital rights management]]
+*[[Free and open-source graphics device driver]]
+*[[Comparison of open-source wireless drivers]]
+*[[Hardware restriction]]s 
+*[[License proliferation]] 
+*[[Mozilla Corporation software rebranded by the Debian project|Mozilla software rebranding]] 
+*[[Proprietary software]] 
+*[[SCO–Linux controversies]]
+*[[UEFI_Secure_Boot#Secure_boot|Secure boot]] 
+*[[Software patents and free software|Software patents]]
+*[[Open-source software security|Software security]]
+*[[Trusted Computing]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*''[[The Cathedral and the Bazaar]]''
+*[[Fork (software development)|Forking]] 
+*[[Linux distribution]] 
+*[[Microsoft Open Specification Promise]] 
+*''[[Revolution OS]]''
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2" style="font-weight:bold;"><div>
+*[[File:Symbol book class2.svg                  | Wikipedia book|16x16px|link=]] [[Book:Free and Open Source Software|Book]]
+*[[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] [[:Category:Free software|Category]]
+*[[File:Commons-logo.svg                        | Commons page|16x16px|link=]] [[:commons:Category:Free software|Commons]]
+*[[File:Portal-puzzle.svg                       | Portal|16x16px|link=]] [[Portal:Free software|Portal]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Free software operating systems| ]]
+[[Category:Operating system comparisons|Open Source Operating Systems]]

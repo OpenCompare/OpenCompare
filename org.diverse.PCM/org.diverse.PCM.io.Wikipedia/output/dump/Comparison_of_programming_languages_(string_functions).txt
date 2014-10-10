@@ -1,0 +1,1245 @@
+definition
+returns character.
+description
+returns character at index in the string.
+equivalent
+see substring of length 1 character.
+format
+languages
+base index
+
+algol 68, pascal, object pascal (delphi), seed7
+1
+
+c, c++, c#, d, freebasic, go, python, php, ruby, windows powershell, javascript, ya
+0
+
+php (deprecated in 5.3)
+0
+
+ada
+≥1
+
+vb
+1
+
+basic
+1
+
+vb.net
+0
+
+fortran
+1
+
+java, javascript
+0
+
+ocaml, f#
+0
+
+standard ml
+0
+
+haskell
+0
+
+scheme
+0
+
+common lisp
+0
+
+islisp
+0
+
+clojure
+0
+
+perl
+0
+
+pl/i
+1
+
+c++ (stl) (w/ bounds checking)
+0
+
+erlang
+1
+
+objective-c ( only)
+0
+
+lua
+1
+
+smalltalk (w/ bounds checking)
+1
+
+tcl
+0
+
+mathematica
+1
+
+eiffel
+1
+
+cobol
+1
+definition
+returns integer.
+description
+compares two strings to each other. if they are equivalent, a zero is returned. otherwise, most of these routines will return a positive or negative result corresponding to whether string is lexicographically greater than, or less than, respectively, than string. the exceptions are the scheme and rexx routines which return the index of the first mismatch.
+format
+languages
+
+algol 68
+
+python (before 3.0 only)
+
+python (since 3.0)
+
+c, php
+
+d
+
+vb, object pascal (delphi)
+
+perl
+
+ruby
+
+c++ (stl)
+
+rexx, seed7
+
+pascal, object pascal (delphi)
+
+java
+
+vb .net, c#, f#
+
+clojure
+
+common lisp
+
+scheme (srfi 13)
+
+islisp
+
+ocaml
+
+standard ml
+
+haskell
+
+windows powershell
+
+objective-c ( only)
+
+fortran
+
+javascript
+
+go
+
+tcl
+
+pl/i
+definition
+or returns boolean.
+description
+lexicographically compares two strings using a relational operator or function. boolean result returned.
+format
+languages
+, where can be any of and
+pascal, object pascal (delphi), ocaml, seed7, standard ml, basic, vb, vb .net, f#
+, where can be any of and ; also: and
+algol 68
+, where can be any of and (operators starting with '' are case-insensitive)
+scheme
+, where can be any of and (operators starting with '' are case-insensitive)
+scheme (srfi 13)
+, where can be any of and (the verbal operators are case-insensitive)
+common lisp
+, where can be any of and
+islisp
+, where can be any of and
+rexx
+, where can be any of and
+pl/i
+, where can be any of and
+ada
+, where can be any of and
+erlang
+, where can be any of and
+haskell
+, where can be any of and
+perl
+, where can be any of and
+c++ (stl), c#, d, go, javascript, python, php, ruby, ya
+, where can be any of and (operators starting with '' are case-sensitive)
+windows powershell
+, where can be any of and
+lua
+, where can be any of and
+smalltalk
+, where can be any of and and
+fortran.
+where can be any of as well as worded equivalents
+cobol
+definition
+returns string.
+description
+concatenates (joins) two strings to each other, returning the combined string. note that some languages like c have mutable strings, so really the second string is being appended to the first string and the mutated string is returned.
+format
+languages
+
+ada, freebasic, seed7, basic, vb, vb .net, cobol (between literals only)
+
+c, c++ ( only)
+
+perl, php
+
+algol 68, c++ (stl), c#, freebasic, go, pascal, object pascal (delphi), java, javascript, windows powershell, python, ruby, rust, f#, turing, vb, ya
+
+d
+
+scheme, islisp
+
+common lisp
+
+clojure
+
+rexx, sql, pl/i
+
+fortran
+
+erlang, haskell
+
+ocaml, standard ml, f#
+
+objective-c ( only)
+
+lua
+
+smalltalk
+
+snobol
+
+bash shell
+
+mathematica
+definition
+returns boolean
+description
+returns whether string contains substring as a substring. this is equivalent to using #find and then detecting that it does not result in the failure condition listed in the third column of the #find section. however, some languages have a simpler way of expressing this test.
+related
+format
+languages
+
+algol 68
+
+object pascal (delphi)
+
+c#, vb .net, windows powershell, f#
+
+java (1.5+)
+
+javascript
+
+php
+
+seed7
+
+python (2.3+)
+
+lua
+
+ruby
+
+haskell (ghc 6.6+)
+
+smalltalk (squeak, pharo)
+
+standard ml
+
+common lisp
+
+islisp
+
+clojure
+
+mathematica
+
+pl/i
+
+go
+
+c++
+
+objective-c ( only, ios 8+/os x 10.10+)
+format
+languages
+
+python, c++ (stl), c#, go, javascript (similarity), php (similarity), ruby, erlang, haskell, lua, d, mathematica, ya
+
+javascript, php
+
+fortran
+
+c
+
+scheme
+
+common lisp, islisp
+
+algol 68, ada, object pascal (delphi), ocaml, pascal, rexx, seed7, standard ml, basic, vb, vb .net, f#, smalltalk, pl/i, cobol
+
+bourne shell
+
+perl
+
+java
+
+c#
+
+windows powershell
+
+objective-c ( only)
+definition
+returns integer
+description
+returns the position of the start of the first occurrence of substring in string. if the substring is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as boolean false.
+related
+instrrev
+format
+languages
+if not found
+
+algol 68
+returns bool: true or false, and position in ref int pos.
+
+vb (positions start at 1)
+returns 0
+
+basic (positions start at 1)
+returns 0
+
+awk
+returns 0
+
+perl
+returns -1
+
+freebasic
+returns 0
+
+php
+returns false
+
+ingres
+returns string length + 1
+
+c, c++ ( only, returns pointer to first character)
+returns null
+
+d
+returns -1
+
+seed7
+returns 0
+
+go
+returns -1
+
+pascal, object pascal (delphi)
+returns 0
+
+rexx
+returns 0
+
+c++ (stl)
+returns std::string::npos
+
+python
+returns -1
+
+python
+raises valueerror
+
+ruby
+returns nil
+
+java, javascript
+returns -1
+
+vb .net, c#, windows powershell, f#
+returns -1
+
+erlang
+returns 0
+
+scheme (srfi 13)
+returns #f
+
+common lisp
+returns nil
+
+islisp
+returns
+
+haskell (returns just index)
+returns nothing
+
+ocaml
+raises not_found
+
+standard ml
+returns string length
+
+objective-c ( only)
+returns nsnotfound
+
+lua
+returns nil
+
+smalltalk (squeak, pharo)
+evaluate ablock which is a block closure (or any object understanding value) returns 0
+
+fortran
+returns 0 if substring is not in string; returns len(string)+1 if substring is empty
+
+sql
+returns 0 (positions start at 1)
+
+pl/i
+returns 0 (positions start at 1)
+definition
+returns integer
+description
+returns the position of the start of the first occurrence of the character char in string. if the character is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as boolean false. this can be accomplished as a special case of #find, with a string of one character; but it may be simpler or more efficient in many languages to locate just one character. also, in many languages, characters and strings are different types, so it is convenient to have such a function.
+related
+find
+format
+languages
+if not found
+
+algol 68
+returns bool: true or false, and position in ref int pos.
+(char, can contain more them one char, in which case the position of the first appearance of any of them is returned.)
+freebasic
+returns 0
+
+c, c++ ( only, returns pointer to character)
+returns null
+
+d
+returns -1
+
+c++ (stl)
+returns std::string::npos
+
+seed7
+returns 0
+
+go
+returns -1
+
+java, javascript
+returns -1
+
+vb .net, c#, windows powershell, f#
+returns -1
+
+common lisp
+returns nil
+
+islisp
+returns
+
+haskell (returns just index)
+returns nothing
+
+ocaml
+raises not_found
+
+fortran
+returns zero
+
+smalltalk
+evaluate which is a (or any object understanding value) returns 0 returns or
+
+pl/i
+returns 0 (positions start at 1)
+
+ruby
+returns nil
+
+php
+returns
+definition
+returns string
+description
+returns the formatted string representation of one or more items.
+format
+languages
+format string syntax
+
+algol 68
+algol
+
+vb
+
+
+perl, php, ruby
+c
+
+erlang
+
+
+c
+c
+
+d
+c
+
+object pascal (delphi)
+
+
+go
+c
+
+bash shell
+c
+
+python, ruby
+c
+
+python 3.x
+.net
+
+ocaml, f#
+c
+
+haskell (ghc)
+c
+
+java
+c
+
+vb .net, c#, f#
+.net
+
+scheme (srfi 28)
+lisp
+
+common lisp
+lisp
+
+clojure
+lisp
+
+windows powershell
+.net
+
+objective-c ( only)
+c
+
+lua
+c
+
+fortran
+fortran
+
+pl/i
+pl/i (similar to fortran)
+format
+languages
+
+algol 68 - note: the operator "ne" is literally in bold type-font.
+
+algol 68, ada, erlang, fortran, haskell
+
+basic, vb, vb .net, pascal, object pascal (delphi), ocaml, php, seed7, standard ml, f#, cobol
+
+basic (some implementations)
+
+perl
+
+scheme (srfi 13)
+
+common lisp
+
+islisp
+
+clojure
+
+c++ (stl), c#, go, javascript (not similar), php (not similar), python, ruby, d, mathematica
+
+javascript, php
+
+rexx
+
+pl/i
+
+bourne shell
+
+windows powershell
+
+lua, smalltalk
+definition
+returns a list of strings joined with a separator
+description
+joins the list of strings into a new string, with the separator string between each of the substrings. opposite of split.
+related
+sprintf
+format
+languages
+
+d
+
+erlang
+
+perl, php
+
+php
+
+python
+
+ruby, javascript
+
+scheme (srfi 13)
+
+common lisp
+
+clojure
+
+go
+
+seed7
+
+ocaml
+
+standard ml
+
+haskell (ghc 6.8+)
+
+vb
+
+vb .net, c#, f#
+
+windows powershell
+
+objective-c ( only)
+
+lua
+
+smalltalk (squeak, pharo)
+definition
+returns string
+description
+returns the left n part of a string. if n is greater than the length of the string then most implementations return the whole string (exceptions exist - see code examples).
+format
+languages
+
+ada
+
+erlang
+
+vb
+
+basic
+
+freebasic, ingres
+
+common lisp
+
+rexx, erlang
+
+awk (changes string), perl, php
+
+go, python
+
+ruby
+
+c
+
+c++ (stl)
+
+d
+
+seed7
+
+vb .net, c#, windows powershell, f#
+
+pascal, object pascal (delphi)
+
+java, javascript
+
+scheme (srfi 13)
+
+haskell
+
+clojure
+
+objective-c ( only)
+
+standard ml
+
+ocaml
+
+f#
+
+lua
+
+smalltalk (squeak, pharo)
+
+fortran
+
+mathematica
+
+cobol
+definition
+returns an integer number
+description
+returns the length of a string (not counting the null terminator or any other of the string's internal structural information). an empty string returns a length of 0.
+format
+returns
+languages
+
+
+ada
+
+
+algol 68
+
+
+ingres, perl, pascal, object pascal (delphi), rexx, seed7, sql, pl/i
+
+
+basic, freebasic, python, go
+
+
+erlang
+
+
+vb
+
+number of 16-bit utf-16-encoded blocks
+vb .net, c#, windows powershell, f#
+
+number of bytes
+ruby
+
+number of bytes
+c, php
+
+
+c++ (stl)
+
+
+d, javascript
+
+number of 16-bit utf-16-encoded blocks
+java
+
+
+scheme
+
+
+common lisp, islisp
+
+
+clojure
+
+
+ocaml
+
+
+standard ml
+
+number of unicode codepoints
+haskell
+
+
+objective-c ( only)
+
+
+lua
+
+
+smalltalk
+
+
+fortran
+
+
+mathematica
+or
+number of bytes as
+ya
+or
+number of characters and number of bytes, respectively
+cobol
+definition
+returns string
+description
+returns the string in lower case.
+format
+languages
+
+vb
+
+freebasic
+
+perl
+
+c
+
+d
+
+c++
+
+object pascal (delphi)
+
+php
+
+seed7
+
+unix
+
+python
+
+ruby
+
+go
+
+scheme (r6rs), common lisp
+
+clojure
+
+ocaml
+
+standard ml
+
+haskell
+
+java, javascript
+
+erlang
+
+vb .net, c#, windows powershell, f#
+
+objective-c ( only)
+
+lua
+
+smalltalk
+
+sql
+
+pl/i
+
+mathematica
+
+cobol
+definition
+format
+languages
+
+python, ruby(1.9+)
+
+erlang
+
+perl
+definition
+returns string
+description
+returns a string with find occurrences changed to replace.
+format
+languages
+
+rexx
+
+d
+
+vb
+
+seed7
+
+vb .net, c#, f#
+
+php
+
+erlang
+
+python, java (1.5+)
+
+java
+
+ruby
+
+perl
+
+javascript
+
+unix
+
+windows powershell
+
+ocaml
+
+objective-c ( only)
+
+lua
+
+smalltalk (squeak, pharo)
+
+tcl
+
+mathematica
+
+go
+
+cobol
+definition
+
+description
+reverses the order of the characters in the string.
+format
+languages
+
+perl, haskell
+
+erlang
+
+php
+
+python
+
+scheme (srfi 13)
+
+common lisp
+
+ruby, d (modifies string)
+
+java
+
+c++ ( only, modifies string)
+
+vb
+
+vb .net, c#
+
+standard ml
+
+javascript
+
+lua
+
+smalltalk
+
+mathematica
+
+pl/i
+
+cobol
+definition
+returns integer
+description
+returns the position of the start of the last occurrence of substring in string. if the substring is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as boolean false.
+related
+instr
+format
+languages
+if not found
+
+vb
+returns 0
+
+freebasic
+returns 0
+
+perl
+returns -1
+
+php
+returns false
+
+c++ (stl)
+returns std::string::npos
+
+d
+returns -1
+
+python
+returns -1
+
+seed7
+returns 0
+
+ruby
+returns nil
+
+go
+returns -1
+
+java, javascript
+returns -1
+
+vb .net, c#, windows powershell, f#
+returns -1
+
+common lisp
+returns nil
+
+objective-c ( only)
+returns nsnotfound
+
+ocaml
+raises not_found
+
+lua
+returns nil
+
+ada
+returns 0
+definition
+returns string
+description
+returns the right n part of a string. if n is greater than the length of the string then most implementations return the whole string (exceptions exist - see code examples).
+format
+languages
+
+ada
+
+vb
+
+basic
+
+freebasic, ingres
+(n must not be greater than the length of string)
+c
+
+c#
+
+java
+
+javascript
+
+rexx, erlang
+
+perl, php
+
+python
+
+scheme (srfi 13)
+
+ruby, ya
+
+d
+
+ocaml
+
+lua
+
+smalltalk (squeak, pharo)
+
+mathematica
+
+cobol
+definition
+format
+languages
+
+python, ruby
+definition
+format
+languages
+
+perl
+
+php
+
+python
+
+javascript, java, ruby
+
+erlang
+
+go
+
+scheme (srfi 13)
+
+vb
+
+vb .net, c#, f#
+
+windows powershell
+
+ocaml
+
+d
+
+objective-c ( only)
+
+object pascal
+
+mathematica
+definition
+returns string returns string
+description
+returns a substring of string between starting at startpos and endpos, or starting at startpos of length numchars. the resulting string is truncated if there are fewer than numchars characters beyond the starting point. endpos represents the index after the last character in the substring.
+format
+languages
+
+algol 68 (changes base index)
+
+ada (changes base index)
+
+vb
+
+freebasic
+
+basic
+
+awk (changes string), perl, php
+
+rexx
+
+python, go
+
+ruby
+
+seed7
+
+javascript
+
+c++ (stl), javascript
+
+vb .net, c#, windows powershell, f#
+
+java, javascript
+
+object pascal (delphi)
+
+scheme
+
+common lisp
+
+islisp
+
+ocaml
+
+standard ml
+
+erlang
+
+c
+
+d
+
+haskell
+
+objective-c ( only)
+
+f#
+
+lua
+
+smalltalk
+
+fortran
+
+sql
+
+mathematica
+
+ya
+definition
+returns string
+description
+returns the string in upper case.
+format
+languages
+
+vb
+
+freebasic
+
+awk (changes string)
+
+perl
+
+c (operates on one character)
+
+c (string / char array)
+
+d
+
+c++
+
+object pascal (delphi)
+
+object pascal (delphi) (operates on one character)
+
+php
+
+seed7
+
+unix
+, or , or
+rexx
+
+python
+
+ruby
+
+go
+
+scheme, common lisp
+
+ocaml
+
+standard ml
+
+haskell
+
+java, javascript
+
+erlang
+
+vb .net, c#, windows powershell, f#
+
+objective-c ( only)
+
+lua
+
+smalltalk
+
+sql
+
+mathematica
+
+cobol
+format
+languages
+
+c#
+
+common lisp
+
+go
+
+java
+
+javascript
+
+mathematica
+
+php
+
+python

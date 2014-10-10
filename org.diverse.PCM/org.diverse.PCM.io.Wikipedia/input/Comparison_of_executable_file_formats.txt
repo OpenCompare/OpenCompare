@@ -1,0 +1,440 @@
+This is a comparison of binary [[executable]] [[file format]]s which, once loaded by a suitable executable [[Loader (computing)|loader]], can be directly executed by the CPU rather than become interpreted by software. In addition to the binary application code, the executables may contain headers and tables with relocation and fixup information as well as various kinds of meta data. Among those formats listed, the ones in most common use are [[Portable Executable|PE]] (on [[Microsoft Windows]]), [[Executable and Linkable Format|ELF]] (on [[Linux]] and most other versions of [[Unix]]), [[Mach-O]] (on [[OS X]] and [[iOS]]) and [[DOS MZ executable|MZ]] (on [[DOS]]).
+
+{| class="wikitable sortable"
+|-
+! Format name
+! Operating system
+! [[Filename extension]]
+! Explicit processor declarations
+! Arbitrary [[memory segmentation|sections]]
+! [[Metadata]]<sup class="reference plainlinks nourlexpansion" id="ref_Metadata">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_Metadata]</sup>
+! [[Code signing|Digital signature]]
+! [[String (computer science)|String table]]
+! [[Symbol table]]
+! [[64-bit]]
+! [[Fat binary|Fat binaries]]
+! Can contain [[Icon (computing)|icon]]
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[OS/360 Object File Format|OS/360]]
+| [[OS/360]] and [[VS/9]] mainframe systems
+| <center>none</center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[a.out]]
+| [[Unix-like]]
+| <center>none</center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[COFF]]
+| [[Unix-like]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ECOFF]]
+| [[Ultrix]], [[Tru64&nbsp;UNIX]], [[IRIX]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[XCOFF]]
+| [[IBM&nbsp;AIX]], [[BeOS]], [[Mac OS]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Executable and Linkable Format|ELF]]
+| [[Unix-like]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Mach-O]]
+| [[NeXTSTEP]], [[OS&nbsp;X]], [[iOS]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by section
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some <small>(limited to max. 256 sections)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[System Object Model (file format)|SOM]]
+| [[HP-UX]], [[MPE/ix]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Amiga Hunk]]
+| [[AmigaOS]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Preferred Executable Format|PEF]]
+| [[Mac&nbsp;OS]]
+| <center>none</center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CMD file (CP/M)|CMD]]
+| [[CP/M-86]], [[MP/M-86]], [[Concurrent&nbsp;CP/M-86]], [[Personal&nbsp;CP/M-86]], [[S5-DOS]], [[Concurrent&nbsp;DOS]], [[Concurrent&nbsp;DOS&nbsp;286]], [[FlexOS]], [[S5-DOS/ST]], [[S5-DOS/MT]], [[Concurrent&nbsp;DOS&nbsp;386]], [[Multiuser&nbsp;DOS]], [[Datapac System Manager|System&nbsp;Manager]], [[REAL/32]], [[DOS&nbsp;Plus]]
+| <center><code>.CMD</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel x86|x86]] only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | FlexOS 186
+| [[FlexOS&nbsp;186]], [[FlexOS&nbsp;286]], [[S5-DOS/ST]], [[S5-DOS/MT]], [[4680&nbsp;OS]], [[FlexOS&nbsp;386]], [[4690&nbsp;OS]]
+| <center><code>[[.186]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel 80186|186]]/[[Intel 80188|188]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | FlexOS 286
+| [[FlexOS&nbsp;286]], [[S5-DOS/ST]], [[S5-DOS/MT]], [[4680&nbsp;OS]], [[FlexOS&nbsp;386]], [[4690&nbsp;OS]]
+| <center><code>[[.286]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel 80286|286]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | CP/M-68K
+| [[CP/M-68K]], [[Concurrent&nbsp;DOS&nbsp;68K]], [[FlexOS&nbsp;68K]]
+| <center><code>[[.68K]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Motorola 68000|68000]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[COM file (CP/M)|COM (CP/M)]]
+| [[CP/M]], [[MP/M]], [[Concurrent&nbsp;CP/M]], [[Personal&nbsp;CP/M]]
+| <center><code>[[COM file|.COM]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel 8080|8080]]/[[Zilog Z80|Z80]] only)</small>
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension <small>([[Basic Disk Operating System|BDOS]] 3 and higher only)</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[COM file (DOS)|COM (DOS)]]
+| [[DOS]], [[OS/2]], [[Windows]] <small>(except for 64-bit editions)</small>, [[Concurrent&nbsp;CP/M-86]] <small>([[Basic Disk Operating System|BDOS]] 3.1 only)</small>, [[Concurrent&nbsp;DOS]], [[Concurrent&nbsp;DOS&nbsp;286]], [[FlexOS]], [[Concurrent&nbsp;DOS&nbsp;386]], [[Multiuser&nbsp;DOS]], [[Datapac System Manager|System&nbsp;Manager]], [[REAL/32]], [[DOS&nbsp;Plus]]
+| <center><code>[[COM file|.COM]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel x86|x86]] only)</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension <small>(Novell/Caldera [[VERSION.EXE|VERSION]] etc.)</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[DOS MZ executable|MZ (DOS)]]
+| [[DOS]], [[OS/2]], [[Windows]] <small>(except for 64-bit editions)</small>, [[Concurrent&nbsp;DOS&nbsp;286]], [[FlexOS]], [[Concurrent&nbsp;DOS&nbsp;386]], [[Multiuser&nbsp;DOS]], [[Datapac System Manager|System&nbsp;Manager]], [[REAL/32]], [[DOS&nbsp;Plus]]
+| <center><code>[[.EXE]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel x86|x86]] only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension<small>(Novell/Caldera [[VERSION.EXE|VERSION]] etc.)</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Extension
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | MZ (GEM)
+| [[Graphical Environment Manager|GEM]], [[ViewMAX]]
+| <center><code>[[.APP]]/[[.ACC]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel x86|x86]] only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[New Executable|NE]]
+| [[MS-DOS 4.0 (multitasking)]], [[OS/2]], [[Windows]], [[HX&nbsp;DOS&nbsp;Extender]]
+| <center><code>[[.EXE]]</code></center>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[LE executable|LE]], ([[Windows W3 executable|W3]], [[Windows W4 executable|W4]])
+| [[OS/2]] <small>(2.0 and higher only)</small>, some [[DOS extender]]s
+| <center><code>[[.EXE]]</code></center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file <small>([[Intel 80286|286]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[LX executable|LX]]
+| [[OS/2]] <small>(2.0 and higher only)</small>, some 32-bit [[DOS extender]]s
+| <center><code>[[.EXE]]</code></center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Portable Executable|PE]]
+| [[Windows]], [[ReactOS]], [[HX&nbsp;DOS&nbsp;Extender]], [[BeOS]] <small>(R3 and higher only)</small>
+| <center><code>[[.EXE]]</code></center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Portable Executable|PE32+]]
+| [[Windows]] <small>(64-bit editions only)</small>
+| <center><code>[[.EXE]]</code></center>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes by file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Personal Information Manager|PIM]]/[[Execute In Place|XIP]]
+| [[PalmDOS]] <small>([[MINIMAX]] applications only)</small>
+| <center><code>[[.PIM]]/[[.XIP]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel x86|x86]] only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" id=.exm | [[DL executable|DL]]
+| [[MS-DOS]] [[System Manager (HP LX)|System&nbsp;Manager]] applications <small>([[HP LX series]] only)</small>
+| <center><code>[[.EXM]]</code></center>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>([[Intel 80186|186]]/[[Intel 80188|188]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" id=.exp | [[MP executable|MP]]
+| [[Phar Lap (company)|Phar&nbsp;Lap]] [[DOS extender]]s
+| <center><code>[[.EXP]]</code></center>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown <small>([[Intel 80286|286]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[P2 executable|P2]]
+| [[Phar Lap (company)|Phar&nbsp;Lap]] 16-bit [[DOS extender]]s
+| <center><code>[[.EXP]]</code></center>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown <small>([[Intel 80286|286]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[P3 executable|P3]]
+| [[Phar Lap (company)|Phar&nbsp;Lap]] 32-bit [[DOS extender]]s
+| <center><code>[[.EXP]]</code></center>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown <small>([[Intel 80386|386]] and higher only)</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | GEOS
+| [[PC/GEOS]], [[Geoworks&nbsp;Ensemble]], [[NewDeal&nbsp;Office]], [[Breadbox&nbsp;Ensemble]]
+| <center><code>[[.GEO]]</code></center>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown <small>([[Intel x86|x86]] only)</small>
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|}
+
+==Notes==
+<table class="metadata plainlinks ambox ambox-content ambox-Unreferenced" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px]]</div></td><td class="mbox-text"><span class="mbox-text-span">This section '''does not [[Wikipedia:Citing sources|cite]] any [[Wikipedia:Verifiability|references or sources]]'''.<span class="hide-when-compact"> Please help improve this section by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and [[Wikipedia:Verifiability#Burden of evidence|removed]].</span>  <small>''(July 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+;<span class="citation wikicite" id="endnote_Metadata"><b>[[#ref_Metadata|^]]</b></span>Metadata
+:Metadata is casually used to describe the controlling data used in software architectures that are more abstract or configurable. Most executable file formats include what may be termed "metadata" that specifies certain, usually configurable, behavioral [[run time (program lifecycle phase)|runtime]] characteristics. However, it is difficult if not impossible to precisely distinguish program "metadata" from general aspects of [[Von Neumann architecture|stored-program computing architecture]]; if the machine reads it and acts upon it, it is a computational [[Instruction (computer science)|instruction]], and the prefix "meta" has little significance.
+:In [[Java (programming language)|Java]], the [[Class (file format)|class file format]] contains metadata used by the [[Java compiler]] and the [[Java virtual machine]] to [[dynamic linking|dynamically link]] [[class (computer science)|classes]] and to support [[reflection (computer science)|reflection]]. The [[Java Platform, Standard Edition]] since J2SE 5.0 has included a [[metadata facility for Java|metadata facility]] to allow additional annotations that are used by [[development tool]]s.
+:In [[MS-DOS]], the [[COM file]] format does ''not'' normally include metadata, while the [[EXE]] file and Windows [[Portable Executable|PE]] formats do. These metadata can include the company that published the program, the date the program was created, the version number and more.
+:In the [[.NET Framework]] executable format, extra metadata is included to allow [[Reflection (computer science)|reflection]] at runtime.
+
+== References ==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Executables|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Executables|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Executables&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Executable]] and [[object file]] formats</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[a.out]]
+*[[Arm Image Format|AIF]]
+*[[COFF]]
+*[[CMD file (CP/M)|CMD]]
+*[[COM file|COM]]
+*[[ECOFF]]
+*[[Executable and Linkable Format|ELF]]
+*[[GOFF]]
+*[[Amiga Hunk|Hunk]]
+*[[Mach-O]]
+*[[DOS MZ executable|MZ]]
+*[[New Executable|NE]]
+*[[Relocatable Object Module Format|OMF]]
+*[[OS/360 Object File Format|OS/360]]
+*[[Portable Executable|PE]]
+*[[Preferred Executable Format|PEF]]
+*[[XCOFF]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow hlist" colspan="2"><div>
+* [[Comparison of executable file formats|Comparison of formats]]
+* [[.exe]]
+</div></td></tr></table></td></tr></table>
+
+
+
+[[Category:Computing comparisons]]
+[[Category:Executable file formats| ]]
+
+<table class="metadata plainlinks stub" style="background: transparent;"  role="presentation"><tr>
+<td>[[File:Crystal kpackage.png|32px|alt=Stub icon]]</td>
+<td>''This  article related to a type of [[software]] is a [[Wikipedia:stub|stub]].  You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].''<div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Software-type-stub|<span title="View this template" style="">v</span>]]</li><li class="nv-talk">[[Template talk:Software-type-stub|<span title="Discuss this template" style="">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Software-type-stub&action=edit <span title="Edit this template" style="">e</span>]</li></ul></div></td>
+</tr></table>

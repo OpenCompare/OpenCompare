@@ -1,0 +1,853 @@
+== Hub software ==
+Direct Connect hubs are central [[Server (computing)|server]]s to which clients connect, thus the networks are not as decentralized as [[Gnutella]] or [[FastTrack]]. Hubs provide information about the clients, as well as file-searching and [[Online chat|chat]] capabilities. [[File transfer]]s are done directly between clients, in true [[peer-to-peer]] fashion.
+
+Hubs often have special areas of interest. Many have requirements on the total size of the files that their members share (share size), and restrictions on the content and quality of shares. A hub can have any arbitrary rule. Hubs can allow users to register and provide user [[authentication]]. The authentication is also in clear text. The hub may choose certain individuals as operators (similar to IRC operators) to enforce said rules if the hub itself cannot.
+
+While not directly supported by the protocol, hub linking software exists. The software allow multiple hubs to be connected, allowing users to share and / or chat with people on the other linked hubs. Direct connect hubs have difficulty [[scaling (computer network)|scaling]], due to the broadcast-centricity of the protocol.
+
+=== General ===
+
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! NMDC hub
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+! Latest version (release date)
+! [[GUI]]<br>||[[Command-line interface|CLI]]<br>||Other <br>
+! [[IPv6]] support
+! [[Programming language]]
+! Based on
+! Notes
+|-
+|[http://www.ufo-modus.com UFOHub]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]<br>[[Freeware]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 8.14.9 (04-Sept-2014)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| UFOHub
+| Available
+|-
+|[https://sourceforge.net/projects/ptdch/ PTDCH]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Never released since 2008
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Visual Basic]], [[Jscript]], [[VBscript]]
+| DDCH
+|-
+| [http://dtella.org/ Dtella]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1.2.7 (2012-08-15)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Python (programming language)|Python]]
+| 
+|-
+| [http://sourceforge.net/projects/hexhub/ HeXHub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Open Software License]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 5.07 (2011-05-29)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Assembly language|Assembly]]
+| 
+|-
+| [http://sourceforge.net/projects/opendchub/ Open Direct Connect Hub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 0.8.2 (2010-04-09)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown||style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C (programming language)|C]], [[Perl]]
+| 
+| Available in [[Debian]] and [[OpenWrt]]
+|-
+| [http://www.flexhub.org Flexhub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU AGPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Beta0.2svn1469 (2013-10-22)
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Pending||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Lua (programming language)|Lua]]
+| 
+|-
+| [http://www.ptokax.org PtokaX]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 0.5.0.2 (2014-04-13)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[C++]], [[Lua (programming language)|Lua]]
+| 
+|-
+| [http://rushub.org/ RusHub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2.3.10 (2012-06-10)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[C++]], [[Lua (programming language)|Lua]]
+| Verlihub
+|-
+| [http://www.verlihub-project.org/ VerliHub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 0.9.8e-r2 (2009-07-20)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]], [[Lua (programming language)|Lua]], [[Python (programming language)|Python]]
+| 
+|-
+| Eximius
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]<br>[[Freeware]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2007
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C Sharp (programming language)|C#]], [[Lua (programming language)|Lua]]
+|
+|-
+| [https://sourceforge.net/projects/dbhub/ DB Hub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2008
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| OpenDCHub
+|-
+| [http://opendcd.sourceforge.net/ openDCd]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2002
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| 
+|-
+| DDCH DevDirect Connect Hub
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Visual Basic]], [[Jscript]]
+| 
+|-
+| [http://sourceforge.net/projects/py-dchub/ py-dchub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[MIT License]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 0.2.4 (2006-02-13)
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Python (programming language)|Python]]
+| 
+|-
+|[http://sourceforge.net/projects/aquiladc/ Aquila]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2012
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]], [[Lua (programming language)|Lua]]
+| 
+|-
+| [http://ynhub.gwhublist.com YnHub]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]<br>[[Freeware]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1.0363 (2014-02-20)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Delphi]]
+| 
+|-
+| [http://lamahub.sourceforge.net/ LamaHub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 0.0.6.3 (2010-04-25)
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C (programming language)|C]]
+| 
+|-
+| [https://sourceforge.net/projects/dcsharphub/ DC Sharp Hub]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 3.0.4 beta (2004-09-06)
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown|| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C Sharp (programming language)|C#]]
+| 
+|- class="sortbottom"
+! NMDC hub
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+! Latest version (release date)
+! [[GUI]]<br>||[[Command-line interface|CLI]]<br>||Other<br>
+! [[IPv6]] support
+! [[Programming language]]
+! Based on
+|}
+
+=== Operating system support ===
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! NMDC hub
+! [[Windows]] <br>
+! [[Linux]]<br>
+! [[Mac OS X]] <br>
+! Other
+|-
+| UFOHub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Eximius
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| PTDCH
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Aquila
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Dtella
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| HeXHub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Open Direct Connect Hub
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[OpenWrt]]
+|-
+| Flexhub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Qnap]] and [[Synology]] [[Network-attached storage|NAS]] Devices
+|-
+| openDCd
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| DDCH DevDirect Connect Hub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| DBHub
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| PtokaX
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[FreeBSD]], [[Nexenta]], [[Solaris (operating system)|Solaris]], [[Haiku (operating system)|Haiku]]
+|-
+| py-dchub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Any [[Python (programming language)|Python]] compatible platform
+|-
+ | RusHub
+ | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+ | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+ | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+ | [[FreeBSD]], [[Solaris (operating system)|Solaris]]
+|-
+| VerliHub
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Yhub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Ynhub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| LamaHub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[OS/2]], [[OpenBSD]], [[NetBSD]], [[PC-BSD]], [[FreeBSD]], ZeX/OS
+|-
+| DC Sharp Hub
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|- class="sortbottom"
+! NMDC hub
+! [[Windows]] <br>
+! [[Linux]]<br>
+! [[Mac OS X]] <br>
+! Other
+|}
+
+== Client software ==
+:''For additional clients that are NMDC compatible see [[Comparison of ADC software#Features_2|ADC Compatible Clients]] since this list is for NMDC  clients only.''
+
+While not mandated by the protocol, most clients send a "tag". This is part of the client's description and display information ranging from client name and version to number of total available slots to if the user is using a proxy server. It was originally added to [[DC++]], due to its ability to be in multiple hubs with the same instance. The information is arbitrary. The original client's file list (a comprehensive list of the files a user shares) was compressed using [[Huffman coding|Huffman's compression algorithm]]. Newer clients (among them DC++) serve an [[XML]]-based list, compressed with [[bzip2]].
+
+=== General ===
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! NMDC Client
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+! [[Windows]]
+! [[Linux]]
+! [[Mac OS X]]
+! Other OS
+! [[GUI]]
+! [[Command-line interface|CLI]]
+! Other UI
+! [[Programming language]]
+! Based on
+|-
+| [[MLDonkey]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Http|WebUI]]
+| [[OCaml]], [[C (programming language)|C]], [[Assembly language|assembly]]
+| 
+|-
+| [[Shareaza]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| [[C++]]
+| 
+|-
+| [[NeoModus Direct Connect]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]<br>[[Freeware]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Visual Basic]], [[C++]]
+| 
+|-
+| [http://code.google.com/p/shakespeer/ ShakesPeer]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C (programming language)|C]]
+| 
+|-
+| [http://wxdcgui.sourceforge.net/ Valknut]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| 
+|-
+| [http://ac2i.homelinux.com/dctc/ DCTC]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[C++]]
+| 
+|-
+| [http://code.google.com/p/dcsharp/ DC#]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C Sharp (programming language)|C#]]
+| 
+|-
+| [http://www.softservice.com.pl/ldcc/ LDCC]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[C (programming language)|C]]
+| 
+|-
+| [http://www.hot.ee/dcdm/ DCDM++]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| DC++
+|-
+| [http://fuldc.berlios.de/ fulDC]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| DC++
+|-
+| [http://www.revconnect.com/ RevConnect]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| DC++
+|-
+| [http://www.CzDC.org/ CzDC]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| DC++
+|-
+| [[EiskaltDC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeBSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C++]]
+| Valknut
+|-
+| [http://dev.yorhel.nl/ncdc ncdc]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"| [[MIT Licence]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeBSD]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C (programming language)|C]]
+|
+|-
+|- class="sortbottom"
+! NMDC Client
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+! [[Windows]]
+! [[Linux]]
+! [[Mac OS X]]
+! Other OS
+! [[GUI]]
+! [[Command-line interface|CLI]]
+! Other UI
+! [[Programming language]]
+! Based on
+|}
+
+== Other software ==
+
+Hub linking software links hubs' main chat, so that users can see and respond to chat that is in a hub they're not directly connected to. Often used to draw in users to hubs, or make private or small hubs more widely known. Whereas advertising a hub is "frowned upon" and is usually repercussion with floods or [[Denial-of-service attack|denial of service attacks]], forming a more or less formal network by means of linking hub chat is a legitimate means for getting free publicity. Some Hub programs are able to support a more advanced form of linking which includes all the normal functions, chat, private messages, search and file transfers between users on different hubs can be supported through hub specific solutions or hub software neutral extensions using scripts/plug-ins.
+
+=== General ===
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! Other software
+! Software type
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+|-
+| [http://jdcbot.sf.net jDCBot]
+| General library
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [https://metacpan.org/module/Net::DirectConnect Net::DirectConnect]
+| General library
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [https://code.google.com/p/flowlib/ FlowLib]
+| General library
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [http://dc-hublink.sourceforge.net/ DC-hublink]
+| Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [http://hub-link.sourceforge.net/ Hub-Link]
+| Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [http://myircdclinks.sourceforge.net/ MyIrcDcLinks]
+| Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [http://netchatlink.sourceforge.net NetChatLink]
+| Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [https://sourceforge.net/projects/kittydcbot/ Kitty]
+| Bot
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|- class="sortbottom"
+! Other software
+! Software type
+! [[Free and open source software|FOSS]]
+! [[Software license]]
+! Active
+|}
+
+=== Operating system support ===
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! Other software
+! [[Windows]] <br>
+! [[Linux]]<br>
+! [[Mac OS X]] <br>
+! Other
+|-
+| jDCBot
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Any [[Java (software platform)|Java]] compatible platform
+|-
+| Net::DirectConnect
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Any [[Perl]] compatible platform
+|-
+| FlowLib
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Any [[C Sharp (programming language)|C#]] compatible platform
+|-
+| DC-hublink
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| Hub-Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| MyIrcDcLinks
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [http://netchatlink.sourceforge.net NetChatLink]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Runs under [[Wine (software)|WINE]]
+|-
+| Kitty
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|- class="sortbottom"
+! Other software
+! [[Windows]] <br>
+! [[Linux]]<br>
+! [[Mac OS X]] <br>
+! Other
+|}
+
+=== Interface and programming ===
+{| style="font-size: 85%; text-align: center;" class="wikitable sortable"
+|-
+! Other software
+! [[GUI]]<br>
+! [[Command-line interface|CLI]] <br>
+! Other <br>
+! [[Programming language]] <br>
+! Based on
+|-
+| jDCbot
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Java (software platform)|Java]]
+| 
+|-
+| Net::DirectConnect
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Perl]]
+| 
+|-
+| FlowLib
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[C Sharp (programming language)|C#]]
+| 
+|-
+| DC-hublink
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Visual Basic]]
+| 
+|-
+| Hub-Link
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Visual Basic]]
+| 
+|-
+| MyIrcDcLinks
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Delphi programming language|Delphi]]
+|
+|-
+| [http://netchatlink.sourceforge.net NetChatLink]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Object Pascal|Delphi]]
+| 
+|-
+| Kitty
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| [[C Sharp (programming language)|C#]]
+| 
+|-
+|- class="sortbottom"
+! Other software
+! [[GUI]]<br>
+! [[Command-line interface|CLI]] <br>
+! Other <br>
+! [[Programming language]] <br>
+! Based on
+|}
+
+
+
+== References ==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:File sharing|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:File sharing|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:File_sharing&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Peer-to-peer file sharing]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Networks and protocols</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Centralized</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Advanced Direct Connect]]
+* [[Audiogalaxy]]
+* [[CuteMX]]
+* [[Direct Connect (file sharing)|Direct Connect]]
+* [[Napster]]
+* [[Opennap]]
+* [[Soribada]] 
+* [[Soulseek]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Decentralized</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Advanced Direct Connect]]
+* [[Ares Galaxy|Ares]]
+* [[BitTorrent (protocol)|BitTorrent]]
+* [[eDonkey network|eDonkey]]
+* [[FastTrack]]
+* [[Freenet]]
+* [[GNUnet]]
+* [[Gnutella]]
+* [[Gnutella2]]
+* [[I2P]]
+* [[Kad network|Kad]] 
+* [[Kazaa]] 
+* [[Morpheus (software)|Morpheus]]
+* [[OpenFT]]
+* [[Overnet]]
+* [[Tribler]]
+* [[WASTE]] 
+* [[WinMX]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Comparisons of clients</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Comparison_of_ADC_Software#Client_software|Advanced Direct Connect]]
+* [[Comparison of BitTorrent clients|BitTorrent]]
+* [[Comparison_of_NMDC_Software#Client_Software|Direct Connect]]
+* [[Comparison of eDonkey software|eDonkey]]
+* [[Gnutella#Gnutella_features|gnutella]]
+* [[Gnutella2#Comparison|Gnutella2]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Hyperlinks</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Ed2k URI scheme|eD2k]]
+* [[Magnet URI scheme|Magnet]]
+* [[Metalink]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Uses</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Broadcatching]]
+* [[Music download]]
+* [[Photo sharing]]
+* [[Shared resource|Disk sharing]]
+* [[Peercasting]]
+* [[Peer-to-peer web hosting|Web hosting]] ([[freesite]])
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Concepts</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">[[Privacy in file sharing networks|Privacy]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Friend-to-friend]]
+* [[Darknet (file sharing)|Darknet]]
+* [[Open Music Model]]
+* [[Anonymous P2P]]
+* [[Private P2P]]
+</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+[[Category:Direct Connect network]]
+[[Category:File sharing programs]]
+

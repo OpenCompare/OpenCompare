@@ -1,0 +1,201 @@
+This is a comparison of the [[Office Open XML]] [[document file format]] with the [[OpenDocument]] [[file format]].
+
+==Comparison==
+{| class="wikitable sortable" border="1" cellpadding="1" cellspacing="0" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: 100%;"
+|- style="background: #ececec"
+! style="width:15em" | File format
+! Office Open XML
+! OpenDocument
+|-
+! style="text-align:left; background: #ececec;" | Based on a format<br />developed by
+| [[Microsoft]]
+| StarDivision / [[Sun Microsystems]]
+|-
+! style="text-align:left; background: #ececec;" | Predecessor file format
+| [[Microsoft Office XML formats]]
+| [[OpenOffice.org XML]]
+|-
+! style="text-align:left; background: #ececec;" | Standardized by
+| [[Ecma International]], [[International Organisation for Standardisation|ISO]]/[[International Electrotechnical Commission|IEC]]
+| [[OASIS (organization)|OASIS]], [[International Organisation for Standardisation|ISO]]/[[International Electrotechnical Commission|IEC]]
+|-
+! style="text-align:left; background: #ececec;" | First public release date
+| 2006
+| 2005
+|-
+! style="text-align:left; background: #ececec;" | First stable version
+| Ecma International Standard ECMA-376 Office Open XML File Formats 1st edition
+| OASIS OpenDocument Format for Office Applications (OpenDocument) v1.0
+|-
+! style="text-align:left; background: #ececec;" | Latest stable version
+| ISO/IEC IS 29500:2008—Office Open XML File Formats
+| OASIS Open Document Format for Office Applications (OpenDocument) v1.2
+|-
+! style="text-align:left; background: #ececec;" | Latest ISO/IEC standardised version
+| ISO/IEC IS 29500:2008—Office Open XML File Formats
+| ISO/IEC IS 26300:2006—Open Document Format for Office Applications (OpenDocument) v1.0
+|-
+! style="text-align:left; background: #ececec;" | Language type
+| [[Markup language]] ([[XML]])
+| [[Markup language]] ([[XML]])
+|-
+! style="text-align:left; background: #ececec;" | XML schema representation
+| [[XML Schema (W3C)]] (XSD) and [[RELAX NG]] (ISO/IEC 19757-2)
+| [[RELAX NG]] (ISO/IEC 19757-2)
+|-
+! style="text-align:left; background: #ececec;" | Expression of extensibility rules
+| [[Namespace-based Validation Dispatching Language|NVDL]] (ISO/IEC 19757-4)
+|
+|-
+! style="text-align:left; background: #ececec;" | Compression format
+| [[ZIP (file format)|ZIP]]
+| [[ZIP (file format)|ZIP]]
+|-
+! style="text-align:left; background: #ececec;" | Container structure
+| [[Open Packaging Convention]] (ISO/IEC 29500-2:2008)
+| [[OpenDocument|ODF Package]]
+|-
+! style="text-align:left; background: #ececec;" | Metadata format
+| [[Dublin Core]] (ISO 15836)
+| subset of [[Dublin Core]] and  elements
+|-
+! style="text-align:left; background: #ececec;" | Drawing language
+| [[DrawingML]], [[VML]]
+|  elements and  elements
+|-
+! style="text-align:left; background: #ececec;" | Mathematical notation language
+| [[Office MathML]] (OMML)
+| [[MathML]]
+|-
+! style="text-align:left; background: #ececec;" | Change-tracking
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported
+|-
+! style="text-align:left; background: #ececec;" | Conditional formatting in spreadsheets
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported
+|-
+! style="text-align:left; background: #ececec;" | Spreadsheet formula language
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|part of the standard<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (May 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|based on [[OpenFormula]]
+|-
+! style="text-align:left; background: #ececec;" | Macro language
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|application-defined
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|application-defined
+|-
+! style="text-align:left; background: #ececec;" | Digital signatures
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|part of the standard<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (May 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported
+|-
+! style="text-align:left; background: #ececec;" | Thumbnails
+| [[JPEG]] (ISO/IEC 10918)
+| [[Portable Network Graphics|PNG]] (ISO/IEC 15948)
+|-
+! style="text-align:left; background: #ececec;" | Interchange of digital font information
+| [[OpenType|Open Font Format]] (ISO/IEC 14496-22)
+|
+|-
+! style="text-align:left; background: #ececec;" | [[PANOSE]] font specifications
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|part of the standard
+|
+|-
+! style="text-align:left; background: #ececec;" | Filename extensions
+| <tt>docx, docm, xlsx, xlsm, pptx, pptm</tt>
+| <tt>odt, ods, odp, odg, odf</tt>
+|-
+! style="text-align:left; background: #ececec;" | Internet media types
+|
+<tt>application/vnd.openxmlformats-officedocument.wordprocessingml.document<br />
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet<br />
+application/vnd.openxmlformats-officedocument.presentationml.presentation</tt>
+|
+<tt>application/vnd.oasis.opendocument.text<br />
+application/vnd.oasis.opendocument.spreadsheet<br />
+application/vnd.oasis.opendocument.presentation<br />
+application/vnd.oasis.opendocument.graphics</tt>
+|-
+! style="text-align:left; background: #ececec;" | Application support
+| [[Office Open XML software]]
+| [[OpenDocument software]]
+|-
+! style="text-align:left; background: #ececec;" | Standard licensing
+|
+* ISO/IEC copyrighted free download
+* Ecma copyrighted free download / copying allowed
+|
+* ISO/IEC copyrighted free download
+* OASIS copyrighted free download / copying allowed
+|-
+! style="text-align:left; background: #ececec;" | Additional technology patent licensing
+|
+* [[Reasonable and Non Discriminatory Licensing]] (RAND-Z)
+* [[Microsoft Open Specification Promise]] (OSP)
+* Microsoft Covenant Not to Sue (CNS)
+|
+* Sun Microsystems intellectual property covenant
+* IBM Interoperability Specifications Pledge
+|-
+! style="text-align:left; background: #ececec;" | Implementations covered by patent license
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Patent license covers conforming implementations
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Patent license covers fully compliant implementations
+|-
+! style="text-align:left; background: #ececec;" | Implemented
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Microsoft Office 2013
+
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Many including [[LibreOffice]], [[OpenOffice.org]], [[KOffice]], [[AbiWord]], [[Lotus Notes]] and Microsoft Office (since 2007 SP2)
+|- style="background: #ececec" class="sortbottom"
+! File format
+! Office Open XML
+! OpenDocument
+|-
+|}
+
+==See also==
+*[[Comparison of document markup languages]]
+*[[List of document markup languages]]
+*[[Lightweight markup language]]
+
+==References==
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+Reference 12 is now DEAD.  It says: "This Web page is unavailable".  It goes to here: http://office.microsoft.com/en-us/HA010205815.aspx?redir=0
+
+==External links==
+*[http://www.ecma-international.org/publications/standards/Ecma-376.htm ECMA-376] Office Open XML File Formats
+*[http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_tc_browse.htm?commid=45374 ISO/IEC IS 29500:2008] Office Open XML
+*[http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=43485 ISO/IEC IS 26300:2006] OpenDocument
+*[http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1201708 Lost in Translation: Interoperability Issues for Open Standards - ODF and OOXML as Examples]
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Office document file formats|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Office document file formats|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Office_document_file_formats&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">Multi-purpose [[Office suite|office]] [[document file format]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Editable document formats</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Compound Document Format]]
+* [[Microsoft Office XML formats]]
+* [[Office Open XML]]
+* [[Open Document Architecture]]
+* [[OpenDoc]]
+* [[OpenDocument]]
+* [[OpenOffice.org XML]]
+* [[Revisable-Form Text]]
+* [[Rich Text Format]]
+* [[Uniform Office Format]]
+* [[DOC (computing)|Word Document]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Fixed document formats</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[DjVu]]
+* [[Envoy (WordPerfect)|Envoy]]
+* [[Open XML Paper Specification]]
+* [[Portable Document Format]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Character encoding]]
+** [[ASCII]]
+** [[Unicode]]
+* [[TeX]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Office Open XML]]
+[[Category:OpenDocument]]
+[[Category:Markup language comparisons]]
+
+
+<table class="metadata plainlinks stub" style="background: transparent;"  role="presentation"><tr>
+<td>[[File:Crystal kchart.png|40x30px|alt=Stub icon]]</td>
+<td>''This [[business software]] article  is a [[Wikipedia:stub|stub]].  You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].''<div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Business-software-stub|<span title="View this template" style="">v</span>]]</li><li class="nv-talk">[[Template talk:Business-software-stub|<span title="Discuss this template" style="">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Business-software-stub&action=edit <span title="Edit this template" style="">e</span>]</li></ul></div></td>
+</tr></table>

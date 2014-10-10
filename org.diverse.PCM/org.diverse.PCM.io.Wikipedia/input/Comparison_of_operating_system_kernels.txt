@@ -1,0 +1,2918 @@
+A '''[[Kernel (computer science)|kernel]]''' (called '''nucleus''' or '''hardcore''' by some operating systems) is the core component of every computer [[operating system]]. While kernels are highly technical in nature, and may be hidden from the user under many layers of software and applications, they do have distinguishing or characteristic features, such as [[computer architecture]], design goals, as well as the more practical features that they provide. A direct '''comparison of operating system kernels''' can highlight these design choices, and provide insight into different niches and the evolving technology of kernels.
+
+== Comparison criteria ==
+The following tables compare '''general and technical information''' for a number of widely used and currently available [[operating system]] kernels. Please see the individual products' articles for further information.
+
+Even though there are a large number and variety of available [[Linux distribution]]s, all of these kernels are grouped under a single entry in these tables, due to the differences among them being of the patch level. See [[comparison of Linux distributions]] for a detailed comparison. Linux distributions that have highly modified kernels — for example, [[real-time computing]] kernels — should be listed separately. There are also a wide variety of minor BSD operating systems, many of which can be found at [[comparison of BSD operating systems]].
+
+The tables specifically do not include subjective viewpoints on the merits of each kernel or operating system. For this kind of information, please see [[operating system advocacy]].
+
+== Feature overview ==
+The major contemporary general-purpose [[Kernel (computer science)|kernels]] are shown in comparison. Only an overview of the technical features is detailed.
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel name
+! Used in
+! Creator
+! Executable<br>format<br>(also see<br>[[#Binary format support|section]]<br>below)
+! Type
+! Integrated [[Firewall (networking)|firewall]]
+! [[Symmetric multiprocessing|SMP]] support
+! Multiple [[Computer architecture|architecture]]<br>support<br>(also see<br>[[#Supported CPU architectures|section]] below).
+! [[Computer multitasking|Multitasking]]
+! [[Operating system-level virtualization|Virtualization]]
+! [[Security]]
+! [[Software performance analysis|Profiling]]/[[Debugging]]
+! Soft [[Real-time computing|real-time]] support
+! Hard [[Real-time computing|real-time]] support
+! Can keep [[Real-time clock|RTC]] in [[Universal Time|UT]]
+|-
+! [[Agnix]] [http://agnix.sourceforge.net/]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Amiga Exec]]
+| [[AmigaOS]]
+| [[Commodore International]]
+| [[Amiga Hunk|HUNK]]
+| [[Exokernel]] (atypical)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Amiga Exec SG (2nd Generation)]]
+| [[AmigaOS 4]]
+| [[Hyperion Entertainment]]
+| [[Executable and Linkable Format|ELF]]/[[Amiga Hunk|HUNK]]
+| [[Exokernel]] (atypical)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[DragonFly BSD#Kernel|DragonFly BSD kernel]]
+| [[DragonFly BSD]]
+| [[Matt Dillon (computer scientist)|Matt Dillon]]
+| [[Executable and Linkable Format|ELF]], others - platform dependent
+| [[hybrid kernel|hybrid]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[IPFilter]], [[Ipfirewall]],<br>[[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]], [[jail]], vkernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|DDB, [[KGDB]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| [[FreeBSD]],
+[[GNU variants#Debian GNU/kFreeBSD|Debian GNU/kFreeBSD]],
+[[Gentoo/FreeBSD]],
+[[PlayStation 4|Orbis OS]]
+| [[FreeBSD|The FreeBSD Project]]
+| [[Executable and Linkable Format|ELF]], others - platform dependent
+| [[Monolithic kernel|monolithic]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[IPFilter]], [[Ipfirewall]],<br>[[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]], [[FreeBSD jail|jail]], bhyve
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|POSIX.1e and NFSv4 ACLs]], Capsicum, [[Mandatory Access Control|TrustedBSD MAC]], [[OpenBSM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Kernel debugger|KDB]], DDB, [[KGDB]], [[DTrace]], [[hwpmc]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[GNU Hurd]] [http://hurd.gnu.org/]
+| [[GNU|GNU/Hurd]] ([[GNU variants#Arch Hurd|Arch Hurd]], [[GNU variants#Debian GNU/Hurd|Debian GNU/Hurd]], [http://nixos.org/ NixOS])
+| [[GNU Project]]/[[Free Software Foundation]]
+| [[Executable and Linkable Format|ELF]]
+| <span class="url">[http://www.gnu.org/software/hurd/faq/multiserver_microkernel.html multiserver microkernel]</span>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| <span class="url">[https://www.gnu.org/software/hurd/faq/smp.html partial]</span>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]], [[Xen]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|POSIX ACL]], [[Capability-based security#POSIX capabilities|POSIX Capabilities]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[GNU Mach]] [http://www.gnu.org/software/hurd/gnumach.html]
+| part of [[GNU Hurd]], used in [[GNU|GNU/Hurd]]
+| [[GNU Project]]/[[Free Software Foundation]]
+| [[Executable and Linkable Format|ELF]]
+| [[microkernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| <span class="url">[https://www.gnu.org/software/hurd/faq/smp.html partial]</span>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]], [[Xen]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|POSIX ACL]], [[Capability-based security#POSIX capabilities|POSIX Capabilities]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Inferno (operating system)|Inferno kernel]]
+| [[Inferno (operating system)|Inferno]]
+| [[Bell Labs]] / [[Vita Nuova Holdings]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[virtual machine]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]], [[Xen]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[L4 microkernel family|L4]]
+| [[L4 microkernel family|L4]]
+| [[Jochen Liedtke]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[microkernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Afterburner/L4]] [http://www.l4ka.org/79.php], Marzipan [http://www.l4ka.org/78.php], [[Capability-based security|capabilities]] in [[L4/Fiasco]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [[L4/Fiasco]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [[L4/Fiasco]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Linux kernel]] [http://www.kernel.org/]
+| [[Linux]], [[Android (operating system)|Android]], [[webOS]], [[Firefox OS]], [[Chrome OS]], [http://web.syllable.org/Linux/index.html Syllable Server], [[Mastodon Linux]], [http://starchlinux.org/ OpenBSD/Linux], [http://www.glendix.org/ Plan 9/Linux], [[Sailfish OS]], [[Tizen]], others
+| [[Linus Torvalds]]
+| [[Executable and Linkable Format|ELF]], others
+| [[Monolithic kernel|monolithic]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|*[[ipfwadm]] (2.0 –)
+* [[ipchains]] (2.2 –)
+* [[Netfilter]] (2.4 – 3.x)
+* [[nftables]] (3.13 –)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[cgroups]], [[chroot]], [[Lguest]], [[Xen]], [[Kernel-based Virtual Machine|KVM]], [[kvm-lite]], [[LXC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|POSIX ACL]], [[Capability-based security#POSIX capabilities|POSIX Capabilities]], keyctl, [[Linux Security Modules|LSM]]([[SELinux]], [[Smack (Linux security module)|SMACK]], [[TOMOYO Linux]], [[AppArmor]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[OProfile]], [[kprobe]], [[SystemTap]], [[JProbe]], [[ftrace]], [[Kernel debugger|KDB]], [[KGDB]], [[kernel marker]], [[Perf (Linux)|perf tools]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|CONFIG_PREEMPT
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|(CONFIG_PREEMPT_RT Patch)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Compute Node Linux]]
+| [[Compute Node Linux]]
+| [[Cray Inc.]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Mach (kernel)|Mach]] [http://www.cs.cmu.edu/afs/cs/project/mach/public/www/mach.html]
+| [[NeXTSTEP]] and [[OpenStep#OPENSTEP for Mach|OPENSTEP for Mach]]
+| [[Carnegie Mellon University]]
+| [[Mach-O]]
+| [[microkernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[MINIX 3|MINIX 3 kernel]] [http://www.minix3.org]
+| [[MINIX 3]]
+| [[Andrew S. Tanenbaum]]
+| [[Executable and Linkable Format|ELF]], [[a.out]]
+| [[microkernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Call profiling, statistical profiling, Minix Debugger (mdb)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[MkLinux]] [http://www.mklinux.org]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OSF Research Institute]] and [[Apple Computer]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[microkernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[NetBSD|NetBSD kernel]]
+| [[NetBSD]],
+GNU/kNetBSD ([[GNU variants#Debian GNU/NetBSD|Debian GNU/NetBSD]]),
+| [[NetBSD|The NetBSD Project]]
+| [[Executable and Linkable Format|ELF]], others - platform dependent
+| [[Monolithic kernel|monolithic]], any kernel using [[Runnable Userspace Meta Programs|RUMP]] architecture
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[IPFilter]], [[PF (firewall)|PF]], [[NPF (firewall)|NPF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Xen]], [[chroot]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[kauth]], [[Unix security|Unix permissions]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|DDB, [[KGDB]], [[tprof]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[POSIX]] real-time scheduling extensions
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Kernel preemption]] 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[NetWare|NetWare kernel]]
+| [[NetWare]]
+| [[Novell]]
+| [[NetWare Loadable Module|NLM]]
+| [[Hybrid kernel|hybrid]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[OpenBSD|OpenBSD kernel]]
+| [[OpenBSD]]
+| [[OpenBSD developers]]
+| [[Executable and Linkable Format|ELF]], others - platform dependent
+| [[Monolithic kernel|monolithic]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[OS/2|OS/2 kernel]]
+| [[OS/2]] version 2 and above
+| [[IBM]]
+| LX
+| [[Hybrid kernel|hybrid]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No <small>[[PowerPC]] version developed but never officially released.</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Plan 9 kernel]]
+| [[Plan 9 from Bell Labs]]
+| [[Bell Labs]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Hybrid kernel|hybrid]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|ipmux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[ReactOS|ReactOS kernel]]
+| [[ReactOS]]
+| [[ReactOS Foundation]]
+| [[Portable Executable|PE]], others?
+| [[Hybrid kernel|hybrid]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Rockbox|Rockbox kernel]]
+| [[Rockbox]]
+| The Rockbox Project
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[SunOS|SunOS kernel]]
+| [[SunOS]]
+| [[Sun Microsystems]]
+| [[a.out]]<br>
+| [[Monolithic kernel|monolithic]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| [[Solaris (operating system)|Solaris]],
+[[OpenSolaris]],
+GNU/kOpenSolaris ([[GNU variants#OpenSolaris variants|Nexenta OS]])
+| [[Sun Microsystems]]
+| [[Executable and Linkable Format|ELF]] (32-bit only until<br />Solaris 7 in 1998)
+| [[Monolithic kernel|monolithic]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[IPFilter]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Solaris Zones|Zones]], [[chroot]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|ACL]], [[RBAC]], Auditing, [[Least privilege|Privileges]], [[Solaris Zones|Zones]], [[Solaris Trusted Extensions|Trusted Extensions]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[DTrace]], CPU profiling, microstate accounting, perf counters, kernel lock stats, kstats, mdb, kmdb
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Real-time scheduler
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Trix (operating system)|Trix kernel]]
+| [[Trix (operating system)|Trix]], [[GNU]]/[[Trix (operating system)#Attempted use by the GNU Project|kTrix]]
+| [[Massachusetts Institute of Technology]]
+| [[a.out]]
+| [[Monolithic kernel|monolithic]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]] [http://www.microsoft.com/windows]
+| [[Windows NT]], [[Windows 2000|2000]],<br>[[Windows XP|XP]], [[Windows 2003|2003]], [[Windows Vista|Vista]], [[Windows 7]], [[Windows 8]]
+| [[Microsoft]]
+| [[Portable Executable|PE]], others?
+| [[hybrid kernel|hybrid]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Hyper-V]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Access control list|ACL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Event Tracing
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:  #5FC; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Unofficial
+|-
+! [[XNU]] ([[Darwin (operating system)|Darwin]] kernel) [http://opensource.apple.com/source/xnu/]
+| [[Mac OS X]], [[iOS]],
+[[Darwin (operating system)#OpenDarwin|OpenDarwin]],
+[[Darwin (operating system)#PureDarwin|PureDarwin]]
+[[GNU-Darwin|GNU/Darwin]]
+| [[Apple Computer]]
+| [[Mach-O]]
+| [[hybrid kernel|hybrid]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Ipfirewall]],<br>[[PF (firewall)|PF]] (starting in Lion)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Unix security|Unix permissions]], [[Access control list|ACL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[DTrace]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[HelenOS|SPARTAN kernel]] [http://www.helenos.eu/]
+| [[HelenOS]]
+| [[Jakub Jermar]]
+| [[Executable and Linkable Format|ELF]]
+| [[microkernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-class="sortbottom"
+! Kernel name
+! Used in
+! Creator
+! Executable<br>format<br>(also see<br>[[#Binary format support|section]]<br>below)
+! Type
+! Integrated [[Firewall (networking)|firewall]]
+! [[Symmetric multiprocessing|SMP]] support
+! Multiple [[Computer architecture|architecture]]<br>support<br>(also see<br>[[#Supported CPU architectures|section]] below).
+! [[Computer multitasking|Multitasking]]
+! [[Operating system-level virtualization|Virtualization]]
+! [[Security]]
+! [[Software performance analysis|Profiling]]/[[Debugging]]
+! Soft [[Real-time computing|real-time]] support
+! Hard [[Real-time computing|real-time]] support
+! Can keep [[Real-time clock|RTC]] in [[Universal Time|UT]]
+|}
+
+== Transport protocol support ==
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! [[Transmission Control Protocol|TCP]]
+! [[User Datagram Protocol|UDP]]
+! [[SCTP]]
+! [[DCCP]]
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Linux kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[XNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+== In-kernel security ==
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! File access control
+! [[NX bit|Disable memory execution]] support
+! Kernel [[Address space layout randomization|ASLR]]
+! [[Mandatory access control]]
+! [[Capability-based security]]
+! In-kernel key management
+! Audit API
+! [[Sandbox (computer security)|Sandbox]]
+! [[SYN flood]] protection
+! [[UDP flood]] protection
+! [[Ping flood]] protection
+! [[Smurf attack]] protection
+! [[Intrusion prevention system|Network Behavior Analysis]]
+|-
+! Linux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Filesystem permissions#Traditional Unix permissions|Traditional Unix permissions]], [[Access control list|POSIX ACL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Linux Security Modules|LSM]]([[SELinux]], [[Smack (Linux security module)|SMACK]], [[TOMOYO Linux]], [[AppArmor]])
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[keyctl]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|fanotify
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|SELinux Sandbox, [[seccomp]], [[Kernel-based Virtual Machine|KVM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[SYN cookies]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! FreeBSD Kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Filesystem permissions#Traditional Unix permissions|Traditional Unix permissions]], [[Access control list|POSIX and NFSv4 ACL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[TrustedBSD MAC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Capsicum
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[OpenBSM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Capsicum
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[SYN cookies]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Solaris Kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Filesystem permissions#Traditional Unix permissions|Traditional Unix permissions]], [[Access control list|POSIX ACL]], [[ZFS|NFSv4 ACL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Default
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Solaris Trusted Extensions]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Windows NT kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Access control list]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Data Execution Prevention|DEP]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Mandatory Integrity Control]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! XNU
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Filesystem permissions#Traditional Unix permissions|Traditional Unix permissions]], [[access control list]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[TrustedBSD MAC]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[OpenBSM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Apple XNU Sandbox
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|}
+
+== In-kernel virtualization ==
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! [[Operating system-level virtualization|Container]] (no resource management, no security)
+! [[Operating system-level virtualization|Container]] (no resource management)
+! [[Operating system-level virtualization|Container]] (resource management)
+! [[Paravirtualization]]
+! [[Full virtualization]]
+! User-space execution
+|-
+! Linux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[chroot]]
+| colspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[LXC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Virtio, [[Hyper-V]] (guest only), [[Xen]] (guest only), [[Virtual Machine Interface|VMI]] (guest only), [[kvm-lite]], [[lguest]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Kernel-based Virtual Machine|KVM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[User-mode Linux|UML]]
+|-
+! FreeBSD kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|chroot
+| colspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[jail (computer security)|jail]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Virtio, [[Xen]] (guest only)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[BHyVe]] (KVM)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Solaris kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|chroot
+| colspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Solaris Zones|Solaris Containers / Zones]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! Windows NT kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|AppContainers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|AppContainers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|AppContainers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Hyper-V
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Hyper-V
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! XNU
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|chroot
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|}
+
+== In-kernel server support ==
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! [[HTTP]]
+! [[FTP]]
+! [[Network File System (protocol)|NFS]]
+! [[CIFS]]
+! [[Name server]]
+! Transport-layer load balancer
+! Application-layer load balancer
+! [[9P]]
+! [[Secure Sockets Layer|SSL]] proxy
+|-
+! [[Linux kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|([[TUX web server]] patch)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|([[TUX web server]] patch)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|knfsd
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[IP Virtual Server]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|([[KTCPVS]])
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|([http://lkml.indiana.edu/hypermail/linux/kernel/0711.0/0585.html patch available])
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[KSSL]]
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTTP.sys
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[XNU]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+== Binary format support ==
+A comparison of OS support for different [[binary format]]s ([[executable]]s):
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! [[A.out (file format)|a.out]]
+! [[ECOFF]]
+! [[Executable and Linkable Format|ELF]]
+! FDPIC<br>ELF<br>binaries<br>(mmu less)
+! flat<br>binaries<br>(superH)
+! [[Amiga Hunk|HUNK]]
+! [[Mach-O]]
+! Misc<br>(wrapper<br>based,<br>like<br>interpreters)
+! [[Portable Executable|PE]]
+! SOM<br>(PA-RISC,<br>HP-UX)
+! [[NetWare Loadable Module|NLM]]
+! [[Preferred Executable Format|PEF]]
+! [[COM file|DOS COM]]
+! [[DOS MZ executable|MZ]]
+! [[Linear Executable|LE]]
+! [[Linear Executable|LX]]
+! [[New Executable|NE]]
+|-
+! [[Amiga Exec]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[HP-UX|HP-UX kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Linux kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[MINIX 3|MINIX 3 kernel]]
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+![[NetBSD|NetBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[ReactOS|ReactOS kernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[XNU]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+== File system support ==
+Physical [[file system]]s:
+{| style="font-size:85%; text-align: center; width: auto" class="sortable wikitable"
+! Kernel
+! [[Advanced Disc Filing System|Acorn ADFS]]
+! [[Amiga FFS]]
+! [[BeFS]]
+! [[Boot File System|BFS]]
+! [[cramfs]]
+! [[Extent File System|EFS]]
+! [[ext2]]
+! [[ext3]]
+! [[ext4]]
+! [[File Allocation Table|FAT]]
+! [[FreeVxFS]]
+! [[Hierarchical File System|HFS]]
+! [[HFS+]]
+! [[High Performance File System|HPFS]]
+! [[ISO 9660]]
+! [[JFFS]]
+! [[JFFS2]]
+! [[IBM Journaled File System 2 (JFS2)|JFS]]
+! [[MINIX file system|MINIX fs]]
+! [[Novell Storage Services|NSS]]
+! [[NTFS]]
+! [[OCFS]]
+! [[QNX4 FS]]
+! [[System V FS]]
+! [[Universal Disk Format|UDF]]
+! [[Unix File System|UFS]]
+! [[XFS]]
+! [[ZFS]]
+! [[ReiserFS]]
+! [[Reiser4]]
+! [[Btrfs]]
+! [[HAMMER]]
+! [[Tux3]]
+! [[exFAT]]
+
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|limited write
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Linux kernel]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|limited write (only with empty journal)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|limited write<br>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br><br>
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|write support?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| both FUSE and native
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|(experimental patch is available)
+|-
+! [[MINIX 3|MINIX 3 kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Tools available, cannot mount
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Novell NetWare|NetWare kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[ReactOS|ReactOS kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[XNU]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes<br>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|limited write
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+== Networked file system support ==
+
+{| class="sortable wikitable" style="text-align: center; width: auto"
+! Kernel Name
+! [[Network File System (protocol)|NFS]]
+! [[Andrew File System|AFS]]
+! [[CIFS]]
+! [[Coda (file system)|Coda]]
+! [[9P]]
+! [[Ceph (software)|Ceph]]
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Linux kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[XNU]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+== Supported CPU instruction sets and microarchitectures ==
+
+{| style="font-size:85%; text-align: center; width: auto" class="sortable wikitable"
+
+!rowspan="3"| [[Kernel (computer science)|kernel]]
+
+!colspan="2"| [[Digital Equipment Corporation|DEC]]
+
+!colspan="2"| [[ARM Holdings]]
+
+!colspan="1"| [[Hewlett-Packard|HP]]
+
+!colspan="4"| [[Intel]]
+
+!colspan="2"| [[MIPS Technologies]]
+
+!colspan="2"| [[AIM alliance|AIM]] 
+
+!colspan="2"| [[IBM]]
+
+!colspan="5"| [[Renesas Technology|Renesas Electronics]]
+
+!colspan="3"| [[Sun Microsystems]]
+
+!colspan="2"| [[Motorola]]
+
+!colspan="1"| [[Analog Devices]] 
+
+!colspan="1"| [[Xilinx]]
+
+!colspan="2"| [[Renesas Technology|Renesas Electronics]]
+
+!colspan="2"| [[Tensilica]]
+
+!colspan="1"| [[Axis Communications]]
+
+!colspan="1"| [[Fujitsu]]
+
+!colspan="1"| [[Atmel]]
+
+!colspan="1"| [[Panasonic]] 
+
+!colspan="1"| [[Hyperstone]]
+
+!colspan="3"| [[Altera]]
+
+!colspan="1"| [[Western Design Center|WDC]]
+
+!colspan="1"| [[Sunplus Technology]]
+
+!colspan="1"| [[Tilera]]
+
+!colspan="1"| [[Texas Instruments]]
+
+|-
+
+!rowspan="2"| [[VAX]]
+
+!rowspan="2"| [[DEC Alpha|Alpha]]
+
+!colspan="2"| [[ARM architecture|ARM]]
+
+!rowspan="2"| [[PA-RISC family|PA-RISC]]
+
+!colspan="2"| [[x86 architecture|x86]]
+!rowspan="2"| [[i960]]
+!rowspan="2"| [[IA-64]]
+
+!colspan="2"| [[MIPS architecture|MIPS]]
+
+
+
+!colspan="2"| [[PowerPC]]
+
+!rowspan="2"| [[System/390|System/<br>390]]
+
+!rowspan="2"| [[z/Architecture]]
+
+!rowspan="2"| [[H8300]]
+
+!rowspan="2"| [[M16C]]
+
+!rowspan="2"| [[M32R]]
+
+!colspan="2"| [[SuperH]]
+
+
+
+!colspan="3"| [[SPARC]]
+
+!colspan="2"| [[m68k]]
+
+!rowspan="2"| [[Blackfin]] (nommu)
+
+!rowspan="2"| [[MicroBlaze]]
+
+!rowspan="2"| [[78K]]
+
+!rowspan="2"| [[V850]]
+
+!colspan="2"| [[Xtensa]]
+
+!rowspan="2"| [[ETRAX CRIS]]
+
+!rowspan="2"| [[FR-V]]
+
+!rowspan="2"| [[AVR32]]
+
+!rowspan="2"| [[MN10300]] 
+
+!rowspan="2"| E1 (nommu) 
+
+!rowspan="2"| [[Nios embedded processor|Nios]] (nommu)
+
+!colspan="2"| [[Nios II]]
+
+!rowspan="2"| [[WDC 65C816]]
+
+!rowspan="2"| [[S+core]]
+
+!rowspan="2"| Tilera
+
+!rowspan="2"| [[Texas Instruments TMS320C6000|C6X]]
+
+|-
+
+! mmu
+
+! nommu
+
+! x86
+! x86-64
+
+! mmu
+
+! nommu
+
+! 32-bit
+
+! 64-bit
+
+! mmu
+
+! nommu
+
+! 32-bit
+
+! 64-bit
+
+! nommu
+
+! mmu
+
+! nommu
+
+! mmu
+
+! nommu
+
+! mmu
+
+! nommu
+
+|-
+
+! [[DragonFly BSD#Kernel|DragonFly BSD kernel]]
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|-
+
+! [[FreeBSD|FreeBSD kernel]]
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|-
+
+! [[Linux kernel]]
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (dropped in 2.6.x)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[MINIX 3|MINIX 3 kernel]]
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|In progress
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|In progress
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|In progress
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[NetBSD|NetBSD kernel]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Novell NetWare|NetWare kernel]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[OpenBSD|OpenBSD kernel]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Rockbox|Rockbox kernel]]
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Solaris (operating system)|Solaris kernel]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |NT 5.0 RC1 and below only
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |[[Windows NT 4.0|NT 4.0]] and below only
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |[[Windows NT 3.51|NT 3.51]] and [[Windows NT 4.0|NT 4.0]] only
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+
+! [[Windows CE|Windows CE kernel]]
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+! [[XNU]]
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|-
+
+! [[HelenOS|SPARTAN kernel]]
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|In Progress
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|-
+
+! [[FreeRTOS|FreeRTOS kernel]]
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+
+|}
+
+== Supported kernel execution environment ==
+{| style="text-align: center; width: auto" class="sortable wikitable"
+! Kernel name
+! [[Linux]]
+! [[Darwin (operating system)|Darwin]]
+! [[Windows NT]]
+! [[FreeBSD]]
+! [[NetBSD]]
+! [[Solaris (operating system)|Solaris]]
+! [[Tru64 UNIX#OSF/1|OSF/1]]
+! [[Amiga Unix]]
+! [[SunOS]]
+! [[BSD/OS]]
+! IBCS2 systems
+! [[IRIX]]
+! [[Ultrix]]
+! NDIS
+! [[UNIX System V#SVR4|SVR4]]
+|-
+! [[FreeBSD|FreeBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Linux kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[NetBSD|NetBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No? [http://hcpnet.free.fr/applebsd.html]?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No? [http://pkgsrc.se/emulators/peace]?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [http://netbsd-soc.sourceforge.net/projects/ndis/]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenBSD|OpenBSD kernel]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Architecture of Windows NT#Kernel mode|Windows NT kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[ReactOS|ReactOS kernel]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[XNU]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-class="sortbottom"
+! Kernel name
+! [[Linux]]
+! [[Darwin (operating system)|Darwin]]
+! [[Windows NT]]
+! [[FreeBSD]]
+! [[NetBSD]]
+! [[Solaris (operating system)|Solaris]]
+! [[Tru64 UNIX#OSF/1|OSF/1]]
+! [[Amiga Unix]]
+! [[SunOS]]
+! [[BSD/OS]]
+! IBCS2 systems
+! [[IRIX]]
+! [[Ultrix]]
+! NDIS
+! [[UNIX System V#SVR4|SVR4]]
+|}
+
+== Supported cipher algorithms ==
+This may be usable on some situations like file system encrypting.
+{| style="font-size:85%; text-align: center; width: auto" class="sortable wikitable"
+! Kernel name
+! [[Data Encryption Standard|DES]]
+! [[Advanced Encryption Standard|AES]]
+! [[Blowfish (cipher)|Blowfish]]
+! [[Triple DES]]
+! [[Serpent (cipher)|Serpent]]
+! [[Twofish]]
+! [[CAST-128]] 
+! [[DES-X]]
+! [[International Data Encryption Algorithm|IDEA]]
+! [[RC2]]
+! [[RC5]]
+! [[SEED]]
+! [[Skipjack (cipher)|Skipjack]]
+! [[Tiny Encryption Algorithm|TEA]]
+! [[XTEA]]
+! [[CAST-256]] 
+! [[RC4]] 
+! [[Camellia (cipher)|Camellia]]
+! [[Anubis (cipher)|Anubis]]
+! [[KHAZAD]]
+! [[Salsa20]]
+! [[FCrypt]] 
+|-
+! Linux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Windows NT kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! FreeBSD kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-class="sortbottom"
+! Kernel name
+! [[Data Encryption Standard|DES]]
+! [[Advanced Encryption Standard|AES]]
+! [[Blowfish (cipher)|Blowfish]]
+! [[Triple DES]]
+! [[Serpent (cipher)|Serpent]]
+! [[Twofish]]
+! [[CAST-128]] 
+! [[DES-X]]
+! [[International Data Encryption Algorithm|IDEA]]
+! [[RC2]]
+! [[RC5]]
+! [[SEED]]
+! [[Skipjack (cipher)|Skipjack]]
+! [[Tiny Encryption Algorithm|TEA]]
+! [[XTEA]]
+! [[CAST-256]] 
+! [[RC4]] 
+! [[Camellia (cipher)|Camellia]]
+! [[Anubis (cipher)|Anubis]]
+! [[KHAZAD]]
+! [[Salsa20]]
+! [[FCrypt]] 
+|}
+
+== Supported compression algorithms ==
+This may be usable on some situations like compression file system.
+{| style="text-align: center; width: auto" class="sortable wikitable"
+! Kernel name
+! [[DEFLATE|Deflate]]
+! [[zlib]]
+! [[Lempel-Ziv-Oberhumer|LZO]]
+! [[LZJB]]
+! [[gzip]]
+|-
+! Linux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Solaris kernel
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+== Supported hash algorithms ==
+{| style="font-size:85%; text-align: center; width: auto" class="sortable wikitable"
+! Kernel name
+! [[CRC32|CRC-32 (IEEE)]]
+! [[CRC32c]]
+! [[MD2 (cryptography)|MD2]]
+! [[MD4]]
+! [[MD5]]
+! [[SHA-1]]
+! [[SHA-256]]
+! [[SHA-384]]
+! [[SHA-512]]
+! [[Michael MIC]]
+! [[RIPEMD|RIPEMD-128]]
+! [[RIPEMD|RIPEMD-160]]
+! [[RIPEMD|RIPEMD-256]]
+! [[RIPEMD|RIPEMD-320]]
+! [[Tiger (cryptography)|Tiger]]
+! [[Whirlpool (cryptography)|Whirlpool]]
+! [[HMAC]]
+! [[MDC2]]
+! [[GOST (hash function)|GOST]]
+! [[LASH-160]]
+! [[LASH-256]]
+! [[LASH-384]]
+! [[LASH-512]]
+|-
+! Linux
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Solaris kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Windows NT kernel
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! FreeBSD kernel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-class="sortbottom"
+! Kernel name
+! [[CRC32|CRC-32 (IEEE)]]
+! [[CRC32c]]
+! [[MD2 (cryptography)|MD2]]
+! [[MD4]]
+! [[MD5]]
+! [[SHA-1]]
+! [[SHA-256]]
+! [[SHA-384]]
+! [[SHA-512]]
+! [[Michael MIC]]
+! [[RIPEMD|RIPEMD-128]]
+! [[RIPEMD|RIPEMD-160]]
+! [[RIPEMD|RIPEMD-256]]
+! [[RIPEMD|RIPEMD-320]]
+! [[Tiger (cryptography)|Tiger]]
+! [[Whirlpool (cryptography)|Whirlpool]]
+! [[HMAC]]
+! [[MDC2]]
+! [[GOST (hash function)|GOST]]
+! [[LASH-160]]
+! [[LASH-256]]
+! [[LASH-384]]
+! [[LASH-512]]
+|}
+
+== Supported Bluetooth protocols ==
+{| style="font-size:85%; text-align: center; width: auto" class="sortable wikitable"
+! Kernel name
+! <abbr    title="Asynchronous connection-oriented">ACL</abbr>
+! <abbr    title="Synchronous connection-oriented">SCO</abbr>
+! <abbr    title="Link management protocol">LMP</abbr>
+! <abbr    title="Host/controller interface">HCI</abbr>
+! <abbr    title="Logical link control and adaptation protocol">L2CAP</abbr>
+! <abbr    title="Bluetooth network encapsulation protocol">BNEP</abbr>
+! <abbr    title="Radio frequency communication">RFComm.</abbr>
+! <abbr    title="Service discovery protocol">SDP</abbr>
+! <abbr    title="Telephony control protocol">TCP</abbr>
+! <abbr    title="Audio/visual control transport protocol">AVTCP</abbr>
+! <abbr    title="Audio/visual data transport protocol">AVDTP</abbr>
+! <abbr    title="Object exchange">OBEX</abbr>
+! CMTP
+! HIDP
+! HCRP
+! CAPI
+! PPP
+|-
+! FreeBSD kernel
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! Linux
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-class="sortbottom"
+! Kernel name
+! ACL
+! SCO
+! LMP
+! HCI
+! L2CAP
+! BNEP
+! RFComm.
+! SDP
+! TCP
+! AVTCP
+! AVDTP
+! OBEX
+! CMTP
+! HIDP
+! HCRP
+! CAPI
+! PPP
+|}
+
+== See also ==
+*[[Comparison of open source operating systems]]
+*[[Comparison of Linux distributions]]
+*[[Comparison of BSD operating systems]]
+*[[Comparison of Microsoft Windows versions]]
+*[[List of operating systems]]
+*[[Comparison of file systems]]
+*[[Comparison of operating systems]]
+*[[Operating system advocacy]]
+*[[MacvsWindows]]
+
+== Footnotes ==
+
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+[[Category:Operating system comparisons|Kernels]]
+[[Category:Computing platforms]]
+[[Category:Operating system kernels]]

@@ -1,0 +1,107 @@
+In computing, a '''distributed file system''' or '''network file system''' is any [[file system]] that allows access to [[computer file|files]] from multiple hosts [[resource sharing|sharing]] via a [[computer network]]. This makes it possible for multiple users on multiple machines to share files and storage resources.
+
+Distributed File Systems (DFSs) differ in their performance, mutability of content, handling of concurrent writes, handling of permanent or temporary loss of nodes or storage, and their policy of storing content.
+
+== Locally managed ==
+{| class="wikitable sortable" style="width: auto; table-layout: fixed;  text-align: center;"
+|- style="background: #ececec"
+! style="" | Client
+! Written in
+! License
+! Access API
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Ceph (file system)|Ceph]]
+| C++
+| LGPL
+| librados (C, C++, Python, Ruby), [[Amazon S3|S3]], Swift, [[Filesystem in Userspace|FUSE]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[FhGFS]]
+| C / C++
+| FRAUNHOFER FS (FhGFS) EULA,
+GPLv2 client
+| [[Posix#POSIX.1|POSIX]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[GlusterFS]]
+| C
+| GPLv3
+| libglusterfs, [[Filesystem in Userspace|FUSE]], NFS, SMB, Swift, libgfapi
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Quantcast File System]]
+| C
+| Apache License 2.0
+| C++ client, [[Filesystem in Userspace|FUSE]] (C++ server: MetaServer and ChunkServer are both in C++)
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Lustre (file system)|Lustre]]
+| C
+| GPLv2
+| [[Posix#POSIX.1|POSIX]], liblustre, [[Filesystem in Userspace|FUSE]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[OpenAFS]]
+| C
+| IBM Public License
+| [[Virtual file system]], [[Installable File System]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Tahoe-LAFS]]
+| Python
+| [[GNU GPL]] 2+ and other
+| HTTP (browser or [[Command-line interface|CLI]]), [[SSH File Transfer Protocol|SFTP]], [[File Transfer Protocol|FTP]], [[Filesystem in Userspace|FUSE]] via [[sshfs]], pyfilesystem
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[HDFS]]
+| Java
+| Apache License 2.0
+| Java and C client, HTTP
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[XtreemFS]]
+| Java, C++
+| BSD License
+|  libxtreemfs (Java, C++), [[Filesystem in Userspace|FUSE]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Moose File System|MooseFS]]
+| Java, C++
+| GPL
+|-
+|}
+
+== Remote access ==
+{| class="wikitable sortable" style="width: auto; table-layout: fixed;  text-align: center;"
+|- style="background: #ececec"
+! style="" | Name
+! Run by
+! Access API
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Amazon S3]]
+| [[Amazon.com]]
+| [[HTTP]] ([[REST]]/[[SOAP]])
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Google Cloud Storage]]
+| [[Google]]
+| [[HTTP]] ([[REST]])
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |SWIFT (part of [[OpenStack]])
+| [[Rackspace]], [[Hewlett-Packard]], others
+| [[HTTP]] ([[REST]])
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Microsoft Azure]]
+| [[Microsoft]]
+| [[HTTP]] ([[REST]])
+|-
+|-
+| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Cleversafe]]
+| [[Cleversafe]]
+| [[HTTP]] ([[REST]])
+|}
+
+== References ==
+<references />
+
+== See also ==
+* [[Distributed file system]]
+* [[List of file systems#Distributed file systems|List of file systems, the ''Distributed file systems'' section]]
+
+[[Category:Network file systems]]
+
+
+<table class="metadata plainlinks stub" style="background: transparent;"  role="presentation"><tr>
+<td>[[File:Floppy icon.svg|30px|alt=Stub icon]]</td>
+<td>''This [[computer storage]]–related article  is a [[Wikipedia:stub|stub]].  You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].''<div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Compu-storage-stub|<span title="View this template" style="">v</span>]]</li><li class="nv-talk">[[Template talk:Compu-storage-stub|<span title="Discuss this template" style="">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Compu-storage-stub&action=edit <span title="Edit this template" style="">e</span>]</li></ul></div></td>
+</tr></table>

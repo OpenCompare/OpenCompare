@@ -1,0 +1,747 @@
+This is a list of assemblers: [[computer program]]s that translate ("assemble") [[assembly language]] [[source code]] into binary programs.
+
+== Multiple target assemblers ==
+
+*[[GNU Assembler]] (gas): GPL: many target instruction sets including [[ARM architecture]], [[Atmel AVR]], [[x86]], [[Freescale 68HC11]], [[Freescale ColdFire|Freescale v4e]], [[M68k|Motorola 68k]], [[TI MSP430]], [[Zilog Z80]], [[PowerPC]], IBM [[System z]].
+
+*ASxxxx Cross Assembler (part of the [[Small Device C Compiler]] project): GPL: several target instruction sets including [[Intel 8051]], [[Zilog Z80]], [[Freescale 68HC08]], [[PIC microcontroller]].
+
+*[[Vasm]] portable and retargetable assembler: Target instruction sets including [[Motorola 68000 family|680x0]], Coldfire, [[PowerPC]], C16x/ST10, [[6502]], [[Zilog Z80]].
+
+*The [[Amsterdam Compiler Kit]] (ACK) targets [http://tack.cvs.sourceforge.net/viewvc/tack/Ack/mach/ many] architectures of the 1980s, including [[MOS Technology 6502|6502]], [[Motorola 6800|6800]], [[Motorola 68000 family|680x0]], [[ARM architecture|ARM]], [[x86]], [[Zilog Z80]] and [[Zilog Z8000|Z8000]].
+
+==Single target assemblers==
+
+===6502 assemblers===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+|-
+! [http://sourceforge.net/projects/tass64/develop 64tass]
+| [[GPL]]
+| [[MOS Technology 6502]], [[WDC 65C02]], [[WDC 65816/65802]]
+| various
+|-
+! [http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/acme/ ACME]
+| [[GPL]]
+| [[MOS Technology 6502]], [[WDC 65C02]], [[WDC 65816/65802]]
+| various
+|-
+! [http://home.comcast.net/~olimar/NES/ ASM6]
+| Public domain
+| [[MOS Technology 6502]]
+| various
+|-
+! [http://atari.miribilist.com/atasm/ ATASM]
+| [[GPL]]
+| [[MOS Technology 6502]]
+| various
+|-
+! [[Atari Assembler Editor]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| [[Atari 8-bit family]]
+|-
+! [http://commodoreserver.com/Downloads.asp C64List]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| Commodore 64
+|-
+! [http://www.cc65.org/doc/ca65.html CA65]
+| [[GPL]]
+| [[MOS Technology 6502]], [[WDC 65C02]], [[WDC 65816/65802]]
+| various
+|-
+! [http://dasm-dillon.sourceforge.net/ dasm]
+| [[GPL]]
+| [[MOS Technology 6502]], others
+| various
+|-
+! [http://developer.berlios.de/projects/rrtools/ dreamass]
+| [[GPL]]
+| [[MOS Technology 6502]], [[WDC 65816/65802]]
+| various
+|-
+! [[French Silk (assembler)|French Silk]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| [[Commodore 64]]
+|-
+! [http://www.theweb.dk/KickAssembler/ Kick Assembler]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| various
+|-
+! [[Lazer's Interactive Symbolic Assembler|Lisa]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| [[Apple II series]]
+|-
+! [[MAC/65]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| [[Atari 8-bit family]]
+|-
+! [http://mads.atari8.info MADS]
+| Public domain
+| [[MOS Technology 6502]], [[WDC 65816/65802]]
+| various
+|-
+! [[Merlin (assembler)|Merlin]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]], [[WDC 65C02]], [[WDC 65816/65802]]
+| [[Apple II series]], [[Commodore 64]], [[Commodore 128]]
+|-
+! [https://github.com/majestic53/mosasm MOSASM]
+| [[GPL]]
+| [[MOS Technology 6502]]
+| various
+|-
+| [https://michaelcmartin.github.io/Ophis/ Ophis]
+| [[MIT License]]
+| [[MOS Technology 6502]], [[WDC 65C02]], [[MOS Technology 4510|MOS Technology 4502/4510]] (experimental)
+| various
+|-
+| [http://turbo.style64.org/docs/tmpx-overview TMPx]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[MOS Technology 6502]]
+| various
+|-
+! [[vasm]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[MOS Technology 6502]]
+| various
+|-
+! [http://www.villehelin.com/wla.html WLA DX]
+| [[GPL]]
+| [[MOS Technology 6502]], others
+| various
+|-
+! [http://www.floodgap.com/retrotech/xa/ XA65]
+| [[GPL]]
+| [[MOS Technology 6502]], others
+| various
+|-
+! [http://www.atari.org.pl/x-asm/ XASM]
+| Public domain
+| [[MOS Technology 6502]]
+| various
+|-
+|}
+
+===680x0 assemblers===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Open source]]
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+! Active Development
+|-
+! [[A68K]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[ASM-One Macro Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Digital Research Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Fantasm (assembler)|Fantasm]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Apple Macintosh]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GFA-Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GST Macro Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[HiSoft DevPac Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]], [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Mac Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Apple Macintosh]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MaxonASM]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Metacomco Macro Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]], [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MPW Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Apple Macintosh]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Optimierender Makro-Assembler|OMA]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [http://sun.hasenbraten.de/~frank/projects/ PhxAss]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Pure Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Data Becker Profimat]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Seka Assembler]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Amiga|Commodore Amiga]], [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [http://www.sarnau.info/software:turboass TurboAss]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Motorola 68000 family|Motorola 680x0]]
+| [[Atari ST]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[vasm]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Motorola 68000 family|Motorola 680x0]]
+| various
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+===ARM assemblers===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+|-
+! [[Archimedes Assembler]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[ARM architecture|ARM]]
+| [[Acorn Archimedes]]
+|-
+! ARM, inc. [[armasm]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[ARM architecture|ARM]]
+| Linux, Windows
+|-
+! [http://arm.flatassembler.net/ FASMARM]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[ARM architecture|ARM]]
+| various
+|-
+! [http://www.hh.se/download/18.4cad802d1363ad97dad8000999/EWARM_AssemblerReference.pdf IAR ARM Assembler]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[ARM architecture|ARM]]
+| Windows
+|-
+! Microsoft [[armasm]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[ARM architecture|ARM]]
+| [[Visual Studio 2005#Visual Studio 2005|Visual Studio 2005]]
+|-
+! [[vasm]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[ARM architecture|ARM]]
+| various
+|}
+
+===IBM mainframe assemblers===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+|-
+! [[IBM Basic assembly language|BAL]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[IBM System/360]]
+| [[IBM Basic Programming Support|IBM BPS/360]]
+|-
+! [http://www.dignus.com Dignus] Systems/ASM
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[z/Architecture]]
+| numerous
+|-
+! [[IBM High-Level Assembler|HLASM]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[z/Architecture]]
+| numerous
+|-
+! IBM Assembler D
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[IBM System/360]]
+| IBM [[DOS/360 and successors|DOS/360]]
+|-
+! IBM Assembler F
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[IBM System/360]]
+| IBM [[OS/360 and successors|OS/360]] and [[CP/CMS|CP-67/CMS]]
+|-
+! IBM [[IBM Basic assembly language and successors# Assembler H|Assembler H]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[IBM System/360]] and [[IBM System/370|System/370]] 
+| IBM [[OS/360 and successors]]
+|-
+! IBM Assembler XF
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[IBM System/370]]
+| numerous
+|-
+! [[PL360]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[IBM System/360]]
+| IBM [[OS/360 and successors|OS/360]]
+|-
+|}
+
+===Power Architecture assemblers===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+|-
+! IBM AIX assembler
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[IBM POWER Instruction Set Architecture|POWER]]
+| [[IBM AIX]]
+|-
+! [[MPW Power Assembler]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[PowerPC]]
+| [[Apple Power Macintosh]]
+|-
+! [[Power Fantasm]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[PowerPC]]
+| [[Apple Power Macintosh]]
+|-
+! [[StormPowerASM]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[PowerPC]]
+| [[Amiga|PowerPC Amiga]]
+|-
+! [[vasm]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[PowerPC]]
+| various
+|}
+
+===x86 assemblers===
+
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Operating system|OS]]
+! [[Open source]]
+! [[Software license|License]]
+! [[x86-64]]
+! Active Development
+|-
+! [[A86 (software)|A86/A386]]
+| [[Microsoft Windows|Windows]], [[DOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Amsterdam Compiler Kit|ACK]]
+| [[Linux]], [[Minix]], [[Unix-like]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]] since 2003
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 1985-? <sup class="reference plainlinks nourlexpansion" id="ref_ACK">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_ACK]</sup>
+|-
+! [[Arrowsoft Assembler]]
+| [[DOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Public Domain]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[IBM]] ALP
+| [[OS/2]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[AT&T]]
+| [[Unix System V]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|1985-?<sup class="reference plainlinks nourlexpansion" id="ref_ATT">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_ATT]</sup>
+|-
+! [[Bruce D. Evans]]' [[as86]]
+| [[Minix]] 1.x, 16-bit part in [[Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|1988-2001<sup class="reference plainlinks nourlexpansion" id="ref_Dev86">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_Dev86]</sup>
+|-
+! [[Digital Research]] ASM86
+| [[CP/M-86]], [[DOS]], [[Intel]]'s [[ISIS (operating system)|ISIS]] and [[iRMX]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|1978-1992
+|-
+! [http://www.develsoftware.com/downloads/6-assembler-x86-64 DevelSoftware Assembler]
+| [[Microsoft Windows|Windows]], [[Linux]], [[Unix-like]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Listed, N/A
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FASM]]
+| [[Microsoft Windows|Windows]], [[DOS]], [[Linux]], [[Unix-like]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]] with added [[Copyleft]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[GNU Assembler|GAS]]
+| [[Unix-like]], [[Microsoft Windows|Windows]], [[DOS]], [[OS/2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Since 1987
+|-
+! [[GoAsm]]
+| [[Microsoft Windows|Windows]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[High Level Assembly|HLA]]
+| [[Microsoft Windows|Windows]], [[Linux]], [[FreeBSD]], [[Mac OS X]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Public domain]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Open Watcom Assembler|JWASM]]
+| [[Microsoft Windows|Windows]], [[DOS]], [[Linux]], [[FreeBSD]], [[OS/2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Sybase Open Watcom Public License]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [http://web.archive.org/web/20090104203629/http://lzasm.hotbox.ru/ LZASM]
+| [[Microsoft Windows|Windows]], [[DOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Microsoft Macro Assembler|MASM]]
+| [[Microsoft Windows|Windows]], [[DOS]], [[OS/2]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Software license agreement|Microsoft EULA]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Since 1981<sup class="reference plainlinks nourlexpansion" id="ref_MASM">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_MASM]</sup>
+|-
+! Mical a86
+| [[Unix]], [[DOS]], [[PC/IX]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|1982-1984<sup class="reference plainlinks nourlexpansion" id="ref_Mical">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_Mical]</sup>
+|-
+! [[Netwide Assembler|NASM]]
+| [[Microsoft Windows|Windows]], [[Linux]], [[Mac OS X]], [[DOS]], [[OS/2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Tim Paterson]]'s ASM
+| [[86-DOS]], [[DOS]] [[DEBUG]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[http://www.patersontech.com/dos/manuals.aspx 1979-1983]
+|-
+! [[Pelles C|POASM]]
+| [[Microsoft Windows|Windows]], [[Windows Mobile]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! '''RosAsm'''
+| [[Microsoft Windows|Windows]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<sup class="reference plainlinks nourlexpansion" id="ref_RoAsm2">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_RoAsm2]</sup>
+|-
+! [[SLR's OPTASM]]
+| [[DOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Turbo Assembler|TASM]]
+| [[Microsoft Windows|Windows]], [[DOS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?<sup class="reference plainlinks nourlexpansion" id="ref_TASM1">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_TASM1]</sup><sup class="reference plainlinks nourlexpansion" id="ref_TASM2">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_TASM2]</sup>
+|-
+! [[Open Watcom Assembler|WASM]]
+| [[Microsoft Windows|Windows]], [[DOS]], [[OS/2]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Sybase Open Watcom Public License]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Tiny C Compiler|TCCASM]]
+| [[Unix-like]], [[Microsoft Windows|Windows]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU Lesser General Public License|LGPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[vasm]]
+| various
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Xenix]]
+| [[Xenix]] 2.3 and 3.0 (before 1985)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|1982-1984
+|-
+! [[Yasm]]
+| [[Microsoft Windows|Windows]], [[DOS]], [[Linux]], [[Unix-like]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+# <span class="citation wikicite" id="endnote_ACK"><b>[[#ref_ACK|^]]</b></span> Part of the [[Minix 3]] source tree, but [https://gforge.cs.vu.nl/gf/project/minix/scmsvn/?action=browse&path=%2Ftrunk%2Fbigports%2Fackpack%2F without obvious development activity]. The full source history is [http://tack.cvs.sourceforge.net/viewvc/tack/Ack/mach/i86/as/ available].
+# <span class="citation wikicite" id="endnote_ATT"><b>[[#ref_ATT|^]]</b></span> Developed by [[Interactive Systems Corporation|Interactive]] in 1986 when they ported [[UNIX System V|System V]] to Intel iAPX286 and 80386 architectures. Archetypical of [[X86 assembly language#Syntax|ATT syntax]] because it was used as reference for GAS. Still used for [[SCO Group|The SCO Group]]'s products, [[UnixWare]] and [[OpenServer]].
+# <span class="citation wikicite" id="endnote_Dev86"><b>[[#ref_Dev86|^]]</b></span> [http://www.debath.co.uk/dev86/ Home site] does not appear active any more. Also offered as part of [[FreeBSD Ports]], in [http://www.freebsdsoftware.org/devel/bcc.html bcc-1995.03.12].
+# <span class="citation wikicite" id="endnote_MASM"><b>[[#ref_MASM|^]]</b></span> Active and supported, but not advertised.
+# <span class="citation wikicite" id="endnote_Mical"><b>[[#ref_Mical|^]]</b></span> [http://ftp.gcu-squad.org/tuhs/Applications/Portable_CC/8086.zip Developed in 1982] at [[MIT]] as a cross-assembler, it was picked up by [[Interactive Systems Corporation|Interactive]] in 1983 when they developed PC/IX under IBM contract. The syntax was [http://minix1.woodhull.com/pub/info/pc-ix-assem.txt later used] as base for ACK assembler, to be used in [[Minix]] 1.x toolchain.
+# <span class="citation wikicite" id="endnote_RoAsm2"><b>[[#ref_RoAsm2|^]]</b></span> [http://web.archive.org/web/20041127230513/http://www.rosasm.org/ RosAsm project on WebArchive.org.]
+# <span class="citation wikicite" id="endnote_TASM1"><b>[[#ref_TASM1|^]]</b></span> Part of the [[C++Builder]] Tool Chain, but not sold as a stand-alone product, or marketed since the CodeGear spin-off; [http://web.archive.org/web/20100822224449/http://info.borland.com/borlandcpp/cppcomp/tasmfact.html Borland was still selling it until then]. Version 5.0, the last, is dated 1996.
+# <span class="citation wikicite" id="endnote_TASM2"><b>[[#ref_TASM2|^]]</b></span> Turbo Assembler was developed as "Turbo Editasm" by Uriah Barnett from Speedware Inc (Sacramento, CA) between 1984 and 1987.  It was later sold to (or marketed by) Borland as their Turbo Assembler.
+
+===Other architectures===
+{| class="wikitable sortable" style="font-size: 85%; text-align: center"
+! Assembler
+! [[Software license|License]]
+! [[Instruction set]]
+! Host [[Computing platform|platform]]
+|-
+! ALM (Assembly Language for [[Multics]])
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[MIT License]]
+| [[GE-645]]<br>[[Honeywell 6180]]
+| [[GE-645]]<br>[[Honeywell 6180]]
+|-
+! [[Babbage (programming language)|Babbage]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[GEC 4000 series]]
+| [[GEC 4000 series]]
+|-
+! [[COMPASS]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[Control Data Corporation|CDC mainframe]]
+| [[Control Data Corporation|CDC mainframe]]
+|-
+! [[MACRO-10]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[PDP-10]]
+| [[PDP-10]]
+|-
+! [[MACRO-11]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| [[PDP-11]]
+| [[PDP-11]]
+|-
+! [[MACRO-32]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| [[VAX]]
+| [[VAX]]
+|-
+! PASMO
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+| [[Zilog Z80]]
+| numerous
+|-
+! [[vasm]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Zilog Z80]], [[Motorola 6800 family]]
+| various
+|-
+! [http://busy.speccy.cz/tvorba/mrs.htm MRS]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+| [[Zilog Z80]], [[Intel 8080|8080]]
+| [[ZX Spectrum]], [[PMD 85|PMD-85]]
+|-
+! [http://plit.de/asem-51/ ASEM-51]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Intel 8051|8051]]
+| [[Embedded Systems]]
+|-
+! [[GPUTILS|GPASM]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+| [[PIC microcontroller]]
+| many
+|-
+! [[ID3E]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Free for academic use
+| [[SC123]]
+| [[SC123 emulator]]
+|-
+! [[MIPS architecture#MIPS assembly language|MIPS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[MIPS architecture]]
+| [[MIPS architecture]]
+|-
+! SOAP<br>([[Symbolic Optimal Assembly Program]])
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[IBM 650]]
+| [[IBM 650]]
+|-
+! [[MPW IIgs Assembler]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| [[WDC 65816/65802|WD 65C816]]
+| [[Apple IIgs]]
+|-
+! [[MetaSymbol]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Sigma|SDS/XDS Sigma systems]]
+| [[Sigma|SDS/XDS Sigma systems]]
+|-
+! [[Autocoder]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| IBM [[IBM 700/7000 series#Commercial architecture (702/705/7080)|705]], [[IBM 1401|14xx]], [[IBM 1410|1410]], [[IBM 7010|7010]], [[IBM 7070|7070]], [[IBM 7072|7072]], [[IBM 7074|7074]], [[IBM 7080|7080]]
+| various
+|-
+! [[FORTRAN Assembly Program#FORTRAN assembly program|FAP]]<br>(Fortran Assembly Program)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| IBM [[IBM 709|709]], [[IBM 7040|704x]], [[IBM 7090|709x]]
+| various
+|-
+! [[IBM 7090/94 IBSYS|MAP]]<br>(Macro Assembly Program)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| IBM [[IBM 709|709]], [[IBM 7040|704x]], [[IBM 7090|709x]]
+| various
+|-
+! [[Symbolic Programming System]] (SPS)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| IBM [[IBM 1401|14xx]], [[IBM 1620|1620]], [[IBM 1710|1710]]
+| IBM 1401, 1440, 1460, 1620, 1710
+|-
+|}
+
+==Notes and references==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2" style="background:#BDF;background:#9BF;;"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:X86 assembly topics|<span title="View this template" style="background:#BDF;background:#9BF;;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:X86 assembly topics|<span title="Discuss this template" style="background:#BDF;background:#9BF;;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:X86_assembly_topics&action=edit <span title="Edit this template" style="background:#BDF;background:#9BF;;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">x86 assembly topics</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="background:#BDF;">Topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Assembly language]]
+* [[Comparison of assemblers]]
+* [[Disassembler]]
+* [[Instruction set]]
+* [[Low-level programming language]]
+* [[Machine code]]
+* [[Microassembler]]
+* [[x86 assembly language]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="background:#BDF;">[[Comparison of assemblers#x86 assemblers|x86 Assemblers]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[A86 (software)|A86/A386]]
+* [[FASM]]
+* [[GNU Assembler|GAS]]
+* [[High Level Assembly|HLA]]
+* [[Microsoft Macro Assembler|MASM]]
+* [[Netwide Assembler|NASM]]
+* [[Turbo Assembler|TASM]]
+* [[Open Watcom Assembler|WASM]]
+* [[Yasm|YASM]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="background:#BDF;">Programming issues</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Call stack]]
+* [[FLAGS register|Flags]]
+** [[Carry flag]]
+** [[Direction flag]]
+** [[Interrupt flag]]
+** [[Overflow flag]]
+** [[Zero flag]]
+* [[Opcode]]
+* [[Program counter]]
+* [[Processor register]]
+* [[x86 calling conventions]]
+* [[x86 instruction listings]]
+* [[x86#x86 registers|x86 registers]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Assemblers|*Assembler]]
+[[Category:Software comparisons|Assemblers]]

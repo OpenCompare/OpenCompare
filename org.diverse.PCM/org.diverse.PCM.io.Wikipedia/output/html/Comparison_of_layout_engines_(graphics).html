@@ -1,0 +1,545 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Engine nomenclature</h1>
+      <table border="1">
+        <tr>
+          <td> Layout engine </td>
+          <td> Release version </td>
+          <td> Preview version </td>
+          <td> Used by </td>
+        </tr>
+        <tr>
+          <td> Amaya </td>
+          <td> 11.4.7 </td>
+          <td> N/A </td>
+          <td> No longer developed; Amaya </td>
+        </tr>
+        <tr>
+          <td> Blink </td>
+          <td> 537.36 </td>
+          <td> source code </td>
+          <td> Chromium/Chrome (28+), Opera (15+) and Yandex </td>
+        </tr>
+        <tr>
+          <td> Gecko </td>
+          <td> ) </td>
+          <td> ) </td>
+          <td>
+            All Mozilla software, including Firefox; SeaMonkey and Galeon; Camino; K-Meleon; Flock (up to 2.x); Debian IceWeasel; GNU IceCat (formerly GNU IceWeasel); Icedove, Iceape and Iceowl; Fennec. Also used by the Maple platform in 2010 and 2011 Samsung &quot;SmartTV&quot; devices which are based on the build used in Firefox 3.0. Nokia Asha platform is also using Gecko for web apps rendering.
+          </td>
+        </tr>
+        <tr>
+          <td> KHTML </td>
+          <td> 4.12.3 </td>
+          <td> N/A </td>
+          <td> Konqueror </td>
+        </tr>
+        <tr>
+          <td> Presto </td>
+          <td> 2.12.388 </td>
+          <td> N/A </td>
+          <td>
+            No longer developed; Opera and Opera Mobile use Blink now; Nintendo DS &amp; DSi Browser; Internet Channel
+          </td>
+        </tr>
+        <tr>
+          <td> Tasman </td>
+          <td> (IE 5.2.3 for Mac) </td>
+          <td> N/A </td>
+          <td>
+            No longer developed (aborted in 2003); Internet Explorer 5+  for Mac OS X
+          </td>
+        </tr>
+        <tr>
+          <td> Trident </td>
+          <td> 7.0 (IE 11) </td>
+          <td> N/A </td>
+          <td>
+            Internet Explorer and other Internet Explorer shell like Maxthon (Microsoft Windows operating system only), Windows Phone 8
+          </td>
+        </tr>
+        <tr>
+          <td> WebKit </td>
+          <td> 534.20 </td>
+          <td> nightly build </td>
+          <td>
+            Tizen (both OS and browser), Safari (both desktop and mobile), Google Chrome (before 28), Maxthon 3, Shiira, iCab 4, OmniWeb 5.5+, Web, Adobe AIR, Midori, Adobe Dreamweaver CS4 and CS5, Android browser, Palm webOS browser, Symbian S60 browser, OWB, Steam, Rekonq, Arora, Flock (version 3+), RockMelt, Dolphin Browser, Sleipnir, Konqueror. Used by the LG Smart TV platform to enable web content on TVs.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Values</h1>
+      <table border="1">
+        <tr>
+          <td> Value </td>
+          <td> Meaning </td>
+        </tr>
+        <tr>
+          <td> Yes </td>
+          <td>
+            Indicates that the layout engine fully supports this property/element when valid values are used.
+          </td>
+        </tr>
+        <tr>
+          <td> No </td>
+          <td> Indicates that the property/element is completely ignored. </td>
+        </tr>
+        <tr>
+          <td> Partial </td>
+          <td>
+            Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+          </td>
+        </tr>
+        <tr>
+          <td> Incorrect </td>
+          <td>
+            Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+          </td>
+        </tr>
+        <tr>
+          <td> Experimental </td>
+          <td>
+            Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+          </td>
+        </tr>
+        <tr>
+          <td> Dropped </td>
+          <td> Indicates that the property/element is no longer supported. </td>
+        </tr>
+        <tr>
+          <td> Nightly build </td>
+          <td>
+            Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+          </td>
+        </tr>
+        <tr>
+          <td> Depends </td>
+          <td>
+            Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Image format support</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> Trident </td>
+          <td> Tasman </td>
+          <td> Gecko </td>
+          <td> WebKit </td>
+          <td> KHTML </td>
+          <td> Presto </td>
+          <td> Prince XML </td>
+        </tr>
+        <tr>
+          <td> JPEG/JFIF </td>
+          <td> JPEG/JFIF </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> JPEG 2000 (.jp2) </td>
+          <td> JPEG 2000 (.jp2) </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Depends </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JPEG XR </td>
+          <td> JPEG XR </td>
+          <td> 5.0 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GIF </td>
+          <td> GIF 89a </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 5.0 </td>
+        </tr>
+        <tr>
+          <td> GIF </td>
+          <td> GIF 87a </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 5.0 </td>
+        </tr>
+        <tr>
+          <td> PNG </td>
+          <td> 1.2 (W3C/ISO/IEC version) </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> PNG </td>
+          <td> 1.1 </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> PNG </td>
+          <td> 1.0 </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> MNG </td>
+          <td> 1.0 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Dropped </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JNG </td>
+          <td> 1.0 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Dropped </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> APNG </td>
+          <td> 1.0 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> 1.9 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> 2.1 </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> BMP </td>
+          <td> BMP </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> WBMP </td>
+          <td> WBMP </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> ICO </td>
+          <td> ICO </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> TIFF </td>
+          <td> TIFF </td>
+          <td> 5.0 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> XBM </td>
+          <td> XBM </td>
+          <td> Dropped </td>
+          <td> Yes </td>
+          <td> Dropped </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> 1.0 </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> WebP </td>
+          <td> WebP </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> 534.10 </td>
+          <td> No </td>
+          <td> 2.8.131 </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>JPEG support</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> Trident </td>
+          <td> Tasman </td>
+          <td> Gecko </td>
+          <td> WebKit </td>
+          <td> KPart </td>
+          <td> Presto </td>
+          <td> Prince XML </td>
+        </tr>
+        <tr>
+          <td> Operation mode </td>
+          <td> Progressive </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Operation mode </td>
+          <td> Baseline </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Operation mode </td>
+          <td> Hierarchical </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Operation mode </td>
+          <td> Lossless </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>GIF support</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> Trident </td>
+          <td> Tasman </td>
+          <td> Gecko </td>
+          <td> WebKit </td>
+          <td> KPart </td>
+          <td> Presto </td>
+          <td> Prince XML </td>
+        </tr>
+        <tr>
+          <td> GIF 87a </td>
+          <td> Interlacing </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> GIF 89a </td>
+          <td> Binary transparency </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> GIF 89a </td>
+          <td> Animation </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>PNG support</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td> Trident </td>
+          <td> Tasman </td>
+          <td> Gecko </td>
+          <td> WebKit </td>
+          <td> KPart </td>
+          <td> Presto </td>
+          <td> Prince XML </td>
+        </tr>
+        <tr>
+          <td> Color mode </td>
+          <td> True color </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Color mode </td>
+          <td> Grayscale </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Color mode </td>
+          <td> Palette-based (max. 256 colors) </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Alpha channel </td>
+          <td> Alpha channel </td>
+          <td> 3.1 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 85 </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Gamma correction </td>
+          <td> Gamma correction </td>
+          <td> 5.0 </td>
+          <td> Yes </td>
+          <td> Partial </td>
+          <td> Incorrect </td>
+          <td> No </td>
+          <td> Partial </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Color correction </td>
+          <td> Color correction </td>
+          <td> 5.0 </td>
+          <td> Yes </td>
+          <td> 1.9 </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> 3.0 </td>
+        </tr>
+        <tr>
+          <td> Interlacing </td>
+          <td> Interlacing </td>
+          <td> Incorrect </td>
+          <td> Yes </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+          <td> 4.0 </td>
+          <td> 1.0 </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Integrity checking </td>
+          <td> Integrity checking </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

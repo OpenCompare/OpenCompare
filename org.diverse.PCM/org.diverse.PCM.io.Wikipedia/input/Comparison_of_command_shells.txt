@@ -1,0 +1,2511 @@
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(August 2011)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<table class="metadata plainlinks ambox ambox-style ambox-cleanup-link_rot" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Text document with red question mark.svg|50x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''uses [[Wikipedia:Bare URLs|bare URLs]] for [[Wikipedia:Citing sources|citations]], which may be threatened by [[Wikipedia:Link rot|link rot]].'''<span class="hide-when-compact"> Please consider adding [[Wikipedia:Citing sources#Citation styles|full citations]] so that the article remains [[Wikipedia:Verifiability|verifiable]]. [[Wikipedia:Template messages/Sources of articles#Examples|Several templates]] and the [//tools.wmflabs.org/fengtools/reflinks/result.php?page=Special:ExpandTemplates&noaccessdate=y Reflinks tool] are available to assist in formatting. ([[WP:REFLINKS2|Reflinks documentation]])</span>  <small>''(June 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<table class="metadata plainlinks ambox ambox-content" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[Image:Unbalanced scales.svg|50x40px|link=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''lends [[Wikipedia:Neutral point of view#Undue_weight|undue weight]] to certain ideas, incidents, or controversies'''.<span class="hide-when-compact"> Please help to create a more balanced presentation. [[|Discuss]] and [[Wikipedia:Dispute resolution|resolve]] this issue before removing this message.</span>  <small>''(October 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Lua error in Module:Message_box at line 315: attempt to index field 'talk' (a nil value).</span></strong>
+<table class="metadata plainlinks ambox ambox-content ambox-multiple_issues compact-ambox" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Ambox content.png|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span"><table class="collapsible  " style="width:95%; background:transparent;">
+<tr><th style="text-align:left; padding:0.2em 2px 0.2em 0;"> This article has multiple issues. <span style="font-weight: normal;">Please help '''[//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve it]''' or discuss these issues on the '''[[|talk page]]'''.</span></th></tr>
+<tr><td>
+</td></tr></table><span class="hide-when-compact"></span><span class="hide-when-compact"></span></span></td></tr></table>
+
+<div class="hatnote boilerplate seealso">For more details on this topic, see [[Shell (computing)]].</div>
+[[File:Bash screenshot.png|250px|thumb|[[Bash (Unix shell)|Bash]], the default shell on many GNU/Linux distributions.]]
+A [[command shell]] is a [[command line interface]] computer program to an [[operating system]].
+
+== General characteristics ==
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+|-
+
+!
+!Usual environment
+!Usually invoked
+!Introduced
+![[Cross-platform|Platform-independent]]
+!Default login shell in
+!Default script shell in
+!License
+!Source code availability
+!User interface
+!Mouse support
+![[Unicode]] support
+![[ISO 8601]] support
+!Console redirection
+![[Standard streams|Stream]] [[Redirection (Unix)|redirection]]
+!Configurability
+!Startup/shutdown scripts
+!Batch scripts
+!Logging
+!Native [[Common Information Model (computing)|CIM]]/[[Web-Based Enterprise Management|WBEM]] support
+!available as statically linked, independent single file executable
+
+|-
+
+![[Bourne shell]]
+|[[Version 7 Unix|7th Ed. UNIX]]
+|sh
+|1977
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Version 7 Unix|7th Ed. UNIX]]
+|[[Version 7 Unix|7th Ed. UNIX]],
+|Proprietary, [[Common Development and Distribution License|CDDL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based [[Command-line interface|CLI]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|N/A
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>[[file descriptor|fd]]s</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>.profile</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[POSIX]] shell
+|[[POSIX]]
+|sh
+|1992
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|N/A
+|[[POSIX]]
+|N/A
+|N/A
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, if used by configured locale
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>date</tt> and <tt>touch</tt> utilities)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|Unspecified (<tt>.profile</tt> given as an example)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|N/A
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|[[POSIX]]
+|bash, sh
+|1989
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU]], [[Linux]], [[Mac OS X]] 10.3+
+|[[GNU]], [[Linux]], [[Haiku (operating system)|Haiku]], [[Mac OS X]]
+|[[GPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>printf</tt> builtin)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>/etc/profile</tt>, <tt>.bash_profile</tt>, <tt>.bash_login</tt>, <tt>.profile</tt>, <tt>.bashrc</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[C shell|csh]]
+|[[POSIX]]
+|csh
+|1978
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[SunOS]]
+|?
+|[[BSD licenses|BSD]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stdout+stderr</tt>)
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[tcsh]]
+|[[POSIX]]
+|tcsh, csh
+|1983
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[FreeBSD]], formerly [[Mac OS X]]
+|?
+|[[BSD licenses|BSD]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stdout+stderr</tt>)
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[Hamilton C shell]]
+|[[Win32]], OS/2
+|csh
+|1988
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (OS/2 version no longer maintained)
+|optional
+|optional
+|Proprietary
+|?
+|Text-based CLI
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stdout+stderr</tt>)
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[Scsh]]
+|[[POSIX]]
+|scsh
+|1994
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|[[BSD licenses|BSD]]-style
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|[[POSIX]]
+|ksh
+|1983
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[AIX]], [[HP-UX]]
+|[[OpenSolaris]]
+|[[Common Public License]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>printf</tt> builtin)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (system and user's <tt>profile</tt> and <tt>kshrc</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[pdksh]]
+|[[POSIX]]
+|ksh, sh
+|1989?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[OpenBSD]]
+|[[OpenBSD]]
+|[[Public Domain]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|N/A
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>/etc/profile</tt>, <tt>.profile</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[zsh]]
+|[[POSIX]]
+|zsh
+|1990
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Grml]], [[Gobolinux]]
+|[[Grml]]
+|[[MIT license|MIT]]-style
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via additional code
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables, options, functions, styles, etc.)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (system and user's <tt>zshenv</tt>, <tt>zprofile</tt>, <tt>zshrc</tt>, <tt>zlogin</tt>, <tt>zlogout</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[Almquist shell|ash]]
+|[[POSIX]]
+|sh
+|1989
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Minix]], [[BusyBox]] based systems
+|[[NetBSD]], [[Minix]], [[BusyBox]] based systems
+|[[BSD licenses|BSD]]-style
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>touch</tt> builtin)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via variables and options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>/etc/profile</tt>, <tt>.profile</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Unix feature)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|[[CP/M]], [[MP/M]]
+|(CCP)
+|1975 (1973)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[CP/M]] (no login), [[MP/M]]
+|[[CP/M]], [[MP/M]]
+|Freeware (originally proprietary)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (originally closed-source)
+|Text-based [[Command-line interface|CLI]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic via <tt>$$$.SUB</tt>)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only via external <tt>SUBMIT</tt> command to update <tt>$$$.SUB</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[COMMAND.COM]]
+|[[DOS]]
+|[[COMMAND (DOS command)|COMMAND]]
+|1980
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (3rd party implementations, not bound to a specific DOS vendor or version, available)
+|[[DOS]], [[Windows 95]], [[Windows 98|98]], [[Windows 98 SE|SE]], [[Windows ME|ME]]
+|[[DOS]], [[Windows 95]], [[Windows 98|98]], [[Windows 98 SE|SE]], [[Windows ME|ME]]
+|vendor specific, f.e. [[Microsoft|MS]]-[[Software license agreement|EULA]], or [[BSD]]/[[GPL]] (free clones)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (except for OpenDOS, DR-DOS, PTS/DOS and FreeDOS)
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (except for DR-DOS)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>COMMAND con:</tt> or <tt>CTTY con:</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via startup parameters and environment variables, DR-DOS also supports <tt>DIR /C /R</tt> user-default switch command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic <tt>\AUTOEXEC.BAT</tt> for primary shell, or explicitly via <tt>/P</tt>, <tt>/P:filename.bat</tt> or <tt>/K</tt> startup options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+!OS/2 [[CMD.EXE (OS/2)|CMD.EXE]]
+|[[OS/2]]
+|[[CMD (OS/2 command)|CMD]]
+|1987
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[OS/2]]
+|[[OS/2]]
+|[[IBM]]-[[Software license agreement|EULA]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stderr</tt>)
+|?
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only via <tt>/K</tt> startup option)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+
+|-
+
+!Windows [[CMD.EXE (Windows)|CMD.EXE]]
+|[[Win32]]
+|[[CMD (Windows command)|CMD]]
+|1993
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Windows]] NT, 2000, XP, Server 2003, Vista
+|[[Windows]] NT, 2000, XP, Server 2003, Vista
+|[[Microsoft|MS]]-[[Software license agreement|EULA]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (<tt>[[CHCP (command)|CHCP]] [[Code page 65001|65001]]</tt> for [[UTF-8]], but program arguments are still encoded in local codepage)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via registry, startup parameters, and environment variables)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic via registry, or explicitly via <tt>/K</tt> startup option)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[4DOS]], [[NDOS]]
+|[[DOS]], [[Windows 95]], [[Windows 98|98]], [[Windows 98 SE|SE]], [[Windows ME|ME]]
+|[[4DOS]], [[NDOS]]
+|1989 (1986)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (not bound to a specific OS vendor or version)
+|optional
+|optional
+|[[MIT License]], with restrictions
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI with [[text-based user interface|TUI]] extensions
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (popups, help system, <tt>%_MOUSE</tt> internal variable, <tt>INKEY /M</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>4DOS con:</tt> or <tt>CTTY con:</tt>, except for <tt>DRAWBOX</tt>, <tt>DRAWLINE</tt>, <tt>DRAWVLINE</tt>, <tt>LIST</tt>, <tt>SCREEN</tt>, <tt>SCRPUT</tt>, <tt>SELECT</tt>, <tt>VSCRPUT</tt> commands and file&nbsp;/ directory coloring)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stderr</tt>, <tt>stdout+stderr</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>4DOS.INI</tt>/<tt>NDOS.INI</tt> file, startup parameters, environment variables, <tt>SETDOS</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic <tt>\AUTOEXEC.BAT</tt> for primary shell and <tt>4START.BTM</tt>/<tt>4START.BAT</tt> as well as <tt>4EXIT.BTM</tt>/<tt>4EXIT.BAT</tt> for any shell, or explicitly via <tt>/P</tt>, <tt>/P:dir\filename.ext</tt> or <tt>/K</tt> startup options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[4OS2]]
+|[[OS/2]]
+|[[4OS2]]
+|1992
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (not bound to specific OS/2 versions)
+|optional
+|optional
+|Freeware
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Text-based CLI
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stderr</tt>, <tt>stdout+stderr</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>4OS2.INI</tt> file, startup parameters, environment variables, <tt>SETDOS</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic via <tt>4START.CMD</tt>/<tt>4START.BTM</tt> as well as <tt>4EXIT.CMD</tt>/<tt>4EXIT.BTM</tt> files, or explicitly via <tt>/K startup.cmd</tt> option)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|[[Win32]]
+|TCC
+|1993
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (not bound to specific NT versions)
+|optional
+|optional
+|[[Shareware]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Text-based CLI ([[Take Command (command line interpreter)|Take Command]]: [[GUI]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (console mouse, popups, help system, <tt>%_XMOUSE</tt>, <tt>%_YMOUSE</tt> internal variables, <tt>INKEY /M</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>stdin</tt>, <tt>stdout</tt>, <tt>stderr</tt>, <tt>stdout+stderr</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via registry, <tt>TCMD.INI</tt>/<tt>4NT.INI</tt> file, startup parameters, environment variables, <tt>SETDOS</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (automatic via registry and <tt>TCSTART</tt>/<tt>4START</tt> as well as <tt>TCEXIT</tt>/<tt>4EXIT</tt>, or explicitly via <tt>/K</tt> startup option)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL</tt> command or <tt>/C</tt> and <tt>/K</tt> startup options)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Windows PowerShell]]
+|[[.NET Framework|.NET]]
+|powershell
+|2006
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Windows]] Server 2008, 7, Vista, XP
+|[[Windows]] Server 2008, 7
+|[[Microsoft|MS]]-[[Software license agreement|EULA]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Graphical CLI
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (%USERPROFILE%\Documents \WindowsPowerShell\Microsoft.PowerShell_profile.ps1)
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[rc]]
+|[[Plan 9 from Bell Labs|Plan 9]], [[POSIX]]
+|rc
+|1989
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Plan 9 from Bell Labs|Plan 9]], [[Version 10 Unix]]
+|[[Plan 9 from Bell Labs|Plan 9]], [[Version 10 Unix]]
+|[[Lucent Public License]]
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[BeanShell]]
+|[[Java Runtime Environment|Java]]
+|?
+|2005
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|[[LGPL]]
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>bsh.jar</tt>)
+
+|-
+
+![[DIGITAL Command Language|VMS DCL]]
+|[[OpenVMS]]
+|?
+|1977?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|VMS
+|VMS
+|?
+|?
+|Text-based CLI
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>sys$input</tt>, <tt>sys$output</tt> assignment)
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Friendly interactive shell|fish]]
+|[[POSIX]]
+|fish
+|2005
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|[[GPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+
+|}
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== Interactive features ==
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+
+|-
+
+!
+![[#Completions|Command<br/>name<br/>completion]]
+![[#Completions|Path/file<br/>argument<br/>completion]]
+![[#Completions|Non-Path/file<br/>argument<br/>completion]]
+![[#Completions|Wildcard<br/>completion]]
+![[#Command history|Command<br/>history]]
+![[#Mandatory argument prompt|Mandatory<br/>argument<br/>prompt]]
+![[#Automatic suggestions|Automatic<br/>suggestions]]
+![[#Syntax highlighting|Syntax<br/>highlighting]]
+![[#Directory history, stack or similar features|Directory history, stack or similar features]]
+![[#Implicit directory change|Implicit<br/>directory<br/>change]]
+![[#Spell checking|Spell<br/>checking]]
+![[#Integrated environment|Integrated<br/>environment]]
+![[#Snippets|Snippets]]
+![[#Value prompt|Value<br/>prompt]]
+![[#Menu/options selector|Menu/options<br/>prompt]]
+![[#Progress indicator|Progress<br/>indicator]]
+![[#Interactive table|Interactive<br/>table]]
+![[#Context sensitive help|Context<br/>sensitive<br/>help]]
+![[#Command builder|Command<br/>builder]]
+
+|-
+
+![[Bourne shell]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[POSIX]] shell
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>CDPATH</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |when defined
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>CDPATH</tt>, <tt>pushd</tt>, <tt>popd</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|optional
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[C shell|csh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>cdpath</tt>, <tt>pushd</tt>, <tt>popd</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|optional
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[tcsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|optional
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |experimental
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Hamilton C shell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>cdpath</tt>, <tt>pushd</tt>, <tt>popd</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Scsh]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (extendable)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (extendable)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>cdpath</tt> builtin, <tt>pushd</tt>, <tt>popd</tt> implemented as functions)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[pdksh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[zsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |when defined
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|optional
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Almquist shell|ash]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[COMMAND.COM]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (only via external <tt>CHOICE</tt> command, in DR-DOS also via <tt>SWITCH</tt>&nbsp;/ <tt>DRSWITCH</tt> internal commands)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!OS/2<br/>[[CMD.EXE]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!Windows<br/>[[CMD.EXE]]
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |partial
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |partial
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>F8</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>PUSHD</tt>, <tt>POPD</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET /P</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4DOS]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| (via popup, extended directory searches, <tt>CDPATH</tt>, <tt>PUSHD</tt>, <tt>POPD</tt>, <tt>DIRHISTORY</tt>, <tt>DIRS</tt>, <tt>CDD</tt>, <tt>CD&nbsp;-</tt> commands and <tt>%@DIRSTACK[]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>INPUT</tt>, <tt>INKEY</tt> and <tt>ESET</tt> commands)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>@SELECT[]</tt> function, and indirectly via a combination of <tt>INKEY</tt>, <tt>INPUT</tt>, <tt>SWITCH</tt> commands)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (except for <tt>OPTION</tt> command for INI file directives)
+
+|-
+
+![[4OS2]]
+|?
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| (via popup, extended directory searches, <tt>CDPATH</tt>, <tt>PUSHD</tt>, <tt>POPD</tt>, <tt>DIRHISTORY</tt>, <tt>DIRS</tt>, <tt>CDD</tt>, <tt>CD&nbsp;-</tt> commands and <tt>%@DIRSTACK[]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>INPUT</tt>, <tt>INKEY</tt>, <tt>ESET</tt> and <tt>SET /P</tt> commands)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>@SELECT[]</tt> function, and indirectly via a combination of <tt>INKEY</tt>, <tt>INPUT</tt>, <tt>SWITCH</tt> commands)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Windows PowerShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>F8</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; multiple stacks; multiple location types
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|popup window
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|popup window
+
+|-
+
+![[rc]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[BeanShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[DIGITAL Command Language|VMS DCL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Minimum uniqueness scheme
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Friendly interactive shell|fish]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |when defined
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|}
+
+=== Completions ===
+<div class="hatnote relarticle mainarticle">Main article: [[Command-line completion]]</div>
+
+[[Image:Command-line-completion-example.gif|right|thumb|402px|Command-line completion in [[Bash (Unix shell)|Bash]].]]Completion features assist the user in typing commands at the command line. The simplest form of completion is command name completion where the shell looks for and suggests matching internal and/or external commands when the user enters a partial command and presses the completion key (often the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Tab <span class="Unicode">↹</span></kbd> key).
+
+For each command there is usually also a set of parameters/arguments/options. parameters/arguments/options are often identified by a name or letter preceding a value. Some shells allow completion on parameter/option names and -values.
+
+Bash and zsh offer parameter name completion through a definition external to the command, distributed in a separate completion definition file. For command parameter name/value completions, the shell assumes path/filename completion if no completion is defined for the command. Completion can be set up to suggest completions by calling a shell function.
+
+As opposed to traditional shells where parameters are parsed internally by each command, all types of PowerShell commands (cmdlets, functions, script files) expose data about their parameters, names, types, value ranges and more. This discoverable data is used by the shell to automatically support argument name and value completion for built-in commands/functions, user-defined commands/functions as well as for script files. Cmdlets can also define dynamic completion of argument values where the completion values are computed dynamically on the running system.
+
+=== Command history ===
+<div class="hatnote relarticle mainarticle">Main article: [[Command history]]</div>
+A user of a shell may find that he/she is typing something similar to what the user typed before. If the shell supports ''command history'' the user can call
+the previous command into the line editor and edit it before issuing it again.
+
+Shells that support completion may also be able to directly complete the command from the command history given a partial/initial part of the previous command.
+
+Most modern shells support command history. Shells which support command history in general also supports completion from history rather than just recalling
+commands from the history. In addition to the plain command text, PowerShell also records execution start- and end time and execution status in the command history.
+
+=== Mandatory argument prompt ===
+<div class="hatnote">Further information: [[Named parameter#Optional_parameters|Named parameter § Optional_parameters]]</div>
+Mandatory arguments/parameters are arguments/parameters which must be assigned a value upon invocation the command, function or script file. A shell that can determine ahead
+of invocation that there are missing mandatory values, can assist the interactive user by prompting for those values instead of letting the command fail.
+Having the shell prompt for missing values will allow the author of a script, command or function to mark a parameter as mandatory instead of creating script code to either
+prompt for the missing values (after determining that it is being run interactively) or fail with a message.
+
+PowerShell allows commands, functions and scripts to define arguments/parameters as ''mandatory''. The shell determines prior to invocation if there is any
+mandatory arguments/parameters which have not been bound, and will then prompt the user for the value(s) before actual invocation.
+
+
+=== Automatic suggestions ===
+<div class="hatnote relarticle mainarticle">Main article: [[Autocomplete]]</div>
+[[Image:Powershell Intellisense example for the Get-Process cmdlet.gif|right|thumb|550px|Command-line completion in [[PowerShell]].]]With automatic suggestions the shell monitors while the interactive user is typing and displays context-relevant suggestions without interrupting the typing instead of the user [[#Command, parameter and -value completion|explicitly requesting completion]].
+
+The PowerShell Integrated Scripting Environment use the discoverable metadata to provide "intellisense" - i.e. suggestions that automatically pops up as the user types, in addition to when the user explicitly requests completion lists by pressing e.g. <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Tab <span class="Unicode">↹</span></kbd>
+<div class="hatnote">Further information: [[Intellisense]]</div>
+
+=== Directory history, stack or similar features ===
+
+A shell may record the locations the user has used as current locations and allow fast switching to any location/directory in the history.
+
+One of the uses of the zsh directory stack is to record a directory history. In particular, the <tt>AUTO_PUSHD</tt> option and advanced <tt>cd</tt> arguments and completion are used for this purpose.
+
+PowerShell allows multiple named stacks to be used. Locations (directories) can be pushed onto/popped from the current stack or a named stack. Any stack can become the current (default) stack. Unlike most other shells, PowerShell's ''location'' concept allow location stacks to hold file system locations as well as other location types like e.g. [[Active Directory]] organizational units/groups, [[Database server|SQL Server]] databases/tables/objects, [[Internet Information Server]] applications/sites/virtual directories.
+
+4DOS and Take Command Console record history of current directories and allows the user to switch to a directory in the history using a popup a window.
+
+=== Implicit directory change ===
+A directory name can be used directly as a command which implicitly changes the current location to the directory.
+
+=== Spell checking ===
+<div class="hatnote relarticle mainarticle">Main article: [[Spell checker]]</div>
+
+When a command line does not match a command or arguments directly, spell checking can look for common typing mistakes and match possible alternatives with known valid alternatives. The shell can then suggest
+probable corrections to the interactive user.
+
+The [[tcsh]] and [[zsh]] shells feature optional spell checking/correction.
+
+=== Integrated environment ===
+<div class="hatnote relarticle mainarticle">Main article: [[Integrated development environment]]</div>
+<div class="hatnote boilerplate seealso">See also: [[Integrated applications environment]] and [[File manager]]</div>
+
+An integrated environment is the integration of the command-line interface with editors (typically multiple documents), [[online help|help system]] and possibly [[debugger|debugging]] and other tools.
+
+[[Take Command Console]] (TCC) comes with an integrated environment with command line pane, file explorer, editor, batch debugger and more.
+
+[[Windows PowerShell|PowerShell ISE]] includes a command line pane with support for integrated command line, copy-paste, multiple document editors, [[source-level debugging]], help pane, command explorer pane and scripting interface allowing scripts/modules to manipulate menus, add-ons etc. The ISE (menus, windows, shortcuts, addons) are customizable through scripts.
+
+=== Snippets ===
+<div class="hatnote relarticle mainarticle">Main article: [[Snippet (programming)]]</div>
+
+Snippets are small regions of re-usable of script code. Snippets are often used to save keystrokes, or to assist the user with common scripting patterns.
+
+PowerShell supports snippets in the Integrated Scripting Environment (ISE) using <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Ctrl J</kbd>.
+
+=== Value prompt ===
+A shell script can prompt the interactive user for a value.
+
+=== Menu/options selector ===
+A shell script can present the interactive user with a list of choices.
+
+=== Progress indicator ===
+A shell script (or job) can report progress of long running tasks to the interactive user.
+
+Unix/Linux systems may offer other tools support using progress indicators from scripts or as standalone-commands, such as the program "pv". These are not integrated features of the shells, however.
+
+PowerShell has a built-in command and API functions (to be used when authoring commands) for writing/updating a progress bar. Progress bar messages are sent separates from regular command output
+and the progress bar is always displayed at the ultimate interactive users console regardless of whether the progress messages originates from an interactive script, from a background job or from a remote session.
+
+=== Interactive table ===
+Output from a command execution can be displayed in a table/grid which can be interactively sorted and filtered and/or otherwise manipulated after command execution ends.
+
+PowerShell <tt>Out-GridView</tt> cmdlet displays data in an interactive window with interactive sorting and filtering.
+
+=== Syntax highlighting ===
+<div class="hatnote relarticle mainarticle">Main article: [[Syntax highlighting]]</div>
+
+An independent project offers syntax highlighting as an add-on to the Z Shell (zsh). This is not part of the shell, however.
+PowerShell ISE has syntax highlighting on the current command line as well as in the script pane.
+Take Command Console (TCC) offers syntax highlighting in the integrated environment.
+
+=== Context sensitive help ===
+<div class="hatnote relarticle mainarticle">Main article: [[Context-sensitive help]]</div>
+
+4DOS, 4OS2, 4NT / Take Command Console and PowerShell (in PowerShell ISE) looks up context-sensitive help information when <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">F1</kbd> is pressed.
+
+Zsh provides various forms of configurable context-sensitive help as part of its <tt>run-help</tt> widget, <tt>_complete_help</tt> command, or in the completion of options for some commands.
+
+=== Command builder ===
+A command builder is a guided dialog which assists the user in filling in a command. PowerShell has a command builder which is available in PowerShell ISE or which can be displayed separately through the <tt>Show-Command</tt> cmdlet.
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== Programming features ==
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+|-
+
+!
+![[Subroutine|Functions]]
+![[Exception handling]]
+!Search & replace on variable substi&shy;tutions
+![[Arithmetic|Arith&shy;metic]]
+![[Array data type|Linear arrays]] or [[List (abstract data type)|lists]]
+![[Associative array|Assoc&shy;iative arrays]]
+![[Lambda calculus|Lambda functions]]
+![[eval|eval func&shy;tion]]
+![[PRNG|Pseudo&shy;random number generation]]
+![[Bytecode]]
+
+|-
+
+![[Bourne shell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes since SVR2
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[POSIX]] shell
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>${//}</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>$RANDOM</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[C shell|csh]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>$var:s///</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[tcsh]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>$var:s///</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Hamilton C shell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>$var:s///</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Scsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via string functions and regular expressions)
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (random-integer, random-real)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (compiler is Scheme48 virtual machine, via <tt>scshvm</tt>)
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>${//}</tt> syntax and builtin commands)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>$RANDOM</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (compiler is called <tt>shcomp</tt>)
+
+|-
+
+![[pdksh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>$RANDOM</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[zsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>${:s//}</tt> and <tt>${//}</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>$RANDOM</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (built-in <tt>zcompile</tt> command)
+
+|-
+
+![[Almquist shell|ash]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>trap</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[COMMAND.COM]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only Auto-fail (via <tt>COMMAND /F</tt> (or <tt>/N</tt> in some versions of DR-DOS))
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!OS/2 [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!Windows [[CMD.EXE]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>CALL :label</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET %''varname'':''expression''</tt> syntax)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET /A</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>%random%</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4DOS]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>ON</tt> command, optional Auto-fail via <tt>4DOS /F</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>%@Replace[...]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET /A</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via ranges, include lists, <tt>@</tt>file lists and <tt>FOR</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>%@Random[...]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>BATCOMP</tt> command)
+
+|-
+
+![[4OS2]]
+|?
+|?
+|?
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>%@Random[...]</tt> function)
+|?
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>ON</tt> and various <tt>...MONITOR</tt> commands)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>%@Replace[...]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>SET /A</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via ranges, include lists, <tt>@</tt>file lists and <tt>FOR</tt> command)
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>%@Random[...]</tt> function)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>BATCOMP</tt> command)
+
+|-
+
+![[Windows PowerShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>-replace</tt> operator)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, automatic
+
+|-
+
+![[rc]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[BeanShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[DIGITAL Command Language|VMS DCL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[friendly interactive shell|fish]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Yes (via <tt>trap</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>random</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|}
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== String processing and filename matching ==
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+|-
+
+!
+!String processing
+![[Alternation (string expansion)|Alternation]] ([[Brace expansion]])
+!Pattern matching ([[regular expression]]s built-in)
+!Pattern matching (filename [[glob (programming)|globbing]])
+!Globbing qualifiers (filename generation based on file attributes)
+![[Recursive globbing]] (generating files from any level of subdirectories)
+
+|-
+
+![[Bourne shell]]
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[POSIX]] shell
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>, <tt>{...}</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>**/...</tt>)
+
+|-
+
+![[C shell|csh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (:s and other editing operators)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[tcsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (:s and other editing operators)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Hamilton C shell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (:s and other editing operators + substr, strlen, strindex, printf, reverse, upper, lower, concat and other builtin functions)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via indefinite directory <tt>"..."</tt> wildcard)
+
+|-
+
+![[Scsh]]
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with <tt>set -G</tt>, no following of symlinks)
+
+|-
+
+![[pdksh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[zsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (through variable processing: e.g. substring extraction, various transformations via parameter expansion)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>, [[extended globbing]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>**/...</tt> or <tt>***/...</tt> to follow symlinks)
+
+|-
+
+![[Almquist shell|ash]]
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[COMMAND.COM]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!OS/2 [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only in <tt>DIR /A:...</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!Windows [[CMD.EXE]]
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only through <tt>FOR /F</tt> and <tt>SET /A</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FINDSTR /R</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only in <tt>DIR /A:...</tt> command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /R</tt> command, or, where available, indirectly via <tt>/S</tt> subdir option)
+
+|-
+
+![[4DOS]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (through variable functions <tt>%@...[]</tt>, extended environment variable processing, various string commands and <tt>FOR /F</tt> and <tt>SET /A</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>, [[extended wildcards]], <tt>SELECT</tt> popup command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>/A:...</tt> attribute and <tt>/I"..."</tt> description options and <tt>/[S...]</tt> size, <tt>/[T...]</tt> time, <tt>/[D...]</tt> date, and <tt>/[!...]</tt> file exclusion ranges)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /R</tt> command, or indirectly via <tt>GLOBAL</tt> command or, where available, <tt>/S</tt> subdir option)
+
+|-
+
+![[4OS2]]
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|?
+|?
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (through variable functions <tt>%@...[]</tt>, extended environment variable processing, various string commands and <tt>FOR /F</tt> and <tt>SET /A</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>, [[extended wildcards]], <tt>SELECT</tt> popup command)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>/A:...</tt> attribute and <tt>/I"..."</tt> description options and <tt>/[S...]</tt> size, <tt>/[T...]</tt> time, <tt>/[D...]</tt> date, <tt>/[O...]</tt> owner, and <tt>/[!...]</tt> file exclusion ranges)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /R</tt> command, or indirectly via <tt>GLOBAL</tt> command or, where available, <tt>/S</tt> subdir option)
+
+|-
+
+![[Windows PowerShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Concat/Substring/Insert/Remove/Replace, ToLower/ToUpper, Trim/TrimStart/TrimEnd, Compare, Contains/StartsWith/EndWith, Format, IndexOf/LastIndexOf, Pad/PadLeft/PadRight, Split/Join, regular expression functions and other .NET string functions)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (full regex support)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>[...]</tt>)
+|?
+|?
+
+|-
+
+![[rc]]
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[BeanShell]]
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|?
+|?
+|?
+
+|-
+
+![[DIGITAL Command Language|VMS DCL]]
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>[SUBDIR...]</tt>)
+
+|-
+
+![[friendly interactive shell|fish]]
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>{...}</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>**/...</tt>)
+
+|}
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== Inter-process communication ==
+
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+|-
+
+!
+!Keystroke stacking
+![[Pipeline (software)|Pipes]]
+![[Command substitution]]
+![[Process substitution]]
+!Subshells
+![[Transmission Control Protocol|TCP]]/[[User Datagram Protocol|UDP]] connections as streams
+
+|-
+
+![[Bourne shell]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[POSIX]] shell
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (if system supports <tt>/dev/fd/''<n>''</tt> or named pipes)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (client only)
+
+|-
+
+![[C shell|csh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[tcsh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Hamilton C shell]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Scsh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes (may contain serialized objects if <tt>print -C</tt> is used) concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>$(...)</tt> and <tt>${<space>...;}</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (if system supports <tt>/dev/fd/''<n>''</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (and SCTP support, client only)
+
+|-
+
+![[pdksh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[zsh]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (client and server, but only TCP)
+
+|-
+
+![[Almquist shell|ash]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[COMMAND.COM]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text sequential temporary files
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS multitasker via <tt>COMMAND.COM /T</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!OS/2 [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text concurrent
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!Windows [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /F</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Backtick: <tt>`</tt> in <tt>FOR /F usebackq</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4DOS]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>KEYSTACK</tt> and <tt>[[KSTACK.COM|KSTACK]]</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text sequential temporary files
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /F</tt> command)
+|?
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (via <tt>%@EXECSTR[]</tt> and <tt>%@EXEC[]</tt>, or via <tt>SET /M</tt>, <tt>ESET /M</tt> and <tt>UNSET /M</tt> and <tt>%@MASTER[...]</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4OS2]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>KEYSTACK</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text concurrent
+|?
+|?
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>KEYSTACK</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FOR /F</tt> command)
+|?
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (via <tt>%@EXECSTR[]</tt> and <tt>%@EXEC[]</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>FTP</tt>, <tt>TFTP</tt>, <tt>FTPS</tt>, <tt>SFTP</tt>, <tt>HTTP</tt>, <tt>HTTPS</tt> and <tt>IFTP</tt>, client only)
+
+|-
+
+![[Windows PowerShell]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|objects concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[rc]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via: <tt><{cmd}</tt> if system supports <tt>/dev/fd/''<n>''</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[BeanShell]]
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|not supported
+|?
+|?
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[DIGITAL Command Language|VMS D</tt>CL]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|text (via <tt>PIPE</tt> command)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (spawn)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (server TCP only)
+
+|-
+
+![[friendly interactive shell|fish]]
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|bytes concurrent
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>...</tt>)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>...</tt>  <tt>psub</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|}
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== Security features ==
+<table class="metadata plainlinks ambox ambox-content" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Ambox content.png|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This section '''contains information of unclear or questionable [[Wikipedia:What Wikipedia is not#Wikipedia is not an indiscriminate collection of information|importance]] or [[Wikipedia:Guide to writing better articles|relevance]] to the article's subject matter'''. Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by clarifying or removing [[Wikipedia:Out of scope|superfluous information]].<span class="hide-when-compact"></span>  <small>''(July 2014)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+
+{| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller;"
+|-
+
+!
+![[#Secure prompt|Secure (password) prompt]]
+![[#Non-password credentials prompt|Non-password credentials prompt]]
+![[#Encrypted variables/parameters|Encrypted variables/ parameters]]
+!File/directory passwords
+![[#Execute permission|Execute permission]]
+![[#Script origin execution restriction|Script origin execution restriction]]
+![[#Signed script restriction|Signed script restriction]]
+![[#Multilevel execution policies|Multilevel execution policies]]
+![[#Restricted shell subset|Restricted shell subset]]
+![[#Safe data subset|Safe data subset]]
+
+|-
+
+![[Bourne shell]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[POSIX]] shell
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Bash (Unix shell)|bash]] (v4.0)
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|<tt>read -s</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[C shell|csh]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[tcsh]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Hamilton C shell]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Scsh]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Korn Shell|ksh]] (ksh93t+)
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[pdksh]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[zsh]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|<tt>read -s</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Almquist shell|ash]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[CCP (CP/M)|CCP]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[COMMAND.COM]]
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS, prompts for password if file/directory is protected)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS via <tt>\dirname;dirpwd\filename;filepwd</tt> syntax)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS, if files are password-protected for read and/or execute permission)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!OS/2 [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+!Windows [[CMD.EXE]]
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4DOS]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>INPUT /P</tt> or <tt>INKEY /P</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS via <tt>\dirname;;dirpwd\filename;;filepwd</tt> syntax)
+|style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial (only under DR-DOS, if files are password-protected for read and/or execute permission)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[4OS2]]
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Take Command Console|TCC]] (formerly [[4NT]])
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via <tt>INPUT /P</tt>, <tt>INKEY /P</tt> or <tt>QUERYBOX /P</tt>)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via NTFS <tt>Zone ID</tt> config setting)
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Windows PowerShell]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+
+![[rc]]
+|style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|via <tt>stty</tt>
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[BeanShell]]
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+
+|-
+
+![[DIGITAL Command Language|VMS DCL]]
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+
+![[Friendly interactive shell|fish]]
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+|?
+
+|}
+
+=== Secure prompt ===
+Some shell scripts need to query the user for sensitive information such as [[password]]s, private digital keys, [[Personal Identification Number|PIN codes]] or other confidential information. Sensitive input should not be echoed back to the screen/input device where it could be gleaned by unauthorized persons. Plaintext memory representation of sensitive information should also be avoided as it could allow the information to be compromised, e.g., through swap files, core dumps etc.
+
+The shells bash, zsh and Windows PowerShell offer this as a specific feature. Shells which do not offer this as a specific feature may still be able to turn off echoing through some other means. Shells executing on a Unix/Linux operating system can use the <tt>stty</tt> external command to switch off/on echoing of input characters. In addition to not echoing back the characters, PowerShell's <tt>-AsSecureString</tt> option also encrypts the input character-by-character during the input process, ensuring that the string is never represented unencrypted in memory where it could be compromised through memory dumps, scanning, transcription etc.
+
+=== Non-password credentials prompt ===
+Scripts that connect to resources on behalf of the user will usually (security best practice) query the user for his/her credentials at run time. Depending on the security policies in place, the credentials may be in the form of username+password, [[smart card]] with PIN code, biometrics, tokens etc. The script should be able to handle (relay) credentials without restricting the credential type to username+password, i.e. it should be able to handle "abstract" credentials without concerns about specific type of the credentials.
+
+PowerShell comes with the <tt>Get-Credential</tt> [[cmdlet]] which prompts for credentials and which can accept other types of credentials, e.g. a [[smart card]] with a [[Personal Identification Number|PIN code]] depending on the security providers available at run time. Scripts that need to obtain credentials to access resources on behalf of the user can use this cmdlet to obtain credentials without specifying which form they must take. The <tt>Get-Credential</tt> cmdlet returns credentials in [[Common Criteria]] compliant encrypted form.
+
+=== Encrypted variables/parameters ===
+If a script reads a password into an environment variable it is in memory in plain text, and thus may be accessed via a core dump. It is also in the process environment, which may be accessible by other processes started by the script.
+
+PowerShell can work with encrypted string variables/parameters. Encrypted variables ensure that values are not inadvertently disclosed through e.g. transcripts, echo'ing, logfiles, memory or crash dumps or even malicious memory scanning. PowerShell also supports saving of such encrypted strings in text files, protected by a key owned by the current user.
+
+=== Execute permission ===
+Some operating systems define an ''execute'' permission which can be granted to users/groups for a script file. The Linux/Unix shells in general require that this bit be set if a file is invoked as a script file to be executed by the shell. Although Windows also specifies an ''execute'' permission, none of the Windows specific shells block script execution if the permission has not been granted. PowerShell protects against inadvertently executing scripts obtained from untrusted sources through other means (described in the following sections).
+
+=== Script origin execution restriction ===
+PowerShell can be set to block execution of scripts which has been marked as obtained from an unknown/untrusted origin (e.g. the Internet). Internet facing applications such as web browsers, IM clients, mail readers etc. mark files downloaded from the internet with the origin zone in an alternate data stream which is understood by PowerShell. The Unix/Linux shell in general block on the specific ''execute'' permission (see [[#General execution restriction|General execution restriction]] above), not based on origin zone.
+
+=== Signed script restriction ===
+Script/code signing policies can be used to ensure that an operations department only run approved scripts/code which have been reviewed and signed by a trusted reviewer/approver. Signing regimes also protects against tampering. If a script is sent from vendor to a client, the client can use signing to ensure that the script has not been tampered with during transit and that the script indeed originates from the vendor and not an attacker trying to social engineer an operator into running an attack script.
+
+PowerShell can be set to allow execution of otherwise blocked scripts (e.g. originating from an untrusted zone) if the script has been digitally signed using a trusted digital certificate.
+
+=== Multilevel execution policies ===
+A company may want to enforce execution restriction globally within the company and/or certain parts of the company. It may want to set a policy for running signed scripts but allow certain parts of the company to set their own policies for zoned restrictions.
+
+PowerShell allows script blocking policies to be enforced at multiple levels: Local machine, current user etc. A higher level policy overrides a lower level policy, e.g. if a policy is defined for the local machine it is in place for all users of the local machine, only if it is left ''undefined'' at the higher level can it be defined for the lower levels.
+
+=== Restricted shell subset ===
+Several shells can be started or be configured to start in a mode where only a limited set of commands and actions is available to the user. While not a security ''boundary'' (the command accessing a resource is blocked rather than the resource) this is nevertheless typically used to restrict users' actions before logging in.
+
+A restricted mode is part of the [[POSIX]] specification for shells, and most of the Linux/Unix shells support such a mode where several of the built-in commands are disabled and only external commands from a certain directory can be invoked.
+
+PowerShell supports restricted modes through ''session configuration files'' or session configurations. A session configuration file can define visible (available) cmdlets, aliases, functions, path providers and more.
+
+=== Safe data subset ===
+Scripts that invoke other scripts can be a security risk as they can potentially execute foreign code in the context of the user who launched the initial script. Scripts will usually be designed to exclusively include scripts from known safe locations; but in some instances, e.g. when offering the user a way to configure the environment or loading localized messages, the script may need to include other scripts/files. One way to address this risk is for the shell to offer a safe subset of commands which can be executed by an included script.
+
+PowerShell [http://technet.microsoft.com/en-us/library/hh848302.aspx data sections] can contain constants and expressions using a restricted subset of operators and commands. PowerShell data sections are used when e.g. localized strings needs to be read from an external source while protecting against unwanted side effects.
+
+=== Notes ===
+<div class="reflist columns references-column-width" style="-moz-column-width: close; -webkit-column-width: close; column-width: close; list-style-type: decimal;">
+<references group=""></references></div>
+
+== External links ==
+*[http://w3.linux-magazine.com/issue/78/Bash_vs._Vista_PowerShell.pdf Linux Magazine: Bash vs. Vista PowerShell]
+*[http://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html IEEE. 1003.1 Standard for Information Technology – Portable Operating System Interface (POSIX): Shell and Utilities, Issue 7]
+
+
+
+
+
+[[Category:Command shells]]
+[[Category:Software comparisons|Shells]]

@@ -1,0 +1,161 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Overview</h1>
+      <table border="1">
+        <tr>
+          <td> !VC-1 </td>
+          <td> H.264 </td>
+          <td> /!\ Not defined /!\ </td>
+        </tr>
+        <tr>
+          <td> Goals </td>
+          <td>
+            Designed to offer very high image quality with excellent compression efficiency
+          </td>
+          <td>
+            Designed to meet a variety of industry needs with many profiles and levels, allowing for varying compression, quality and CPU usage levels, where the lowest level is for portable devices, designed with low CPU usage in mind, while the high levels are designed with very high quality and compression efficiency in mind
+          </td>
+        </tr>
+        <tr>
+          <td> Example industry use </td>
+          <td> Supports 4:2:0 compression / color space </td>
+          <td>
+            Supports studio archiving requirements with 4:4:4 color space;
+            <br/>
+            separate black and white (BW) video mode
+          </td>
+        </tr>
+        <tr>
+          <td> Licensing costs </td>
+          <td> Similar </td>
+          <td> Similar </td>
+        </tr>
+        <tr>
+          <td> Documentation </td>
+          <td> Not free. Reference decoder, comes with external documentation. </td>
+          <td>
+            ? AVC/H264 Licensing costs and terms from MPEG LA. Reference encoder and decoder free as well. Additionally, JVT &amp; M4IF mailing lists are available where one may receive answers on AVC related questions.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Terminology</h1>
+      <table border="1">
+        <tr>
+          <td> Feature </td>
+          <td> VC-1 </td>
+          <td> H.264 </td>
+        </tr>
+        <tr>
+          <td> Partition sizes </td>
+          <td> 16×16 and 8×8 </td>
+          <td> 16×16, 16×8, 8×16, 8×8, 8×4, 4×8, and 4×4 </td>
+        </tr>
+        <tr>
+          <td> Integer transform </td>
+          <td> 8×8, 4×8, 8×4, and 4×4 </td>
+          <td> 4×4; 8×8 available in High Profile only </td>
+        </tr>
+        <tr>
+          <td> Frame </td>
+          <td> Used for progressive or interlaced content </td>
+          <td> Used for progressive or interlaced content </td>
+        </tr>
+        <tr>
+          <td> Macroblock sizes </td>
+          <td> 16×16 only </td>
+          <td> 16×16 only </td>
+        </tr>
+        <tr>
+          <td> Motion vector </td>
+          <td>
+            Two dimensional vector offset from current position to reference frame
+          </td>
+          <td>
+            Two dimensional vector offset from current position to reference frame
+          </td>
+        </tr>
+        <tr>
+          <td> Picture </td>
+          <td> A field or frame </td>
+          <td> A field or frame </td>
+        </tr>
+        <tr>
+          <td> Skipped macroblock </td>
+          <td> No data is encoded for macroblock </td>
+          <td> No data is encoded for macroblock </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Features</h1>
+      <table border="1">
+        <tr>
+          <td> !VC-1 </td>
+          <td> H.264 </td>
+          <td> /!\ Not defined /!\ </td>
+        </tr>
+        <tr>
+          <td> Bitstream formats </td>
+          <td> single bit stream </td>
+          <td> NAL and byte stream </td>
+        </tr>
+        <tr>
+          <td> Bitstream format </td>
+          <td>
+            In advanced profile, each Bitstream Data Unit has its own header.
+            <br/>
+            Simple and Main profile provide neither sequence nor entry point headers.
+          </td>
+          <td>
+            SPS (sequence parameter set),
+            <br/>
+            PPS (picture parameters set),
+            <br/>
+            slice header, macroblock
+          </td>
+        </tr>
+        <tr>
+          <td> Deblocking filter </td>
+          <td> In-loop filter and overlap transform </td>
+          <td> In-loop only </td>
+        </tr>
+        <tr>
+          <td> CABAC </td>
+          <td> No </td>
+          <td> Only supported in Main and higher profiles </td>
+        </tr>
+        <tr>
+          <td> Variable transform size </td>
+          <td> Yes </td>
+          <td> Only in High profile and above </td>
+        </tr>
+        <tr>
+          <td> Slice </td>
+          <td> Contiguous (integer number of macroblock rows only) </td>
+          <td> Contiguous or non-contiguous </td>
+        </tr>
+        <tr>
+          <td> Sub-pixel interpolation methods </td>
+          <td> bicubic, bilinear </td>
+          <td> 6-tap filter for half pixels; averaging for quarter pixels </td>
+        </tr>
+        <tr>
+          <td> Variable Length Coding </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> B frame used for predicting other pictures </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

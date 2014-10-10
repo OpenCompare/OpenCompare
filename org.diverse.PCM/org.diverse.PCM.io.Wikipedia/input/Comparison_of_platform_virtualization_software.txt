@@ -1,0 +1,2585 @@
+
+
+<table class="metadata plainlinks ambox ambox-style ambox-cleanup-link_rot" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Text document with red question mark.svg|50x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''uses [[Wikipedia:Bare URLs|bare URLs]] for [[Wikipedia:Citing sources|citations]], which may be threatened by [[Wikipedia:Link rot|link rot]].'''<span class="hide-when-compact"> Please consider adding [[Wikipedia:Citing sources#Citation styles|full citations]] so that the article remains [[Wikipedia:Verifiability|verifiable]]. [[Wikipedia:Template messages/Sources of articles#Examples|Several templates]] and the [//tools.wmflabs.org/fengtools/reflinks/result.php?page=Special:ExpandTemplates&noaccessdate=y Reflinks tool] are available to assist in formatting. ([[WP:REFLINKS2|Reflinks documentation]])</span>  <small>''(April 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+'''Platform virtualization software''', specifically [[emulator]]s and [[hypervisor]]s, are [[application software|software packages]] that emulate the whole physical computer machine, often providing multiple [[virtual machine]]s on one physical platform. The table below compares basic information about [[Hardware virtualization|platform virtualization]] hypervisors.
+
+==General==
+
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|-
+! Name
+! Creator
+! Host CPU
+! Guest CPU
+! [[Host OS]]
+! [[Guest OS]]
+! License
+|-
+! [[AlphaVM]]
+| EmuVM
+| x86_64
+| Alpha
+| Windows, Linux
+| OpenVMS, Tru64 UNIX
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[bhyve]]
+| [[FreeBSD]]
+| x86-64
+| x86-64
+| [[FreeBSD]]
+| [[FreeBSD]], [[FreeNAS]], [[pfSense]], [[OpenBSD]], [[GNU/Linux]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]
+|-
+! [[Bochs]]
+| [[Kevin Lawton]]
+| Any
+| x86, x86-64
+| [[Windows]], [[Linux]], [[Unix]]/[[X Window System|X11]], <span class="nowrap">[[Mac OS 9]]</span>, <span class="nowrap">[[Mac OS X]]</span>, [[BeOS]], [[MorphOS]], [[OS/2]]
+| [[Windows]], [[Linux]], [[DOS]], [[Berkeley Software Distribution|BSD]], [[OS/2]], [[Haiku (operating system)|Haiku]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[LGPL]]
+|-
+! [[Solaris Containers|Containers, or Zones]]
+| [[Sun Microsystems]]
+| x86, [[x86-64]], SPARC (portable: not tied to hardware)
+| Same as host
+| [[Solaris (operating system)|Solaris 10, Solaris 11 Express]], [[OpenSolaris]] 2009.06, [[SmartOS]]
+| Solaris (8, 9, 10, 11), SmartOS, Linux ([[branded zones|BrandZ]])
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[CDDL]]
+|-
+! [[Cooperative Linux]] (coLinux)
+| [[Dan Aloni]], other developers
+| x86
+| Same as host
+| Windows 2000, XP, 2003, Vista
+| Linux
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[Charon (software)|CHARON]]
+| [[Stromasys]]
+| x86, x86_64, IA64
+| PDP-11, VAX, Alpha
+| Windows, Linux, OpenVMS
+| VMS, OpenVMS, Tru64 UNIX
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Denali (operating system)|Denali]]
+| [[University of Washington]]
+| x86
+| x86
+| Denali
+| [[Ilwaco (operating system)|Ilwaco]], NetBSD
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[DOSBox]]
+| Peter Veenstra, Sjoerd, community help
+| Any
+| x86, ARM
+| Linux, Windows, Mac OS classic, <span class="nowrap">Mac OS X</span>, BeOS, FreeBSD, OpenBSD, Solaris, [[QNX]], IRIX, MorphOS, AmigaOS, [[Maemo]], Symbian
+| Internally emulated DOS shell; classic [[PC booter]] games, unofficially Windows 1.0 to 3.11
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+|-
+! [[Dosemu|DOSEMU]]
+| Community project
+| x86, x86-64
+| x86
+| Linux
+| DOS
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[FreeBSD Jail]]
+| [[FreeBSD]]
+| Any running [[FreeBSD]]
+| Same as host
+| [[FreeBSD]]
+| [[FreeBSD]], [[Linux]] ABI
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]
+|-
+! [[Guest PC]]
+| Lismore Software Systems
+| [[PowerPC]]
+| [[x86]]
+| <span class="nowrap">Mac OS X</span>
+| DOS, Windows, Linux
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[GXemul]]
+| Anders Gavare
+| Any
+| [[ARM architecture|ARM]], [[MIPS architecture|MIPS]], [[Motorola 88000|M88K]], [[PowerPC]], [[SuperH]]
+| Unix-like
+| [[NetBSD]], [[OpenBSD]], [[Linux]], [[Ultrix]], [[Sprite (operating system)|Sprite]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses|BSD]]
+|-
+! [[Hercules emulator|Hercules]]
+| Roger Bowler
+| Any
+| [[z/Architecture]]
+| [[Windows]], [[Linux]], [[Mac OS X]]
+| [[Linux on zSeries]], [[z/OS]], [[z/VM]], [[z/VSE]], [[OS/360]], [[DOS/360]], [[DOS/VS]], [[MVS]], [[VM/370]], [[TSS/370]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Q Public License|QPL]]
+|-
+! [[Hyper-V]] (2008)
+| [[Microsoft]]
+| [[x86-64]] + hardware-assisted virtualization ([[Intel VT-x]] or [[AMD-V]])
+| [[x86-64]], [[x86]] (up to 8 physical CPUs)
+| [[Windows Server 2008]] ([[Windows Server 2008 R2|R2]]) w/[[Hyper-V]] role, Microsoft Hyper-V Server
+| supported drivers for [[Windows 2000]], [[Windows 2003]], [[Windows 2008]], [[Windows XP]], [[Windows Vista]], [[Linux]] ([[SUSE Linux distributions|SUSE]] 10 released, more announced)
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Hyper-V]] (2012)
+| [[Microsoft]]
+| [[x86-64]] + hardware-assisted virtualization ([[Intel VT-x]] or [[AMD-V]] only for RemoteFX)
+| [[x86-64]], (up to 64 physical CPUs)
+| [[Windows 8]]/[[Windows 8.1|8.1]] & [[Windows Server 2012]] ([[Windows Server 2012 R2|R2]]) w/[[Hyper-V]] role, Microsoft Hyper-V Server
+| supported drivers for [[Windows NT]], [[Linux]] ([[SUSE Linux distributions|SUSE]] 10, [[Red Hat Enterprise Linux|RHEL]] 6, [[CentOS]] 6)
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[iCore Virtual Accounts]]
+| [[ICore Networks|iCore Software]]
+| [[x86]]
+| x86
+| [[Windows XP]]
+| [[Windows XP]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[HP Integrity Virtual Machines|Integrity Virtual Machines]]
+| [[Hewlett-Packard]]
+| [[Itanium|IA-64]]
+| IA-64
+| [[HP-UX]]
+| [[HP-UX]], Windows, Linux ([[OpenVMS]] announced)
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Java PC|JPC (Virtual Machine)]]
+| [[Oxford University]]
+| Any running the [[Java Virtual Machine]]
+| x86
+| [[Java Virtual Machine]]
+| DOS, Linux, Windows up to 3.0
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[Kernel-based Virtual Machine|KVM]]
+| [[Qumranet]], now Red Hat
+| x86, x86-64, IA-64, with [[x86 virtualization]], s390, PowerPC
+| Same as host
+| Linux, FreeBSD, illumos
+| FreeBSD, Linux, Solaris, Windows, [[Plan 9 from Bell Labs|Plan 9]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[Linux-VServer]]
+| Community Project
+| x86, x86-64, IA-64, Alpha, PowerPC 64, [[PA-RISC]] 64, SPARC64, ARM, [[S/390]], SH/66, MIPS
+| Compatible
+| Linux
+| Linux variants
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[LynxSecure]]
+| [[LynuxWorks]]
+| x86, [[Intel VT-x]], [[Intel VT-d]]
+| x86
+| No host OS
+| [[LynxOS]], Linux, Windows
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[LXC]]
+| Community project [http://lxc.sourceforge.net/ lxc.sourceforge.net]
+| x86, x86-64, IA-64, PowerPC 64, SPARC64, Itanium, ARM
+| Same as host
+| Linux
+| Linux variants
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[Mac-on-Linux]]
+| [[Mac-on-Linux]]
+| PowerPC
+| PowerPC
+| Linux
+| <span class="nowrap">Mac OS X</span>, Mac OS 7.5.2 to 9.2.2, Linux
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[Mac-on-Mac]]
+| Sebastian Gregorzyk
+| PowerPC
+| PowerPC
+| <span class="nowrap">Mac OS X</span>, up to 10.3
+| <span class="nowrap">Mac OS X</span>, Mac OS 7.5.2 to 9.2.2, Linux
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[Open Kernel Labs|OKL4 Microvisor]]
+| [[Open Kernel Labs]], acquired by [[General Dynamics Corporation]]
+| ARM, x86, MIPS
+| ARM (v5, v6, v7) ([[Paravirtualization]]), ARMv7VE (HW Virtualization)
+| No Host OS
+| Various OSes and RTOSes including [[Linux]], [[Android (operating system)|Android]], [[QNX]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[OpenVZ]]
+| Community project, supported by [[SWsoft]], now [[Parallels, Inc.]]
+| x86, x86-64, IA-64, PowerPC 64, SPARC64
+| Same as host
+| Linux
+| Linux variants
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+!  [[Oracle VM|Oracle VM for x86]]
+| [[Oracle Corporation]]
+| x86, x86-64, [[Intel VT-x]], [[AMD-V]]
+| x86, x86-64, [[Intel VT-x]],  [[AMD-V]]
+| No host OS
+| [[Microsoft Windows]], [[Oracle Linux]], [[Red Hat Enterprise Linux]], [[Solaris (operating system)|Solaris]]
+| Oracle VM Server GPL; Manager proprietary
+|-
+! [[Logical Domains|Oracle VM Server for SPARC]] (LDoms)
+| [[Oracle Corporation]]
+| [[UltraSPARC T1]], [[UltraSPARC T2]], UltraSPARC T2+, [[SPARC T3]], [[SPARC T4]]
+| Compatible
+| [[Solaris (operating system)|Solaris 10, Solaris 11]]
+| Supported: Solaris. Without Oracle support: Linux, FreeBSD
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[OVPsim]]
+| OVP [http://www.ovpworld.org]
+| x86
+| OR1K, MIPS32, ARC600/700, ARM; and public API which enables users to write custom processor models, RISC, CISC, DSP, VLIW all possible
+| [[Microsoft Windows]], Linux
+| Depends on target machine, for example includes MIPS Malta that runs Linux or SMP-Linux; and includes public API which enables users to write custom peripheral and system models
+| Proprietary, [[Apache License|Apache 2.0]] for models
+|-
+! [[Parallels Cloud Server]]
+| [[Parallels, Inc.]]
+| x86-64, [[Intel VT-x]]
+| x86, x86-64
+| Linux
+| Windows, Linux, FreeBSD
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Parallels Desktop for Mac]]
+| Parallels, Inc.
+| x86, [[Intel VT-x]]
+| x86
+| <span class="nowrap">Mac OS X</span> x86
+| DOS, Windows, Linux, <span class="nowrap">Mac OS X</span> Server, FreeBSD, OS/2, eComStation, Solaris, [[Haiku (operating system)|Haiku]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Parallels Workstation]]
+| Parallels, Inc.
+| x86, [[Intel VT-x]]
+| x86
+| Windows, Linux
+| Windows, Linux, FreeBSD, [[OS/2]], [[eComStation]], DOS, Solaris, [[Haiku (operating system)|Haiku]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[PearPC]]
+| [[Sebastian Biallas]]
+| x86, x86-64, PowerPC
+| PowerPC
+| Windows, Linux, <span class="nowrap">Mac OS X</span>, FreeBSD, NetBSD
+| <span class="nowrap">Mac OS X</span>, [[Darwin (operating system)|Darwin]], Linux
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[PikeOS]]
+| [[SYSGO]] AG
+| PowerPC, x86, ARM, MIPS, SPARC, SuperH
+| Same as host
+| No host OS, Linux or Windows as dev.hosts
+| [[PikeOS]] native, Linux, POSIX, AUTOSAR, Android, [[RTEMS]], [[OSEK]], [[ARINC 653]] APEX, [[ITRON]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[PowerVM]]
+| [[IBM]]
+|  [[POWER4]], [[POWER5]], [[POWER6]], [[POWER7]], [[PowerPC 970]]
+| POWER4/5/6/7, PowerPC 970, X86 ([[Lx86|PowerVM-Lx86]])
+| No host OS
+| [[Linux]] PowerPC, x86; [[AIX]], [[i5/OS]], [[IBM i]]
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[QEMU]]
+| [[Fabrice Bellard]], other developers
+| x86, x86-64, IA-64, PowerPC, SPARC 32/64, ARM, S/390, MIPS
+| x86, x86-64, Alpha, ARM, CRIS, LM32, [[M68k]], MicroBlaze, MIPS, OpenRisc32, PowerPC, S/390, SH4, SPARC 32/64, Unicore32, Xtensa
+| Windows, Linux, <span class="nowrap">Mac OS X</span>, Solaris, FreeBSD, OpenBSD, BeOS
+| Changes regularly
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]/[[LGPL]]
+|-
+! [[QEMU]] w/ [[kqemu]] module
+| [[Fabrice Bellard]]
+| x86, x86-64
+| Same as host
+| Linux, FreeBSD, OpenBSD, Solaris, Windows
+| Changes regularly
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]/[[LGPL]]
+|-
+! [[QEMU]] w/ [[qvm86]] module
+| Paul Brook
+| x86
+| x86
+| Linux, [http://pkgsrc.se/wip/qemu-qvm86 NetBSD], Windows
+| Changes regularly
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[QuickTransit]]
+| [[Transitive Corp.]]
+| x86, x86-64, IA-64, POWER
+| MIPS, PowerPC, SPARC, x86
+| Linux, <span class="nowrap">Mac OS X</span>, Solaris
+| Linux, <span class="nowrap">Mac OS X</span>, Irix, Solaris
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[ScaleMP]] vSMP Foundation
+| [[ScaleMP]]
+| x86, x86-64
+| Same as host, up to 8,192 CPUs and 64 TB per VM
+| No host OS
+| Linux
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[SIMH]]
+| [http://simh.trailing-edge.com/ Bob Supnik, The Computer History Simulation Project]
+| Alpha, ARM, HPPA, x86, IA-64, x86-64, M68K, MIPS, MIPSel, POWER, s390, SPARC
+| [[Data General]] [[Data General Nova|Nova]], [[Data General Eclipse|Eclipse]]; [[Digital Equipment Corporation]] [[PDP-1]], [[PDP-4]], [[PDP-7]], [[PDP-8]], [[PDP-9]], [[PDP-10]], [[PDP-11]], [[PDP-15]], [[VAX]]; GRI Corporation GRI-909; [[IBM]] [[IBM 1401|1401]], [[IBM 1620|1620]], [[IBM 1130|1130]], [[IBM 7090|7090/7094]], [[IBM System/3|System/3]]; [[Interdata]] ([[Perkin-Elmer]]) 16b/[[Interdata 7/32 and 8/32|32b]] systems; Hewlett-Packard 2114, 2115, 2116, 2100, 21MX; [[Honeywell]] H316/H516; [[Micro Instrumentation and Telemetry Systems|MITS]] [[Altair 8800]] with [[Intel 8080|8080]] and [[Zilog Z80|Z80]]; [[Royal McBee]] [[LGP-30]], LGP-21; [[Scientific Data Systems]] [[SDS 940]]
+| BSD, Linux, Solaris, VMS, Windows
+| Depends on target machine, includes NetBSD/VAX, OpenBSD/VAX, [[OpenVMS|VAX/VMS]], [[Version 6 Unix|Unix v6]], [[Version 7 Unix|Unix v7]], [[TOPS-10]], [[TOPS-20]], [[Incompatible Timesharing System|ITS]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|BSD-like, unique
+|-
+! [[Simics]]
+| [[Wind River Systems|Wind River]]
+| x86, x86-64
+| 8051, 68000, ARM (v4, v5, v6, v7), MIPS32, MIPS64, Cavium cnMIPS, Broadcom XLR MIPS, Freescale Power Architecture 32-bit and 64-bit (e300, e500, e600, e5500, e6500), IBM Power Architecture (POWER, PPC44x, PPC46x, 47x), SPARC v8 (LEON), SPARC v9 (UltraSparc), x86 (from 80286 to Sandy Bridge), x86-64 (from Pentium4 to Sandy Bridge), TI [[Texas Instruments TMS320|TMS320C64xx]], Renesas H8, Renesas SH
+| Windows 32-bit and 64-bit, Linux 32-bit and 64-bit
+| Depends on target machine, typically runs unmodified software stacks from the corresponding real target, including [[VxWorks]], VxWorks 653, [[Operating System Embedded|OSE]], QNX, Linux, Solaris, Windows, FreeBSD, [[RTEMS]], [[TinyOS]], Wind River Hypervisor, VMware ESX, and others
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Sun xVM]] Server
+| [[Sun Microsystems]]
+| x86-64, [[SPARC]]
+| Same as host
+| No host OS
+| Windows XP, 2003 Server (x86-64 only), Linux, Solaris
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 3|GPL version 3]]
+|-
+! [[SVISTA]] 2004
+| [[Serenity Systems International]]
+| x86
+| x86
+| Windows, OS/2, Linux
+| Windows, Linux, OS/2, BSD
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Trango Virtual Processors|TRANGO]]
+| [http://www.trango-vp.com TRANGO Virtual Processors, Grenoble, France]
+| ARM, [[XScale]], MIPS, PowerPC
+| [[Paravirtualized]] ARM, MIPS, PowerPC
+| No host OS, Linux or Windows as dev. hosts
+| [[Linux]], [[eCos]], [[MicroC/OS-II|µC/OS-II]], [[WindowsCE]], [[Nucleus RTOS|Nucleus]], VxWorks
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[User Mode Linux]]
+| [[Jeff Dike]], other developers
+| x86, x86-64, PowerPC
+| Same as host
+| Linux
+| Linux
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Gpl version 2|GPL version 2]]
+|-
+! [[VirtualBox]]
+| Innotek, acquired by [[Oracle Corporation]]
+| x86, x86-64, [[Intel VT-x]], [[AMD-V]]
+| x86, (x86-64 only on VirtualBox 2 and later with hardware virtualization)
+| Windows, Linux, <span class="nowrap">Mac OS X</span> x86, Solaris, FreeBSD, eComStation
+| DOS, Linux, Mac OS X Server, FreeBSD, [[Haiku (operating system)|Haiku]], OS/2, Solaris, Syllable, Windows. <br />
+<br />
+Also OpenBSD but only with hardware virtualisation indicating inaccuracies in the software memory emulation layer but [https://forums.virtualbox.org/viewtopic.php?p=17930 tolerated by other OS's].
+| GPL version 2; full version with extra enterprise features is proprietary:
+|-
+! [[Virtual Iron]] 3.1
+| Virtual Iron Software, Inc., acquired by Oracle
+| x86 VT-x, x86-64 AMD-V
+| x86, x86-64
+| No host OS
+| Windows, Linux
+| Full product is proprietary, a few components are GPL version 2
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 2007
+| [[Connectix]] & [[Microsoft]]
+| x86, x86-64
+| x86
+| [[Windows Vista]] (Business, Enterprise, Ultimate), XP Pro, XP Tablet PC Edition
+| DOS, Windows, OS/2, Linux (SUSE, Xubuntu), OpenSolaris (Belenix)
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Windows Virtual PC]]
+| [[Connectix]] & [[Microsoft]]
+| x86, x86-64 with Intel VT-x or AMD-V
+| x86
+| Windows 7
+| Windows XP, Windows Vista, Windows 7, Windows Server 2003, Windows Server 2008
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 7 for Mac
+| [[Connectix]] & [[Microsoft]]
+| PowerPC
+| x86
+| <span class="nowrap">Mac OS X</span>
+| Windows, OS/2, Linux
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VirtualLogix]] VLX
+| [[VirtualLogix]]
+| ARM, TI DSP C6000, x86, [[Intel VT-x]], [[Intel VT-d]], PowerPC
+| Same as host
+| No host OS
+| [[Linux]], [[Windows XP]], C5, [[VxWorks]], Nucleus, [[DSP/BIOS]], proprietary
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Microsoft Virtual Server|Virtual Server]] 2005 R2
+| [[Connectix]] & [[Microsoft]]
+| x86, x86-64
+| x86, x86-64
+| Windows Server 2003, 2008, XP (Requires IIS)
+| Windows NT, 2000, 2003, 2008, Linux (Red Hat, SUSE, Ubuntu)
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[CoWare|Synopsys (CoWare)]] [[Virtual Platform]]
+| [[CoWare]]
+| x86, x86-64, SPARC v9
+| Devices including (multi) cores from [[ARM architecture|ARM]], [[MIPS architecture|MIPS]], [[PowerPC]], [[Toshiba]] [[MeP]], [[Renesas]] SH, [[Texas Instruments]], [[Tensilica]], [[ZSP]]
+| Windows, Linux, Solaris
+| Depends on guest CPU; includes: [[Linux]] (various flavors), [[µITRON]] (various flavors), [[Windows CE]], [[Symbian]], more
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Virtuozzo]]
+| [[SWsoft]], now [[Parallels, Inc.]]
+| x86, [[Itanium|IA-64]], x86-64
+| x86, IA-64, x86-64
+| Linux, Windows
+| Linux, Windows
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware ESX Server]]
+| [[VMware]]
+| x86, x86-64
+| x86, x86-64
+| No host OS
+| Windows, Linux, Solaris, FreeBSD, [[OSx86]] (as FreeBSD), [[virtual appliance]]s, Netware, OS/2, SCO, BeOS, [[Haiku (operating system)|Haiku]], [[Darwin (operating system)|Darwin]], others: runs arbitrary OS
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware ESXi]]
+| [[VMware]]
+| x86, x86-64
+| x86, x86-64
+| No host OS
+| Same as VMware ESX Server
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware Fusion]]
+| [[VMware]]
+| x86, x86-64
+| x86, x86-64
+| <span class="nowrap">Mac OS X</span> x86
+| Same as VMware ESX Server
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware Server]]
+| [[VMware]]
+| x86, x86-64
+| x86, x86-64
+| Windows, Linux
+| Same as VMware ESX Server
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware Workstation]] 10.0.2
+| [[VMware]]
+| x86, x86-64
+| x86, x86-64
+| Windows, Linux
+| Same as VMware ESX Server
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[VMware Player]] 6.0.2
+| [[VMware]]
+| x86-64
+| x86, x86-64
+| Windows, Linux
+| Same as VMware ESX Server
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|Proprietary, free of charge for personal non-commercial use
+|-
+![[Wind River Systems|Wind River]] Hypervisor
+| [[Wind River Systems|Wind River]]
+| x86, x86-64, PowerPC, ARM
+| Same as host
+| No host OS
+| Linux, VxWorks, unmodified guests (including MS Windows and RTOSes such ach OSE, QNX and others), bare metal virtual board
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Wind River Systems|Wind River]] VxWorks MILS Platform
+| [[Wind River Systems|Wind River]]
+| PowerPC
+| Same as host
+| No host OS
+| VxWorks, bare metal virtual board
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+! [[Xen]]
+| [[Xensource, Now Citrix System]]
+| x86, x86-64, ARM, IA-64 (inactive), PowerPC (inactive)
+| Same as host
+| Linux, NetBSD, Solaris, MiniOS
+| FreeBSD, Linux, MiniOS, NetBSD, Solaris, Windows XP & 2003 Server (needs vers. 3.0 and an [[Intel VT-x]] (Vanderpool) or [[AMD-V]] (Pacifica)-capable CPU), [[Plan 9 from Bell Labs|Plan 9]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[XtratuM]]
+| [[Universidad Politecnica de Valencia]]
+| x86, x86; SPARC v8 LEON2/3
+| Same as host
+| No host OS
+| GPOS: Linux, RTOS: PartiKle, RTEMS
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+|-
+! [[z/VM]]
+| [[IBM]]
+| [[z/Architecture]]
+| z/Architecture, z/VM does not run on predecessor mainframes
+| No host OS, itself (single or multiple levels/versions deep, e.g. VM/ESA running in z/VM 4.4 in z/VM 5.2 in z/VM 5.1.)
+| [[Linux on zSeries]], [[z/OS]], [[z/VSE]], [[z/TPF]], z/VM, [[VM/CMS]], [[MUSIC/SP]], [[OpenSolaris for System z]], predecessors
+| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|-
+!  z [[LPAR]]s
+| [[IBM]]
+| [[z/Architecture]]
+| z/Architecture
+| Integrated in firmware of [[System z]] mainframes
+| [[Linux on zSeries]], [[z/OS]], [[z/VSE]], [[z/TPF]], [[z/VM]], [[MUSIC/SP]], and predecessors
+| Integrated in firmware of [[System z]] mainframes
+|- class="sortbottom"
+! Name
+! Creator
+! Host CPU
+! Guest CPU
+! Host OS(s)
+! Guest OS(s)
+! License
+|}
+
+== Features ==
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|- class="sortbottom"
+! Name
+! Guest OS [[symmetric multiprocessing|SMP]] available
+! Runs arbitrary OS
+! Supported guest OS [[device driver|drivers]]
+! Method of operation
+! Typical use
+! Speed relative to host OS
+! Commercial support available
+|-
+! [[Solaris Zones|Containers]], or Zones
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, over 500-way on current systems
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Uses native device drivers
+| [[Operating system-level virtualization]]
+| Server consolidation with workload isolation, single workload containment, hosting, dev/test/prod
+| Near native
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Guest PC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[dynamic recompilation]] (guest calls trapping where supported)
+| Hobbyist, Developer, Business workstation
+| Slow <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (June 2013)">citation needed</span>]]</i>&#93;</sup>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Hyper-V]] Server 2008 R2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, up to 4 VCPUs per VM
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Virtualization
+| Server consolidation, service continuity, dev/test, desktop virtualization, cloud computing
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup><sup class="reference plainlinks nourlexpansion" id="ref_osvirt">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_osvirt]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenVZ]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Compatible
+| [[Operating system-level virtualization]]
+| Virtualized server isolation
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup><sup class="reference plainlinks nourlexpansion" id="ref_osvirt">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_osvirt]</sup>
+| ?
+|-
+! [[Kernel-based Virtual Machine|KVM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|AMD-V and Intel-VT-x]]
+| Virtualized server isolation, server/desktop consolidation, software development, cloud computing, other purposes
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup><sup class="reference plainlinks nourlexpansion" id="ref_osvirt">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_osvirt]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Linux-VServer]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Compatible
+| [[Operating system-level virtualization]]
+| Virtualized server isolation and security, server consolidation, cloud computing
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup><sup class="reference plainlinks nourlexpansion" id="ref_osvirt">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_osvirt]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Oracle VM|Oracle VM Server for x86]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] and hardware virtualization
+| Server consolidation and security, enterprise and business deployment
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Logical Domains|Oracle VM Server for SPARC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, but needs porting
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] and hardware virtualization
+| Server consolidation and security, enterprise and business deployment
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OVPsim]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| Full system simulation with optional component virtualization
+| Software development (early, embedded), advanced debug for single and multicore software, compiler and other tool development, computer architecture research, hobbyist
+| Depends on target architecture (full and slow hardware emulation for guests incompatible with host)<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with commercial license from Imperas
+|-
+! [[PikeOS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, but modifications required as [[paravirtualization]] is used
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]]
+| Safety and security critical [[embedded system]]s.
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[ScaleMP]] vSMP Foundation
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, up to 8,192 CPUs and 64 TB per VM<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server consolidation, Cloud computing
+| ?<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Simics]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Full system simulation of processors, MMUs, devices, disks, memories, networks, etc.
+| Software development, advanced debug for single and multicore software, compiler and other tool development, computer architecture research, bug transportation, automated testing, system architecture, long-term support of safety-critical systems, early hardware availability, virtual prototyping
+| Depends on host machine and target architecture. Runs at near-native speeds for x86-on-x86 using VT-x, cross-simulation of other architectures can be faster or slower than real-time depending on how fast the target is and how big the target is (number of processors, number of target machines, and how much the simulation can be parallelized)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Sun xVM]] Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] and porting or hardware virtualization
+| Servers, Development
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| Yes
+|-
+! [[SVISTA]] 2004
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| Hobbyist, Developer, Business workstation
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Trango Virtual Processors|TRANGO]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="reference plainlinks nourlexpansion" id="ref_patch">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_patch]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] and [[porting]] or hardware virtualization
+| Mob. phone, STB, routers, etc.
+| Near native<sup class="reference plainlinks nourlexpansion" id="ref_native">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_native]</sup><sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[User Mode Linux]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| special guest kernel+modules required
+| [[Porting]]
+| Developer (as a separate machine for a server or with X11 networking)
+| Non-significantly slower than native <sup class="reference plainlinks nourlexpansion" id="ref_native speed">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_native_speed]</sup> (all calls to kernel are proxied)<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Open Kernel Labs|OKL4 Microvisor]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, (either with para-virtualization or HW virtualization)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]], Hardware assisted virtualization
+| Mobile, embedded, security, safety critical, networking, legacy OS, etc.
+| Near native
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Oracle [[VirtualBox]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Business workstation, server consolidation, service continuity, developer, hobbyist
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with commercial license)
+|-
+! [[Virtual Iron]] 3.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, up to 8 way
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Native virtualization]]
+| Server consolidation, service continuity, dev/test
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 2007
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]], guest calls trapping where supported
+| Hobbyist, Developer, Business workstation
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup> with virtual machine additions
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Windows Virtual PC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Hardware virtualization]]
+| Developer, Business workstation, support for Compatibility with Windows XP applications
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup> with virtual machine additions
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 7 for Mac
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[dynamic recompilation]] (guest calls trapping where supported)
+| Hobbyist, Developer, Business workstation
+| Slow <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Microsoft Virtual Server|Virtual Server]] 2005 R2
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]] (guest calls trapping where supported)
+| Server, server farm
+| Up to near native with virtual machine additions but slower than with hypervisor due to proxied calls<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[CoWare]] [[Virtual Platform]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ( Same compiled Software image as for the real device)
+| Full-system virtualization (Processor Core ISA + Hardware + External connections)
+| Early embedded software development and integration (from driver to application), [[Multi-core]] software debugging and optimization
+| Depending on the system characteristics and the software itself, ranges from faster than real time to slow<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Virtuozzo]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Compatible
+| [[Operating system-level virtualization]]
+| Server consolidation, service continuity, disaster recovery, service providers
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware ESXi Server]] 5.5 (vSphere)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, add-on, up to 64 way
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server consolidation, service continuity, dev/test, cloud computing, business critical applications, Infrastructure as a Service [[IaaS]]
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware ESX Server]] 4.0 (vSphere)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, add-on, up to 8 way
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server consolidation, service continuity, dev/test, cloud computing
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware ESX Server]] 3.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, add-on, up to 4 way
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server consolidation, service continuity, dev/test
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! VMware ESX Server 2.5.3
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, add-on, 2 way
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server consolidation, service continuity, dev/test
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware Fusion]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Virtualization
+| Hobbyist, Developer, Tester, Business workstation
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2-way)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Server/desktop consolidation, dev/test
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware Workstation]] 6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2-way)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] ([[Virtual Machine Interface|VMI]]) and [[x86 virtualization|virtualization]]
+| Technical professional, advanced dev/test, trainer
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware Player]] 6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[x86 virtualization|Virtualization]]
+| Technical professional, advanced dev/test, trainer, end user on prebuilt machines
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Wind River Systems|Wind River]] hypervisor
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]], hardware assisted virtualization
+| Embedded, safety critical, secure
+| Up to near native<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (November 2010)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Wind River Systems|Wind River]] VxWorks MILS Platform
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]], hardware assisted virtualization
+| Embedded, [[Safety critical systems|safety critical]], secure
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Xen]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, v4.0.0: up to 128 VCPUs per VM
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No, bare hypervisor
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]] and porting or hardware virtualization. 
+| Virtualized server isolation, server/desktop consolidation, software development, cloud computing, other purposes. Xen powers most public cloud services and many hosting services, such as Amazon Web Services, Rackspace Hosting and Linode.
+| Up to native
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[XtratuM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Paravirtualization]]
+| Embedded, safety critical, secure
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[z/VM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, both real and virtual (guest perceives more CPUs than installed), incl. dynamic CPU provisioning and reassignment
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, but not required
+| Virtualization (among first systems to provide hardware assists)
+| Servers
+| Near Native<sup class="reference plainlinks nourlexpansion" id="ref_zvm_performance">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_zvm_performance]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+!  z [[LPAR]]s
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, both real and virtual (guest perceives more CPUs than installed), incl. dynamic CPU provisioning and reassignment; up to 64 real cores
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, but not required
+| [[Microcode]] and hardware hypervisor
+| Servers
+| Native: System z machines always run with at least one LPAR
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|- class="sortbottom"
+! Name
+! Guest OS [[symmetric multiprocessing|SMP]] available
+! Runs arbitrary OS
+! Supported guest OS [[device driver|drivers]]
+! Method of operation
+! Typical use
+! Speed relative to host OS
+! Commercial support available
+|}
+* <span class="citation wikicite" id="endnote_native"><b>[[#ref_native|^]]</b></span> Providing any virtual environment usually requires some overhead of some type or another. Native usually means that the virtualization technique does not do any CPU level virtualization (like Bochs), which executes code more slowly than when it is directly executed by a CPU. Some other products such as VMWare and Virtual PC use similar approaches to Bochs and QEMU, however they use a number of advanced techniques to shortcut most of the calls directly to the CPU (similar to the process that JIT compiler uses) to bring the speed to near native in most cases. However, some products such as coLinux, Xen, z/VM (in real mode) do not suffer the cost of CPU-level slowdowns as the CPU-level instructions are not proxied or executing against an emulated architecture since the guest OS or hardware is providing the environment for the applications to run under. However access to many of the other resources on the system, such as devices and memory may be proxied or emulated in order to broker those shared services out to all the guests, which may cause some slow downs as compared to running outside of virtualization.
+* <span class="citation wikicite" id="endnote_osvirt"><b>[[#ref_osvirt|^]]</b></span> OS-level virtualization is described as "native" speed, however some groups have found overhead as high as 3% for some operations, but generally figures come under 1%, so long as secondary effects do not appear.
+* <span class="citation wikicite" id="endnote_parav"><b>[[#ref_parav|^]]</b></span> See for a paper comparing performance of paravirtualization approaches (e.g. Xen) with OS-level virtualization
+* <span class="citation wikicite" id="endnote_patch"><b>[[#ref_patch|^]]</b></span> Requires patches/recompiling.
+* <span class="citation wikicite" id="endnote_zvm_performance"><b>[[#ref_zvm_performance|^]]</b></span>Exceptional for lightweight, [[paravirtualized]], single-user VM/CMS interactive shell: largest customers run several thousand users on even single prior models. For multiprogramming OSes like [[Linux on zSeries]] and [[z/OS]] that make heavy use of native supervisor state instructions, performance will vary depending on nature of workload but is near native. Hundreds into the low thousands of Linux guests are possible on a single machine for certain workloads.
+
+== Image type compatibility ==
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|-
+! Name
+
+! [[Disk image|floppy]]
+! [[ISO image|ISO]]
+! [[Directory (computing)|folders]] on host
+! physical disk / device
+! raw / flat (whole disk)
+! raw / flat ([[Disk partitioning|partition]])
+
+
+! hdd ([[Parallels Workstation|Parallels]])
+! [[qcow|QCOW]] ([[QEMU]])
+! [[qcow#qcow2|QCOW2]] ([[QEMU]])
+! QED ([[QEMU]])
+! [[VDI (file format)|VDI]] ([[VirtualBox]])
+! [[VHD (file format)|VHD]] ([[Connectix Virtual PC]])
+! VHDX ([[Hyper-V]])
+! [[VMDK]] ([[VMware Workstation|VMware]])
+
+
+|-
+! AlphaVM
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Bochs]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|v3, v4
+|-
+! [[Solaris Containers|Containers, or Zones]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Cooperative Linux]] (coLinux)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Charon (software)|CHARON]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Denali (operating system)|Denali]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[DOSBox]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Dosemu|DOSEMU]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[FreeBSD Jail]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Guest PC]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Sparse image|.sparseimage]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[GXemul]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Hercules emulator|Hercules]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Hyper-V]] (2008 R2)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Hyper-V]] (2012)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Hyper-V]] (2012 R2)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[iCore Virtual Accounts]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[HP Integrity Virtual Machines|Integrity Virtual Machines]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Java PC|JPC (Virtual Machine)]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Kernel-based Virtual Machine|KVM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Linux-VServer]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[LynxSecure]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[LXC]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Mac-on-Linux]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Mac-on-Mac]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[OpenVZ]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+!  [[Oracle VM|Oracle VM for x86]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Logical Domains|Oracle VM Server for SPARC]] (LDoms)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[OVPsim]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Parallels Desktop for Mac]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Parallels Workstation]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[PearPC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[PikeOS]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[PowerVM]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[QEMU]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[QEMU]] w/ [[kqemu]] module
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[QEMU]] w/ [[qvm86]] module
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! [[QuickTransit]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[ScaleMP]] vSMP Foundation
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[SIMH]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Simics]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Sun xVM]] Server
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[SVISTA]] 2004
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Trango Virtual Processors|TRANGO]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[User Mode Linux]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[VirtualBox]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|up to v2 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|read-only 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! [[Virtual Iron]] 3.1
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 2007
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Windows Virtual PC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Microsoft Virtual PC|Virtual PC]] 7 for Mac
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[VirtualLogix]] VLX
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Microsoft Virtual Server|Virtual Server]] 2005 R2
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[CoWare|Synopsys (CoWare)]] [[Virtual Platform]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Virtuozzo]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[VMware ESX Server]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[VMware ESXi]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[VMware Fusion]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! [[VMware Server]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! [[VMware Workstation]] 7.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+! [[VMware Player]] 3.1
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|-
+![[Wind River Systems|Wind River]] Hypervisor
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Wind River Systems|Wind River]] VxWorks MILS Platform
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[Xen]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[XtratuM]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+! [[z/VM]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|-
+!  z [[LPAR]]s
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+|- class="sortbottom"
+! Name
+! [[Disk image|floppy]]
+! [[ISO image|ISO]]
+! [[Directory (computing)|folders]] on host
+! physical disk / device
+! raw / flat (whole disk)
+! raw / flat ([[Disk partitioning|partition]])
+! hdd ([[Parallels Workstation|Parallels]])
+! [[qcow|QCOW]] ([[QEMU]])
+! [[qcow#qcow2|QCOW2]] ([[QEMU]])
+! QED ([[QEMU]])
+! [[VDI (file format)|VDI]] ([[VirtualBox]])
+! [[VHD (file format)|VHD]] ([[Connectix Virtual PC]])
+! VHDX ([[Hyper-V]])
+! [[VMDK]] ([[VMware Workstation|VMware]])
+|}
+
+== Other features ==
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|- class="sortbottom"
+! Name
+! Can boot an OS on another disk partition as guest
+! USB support
+! GUI
+! Live memory allocation
+! 3D acceleration
+! [[Snapshot (virtualization)|Snapshots]] per VM 
+! Snapshot of running system
+! Live migration
+! Shared folders
+! Shared clipboard
+! PCI passthrough
+|-
+! [[Kernel-based Virtual Machine|KVM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via [[AIGLX]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[User Mode Linux]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| N/A
+| 
+|-
+! [[DosBox]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|SVN builds only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Glide (SVN builds only)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! Oracle [[VirtualBox]] (formerly OSE, GPLv2)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|USB 1.1 only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Linux only
+|-
+! Oracle [[VirtualBox]] with ''Extension Pack'' and ''Guest Additions'' (PUEL)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|USB 2.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| OpenGL 2.0 and Direct3D 8/9
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Linux only
+|-
+! [[Logical Domains|Oracle VM Server for SPARC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|USB 2.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Guest PC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ? 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|-
+! [[Open Kernel Labs|OKL4 Microvisor]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| VMs only
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Static assignment
+|-
+! [[Virtual Iron]] 4.2
+|
+|
+|
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| 
+|-
+! [[Virtual PC]] 2007
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+! [[Windows Virtual PC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|partially
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+! [[VirtualPC]] 7 for Mac
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+! [[Microsoft Virtual Server]] 2005 R2
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| 
+|-
+! [[Hyper-V|Microsoft Hyper-V Server]] 2008 R2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial support over remote desktop connections <sup class="reference plainlinks nourlexpansion" id="ref_Hyper-V-USBRedirection">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_Hyper-V-USBRedirection]</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|DirectX 9.0c <sup class="reference plainlinks nourlexpansion" id="ref_Hyper-V-3DAcceleration">[//en.wikipedia.org/wiki/Special:ExpandTemplates#endnote_Hyper-V-3DAcceleration]</sup> (via [[RemoteFX]])
+| branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Virtuozzo]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| 
+|-
+! [[VMware ESX Server]] 3.0 atp
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware ESX Server]] 2.5.3
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| 
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware ESX Server]] 4.0 (vSphere)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMware Fusion]] 2.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[DirectX]] 9 Shader model 2
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[VMware Server|1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+! [[VMware Workstation]] 5.5
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Experimental support for DirectX 8; also supported with VMGL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware Workstation]] 6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Experimental support for DirectX 8; Also supported with VMGL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware Workstation]] 7.0 and 8.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Support for DirectX 9.0c Shader Model 3 and OpenGL 2.13D.
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes branched
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[VMware Player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| supported with VMGL
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Wind River Systems|Wind River]] hypervisor
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| 
+|-
+! [[Wind River Systems|Wind River]] VxWorks MILS Platform
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+| 
+| 
+| 
+|-
+! [[Xen]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Supported with VMGL
+| ? 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[z/VM]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Not applicable
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (zURM/HMC)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Not applicable
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2011)
+| 
+| Not applicable
+| Not applicable
+|-
+! z [[LPAR]]s
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Not applicable
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (HMC)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Not applicable
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2007)
+| 
+| Not applicable
+| Not applicable
+|-
+! [[Solaris Zones|Zones]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+|- class="sortbottom"
+! Name
+! Can boot an OS on another disk partition as guest
+! USB
+! GUI
+! Live memory allocation
+! 3D acceleration
+! Snapshots per VM
+! Snapshot of running system
+! Live migration
+! Shared folders
+! Shared clipboard
+! PCI passthrough
+|}
+* <span class="citation wikicite" id="endnote_Hyper-V-USBRedirection"><b>[[#ref_Hyper-V-USBRedirection|^]]</b></span> Windows Server 2008 R2 SP1 and Windows 7 SP1 have limited support for redirecting the USB protocol over [[Remote Desktop Protocol|RDP]] using [[RemoteFX]].
+* <span class="citation wikicite" id="endnote_Hyper-V-3DAcceleration"><b>[[#ref_Hyper-V-3DAcceleration|^]]</b></span> Windows Server 2008 R2 SP1 adds accelerated graphics support for certain editions of Windows Server 2008 R2 SP1 and Windows 7 SP1 using RemoteFX.
+
+== Restrictions ==
+This table is meant to outline restrictions in the software dictated by licensing or capabilities.
+
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|-
+! Name
+! Maximum host cores / CPUs
+! Maximum host memory
+! Maximum host disk volume size
+! Maximum number of guest VM running
+! Maximum number of logical CPU per VM guest
+! Maximum amount of memory per VM guest
+! Maximum number of SCSI + IDE disks per VM guest
+! Maximum disk size per VM guest
+|-
+! [[Solaris Containers|Containers, or Zones]]
+| 144 cores / 72 CPUs
+| 4 TB
+| No limit
+| 8191
+| No limit
+| No limit
+| No limit
+| No limit
+|-
+! [[VMware Player]] 4.0
+| 4 cores
+| No limit
+| N/A
+| ?
+| 8
+| 8 GB (32-bit); 64 GB (64-bit)
+| ?
+| 2 TB
+|-
+! [[VMware Server]] 2.0
+| 16 CPUs
+| No limit
+| N/A
+| 64
+| 2
+| 8 GB
+| 4 IDE; 60 SCSI
+| 950 GB
+|-
+! [[VMware vSphere]] Hypervisor (ESXi) 4.1
+| 160 logical cores
+| 1 TB
+| 2 TB minus 512 bytes
+| 320
+| 8
+| 255 GB
+| 4 IDE; 60 SCSI
+| 2 TB minus 512 bytes
+|-
+! VMware vSphere ESXi 5.0
+| 160 logical cores
+| 2 TB
+| 64 TB
+| 512
+| 32
+| 1 TB
+| 4 IDE; 60 SCSI
+| 2 TB minus 512 bytes
+|-
+! VMware vSphere Hypervisor (ESXi 5.5) (free)
+| 16 NUMA Nodes / 320 logical CPUs
+| 4 TB
+| Depending on filesystem
+| 512
+| 8
+| 1 TB
+| 4 IDE; 60 SCSI
+| 62 TB
+|-
+! [[VMware vSphere]] Hypervisor (ESXi 5.5)
+| 16 NUMA Nodes / 320 logical CPUs
+| 4 TB
+| Depending on filesystem
+| 512
+| 64
+| 1 TB
+| 4 IDE; 60 SCSI
+| 62 TB
+|-
+! [[VirtualBox]] 4.1.x
+| 256 logical cores (Windows version limited to 64)
+| No limit
+| No limit
+| No limit
+| 32
+| 1 TB
+| 4 IDE; no limit for SATA, SCSI, SAS
+| 2 TB
+|-
+! Hyper-V Server 2008 R2
+| 64 cores / 8 CPUs
+| 1 TB
+| No limit
+| 384
+| 4
+| 64 GB
+| 4 IDE; 256 SCSI
+| 2 TB
+|-
+! Hyper-V Server 2012
+| 320 cores / 64 CPUs
+| 4 TB
+| No limit
+| 1024
+| 64
+| 1 TB
+| 4 IDE; 256 SCSI
+| 64 TB
+|}
+
+Note: No limit means no enforced limit. For example, a VM with 1 TB of memory cannot fit in a host with only 8 GB memory and no memory swap disk, so it will have a limit of 8 GB physically.
+
+==See also==
+* [[List of computer system emulators]]
+* [[Comparison of application virtualization software]]
+* [[Popek and Goldberg virtualization requirements]]
+* [[Virtual DOS machine]]
+* [[x86 virtualization]]
+
+==Notes==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="notes"></references></div>
+
+==References==
+<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+* [http://virt.kernelnewbies.org/TechComparison Technical comparison of Linux virtualization technologies].
+* [http://www.unix.com/answers-frequently-asked-questions/16634-unix-environments-ms-windows.html Unix for Windows FAQ] at Unix.com
+
+[[Category:Software comparisons|Platform virtualization software]]
+[[Category:Virtualization software| ]]
+
+[[zh:虛擬機器#虛擬機器比較]]

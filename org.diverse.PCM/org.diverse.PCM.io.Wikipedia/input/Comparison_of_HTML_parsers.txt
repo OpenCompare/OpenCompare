@@ -1,0 +1,179 @@
+[[Parsing]] HTML is an automated task, performed by (so called) '''HTML parsers'''. They have two main purposes: 
+* HTML traversal: offer an interface for programmers to easily access and modify of the "HTML string code".  Canonical example: [[Document Object Model#Libraries|DOM parsers]].
+* HTML clean:  to fix invalid HTML and to improve the layout and indent style of the resulting markup. Canonical example: [[HTML Tidy]].
+
+{| class="wikitable sortable" style="width: auto; font-size: smaller"
+|-
+! Parser
+! [[software license|License]]
+! Implementation language(s)
+! Latest date*
+! HTML Parsing
+! Clean HTML**
+! Update HTML***
+|-
+| [http://htmlagilitypack.codeplex.com/ Html Agility Pack]
+| [[Microsoft Public License]]
+| [[C Sharp (programming language)|C#]]
+| 2012-08-07
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+| [[Beautiful Soup]] (base on lxml and html5lib)
+| [[Python Software Foundation License|Python S. F. L.]]
+| [[Python (programming language)|Python]]
+| 2013-05-31
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+| [https://github.com/google/gumbo-parser Gumbo]
+| [[Apache License 2.0]]
+| [[C (programming language)|C]]
+| 2013-08-13
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+| [https://github.com/html5lib/html5lib-python html5lib]
+| [[MIT License]]
+| [[Python (programming language)|Python]] and [[PHP]]
+| 2013-12-23
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [https://metacpan.org/module/HTML::Parser HTML::Parser]
+| [[Perl license]]
+| [[Perl]]
+| 2013-03-28
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+
+|-
+| [http://htmlpurifier.org/ htmlPurifier]
+| [[GNU Lesser General Public License|GNU Lesser GPL]]
+| [[PHP]]
+| 2009-03-25
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+|-
+| [[HTML Tidy]]
+| [[W3C license]]
+| [[ANSI C]]
+| 2009-03-25
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+
+|-
+| [http://htmlcleaner.sourceforge.net/ HtmlCleaner]
+| [[BSD License]]
+| [[Java (programming language)|Java]]
+| 2013-09-05
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+| [http://www.netsurf-browser.org/projects/hubbub/ Hubbub]
+| [[MIT License]]
+| [[C (programming language)|C]]
+| 2013-04-19
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+| [http://jaunt-api.com/ Jaunt API]
+| [[Jaunt Beta License]]
+| [[Java (programming language)|Java]]
+| 2013-08-01
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+| [http://jerichohtml.sourceforge.net/ Jericho HTML Parser]
+| [[Eclipse Public License]]
+| [[Java (programming language)|Java]]
+| 2012-10-30
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No??
+| ?
+| ?
+|-
+| [https://npmjs.org/package/jsdom jsdom]
+| [[MIT license]]
+| [[JavaScript]]
+| 2013-07-21
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+| [http://jsoup.org/ jsoup]
+| [[MIT license]]
+| [[Java (programming language)|Java]]
+| 2013-11-18
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+| [http://jtidy.sourceforge.net/ JTidy]
+| [http://jtidy.sourceforge.net/license.html JTidy License]
+| [[Java (programming language)|Java]]
+| 2012-10-09
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+| [[libxml2]] [http://www.xmlsoft.org/html/libxml-HTMLparser.html HTMLparser]
+| [[MIT License]]
+| [[C (programming language)|C]]
+| 2012-09-11
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+| [http://nekohtml.sourceforge.net/ NekoHTML]
+| [[Apache License 2.0]]
+| [[Java (programming language)|Java]]
+| 2013-02-27
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+| [http://ccil.org/~cowan/XML/tagsoup/ TagSoup]
+| [[Apache License 2.0]]
+| [[Java (programming language)|Java]]
+| 2011-07-07
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+| [http://about.validator.nu/htmlparser/ Validator.nu HTML Parser]
+| [[MIT License]]
+| [[Java (programming language)|Java]]
+| 2012-06-05
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|- class="sortbottom"
+! Parser
+! [[software license|License]]
+! Implementation language(s)
+! Latest date*
+! HTML Parsing
+! Clean HTML**
+! Update HTML***
+|}
+: * Latest release (of significant changes) date.
+: ** ''sanitize'' (generating standard-compatible web-page, reduce spam, etc.) and ''clean'' (strip out surplus presentational tags,  remove XSS code, etc.) HTML code.
+: *** Updates HTML4.X to XHTML or to HTML5, converting deprecated tags (ex. CENTER) to valid ones (ex. DIV with <tt>style="text-align:center;"</tt>). 
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+[[Category:HTML]]
+[[Category:Comparisons]]

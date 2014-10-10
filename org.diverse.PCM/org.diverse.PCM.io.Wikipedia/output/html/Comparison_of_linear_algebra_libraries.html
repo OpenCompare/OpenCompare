@@ -1,0 +1,365 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>General information</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> Creator </td>
+          <td> Language </td>
+          <td> First public release </td>
+          <td> Latest stable version </td>
+          <td> Cost (USD) </td>
+          <td> License </td>
+          <td> Notes </td>
+        </tr>
+        <tr>
+          <td> ALGLIB </td>
+          <td> Sergey Bochkanov </td>
+          <td> C++, C#, FreePascal, VBA </td>
+          <td> 2006 </td>
+          <td> 2.6.0 / 06.2010 </td>
+          <td> Free </td>
+          <td> GPL </td>
+          <td>
+            General purpose numerical analysis library. Uses automatic code generation to support several programming languages.
+          </td>
+        </tr>
+        <tr>
+          <td> ATLAS </td>
+          <td> R. Clint Whaley et al. </td>
+          <td> C </td>
+          <td> 2001 </td>
+          <td> 3.8.3 / 02.2009 </td>
+          <td> Free </td>
+          <td> BSD </td>
+          <td>
+            Automatically tuned implementation of BLAS. Also includes LU and Cholesky decompositions.
+          </td>
+        </tr>
+        <tr>
+          <td> FinMath </td>
+          <td> RTMath </td>
+          <td> C / C# </td>
+          <td> October 2011 </td>
+          <td> 1.4.28.00 / 03.2013 </td>
+          <td> Non-free </td>
+          <td> Proprietary </td>
+          <td> General purpose numerical library for .NET. </td>
+        </tr>
+        <tr>
+          <td> GNU Scientific Library </td>
+          <td> GNU Project </td>
+          <td> C </td>
+          <td> 1996 </td>
+          <td> 1.16 / 07.2013 </td>
+          <td> Free </td>
+          <td> GPL </td>
+          <td>
+            General purpose numerical analysis library. Includes some support for linear algebra.
+          </td>
+        </tr>
+        <tr>
+          <td> IMSL Numerical Libraries </td>
+          <td> Rogue Wave Software </td>
+          <td> C, Java, C#, Fortran, Python </td>
+          <td> 1970 </td>
+          <td> many components </td>
+          <td> Non-free </td>
+          <td> Proprietary </td>
+          <td> General purpose numerical analysis library. </td>
+        </tr>
+        <tr>
+          <td> LAPACK </td>
+          <td> </td>
+          <td> Fortran </td>
+          <td> 1992 </td>
+          <td> 3.4.0 / 11.2011 </td>
+          <td> Free </td>
+          <td> 3-clause BSD </td>
+          <td> Numerical linear algebra library with long history </td>
+        </tr>
+        <tr>
+          <td> MKL </td>
+          <td> Intel </td>
+          <td> C++, Fortran </td>
+          <td> 2003 </td>
+          <td> 10.3 update 8 / 2011 </td>
+          <td> Non-free </td>
+          <td> Proprietary </td>
+          <td> Numerical analysis library optimized for Intel CPUs </td>
+        </tr>
+        <tr>
+          <td> NAG Numerical Library </td>
+          <td> The Numerical Algorithms Group </td>
+          <td> C, Fortran </td>
+          <td> 1971 </td>
+          <td> many components </td>
+          <td> Non-free </td>
+          <td> Proprietary </td>
+          <td> General purpose numerical analysis library. </td>
+        </tr>
+        <tr>
+          <td> NMath </td>
+          <td> CenterSpace Software </td>
+          <td> C# </td>
+          <td> 2003 </td>
+          <td> 4.0 / November 2009 </td>
+          <td> Non-free </td>
+          <td> Proprietary </td>
+          <td> Math and statistical libraries for the .NET Framework </td>
+        </tr>
+        <tr>
+          <td> SciPy </td>
+          <td> Enthought </td>
+          <td> Python </td>
+          <td> </td>
+          <td> 0.8.0 / 2010 </td>
+          <td> Free </td>
+          <td> BSD </td>
+          <td> based on Python </td>
+        </tr>
+        <tr>
+          <td> Eigen </td>
+          <td> Benoît Jacob </td>
+          <td> C++ </td>
+          <td> 2008 </td>
+          <td> 3.2 / 2013 </td>
+          <td> Free </td>
+          <td> MPL2 </td>
+          <td>
+            Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+          </td>
+        </tr>
+        <tr>
+          <td> Armadillo </td>
+          <td> NICTA </td>
+          <td> C++ </td>
+          <td> 2009 </td>
+          <td> 3.900 / 2013 </td>
+          <td> Free </td>
+          <td> MPL2 </td>
+          <td>
+            C++ template library for linear algebra; includes various decompositions and factorisations; syntax (API) is similar to MATLAB.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Matrix types and operations</h1>
+      <table border="1">
+        <tr>
+          <td> </td>
+          <td> Real </td>
+          <td> Complex </td>
+          <td> SPD </td>
+          <td> HPD </td>
+          <td> SY </td>
+          <td> HE </td>
+          <td> BND </td>
+          <td> TF </td>
+          <td> OF </td>
+          <td> EVD </td>
+          <td> SVD </td>
+          <td> GEVD </td>
+          <td> GSVD </td>
+        </tr>
+        <tr>
+          <td> ALGLIB </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> ATLAS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GNU Scientific Library </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> FinMath </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> ILNumerics.Net </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> IMSL Numerical Libraries </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> LAPACK </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> MKL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> NAG Numerical Library </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> NMath </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SciPy (Python packages) </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Eigen </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

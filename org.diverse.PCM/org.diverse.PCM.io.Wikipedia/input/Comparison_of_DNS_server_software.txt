@@ -1,0 +1,682 @@
+This article presents a '''comparison''' of the features, platform support, and packaging of independent implementations of [[Domain Name System]] ('''DNS''') '''[[name server]] software'''.
+
+== Servers compared ==
+Each of these [[Domain Name System|DNS]] servers is an independent implementation of the DNS protocols, capable of resolving DNS names for other computers, publishing the DNS names of computers, or both. Excluded from consideration are single-feature DNS tools (such as proxies, filters, and firewalls) and redistributions of servers listed here (many products repackage BIND, for instance, with proprietary user interfaces).
+
+DNS servers are grouped into several categories of specialization of servicing domain name system queries.  The two principal roles, which may be implemented either uniquely or combined in a given product are:
+* '''Authoritative server''': [[authoritative name server]]s publish DNS mappings for domains under their ''authoritative'' control. Typically, a company (e.g. "Acme Example Widgets") would provide its own authority services to respond to address queries, or for other DNS information, for ''www.example.int''.  These servers are listed as being at the top of the authority chain for their respective domains, and are capable of providing a definitive answer.  Authoritative name servers can be ''primary name servers'', also known as ''master'' servers, i.e. they contain the original set of data, or they can be ''secondary'' or ''slave name servers'', containing data copies usually obtained from synchronization directly with the master server, either via a DNS mechanism, or by other data store synchronization mechanisms.
+* '''Recursive Servers''': [[Domain Name System#Recursive and caching name server|recursive servers]] (sometimes called "DNS caches", "caching-only name servers") provide DNS name resolution for applications, by relaying the requests of the client application to the chain of authoritative name servers to fully resolve a network name. They also (typically) cache the result to answer potential future queries within a certain expiration ([[Time to live|time-to-live]]) period. Most Internet users access a ''recursive server'' provided by their internet service provider to locate internet [[Host (network)|hosts]] such as ''[[example.com|www.example.com]]''.
+
+=== [[BIND]] ===
+BIND is the ''[[de facto standard]]'' DNS server. It is a [[free software]] product and is distributed with most Unix and Linux platforms, where it is most often also referred to as ''named'' (name daemon). It is the most widely deployed DNS server. Historically, BIND underwent three major revisions, each with significantly different architectures: BIND4, BIND8, and BIND9. BIND4 and BIND8 are now technically obsolete and not considered in this article. BIND9 is a ground-up rewrite of BIND featuring complete [[Domain Name System Security Extensions|DNSSEC]] support in addition to other features and enhancements.
+
+[[Internet Systems Consortium]] started development of a new version, BIND 10.  Its first release was in April 2010, but ISC involvement concluded with the release of BIND 10 version 1.2 in April 2014.  ISC cited a lack of resources to continue development of BIND 10, and they reaffirmed their commitment to BIND9.
+
+The BIND 10 codebase continues on as an open source project at http://bundy-dns.de/ (''ibid''.)  It is not included in this comparison at this time.
+
+=== [[Dnsmasq]] ===
+Dnsmasq is a lightweight, easy to configure DNS forwarder, designed to provide DNS (and optionally [[Dynamic Host Configuration Protocol|DHCP]] and [[Trivial File Transfer Protocol|TFTP]]) services to a small-scale network. It can serve the names of local machines which are not in the global DNS.
+
+Dnsmasq accepts DNS queries and either answers them from a small, local cache or forwards them to a real, recursive DNS server. It loads the contents of [[Hosts (file)|/etc/hosts]], so that local host names which do not appear in the global DNS can be resolved.
+
+=== [[djbdns]] ===
+Djbdns is a collection of DNS applications, including ''tinydns'', which was the second most used [[free software]] DNS server in 2004. It was designed by [[Daniel J. Bernstein]], author of [[qmail]], with an emphasis on security considerations. In March 2009, Bernstein paid $1000 to the first person finding a security hole in djbdns. The [[Source code]] is not centrally maintained and was released into the public domain in 2007. As of March 2009, there are three [[Fork (software development)|forks]] and more than a dozen [[Patch (computing)|patches]] to add additional features to djbdns<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2012)">citation needed</span>]]</i>&#93;</sup>.
+
+=== [[Simple DNS Plus]] ===
+Simple DNS Plus is a commercial DNS server product that runs under Microsoft Windows with an emphasis on a simple-to-use [[GUI]].
+
+=== [[NSD]] ===
+NSD is a [[free software]] authoritative server provided by NLNet Labs. NSD is a test-bed server for DNSSEC; new DNSSEC protocol features are often prototyped using the NSD code base. NSD hosts several [[top-level domain]]s, and operates three of the [[root nameserver]]s.
+
+=== [[Knot DNS]] ===
+Knot DNS is a [[free software]] authoritative DNS server by [[CZ.NIC]]. Knot DNS aims to be a fast, resilient DNS server usable for infrastructure (root and TLD) and [[DNS]] hosting services.  Knot DNS supports [[DNSSEC]] signing and hosts several [[top-level domain]]s and DNS hostings.
+
+=== [[PowerDNS]] ===
+PowerDNS is a [[free software]] DNS server with a variety of data storage back-ends and load balancing features. Authoritative and recursive server functions are implemented as separate applications.
+
+=== [[MaraDNS]] ===
+MaraDNS is a [[free software]] DNS server by Sam Trenholme that claims a good security history and ease of use.
+
+In order to change any DNS records, MaraDNS needs to be restarted. Like djbdns dnscache, the MaraDNS 2.0 stand-alone recursive resolver ("Deadwood") does not use threads.
+
+=== [[Nominum Authoritative Name Server|Nominum Authoritative Name Server (ANS)]] ===
+ANS is a commercial authoritative server from [[Nominum]], a company whose chief scientist and chairman is [[Paul Mockapetris]], the inventor of the DNS. ANS was designed to meet the needs of [[Top Level Domain|top level domain]] servers, hosters and large enterprises.
+
+=== [[Nominum Vantio]] ===
+Vantio is a commercial high-performance recursive caching server from [[Nominum]], intended as a fast, secure alternative to BIND for service providers, enterprises, and government agencies.
+
+=== [[Posadis]] ===
+Posadis is a [[free software]] DNS server, written in C++, featuring [[Dynamic DNS]] update support.
+
+=== [[Unbound (DNS Server)|Unbound]] ===
+Unbound is a validating, recursive and caching DNS server designed for high-performance. It was released May 20, 2008 (version 1.0.0) in form of [[free software]] software licensed under the BSD license by NLnet Labs, Verisign Inc., Nominet, and Kirei.  It is installed as part of the base system in [[FreeBSD]] version 10.0 and beyond.  (Previous versions of FreeBSD shipped with BIND.)
+
+=== [[pdnsd]] ===
+Pdnsd is a caching DNS proxy server that stores cached DNS records on disk for long term retention. Pdnsd is designed to be highly adaptable to situations where net connectivity is slow, unreliable, unavailable, or highly dynamic, with limited capability of acting as an authoritative nameserver. It is licensed under the [[GPL]].
+
+=== [[Cisco Network Registrar]] ===
+CNR includes a commercial DNS server from [[Cisco Systems]] usually used in conjunction with the CNR DHCP ([[Dynamic Host Configuration Protocol]]) server.  It supports high rates of dynamic update.
+
+=== Domain Name Relay Daemon (dnrd) ===
+Domain Name Relay Daemon [http://dnrd.sourceforge.net/] is a [[Domain Name System#Recursive and caching name server|caching, forwarding]] DNS proxy server. Most useful on [[Virtual private network|vpn]] or [[dialup]] firewalls but it is also a nice DNS cache for minor networks and workstations. Licensed under [[GNU General Public License|GPL]].
+
+=== gdnsd ===
+gdnsd [https://github.com/blblack/gdnsd] is a [[GPL3]]-licensed Authoritative DNS server written in C using libev [http://software.schmorp.de/pkg/libev.html] and [[pthreads]] with a focus on high performance, low latency service. It does not offer any form of caching or recursive service, and does not support [[DNSSEC]]. The initial "g" stands for Geographic, as gdnsd offers a plugin system for geographic (or other sorts of) balancing, redirection, and service-state-conscious failover. If you don't care about that feature, you can ignore it and gdnsd still makes a great authoritative DNS server.
+
+=== [[YADIFA]] ===
+YADIFA [http://www.yadifa.eu/] is a BSD-licensed, memory-efficient DNS server written in C. The acronym YADIFA stands for ''Yet Another DNS Implementation For All''. It was created by [[EURid]], which operates the .eu top-level domain.
+
+=== Yaku-NS ===
+Yaku-NS [https://github.com/antirez/yaku-ns] is a [[GPL]]-licensed authoritative DNS server written in C, small footprint, trivial to configure. Features include forwarding to multiple external DNS servers, built-in ACL rules, root privileges squashing, chroot jail under unix systems and secure DNS IDs to prevent DNS forgery.
+
+== Features ==
+Some DNS features are relevant only to recursive servers, or to authoritative servers. As a result, a feature matrix such as the one in this article cannot by itself represent the effectiveness or maturity of a given implementation.
+
+Another important qualifier is the server architecture. Some DNS servers provide support for both server roles in a single, "monolithic" program. Others are divided into smaller programs, each implementing a subsystem of the server. As in the classic Computer Science [[microkernel]] debate, the importance and utility of this distinction is hotly debated. The feature matrix in this article does not discuss whether DNS features are provided in a single program or several, so long as those features are provided with the base server package and not with third-party add-on software.
+
+=== Explanation of features ===
+; Authoritative
+: A major category of DNS server functionality, see above.
+
+; Recursive
+: A major category of DNS server functionality, see above.
+
+; Recursion Access Control
+: Servers with this feature provide control over which hosts are permitted DNS recursive lookups. This is useful for load balancing and service protection.
+
+; Slave Mode
+: Authoritative servers can publish content that originates from primary data storage (such as zone files or databases connected to business administration processes)--such servers are also called 'master' servers--or can be ''slave'' or ''secondary'' servers, republishing content fetched from and synchronized with such master servers. Servers with a "slave mode" feature have a built-in capability to retrieve and republish content from other servers. This is typically, though not always, provided using the [[AXFR]] DNS protocol.
+
+; Caching
+: Servers with this feature provide recursive services for applications, and cache the results so that future requests for the same name can be answered quickly, without a full DNS lookup. This is an important performance feature, as it significantly reduces the latency of DNS requests.
+
+; DNSSEC
+: Servers with this feature implement some variant of the [[Domain Name System Security Extensions|DNSSEC]] protocols. They may publish names with resource record signatures (providing a "secure authority service"), and may validate those signatures during recursive lookups (providing a "secure resolver"). DNSSEC is becoming more widespread as the deployment of a DNSSEC root key has been done by ICANN.  Deployment to individual sites is growing as top level domains start to deploy DNSSEC too. The presence of DNSSEC features is a notable characteristic of a DNS server.
+
+; TSIG
+: Servers with this feature typically provide DNSSEC services. In addition, they support the [[TSIG]] protocol, which allows DNS clients to establish a secure session with the server to publish [[Dynamic DNS]] records or to request secure DNS lookups without incurring the cost and complexity of full DNSSEC support.
+
+; IPv6
+: Servers with this feature are capable of publishing or handling DNS records that refer to [[IPv6]] addresses. In addition to be fully IPv6 capable they must implement IPv6 transport protocol for queries and zone transfers in slave/master relationships and forwarder functions.
+
+; Wildcard
+: Servers with this feature can publish information for [[Wildcard DNS record|wildcard records]], which provide data about DNS names in DNS zones that are not specifically listed in the zone.
+
+; Split horizon
+: Servers with the [[split-horizon DNS]] feature can give different answers depending on the source IP address of the query.
+
+=== Feature matrix ===
+{| class="sortable wikitable" style="font-size: 85%; text-align: center; width: auto;"
+|-
+! style="width:20em" | Server
+! Authoritative
+! Recursive
+! Recursion [[Access control list|ACL]]
+! Slave mode
+! Caching
+! [[Domain Name System Security Extensions|DNSSEC]]
+! [[TSIG]]
+! [[IPv6]]
+! Wildcard
+! Free Software
+! Interface
+! [[Split-horizon DNS|split horizon]]
+|-
+! [[BIND]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 9.x)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 4.x)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Web<ref name="bind_web" group="Note"></ref>, command line
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[PowerDNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="powerdns_slave6" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.0) <ref name="powerdns_dnssec" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.0)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="powerdns_slave6" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="powerdns_views" group="Note"></ref>
+|-
+! [[djbdns]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="djbslave" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref name="djbdns_dnssec" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial via generic records. [http://www.fefe.de/dns/]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref name="djbdns_wild" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line and web (VegaDNS & [http://www.nictool.com/ NicTool])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="locations" group="Note"></ref>
+|-
+! [[dbndns]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line and web
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[pdnsd]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line, pdnsd-ctl program
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|-
+! [[MaraDNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref name="maraslave" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+|  style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+
+|-
+! [[Posadis]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line, API
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Unbound (DNS Server)|Unbound]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line, API
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Dnsmasq]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref name="masqauth" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.69) <ref name="masqdnssec" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref name="masqsplit" group="Note"></ref>
+
+|-
+! [[NSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Knot DNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! dnrd
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! gdnsd
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[YADIFA]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! yaku-ns
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| command line
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Microsoft DNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="msdns_dnssec" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="msdns_tsig" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="msdns_ipv6" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| GUI, command line, API<ref name="msdns_api" group="Note"></ref>, [[Windows Management Instrumentation|WMI]]<ref name="msdns_wmi" group="Note"></ref>, [[MSRPC|RPC]]<ref name="msdns_rpc" group="Note"></ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Simple DNS Plus]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| GUI, Web, command line
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="sdns_views" group="Note"></ref>
+|-
+! [[Nominum Authoritative Name Server|Nominum ANS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| command line, api, SOAP Interface, SNMP
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Nominum Vantio]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| command line, api, SOAP Interface, SNMP
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="width:20em" | Server
+! Authoritative
+! Recursive
+! Recursion [[Access control list|ACL]]
+! Slave mode
+! Caching
+! [[Domain Name System Security Extensions|DNSSEC]]
+! [[TSIG]]
+! [[IPv6]]
+! Wildcard
+! Free Software
+! Interface
+! [[Split-horizon DNS|split horizon]]
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Platforms ==
+In this overview of [[operating system]] support for the discussed DNS server, the following terms indicate the level of support:
+* ''No'' indicates that it does not exist or was never released.
+* ''Partial'' indicates that while it works, the server lacks important functionality compared to versions for other OSs; it is still being developed however.
+* ''Beta'' indicates that while a version is fully functional and has been released, it is still in development (e.g. for stability).
+* ''Yes'' indicates that it has been officially released in a fully functional, stable version.
+* ''Included'' indicates that the server comes pre-packaged with or has been integrated into the operating system.
+
+This compilation is not exhaustive, but rather reflects the most common platforms today.
+
+{| class="sortable wikitable" style="font-size: 85%; text-align: center; width: auto;"
+|-
+! style="width:20em" | Server
+! [[Berkeley Software Distribution|BSD]]
+! [[Solaris (operating system)|Solaris]]
+! [[Linux]]
+! [[Mac OS X]]
+! [[Microsoft Windows|Windows]]
+|-
+! [[BIND]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="ntbind" group="Note"></ref>
+|-
+! [[Microsoft DNS]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #DDFBFF; color: black; vertical-align: middle; text-align: center; " class="included table-included"|Included<ref name="msdns_included_functionality" group="Note"></ref>
+|-
+! [[djbdns]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Dnsmasq]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Simple DNS Plus]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[NSD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Knot DNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[PowerDNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [http://www.solaris4you.dk/dnsservSS.html]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MaraDNS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [http://www.solaris4you.dk/dnsservSS.html]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|-
+! [[pdnsd]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|-
+! [[Nominum Authoritative Name Server|Nominum ANS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Nominum Vantio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Posadis]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [http://posadis.sourceforge.net/]
+|-
+! [[Unbound (DNS Server)|Unbound]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Cisco Network Registrar]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! dnrd
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! gdnsd
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! yaku-ns
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+== Packaging ==
+{| class="sortable wikitable" style="font-size: 85%; text-align: center; width: auto;"
+|-
+! style="width:20em" | Server
+! Creator
+! Cost ([[United States dollar|USD]])
+! Public source code
+! [[Software license]]
+|-
+! [[BIND]]
+| [[Internet Systems Consortium]]
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[BSD license|BSD]]
+|-
+! [[Microsoft DNS]]
+| [[Microsoft]]
+| Included with [[Windows Server]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Clickwrap|Clickwrap license]]
+|-
+! [[djbdns]]
+| [[Daniel J. Bernstein]]
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Public domain]]
+|-
+! [[Dnsmasq]]
+| Simon Kelley
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! [[Simple DNS Plus]]
+| JH Software
+| $79 – $379
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Clickwrap|Clickwrap license]]
+|-
+! [[NSD]]
+| NLnet Labs
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[BSD licenses|BSD]] variant
+|-
+! [[Knot DNS]]
+| [[CZ.NIC]]
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! [[PowerDNS]]
+| PowerDNS.COM BV / [[Bert Hubert]]
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! [[MaraDNS]]
+| Sam Trenholme
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[BSD licenses|BSD]] variant
+|-
+! [[Nominum Authoritative Name Server|Nominum ANS]]
+| [[Nominum]]
+| Unpublished price
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Clickwrap|Clickwrap license]]
+|-
+! [[Nominum Vantio]]
+| [[Nominum]]
+| Unpublished price
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| [[Clickwrap|Clickwrap license]]
+|-
+! [[pdnsd]]
+| Thomas Moestl and Paul Rombouts
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! [[Posadis]]
+| Meilof Veeningen
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! [[Unbound (DNS Server)|Unbound]]
+| NLnet Labs
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[BSD license|BSD]]
+|-
+! gdnsd
+| Brandon Black
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|-
+! yaku-ns
+| Salvatore Sanfilippo
+| Free
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[GNU General Public License|GPL]]
+|}
+
+== See also ==
+*[[Comparison of DHCP server software]]
+* [[DNS management software]]
+
+== References ==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+== External links ==
+* [http://mydns.bboy.net/survey/ Don Moore's May 2004 DNS Internet survey]
+* [http://dns.measurement-factory.com/surveys/sum1.html The Measurement Factory DNS Survey Summary: April & June 2005]
+* [http://www.cs.cornell.edu/People/egs/beehive/dnssurvey.html Beehive/CoDoNS DNS Survey: July 2004]
+* [http://www.itu.int/itudoc/itu-t/workshop/cctld/cctld046.pdf ITU ccTLD DNS Survey]
+
+
+
+[[Category:Software comparisons|DNS server software]]
+[[Category:DNS software]]

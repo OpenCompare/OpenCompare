@@ -1,0 +1,368 @@
+
+
+This article compares [[Unicode]] encodings. Two situations are considered: [[8-bit-clean]] environments, and environments that forbid use of [[byte]] values that have the high bit set. Originally such prohibitions were to allow for links that used only seven data bits, but they remain in the standards and so software must generate messages that comply with the restrictions. [[Standard Compression Scheme for Unicode]] and [[Binary Ordered Compression for Unicode]] are excluded from the comparison tables because it is difficult to simply quantify their size.
+
+==Compatibility issues==
+A [[UTF-8]] file that contains only [[ASCII]] characters is identical to an ASCII file. Legacy programs can generally handle UTF-8 encoded files, even if they contain non-ASCII characters. For instance, the [[C (programming language)|C]] [[printf]] function can print a UTF-8 string, as it only looks for the ASCII '%' character to define a formatting string, and prints all other bytes unchanged, thus non-ASCII characters will be output unchanged.
+
+[[UTF-16]] and [[UTF-32]] are incompatible with ASCII files, and thus require [[Unicode]]-aware programs to display, print and manipulate them, even if the file is known to contain only characters in the ASCII subset. Because they contain many zero bytes, the strings cannot be manipulated by normal [[null-terminated string]] handling for even simple operations such as copy.
+
+Therefore, even on most UTF-16 systems such as [[Windows]] and [[Java (software platform)|Java]], UTF-16 text files are not common; older 8-bit encodings such as ASCII or [[ISO-8859-1]] are still used for text files without supporting all the characters of Unicode, or UTF-8 is used that does. One of the few counterexamples of a UTF-16 file is the "strings" file used by [[Mac OS X]] (10.3 and later) applications for lookup of internationalized versions of messages, these default to UTF-16 and "files encoded using UTF-8 are not guaranteed to work. When in doubt, encode the file using UTF-16". This is because the default string class in Mac OS X (NSString) stores characters in UTF-16.
+ 
+[[XML]] is, by default, encoded as UTF-8, and all XML processors must at least support UTF-8 (including US-ASCII by definition) and UTF-16.
+
+==Efficiency==
+[[UTF-8]] requires either 8, 16, 24 or 32 bits (one to four [[Octet (computing)|octets]]) to encode a Unicode character, [[UTF-16]] requires either 16 or 32 bits to encode a character, and [[UTF-32]] always requires 32 bits to encode a character. The first 128 Unicode [[code point]]s, U+0000 to U+007F, used for the [[C0 Controls and Basic Latin]] characters and which correspond one-to-one to their ASCII-code equivalents, are encoded using 8 bits in UTF-8, 16 bits in UTF-16, and 32 bits in UTF-32. The next 1,920 characters, U+0080 to U+07FF (encompassing the remainder of almost all [[Latin alphabets]], and also [[Greek alphabet|Greek]], [[Cyrillic script|Cyrillic]], [[Coptic alphabet|Coptic]], [[Armenian alphabet|Armenian]], [[Hebrew alphabet|Hebrew]], [[Arabic alphabet|Arabic]], [[Syriac alphabet|Syriac]], [[Tāna]] and [[N'Ko alphabet|N'Ko]]), require 16 bits to encode in both UTF-8 and UTF-16, and 32 bits in UTF-32. For U+0800 to U+FFFF, i.e. the remainder of the characters in the [[Basic Multilingual Plane]] (BMP, plane 0, U+0000 to U+FFFF), which encompasses the rest of the characters of most of the world's living languages, UTF-8 needs 24 bits to encode a character, while UTF-16 needs 16 bits and UTF-32 needs 32. Code points U+010000 to U+10FFFF, which represent characters in the [[Plane (Unicode)|supplementary planes]] (planes 1-16), require 32 bits in UTF-8, UTF-16 and UTF-32. All printable characters in [[UTF-EBCDIC]] use at least as many bytes as in UTF-8, and most use more, due to a decision made to allow encoding the C1 control codes as single bytes. For seven-bit environments, [[UTF-7]] is more space efficient than the combination of other Unicode encodings with [[quoted-printable]] or [[base64]] for almost all types of text (see "[[#Seven-bit environments|Seven-bit environments]]" below).
+
+Each format has its own set of advantages and disadvantages with respect to storage efficiency (and thus also of transmission time), and processing efficiency. Storage efficiency is subject to the location within the Unicode [[code point|code space]] in which any given text's characters are predominately from. Since Unicode code space blocks are organized by character set (i.e. alphabet/script), storage efficiency of any given text effectively depends on the [[alphabet|alphabet/script]] used for that text. So, for example, UTF-8 needs one less byte per character (8 versus 16 bits) than UTF-16 for the 128 code points between U+0000 and U+007F, but needs one more byte per character (24 versus 16 bits) for the 63,488 code points between U+0800 and U+FFFF. Therefore if there are more characters in the range U+0000 to U+007F than there are in the range U+0800 to U+FFFF then UTF-8 is more efficient, while if there are fewer then UTF-16 is more efficient. If the counts are equal then they are exactly the same size. A surprising result is that real-world documents written in languages that use characters only in the high range are still often shorter in UTF-8, due to the extensive use of spaces, digits, newlines, html markup, and embedded English words <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (October 2013)">citation needed</span>]]</i>&#93;</sup>.
+
+As far as processing time is concerned, text with variable-length encoding such as UTF-8 or UTF-16 is harder to process if there is a need to find the individual code units, as opposed to working with sequences of code units. Searching is unaffected by whether the characters are variable sized, since a search for a sequence of code units does not care about the divisions (it does require that the encoding be self-synchronizing, which both UTF-8 and UTF-16 are). A common misconception is that there is a need to "find the ''n''th character" and that this requires a fixed-length encoding; however, in real use the number ''n'' is only derived from examining the ''n'' − 1 characters, thus sequential access is needed anyway <sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (October 2013)">citation needed</span>]]</i>&#93;</sup>.
+
+On the other hand, UTF-8 is [[endianness|endian-neutral]], while UTF-16 and UTF-32 are not. This means that when character sequences in one endian order are loaded onto a machine with a different endian order, the characters need to be converted before they can be processed efficiently. This is more of a communication problem than a computation one.
+
+==Processing issues==
+For processing, a format should be easy to search, truncate, and generally process safely. All normal Unicode encodings use some form of fixed size code unit. Depending on the format and the code point to be encoded, one or more of these code units will represent a Unicode [[code point]]. To allow easy searching and truncation, a sequence must not occur within a longer sequence or across the boundary of two other sequences. UTF-8, UTF-16, UTF-32 and UTF-EBCDIC have these important properties but [[UTF-7]] and [[GB 18030]] do not.
+
+Fixed-size characters can be helpful, but even if there is a fixed byte count per code point (as in UTF-32), there is not a fixed byte count per displayed character due to [[combining character]]s. If you are working with a particular [[application programming interface|API]] heavily and that API has standardised on a particular Unicode encoding, it is generally a good idea to use the encoding that the API does to avoid the need to convert before every call to the API. Similarly if you are writing server-side software, it may simplify matters to use the same format for processing that you are communicating in.
+
+UTF-16 is popular because many APIs date to the time when Unicode was 16-bit fixed width. However, using UTF-16 makes characters outside the [[Mapping of Unicode character planes|Basic Multilingual Plane]] a special case which increases the risk of oversights related to their handling. That said, programs that mishandle surrogate pairs probably also have problems with combining sequences, so using UTF-32 is unlikely to solve the more general problem of poor handling of multi-code-unit characters.
+
+If any stored data is in UTF-8 (such as file contents or names), it is very difficult to write a system that uses UTF-16 or UTF-32 as an API. This is due to the oft-overlooked fact that the byte array used by UTF-8 can physically contain invalid sequences. For instance, it is impossible to fix an invalid UTF-8 filename using a UTF-16 API, as no possible UTF-16 string will translate to that invalid filename. The opposite is not true, it is trivial to translate invalid UTF-16 to a unique (though technically invalid) UTF-8 string, so a UTF-8 API can control both UTF-8 and UTF-16 files and names, making UTF-8 preferred in any such mixed environment. An unfortunate but far more common workaround used by UTF-16 systems is to interpret the UTF-8 as some other encoding such as [[CP-1252]] and ignore the [[mojibake]] for any non-ASCII data.
+
+==For communication and storage==
+UTF-16 and UTF-32 are not [[byte orientation|byte oriented]], so a byte order must be selected when transmitting them over a byte-oriented network or storing them in a byte-oriented file. This may be achieved by standardising on a single byte order, by specifying the [[endianness]] as part of external metadata (for example the [[MIME]] charset registry has distinct [[UTF-16BE]] and [[UTF-16LE]] registrations) or by using a [[byte-order mark]] at the start of the text.  UTF-8 is byte-oriented and does not have this problem.
+
+If the byte stream is subject to [[data corruption|corruption]] then some encodings recover better than others. UTF-8 and UTF-EBCDIC are best in this regard as they can always resynchronize at the start of the next code point, GB 18030 is unable to recover after a corrupt or missing byte until the next ASCII non-number. UTF-16 and UTF-32 will handle corrupt (altered) bytes by resynchronizing on the next good code point, but an odd number of lost or spurious [[octet (computing)|byte (octet)]]s will garble all following text.
+
+==In detail==
+The tables below list the number of bytes per code point for different Unicode ranges. Any additional comments needed are included in the table. The figures assume that overheads at the start and end of the block of text are negligible.
+
+<blockquote>
+'''''N.B.''' The tables below list numbers of bytes per '''code point''', '''not''' per user visible "character" (or "grapheme cluster"). It can take multiple code points to describe a single grapheme cluster, so even in UTF-32, care must be taken when splitting or concatenating strings.''
+</blockquote>
+
+===Eight-bit environments===
+
+{| class="wikitable"
+! Code range (hexadecimal) !! [[UTF-8]] !! [[UTF-16]] !! [[UTF-32]] !! [[UTF-EBCDIC]] !! [[GB 18030]]
+|-
+|000000 – 00007F||1||rowspan=6|2||rowspan=8|4||rowspan=2|1||1
+|-
+|000080 – 00009F||rowspan=3|2||rowspan=5|2 for characters inherited from<br>[[GB 2312]]/[[GBK]] (e.g. most<br>Chinese characters) 4 for<br>everything else.
+|-
+|0000A0 – 0003FF||2
+|-
+|000400 – 0007FF||rowspan=2|3
+|-
+|000800 – 003FFF||rowspan=2|3
+|-
+|004000 – 00FFFF||rowspan=2|4
+|-
+|010000 – 03FFFF||rowspan=2|4||rowspan=2|4||rowspan=2|4
+|-
+|040000 – 10FFFF||5
+|}
+
+===Seven-bit environments===
+This table may not cover every special case and so should be used for estimation and comparison only. To accurately determine the size of text in an encoding, see the actual specifications.
+{| class="wikitable"
+|-
+!Code range (hexadecimal)
+!UTF-7
+!UTF-8 [[quoted-printable|quoted-<br>printable]]
+!UTF-8 [[base64]]
+!UTF-16 q.-p.
+!UTF-16 base64
+
+!GB&nbsp;18030 q.-p.
+!GB&nbsp;18030 base64
+|-
+|ASCII<br>[[graphic character]]s<br>(except U+003D “=”)
+|rowspan=2|1 for "direct characters" (depends on the encoder setting for some code points), 2 for U+002B “+”, otherwise same as for 000080 – 00FFFF
+|1
+|rowspan=3|<span class="frac nowrap">1<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span>
+|4
+|rowspan=5|<span class="frac nowrap">2<span class="visualhide">&nbsp;</span><sup>2</sup>&frasl;<sub>3</sub></span>
+
+|1
+|rowspan=3|<span class="frac nowrap">1<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span>
+|-
+|00003D (equals sign)
+|3
+|rowspan=2|6
+
+|3
+|-
+|ASCII<br>[[control character]]s:<br>000000 – 00001F<br>and 00007F
+|as above, depending on directness
+|1 or 3 depending on directness
+|1 or 3 depending on directness
+|-
+|000080 – 0007FF
+|rowspan=2|5 for an isolated case inside a run of single byte characters. For runs <span class="frac nowrap">2<span class="visualhide">&nbsp;</span><sup>2</sup>&frasl;<sub>3</sub></span> per character plus padding to make it a whole number of bytes plus two to start and finish the run
+|6
+|<span class="frac nowrap">2<span class="visualhide">&nbsp;</span><sup>2</sup>&frasl;<sub>3</sub></span>
+|rowspan=2|2–6 depending on if the byte values need to be escaped
+
+|rowspan=2|4–6 for characters inherited from GB2312/GBK (e.g.<br>most Chinese characters) 8 for everything else.
+|rowspan=2|<span class="frac nowrap">2<span class="visualhide">&nbsp;</span><sup>2</sup>&frasl;<sub>3</sub></span> for characters inherited from GB2312/GBK (e.g.<br>most Chinese characters) <span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span> for everything else.
+|-
+|000800 – 00FFFF
+|9
+|4
+|-
+|010000 – 10FFFF
+|8 for isolated case, <span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span> per character plus padding to integer plus 2 for a run
+|12
+|<span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span>
+|8–12 depending on if the low bytes of the surrogates need to be escaped.
+|<span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span>
+|8
+|<span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span>
+|}
+Size of codes for UTF-16 do not differ for -LE and -BE versions of UTF-16.
+The use of UTF-32 under quoted-printable is highly impratical, but if implemented, will result in 8–12 bytes per code point (about 10 bytes in average), namely for BMP, each code point will occupy exactly 6 bytes more than the same code in quoted-printable/UTF-16. Base64/UTF-32 gets <span class="frac nowrap">5<span class="visualhide">&nbsp;</span><sup>1</sup>&frasl;<sub>3</sub></span> bytes for ''any'' code point. Endianness also does not affect sizes for UTF-32.
+
+An ASCII control character under quoted-printable or UTF-7 may be represented either directly or encoded (escaped). The need to escape a given control character depends on many circumstances, but [[newline]]s in text data are usually coded directly.
+
+=== Compression schemes ===
+
+[[Binary Ordered Compression for Unicode|BOCU-1]] and [[Standard Compression Scheme for Unicode|SCSU]] are two ways to compress Unicode data. Their [[character encoding|encoding]] relies on how frequently the text is used. Most runs of text use the same script; for example, [[Latin alphabet|Latin]], [[Cyrillic script|Cyrillic]], [[Greek alphabet|Greek]] and so on. This normal use allows many runs of text to compress down to about 1 byte per code point. These stateful encodings make it more difficult to randomly access text at any position of a string.
+
+These two compression schemes are not as efficient as other compression schemes, like [[ZIP (file format)|zip]] or [[bzip2]]. Those general-purpose compression schemes can compress longer runs of bytes to just a few bytes. The [[Standard Compression Scheme for Unicode|SCSU]] and [[Binary Ordered Compression for Unicode|BOCU-1]] compression schemes will not compress more than the theoretical 25% of text encoded as UTF-8, UTF-16 or UTF-32. Other general-purpose compression schemes can easily compress to 10% of original text size. The general purpose schemes require more complicated algorithms and longer chunks of text for a good compression ratio.
+
+[http://www.unicode.org/notes/tn14/ Unicode Technical Note #14] contains a more detailed comparison of compression schemes.
+
+=== Historical: UTF-5 and UTF-6 ===
+Proposals have been made for a UTF-5 and UTF-6 for the [[Internationalized domain name|internationalization of domain names]] (IDN). The UTF-5 proposal used a [[Base32|base 32]] encoding, where [[Punycode]] is (among other things, and not exactly) a [[base 36]] encoding. The name UTF-5 for a code unit of 5 bits is explained by the equation 2<sup>5</sup> = 32. The UTF-6 proposal added a running length encoding to UTF-5, here '''6''' simply stands for ''UTF-5 plus 1''.
+The [[Internet Engineering Task Force|IETF]] IDN WG later adopted the more efficient [[Punycode]] for this purpose.
+
+=== Not being seriously pursued ===
+[[UTF-1]] never gained serious acceptance. UTF-8 is much more frequently used.
+
+[[UTF-9 and UTF-18]], despite being theoretically functional encodings, were not intended for practical use, mostly because systems using 9-bit bytes were largely extinct by the time they were designed.
+
+== References ==
+<references/>
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Unicode navigation|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Unicode navigation|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Unicode_navigation&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Unicode]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Unicode</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Unicode Consortium]]
+* [[Universal Character Set|ISO/IEC 10646 (Universal Character Set)]]
+* [[Unicode#Versions|Versions]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Code point]]s</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Unicode block|Block]]
+* [[Universal Character Set characters|Characters]]
+* [[:Category:Unicode charts|Character charts]]
+* [[Unicode character property|Character property]]
+* [[Plane (Unicode)|Plane]]
+* [[Private Use (Unicode)|Private Use Area]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Characters</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group" style="width:12em;padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">[[Mapping of Unicode characters#Special-purpose characters|Special purpose]]</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Byte order mark|BOM]]
+* [[Combining grapheme joiner]]
+* [[Left-to-right mark]] / [[Right-to-left mark]]
+* [[Soft hyphen]]
+* [[Zero-width joiner]]
+* [[Zero-width no-break space]]
+* [[Zero-width non-joiner]]
+* [[Zero-width space]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:12em;padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Lists</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;"><div style="padding:0em 0.25em;">
+* [[CJK Unified Ideographs]]
+* [[Combining character]]
+* [[Duplicate characters in Unicode|Duplicate characters]]
+* [[Numerals in Unicode|Numerals]]
+* [[Script (Unicode)|Scripts]]
+* [[Space (punctuation)#Spaces in Unicode|Spaces]]
+* [[Unicode symbols|Symbols]]
+* [[Halfwidth and fullwidth forms|Halfwidth and fullwidth]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Processing</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group" style="width:12em;padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Algorithms</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Bi-directional text]]
+* [[Unicode collation algorithm|Collation]]
+** [[ISO 14651]]
+* [[Unicode equivalence|Equivalence]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:12em;padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">[[Comparison of Unicode encodings|Comparison]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Binary Ordered Compression for Unicode|BOCU-1]]
+* [[CESU-8]]
+* [[Punycode]]
+* [[Standard Compression Scheme for Unicode|SCSU]]
+* [[UTF-1]]
+* [[UTF-7]]
+* [[UTF-8]]
+* [[UTF-9 and UTF-18|UTF-9/UTF-18]]
+* [[UTF-16|UTF-16/UCS-2]]
+* [[UTF-32|UTF-32/UCS-4]]
+* [[UTF-EBCDIC]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">On pairs of<br/>code points</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Combining character]]
+* [[Unicode compatibility characters|Compatibility characters]]
+* [[Duplicate characters in Unicode|Duplicate characters]]
+* [[Unicode equivalence|Equivalence]]
+* [[Homoglyph]]
+* [[Precomposed character]]
+** [[List of precomposed Latin characters in Unicode|list]]
+* [[Z-variant]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Usage</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Internationalized domain name|Domain names (IDN)]]
+* [[Unicode and email|Email]]
+* [[Unicode font|Fonts]]
+* [[Unicode and HTML|HTML]]
+** [[List of XML and HTML character entity references|entity references]]
+** [[Numeric character reference|numeric references]]
+* [[Unicode input|Input]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related standards</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Common Locale Data Repository|Common Locale Data Repository (CLDR)]]
+* [[GB 18030]]
+* [[Han unification]]
+* [[ISO/IEC 8859]]
+* [[ISO 15924]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Unicode anomaly|Anomalies]]
+* [[ConScript Unicode Registry]]
+* [[Ideographic Rapporteur Group]]
+* [[International Components for Unicode]]
+* [[:Category:People involved with Unicode|People involved with Unicode]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2"><span style="float:left;width:6em;">&nbsp;</span><div style="font-size:110%;">[[Script (Unicode)|Scripts]] and symbols in Unicode</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">[[Script (Unicode)#Common and inherited scripts|Common and <br/>inherited scripts]]</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Combining character|Combining marks]]
+* [[Diacritic]]s
+* [[Punctuation]]
+* [[Space (punctuation)#Spaces in Unicode|Space]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Modern scripts</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Arabic script|Arabic]]
+** [[Arabic diacritics|diacritics]]
+* [[Armenian alphabet|Armenian]]
+* [[Balinese alphabet|Balinese]]
+* [[Bamum script|Bamum]]
+* [[Batak alphabet|Batak]]
+* [[Bengali alphabet|Bengali]]
+* [[Bopomofo]]
+* [[Braille]]
+* [[Buhid alphabet|Buhid]]
+* [[Burmese alphabet|Burmese]]
+* [[Canadian Aboriginal syllabics|Canadian Aboriginal]]
+* [[Chakma alphabet|Chakma]]
+* [[Cham alphabet|Cham]]
+* [[Cherokee syllabary|Cherokee]]
+* [[CJK Unified Ideographs|CJK Unified Ideographs (Han)]]
+* [[Cyrillic script|Cyrillic]]
+* [[Deseret alphabet|Deseret]]
+* [[Devanagari]]
+* [[Ge'ez script|Ge'ez]]
+* [[Georgian alphabet|Georgian]]
+* [[Greek alphabet|Greek]]
+* [[Gujarati alphabet|Gujarati]]
+* [[Gurmukhī alphabet|Gurmukhī]]
+* [[Hangul]]
+* [[Hanja]]
+* [[Hanunó'o alphabet|Hanunó'o]]
+* [[Unicode and HTML for the Hebrew alphabet|Hebrew]]
+** [[Hebrew diacritics|diacritics]]
+* [[Hiragana]]
+* [[Javanese alphabet|Javanese]]
+* [[Kanji]]
+* [[Kannada alphabet|Kannada]]
+* [[Katakana]]
+* [[Kayah Li alphabet|Kayah Li]]
+* [[Khmer alphabet|Khmer]]
+* [[Khudawadi]]
+* [[Lao alphabet|Lao]]
+* [[Latin script in Unicode|Latin]]
+* [[Lepcha alphabet|Lepcha]]
+* [[Limbu alphabet|Limbu]]
+* [[Fraser alphabet|Lisu (Fraser)]]
+* [[Lontara alphabet|Lontara]]
+* [[Malayalam alphabet|Malayalam]]
+* [[Manchu alphabet|Manchu]]
+* [[Mandaic alphabet|Mandaic]]
+* [[Meitei Mayek alphabet|Meetei Mayek]]
+* [[Mende Kikakui script|Mende Kikakui]]
+* [[Modi alphabet|Modi]]
+* [[Mro script|Mro]]
+* [[Pollard script|Miao (Pollard)]]
+* [[Mongolian script|Mongolian]]
+* [[N'Ko alphabet|N'Ko]]
+* [[New Tai Lue alphabet|New Tai Lue]]
+* [[Ol Chiki alphabet|Ol Chiki]]
+* [[Oriya alphabet|Oriya]]
+* [[Osmanya alphabet|Osmanya]]
+* [[Pahawh Hmong]]
+* [[Pau Cin Hau]]
+* [[Rejang alphabet|Rejang]]
+* [[Samaritan alphabet|Samaritan]]
+* [[Śāradā script|Śāradā]]
+* [[Saurashtra alphabet|Saurashtra]]
+* [[Shavian alphabet|Shavian]]
+* [[Sinhala alphabet|Sinhala]]
+* [[Sorang Sompeng alphabet|Sorang Sompeng]]
+* [[Sundanese alphabet|Sundanese]]
+* [[Sylheti Nagari]]
+* [[Syriac alphabet|Syriac]]
+* [[Baybayin|Tagalog (Baybayin)]]
+* [[Tagbanwa alphabet|Tagbanwa]]
+* [[Tai Le alphabet|Tai Le]]
+* [[Tai Tham alphabet|Tai Tham]]
+* [[Tai Dam language#Writing system|Tai Viet]]
+* [[Takri alphabet|Takri]]
+* [[Tamil script|Tamil]]
+* [[Telugu alphabet|Telugu]]
+* [[Thaana]]
+* [[Thai alphabet|Thai]]
+* [[Tirhuta]]
+* [[Tibetan alphabet|Tibetan]]
+* [[Tifinagh]]
+* [[Vai syllabary|Vai]]
+* [[Warang Citi]]
+* [[Yi script|Yi]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Ancient and<br/>historic scripts</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Avestan alphabet|Avestan]]
+* [[Bassa Vah]]
+* [[Brāhmī script|Brāhmī]]
+* [[Carian alphabets|Carian]]
+* [[Caucasian Albanian alphabet|Caucasian Albanian]]
+* [[Coptic alphabet|Coptic]]
+* [[Cuneiform]]
+* [[Cypriot syllabary|Cypriot]]
+* [[Egyptian hieroglyphs]]
+* [[Elbasan]]
+* [[Glagolitic alphabet|Glagolitic]]
+* [[Gothic alphabet|Gothic]]
+* [[Grantha script|Grantha]]
+* [[Aramaic language#Imperial Aramaic|Imperial Aramaic]]
+* [[Pahlavi scripts#Inscriptional Pahlavi|Inscriptional Pahlavi]]
+* [[Parthian language#Written Parthian|Inscriptional Parthian]]
+* [[Kaithi]]
+* [[Kharosthi]]
+* [[Khojki]]
+* [[Linear A]]
+* [[Linear B]]
+* [[Lycian alphabet|Lycian]]
+* [[Lydian alphabet|Lydian]]
+* [[Mahajani]]
+* [[Manichaean]]
+* [[Meroitic alphabet|Meroitic]]
+* [[Nabataean]]
+* [[Ogham]]
+* [[Old Italic script|Old Italic]]
+* [[Old North Arabian]]
+* [[Old Permic]]
+* [[Old Persian cuneiform]]
+* [[Old Turkic alphabet|Old Turkic]]
+* [[Palmyrene dialect|Palmyrene]]
+* [['Phags-pa script|'Phags-pa]]
+* [[Phoenician alphabet|Phoenician]]
+* [[Psalter Pahlavi]]
+* [[Runes|Runic]]
+* [[Siddham]]
+* [[South Arabian alphabet|South Arabian]]
+* [[Ugaritic alphabet|Ugaritic]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Notational scripts</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Duployan shorthand|Duployan]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Symbols</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Cultural, political, and religious symbols in Unicode|Cultural, political, and religious symbols]]
+* [[Currency symbol|Currency]]
+* [[Mathematical operators and symbols in Unicode|Mathematical operators and symbols]]
+* [[Phonetic symbols in Unicode|Phonetic symbols (including IPA)]]
+</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+
+
+
+[[Category:Unicode Transformation Formats| ]]
+[[Category:Software comparisons|Unicode]]

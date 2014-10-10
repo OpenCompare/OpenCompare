@@ -1,0 +1,571 @@
+The following tables compare [[computer graphics|graphics]] compatibility and support for a number of [[layout engine]]s within [[web browsers]]. Please see the individual products' articles for further information.
+
+Unless otherwise specified in footnotes, comparisons are based on the stable versions without any add-ons, extensions or external programs.  Version numbers, if possible, are provided for features that are fully supported. Proprietary extensions are not included.
+
+== Explanation of the tables ==
+=== Engine nomenclature ===
+
+Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
+
+{| class="wikitable"
+! Layout engine
+! Release version
+! Preview version
+! Used by
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
+| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Amaya (web browser)|Amaya]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
+| 537.36
+| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
+|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+) and [[Yandex Browser|Yandex]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
+| 
+;Stable
+32.0.3 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/32.0.3/releasenotes/
+  | title                  = Firefox — Notes (32.0.3) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;ESR
+ESR 31.1.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/31.1.1/releasenotes/
+  | title                  = Firefox — Notes (31.1.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small><br/>
+ESR 24.8.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/24.8.1/releasenotes/
+  | title                  = Firefox — Notes (24.8.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+| 
+;Beta
+33.0 RC 1 <small>(October&nbsp;8, 2014<span class="noprint">&#059;&#032;2 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-08</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/33.0beta/releasenotes/
+ | title = Firefox — Beta Notes (33.0beta) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-09-05
+}}</ref><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/beta/all/
+ | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
+ | accessdate = 2014-10-01
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;Aurora
+34.0a2 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/34.0a2/auroranotes/
+ | title = Firefox — Aurora Notes (34.0a2) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+;Nightly
+35.0a1 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+  | url = https://wiki.mozilla.org/RapidRelease/Calendar
+  | title = RapidRelease/Calendar - MozillaWiki
+  | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
+| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Konqueror]]<ref group="note" name="switch" />
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
+| 2.12.388
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
+| (IE 5.2.3 for Mac)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
+| 7.0 (IE 11)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
+| 534.20
+| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
+|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
+
+===Values===
+Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
+
+{| class="wikitable"
+|-
+! Value
+! Meaning
+|-
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Indicates that the layout engine fully supports this property/element when valid values are used.
+|-
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Indicates that the property/element is completely ignored.
+|-
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+|-
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| Indicates that the property/element is no longer supported.
+|-
+| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
+| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+|-
+|}
+
+==Image format support==
+{| style="text-align: center; width: 95%;" class="wikitable"
+! colspan="2" |
+! style="width: 12%" | [[Trident (layout engine)|Trident]]
+! style="width: 12%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 12%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%" | [[WebKit]]
+! style="width: 12%" | [[KHTML]]
+! style="width: 12%" | [[Presto (layout engine)|Presto]]
+! style="width: 12%" | [[Prince XML]]
+|-
+! style="text-align: left" colspan="2" | [[JPEG]]/JFIF
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 3.0&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" colspan="2" | [[JPEG 2000]] (.jp2)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends<ref group="note">JPEG 2000 support is only available on the Mac OS X platform. (Note that the referenced link leads to the Mozilla Bugzilla, where this was brought up and confirmed.)</ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" colspan="2" | [[JPEG XR]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" rowspan="2" | [[Graphics Interchange Format|GIF]]
+| style="text-align: left" | GIF 89a
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 3.0&#93;</sup>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+|-
+| style="text-align: left" | GIF 87a
+|-
+! style="text-align: left" rowspan="3" | [[Portable Network Graphics|PNG]]
+| style="text-align: left" | 1.2 ([[World Wide Web Consortium|W3C]]/[[International Organization for Standardization|ISO]]/[[International Electrotechnical Commission|IEC]] version)
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.1
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+| style="text-align: left" | 1.1
+|-
+| style="text-align: left" | 1.0
+|-
+! style="text-align: left" | [[Multiple-image Network Graphics|MNG]]
+| style="text-align: left" | 1.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" | [[JPEG Network Graphics|JNG]]
+| style="text-align: left" | 1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" | [[Animated Portable Network Graphics|APNG]]
+| style="text-align: left" | 1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
+|-
+! style="text-align: left" colspan="2" | [[BMP file format|BMP]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" colspan="2" | [[Wireless Application Protocol Bitmap Format|WBMP]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" colspan="2" | [[ICO (icon image file format)|ICO]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" colspan="2" | [[Tagged Image File Format|TIFF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" colspan="2" | [[X BitMap|XBM]]
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped<ref group="note">Gecko dropped XBM support in version 1.9.2.</ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" colspan="2" | [[WebP]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|534.10
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.8.131
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+===JPEG support===
+Comparison of various JPEG/JFIF feature support.
+{| style="text-align: center; width: 95%;" class="wikitable"
+! colspan="2" |
+! style="width: 12%" | [[Trident (layout engine)|Trident]]
+! style="width: 12%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 12%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%" | [[WebKit]]
+! style="width: 12%" | [[KPart]]s
+! style="width: 12%" | [[Presto (layout engine)|Presto]]
+! style="width: 12%" | [[Prince XML]]
+|-
+! style="text-align: left" rowspan="4" | Operation mode
+| style="text-align: left" | Progressive
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|&lt;3.1<sup>&#91;IE 3.0&#93;</sup>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+| style="text-align: left" | Baseline
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 3.0&#93;</sup>
+|-
+| style="text-align: left" | Hierarchical
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+| style="text-align: left" | Lossless
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+===GIF support===
+Comparison of various GIF feature support.
+{| style="text-align: center; width: 95%;" class="wikitable"
+! colspan="2" |
+! style="width: 12%" | [[Trident (layout engine)|Trident]]
+! style="width: 12%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 12%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%" | [[WebKit]]
+! style="width: 12%" | [[KPart]]s
+! style="width: 12%" | [[Presto (layout engine)|Presto]]
+! style="width: 12%" | [[Prince XML]]
+|-
+! style="text-align: left" | GIF 87a
+| style="text-align: left" | Interlacing
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.1
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" rowspan="2" | GIF 89a
+| style="text-align: left" | Binary transparency
+|-
+| style="text-align: left" | Animation
+|}
+
+===PNG support===
+Comparison of various PNG feature support.
+{| style="text-align: center; width: 95%;" class="wikitable"
+! colspan="2" |
+! style="width: 12%" | [[Trident (layout engine)|Trident]]
+! style="width: 12%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 12%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%" | [[WebKit]]
+! style="width: 12%" | [[KPart]]s
+! style="width: 12%" | [[Presto (layout engine)|Presto]]
+! style="width: 12%" | [[Prince XML]]
+|-
+! style="text-align: left" rowspan="3" | Color mode
+| style="background: #f2f2f2; text-align: left" | True color
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 4.0&#93;</sup>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+| style="background: #f2f2f2; text-align: left" | Grayscale
+|-
+| style="background: #f2f2f2; text-align: left" | Palette-based (max. 256 colors)
+|-
+! style="text-align: left" colspan="2" | Alpha channel
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.1
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" colspan="2" | Gamma correction
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note" name="gamma-correction">Gecko and Presto currently support gamma correction for all color profiles except for [[International Color Consortium|ICC]]-[[ICC profile|profile]].</ref>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect<ref group="note">Webkit incorrectly applies gamma correction to unlabeled PNGs.</ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" colspan="2" | Color correction
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" colspan="2" | Interlacing
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" colspan="2" | Integrity checking
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|}
+
+== See also ==
+* [[Favicon]]
+* [[Comparison of layout engines (Scalable Vector Graphics)]]
+
+==Notes==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"></references></div>
+
+==References==
+
+===Trident references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="t"></references></div>
+
+===Gecko references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="g"></references></div>
+
+===Webkit references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="w"></references></div>
+
+===KHTML references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="k"></references></div>
+
+===Presto references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="p"></references></div>
+
+===Other references===
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Graphics file formats|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Graphics file formats|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Graphics_file_formats&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Image file formats|Graphics file formats]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Raster graphics|Raster]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[ANI (file format)                              | ANI]]
+* [[                                                 ANIM]]
+* [[                                                 APNG]]
+* [[ART image file format                          | ART]]
+* [[BMP file format                                | BMP]]
+* [[BSAVE (bitmap format)                          | BSAVE]]
+* [[CALS Raster file format                        | CAL]]
+* [[Cineon                                         | CIN]]
+* [[Cartesian Perceptual Compression               | CPC]]
+* [[CPT (file format)                              | CPT]]
+* [[Digital Picture Exchange                       | DPX]]
+* [[ECW (file format)                              | ECW]]
+* [[OpenEXR                                        | EXR]]
+* [[                                                 FITS]]
+* [[FLIC (file format)                             | FLIC]]
+* [[FlashPix                                       | FPX]]
+* [[Graphics Interchange Format                    | GIF]]
+* [[HDRi (data format)                             | HDRi]]
+* [[High Efficiency Video Coding#Main Still Picture| HEVC]]
+* [[ICER]]
+* [[Apple Icon Image format                        | ICNS]]
+* [[ICO (file format)                              | ICO / CUR]]
+* [[Image Cytometry Standard                       | ICS]]
+* [[                                                 ILBM]]
+* [[                                                 JBIG]]
+* [[                                                 JBIG2]]
+* [[JPEG Network Graphics                          | JNG]]
+* [[                                                 JPEG]]
+* [[                                                 JPEG 2000]]
+* [[Lossless JPEG#JPEG-LS                          | JPEG-LS]]
+* [[                                                 JPEG XR]]
+* [[Multiple-image Network Graphics                | MNG]]
+* [[Magick Image File Format                       | MIFF]]
+* [[Netpbm#PAM graphics format                     | PAM]]
+* [[Netpbm format                                  | PBM / PGM / PPM / PNM]]
+* [[                                                 PCX]]
+* [[Progressive Graphics File                      | PGF]]
+* [[PICtor PIC image format                        | PICtor]]
+* [[Portable Network Graphics                      | PNG]]
+* [[Adobe Photoshop#PSD                            | PSD / PSB]]
+* [[PaintShop Pro                                  | PSP]]
+* [[QuickTime VR                                   | QTVR]]
+* [[Sun Raster                                     | RAS]]
+* [[RGBE image format                              | RBE]]
+** [[JPEG-HDR]]
+** [[Logluv TIFF]]
+* [[Silicon Graphics Image                         | SGI]]
+* [[Truevision TGA                                 | TGA]]
+* [[Tagged Image File Format | TIFF]]
+** [[TIFF/EP]]
+** [[Tagged Image File Format#TIFF/IT | TIFF/IT]]
+* [[Wireless Application Protocol Bitmap Format    | WBMP]]
+* [[                                                 WebP]]
+* [[X BitMap                                       | XBM]]
+* [[XCF (file format)                              | XCF]]
+* [[X PixMap                                       | XPM]]
+* [[xwd                                            | XWD]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Raw image format|Raw]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Camera Image File Format                       | CIFF]]
+* [[Digital Negative                               | DNG]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Vector graphics|Vector]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Adobe Illustrator Artwork                      | AI]]
+* [[CorelDRAW#CDR file format                      | CDR]]
+* [[Computer Graphics Metafile                     | CGM]]
+* [[AutoCAD DXF                                    | DXF]]
+* [[Extended Vector Animation                      | EVA]]
+* [[Windows Metafile                               | EMF]]
+* [[Gerber format                                  | Gerber]]
+* [[Haiku Vector Icon Format                       | HVIF]]
+* [[                                                 IGES]]
+* [[Precision Graphics Markup Language             | PGML]]
+* [[Scalable Vector Graphics                       | SVG]]
+* [[Vector Markup Language                         | VML]]
+* [[Windows Metafile                               | WMF]]
+* [[Xar (graphics)                                 | Xar]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Compound</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Computable Document Format                     | CDF]]
+* [[                                                 DjVu]]
+* [[Encapsulated PostScript                        | EPS]]
+* [[Portable Document Format                       | PDF]]
+* [[                                                 PICT]]
+* [[PostScript                                     | PS]]
+* [[                                                 SWF]]
+* [[Extensible Application Markup Language         | XAML]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+* [[Exchangeable image file format|Exchangeable image file format (Exif)]]
+* [[Extensible Metadata Platform|Extensible Metadata Platform (XMP)]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+* '''[[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] [[:Category:Graphics file formats|Category]]'''
+* '''[[File:Symbol neutral vote.svg                 | Non-article page|16x16px|link=]] [[Comparison of graphics file formats|Comparison]]'''
+</div></td></tr></table></td></tr></table>
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Layout engine]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Blink (layout engine)|Blink]]
+*[[Gecko (software)|Gecko]]
+*[[KHTML]]
+*[[MARTHA (layout engine)|MARTHA]]
+*[[Presto (layout engine)|Presto]]
+*[[Prince (software)|Prince]]
+*[[Servo (layout engine)|Servo]]
+*[[Trident (layout engine)|Trident]]
+*[[WebKit]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Amaya (web browser)|Amaya]]
+*[[Boxely]]
+*[[Gazelle (web browser)|Gazelle]]
+*[[GtkHTML]]
+*[[HTMLayout]]
+*[[iCab]]
+*[[Mariner (layout engine)|Mariner]]
+*[[Tasman (layout engine)|Tasman]]
+*[[Tkhtml]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Comparison of layout engines (HTML)|HTML]]
+**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
+*[[Comparison of layout engines (HTML5)|HTML5]]
+**[[Comparison of layout engines (HTML5 media)|media]]
+**[[Comparison of layout engines (HTML5 canvas)|canvas]]
+*[[Comparison of layout engines (XML)|XML]]
+**[[Comparison of layout engines (XHTML)|XHTML]]
+***[[Comparison of layout engines (XHTML 1.1)|1.1]]
+**[[Comparison of layout engines (MathML)|MathML]]
+**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
+*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
+*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
+*[[Comparison of layout engines (Document Object Model)|DOM]]
+*[[Comparison of layout engines (graphics)|Graphics]]
+*[[Comparison of layout engines (web typography)|Typography]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Layout engine comparisons]]
+[[Category:Graphics file formats]]

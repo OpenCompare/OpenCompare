@@ -1,0 +1,4605 @@
+<table class="plainlinks ombox ombox-content" role="presentation"><tr><td class="mbox-image">[[File:Imbox content.png|40x40px|link=|alt=]]</td><td class="mbox-text">This section or list '''is incomplete'''. Please help to improve it, or discuss the issue on the [[:ExpandTemplates|talk page]].</td></tr></table>
+<table class="plainlinks ombox ombox-content ambox-Update" role="presentation"><tr><td class="mbox-image">[[File:Ambox current red.svg|42px]]</td><td class="mbox-text">This special is '''outdated'''. Please update this special to reflect recent events or newly available information. <small>''(April 2012)''</small></td></tr></table>
+The following tables compare [[Document Object Model|DOM]] compatibility and support for a number of [[layout engine]]s. Please see the individual products' articles for further information. Unless otherwise specified in footnotes, comparisons are based on the stable versions without any add-ons, extensions or external programs.
+
+For features that are fully supported (based on DOM Level 2 or DOM Level 3 modules that are under W3C Recommendation), an exact version number is given if it is certain that the feature was added in such version. DOM Level 0 and DOM Level 3 modules that are still under development are not included.
+
+== Explanation of the tables ==
+=== Engine nomenclature ===
+
+Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
+
+{| class="wikitable"
+! Layout engine
+! Release version
+! Preview version
+! Used by
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
+| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Amaya (web browser)|Amaya]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
+| 537.36
+| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
+|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+) and [[Yandex Browser|Yandex]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
+| 
+;Stable
+32.0.3 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/32.0.3/releasenotes/
+  | title                  = Firefox — Notes (32.0.3) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;ESR
+ESR 31.1.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/31.1.1/releasenotes/
+  | title                  = Firefox — Notes (31.1.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small><br/>
+ESR 24.8.1 <small>(September&nbsp;24, 2014<span class="noprint">&#059;&#032;16 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-24</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/24.8.1/releasenotes/
+  | title                  = Firefox — Notes (24.8.1) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2014-09-24
+  | accessdate             = 2014-09-25}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+| 
+;Beta
+33.0 RC 1 <small>(October&nbsp;8, 2014<span class="noprint">&#059;&#032;2 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-08</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/33.0beta/releasenotes/
+ | title = Firefox — Beta Notes (33.0beta) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-09-05
+}}</ref><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/beta/all/
+ | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
+ | accessdate = 2014-10-01
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;Aurora
+34.0a2 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/34.0a2/auroranotes/
+ | title = Firefox — Aurora Notes (34.0a2) — Mozilla
+ | date = 2014-09-02
+ | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+;Nightly
+35.0a1 <small>(September&nbsp;2, 2014<span class="noprint">&#059;&#032;38 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-09-02</span>)</span><ref>{{Cite web
+  | url = https://wiki.mozilla.org/RapidRelease/Calendar
+  | title = RapidRelease/Calendar - MozillaWiki
+  | accessdate = 2014-10-03
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small>
+|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
+| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Konqueror]]<ref group="note" name="switch" />
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
+| 2.12.388
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
+| (IE 5.2.3 for Mac)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
+| 7.0 (IE 11)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
+| 534.20
+| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
+|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
+
+===Values===
+Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
+
+{| class="wikitable"
+|-
+! Value
+! Meaning
+|-
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Indicates that the layout engine fully supports this property/element when valid values are used.
+|-
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Indicates that the property/element is completely ignored.
+|-
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+|-
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| Indicates that the property/element is no longer supported.
+|-
+| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
+| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+|-
+|}
+
+==General overview==
+{| class="wikitable" style="width: 95%; text-align: center"
+!
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec" | DOM1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|85
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec" | DOM2
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Mostly
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Mostly
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Mostly
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Mostly
+|-
+! style="background: #ececec" | DOM3
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+|}
+
+==Core (Fundamental)==
+The interfaces within this section are considered fundamental, and must be fully implemented by all conforming implementations of the DOM, including all HTML DOM implementations.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Exception DOMException
+|-
+| style="background: #ececec" | DOM1
+! <tt>code</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMStringList
+|-
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>length</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.6
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>contains()</tt>
+| ?
+|-
+! <tt>item()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NameList
+|-
+| style="background: #ececec" rowspan="5" | DOM3
+! <tt>length</tt>
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.6
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>getName()</tt>
+|-
+! <tt>getNamespaceURI()</tt>
+|-
+! <tt>contains()</tt>
+|-
+! <tt>containsNS()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMImplementationList
+|-
+| style="background: #ececec" rowspan="2" | DOM3
+! <tt>length</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>item()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMImplementationSource
+|-
+| style="background: #ececec" rowspan="2" | DOM3
+! <tt>getDOMImplementation()</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>getDOMImplementationList()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMImplementation
+|-
+| style="background: #ececec" | DOM1
+! <tt>hasFeature()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>createDocumentType()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>createDocument()</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" | DOM3
+! <tt>getFeature()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentFragment
+|-
+| style="background: #ececec" | DOM1
+! <tt>(no properties)</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Document
+|-
+| style="background: #ececec" rowspan="12" | DOM1
+! <tt>doctype</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident Document doctype|9.0]]
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>createElement()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+|-
+! <tt>createTextNode()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+|-
+! <tt>createAttribute()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+|-
+! <tt>documentElement</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+|-
+! <tt>getElementsByTagName()</tt>
+| ?
+|-
+! <tt>implementation</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+|-
+! <tt>createDocumentFragment()</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>createComment()</tt>
+| ?
+|-
+! <tt>createCDATASection()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| ?
+|-
+! <tt>createProcessingInstruction()</tt>
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.7
+| ?
+|-
+! <tt>createEntityReference()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No [https://bugzilla.mozilla.org/show_bug.cgi?id=9850]
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="5" | DOM2
+! <tt>importNode()</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>createElementNS()</tt>
+| ?
+|-
+! <tt>createAttributeNS()</tt>
+| ?
+|-
+! <tt>getElementsByTagNameNS()</tt>
+| ?
+|-
+! <tt>getElementById()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident Document getElementById|8.0]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#presto Document getElementById|2.1]]
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="10" | DOM3
+! <tt>adoptNode()</tt>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="10" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.7
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>inputEncoding</tt>
+| rowspan="9" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="9" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>xmlEncoding</tt>
+| ?
+|-
+! <tt>xmlStandalone</tt>
+| ?
+|-
+! <tt>xmlVersion</tt>
+| ?
+|-
+! <tt>domConfig</tt>
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>strictErrorChecking</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.7
+| ?
+|-
+! <tt>documentURI</tt>
+| ?
+|-
+! <tt>normalizeDocument()</tt>
+| ?
+|-
+! <tt>renameNode()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Node
+|-
+| style="background: #ececec" rowspan="17" | DOM1
+! <tt>nodeName</tt>
+| rowspan="15" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="17" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="17" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="17" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>nodeValue</tt>
+| ?
+|-
+! <tt>nodeType</tt>
+| ?
+|-
+! <tt>parentNode</tt>
+| ?
+|-
+! <tt>childNodes</tt>
+| ?
+|-
+! <tt>firstChild</tt>
+| ?
+|-
+! <tt>lastChild</tt>
+| ?
+|-
+! <tt>previousSibling</tt>
+| ?
+|-
+! <tt>nextSibling</tt>
+| ?
+|-
+! <tt>attributes</tt>
+| ?
+|-
+! <tt>cloneNode()</tt>
+| ?
+|-
+! <tt>insertBefore()</tt>
+| rowspan="4" style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[#gecko Node insertBefore|Partial]]
+| ?
+|-
+! <tt>replaceChild()</tt>
+| ?
+|-
+! <tt>removeChild()</tt>
+| ?
+|-
+! <tt>appendChild()</tt>
+| ?
+|-
+! <tt>ownerDocument</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| ?
+|-
+! <tt>hasChildNodes()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="5" | DOM2
+! <tt>namespaceURI</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>prefix</tt>
+| ?
+|-
+! <tt>localName</tt>
+| ?
+|-
+! <tt>isSupported()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| ?
+|-
+! <tt>hasAttributes()</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="11" | DOM3
+! <tt>isSameNode()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident isSameNode|9.0]]
+| rowspan="11" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
+|-
+! <tt>compareDocumentPosition()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.7
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.2.4
+|-
+! <tt>baseURI</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! <tt>textContent</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>lookupPrefix()</tt>
+| ?
+|-
+! <tt>isDefaultNamespace()</tt>
+| ?
+|-
+! <tt>lookupNamespaceURI()</tt>
+| ?
+|-
+! <tt>getFeature()</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>setUserData()</tt>
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>getUserData()</tt>
+| ?
+|-
+! <tt>isEqualNode()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.7
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NodeList
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>length</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>item()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NamedNodeMap
+|-
+| style="background: #ececec" rowspan="5" | DOM1
+! <tt>length</tt>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>getNamedItem()</tt>
+| ?
+|-
+! <tt>setNamedItem()</tt>
+| ?
+|-
+! <tt>removeNamedItem()</tt>
+| ?
+|-
+! <tt>item()</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>getNamedItemNS()</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>setNamedItemNS()</tt>
+| ?
+|-
+! <tt>removeNamedItemNS()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CharacterData
+|-
+| style="background: #ececec" rowspan="7" | DOM1
+! <tt>data</tt>
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>length</tt>
+| ?
+|-
+! <tt>substringData()</tt>
+| ?
+|-
+! <tt>appendData()</tt>
+| ?
+|-
+! <tt>insertData()</tt>
+| ?
+|-
+! <tt>deleteData()</tt>
+| ?
+|-
+! <tt>replaceData()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Attr
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>name</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>value</tt>
+| ?
+|-
+! <tt>specified</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#trident Attr specified|Incorrect]]
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#tasman Attr specified|Incorrect]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#gecko Attr specified|1.9.1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#webkit Attr specified|Yes]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#khtml Attr specified|Yes]]
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" | DOM2
+! <tt>ownerElement</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="2" | DOM3
+! <tt>schemaTypeInfo</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>isId</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Element
+|-
+| style="background: #ececec" rowspan="9" | DOM1
+! <tt>tagName</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>getElementsByTagName()</tt>
+|-
+! <tt>getAttribute()</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident_Element_Attribute|8.0]]
+|-
+! <tt>setAttribute()</tt>
+|-
+! <tt>removeAttribute()</tt>
+|-
+! <tt>getAttributeNode()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+|-
+! <tt>setAttributeNode()</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+|-
+! <tt>removeAttributeNode()</tt>
+|-
+! <tt>normalize()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="8" | DOM2
+! <tt>getAttributeNS()</tt>
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>setAttributeNS()</tt>
+| ?
+|-
+! <tt>removeAttributeNS()</tt>
+| ?
+|-
+! <tt>getAttributeNodeNS()</tt>
+| ?
+|-
+! <tt>setAttributeNodeNS()</tt>
+| ?
+|-
+! <tt>getElementsByTagNameNS()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>hasAttribute()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+! <tt>hasAttributeNS()</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="4" | DOM3
+! <tt>schemaTypeInfo</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>setIdAttribute()</tt>
+| ?
+|-
+! <tt>setIdAttributeNS()</tt>
+| ?
+|-
+! <tt>setIdAttributeNode()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Text
+|-
+| style="background: #ececec" | DOM1
+! <tt>splitText()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>isElementContentWhitespace</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! <tt>wholeText</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
+|-
+! <tt>replaceWholeText()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Comment
+|-
+| style="background: #ececec" | DOM1
+! <tt>(no properties)</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface TypeInfo
+|-
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>typeName</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>typeNamespace</tt>
+|-
+! <tt>isDerivedFrom()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface UserDataHandler
+|-
+| style="background: #ececec" | DOM3
+! <tt>handle()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMError
+|-
+| style="background: #ececec" rowspan="6" | DOM3
+! <tt>severity</tt>
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>message</tt>
+|-
+! <tt>type</tt>
+|-
+! <tt>location</tt>
+|-
+! <tt>relatedData</tt>
+|-
+! <tt>relatedException</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMErrorHandler
+|-
+| style="background: #ececec" | DOM3
+! <tt>handleError()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMLocator
+|-
+| style="background: #ececec" rowspan="6" | DOM3
+! <tt>lineNumber</tt>
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>columnNumber</tt>
+|-
+! <tt>byteOffset</tt>
+|-
+! <tt>utf16Offset</tt>
+|-
+! <tt>relatedNode</tt>
+|-
+! <tt>uri</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMConfiguration
+|-
+| style="background: #ececec" rowspan="4" | DOM3
+! <tt>parameterNames</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>setParameter()</tt>
+| ?
+|-
+! <tt>getParameter()</tt>
+| ?
+|-
+! <tt>canSetParameter()</tt>
+| ?
+|}
+
+===Trident Core (Fundamental) notes===
+# <tt id="trident_Document_doctype">doctype</tt> &mdash; Prior to version 9.0, returns true when checked but always contains null.
+# <tt id="trident_Document_getElementById">getElementById()</tt> &mdash; Prior to version 8.0 returned elements with <tt>name</tt> attribute set to value being found, not only <tt>id</tt>.
+# <tt id="trident_Element_Attribute">getAttribute()</tt>, <tt>setAttribute()</tt>, <tt>removeAttribute()</tt></tt> &mdash; prior to version 8.0 returned, set, or removed, respectively, the corresponding DOM property instead of the string value of the attribute.
+# <tt id="trident_Attr_specified">AttributeNode.specified</tt> &mdash; Does not set <code>specified</code> to <code>true</code> if ownerElement is null.
+# <tt id="trident_isSameNode">Node.isSameNode</tt> &mdash; Prior to version 9.0, only supported for XML documents.
+
+===Tasman Core (Fundamental) notes===
+# <tt id="tasman_Attr_specified">AttributeNode.specified</tt> &mdash; Does not set <code>specified</code> to <code>true</code> if ownerElement is null.
+
+===Gecko Core (Fundamental) notes===
+# <tt id="gecko_Node_insertBefore">insertBefore(), replaceChild(), removeChild(), appendChild()</tt> &mdash; Fails on <code>Attr</code> nodes. <code>appendChild</code> does not work as expected for <code>DocumentFragment</code> nodes prior to 1.8.
+# <tt id="gecko_Attr_specified">AttributeNode.specified</tt> &mdash; Prior to 1.9.1 does not set <code>specified</code> to <code>true</code> if ownerElement is null. Does not create Attribute Nodes for default values specified in the DTD.
+
+===Presto Core (Fundamental) notes===
+# <tt id="presto_Document_getElementById">getElementById()</tt> &mdash; Versions prior to Opera 9.50 returns elements with <tt>name</tt> attribute set to value being found, not only <tt>id</tt>.
+# <tt id="presto_Attr_value">URI attribute value</tt> &mdash; In versions prior to Opera 9, all URI attribute values are resolved to full URI. Hence the value from <code>getAttribute()</code> and <code>getAttributeNode()</code> could be wrong if relative URIs are used.
+# Attributes that are not supported in the layout engine are still parsed and available through DOM. E.g. char and charoff are available under .ch and .chOff.
+# In Opera 8.54 methods DOMImplementation.createDocument and DOMDocument.createElementNS both fail to accept any non-empty namespace URI. They work in Opera 9 Beta 2 and they may also have worked before (somebody with Opera 8, please check.) The symptom is that the namespaceURI property is null/empty and serialization gives wrong result.
+
+===WebKit Core (Fundamental) notes===
+# <tt id="webkit_Attr_specified">AttributeNode.specified</tt> &mdash; Does not create Attribute Nodes for default values specified in the DTD.
+
+===KHTML Core (Fundamental) notes===
+# <tt id="khtml_Attr_specified">AttributeNode.specified</tt> &mdash; Does not create Attribute Nodes for default values specified in the DTD.
+
+==Core (Extended)==
+The interfaces defined here form part of the DOM Core specification, but objects that expose these interfaces will never be encountered in a DOM implementation that deals only with HTML.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CDATASection
+|-
+| style="background: #ececec" | DOM1
+! <tt>(no properties)</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentType
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>name</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>entities</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>notations</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>publicId</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>systemId</tt>
+| ?
+|-
+! <tt>internalSubset</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Notation
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>publicId</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>systemId</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Entity
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>publicId</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>systemId</tt>
+| ?
+|-
+! <tt>notationName</tt>
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>inputEncoding</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>xmlEncoding</tt>
+| ?
+|-
+! <tt>xmlVersion</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface EntityReference
+|-
+| style="background: #ececec" | DOM1
+! <tt>(no properties)</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface ProcessingInstruction
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>target</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>data</tt>
+| ?
+|}
+
+==HTML==
+The interfaces found within this section are not mandatory. This section extends the DOM Core API to describe objects and methods specific to [[HTML]] documents, and [[XHTML]] documents. In general, the functionality needed to manipulate hierarchical document structures, elements, and attributes will be found in the core section; functionality that depends on the specific elements defined in HTML will be found in this section. Elements deprecated since HTML 4.01 are not listed. Some elements and attributes listed here are deprecated in XHTML 1.1. For example, presentation attributes, image maps, frames and targets.
+{| class="wikitable" style="width: 95%; text-align: center"
+
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLCollection
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>length</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|7.0
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>namedItem()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLOptionsCollection
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>length</tt>
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>namedItem()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLDocument
+|-
+| style="background: #ececec" rowspan="16" | DOM1
+! <tt>domain</tt>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="15" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="16" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="16" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="16" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>URL</tt>
+| ?
+|-
+! <tt>body</tt>
+| ?
+|-
+! <tt>images</tt>
+| ?
+|-
+! <tt>applets</tt>
+| ?
+|-
+! <tt>title</tt>
+| rowspan="10" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+|-
+! <tt>referrer</tt>
+| ?
+|-
+! <tt>links</tt>
+| ?
+|-
+! <tt>forms</tt>
+| ?
+|-
+! <tt>anchors</tt>
+| ?
+|-
+! <tt>cookie</tt>
+| ?
+|-
+! <tt>open()</tt>
+| ?
+|-
+! <tt>close()</tt>
+| ?
+|-
+! <tt>write()</tt>
+| ?
+|-
+! <tt>writeln()</tt>
+| ?
+|-
+! <tt>getElementsByName()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLElement
+|-
+| style="background: #ececec" rowspan="5" | DOM1
+! <tt>id</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>title</tt>
+| ?
+| ?
+|-
+! <tt>lang</tt>
+| ?
+| ?
+|-
+! <tt>className</tt>
+| ?
+| ?
+|-
+! <tt>dir</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLHtmlElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>version</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLHeadElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>profile</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLLinkElement
+|-
+| style="background: #ececec" rowspan="9" | DOM1
+! <tt>disabled</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>charset</tt>
+| ?
+| ?
+|-
+! <tt>href</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>hreflang</tt>
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>media</tt>
+| ?
+| ?
+|-
+! <tt>rel</tt>
+| ?
+| ?
+|-
+! <tt>rev</tt>
+| ?
+| ?
+|-
+! <tt>target</tt>
+| ?
+| ?
+|-
+! <tt>type</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTitleElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>text</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLMetaElement
+|-
+| style="background: #ececec" rowspan="4" | DOM1
+! <tt>content</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>httpEquiv</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! <tt>scheme</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLBaseElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>href</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>target</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLStyleElement
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>disabled</tt>
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>media</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>type</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLBodyElement
+|-
+| style="background: #ececec" rowspan="6" | DOM1
+! <tt>aLink</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>background</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>bgColor</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>link</tt>
+| ?
+| ?
+|-
+! <tt>text</tt>
+| ?
+| ?
+|-
+! <tt>vLink</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLFormElement
+|-
+| style="background: #ececec" rowspan="10" | DOM1
+! <tt>action</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| ?
+| ?
+| rowspan="10" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>acceptEncoding</tt>
+| ?
+| ?
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|-
+! <tt>elements</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>length</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! <tt>enctype</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>method</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+|-
+! <tt>target</tt>
+| ?
+| ?
+|-
+! <tt>submit()</tt>
+| ?
+| ?
+|-
+! <tt>reset()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLSelectElement
+|-
+| style="background: #ececec" rowspan="15" | DOM1
+! <tt>selectedIndex</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="15" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="15" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>length</tt>
+| ?
+| ?
+|-
+! <tt>options</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! <tt>size</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>type</tt>
+| ?
+| ?
+|-
+! <tt>value</tt>
+| ?
+| ?
+|-
+! <tt>disabled</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| ?
+|-
+! <tt>multiple</tt>
+| ?
+| ?
+|-
+! <tt>form</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>add()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>remove()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>blur()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>focus()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLOptGroupElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>disabled</tt>
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>label</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLOptionElement
+|-
+| style="background: #ececec" rowspan="8" | DOM1
+! <tt>form</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>defaultSelected</tt>
+| ?
+| ?
+|-
+! <tt>text</tt>
+| ?
+| ?
+|-
+! <tt>index</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>disabled</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>label</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>selected</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>value</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLInputElement
+|-
+| style="background: #ececec" rowspan="22" | DOM1
+! <tt>defaultValue</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="13" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>defaultChecked</tt>
+| ?
+| ?
+|-
+! <tt>form</tt>
+| ?
+| ?
+|-
+! <tt>accept</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>accesskey</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>align</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>alt</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>checked</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>disabled</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| ?
+|-
+! <tt>maxLength</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>name</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>readOnly</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>size</tt>
+| ?
+| ?
+|-
+! <tt>src</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|-
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>useMap</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>value</tt>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>blur()</tt>
+| ?
+| ?
+|-
+! <tt>focus()</tt>
+| ?
+| ?
+|-
+! <tt>select()</tt>
+| ?
+| ?
+|-
+! <tt>click()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTextAreaElement
+|-
+| style="background: #ececec" rowspan="14" | DOM1
+! <tt>defaultValue</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="14" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="14" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>form</tt>
+| ?
+| ?
+|-
+! <tt>accesskey</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>cols</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>disabled</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| ?
+|-
+! <tt>name</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+|-
+! <tt>readOnly</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>rows</tt>
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>value</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+|-
+! <tt>blur()</tt>
+| ?
+| ?
+|-
+! <tt>focus()</tt>
+| ?
+| ?
+|-
+! <tt>select()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLButtonElement
+|-
+| style="background: #ececec" rowspan="7" | DOM1
+! <tt>form</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>accesskey</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>disabled</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>name</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>type</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>value</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLLabelElement
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>form</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>accesskey</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| ?
+| ?
+|-
+! <tt>htmlFor</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLFieldSetElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>form</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLLegendElement
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>form</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>accesskey</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLUListElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>compact</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>type</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLOListElement
+|-
+| style="background: #ececec" rowspan="3" | DOM1
+! <tt>compact</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>start</tt>
+| ?
+| ?
+|-
+! <tt>type</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLDListElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>compact</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLLIElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>type</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>value</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLDivElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>align</tt>
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLParagraphElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>align</tt>
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLHeadingElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLQuoteElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>cite</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLPreElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>width</tt>
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLBRElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>clear</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLHRElement
+|-
+| style="background: #ececec" rowspan="4" | DOM1
+! <tt>align</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>noShade</tt>
+| ?
+| ?
+|-
+! <tt>size</tt>
+| ?
+| ?
+|-
+! <tt>width</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLModElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>cite</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>dateTime</tt>
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLAnchorElement
+|-
+| style="background: #ececec" rowspan="14" | DOM1
+! <tt>accesskey</tt>
+| ?
+| ?
+| rowspan="14" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="14" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>charset</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>coords</tt>
+| ?
+| ?
+|-
+! <tt>href</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| ?
+| ?
+|-
+! <tt>hreflang</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>name</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>rel</tt>
+| ?
+| ?
+|-
+! <tt>rev</tt>
+| ?
+| ?
+|-
+! <tt>shape</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>target</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>blur()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>focus()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLImageElement
+|-
+| style="background: #ececec" rowspan="12" | DOM1
+! <tt>name</tt>
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>align</tt>
+| ?
+| ?
+|-
+! <tt>alt</tt>
+| ?
+| ?
+|-
+! <tt>border</tt>
+| ?
+| ?
+|-
+! <tt>height</tt>
+| ?
+| ?
+|-
+! <tt>hspace</tt>
+| ?
+| ?
+|-
+! <tt>isMap</tt>
+| ?
+| ?
+|-
+! <tt>longDesc</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>src</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>useMap</tt>
+| ?
+| ?
+|-
+! <tt>vspace</tt>
+| ?
+| ?
+|-
+! <tt>width</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLObjectElement
+|-
+| style="background: #ececec" rowspan="18" | DOM1
+! <tt>form</tt>
+| ?
+| ?
+| rowspan="19" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>code</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>align</tt>
+| ?
+| ?
+|-
+! <tt>archive</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>border</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>codeBase</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>codeType</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>data</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>declare</tt>
+| ?
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>height</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>hspace</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! <tt>standby</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>useMap</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>vspace</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>width</tt>
+| ?
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" | DOM2
+! <tt>contentDocument</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLParamElement
+|-
+| style="background: #ececec" rowspan="4" | DOM1
+! <tt>name</tt>
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>type</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>value</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>valueType</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLMapElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>areas</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLAreaElement
+|-
+| style="background: #ececec" rowspan="8" | DOM1
+! <tt>accesskey</tt>
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>alt</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>coords</tt>
+| ?
+| ?
+|-
+! <tt>hrefs</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>noHrefs</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>shape</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>tabIndex</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>target</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLScriptElement
+|-
+| style="background: #ececec" rowspan="8" | DOM1
+! <tt>text</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#presto HTMLScriptElement text|1.0]]
+|-
+! <tt>htmlFor (reserved for future use)</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>event (reserved for future use)</tt>
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>charset</tt>
+| ?
+| ?
+| ?
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>defer</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>src</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>target</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableElement
+|-
+| style="background: #ececec" rowspan="22" | DOM1
+! <tt>caption</tt>
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="22" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="22" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>tHead</tt>
+| ?
+| ?
+|-
+! <tt>tFoot</tt>
+| ?
+| ?
+|-
+! <tt>rows</tt>
+| ?
+| ?
+|-
+! <tt>tBodies</tt>
+| ?
+| ?
+|-
+! <tt>align</tt>
+| ?
+| ?
+|-
+! <tt>bgColor</tt>
+| ?
+| ?
+|-
+! <tt>border</tt>
+| ?
+| ?
+|-
+! <tt>cellPadding</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>cellSpacing</tt>
+| ?
+| ?
+|-
+! <tt>frame</tt>
+| ?
+| ?
+|-
+! <tt>rules</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+! <tt>summary</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>width</tt>
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>createTHead()</tt>
+| ?
+| ?
+|-
+! <tt>deleteTHead()</tt>
+| ?
+| ?
+|-
+! <tt>createTFoot()</tt>
+| ?
+| ?
+|-
+! <tt>deleteTFoot()</tt>
+| ?
+| ?
+|-
+! <tt>createCaption()</tt>
+| ?
+| ?
+|-
+! <tt>deleteCaption()</tt>
+| ?
+| ?
+|-
+! <tt>insertRow()</tt>
+| ?
+| ?
+|-
+! <tt>deleteRow()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableCaptionElement
+|-
+| style="background: #ececec" | DOM1
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableColElement
+|-
+| style="background: #ececec" rowspan="6" | DOM1
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>ch</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>chOff</tt>
+| ?
+| ?
+|-
+! <tt>span</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>vAlign</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>width</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableSectionElement
+|-
+| style="background: #ececec" rowspan="7" | DOM1
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>ch</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>chOff</tt>
+| ?
+| ?
+|-
+! <tt>vAlign</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>rows</tt>
+| ?
+| ?
+|-
+! <tt>insertRow()</tt>
+| ?
+| ?
+|-
+! <tt>deleteRow()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableRowElement
+|-
+| style="background: #ececec" rowspan="10" | DOM1
+! <tt>rowIndex</tt>
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="10" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>sectionRowIndex</tt>
+| ?
+| ?
+|-
+! <tt>cells</tt>
+| ?
+| ?
+|-
+! <tt>align</tt>
+| ?
+| ?
+|-
+! <tt>bgColor</tt>
+| ?
+| ?
+|-
+! <tt>ch</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>chOff</tt>
+| ?
+| ?
+|-
+! <tt>vAlign</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>insertCell()</tt>
+| ?
+| ?
+|-
+! <tt>deleteCell()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLTableCellElement
+|-
+| style="background: #ececec" rowspan="15" | DOM1
+! <tt>cellIndex</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="15" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#webcore HTMLTableCellElement cellIndex|Incorrect]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>abbr</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>axis</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>bgColor</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>ch</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>chOff</tt>
+| ?
+| ?
+|-
+! <tt>colSpan</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>headers</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>height</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>noWrap</tt>
+| ?
+| ?
+|-
+! <tt>rowSpan</tt>
+| ?
+| ?
+|-
+! <tt>scope</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>vAlign</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>width</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLFrameSetElement
+|-
+| style="background: #ececec" rowspan="2" | DOM1
+! <tt>cols</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>rows</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLFrameElement
+|-
+| style="background: #ececec" rowspan="8" | DOM1
+! <tt>frameBorder</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>longDesc</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>marginHeight</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>marginWidth</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>noResize</tt>
+| ?
+| ?
+|-
+! <tt>scrolling</tt>
+| ?
+| ?
+|-
+! <tt>src</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" | DOM2
+! <tt>contentDocument</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface HTMLIFrameSetElement
+|-
+| style="background: #ececec" rowspan="10" | DOM1
+! <tt>align</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>frameBorder</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! <tt>height</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>longDesc</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>marginHeight</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|-
+! <tt>marginWidth</tt>
+| ?
+| ?
+|-
+! <tt>name</tt>
+| ?
+| ?
+|-
+! <tt>scrolling</tt>
+| ?
+| ?
+|-
+! <tt>src</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident HTML URL|8.0]]
+| ?
+| ?
+|-
+! <tt>width</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| ?
+| ?
+|- style="border-top: 1px solid #ccc"
+| style="background: #ececec" | DOM2
+! <tt>contentDocument</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|}
+
+===Trident HTML notes===
+# <tt id="trident_HTML_URL">profile</tt>, <tt>href</tt>, <tt>background</tt>, <tt>action</tt>, <tt>cite</tt>, <tt>longDesc</tt>, <tt>codebase</tt>, <tt>data</tt>, <tt>src</tt> &mdash; Prior to version 8.0 relative URLs were not resolved to full URLs.
+
+===WebKit HTML notes===
+# <tt id="webcore_HTMLTableCellElement_cellIndex">cellIndex</tt> &mdash; Always return zero.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (October 2012)">citation needed</span>]]</i>&#93;</sup>
+
+===Presto HTML notes===
+# <tt id="presto_HTMLScriptElement_text">text</tt> &mdash; Opera 8 and lower returned data at <code>src</code>, when it should return inline data instead.
+
+==Style (Style Sheets)==
+The interfaces found within this section are not mandatory. The interfaces in this section are base interfaces used to represent any type of style sheet.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface StyleSheet
+|-
+| style="background: #ececec" rowspan="7" | DOM2
+! <tt>type</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>disabled</tt>
+| ?
+| ?
+|-
+! <tt>ownerNode</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+! <tt>parentStyleSheet</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>href</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#trident StyleSheet href|8.0]]
+| ?
+| ?
+|-
+! <tt>title</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| ?
+|-
+! <tt>media</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#trident StyleSheet media|Incorrect]]
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface StyleSheetList
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>length</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface MediaList
+|-
+| style="background: #ececec" rowspan="5" | DOM2
+! <tt>mediaText</tt>
+| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>length</tt>
+| ?
+| ?
+|-
+! <tt>item()</tt>
+| ?
+| ?
+|-
+! <tt>deleteMedium()</tt>
+| ?
+| ?
+|-
+! <tt>appendMedium()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LinkStyle
+|-
+| style="background: #ececec" | DOM2
+! <tt>sheet</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentStyle
+|-
+| style="background: #ececec" | DOM2
+! <tt>styleSheets</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|}
+
+===Trident Style (Style Sheets) notes===
+# <tt id="trident_StyleSheet_href">href</tt> &mdash; Prior to version 8.0 relative URLs were not resolved to full URLs.
+# <tt id="trident_StyleSheet_media">media</tt> &mdash; Returns string instead of <code>MediaList</code>.
+
+==Style (CSS Fundamental)==
+The interfaces within this section are considered fundamental CSS interfaces, and must be supported by all conforming implementations of the CSS module. These interfaces represent CSS style sheets specifically.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSStyleSheet
+|-
+| style="background: #ececec" rowspan="4" | DOM2
+! <tt>ownerRule</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>cssRules</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+|-
+! <tt>insertRule()</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>deleteRule()</tt>
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface StyleSheetList
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>length</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSRuleList
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>length</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSRule
+|-
+| style="background: #ececec" rowspan="4" | DOM2
+! <tt>type</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>cssText</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+|-
+! <tt>parentStyleSheet</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+|-
+! <tt>parentRule</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSStyleRule
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>selectorText</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>style</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSMediaRule
+|-
+| style="background: #ececec" rowspan="4" | DOM2
+! <tt>media</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>cssRules</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>insertRule()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>deleteRule()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSFontFaceRule
+|-
+| style="background: #ececec" | DOM2
+! <tt>style</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSPageRule
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>selectorText</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>style</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSImportRule
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>href</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>media</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>styleSheet</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSCharsetRule
+|-
+| style="background: #ececec" | DOM2
+! <tt>encoding</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSUnknownRule
+|-
+| style="background: #ececec" | DOM2
+! <tt>(no properties)</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSStyleDeclaration
+|-
+| style="background: #ececec" rowspan="9" | DOM2
+! <tt>cssText</tt>
+| rowspan="9" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>length</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>parentRule</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>getPropertyValue()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>getPropertyCSSValue()</tt>
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>removeProperty()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>getPropertyPriority()</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#tasman CSSStyleDeclaration getPropertyPriority|Incorrect]]
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>setProperty()</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSValue
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>cssText</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>cssValueType</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSPrimitiveValue
+|-
+| style="background: #ececec" rowspan="8" | DOM2
+! <tt>primitiveType</tt>
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>setFloatValue()</tt>
+| ?
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+|-
+! <tt>getFloatValue()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>setStringValue()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>getStringValue()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>getCounterValue()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>getRectValue()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>getRGBColorValue()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSSValueList
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>length</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>item()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface RGBColor
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>red</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>green</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>blue</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Rect
+|-
+| style="background: #ececec" rowspan="4" | DOM2
+! <tt>top</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>right</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>bottom</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>left</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Counter
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>identifier</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>listStyle</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>separator</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface ViewCSS
+|-
+| style="background: #ececec" | DOM2
+! <tt>getComputedStyle()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentCSS
+|-
+| style="background: #ececec" | DOM2
+! <tt>getOverrideStyle()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMImplementationCSS
+|-
+| style="background: #ececec" | DOM2
+! <tt>createCSSStyleSheet()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface ElementCSSInlineStyle
+|-
+| style="background: #ececec" | DOM2
+! <tt>style</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.3
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|}
+
+===Tasman Style (CSS Fundamental) notes===
+# <tt id="tasman_CSSStyleDeclaration_getPropertyPriority">getPropertyPriority()</tt> &mdash; Returns <code>!important</code> instead of <code>important</code>.
+
+==Style (CSS Extended)==
+The interfaces found within this section are not mandatory.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CSS2Properties
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! style="font-weight: normal; background: #ececec" | Support this interface
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="font-weight: normal; background: #ececec" | Properties
+| colspan="7" | Please refer to [[Comparison of layout engines (Cascading Style Sheets)]] for the comparison of CSS properties.
+|}
+
+==Events==
+The interfaces found within this section are not mandatory. The first goal is the design of a generic event system which allows registration of event handlers, describes event flow through a tree structure, and provides basic contextual information for each event. The second goal of the event model is to provide a common subset of the current event systems used in DOM Level 0 browsers. See also [[DOM Events]] for details.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface EventTarget
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>addEventListener()</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>removeEventListener()</tt>
+|-
+! <tt>dispatchEvent()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface EventListener
+|-
+| style="background: #ececec" | DOM2
+! <tt>handleEvent()</tt>
+| ?
+| ?
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Event
+|-
+| style="background: #ececec" rowspan="10" | DOM2
+! <tt>type</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="10" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>target</tt>
+| rowspan="9" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#gecko Event target|1.3]]
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#webcore Event target|Incorrect]]
+| ?
+|-
+! <tt>currentTarget</tt>
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|-
+! <tt>eventPhase</tt>
+| ?
+| ?
+|-
+! <tt>bubbles</tt>
+| ?
+| ?
+|-
+! <tt>cancelable</tt>
+| ?
+| ?
+|-
+! <tt>timeStamp</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#gecko Event timeStamp|Yes]]
+| ?
+| ?
+|-
+! <tt>stopPropagation()</tt>
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|-
+! <tt>preventDefault()</tt>
+| ?
+| ?
+|-
+! <tt>initEvent()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Exception EventException
+|-
+| style="background: #ececec" | DOM2
+! <tt>code</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentEvent
+|-
+| style="background: #ececec" | DOM2
+! <tt>createEvent()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface UIEvent
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>view</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>detail</tt>
+| ?
+| ?
+|-
+! <tt>initUIEvent()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Events for interface UIEvent
+|-
+| style="background: #ececec" rowspan="3" | DOM2
+! <tt>DOMFocusIn</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>DOMFocusOut</tt>
+| ?
+| ?
+|-
+! <tt>DOMActivate</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface MouseEvent
+|-
+| style="background: #ececec" rowspan="11" | DOM2
+! <tt>screenX</tt>
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="11" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>screenY</tt>
+| ?
+|-
+! <tt>clientX</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#webcore Event clientX|Incorrect]]
+| ?
+|-
+! <tt>clientY</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#webcore Event clientY|Incorrect]]
+| ?
+|-
+! <tt>ctrlKey</tt>
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+! <tt>shiftKey</tt>
+| ?
+|-
+! <tt>altKey</tt>
+| ?
+|-
+! <tt>metaKey</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+|-
+! <tt>button</tt>
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#trident MouseEvent button|Incorrect]]
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#tasman MouseEvent button|Incorrect]]
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|[[#webcore MouseEvent button|Incorrect]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[#presto MouseEvent button|1.0]]
+|-
+! <tt>relatedTarget</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>initMouseEvent()</tt>
+| ?
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Events for interface MouseEvent
+|-
+| style="background: #ececec" rowspan="6" | DOM2
+! <tt>click</tt>
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>mousedown</tt>
+| ?
+| ?
+|-
+! <tt>mouseup</tt>
+| ?
+| ?
+|-
+! <tt>mouseover</tt>
+| ?
+| ?
+|-
+! <tt>mousemove</tt>
+| ?
+| ?
+|-
+! <tt>mouseout</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface MutationEvent
+|-
+| style="background: #ececec" rowspan="6" | DOM2
+! <tt>relatedNode</tt>
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>prevValue</tt>
+| ?
+| ?
+|-
+! <tt>newValue</tt>
+| ?
+| ?
+|-
+! <tt>attrName</tt>
+| ?
+| ?
+|-
+! <tt>attrChange</tt>
+| ?
+| ?
+|-
+! <tt>initMutationEvent</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Events for interface MutationEvent
+|-
+| style="background: #ececec" rowspan="7" | DOM2
+! <tt>DOMSubtreeModified</tt>
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| rowspan="5" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[#khtml MutationEvent DOMSubtreeModified|Partial]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>DOMNodeInserted</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>DOMNodeRemoved</tt>
+|-
+! <tt>DOMNodeRemovedFromDocument</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>DOMNodeInsertedIntoDocument</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! <tt>DOMAttrModified</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>DOMCharacterDataModified</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Events for HTML
+|-
+| style="background: #ececec" rowspan="12" | DOM2
+! <tt>load</tt>
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>unload</tt>
+| ?
+| ?
+|-
+! <tt>abort</tt>
+| ?
+| ?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>error</tt>
+| ?
+| ?
+| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>select</tt>
+| ?
+| ?
+|-
+! <tt>change</tt>
+| ?
+| ?
+|-
+! <tt>submit</tt>
+| ?
+| ?
+|-
+! <tt>reset</tt>
+| ?
+| ?
+|-
+! <tt>focus</tt>
+| ?
+| ?
+|-
+! <tt>blur</tt>
+| ?
+| ?
+|-
+! <tt>resize</tt>
+| ?
+| ?
+|-
+! <tt>scroll</tt>
+| ?
+| ?
+|}
+
+===Trident Events notes===
+# <tt id="trident_MouseEvent_button">button</tt> &mdash; Does not use W3C values.
+
+===Tasman Events notes===
+# <tt id="tasman_MouseEvent_button">button</tt> &mdash; Does not use W3C values.
+
+===Gecko Events notes===
+# <tt id="gecko_Event_target">target</tt> &mdash; Return text node, if any, of the target element node prior to 1.3.
+# <tt id="gecko_Event_timeStamp">timeStamp</tt> &mdash; Is relative to the system start instead of to 1 January 1970.
+
+===WebKit Events notes===
+# <tt id="webcore_Event_target">target</tt> &mdash; Return text node, if any, of the target element node (fixed in v73, but reverted in v85).
+# <tt id="webcore_Event_clientX">clientX</tt>, <tt id="webcore_Event_clientY">clientY</tt> &mdash; Treated as <code>pageX</code> and <code>pageY</code>.
+# <tt id="webcore_MouseEvent_button">button</tt> &mdash; Does not use W3C values.
+
+===KHTML Events notes===
+# <tt id="khtml_MutationEvent_DOMSubtreeModified">DOMSubtreeModified</tt> &mdash; Not triggered when an element is removed from the subtree.
+
+===Presto Events notes===
+# <tt id="presto_MouseEvent_button">button</tt> &mdash; Does not use W3C values prior to 8.0.
+
+==Views==
+The interfaces found within this section are not mandatory. A document may have one or more "views" associated with it, e.g., a computed view on a document after applying a CSS stylesheet, or multiple presentations (e.g. HTML frame) of the same document in a client. That is, a view is some alternate representation of, or a presentation of, and associated with, a source document.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface AbstractView
+|-
+| style="background: #ececec" | DOM2
+! <tt>document</tt>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentView
+|-
+| style="background: #ececec" | DOM2
+! <tt>defaultView</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[#trident parentWindow|No]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|}
+
+===Trident notes===
+# <tt id="trident_parentWindow">defaultView</tt> &mdash; Trident does not support the defaultView property for documents, but it supports another property with the same meaning which is parentWindow.
+
+==Traversal==
+The interfaces found within this section are not mandatory. Its interfaces provide easy-to-use, robust, selective traversal of a document's contents.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NodeIterator
+|-
+| style="background: #ececec" rowspan="7" | DOM2
+! <tt>root</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="7" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| ?
+| ?
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>whatToShow</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>filter</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>expandEntityReferences</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>nextNode()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>previousNode()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>detach()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NodeFilter
+|-
+| style="background: #ececec" | DOM2
+! <tt>acceptNode()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface TreeWalker
+|-
+| style="background: #ececec" rowspan="12" | DOM2
+! <tt>root</tt>
+| rowspan="12" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+| rowspan="12" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>whatToShow</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>filter</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>expandEntityReferences</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>currentNode</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>parentNode()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>firstChild()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>lastChild()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>previousSibling()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>nextSibling()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>previousNode()</tt>
+| ?
+| ?
+| ?
+|-
+! <tt>nextNode()</tt>
+| ?
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentTraversal
+|-
+| style="background: #ececec" rowspan="2" | DOM2
+! <tt>createNodeIterator()</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
+| ?
+| ?
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>createTreeWalker()</tt>
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| ?
+| ?
+|}
+
+==Range==
+The interfaces found within this section are not mandatory. It includes methods for creating and moving a Range and methods for manipulating content with Ranges.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface Range
+|-
+| style="background: #ececec" rowspan="24" | DOM2
+! <tt>startContainer</tt>
+| rowspan="24" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| rowspan="24" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="24" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| rowspan="24" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>startOffset</tt>
+| ?
+| ?
+|-
+! <tt>endContainer</tt>
+| ?
+| ?
+|-
+! <tt>endOffset</tt>
+| ?
+| ?
+|-
+! <tt>collapsed</tt>
+| ?
+| ?
+|-
+! <tt>commonAncestorContainer</tt>
+| ?
+| ?
+|-
+! <tt>setStart()</tt>
+| ?
+| ?
+|-
+! <tt>setEnd()</tt>
+| ?
+| ?
+|-
+! <tt>setStartBefore()</tt>
+| ?
+| ?
+|-
+! <tt>setStartAfter()</tt>
+| ?
+| ?
+|-
+! <tt>setEndBefore()</tt>
+| ?
+| ?
+|-
+! <tt>setEndAfter()</tt>
+| ?
+| ?
+|-
+! <tt>collapse()</tt>
+| ?
+| ?
+|-
+! <tt>selectNode()</tt>
+| ?
+| ?
+|-
+! <tt>selectNodeContents()</tt>
+| ?
+| ?
+|-
+! <tt>compareBoundaryPoints()</tt>
+| ?
+| ?
+|-
+! <tt>deleteContents()</tt>
+| ?
+| ?
+|-
+! <tt>extractContents()</tt>
+| ?
+| ?
+|-
+! <tt>cloneContents()</tt>
+| ?
+| ?
+|-
+! <tt>insertNode()</tt>
+| ?
+| ?
+|-
+! <tt>surroundContents()</tt>
+| ?
+| ?
+|-
+! <tt>cloneRange()</tt>
+| ?
+| ?
+|-
+! <tt>toString()</tt>
+| ?
+| ?
+|-
+! <tt>detach()</tt>
+| ?
+| ?
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentRange
+|-
+| style="background: #ececec" | DOM2
+! <tt>createRange()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Exception RangeException
+|-
+| style="background: #ececec" | DOM2
+! <tt>code</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|}
+
+==Load and Save==
+The interfaces within this section are considered fundamental, and must be fully implemented by all conforming implementations of the DOM Load and Save module.
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Exception LSException
+|-
+| style="background: #ececec" | DOM3
+! <tt>code</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DOMImplementationLS
+|-
+| style="background: #ececec" rowspan="4" | DOM3
+! <tt>createLSParser()</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>createLSSerializer()</tt>
+|-
+! <tt>createLSInput()</tt>
+|-
+! <tt>createLSOutput()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSParser
+|-
+| style="background: #ececec" rowspan="8" | DOM3
+! <tt>domConfig</tt>
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>filter</tt>
+|-
+! <tt>async</tt>
+|-
+! <tt>busy</tt>
+|-
+! <tt>parse()</tt>
+|-
+! <tt>parseURI()</tt>
+|-
+! <tt>parseWithContext()</tt>
+|-
+! <tt>abort()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSInput
+|-
+| style="background: #ececec" rowspan="8" | DOM3
+! <tt>characterStream</tt>
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="8" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>byteStream</tt>
+|-
+! <tt>stringData</tt>
+|-
+! <tt>systemId</tt>
+|-
+! <tt>publicId</tt>
+|-
+! <tt>baseURI</tt>
+|-
+! <tt>encoding</tt>
+|-
+! <tt>certifiedText</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSResourceResolver
+|-
+| style="background: #ececec" | DOM3
+! <tt>resolveResource()</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSParserFilter
+|-
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>whatToShow</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>startElement()</tt>
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>acceptNode()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSProgressEvent
+|-
+| style="background: #ececec" rowspan="3" | DOM3
+! <tt>input</tt>
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>position</tt>
+|-
+! <tt>totalSize</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSLoadEvent
+|-
+| style="background: #ececec" rowspan="2" | DOM3
+! <tt>newDocument</tt>
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! <tt>input</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSSerializer
+|-
+| style="background: #ececec" rowspan="6" | DOM3
+! <tt>domConfig</tt>
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>newLine</tt>
+|-
+! <tt>filter</tt>
+|-
+! <tt>write()</tt>
+|-
+! <tt>writeToURI()</tt>
+|-
+! <tt>writeToString()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSOutput
+|-
+| style="background: #ececec" rowspan="4" | DOM3
+! <tt>characterStream</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+|-
+! <tt>byteStream</tt>
+|-
+! <tt>systemId</tt>
+|-
+! <tt>encoding</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface LSSerializerFilter
+|-
+| style="background: #ececec" | DOM3
+! <tt>whatToShow</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+==Validation==
+The interfaces found within this section are not mandatory. This module provides interfaces to guide construction and editing of XML documents. Examples of such guided editing are queries like those that combine questions like "what does the schema allow me to insert/delete here" and "if I insert/delete here, will the document still be valid."
+{| class="wikitable" style="width: 95%; text-align: center"
+! colspan="2" |
+! style="width: 10%" | [[Trident (layout engine)|Trident]]
+! style="width: 10%" | [[Tasman (layout engine)|Tasman]]
+! style="width: 10%" | [[Gecko (layout engine)|Gecko]]
+! style="width: 10%" | [[WebKit]]
+! style="width: 10%" | [[KHTML]]
+! style="width: 10%" | [[Presto (layout engine)|Presto]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Exception ExceptionVAL
+|-
+| style="background: #ececec" | DOM3
+! <tt>code</tt>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface DocumentEditVAL
+|-
+| style="background: #ececec" rowspan="4" | DOM3
+! <tt>continuousValidityChecking</tt>
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="4" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>domConfig</tt>
+|-
+! <tt>getDefinedElements()</tt>
+|-
+! <tt>validateDocument()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface NodeEditVAL
+|-
+| style="background: #ececec" rowspan="7" | DOM3
+! <tt>defaultValue</tt>
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="7" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>enumeratedValues</tt>
+|-
+! <tt>canInsertBefore()</tt>
+|-
+! <tt>canRemoveChild()</tt>
+|-
+! <tt>canReplaceChild()</tt>
+|-
+! <tt>canAppendChild()</tt>
+|-
+! <tt>nodeValidity()</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface ElementEditVAL
+|-
+| style="background: #ececec" rowspan="17" | DOM3
+! <tt>allowedChildren</tt>
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="17" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>allowedFirstChildren</tt>
+|-
+! <tt>allowedParents</tt>
+|-
+! <tt>allowedNextSiblings</tt>
+|-
+! <tt>allowedPreviousSiblings</tt>
+|-
+! <tt>allowedAttributes</tt>
+|-
+! <tt>requiredAttributes</tt>
+|-
+! <tt>contentType</tt>
+|-
+! <tt>canSetTextContent</tt>
+|-
+! <tt>canSetAttribute</tt>
+|-
+! <tt>canSetAttributeNode</tt>
+|-
+! <tt>canSetAttributeNS</tt>
+|-
+! <tt>canRemoveAttribute</tt>
+|-
+! <tt>canRemoveAttributeNS</tt>
+|-
+! <tt>canRemoveAttributeNode</tt>
+|-
+! <tt>isElementDefined</tt>
+|-
+! <tt>isElementDefinedNS</tt>
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" colspan="8" | Interface CharacterDataEditVAL
+|-
+| style="background: #ececec" rowspan="6" | DOM3
+! <tt>isWhitespaceOnly()</tt>
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="6" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! <tt>canSetData()</tt>
+|-
+! <tt>canAppendData()</tt>
+|-
+! <tt>canReplaceData()</tt>
+|-
+! <tt>canInsertData()</tt>
+|-
+! <tt>canDeleteData()</tt>
+|}
+
+==References==
+===Trident references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="t"></references></div>
+
+===Gecko references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="g"></references></div>
+
+===Webkit references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="w"></references></div>
+
+===Presto references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="p"></references></div>
+
+===Other references===
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+*<span id="CITEREF" class="citation">[http://www.w3.org/DOM/Test/ "W3C"], ''Document Object Model (DOM) Conformance Test Suites''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=W3C&rft.genre=article&rft_id=http%3A%2F%2Fwww.w3.org%2FDOM%2FTest%2F&rft.jtitle=Document+Object+Model+%28DOM%29+Conformance+Test+Suites&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://dbaron.org/dom/test/ "David Baron's Homepage"], ''DOM Test Pages''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=David+Baron%27s+Homepage&rft.genre=article&rft_id=http%3A%2F%2Fdbaron.org%2Fdom%2Ftest%2F&rft.jtitle=DOM+Test+Pages&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://www.jeremie.com/Dev/DOM/ "Jeremie's Personal Site"], ''DOM Level 1 Tests''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Jeremie%27s+Personal+Site&rft.genre=article&rft_id=http%3A%2F%2Fwww.jeremie.com%2FDev%2FDOM%2F&rft.jtitle=DOM+Level+1+Tests&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://www.mozilla.org/docs/dom/mozilla/ "Mozilla Developer Documentation"], ''DOM Support in Mozilla''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Mozilla+Developer+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.mozilla.org%2Fdocs%2Fdom%2Fmozilla%2F&rft.jtitle=DOM+Support+in+Mozilla&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://www.mozilla.org/docs/dom/reference/levels.html "Mozilla Developer Documentation"], ''What does each DOM Level bring?''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Mozilla+Developer+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.mozilla.org%2Fdocs%2Fdom%2Freference%2Flevels.html&rft.jtitle=What+does+each+DOM+Level+bring%3F&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://xulplanet.com/references/objref/ "XULPlanet.com"], ''Mozilla Object Reference''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=XULPlanet.com&rft.genre=article&rft_id=http%3A%2F%2Fxulplanet.com%2Freferences%2Fobjref%2F&rft.jtitle=Mozilla+Object+Reference&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://guisset.tripod.com/mozilla/DOMStatus.html "Fabian Guisset"], ''Mozilla DOM Status Update''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Fabian+Guisset&rft.genre=article&rft_id=http%3A%2F%2Fguisset.tripod.com%2Fmozilla%2FDOMStatus.html&rft.jtitle=Mozilla+DOM+Status+Update&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://www.opera.com/docs/specs/ "Opera Documentation"], ''Web Specifications Supported in Opera''<span class="reference-accessdate">, retrieved May 1, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Opera+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.opera.com%2Fdocs%2Fspecs%2F&rft.jtitle=Web+Specifications+Supported+in+Opera&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+*<span id="CITEREF" class="citation">[http://www.dannyg.com/ref/jsquickref.html "JavaScript Bible, 5th Edition"], ''Appendix A: JS/DOM Object Quick Reference''<span class="reference-accessdate">, retrieved May 5, 2005</span></span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=JavaScript+Bible%2C+5th+Edition&rft.genre=article&rft_id=http%3A%2F%2Fwww.dannyg.com%2Fref%2Fjsquickref.html&rft.jtitle=Appendix+A%3A+JS%2FDOM+Object+Quick+Reference&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+==External links==
+*[http://www.quirksmode.org/dom/ QuirksMode - DOM]
+*[http://www.webdevout.net/browser_support_dom.php Web browser DOM support]
+*[http://code.google.com/doctype/ Google Doctype]
+
+<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Layout engine]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Blink (layout engine)|Blink]]
+*[[Gecko (software)|Gecko]]
+*[[KHTML]]
+*[[MARTHA (layout engine)|MARTHA]]
+*[[Presto (layout engine)|Presto]]
+*[[Prince (software)|Prince]]
+*[[Servo (layout engine)|Servo]]
+*[[Trident (layout engine)|Trident]]
+*[[WebKit]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Amaya (web browser)|Amaya]]
+*[[Boxely]]
+*[[Gazelle (web browser)|Gazelle]]
+*[[GtkHTML]]
+*[[HTMLayout]]
+*[[iCab]]
+*[[Mariner (layout engine)|Mariner]]
+*[[Tasman (layout engine)|Tasman]]
+*[[Tkhtml]]
+</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Comparison of layout engines (HTML)|HTML]]
+**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
+*[[Comparison of layout engines (HTML5)|HTML5]]
+**[[Comparison of layout engines (HTML5 media)|media]]
+**[[Comparison of layout engines (HTML5 canvas)|canvas]]
+*[[Comparison of layout engines (XML)|XML]]
+**[[Comparison of layout engines (XHTML)|XHTML]]
+***[[Comparison of layout engines (XHTML 1.1)|1.1]]
+**[[Comparison of layout engines (MathML)|MathML]]
+**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
+*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
+*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
+*[[Comparison of layout engines (Document Object Model)|DOM]]
+*[[Comparison of layout engines (graphics)|Graphics]]
+*[[Comparison of layout engines (web typography)|Typography]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Layout engine comparisons]]
