@@ -28,4 +28,4 @@ This github repository contains several projects :
 
 ### Getting started :
     https://github.com/gbecan/PCM.git
-    mvm clean install
+    mvn clean install
