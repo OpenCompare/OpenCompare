@@ -3,7 +3,6 @@ import com.shopping.api.sdk.SdcQuery;
 import com.shopping.api.sdk.SdcQueryException;
 import com.shopping.api.sdk.SdkConfiguration;
 import com.shopping.api.sdk.response.*;
-import com.sun.tools.javac.util.Pair;
 import org.kevoree.modeling.api.json.JSONModelSerializer;
 import pcm.*;
 import pcm.factory.DefaultPcmFactory;
