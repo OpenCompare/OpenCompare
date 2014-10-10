@@ -1,0 +1,894 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Overview</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Name) </td>
+          <td rowspan="1" colspan="1"> Header(Creator/Maintainer) </td>
+          <td rowspan="1" colspan="1"> Header(Based on) </td>
+          <td rowspan="1" colspan="1"> Header(Standardized?) </td>
+          <td rowspan="1" colspan="1"> Header(Specification) </td>
+          <td rowspan="1" colspan="1"> Header(Binary?) </td>
+          <td rowspan="1" colspan="1"> Header(Human-readable?) </td>
+          <td rowspan="1" colspan="1"> Header(Supports reference?) </td>
+          <td rowspan="1" colspan="1"> Header(Schema/IDL?) </td>
+          <td rowspan="1" colspan="1"> Header(Standard API) </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Apache Avro) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Apache Software Foundation, Apache Software Foundation)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Apache Avro™ 1.7.5 Specification, Apache Avro™ 1.7.5 Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(built-in, built-in))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ASN.1) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(ISO, ISO), VarConceptRef(IEC, IEC), VarConceptRef(ITU-T, ITU-T))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(ISO, ISO), VarConceptRef(IEC 8824, IEC 8824)), VarConceptRef(X.680 series of ITU-T Recommendations, X.680 series of ITU-T Recommendations))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(BER, BER), VarConceptRef(DER, DER), VarConceptRef(PER, PER), VarConceptRef(OER, OER), VarConceptRef(or custom via ECN, or custom via ECN)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(XER, XER), VarConceptRef(GSER, GSER), VarConceptRef(or custom via ECN, or custom via ECN)))
+          </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(built-in, built-in))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Bencode) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Bram Cohen, Bram Cohen), And(VarConceptRef(creator)
+BitTorrent, creator)
+BitTorrent), VarConceptRef(Inc. (maintainer, Inc. (maintainer)))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Part of BitTorrent protocol specification, Part of BitTorrent protocol specification)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Partially, Partially), And(VarConceptRef(numbers, numbers), VarConceptRef(delimiters are ASCII, delimiters are ASCII)))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Partially, Partially) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(BSON) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(MongoDB, MongoDB) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(JSON, JSON) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(BSON Specification, BSON Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Candle Markup) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Henry Luo, Henry Luo) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(XML, XML), VarConceptRef(JSON, JSON), VarConceptRef(JavaFX, JavaFX))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Candle Markup Reference, Candle Markup Reference)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(XPointer, XPointer), VarConceptRef(XPath, XPath)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(Candle Pattern Reference, Candle Pattern Reference))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(XQuery, XQuery), VarConceptRef(XPath, XPath)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Cap'n Proto) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Kenton Varda, Kenton Varda), VarConceptRef(primary author of Protocol Buffers, primary author of Protocol Buffers))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Protocol Buffers, Protocol Buffers)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Comma-separated values (CSV)) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(RFC author:
+Yakov Shafranovich, RFC author:
+Yakov Shafranovich)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), VarConceptRef(myriad informal variants used, myriad informal variants used))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(RFC 4180, RFC 4180), VarConceptRef(among others, among others))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Concise Binary Object Representation (CBOR))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(RFC authors:
+Carsten Bormann &amp; Paul Hoffman, RFC authors:
+Carsten Bormann &amp; Paul Hoffman)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MessagePack, MessagePack), VarConceptRef(JSON, JSON), VarConceptRef(CoAP, CoAP))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RFC 7049, RFC 7049) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(D-Bus Message Protocol) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(freedesktop.org, freedesktop.org)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(D-Bus Specification, D-Bus Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(Type Signatures, Type Signatures))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(see D-Bus, see D-Bus))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(JSON) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Douglas Crockford, Douglas Crockford)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(JavaScript syntax, JavaScript syntax)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(RFC 4627, RFC 4627), And(VarConceptRef(ancillary:
+RFC 6901, ancillary:
+RFC 6901), VarConceptRef(RFC 6902, RFC 6902)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(but see UBJSON, but see UBJSON), VarConceptRef(BSON, BSON))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), Partial(VarConceptRef(JSON Pointer, JSON Pointer), And(And(VarConceptRef(RFC 6901), RFC 6901)), VarConceptRef(alternately:
+JSONPath, alternately:
+JSONPath)), VarConceptRef(JPath, JPath), VarConceptRef(JSPON, JSPON), VarConceptRef(json:select(, json:select())))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), And(VarConceptRef(JSON Schema Proposal, JSON Schema Proposal), VarConceptRef(Kwalify, Kwalify), VarConceptRef(Rx, Rx), VarConceptRef(Itemscript Schema, Itemscript Schema)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), And(VarConceptRef(Clarinet, Clarinet), VarConceptRef(JSONQuery, JSONQuery), VarConceptRef(JSONPath, JSONPath)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(JSON5) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(aseemk, aseemk) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(JSON, JSON), VarConceptRef(JavaScript syntax, JavaScript syntax))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(but see UBJSON, but see UBJSON), VarConceptRef(BSON, BSON))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(is a superset of JSON, is a superset of JSON))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(MessagePack) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Sadayuki Furuhashi, Sadayuki Furuhashi)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(JSON, JSON), VarConceptRef(loosely, loosely))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(MessagePack format specification, MessagePack format specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Netstring) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Dan Bernstein, Dan Bernstein) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(netstrings.txt, netstrings.txt)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(OGDL) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Rolf Veen, Rolf Veen) </td>
+          <td rowspan="1" colspan="1"> Unknown(?) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Specification, Specification) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(Binary Specification, Binary Specification))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(Path Specification, Path Specification))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(Schema WD, Schema WD))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(OpenDDL) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Eric Lengyel, Eric Lengyel) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C, C), VarConceptRef(PHP, PHP))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(OpenDDL.org, OpenDDL.org) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(PHP's &amp;) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(PHP Group, PHP Group) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Data::Dumper format (Core Perl Module))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Gurusamy Sarathy, Gurusamy Sarathy), VarConceptRef(ActiveState developer, ActiveState developer))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Perl data types, Perl data types)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(?) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(?) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Property list) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(NeXT, NeXT), VarConceptRef(creator)
+Apple (maintainer, creator)
+Apple (maintainer))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(?) </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Public DTD for XML format, Public DTD for XML format)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(?) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cocoa, Cocoa), VarConceptRef(CoreFoundation, CoreFoundation), VarConceptRef(OpenStep, OpenStep), VarConceptRef(GnuStep, GnuStep))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Protocol Buffers) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Google, Google) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Developer Guide: Encoding, Developer Guide: Encoding)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(built-in, built-in))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ROOT) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(CERN &amp; FNAL, CERN &amp; FNAL)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(optional XML output for debugging, optional XML output for debugging))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(C++ object persistency framework, C++ object persistency framework))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(Native C++ API, Native C++ API), VarConceptRef(bindings for Python, bindings for Python), VarConceptRef(Ruby, Ruby), VarConceptRef(and others, and others)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(S-expression) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Internet Draft author:
+Ron Rivest, Internet Draft author:
+Ron Rivest)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Lisp, Lisp), VarConceptRef(Netstring, Netstring))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), VarConceptRef(largely de facto, largely de facto))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(&quot;S-Expressions&quot; Internet Draft, &quot;S-Expressions&quot; Internet Draft)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(&quot;Canonical representation&quot;, &quot;Canonical representation&quot;))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(&quot;Advanced transport representation&quot;, &quot;Advanced transport representation&quot;))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Sereal) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Yves Orton, Yves Orton), VarConceptRef(Steffen Müller et al., Steffen Müller et al.))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Sereal Specification, Sereal Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Smile) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Tatu Saloranta, Tatu Saloranta)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(JSON, JSON) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Smile Format Specification, Smile Format Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Structured Data eXchange Format) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Max Wildgrube, Max Wildgrube) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RFC 3072, RFC 3072) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Thrift) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Facebook, Facebook), VarConceptRef(creator)
+Apache (maintainer, creator)
+Apache (maintainer))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Original whitepaper, Original whitepaper)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(built-in, built-in))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(TOML) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Tom Preston-Werner, Tom Preston-Werner)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Version 0.2.0, Version 0.2.0) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Transenc) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bjorn Reese, Bjorn Reese) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Transenc Specification, Transenc Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(UBJSON) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(The Buzz Media, The Buzz Media), VarConceptRef(LLC, LLC))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(JSON, JSON), VarConceptRef(BSON, BSON))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(eXternal Data Representation) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Sun Microsystems, Sun Microsystems), VarConceptRef(creator)
+IETF (maintainer, creator)
+IETF (maintainer))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RFC 4506, RFC 4506) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(XML) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(W3C, W3C) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(SGML, SGML) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(W3C Recommendation:
+1.0, W3C Recommendation:
+1.0), VarConceptRef(Fifth Edition)
+1.1 (Second Edition, Fifth Edition)
+1.1 (Second Edition))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), VarConceptRef(Binary XML, Binary XML))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(XPointer, XPointer), VarConceptRef(XPath, XPath)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(XML schema, XML schema))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(DOM, DOM), VarConceptRef(SAX, SAX), VarConceptRef(XQuery, XQuery), VarConceptRef(XPath, XPath)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(XML-RPC) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Dave Winer, Dave Winer) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(XML, XML), VarConceptRef(SOAP, SOAP))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(XML-RPC Specification, XML-RPC Specification)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(YAML) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Clark Evans, Clark Evans), VarConceptRef(Ingy döt Net, Ingy döt Net), VarConceptRef(and Oren Ben-Kiki, and Oren Ben-Kiki))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C, C), VarConceptRef(Java, Java), VarConceptRef(Perl, Perl), VarConceptRef(Python, Python), VarConceptRef(Ruby, Ruby), VarConceptRef(Email, Email), VarConceptRef(HTML, HTML), VarConceptRef(MIME, MIME), VarConceptRef(URI, URI), VarConceptRef(XML, XML), VarConceptRef(SAX, SAX), VarConceptRef(SOAP, SOAP), VarConceptRef(JSON, JSON))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Version 1.2, Version 1.2) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Partial(VarConceptRef(Partial, Partial), ), And(VarConceptRef(Kwalify, Kwalify), VarConceptRef(Rx, Rx), VarConceptRef(built-in language type-defs, built-in language type-defs)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Syntax comparison of human-readable formats</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1"> Header(Null) </td>
+          <td rowspan="1" colspan="1"> Header(Boolean true) </td>
+          <td rowspan="1" colspan="1"> Header(Boolean false) </td>
+          <td rowspan="1" colspan="1"> Header(Integer) </td>
+          <td rowspan="1" colspan="1"> Header(Floating-point) </td>
+          <td rowspan="1" colspan="1"> Header(String) </td>
+          <td rowspan="1" colspan="1"> Header(Array) </td>
+          <td rowspan="1" colspan="1"> Header(Associative array/Object) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ASN.1 (XML Encoding Rules)) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(An object (the key is a field name):A data mapping (the key is a data value):, An object (the key is a field name):A data mapping (the key is a data value):)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Candle Markup) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(or, or) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CSV) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef((or an empty element in the row), (or an empty element in the row))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Netstring) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(JSON) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(OGDL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(OpenDDL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Homogeneous array:Heterogeneous array:, Homogeneous array:Heterogeneous array:)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(PHP's &amp;) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Associative array:
+
+Object:, Associative array:
+
+Object:)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Property list (plain text format)) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Property list (XML format)) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(S-expression) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(YAML) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(XML) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(a, a) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(XML-RPC) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Comparison of binary formats</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1"> Header(Null) </td>
+          <td rowspan="1" colspan="1"> Header(Boolean) </td>
+          <td rowspan="1" colspan="1"> Header(Integer) </td>
+          <td rowspan="1" colspan="1"> Header(Floating-point) </td>
+          <td rowspan="1" colspan="1"> Header(String) </td>
+          <td rowspan="1" colspan="1"> Header(Array) </td>
+          <td rowspan="1" colspan="1"> Header(Associative array/Object) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ASN.1 (BER, PER or OER encoding)) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(NULL type, NULL type) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(BOOLEAN, BOOLEAN), VarConceptRef(BER: as 1 byte in binary form, BER: as 1 byte in binary form), VarConceptRef(PER: as 1 bit, PER: as 1 bit), VarConceptRef(OER: as 1 byte, OER: as 1 byte))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(INTEGER, INTEGER), Partial(VarConceptRef(BER: variable-length big-endian binary representation, BER: variable-length big-endian binary representation), VarConceptRef(up to 2^(2^1024) bits, up to 2^(2^1024) bits)), VarConceptRef(PER Unaligned: a fixed number of bits if the integer type has a finite range, PER Unaligned: a fixed number of bits if the integer type has a finite range), VarConceptRef(a variable number of bits otherwise, a variable number of bits otherwise), And(VarConceptRef(PER Aligned: a fixed number of bits if the integer type has a finite range, PER Aligned: a fixed number of bits if the integer type has a finite range), VarConceptRef(the size of the range is less than 65536, the size of the range is less than 65536)), VarConceptRef(a variable number of octets otherwise, a variable number of octets otherwise), VarConceptRef(OER: one, OER: one)), VarConceptRef(two, two), And(Or(VarConceptRef(or four octets (either signed, or four octets (either signed), VarConceptRef(unsigned) if the integer type has a finite range that fits in that number of octets, unsigned) if the integer type has a finite range that fits in that number of octets)), VarConceptRef(a variable number of octets otherwise, a variable number of octets otherwise)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(REAL, REAL), VarConceptRef(base-10 real values are represented as character strings in ISO 6093 format, base-10 real values are represented as character strings in ISO 6093 format), VarConceptRef(binary real values are represented in a binary format that includes the mantissa, binary real values are represented in a binary format that includes the mantissa)), VarConceptRef(the base (2, the base (2), Integer(8, 8), VarConceptRef(or 16), or 16)), And(VarConceptRef(and the exponent, and the exponent), VarConceptRef(the special values NaN, the special values NaN)), VarConceptRef(-INF, -INF), VarConceptRef(+INF, +INF), VarConceptRef(and negative zero are also supported, and negative zero are also supported))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Multiple valid types, Multiple valid types), And(VarConceptRef(VisibleString, VisibleString), VarConceptRef(PrintableString, PrintableString), VarConceptRef(GeneralString, GeneralString), VarConceptRef(UniversalString, UniversalString), VarConceptRef(UTF8String, UTF8String)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(data specifications SET OF, data specifications SET OF), And(VarConceptRef(unordered), unordered)), VarConceptRef(SEQUENCE OF (guaranteed order, SEQUENCE OF (guaranteed order)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(user definable type, user definable type)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(BSON) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Null type - 0 bytes for value, Null type - 0 bytes for value)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(True: one byte 
+False:, True: one byte 
+False:)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(int32: 32-bit little-endian 2's complement, int32: 32-bit little-endian 2's complement), VarConceptRef(int64: 64-bit little-endian 2's complement, int64: 64-bit little-endian 2's complement))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(double: little-endian binary64, double: little-endian binary64)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(UTF-8 encoded, UTF-8 encoded), VarConceptRef(preceded by int32 encoded string length in bytes, preceded by int32 encoded string length in bytes))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(BSON embedded document with numeric keys, BSON embedded document with numeric keys)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(BSON embedded document, BSON embedded document)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Concise Binary Object Representation (CBOR))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(True: False:, True: False:) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,280 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Comparison</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Tax Year 2013) </td>
+          <td rowspan="1" colspan="1"> Header((Traditional) 401(k)) </td>
+          <td rowspan="1" colspan="1"> Header(Roth 401(k)) </td>
+          <td rowspan="1" colspan="1"> Header(Traditional IRA) </td>
+          <td rowspan="1" colspan="1"> Header(Roth IRA) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Tax benefit) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Capital gains, Capital gains), VarConceptRef(dividends, dividends), VarConceptRef(and interest within account incur no tax liability., and interest within account incur no tax liability.))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Subjected taxes) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Contributions are usually pre-tax, Contributions are usually pre-tax), VarConceptRef(but can also be post-tax, but can also be post-tax)), VarConceptRef(if allowed by plan. Distributions are taxed as ordinary income (except any post-tax principal)., if allowed by plan. Distributions are taxed as ordinary income (except any post-tax principal).))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Contributions are post-tax. Qualified distributions are not taxable., Contributions are post-tax. Qualified distributions are not taxable.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Contributions are deductible (subject to conditions). When deducted, Contributions are deductible (subject to conditions). When deducted), VarConceptRef(contributions are pre-tax, contributions are pre-tax), VarConceptRef(otherwise, otherwise), VarConceptRef(they are post-tax.  Distributions are taxed as ordinary income (except any non-deducted principal)., they are post-tax.  Distributions are taxed as ordinary income (except any non-deducted principal).))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Contributions are post-tax. Qualified distributions are not taxable., Contributions are post-tax. Qualified distributions are not taxable.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Employer or Individual) </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Employer, Employer), VarConceptRef(Sole Proprietor sets up this plan, Sole Proprietor sets up this plan))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Individual sets up this plan, Individual sets up this plan)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Contribution Limits) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Employee contribution limit of $17.5k, Employee contribution limit of $17.5k), VarConceptRef(yr for under 50 in 2013, yr for under 50 in 2013)), And(VarConceptRef($23k, $23k), Or(VarConceptRef(yr for age 50, yr for age 50), VarConceptRef(above, above))), Or(Or(And(Partial(VarConceptRef(limits are a total of pre-tax Traditional 401, limits are a total of pre-tax Traditional 401), Partial(And(VarConceptRef(k), k)), VarConceptRef(Roth 401, Roth 401)), VarConceptRef(k) contributions. Total employee (including after-tax Traditional 401(k, k) contributions. Total employee (including after-tax Traditional 401(k))), VarConceptRef(employer combined contributions must be lesser of 100% of employee's salary, employer combined contributions must be lesser of 100% of employee's salary)), VarConceptRef($51k ($56.5k for age 50, $51k ($56.5k for age 50)), VarConceptRef(above). There is no income cap for this investment class., above). There is no income cap for this investment class.)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(And(And(VarConceptRef($5.5k, $5.5k), Or(VarConceptRef(yr for age 49, yr for age 49), VarConceptRef(below, below))), And(VarConceptRef($6.5k, $6.5k), Or(VarConceptRef(yr for age 50, yr for age 50), VarConceptRef(above in 2013, above in 2013))), And(VarConceptRef(limits are total for traditional IRA, limits are total for traditional IRA), VarConceptRef(Roth IRA contributions combined. Cannot contribute more than annual earned income. For direct contributions to Roth IRAs, Roth IRA contributions combined. Cannot contribute more than annual earned income. For direct contributions to Roth IRAs))), VarConceptRef(contribution limit is reduced in a &quot;phase-out&quot; range, contribution limit is reduced in a &quot;phase-out&quot; range), And(VarConceptRef(for single AGI&gt;$112k, for single AGI&gt;$112k), VarConceptRef(joint AGI&gt;$178k Contribution limit does not apply to conversions from traditional IRA to Roth IRA., joint AGI&gt;$178k Contribution limit does not apply to conversions from traditional IRA to Roth IRA.)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Contribution notes) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Effective limit is higher compared to traditional 401k as the contributions are post-tax., Effective limit is higher compared to traditional 401k as the contributions are post-tax.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Effective limit is higher compared to traditional IRA as the contributions are post-tax., Effective limit is higher compared to traditional IRA as the contributions are post-tax.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Matching Contributions) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Matching contributions available from some employers., Matching contributions available from some employers.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Matching contributions available through some employers, Matching contributions available through some employers), VarConceptRef(but they must sit in a pretax account, but they must sit in a pretax account))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(No matching contributions available, No matching contributions available)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Deduction Limits) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Generally no limit on the amount deductible from income, Generally no limit on the amount deductible from income), VarConceptRef(but somewhat complicated due to HCE (highly compensated employees) rules, but somewhat complicated due to HCE (highly compensated employees) rules))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Full deduction available on incomes up to $188k, Full deduction available on incomes up to $188k), VarConceptRef(depending on tax filing status. See full rules., depending on tax filing status. See full rules.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Tax-exempt earnings on contributions available up to incomes of $173k, Tax-exempt earnings on contributions available up to incomes of $173k), And(VarConceptRef(depending on tax filing status. See full rules, depending on tax filing status. See full rules), VarConceptRef(Backdoor Roth IRA Contributions., Backdoor Roth IRA Contributions.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef((Traditional) 401, (Traditional) 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Roth 401, Roth 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Traditional IRA, Traditional IRA)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Roth IRA, Roth IRA) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Distributions) </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Distributions can begin at age 59½, Distributions can begin at age 59½), VarConceptRef(if owner becomes disabled, if owner becomes disabled))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Distributions can begin at age 59½, Distributions can begin at age 59½), VarConceptRef(the account has been open for at least 5 years, the account has been open for at least 5 years)), VarConceptRef(or if owner becomes disabled, or if owner becomes disabled), VarConceptRef(with some exceptions, with some exceptions))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Distributions can begin at age 59½, Distributions can begin at age 59½), VarConceptRef(if owner becomes disabled, if owner becomes disabled))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(Partial(VarConceptRef(Distributions can begin at age 59½ as long as contributions are &quot;seasoned&quot;, Distributions can begin at age 59½ as long as contributions are &quot;seasoned&quot;), VarConceptRef(5 years from January 1 of the year the first contribution was made, 5 years from January 1 of the year the first contribution was made)), VarConceptRef(owner becomes disabled, owner becomes disabled))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Forced Distributions) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Must start withdrawing funds at age 70½ unless employee is still employed. Penalty is 50% of minimum distribution., Must start withdrawing funds at age 70½ unless employee is still employed. Penalty is 50% of minimum distribution.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Must start withdrawing funds at age 70½ unless employee is still employed, Must start withdrawing funds at age 70½ unless employee is still employed), VarConceptRef(not a 5% owner. Penalty is 50% of minimum distribution., not a 5% owner. Penalty is 50% of minimum distribution.))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Must start withdrawing funds at age 70½. Penalty is 50% of minimum distribution., Must start withdrawing funds at age 70½. Penalty is 50% of minimum distribution.)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(None., None.) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Loans) </td>
+          <td rowspan="1" colspan="1">
+            Or(And(Partial(VarConceptRef(When still employed with employer setting up the 401, When still employed with employer setting up the 401), VarConceptRef(k, k)), VarConceptRef(loans may be available depending upon the plan, loans may be available depending upon the plan), VarConceptRef(not more than 50% of balance, not more than 50% of balance)), VarConceptRef($50,000, $50,000))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Early Withdrawal) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Generally no when still employed with employer setting up the 401(k). Otherwise, Generally no when still employed with employer setting up the 401(k). Otherwise), VarConceptRef(10% penalty plus taxes. There are some exceptions to this penalty., 10% penalty plus taxes. There are some exceptions to this penalty.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Generally no when still employed with employer setting up the 401(k). Otherwise, Generally no when still employed with employer setting up the 401(k). Otherwise), VarConceptRef(taxes on the earnings, taxes on the earnings), And(VarConceptRef(plus 10% penalty on taxable part of distribution, plus 10% penalty on taxable part of distribution), VarConceptRef(taxable part of unseasoned conversions. There are some exceptions to this penalty., taxable part of unseasoned conversions. There are some exceptions to this penalty.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(10% penalty plus taxes for distributions before age 59½ with exceptions, 10% penalty plus taxes for distributions before age 59½ with exceptions)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(And(VarConceptRef(Principal of contributions, Principal of contributions), VarConceptRef(seasoned conversions can be withdrawn at any time without tax, seasoned conversions can be withdrawn at any time without tax)), And(VarConceptRef(penalty. Additional amounts are subject to normal income taxes, penalty. Additional amounts are subject to normal income taxes), VarConceptRef(10% penalty if not qualified distributions, 10% penalty if not qualified distributions)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Home Down Payment) </td>
+          <td rowspan="1" colspan="1">
+            And(Or(And(VarConceptRef(Purchase of primary residence, Purchase of primary residence), VarConceptRef(avoidance of foreclosure, avoidance of foreclosure)), VarConceptRef(eviction of primary residence, eviction of primary residence)), VarConceptRef(subject to 10% penalty, subject to 10% penalty), VarConceptRef(if hardship withdrawals are available in the plan., if hardship withdrawals are available in the plan.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(If your plan permits distributions from accounts because of hardship, If your plan permits distributions from accounts because of hardship), Or(And(And(And(VarConceptRef(you may choose to receive a hardship distribution from your designated Roth account. The hardship distribution will consist of a pro-rata share of earnings, you may choose to receive a hardship distribution from your designated Roth account. The hardship distribution will consist of a pro-rata share of earnings), VarConceptRef(basis, basis)), VarConceptRef(the earnings portion will be included in gross income unless you have had the designated Roth account for 5 years, the earnings portion will be included in gross income unless you have had the designated Roth account for 5 years)), VarConceptRef(are either disabled, are either disabled)), VarConceptRef(over age 59 ½., over age 59 ½.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Can withdraw up to $10k for a first time home purchase down payment with stipulations, Can withdraw up to $10k for a first time home purchase down payment with stipulations)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(Or(VarConceptRef(Up to $10k can be used for primary home down payment.  Must have held Roth IRA for a minimum of 5 years. Must not have owned a home in previous 24 months.  House must be owned by IRA owner, Up to $10k can be used for primary home down payment.  Must have held Roth IRA for a minimum of 5 years. Must not have owned a home in previous 24 months.  House must be owned by IRA owner), VarConceptRef(direct linear ancestors, direct linear ancestors)), VarConceptRef(descendants., descendants.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Education Expenses) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Payment of secondary educational expenses in last 12 months for employee, Payment of secondary educational expenses in last 12 months for employee), VarConceptRef(spouse, spouse), VarConceptRef(or dependents, or dependents), VarConceptRef(subject to 10% penalty, subject to 10% penalty), VarConceptRef(if hardship withdrawals are available in the plan., if hardship withdrawals are available in the plan.))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Can withdraw for qualified higher education expenses of owner, Can withdraw for qualified higher education expenses of owner), VarConceptRef(children, children), VarConceptRef(and grandchildren, and grandchildren))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Medical Expenses) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Medical expenses not covered by insurance for employee, Medical expenses not covered by insurance for employee), VarConceptRef(spouse, spouse), VarConceptRef(or dependents, or dependents), VarConceptRef(subject to 10% penalty, subject to 10% penalty), VarConceptRef(if hardship withdrawals are available in the plan. Medical expenses in excess of 7.5% of your adjusted gross income may be exempt to the 10% penalty., if hardship withdrawals are available in the plan. Medical expenses in excess of 7.5% of your adjusted gross income may be exempt to the 10% penalty.))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Can withdraw for qualified unreimbursed medical expenses that are more than 7.5% of AGI, Can withdraw for qualified unreimbursed medical expenses that are more than 7.5% of AGI), VarConceptRef(medical insurance during period of unemployment, medical insurance during period of unemployment), VarConceptRef(during disability, during disability))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef((Traditional) 401, (Traditional) 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Roth 401, Roth 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Traditional IRA, Traditional IRA)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Roth IRA, Roth IRA) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conversions and Rollovers) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Upon termination of employment, Upon termination of employment), Or(Or(VarConceptRef(can be rolled to IRA, can be rolled to IRA), VarConceptRef(Roth IRA. When rolled to a Roth IRA taxes need to be paid during the year of the conversion. For any conversions, Roth IRA. When rolled to a Roth IRA taxes need to be paid during the year of the conversion. For any conversions)), VarConceptRef(rollovers in 2010, rollovers in 2010)), And(VarConceptRef(any amounts that are required to be included in income are included in income in equal amounts in 2011, any amounts that are required to be included in income are included in income in equal amounts in 2011), VarConceptRef(2012. If you elect otherwise, 2012. If you elect otherwise)), VarConceptRef(you can choose to include the entire amount in income in 2010. per IRS Pub. 590, you can choose to include the entire amount in income in 2010. per IRS Pub. 590), VarConceptRef(Pg. 63.Beginning in 2013 you can roll your Traditional 401(k) into a Roth 401(k) if your company offers a roth option, Pg. 63.Beginning in 2013 you can roll your Traditional 401(k) into a Roth 401(k) if your company offers a roth option))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Cannot be converted to a traditional 401, Cannot be converted to a traditional 401), VarConceptRef(k, k)), VarConceptRef(but upon termination of employment, but upon termination of employment), VarConceptRef(can be rolled into Roth IRA, can be rolled into Roth IRA))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Can be converted to a Roth IRA, Can be converted to a Roth IRA), VarConceptRef(typically for backdoor Roth IRA contributions. Taxes need to be paid during the year of the conversion. For 2010, typically for backdoor Roth IRA contributions. Taxes need to be paid during the year of the conversion. For 2010), VarConceptRef(the income limits for conversion have been lifted. In addition to that, the income limits for conversion have been lifted. In addition to that), Or(VarConceptRef(the tax liability for a traditional to Roth conversion may either be paid fully in 2010, the tax liability for a traditional to Roth conversion may either be paid fully in 2010), And(VarConceptRef(spread equally across 2011, spread equally across 2011), VarConceptRef(2012.Also, 2012.Also))), Partial(VarConceptRef(the non-basis portion can be rolled over into a 401, the non-basis portion can be rolled over into a 401), VarConceptRef(k, k)), VarConceptRef(if allowed by the 401(k) plan., if allowed by the 401(k) plan.))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Changing Institutions) </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Can roll over to another employer's 401(k) plan, Can roll over to another employer's 401(k) plan), VarConceptRef(to a traditional IRA at an independent institution., to a traditional IRA at an independent institution.))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Can roll over to another employer's Roth 401(k) plan, Can roll over to another employer's Roth 401(k) plan), VarConceptRef(to a Roth IRA at an independent institution., to a Roth IRA at an independent institution.))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Funds can be either transferred to another institution, Funds can be either transferred to another institution), VarConceptRef(they can be sent to the owner of the traditional IRA who has 60 days to put the money in another institution in a rollover contribution to another traditional IRA, they can be sent to the owner of the traditional IRA who has 60 days to put the money in another institution in a rollover contribution to another traditional IRA))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Funds can be either transferred to another institution, Funds can be either transferred to another institution), VarConceptRef(they can be sent to the owner of the Roth IRA who has 60 days to put the money in another institution in a rollover contribution to another Roth IRA, they can be sent to the owner of the Roth IRA who has 60 days to put the money in another institution in a rollover contribution to another Roth IRA))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Beneficiaries) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(When owner dies, When owner dies), VarConceptRef(spouse as beneficiary can roll both accounts into one IRA account. Other beneficiaries will be subject to forced distributions (taxable) based on life expectancy. Beneficiaries will not pay estate tax if the inheritance is under the exemption amount., spouse as beneficiary can roll both accounts into one IRA account. Other beneficiaries will be subject to forced distributions (taxable) based on life expectancy. Beneficiaries will not pay estate tax if the inheritance is under the exemption amount.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(When owner dies, When owner dies), VarConceptRef(spouse as beneficiary can roll both accounts into one Roth IRA account. Other beneficiaries will be subject to forced distributions (tax free) based on life expectancy. Beneficiaries will not pay estate tax if the inheritance is under the exemption amount., spouse as beneficiary can roll both accounts into one Roth IRA account. Other beneficiaries will be subject to forced distributions (tax free) based on life expectancy. Beneficiaries will not pay estate tax if the inheritance is under the exemption amount.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Protection) </td>
+          <td rowspan="1" colspan="1">
+            Partial(And(VarConceptRef(Account is protected from bankruptcy, Account is protected from bankruptcy), VarConceptRef(creditors, creditors)), And(VarConceptRef(with limited exceptions, with limited exceptions), VarConceptRef(e.g. IRS, e.g. IRS)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Account is protected from bankruptcy up to $1 million. Protection from creditors varies by state (from none to full protection)., Account is protected from bankruptcy up to $1 million. Protection from creditors varies by state (from none to full protection).)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef((Traditional) 401, (Traditional) 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Roth 401, Roth 401), VarConceptRef(k, k))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Traditional IRA, Traditional IRA)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Roth IRA, Roth IRA) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

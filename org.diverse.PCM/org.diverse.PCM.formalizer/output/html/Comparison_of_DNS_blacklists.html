@@ -1,0 +1,1180 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Blacklist operator) </td>
+          <td rowspan="1" colspan="1"> Header(DNS blacklist) </td>
+          <td rowspan="1" colspan="1"> Header(Informational URL) </td>
+          <td rowspan="1" colspan="1"> Header(Zone) </td>
+          <td rowspan="1" colspan="1"> Header(Listing goal) </td>
+          <td rowspan="1" colspan="1"> Header(Nomination) </td>
+          <td rowspan="1" colspan="1"> Header(Listing lifetime) </td>
+          <td rowspan="1" colspan="1"> Header(Notes) </td>
+          <td rowspan="1" colspan="1"> Header(Collateral Listings) </td>
+          <td rowspan="1" colspan="1"> Header(Notifies upon listing) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ARM Research Labs, LLC GBUdb) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Truncate, Truncate) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(truncate.gbudb.net, truncate.gbudb.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Extremely conservative list of single IP4 addresses that produce exclusively spam, Extremely conservative list of single IP4 addresses that produce exclusively spam), VarConceptRef(malware as indicated by the GBUdb IP Reputation system. Most systems should be able to safely reject connections based on this list., malware as indicated by the GBUdb IP Reputation system. Most systems should be able to safely reject connections based on this list.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic: IPs are added when the GBUdb &quot;cloud&quot; statistics reach a probability figure that indicates 95% of messages produce a spam, Automatic: IPs are added when the GBUdb &quot;cloud&quot; statistics reach a probability figure that indicates 95% of messages produce a spam), And(VarConceptRef(malware pattern match, malware pattern match), VarConceptRef(a confidence figure that indicates sufficient data to trust the probability data., a confidence figure that indicates sufficient data to trust the probability data.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic: Continuous while reputation statistics remain bad. Warning: Produces false positives, Automatic: Continuous while reputation statistics remain bad. Warning: Produces false positives), And(VarConceptRef(and has no remedy, and has no remedy), VarConceptRef(removal process. IPs are dropped quickly if the statistics improve (within an hour). IPs are dropped within 36 hours (typ) if no more messages are seen (dead zombie)., removal process. IPs are dropped quickly if the statistics improve (within an hour). IPs are dropped within 36 hours (typ) if no more messages are seen (dead zombie).)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Source data is derived from a global network of Message Sniffer filtering nodes in real-time. Truncate data is updated from statistics every 10 minutes., Source data is derived from a global network of Message Sniffer filtering nodes in real-time. Truncate data is updated from statistics every 10 minutes.)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(invaluement DNSBL) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ivmSIP, ivmSIP) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(paid access via rsync, paid access via rsync)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Single IP addresses which only send UBE. Specializing in snowshoe spam, Single IP addresses which only send UBE. Specializing in snowshoe spam), VarConceptRef(other 'under the radar' spams which evade many other DNSBLs. Has FP-level comparable to Zen., other 'under the radar' spams which evade many other DNSBLs. Has FP-level comparable to Zen.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Automatic, Automatic), VarConceptRef(upon receipt of a spam to a real person's mailbox, upon receipt of a spam to a real person's mailbox)), And(VarConceptRef(with extensive whitelists, with extensive whitelists), VarConceptRef(filtering to prevent false positives, filtering to prevent false positives)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Typically an automatic expiration 11 days after the last abuse was seen, Typically an automatic expiration 11 days after the last abuse was seen), VarConceptRef(but with some exceptions, but with some exceptions))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Spam samples are always kept on file for each listing. Removal requests are manually reviewed, Spam samples are always kept on file for each listing. Removal requests are manually reviewed), VarConceptRef(processed without fees., processed without fees.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(ivmSIP, ivmSIP), Integer(24, 24))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(paid access via rsync, paid access via rsync)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(lists, lists), And(VarConceptRef(24 blocks of IP addresses which usually only send UBE, 24 blocks of IP addresses which usually only send UBE), VarConceptRef(containing at least several addresses which are confirmed emitters of junk mail. Collateral listings are kept to a minimum because subsections are often carved from, containing at least several addresses which are confirmed emitters of junk mail. Collateral listings are kept to a minimum because subsections are often carved from)), And(VarConceptRef(24 listings when spammers, 24 listings when spammers), VarConceptRef(legit senders share the same, legit senders share the same)), VarConceptRef(24 block., 24 block.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic once at least several IP addresses from a given block are individually listed on ivmSIP, Automatic once at least several IP addresses from a given block are individually listed on ivmSIP), And(VarConceptRef(with extensive whitelists, with extensive whitelists), VarConceptRef(filtering to prevent false positives, filtering to prevent false positives)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(expiration time increases to many weeks as the fraction of IP addresses in the, expiration time increases to many weeks as the fraction of IP addresses in the), VarConceptRef(24 block in question sending junk mail increases, 24 block in question sending junk mail increases))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Removal requests are quickly, Removal requests are quickly), VarConceptRef(manually reviewed, manually reviewed)), VarConceptRef(processed without fees., processed without fees.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ivmURI, ivmURI) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(paid access via rsync, paid access via rsync)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(comparable to uribl.com, comparable to uribl.com), VarConceptRef(surbl.org, surbl.org)), And(VarConceptRef(this is a list of IP addresses, this is a list of IP addresses), VarConceptRef(domains which are used by spammers in the clickable links found in the body of spam messages, domains which are used by spammers in the clickable links found in the body of spam messages)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Automatic, Automatic), VarConceptRef(upon receipt of a spam to a real person's mailbox, upon receipt of a spam to a real person's mailbox)), And(VarConceptRef(with extensive whitelists, with extensive whitelists), VarConceptRef(filtering to prevent false positives, filtering to prevent false positives)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Typically an automatic expiration several weeks after the last abuse was seen., Typically an automatic expiration several weeks after the last abuse was seen.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Spam samples are always kept on file for each listing. Removal requests are quickly, Spam samples are always kept on file for each listing. Removal requests are quickly), VarConceptRef(manually reviewed, manually reviewed)), VarConceptRef(processed without fees., processed without fees.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(proxyBL) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl, dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dnsbl.proxybl.org, dnsbl.proxybl.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Lists all types of open (publicly accessible) proxies, Lists all types of open (publicly accessible) proxies)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automated listing through crawling of websites, Automated listing through crawling of websites)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(As long as proxy is verified open, As long as proxy is verified open), VarConceptRef(automated, automated))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Time between verifications increases exponentially in relation to the number of times the host was verified an open proxy, Time between verifications increases exponentially in relation to the number of times the host was verified an open proxy)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(UCEPROTECT-Network) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(UCEPROTECT Level 1, UCEPROTECT Level 1)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(dnsbl-1.uceprotect.net, dnsbl-1.uceprotect.net), VarConceptRef(also free available via rsync , also free available via rsync ))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Single IP addresses that send mail to spamtrap, Single IP addresses that send mail to spamtrap)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatic by a cluster of more than 60 trapservers, Automatic by a cluster of more than 60 trapservers)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic expiration 7 days after the last abuse was seen, Automatic expiration 7 days after the last abuse was seen), VarConceptRef(optionally express delisting for a small fee., optionally express delisting for a small fee.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(UCEPROTECT's primary, UCEPROTECT's primary), VarConceptRef(the only independent list, the only independent list))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(UCEPROTECT Level 2, UCEPROTECT Level 2)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(dnsbl-2.uceprotect.net, dnsbl-2.uceprotect.net), VarConceptRef(also free available via rsync , also free available via rsync ))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Allocations with exceeded UCEPROTECT Level 1 listings, Allocations with exceeded UCEPROTECT Level 1 listings)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatic calculated from UCEPROTECT-Level 1, Automatic calculated from UCEPROTECT-Level 1)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic removal as soon as Level 1 listings decrease below Level 2 listing border, Automatic removal as soon as Level 1 listings decrease below Level 2 listing border), Partial(VarConceptRef(optionally express delisting, optionally express delisting), VarConceptRef(for a fee, for a fee)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Fully depending on Level 1, Fully depending on Level 1)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(UCEPROTECT Level 3, UCEPROTECT Level 3)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(dnsbl-3.uceprotect.net, dnsbl-3.uceprotect.net), VarConceptRef(also free available via rsync , also free available via rsync ))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(ASN's with excessive UCEPROTECT Level 1 listings, ASN's with excessive UCEPROTECT Level 1 listings)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatic calculated from UCEPROTECT-Level 1, Automatic calculated from UCEPROTECT-Level 1)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic removal as soon as Level 1 listings decrease below Level 3 listing border, Automatic removal as soon as Level 1 listings decrease below Level 3 listing border), Partial(VarConceptRef(optionally express delisting, optionally express delisting), VarConceptRef(fee, fee)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Fully depending on Level 1, Fully depending on Level 1)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Spam and Open Relay Blocking System (SORBS))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl, dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dnsbl.sorbs.net, dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Unsolicited bulk, Unsolicited bulk), VarConceptRef(commercial email senders, commercial email senders))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(See individual zones, See individual zones)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(See individual zones, See individual zones)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Aggregate zone, Aggregate zone), And(VarConceptRef(all aggregates, all aggregates), VarConceptRef(what they include are listed on SORBS, what they include are listed on SORBS)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(safe.dnsbl, safe.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(safe.dnsbl.sorbs.net, safe.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Unsolicited bulk, Unsolicited bulk), VarConceptRef(commercial email senders, commercial email senders))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(See individual zones, See individual zones)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(N, N), Partial(VarConceptRef(A, A), VarConceptRef(See individual zones, See individual zones)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(&quot;Safe&quot; Aggregate zone, &quot;Safe&quot; Aggregate zone), And(VarConceptRef(all zones in dnsbl.sorbs.net except &quot;recent&quot;, all zones in dnsbl.sorbs.net except &quot;recent&quot;), VarConceptRef(&quot;escalations&quot;, &quot;escalations&quot;)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(http.dnsbl, http.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(http.dnsbl.sorbs.net, http.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Open HTTP proxy servers, Open HTTP proxy servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(socks.dnsbl, socks.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(socks.dnsbl.sorbs.net, socks.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Open SOCKS proxy servers, Open SOCKS proxy servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(misc.dnsbl, misc.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(misc.dnsbl.sorbs.net, misc.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Additional proxy servers, Additional proxy servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Those not already listed in the HTTP, Those not already listed in the HTTP), VarConceptRef(SOCKS databases, SOCKS databases))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(smtp.dnsbl, smtp.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(smtp.dnsbl.sorbs.net, smtp.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Open SMTP relay servers, Open SMTP relay servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(web.dnsbl, web.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(web.dnsbl.sorbs.net, web.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(IP addresses with vulnerabilities that are exploitable by spammers, IP addresses with vulnerabilities that are exploitable by spammers), VarConceptRef(e.g. FormMail scripts, e.g. FormMail scripts))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Until delisting requested, Until delisting requested), VarConceptRef(Automated Expiry, Automated Expiry))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(new.spam.dnsbl, new.spam.dnsbl)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(new.spam.dnsbl.sorbs.net, new.spam.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts that have sent spam to the admins of SORBS in the last 48 hours, Hosts that have sent spam to the admins of SORBS in the last 48 hours)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(Spamtrap, Spamtrap))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net', Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net')
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(recent.spam.dnsbl, recent.spam.dnsbl)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(recent.spam.dnsbl.sorbs.net, recent.spam.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts that have sent spam to the admins of SORBS in the last 28 days, Hosts that have sent spam to the admins of SORBS in the last 28 days)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(Spamtrap, Spamtrap))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net', Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net')
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(old.spam.dnsbl, old.spam.dnsbl)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(old.spam.dnsbl.sorbs.net, old.spam.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts that have sent spam to the admins of SORBS in the last year, Hosts that have sent spam to the admins of SORBS in the last year)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(Spamtrap, Spamtrap))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net', Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net')
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(spam.dnsbl, spam.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(spam.dnsbl.sorbs.net, spam.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts that have allegedly sent spam to the admins of SORBS at any time, Hosts that have allegedly sent spam to the admins of SORBS at any time)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(Spamtrap., Spamtrap.))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(And(VarConceptRef(Until 1 year after the last spam is received, Until 1 year after the last spam is received), VarConceptRef(a request has been made, a request has been made)), VarConceptRef(until the &quot;fine&quot; is paid for express delisting, until the &quot;fine&quot; is paid for express delisting))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(escalations.dnsbl, escalations.dnsbl)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(escalations.dnsbl.sorbs.net, escalations.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Netblocks of service providers believed to support spammers, Netblocks of service providers believed to support spammers)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(SORBS Admin fed., SORBS Admin fed.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Until delisting requested, Until delisting requested), VarConceptRef(matter resolved., matter resolved.))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Service providers are added on receipt of a 'third strike' spam, Service providers are added on receipt of a 'third strike' spam)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(block.dnsbl, block.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(block.dnsbl.sorbs.net, block.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts demanding that they never be tested, Hosts demanding that they never be tested)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Request by host, Request by host)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(zombie.dnsbl, zombie.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(zombie.dnsbl.sorbs.net, zombie.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hijacked networks, Hijacked networks)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(manual submission, manual submission))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dul.dnsbl, dul.dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dul.dnsbl.sorbs.net, dul.dnsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Dynamic IP address ranges, Dynamic IP address ranges)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(SORBS Admin, SORBS Admin), VarConceptRef(manual submission, manual submission))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Not a list of dial-up IP addresses, Not a list of dial-up IP addresses)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(rhsbl, rhsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(rhsbl.sorbs.net, rhsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Aggregate RHS zones, Aggregate RHS zones)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(badconf.rhsbl, badconf.rhsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(badconf.rhsbl.sorbs.net, badconf.rhsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Domains with invalid A, Domains with invalid A), VarConceptRef(MX records in DNS, MX records in DNS))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Open submission via automated testing page., Open submission via automated testing page.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(nomail.rhsbl, nomail.rhsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(nomail.rhsbl.sorbs.net, nomail.rhsbl.sorbs.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Domains which the owners have confirmed will not be used for sending email, Domains which the owners have confirmed will not be used for sending email)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Owner submission, Owner submission)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested., Until delisting requested.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Spamhaus) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(SBL Advisory, SBL Advisory) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(sbl.spamhaus.org, sbl.spamhaus.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Verified sources of spam, Verified sources of spam), And(VarConceptRef(including spammers, including spammers), VarConceptRef(their support services, their support services)))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Manual, Manual) </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(From 30 minutes to a year, From 30 minutes to a year), VarConceptRef(more, more)), And(VarConceptRef(depending on issue, depending on issue), VarConceptRef(resolution, resolution)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(XBL Advisory, XBL Advisory) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(xbl.spamhaus.org, xbl.spamhaus.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Illegal third-party exploits, Illegal third-party exploits), And(VarConceptRef(e.g. open proxies, e.g. open proxies), VarConceptRef(Trojan Horses, Trojan Horses)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Third-party (see Notes) with automated additions, Third-party (see Notes) with automated additions)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Varies, Varies), VarConceptRef(under a month., under a month.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Includes the Composite Blocking List, Includes the Composite Blocking List), VarConceptRef(parts of the Not Just Another Bogus List, parts of the Not Just Another Bogus List))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(PBL Advisory, PBL Advisory) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(pbl.spamhaus.org, pbl.spamhaus.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Static, Static), VarConceptRef(dial-up &amp; DHCP IP address space that is not meant to be initiating SMTP connections, dial-up &amp; DHCP IP address space that is not meant to be initiating SMTP connections))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Manual, Manual) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Should not be confused with the MAPS DUL, Should not be confused with the MAPS DUL), VarConceptRef(Wirehub Dynablocker lists, Wirehub Dynablocker lists))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(SBL+XBL, SBL+XBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(sbl-xbl.spamhaus.org, sbl-xbl.spamhaus.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(A single lookup for querying the SBL, A single lookup for querying the SBL), VarConceptRef(XBL databases, XBL databases))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Zen, Zen) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(zen.spamhaus.org, zen.spamhaus.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(A single lookup for querying the SBL, A single lookup for querying the SBL), And(VarConceptRef(XBL, XBL), VarConceptRef(PBL databases., PBL databases.)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(The one to use to get all., The one to use to get all.)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ORBITrbl Aggressive RBL) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RBL, RBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(rbl.orbitrbl.com, rbl.orbitrbl.com)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Unsolicited bulk, Unsolicited bulk), VarConceptRef(Commercial email senders (, Commercial email senders (), VarConceptRef(24 IP address block), 24 IP address block)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Until delisting requested?, Until delisting requested?), VarConceptRef(Only When Found to be Non Spam Source, Only When Found to be Non Spam Source))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Aggregate zone, Aggregate zone)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Composite Blocking List) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CBL, CBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(cbl.abuseat.org, cbl.abuseat.org), And(VarConceptRef(also free available rsync access, also free available rsync access), VarConceptRef(on request see FAQ , on request see FAQ )))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Only IP addresses exhibiting characteristics specific to open proxies, Only IP addresses exhibiting characteristics specific to open proxies), VarConceptRef(spamware, spamware), And(VarConceptRef(botnets, botnets), VarConceptRef(the like., the like.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automatic: large spamtraps, Automatic: large spamtraps), VarConceptRef(production mail servers, production mail servers))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Temporary, Temporary), VarConceptRef(until spam stops, until spam stops))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(Use Spamhaus XBL, Use Spamhaus XBL), VarConceptRef(Spamhaus Zen instead, Spamhaus Zen instead)), VarConceptRef(they include CBL., they include CBL.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Passive Spam Block List) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(PSBL, PSBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(psbl.surriel.com, psbl.surriel.com), VarConceptRef(also free available via rsync , also free available via rsync ))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IP addresses used to send spam to trap, IP addresses used to send spam to trap)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(spamtraps, spamtraps) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Temporary, Temporary), VarConceptRef(until spam stops, until spam stops))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Intercept - DNS Blacklist (DNSBL)) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Intercept, Intercept) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Broken as 10, Broken as 10), Integer(14, 14), Integer(2013, 2013))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(intercept.datapacket.net, intercept.datapacket.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IP addresses used to send spam to trap, IP addresses used to send spam to trap)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(spamtraps, spamtraps) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Temporary, Temporary), VarConceptRef(until spam stops, until spam stops))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Weighted Private Block List) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(WPBL, WPBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(db.wpbl.info, db.wpbl.info) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IP addresses used to send UBE to members, IP addresses used to send UBE to members)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(spamtraps, spamtraps) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Temporary, Temporary), VarConceptRef(until spam stops, until spam stops))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SpamCop Blocking List) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(SCBL, SCBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(bl.spamcop.net, bl.spamcop.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IP addresses which have been used to transmit reported email to SpamCop users, IP addresses which have been used to transmit reported email to SpamCop users)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(users submit, users submit) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Temporary, Temporary), VarConceptRef(until spam stops, until spam stops))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SpamRats) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RATSNOPTR, RATSNOPTR) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(noptr.spamrats.com, noptr.spamrats.com)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IP addresses detected as abusive at ISP's using MagicMail Servers, IP addresses detected as abusive at ISP's using MagicMail Servers), VarConceptRef(with no reverse DNS service, with no reverse DNS service))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatically Submitted, Automatically Submitted)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Listed until removed, Listed until removed), VarConceptRef(and reverse DNS configured, and reverse DNS configured))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RATSDYNA, RATSDYNA) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dyna.spamrats.com, dyna.spamrats.com)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IP addresses detected as abusive at ISP's using MagicMail Servers, IP addresses detected as abusive at ISP's using MagicMail Servers), VarConceptRef(with non-conforming reverse DNS service (See Best Practises) indicative of compromised systems, with non-conforming reverse DNS service (See Best Practises) indicative of compromised systems))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatically Submitted, Automatically Submitted)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Listed until removed, Listed until removed), VarConceptRef(and reverse DNS set to conform to Best Practises, and reverse DNS set to conform to Best Practises))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RATSSPAM, RATSSPAM) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(spam.spamrats.com, spam.spamrats.com)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IP addresses detected as abusive at ISP's using MagicMail Servers, IP addresses detected as abusive at ISP's using MagicMail Servers), VarConceptRef(and manually confirmed as spam sources, and manually confirmed as spam sources))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Manually Submitted, Manually Submitted)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Listed until removed, Listed until removed)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SpamCannibal) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(spamcannibal.org, spamcannibal.org)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(bl.spamcannibal.org, bl.spamcannibal.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IP addresses, IP addresses), VarConceptRef(related generic netblocks that have sent spam., related generic netblocks that have sent spam.))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(spamtraps, spamtraps) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(until removal requested, until removal requested), VarConceptRef(matter resolved by changing server DNS ptr record to a non-generic name., matter resolved by changing server DNS ptr record to a non-generic name.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Even if a particular IP has not sent spam, Even if a particular IP has not sent spam), VarConceptRef(it may be included in a generic netblock which will provide many false positives. listed=127.0.0.2, it may be included in a generic netblock which will provide many false positives. listed=127.0.0.2))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Distributed Realtime Blocking List) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(drand DRBL node, drand DRBL node)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(spamtrap.drbl.drand.net, spamtrap.drbl.drand.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(IP addresses used to send spam to traps, IP addresses used to send spam to traps), VarConceptRef(members, members))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automated [de]listing., Automated [de]listing.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Varies from spam type, Varies from spam type), And(VarConceptRef(rate, rate), VarConceptRef(other sophisticated factors. 30 s to 1 week., other sophisticated factors. 30 s to 1 week.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(High IP network aggregate threshold &gt;= 254., High IP network aggregate threshold &gt;= 254.)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Junk Email Filter) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Hostkarma, Hostkarma) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(hostkarma.junkemailfilter.com
+blacklist.hostkarma.com, hostkarma.junkemailfilter.com
+blacklist.hostkarma.com)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Detects viruses by behavior using fake high MX, Detects viruses by behavior using fake high MX), VarConceptRef(tracking non-use of QUIT, tracking non-use of QUIT))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automated [de]listing, Automated [de]listing)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Black list Data lives for 4 days. White list data lives for 10 days., Black list Data lives for 4 days. White list data lives for 10 days.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(127.0.0.1=white 127.0.0.2=black 127.0.0.3=yellow, 127.0.0.1=white 127.0.0.2=black 127.0.0.3=yellow)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(The Abusive Hosts Blocking List (AHBL))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl, dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dnsbl.ahbl.org, dnsbl.ahbl.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Aggregate zone, Aggregate zone), And(VarConceptRef(contains UCE, contains UCE), VarConceptRef(bulk email senders, bulk email senders)), VarConceptRef(open proxies, open proxies), VarConceptRef(open relays, open relays), And(VarConceptRef(trojaned, trojaned), VarConceptRef(infected machines, infected machines)), And(VarConceptRef(comment, comment), VarConceptRef(trackback spammers, trackback spammers)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Feeder systems, Feeder systems), VarConceptRef(manual, manual))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested, Until delisting requested)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Aggregate zone, Aggregate zone), And(VarConceptRef(all aggregates, all aggregates), VarConceptRef(what they include are listed on AHBL, what they include are listed on AHBL)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(rhsbl, rhsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(rhsbl.ahbl.org, rhsbl.ahbl.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Domains sending spam, Domains sending spam), VarConceptRef(domains owned by spammers, domains owned by spammers), VarConceptRef(comment spam domains, comment spam domains), VarConceptRef(spammed URLs, spammed URLs))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Manual, Manual) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ircbl, ircbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(ircbl.ahbl.org, ircbl.ahbl.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Subset of dnsbl, Subset of dnsbl), VarConceptRef(contains only open proxies, contains only open proxies), VarConceptRef(compromised machines, compromised machines), VarConceptRef(comment spammers, comment spammers))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Until delisting requested, Until delisting requested)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Designed for use on IRC servers, Designed for use on IRC servers)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(tor, tor) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(tor.ahbl.org, tor.ahbl.org) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Current tor relay, Current tor relay), VarConceptRef(exit nodes, exit nodes))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Automated, Automated) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Dronebl) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl, dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(dnsbl.dronebl.org, dnsbl.dronebl.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(All-in-one abusive hosts blacklist, All-in-one abusive hosts blacklist)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automated listing via distributed monitoring points, Automated listing via distributed monitoring points)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Permanent until delisted via website., Permanent until delisted via website.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Quorum.to) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ip-dnsbl, ip-dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(list.quorum.to., list.quorum.to.), VarConceptRef( or per-subscriber: [id].list.quorum.to. ,  or per-subscriber: [id].list.quorum.to. ))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Stop spam from hosts that send no legitimate mail (list most non-mail-sending hosts)., Stop spam from hosts that send no legitimate mail (list most non-mail-sending hosts).)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Listings based on &quot;instant&quot; automated checks, Listings based on &quot;instant&quot; automated checks), And(VarConceptRef(recipient nomination, recipient nomination), VarConceptRef(traps., traps.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Listings can be challenged.  Subscribers vote to decide sender status., Listings can be challenged.  Subscribers vote to decide sender status.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Public list follows standard dnsbl protocol.  Subscription based service is more capable, Public list follows standard dnsbl protocol.  Subscription based service is more capable), VarConceptRef(but does not follow standard., but does not follow standard.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Spamanalysis.org) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(GeoBL, GeoBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(User-defined: [*].geobl.spamanalysis.org, User-defined: [*].geobl.spamanalysis.org)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Lists hosts known as being in certain geographic locations., Lists hosts known as being in certain geographic locations.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Users set their own list of blocked countries., Users set their own list of blocked countries.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Hosts reported as being incorrectly located may be delisted., Hosts reported as being incorrectly located may be delisted.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Allows basic monitoring, Allows basic monitoring), Or(VarConceptRef(listed if A=127.0.0.2, listed if A=127.0.0.2), VarConceptRef(TXT=blocked, TXT=blocked)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Heise Zeitschriften Verlag GmbH &amp; Co. KG, hosted by manitu GmbH)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(NiX Spam, NiX Spam), VarConceptRef(nixspam, nixspam))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(ix.dnsbl.manitu.net, ix.dnsbl.manitu.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Lists single IPs (no IP ranges) that send spam to spamtraps., Lists single IPs (no IP ranges) that send spam to spamtraps.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Automated listing due to spamtrap hits. Exceptions apply to bounces, Automated listing due to spamtrap hits. Exceptions apply to bounces), And(VarConceptRef(NDRs, NDRs), VarConceptRef(whitelisted IPs., whitelisted IPs.)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(12 hours after last listing, 12 hours after last listing), VarConceptRef(until self delisting, until self delisting))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(TXT records provide information of listing incident - NiX Spam also provides hashes for fuzzy checksum plugin (iXhash) for SpamAssassin., TXT records provide information of listing incident - NiX Spam also provides hashes for fuzzy checksum plugin (iXhash) for SpamAssassin.)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(yes, true), And(VarConceptRef(for ISPs, for ISPs), VarConceptRef(ESPs on request, ESPs on request)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(inps.de) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(inps.de-DNSBL, inps.de-DNSBL) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl.inps.de, dnsbl.inps.de) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Single IP addresses, Single IP addresses)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IP addresses can be reported as known spam sources by users, IP addresses can be reported as known spam sources by users), VarConceptRef(additionally automated listing if spam arrives at the mailservers of inps.de, additionally automated listing if spam arrives at the mailservers of inps.de))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IP addresses are listed until they are removed manually via the website., IP addresses are listed until they are removed manually via the website.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(A-, A-), VarConceptRef(TXT records are available for each entry, TXT records are available for each entry)), And(VarConceptRef(Removal is free after 30 days for automatic additions, Removal is free after 30 days for automatic additions), VarConceptRef(after 7 days for manual additions, after 7 days for manual additions)), VarConceptRef(otherwise removal fee is at least EUR 10,00., otherwise removal fee is at least EUR 10,00.))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(maybe, maybe) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(blocklist.de) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(dnsbl, dnsbl) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(bl.blocklist.de, bl.blocklist.de)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(IP-Addresses who Attacks other Server, IP-Addresses who Attacks other Server), VarConceptRef(Honeypots over ssh, Honeypots over ssh)), VarConceptRef(imap, imap), VarConceptRef(smtp, smtp), VarConceptRef(ftp, ftp), VarConceptRef(web, web), VarConceptRef(rfi, rfi), VarConceptRef(sqli, sqli), VarConceptRef(ddos...., ddos....))
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(And(And(VarConceptRef(Automatic: over Honeypots, Automatic: over Honeypots), VarConceptRef(with over 515 Users, with over 515 Users)), VarConceptRef(630 Servers from blocklist.de via Fail2Ban, 630 Servers from blocklist.de via Fail2Ban)), VarConceptRef(own scripts, own scripts))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatic: 48 Hours after the last Attack. But earlier remove is available over the Delist-Link, Automatic: 48 Hours after the last Attack. But earlier remove is available over the Delist-Link)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Services is free! Source data is from Honeypot-Systems, Services is free! Source data is from Honeypot-Systems), VarConceptRef(over 515 User with 630 Servern there reports Attacks with Fail2Ban, over 515 User with 630 Servern there reports Attacks with Fail2Ban))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SRN:SurGATE Reputation Network) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(SRN, SRN) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(srnblack.surgate.net, srnblack.surgate.net)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Spam sources, Spam sources), VarConceptRef(relay abusers, relay abusers))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Feeder servers, Feeder servers)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Automatic expiry, Automatic expiry), VarConceptRef(varies by type, varies by type)), VarConceptRef(webpage allows delisting, webpage allows delisting))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Removal requests are quickly, Removal requests are quickly), VarConceptRef(manually reviewed, manually reviewed)), VarConceptRef(processed without fees., processed without fees.))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(no, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(s5h.net Internet Services) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(s5h.net, s5h.net) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(all.s5h.net, all.s5h.net) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Spam sources from email, Spam sources from email), VarConceptRef(forums, forums), And(VarConceptRef(referrer spam, referrer spam), VarConceptRef(dictionary attacks, dictionary attacks)))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Traps, Traps) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Twelve months unless ISPs request removal earlier, Twelve months unless ISPs request removal earlier)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(By request. ISPs can provide request exclusion, By request. ISPs can provide request exclusion)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

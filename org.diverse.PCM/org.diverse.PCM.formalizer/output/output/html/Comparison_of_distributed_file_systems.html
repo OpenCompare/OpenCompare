@@ -1,0 +1,149 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Locally managed</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Client) </td>
+          <td rowspan="1" colspan="1"> Header(Written in) </td>
+          <td rowspan="1" colspan="1"> Header(License) </td>
+          <td rowspan="1" colspan="1"> Header(Access API) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Ceph) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(C, C) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(LGPL, LGPL) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(librados (C, librados (C), VarConceptRef(C++, C++), VarConceptRef(Python, Python), VarConceptRef(Ruby), Ruby)), VarConceptRef(S3, S3), VarConceptRef(Swift, Swift), VarConceptRef(FUSE, FUSE))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(FhGFS) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C, C), VarConceptRef(C++, C++))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(FRAUNHOFER FS (FhGFS) EULA,GPLv2 client, FRAUNHOFER FS (FhGFS) EULA,GPLv2 client)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(POSIX, POSIX) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(GlusterFS) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(C, C) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(GPLv3, GPLv3) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(libglusterfs, libglusterfs), VarConceptRef(FUSE, FUSE))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Quantcast File System) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(C, C) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Apache License 2.0, Apache License 2.0)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C++ client, C++ client), Partial(VarConceptRef(FUSE, FUSE), And(VarConceptRef(C++ server: MetaServer, C++ server: MetaServer), VarConceptRef(ChunkServer are both in C++, ChunkServer are both in C++))))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Lustre) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(C, C) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(GPLv2, GPLv2) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(POSIX, POSIX), VarConceptRef(liblustre, liblustre), VarConceptRef(FUSE, FUSE))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(OpenAFS) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(C, C) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(IBM Public License, IBM Public License)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Virtual file system, Virtual file system), VarConceptRef(Installable File System, Installable File System))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Tahoe-LAFS) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Python, Python) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(GNU GPL 2+, GNU GPL 2+), VarConceptRef(other, other))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(HTTP, HTTP), Or(VarConceptRef(browser, browser), VarConceptRef(CLI, CLI))), VarConceptRef(SFTP, SFTP), VarConceptRef(FTP, FTP), VarConceptRef(FUSE via sshfs, FUSE via sshfs), VarConceptRef(pyfilesystem, pyfilesystem))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(HDFS) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Java, Java) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Apache License 2.0, Apache License 2.0)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Java client, Java client), VarConceptRef(c client, c client), VarConceptRef(HTTP, HTTP))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(XtreemFS) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Java, Java), VarConceptRef(C++, C++))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(BSD License, BSD License) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(libxtreemfs (Java, libxtreemfs (Java), VarConceptRef(C++), C++)), VarConceptRef(FUSE, FUSE))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Remote access</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Name) </td>
+          <td rowspan="1" colspan="1"> Header(Run by) </td>
+          <td rowspan="1" colspan="1"> Header(Access API) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Amazon S3) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Amazon.com, Amazon.com) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(HTTP, HTTP), And(VarConceptRef(REST, REST), VarConceptRef(SOAP, SOAP)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Google Cloud Storage) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Google, Google) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(HTTP, HTTP), VarConceptRef(REST, REST))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SWIFT (part of OpenStack)) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Rackspace, Rackspace), VarConceptRef(Hewlett-Packard, Hewlett-Packard), VarConceptRef(others, others))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(HTTP, HTTP), VarConceptRef(REST, REST))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Microsoft Azure) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Microsoft, Microsoft) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(HTTP, HTTP), VarConceptRef(REST, REST))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Cleversafe) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Cleversafe, Cleversafe) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(HTTP, HTTP), VarConceptRef(REST, REST))
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

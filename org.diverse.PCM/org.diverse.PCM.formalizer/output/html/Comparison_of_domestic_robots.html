@@ -1,0 +1,613 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Model) </td>
+          <td rowspan="1" colspan="1"> Header(Release date) </td>
+          <td rowspan="1" colspan="1"> Header(Coverage per room (CPR)) </td>
+          <td rowspan="1" colspan="1"> Header(Self-charging) </td>
+          <td rowspan="1" colspan="1"> Header(Self-cleaning) </td>
+          <td rowspan="1" colspan="1"> Header(Sensors) </td>
+          <td rowspan="1" colspan="1"> Header(Cleaning algorithm) </td>
+          <td rowspan="1" colspan="1"> Header(Surfaces/areas treated) </td>
+          <td rowspan="1" colspan="1"> Header(Expansion interfaces) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Floor cleaning/vacuuming robots) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(bObsweep) </td>
+          <td rowspan="1" colspan="1"> Integer(2010, 2010) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(bump, cliff IR, object IR, dirt, motion,, bump, cliff IR, object IR, dirt, motion,)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CleanMate) </td>
+          <td rowspan="1" colspan="1"> Integer(2004, 2004) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(soft-touch, soft-touch), VarConceptRef(IR, IR))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(hard floors, hard floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(F.ROBO CLEAN) </td>
+          <td rowspan="1" colspan="1"> Integer(2009, 2009) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(IClebo) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(bump, bump), VarConceptRef(IR, IR), VarConceptRef(dirt, dirt), VarConceptRef(dustbin, dustbin))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(hard floors, hard floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Koolvac) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(LAQULITO) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Milagrow BlackCat) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(High, High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), VarConceptRef(Obstacle IR Sensors, Obstacle IR Sensors), VarConceptRef(UV Bulb, UV Bulb), VarConceptRef(Dirt Detection Sensors, Dirt Detection Sensors), VarConceptRef(Battery Status Sensors, Battery Status Sensors), VarConceptRef(RF Remote, RF Remote), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Zig Zag, Zig Zag), VarConceptRef(Spiral, Spiral), And(VarConceptRef(Wall-to-wall, Wall-to-wall), VarConceptRef(Auto Random, Auto Random)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Tile, Tile), VarConceptRef(Marble, Marble), VarConceptRef(Wood, Wood), VarConceptRef(Low-mid carpets, Low-mid carpets), VarConceptRef(Linoleum, Linoleum), VarConceptRef(Glass, Glass))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Milagrow RedHawk) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Very High, Very High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), VarConceptRef(Obstacle IR Sensors, Obstacle IR Sensors), VarConceptRef(UV Bulb, UV Bulb), VarConceptRef(Dirt Detection Sensors, Dirt Detection Sensors), VarConceptRef(Battery Status Sensors, Battery Status Sensors), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Zig Zag, Zig Zag), VarConceptRef(Spiral, Spiral), And(VarConceptRef(Wall-to-wall, Wall-to-wall), VarConceptRef(Auto Random, Auto Random)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Tile, Tile), VarConceptRef(Marble, Marble), VarConceptRef(Wood, Wood), VarConceptRef(Low-mid carpets, Low-mid carpets), VarConceptRef(Linoleum, Linoleum), VarConceptRef(Glass, Glass))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Milagrow RoboCop) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(High, High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), VarConceptRef(Obstacle IR Sensors, Obstacle IR Sensors), VarConceptRef(Dirt Detection Sensors, Dirt Detection Sensors), VarConceptRef(Battery Status Sensors, Battery Status Sensors), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Zig Zag, Zig Zag), VarConceptRef(Spiral, Spiral), And(VarConceptRef(Wall-to-wall, Wall-to-wall), VarConceptRef(Auto Random, Auto Random)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Tile, Tile), VarConceptRef(Marble, Marble), VarConceptRef(Wood, Wood), VarConceptRef(Low-mid carpets, Low-mid carpets), VarConceptRef(Linoleum, Linoleum), VarConceptRef(Glass, Glass))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Milagrow SuperBot) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(High, High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), VarConceptRef(Obstacle IR Sensors, Obstacle IR Sensors), VarConceptRef(Dirt Detection Sensors, Dirt Detection Sensors), VarConceptRef(Battery Status Sensors, Battery Status Sensors), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Zig Zag, Zig Zag), VarConceptRef(Spiral, Spiral), And(VarConceptRef(Wall-to-wall, Wall-to-wall), VarConceptRef(Auto Random, Auto Random)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Tile, Tile), VarConceptRef(Marble, Marble), VarConceptRef(Wood, Wood), VarConceptRef(Low-mid carpets, Low-mid carpets), VarConceptRef(Linoleum, Linoleum), VarConceptRef(Glass, Glass))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Roboking) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Dec 2009, Dec 2009) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Very High, Very High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Vision Camera, Vision Camera), VarConceptRef(Ultrasonic, Ultrasonic), VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(PSD IR, PSD IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cell by Cell, Cell by Cell), VarConceptRef(Zig Zag, Zig Zag), And(VarConceptRef(Spiral, Spiral), VarConceptRef(Reservation, Reservation)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Office area cleaning robot system) </td>
+          <td rowspan="1" colspan="1"> Integer(2009, 2009) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NaviBot) </td>
+          <td rowspan="1" colspan="1"> Integer(2010, 2010) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(bump, bump), VarConceptRef(IR, IR), VarConceptRef(vision, vision), VarConceptRef(cliff, cliff), VarConceptRef(others?, others?))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(hard floors, hard floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Orazio) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Ottoro) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(July 2003, July 2003) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(vision, vision), VarConceptRef(ultrasonic, ultrasonic), VarConceptRef(cliff, cliff), VarConceptRef(bump, bump), VarConceptRef(IR, IR), VarConceptRef(dirt, dirt), VarConceptRef(motion, motion))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Ottoro S) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(June 2009, June 2009) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(bump, bump), VarConceptRef(IR, IR), VarConceptRef(dirt, dirt), VarConceptRef(motion, motion))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(P3 Int. P4900/4920) </td>
+          <td rowspan="1" colspan="1"> Integer(2008, 2008) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Medium, Medium) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(bump, bump) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(P3 Int. P4940 V-BOT/P4960 V-BOT) </td>
+          <td rowspan="1" colspan="1"> Integer(2008, 2008) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Medium, Medium) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(bump, bump), VarConceptRef(cliff IR, cliff IR))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Karcher RC3000/Siemens sensor cruiser)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(September 2002, September 2002)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Very high, Very high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Automatic dustbin emptying, Automatic dustbin emptying)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(bump, bump), VarConceptRef(IR, IR), VarConceptRef(dirt, dirt), VarConceptRef(motion, motion), VarConceptRef(dustbin, dustbin))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Roboking) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Dec 2009, Dec 2009) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Very High, Very High) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Vision Camera, Vision Camera), VarConceptRef(Ultrasonic, Ultrasonic), VarConceptRef(Cliff IR, Cliff IR), VarConceptRef(PSD IR, PSD IR), VarConceptRef(Optical Floor Sensor, Optical Floor Sensor), And(VarConceptRef(Gyro, Gyro), VarConceptRef(Accelerometer, Accelerometer)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Cell by Cell, Cell by Cell), VarConceptRef(Zig Zag, Zig Zag), And(VarConceptRef(Spiral, Spiral), VarConceptRef(Reservation, Reservation)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Robo Maxx) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(low, low) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(none, none) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(none, none) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(bare floors, bare floors) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(RoboMop or RoboMaid) </td>
+          <td rowspan="1" colspan="1"> Integer(2004, 2004) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(low, low) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(none, none) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(none, none) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(bare floors, bare floors) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Robosanitan) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(March 1997, March 1997) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Roomba 1st Gen.) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(October 2002, October 2002) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(bump, bump), VarConceptRef(cliff IR, cliff IR), VarConceptRef(motion, motion))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Roomba 2nd Gen.) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(July 2004, July 2004) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(bump, bump), VarConceptRef(cliff IR, cliff IR), VarConceptRef(motion, motion), VarConceptRef(dirt, dirt))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Roomba 3rd Gen.) </td>
+          <td rowspan="1" colspan="1"> Integer(2007, 2007) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(bump, bump), VarConceptRef(cliff IR, cliff IR), VarConceptRef(object IR, object IR), VarConceptRef(motion, motion), VarConceptRef(dirt, dirt))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SO-Zi) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(December 2007, December 2007) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Trilobite (Discontinued)) </td>
+          <td rowspan="1" colspan="1"> Integer(2001, 2001) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(ultrasonic, ultrasonic), VarConceptRef(IR, IR), VarConceptRef(bump, bump), VarConceptRef(others?, others?))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(low to deep pile, low to deep pile)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(V-R4000) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Neato XV-11) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(February 2010, February 2010) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(high, high) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(laser, laser), VarConceptRef(cliff, cliff), VarConceptRef(bump, bump))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mapping, mapping) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(low-mid carpet, low-mid carpet), VarConceptRef(floors, floors))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Floor washing robots) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Cleaning system of the building with the robot)
+          </td>
+          <td rowspan="1" colspan="1"> Integer(2001, 2001) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Scooba) </td>
+          <td rowspan="1" colspan="1"> Integer(2006, 2006) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Medium, Medium) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(soft-touch, soft-touch), VarConceptRef(IR, IR))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(hard floors, hard floors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Scooba 230) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Small, Small) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(cliff, cliff), VarConceptRef(soft-touch, soft-touch), VarConceptRef(IR, IR))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(simple repertoire, simple repertoire)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(hard floors, hard floors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Scooba 450) </td>
+          <td rowspan="1" colspan="1"> Integer(2014, 2014) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Ironing robots) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Dressman) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(clothing, clothing) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Driron) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(clothing, clothing) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Pet care robots) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Litter Robot) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(intrinsic, intrinsic) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(entry platform switch, entry platform switch)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(rotate to clean, rotate to clean), VarConceptRef(rotate to fill, rotate to fill), VarConceptRef(rotate to empty, rotate to empty))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(cat litter, cat litter) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(LitterMaid) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> Unknown(N/A) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(intrinsic, intrinsic) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(IR, IR), VarConceptRef(soft-touch, soft-touch))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(simple raking, simple raking) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(cat litter, cat litter) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

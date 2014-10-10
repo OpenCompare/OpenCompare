@@ -1,0 +1,246 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Player eligibility and team composition</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1"> Header(Number of team members) </td>
+          <td rowspan="1" colspan="1"> Header(Credit hours needed for eligibility) </td>
+          <td rowspan="1" colspan="1"> Header(Maximum years of eligibility) </td>
+          <td rowspan="1" colspan="1"> Header(Campus Tournament required) </td>
+          <td rowspan="1" colspan="1"> Header(Graduate student restrictions) </td>
+          <td rowspan="1" colspan="1"> Header(Substitution allowed in-game) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ACF) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(1–6, 1–6) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(no maximum, no maximum) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(None, None) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(At half, At half), VarConceptRef(before overtime, before overtime)), VarConceptRef(and players may enter if a team starts shorthanded, and players may enter if a team starts shorthanded))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CBI) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(3–5, 3–5) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1"> Integer(6, 6) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(at most 1 per team, at most 1 per team)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), Or(VarConceptRef(excepting &quot;incapacitating illness, excepting &quot;incapacitating illness), VarConceptRef(injury&quot;, injury&quot;)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(HCASC) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(3–4, 3–4) </td>
+          <td rowspan="1" colspan="1"> Integer(7, 7) </td>
+          <td rowspan="1" colspan="1"> Integer(4, 4) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(No grad students allowed, No grad students allowed)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NAQT) </td>
+          <td rowspan="1" colspan="1"> Or(Integer(1, 1), VarConceptRef(more, more)) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(no maximum, no maximum), VarConceptRef(Div. I) 
+ 4 (Div. II, Div. I) 
+ 4 (Div. II))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(No restrictions in Div. I, No restrictions in Div. I), And(VarConceptRef(prohibited in Undergraduate, prohibited in Undergraduate), VarConceptRef(Div. II, Div. II)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(At half, At half), VarConceptRef(before overtime, before overtime)), VarConceptRef(or during a timeout, or during a timeout))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Match format</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1">
+            Header(Number of toss-ups and bonuses per packet)
+          </td>
+          <td rowspan="1" colspan="1"> Header(Time limit per half) </td>
+          <td rowspan="1" colspan="1"> Header(Powers) </td>
+          <td rowspan="1" colspan="1"> Header(Bonus value) </td>
+          <td rowspan="1" colspan="1"> Header(Overtime rules) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ACF) </td>
+          <td rowspan="1" colspan="1"> Integer(20, 20) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(none, none) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Integer(30, 30) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(1 toss-up, 1 toss-up), Or(VarConceptRef(+10, +10), VarConceptRef(−5 ends the game, −5 ends the game)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CBI and HCASC) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(28 toss-ups
+25 bonuses, 28 toss-ups
+25 bonuses)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(7 min., 7 min.), And(VarConceptRef(CBI Campus Tournament)
+8 min. (Regionals, CBI Campus Tournament)
+8 min. (Regionals), And(VarConceptRef(Nationals, Nationals), VarConceptRef(HCASC Campus Tournament, HCASC Campus Tournament))))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            And(Integer(20, 20), Integer(25, 25), VarConceptRef(or 30, or 30))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(1 toss-up, 1 toss-up), Or(VarConceptRef(+10, +10), VarConceptRef(−5 ends the game, −5 ends the game)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NAQT) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(26, 26), VarConceptRef(Div. I) 
+ 24 (Div. II, Div. I) 
+ 24 (Div. II))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(9 min., 9 min.) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Integer(30, 30) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(3 toss-ups with no bonuses, 3 toss-ups with no bonuses), VarConceptRef(if still tied, if still tied)), VarConceptRef(additional toss-ups are read with the next +15, additional toss-ups are read with the next +15), VarConceptRef(+10, +10), VarConceptRef(or −5 ending the game, or −5 ending the game))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Toss-up execution</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1"> Header(Question time limit) </td>
+          <td rowspan="1" colspan="1"> Header(Must be recognized) </td>
+          <td rowspan="1" colspan="1"> Header(Time to begin answering) </td>
+          <td rowspan="1" colspan="1"> Header(Conferral definition) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ACF) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(5 sec., 5 sec.) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(5 sec., 5 sec.) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(&quot;verbal, &quot;verbal), Or(VarConceptRef(written, written), VarConceptRef(analogous communication among team members that can convey information pertinent to what the possible answer to the question is.&quot;, analogous communication among team members that can convey information pertinent to what the possible answer to the question is.&quot;)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CBI and HCASC) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(3 sec., 3 sec.) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(immediately, immediately) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(&quot;obvious non-verbal cues&quot;, &quot;obvious non-verbal cues&quot;)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NAQT) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(3 sec., 3 sec.) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(2 sec., 2 sec.) </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(verbal, verbal), VarConceptRef(written communication, written communication)), VarConceptRef(or communication that can &quot;convey any information about the substance of the answer&quot;, or communication that can &quot;convey any information about the substance of the answer&quot;))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Distribution</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Format) </td>
+          <td rowspan="1" colspan="1"> Header(Literature) </td>
+          <td rowspan="1" colspan="1"> Header(History) </td>
+          <td rowspan="1" colspan="1"> Header(Science) </td>
+          <td rowspan="1" colspan="1"> Header(Fine Arts) </td>
+          <td rowspan="1" colspan="1"> Header(Religion, Mythology, and Philosophy) </td>
+          <td rowspan="1" colspan="1"> Header(Social Sciences) </td>
+          <td rowspan="1" colspan="1"> Header(Geography) </td>
+          <td rowspan="1" colspan="1"> Header(Current Events) </td>
+          <td rowspan="1" colspan="1"> Header(General Knowledge) </td>
+          <td rowspan="1" colspan="1"> Header(Pop culture and sports) </td>
+          <td rowspan="1" colspan="1"> Header(Special) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ACF) </td>
+          <td rowspan="1" colspan="1"> Double(20.8, 20.8) </td>
+          <td rowspan="1" colspan="1"> Double(20.8, 20.8) </td>
+          <td rowspan="1" colspan="1"> Double(20.8, 20.8) </td>
+          <td rowspan="1" colspan="1"> Double(12.5, 12.5) </td>
+          <td rowspan="1" colspan="1"> Double(12.5, 12.5) </td>
+          <td rowspan="1" colspan="1"> Double(4.2, 4.2) </td>
+          <td rowspan="1" colspan="1"> Double(4.2, 4.2) </td>
+          <td rowspan="1" colspan="1"> Double(0.0, 0.0) </td>
+          <td rowspan="1" colspan="1"> Double(0.0, 0.0) </td>
+          <td rowspan="1" colspan="1"> Double(4.2, 4.2) </td>
+          <td rowspan="1" colspan="1"> Double(0.0, 0.0) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(CBI) </td>
+          <td rowspan="1" colspan="1"> Double(11.3, 11.3) </td>
+          <td rowspan="1" colspan="1"> Double(11.3, 11.3) </td>
+          <td rowspan="1" colspan="1"> Double(11.3, 11.3) </td>
+          <td rowspan="1" colspan="1"> Double(5.7, 5.7) </td>
+          <td rowspan="1" colspan="1"> Double(5.7, 5.7) </td>
+          <td rowspan="1" colspan="1"> Double(5.7, 5.7) </td>
+          <td rowspan="1" colspan="1"> Double(9.4, 9.4) </td>
+          <td rowspan="1" colspan="1"> Double(5.7, 5.7) </td>
+          <td rowspan="1" colspan="1"> Double(11.3, 11.3) </td>
+          <td rowspan="1" colspan="1"> Double(15.1, 15.1) </td>
+          <td rowspan="1" colspan="1"> Double(7.5, 7.5) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(HCASC) </td>
+          <td rowspan="1" colspan="1"> Double(8.9, 8.9) </td>
+          <td rowspan="1" colspan="1"> Double(12.5, 12.5) </td>
+          <td rowspan="1" colspan="1"> Double(12.5, 12.5) </td>
+          <td rowspan="1" colspan="1"> Double(5.4, 5.4) </td>
+          <td rowspan="1" colspan="1"> Double(5.4, 5.4) </td>
+          <td rowspan="1" colspan="1"> Double(5.4, 5.4) </td>
+          <td rowspan="1" colspan="1"> Double(8.9, 8.9) </td>
+          <td rowspan="1" colspan="1"> Double(5.4, 5.4) </td>
+          <td rowspan="1" colspan="1"> Double(8.9, 8.9) </td>
+          <td rowspan="1" colspan="1"> Double(14.2, 14.2) </td>
+          <td rowspan="1" colspan="1"> Double(12.5, 12.5) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NAQT) </td>
+          <td rowspan="1" colspan="1"> Double(16.1, 16.1) </td>
+          <td rowspan="1" colspan="1"> Double(19.1, 19.1) </td>
+          <td rowspan="1" colspan="1"> Double(19.1, 19.1) </td>
+          <td rowspan="1" colspan="1"> Double(8.1, 8.1) </td>
+          <td rowspan="1" colspan="1"> Double(7.2, 7.2) </td>
+          <td rowspan="1" colspan="1"> Double(4.6, 4.6) </td>
+          <td rowspan="1" colspan="1"> Double(5.3, 5.3) </td>
+          <td rowspan="1" colspan="1"> Double(6.0, 6.0) </td>
+          <td rowspan="1" colspan="1"> Double(5.8, 5.8) </td>
+          <td rowspan="1" colspan="1"> Double(8.8, 8.8) </td>
+          <td rowspan="1" colspan="1"> Double(0.0, 0.0) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

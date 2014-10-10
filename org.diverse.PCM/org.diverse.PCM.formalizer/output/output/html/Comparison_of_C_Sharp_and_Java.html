@@ -1,0 +1,1574 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Data types</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Data types) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Single-root (unified) type system) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Signed integers) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; 8, ; 8), Integer(16, 16), Integer(32, 32), VarConceptRef(64 bits, 64 bits)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; 8, ; 8), Integer(16, 16), Integer(32, 32), VarConceptRef(64 bits, 64 bits)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Unsigned integers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; 8, ; 8), Integer(16, 16), Integer(32, 32), VarConceptRef(64 bits, 64 bits)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Character) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Date/time) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; reference type, ; reference type))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; value type, ; value type))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(IEEE 754 binary32 floating point number)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(IEEE 754 binary64 floating point number)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Boolean type) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(High precision decimal number) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(128-bit (28 digits) Decimal type, 128-bit (28 digits) Decimal type)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Arbitrary size decimals) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Reference type, Reference type), VarConceptRef(no operators, no operators))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Strings) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Immutable reference type, Immutable reference type), VarConceptRef(Unicode, Unicode))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Immutable reference type, Immutable reference type), VarConceptRef(Unicode, Unicode))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Arbitrary size integers) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Reference type, Reference type), VarConceptRef(no operators, no operators))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Complex numbers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Reference types) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Arrays) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Value types) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(only primitive types, only primitive types))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Enumerated types) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; reference type, ; reference type))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; scalar, ; scalar))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Lifted (nullable) types) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(but wrapper types, but wrapper types))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Tuples) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Pointers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Enumerations</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra() </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Definition) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In Java, In Java), VarConceptRef(the enumeration type is a class, the enumeration type is a class), VarConceptRef(and its values are objects (instances) of that class. The only valid values are the ones listed in the enumeration. The enumeration type may declare fields, and its values are objects (instances) of that class. The only valid values are the ones listed in the enumeration. The enumeration type may declare fields), Or(VarConceptRef(allowing each individual enumerated value to reference additional data associated uniquely with that specific value. The enumeration type may also declare, allowing each individual enumerated value to reference additional data associated uniquely with that specific value. The enumeration type may also declare), VarConceptRef(override methods, override methods)), VarConceptRef(or implement interfaces., or implement interfaces.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(Enumeration in C# are implicitly derived from the  type that again is a value type derivative. The value set of a C# enumeration is defined by the underlying type that can be a signed, Enumeration in C# are implicitly derived from the  type that again is a value type derivative. The value set of a C# enumeration is defined by the underlying type that can be a signed), VarConceptRef(unsigned integer type of 8, unsigned integer type of 8)), Integer(16, 16), Or(Integer(32, 32), And(Partial(VarConceptRef(64 bits. The enumeration definition defines names for the selected integer values. By default the first name is assigned the value 0, 64 bits. The enumeration definition defines names for the selected integer values. By default the first name is assigned the value 0), VarConceptRef(zero, zero)), VarConceptRef(the following names are assigned in increments of 1. Any value of the underlying primitive type is a valid value of the enumeration type, the following names are assigned in increments of 1. Any value of the underlying primitive type is a valid value of the enumeration type))), VarConceptRef(though an explicit cast may be needed to assign it., though an explicit cast may be needed to assign it.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Combining) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Java enumeration set, Java enumeration set), VarConceptRef(map collections provide functionality to combine multiple enumeration values to a combined value. These special collections allows compiler optimization to minimize the overhead incurred by using collections as the combination mechanism., map collections provide functionality to combine multiple enumeration values to a combined value. These special collections allows compiler optimization to minimize the overhead incurred by using collections as the combination mechanism.))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C# supports bit-mapped enumerations where an actual value may be a combination of enumerated values bitwise or'ed together. The formatting, C# supports bit-mapped enumerations where an actual value may be a combination of enumerated values bitwise or'ed together. The formatting), VarConceptRef(parsing methods implicitly defined by the type will attempt to use these values., parsing methods implicitly defined by the type will attempt to use these values.))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Reference types</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Reference types) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Garbage collection) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Weak reference) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Reference queue (interaction with garbage collection))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Soft and Phantom references) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Proxy support) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; proxy generation, ; proxy generation))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; object contexts, ; object contexts))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Object orientation</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Object orientation) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Classes) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mandatory, mandatory) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(mandatory, mandatory) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Interfaces) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Abstract classes) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Member accessibility levels) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; public, ; public), VarConceptRef(package, package), VarConceptRef(protected, protected), VarConceptRef(private, private)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; public, ; public), VarConceptRef(internal, internal), VarConceptRef(protected, protected), VarConceptRef(private, private), VarConceptRef(protected internal, protected internal)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Class-level inner classes) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; inner classes are class level, ; inner classes are class level))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; all inner classes are class level, ; all inner classes are class level))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Instance-level inner classes) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Statement-level (local) anonymous classes)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; Without methods, ; Without methods))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Partial class) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Implicit (inferred) anonymous classes)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Deprecation/obsolescence) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Overload versioning) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Some, Some) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Enums can implement interfaces) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Properties) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(but see JavaBeans spec, but see JavaBeans spec))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Events) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Provided by standard libraries, Provided by standard libraries)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Built-in language feature, Built-in language feature)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Operator overloading) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Indexers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Implicit conversions) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Explicit conversions) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Fields and initialization</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Fields and initialization) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Fields) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Constants) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; but no support for constant passed parameters, ; but no support for constant passed parameters))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Static (class) constructors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Instance constructors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Finalizers/destructors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Instance initializers) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Object initialization) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Bottom-up, Bottom-up), And(VarConceptRef(fields, fields), VarConceptRef(constructors, constructors)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Top-down, Top-down), And(VarConceptRef(fields), fields)), VarConceptRef(bottom-up (constructors, bottom-up (constructors)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Object initializers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Collection initializers) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(can be modelled, can be modelled))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Array initializers) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Methods and properties</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Methods and properties) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Static imports) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Virtual methods) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Virtual by default, Virtual by default)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Non-virtual by default, Non-virtual by default)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Abstract) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Sealing) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Explicit interface implementation) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Value (input) parameters) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Reference (input/output) parameters) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Output (output) parameters) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Constant (immutable) parameters) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(;final parameters, ;final parameters))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Variadic methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Optional arguments) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Named arguments) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Generator methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Extension / default methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conditional methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Partial methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Constant/immutable parameters</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Generics</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Generics) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Implementation) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Type erasure, Type erasure) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Reification, Reification) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Runtime realization) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Covariance) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Contravariance) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Reference type constraint) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; implicit, ; implicit))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Value/primitive type constraint) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Constructor constraint) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Relation constraint) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Primitive/value type support) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Migration compatibility) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Type erasure versus reified generics</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Type checks and downcasts are injected into client code (the code referencing the generics). Compared to non-generic code with manual casts, these casts will be the same, but compared to compile-time verified code that would not need runtime casts and checks, these operations represent a performance overhead.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(C#, C#), And(VarConceptRef(.NET generics guarantee type-safety, .NET generics guarantee type-safety), VarConceptRef(are verified at compile time, are verified at compile time))), And(VarConceptRef(making extra checks, making extra checks), VarConceptRef(casts are unnecessary at runtime. Hence, casts are unnecessary at runtime. Hence)), Or(VarConceptRef(generic code will run faster than non-generic (or type-erased) code that require casts when handling non-generic, generic code will run faster than non-generic (or type-erased) code that require casts when handling non-generic), VarConceptRef(type-erased objects., type-erased objects.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Cannot use primitive types as type parameters; instead, the developer must use the wrapper type corresponding to the primitive type. This incurs extra performance overhead by requiring boxing and unboxing conversions as well a memory and garbage collection pressure, as the wrappers will be heap-allocated as opposed to stack-allocated.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(And(VarConceptRef(Primitive, Primitive), VarConceptRef(value types are allowed as type parameters in generic realizations. At runtime code will be synthesized, value types are allowed as type parameters in generic realizations. At runtime code will be synthesized)), VarConceptRef(compiled for each unique combination of type parameters upon first use. Generics that are realized with primitive, compiled for each unique combination of type parameters upon first use. Generics that are realized with primitive)), VarConceptRef(value type do not require boxing, value type do not require boxing), VarConceptRef(unboxing conversions., unboxing conversions.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Generic exceptions are not allowed and a type parameter cannot be used in a catch clause)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Can both define generic exceptions, Can both define generic exceptions), VarConceptRef(use those in catch clauses, use those in catch clauses))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Static members are shared across all generic realizations (during type erasure all realizations are folded into a single class))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Static members are separate for each generic realization. A generic realization is a unique class., Static members are separate for each generic realization. A generic realization is a unique class.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Type parameters cannot be used in declarations of static fields/methods or in definitions of static inner classes)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(No restrictions on use of type parameters, No restrictions on use of type parameters)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Cannot create an array where the component type is a generic realization (concrete parameterized type))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(A generic realization is a 1st class citizen, A generic realization is a 1st class citizen), VarConceptRef(can be used as any other class, can be used as any other class)), VarConceptRef(also an array component, also an array component))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Cannot create an array where the component type is a type parameter)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Type parameters represent actual, Type parameters represent actual), And(VarConceptRef(discrete classes, discrete classes), VarConceptRef(can be used like any other type within the generic definition., can be used like any other type within the generic definition.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(There is no class literal for a concrete realization of a generic type)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(A generic realization is an actual class., A generic realization is an actual class.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(is not allowed with type parameters or concrete generic realizations)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(The , The ), VarConceptRef( operators work the same for type parameters as for any other type.,  operators work the same for type parameters as for any other type.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Cannot create new instances using a type parameter as the type)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(With a constructor constraint, With a constructor constraint), Or(VarConceptRef(generic methods, generic methods), VarConceptRef(methods of generic classes can create instances of classes that have default constructors., methods of generic classes can create instances of classes that have default constructors.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Type information is erased during compilation. Special extensions to reflection must be used to discover the original type.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Type information about C# generic types is fully preserved at runtime, Type information about C# generic types is fully preserved at runtime), VarConceptRef(and allows complete reflection support as well as instantiation of generic types., and allows complete reflection support as well as instantiation of generic types.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Reflection cannot be used to construct new generic realizations. During compilation extra code (typecasts) are injected into the client code of generics. This precludes creating new realizations later.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Reflection can be used to create new realizations for new combinations of type parameters., Reflection can be used to create new realizations for new combinations of type parameters.)
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Functional programming</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Functional programming) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Method references) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(As of Java 8, As of Java 8))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Closures) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(As of Java 8. All lambdas do not introduce a new level of scope, As of Java 8. All lambdas do not introduce a new level of scope))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Lambda expressions) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(As of Java 8, As of Java 8))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Expression trees) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Generic query language) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Tail recursion compiler optimizations)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Late binding</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Runtime (dynamic) binding) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Late-bound (dynamic) type) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Runtime type information and manipulation</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1">
+            Extra(Runtime type information and manipulation)
+          </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Runtime type information) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; but with type erasure, ; but with type erasure))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Runtime generics realization) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Runtime type construction) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(third party tools exist, third party tools exist))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Statements</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Statements) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Loops) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conditionals) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Flow control) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Assignment) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Exception control) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Variable declaration) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Variable type inference) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Deterministic disposal (ARM-blocks)) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(starting with Java 7, starting with Java 7))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Expressions and operators</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Expressions and operators) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Arithmetic operators) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Logical operators) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Bitwise logic operators) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conditional) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(String concatenation) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Casts) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Boxing) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; implicit, ; implicit))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; implicit, ; implicit))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Unboxing) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; implicit, ; implicit))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; explicit, ; explicit))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Lifted operators) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Overflow control) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Strict floating point evaluation) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), And(VarConceptRef(; opt-in, ; opt-in), VarConceptRef(out, out)))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Verbatim (here-)strings) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Exceptions</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Exceptions) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Checked exceptions) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Try-catch-finally) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Arrays and collections</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Arrays and Collections) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Abstract data type) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(One-dimensional, zero-based index arrays)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Multidimensional arrays, rectangular (single array))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Multidimensional arrays, jagged (arrays of arrays))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Non-zero based arrays) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Some, Some) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Unified arrays and collections) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Maps/dictionaries) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Sorted dictionaries) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Sets) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Sorted sets) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Lists/vectors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Queues/stacks) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Priority queue) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Bags/multisets) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Concurrency optimized collections) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Arrays and collections</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Arrays are implicitly direct specializations of . They are not unified with collection types.)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Arrays in C# are implicit specializations of the  class that implements a number of collection interfaces., Arrays in C# are implicit specializations of the  class that implements a number of collection interfaces.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Arrays and collections are completely separate with no unification. Arrays cannot be passed where sequences or collections are expected)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(Or(Partial(VarConceptRef(Arrays can be passed where sequences, Arrays can be passed where sequences), VarConceptRef(s, s)), VarConceptRef(collections, collections)), VarConceptRef(list interfaces are expected. However, list interfaces are expected. However)), And(VarConceptRef(the collection operations that alter the number of elements (insert, the collection operations that alter the number of elements (insert), VarConceptRef(add, add), VarConceptRef(remove) will throw exceptions as these operations are not supported by arrays., remove) will throw exceptions as these operations are not supported by arrays.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(The  statement accepts either arrays or s. All collections implement . This means that the same short syntax can be used in for-loops.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(The  statement iterates through a sequence using the , The  statement iterates through a sequence using the ), VarConceptRef(interface. Because arrays always implicitly implement these interfaces, interface. Because arrays always implicitly implement these interfaces)), VarConceptRef(the loop will iterate through arrays as well., the loop will iterate through arrays as well.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(In both languages arrays are covariant. This means that a  array is assignable to variables of  because  is a specialization of (assignable to) . In both languages the arrays will perform a type check when inserting new values because type-safety would otherwise be compromised. This is in contrast to how generic collections have been implemented in both languages.)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(No multidimensional arrays (rectangular arrays), but arrays of references to arrays (jagged array).)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Multidimensional arrays, Multidimensional arrays), VarConceptRef(rectangular arrays, rectangular arrays)), VarConceptRef(as well as arrays of references to arrays (jagged array)., as well as arrays of references to arrays (jagged array).))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Arrays cannot be resized (though use of the  method can allow for multi-step array resizing))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Arrays can be resized while preserving existing values using the  static array method., Arrays can be resized while preserving existing values using the  static array method.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Implemented as a retrofit for the  library having extra features, like data structures like sets and linked sets, and has a number of algorithms to manipulate elements of a collection, like finding the largest element based on some Comparator object, finding the smallest element, finding sublists within a list, reverse the contents of a list, shuffle the contents of a list, create immutable versions of a collection, performs sorts, and make binary searches.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(And(VarConceptRef(The C# collections framework consists of classes from the , The C# collections framework consists of classes from the ), VarConceptRef(the  namespaces with a number of useful interfaces, abstract classes,, the  namespaces with a number of useful interfaces, abstract classes,)), VarConceptRef(data structures. Net 3.5 added  namespace contains various native extension methods for querying collections, such as , , , , , , , data structures. Net 3.5 added  namespace contains various native extension methods for querying collections, such as , , , , , , )), VarConceptRef(many others. Queries using these methods are called LINQ queries., many others. Queries using these methods are called LINQ queries.))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Arrays and collections</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Metadata annotations</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Metadata) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Metadata annotations/attributes) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Interface based, Interface based), VarConceptRef(user-defined annotations can be created, user-defined annotations can be created))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Class based, Class based) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Positional arguments) </td>
+          <td rowspan="1" colspan="1">
+            And(Boolean(No, false), VarConceptRef(unless a single argument, unless a single argument))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Named arguments) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Default values) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(At definition, At definition) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Through initialization, Through initialization)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Nested types) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Specialization) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conditional metadata) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Preprocessing, compilation and packaging</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1">
+            Extra(Preprocessing, Compilation and Packaging)
+          </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Namespaces) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Packages, Packages) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Namespaces, Namespaces) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(File contents) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Restricted, Restricted) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Free, Free) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Packaging) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Package, Package) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Assembly, Assembly) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Classes/assembly search path) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ClassPath, ClassPath) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Both compile-time, Both compile-time), VarConceptRef(runtime, runtime))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Conditional compilation) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Custom errors/warnings) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Explicit regions) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Threading and asynchronous features</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Threading and Synchronization) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Threads) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Thread pool) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Task-based parallelism) </td>
+          <td rowspan="1" colspan="1"> Partial(VarConceptRef(Partial, Partial), ) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Semaphores) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Monitors) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Thread-local variables) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; ThreadStaticAttribute, ; ThreadStaticAttribute))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Native interoperability</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Native interoperability) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Cross-language interoperability) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(No, false), Or(VarConceptRef(only with CORBA, only with CORBA), VarConceptRef(JNI, JNI)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; C# was designed for it, ; C# was designed for it))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(External/native methods) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Marshalling) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(External glue code required, External glue code required)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(Yes, true), VarConceptRef(; metadata controlled, ; metadata controlled))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Pointer and arithmetics) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Native types) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Fixed-size buffers) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Explicit stack allocation) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Address-of) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Object pinning (fix variable to address))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Platform support</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Platform support) </td>
+          <td rowspan="1" colspan="1"> Header(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Linux) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Mac OS X) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Solaris) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(FreeBSD) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(AIX) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Partial?, Partial?) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(iOS) </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(only partially via C#, only partially via C#), VarConceptRef(Objective C code generators, Objective C code generators)), VarConceptRef(or the HTML5-based Oracle ADF Mobile framework, or the HTML5-based Oracle ADF Mobile framework))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Windows) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Windows Mobile) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Windows Phone) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(via C# code generator only, via C# code generator only)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Android) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Dalvik, via Dalvik) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(via Mono, via Mono) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Feature phones) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Symbian) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Deprecated, Deprecated) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Blackberry) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(via cross-compiler, via cross-compiler)
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Special feature keywords</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(keyword) </td>
+          <td rowspan="1" colspan="1"> Header(feature, example usage) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(,) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In C#, In C#), Or(VarConceptRef(statement blocks, statement blocks), VarConceptRef(expressions can enable run-time checking for arithmetic overflow., expressions can enable run-time checking for arithmetic overflow.)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(,) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(C# implements properties as part of the language syntax with their optional corresponding , C# implements properties as part of the language syntax with their optional corresponding ), VarConceptRef( accessors,  accessors)), VarConceptRef(as an alternative for the accessor method used in Java, as an alternative for the accessor method used in Java), VarConceptRef(which is not a language feature but a coding-pattern based on method name conventions., which is not a language feature but a coding-pattern based on method name conventions.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(C# supports the  keyword. This can occasionally be useful, C# supports the  keyword. This can occasionally be useful), Or(VarConceptRef(for example for implementing finite state machine, for example for implementing finite state machine), VarConceptRef(for generated code, for generated code)), VarConceptRef(but the use of a more structured method of control flow is usually recommended (see criticism of the goto statement). Java does not support the  statement (but  is a reserved word). However, but the use of a more structured method of control flow is usually recommended (see criticism of the goto statement). Java does not support the  statement (but  is a reserved word). However), And(VarConceptRef(Java does support labeled , Java does support labeled ), VarConceptRef( statements,  statements)), VarConceptRef(which in certain situations can be used when a  statement might otherwise be used., which in certain situations can be used when a  statement might otherwise be used.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In C#, In C#), Partial(VarConceptRef(the  keyword is a shorthand for synchronizing access to a block of code across threads, the  keyword is a shorthand for synchronizing access to a block of code across threads), VarConceptRef(using a , using a )), VarConceptRef(wrapped in a  …  block., wrapped in a  …  block.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(,) </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(C# has support for output, C# has support for output), VarConceptRef(reference parameters. These allow returning multiple output values from a method, reference parameters. These allow returning multiple output values from a method)), VarConceptRef(or passing values by reference., or passing values by reference.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Java uses  to guarantee the results of floating point operations remain the same across platforms., Java uses  to guarantee the results of floating point operations remain the same across platforms.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In C#, In C#), And(And(VarConceptRef(the switch statement also operates on strings, the switch statement also operates on strings), VarConceptRef(longs. Fallthrough is allowed for empty statements, longs. Fallthrough is allowed for empty statements)), VarConceptRef(possible via 'goto case' for statements containing code. Java's switch statement does not operate on strings (before Java 7) nor  primitive type but falls through for all statements (excluding those with '')., possible via 'goto case' for statements containing code. Java's switch statement does not operate on strings (before Java 7) nor  primitive type but falls through for all statements (excluding those with '').)))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In Java, In Java), Partial(VarConceptRef(the  keyword is a shorthand for synchronizing access to a block of code across threads, the  keyword is a shorthand for synchronizing access to a block of code across threads), VarConceptRef(using a , using a )), VarConceptRef(wrapped in a  …  block., wrapped in a  …  block.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Java requires every method to declare the checked exceptions, Java requires every method to declare the checked exceptions), VarConceptRef(superclasses of the checked exceptions that it can throw. Any method can also optionally declare the unchecked exception that it throws. C# has no such syntax., superclasses of the checked exceptions that it can throw. Any method can also optionally declare the unchecked exception that it throws. C# has no such syntax.))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(In C#, In C#), Or(VarConceptRef(causes the  method (implemented via the  interface) of the object declared to be executed after the code block has run, causes the  method (implemented via the  interface) of the object declared to be executed after the code block has run), VarConceptRef(when an exception is thrown within the code block.In Java SE 7 a similar construct has been added called try-with-resources :, when an exception is thrown within the code block.In Java SE 7 a similar construct has been added called try-with-resources :)))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Input/output</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Notes on the Java implementation: Files.readAllBytes method reads a whole file into a byte array.
+ Files.write method writes a byte array into an output file, indicated by a Path object.
+ Files.write method also takes care of buffering and closing the output stream.
+ An explicit option should be specified for the Files.write method whether it should overwrite or append to the output file.
+ StandardOpenOption.CREATE indicates that the output file should be created or overwritten if exists.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(And(VarConceptRef(Notes on the C# implementation: The  method returns an enumerable object which upon enumeration will read the file one line at a time.
+ The  method takes an enumerable, Notes on the C# implementation: The  method returns an enumerable object which upon enumeration will read the file one line at a time.
+ The  method takes an enumerable), VarConceptRef(retrieves a line at a time, retrieves a line at a time)), VarConceptRef(writes it until the enumeration ends.
+ The underlying reader will automatically allocate a buffer, writes it until the enumeration ends.
+ The underlying reader will automatically allocate a buffer)), VarConceptRef(thus there is no need to explicitly introduce a buffered stream.
+  automatically closes the output stream, thus there is no need to explicitly introduce a buffered stream.
+  automatically closes the output stream), VarConceptRef(also in the case of an abnormal termination., also in the case of an abnormal termination.))
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Integration of library defined types</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>C# delegates and equivalent Java constructs</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Type lifting</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Interoperability with dynamic languages</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(Notes for the Java implementation: Ruby accessors names are generated from the attribute name with a  suffix. When assigning values, Java developers must use the Ruby accessor method name.
+ Dynamic objects from a foreign language are not first-class objects in that they must be manipulated through an API.)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(Or(VarConceptRef(Notes for the C# implementation: Objects returned from properties, Notes for the C# implementation: Objects returned from properties), VarConceptRef(methods of  objects are themselves of  type. When type inference (the  keyword) is used, methods of  objects are themselves of  type. When type inference (the  keyword) is used)), And(And(VarConceptRef(the variables calc, the variables calc), VarConceptRef(answer are inferred dynamic, answer are inferred dynamic)), VarConceptRef(late-bound.
+ Dynamic, late-bound.
+ Dynamic)), VarConceptRef(late-bounds objects are first-class citizens that can be manipulated using C# syntax even though they have been created by an external language.
+ is a reserved word. The  prefix allows keywords to be used as identifiers., late-bounds objects are first-class citizens that can be manipulated using C# syntax even though they have been created by an external language.
+ is a reserved word. The  prefix allows keywords to be used as identifiers.))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Pass by reference</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(||) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Fibonacci sequence</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Java) </td>
+          <td rowspan="1" colspan="1"> Header(C#) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

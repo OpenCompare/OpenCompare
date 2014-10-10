@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Licensure</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra() </td>
+          <td rowspan="1" colspan="1"> Header(M.D.) </td>
+          <td rowspan="1" colspan="1"> Header(D.O.) </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+          <td rowspan="1" colspan="1"> Header() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Medical School Application service) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(AMCAS, AMCAS), VarConceptRef(TMDSAS, TMDSAS))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(AACOMAS, AACOMAS), VarConceptRef(TMDSAS, TMDSAS))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MLE, MLE), VarConceptRef(Step 2, Step 2))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(USMLE required, USMLE required)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(COMLEX required, COMLEX required)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Board Certification, Board Certification)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Medical specialty boards, Medical specialty boards)
+          </td>
+          <td rowspan="1" colspan="1">
+            Or(VarConceptRef(Either M.D., Either M.D.), VarConceptRef(D.O. medical specialty boards, D.O. medical specialty boards))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Years of medical school) </td>
+          <td rowspan="1" colspan="1"> Integer(4, 4) </td>
+          <td rowspan="1" colspan="1"> Integer(4, 4) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(residency, residency) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(M.D., M.D.), VarConceptRef(ACGME, ACGME))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Medical Licensing Exam (MLE) Step 1) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(USMLE required, USMLE required)
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Licensure</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(USMLE optional (~50%)) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(COMLEX required) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Licensure</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(M.D. (ACGME)) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(D.O. (AOA)) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(combined M.D./D.O.) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(AOA approval of an ACGME program) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

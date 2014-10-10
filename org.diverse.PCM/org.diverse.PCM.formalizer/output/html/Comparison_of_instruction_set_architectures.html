@@ -1,0 +1,688 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Instruction sets</h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Instruction set) </td>
+          <td rowspan="1" colspan="1"> Header(Bits) </td>
+          <td rowspan="1" colspan="1"> Header(Version) </td>
+          <td rowspan="1" colspan="1"> Header(Introduced) </td>
+          <td rowspan="1" colspan="1"> Header(Max # operand) </td>
+          <td rowspan="1" colspan="1"> Header(Type) </td>
+          <td rowspan="1" colspan="1"> Header(Design) </td>
+          <td rowspan="1" colspan="1"> Header(Registers) </td>
+          <td rowspan="1" colspan="1"> Header(Instruction encoding) </td>
+          <td rowspan="1" colspan="1"> Header(Branch evaluation) </td>
+          <td rowspan="1" colspan="1"> Header(Endianness) </td>
+          <td rowspan="1" colspan="1"> Header(Extensions) </td>
+          <td rowspan="1" colspan="1"> Header(Open) </td>
+          <td rowspan="1" colspan="1"> Header(Royalty free) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Alpha) </td>
+          <td rowspan="1" colspan="1"> Integer(64, 64) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1992, 1992) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MVI, MVI), VarConceptRef(BWX, BWX), VarConceptRef(FIX, FIX), VarConceptRef(CIX, CIX))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ARM) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(ARMv7, ARMv7), VarConceptRef(earlier, earlier))
+          </td>
+          <td rowspan="1" colspan="1"> Integer(1983, 1983) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(16, 16), And(VarConceptRef(including PC, including PC), VarConceptRef(SP, SP)))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), And(VarConceptRef(32-bit), 32-bit)), Partial(VarConceptRef(Thumb: Fixed, Thumb: Fixed), VarConceptRef(16-bit, 16-bit)), And(VarConceptRef(Thumb-2: Variable (16, Thumb-2: Variable (16), VarConceptRef(32-bit, 32-bit))))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(NEON, NEON), VarConceptRef(Jazelle, Jazelle), VarConceptRef(VFP, VFP), VarConceptRef(TrustZone, TrustZone), VarConceptRef(LPAE, LPAE))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(ARMv8-A) </td>
+          <td rowspan="1" colspan="1"> And(Integer(64, 64), Integer(32, 32)) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(ARMv8-A, ARMv8-A) </td>
+          <td rowspan="1" colspan="1"> Integer(2011, 2011) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(31, 31) </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit). In ARMv7 compatibility mode: Thumb: Fixed (16-bit, 32-bit). In ARMv7 compatibility mode: Thumb: Fixed (16-bit)), Partial(VarConceptRef(Thumb-2: Variable, Thumb-2: Variable), And(Integer(16, 16), VarConceptRef(32-bit, 32-bit))), VarConceptRef(A64, A64))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(NEON, NEON), VarConceptRef(Jazelle, Jazelle), VarConceptRef(VFP, VFP), VarConceptRef(TrustZone, TrustZone))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(AVR32) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Rev 2, Rev 2) </td>
+          <td rowspan="1" colspan="1"> Integer(2006, 2006) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(2-3, 2-3) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(15, 15) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Java Virtual Machine, Java Virtual Machine)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Blackfin) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2000, 2000) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(8, 8) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(DLX) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1990, 1990) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(eSi-RISC) </td>
+          <td rowspan="1" colspan="1"> And(Integer(16, 16), Integer(32, 32)) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2009, 2009) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(8-72, 8-72) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), Or(Integer(16, 16), VarConceptRef(32-bit, 32-bit)))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(And(VarConceptRef(Compare, Compare), VarConceptRef(branch, branch)), VarConceptRef(condition register, condition register))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(User-defined instructions, User-defined instructions)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Itanium (IA-64)) </td>
+          <td rowspan="1" colspan="1"> Integer(64, 64) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2001, 2001) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(EPIC, EPIC) </td>
+          <td rowspan="1" colspan="1"> Integer(128, 128) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Bi, Bi), VarConceptRef(selectable, selectable))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Intel Virtualization Technology, Intel Virtualization Technology)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(M32R) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1997, 1997) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(16, 16) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), Or(VarConceptRef(16-, 16-), VarConceptRef(32-bit, 32-bit)))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Motorola 68k) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1979, 1979) </td>
+          <td rowspan="1" colspan="1"> Integer(2, 2) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Memory, Register Memory)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(8 data, 8 data), VarConceptRef(8 address, 8 address))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Mico32) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2006, 2006) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Compare, Compare), VarConceptRef(branch, branch))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(User-defined instructions, User-defined instructions)
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(MIPS) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(32→64, 32→64))
+          </td>
+          <td rowspan="1" colspan="1"> Integer(5, 5) </td>
+          <td rowspan="1" colspan="1"> Integer(1981, 1981) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(1-3, 1-3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(4-31, 4-31) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MDMX, MDMX), VarConceptRef(MIPS-3D, MIPS-3D))
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(MMIX) </td>
+          <td rowspan="1" colspan="1"> Integer(64, 64) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1999, 1999) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(256, 256) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(6502) </td>
+          <td rowspan="1" colspan="1"> Integer(8, 8) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1975, 1975) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Memory, Register Memory)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), VarConceptRef(8 to 32 bits, 8 to 32 bits))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(65k) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(8→64, 8→64))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(2006?, 2006?) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Memory Memory, Memory Memory) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), VarConceptRef(8 bits to 256 bytes, 8 bits to 256 bytes))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Compare, Compare), VarConceptRef(branch, branch))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(NS320xx) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1982, 1982) </td>
+          <td rowspan="1" colspan="1"> Integer(5, 5) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Memory Memory, Memory Memory) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(8, 8) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Variable Huffman coded, Variable Huffman coded), VarConceptRef(up to 23 bytes long, up to 23 bytes long))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition Code, Condition Code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(BitBlt instructions, BitBlt instructions)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(PA-RISC (HP/PA)) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(32→64, 32→64))
+          </td>
+          <td rowspan="1" colspan="1"> Double(2.0, 2.0) </td>
+          <td rowspan="1" colspan="1"> Integer(1986, 1986) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Compare, Compare), VarConceptRef(branch, branch))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big → Bi, Big → Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Multimedia Acceleration eXtensions, Multimedia Acceleration eXtensions), VarConceptRef(MAX, MAX)), VarConceptRef(MAX-2, MAX-2))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(PowerPC) </td>
+          <td rowspan="1" colspan="1">
+            And(Integer(32, 32), Partial(Integer(64, 64), VarConceptRef(32→64, 32→64)))
+          </td>
+          <td rowspan="1" colspan="1"> Double(2.07, 2.07) </td>
+          <td rowspan="1" colspan="1"> Integer(1991, 1991) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit)), VarConceptRef(Variable, Variable))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Big, Big), VarConceptRef(Bi, Bi))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(AltiVec, AltiVec), VarConceptRef(APU, APU), VarConceptRef(VSX, VSX), VarConceptRef(Cell, Cell))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(S+core) </td>
+          <td rowspan="1" colspan="1"> And(Integer(16, 16), Integer(32, 32)) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2005, 2005) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SPARC) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(32→64, 32→64))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(V9, V9) </td>
+          <td rowspan="1" colspan="1"> Integer(1985, 1985) </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(31, 31), VarConceptRef(of at least 55, of at least 55))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Fixed, Fixed), VarConceptRef(32-bit, 32-bit))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big → Bi, Big → Bi) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(VIS 1.0, VIS 1.0), Double(2.0, 2.0), Double(3.0, 3.0))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(SuperH (SH)) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(1990s, 1990s) </td>
+          <td rowspan="1" colspan="1"> Integer(2, 2) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Register Register, Register Register), VarConceptRef(Register Memory, Register Memory))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(RISC, RISC) </td>
+          <td rowspan="1" colspan="1"> Integer(16, 16) </td>
+          <td rowspan="1" colspan="1">
+            And(Partial(VarConceptRef(Fixed, Fixed), Or(VarConceptRef(16-, 16-), VarConceptRef(32-bit, 32-bit))), VarConceptRef(Variable, Variable))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Condition Code, Condition Code), VarConceptRef(Single Bit, Single Bit))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bi, Bi) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1">
+            Header(System/360 / System/370 / z/Architecture)
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(32→64, 32→64))
+          </td>
+          <td rowspan="1" colspan="1"> Integer(3, 3) </td>
+          <td rowspan="1" colspan="1"> Integer(1964, 1964) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Register Memory, Register Memory), VarConceptRef(Memory Memory, Memory Memory))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(16, 16) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Big, Big) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(VAX) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1977, 1977) </td>
+          <td rowspan="1" colspan="1"> Integer(6, 6) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Memory Memory, Memory Memory) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(16, 16) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Compare, Compare), VarConceptRef(branch, branch))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(VAX Vector Architecture, VAX Vector Architecture)
+          </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+          <td rowspan="1" colspan="1"> Unknown(Unknown) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(x86) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(32, 32), VarConceptRef(16→32, 16→32))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1978, 1978) </td>
+          <td rowspan="1" colspan="1"> Integer(2, 2) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Memory, Register Memory)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(8, 8), And(VarConceptRef(including SP, including SP), VarConceptRef(BP, BP)))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MMX, MMX), VarConceptRef(3DNow!, 3DNow!), VarConceptRef(SSE, SSE), VarConceptRef(PAE, PAE))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(x86-64) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(64, 64), VarConceptRef(32→64, 32→64))
+          </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2003, 2003) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(2, 2), VarConceptRef(integer)
+3 (AVX, integer)
+3 (AVX))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Memory, Register Memory)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1">
+            Partial(Integer(16, 16), And(VarConceptRef(including SP, including SP), VarConceptRef(BP, BP)))
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Variable, Variable) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(MMX, MMX), VarConceptRef(3DNow!, 3DNow!), VarConceptRef(PAE, PAE), VarConceptRef(AVX, AVX), VarConceptRef(AES, AES), VarConceptRef(FMA, FMA))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Z80) </td>
+          <td rowspan="1" colspan="1"> Integer(8, 8) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(1976, 1976) </td>
+          <td rowspan="1" colspan="1"> Integer(2, 2) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Memory, Register Memory)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(CISC, CISC) </td>
+          <td rowspan="1" colspan="1"> Integer(8, 8) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), VarConceptRef(8 to 32 bits, 8 to 32 bits))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Xilinx) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(4→48→56, 4→48→56) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2005, 2005) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition Code, Condition Code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(FPGA, FPGA) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), VarConceptRef(up to 768 bytes, up to 768 bytes))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition register, Condition register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Crusoe) </td>
+          <td rowspan="1" colspan="1"> Integer(32, 32) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Integer(2000, 2000) </td>
+          <td rowspan="1" colspan="1"> Integer(1, 1) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Register Register, Register Register)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(VLIW, VLIW) </td>
+          <td rowspan="1" colspan="1"> Integer(64, 64) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Variable, Variable), Or(Integer(64, 64), VarConceptRef(128 bits, 128 bits)))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Condition code, Condition code)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Little, Little) </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+          <td rowspan="1" colspan="1"> Empty() </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Architecture) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Bits, Bits) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Version, Version) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Introduced, Introduced) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Max # operands, Max # operands)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Type, Type) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Design, Design) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Registers, Registers) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Instruction encoding, Instruction encoding)
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Branch evaluation, Branch evaluation)
+          </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Endianness, Endianness) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Extensions, Extensions) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Open, Open) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Royalty free, Royalty free) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

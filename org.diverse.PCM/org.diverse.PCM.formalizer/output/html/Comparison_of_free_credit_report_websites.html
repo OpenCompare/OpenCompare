@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1></h1>
+      <table border="1">
+        <tr>
+          <td rowspan="1" colspan="1"> Extra(Name/Website) </td>
+          <td rowspan="1" colspan="1"> Header(Cost of credit report) </td>
+          <td rowspan="1" colspan="1"> Header(Cost of credit score) </td>
+          <td rowspan="1" colspan="1"> Header(Credit card required?) </td>
+          <td rowspan="1" colspan="1"> Header(Social Security Number required?) </td>
+          <td rowspan="1" colspan="1"> Header(Report type) </td>
+          <td rowspan="1" colspan="1"> Header(Score type) </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(AnnualCreditReport.com) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(one from each agency every 12 months, one from each agency every 12 months))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(FICO score (Equifax) = $7.95, FICO score (Equifax) = $7.95), VarConceptRef(Experian score = $7.95, Experian score = $7.95), VarConceptRef(TransUnion score = $7.95, TransUnion score = $7.95))
+          </td>
+          <td rowspan="1" colspan="1">
+            Partial(Boolean(No, false), And(VarConceptRef(for credit report), for credit report)), Partial(Boolean(Yes, true), VarConceptRef((for credit score, (for credit score))))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Equifax, Equifax), VarConceptRef(Experian &amp; Transunion, Experian &amp; Transunion))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(FICO (proprietary from Equifax, FICO (proprietary from Equifax), VarConceptRef(not FICO), not FICO)), VarConceptRef(Experian &amp; Transunion, Experian &amp; Transunion))
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Credit.com) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Free proprietary credit report summary, Free proprietary credit report summary)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(once monthly, once monthly))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Experian, Experian), VarConceptRef(bare, bare))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Experian's National Equivalency Score, Experian's National Equivalency Score)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Credit Karma) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Free proprietary credit report summary, Free proprietary credit report summary)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(once weekly, once weekly))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Transunion, Transunion), VarConceptRef(bare, bare))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Transunion's TransRisk New Account score. VantageScore., Transunion's TransRisk New Account score. VantageScore.)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Credit Sesame) </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Free Experian credit report summary, Free Experian credit report summary)
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(once monthly, once monthly))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1">
+            Partial(VarConceptRef(Experian, Experian), VarConceptRef(bare, bare))
+          </td>
+          <td rowspan="1" colspan="1">
+            VarConceptRef(Experian's National Equivalency Score, Experian's National Equivalency Score)
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="1"> Header(Quizzle) </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(once every 6 months, once every 6 months))
+          </td>
+          <td rowspan="1" colspan="1">
+            And(VarConceptRef(Free, Free), VarConceptRef(once every 6 months, once every 6 months))
+          </td>
+          <td rowspan="1" colspan="1"> Boolean(No, false) </td>
+          <td rowspan="1" colspan="1"> Boolean(Yes, true) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(Equifax, Equifax) </td>
+          <td rowspan="1" colspan="1"> VarConceptRef(VantageScore, VantageScore) </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
