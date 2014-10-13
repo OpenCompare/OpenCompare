@@ -1,18 +1,8 @@
 define(function (require) {
-    // Load any app-specific modules
-    // with a relative require call,
-    // like:
-    var messages = require('./messages');
-
-    console.log("main");
+    require('pcm.merged');
 
 
-    // Load library/vendor modules using
-    // full IDs, like:
-    var pcmlib = require('pcm.merged');
-    var print = require('print');
 
-    print(messages.getHello());
 
 
 
