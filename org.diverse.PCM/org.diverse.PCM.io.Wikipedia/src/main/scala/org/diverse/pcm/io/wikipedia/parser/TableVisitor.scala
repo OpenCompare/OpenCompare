@@ -1,6 +1,7 @@
-package parser
+package org.diverse.pcm.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.diverse.pcm.io.wikipedia.pcm.{Cell, Matrix}
 import org.sweble.wikitext.`lazy`.parser._
 import de.fau.cs.osr.ptk.common.ast.NodeList
 import org.sweble.wikitext.`lazy`.utils.XmlAttribute
@@ -10,12 +11,9 @@ import de.fau.cs.osr.ptk.common.ast.Text
 import org.sweble.wikitext.`lazy`.utils.XmlEntityRef
 import de.fau.cs.osr.ptk.common.ast.AstNode
 import org.sweble.wikitext.`lazy`.utils.XmlAttributeGarbage
-import pcm.Cell
 import org.sweble.wikitext.`lazy`.utils.XmlCharRef
 import scala.collection.mutable.ListBuffer
 import scala.collection.mutable.Stack
-import pcm.Matrix
-import pcm.Cell
 import java.util.regex.Pattern
 
 class TableVisitor extends AstVisitor {

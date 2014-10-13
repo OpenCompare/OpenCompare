@@ -4,8 +4,8 @@ import java.io.{File, FileWriter, PrintWriter, StringWriter}
 import java.util.Collections
 import java.util.concurrent.Executors
 
-import _root_.parser.WikipediaPCMParser
-import _root_.pcm.PCM
+import org.diverse.pcm.io.wikipedia.parser.WikipediaPCMParser
+import org.diverse.pcm.io.wikipedia.pcm.{WikipediaPageMiner, Page}
 import org.scalatest.{Matchers, FlatSpec}
 
 import scala.concurrent.{Future, ExecutionContext}
@@ -19,7 +19,7 @@ class ParserTest extends FlatSpec with Matchers {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
   
-  def parsePCMFromFile(file : String) : PCM= {
+  def parsePCMFromFile(file : String) : Page= {
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
@@ -27,32 +27,32 @@ class ParserTest extends FlatSpec with Matchers {
     parser.preprocessAndParse(code)
   }
   
-  def parseFromTitle(title : String) : PCM = {
+  def parseFromTitle(title : String) : Page = {
     (new WikipediaPCMParser).parseOnlineArticle(title)
   }
   
-  def parseFromOfflineCode(title : String) : PCM = {
+  def parseFromOfflineCode(title : String) : Page = {
     val parser = new WikipediaPCMParser
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
     parser.parse(code)
   }
   
-  def testArticle(title : String) : PCM = {
+  def testArticle(title : String) : Page = {
     val pcm = parseFromOfflineCode(title)
     writeToHTML(title, pcm)
     dumpCellsInFile(title, pcm)
     writeToCSV(title, pcm)
+    writeToPCM(title, pcm)
     pcm
   }
   
-  def writeToHTML(title : String, pcm : PCM) {
+  def writeToHTML(title : String, pcm : Page) {
     val writer = new FileWriter("output/html/" + title.replaceAll(" ", "_") + ".html")
-    writer.write((new PrettyPrinter(80,2)).format(pcm.toHTML)) // FIXME : where is pretty printer class?
-    //writer.write(pcm.toHTML.toString)
+    writer.write((new PrettyPrinter(80,2)).format(pcm.toHTML))
     writer.close()
   }
   
-  def dumpCellsInFile(title : String, pcm : PCM) {
+  def dumpCellsInFile(title : String, pcm : Page) {
     val writer = new FileWriter("output/dump/" + title.replaceAll(" ", "_") + ".txt")
     for(matrix <- pcm.getMatrices; 
     row <- 0 until matrix.getNumberOfRows; 
@@ -68,9 +68,17 @@ class ParserTest extends FlatSpec with Matchers {
     writer.close()
   }
   
-  def writeToCSV(title : String, pcm : PCM) {
+  def writeToCSV(title : String, pcm : Page) {
     val writer = new FileWriter("output/csv/" + title.replaceAll(" ", "_") + ".csv")
     writer.write(pcm.toCSV)
+    writer.close()
+  }
+
+  def writeToPCM(title : String, page : Page) {
+    val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
+    val miner = new WikipediaPageMiner
+    val pcm = miner.toPCM(page)
+    writer.write(pcm.toString)
     writer.close()
   }
   
@@ -118,7 +126,7 @@ class ParserTest extends FlatSpec with Matchers {
     }
   }
 
-  it should "parse every available PCM in Wikipedia" in {
+  ignore should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -150,36 +158,13 @@ class ParserTest extends FlatSpec with Matchers {
 
 
 
-//   it should "parse these PCMs" in {
-//	   val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
-//	   val tasks : Seq[Future[String]] = for(article <- wikipediaPCMs) yield future {
-//	     var result = new StringBuilder
-//	     if (article.startsWith("//")) {
-//	       result ++= "IGNORED : " + article
-//	     } else {
-//	    	 result ++= article
-//	    	 var retry = false
-//	    	 do {
-//	    		 try {
-//	    			 val pcms = testArticle(article)
-//	    		 } catch {
-////	    		 case e : UnknownHostException => retry = true
-//	    		 case e : Throwable =>
-//	    		 	val sw = new StringWriter();
-//					val pw = new PrintWriter(sw);
-//					e.printStackTrace(pw);
-//					result ++= sw.toString();
-//	    		 }
-//	    	 } while (retry)
-//	     }
-//	     result.toString
-//	   } (executionContext)
-//
-//	   for (task <- tasks) {
-//         val result = Await.result(task, 10.minutes)
-//         println(result)
-//       }
-//   }
+   it should "parse these PCMs" in {
+	   val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
+	   for(article <- wikipediaPCMs) yield {
+       println(article)
+	     testArticle(article)
+     }
+   }
    
    
 

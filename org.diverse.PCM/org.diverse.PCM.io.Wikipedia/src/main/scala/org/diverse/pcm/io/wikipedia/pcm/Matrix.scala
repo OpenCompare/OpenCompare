@@ -1,4 +1,6 @@
-package pcm
+package org.diverse.pcm.io.wikipedia.pcm
+
+import org.diverse.pcm.api.java.PCM
 
 import scala.xml.Elem
 import scala.xml.Text
@@ -115,5 +117,15 @@ class Matrix {
       
     }
     result.toString
+  }
+  
+  def toPCM(pcm : PCM) {
+    val nbFeatureLines = 1
+    val nbProductColumns = 1
+
+
+    // TODO : set first line (+ followings if rowspan) as features
+    // TODO : set first column (+ followings if colspan) as products
+
   }
 }

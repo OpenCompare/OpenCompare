@@ -1,4 +1,4 @@
-package parser
+package org.diverse.pcm.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
 import de.fau.cs.osr.ptk.common.ast.NodeList

@@ -1,21 +1,16 @@
-package parser
+package org.diverse.pcm.io.wikipedia.parser
 
-import java.util.HashSet
-import org.sweble.wikitext.`lazy`.LazyParser
-import org.sweble.wikitext.engine.config.MagicWord
-import org.sweble.wikitext.engine.utils.SimpleWikiConfiguration
-import pcm.PCM
-import java.net.URL
-import scalaj.http.Http
-import scalaj.http.HttpOptions
-import scala.xml.XML
-import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
-import scala.io.Source
-import org.xml.sax.InputSource
-import scala.xml.parsing.NoBindingFactoryAdapter
 import java.io.StringReader
+
+import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
+import org.diverse.pcm.io.wikipedia.pcm.Page
+import org.sweble.wikitext.`lazy`.{LazyParser, LazyPreprocessor}
+import org.sweble.wikitext.engine.utils.SimpleWikiConfiguration
+import org.xml.sax.InputSource
+
 import scala.xml.Node
-import org.sweble.wikitext.`lazy`.LazyPreprocessor
+import scala.xml.parsing.NoBindingFactoryAdapter
+import scalaj.http.{Http, HttpOptions}
 
 class WikipediaPCMParser {
   
@@ -26,7 +21,7 @@ class WikipediaPCMParser {
   /**
    * Parse PCM from online MediaWiki code
    */
-  def parseOnlineArticle(title : String) : PCM = {
+  def parseOnlineArticle(title : String) : Page = {
     val code = retrieveCodeFromOnlineArticle(title)
     preprocessAndParse(code)
   }
@@ -59,7 +54,7 @@ class WikipediaPCMParser {
   /**
    * Preprocess then parse PCM from MediaWiki code 
    */
-  def preprocessAndParse(code : String) : PCM = {
+  def preprocessAndParse(code : String) : Page = {
     val preprocessedCode = preprocess(code)
     parseAndNormalizePCM(preprocessedCode)
   }
@@ -67,7 +62,7 @@ class WikipediaPCMParser {
   /**
    * Parse preprocessed MediaWiki code
    */
-  def parse(preprocessedCode : String) : PCM = {
+  def parse(preprocessedCode : String) : Page = {
     parseAndNormalizePCM(preprocessedCode)
   }
   
@@ -85,7 +80,7 @@ class WikipediaPCMParser {
   /**
    * Parse preprocessed MediaWiki code to extract normalized PCMs
    */
-  private def parseAndNormalizePCM(code : String) : PCM = {
+  private def parseAndNormalizePCM(code : String) : Page = {
 	val ast = parser.parseArticle(code, "");
     val visitor = new PageVisitor
     visitor.go(ast)

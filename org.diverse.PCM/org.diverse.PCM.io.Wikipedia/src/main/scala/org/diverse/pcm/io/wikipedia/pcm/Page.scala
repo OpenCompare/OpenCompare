@@ -1,5 +1,6 @@
-package pcm
+package org.diverse.pcm.io.wikipedia.pcm
 
+import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 
 import scala.xml.PrettyPrinter
@@ -9,7 +10,7 @@ import scala.xml.Elem
 import scala.collection.mutable.ListBuffer
 
 
-class PCM {
+class Page {
 
   private val matrices : ListBuffer[Matrix] = new ListBuffer
   
@@ -47,6 +48,19 @@ class PCM {
   def toCSV() : String = {
     val matricesInCSV = matrices.map(_.toCSV) 
     matricesInCSV.mkString("", "\n", "")
+  }
+
+  def toPCM() : PCM = {
+    val factory = new PCMFactoryImpl
+    val pcm = factory.createPCM()
+
+    // TODO : set name
+
+    for (matrix <- matrices) {
+      matrix.toPCM(pcm)
+    }
+
+    pcm
   }
 
 }

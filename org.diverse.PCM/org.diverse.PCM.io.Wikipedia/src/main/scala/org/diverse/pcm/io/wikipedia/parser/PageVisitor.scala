@@ -1,6 +1,7 @@
-package parser
+package org.diverse.pcm.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.diverse.pcm.io.wikipedia.pcm.{Page, Matrix}
 import org.sweble.wikitext.`lazy`.parser.LazyParsedPage
 import de.fau.cs.osr.ptk.common.ast.NodeList
 import org.sweble.wikitext.`lazy`.postprocessor.ImTagOpen
@@ -16,7 +17,6 @@ import org.sweble.wikitext.`lazy`.parser.Itemization
 import org.sweble.wikitext.`lazy`.parser.InternalLink
 import org.sweble.wikitext.`lazy`.utils.XmlAttributeGarbage
 import org.sweble.wikitext.`lazy`.preprocessor.LazyPreprocessedPage
-import pcm.PCM
 import org.sweble.wikitext.`lazy`.parser.DefinitionList
 import org.sweble.wikitext.`lazy`.parser.XmlElementClose
 import org.sweble.wikitext.`lazy`.parser.XmlElementOpen
@@ -29,13 +29,12 @@ import org.sweble.wikitext.`lazy`.parser.Url
 import org.sweble.wikitext.`lazy`.utils.XmlCharRef
 import org.sweble.wikitext.`lazy`.parser.Enumeration
 import org.sweble.wikitext.`lazy`.parser.HorizontalRule
-import pcm.Matrix
 import java.util.regex.Pattern
 
 class PageVisitor extends AstVisitor{
   
   var matrices : ListBuffer[Matrix] = ListBuffer()
-  val pcm : PCM = new PCM
+  val pcm : Page = new Page
   var section : StringBuilder = new StringBuilder
   var inTitle : Boolean = false
   
