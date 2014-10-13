@@ -25,21 +25,11 @@ class WikipediaPageMiner {
       val normalizedMatrix = normalize(matrix)
 
       // Extract features
-      extractFeatures(matrix, pcm, nbFeatureRows)
-      pcm.getFeatures.foreach{ f =>
-        println(f.getName + " " + f.getClass)
-        f match {
-          case g : FeatureGroup => g.getFeatures.foreach(sf => println(sf.getName + " " + sf.getClass))
-          case _ =>
-        }
-      }
+      val features = extractFeatures(normalizedMatrix, pcm, nbFeatureRows)
+      features.values.foreach{ f => println(f.getName + " " + f.getClass)}
 
-      // Extract products
-      extractProducts(matrix, pcm, nbProductColumns)
-
-
-      // Extract cells
-
+      // Extract products and cells
+      extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
     }
 
     pcm
@@ -59,8 +49,32 @@ class WikipediaPageMiner {
    * @return
    */
   def normalize(matrix : Matrix) : Matrix = {
-    // TODO : normalize matrix
-    matrix
+    // Duplicate cells with rowspan or colspan
+    val normalizedMatrix = new Matrix
+
+    for (cell <- matrix.cells.map(_._2)) {
+        for (
+          rowShift <- 0 until cell.rowspan;
+          columnShift <- 0 until cell.colspan
+        ) {
+
+          val row = cell.row + rowShift
+          val column = cell.column + columnShift
+
+          val duplicate = new Cell(cell.content, cell.isHeader, row, 1, column, 1)
+          normalizedMatrix.setCell(duplicate, row, column)
+      }
+    }
+
+    // Detect holes in the matrix and add a cell if necessary
+    for (row <- 0 until normalizedMatrix.getNumberOfRows(); column <- 0 until normalizedMatrix.getNumberOfColumns()) {
+      if (!normalizedMatrix.getCell(row, column).isDefined) {
+        val emptyCell = new Cell("", false, row, 1, column, 1)
+        normalizedMatrix.setCell(emptyCell, row, column)
+      }
+    }
+
+    normalizedMatrix
   }
 
   /**
@@ -69,9 +83,9 @@ class WikipediaPageMiner {
    * @param pcm
    * @param nbFeatureRows
    */
-  def extractFeatures(matrix : Matrix, pcm : PCM, nbFeatureRows : Int): Unit = {
+  def extractFeatures(matrix : Matrix, pcm : PCM, nbFeatureRows : Int): Map[String, AbstractFeature] = {
 
-    val features = collection.mutable.Map.empty[String, AbstractFeature]
+    var features = Map.empty[String, AbstractFeature]
 
     for (c <- 0 until matrix.getNumberOfColumns()) {
 
@@ -113,18 +127,30 @@ class WikipediaPageMiner {
       }
 
     }
+
+    features
   }
 
-  def extractProducts(matrix : Matrix, pcm : PCM, nbProductColumns : Int): Unit = {
-    for (r <- 0 until matrix.getNumberOfRows()) {
+  /**
+   * Extract products and cells from a normalized matrix
+   * @param matrix
+   * @param pcm
+   * @param nbFeatureRows
+   * @param nbProductColumns
+   */
+  def extractProducts(matrix : Matrix, pcm : PCM, nbFeatureRows : Int, nbProductColumns : Int, features : Map[String, AbstractFeature]): Unit = {
+    for (r <- nbFeatureRows until matrix.getNumberOfRows()) {
+      // Get product name
       val productName = for (c <- 0 until nbProductColumns) yield {
         matrix.getCell(r, c).get.content
       }
 
+      // Create product
       val product = factory.createProduct()
       pcm.addProduct(product)
       product.setName(productName.mkString("."))
 
+      // Create cells
       for (c <- nbProductColumns until matrix.getNumberOfColumns())  {
         val content = matrix.getCell(r, c).get.content
 
@@ -132,7 +158,10 @@ class WikipediaPageMiner {
         cell.setContent(content)
         product.addCell(cell)
 
-        // TODO : assign feature
+        val featureName = matrix.getCell(nbFeatureRows - 1, c).get.content
+        println(featureName)
+        val feature = features(featureName).asInstanceOf[Feature]
+        cell.setFeature(feature)
       }
      }
   }
