@@ -1,6 +1,7 @@
 package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.Feature;
 import org.diverse.pcm.api.java.Value;
 import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
 import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
@@ -53,5 +54,15 @@ public class CellImpl implements Cell {
     @Override
     public void setInterpretation(Value value) {
        kCell.setInterpretation(((ValueImpl) value).getkValue());
+    }
+
+    @Override
+    public Feature getFeature() {
+        return new FeatureImpl(kCell.getFeature());
+    }
+
+    @Override
+    public void setFeature(Feature feature) {
+        kCell.setFeature(((FeatureImpl) feature).getkFeature());
     }
 }

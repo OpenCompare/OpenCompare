@@ -101,5 +101,11 @@ public abstract class PCMTest {
         assertThat(cell.getInterpretation(), CoreMatchers.instanceOf(BooleanValue.class));
         assertEquals(((BooleanValue) cell.getInterpretation()).getValue(), true);
 
+        Feature feature = factory.createFeature();
+        feature.setName("feature name");
+        cell.setFeature(feature);
+        assertEquals(cell.getFeature().getName(), "feature name");
+
+
     }
 }
