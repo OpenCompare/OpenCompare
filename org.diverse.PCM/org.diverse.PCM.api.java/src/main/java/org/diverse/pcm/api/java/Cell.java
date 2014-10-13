@@ -7,5 +7,8 @@ public interface Cell {
 	
 	Value getInterpretation();
 	void setInterpretation(Value interpretation);
+
+    Feature getFeature();
+    void setFeature(Feature feature);
 	
 }
