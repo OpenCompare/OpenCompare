@@ -1,18 +1,17 @@
 define(function (require) {
     require('pcm.merged');
+    var tools = require('utils') ;
 
 
 
-
-
-
-
-    <!-- core -->
+    var getAllFilesFromFolder = tools.getAllFilesFromFolder('/org.diverse.PCM/org.diverse.PCM.naiveFrontEnd/www/PCM_data/');
+    console.log(getAllFilesFromFolder.size);
+ //   <!-- core -->
 
     var KPCMMM = Kotlin.modules['pcm'].pcm;
     var kev =    Kotlin.modules['pcm'] ;
     var factory  = new KPCMMM.factory.DefaultPcmFactory();
-    <!-- ModelLoader -->
+  //  <!-- ModelLoader -->
     var loader = factory.createJSONLoader();
     var saver = factory.createJSONSerializer();
     var modelElm = null;
@@ -35,11 +34,16 @@ define(function (require) {
         <!-- Number of Abstract feature -->
         console.log( + kPCM.features.size());
 
+        console.log(tools. getNumberOfChild(kPCM.features.get(0) )) ;
+        console.log( "total number of feature");
+        console.log( tools.getNumberOfFeatures(kPCM.features));
+        console.log( tools.getDepth(kPCM.features));
+
         // Test type (a better solution exists...)
         var aFeature = kPCM.features.get(0);
         console.log("pcm.FeatureGroup" === aFeature.metaClassName())
 
-        <!-- Go other all the products -->
+      // <!-- Go other all the products -->
         var products = kPCM.products ;
         for (var i = 0; i < products.size(); i++) {
             console.log(products.get(i).name);
