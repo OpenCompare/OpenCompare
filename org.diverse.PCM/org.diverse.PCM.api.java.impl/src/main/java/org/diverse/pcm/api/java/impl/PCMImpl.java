@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.diverse.pcm.api.java.AbstractFeature;
 import org.diverse.pcm.api.java.Product;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 import pcm.FeatureGroup;
+import pcm.PCM;
 
 
 /**
@@ -17,6 +19,10 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
     public PCMImpl(pcm.PCM kpcm) {
         this.kpcm = kpcm;
+    }
+
+    public PCM getKpcm() {
+        return kpcm;
     }
 
     @Override
@@ -69,5 +75,10 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     @Override
     public void removeFeature(AbstractFeature abstractFeature) {
         kpcm.removeFeatures(((AbstractFeatureImpl) abstractFeature).getkAbstractFeature());
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }

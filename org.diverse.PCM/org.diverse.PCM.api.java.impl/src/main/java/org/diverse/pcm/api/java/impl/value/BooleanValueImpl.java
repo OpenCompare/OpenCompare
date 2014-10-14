@@ -1,6 +1,7 @@
 package org.diverse.pcm.api.java.impl.value;
 
 import org.diverse.pcm.api.java.impl.ValueImpl;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 import org.diverse.pcm.api.java.value.BooleanValue;
 
 /**
@@ -27,5 +28,10 @@ public class BooleanValueImpl extends ValueImpl implements BooleanValue {
     @Override
     public void setValue(boolean b) {
         kBooleanValue.setValue(b);
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }

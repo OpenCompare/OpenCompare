@@ -1,6 +1,7 @@
 package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +48,10 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
     @Override
     public void removeCell(Cell cell) {
         kProduct.removeValues(((CellImpl) cell).getkCell());
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }

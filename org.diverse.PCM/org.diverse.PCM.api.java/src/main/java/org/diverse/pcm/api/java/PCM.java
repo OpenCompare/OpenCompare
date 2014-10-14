@@ -2,7 +2,7 @@ package org.diverse.pcm.api.java;
 
 import java.util.List;
 
-public interface PCM {
+public interface PCM extends PCMElement {
 
 	String getName();
 	void setName(String name);

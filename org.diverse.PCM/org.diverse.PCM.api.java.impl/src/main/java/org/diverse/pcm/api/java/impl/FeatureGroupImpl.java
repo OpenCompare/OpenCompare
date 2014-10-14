@@ -2,6 +2,7 @@ package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.AbstractFeature;
 import org.diverse.pcm.api.java.Feature;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +54,10 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements org.diverse
     @Override
     public void setName(String s) {
         kFeatureGroup.setName(s);
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }

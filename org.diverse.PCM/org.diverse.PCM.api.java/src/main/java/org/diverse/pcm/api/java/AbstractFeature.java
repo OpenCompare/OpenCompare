@@ -1,6 +1,6 @@
 package org.diverse.pcm.api.java;
 
-public interface AbstractFeature {
+public interface AbstractFeature extends PCMElement {
 
     String getName();
     void setName(String name);

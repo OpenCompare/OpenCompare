@@ -4,6 +4,8 @@ import java.io.{File, FileWriter, PrintWriter, StringWriter}
 import java.util.Collections
 import java.util.concurrent.Executors
 
+import org.diverse.pcm.api.java.export.PCMtoHTML
+import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.io.wikipedia.parser.WikipediaPCMParser
 import org.diverse.pcm.io.wikipedia.pcm.{WikipediaPageMiner, Page}
 import org.scalatest.{Matchers, FlatSpec}
@@ -78,7 +80,8 @@ class ParserTest extends FlatSpec with Matchers {
     val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
     val miner = new WikipediaPageMiner
     val pcm = miner.toPCM(page)
-    writer.write(pcm.toString)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
     writer.close()
   }
   

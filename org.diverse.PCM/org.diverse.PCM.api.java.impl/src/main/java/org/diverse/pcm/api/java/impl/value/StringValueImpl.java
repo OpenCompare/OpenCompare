@@ -1,6 +1,7 @@
 package org.diverse.pcm.api.java.impl.value;
 
 import org.diverse.pcm.api.java.impl.ValueImpl;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 import org.diverse.pcm.api.java.value.StringValue;
 
 /**
@@ -22,5 +23,10 @@ public class StringValueImpl extends ValueImpl implements StringValue {
     @Override
     public String getValue() {
         return kStringValue.getValue();
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }

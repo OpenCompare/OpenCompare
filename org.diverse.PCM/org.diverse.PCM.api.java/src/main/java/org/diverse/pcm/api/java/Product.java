@@ -2,7 +2,7 @@ package org.diverse.pcm.api.java;
 
 import java.util.List;
 
-public interface Product {
+public interface Product extends PCMElement {
 
 	String getName();
 	void setName(String name);
@@ -10,4 +10,5 @@ public interface Product {
 	List<Cell> getCells();
     void addCell(Cell cell);
     void removeCell(Cell cell);
+
 }

@@ -1,5 +1,6 @@
 package org.diverse.pcm.api.java.impl;
 
+import org.diverse.pcm.api.java.util.PCMVisitor;
 import pcm.AbstractFeature;
 
 /**
@@ -26,5 +27,27 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
     @Override
     public void setName(String s) {
         kFeature.setName(s);
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FeatureImpl feature = (FeatureImpl) o;
+
+        if (kFeature != null ? !kFeature.equals(feature.kFeature) : feature.kFeature != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return kFeature != null ? kFeature.hashCode() : 0;
     }
 }

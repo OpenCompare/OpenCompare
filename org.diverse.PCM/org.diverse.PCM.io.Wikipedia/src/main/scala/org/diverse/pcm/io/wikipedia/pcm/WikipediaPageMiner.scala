@@ -87,7 +87,7 @@ class WikipediaPageMiner {
 
     var features = Map.empty[String, AbstractFeature]
 
-    for (c <- 0 until matrix.getNumberOfColumns()) {
+    for (c <- 1 until matrix.getNumberOfColumns()) {
 
       // Extract features
       var previous : AbstractFeature = {

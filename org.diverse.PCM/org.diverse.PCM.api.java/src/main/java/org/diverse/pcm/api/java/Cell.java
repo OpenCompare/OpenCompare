@@ -1,6 +1,6 @@
 package org.diverse.pcm.api.java;
 
-public interface Cell {
+public interface Cell extends PCMElement {
 
 	String getContent();
 	void setContent(String content);

@@ -6,6 +6,7 @@ import org.diverse.pcm.api.java.Value;
 import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
 import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
 import org.diverse.pcm.api.java.impl.value.StringValueImpl;
+import org.diverse.pcm.api.java.util.PCMVisitor;
 import pcm.BooleanValue;
 import pcm.IntegerValue;
 import pcm.StringValue;
@@ -64,5 +65,10 @@ public class CellImpl implements Cell {
     @Override
     public void setFeature(Feature feature) {
         kCell.setFeature(((FeatureImpl) feature).getkFeature());
+    }
+
+    @Override
+    public void accept(PCMVisitor visitor) {
+        visitor.visit(this);
     }
 }
