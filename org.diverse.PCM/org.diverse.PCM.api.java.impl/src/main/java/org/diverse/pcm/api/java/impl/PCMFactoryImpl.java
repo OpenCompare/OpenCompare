@@ -1,9 +1,7 @@
 package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.*;
-import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
-import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
-import org.diverse.pcm.api.java.impl.value.StringValueImpl;
+import org.diverse.pcm.api.java.impl.value.*;
 import org.diverse.pcm.api.java.value.*;
 import pcm.factory.DefaultPcmFactory;
 import pcm.factory.PcmFactory;
@@ -55,11 +53,9 @@ public class PCMFactoryImpl implements PCMFactory {
         return new StringValueImpl(kFactory.createStringValue());
     }
 
-    // TODO : create other type of values
-
     @Override
     public Conditional createConditional() {
-        return null;
+        return new ConditionalImpl(kFactory.createConditional());
     }
 
     @Override
@@ -74,7 +70,7 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public Multiple createMultiple() {
-        return null;
+        return new MultipleImpl(kFactory.createMultiple());
     }
 
     @Override
@@ -84,7 +80,7 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public NotAvailable createNotAvailable() {
-        return null;
+        return new NotAvailableImpl(kFactory.createNotAvailable());
     }
 
     @Override
@@ -94,7 +90,7 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public RealValue createRealValue() {
-        return null;
+        return new RealValueImpl(kFactory.createRealValue());
     }
 
     @Override

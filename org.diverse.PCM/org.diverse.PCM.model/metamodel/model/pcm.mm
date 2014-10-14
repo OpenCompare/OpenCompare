@@ -66,7 +66,7 @@ class pcm.Conditional : pcm.Value {
     condition : pcm.Value
 }
 
-class pcm.Partial  {
+class pcm.Partial : pcm.Value {
     @contained
     value : pcm.Value
 }
