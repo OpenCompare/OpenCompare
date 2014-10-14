@@ -19,14 +19,11 @@ class WikipediaPageMiner {
       val nbFeatureRows = nFirstLine(matrix, 1).map(_.rowspan).max
       val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max
 
-      println((nbFeatureRows, nbProductColumns))
-
       // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
       val normalizedMatrix = normalize(matrix)
 
       // Extract features
       val features = extractFeatures(normalizedMatrix, pcm, nbFeatureRows)
-      features.values.foreach{ f => println(f.getName + " " + f.getClass)}
 
       // Extract products and cells
       extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
@@ -159,7 +156,6 @@ class WikipediaPageMiner {
         product.addCell(cell)
 
         val featureName = matrix.getCell(nbFeatureRows - 1, c).get.content
-        println(featureName)
         val feature = features(featureName).asInstanceOf[Feature]
         cell.setFeature(feature)
       }

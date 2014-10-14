@@ -156,11 +156,6 @@ public class PCMtoHTML implements PCMVisitor {
         Collections.sort(cells, new Comparator<Cell>() {
             @Override
             public int compare(Cell cell1, Cell cell2) {
-                for (Feature feature : featurePosition.keySet()) {
-                    System.out.println("feature = " + feature);
-                }
-                System.out.println(cell1.getFeature());
-                System.out.println(cell2.getFeature());
                 return featurePosition.get(cell1.getFeature()) - featurePosition.get(cell2.getFeature());
             }
         });

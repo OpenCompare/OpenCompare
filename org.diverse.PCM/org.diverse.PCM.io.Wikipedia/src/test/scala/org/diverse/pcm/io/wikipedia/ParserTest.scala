@@ -1,26 +1,31 @@
 package org.diverse.pcm.io.wikipedia
 
 import java.io.{File, FileWriter, PrintWriter, StringWriter}
-import java.util.Collections
 import java.util.concurrent.Executors
 
 import org.diverse.pcm.api.java.export.PCMtoHTML
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.io.wikipedia.parser.WikipediaPCMParser
-import org.diverse.pcm.io.wikipedia.pcm.{WikipediaPageMiner, Page}
-import org.scalatest.{Matchers, FlatSpec}
+import org.diverse.pcm.io.wikipedia.pcm.{Page, WikipediaPageMiner}
+import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
-import scala.concurrent.{Future, ExecutionContext}
+import scala.concurrent.duration._
+import scala.concurrent.{ExecutionContext, Future, _}
 import scala.io.Source
 import scala.xml.PrettyPrinter
-import scala.concurrent._
-import scala.concurrent.duration._
-import scalaj.http.{HttpOptions, Http}
 
-class ParserTest extends FlatSpec with Matchers {
+class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  
+
+  override def beforeAll() {
+
+    new File("input/").mkdirs()
+    new File("output/csv/").mkdirs()
+    new File("output/html/").mkdirs()
+    new File("output/dump/").mkdirs()
+    new File("output/model/").mkdirs()
+  }
+
   def parsePCMFromFile(file : String) : Page= {
     val reader= Source.fromFile(file)
     val code = reader.mkString
