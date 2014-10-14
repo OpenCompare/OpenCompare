@@ -7,4 +7,5 @@ import org.diverse.pcm.api.java.Value;
  */
 public interface StringValue extends Value {
     String getValue();
+    void setValue(String value);
 }

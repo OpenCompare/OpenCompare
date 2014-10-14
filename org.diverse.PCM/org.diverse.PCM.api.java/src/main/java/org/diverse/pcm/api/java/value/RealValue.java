@@ -7,4 +7,5 @@ import org.diverse.pcm.api.java.Value;
  */
 public interface RealValue extends Value {
     double getValue();
+    void setValue(double value);
 }

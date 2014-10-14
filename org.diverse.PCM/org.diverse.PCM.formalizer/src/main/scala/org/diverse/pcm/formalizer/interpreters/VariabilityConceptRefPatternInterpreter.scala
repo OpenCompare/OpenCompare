@@ -1,10 +1,7 @@
 package org.diverse.pcm.formalizer.interpreters
 
-import pcmmm.Constraint
+import org.diverse.pcm.api.java.{Value, Feature, Product}
 import java.util.regex.Matcher
-import pcmmm.PcmmmFactory
-import pcmmm.Product
-import pcmmm.Feature
 
 class VariabilityConceptRefPatternInterpreter (
     validHeaders : List[String],
@@ -12,13 +9,11 @@ class VariabilityConceptRefPatternInterpreter (
     parameters : List[String],
     confident : Boolean)
     extends PatternInterpreter(validHeaders, regex, parameters, confident) {
- 
-  override def createConstraint(s : String, matcher : Matcher, parameters : List[String], products : List[Product], features : List[Feature]) : Option[Constraint] = {
-		  val constraint = PcmmmFactory.eINSTANCE.createVariabilityConceptRef()
-		  constraint.setName(s)
-		  constraint.setVerbatim(s)
-		  constraint.setConfident(confident)
-		  Some(constraint)
+
+  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+		val value = factory.createStringValue()
+    value.setValue(s)
+		Some(value)
   }
   
 }

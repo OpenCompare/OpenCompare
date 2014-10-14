@@ -1,8 +1,6 @@
 package org.diverse.pcm.api.java;
 
-import org.diverse.pcm.api.java.value.BooleanValue;
-import org.diverse.pcm.api.java.value.IntegerValue;
-import org.diverse.pcm.api.java.value.StringValue;
+import org.diverse.pcm.api.java.value.*;
 
 /**
  * Created by gbecan on 09/10/14.
@@ -16,7 +14,16 @@ public interface PCMFactory {
     Cell createCell();
 
     BooleanValue createBooleanValue();
+    Conditional createConditional();
+    DateValue createDateValue();
+    Dimension createDimension();
     IntegerValue createIntegerValue();
+    Multiple createMultiple();
+    NotApplicable createNotApplicable();
+    NotAvailable createNotAvailable();
+    Partial createPartial();
+    RealValue createRealValue();
     StringValue createStringValue();
-    // TODO : add methods for other values
+    Unit createUnit();
+    Version createVersion();
 }

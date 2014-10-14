@@ -26,7 +26,14 @@ public class IntegerValueImpl extends ValueImpl implements IntegerValue {
     }
 
     @Override
+    public void setValue(int value) {
+        kIntegerValue.setValue(value);
+    }
+
+    @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

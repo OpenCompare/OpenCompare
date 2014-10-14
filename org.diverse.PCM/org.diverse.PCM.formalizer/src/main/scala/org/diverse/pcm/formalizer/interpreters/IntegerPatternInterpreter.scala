@@ -1,11 +1,9 @@
 package org.diverse.pcm.formalizer.interpreters
 
 import java.util.regex.Matcher
+import org.diverse.pcm.api.java.{Value, Feature, Product}
+
 import scala.collection.immutable.List
-import pcmmm.PcmmmFactory
-import pcmmm.Product
-import pcmmm.Feature
-import pcmmm.Constraint
 
 class IntegerPatternInterpreter (
      validHeaders : List[String],
@@ -13,20 +11,17 @@ class IntegerPatternInterpreter (
     parameters : List[String],
     confident : Boolean)
     extends PatternInterpreter(validHeaders, regex, parameters, confident) {
-  
-  override def createConstraint(s: String, matcher : Matcher, parameters : List[String], products : List[Product], features : List[Feature]) : Option[Constraint] = {
-		  val constraint = PcmmmFactory.eINSTANCE.createInteger()
+
+  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+		  val value = factory.createIntegerValue()
 		
-		  constraint.setValue(try {
+		  value.setValue(try {
 		    s.toInt
 		  } catch {
 		    case e : NumberFormatException => 0
 		  })
 		  
-		  constraint.setName(s)
-		  constraint.setVerbatim(s)
-		  constraint.setConfident(confident)
-		  Some(constraint)
+		  Some(value)
     
   }
 

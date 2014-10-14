@@ -26,6 +26,11 @@ public class StringValueImpl extends ValueImpl implements StringValue {
     }
 
     @Override
+    public void setValue(String value) {
+        kStringValue.setValue(value);
+    }
+
+    @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
     }

@@ -1,11 +1,7 @@
 package org.diverse.pcm.formalizer.interpreters
 
 import java.util.regex.Matcher
-import pcmmm.Constraint
-import pcmmm.PcmmmFactory
-import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
-import pcmmm.Feature
-import pcmmm.Product
+import org.diverse.pcm.api.java.{Value, Feature, Product}
 
 class PartialPatternInterpreter (
     validHeaders : List[String],
@@ -14,49 +10,56 @@ class PartialPatternInterpreter (
     confident : Boolean)
     extends PatternInterpreter(validHeaders, regex, parameters, confident) {
 
-  override def createConstraint(s : String, matcher : Matcher, parameters : List[String], products : List[Product], features : List[Feature]) : Option[Constraint] = {
-		 val constraint = PcmmmFactory.eINSTANCE.createPartial()
-		 var fullyInterpreted : Boolean = true
-		  var subConstraintsConfidence = true
-		  
-		 if (matcher.groupCount() >= 1) {
-		   // Interpret argument
-		   val argument = matcher.group(1)
-		   lastCall = Some(s, products, features) 
-		   val argInterpretation = cellContentInterpreter.findInterpretation(argument, products, features)
-		   if (argInterpretation.isDefined) {
-			   constraint.setArgument(argInterpretation.get)
-			   subConstraintsConfidence = subConstraintsConfidence && argInterpretation.get.isConfident()
-		   } else {
-		     fullyInterpreted = false
-		   }
-		 }
-		 
-		 if (matcher.groupCount() >= 2) {  
-		   // Interpret condition
-		   val condition = matcher.group(2)
-		   lastCall = Some(s, products, features) 
-		   val condInterpretation = cellContentInterpreter.findInterpretation(condition, products, features)
-		   if (condInterpretation.isDefined) {
-		     constraint.setCondition(condInterpretation.get)
-		     subConstraintsConfidence = subConstraintsConfidence && condInterpretation.get.isConfident()
-		   } else {
-		     fullyInterpreted = false
-		   }
-		 }
-		 
-		 // Invert argument and condition if specified by parameter
-	     if (parameters.contains("inverted")) {
-	       val condition = constraint.getCondition()
-	       constraint.setCondition(constraint.getArgument())
-	       constraint.setArgument(condition)
-	     }
-		 
-		 if (fullyInterpreted) {
-			 Some(constraint)
-		 } else {
-			 None
-		 }
+  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+
+    // Interpret value
+    val valueInterpretation = if (matcher.groupCount() >= 1) {
+      val valueString = matcher.group(1)
+      lastCall = Some(s, product, feature)
+      cellContentInterpreter.findInterpretation(valueString, product, feature)
+    } else {
+      None
+    }
+
+    // Interpret condition
+    val condInterpretation = if (matcher.groupCount() >= 2) {
+      val conditionString = matcher.group(2)
+      lastCall = Some(s, product, feature)
+      cellContentInterpreter.findInterpretation(conditionString, product, feature)
+    } else {
+      None
+    }
+
+
+    if (valueInterpretation.isDefined && !condInterpretation.isDefined) { // Partial
+
+      val value = factory.createPartial()
+      value.setValue(valueInterpretation.get)
+      Some(value)
+
+    } else if (valueInterpretation.isDefined && condInterpretation.isDefined) { // Conditional
+
+      val value = factory.createConditional()
+
+      if (!parameters.contains("inverted")) {
+        value.setValue(valueInterpretation.get)
+        value.setCondition(condInterpretation.get)
+      } else {
+        // Invert argument and condition if specified by parameter
+        value.setValue(condInterpretation.get)
+        value.setCondition(valueInterpretation.get)
+      }
+
+      Some(value)
+
+    } else {
+      None
+    }
+
+
+
+
+
   }
 
 }

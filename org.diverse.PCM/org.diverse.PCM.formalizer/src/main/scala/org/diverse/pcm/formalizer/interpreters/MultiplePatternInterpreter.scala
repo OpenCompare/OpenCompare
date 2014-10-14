@@ -1,11 +1,7 @@
 package org.diverse.pcm.formalizer.interpreters
 
 import java.util.regex.Matcher
-import pcmmm.Constraint
-import pcmmm.PcmmmFactory
-import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
-import pcmmm.Product
-import pcmmm.Feature
+import org.diverse.pcm.api.java.{Value, Feature, Product}
 
 class MultiplePatternInterpreter (
     validHeaders : List[String],
@@ -14,23 +10,22 @@ class MultiplePatternInterpreter (
     confident : Boolean)
     extends PatternInterpreter(validHeaders, regex, parameters, confident) {
 
-  override def createConstraint(s : String, matcher : Matcher, parameters : List[String], products : List[Product], features : List[Feature]) : Option[Constraint] = {
-		  val constraint = parameters match {
-		    case "and" :: Nil => PcmmmFactory.eINSTANCE.createAnd()
-		    case "xor" :: Nil => PcmmmFactory.eINSTANCE.createXOr()
-		    case "or" :: Nil => PcmmmFactory.eINSTANCE.createOr()
-		    case _ => PcmmmFactory.eINSTANCE.createMultiple()
+  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+		  val value = parameters match { // TODO : support cardinality
+//		    case "and" :: Nil => PcmmmFactory.eINSTANCE.createAnd()
+//		    case "xor" :: Nil => PcmmmFactory.eINSTANCE.createXOr()
+//		    case "or" :: Nil => PcmmmFactory.eINSTANCE.createOr()
+		    case _ => factory.createMultiple()
 		  }
 		  var fullyInterpreted : Boolean = true
-		  var subConstraintsConfidence = true
+
 		  for (groupID <- 1 to matcher.groupCount()) {
 			  val subConstraint = matcher.group(groupID)
 			  if (subConstraint != null) {
-				  lastCall = Some(s, products, features) 
-				  val subCInterpretation = cellContentInterpreter.findInterpretation(subConstraint, products, features)
+				  lastCall = Some(s, product, feature)
+				  val subCInterpretation = cellContentInterpreter.findInterpretation(subConstraint, product, feature)
 				  if (subCInterpretation.isDefined) {
-				    constraint.getContraints().add(subCInterpretation.get)
-				    subConstraintsConfidence = subConstraintsConfidence && subCInterpretation.get.isConfident()
+				    value.addSubValue(subCInterpretation.get)
 				  } else {
 				    fullyInterpreted = false
 				  }
@@ -38,8 +33,7 @@ class MultiplePatternInterpreter (
 			  
 		  }
 		  if (fullyInterpreted) {
-			  constraint.setConfident(confident && subConstraintsConfidence)
-			  Some(constraint)
+			  Some(value)
 		  } else {
 			  None
 		  }

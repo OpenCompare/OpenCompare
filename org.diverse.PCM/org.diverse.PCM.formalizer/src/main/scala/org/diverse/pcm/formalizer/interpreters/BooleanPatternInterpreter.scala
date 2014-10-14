@@ -1,10 +1,8 @@
 package org.diverse.pcm.formalizer.interpreters
 
 import java.util.regex.Matcher
-import pcmmm.Constraint
-import pcmmm.PcmmmFactory
-import pcmmm.Feature
-import pcmmm.Product
+
+import org.diverse.pcm.api.java.{Value, Feature, Product}
 
 class BooleanPatternInterpreter (
     validHeaders : List[String],
@@ -14,17 +12,14 @@ class BooleanPatternInterpreter (
     extends PatternInterpreter(validHeaders, regex, parameters, confident) {
   
  
-  override def createConstraint(s: String, matcher : Matcher, parameters : List[String], products : List[Product], features : List[Feature]) : Option[Constraint] = {
-		  val constraint = PcmmmFactory.eINSTANCE.createBoolean()
+  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+		  val value = factory.createBooleanValue();
 		  if (!parameters.isEmpty) {
-			  constraint.setValue(parameters.head.toBoolean)
+			  value.setValue(parameters.head.toBoolean)
 		  } else {
-			  constraint.setValue(false)
+			  value.setValue(false)
 		  }
-		  constraint.setName(s)
-		  constraint.setVerbatim(s)
-		  constraint.setConfident(confident)
-		  Some(constraint)
+		  Some(value)
   }
     
 }

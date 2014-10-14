@@ -4,9 +4,7 @@ import org.diverse.pcm.api.java.*;
 import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
 import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
 import org.diverse.pcm.api.java.impl.value.StringValueImpl;
-import org.diverse.pcm.api.java.value.BooleanValue;
-import org.diverse.pcm.api.java.value.IntegerValue;
-import org.diverse.pcm.api.java.value.StringValue;
+import org.diverse.pcm.api.java.value.*;
 import pcm.factory.DefaultPcmFactory;
 import pcm.factory.PcmFactory;
 
@@ -55,5 +53,57 @@ public class PCMFactoryImpl implements PCMFactory {
     @Override
     public StringValue createStringValue() {
         return new StringValueImpl(kFactory.createStringValue());
+    }
+
+    // TODO : create other type of values
+
+    @Override
+    public Conditional createConditional() {
+        return null;
+    }
+
+    @Override
+    public DateValue createDateValue() {
+        return null;
+    }
+
+    @Override
+    public Dimension createDimension() {
+        return null;
+    }
+
+    @Override
+    public Multiple createMultiple() {
+        return null;
+    }
+
+    @Override
+    public NotApplicable createNotApplicable() {
+        return null;
+    }
+
+    @Override
+    public NotAvailable createNotAvailable() {
+        return null;
+    }
+
+    @Override
+    public Partial createPartial() {
+        return null;
+    }
+
+    @Override
+    public RealValue createRealValue() {
+        return null;
+    }
+
+    @Override
+    public Unit createUnit() {
+        return null;
+    }
+
+    @Override
+    public Version createVersion() {
+        return null;
     }
 }
