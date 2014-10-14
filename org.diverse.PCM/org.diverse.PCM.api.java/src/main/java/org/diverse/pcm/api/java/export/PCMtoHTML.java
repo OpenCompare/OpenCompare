@@ -162,7 +162,16 @@ public class PCMtoHTML implements PCMVisitor {
 
         for (Cell cell : cells) {
             builder.append("<td>");
+
+            // Convert interpretation
+            builder.append("<span title=\"");
+            builder.append(cell.getInterpretation());
+            builder.append("\">");
+
+            // Convert content
             builder.append(cell.getContent());
+
+            builder.append("</span>");
             builder.append("</td>");
         }
 

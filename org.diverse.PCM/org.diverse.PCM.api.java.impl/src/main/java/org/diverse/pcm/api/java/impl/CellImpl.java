@@ -3,18 +3,14 @@ package org.diverse.pcm.api.java.impl;
 import org.diverse.pcm.api.java.Cell;
 import org.diverse.pcm.api.java.Feature;
 import org.diverse.pcm.api.java.Value;
-import org.diverse.pcm.api.java.impl.value.BooleanValueImpl;
-import org.diverse.pcm.api.java.impl.value.IntegerValueImpl;
-import org.diverse.pcm.api.java.impl.value.StringValueImpl;
+import org.diverse.pcm.api.java.impl.value.*;
 import org.diverse.pcm.api.java.util.PCMVisitor;
-import pcm.BooleanValue;
-import pcm.IntegerValue;
-import pcm.StringValue;
+import pcm.*;
 
 /**
  * Created by gbecan on 08/10/14.
  */
-public class CellImpl implements Cell {
+public class CellImpl extends PCMElementImpl implements Cell {
 
     private pcm.Cell kCell;
 
@@ -39,6 +35,7 @@ public class CellImpl implements Cell {
     @Override
     public Value getInterpretation() {
         pcm.Value kInterpretation = kCell.getInterpretation();
+
         if (kInterpretation == null) {
             return null;
         } else if (kInterpretation instanceof BooleanValue) {
@@ -47,6 +44,16 @@ public class CellImpl implements Cell {
             return new IntegerValueImpl((IntegerValue) kInterpretation);
         } else if (kInterpretation instanceof StringValue) {
             return new StringValueImpl((StringValue) kInterpretation);
+        } else if (kInterpretation instanceof RealValue) {
+            return new RealValueImpl((RealValue) kInterpretation);
+        } else if (kInterpretation instanceof Multiple) {
+            return new MultipleImpl((Multiple) kInterpretation);
+        } else if (kInterpretation instanceof NotAvailable) {
+            return new NotAvailableImpl((NotAvailable) kInterpretation);
+        } else if (kInterpretation instanceof Conditional) {
+            return new ConditionalImpl((Conditional) kInterpretation);
+        } else if (kInterpretation instanceof Partial) {
+            return new PartialImpl((Partial) kInterpretation);
         } else {
             throw new UnsupportedOperationException(kInterpretation.getClass() + " interpretation type is not yet supported");
         }
