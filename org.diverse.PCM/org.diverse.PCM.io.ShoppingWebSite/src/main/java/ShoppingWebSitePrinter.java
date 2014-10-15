@@ -176,6 +176,8 @@ public class ShoppingWebSitePrinter {
                                             m.addSubvalues(sv);
                                         }
                                         c.setInterpretation(m);
+                                        c.setFeature(f);
+                                        pcmProd.addValues(c);
                                     }
                                 }
                             }

@@ -221,6 +221,7 @@ public class ShoppingWebSiteParser {
 
                                         Cell c = myFactory.createCell();
                                         c.setContent(values.toString());
+                                        c.setFeature(f);
                                         Multiple m = myFactory.createMultiple();
                                         for (String value : values) {
                                             StringValue sv = myFactory.createStringValue();
@@ -228,6 +229,7 @@ public class ShoppingWebSiteParser {
                                             m.addSubvalues(sv);
                                         }
                                         c.setInterpretation(m);
+                                        pcmProd.addValues(c);
                                     }
                                 }
                             }

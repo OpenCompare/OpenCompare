@@ -101,6 +101,7 @@ define(['require'],{
     },
 
     getColumn: function(feature,featureOrder){
+        console.log(feature);
         for (var i = 0; i < featureOrder.length; i++) {
             if(feature.name === featureOrder[i].name)
             {
@@ -127,7 +128,8 @@ define(['require'],{
             }
             prodMatrix[i] = prodArr ;
         }
-    console.log(prodMatrix);
+
+
         var html = " <tr> \n " ;
         for (var i = 0 ; i < prodMatrix.length ; i ++)
         {

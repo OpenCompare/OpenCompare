@@ -16,12 +16,16 @@ public class Main {
     public static void main(String[] Args)
     {
 
-         DefaultPcmFactory myFactory = new DefaultPcmFactory();
-        JSONModelSerializer jms = myFactory.createJSONSerializer() ;
-        ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
-        ShoppingWebSitePrinter swspr = new ShoppingWebSitePrinter();
-        swspr.printAllCat();
-        /*
+           DefaultPcmFactory myFactory = new DefaultPcmFactory();
+          JSONModelSerializer jms = myFactory.createJSONSerializer() ;
+          ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
+              ShoppingWebSitePrinter swspr = new ShoppingWebSitePrinter();
+
+
+
+
+            //  swspr.printProducts(1725);
+
         LinkedList<Pair<String,String>>  r = swsp.getAllCat();
         for (Pair<String, String> stringStringPair : r) {
 
@@ -46,7 +50,7 @@ public class Main {
         }
       //  swspr.printProducts(1725);
 
-*/
+
 
 
 
