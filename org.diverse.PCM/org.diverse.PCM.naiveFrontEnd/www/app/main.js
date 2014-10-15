@@ -4,8 +4,6 @@ define(function (require) {
 
 
 
-    var getAllFilesFromFolder = tools.getAllFilesFromFolder('/org.diverse.PCM/org.diverse.PCM.naiveFrontEnd/www/PCM_data/');
-    console.log(getAllFilesFromFolder.size);
  //   <!-- core -->
 
     var KPCMMM = Kotlin.modules['pcm'].pcm;
@@ -33,11 +31,16 @@ define(function (require) {
         console.log( + kPCM.products.size());
         <!-- Number of Abstract feature -->
         console.log( + kPCM.features.size());
+        console.log( tools.getMaxDepth(kPCM.features));
 
-        console.log(tools. getNumberOfChild(kPCM.features.get(0) )) ;
+        console.log(tools.getPCMHtml(kPCM )) ;
+
+        jQuery(document).ready(function($){
+            $('#pcm').html(tools. getPCMHtml(kPCM ));
+        });
+
         console.log( "total number of feature");
         console.log( tools.getNumberOfFeatures(kPCM.features));
-        console.log( tools.getDepth(kPCM.features));
 
         // Test type (a better solution exists...)
         var aFeature = kPCM.features.get(0);

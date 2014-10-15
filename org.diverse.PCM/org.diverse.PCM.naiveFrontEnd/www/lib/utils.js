@@ -27,8 +27,8 @@ define(['require'],{
 
 
     buildHeader: function(featureCollection) {
-        console.log("New line ");
-        var collection;
+
+
         var val = 0
         for (var i = 0; i < featureCollection.size(); i++) {
             var currFeature = featureCollection.get(i);
@@ -53,7 +53,7 @@ define(['require'],{
 
             if ("pcm.FeatureGroup" === currFeature.metaClassName()) {
                var res2 =  this.getDepth(currFeature.subFeatures) ;
-                var max =   Math.max.apply(Math, res2);
+               var max =   Math.max.apply(Math, res2);
 
                   res[i] = res[i] + max ;
 
@@ -64,9 +64,25 @@ define(['require'],{
     },
 
     getMaxDepth: function(featureCollection){
-        return Math.max.apply(Math, this.getDepth(featureCollection));
+        var arr =this.getDepth(featureCollection)
+
+        var max = Math.max.apply(Math,arr);
+
+        return max;
     },
 
+    getDepthFt : function(feature)
+    {
+        var res = 0 ;
+
+
+        if ("pcm.FeatureGroup" === feature.metaClassName()) {
+
+            res = 1 + this.getMaxDepth(feature.subFeatures) ;
+
+        };
+        return res;
+    },
 
     getNumberOfChildRec: function(feature)
     {
@@ -84,12 +100,40 @@ define(['require'],{
         return res ;
     },
 
-    buildPcmHeader: function(featureCollection)
+   getPCMHtml: function(PCM)
+   {
+       var html ='<table class="table">' + '\n <thead>' ;
+       var depth = this.getMaxDepth(PCM.features);
+       var vect =  Array(depth).join(".").split(".");
+       this.buildPcmHeader(PCM.features,vect,0);
+       for(var i = 0 ; i < vect.length ; i ++)
+       {
+          html = html +' <tr>' + vect[i] + '\n </tr>';
+       }
+       html = html  + '\n </thead>' ;
+       html = html + '\n </table>' ;
+       return html ;
+   },
+
+    buildPcmHeader: function(featureCollection, vect, rank)
     {
-        var htmlCode = "" ;
+        var maxDepth = this.getMaxDepth(featureCollection) ;
+        for (var i = 0; i < featureCollection.size(); i++) {
+            var currFeature = featureCollection.get(i);
+            var nbChild= this.getNumberOfChildRec(currFeature) ;
+            var rawspan = maxDepth - rank - this.getDepthFt(currFeature);
+            if(nbChild == 0)
+            {
+                nbChild = 1 ;
+            }
+            vect[rank] = vect[rank] + "<th id="+ currFeature.generated_KMF_ID+" rowspan="+ rawspan+" colspan="+nbChild+">" + currFeature.name + "</th>";
 
+            if ("pcm.FeatureGroup" === currFeature.metaClassName()) {
+                var rank2 = rank +1 ;
+                this.buildPcmHeader(currFeature.subFeatures, vect, rank2);
 
-        return htmlCode ;
+            }
+        }
     }
 
 });
