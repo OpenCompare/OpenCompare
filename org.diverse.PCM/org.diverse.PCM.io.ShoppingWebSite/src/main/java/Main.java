@@ -30,7 +30,7 @@ public class Main {
         for (Pair<String, String> stringStringPair : r) {
 
             PCM m = swsp.getPcm(Integer.valueOf(stringStringPair.getValue())) ;
-            if(m.getProducts().size() == 0)
+             if(m.getProducts().size() == 0)
             {
                 System.out.println("no prod in " + stringStringPair.getKey());
             }else

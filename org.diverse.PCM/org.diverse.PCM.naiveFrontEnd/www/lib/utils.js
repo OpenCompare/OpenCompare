@@ -136,7 +136,7 @@ define(['require'],{
 
             var prod =    prodMatrix[i] ;
 
-            html = html +'<td id="'+ products.get(i).generated_KMF_ID+'" + class="prod">' + products.get(i).name +'</td> \n ' ;
+            html = html +'<td id="'+ products.get(i).path()+'" + class="prod">' + products.get(i).name +'</td> \n ' ;
             for (var j = 0 ; j < prod.length ;j ++)
             {
 
@@ -144,7 +144,7 @@ define(['require'],{
 
                 if(cell != null)
                 {
-                    html = html + '<td id="'+ cell.generated_KMF_ID+'" + class="cell">' + cell.content +'</td> \n ' ;
+                    html = html + '<td id="'+ cell.path()+'" + class="cell">' + cell.content +'</td> \n ' ;
 
                 }
                 else{
