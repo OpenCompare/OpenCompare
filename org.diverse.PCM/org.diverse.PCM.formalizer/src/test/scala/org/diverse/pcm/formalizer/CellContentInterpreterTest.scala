@@ -1,6 +1,6 @@
 package org.diverse.pcm.formalizer
 
-import java.io.FileWriter
+import java.io.{File, FileWriter}
 
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
@@ -32,6 +32,7 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     // Serialize
     val serializer = new PCMtoHTML
     val html = serializer.toHTML(pcm)
+    new File("output/").mkdirs() // Create output directory
     val writer = new FileWriter("output/out.html")
     writer.write(html)
     writer.close()
