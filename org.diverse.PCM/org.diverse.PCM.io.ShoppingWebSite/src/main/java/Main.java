@@ -20,6 +20,8 @@ public class Main {
         JSONModelSerializer jms = myFactory.createJSONSerializer() ;
         ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
         ShoppingWebSitePrinter swspr = new ShoppingWebSitePrinter();
+        swspr.printAllCat();
+        /*
         LinkedList<Pair<String,String>>  r = swsp.getAllCat();
         for (Pair<String, String> stringStringPair : r) {
 
@@ -44,7 +46,7 @@ public class Main {
         }
       //  swspr.printProducts(1725);
 
-
+*/
 
 
 

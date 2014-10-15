@@ -100,39 +100,118 @@ define(['require'],{
         return res ;
     },
 
+    getColumn: function(feature,featureOrder){
+        for (var i = 0; i < featureOrder.length; i++) {
+            if(feature.name === featureOrder[i].name)
+            {
+                return i ;
+            }
+        }
+        return -1 ;
+},
+        getHTMLProduct: function(products,featureOrder,NbOfFeatures)
+    {
+       var prodMatrix = new Array(products.size() ) ;
+        for(var i = 0 ; i < products.size() ; i ++)
+
+        {
+
+           var currProd = products.get(i);
+            var cells = currProd.values ;
+            var prodArr = new Array(NbOfFeatures) ;
+
+            for (var j = 0 ; j < cells.size() ; j++){
+
+                var currCell = cells.get(j);
+                prodArr[this.getColumn(currCell.feature,featureOrder)] = currCell ;
+            }
+            prodMatrix[i] = prodArr ;
+        }
+    console.log(prodMatrix);
+        var html = " <tr> \n " ;
+        for (var i = 0 ; i < prodMatrix.length ; i ++)
+        {
+
+            var prod =    prodMatrix[i] ;
+
+            html = html +'<td id="'+ products.get(i).generated_KMF_ID+'" + class="prod">' + products.get(i).name +'</td> \n ' ;
+            for (var j = 0 ; j < prod.length ;j ++)
+            {
+
+                var cell = prod[j];
+
+                if(cell != null)
+                {
+                    html = html + '<td id="'+ cell.generated_KMF_ID+'" + class="cell">' + cell.content +'</td> \n ' ;
+
+                }
+                else{
+                    html =html + "<td></td> \n " ;
+            }
+
+            }
+            html = html +" </tr> " ;
+
+        }
+
+return html;
+
+    },
+
+
    getPCMHtml: function(PCM)
    {
        var html ='<table class="table">' + '\n <thead>' ;
        var depth = this.getMaxDepth(PCM.features);
        var vect =  Array(depth).join(".").split(".");
-       this.buildPcmHeader(PCM.features,vect,0);
+       var featureOrder = new Array() ;
+       this.buildPcmHeader(PCM.features,vect,0,featureOrder);
+
+
+
        for(var i = 0 ; i < vect.length ; i ++)
        {
-          html = html +' <tr>' + vect[i] + '\n </tr>';
+           if(i == 0)
+           {
+               html = html +' <tr><th rowspan=2> Product </th>  '  + vect[i] + '\n </tr>';
+
+           }else{
+               html = html +' <tr>' + vect[i] + '\n </tr>';
+           }
+
        }
        html = html  + '\n </thead>' ;
+       html = html  + '\n <tbody>' ;
+       html = html + this.getHTMLProduct(PCM.products, featureOrder,this.getNumberOfFeatures(PCM.features));
+       html = html  + '\n </tbody>' ;
        html = html + '\n </table>' ;
+
        return html ;
    },
 
-    buildPcmHeader: function(featureCollection, vect, rank)
+    buildPcmHeader: function(featureCollection, vect, rank,featureOrder)
     {
         var maxDepth = this.getMaxDepth(featureCollection) ;
         for (var i = 0; i < featureCollection.size(); i++) {
             var currFeature = featureCollection.get(i);
             var nbChild= this.getNumberOfChildRec(currFeature) ;
             var rawspan = maxDepth - rank - this.getDepthFt(currFeature);
+
             if(nbChild == 0)
             {
                 nbChild = 1 ;
             }
-            vect[rank] = vect[rank] + "<th id="+ currFeature.generated_KMF_ID+" rowspan="+ rawspan+" colspan="+nbChild+">" + currFeature.name + "</th>";
+            vect[rank] = vect[rank] + '<th id="'+ currFeature.generated_KMF_ID+'" rowspan="'+ rawspan+'" colspan="'+nbChild+'">' + currFeature.name + '</th>';
 
             if ("pcm.FeatureGroup" === currFeature.metaClassName()) {
                 var rank2 = rank +1 ;
-                this.buildPcmHeader(currFeature.subFeatures, vect, rank2);
+                this.buildPcmHeader(currFeature.subFeatures, vect, rank2,featureOrder);
 
             }
+            else{
+                featureOrder.push(currFeature);
+            }
+
         }
     }
 
