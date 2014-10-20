@@ -21,11 +21,23 @@ public class Main {
           ShoppingWebSiteParser swsp = new ShoppingWebSiteParser() ;
               ShoppingWebSitePrinter swspr = new ShoppingWebSitePrinter();
 
+/*
+        PCM m = swsp.getPcm(87207);
+        String name = "RR";
+        name = name.trim() ;
+        File f = new File("/Users/Aymeric/Documents/dev_PCM/PCM/org.diverse.PCM/org.diverse.PCM.io.ShoppingWebSite/PCMs/" +name +".json");
+        if(f.exists())
+        {
+            f.delete();
+        }
+        PCMUtils.pcmNormalizer(m);
+        m.setName("RRR");
+        swsp.savePcmToFile(m,f);
 
+        System.out.println(  jms.serialize(m));
 
-
-            //  swspr.printProducts(1725);
-
+            //
+*/
         LinkedList<Pair<String,String>>  r = swsp.getAllCat();
         for (Pair<String, String> stringStringPair : r) {
 
@@ -43,8 +55,10 @@ public class Main {
                     f.delete();
                 }
                 m.setName(stringStringPair.getValue());
+                PCMUtils.pcmNormalizer(m);
                 swsp.savePcmToFile(m,f);
-                System.out.println(  jms.serialize(m));
+
+
             }
 
         }

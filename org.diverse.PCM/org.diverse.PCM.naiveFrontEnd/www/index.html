@@ -16,6 +16,12 @@
 
     <script data-main="app" src="lib/require.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".dropdown-toggle").dropdown();
+        });
+    </script>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
 
@@ -52,6 +58,36 @@
 </div>
 
 <div class="container-fluid">
+
+    <div class="row">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default"> <a id="addFeature" href="#">Add Feature</a></button>
+
+
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default"> <a id="addProd" href="#">Add Product</a></button>
+
+
+        </div>
+
+        <div class="btn-group">
+
+            <li class="dropdown">
+                <button type="button" class="btn btn-default">  <a href="#" data-toggle="dropdown" class="dropdown-toggle">Messages <b class="caret"></b></a></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Inbox</a></li>
+                    <li><a href="#">Drafts</a></li>
+                    <li><a href="#">Sent Items</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Trash</a></li>
+                </ul>
+            </li>
+        </div>
+
+
+
+    </div>
 
     <div class="row">
 

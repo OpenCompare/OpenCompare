@@ -1,8 +1,22 @@
 define(function (require) {
     require('pcm.merged');
+    require('pcmEditor');
     var tools = require('utils') ;
 
+function enableListener()
+{
+    $('.dropdown-toggle').dropdown()
 
+        $('#pcm').editableTableWidget();
+
+        $('#pcm td').on('change', function(evt, newValue) {
+            // do something with the new cell value
+            kPCM.findByPath(evt.target.id).name = newValue ;
+        });
+
+
+
+}
 
  //   <!-- core -->
 
@@ -16,7 +30,7 @@ define(function (require) {
 
     var compare = factory.createModelCompare();
 
-    $.getJSON('/org.diverse.PCM/org.diverse.PCM.naiveFrontEnd/www/PCM_data/Boomboxes.json', function(data) {
+    $.getJSON('/org.diverse.PCM/org.diverse.PCM.naiveFrontEnd/www/PCM_data/RR.json', function(data) {
 
 
         console.log(data);
@@ -61,7 +75,28 @@ define(function (require) {
         // to do implement the saveusing https://github.com/eligrey/FileSaver.js
 
 
+        enableListener();
+
+        $('#addProd').click(function() {
+            tools.addProduct(kPCM,"test") ;
+            $('#pcm').html(tools. getPCMHtml(kPCM));
+            enableListener();
+        });
+
+        $('#addFeature').click(function() {
+            tools.addFeature(kPCM,"test") ;
+            $('#pcm').html(tools. getPCMHtml(kPCM));
+            enableListener();
+        });
+
+
+
+
     });
+
+
+
+
 
 
 });

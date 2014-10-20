@@ -101,7 +101,7 @@ define(['require'],{
     },
 
     getColumn: function(feature,featureOrder){
-        console.log(feature);
+
         for (var i = 0; i < featureOrder.length; i++) {
             if(feature.name === featureOrder[i].name)
             {
@@ -136,7 +136,7 @@ define(['require'],{
 
             var prod =    prodMatrix[i] ;
 
-            html = html +'<td id="'+ products.get(i).path()+'" + class="prod">' + products.get(i).name +'</td> \n ' ;
+            html = html +'<td id="'+ products.get(i).path()+'" class="prod">' + products.get(i).name +'</td> \n ' ;
             for (var j = 0 ; j < prod.length ;j ++)
             {
 
@@ -144,7 +144,7 @@ define(['require'],{
 
                 if(cell != null)
                 {
-                    html = html + '<td id="'+ cell.path()+'" + class="cell">' + cell.content +'</td> \n ' ;
+                    html = html + '<td id="'+ cell.path()+'"  class="cell">' + cell.content +'</td> \n ' ;
 
                 }
                 else{
@@ -163,7 +163,7 @@ return html;
 
    getPCMHtml: function(PCM)
    {
-       var html ='<table class="table">' + '\n <thead>' ;
+       var html ='<table class="table" id="pcm">' + '\n <thead>' ;
        var depth = this.getMaxDepth(PCM.features);
        var vect =  Array(depth).join(".").split(".");
        var featureOrder = new Array() ;
@@ -215,7 +215,60 @@ return html;
             }
 
         }
+    },
+    addProduct: function(PCM, Name){
+        var KPCMMM = Kotlin.modules['pcm'].pcm ;
+        var factory  = new KPCMMM.factory.DefaultPcmFactory();
+        var prod = factory.createProduct();
+        prod.name = Name ;
+        var features = PCM.features ;
+        console.log(  PCM.products);
+
+       this. populateProd(prod,PCM.features,factory);
+        PCM.addProducts(prod);
+
+    },
+
+    populateProd: function(product, featureCollection, factory)
+    {
+        for (var i = 0; i < featureCollection.size(); i++) {
+
+            var currFeature = featureCollection.get(i);
+
+            if ("pcm.FeatureGroup" === currFeature.metaClassName()) {
+                this.populateProd(product,currFeature.subFeatures,factory);
+
+            }
+            else{
+              var cell = factory.createCell();
+               cell.content ="";
+                cell.feature =currFeature;
+                product.addValues(cell);
+            }
+
+        }
+
+    },
+
+    addFeature: function(PCM, Name){
+        var KPCMMM = Kotlin.modules['pcm'].pcm ;
+        var factory  = new KPCMMM.factory.DefaultPcmFactory();
+        var feature = factory.createFeature();
+        feature.name = Name ;
+        PCM.addFeatures(feature) ;
+        for (var i = 0 ; i < PCM.products.size(); i++){
+            var currProd = PCM.products.get(i);
+            var cell = factory.createCell();
+            cell.content ="";
+            cell.feature =feature;
+            currProd.addValues(cell);
+
+        }
+
     }
+
+
+
 
 });
 
