@@ -1,5 +1,5 @@
 <table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(August 2011)''</small><span class="hide-when-compact"></span></span></td></tr></table>
-<table class="metadata plainlinks ambox ambox-style ambox-cleanup-link_rot" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Text document with red question mark.svg|50x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''uses [[Wikipedia:Bare URLs|bare URLs]] for [[Wikipedia:Citing sources|citations]], which may be threatened by [[Wikipedia:Link rot|link rot]].'''<span class="hide-when-compact"> Please consider adding [[Wikipedia:Citing sources#Citation styles|full citations]] so that the article remains [[Wikipedia:Verifiability|verifiable]]. [[Wikipedia:Template messages/Sources of articles#Examples|Several templates]] and the [//tools.wmflabs.org/fengtools/reflinks/result.php?page=Special:ExpandTemplates&noaccessdate=y Reflinks tool] are available to assist in formatting. ([[WP:REFLINKS2|Reflinks documentation]])</span>  <small>''(June 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<table class="metadata plainlinks ambox ambox-style ambox-cleanup-link_rot" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Text document with red question mark.svg|50x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''uses [[Wikipedia:Bare URLs|bare URLs]] for [[Wikipedia:Citing sources|citations]], which may be threatened by [[Wikipedia:Link rot|link rot]].'''<span class="hide-when-compact"> Please consider adding [[Wikipedia:Citing sources#Citation styles|full citations]] so that the article remains [[Wikipedia:Verifiability|verifiable]]. [[Wikipedia:Template messages/Sources of articles#Examples|Several templates]] and the [//tools.wmflabs.org/fengtools/reflinks/result.php?page=Special:ExpandTemplates&defaults=y Reflinks tool] are available to assist in formatting. ([[WP:REFLINKS2|Reflinks documentation]])</span>  <small>''(June 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
 <table class="metadata plainlinks ambox ambox-content" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[Image:Unbalanced scales.svg|50x40px|link=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''lends [[Wikipedia:Neutral point of view#Undue_weight|undue weight]] to certain ideas, incidents, or controversies'''.<span class="hide-when-compact"> Please help to create a more balanced presentation. [[|Discuss]] and [[Wikipedia:Dispute resolution|resolve]] this issue before removing this message.</span>  <small>''(October 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
 <strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Lua error in Module:Message_box at line 315: attempt to index field 'talk' (a nil value).</span></strong>
 <table class="metadata plainlinks ambox ambox-content ambox-multiple_issues compact-ambox" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Ambox content.png|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span"><table class="collapsible  " style="width:95%; background:transparent;">
@@ -583,11 +583,35 @@ A [[command shell]] is a [[command line interface]] computer program to an [[ope
 |?
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (arbitrary <tt>fds</tt>)
 |?
-|?
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>/etc/fish/config.fish</tt> and <tt>~/.config/fish/config.fish</tt>)
 |?
 |?
 |style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |?
+
+|-
+
+!
+!Usual environment
+!Usually invoked
+!Introduced
+![[Cross-platform|Platform-independent]]
+!Default login shell in
+!Default script shell in
+!License
+!Source code availability
+!User interface
+!Mouse support
+![[Unicode]] support
+![[ISO 8601]] support
+!Console redirection
+![[Standard streams|Stream]] [[Redirection (Unix)|redirection]]
+!Configurability
+!Startup/shutdown scripts
+!Batch scripts
+!Logging
+!Native [[Common Information Model (computing)|CIM]]/[[Web-Based Enterprise Management|WBEM]] support
+!available as statically linked, independent single file executable
 
 |}
 
@@ -602,8 +626,8 @@ A [[command shell]] is a [[command line interface]] computer program to an [[ope
 
 !
 ![[#Completions|Command<br/>name<br/>completion]]
-![[#Completions|Path/file<br/>argument<br/>completion]]
-![[#Completions|Non-Path/file<br/>argument<br/>completion]]
+![[#Completions|Path<br/>completion]]
+![[#Completions|Command<br/>argument<br/>completion]]
 ![[#Completions|Wildcard<br/>completion]]
 ![[#Command history|Command<br/>history]]
 ![[#Mandatory argument prompt|Mandatory<br/>argument<br/>prompt]]
@@ -611,7 +635,7 @@ A [[command shell]] is a [[command line interface]] computer program to an [[ope
 ![[#Syntax highlighting|Syntax<br/>highlighting]]
 ![[#Directory history, stack or similar features|Directory history, stack or similar features]]
 ![[#Implicit directory change|Implicit<br/>directory<br/>change]]
-![[#Spell checking|Spell<br/>checking]]
+![[#Autocorrection|Auto&shy;correction]]
 ![[#Integrated environment|Integrated<br/>environment]]
 ![[#Snippets|Snippets]]
 ![[#Value prompt|Value<br/>prompt]]
@@ -1140,7 +1164,7 @@ A [[command shell]] is a [[command line interface]] computer program to an [[ope
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
@@ -1155,13 +1179,20 @@ A [[command shell]] is a [[command line interface]] computer program to an [[ope
 === Completions ===
 <div class="hatnote relarticle mainarticle">Main article: [[Command-line completion]]</div>
 
-[[Image:Command-line-completion-example.gif|right|thumb|402px|Command-line completion in [[Bash (Unix shell)|Bash]].]]Completion features assist the user in typing commands at the command line. The simplest form of completion is command name completion where the shell looks for and suggests matching internal and/or external commands when the user enters a partial command and presses the completion key (often the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Tab <span class="Unicode">↹</span></kbd> key).
+[[Image:Command-line-completion-example.gif|right|thumb|402px|Command-line completion in [[Bash (Unix shell)|Bash]].]]Completion features assist the user in typing commands at the command line, by looking for and suggesting matching words for incomplete ones. Completion is generally requested by pressing the completion key (often the <kbd class="keyboard-key nowrap" style="border: 1px solid #aaa; -moz-border-radius: 0.2em; -webkit-border-radius: 0.2em; border-radius: 0.2em; -moz-box-shadow: 0.1em 0.2em 0.2em #ddd; -webkit-box-shadow: 0.1em 0.2em 0.2em #ddd; box-shadow: 0.1em 0.2em 0.2em #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(to bottom, #eee, #f9f9f9, #eee); padding: 0.1em 0.3em; font-family: inherit; font-size: 0.85em;">Tab <span class="Unicode">↹</span></kbd> key).
 
-For each command there is usually also a set of parameters/arguments/options. parameters/arguments/options are often identified by a name or letter preceding a value. Some shells allow completion on parameter/option names and -values.
+''Command name completion'' is the completion of the name of a command. In most shells, a command can be a program in the command path (usually <code>$PATH</code>), a builtin command, a function or alias.
 
-Bash and zsh offer parameter name completion through a definition external to the command, distributed in a separate completion definition file. For command parameter name/value completions, the shell assumes path/filename completion if no completion is defined for the command. Completion can be set up to suggest completions by calling a shell function.
+''Path completion'' is the completion of the path to a file, relative or absolute.
 
-As opposed to traditional shells where parameters are parsed internally by each command, all types of PowerShell commands (cmdlets, functions, script files) expose data about their parameters, names, types, value ranges and more. This discoverable data is used by the shell to automatically support argument name and value completion for built-in commands/functions, user-defined commands/functions as well as for script files. Cmdlets can also define dynamic completion of argument values where the completion values are computed dynamically on the running system.
+''Wildcard completion'' is a generalization of path completion, where an expression matches any number of files, using any supported syntax for [[#String_processing_and_filename_matching|file matching]].
+
+''Variable completion'' is the completion of the name of a variable name ([[environment variable]] or shell variable).
+Bash, zsh, and fish have completion for all variable names. PowerShell has completions for [[environment variable]] names, shell variable names and - from within user-defined functions - parameter names.
+
+''Command argument completion'' is the completion of a specific command's arguments. There are two types of arguments, [[Named_parameter|named]] and positional: Named arguments, often called ''options'', are identified by their name or letter preceding a value, whereas positional arguments consist only of the value. Some shells allow completion of argument names, but few support completing values.
+
+Bash, zsh and fish offer parameter name completion through a definition external to the command, distributed in a separate completion definition file. For command parameter name/value completions, these shells assume path/filename completion if no completion is defined for the command. Completion can be set up to suggest completions by calling a shell function. The fish shell additionally supports parsing of [[man page]]s to extract parameter information that can be used to improve completions/suggestions. In PowerShell, all types of commands (cmdlets, functions, script files) inherently expose data about the names, types and valid value ranges/lists for each argument. This metadata is used by PowerShell to automatically support argument name and value completion for built-in commands/functions, user-defined commands/functions as well as for script files. Individual cmdlets can also define dynamic completion of argument values where the completion values are computed dynamically on the running system.
 
 === Command history ===
 <div class="hatnote relarticle mainarticle">Main article: [[Command history]]</div>
@@ -1204,13 +1235,12 @@ PowerShell allows multiple named stacks to be used. Locations (directories) can 
 === Implicit directory change ===
 A directory name can be used directly as a command which implicitly changes the current location to the directory.
 
-=== Spell checking ===
-<div class="hatnote relarticle mainarticle">Main article: [[Spell checker]]</div>
+=== Autocorrection ===
+When a command line does not match a command or arguments directly, spell checking can automatically correct common typing mistakes (such as [[case sensitivity]], missing letters). There are two approaches to this; the shell can either suggest probable corrections upon command invocation, or this can happen earlier as part of a completion or autosuggestion.
 
-When a command line does not match a command or arguments directly, spell checking can look for common typing mistakes and match possible alternatives with known valid alternatives. The shell can then suggest
-probable corrections to the interactive user.
+The [[tcsh]] and [[zsh]] shells feature optional spell checking/correction, upon command invocation.
 
-The [[tcsh]] and [[zsh]] shells feature optional spell checking/correction.
+Fish does the autocorrection upon completion and autosuggestion. The feature is therefore not in the way when typing out the whole command and pressing enter, whereas extensive use of the tab and right-arrow keys makes the shell mostly case insensitive.
 
 === Integrated environment ===
 <div class="hatnote relarticle mainarticle">Main article: [[Integrated development environment]]</div>
@@ -1848,8 +1878,8 @@ A command builder is a guided dialog which assists the user in filling in a comm
 |-
 
 ![[friendly interactive shell|fish]]
-|?
-|?
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (<tt>*</tt>, <tt>?</tt>, <tt>{...}</tt>)
 |style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
@@ -2468,7 +2498,15 @@ If a script reads a password into an environment variable it is in memory in pla
 PowerShell can work with encrypted string variables/parameters. Encrypted variables ensure that values are not inadvertently disclosed through e.g. transcripts, echo'ing, logfiles, memory or crash dumps or even malicious memory scanning. PowerShell also supports saving of such encrypted strings in text files, protected by a key owned by the current user.
 
 === Execute permission ===
-Some operating systems define an ''execute'' permission which can be granted to users/groups for a script file. The Linux/Unix shells in general require that this bit be set if a file is invoked as a script file to be executed by the shell. Although Windows also specifies an ''execute'' permission, none of the Windows specific shells block script execution if the permission has not been granted. PowerShell protects against inadvertently executing scripts obtained from untrusted sources through other means (described in the following sections).
+Some operating systems define an ''execute'' permission which can be granted to users/groups for a file.
+
+On Unix systems, the execute permission controls access to invoking the file as a program,
+and applies both to executables and scripts.
+As the permission is enforced in the [[Loader (computing)|program loader]],
+no obligation is needed from the invoking program, nor the invoked program, in enforcing the execute permission — this also goes for shells and other interpreter programs.
+The behaviour is mandated by the [[C POSIX library|POSIX C library]] that is used for interfacing with the kernel: POSIX specifies that the <code>exec</code> family of functions shall fail with EACCESS (permission denied) if the file denies execution permission (see <span class="plainlinksneverexpand"><code>[http://linux.die.net/man/3/execve execve(3)]</code></span>&nbsp;–&nbsp;[[Linux]] Library Functions [[Manual page (Unix)|Manual]]).
+
+Although Windows also specifies an ''execute'' permission, none of the Windows specific shells block script execution if the permission has not been granted. PowerShell protects against inadvertently executing scripts obtained from untrusted sources through other means (described in the following sections).
 
 === Script origin execution restriction ===
 PowerShell can be set to block execution of scripts which has been marked as obtained from an unknown/untrusted origin (e.g. the Internet). Internet facing applications such as web browsers, IM clients, mail readers etc. mark files downloaded from the internet with the origin zone in an alternate data stream which is understood by PowerShell. The Unix/Linux shell in general block on the specific ''execute'' permission (see [[#General execution restriction|General execution restriction]] above), not based on origin zone.

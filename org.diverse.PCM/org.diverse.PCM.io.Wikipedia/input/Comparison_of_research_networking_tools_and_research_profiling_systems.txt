@@ -20,9 +20,9 @@ This table provides general information for each tool: name, developing institut
 |-
 ! Activity Insight
 | [http://www.digitalmeasures.com/faculty-activity-reporting-software/ Activity Insight]
-| Digital Measures
+| [http://www.digitalmeasures.com Digital Measures]
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| [[USC Marshall School of Business]]
+| Hundreds of major research institutions around the world
 |-
 ! C-IKNOW
 | [http://ciknow.northwestern.edu/ C-IKNOW]
@@ -39,8 +39,14 @@ This table provides general information for each tool: name, developing institut
 ! Community Academic Profiles - CAP
 | [http://med.stanford.edu/profiles/ Community Academic Profiles]
 | [[Stanford University]]
-| No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
 | [[Stanford University]]
+|-
+! [[Converis]]
+| [http://converis.thomsonreuters.com/ Converis]
+| [[Thomson Reuters]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| Unknown
 |-
 ! Curvita<sup>TM</sup> Profile Manager
 | [http://www.scimedsolutions.com/curvita-profile-manager Curvita Profile Manager]
@@ -157,10 +163,10 @@ This table provides general information for each tool: name, developing institut
 | N/A (platform is directed toward individual researcher use)
 |-
 ! [[InCites]]
-| [http://researchanalytics.thomsonreuters.com/incites/ InCites]
+| [http://about.incites.thomsonreuters.com/ InCites]
 | [[Thomson Reuters]]
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-| 100 research institutions and funding bodies globally
+| Unknown
 |-
 ! INDURE (Indiana Database for University Research Expertise)
 | [https://www.indure.org/ INDURE]
@@ -314,10 +320,10 @@ This table provides information on the types of data used in each RN tool and ho
 | Unknown
 |-
 ! Activity Insight
-| Info collected by (1) integrating Digital Measures into faculty reporting system(s), (2) importing existing info from systems like Banner, Datatel, PeopleSoft, or SIS+.
+| Information typically imported from the following sources: PubMed, Google Scholar, Scopus, Web of Science, RefWorks, Banner, Datatel, PeopleSoft, CampusVue, Jenzabar, Sedona, EndNote, Mendeley, Zotero, BiBTeX, a RESTful web services API, CSV Data Imports, etc. Also supports various methods of manual entry.
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Unknown
-| Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| RTF, XLS, CSV, PDF, HTML, XML
 |-
 ! C-IKNOW
 | Network Surveys, automated upload for any kind of network data including archival, scientometric, webometric and computer log data. Also import data in GraphML, RDF, and DL (used by UCINET)
@@ -336,6 +342,12 @@ This table provides information on the types of data used in each RN tool and ho
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
 | Unknown
 | Unknown
+|-
+! Converis
+| Default connection to [[Thomson Reuters]] [[Web of Science]], Scopus, oubmed, europubmed, etc.  Ay internal data feed (HR, finance can be configured)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes -- can be pre-populated and alerts recommend new data 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes -- can be used to power VIVO
+| XML, .mbb, XLS
 |-
 ! Curvita<sup>TM</sup> Profile Manager
 | Information collected from university systems
@@ -446,10 +458,10 @@ This table provides information on the types of data used in each RN tool and ho
 | Unknown
 |-
 ! InCites
-| [[Thomson Reuters]] [[Web of Knowledge]]
+| [[Thomson Reuters]] [[Web of Science]], ESI, JCR
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| XML, .mbb
+| XML, .mbb, XLS
 |-
 ! INDURE (Indiana Database for University Research Expertise)
 | Faculty-entered information about research, faculty home pages
@@ -586,9 +598,9 @@ This table provides information on whether the research networking tool is compa
 | The system is voluntary, so national and international by active inclusion
 |-
 ! Activity Insight
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Banner, Datatel, PeopleSoft, or SIS+)
-| Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Banner, Datatel, PeopleSoft, CampusVue, Jenzabar, etc.)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Google Scholar, Scopus, Web of Science, RefWorks, etc.)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (EndNote, Mendeley, Zotero, tools which generate BiBTeX, CSV or XML files)
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! C-IKNOW
@@ -607,6 +619,12 @@ This table provides information on whether the research networking tool is compa
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
 | Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! Converis
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Bisynchronous and one way operations with institution's enterprise system both possible.)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Yes, Web of Science, ORCID, pubmed, europubmed.)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Integrates with Pentaho Research Analytics module and InCites) 
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! Curvita<sup>TM</sup> Profile Manager
@@ -719,8 +737,8 @@ This table provides information on whether the research networking tool is compa
 |-
 ! InCites
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Institutions have access to Web Services in order to feed data into internal databases.)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (From the publisher: Underlying data from InCites can be used with a variety of systems.)
-| Unknown 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Integrates with Converis.)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Web of Science, ResearcherID) 
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! INDURE (Indiana Database for University Research Expertise)
@@ -857,10 +875,10 @@ This table provides information on what user population is profiled for each too
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! Activity Insight
-| Dictated by data source from institutional systems
-| Unknown
-| No networking
-| Unknown
+| Faculty, Staff, Graduate Students
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Active and Passive
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |-
 ! C-IKNOW
 | Defined using Web of science ID or on an ad hoc basis
@@ -1132,9 +1150,9 @@ This table provides information on the types of controlled vocabulary or thesaur
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! Activity Insight
-| Unknown
-| Unknown
-| Unknown
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Fully customizable data collection screens; campus, college and department-defined ontologies
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |-
 ! C-IKNOW
 | Not applicable
@@ -1150,6 +1168,11 @@ This table provides information on the types of controlled vocabulary or thesaur
 | MeSH
 | Unknown
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes  (partial)
+|-
+! Converis
+| In some fields
+| [[CASRAI]], VIVO 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Author clustering capabilities used to match authros with papers)
 |-
 ! Curvita<sup>TM</sup> Profile Manager
 | Unknown
@@ -1242,9 +1265,9 @@ This table provides information on the types of controlled vocabulary or thesaur
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
 |-
 ! InCites
+| In some fields
 | Unknown 
-| Unknown 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (Though InCites can accept data from ResearcherID and Research in View profiling systems for disambiguation)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (Though InCites can accept data from ResearcherID and Converis profiling systems for disambiguation)
 |-
 ! INDURE
 | Unknown
@@ -1367,11 +1390,11 @@ This table provides information on the types of [[bibliometrics]] provided in th
 | 
 |-
 ! Activity Insight
-|
-|
-|
-| 
-| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 | 
 | 
 |-
@@ -1402,6 +1425,14 @@ This table provides information on the types of [[bibliometrics]] provided in th
 | 
 | 
 |-
+! InCites
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes Can integrate with altmetric data feed
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
 ! Curvita<sup>TM</sup> Profile Manager
 |
 |
@@ -1567,8 +1598,8 @@ This table provides information on the types of [[bibliometrics]] provided in th
 ! InCites
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-| 
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes Recorded Future partnership provides customized newsfeed and instition activity from web content
+|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 | 
 | 

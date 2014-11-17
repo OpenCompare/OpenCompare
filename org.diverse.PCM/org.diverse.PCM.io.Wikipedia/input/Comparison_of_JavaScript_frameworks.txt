@@ -12,155 +12,179 @@
 
 There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] available. The intention of this comparison is to show some examples of notable JavaScript frameworks.
 
-== Comparison of JavaScript frameworks ==
-{| class="wikitable" style="margin-right:0; font-size:85%;"
-!style="width:15em"|
-![[AccDC]]
-![[Ample SDK]]
-![[AngularJS]]
-![[Web Atoms|Atoms.js]]
-![[CupQ]]
-![[Dhtmlx|DHTMLX]]
-![[Dojo Toolkit|Dojo]]
-![[Echo (framework)#Echo3|Echo3]]
-![[Ember.js]]
-![[Enyo (software)|Enyo]]
-![[Ext (JavaScript library)|Ext JS]]
-![[Google Web Toolkit]]
-![[jQuery]]
-![[Midori Javascript Framework|midori]]
-![[MochiKit]]
-![[MooTools]]
-![[PhoneJS]]
-![[Prototype JavaScript Framework|Prototype]] & [[script.aculo.us|script. aculo.us]]
-![[Pyjamas (software)|Pyjamas]]
-![[qooxdoo]]
-![[Rialto Toolkit]]
-![[Rico (Ajax)|Rico]]
-![[SmartClient]] & SmartGWT
-![[Wakanda (software)|Wakanda]]
-![[YUI Library|YUI]]
-![[ZK Framework|ZK]]
-![[Webix]]
+== General information ==
+{| class="wikitable sortable" style="margin-right:0; font-size:85%;"
+! Framework
+! Version compared
+! Size
+! License
+! Source language
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| Version compared
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[AccDC]]
 | 3.0<br/><span class="nowrap">September 2013</span>
-| 0.9.3<br/><span class="nowrap">1 Jul 2010</span>
-| 1.2.14<br/><span class="nowrap">1 Mar 2014</span>
-| 1.2.31<br/><span class="nowrap">1 May 2014</span>
-| 0.2<br/><span class="nowrap">June 2012</span>
-| 4.0<br/><span class="nowrap">4 Jun 2014</span>
-| 1.10<br/><span class="nowrap"></span>
-| 3.0.rc1<br/><span class="nowrap">24 Mar 2011</span>
-| 1.7.0<br/><span class="nowrap">19 Aug 2014</span>
-| 2.0.1<br/><span class="nowrap">30 Aug 2012</span>
-| 4.2<br/><span class="nowrap">13 Mar 2013</span>
-| 2.4<br/><span class="nowrap">September 2011</span>
-| 1.9.1<br/><span class="nowrap">4 Feb 2013</span>
-| 2010.05<br /><span class="nowrap">10 May 2010</span>
-| 1.4.2<br/><span class="nowrap">17 Nov 2008</span>
-| 1.4.5<br/><span class="nowrap">26 Feb 2012</span>
-| 13.1.4<br/><span class="nowrap">6 Jun 2013</span>
-| Prototype: 1.7.1<br/><span class="nowrap">8 Aug 2012</span> <br/>script.aculo.us: 1.9.0<br/><span class="nowrap">23 Dec 2010</span>
-| 0.5<br/><span class="nowrap">March 2009</span>
-| 4.0.1<br/><span class="nowrap">9 Jul 2014</span>
-| 1.1.5<br/><span class="nowrap">25 Feb 2011</span>
-| 2.0<br/><span class="nowrap">3 May 2009</span>
-|SmartClient: 10.0 <br><span class="nowrap">September 2014</span> <br>SmartGWT: 5.0 <br><span class="nowrap">September 2014</span>
-| 3<br/><span class="nowrap">19 Dec 2012</span>
-| 3.10.0<br/><span class="nowrap">23 Apr 2013</span>
-| 6.5.1.1 <br/><span class="nowrap">13 Dec 2012</span>  / 12 Sep 2012;
-| 1<br/><span class="nowrap">11 Jul 2013</span>
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| Size
-|
-| Variable. <br>Core size: <br><span class="nowrap">40 kB</span> (minified & gzipped)
-| <span class="nowrap">36 kB</span> (minified & compressed)
-| <span class="nowrap">44 kB</span> (gzipped)
-| <span class="nowrap">20 kB</span> (minified)
-| Variable
-| Variable. <br>Base size: <br><span class="nowrap">41 kB</span> (minified & gzipped), <br><span class="nowrap">155 kB</span> (minified), <br><span class="nowrap">598 kB</span> (uncompressed)
-|
-| <span class="nowrap">95 kB</span> (minified & gzipped), <br><span class="nowrap">340 kB</span> (minified), <br><span class="nowrap">1.5 MB</span> (uncompressed)
-| <span class="nowrap"><25 kB</span> (core gzipped)
-| <span class="nowrap">84–502 kB</span>
-| Variable
-| <span class="nowrap">32 KiB</span> (minified & gzipped), <br><span class="nowrap">93 KiB</span> (minified), <br><span class="nowrap">252 KiB</span> (uncompressed)
-| <span class="nowrap">9 kB</span> (minified & gzipped), <br><span class="nowrap">50 kB</span> (uncompressed)
-| <span class="nowrap">32–200 kB</span>
-| Variable; <br><span class="nowrap">7.3–65 KiB</span> <span class="nowrap">([[YUI Library#Build tools|YUI Compressor]])</span>, <br><span class="nowrap">101 KiB</span> (uncompressed)
-| <span class="nowrap">236 kB</span>
-| <span class="nowrap">46–278 kB</span>
-| Variable
-| Variable, starting at <span class="nowrap">6 kB</span> (gzipped)
-| <span class="nowrap">520 kB</span>
-|
-| <span class="nowrap">100–500 kb</span> (gzipped).
-| Variable
-| Variable; library core is <span class="nowrap">31 kB</span>
-| Variable
-| <span class="nowrap">110 kB</span> (gzipped)
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| License
+| 
 | [[MIT License]]
+| JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ample SDK]]
+| 0.9.3<br/><span class="nowrap">1 Jul 2010</span>
+| Variable. <br>Core size: <br><span class="nowrap">40 kB</span> (minified & gzipped)
 | [[MIT License|MIT]] & [[GPL]]
-| [[MIT License|MIT]]
-| [[MIT License|MIT]]
-| [[MIT License|MIT]]
-| [[GPL]] and [http://dhtmlx.com/docs/products/licenses.shtml Commercial]
-| [[BSD License|BSD]] & [[Academic Free License|AFL]]
-| [[Mozilla Public License|MPL]], LGPL or GPL
-| [[MIT License|MIT]]
-|  [[Apache 2 License|Apache 2]] [http://enyojs.com/about/#License]
-| [[GPL v3|GPL]] and [http://www.sencha.com/products/license.php Commercial]
-| [[Apache License|Apache]]
-| [[MIT License|MIT]]
-| [[MIT License|MIT]]
-| [[MIT License|MIT]] & [[Academic Free License|AFL]]
-| [[MIT License|MIT]]
-| [http://phonejs.devexpress.com/EULA DEVEXPRESS EULA]
-| [[MIT License|MIT]]
-| [[Apache 2 License|Apache 2]] & [[GPL]]
-| [[LGPL]] & [[Eclipse Public License|EPL]]
-| [[Apache License|Apache]]
-| [[Apache License|Apache]]
-| [[LGPL]] & [http://www.smartclient.com/product/index.jsp Commercial]
-| [[GPL]] & [http://www.wakanda.org/license/commercial Commercial]
-| [[BSD License|BSD]]
-| [[LGPL]] & [[GPL]] & [http://www.zkoss.org/license/ ZOL]
-| [[GPL]] & [http://webix.com/licences/ Commercial]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| Source language
-| JavaScript
 | ?
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[AngularJS]]
+| 1.2.14<br/><span class="nowrap">1 Mar 2014</span>
+| <span class="nowrap">36 kB</span> (minified & compressed)
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Web Atoms|Atoms.js]]
+| 1.2.31<br/><span class="nowrap">1 May 2014</span>
+| <span class="nowrap">44 kB</span> (gzipped)
+| [[MIT License|MIT]]
 | JavaScript + HTML + CSS
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[CupQ]]
+| 0.2<br/><span class="nowrap">June 2012</span>
+| <span class="nowrap">20 kB</span> (minified)
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Dhtmlx|DHTMLX]]
+| 4.0<br/><span class="nowrap">4 Jun 2014</span>
+| Variable
+| [[GPL]] and [http://dhtmlx.com/docs/products/licenses.shtml Commercial]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Dojo Toolkit|Dojo]]
+| 1.10<br/><span class="nowrap"></span>
+| Variable. <br>Base size: <br><span class="nowrap">41 kB</span> (minified & gzipped), <br><span class="nowrap">155 kB</span> (minified), <br><span class="nowrap">598 kB</span> (uncompressed)
+| [[BSD License|BSD]] & [[Academic Free License|AFL]]
 | JavaScript + HTML
-|  JavaScript and/or Java
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Echo (framework)#Echo3|Echo3]]
+| 3.0.rc1<br/><span class="nowrap">24 Mar 2011</span>
+|
+| [[Mozilla Public License|MPL]], LGPL or GPL
+| JavaScript and/or Java
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ember.js]]
+| 1.7.0<br/><span class="nowrap">19 Aug 2014</span>
+| <span class="nowrap">95 kB</span> (minified & gzipped), <br><span class="nowrap">340 kB</span> (minified), <br><span class="nowrap">1.5 MB</span> (uncompressed)
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Enyo (software)|Enyo]]
+| 2.0.1<br/><span class="nowrap">30 Aug 2012</span>
+| <span class="nowrap"><25 kB</span> (core gzipped)
+|  [[Apache 2 License|Apache 2]] [http://enyojs.com/about/#License]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ext (JavaScript library)|Ext JS]]
+| 4.2<br/><span class="nowrap">13 Mar 2013</span>
+| <span class="nowrap">84–502 kB</span>
+| [[GPL v3|GPL]] and [http://www.sencha.com/products/license.php Commercial]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Google Web Toolkit]]
+| 2.4<br/><span class="nowrap">September 2011</span>
+| Variable
+| [[Apache License|Apache]]
 | Java
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[jQuery]]
+| 1.9.1<br/><span class="nowrap">4 Feb 2013</span>
+| <span class="nowrap">32 KiB</span> (minified & gzipped), <br><span class="nowrap">93 KiB</span> (minified), <br><span class="nowrap">252 KiB</span> (uncompressed)
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Midori Javascript Framework|midori]]
+| 2010.05<br /><span class="nowrap">10 May 2010</span>
+| <span class="nowrap">9 kB</span> (minified & gzipped), <br><span class="nowrap">50 kB</span> (uncompressed)
+| [[MIT License|MIT]]
 | ?
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[MochiKit]]
+| 1.4.2<br/><span class="nowrap">17 Nov 2008</span>
+| <span class="nowrap">32–200 kB</span>
+| [[MIT License|MIT]] & [[Academic Free License|AFL]]
 | ?
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[MooTools]]
+| 1.4.5<br/><span class="nowrap">26 Feb 2012</span>
+| Variable; <br><span class="nowrap">7.3–65 KiB</span> <span class="nowrap">([[YUI Library#Build tools|YUI Compressor]])</span>, <br><span class="nowrap">101 KiB</span> (uncompressed)
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[PhoneJS]]
+| 13.1.4<br/><span class="nowrap">6 Jun 2013</span>
+| <span class="nowrap">236 kB</span>
+| [http://phonejs.devexpress.com/EULA DEVEXPRESS EULA]
 | JavaScript + HTML5 + CSS3
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Prototype JavaScript Framework|Prototype]] & [[script.aculo.us|script. aculo.us]]
+| Prototype: 1.7.1<br/><span class="nowrap">8 Aug 2012</span> <br/>script.aculo.us: 1.9.0<br/><span class="nowrap">23 Dec 2010</span>
+| <span class="nowrap">46–278 kB</span>
+| [[MIT License|MIT]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Pyjamas (software)|Pyjamas]]
+| 0.5<br/><span class="nowrap">March 2009</span>
+| Variable
+| [[Apache 2 License|Apache 2]] & [[GPL]]
 | Python
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[qooxdoo]]
+| 4.0.1<br/><span class="nowrap">9 Jul 2014</span>
+| Variable, starting at <span class="nowrap">6 kB</span> (gzipped)
+| [[LGPL]] & [[Eclipse Public License|EPL]]
 | JavaScript
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Rialto Toolkit]]
+| 1.1.5<br/><span class="nowrap">25 Feb 2011</span>
+| <span class="nowrap">520 kB</span>
+| [[Apache License|Apache]]
 | ?
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Rico (Ajax)|Rico]]
+| 2.0<br/><span class="nowrap">3 May 2009</span>
+| 
+| [[Apache License|Apache]]
 | ?
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SmartClient]] & SmartGWT
+| SmartClient: 10.0 <br><span class="nowrap">September 2014</span> <br>SmartGWT: 5.0 <br><span class="nowrap">September 2014</span>
+| <span class="nowrap">100–500 kb</span> (gzipped).
+| [[LGPL]] & [http://www.smartclient.com/product/index.jsp Commercial]
 | Server: Java <br>Client: Java (Smart GWT) or Javascript (SmartClient) or XML (both)
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Wakanda (software)|Wakanda]]
+| 3<br/><span class="nowrap">19 Dec 2012</span>
+| Variable
+| [[GPL]] & [http://www.wakanda.org/license/commercial Commercial]
 | Javascript + HTML + CSS
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YUI Library|YUI]]
+| 3.10.0<br/><span class="nowrap">23 Apr 2013</span>
+| Variable; library core is <span class="nowrap">31 kB</span>
+| [[BSD License|BSD]]
 | Javascript + HTML + CSS
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[ZK Framework|ZK]]
+| 6.5.1.1 <br/><span class="nowrap">13 Dec 2012</span>  / 12 Sep 2012;
+| Variable
+| [[LGPL]] & [[GPL]] & [http://www.zkoss.org/license/ ZOL]
 | XML + Java (Javascript Optional)
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Webix]]
+| 1<br/><span class="nowrap">11 Jul 2013</span>
+| <span class="nowrap">110 kB</span> (gzipped)
+| [[GPL]] & [http://webix.com/licences/ Commercial]
 | JavaScript
-|-
-!colspan="21"| Features
-|-
+|}
+
+== Features ==
+{| class="wikitable" style="margin-right:0; font-size:85%;"
 !style="width:15em"|
 ![[AccDC]]
 ![[Ample SDK]]
@@ -277,7 +301,7 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 |
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [WebSocket]
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[WebSocket]]
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |
@@ -305,34 +329,6 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
 |
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[JSON]] data retrieval
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-| 
-| 
-| 
-| 
-| 
-| 
-|
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-|
-| 
 |-
 !style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Server push]] data retrieval
 | style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
@@ -1087,181 +1083,204 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 |
 |
 | style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+== Browser support ==
+{| class="wikitable sortable" style="margin-right:0; font-size:85%;"
+!Framework
+![[Internet Explorer]]
+![[Mozilla Firefox]]
+![[Safari (web browser)|Safari]]
+![[Opera (web browser)|Opera]]
+![[Chromium (software)|Chrome]]
 |-
-!colspan="21"| Browser Support
-|-
-!style="width:15em"|
-![[AccDC]]
-![[Ample SDK]]
-![[AngularJS]]
-![[Web Atoms|Atoms.js]]
-![[CupQ]]
-![[Dhtmlx|DHTMLX]]
-![[Dojo Toolkit|Dojo]]
-![[Echo (framework)#Echo3|Echo3]]
-![[Ember.js]]
-![[Enyo (software)|Enyo]]
-![[Ext (JavaScript library)|Ext JS]]
-![[Google Web Toolkit]]
-![[jQuery]]
-![[Midori Javascript Framework|midori]]
-![[MochiKit]]
-![[MooTools]]
-![[PhoneJS]]
-![[Prototype JavaScript Framework|Prototype]] & [[script.aculo.us|script. aculo.us]]
-![[Pyjamas (software)|Pyjamas]]
-![[qooxdoo]]
-![[Rialto Toolkit]]
-![[Rico (Ajax)|Rico]]
-![[SmartClient]] and SmartGWT
-![[Wakanda (software)|Wakanda]]
-![[YUI Library|YUI]]
-![[ZK Framework|ZK]]
-![[Webix]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Internet Explorer]]
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[AccDC]]
 | 6+
-| 6+
-| 8+
-| 8+
-| 6+
-| 6+
-| 6+
-| 6+
-| 6+
-| 8+
-| 6+
-| 6+
-| 6+
-| 6+
-| 6
-| 6+
+| 2+
+| 3+
 | 9+
-| 6+
-| 6+
-| 6+
-| 6+
-| 5.5+
-| 6+
-| 9+
-| 6+
-| 6+
-| 8+
+| 1+
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mozilla Firefox]]
-| 2+
-| 1+
-| 4+
-| 4+
-| 2+
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ample SDK]]
+| 6+
 | 1+
 | 3+
-| 1.5+
-| 3+
-| >4
-| 3.6+
-| 1+
-| 2+
-| 1.5+
-| 1.0.7, 1.5b2
-| 2+
-| 17+
-| 1.5+
-| 1+
-| 2+
-| 1.5+
-| 1+
-| 1+
-| 4+
-| 3+
-| 2.0+
-| 3+
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Safari (web browser)|Safari]]
-| 3+
-| 3+
-| 5+
-| 4+
-| 3+
-| 2.0+
-| 4
-| 3+
-| 4+
-| >5
-| 4+
-| 3+
-| 3+
-| 2+
-| 2.0.2
-| 3+
-| 5+
-| 2.0.4+
-| 2+
-| 3+
-|
-| 2.0.3
-| 3+
-| 5+
-| 4.0
-| 3+
-| 4+
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Opera (web browser)|Opera]]
-| 9+
 | 9.6+
-| 11+
-| 11+
-| 9+
-| 9+
-| 10.50+
-| 9+
-| 10.6+
-|
-| 11+
-| 9+
-| 9+
-| 9+
-| 8.5
-| 9+
-| 11+
-| 9.25+
-| 9+
-| 9+
-| 9+
-|
-| 9+
-|
-| 10.0+
-| 9+
-| 9+
+| 1+
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Chromium (software)|Chrome]]
-| 1+
-| 1+
-| 30+
-| 10+
-| 1+
-| 1+
-| 3
-| 1+
-| 14+
-| >10
-| 10+
-| 1+
-| 1+
-|
-|
-| 1+
-| 22+
-| 1+ (starting with 1.6.1RC3)
-|
-| 2+
-|
-|
-| 1+
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[AngularJS]]
+| 8+
+| 4+
+| 5+
 | 11+
-|
+| 30+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Web Atoms|Atoms.js]]
+| 8+
+| 4+
+| 4+
+| 11+
+| 10+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[CupQ]]
+| 6+
 | 2+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Dhtmlx|DHTMLX]]
+| 6+
+| 1+
+| 2.0+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Dojo Toolkit|Dojo]]
+| 6+
+| 3+
+| 4
+| 10.50+
+| 3
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Echo (framework)#Echo3|Echo3]]
+| 6+
+| 1.5+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ember.js]]
+| 6+
+| 3+
+| 4+
+| 10.6+
+| 14+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Enyo (software)|Enyo]]
+| 8+
+| >4
+| >5
+|
+| >10
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ext (JavaScript library)|Ext JS]]
+| 6+
+| 3.6+
+| 4+
+| 11+
+| 10+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Google Web Toolkit]]
+| 6+
+| 1+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[jQuery]]
+| 6+
+| 2+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Midori Javascript Framework|midori]]
+| 6+
+| 1.5+
+| 2+
+| 9+
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[MochiKit]]
+| 6
+| 1.0.7, 1.5b2
+| 2.0.2
+| 8.5
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[MooTools]]
+| 6+
+| 2+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[PhoneJS]]
+| 9+
+| 17+
+| 5+
+| 11+
+| 22+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Prototype JavaScript Framework|Prototype]] & [[script.aculo.us|script. aculo.us]]
+| 6+
+| 1.5+
+| 2.0.4+
+| 9.25+
+| 1+ (starting with 1.6.1RC3)
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Pyjamas (software)|Pyjamas]]
+| 6+
+| 1+
+| 2+
+| 9+
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[qooxdoo]]
+| 6+
+| 2+
+| 3+
+| 9+
+| 2+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Rialto Toolkit]]
+| 6+
+| 1.5+
+|
+| 9+
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Rico (Ajax)|Rico]]
+| 5.5+
+| 1+
+| 2.0.3
+|
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SmartClient]] and SmartGWT
+| 6+
+| 1+
+| 3+
+| 9+
+| 1+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Wakanda (software)|Wakanda]]
+| 9+
+| 4+
+| 5+
+|
+| 11+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YUI Library|YUI]]
+| 6+
+| 3+
+| 4.0
+| 10.0+
+|
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[ZK Framework|ZK]]
+| 6+
+| 2.0+
+| 3+
+| 9+
+| 2+
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Webix]]
+| 8+
+| 3+
+| 4+
+| 9+
 | 1+
 |}
 
@@ -1274,7 +1293,7 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 <div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
 <references group=""></references></div>
 
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:ECMAScript|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:ECMAScript|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:ECMAScript&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[ECMAScript]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Dialects</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:ECMAScript|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:ECMAScript|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:ECMAScript&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[ECMAScript]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Dialects</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[ActionScript]]
 *[[Caja project|Caja]]
 *[[JavaScript]]
@@ -1284,7 +1303,7 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 *[[JScript .NET]]
 *[[QtScript]]
 *[[WMLScript]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[list of ECMAScript engines|Engines]]<br />([[comparison of layout engines (ECMAScript)|comparison]])</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[list of ECMAScript engines|Engines]]<br />([[comparison of layout engines (ECMAScript)|comparison]])</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Presto (layout engine)#JavaScript engines|Carakan]]
 *[[Presto (layout engine)#JavaScript engines|Futhark]]
 *[[InScript (JavaScript engine)|InScript]]
@@ -1297,8 +1316,8 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 *[[QtScript]]
 *[[Rhino (JavaScript engine)|Rhino]]
 *[[YAJI]]
-*[[SpiderMonkey (JavaScript engine)|SpiderMonkey]]
-**[[SpiderMonkey (JavaScript engine)#TraceMonkey|TraceMonkey]]
+*[[SpiderMonkey_(software)|SpiderMonkey]]
+**[[SpiderMonkey_(software)#TraceMonkey|TraceMonkey]]
 **[[JägerMonkey]]
 *[[Tamarin (software)|Tamarin]]
 *[[V8 (JavaScript engine)|V8]]
@@ -1307,7 +1326,7 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 *[[JScript .NET]]
 *[[Jint]]
 *[[Nashorn (JavaScript engine)|Nashorn]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Frameworks,<br />libraries</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[list of JavaScript libraries|JavaScript]]<br />([[comparison of JavaScript frameworks|comparison]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[client-side JavaScript|Client-side]]<br />([[list of Ajax frameworks#JavaScript|list, Ajax frameworks]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Frameworks,<br />libraries</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[list of JavaScript libraries|JavaScript]]<br />([[comparison of JavaScript frameworks|comparison]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[client-side JavaScript|Client-side]]<br />([[list of Ajax frameworks#JavaScript|list, Ajax frameworks]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Ample SDK]]
 *[[Web Atoms|Atoms.js]]
 *[[Chaplin.js]]
@@ -1332,29 +1351,29 @@ There are many [[JavaScript]] [[Framework_(computer_science)|frameworks]] availa
 *[[Spry framework|Spry]]
 *[[Wakanda (software)|Wakanda Framework]]
 *[[YUI Library]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Server-side JavaScript|Server-side]]<br />([[comparison of server-side JavaScript solutions|comparison]])</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Server-side JavaScript|Server-side]]<br />([[comparison of server-side JavaScript solutions|comparison]])</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[AppJet]]
 *[[Jaxer#Aptana_Jaxer|Jaxer]]
 *[[Node.js]]
 *[[Wakanda (software)|WakandaDB]]
 *[[KONA Cloud]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[JavaScript library|Libraries]]<br />([[list of JavaScript libraries|list]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[JavaScript library|Libraries]]<br />([[list of JavaScript libraries|list]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Backbone.js|Backbone]]
 *[[SWFObject]]
 *[[SWFAddress]]
 *[[Underscore.js|Underscore]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">ActionScript</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">ActionScript</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[PureMVC]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Multiple<br />implementations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Multiple<br />implementations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Cappuccino (application development framework)|Cappuccino]]
 **[[JavaScript]]
 **[[Objective-J]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Brendan Eich]]
 *[[Douglas Crockford]]
 *[[John Resig]]
 *[[Scott Isaacs]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Dynamic HTML|DHTML]]
 *[[Ecma International]]
 *[[JSDoc]]

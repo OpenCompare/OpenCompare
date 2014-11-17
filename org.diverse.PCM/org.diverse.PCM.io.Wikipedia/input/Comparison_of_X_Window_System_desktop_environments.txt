@@ -27,13 +27,12 @@ Some of the differences which can influence the choice of desktop environment ar
 === Overview ===
 <span id="Outer view of different classes of desktop environments"></span>
 
-For convenience, the desktop environments have been grouped into five classes only for the purpose of representation in this table. The classes are listed approximately according to the size of each environment. Note that many desktop environments are not in the table, but most desktop environments should fall into one of the five categories. The table also includes [[X window manager]]s which are not desktop environments, but often mistaken for same.
+For convenience, the desktop environments have been grouped into five classes only for the purpose of representation in this table. The classes are listed approximately according to the size of each environment. Note that many desktop environments are not in the table, but most desktop environments should fall into one of the five categories.
 
 {| class="wikitable"
 !
 !colspan=7 | Full environments
 !colspan=1 | [[Shell (computing)|Shell]] (semi-environment)
-!colspan=3 | [[X window manager|Window manager]] only
 |----
 !
 ![[KDE Software Compilation]]
@@ -44,9 +43,6 @@ For convenience, the desktop environments have been grouped into five classes on
 ![[Étoilé]]
 ![[EDE]]
 ![[Enlightenment (window manager)|Enlightenment]]
-![[awesome (window manager)|awesome]]
-![[Blackbox]], [[Openbox]], [[Fluxbox]] and [[IceWM]]
-![[Ratpoison]], [[wmii]], [[dwm]], [[xmonad]], [[WindowLab]], and [[Ion (window manager)|Ion]]
 |----
 !Main objective
 |Full desktop environment, graphical, easy to use, targeted at everyone. Accent on maximum reconfigurability.
@@ -55,9 +51,6 @@ For convenience, the desktop environments have been grouped into five classes on
 |Emphasis on providing the traditional [[desktop metaphor]].
 |colspan=3|Lightweight desktop environment, modular, portable.
 |Advanced graphical libraries, tools and environments
-|Framework window manager (extensively customizable). Very fast and low resource usage.
-|Fast, lightweight. Nearly zero library dependencies. No additional software packaged. Ultra low memory consumption
-|Super-minimalistic. No fancy graphics. Scant, if any, window decoration. Belief in concise, elegant code
 |----
 !Programming language
 |colspan=2|Mainly C++, as Qt is written in C++
@@ -65,9 +58,6 @@ For convenience, the desktop environments have been grouped into five classes on
 |Objective-C
 |C++
 |C
-|C, Lua
-|C++, Openbox uses C
-|C, Lua, Haskell, Lisp, Common Lisp
 |----
 !Additional library dependencies
 |[[KDELibs]]
@@ -78,19 +68,13 @@ For convenience, the desktop environments have been grouped into five classes on
 |
 |libede
 |[[Enlightenment Foundation Libraries|EFL]]
-|
-|
-|
 |----
 !Toolkit used
-|colspan=2|Qt
-|colspan=3|GTK+
+|colspan=2|[[Qt]]
+|colspan=3|[[GTK+]]
 |[[GNUstep]]
 |[[FLTK]] (previously eFLTK)
 |[[Enlightenment Foundation Libraries|Elementary]] (provided by EFL)
-|Internal
-|
-|
 |----
 !Size (base system, X installed)
 | ~210 MB
@@ -100,9 +84,6 @@ For convenience, the desktop environments have been grouped into five classes on
 |
 |EDE: ~3 MB
 |DR16: ~3 MB, DR17: ~15MB
-|~700 KB with 20,000 lines of code
-|Blackbox: ~350 KB, Fluxbox: ~800 KB
-|The wmii package is close to 10,000 lines of code and 90 kB in size. Dwm is less than 2000 lines of code and Xmonad uses fewer than 1200 lines of code.
 |----
 |}
 
@@ -329,7 +310,6 @@ GNOME's graphical file manager Nautilus is intended to be very easy to use and h
 Both GNOME and KDE come with many graphical configuration tools, reducing the need to manually edit configuration files for new users. They have extensive bundled software such as graphical menu editors, text editors, audio players, and software for doing administrative work. All applications installed in most distributions are automatically added to the GNOME and KDE menus. No major configuration changes are necessary to begin working. However, by using graphical tools, the extent to which the desktops can be configured is determined by the power provided by those tools.
 
 
-Blackbox, Fluxbox, Openbox, Ratpoison, Ion and wmii require users to edit configuration files by hand to configure virtually every aspect of the desktop environment and are hence highly configurable. A new user, however, may feel uncomfortable without any graphical tools. These window managers also do not provide any additional software like file managers, text editors or web browsers, leaving it up to their users to decide upon the software they prefer.
 
 == Compatibility and interoperability issues ==
 Some desktop environments and window managers claim that they support applications made for other desktop environments explicitly. For example, Fluxbox states KDE support in its feature list. Using software made specifically for the desktop environment in use or window manager agnostic software is a way to avoid these issues. For software developers, the [[Portland Project]] has released a set of common interfaces that allows applications to integrate across many desktop environments.
@@ -340,16 +320,16 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 == See also ==
 * [[Comparison of X window managers]]
 * [[Comparison of file managers]]
-* [[Software bloat]]
-* [[Minimalism (computing)]]
-* [[freedesktop.org]]
 * [[Croquet Project]]
+* [[freedesktop.org]]
+* [[Minimalism (computing)]]
+* [[Software bloat]]
 
 == References ==
 <div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
 <references group=""></references></div>
 
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:X desktop environments and window managers|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:X desktop environments and window managers|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:X_desktop_environments_and_window_managers&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Desktop environment]]s, [[widget toolkit]]s, and [[X window manager|window manager]]s based on [[Wayland (display server protocol)|Wayland]] or [[X Window System]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Desktop environment]]s<br /><small>([[Comparison of X Window System desktop environments|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[GTK+]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:X desktop environments and window managers|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:X desktop environments and window managers|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:X_desktop_environments_and_window_managers&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Desktop environment]]s, [[widget toolkit]]s, and [[X window manager|window manager]]s based on [[Wayland (display server protocol)|Wayland]] or [[X Window System]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Desktop environment]]s<br /><small>([[Comparison of X Window System desktop environments|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[GTK+]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Cinnamon (software)|Cinnamon]]
 *[[GNOME]]
 *[[LXDE]]
@@ -359,25 +339,25 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[ROX Desktop]]
 *[[Sugar (software)|Sugar]]
 *[[Xfce]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Qt (software)|Qt]]-based</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Qt (software)|Qt]]-based</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Hawaii (desktop environment)|Hawaii]]
 *[[KDE Software Compilation|KDE SC]]
 *[[OPIE user interface]]
 *[[MoonLightDE]]
 *[[Razor-qt]]
 *[[Trinity (desktop environment)|Trinity]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Motif (software)|Motif]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Motif (software)|Motif]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Common Desktop Environment|CDE]]
 *[[IRIX Interactive Desktop]]
 *[[Visual User Environment|VUE]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[EDE]] ([[FLTK]]-based)
 *[[Étoilé]] ([[GNUstep]]-based)
 *[[Mezzo (desktop environment)|Mezzo]]
 *[[OpenWindows]] ([[OLIT]]-based)
 *[[UDE]]
 *[[Enlightenment (software)|Enlightenment]] ([[Enlightenment Foundation Libraries|EFL]]-based)
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Graphical shell]]s</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Graphical shell]]s</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Cinnamon (software)|Cinnamon]]
 *[[Enlightenment (software)|Enlightenment]]
 *[[GNOME Shell]]
@@ -386,13 +366,13 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[KDE Plasma 5]]
 *[[Maynard (software)|Maynard]]
 *[[Unity (user interface)|Unity]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager]]s<br /><small>([[Comparison of X window managers|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[Compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager]]s<br /><small>([[Comparison of X window managers|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Compiz]]
 * [[KWin]]
 * [[Metacity]]
 * [[Mutter (software)|Mutter]]
 * [[Xfwm]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Awesome (window manager)|awesome]]
 * [[dwm]]
 * [[i3 (window manager)|i3]]
@@ -402,7 +382,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 * [[ratpoison]]
 * [[wmii]]
 * [[xmonad]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[4Dwm]]
 * [[9wm]]
 * [[AfterStep]]
@@ -423,7 +403,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 * [[Sawfish (window manager)|Sawfish]]
 * [[twm]]
 * [[Window Maker]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Wayland compositor]]s<br /><small>([[List of display servers#Wayland|Comparison]])</small></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Wayland compositor]]s<br /><small>([[List of display servers#Wayland|Comparison]])</small></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Enlightenment (software)|Enlightenment]]
 * [[Gala Window Manager|Gala]]
 * [[KWin]]
@@ -431,13 +411,13 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 * [[Muffin (software)|Muffin]]
 * [[Mir (software)|Mir]]
 * [[Weston (software)|Weston]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Dock (computing)|Dock]]
 *[[Pager (GUI)|Pager]]
 *[[Taskbar]]
 *[[Title bar]]
 *[[Window decoration|Window decorator]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Graphical user interface|GUI]]
 *[[GUI widget]]
 *[[Painter's algorithm]]
@@ -448,7 +428,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[WIMP (computing)|WIMP]]
 *[[Windowing system]]
 </div></td></tr></table></td></tr></table>
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="3"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:XWinSys|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:XWinSys|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:XWinSys&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[X Window System]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X Window System protocols and architecture|Architecture]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="3"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:XWinSys|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:XWinSys|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:XWinSys&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[X Window System]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X Window System protocols and architecture|Architecture]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *'''[[X Window System core protocol|Core protocol]]'''
 *[[X Window selection]]
 *[[X Toolkit Intrinsics]]
@@ -456,7 +436,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[X11 color names]]
 *[[X Input Method]]
 *[[Wayland (display server protocol)|Wayland]]
-</div></td><td class="navbox-image" rowspan="9" style="width:0%;padding:0px 0px 0px 2px;"><div>[[File:X11.svg|64px]]</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Extensions</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td><td class="navbox-image" rowspan="9" style="width:0%;padding:0px 0px 0px 2px"><div>[[File:X11.svg|64px]]</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Extensions</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[X Image Extension]]
 *[[X keyboard extension]]
 *[[RandR]]
@@ -472,7 +452,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Display PostScript]]
 *[[Composite (graphics)|Composite]]
 *[[Xinerama]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components<br>and notable<br>implementations</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[display server]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components<br>and notable<br>implementations</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[display server]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *'''[[X.Org Server]]'''
 *[[Cygwin/X]]
 *[[X-Win32]]
@@ -488,10 +468,10 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Xephyr]]
 *[[XQuartz]]
 *[[XWayland]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">client libraries</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">client libraries</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Xlib]]
 *[[XCB]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X display manager (program type)|display managers]]<br>[[X session manager|session manager]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X display manager (program type)|display managers]]<br>[[X session manager|session manager]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GNOME Display Manager|GDM]]
 *[[KDE Display Manager|KDM]]
 *[[Simple Desktop Display Manager|SDDM]]
@@ -501,13 +481,13 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[SLiM]]
 *[[Entrance (display manager)|Entrance]]
 *[[WINGs Display Manager|WDM]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager|window manager]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager|window manager]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Compiz]]
 * [[KWin]]
 * [[Metacity]]
 * [[Mutter (software)|Mutter]]
 * [[Xfwm]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Awesome (window manager)|awesome]]
 * [[dwm]]
 * [[i3 (window manager)|i3]]
@@ -516,7 +496,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 * [[ratpoison]]
 * [[wmii]]
 * [[xmonad]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[AfterStep]]
 * [[amiwm]]
 * [[Blackbox]]
@@ -533,12 +513,12 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 * [[Sawfish (window manager)|Sawfish]]
 * [[twm]]
 * [[Window Maker]]
-</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Standards</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Standards</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Inter-Client Communication Conventions Manual|ICCCM]]
 *[[Extended Window Manager Hints|EWMH]]
 *[[Direct Save Protocol|XDS]]
 *[[freedesktop.org]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Applications</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Applications</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[xcalc]]
 *[[xclock]]
 *[[Xedit (X11)|xedit]]
@@ -547,7 +527,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[xeyes]]
 *[[Comparison of X Window System desktop environments|desktop environments]]
 </div></td></tr></table></td></tr></table>
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:FOSS|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:FOSS|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:FOSS&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Free and open-source software]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:FOSS|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:FOSS|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:FOSS&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Free and open-source software]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Alternative terms for free software]]
 *[[Comparison of open source and closed source]]
 *[[Comparison of open-source software hosting facilities]]
@@ -564,9 +544,10 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Open-source software]]
 *[[Outline of free software|Outline]]
 *[[Software Package Data Exchange|SPDX]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of open-source operating systems|Operating system<br/> families]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of open-source operating systems|Operating system<br/> families]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[AROS Research Operating System|AROS]] 
 *[[Berkeley Software Distribution|BSD]] 
+*[[Contiki]]
 *[[Darwin (operating system)|Darwin]] 
 *[[eCos]] 
 *[[FreeDOS]] 
@@ -580,14 +561,15 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Plan 9 from Bell Labs|Plan 9]] 
 *[[ReactOS]]
 *[[TUD:OS]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Open-source software development|Development]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Open-source software development|Development]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Basic For Qt]] 
 *[[Eclipse (software)|Eclipse]] 
 *[[Free Pascal]]
 *[[FreeBASIC]]
 *[[Gambas]]
 *[[GNU Compiler Collection|GCC]]
-*[[Java (programming language)|Java]] 
+*[[Java (programming language)|Java]]
+*[[Julia (programming language)|Julia]]
 *[[LLVM]] 
 *[[Lua (programming language)|Lua]] 
 *[[NetBeans]] 
@@ -598,7 +580,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[ROSE (compiler framework)|ROSE]] 
 *[[Ruby (programming language)|Ruby]] 
 *[[Tcl]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of free and open-source software|History]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of free and open-source software|History]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GNU#History|GNU]] 
 *[[History of Haiku (operating system)|Haiku]] 
 *[[History of Linux|Linux]] 
@@ -606,7 +588,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 **[[History of Mozilla Application Suite|Application Suite]] 
 **[[History of Firefox|Firefox]] 
 **[[History of Mozilla Thunderbird|Thunderbird]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Organizations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Organizations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Android (operating system)|Android Open Source Project]] 
 *[[Apache Software Foundation]] 
 *[[Blender Foundation]]
@@ -637,7 +619,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[X.Org Foundation]]
 *[[Xiph.Org Foundation]] 
 *[[XMPP Standards Foundation]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Free software license|Licenses]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Free software license|Licenses]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Apache License|Apache]] 
 *[[Artistic License|Artistic]] 
 *[[Beerware]]
@@ -652,7 +634,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Shared source#Open Source licenses|Ms-PL/RL]] 
 *[[WTFPL]]
 *[[zlib License|zlib]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">License types<br/> and standards</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">License types<br/> and standards</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Comparison of free and open-source software licenses]]
 *[[Contributor License Agreement]] 
 *[[Copyfree]]
@@ -666,7 +648,7 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Permissive free software licence]]
 *[[Public domain]]
 *[[Viral license]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Challenges</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Challenges</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Binary blob]] 
 *[[Digital rights management]]
 *[[Free and open-source graphics device driver]]
@@ -680,13 +662,13 @@ Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]
 *[[Software patents and free software|Software patents]]
 *[[Open-source software security|Software security]]
 *[[Trusted Computing]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *''[[The Cathedral and the Bazaar]]''
 *[[Fork (software development)|Forking]] 
 *[[Linux distribution]] 
 *[[Microsoft Open Specification Promise]] 
 *''[[Revolution OS]]''
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2" style="font-weight:bold;"><div>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2" style="font-weight:bold"><div>
 *[[File:Symbol book class2.svg                  | Wikipedia book|16x16px|link=]] [[Book:Free and Open Source Software|Book]]
 *[[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] [[:Category:Free software|Category]]
 *[[File:Commons-logo.svg                        | Commons page|16x16px|link=]] [[:commons:Category:Free software|Commons]]

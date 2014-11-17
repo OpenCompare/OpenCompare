@@ -12,17 +12,17 @@ In the past, BSD was also used as a basis for several proprietary versions of UN
 ===FreeBSD===
 [[FreeBSD]] aims to make an operating system usable for any purpose. It is intended to run a wide variety of applications, be easy to use, contain cutting edge features, and be highly scalable on very high load network servers. FreeBSD is free and open source, and the project prefers the BSD license. However, they sometimes accept [[non-disclosure agreement]]s (NDAs) and include a limited number of closed-source [[Hardware abstraction layer|HAL]] modules for specific device drivers in their source tree, to support the hardware of companies who do not provide purely open source drivers (such as HALs to program [[software-defined radio]]s so that vendors do not share their proprietary algorithms). To maintain a high level of quality and provide good support for "production quality [[commercial off-the-shelf]] (COTS) workstation, server, and high-end embedded systems", FreeBSD focuses on a narrow set of architectures. A significant focus of development over the last five years<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Manual of Style/Dates and numbers#Chronological items|<span title="The time period mentioned near this tag is ambiguous. (August 2013)">when?</span>]]</i>&#93;</sup> has been fine-grained locking and [[Symmetric multiprocessing|SMP]] scalability. Other recent work includes [[Common Criteria]] security functionality, such as mandatory access control and security event audit support.
 
-====JunOS====
-[[JunOS]] is the FreeBSD-based [[Proprietary software|proprietary]] and closed-source operating system distributed with [[Juniper Networks]] hardware.
-
 ====PC-BSD====
 [[PC-BSD]] aims at user friendliness for the layperson. [[KDE]] was the default [[desktop environment]] up to PC-BSD8, but as of PC-BSD9 a range of environments including KDE, [[GNOME]], [[Xfce]], and [[LXDE]], and many window managers are available to choose from during the installation. An easy to use software manager is included, which downloads and installs binary packages in PC-BSD's own .pbi format. Each version of PC-BSD remains directly descended from the same version of [[FreeBSD]]. The FreeBSD community will typically point users looking for an "easy" BSD to the PC-BSD project.
+
+====JunOS====
+[[JunOS]] is the FreeBSD-based [[Proprietary software|proprietary]] and closed-source operating system distributed with [[Juniper Networks]] hardware.
 
 ===NetBSD===
 [[NetBSD]] aims to provide a freely redistributable operating system that professionals, hobbyists, and researchers can use in any manner they wish. The main focus is portability, through the use of clear distinctions between machine-dependent and machine-independent code. It runs on a wide variety of 32-bit and 64-bit processor architectures and hardware platforms, and is intended to interoperate well with other operating systems. NetBSD places emphasis on correct design, well-written code, stability, and efficiency. Where practical, close compliance with open API and protocol standards is also aimed for. In June, 2008, the NetBSD Foundation moved to a two clause BSD license, citing changes at UCB and industry applicability. [[NPF (firewall)|NPF]] is a project spawn by NetBSD.
 
 ===OpenBSD===
-[[OpenBSD]] aims at security, correctness, and being as free as possible. Security policies include revealing security flaws publicly, known as [[Full disclosure (computing security)|full disclosure]]; thoroughly [[auditing]] code for bugs and security issues; various security features, including the [[W^X]] page protection technology and heavy use of randomization; a "[[secure by default]]" philosophy including disabling all non-essential services and having sane initial settings; and integrated [[cryptography]], originally made easier due to relaxed [[Canadian]] export laws relative to the [[United States]]. Concerning software freedom, OpenBSD prefers the [[BSD license|BSD]] or [[ISC license]], with the [[GNU General Public License|GPL]] acceptable only for existing software which is impractical to replace, such as the [[GNU Compiler Collection]]. NDAs are never considered acceptable. In common with its parent, NetBSD, OpenBSD strives to run on a wide variety of hardware.
+[[OpenBSD]] aims at security, correctness, and being as free as possible. Security policies include revealing security flaws publicly, known as [[Full disclosure (computer security)|full disclosure]]; thoroughly [[auditing]] code for bugs and security issues; various security features, including the [[W^X]] page protection technology and heavy use of randomization; a "[[secure by default]]" philosophy including disabling all non-essential services and having sane initial settings; and integrated [[cryptography]], originally made easier due to relaxed [[Canadian]] export laws relative to the [[United States]]. Concerning software freedom, OpenBSD prefers the [[BSD license|BSD]] or [[ISC license]], with the [[GNU General Public License|GPL]] acceptable only for existing software which is impractical to replace, such as the [[GNU Compiler Collection]]. NDAs are never considered acceptable. In common with its parent, NetBSD, OpenBSD strives to run on a wide variety of hardware.
 
 The OpenBSD project has spawned numerous child projects such as [[OpenSSH]], [[OpenNTPD]], [[OpenBGPD]], [[OpenSMTPD]], [[PF (firewall)|PF]], [[Common Address Redundancy Protocol|CARP]], and [[LibreSSL]]. Many of these are designed to replace restricted alternatives.
 
@@ -77,7 +77,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 | 1993-12-01
 | [[386BSD]], [[4.4BSD]]-Lite
 | 10.0
-| 2004-01-20
+| 2014-01-20
 | style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
 | [[BSD License|BSD]]
 | [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
@@ -87,8 +87,8 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 | The [[OpenBSD]] Project
 | 1996-09-01
 | [[NetBSD|NetBSD 1.0]]
-| 5.5
-| 2004-05-01
+| 5.6
+| 2014-11-01
 | style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
 | [[ISC license|ISC]]
 | [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
@@ -98,8 +98,8 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 | The [[NetBSD]] Project
 | 1993-05-01
 | [[386BSD]], [[4.4BSD]]-Lite
-| 6.1.3
-| 2004-01-27
+| 6.1.5
+| 2014-10-07
 | style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
 | [[BSD License|BSD]]
 | [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
@@ -173,21 +173,21 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 |-
 ! [[OS X]]
 | [[Apple Inc.]]
-| 1993-03-01
+| 2001-03-24
 | [[Darwin (operating system)|Darwin]]
-| 10.9 "Mavericks"
-| 2013-10-22
+| 10.10 "Yosemite"
+| 2014-10-16
 | Client: Free<br /> Server (add-on application): $19.99
-| [[Open source]] core system (see Darwin) with [[proprietary software|proprietary]] higher level API layers
+| [[Open source]] core system (see Darwin) with [[proprietary software|proprietary]] higher level API layers locking to Apple hardware
 | [[Computer workstation|Workstation]], Home Desktop, [[Server (computing)|Server]]
-| Ships with Apple hardware and is locked to it.
+| Locked to Apple hardware use only
 |-
 ! [[iOS (Apple)|iOS]]
 | [[Apple Inc.]]
 | 2007-06-01
 | [[Darwin (operating system)|Darwin]]
-| 7.1
-| 2014-03-10
+| 8
+| 2014-09-17
 | style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
 | [[Proprietary software|Proprietary]]
 | [[Embedded system|Embedded]] [[mobile device]]
@@ -395,8 +395,8 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 | Lucas Holt
 | style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
 | [[FreeBSD]] 6.1 beta
-| 0.4
-| 2013-07-05
+| 0.5
+| 2014-09-22
 | style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
 | [[BSD License|BSD]]
 | Desktop
@@ -404,7 +404,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 |-
 ! [[pfSense]]
 | [http://www.pfsense.org/index.php?option=com_content&task=view&id=59&Itemid=58 various contributors]
-| 1.0
+| 2006-10-04
 | [[FreeBSD]]
 | 2.1.2
 | 2014-04-10
@@ -660,7 +660,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 ==See also==
 <div class="noprint tright portal" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em;">
 <table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px;">
-<tr valign="middle"><td style="text-align:center;">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold;">[[Portal:Free software|Free software portal]]</td></tr></table></div>
+<tr style="vertical-align:middle;"><td style="text-align:center;">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold;">[[Portal:Free software|Free software portal]]</td></tr></table></div>
 * [[List of BSD operating systems]]
 * [[BSD license]]
 * [[Comparison of open source operating systems]]
@@ -686,7 +686,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 * <span class="citation web">Brown, Martin (2004-08-10). [http://www.serverwatch.com/tutorials/article.php/3393051 "Differentiating Among BSD Distros"]. Jupitermedia Corporation. p.&nbsp;4<span class="reference-accessdate">. Retrieved 2006-06-03</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.au=Brown%2C+Martin&rft.aufirst=Martin&rft.aulast=Brown&rft.btitle=Differentiating+Among+BSD+Distros&rft.date=2004-08-10&rft.genre=book&rft_id=http%3A%2F%2Fwww.serverwatch.com%2Ftutorials%2Farticle.php%2F3393051&rft.pages=4&rft.pub=Jupitermedia+Corporation&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
 * <span class="citation web">Schneider, Wolfram; Gilliam, Josh and Schultz, Steven M. (1997–2004). [ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/share/misc/bsd-family-tree "The UNIX system family tree: Research and BSD"] (ASCII). The NetBSD Foundation<span class="reference-accessdate">. Retrieved 2006-06-03</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aufirst=Wolfram&rft.aulast=Schneider&rft.au=Schneider%2C+Wolfram&rft.btitle=The+UNIX+system+family+tree%3A+Research+and+BSD&rft.date=1997-2004&rft.genre=book&rft_id=ftp%3A%2F%2Fftp.netbsd.org%2Fpub%2FNetBSD%2FNetBSD-current%2Fsrc%2Fshare%2Fmisc%2Fbsd-family-tree&rft.pub=The+NetBSD+Foundation&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameters ([[Help:CS1 errors#deprecated_params|help]])</span>[[Category:Pages containing cite templates with deprecated parameters]]
 
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Berkeley Software Distribution|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Berkeley Software Distribution|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Berkeley_Software_Distribution&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Berkeley Software Distribution]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Berkeley Software Distribution|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Berkeley Software Distribution|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Berkeley_Software_Distribution&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Berkeley Software Distribution]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Bob Fabry]]
 * [[Keith Bostic]]
 * [[Marshall Kirk McKusick]]
@@ -696,7 +696,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 * [[Jordan Hubbard]]
 * [[Theo de Raadt]]
 * [[Poul-Henning Kamp]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Derivatives</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Active</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Derivatives</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">Active</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[FreeBSD]]
 * [[OpenBSD]]
 * [[NetBSD]]
@@ -706,23 +706,23 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 * [[Darwin (operating system)|Darwin]]
 * [[PlayStation 3 system software|PS3]]/[[PlayStation 4 system software|PS4 operating system]]
 * [[List of BSD operating systems|...]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;;"><div style="padding:0em 0.75em;">Discontinued</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0em;padding-right:0em;"><div style="padding:0em 0.75em;">Discontinued</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[386BSD]]
 * [[BSD/OS]]
 * [[SunOS]]
 * [[Ultrix]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Companies</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Companies</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Sleepycat Software]]
 * [[Walnut Creek CDROM]]
 * [[Berkeley Software Design]]
 * [[iXsystems]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other topics</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other topics</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 * [[Comparison of BSD operating systems|Comparison]]
 * [[BSD licenses|Licensing]]
 * [[BSD Daemon]]
 * [[Computer Systems Research Group]]
 </div></td></tr></table></td></tr></table>
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Unix|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Unix|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Unix&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Unix]] and [[Unix-like]] [[operating system]]s</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Unix|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Unix|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Unix&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Unix]] and [[Unix-like]] [[operating system]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
 * ''[[A/UX]]''
 * [[IBM AIX|AIX]]
 * [[Android (operating system)|Android]]
@@ -757,7 +757,7 @@ A number of BSD OSes use stylized version of their respective names for logos. T
 * [[UnixWare]]
 * ''[[Xenix]]''
 * ''[[List of Unix systems|more...]]''
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
 * [[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] '''[[:Category:Unix|Category]]'''
 * [[File:Commons-logo.svg                        | Commons page|16x16px|link=]] '''[[commons:Unix|Commons]]'''
 * [[File:Symbol book class2.svg                  | Wikipedia book|16x16px|link=]] '''[[b:Unix|Book]]'''

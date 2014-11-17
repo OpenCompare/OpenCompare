@@ -96,7 +96,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     pcm.getMatrices.size should be (1)
    }
 
-  ignore should "preprocess every available Wikipedia PCM" in {
+  it should "preprocess every available Wikipedia PCM" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -110,13 +110,18 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         var retry = false
         do {
           try {
+
+            // Preprocess Wikipedia page
             val parser = new WikipediaPCMParser
             val preprocessedCode = parser.preprocessOnlineArticle(article)
+
+            // Save preprocessed page
             val writer = new FileWriter("input/" + article.replaceAll(" ", "_") + ".txt")
             writer.write(preprocessedCode)
             writer.close()
+
           } catch {
-            //	    		 case e : UnknownHostException => retry = true
+            // case e : UnknownHostException => retry = true
             case e : Throwable =>
               val sw = new StringWriter();
               val pw = new PrintWriter(sw);
@@ -134,7 +139,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
   }
 
-  ignore should "parse every available PCM in Wikipedia" in {
+  it should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -145,7 +150,10 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       } else {
         println(article)
         try {
+
+          // Parse preprocessed Wikipedia page
           val pcms = testArticle(article)
+
         } catch {
           case e : Throwable => e.printStackTrace()
         }

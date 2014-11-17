@@ -345,7 +345,7 @@ The fields in the table listed below describe the following:
 |128
 |}
 
-*<sup>1</sup> [[Pixel shader]]s : [[Texture mapping unit]]s : [[Render output unit]]s
+*<sup>1</sup> [[Pixel pipeline]]s : [[Texture mapping unit]]s : [[Render output unit]]s
 
 ===GeForce2 Series===
 <div class="hatnote relarticle mainarticle">Main article: [[GeForce 2 Series]]</div>
@@ -505,7 +505,7 @@ The fields in the table listed below describe the following:
 |128
 |}
 
-*<sup>1</sup> [[Pixel shader]]s : [[Texture mapping unit]]s : [[Render output unit]]s
+*<sup>1</sup> [[Pixel pipeline]]s : [[Texture mapping unit]]s : [[Render output unit]]s
 
 ===GeForce3 Series===
 <div class="hatnote relarticle mainarticle">Main article: [[GeForce 3 Series]]</div>
@@ -4417,7 +4417,7 @@ SP - Shader Processor (Unified Shader, [[CUDA]] Core), SFU - Special Function Un
 | 6.54
 | OEM Card
 |-
-! style="text-align:left;"| GeForce GT 330
+! style="text-align:left;"| GeForce GT 330 
 | February, 2010
 | GT215-301-A3
 | 40
@@ -4426,18 +4426,18 @@ SP - Shader Processor (Unified Shader, [[CUDA]] Core), SFU - Special Function Un
 | 1
 | PCIe 2.0 x16
 | 1024<br>1536<br>2048
-| 96:48?:8?<br>96:48?:12?<br>112:56?:16?<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup>
+| 96:32:8<br>96:48?:12?<br>112:56?:16?<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup>
 | 500<br>550<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup>
 | 1250<br>1340<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup>
 | 1000 (DDR2)<br>1600 (GDDR3)
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| 4.40
+| 17.6
 | 24<br>32<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup>
 | DDR2<br>GDDR3
 | 128<br>192<br>256
-| 10
+| 10.1
 | 3.3
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| 257.3
 | 75
 | style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
 | Specifications vary depending on OEM, similar to GT230 v2.
@@ -6539,7 +6539,7 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
 | style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
 | 891<br>(1782)
-| 7.94
+| 15.9
 | 31.8
 | 28.5
 | DDR3
@@ -6569,7 +6569,7 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
 | style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
 | 1252<br>(5008)
-| 7.94
+| 15.9
 | 31.8
 | 80.1
 | GDDR5
@@ -6592,26 +6592,26 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | 148
 | 1
 | PCIe 3.0 x16
-| 4096
-| 4
-| 512:32:16
-| 1020
-| 1085
-| 1163
-| 1250<br>(5000)
-| 16.3
-| 32.6
-| 80
-| GDDR5
+| 1024<br />4096
+| 3
+| 384:24:16
+| 1033
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| 900<br>(1800)
+| 16.5
+| 24.8
+| 28.8
+| DDR3
 | 128
-| 11.2
+| 11.0
 | 4.5
 | 1.1
-| 1044
-| 32.6
+| 793.3
+| 24.8
 | 55
-| 19
-| 0.59
+| 14.4
+| 0.45
 | OEM
 |-
 ! style="text-align:left;" | GeForce GTX 750
@@ -6840,7 +6840,7 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | 875
 | 928
 | 1020
-| 1752.5<br>(7010)
+| 1750<br>(7000)
 | 42.0
 | 210.2
 | 336.4
@@ -6900,7 +6900,7 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | 889
 | 980
 | style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| 1752.5<br>(7010)
+| 1750<br>(7000)
 | 42.7
 | 213
 | 336.4
@@ -6930,7 +6930,7 @@ The GeForce 700 series for desktop. The GM107-chips are [[Maxwell (microarchitec
 | 705
 | 876
 | style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| 1752.5<br>(7010)
+| 1750<br>(7000)
 | 2× 33.8
 | 2× 169
 | 2× 336.4
@@ -7033,6 +7033,36 @@ The GeForce 900 series for desktop. The GM20x chips are [[Maxwell (microarchitec
 ! Single Precision<sup>4</sup>
 ! Double Precision<sup>5</sup>
 |-
+! style="text-align:left;" | GeForce GTX 960
+| 
+| GM204
+| 28
+| 5200
+| 398
+| 1
+| PCIe 3.0 x16
+| 4096
+| 13
+| ????:???:??
+| 
+| 
+| 
+| 1504<br>(6008)
+| 
+| 
+| 192
+| GDDR5
+| 256
+| 12.0
+| 4.5
+| 1.2
+| 
+| 
+| 
+| 
+| 
+| $2??
+|-
 ! style="text-align:left;" | GeForce GTX 970 
 | September 18, 2014
 | GM204-200
@@ -7046,7 +7076,7 @@ The GeForce 900 series for desktop. The GM20x chips are [[Maxwell (microarchitec
 | 1664:104:64
 | 1050 
 | 1178
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| 1250
 | 1752.5<br>(7010)
 | 67.2
 | 109.2
@@ -7076,7 +7106,7 @@ The GeForce 900 series for desktop. The GM20x chips are [[Maxwell (microarchitec
 | 2048:128:64
 | 1126 
 | 1216
-| 1252
+| 1266
 | 1752.5<br>(7010)
 | 72.1
 | 144
@@ -9850,7 +9880,7 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 289.2<br>388.8
 | 35
-| GF106: OEM. Rebadged GT 555M<br>GF116: 144 Unified Shaders
+| GF106: OEM. Rebadged GT 555M<br>GF116: 94% of desktop GT640
 |-
 ! style="text-align:left;" | GeForce GT 640M LE
 | March 22, 2012
@@ -9871,7 +9901,7 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 292.6<br>384
 | 32<br>20
-| GF108: Fermi<br>GK107: Kepler, Similar to Desktop GTX650 
+| GF108: 94% of desktop GT630<br>GK107: 47% of desktop GTX650 
 |-
 ! style="text-align:left;" | GeForce GT 640M
 | March 22, 2012
@@ -9892,7 +9922,7 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 480
 | 32
-| Kepler, Similar to Desktop GTX650
+| 59% of desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GT 645M
 | October 2012
@@ -9913,7 +9943,7 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 545
 | 32
-| Kepler, Similar to Desktop GTX650
+| 67% of desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GT 650M
 | March 22, 2012 
@@ -9930,11 +9960,11 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 28.8<br>64.0<br>80.0*
 | DDR3<br>GDDR5
 | 128
-| 11.0
+| 11.2
 | 4.5
-| 641.3<br>572.2<br>691.2
+| 641.3<br>572.2<br>691.2*
 | 45
-| Kepler, Similar to Desktop GTX650<br>*
+| 79% of desktop GTX650<br>*
 |-
 ! style="text-align:left;" | GeForce GTX 660M
 | March 22, 2012
@@ -9943,19 +9973,19 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 2048
 | 384:32:16<br>(2 SMX)
-| 835
-| 835
+| 950
+| 950
 | 5000
 | 13.4
 | 26.7
 | 80.0
 | GDDR5
 | 128
-| 11.0
+| 11.2
 | 4.5
-| 641.3
+| 730
 | 50
-| Kepler, Similar to Desktop GTX650<br>
+| 79% of desktop GTX650<br>
 |-
 ! style="text-align:left;" | GeForce GTX 670M
 | April 2012
@@ -9964,8 +9994,8 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 2.0 x16
 | 1536<br>3072
 | 336:56:24
-| 598
-| 1196
+| 620
+| 1240
 | 3000
 | 14.35
 | 33.5
@@ -9974,9 +10004,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 192
 | 11.0
 | 4.5
-| 803.6
+| 833
 | 75
-| Rebadged GTX 570M, Similar to Desktop GTX 560
+| 73% of desktop GTX 560
 |-
 ! style="text-align:left;" | GeForce GTX 670MX
 | October 2012
@@ -9985,8 +10015,8 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 1536<br>3072
 | 960:80:24<br>(5 SMX)
-| 600
-| 600
+| 615
+| 615
 | 2800
 | 14.4
 | 48.0
@@ -9995,9 +10025,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 192
 | 11.0
 | 4.5
-| 1152
+| 1181
 | 75
-| Kepler architecture, Similar to Desktop GTX 660
+| 61% of desktop GTX 660
 |-
 ! style="text-align:left;" | GeForce GTX 675M
 | April 2012
@@ -10006,8 +10036,8 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 2.0 x16
 | 2048
 | 384:64:32
-| 620
-| 1240
+| 632
+| 1265
 | 3000
 | 19.8
 | 39.7
@@ -10016,9 +10046,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 952.3
+| 972
 | 100
-| Rebadged GTX 580M, Similar to Desktop GTX 560Ti
+| 75% of desktop GTX 560Ti
 |-
 ! style="text-align:left;" | GeForce GTX 675MX
 | October 2012
@@ -10026,9 +10056,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 28
 | PCIe 3.0 x16
 | 4096
-| 960:80:32<br>(5 SMX)
-| 600
-| 600
+| 1344:112:32<br>(7 SMX)
+| 667
+| 667
 | 3600
 | 19.2
 | 48.0
@@ -10037,9 +10067,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 1152
+| 1793
 | 100
-| Kepler architecture, Similar to Desktop GTX 660
+| 61% of desktop GTX 660
 |-
 ! style="text-align:left;" | GeForce GTX 680M
 | June 4, 2012
@@ -10048,8 +10078,8 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 4096
 | 1344:112:32<br>(7 SMX)
-| 720
-| 720
+| 719
+| 719
 | 3600
 | 23
 | 80.6
@@ -10058,9 +10088,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 1935.4
+| 1933
 | 100
-| Kepler architecture, Similar to Desktop GTX 670
+| 78% of desktop GTX 670
 |-
 ! style="text-align:left;" | GeForce GTX 680MX
 | October 23, 2012
@@ -10069,8 +10099,8 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 4096
 | 1536:128:32<br>(8 SMX)
-| 720
-| 720
+| 719
+| 719
 | 5000
 | 23
 | 92.2
@@ -10079,9 +10109,9 @@ The GeForce 600M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 2234.3
+| 2209
 | 122
-| Kepler architecture, Similar to Desktop GTX 680
+| 72% of desktop GTX 680
 |-
 ! rowspan=2 | Model
 ! rowspan=2 | Launch
@@ -10164,7 +10194,7 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 307.2
 | 12
-| OEM. Similar to Mobile 620 & Desktop 530
+| OEM. About 115% of Mobile 620 & Desktop 530
 |-
 ! style="text-align:left;" | GeForce GT 720M
 | April 1, 2013
@@ -10185,7 +10215,7 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 360.19
 | ?
-| OEM. Similar to Mobile 625/630 & Desktop 620
+| OEM. About 130% of Mobile 625/630 & Desktop 620
 |-
 ! style="text-align:left;" | GeForce GT 730M
 | Jan 2013
@@ -10269,7 +10299,7 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 622.1
 | 45
-| Kepler, similar to Desktop GTX650
+| about 76% of Desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GT 745M
 | April 1, 2013
@@ -10290,7 +10320,7 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 642.8
 | 45
-| Kepler, similar to Desktop GTX650
+| about 79% of Desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GT 750M
 | April 1, 2013
@@ -10311,7 +10341,7 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 742.7
 | 50
-| Kepler, similar to Desktop GTX650
+| about 91% of Desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GT 755M 
 | ?
@@ -10320,8 +10350,8 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 2048
 | 384:32:16<br>(2 SMX)
-| 980?
-| 980?
+| 1020
+| 1020
 | 5400
 | 15.7
 | 31.4
@@ -10330,9 +10360,9 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 128
 | 11.0
 | 4.5
-| 752.64
+| 783
 | 50
-| Kepler, similar to Desktop GTX650
+| about 93% of Desktop GTX650
 |-
 ! style="text-align:left;" | GeForce GTX 760M
 | May 2013
@@ -10341,8 +10371,8 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 2048
 | 768:64:16<br>(4 SMX)
-| 657
-| 657
+| 719
+| 719
 | 4000
 | 10.5
 | 42.1
@@ -10351,9 +10381,9 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 128
 | 11.0
 | 4.5
-| 1009.2
+| 1104
 | 55
-| Kepler, similar to Desktop GTX 650Ti
+| about 71% of Desktop GTX 650Ti
 |-
 ! style="text-align:left;" | GeForce GTX 765M
 | May 2013
@@ -10362,8 +10392,8 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 2048
 | 768:64:16<br>(4 SMX)
-| 850
-| 850
+| 863
+| 863
 | 4000
 | 13.6
 | 54.4
@@ -10372,9 +10402,9 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 128
 | 11.0
 | 4.5
-| 1305.6
+| 1326
 | 65
-| Kepler, similar to Desktop GTX 650Ti
+| about 92% of Desktop GTX 650Ti
 |-
 ! style="text-align:left;" | GeForce GTX 770M
 | May 2013
@@ -10383,8 +10413,8 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 3072
 | 960:80:24<br>(5 SMX)
-| 811
-| 811
+| 797
+| 797
 | 4000
 | 19.5
 | 64.9
@@ -10393,30 +10423,9 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 192
 | 11.0
 | 4.5
-| 1557.1
+| 1530
 | 75
-| Kepler, similar to Desktop GTX660
-|-
-! style="text-align:left;" | GeForce GTX 775M
-| Sep 2013
-| GK104
-| 28
-| PCIe 3.0 x16
-| 4096
-| 1344:112:32<br>(7 SMX)
-| 719
-| 719
-| 3600
-| 23.0
-| 92.0
-| 115.2
-| GDDR5
-| 256
-| 11.0
-| 4.5
-| 1932.7
-| 100
-| Kepler, similar to Desktop GTX670
+| about 83% of Desktop GTX660
 |-
 ! style="text-align:left;" | GeForce GTX 780M
 | May 2013
@@ -10425,8 +10434,8 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 4096
 | 1536:128:32<br>(8 SMX)
-| 823
-| 823
+| 797
+| 797
 | 5000
 | 26.3
 | 105.3
@@ -10435,9 +10444,9 @@ The GeForce 700M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 2528.3
+| 2448
 | 122
-| Kepler, similar to Desktop GTX770
+| about 78% of Desktop GTX770
 |-
 ! rowspan=2 | Model
 ! rowspan=2 | Launch
@@ -10520,7 +10529,28 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 276.1-366.3
 | 
-| 
+| 115% of 620 (Fermi)
+|-
+! style="text-align:left;" | GeForce 825M 
+| January 27, 2014
+| GK208
+| 28
+| PCIe 3.0 x8
+| 2
+| 384:16:8<br>(2 SMX)
+| 850
+| 850
+| 1800
+| 6.8
+| 13.6
+| 14.4
+| DDR3
+| 64
+| 11.0
+| 4.5
+| 652.8
+| 33
+| 94% of 630 (Kepler)
 |-
 ! style="text-align:left;" | GeForce 830M 
 | March 12, 2014
@@ -10529,19 +10559,19 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 2
 | 256:16:8<br>(2 SMM)
-| 
-| 
-| 2000
-| 
-| 
-| 
+| 1029
+| 1029
+| 1800
+| 8.2
+| 16.5
+| 14.4
 | DDR3
 | 64
 | 11.2
 | 4.5
-| 
-| 
-| 
+| 526.8
+| ~25
+|50% of 750 (Maxwell)
 |-
 ! style="text-align:left;" | GeForce 840M 
 | March 12, 2014
@@ -10562,49 +10592,71 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | 4.5
 | 790.3
 | 30
-| 
+| 50% of 745 (Maxwell)
 |-
-! style="text-align:left;" | GeForce GTX 850M 
-| March 12, 2014
-| GM107
-| 28
-| PCIe 3.0 x16
-| 2
-| 640:40:16<br>(5 SMM)
-| 876+Boost<br>936+Boost
-| 876+Boost<br>936+Boost
-| 5000<br>2000
-| 14.0<br>15.0
-| 35.0<br>37.4
-| 80<br>32
-| GDDR5<br>DDR3
-| 128
-| 11.2
-| 4.5
-| 1121.3<br>1198.1
-| 40
-| 
-|-
-! style="text-align:left;" | GeForce GTX 860M 
-| March 12, 2014
-| GM107<br>GK104
-| 28
-| PCIe 3.0 x16
-| 2<br>4
-| 640:40:16<br>(5 SMM)<br>1152:96:16<br>(6 SMX)
-| 1029+Boost<br>797+Boost
-| 1029+Boost<br>797+Boost
+! rowspan=2  style="text-align:left;" | GeForce GTX 850M 
+| rowspan=2 | March 12, 2014
+| rowspan=2 | GM107
+| rowspan=2 | 28
+| rowspan=2 | PCIe 3.0 x16
+| rowspan=2 | 2
+| rowspan=2 | 640:40:16<br>(5 SMM)
+| 876+Boost
+| 876+Boost
 | 5000
-| 16.5<br>12.8
-| 41.2<br>76.5
+| 14.0
+| 35.0
 | 80
 | GDDR5
-| 128
-| 11.2<br>11.0
-| 4.5
-| 1317.1<br>1836.3
-| 40-45<br>75
+| rowspan=2 | 128
+| rowspan=2 | 11.2
+| rowspan=2 | 4.5
+| 1121.3
+| rowspan=2 | 40
 | 
+|-
+| 936+Boost
+| 936+Boost
+| 2000
+| 15.0
+| 37.4
+| 32
+| DDR3
+| 1198.1
+| 85% of 750Ti
+|-
+! rowspan=2 style="text-align:left;" | GeForce GTX 860M 
+| rowspan=2 | March 12, 2014
+| GM107
+| rowspan=2 | 28
+| rowspan=2 | PCIe 3.0 x16
+| 2
+| 640:40:16<br>(5 SMM)
+| 1020-1085
+| 1020-1085
+| rowspan=2 | 5000
+| 16.5
+| 41.2
+| rowspan=2 | 80
+| rowspan=2 | GDDR5
+| rowspan=2 | 128
+| 11.2
+| rowspan=2 | 4.5
+| 1389
+| 40-45
+| equal to 750Ti
+|- 
+| GK104
+| 4
+| 1152:96:16<br>(6 SMX)
+| 797-915
+| 797-915
+| 12.8
+| 76.5
+| 11.0
+| 2108
+| 75
+| similar to 660 OEM.
 |-
 ! style="text-align:left;" | GeForce GTX 870M 
 | March 12, 2014
@@ -10613,8 +10665,8 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 3<br>6
 | 1344:112:24<br>(7 SMX)
-| 941+Boost
-| 941+Boost
+| 941-967
+| 941-967
 | 5000
 | 22.6
 | 105.4
@@ -10623,9 +10675,9 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | 192
 | 11.0
 | 4.5
-| 2529.4
-| 100
-| 
+| 2599
+| 110
+| 105% of 660Ti
 |-
 ! style="text-align:left;" | GeForce GTX 880M 
 | March 12, 2014
@@ -10634,8 +10686,8 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | PCIe 3.0 x16
 | 4<br>8
 | 1536:128:32<br>(8 SMX)
-| 954+Boost
-| 954+Boost
+| 954-993
+| 954-993
 | 5000
 | 30.5
 | 122.1
@@ -10644,9 +10696,9 @@ The GeForce 800M Series for notebooks architecture. The processing power is obta
 | 256
 | 11.0
 | 4.5
-| 2930.7
-| 105
-| 
+| 3104
+| 130
+| 90% of 770
 |-
 ! rowspan=2 | Model
 ! rowspan=2 | Launch
@@ -10699,8 +10751,8 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 ! rowspan=2 | [[Thermal Design Power|TDP]] (watts)
 ! rowspan=2 | Notes
 |-
-! Core ([[Hertz|MHz]])
-! Shader ([[Hertz|MHz]])
+! Min ([[Hertz|MHz]])
+! Average ([[Hertz|MHz]])
 ! Memory ([[Transfer (computing)|MT/s]])
 ! Pixel ([[Pixel|GP]]/s)
 ! Texture ([[Texel (graphics)|GT]]/s)
@@ -10715,10 +10767,10 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 | GM204
 | 28
 | PCIe 3.0 x16
-| 3<br />6
+| 3, 6
 | 1280:80:48<br>(10 SMM)
-| 924+Boost
-| 924+Boost
+| 924
+| 993
 | 5000
 | 44.4
 | 73.9
@@ -10727,19 +10779,19 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 | 192
 | 12.0
 | 4.5
-| 2365.4
-| 95
-| 
+| 2542
+| 75
+| 80% of GTX 970
 |-
 ! style="text-align:left;" | GeForce GTX 980M 
 | October 7, 2014
 | GM204
 | 28
 | PCIe 3.0 x16
-| 4<br />8
+| 4, 8
 | 1536:96:64<br>(12 SMM)
-| 1038+Boost
-| 1038+Boost
+| 1038
+| 1127
 | 5000
 | 66.4
 | 99.6
@@ -10748,9 +10800,9 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 | 256
 | 12.0
 | 4.5
-| 3188.7
-| 125
-| 
+| 3462
+| 100
+| 80% of GTX 980
 |-
 ! rowspan=2 | Model
 ! rowspan=2 | Launch
@@ -10767,8 +10819,8 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 ! rowspan=2 | [[Thermal Design Power|TDP]] (watts)
 ! rowspan=2 | Notes
 |-
-! Core ([[Hertz|MHz]])
-! Shader ([[Hertz|MHz]])
+! Min ([[Hertz|MHz]])
+! Average ([[Hertz|MHz]])
 ! Memory ([[Transfer (computing)|MT/s]])
 ! Pixel ([[Pixel|GP]]/s)
 ! Texture ([[Texel (graphics)|GT]]/s)
@@ -12552,7 +12604,7 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 |GDDR5
 |128
 |732.67
-|
+|30.5
 |11.0
 |4.5
 |51
@@ -12675,7 +12727,7 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 !Quadro K420
 |GK107
 |28
-|PCIe 3.0 x16
+|PCIe 2.0 x16
 |1024
 |780
 |780
@@ -14980,7 +15032,7 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 ! Memory<br>([[Gigabyte|GB]])
 |- valign="top"
 !style="text-align:left"|GRID K1 
-|GK208
+|GK107
 |4
 |768
 |PCIe 3.0 x16
@@ -15092,7 +15144,7 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 *[http://www.mwave.com.au/blog/2014/6/2/timeline-popular-games-and-video-cards-requirements Timeline for popular games and graphic cards requirements]
 * [http://www.techpowerup.com/forums/showthread.php?t=171000 TechPowerUp! GPU Database]
 
-<table cellspacing="0" class="navbox" style="border-spacing:0;"><tr><td style="padding:2px;"><table cellspacing="0" class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit;"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Nvidia|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Nvidia|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Nvidia&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%;">[[Nvidia]]</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2" style=";;"><span style="float:left;width:6em;">&nbsp;</span><div style="font-size:110%;">[[GeForce]] <small>[[List of Nvidia graphics processing units|List of]]</small></div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">Fixed pipeline</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Nvidia|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Nvidia|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Nvidia&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Nvidia]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">[[GeForce]] <small>([[List of Nvidia graphics processing units|List of GPUs]])</small></div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Fixed pipeline</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[NV1]]
 *[[NV2]]
 *[[RIVA 128]]
@@ -15102,63 +15154,64 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 *[[GeForce 2 series|2]]
 *[[GeForce 3 series|3]]
 *[[GeForce 4 series|4]]
-*[[GeForce FX series|5]]
+*[[GeForce FX series|FX]]
 *[[GeForce 6 series|6]]
 *[[GeForce 7 series|7]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Unified shader model|Unified shaders]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[Tesla (microarchitecture)|Tesla]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Unified Shader Model|Unified shaders]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Tesla (microarchitecture)|Tesla]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GeForce 8 series|GeForce 8]]
 *[[GeForce 9 series|9]]
 *[[GeForce 100 series|100]]
 *[[GeForce 200 series|200]]
 *[[GeForce 300 series|300]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Fermi (microarchitecture)|Fermi]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Fermi (microarchitecture)|Fermi]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GeForce 400 series|GeForce 400]]
 *[[GeForce 500 series|500]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Kepler (microarchitecture)|Kepler]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Kepler (microarchitecture)|Kepler]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GeForce 600 series|GeForce 600]]
 *[[GeForce 700 series|700]]
 *[[GeForce 800M series|800M]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Maxwell (microarchitecture)|Maxwell]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Maxwell (microarchitecture)|Maxwell]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GeForce 700 series|GeForce 700]]
 *[[GeForce 800M series|800M]]
 *[[GeForce 900 series|900]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Unified shaders & [[Unified Memory Architecture|memory]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[Pascal (microarchitecture)|Pascal]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Unified shaders  <br /> and [[Unified Memory Architecture|memory]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Pascal (microarchitecture)|Pascal]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GeForce 1000 series|GeForce 1000]]
 *[[GeForce 1100 series|1100]]
-</div></td></tr></table><div></div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2" style=";;"><span style="float:left;width:6em;">&nbsp;</span><div style="font-size:110%;">Current technologies and software</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">Audio/Video acceleration</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
-*[[Nvidia PureVideo|PureVideo]]
-*[[Nvidia NVENC|NVENC]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Technologies</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
-*[[Nvidia Surround]] (multi-monitor)
-*[[Nvidia 3D Vision|3D Vision]]
-*[[Scalable Link Interface|SLI]]
-*[[Nvidia Optimus|Optimus]]
-*[[TurboCache]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Software</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
-*[[Nvidia GeForce driver]] 
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Volta (microarchitecture)|Volta]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*''To be announced''
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Software and technologies</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Multimedia <br /> acceleration</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Nvidia NVENC]]
+*[[Nvidia PureVideo]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Software</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Cg (programming language)|Cg]]
 *[[CUDA]]
-*[[PhysX]]
-*[[OptiX]]
-*[[Nvidia System Tools|System Tools]]
 *[[Gelato (software)|Gelato]]
-*[[Cg_(programming_language)|Cg]]
+*[[Nvidia GameWorks]]
+**[[OptiX]]
+**[[PhysX]]
+*[[Nvidia System Tools]]
 *[[VDPAU]]
-</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2" style=";;"><span style="float:left;width:6em;">&nbsp;</span><div style="font-size:110%;">Other products</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">[[Workstation]]s & [[Supercomputer]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Technologies</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Nvidia 3D Vision]]
+*[[Nvidia Optimus]]
+*[[Nvidia Surround]]
+*[[Scalable Link Interface]]
+*[[TurboCache]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Other products</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Workstation]]s and <br /> [[supercomputer]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Nvidia Quadro]]
 **[[Nvidia Quadro Plex|Quadro Plex]]
 *[[Nvidia Tesla]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Video game console|Consoles]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Video game console|Consoles]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Xbox (console)#Technical specifications|NV2A]] <small style="font-size:85%;">([[Xbox (console)|Xbox]])</small>
-*[[RSX 'Reality Synthesizer'|RSX]] <small style="font-size:85%;">([[PlayStation 3]])</small>
+*[[RSX 'Reality Synthesizer']] <small style="font-size:85%;">([[PlayStation 3]])</small>
 *[[Shield Portable]]
 *[[Shield Tablet]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[System on a chip|SoCs]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[System on a chip|SoCs]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[GoForce]]
-*[[Tegra|Tegra 1 2 3 4]]
-*[[Tegra K1]]
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Central processing unit|CPU]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+*[[Tegra]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Central processing unit|CPU]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Project Denver]]
-</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0;"><tr><th scope="col" class="navbox-title" colspan="2" style=";;"><span style="float:left;width:6em;">&nbsp;</span><div style="font-size:110%;">Company</div></th></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px;"><div style="padding:0em 0.25em;"></div><table cellspacing="0" class="nowraplinks navbox-subgroup" style="border-spacing:0;"><tr><th scope="row" class="navbox-group">Key people</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even hlist" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Company</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Key people</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[Jen-Hsun Huang]]
 *[[Chris Malachowsky]]
 *[[Curtis Priem]]
@@ -15167,7 +15220,7 @@ The GeForce 900M Series for notebooks architecture. The processing power is obta
 *Debora Shoquist
 *Ranga Jayaraman
 *Jonah M. Alben
-</div></td></tr><tr style="height:2px;"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Acquisitions</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px;"><div style="padding:0em 0.25em;">
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Acquisitions</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
 *[[3dfx Interactive]]
 *[[Ageia]]
 *[[Acer Laboratories Incorporated|ULi]]

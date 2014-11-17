@@ -1,7 +1,7 @@
 <div class="hatnote">"String functions" redirects here. For string functions in formal language theory, see [[String operations]].</div>
 <div class="hatnote boilerplate further">Further information: [[comparison of programming languages]]</div>
 
-<table class="vertical-navbox nowraplinks" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
 * [[Comparison of programming languages|General comparison]]
 * [[Comparison of programming languages (syntax)|Basic syntax]]
 * [[Comparison of programming languages (basic instructions)|Basic instructions]]
@@ -73,7 +73,7 @@ String functions common to many languages are listed below, including the differ
 |1
 |-
 | <tt>''string''[''i'']</tt>
-|[[C (programming language)|C]], [[C++]], [[C Sharp (programming language)|C#]], [[D (programming language)|D]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Python (programming language)|Python]], [[PHP]], [[Ruby (programming language)|Ruby]], [[Windows PowerShell]], [[JavaScript]], Ya
+|[[C (programming language)|C]], [[C++]], [[C Sharp (programming language)|C#]],[[Cobra (programming language) |Cobra]], [[D (programming language)|D]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Python (programming language)|Python]], [[PHP]], [[Ruby (programming language)|Ruby]], [[Windows PowerShell]], [[JavaScript]], Ya
 |0
 |-
 | <tt>''string''{''i''}</tt>
@@ -265,7 +265,7 @@ Mid("Hello, World",2,1)
 |[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi)
 |-
 | <tt>''string<sub>1</sub>''.compareTo(''string<sub>2</sub>'')</tt>
-|[[Java (programming language)|Java]]
+|[[Cobra (programming language) |Cobra]], [[Java (programming language)|Java]]
 |-
 | <tt>''string<sub>1</sub>''.CompareTo(''string<sub>2</sub>'')</tt>
 |[[Visual Basic .Net|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
@@ -396,6 +396,12 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |-
 | <tt>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</tt> where <tt>OP</tt> can be any of <tt>=, <>, <, >, <=, >=</tt> as well as worded equivalents
 | [[COBOL]]
+|-
+| <tt>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</tt> where <tt>OP</tt> can be any of <tt>==, <>, <, >, <=</tt> and <tt>>=</tt>
+| [[Cobra (programming language) |Cobra]]
+|-
+| Are available in the syntax, but means comparison of the pointers pointing to the strings, not of the string contents.
+| [[C (programming language)|C]], [[Java]]
 |}
 
 <source lang="erlang">
@@ -441,7 +447,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Perl]], [[PHP]]
 |-
 | <tt>''string<sub>1</sub>'' + ''string<sub>2</sub>''</tt>
-|[[ALGOL 68]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[Java (programming language)|Java]], [[JavaScript]], [[Windows PowerShell]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[F Sharp (programming language)|F#]], [[Turing (programming language)|Turing]], [[Visual Basic|VB]], Ya
+|[[ALGOL 68]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[Cobra (programming language) |Cobra]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[Java (programming language)|Java]], [[JavaScript]], [[Windows PowerShell]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[F Sharp (programming language)|F#]], [[Turing (programming language)|Turing]], [[Visual Basic|VB]], Ya
 |-
 | <tt>''string<sub>1</sub>'' ~ ''string<sub>2</sub>''</tt>
 |[[D (programming language)|D]]
@@ -541,7 +547,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 | [[C Sharp (programming language)|C#]], [[Visual Basic .NET|VB .NET]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
 |-
 | <tt>''string''.contains(''substring'')</tt>
-|[[Java (programming language)|Java]] (1.5+)
+| [[Cobra (programming language) |Cobra]], [[Java (programming language)|Java]] (1.5+)
 |-
 | <tt>''string''.indexOf(''substring'') &gt;= 0</tt>
 |[[JavaScript]]
@@ -553,7 +559,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Seed7]]
 |-
 | <tt>''substring'' in ''string''</tt>
-|[[Python (programming language)|Python]] (2.3+)
+|[[Cobra (programming language) |Cobra]], [[Python (programming language)|Python]] (2.3+)
 |-
 | <tt>string.find(''string'', ''substring'') ~= nil</tt>
 |[[Lua (programming language)|Lua]]
@@ -583,7 +589,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Mathematica]]
 |-
 | <tt>index(''string'', ''substring'', ''startpos'')>0</tt>
-|[[PL/I]]
+|[[Fortran, PL/I]]
 |-
 | <tt>strings.Contains(''string'', ''substring'')</tt>
 | [[Go (programming language)|Go]]
@@ -620,7 +626,7 @@ Tests if two strings are equal. See also [[#Compare (relational operator-based, 
 ! Format !! Languages 
 |-
 | <tt>''string<sub>1</sub>'' == ''string<sub>2</sub>''</tt>
-|[[Python (programming language)|Python]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[Go (programming language)|Go]], [[JavaScript]] (similarity), [[PHP]] (similarity), [[Ruby (programming language)|Ruby]], [[Erlang (programming language)|Erlang]], [[Haskell (programming language)|Haskell]], [[Lua (programming language)|Lua]], [[D (programming language)|D]], [[Mathematica]], Ya
+|[[Python (programming language)|Python]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[Cobra (programming language) |Cobra]], [[Go (programming language)|Go]], [[JavaScript]] (similarity), [[PHP]] (similarity), [[Ruby (programming language)|Ruby]], [[Erlang (programming language)|Erlang]], [[Haskell (programming language)|Haskell]], [[Lua (programming language)|Lua]], [[D (programming language)|D]], [[Mathematica]], Ya
 |-
 | <tt>''string<sub>1</sub>'' === ''string<sub>2</sub>''</tt>
 |[[JavaScript]], [[PHP]]
@@ -647,7 +653,7 @@ Tests if two strings are equal. See also [[#Compare (relational operator-based, 
 |[[Perl]]
 |-
 | <tt>''string<sub>1</sub>''.equals(''string<sub>2</sub>'')</tt>
-|[[Java (programming language)|Java]]
+|[[Cobra (programming language) |Cobra]], [[Java (programming language)|Java]]
 |-
 | <tt>''string<sub>1</sub>''.Equals(''string<sub>2</sub>'')</tt>
 |[[C Sharp (programming language)|C#]]
@@ -822,6 +828,10 @@ Tests if two strings are equal. See also [[#Compare (relational operator-based, 
 | <tt>index(''string'', ''substring'', ''startpos'' )</tt>
 |[[PL/I]]
 |returns 0 (positions start at 1)
+|-
+| <tt>''string''.indexOf(''substring''«,''startpos''«, ''charcount''»»)</tt>
+|[[Cobra (programming language) |Cobra]]
+|returns -1
 |}
 
 <source lang="lisp">
@@ -953,6 +963,10 @@ I'Hello mate'
 |<tt>''strpos(''string'',''char'',''startpos'')</tt>
 |[[PHP]]
 |returns <tt>false</tt>
+|-
+| <tt>''string''.indexOf(''char''«,''startpos''«, ''charcount''»»)</tt>
+|[[Cobra (programming language) |Cobra]]
+|returns -1
 |}
 
 <source lang="csharp">
@@ -1075,6 +1089,10 @@ I'Hello mate'
 | <tt>put string(''string'') edit(''items'')(''format'')</tt>
 |[[PL/I]]
 |PL/I (similar to Fortran)
+|-
+| <tt>String.format(''formatstring'', ''items'')</tt>
+|[[Cobra (programming language)|Cobra]]
+|.NET
 |}
 
 <source lang="csharp">
@@ -1124,7 +1142,7 @@ Tests if two strings are not equal. See also [[#Equality]].
 |[[ALGOL 68]], [[Ada (programming language)|Ada]], [[Erlang (programming language)|Erlang]], [[Fortran]], [[Haskell (programming language)|Haskell]] 
 |-
 | <tt>''string<sub>1</sub>'' <> ''string<sub>2</sub>''</tt>
-|[[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[OCaml]], [[PHP]], [[Seed7]], [[Standard ML]], [[F Sharp (programming language)|F#]], [[COBOL]]
+|[[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[OCaml]], [[PHP]], [[Seed7]], [[Standard ML]], [[F Sharp (programming language)|F#]], [[COBOL]], [[Cobra (programming language) |Cobra]]
 |-
 | <tt>''string<sub>1</sub>'' # ''string<sub>2</sub>''</tt>
 |[[BASIC]] (some implementations)
@@ -1275,6 +1293,9 @@ Tests if two strings are not equal. See also [[#Equality]].
 |-
 | <tt> ''collectionOfAnything'' asStringOn: stream delimiter: ''separator'' </tt>
 |[[Smalltalk]] (Squeak, Pharo)
+|-
+| <tt>''array_of_strings''.join(''separator''«, ''final_separator''»)</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
 
 <source lang="csharp">
@@ -1322,41 +1343,44 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |<tt>string (string'First .. string'First + ''n'' - 1)</tt>
 |[[Ada (programming language)|Ada]]
 |-
-| <tt>string:substr(''string'', ''start'', ''length'')</tt>
-|[[Erlang (programming language)|Erlang]]
-|-
-| <tt>Left(''string'',''n'')</tt>
-|[[Visual Basic|VB]]
-|-
-| <tt>LEFT$(''string'',''n'')</tt>
-|[[BASIC]]
-|-
-| <tt>left(''string'',''n'')</tt>
-|[[FreeBASIC]], [[Ingres (database)|Ingres]]
-|-
-| <tt>(subseq ''string'' 0 ''n'')</tt>
-|[[Common Lisp]]
-|-
-| <tt>left(''string'',''n'' «,''padchar''»)</tt>
-|[[REXX]], [[Erlang (programming language)|Erlang]]
-|-
 | <tt>substr(''string'', 0, ''n'')</tt>
 |[[AWK]] (changes string), [[Perl]], [[PHP]]
 |-
-| <tt>''string''[:''n'']</tt>
-|[[Go (programming language)|Go]], [[Python (programming language)|Python]]
+| <tt>LEFT$(''string'',''n'')</tt>
+|[[BASIC]],[[Visual Basic|VB]]
 |-
-| <tt>''string''[0, ''n''] <br /> ''string''[0..''n'' - 1]</tt>
-|[[Ruby (programming language)|Ruby]]
+| <tt>left(''string'',''n'')</tt>
+||[[Visual Basic|VB]],[[FreeBASIC]], [[Ingres (database)|Ingres]]
 |-
 | <tt>strncpy(''string2'', ''string'', ''n'')</tt>
-|[[C (programming language)|C]]
+|[[C (programming language)|C standard library]]
 |-
 | <tt>''string''.substr(0,''n'')</tt>
 |[[C++]] (STL)
 |-
+| <tt>[''string'' substringToIndex:''n'']</tt>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <tt>(apply str (take ''n'' ''string''))</tt>
+|[[Clojure]]
+|-
 | <tt>''string''[0 .. ''n'']</tt>
 |[[D (programming language)|D]]
+|-
+| <tt>string:substr(''string'', ''start'', ''length'')</tt>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <tt>(subseq ''string'' 0 ''n'')</tt>
+|[[Common Lisp]]
+|-
+| <tt>''string''[:''n'']</tt>
+|[[Cobra (programming language) |Cobra]], [[Go (programming language)|Go]], [[Python (programming language)|Python]]
+|-
+| <tt>left(''string'',''n'' «,''padchar''»)</tt>
+|[[REXX]], [[Erlang (programming language)|Erlang]]
+|-
+| <tt>''string''[0, ''n''] <br /> ''string''[0..''n'' - 1]</tt>
+|[[Ruby (programming language)|Ruby]]
 |-
 | <tt>''string''[ .. ''n'']</tt>
 |[[Seed7]]
@@ -1367,6 +1391,9 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 | <tt>leftstr(''string'', ''n'')</tt>
 |[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi)
 |-
+|<tt>''copy'' (''string'',1,''n'')</tt>
+|[[Turbo Pascal]]
+|-
 | <tt>''string''.substring(0,''n'')</tt>
 |[[Java (programming language)|Java]], [[JavaScript]] 
 |-
@@ -1375,12 +1402,6 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |-
 | <tt>take ''n'' ''string''</tt>
 |[[Haskell (programming language)|Haskell]]
-|-
-| <tt>(apply str (take ''n'' ''string''))</tt>
-|[[Clojure]]
-|-
-| <tt>[''string'' substringToIndex:''n'']</tt>
-|[[Objective-C]] (<code>NSString *</code> only)
 |-
 | <tt>String.extract (''string'', ''n'', NONE)</tt>
 |[[Standard ML]]
@@ -1405,6 +1426,9 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |-
 |<tt>''string'' («FUNCTION» LENGTH(''string'') - ''n'':''n'')</tt>
 |[[COBOL]]
+|-
+|<tt>''string''.substring(0, ''n'')</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
 
 <source lang="rexx">
@@ -1495,7 +1519,7 @@ Left("sandroguidi", 100) '  returns "sandroguidi"
 |-
 | <tt>''string''.length</tt>
 | <tt></tt>
-|[[D (programming language)|D]], [[JavaScript]]
+|[[Cobra (programming language) |Cobra]], [[D (programming language)|D]], [[JavaScript]]
 |-
 | <tt>''string''.length()</tt>
 |Number of 16-bit [[UTF-16]]-encoded blocks
@@ -1696,6 +1720,9 @@ Len("")              '  returns 0
 |-
 | <tt>«FUNCTION» LOWER-CASE(''string'')</tt>
 |[[COBOL]]
+|-
+| <tt>''string''.toLower</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
 
 <source lang="csharp">
@@ -1803,7 +1830,7 @@ split /(X)/'Spam eggs spam spam and ham',2;      # ('Spam eggs spam spam and ham
 |[[Erlang (programming language)|Erlang]]
 |-
 | <tt>''string''.replace(''find'', ''replace'')</tt>
-|[[Python (programming language)|Python]], [[Java (programming language)|Java]] (1.5+)
+|[[Cobra (programming language) |Cobra]], [[Python (programming language)|Python]], [[Java (programming language)|Java]] (1.5+)
 |-
 | <tt>''string''.replaceAll(''find_regex'', ''replace'')</tt>
 |[[Java (programming language)|Java]]
@@ -1939,8 +1966,10 @@ Replace("blah", "z", "y")           '  returns "blah"
 |-
 |<tt>«FUNCTION» REVERSE(''string'')</tt>
 |[[COBOL]]
+|-
+|<tt>''string''.toCharArray.toList.reversed.join('')</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
-
 <source lang="perl">
 # Example in Perl
 reverse "hello"              # returns "olleh"
@@ -2042,6 +2071,10 @@ reverse "hello"              # returns "olleh"
 | <tt>Ada.Strings.Unbounded.Index(Source => ''string'', Pattern => ''substring'', <br /> Going => Ada.Strings.Backward)</tt>
 |[[Ada (programming language)|Ada]]
 |returns 0
+|-
+|<tt>''string''.lastIndexOf(''substring''«,''startpos''«, ''charcount''»»)</tt>
+|[[Cobra (programming language) |Cobra]]
+|returns -1
 |}
 
 <source lang="lisp">
@@ -2110,7 +2143,7 @@ InStrRev("word", "z")                    '  returns 0
 |[[Perl]], [[PHP]]
 |-
 | <tt>''string''[-''n'':]</tt>
-|[[Python (programming language)|Python]]
+|[[Cobra (programming language) |Cobra]], [[Python (programming language)|Python]]
 |-
 | <tt>(string-take-right ''string'' ''n'')</tt>
 |[[Scheme (programming language)|Scheme]] (SRFI 13)
@@ -2201,7 +2234,7 @@ str.substring(str.length()-4); // returns 'Door'
 | <string>.split(''separator''[, ''limit'']) splits a string on separator, optionally only up to a limited number of substrings
 |-
 ! Description
-| Splits the given string by occurrences of the separator (itself a string) and returns a list (or array) of the substrings. If ''limit'' is given, after ''limit'' - 1 separators have been read, the rest of the string is made into the last substring, regardless of whether it has any separators in it. The Scheme and Erlang implementations are similar but differ in several ways. JavaScript differs also in that it cuts, it does not put the rest of the string into the last element. [http://www.w3schools.com/jsref/jsref_split.asp See the example here]. Opposite of ''join''.
+| Splits the given string by occurrences of the separator (itself a string) and returns a list (or array) of the substrings. If ''limit'' is given, after ''limit'' - 1 separators have been read, the rest of the string is made into the last substring, regardless of whether it has any separators in it. The Scheme and Erlang implementations are similar but differ in several ways. JavaScript differs also in that it cuts, it does not put the rest of the string into the last element. [http://www.w3schools.com/jsref/jsref_split.asp See the example here]. The Cobra implementation will default to whitespace. Opposite of ''join''.
 |}
 {| class="wikitable sortable"
 |- style="text-align:left;"
@@ -2251,6 +2284,9 @@ str.substring(str.length()-4); // returns 'Door'
 |-
 | <tt>StringSplit[''string'', ''separator''«, ''limit''»]</tt>
 |[[Mathematica]]
+|-
+| <tt>''string''.split«(''sepchars''«, ''limit''«, ''options''»»)»</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
 
 <source lang="csharp">
@@ -2342,7 +2378,7 @@ split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 |[[REXX]]
 |-
 | <tt>''string''[''startpos'':''endpos'']</tt>
-|[[Python (programming language)|Python]], [[Go (programming language)|Go]]
+|[[Cobra (programming language) |Cobra]], [[Python (programming language)|Python]], [[Go (programming language)|Go]]
 |-
 | <tt>''string''[''startpos'', ''numChars''] <br /> ''string''[''startpos'' .. ''endpos''-1] <br /> ''string''[''startpos'' ... ''endpos'']</tt>
 |[[Ruby (programming language)|Ruby]]
@@ -2558,6 +2594,9 @@ substr("abc", 2, 6, "*")    /* returns "bc****" */
 |-
 | <tt>«FUNCTION» UPPER-CASE(''string'')</tt>
 |[[COBOL]]
+|-
+| <tt>''string''.toUpper</tt>
+|[[Cobra (programming language) |Cobra]]
 |}
 
 <source lang="csharp">
@@ -2621,6 +2660,9 @@ UCase("Wiki means fast?")          '  "WIKI MEANS FAST?"
 |-
 |<tt>string.strip()</tt>
 |[[Python (programming language)|Python]]
+|-
+| <tt>''string''.trim<br/>''string''.trimStart<br/>''string''.trimEnd</tt>
+|[[Cobra (programming language)|Cobra]]
 |}
 
 ==References==
@@ -2637,7 +2679,7 @@ UCase("Wiki means fast?")          '  "WIKI MEANS FAST?"
 *[http://msdn2.microsoft.com/en-us/library/system.string.aspx .NET String Methods and Properties]
 *[http://www.ruby-doc.org/core-1.8.7/classes/String.html Ruby String Class]
 *[http://www.php.net/manual/en/ref.strings.php PHP String functions]
-*<code>[http://docs.oracle.com/javase/7/docs/api/java/lang/String.html java.lang.String]</code> members
+*<code>[http://docs.oracle.com/javase/8/docs/api/java/lang/String.html java.lang.String]</code> members
 *[http://haskell.org/ghc/docs/latest/html/libraries/ Haskell Hierarchical Libraries]
 *[http://dlang.org/arrays.html Arrays in D (in D strings are regular arrays)]
 *[http://www.digitalmars.com/d/2.0/phobos/std_string.html std.string from Phobos (D standard library)]

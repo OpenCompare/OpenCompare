@@ -1,5 +1,5 @@
 <strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Lua error in Module:Message_box at line 315: attempt to index field 'talk' (a nil value).</span></strong>
-<table class="vertical-navbox nowraplinks" cellspacing="5" cellpadding="0" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
+<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
 * [[Comparison of programming languages|General comparison]]
 * [[Comparison of programming languages (syntax)|Basic syntax]]
 * [[Comparison of programming languages (basic instructions)|Basic instructions]]
@@ -60,6 +60,9 @@ The following list contains [[programming language syntax|syntax]] examples on h
 |-
 | [[Ch (computer programming)|Ch]]
 | <tt>max(shape(''name''))</tt> || <tt>0</tt> || <tt>max(shape(''name''))-1</tt>
+|-
+| [[Cobra (programming language)|Cobra]]
+| <tt>''name''.length</tt> || <tt>0</tt> || <tt>''name''.length-1</tt>
 |-
 | [[Common Lisp]]
 | <tt>(length ''name'')</tt> || <tt>0</tt> || <tt>(1- (length ''name''))</tt>
@@ -149,7 +152,7 @@ The following list contains Syntax examples on how a single element of an array 
 | [[ALGOL 68]], [[Pascal (programming language)|Pascal]], [[Object Pascal]], [[C Sharp (programming language)|C#]], [[S-Lang (programming library)|S-Lang]]
 |-
 | <tt>name'''['''index''']'''</tt>
-| [[ActionScript]], [[C (programming language)|C]], [[CFML]], [[Ch (computer programming)|Ch]], [[C++]], [[D (programming language)|D]], [[Go (programming language)|Go]], [[Haxe]], [[Java (programming language)|Java]],  [[JavaScript]], [[Julia (programming language)|Julia]], [[Lua (programming language)|Lua]], [[Objective-C]] (<code>NSArray *</code>), [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[Swift (Apple programming language)|Swift]]
+| [[ActionScript]], [[C (programming language)|C]], [[CFML]], [[Ch (computer programming)|Ch]], [[Cobra (programming language) |Cobra]], [[C++]], [[D (programming language)|D]], [[Go (programming language)|Go]], [[Haxe]], [[Java (programming language)|Java]],  [[JavaScript]], [[Julia (programming language)|Julia]], [[Lua (programming language)|Lua]], [[Objective-C]] (<code>NSArray *</code>), [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[Swift (Apple programming language)|Swift]]
 |-
 | <tt>'''$'''name'''['''index''']'''</tt>
 | [[Perl]], [[PHP]], [[Windows PowerShell]]
@@ -189,6 +192,9 @@ The following list contains Syntax examples on how a single element of an array 
 |-
 | <tt>index'''{'''name</tt>
 | [[J (programming language)|J]]
+|-
+| <tt>name.item(index) or name @ index</tt>
+| [[Eiffel (programming language)|Eiffel]]
 |}
 
 ===Slicing===
@@ -268,6 +274,9 @@ In the following table:
 |-
 | <tt>name'''['''first'''..'''end''']''' </tt>
 | [[Rust (programming language)|Rust]]
+|-
+| <tt>name'''['''first''':'''end''']''' </tt>
+| [[Cobra (programming language)|Cobra]]
 |}
 
 ==Array system cross-reference list==
@@ -372,6 +381,15 @@ In the following table:
 | style="background:honeydew;"  | array of array
 | style="background:seashell;"  | no
 | style="background:grey80;"    | some intrinsics
+|-
+| [[Cobra (programming language) |Cobra]]
+| style="background:cornsilk;"  | 0
+| style="background:cornsilk;"  | no
+| style="background:cornsilk;"  | no
+| style="background:azure;"     | checked
+| style="background:azure;"     | array of array
+| style="background:azure;"     | heap
+| style="background:grey80;"    | ?
 |-
 | [[Common Lisp]]
 | style="background:cornsilk;"  | 0
