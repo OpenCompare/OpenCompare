@@ -1,7 +1,7 @@
 @(title: String)(content: Html)
 
 <!DOCTYPE html>
-<html>
+<html ng-app="pcmApp">
 <head>
     <title>@title</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
@@ -38,5 +38,7 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-list-controller.js")'></script>
 </body>
 </html>
