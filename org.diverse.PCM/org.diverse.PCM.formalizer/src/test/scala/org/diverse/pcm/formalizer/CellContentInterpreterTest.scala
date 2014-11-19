@@ -4,8 +4,8 @@ import java.io.{File, FileWriter}
 
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
-import org.diverse.pcm.io.wikipedia.parser.WikipediaPCMParser
-import org.diverse.pcm.io.wikipedia.pcm.WikipediaPageMiner
+import org.diverse.pcm.io.wikipedia.WikipediaPageMiner
+import org.diverse.pcm.io.wikipedia.export.PCMModelExporter
 import org.scalatest.{Matchers, FlatSpec}
 
 import scala.io.Source
@@ -20,10 +20,11 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_AMD_processors.txt"
 
     // Parse
-    val wikipediaParser = new WikipediaPCMParser
-    val page = wikipediaParser.parse(Source.fromFile(path).getLines().mkString("\n"))
-    val wikipediaMiner = new WikipediaPageMiner
-    val pcm = wikipediaMiner.toPCM(page)
+    val miner = new WikipediaPageMiner
+    val page = miner.parse(Source.fromFile(path).getLines().mkString("\n"))
+
+    val exporter = new PCMModelExporter
+    val pcm = exporter.export(page)
 
     // Interpret cells
     val interpreter = new CellContentInterpreter
