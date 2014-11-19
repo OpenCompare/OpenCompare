@@ -4,8 +4,8 @@ import java.io.{File, FileWriter, PrintWriter, StringWriter}
 import java.util.concurrent.Executors
 
 import org.diverse.pcm.api.java.export.PCMtoHTML
-import org.diverse.pcm.io.wikipedia.parser.WikipediaPCMParser
-import org.diverse.pcm.io.wikipedia.pcm.{Page, WikipediaPageMiner}
+import org.diverse.pcm.io.wikipedia.export.PCMModelExporter
+import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -16,6 +16,7 @@ import scala.xml.PrettyPrinter
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
+  val miner = new WikipediaPageMiner
 
   override def beforeAll() {
 
@@ -30,18 +31,19 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
-    val parser = new WikipediaPCMParser
-    parser.preprocessAndParse(code)
+    val preprocessedCode = miner.preprocess(code)
+    miner.parse(preprocessedCode)
   }
   
   def parseFromTitle(title : String) : Page = {
-    (new WikipediaPCMParser).parseOnlineArticle(title)
+    val code = miner.getPageCodeFromWikipedia(title)
+    val preprocessedCode = miner.preprocess(code)
+    miner.parse(preprocessedCode)
   }
   
   def parseFromOfflineCode(title : String) : Page = {
-    val parser = new WikipediaPCMParser
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    parser.parse(code)
+    miner.parse(code)
   }
   
   def testArticle(title : String) : Page = {
@@ -83,8 +85,8 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   def writeToPCM(title : String, page : Page) {
     val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
-    val miner = new WikipediaPageMiner
-    val pcm = miner.toPCM(page)
+    val exporter = new PCMModelExporter
+    val pcm = exporter.export(page)
     val serializer = new PCMtoHTML
     writer.write(serializer.toHTML(pcm))
     writer.close()
@@ -96,7 +98,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     pcm.getMatrices.size should be (1)
    }
 
-  it should "preprocess every available Wikipedia PCM" in {
+  ignore should "preprocess every available Wikipedia PCM" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -112,8 +114,8 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
           try {
 
             // Preprocess Wikipedia page
-            val parser = new WikipediaPCMParser
-            val preprocessedCode = parser.preprocessOnlineArticle(article)
+            val code = miner.getPageCodeFromWikipedia(article)
+            val preprocessedCode = miner.preprocess(code)
 
             // Save preprocessed page
             val writer = new FileWriter("input/" + article.replaceAll(" ", "_") + ".txt")
@@ -139,7 +141,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
   }
 
-  it should "parse every available PCM in Wikipedia" in {
+  ignore should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close

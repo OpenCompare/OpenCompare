@@ -1,17 +1,24 @@
-package org.diverse.pcm.io.wikipedia.pcm
+package org.diverse.pcm.io.wikipedia.export
 
-import org.diverse.pcm.api.java.{FeatureGroup, AbstractFeature, Feature, PCM}
+import org.diverse.pcm.api.java.{Feature, FeatureGroup, AbstractFeature, PCM}
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
-import scala.collection.JavaConversions._
+import org.diverse.pcm.io.wikipedia.WikipediaPageMiner
+import org.diverse.pcm.io.wikipedia.pcm.{Cell, Matrix, Page}
 
 /**
- * Created by gbecan on 13/10/14.
+ * Created by gbecan on 19/11/14.
  */
-class WikipediaPageMiner {
+class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
+  private val miner = new WikipediaPageMiner
 
-  def toPCM(page : Page) : PCM = {
+  def export(page : Page) : PCM = {
+    toPCM(page)
+  }
+
+
+  private def toPCM(page : Page) : PCM = {
     val pcm = factory.createPCM()
 
     for (matrix <- page.getMatrices) {
@@ -20,7 +27,7 @@ class WikipediaPageMiner {
       val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max
 
       // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
-      val normalizedMatrix = normalize(matrix)
+      val normalizedMatrix = miner.normalize(matrix)
 
       // Extract features
       val features = extractFeatures(normalizedMatrix, pcm, nbFeatureRows)
@@ -38,40 +45,6 @@ class WikipediaPageMiner {
 
   def nFirstColumns(matrix : Matrix, n : Int) : List[Cell] = {
     matrix.cells.filter(_._1._2 < n).map(_._2).toList
-  }
-
-  /**
-   * Normalize a matrix
-   * @param matrix
-   * @return
-   */
-  def normalize(matrix : Matrix) : Matrix = {
-    // Duplicate cells with rowspan or colspan
-    val normalizedMatrix = new Matrix
-
-    for (cell <- matrix.cells.map(_._2)) {
-        for (
-          rowShift <- 0 until cell.rowspan;
-          columnShift <- 0 until cell.colspan
-        ) {
-
-          val row = cell.row + rowShift
-          val column = cell.column + columnShift
-
-          val duplicate = new Cell(cell.content, cell.isHeader, row, 1, column, 1)
-          normalizedMatrix.setCell(duplicate, row, column)
-      }
-    }
-
-    // Detect holes in the matrix and add a cell if necessary
-    for (row <- 0 until normalizedMatrix.getNumberOfRows(); column <- 0 until normalizedMatrix.getNumberOfColumns()) {
-      if (!normalizedMatrix.getCell(row, column).isDefined) {
-        val emptyCell = new Cell("", false, row, 1, column, 1)
-        normalizedMatrix.setCell(emptyCell, row, column)
-      }
-    }
-
-    normalizedMatrix
   }
 
   /**
@@ -159,6 +132,7 @@ class WikipediaPageMiner {
         val feature = features(featureName).asInstanceOf[Feature]
         cell.setFeature(feature)
       }
-     }
+    }
   }
+
 }
