@@ -3,8 +3,9 @@ package org.diverse.pcm.io.wikipedia
 import java.io.{File, FileWriter, PrintWriter, StringWriter}
 import java.util.concurrent.Executors
 
+import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.export.PCMtoHTML
-import org.diverse.pcm.io.wikipedia.export.PCMModelExporter
+import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -25,6 +26,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     new File("output/html/").mkdirs()
     new File("output/dump/").mkdirs()
     new File("output/model/").mkdirs()
+    new File("output/wikitext/").mkdirs()
   }
 
   def parsePCMFromFile(file : String) : Page= {
@@ -52,6 +54,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     dumpCellsInFile(title, pcm)
     writeToCSV(title, pcm)
     writeToPCM(title, pcm)
+    writeToWikiText(title, pcm)
     pcm
   }
   
@@ -89,6 +92,18 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val pcm = exporter.export(page)
     val serializer = new PCMtoHTML
     writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
+  def writeToWikiText(title : String, page : Page) {
+    val exporter = new PCMModelExporter
+    val pcm = exporter.export(page)
+
+    val serializer = new WikiTextExporter
+    val wikitext = serializer.toWikiText(pcm)
+
+    val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") + ".txt")
+    writer.write(wikitext)
     writer.close()
   }
   
@@ -141,7 +156,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
   }
 
-  ignore should "parse every available PCM in Wikipedia" in {
+  it should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
