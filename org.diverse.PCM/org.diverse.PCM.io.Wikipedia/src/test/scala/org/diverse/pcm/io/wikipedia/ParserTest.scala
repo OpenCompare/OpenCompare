@@ -5,6 +5,7 @@ import java.util.concurrent.Executors
 
 import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.export.PCMtoHTML
+import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
@@ -90,8 +91,10 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
     val exporter = new PCMModelExporter
     val pcm = exporter.export(page)
-    val serializer = new PCMtoHTML
-    writer.write(serializer.toHTML(pcm))
+//    val serializer = new PCMtoHTML
+//    writer.write(serializer.toHTML(pcm))
+    val serializer = new PCMtoJsonImpl
+    writer.write(serializer.toJson(pcm))
     writer.close()
   }
 

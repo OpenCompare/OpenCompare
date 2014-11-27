@@ -22,20 +22,23 @@ class WikiTextExporter {
     builder ++= "|\n" // empty top left cell
 
     for (feature <- pcm.getFeatures.sortBy(_.getName)) {
-      builder ++= "! " // new cell (we can use || also to separate cells horizontally)
+      builder ++= "! " // new header
       builder ++= feature.getName
       builder ++= "\n"
     }
 
     // Lines (products)
     for (product <- pcm.getProducts.sortBy(_.getName)) {
-      builder ++= "|-\n" // new cell
+
+      // Product name header
+      builder ++= "|-\n"
       builder ++= "! "
       builder ++= product.getName
       builder ++= "\n"
 
+      // Cells
       for (cell <- product.getCells.sortBy(_.getFeature.getName)) {
-        builder ++= "| "
+        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
         builder ++= cell.getContent
         builder ++= "\n"
       }
@@ -47,8 +50,3 @@ class WikiTextExporter {
   }
 
 }
-
-
-
-//"! scope=\"col\"" // column header (may be unnecessary with class="wikitable")
-//"! scope=\"row\"" // row header
