@@ -9,6 +9,7 @@ import org.diverse.pcm.io.wikipedia.pcm.Matrix;
 import org.diverse.pcm.io.wikipedia.pcm.Page;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import static scala.collection.JavaConversions.*;
 
 import java.util.List;
 
@@ -39,8 +40,8 @@ public class WikipediaMinerTest {
 
         // PCM model export
         PCMModelExporter pcmExporter = new PCMModelExporter();
-        PCM pcm = pcmExporter.export(page);
-        assertNotNull(pcm);
+        List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
+        assertNotNull(pcms);
 
     }
 

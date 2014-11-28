@@ -13,15 +13,15 @@ class PCMModelExporter {
   private val factory = new PCMFactoryImpl
   private val miner = new WikipediaPageMiner
 
-  def export(page : Page) : PCM = {
+  def export(page : Page) : List[PCM] = {
     toPCM(page)
   }
 
 
-  private def toPCM(page : Page) : PCM = {
-    val pcm = factory.createPCM()
+  private def toPCM(page : Page) : List[PCM] = {
 
-    for (matrix <- page.getMatrices) {
+    for (matrix <- page.getMatrices) yield {
+      val pcm = factory.createPCM()
       // Get number of rows (resp. columns) for features (resp. products)
       val nbFeatureRows = nFirstLine(matrix, 1).map(_.rowspan).max
       val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max
@@ -34,9 +34,10 @@ class PCMModelExporter {
 
       // Extract products and cells
       extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
+
+      pcm
     }
 
-    pcm
   }
 
   def nFirstLine(matrix : Matrix, n : Int) : List[Cell] = {

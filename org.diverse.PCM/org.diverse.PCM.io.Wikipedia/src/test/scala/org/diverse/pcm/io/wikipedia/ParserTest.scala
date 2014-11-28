@@ -88,26 +88,32 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
 
   def writeToPCM(title : String, page : Page) {
-    val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
     val exporter = new PCMModelExporter
-    val pcm = exporter.export(page)
+    val pcms = exporter.export(page)
 //    val serializer = new PCMtoHTML
 //    writer.write(serializer.toHTML(pcm))
     val serializer = new PCMtoJsonImpl
-    writer.write(serializer.toJson(pcm))
-    writer.close()
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm")
+      writer.write(serializer.toJson(pcm))
+      writer.close()
+    }
+
   }
 
   def writeToWikiText(title : String, page : Page) {
     val exporter = new PCMModelExporter
-    val pcm = exporter.export(page)
+    val pcms = exporter.export(page)
 
     val serializer = new WikiTextExporter
-    val wikitext = serializer.toWikiText(pcm)
 
-    val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") + ".txt")
-    writer.write(wikitext)
-    writer.close()
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val wikitext = serializer.toWikiText(pcm)
+      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
+      writer.write(wikitext)
+      writer.close()
+    }
+
   }
   
   "The PCM parser" should "parse the example of tables from Wikipedia" in {
