@@ -5,6 +5,7 @@ import org.diverse.pcm.io.wikipedia.WikipediaPageMiner;
 import org.diverse.pcm.io.wikipedia.export.CSVExporter;
 import org.diverse.pcm.io.wikipedia.export.HTMLExporter;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter;
+import org.diverse.pcm.io.wikipedia.export.WikiTextExporter;
 import org.diverse.pcm.io.wikipedia.pcm.Matrix;
 import org.diverse.pcm.io.wikipedia.pcm.Page;
 import static org.junit.Assert.*;
@@ -41,7 +42,14 @@ public class WikipediaMinerTest {
         // PCM model export
         PCMModelExporter pcmExporter = new PCMModelExporter();
         List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
-        assertNotNull(pcms);
+        assertFalse(pcms.isEmpty());
+
+        // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
+        WikiTextExporter wikitextExporter = new WikiTextExporter();
+        for (PCM pcm : pcms) {
+            String wikitext = wikitextExporter.toWikiText(pcm);
+            assertNotNull(wikitext);
+        }
 
     }
 
