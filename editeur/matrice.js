@@ -210,11 +210,17 @@ function fromPCM (pcm) {
 	console.log(header);
 	console.log(data);
 	
+	var columnType = [];
+	for (var i = 0 ; i < header.length ; i++) {
+		columnType[i] = {};
+	}
+	
 	var matrice = {
 		data : data,
 		colHeaders : header,
 		//manualRowMove : true,
-		manualColumnMove : true
+		manualColumnMove : true,
+		columns : columnType
 	};
 	
 	$("#table").handsontable(matrice);
