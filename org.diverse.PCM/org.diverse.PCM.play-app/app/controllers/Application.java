@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 public class Application extends Controller {
     
     public static Result index() {
-        return ok(views.html.index.render("OpenCompare...what else?"));
+        return ok(views.html.index.render());
     }
 
     public static Result list() {

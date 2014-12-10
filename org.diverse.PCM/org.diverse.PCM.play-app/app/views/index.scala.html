@@ -1,18 +1,33 @@
-@(message: String)
-
 @main("OpenCompare") {
 
 <div class="jumbotron text-center">
-    <h1>@message</h1>
+    <h1>Open Compare</h1>
+
+    <p>
+        Product comparison matrices<br/>
+        Open data<br/>
+        Collaborative edition<br/>
+    </p>
+
+    <h2>Coming soon</h2>
+
+    <a type="button" class="btn btn-default" href="https://github.com/gbecan/PCM">
+        <img src="assets/images/github.png"> Find out more on Github
+    </a>
 </div>
 
+<!--
 <div ng-controller="PCMListController">
 
-    <ul>
-        <li ng-repeat="pcm in pcmList">
-            <a href='@routes.Assets.at("repository/{{pcm}}")'>{{pcm}}</a>
-        </li>
-    </ul>
+
+<ul>
+<li ng-repeat="pcm in pcmList">
+<a href='@routes.Assets.at("repository/{{pcm}}")'>{{pcm}}</a>
+</li>
+</ul>
+
 </div>
+-->
+
 
 }
