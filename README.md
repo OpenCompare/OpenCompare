@@ -14,8 +14,8 @@ comparison page, and transform it into a .pcm file (can be an .html and
 Development tools
 =================
 
-Play Framework
---------------
+[Play](https://www.playframework.com/) Framework
+------------------------------------------------
 
 Play is a framework for developing web application with Java and Scala.
 Built on Akka, which is a toolkit and runtime for building highly
