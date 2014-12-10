@@ -4,7 +4,10 @@
 
 var pcmApp = angular.module("pcmApp", []);
 
-pcmApp.controller("PCMListController", function($scope) {
+pcmApp.controller("PCMListController", function($scope, $http) {
     $scope.pcmList = ["1" , "2" , "3"]
-    $.ajax
+
+    $http.get("list").success(function(data) {
+        $scope.pcmList = data
+    });
 });

@@ -1,10 +1,12 @@
 package controllers;
 
-import play.api.libs.json.Json;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.util.ArrayList;
+import java.net.UnknownHostException;
 
 public class Application extends Controller {
     
@@ -13,7 +15,22 @@ public class Application extends Controller {
     }
 
     public static Result list() {
-        return ok(Json.toJson(new ArrayList<String>()));
+
+
+        try {
+            MongoClient mongoClient = new MongoClient("localhost", 27017);
+
+            DB db = mongoClient.getDB("opencompare");
+            DBCollection pcms = db.getCollection("pcms");
+
+            System.out.println(pcms.count());
+
+            mongoClient.close();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        return ok("[4, 5, 6]");
     }
     
 }
