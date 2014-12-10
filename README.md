@@ -74,10 +74,8 @@ is a summary of each :
   * **org.diverse.PCM.ressources** : some examples of successfuls exports in PCM, CSV or HTML.
   * **org.diverse.PCM.play-app** : will contains the web editor.
 
-Getting started
-===============
-
-### Git (Versionning management)
+Quick start
+===========
 
     $ git clone https://github.com/StephaneMangin/PCM.git
     $ cd PCM/
