@@ -61,15 +61,15 @@ Projects
 The project is divided in many packages as individual projects too. This
 is a summary of each :
 
-  *  **org.diverse.PCM.api.java** : containsJava interfaces.
+  *  **org.diverse.PCM.api.java** : Java interfaces.
 
-  *  **org.diverse.PCM.api.js** : contains Javascript interfaces.
+  *  **org.diverse.PCM.api.js** : Javascript interfaces.
 
-  *  **org.diverse.PCM.api.java.impl** : contains Java implementations.
+  *  **org.diverse.PCM.api.java.impl** : Java implementations.
 
-  *  **org.diverse.PCM.api.js.impl** : contains Javascript implementations.
+  *  **org.diverse.PCM.api.js.impl** : Javascript implementations.
 
-  *  **org.diverse.PCM.formalizer** : contains the code who formalizes the differents
+  *  **org.diverse.PCM.formalizer** : the code who formalizes the differents
     types of files.
 
   *  **org.diverse.PCM.model** : contains the data model, takes care of the code source
@@ -78,19 +78,19 @@ is a summary of each :
   *  **org.diverse.PCM.naive Frontend** : a naive website to show how to manipulate model
     in a browser
 
-  *  **org.diverse.PCM.browser.io.ShoppingWebSite** : contains an example of the project
+  *  **org.diverse.PCM.browser.io.ShoppingWebSite** : an example of the project
     uses. Parses shopping.com and creates PCMs associated.
 
-  *  **org.diverse.PCM.io.Wikipedia** : contains the parsing code, which create PCMs from
+  *  **org.diverse.PCM.io.Wikipedia** : the parsing code, which create PCMs from
     Wikipedia pages.
 
   * **org.diverse.PCM.input** : some matrix comparison code from Wikipedia in text
     files.
 
-  * **org.diverse.PCM.ressources** : contains some examples of successfuls exports in
+  * **org.diverse.PCM.ressources** : some examples of successfuls exports in
     PCM, CSV or HTML.
 
-  * **org.diverse.PCM.play-app** : contain the web editor.
+  * **org.diverse.PCM.play-app** : will contains the web editor.
 
 Getting started
 ===============
