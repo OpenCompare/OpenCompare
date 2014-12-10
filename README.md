@@ -14,8 +14,8 @@ comparison page, and transform it into a .pcm file (can be an .html and
 Development tools
 =================
 
-Play Framework
---------------
+[Play](https://www.playframework.com/) Framework
+------------------------------------------------
 
 Play is a framework for developing web application with Java and Scala.
 Built on Akka, which is a toolkit and runtime for building highly
@@ -62,40 +62,20 @@ The project is divided in many packages as individual projects too. This
 is a summary of each :
 
   *  **org.diverse.PCM.api.java** : Java interfaces.
-
   *  **org.diverse.PCM.api.js** : Javascript interfaces.
-
   *  **org.diverse.PCM.api.java.impl** : Java implementations.
-
   *  **org.diverse.PCM.api.js.impl** : Javascript implementations.
-
-  *  **org.diverse.PCM.formalizer** : the code who formalizes the differents
-    types of files.
-
-  *  **org.diverse.PCM.model** : contains the data model, takes care of the code source
-    generation.
-
-  *  **org.diverse.PCM.naive Frontend** : a naive website to show how to manipulate model
-    in a browser
-
-  *  **org.diverse.PCM.browser.io.ShoppingWebSite** : an example of the project
-    uses. Parses shopping.com and creates PCMs associated.
-
-  *  **org.diverse.PCM.io.Wikipedia** : the parsing code, which create PCMs from
-    Wikipedia pages.
-
-  * **org.diverse.PCM.input** : some matrix comparison code from Wikipedia in text
-    files.
-
-  * **org.diverse.PCM.ressources** : some examples of successfuls exports in
-    PCM, CSV or HTML.
-
+  *  **org.diverse.PCM.formalizer** : the code who formalizes the differents types of files.
+  *  **org.diverse.PCM.model** : contains the data model, takes care of the code source generation.
+  *  **org.diverse.PCM.naive Frontend** : a naive website to show how to manipulate model in a browser
+  *  **org.diverse.PCM.browser.io.ShoppingWebSite** : an example of the project uses. Parses shopping.com and creates PCMs associated.
+  *  **org.diverse.PCM.io.Wikipedia** : the parsing code, which create PCMs from Wikipedia pages.
+  * **org.diverse.PCM.input** : some matrix comparison code from Wikipedia in text files.
+  * **org.diverse.PCM.ressources** : some examples of successfuls exports in PCM, CSV or HTML.
   * **org.diverse.PCM.play-app** : will contains the web editor.
 
-Getting started
-===============
-
-### Git (Versionning management)
+Quick start
+===========
 
     $ git clone https://github.com/StephaneMangin/PCM.git
     $ cd PCM/
@@ -143,11 +123,9 @@ template (display that is visible. e.g. replacing
 <span><span>FR</span></span>) [*PARSE*]=\> intermediate structure
 [*normalization*]=\> HTML | CSV | PCM model=\> WikipediaPageMiner
 
-1.  <span>[*EDIT*] = Templating</span>
-
-2.  <span>[*PREPROCESS*] = `PreprocessVisitor`</span>
-
-3.  <span>[*PARSE*] = `WikipediaPcmParser` , `PageVisitor` ,
+  *  <span>[*EDIT*] = Templating</span>
+  *  <span>[*PREPROCESS*] = `PreprocessVisitor`</span>
+  *  <span>[*PARSE*] = `WikipediaPcmParser` , `PageVisitor` ,
     `TableVisitor` , `NodeToTextVisitor`</span>
 
 ![image](images/simplified_data_model.png)
