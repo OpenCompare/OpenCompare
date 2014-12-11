@@ -1,0 +1,13 @@
+@(request : String, results : List[String])
+
+@main {
+
+        <div class="jumbotron">
+        <p>Searching @request</p>
+        <ul>
+            @results.map{ result =>
+                <li>@result</li>
+            }
+        </ul>
+        </div>
+}

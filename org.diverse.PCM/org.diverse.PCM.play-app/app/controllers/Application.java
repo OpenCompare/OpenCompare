@@ -3,10 +3,12 @@ package controllers;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
+import model.Database;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.net.UnknownHostException;
+import java.util.List;
 
 public class Application extends Controller {
     
@@ -31,6 +33,14 @@ public class Application extends Controller {
         }
 
         return ok("[4, 5, 6]");
+    }
+
+    public static Result search(String request) {
+
+        // TODO : find PCMs named "request" or with a product named "request"
+        List<String> results = Database.INSTANCE.search(request);
+
+        return ok(views.html.search.render(request, results));
     }
     
 }
