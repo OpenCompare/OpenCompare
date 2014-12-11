@@ -46,5 +46,19 @@ public class Database {
     }
 
 
+    public List<String> list() {
+        DBCollection pcms = db.getCollection("pcms");
+
+        DBCursor cursor = pcms.find();
+        List<String> results = new ArrayList<String>();
+        for (DBObject result : cursor) {
+            String json = JSON.serialize(result);
+            results.add(json);
+        }
+
+        return results;
+    }
+
+
 
 }

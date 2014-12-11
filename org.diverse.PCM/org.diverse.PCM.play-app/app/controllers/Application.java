@@ -1,5 +1,8 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
@@ -17,22 +20,15 @@ public class Application extends Controller {
     }
 
     public static Result list() {
+        List<String> pcms = Database.INSTANCE.list();
 
 
-        try {
-            MongoClient mongoClient = new MongoClient("localhost", 27017);
-
-            DB db = mongoClient.getDB("opencompare");
-            DBCollection pcms = db.getCollection("pcms");
-
-            System.out.println(pcms.count());
-
-            mongoClient.close();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
+        ArrayNode result = new ArrayNode(JsonNodeFactory.instance);
+        for (String pcm : pcms) {
+            result.add(pcm);
         }
 
-        return ok("[4, 5, 6]");
+        return ok(result);
     }
 
     public static Result search(String request) {
