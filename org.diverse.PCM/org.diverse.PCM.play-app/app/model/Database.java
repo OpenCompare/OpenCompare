@@ -2,6 +2,11 @@ package model;
 
 import com.mongodb.*;
 import com.mongodb.util.JSON;
+import org.diverse.pcm.api.java.PCM;
+import org.diverse.pcm.api.java.export.PCMtoJson;
+import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
+import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
+import org.diverse.pcm.api.java.io.JSONLoader;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -38,6 +43,8 @@ public class Database {
 
         List<String> results = new ArrayList<String>();
         for (DBObject result : cursor) {
+
+            result.removeField("_id"); // FIXME : save ID
             String json = JSON.serialize(result);
             results.add(json);
         }
@@ -51,14 +58,24 @@ public class Database {
 
         DBCursor cursor = pcms.find();
         List<String> results = new ArrayList<String>();
+
+        JSONLoader loader = new JSONLoaderImpl();
         for (DBObject result : cursor) {
+            result.removeField("_id"); // FIXME : save ID
             String json = JSON.serialize(result);
-            results.add(json);
+            PCM pcm = loader.load(json);
+            results.add(pcm.getName());
         }
 
         return results;
     }
 
+    public void save(PCM pcm) {
+        DBCollection pcms = db.getCollection("pcms");
+        PCMtoJson serializer = new PCMtoJsonImpl();
+        String json = serializer.toJson(pcm);
+        pcms.insert((DBObject) JSON.parse(json));
 
+    }
 
 }

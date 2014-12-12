@@ -3,11 +3,14 @@ package org.diverse.pcm.api.java;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
+import org.diverse.pcm.api.java.io.JSONLoader;
 import org.diverse.pcm.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -108,4 +111,5 @@ public abstract class PCMTest {
 
 
     }
+
 }

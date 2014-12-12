@@ -22,6 +22,9 @@ class PCMModelExporter {
 
     for (matrix <- page.getMatrices) yield {
       val pcm = factory.createPCM()
+
+      pcm.setName(matrix.name)
+
       // Get number of rows (resp. columns) for features (resp. products)
       val nbFeatureRows = nFirstLine(matrix, 1).map(_.rowspan).max
       val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max

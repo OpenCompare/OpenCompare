@@ -1,4 +1,4 @@
-@(request : String, results : List[String])
+@(request : String, results : List[org.diverse.pcm.api.java.PCM])
 
 @main {
 
@@ -6,7 +6,7 @@
         <p>Searching @request</p>
         <ul>
             @results.map{ result =>
-                <li>@result</li>
+                <li>@result.getName()</li>
             }
         </ul>
         </div>
