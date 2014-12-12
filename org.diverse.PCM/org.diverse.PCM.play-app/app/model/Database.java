@@ -2,8 +2,10 @@ package model;
 
 import com.mongodb.*;
 import com.mongodb.util.JSON;
+import org.bson.types.ObjectId;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.export.PCMtoJson;
+import org.diverse.pcm.api.java.impl.PCMFactoryImpl;
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
 import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
 import org.diverse.pcm.api.java.io.JSONLoader;
@@ -20,6 +22,7 @@ import java.util.UUID;
 public class Database {
 
     public static Database INSTANCE = new Database();
+    private JSONLoader loader = new JSONLoaderImpl();
 
     private DB db;
 
@@ -36,17 +39,14 @@ public class Database {
     }
 
 
-    public List<String> search(String request) {
+    public List<PCMVariable> search(String request) {
         DBCollection pcms = db.getCollection("pcms");
         DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
         DBCursor cursor = pcms.find(query);
 
-        List<String> results = new ArrayList<String>();
+        List<PCMVariable> results = new ArrayList<PCMVariable>();
         for (DBObject result : cursor) {
-
-            result.removeField("_id"); // FIXME : save ID
-            String json = JSON.serialize(result);
-            results.add(json);
+            results.add(createPCMVariable(result));
         }
 
         return results;
@@ -59,11 +59,8 @@ public class Database {
         DBCursor cursor = pcms.find();
         List<String> results = new ArrayList<String>();
 
-        JSONLoader loader = new JSONLoaderImpl();
         for (DBObject result : cursor) {
-            result.removeField("_id"); // FIXME : save ID
-            String json = JSON.serialize(result);
-            PCM pcm = loader.load(json);
+            PCM pcm = createPCMVariable(result).getPcm();
             results.add(pcm.getName());
         }
 
@@ -78,4 +75,23 @@ public class Database {
 
     }
 
+
+    public PCMVariable get(String id) {
+        DBCollection pcms = db.getCollection("pcms");
+        DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
+        DBObject result = pcms.findOne(searchById);
+
+        PCMVariable var = createPCMVariable(result);
+
+        return var;
+    }
+
+
+    private PCMVariable createPCMVariable(DBObject object) {
+        String id = object.removeField("_id").toString();
+        String json = JSON.serialize(object);
+        PCM pcm = loader.load(json);
+        PCMVariable var = new PCMVariable(id, pcm);
+        return var;
+    }
 }

@@ -1,4 +1,4 @@
-@(content: Html)
+@(title : String, header : Html = Html(""), footer : Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
 <html ng-app="pcmApp">
@@ -6,12 +6,16 @@
     <title>OpenCompare</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-    <link rel='stylesheet' href='assets/stylesheets/main.css'>
+    <link rel='stylesheet' href='/assets/stylesheets/main.css'>
+
     <style>
     body {
         margin-top: 50px;
     }
     </style>
+
+    @header
+
 </head>
 <body>
 
@@ -40,6 +44,8 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-list-controller.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/search-controller.js")'></script>
+    <script type="text/javascript" src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.dataTables.js"))'></script>
+
+    @footer
 </body>
 </html>

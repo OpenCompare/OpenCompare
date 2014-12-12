@@ -1,0 +1,23 @@
+@(id : String)
+
+@header = {
+<link rel="stylesheet" type="text/css" href='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.dataTables.css"))'> <!-- DataTables CSS -->
+}
+
+@footer = {
+    <script>
+        var id = "@{Html(id)}";
+    </script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-viewer-controller.js")'></script>
+}
+
+@main("", header, footer) {
+
+    <div ng-controller="PCMViewerController">
+        <h1 id="pcm-name">{{name}} :  {{id}}</h1>
+        <p>{{pcm}}</p>
+
+        <table id="viewer" class="display"></table>
+
+    </div>
+}

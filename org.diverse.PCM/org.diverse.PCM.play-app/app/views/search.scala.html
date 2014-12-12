@@ -1,12 +1,15 @@
-@(request : String, results : List[org.diverse.pcm.api.java.PCM])
+@(request : String, results : List[model.PCMVariable])
 
-@main {
+@header = {}
+@footer = {<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/search-controller.js")'></script>}
+
+@main("", header, footer) {
 
         <div class="jumbotron">
         <p>Searching @request</p>
         <ul>
             @results.map{ result =>
-                <li>@result.getName()</li>
+                <li><a href="view/@result.getId()">@result.getPcm().getName()</a></li>
             }
         </ul>
         </div>
