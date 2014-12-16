@@ -15,9 +15,24 @@
 @main("", header, footer) {
 
     <div ng-controller="PCMViewerController">
-        <h1 id="pcm-name">{{name}}</h1>
+        <h1 id="pcm-name">{{table.name}}</h1>
 
-        <table id="viewer"></table>
+        <div class="table-responsive">
+        <table id="viewer" class="table table-bordered table-condensed">
+
+            <tr>
+                <td></td>
+                <td ng-repeat="f in table.features">{{f.name}}</td>
+
+            </tr>
+
+            <tr ng-repeat="p in table.products">
+                <td>{{p.name}}</td>
+                <td ng-repeat="c in p.cells track by $index">{{c}}</td>
+            </tr>
+
+        </table>
+        </div>
 
         <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
     </div>

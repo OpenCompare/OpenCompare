@@ -23,6 +23,7 @@ public class Database {
 
     public static Database INSTANCE = new Database();
     private JSONLoader loader = new JSONLoaderImpl();
+    private PCMtoJson serializer = new PCMtoJsonImpl();
 
     private DB db;
 
@@ -69,7 +70,6 @@ public class Database {
 
     public void save(PCM pcm) {
         DBCollection pcms = db.getCollection("pcms");
-        PCMtoJson serializer = new PCMtoJsonImpl();
         String json = serializer.toJson(pcm);
         pcms.insert((DBObject) JSON.parse(json));
 
@@ -86,6 +86,10 @@ public class Database {
         return var;
     }
 
+    public void update(String id, String json) {
+        DBCollection pcms = db.getCollection("pcms");
+        pcms.update(new BasicDBObject("_id", new ObjectId(id)), (DBObject) JSON.parse(json));
+    }
 
     private PCMVariable createPCMVariable(DBObject object) {
         String id = object.removeField("_id").toString();

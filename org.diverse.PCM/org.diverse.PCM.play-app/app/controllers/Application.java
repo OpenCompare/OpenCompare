@@ -55,7 +55,8 @@ public class Application extends Controller {
 
     public static Result save(String id) {
         System.out.println("id = " + id);
-        System.out.println(request().body().asJson());
+        String json = request().body().asJson().toString();
+        Database.INSTANCE.update(id, json);
         return ok();
     }
 }
