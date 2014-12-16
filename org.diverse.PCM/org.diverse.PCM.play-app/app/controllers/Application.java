@@ -52,4 +52,10 @@ public class Application extends Controller {
         String json = serializer.toJson(pcm);
         return ok(json);
     }
+
+    public static Result save(String id) {
+        System.out.println("id = " + id);
+        System.out.println(request().body().asJson());
+        return ok();
+    }
 }
