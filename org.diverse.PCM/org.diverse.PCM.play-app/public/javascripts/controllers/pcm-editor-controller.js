@@ -95,34 +95,40 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         // Test handsontable
         var container = document.getElementById('hot');
 
-
-
         var features = [];
-        features.push("");
         for (var i = 0; i < $scope.table.features.length; i++) {
             features.push($scope.table.features[i].name);
         }
 
         var products = [];
+        var data = [];
         for (var i = 0; i < $scope.table.products.length; i++) {
-            var product = [];
-            product.push($scope.table.products[i].name);
+
+            products.push($scope.table.products[i].name);
+
+            var cellsData = [];
             for (var j = 0; j < $scope.table.products[i].cells.length; j++) {
-                product.push($scope.table.products[i].cells[j]);
+                cellsData.push($scope.table.products[i].cells[j]);
             }
-            products.push(product);
+            data.push(cellsData);
         }
 
         var hot = new Handsontable(container,
             {
-                data: products,
+                data: data,
+                rowHeaders: products,
                 colHeaders: features,
+                contextMenu: true,
+                stretchH: 'all', // Scroll bars ?!
+                manualColumnMove: true,
+                manualRowMove: true
             });
     });
 
 
 
     $scope.save = function() {
+        console.log($scope.table);
         var jsonModel = serializer.serialize($scope.pcm);
 
         $http.post("/save/" + $scope.id, JSON.parse(jsonModel)).success(function(data) {
