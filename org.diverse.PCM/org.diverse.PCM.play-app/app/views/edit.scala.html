@@ -1,6 +1,7 @@
 @(id : String)
 
 @header = {
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/handsontable/handsontable.full.min.css")'>
 }
 
 @footer = {
@@ -9,30 +10,16 @@
 </script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/handsontable/handsontable.full.min.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-viewer-controller.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
 }
 
 @main("", header, footer) {
 
-<div ng-controller="PCMViewerController">
+<div ng-controller="PCMEditorController">
     <h1 id="pcm-name">{{table.name}}</h1>
 
     <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
-    <div class="table-responsive">
-        <table id="viewer" class="table table-bordered table-condensed">
-
-            <tr>
-                <th></th>
-                <th ng-repeat="f in table.features">{{f.name}}</th>
-
-            </tr>
-
-            <tr ng-repeat="p in table.products">
-                <th>{{p.name}}</th>
-                <td ng-repeat="c in p.cells track by $index">{{c}}</td>
-            </tr>
-
-        </table>
+    <div id="hot">
     </div>
 
 </div>

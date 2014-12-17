@@ -1,13 +1,13 @@
 @(id : String)
 
 @header = {
+
 }
 
 @footer = {
     <script>
         var id = "@{Html(id)}";
     </script>
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/handsontable/handsontable.full.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-viewer-controller.js")'></script>
 }
@@ -16,6 +16,7 @@
 
     <div ng-controller="PCMViewerController">
         <h1 id="pcm-name">{{table.name}}</h1>
+        <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a>
 
         <div class="table-responsive">
         <table id="viewer" class="table table-bordered table-condensed table-striped">
