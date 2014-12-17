@@ -59,4 +59,9 @@ public class Application extends Controller {
         Database.INSTANCE.update(id, json);
         return ok();
     }
+
+    public static Result edit(String id) {
+        return ok(views.html.edit.render(id));
+    }
+
 }
