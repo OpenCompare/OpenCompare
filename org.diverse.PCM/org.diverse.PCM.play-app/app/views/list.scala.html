@@ -1,0 +1,19 @@
+@(pcms : List[model.PCMVariable])
+
+@header = {
+}
+
+@footer = {
+}
+
+@main("", header, footer) {
+
+        <div class="container">
+        <ul>
+        @for(pcm <- pcms) {
+            <li><a href="/view/@pcm.getId()">@pcm.getPcm().getName()</a></li>
+        }
+        </ul>
+        </div>
+
+}

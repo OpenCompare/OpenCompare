@@ -22,15 +22,8 @@ public class Application extends Controller {
     }
 
     public static Result list() {
-        List<String> pcms = Database.INSTANCE.list();
-
-
-        ArrayNode result = new ArrayNode(JsonNodeFactory.instance);
-        for (String pcm : pcms) {
-            result.add(pcm);
-        }
-
-        return ok(result);
+        List<PCMVariable> pcms = Database.INSTANCE.list();
+        return ok(views.html.list.render(pcms));
     }
 
     public static Result search(String request) {

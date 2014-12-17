@@ -18,16 +18,16 @@
         <h1 id="pcm-name">{{table.name}}</h1>
 
         <div class="table-responsive">
-        <table id="viewer" class="table table-bordered table-condensed">
+        <table id="viewer" class="table table-bordered table-condensed table-striped">
 
             <tr>
-                <td></td>
-                <td ng-repeat="f in table.features">{{f.name}}</td>
+                <th></th>
+                <th ng-repeat="f in table.features">{{f.name}}</th>
 
             </tr>
 
             <tr ng-repeat="p in table.products">
-                <td>{{p.name}}</td>
+                <th>{{p.name}}</th>
                 <td ng-repeat="c in p.cells track by $index">{{c}}</td>
             </tr>
 
