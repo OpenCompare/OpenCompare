@@ -1,33 +1,44 @@
-@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Long)
+@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)
 
 @header = {
 }
 
 @footer = {
+
 }
 
-@main("", header, footer) {
+@main(false, header, footer) {
 
-        @if(page>1) {
-            <a href="/list/@limit/@(page - 1)" >
-        }
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        @if(page>1) {
-            </a>
-        }
+    <div class="row">
+        <div class="center">
+            @if(page>1) {
+                <a href="/list/@limit/@(page - 1)" >
+            }
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            @if(page>1) {
+                </a>
+            }
 
-        @if(page<nbPages) {
-            <a href="/list/@limit/@(page + 1)">
-        }
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        @if(page<nbPages) {
-            </a>
-        }
+            @for(numPage <- 1 to nbPages) {
+                <a href="/list/@limit/@numPage">@numPage</a>
+            }
 
+            @if(page<nbPages) {
+                <a href="/list/@limit/@(page + 1)">
+            }
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            @if(page<nbPages) {
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="row">
         <ul>
         @for(pcm <- pcms) {
             <li><a href="/view/@pcm.getId()">@pcm.getName()</a></li>
         }
         </ul>
+    </div>
 
 }

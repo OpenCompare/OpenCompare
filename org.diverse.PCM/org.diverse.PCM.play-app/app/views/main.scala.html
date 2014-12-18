@@ -1,7 +1,7 @@
-@(title : String, header : Html = Html(""), footer : Html = Html(""))(content: Html)
+@(enableAngular : Boolean, header : Html = Html(""), footer : Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
-<html ng-app="pcmApp">
+<html @if(enableAngular) {ng-app="pcmApp"}>
 <head>
     <title>OpenCompare</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>

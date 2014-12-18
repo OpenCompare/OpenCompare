@@ -24,8 +24,8 @@ public class Application extends Controller {
 
     public static Result list(int limit, int page) {
         List<PCMInfo> pcms = Database.INSTANCE.list(limit, page);
-        long count = Database.INSTANCE.count();
-        long nbPages = count / limit;
+        int count = (int) Database.INSTANCE.count();
+        int nbPages = count / limit;
         if (count % limit != 0) {
             nbPages++;
         }
