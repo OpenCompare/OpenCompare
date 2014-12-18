@@ -7,31 +7,35 @@
 
 }
 
-@main(false, header, footer) {
+@pagination = {
 
     <div class="row">
-        <div class="center">
-            @if(page>1) {
-                <a href="/list/@limit/@(page - 1)" >
-            }
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            @if(page>1) {
+        <nav>
+            <ul class="pagination">
+                <li @if(page<=1) {class="disabled"}>
+                <a @if(page>1) {href="/list/@limit/@(page - 1)"}>
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
                 </a>
-            }
-
-            @for(numPage <- 1 to nbPages) {
-                <a href="/list/@limit/@numPage">@numPage</a>
-            }
-
-            @if(page<nbPages) {
-                <a href="/list/@limit/@(page + 1)">
-            }
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            @if(page<nbPages) {
+                </li>
+                @for(numPage <- 1 to nbPages) {
+                <li @if(numPage == page){class="active"}><a href="/list/@limit/@numPage">@numPage</a></li>
+                }
+                <li @if(page>=nbPages) {class="disabled"}>
+                <a @if(page<nbPages) {href="/list/@limit/@(page + 1)"}>
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
                 </a>
-            }
-        </div>
+                </li>
+            </ul>
+        </nav>
     </div>
+
+}
+
+@main(false, header, footer) {
+
+    @pagination
 
     <div class="row">
         <ul>
@@ -40,5 +44,8 @@
         }
         </ul>
     </div>
+
+    @pagination
+
 
 }
