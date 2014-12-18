@@ -1,4 +1,4 @@
-@(pcms : List[model.PCMVariable])
+@(pcms : List[model.PCMInfo])
 
 @header = {
 }
@@ -11,7 +11,7 @@
         <div class="container">
         <ul>
         @for(pcm <- pcms) {
-            <li><a href="/view/@pcm.getId()">@pcm.getPcm().getName()</a></li>
+            <li><a href="/view/@pcm.getId()">@pcm.getName()</a></li>
         }
         </ul>
         </div>

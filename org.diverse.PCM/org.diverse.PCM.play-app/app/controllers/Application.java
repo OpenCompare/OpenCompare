@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import model.Database;
+import model.PCMInfo;
 import model.PCMVariable;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.export.PCMtoJson;
@@ -22,7 +23,7 @@ public class Application extends Controller {
     }
 
     public static Result list() {
-        List<PCMVariable> pcms = Database.INSTANCE.list();
+        List<PCMInfo> pcms = Database.INSTANCE.list();
         return ok(views.html.list.render(pcms));
     }
 

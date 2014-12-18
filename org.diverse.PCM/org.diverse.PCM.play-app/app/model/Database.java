@@ -54,15 +54,15 @@ public class Database {
     }
 
 
-    public List<PCMVariable> list() {
+    public List<PCMInfo> list() {
         DBCollection pcms = db.getCollection("pcms");
 
-        DBCursor cursor = pcms.find();
-        List<PCMVariable> results = new ArrayList<PCMVariable>();
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("name", "1"));
+        List<PCMInfo> results = new ArrayList<PCMInfo>();
 
         for (DBObject result : cursor) {
-            PCMVariable pcm = createPCMVariable(result);
-            results.add(pcm);
+            PCMInfo info = new PCMInfo(result.get("_id").toString(), result.get("name").toString());
+            results.add(info);
         }
 
         return results;
