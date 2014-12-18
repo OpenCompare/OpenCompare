@@ -9,6 +9,22 @@
 
 var pcmApp = angular.module("pcmApp", []);
 
+/**
+ * Sort two elements by their names (accessed with x.name)
+ * @param a
+ * @param b
+ * @returns {number}
+ */
+function sortByName(a, b) {
+    if (a.name < b.name) {
+        return -1;
+    } else if (a.name > b.name) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 pcmApp.controller("PCMEditorController", function($scope, $http) {
     $scope.id = id;
 
@@ -21,23 +37,11 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     $http.get("/get/" + $scope.id).success(function(data) {
         $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
 
-        // Test handsontable
         var container = document.getElementById('hot');
 
-
-
+        // Transform features to handonstable data structures
         var features = [];
         var featureHeaders = [];
-
-        function sortByName(a, b) {
-            if (a.name < b.name) {
-                return -1;
-            } else if (a.name > b.name) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
 
         var kFeatures = $scope.pcm.features.array.sort(sortByName);
         for (var i = 0; i <  kFeatures.length; i++) {
@@ -47,6 +51,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             featureHeaders.push(kFeatures[i].name);
         }
 
+        // Transform products to handonstable data structures
         var productHeaders = [];
         var products = [];
 
@@ -59,26 +64,24 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
         }
 
+        /**
+         * Synchronization function between handsontable and a PCM model of a product
+         * @param product : KMF model of a product
+         * @returns
+         */
         function model(product) {
-            var _pub = {};
-            var _priv = {};
+            var sync = {};
 
-            if (typeof  product === 'undefined') {
-                return _pub;
-            }
-
-            var kCells = product.values.array.sort(function (a, b) { sortByName(a.feature, b.feature) });
-            for (var j = 0; j < kCells.length; j++) {
-                var kCell = kCells[j];
-                _priv[kCell.feature.name] = kCell.content;
-            }
-
-            _pub.attr = function (attr, val) {
+            sync.attr = function (attr, val) {
                 if (typeof val === 'undefined') {
-                    return _priv[attr];
+                    var kCells = product.values.array;
+                    for (var j = 0; j < kCells.length; j++) {
+                        var kCell = kCells[j];
+                        if (kCell.feature.name == attr) {
+                            return kCell.content;
+                        }
+                    }
                 } else {
-                    _priv[attr] = val;
-
                     var kCells = product.values.array;
                     for (var j = 0; j < kCells.length; j++) {
                         var kCell = kCells[j];
@@ -87,19 +90,25 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                         }
                     }
 
-                    return _pub;
+                    return sync;
                 }
             };
 
-            return _pub;
+            return sync;
         }
 
+        /**
+         * Bind handsontable cells to PCM cells
+         * @param attr
+         * @returns
+         */
         function property(attr) {
             return function (row, value) {
                 return row.attr(attr, value);
             }
         }
 
+        // Initialize handsontable
         var hot = new Handsontable(container,
             {
                 data: products,
@@ -117,7 +126,9 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     });
 
 
-
+    /**
+     * Save PCM on the server
+     */
     $scope.save = function() {
         var jsonModel = serializer.serialize($scope.pcm);
 
