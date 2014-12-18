@@ -1,4 +1,4 @@
-@(pcms : List[model.PCMInfo])
+@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Long)
 
 @header = {
 }
@@ -8,12 +8,26 @@
 
 @main("", header, footer) {
 
-        <div class="container">
+        @if(page>1) {
+            <a href="/list/@limit/@(page - 1)" >
+        }
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        @if(page>1) {
+            </a>
+        }
+
+        @if(page<nbPages) {
+            <a href="/list/@limit/@(page + 1)">
+        }
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        @if(page<nbPages) {
+            </a>
+        }
+
         <ul>
         @for(pcm <- pcms) {
             <li><a href="/view/@pcm.getId()">@pcm.getName()</a></li>
         }
         </ul>
-        </div>
 
 }

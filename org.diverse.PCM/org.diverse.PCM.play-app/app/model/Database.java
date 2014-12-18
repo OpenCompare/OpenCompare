@@ -43,6 +43,7 @@ public class Database {
     public List<PCMVariable> search(String request) {
         DBCollection pcms = db.getCollection("pcms");
         DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
+
         DBCursor cursor = pcms.find(query);
 
         List<PCMVariable> results = new ArrayList<PCMVariable>();
@@ -53,15 +54,26 @@ public class Database {
         return results;
     }
 
+    public long count() {
+        DBCollection pcms = db.getCollection("pcms");
+        return pcms.count();
+    }
 
-    public List<PCMInfo> list() {
+    public List<PCMInfo> list(int limit, int page) {
         DBCollection pcms = db.getCollection("pcms");
 
-        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("name", "1"));
+        int skipped = (page - 1) * limit;
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("name", "1"))
+                .sort(new BasicDBObject("_id",1))
+                .skip(skipped)
+                .limit(limit);
+
         List<PCMInfo> results = new ArrayList<PCMInfo>();
 
         for (DBObject result : cursor) {
-            PCMInfo info = new PCMInfo(result.get("_id").toString(), result.get("name").toString());
+            String id = result.get("_id").toString();
+            String name = result.get("name").toString();
+            PCMInfo info = new PCMInfo(id, name);
             results.add(info);
         }
 

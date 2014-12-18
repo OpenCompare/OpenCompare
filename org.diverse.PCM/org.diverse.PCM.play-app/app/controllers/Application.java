@@ -22,9 +22,14 @@ public class Application extends Controller {
         return ok(views.html.index.render());
     }
 
-    public static Result list() {
-        List<PCMInfo> pcms = Database.INSTANCE.list();
-        return ok(views.html.list.render(pcms));
+    public static Result list(int limit, int page) {
+        List<PCMInfo> pcms = Database.INSTANCE.list(limit, page);
+        long count = Database.INSTANCE.count();
+        long nbPages = count / limit;
+        if (count % limit != 0) {
+            nbPages++;
+        }
+        return ok(views.html.list.render(pcms, limit, page, nbPages));
     }
 
     public static Result search(String request) {
