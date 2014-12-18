@@ -15,8 +15,8 @@
 @main(true, header, footer) {
 
     <div ng-controller="PCMViewerController">
-        <h1 id="pcm-name">{{table.name}}</h1>
-        <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a>
+        <h1 id="pcm-name">{{table.name}} <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a></h1>
+
 
         <div class="table-responsive">
         <table id="viewer" class="table table-bordered table-condensed table-striped">

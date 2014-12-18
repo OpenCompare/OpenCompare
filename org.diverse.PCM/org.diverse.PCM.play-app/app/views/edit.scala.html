@@ -16,9 +16,9 @@
 @main(true, header, footer) {
 
 <div ng-controller="PCMEditorController">
-    <h1 id="pcm-name">{{table.name}}</h1>
+    <h1 id="pcm-name">{{pcm.name}} <button role="button" class="btn btn-primary" ng-click="save()">Save</button></h1>
 
-    <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
+
 
     <div id="hot">
     </div>
