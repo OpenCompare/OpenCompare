@@ -1,4 +1,4 @@
-@(id : String)
+@(id : String, pcm : org.diverse.pcm.api.java.PCM)
 
 @header = {
 
@@ -15,7 +15,7 @@
 @main(true, header, footer) {
 
     <div ng-controller="PCMViewerController">
-        <h1 id="pcm-name">{{table.name}} <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a></h1>
+        <h1 id="pcm-name">@pcm.getName() <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a></h1>
 
 
         <div class="table-responsive">
@@ -23,15 +23,24 @@
 
             <tr>
                 <th></th>
-                <th ng-repeat="f in table.features">{{f.name}}</th>
-
+                @for(feature <- pcm.getFeatures().sortBy(_.getName())) {
+                <th>
+                    @feature.getName()
+                </th>
+                }
             </tr>
 
-            <tr ng-repeat="p in table.products">
-                <th>{{p.name}}</th>
-                <td ng-repeat="c in p.cells track by $index">{{c}}</td>
+            @for(product <- pcm.getProducts().sortBy(_.getName())) {
+
+            <tr>
+                <th>@product.getName()</th>
+                @for(cell <- product.getCells().sortBy(_.getFeature().getName())) {
+
+                    <td>@cell.getContent()</td>
+                }
             </tr>
 
+            }
         </table>
         </div>
 

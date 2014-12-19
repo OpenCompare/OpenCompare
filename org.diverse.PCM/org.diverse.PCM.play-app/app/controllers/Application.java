@@ -42,7 +42,8 @@ public class Application extends Controller {
 
 
     public static Result view(String id) {
-        return ok(views.html.view.render(id));
+        PCM pcm = Database.INSTANCE.get(id).getPcm();
+        return ok(views.html.view.render(id, pcm));
     }
 
     public static Result get(String id) {

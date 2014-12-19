@@ -100,6 +100,12 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             return sync;
         }
 
+        function schema() {
+            var newProduct = factory.createProduct();
+            // FIXME : add new product to PCM
+            return model(newProduct);
+        }
+
         /**
          * Bind handsontable cells to PCM cells
          * @param attr
@@ -115,7 +121,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var hot = new Handsontable(container,
             {
                 data: products,
-                dataSchema: model,
+                dataSchema: schema,
                 rowHeaders: productHeaders,
                 colHeaders: featureHeaders,
                 columns: features,
