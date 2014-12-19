@@ -67,11 +67,14 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         /**
          * Synchronization function between handsontable and a PCM model of a product
          * @param product : KMF model of a product
-         * @returns
+         * @returns synchronization object
          */
         function model(product) {
             var sync = {};
 
+            // FIXME : this function is also used when creating a new product
+
+            // FIXME : ugly stuff to get and set a value... We need to work with the ID !
             sync.attr = function (attr, val) {
                 if (typeof val === 'undefined') {
                     var kCells = product.values.array;
@@ -100,7 +103,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         /**
          * Bind handsontable cells to PCM cells
          * @param attr
-         * @returns
+         * @returns synchronization function
          */
         function property(attr) {
             return function (row, value) {

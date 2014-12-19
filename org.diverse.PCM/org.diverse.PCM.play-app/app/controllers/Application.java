@@ -54,12 +54,19 @@ public class Application extends Controller {
 
     public static Result save(String id) {
         String json = request().body().asJson().toString();
+
+        String ipAddress = request().remoteAddress(); // TODO : For future work !
+
         Database.INSTANCE.update(id, json);
         return ok();
     }
 
     public static Result edit(String id) {
         return ok(views.html.edit.render(id));
+    }
+
+    public static Result about() {
+        return ok(views.html.about.render());
     }
 
 }
