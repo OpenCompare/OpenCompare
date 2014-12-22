@@ -1,0 +1,113 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Maximum amount of memory per VM guest
+! Maximum disk size per VM guest
+! Maximum host cores / CPUs
+! Maximum host disk volume size
+! Maximum host memory
+! Maximum number of SCSI + IDE disks per VM guest
+! Maximum number of guest VM running
+! Maximum number of logical CPU per VM guest
+|-
+! Containers, or Zones
+| No limit
+| No limit
+| 144 cores / 72 CPUs
+| No limit
+| 4 TB
+| No limit
+| 8191
+| No limit
+|-
+! Hyper-V Server 2008 R2
+| 64 GB
+| 2 TB
+| 64 cores / 8 CPUs
+| No limit
+| 1 TB
+| 4 IDE; 256 SCSI
+| 384
+| 4
+|-
+! Hyper-V Server 2012
+| 1 TB
+| 64 TB
+| 320 cores / 64 CPUs
+| No limit
+| 4 TB
+| 4 IDE; 256 SCSI
+| 1024
+| 64
+|-
+! VMware Player 4.0
+| 8 GB (32-bit); 64 GB (64-bit)
+| 2 TB
+| 4 cores
+| N/A
+| No limit
+| ?
+| ?
+| 8
+|-
+! VMware Server 2.0
+| 8 GB
+| 950 GB
+| 16 CPUs
+| N/A
+| No limit
+| 4 IDE; 60 SCSI
+| 64
+| 2
+|-
+! VMware vSphere ESXi 5.0
+| 1 TB
+| 2 TB minus 512 bytes
+| 160 logical cores
+| 64 TB
+| 2 TB
+| 4 IDE; 60 SCSI
+| 512
+| 32
+|-
+! VMware vSphere Hypervisor (ESXi 5.5)
+| 1 TB
+| 62 TB
+| 16 NUMA Nodes / 320 logical CPUs
+| Depending on filesystem
+| 4 TB
+| 4 IDE; 60 SCSI
+| 512
+| 64
+|-
+! VMware vSphere Hypervisor (ESXi 5.5) (free)
+| 1 TB
+| 62 TB
+| 16 NUMA Nodes / 320 logical CPUs
+| Depending on filesystem
+| 4 TB
+| 4 IDE; 60 SCSI
+| 512
+| 8
+|-
+! VMware vSphere Hypervisor (ESXi) 4.1
+| 255 GB
+| 2 TB minus 512 bytes
+| 160 logical cores
+| 2 TB minus 512 bytes
+| 1 TB
+| 4 IDE; 60 SCSI
+| 320
+| 8
+|-
+! VirtualBox 4.1.x
+| 1 TB
+| 2 TB
+| 256 logical cores (Windows version limited to 64)
+| No limit
+| No limit
+| 4 IDE; no limit for SATA, SCSI, SAS
+| No limit
+| 32
+|}

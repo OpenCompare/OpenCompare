@@ -1,0 +1,354 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! API language/environment
+! Automatic heartbeat pings
+! Automatic pongs for pings
+! Binary message support
+! Client (library)
+! Flow-control framework
+! Frame size limit
+! Frame-based API
+! Implementation language/environment
+! License
+! Manual pings/pongs
+! Message-based API
+! Protocol (spec) version support
+! Protocol test report
+! Self-Hosted Server
+! Server (library)
+! Streaming API input/output
+! Text message support
+! Version compared
+|-
+! Achex WS
+| C++/Javascript
+| No
+| No
+| No
+| No
+| Yes
+| 2^16
+| Yes
+| C++
+| complex
+| Yes
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 2.17
+17 June 2014
+|-
+! Google Chrome 15
+| JavaScript / HTML5
+| No
+| Yes
+| No
+| Yes
+| No
+| ≥ 16 MB
+(memory-limited?)
+| No
+| C++ / WebKit
+| complex
+| No
+| Yes
+| 8 (10)
+| 
+| No
+| No
+| No/No
+| Yes
+| 15.0.874.8
+12 Sep 2011
+|-
+! Google Chrome 16
+| JavaScript / HTML5
+| No
+| Yes
+| No
+| Yes
+| No
+| ≥ 16 MB
+(memory-limited?)
+| No
+| C++ / WebKit
+| complex
+| No
+| Yes
+| 13 (17/RFC 6455)
+| 
+| No
+| No
+| No/No
+| Yes
+| 16.0.912
+13 Dec 2011
+|-
+! Kaazing WebSocket Gateway
+| JavaScript / Flash/Flex / Silverlight / Objective-C & iOS / Java / Java &  Android / .NET
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| memory-limited, configurable
+| No
+| Java
+| Commercial
+| No
+| Yes
+| RFC 6455
+| 
+| 
+| Yes
+| Yes
+| Yes
+| 3.5
+|-
+! Lightstreamer
+| JavaScript / Flash/Flex / Silverlight / iOS / OS X / Java / J2ME / Android / .NET / Windows Phone / WinRT
+| Yes
+| Yes
+| No
+| Yes
+| Yes
+| Data driven, configurable
+| No
+| Java
+| Both Commercial and Freeware
+| No
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| No
+| Yes
+| 5.1.2
+22 Jul 2014
+|-
+! MigratoryData
+| JavaScript / Flash/Flex / Silverlight / Objective-C & iOS / Java  J2ME & BlackBerry / Java J2SE &  Android / .NET Compact Framework / .NET / C++ / Python / Perl / Ruby
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| 2, configurable
+| No
+| Java
+| Commercial
+| No
+| Yes
+| RFC 6455
+| 
+| 
+| Yes
+| No/No
+| Yes
+| 4.0.7
+21 May 2013
+|-
+! Mozilla Firefox 11
+| JavaScript / HTML5
+| No
+| Yes
+| Yes
+| Yes
+| No
+| < 2 GB
+(memory-limited?)
+| No
+| C++ / Necko
+| MPL & GPL & LGPL
+| No
+| Yes
+| 13 (17/RFC 6455)
+| 
+| No
+| No
+| No/No
+| Yes
+| 11.0
+13 Mar 2012
+|-
+! Mozilla Firefox 7
+| JavaScript / HTML5
+| No
+| Yes
+| No
+| Yes
+| No
+| < 16 MB
+| No
+| C++ / Necko
+| MPL & GPL & LGPL
+| No
+| Yes
+| 8 (10)
+| 
+| No
+| No
+| No/No
+| Yes
+| 7 beta
+12 Sep 2011
+|-
+! POCO C++ Libraries
+| C++
+| No
+| No
+| Yes
+| Yes
+| No
+| memory-limited, configurable
+| Yes
+| C++ / POCO C++ Libraries
+| Boost Software License
+| Yes
+| No
+| RFC 6455
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 1.4.6
+23 Sep 2014
+|-
+! Push Technology Diffusion
+| JavaScript / Flash/Flex / Silverlight / Objective-C & iOS / Java / Java &  Android / .NET / Java  J2ME & BlackBerry / C/C++ / Node.js
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| memory-limited, configurable
+| No
+| Java
+| Commercial
+| No
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 4.6.1
+|-
+! QtWebSockets
+| Qt
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| memory-limited, configurable
+| Yes
+| C++ / Qt
+| LGPL
+| Yes
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| No
+| Yes
+| 1.0
+12 Nov 2013
+|-
+! Resin
+| Java
+| No
+| Yes
+| Yes
+| No
+| No
+| memory-limited, configurable
+| No
+| Java / C
+| GPL & commercial
+| No
+| Yes
+| RFC 6455
+| 
+| 
+| Yes
+| Yes
+| Yes
+| 4.026
+29 Feb 2012
+|-
+! WebSocketListener
+| .NET
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| Configurable
+| No
+| .NET
+| MIT
+| No
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 2.0.1
+16 May 2014
+|-
+! Wt (web toolkit)
+| C++
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| memory-limited, configurable
+| No
+| C++ / Boost Asio
+| GPL & commercial
+| No
+| No
+| 0,7,8,13 (17)
+| [? Report]
+| 
+| Yes
+| No
+| Yes
+| 3.2.0
+30 Nov 2011
+|-
+! XSockets.NET
+| Server-Languages: Windows[.NET] / Unix/Linux[Mono]Client-Languages: [JavaScript] / [.NET] / [Mono]
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| memory-limited, configurable
+| No
+| .NET
+| Free
+| Yes
+| Yes
+| RFC 6455
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 3.0.2
+|}

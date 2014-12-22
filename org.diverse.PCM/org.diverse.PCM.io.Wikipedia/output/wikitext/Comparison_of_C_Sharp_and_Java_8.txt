@@ -1,0 +1,42 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! C#
+|-
+! Cannot create an array where the component type is a generic realization (concrete parameterized type)
+| A generic realization is a 1st class citizen and can be used as any other class; also an array component
+|-
+! Cannot create an array where the component type is a type parameter
+| Type parameters represent actual, discrete classes and can be used like any other type within the generic definition.
+|-
+! Cannot create new instances using a type parameter as the type
+| With a constructor constraint, generic methods or methods of generic classes can create instances of classes that have default constructors.
+|-
+! Cannot use primitive types as type parameters; instead, the developer must use the wrapper type corresponding to the primitive type. This incurs extra performance overhead by requiring boxing and unboxing conversions as well a memory and garbage collection pressure, as the wrappers will be heap-allocated as opposed to stack-allocated.
+| Primitive and value types are allowed as type parameters in generic realizations. At runtime code will be synthesized and compiled for each unique combination of type parameters upon first use. Generics that are realized with primitive/value type do not require boxing/unboxing conversions.
+|-
+! Generic exceptions are not allowed and a type parameter cannot be used in a catch clause
+| Can both define generic exceptions and use those in catch clauses
+|-
+! Reflection cannot be used to construct new generic realizations. During compilation extra code (typecasts) are injected into the client code of generics. This precludes creating new realizations later.
+| Reflection can be used to create new realizations for new combinations of type parameters.
+|-
+! Static members are shared across all generic realizations (during type erasure all realizations are folded into a single class)
+| Static members are separate for each generic realization. A generic realization is a unique class.
+|-
+! There is no class literal for a concrete realization of a generic type
+| A generic realization is an actual class.
+|-
+! Type checks and downcasts are injected into client code (the code referencing the generics). Compared to non-generic code with manual casts, these casts will be the same, but compared to compile-time verified code that would not need runtime casts and checks, these operations represent a performance overhead.
+| C#/.NET generics guarantee type-safety and are verified at compile time, making extra checks/casts are unnecessary at runtime. Hence, generic code will run faster than non-generic (or type-erased) code that require casts when handling non-generic or type-erased objects.
+|-
+! Type information is erased during compilation. Special extensions to reflection must be used to discover the original type.
+| Type information about C# generic types is fully preserved at runtime, and allows complete reflection support as well as instantiation of generic types.
+|-
+! Type parameters cannot be used in declarations of static fields/methods or in definitions of static inner classes
+| No restrictions on use of type parameters
+|-
+! is not allowed with type parameters or concrete generic realizations
+| The  and  operators work the same for type parameters as for any other type.
+|}

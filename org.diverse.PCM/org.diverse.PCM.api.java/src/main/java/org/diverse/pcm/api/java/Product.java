@@ -11,4 +11,13 @@ public interface Product extends PCMElement {
     void addCell(Cell cell);
     void removeCell(Cell cell);
 
+	/**
+	 * This  method return us the value of cell of feature
+	 * @param feature
+	 * @return
+	 */
+	Cell getCell(String feature);
+
+
+
 }

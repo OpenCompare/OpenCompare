@@ -3,12 +3,15 @@ package org.diverse.pcm.io.wikipedia
 import java.io.{File, FileWriter, PrintWriter, StringWriter}
 import java.util.concurrent.Executors
 
+
+import System.out.{println=>echo}
 import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
+
 
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future, _}

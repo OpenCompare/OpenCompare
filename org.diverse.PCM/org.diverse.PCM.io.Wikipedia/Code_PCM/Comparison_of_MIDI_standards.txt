@@ -1,0 +1,162 @@
+This table provides summary of comparison of various [[MIDI]] enhancement standards by various parameters.
+
+{|class="wikitable"
+|-
+!
+! [[Roland MT-32|MT-32]]
+! [[General MIDI|GM]]
+! [[Roland GS|GS]]
+! [[Yamaha XG|XG]] level 1
+! XG level 2
+! XG level 3
+! [[General MIDI Level 2|GM level 2]]
+|-
+| Entry date
+| 1987
+| 1991
+| 1991
+| 1994
+| 1997
+| 1998
+| 1999
+|-
+| Organization
+| [[Roland Corporation|Roland]]
+| [[MIDI Manufacturers Association|MMA]]
+| [[Roland Corporation|Roland]]
+| colspan=3 | [[Yamaha Corporation|Yamaha]]
+| [[MIDI Manufacturers Association|MMA]]
+|-
+! colspan=8 | Minimum equipment requirements
+|-
+| Simultaneous voices
+| 8 or more (up to 32 partials)
+| 24
+| 24
+| 32
+| 64
+| 128
+| 32
+|-
+| Simultaneous melodic voices
+| rowspan="2" | N/A
+| 16
+| 16
+| rowspan="2" colspan="3" style="text-align: center"| N/A<br/>XG synths have no separate limits on melodic / percussion sounds
+| 16
+|-
+| Simultaneous percussion voices
+| 8
+| 8
+| 16
+|-
+| MIDI channels allocation
+| 8 channels, 1 rhythm channel
+| 16 channels, #10 is fixed for percussion
+| 16 channels, one channel can be set to play drum kits
+| 16 channels, every channel can play drum kits with Bank Select MSB (CC#0) set to 7FH
+| 32 channels, 2 ports, drums as in XG&nbsp;level&nbsp;1
+| 64 channels, 4 ports, drums as in XG&nbsp;level&nbsp;1
+| 16 channels, #10 and #11 are used for percussion
+|-
+| Channel recommendations
+|
+|
+|
+| colspan=3 | #1:&nbsp;melody; #2:&nbsp;melody&nbsp;(duet); #3:&nbsp;bass; #4:&nbsp;pad; #5:&nbsp;riff; #10:&nbsp;drums<ref>[http://www.thewhippinpost.co.uk/midi/xg/xg-midi.htm TheWhippinpost article on MIDI XG STANDARD]</ref>
+|
+|-
+! colspan=8 | Sounds banks available
+|-
+| Melodic instruments
+| 128
+| 128
+| 226
+| 480
+| 1074
+| 1149
+| 256
+|-
+| Drum kits
+| 1
+| 1
+| 8 + 1 SFX&nbsp;kit
+| 9 + 2 SFX&nbsp;kits
+| 34 + 2 SFX&nbsp;kits
+| 35 + 2 SFX&nbsp;kits
+| 9
+|-
+| Drum sounds per kit
+| 30
+| 47
+| 61
+| colspan=3 | 72 
+| 61
+|-
+! colspan=8 | Controls available
+|-
+| Special CC<ref>Special CCs are CCs that don't correspond to the parameter of any particular effect. Most usually they represent special one-shot control commands for the device (these ones are usually represented by a button on a console), or used internally for bank selection, RPN or data entry, etc.</ref>
+| 2<ref name="youngmonkey">[http://www.youngmonkey.ca/nose/audio_tech/synth/Roland-MT32.html youngmonkey Roland MT-32 MIDI/SYSEX reference]</ref><!-- MT-32 -->
+| 6 (MT32+4)<!-- GM -->
+| <!-- GS -->
+| <!-- XG1 -->
+| <!-- XG2 -->
+| <!-- XG3 -->
+| 6 (GM)<!-- GM2 -->
+|-
+| Parametric effect CC<ref>Parametric CCs (also known as ''continuous controller'') correspond to the parameter of some particular effect (i.e. depth, strength, delay of effect, etc). Such CCs are usually represented by a rotating knob or fader in mixers.</ref>
+| 4<ref name="youngmonkey"/><!-- MT-32 -->
+| 5 <!-- GM -->
+| 16 (GM+11) <!-- GS -->
+| colspan=3 | 51 (GM+46) <!-- XG -->
+| 12 (GM+7) <!-- GM2 -->
+|-
+| RPNs
+| 0<ref name="youngmonkey"/><!-- MT-32 -->
+| 5<ref name="midi-rpn">[http://www.midi.org/about-midi/table3.shtml#Table3aRPNs MMA MIDI Message Tables: Table 3a: Registered Parameter Numbers]</ref>
+| <!-- GS -->
+| <!-- XG1 -->
+| <!-- XG2 -->
+| <!-- XG3 -->
+| 6 (GM+1) <ref name="midi-rpn"/><!-- GM2 -->
+|-
+| SysEx messages
+|
+| 2
+|
+|
+|
+|
+| 14
+|}
+
+== References ==
+
+{{reflist}}
+{{refbegin}}
+* {{cite web
+|url = http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf
+|archiveurl = http://web.archive.org/web/20060926124939/http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf
+|archivedate = 2006-09-26
+|title = Yamaha XG format specifications, v1.26
+|author = Yamaha Corporation
+|year = 1996
+|accessdate = 2008-04-23
+|format = PDF
+}}
+* {{cite web
+|url = http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf
+|archiveurl = http://web.archive.org/web/20060926122423/http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf
+|archivedate = 2006-09-26
+|title = Recommendations for producing XG song data, v2.00
+|author = Yamaha Corporation
+|date = 1999-02-02
+|accessdate = 2008-04-23
+|format = PDF
+}}
+* [http://home.roadrunner.com/~jgglatt/tutr/roland.htm Roland Sound Cards], an extensive guide to various models and their capabilities
+* [http://www.emusician.com/news/0766/gm-modules-for-the-masses/144589 GM modules for the masses], a comparison article
+{{refend}}
+
+[[Category:MIDI standards|*]]
+[[Category:Computing comparisons|MIDI standards]]

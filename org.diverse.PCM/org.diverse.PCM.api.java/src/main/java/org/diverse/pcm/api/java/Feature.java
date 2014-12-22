@@ -1,5 +1,16 @@
 package org.diverse.pcm.api.java;
 
-public interface Feature extends AbstractFeature {
+import java.util.List;
 
+public interface Feature extends AbstractFeature
+
+{
+
+
+    /**
+     * This  method return us the value of cell of feature
+     * @param
+     * @return
+     */
+    List<Cell> getListFeature(PCM product);
 }

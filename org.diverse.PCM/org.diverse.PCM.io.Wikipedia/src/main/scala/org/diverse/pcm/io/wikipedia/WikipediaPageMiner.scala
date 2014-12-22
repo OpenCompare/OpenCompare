@@ -1,11 +1,12 @@
 package org.diverse.pcm.io.wikipedia
 
 import java.io.StringReader
-
+import System.out.{println=>echo}
 import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 import org.diverse.pcm.io.wikipedia.parser.{PageVisitor, PreprocessVisitor}
-import org.diverse.pcm.io.wikipedia.pcm.{Cell, Matrix, Page}
+import org.diverse.pcm.io.wikipedia.pcm.{Cell, Matrix}
 import org.sweble.wikitext.`lazy`.{LazyParser, LazyPreprocessor}
+import org.sweble.wikitext.engine.Page
 import org.sweble.wikitext.engine.utils.SimpleWikiConfiguration
 import org.xml.sax.InputSource
 
@@ -33,7 +34,13 @@ class WikipediaPageMiner {
       .option(HttpOptions.readTimeout(30000))
       .asString
     val xml = parseHTMLAsXML(editPage)
+    printf("---------------------------------------")
+    printf(editPage)
+    printf("------------------------------------------")
     val code = (xml \\ "textarea").text
+
+
+    printf(code)
     code
   }
 

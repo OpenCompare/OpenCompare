@@ -1,0 +1,111 @@
+[[H.264]] and [[VC-1]] are popular video compression standards gaining use in the industry {{as of|2007|lc=on}}.
+
+==Overview==
+
+{|class="wikitable"
+!!![[VC-1]]!![[H.264]]
+|-
+|Goals
+|Designed to offer very high image quality with excellent compression efficiency<ref>{{cite web
+ | url = http://www.microsoft.com/windows/windowsmedia/howto/articles/vc1techoverview.aspx#Conclusion
+ | title = VC-1 Technical Overview
+ | first = Jay | last = Loomis |author2=Mike Wasson | publisher = Microsoft }}</ref>
+|Designed to meet a variety of industry needs with many profiles and levels, allowing for varying compression, quality and CPU usage levels, where the lowest level is for portable devices, designed with low CPU usage in mind, while the high levels are designed with very high quality and compression efficiency in mind{{citation needed|date=March 2008}} 
+|-
+|Example industry use
+|Supports 4:2:0 compression / color space<ref>{{cite book
+ | title = SMPTE421M: SMPTE Draft Standard for Television
+ | work = SMPTE Standard for Television: VC-1 Compressed Video Bitstream Format and Decoding Process
+ | author = SMPTE Technology Committee C24 on Video Compression Technology | date = 2005-08-23 }}</ref>
+|Supports studio archiving requirements with 4:4:4 color space; <br> separate black and white (BW) video mode
+|-
+|Licensing costs
+| colspan="2" style="text-align:center;"| Similar<ref>{{cite web
+ | url = http://www.mpegla.com/vc1/vc1web.ppt
+ | format = [[PowerPoint]] | publisher = MPEG LA
+ | title = VC-1 Patent Portfolio License Briefing | date = 2007-11-05
+}}</ref><ref>{{cite web
+ | url = http://www.microsoft.com/windows/windowsmedia/licensing/final.aspx
+ | title = Windows Media Licensing Royalties for Final Products
+ | publisher = Microsoft }}</ref><ref>{{cite web
+ | url = http://www.mpegla.com/avc/avcweb.ppt
+ | format = [[PowerPoint]] | publisher = MPEG LA
+ | title = AVC Patent Portfolio License Briefing | date = 2007-12-12
+ }}</ref>
+|-
+|Documentation
+|Not free.  Reference decoder, comes with external documentation.
+|?<ref>{{cite web
+ | url = http://www.mpegla.com/main/programs/AVC/Pages/FAQ.aspx
+ | title = AVC/H264 Licensing costs and terms from MPEG LA
+}}</ref> AVC/H264 Licensing costs and terms from MPEG LA.<ref>{{cite web
+ | url = http://www.itu.int/rec/T-REC-H.264-200305-S
+ | title = H.264: Advanced video coding for generic audiovisual services |date=March 2003
+}}</ref> Reference encoder and decoder free as well.<ref>{{cite web
+ | url = http://iphome.hhi.de/suehring/tml/
+ | title = H.264/AVC Software Coordination
+}}</ref> Additionally, JVT & M4IF mailing lists are available where one may receive answers on AVC related questions.
+|}
+
+==Terminology==
+All sources for the below information are from the respective specifications listed in the overview section.
+{|class="wikitable"
+! Feature !! [[VC-1]] !! [[H.264]]
+|-
+|Partition sizes||16×16 and 8×8<ref name=iee>{{cite web
+ | url = http://www.iee.org/OnComms/PN/multimediacomms/Alois%20Bock.pdf
+ | title = Advanced Compression Technologies for High Definition 
+ | first = Matthew | last = Goldman
+ |author2=Alois Bock | publisher = TANDBERG Television
+}}</ref> || 16×16, 16×8, 8×16, 8×8, 8×4, 4×8, and 4×4 
+|-
+|[[Integer transform]] || 8×8, 4×8, 8×4, and 4×4 || 4×4; 8×8 available in High Profile only
+|-
+|[[Film frame#Video frames|Frame]] || colspan="2" style="text-align:center;"| Used for progressive or interlaced content
+|-
+|[[Macroblock]] sizes|| colspan="2" style="text-align:center;"| 16×16 only
+|-
+|Motion vector|| colspan="2" style="text-align:center;"| Two dimensional vector offset from current position to [[reference frame (video)|reference frame]] 
+|-
+|Picture|| colspan="2" style="text-align:center;"| A field or frame 
+|-
+|Skipped macroblock|| colspan="2" style="text-align:center;"| No data is encoded for macroblock
+|}
+
+==Features==
+{|class="wikitable"
+!!![[VC-1]]!![[H.264]]
+|-
+|[[Bitstream]] formats||single bit stream||[[Network Abstraction Layer|NAL]] and [[byte stream]]
+|-
+|[[Bitstream]] format||In advanced profile, each Bitstream Data Unit has its own header.<br>Simple and Main profile provide neither sequence nor entry point headers. ||SPS (sequence parameter set),<br> PPS (picture parameters set),<br> slice header, macroblock<br>
+|-
+|Deblocking filter||In-loop filter and overlap transform||In-loop only
+|-
+|[[CABAC]]||No||Only supported in Main and higher profiles
+|-
+|Variable transform size||Yes||Only in High profile and above
+|-
+|Slice||Contiguous (integer number of macroblock rows only)||Contiguous or non-contiguous
+|-
+|Sub-pixel interpolation methods||[[bicubic]], [[bilinear interpolation|bilinear]]
+||6-tap filter for half pixels; averaging for quarter pixels
+|-
+|[[Variable-length code|Variable Length Coding]] || colspan="2" style="text-align:center;"| Yes
+|-
+|[[Video compression picture types#Bi-predictive pictures (or slices)|B frame]] used for predicting other pictures || colspan="2" style="text-align:center;"| Yes
+|}
+
+==References==
+<references/>
+
+==External links==
+* [http://www.mpegla.com/main/programs/AVC/Pages/FAQ.aspx AVC/H264 Licensing costs and terms from MPEG LA]
+* [http://i.cmpnet.com/videsignline/2006/03/ti-table1.jpg EEtimes comparison of video codecs] [http://www.eetimes.com/news/latest/showArticle.jhtml?articleID=184417335&pgno=4]
+* [http://www.m4if.org/exhibitions/NAB2005/presentations/session3-cvandusen.pdf NAB2005 presentation: codec comparison slides 13-14]
+* [http://forum.doom9.org/showthread.php?t=128498 Codec challenge comparison on Doom9 with professional VC1 encoder, PeP, and x264 for H264 => x264 win the first round]
+* [http://www.avsforum.com/avs-vb/showthread.php?p=9931723&&#post9931723 Microsoft employee discusses differences between VC-1 and H.264]
+* [http://forum.doom9.org/showthread.php?p=674819#post674819 Comparison at Doom9]
+
+{{VideoProcessing}}
+[[Category:Video compression]]

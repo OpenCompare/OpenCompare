@@ -1,7 +1,13 @@
 package org.diverse.pcm.api.java.impl;
 
+import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.PCM;
+import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.api.java.util.PCMVisitor;
 import pcm.AbstractFeature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -45,6 +51,24 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
 
         return true;
     }
+
+
+
+    @Override
+    public List<Cell> getListFeature(PCM product) {
+        List<Cell> cells = new ArrayList<Cell>();
+        for (Product pdr : product.getProducts()) {
+            for(Cell cell : pdr.getCells()){
+                if(cell.getFeature().equals(this)){
+                    cells.add(cell);
+                }
+            }
+
+        }
+        return cells;
+    }
+
+
 
     @Override
     public int hashCode() {

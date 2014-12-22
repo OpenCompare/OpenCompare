@@ -1,0 +1,217 @@
+A number of computer [[operating systems]] employ security features to help prevent [[malicious software]] from gaining sufficient privileges to compromise the computer system. Operating systems lacking such features, such as [[DOS]], [[Microsoft Windows|Windows]] implementations prior to [[Windows NT]] (and its descendants), CP/M-80, and all Mac operating systems prior to Mac OS X, had only one category of user who was allowed to do anything. With separate execution contexts it is possible for multiple users to store private files, for multiple users to use a computer at the same time, to protect the system against malicious users, and to protect the system against malicious programs. The first multi-user secure system was [[Multics]], which began development in the 1960s; it wasn't until [[UNIX]], [[BSD]], [[Linux kernel|Linux]], and [[Windows NT|NT]] in the late 80s and early 90s that multi-tasking security contexts were brought to [[x86]] consumer machines.
+
+== Introduction to implementations ==
+;Microsoft Windows
+{|
+|-
+|style="width:130px;height:90px;text-align:center" rowspan=2 |[[File:Windows 7 UAC.png|border|120px|User Account Control prompt]]<small>User Account Control prompt dialog box</small>
+|'''[[User Account Control]]''' ('''UAC'''):<br/>Included with [[Windows Vista]] and later [[Microsoft Windows]] operating systems, ''UAC'' prompts the user for authorization when an application tries to perform an administrator task.<ref>{{cite web
+|url=http://technet.microsoft.com/en-us/windowsvista/aa906021.aspx
+|title=User Account Control Overview
+|publisher=[[Microsoft]]
+|date=2006-10-02
+|accessdate=2007-03-12
+}}</ref>
+|-
+| '''[[Runas]]''':<br/>A command-line tool introduced with [[Windows 2000]] that allows running a program, [[Control Panel (Windows)|control panel applet]], or a [[Microsoft Management Console|MMC snap-in]] as a different user.<ref>{{cite web
+|url=http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/runas.mspx?mfr=true
+|title=Runas
+|work=Windows XP Product Documentation
+|publisher=Microsoft
+|accessdate=2007-03-13
+}}</ref> Runas makes use of the "Secondary Login" [[Windows service]], also introduced with Windows 2000.<ref>{{cite web
+|url=http://blogs.msdn.com/aaron_margosis/archive/2004/06/23/163229.aspx 
+|title="RunAs" basic (and intermediate) topics
+|work=Aaron Margosis' WebLog
+|publisher=MSDN Blogs
+|date=2004-06-23
+|accessdate=2007-03-13
+}}</ref> This service provides the capability to allow applications running as a separate user to interact with the logged-in user's desktop. This is necessary to support drag-and-drop, clipboard sharing, and other interactive login features. 
+|}
+;Mac OS
+{|
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:Mac OS X Authenticate.png|border|120px|Authenticate]]
+|[[Mac OS X]] includes the '''Authenticate''' dialog, which prompts the user to input their password in order to perform administrator tasks. This is essentially a graphical front-end of <code>[[sudo]]</code> command.
+|}
+
+;Unix and Unix-like
+{|
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:System policy.png|border|120px|PolicyKit in GNOME]]
+|'''[[PolicyKit|PolicyKit/pkexec]]''':<br/>A privilege authorization feature, designed to be independent of the desktop environment in use and already adopted by [[GNOME]]<ref>{{cite web|url=http://hal.freedesktop.org/docs/PolicyKit/introduction.html#intro-about|title=About PolicyKit|work=PolicyKit Language Reference Manual|date=2007|accessdate=2008}}</ref> In contrast to earlier systems, applications using PolicyKit never run with privileges above those of the current user. Instead, they indirectly make requests of the PolicyKit [[Daemon (computer software)|daemon]], which is the only program that runs as root.
+|-
+|style="width:130px;height:90px;text-align:center" rowspan=2 |[[Image:Sudo on Ubuntu.png|border|120px|sudo]]<small>Sudo, running in Terminal window in Ubuntu</small>
+|'''[[su (Unix)|su]]''':<br/>A command line tool for [[Unix]]. su (substitute user) allows users to switch the terminal to a different account by entering the username and password of that account. If no user name is given, the operating system's [[superuser]] account (known as "root") is used, thus providing a fast method to obtain a login [[shell (computing)|shell]] with full privileges to the system. Issuing an [[Exit (operating system)|exit]] command returns the user to their own account.
+|-
+|'''[[sudo]]''':<br/>Created around 1980,<ref>{{cite web
+|url=http://www.gratisoft.us/sudo/history.html
+|title=A Brief History of Sudo
+|author=Miller, Todd C
+|accessdate=2007-03-12
+}}</ref> ''sudo'' is a highly configurable Unix command line tool similar to ''su'', but it allows certain users to run programs with root privileges without spawning a root shell or requiring root's password.<ref name="Sudo Nutshell">{{cite web
+|url=http://www.gratisoft.us/sudo/intro.html
+|title=Sudo in a Nutshell
+|author=Miller, Todd C
+|accessdate=2007-07-01
+}}</ref>
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:Gksudo.png|border|120px|gksudo]]
+|'''GKSu''' and '''GKsudo''':<br/>[[Gtk|GTK+]] [[GUI|Graphical]] [[front end processor (program)|frontend]] to ''su'' and ''sudo''.<ref>{{cite web |url=http://www.nongnu.org/gksu/ |title=GKSu home page}}</ref> ''GKsu'' comes up automatically when a supported application needs to perform an action requiring root privileges.  A replacement, "''gksu PolicyKit''", which uses [[PolicyKit]] rather than ''su''/''sudo'', is being developed as part of [[GNOME]].<ref>{{cite web |url=http://live.gnome.org/gksu |title=gksu PolicyKit on Gnome Live}}</ref>
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:Kdesu proper.png|border|120px|kdesu]]
+|'''kdesu''':<br/>A [[Qt (framework)|Qt]] graphical front-end to the ''su'' command for [[KDE]].<ref>{{cite web
+|url=http://www.bellevuelinux.org/kdesu.html
+|title=The KDE su Command
+|author=Bellevue Linux
+|date=2004-11-20
+|accessdate=2007-03-12
+|archiveurl = http://web.archive.org/web/20070202060822/http://www.bellevuelinux.org/kdesu.html <!-- Bot retrieved archive --> |archivedate = 2007-02-02}}</ref>
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:Kdesudo.png|border|120px|kdesudo]]
+|'''kdesudo''':<br/>A Qt graphical front-end to ''sudo'' that has replaced ''kdesu'' in [[Kubuntu]], starting with Kubuntu 7.10.<ref>
+{{cite web
+|url=https://wiki.kubuntu.org/GutsyGibbon/Tribe5/Kubuntu
+|title=GutsyGibbon/Tribe5/Kubuntu
+|author=[[Canonical Ltd.]]
+|date=2007-08-25
+|accessdate=2007-09-18
+}}
+</ref>
+|-
+|style="width:130px;height:90px;text-align:center" |[[Image:Ktsuss - himerge.jpg|border|120px|Ktsuss]]
+|'''ktsuss''':<br/>''ktsuss'' stands for "'''k'''eep '''t'''he '''su''' '''s'''imple, '''s'''tupid", and is a graphical version of ''su''. The idea of the project is to remain simple and bug free.
+|-
+|style="width:130px;<!--height:90px-->;text-align:center" |[[Image:Beesu screenshot.png|border|120px|beesu]]
+|'''beesu''':<br/>A graphical front-end to the ''su'' command that has replaced ''gksu'' in [[Red Hat]] based operating systems. It has been developed mainly for [[Red Hat Enterprise Linux|RHEL]] and [[Fedora (operating system)|Fedora]].<ref>You can read more [http://honeybeenet.altervista.org/beesu/ about ''beesu''] and download it [http://koji.fedoraproject.org/koji/search?type=package&match=glob&terms=beesu from Koji]</ref>
+|}
+
+== Security considerations ==
+{{Expand section|Information for the Mac "Authenticate" dialog|date=December 2009}}
+=== Spoofed input ===
+A major security consideration is the ability of malicious applications to simulate keystrokes or mouse clicks, thus tricking or [[Spoofing attack|spoof]]ing the security feature into granting malicious applications higher privileges.
+
+* '''su''' and '''sudo''' run in the terminal, where they are vulnerable to spoofed input. Of course, if the user was not running a multitasking environment (i.e. a single user in the shell only), this would not be a problem.
+* By default, '''gksudo''' "locks" the keyboard, mouse, and window focus,<ref>{{cite web
+|url=http://www.penguin-soft.com/penguin/man/1/gksu.html
+|title=gksu - a Gtk+ su frontend Linux Man Page
+|accessdate=2007-08-14
+}}</ref> preventing anything but the actual user from inputting the password or otherwise interfering with the [[Confirmation dialog box|confirmation dialog]].
+* By default, '''UAC''' runs in the ''Secure Desktop'', preventing malicious applications from simulating clicking the "Allow" button or otherwise interfering with the confirmation dialog.<ref>{{cite web
+|url=http://blogs.msdn.com/uac/archive/2006/05/03/589561.aspx
+|title=User Account Control Prompts on the Secure Desktop
+|work=UACBlog
+|publisher=[[Microsoft]]
+|first=Jim
+|date=2006-05-03
+|accessdate=2007-03-04
+}}</ref>  In this mode, the user's desktop appears dimmed and cannot be interacted with.
+If either gksudo's "lock" feature or UAC's Secure Desktop were compromised or disabled, malicious applications could gain administrator privileges by using [[keystroke logging]] to record the administrator's password; or, in the case of UAC if running as an administrator, spoofing a mouse click on the "Allow" button. For this reason, voice recognition is also prohibited from interacting with the dialog.{{Citation needed|date=November 2007}} Note that since gksu password prompt runs without special privileges, malicious applications can still do keystroke logging using e.g. the [[strace]] tool.<ref>{{cite web
+|url=http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=474024
+|title=gksu: locking mouse/keyboard not enough to protect against keylogging
+}}</ref> (ptrace was restricted in later kernel versions)<ref>{{cite web |url=https://wiki.ubuntu.com/SecurityTeam/Roadmap/KernelHardening#ptrace_Protection |title=ptrace Protection}}</ref>
+* In GNOME, '''PolicyKit''' directs the [[X Window System|X]] server to capture all keyboard and mouse input. Other desktop environments using PolicyKit may use their own mechanisms.
+
+=== Spoofed dialogs ===
+Another security consideration is the ability of malicious software to [[Spoofing attack|spoof]] dialogs that look like legitimate security confirmation requests. If the user were to input credentials into a fake dialog, thinking the dialog was legitimate, the malicious software would then know the user's password. If the Secure Desktop or similar feature were disabled, the malicious software could use that password to gain higher privileges.
+* Though it is not the default behavior for usability reasons, '''UAC''' may be configured to require the user to press [[Control-Alt-Delete|Ctrl+Alt+Del]] (known as the [[secure attention sequence]]) as part of the authentication process. Because only Windows can detect this key combination, requiring this additional security measure would prevent spoofed dialogs from behaving the same way as a legitimate dialog.<ref name="Allchin">{{cite web
+|url=http://windowsvistablog.com/blogs/windowsvista/archive/2007/01/23/security-features-vs-convenience.aspx
+|title=Security Features vs. Convenience |work=Windows Vista Team Blog
+|publisher=[[Microsoft]]
+|last=Allchin
+|first=Jim
+|authorlink=James Allchin
+|date=2007-01-23
+|accessdate=2007-03-12
+}}</ref> For example, a spoofed dialog might not ask the user to press Ctrl+Alt+Del, and the user could realize that the dialog was fake. Or, when the user did press Ctrl+Alt+Del, the user would be brought to the screen Ctrl+Alt+Del normally brings them to instead of a UAC confirmation dialog. Thus the user could tell whether the dialog was an attempt to trick them into providing their password to a piece of malicious software.
+* In GNOME, '''PolicyKit''' uses different dialogs, depending on the configuration of the system. For example, the authentication dialog for a system equipped with a [[fingerprint reader]] might look different from an authentication dialog for a system without one. Applications do not have access to the configuration of PolicyKit, so they have no way of knowing which dialog will appear and thus how to spoof it.<ref>{{cite web|url=http://hal.freedesktop.org/docs/PolicyKit/introduction.html#intro-about|title=Authentication Agent|date=2007|accessdate=2008}}</ref>
+
+== Usability considerations ==
+Another consideration that has gone into these implementations is [[usability]].
+
+=== Separate administrator account ===
+* '''su''' require the user to know the password to at least two accounts: the regular-use account, and an account with higher privileges such as [[Superuser|root]].
+* '''sudo''', '''kdesu''' and '''gksudo''' use a simpler approach. With these programs, the user is pre-configured to be granted access to specific administrative tasks, but must explicitly authorize applications to run with those privileges.  The user enters their own password instead of that of the superuser or some another account.
+* '''UAC''' and '''Authenticate''' combine these two ideas into one. With these programs, administrators explicitly authorize programs to run with higher privileges. Non-administrators are prompted for an administrator username and password.
+* '''PolicyKit''' can be configured to adopt any of these approaches. In practice, the distribution will choose one.
+
+=== Simplicity of dialog ===
+* In order to grant an application administrative privileges, '''sudo''',<ref>{{cite web
+|url=http://www.gratisoft.us/sudo/man/sudoers.html
+|title=Sudoers Manual
+|author=Miller, Todd C
+|accessdate=2007-03-12
+}}</ref> '''gksudo''', and '''Authenticate''' prompt administrators to re-enter their password.
+* With '''UAC''', when logged in as a standard user, the user must enter an administrator's name and password each time they need to grant an application elevated privileges; but when logged in as a member of the Administrators group, they (by default) simply confirm or deny, instead of re-entering their password each time (though that is an option). While the default approach is simpler, it is also less secure,<ref name="Allchin" /> since if the user physically walks away from the computer without locking it, another person could walk up and have administrator privileges over the system. 
+* '''PolicyKit''' requires the user to re-enter his or her password or provide some other means of authentication (e.g. fingerprint).
+
+=== Saving credentials ===
+{{Expand section|Information for the Mac "Authenticate" dialog|date=December 2009}}
+* '''UAC''' prompts for authorization each time it is called to elevate a program.
+
+* '''sudo''',<ref name="Sudo Nutshell"/> '''gksudo''', and '''kdesu''' do not ask the user to re-enter their password every time it is called to elevate a program. Rather, the user is asked for their password once at the start. If the user has not used their administrative privileges for a certain period of time (sudo's default is 5 minutes<ref name="Sudo Nutshell"/>), the user is once again restricted to standard user privileges until they enter their password again.
+
+:sudo's approach is a trade-off between security and usability. On one hand, a user only has to enter their password once to perform a series of administrator tasks, rather than having to enter their password for each task. But at the same time, the surface area for attack is larger because all programs that run in that tty (for sudo) or all programs not running in a terminal (for gksudo and kdesu) prefixed by either of those commands before the timeout receive administrator privileges. Security-conscious users may remove the temporary administrator privileges upon completing the tasks requiring them by using the <code>sudo -k</code> command when from each tty or pts in which sudo was used (in the case of pts's, closing the terminal emulator is ''not'' sufficient).  The equivalent command for kdesu is <code>kdesu -s</code>.  There is no gksudo option to do the same; however, running <code>sudo -k</code> not within a terminal instance (e.g. through the Alt + F2 "Run Application" dialogue box, unticking "Run in terminal") will have the desired effect.
+
+* '''Authenticate''' does not save passwords. If the user is a standard user, they must enter a username and a password. If the user is an administrator, the current user's name is already filled in, and only needs to enter their password. The name can still be modified to run as another user.
+
+:The application only requires authentication once, and is requested at the time the application needs the privilege. Once "elevated", the application does not need to authenticate again until the application has been Quit and relaunched.
+
+:However, there are varying levels of authentication, known as Rights. The right that is requested can be shown by expanding the triangle next to "details", underneath the password. Normally, applications use system.privilege.admin, but another may be used, such as a lower right for security, or a higher right if higher access is needed. If the right the application has is not suitable for a task, the application may need to authenticate again to increase the privilege level.
+
+* '''PolicyKit''' can be configured to adopt either of these approaches.
+
+== Identifying when administrative rights are needed ==
+{{Expand section|Information for the Mac "Authenticate" dialog|date=December 2009}}
+In order for an operating system to know when to prompt the user for authorization, an application or action needs to identify itself as requiring elevated privileges. While it is technically possible for the user to be prompted at the exact moment that an operation requiring such privileges is executed, it is often not ideal to ask for privileges partway through completing a task.  If the user were unable to provide proper credentials, the work done before requiring administrator privileges would have to be undone because the task could not be seen though to the end.
+
+In the case of user interfaces such as the Control Panel in Microsoft Windows, and the Preferences panels in Mac OS X, the exact privilege requirements are hard-coded into the system so that the user is presented with an authorization dialog at an appropriate time (for example, before displaying information that only administrators should see). Different operating systems offer distinct methods for applications to identify their security requirements:
+
+* '''sudo''' centralises all privilege authorization information in a single configuration file, <code>/etc/sudoers</code>, which contains a list of users and the privileged applications and actions that those users are permitted to use.  The grammar of the sudoers file is intended to be flexible enough to cover many different scenarios, such as placing restrictions on command-line parameters.  For example, a user can be granted access to change anybody's password except for the root account, as follows:
+  pete    ALL = /usr/bin/passwd [A-z]*, !/usr/bin/passwd root
+* '''User Account Control''' uses a combination of heuristic scanning and "application manifests" to determine if an application requires administrator privileges.<ref>{{cite web
+|url=http://msdn2.microsoft.com/en-us/library/aa480150.aspx
+|title=Developer Best Practices and Guidelines for Applications in a Least Privileged Environment
+|accessdate=2007-03-15
+|work=MSDN
+|publisher=Microsoft
+}}</ref>  Manifest ([[.manifest]]) files, first introduced with Windows XP, are [[XML]] files with the same name as the application and a suffix of ".manifest", e.g. <code>Notepad.exe.manifest</code>.  When an application is started, the manifest is looked at for information about what security requirements the application has. For example, this XML fragment will indicate that the application will require administrator access, but will not require unfettered access to other parts of the user desktop outside the application:
+<source lang="xml">
+<security>
+    <requestedPrivileges>
+        <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
+    </requestedPrivileges>
+</security>
+</source>
+:Manifest files can also be compiled into the application executable itself as an [[Resource (Windows)|embedded resource]].  Heuristic scanning is also used, primarily for backwards compatibility.  One example of this is looking at the executable's file name; if it contains the word "Setup", it is assumed that the executable is an installer, and a UAC prompt is displayed before the application starts.<ref>{{cite web
+|url=http://technet.microsoft.com/en-us/windowsvista/aa905117.aspx
+|title=Understanding and Configuring User Account Control in Windows Vista
+|accessdate=2007-03-15
+|work=TechNet
+|publisher=Microsoft
+}}</ref>
+
+:UAC also makes a distinction between elevation requests from a signed executable and an unsigned executable; and if the former, whether or not the publisher is 'Windows Vista'.  The color, icon, and wording of the prompts are different in each case: for example, attempting to convey a greater sense of warning if the executable is unsigned than if not.<ref>{{cite web
+|url=http://windowsvistablog.com/blogs/windowsvista/archive/2007/01/25/accessible-uac-prompts.aspx
+|title=Accessible UAC Prompts
+|work=Windows Vista Blog
+|publisher=Microsoft
+}}</ref>
+
+* Applications using '''PolicyKit''' ask for specific privileges when prompting for authentication, and PolicyKit performs those actions on behalf of the application. Before authenticating, users are able to see which application requested the action and which action was requested.
+
+== See also ==
+* [[Privilege escalation]], a type of security exploit
+* [[Principle of least privilege]], a security design pattern
+* [[Privileged Identity Management]], the methodology of managing privileged accounts
+* [[Privileged password management]], similar concept to privileged identity management:
+** i.e., periodically scramble privileged passwords; and
+** store password values in a secure, highly available vault; and
+** apply policy regarding when, how and to whom these passwords may be disclosed.
+
+== References ==
+<references />
+
+[[Category:Operating system security]]
+[[Category:Software comparisons|Privilege authorization features]]
+[[Category:Computer access control]]

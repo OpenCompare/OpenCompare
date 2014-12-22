@@ -1,0 +1,2678 @@
+{{redirect|String functions|string functions in formal language theory|String operations}}
+{{Further2|[[comparison of programming languages]]}}
+<!--
+##################################
+NOTE TO CONTRIBUTORS: 
+Thanks to all who have submitted code samples from various programming languages.
+When adding code samples, *please* do not include extraneous characters or symbols
+that are not part of a programming language, such as interactive command prompts.
+This causes unneeded confusion for general readers.
+
+All code samples should at least be able to compile without error, when directly cut
+and pasted into a source code file.
+##################################
+-->
+{{ProgLangCompare}}
+String [[Function (computer science)|functions]] are used in computer [[programming language]]s to manipulate a [[String (computer science)|string]] or query information about a string (some do both).
+
+Most programming languages that have a string [[datatype]] will have some string functions although there may be other low-level ways within each language to handle strings directly. In object-oriented languages, string functions are often implemented as properties and methods of string objects. In functional and list-based languages a string is represented as a list (of character codes), therefore all list-manipulation procedures could be considered string functions. However such languages may implement a subset of explicit string-specific functions as well.
+
+For function that manipulate strings, modern object-oriented languages, like [[C Sharp (programming language)|C#]] and [[Java (programming language)|Java]] have immutable strings and return a copy (in newly allocated dynamic memory), while others, like [[C (programming language)|C]] manipulate the original string unless the programmer copies data to a new string. See for example [[#Concatenation|Concatenation]] below.
+
+The most basic example of a string function is the <code>length(string)</code> function. This function returns the length of a [[string literal]].
+
+:e.g. <code>length("hello world")</code> would return 11.
+
+Other languages may have string functions with similar or exactly the same syntax or parameters or outcomes. For example in many languages the length function is usually represented as ''[[Len (programming)|len]](string)''.  The below list of common functions aims to help limit this confusion.
+
+==Common string functions (multi language reference)==
+{{unreferenced section|date=July 2013}}
+String functions common to many languages are listed below, including the different names used.  The below list of common functions aims to help programmers find the equivalent function in a language. Note, string [[concatenation]] and [[regular expressions]] are handled in separate pages. Statements in [[guillemets]] (« … ») are optional.
+<!-- When giving literal examples please say the language you are using as different languages use different syntax. please list in alpha order. -->
+
+===CharAt===
+<!-- startsection -->
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>charAt(string,integer)</code> returns character.
+|-
+! Description
+| Returns character at index in the string.
+|-
+! Equivalent
+| See [[#substring|substring]] of length 1 character.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages !! Base index
+|-
+| <code>''string''[''i'']</code>
+|[[ALGOL 68]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[Seed7]]
+|1
+|-
+| <code>''string''[''i'']</code>
+|[[C (programming language)|C]], [[C++]], [[C Sharp (programming language)|C#]],[[Cobra (programming language)|Cobra]], [[D (programming language)|D]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Python (programming language)|Python]],<ref name="at1"/> [[PHP]], [[Ruby (programming language)|Ruby]],<ref name="at1"/> [[Windows PowerShell]], [[JavaScript]], Ya
+|0
+|-
+| <code>''string''{''i''}</code>
+|[[PHP]] (deprecated in 5.3)
+|0
+|-
+| <code>''string''(''i'')</code>
+|[[Ada (programming language)|Ada]]
+|≥1
+|-
+| <code>Mid(''string'',i,1)</code>
+|[[Visual Basic|VB]]
+|1
+|-
+| <code>MID$(''string'',i,1)</code>
+|[[BASIC]]
+|1
+|-
+| <code>''string''.Chars(''i'')</code>
+|[[Visual Basic .NET|VB.NET]]
+|0
+|-
+| <code>''string''(''i'':''i'')</code>
+|[[Fortran]]
+|1
+|-
+| <code>''string''.charAt(''i'')</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|0
+|-
+| <code>''string''.[''i'']</code>
+|[[OCaml]], [[F Sharp (programming language)|F#]]
+|0
+|-
+| <code>String.sub (''string'', ''i'')</code>
+|[[Standard ML]]
+|0
+|-
+| <code>''string'' !! ''i''</code>
+|[[Haskell (programming language)|Haskell]]
+|0
+|-
+| <code>(string-ref ''string'' ''i'')</code>
+|[[Scheme (programming language)|Scheme]]
+|0
+|-
+| <code>(char ''string'' ''i'')</code>
+|[[Common Lisp]]
+|0
+|-
+| <code>(elt ''string'' ''i'')</code>
+|[[ISLISP]]
+|0
+|-
+| <code>(get ''string'' ''i'')</code>
+|[[Clojure]]
+|0
+|-
+| <code>substr(''string'', ''i'', 1)</code>
+|[[Perl]]<ref name="at1"/>
+|0
+|-
+| <code>substr(''string'', ''i'', 1)</code>
+|[[PL/I]]
+|1
+|-
+| <code>''string''.at(''i'')</code>
+|[[C++]] (STL) (w/ bounds checking)
+|0
+|-
+| <code>lists:nth(''i'', ''string'')</code>
+|[[Erlang (programming language)|Erlang]]
+|1
+|-
+| <code>[''string'' characterAtIndex:''i'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|0
+|-
+| <code>string.sub(''string'', ''i'', ''i'') <br /> (''string''):sub(''i'', ''i'')</code>
+|[[Lua (programming language)|Lua]]<ref name="at1"/>
+|1
+|-
+| <code>''string'' at: ''i''</code>
+|[[Smalltalk]] (w/ bounds checking)
+|1
+|-
+| <code>string index ''string i''</code>
+|[[Tcl]]
+|0
+|-
+| <code>StringTake[''string'', {''i''}]</code>
+|[[Mathematica]]<ref name="at1"/>
+|1
+|-
+| <code>''string''@''i''</code>
+|[[Eiffel (programming language)|Eiffel]]
+|1
+|-
+| <code>''string'' (''i'':1)</code>
+| [[COBOL]]
+|1
+|}
+
+<source lang="pascal">
+{ Example in Pascal }
+var 
+  MyStr: string = 'Hello, World';
+  MyChar: Char;
+begin
+  MyChar := MyStr[2];         // 'e'
+</source>
+
+<source lang="algol68">
+# Example in ALGOL 68 #
+"Hello, World"[2];         // 'e'
+</source>
+
+<source lang="csharp">
+// Example in C# and Ya
+"Hello, World"[2];         // 'l'
+</source>
+
+<source lang="python">
+# Examples in Python
+"Hello, World"[2]          #  'l'
+"Hello, World"[-3]         #  'r'
+</source>
+
+<source lang="vb">
+' Example in Visual Basic
+Mid("Hello, World",2,1)
+</source>
+
+<source lang="vbnet">
+' Example in Visual Basic .NET
+"Hello, World".Chars(2)    '  "l"c
+</source>
+
+<source lang="smalltalk">
+" Example in Smalltalk"
+'Hello, World' at: 2.    "$e"
+</source>
+<!-- endsection -->
+
+===Compare (integer result)===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>compare(string<sub>1</sub>,string<sub>2</sub>)</code> returns integer.
+|-
+! Description
+| Compares two strings to each other.  If they are equivalent, a zero is returned. Otherwise, most of these routines will return a positive or negative result corresponding to whether string<sub>1</sub> is [[lexicographical order|lexicographically]] greater than, or less than, respectively, than string<sub>2</sub>. The exceptions are the Scheme and REXX routines which return the index of the first mismatch.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>IF ''string<sub>1</sub>''<''string<sub>2</sub>'' THEN -1 ELSE ABS (''string<sub>1</sub>''>''string<sub>2</sub>'') FI</code>
+|[[ALGOL 68]]
+|-
+| <code>cmp(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Python (programming language)|Python]] (before 3.0 only)
+|-
+| <code>(''string<sub>1</sub>'' > ''string<sub>2</sub>'') - (''string<sub>1</sub>'' < ''string<sub>2</sub>'')</code>
+|[[Python (programming language)|Python]] (since 3.0)
+|-
+| <code>[[strcmp]](''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[C (programming language)|C]], [[PHP]]
+|-
+| <code>std.string.cmp(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[D (programming language)|D]]
+|-
+| <code>StrComp(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Visual Basic|VB]], [[Object Pascal]] (Delphi)
+|-
+| <code>''string<sub>1</sub>'' cmp ''string<sub>2</sub>''</code>
+|[[Perl]]
+|-
+| <code>''string<sub>1</sub>'' <=> ''string<sub>2</sub>''</code>
+|[[Ruby (programming language)|Ruby]]
+|-
+| <code>''string<sub>1</sub>''.compare(''string<sub>2</sub>'')</code>
+|[[C++]] (STL)
+|-
+| <code>compare(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[REXX]], [[Seed7]]
+|-
+| <code>CompareStr(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi)
+|-
+| <code>''string<sub>1</sub>''.compareTo(''string<sub>2</sub>'')</code>
+|[[Cobra (programming language)|Cobra]], [[Java (programming language)|Java]]
+|-
+| <code>''string<sub>1</sub>''.CompareTo(''string<sub>2</sub>'')</code>
+|[[Visual Basic .Net|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
+|-
+| <code>(= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Clojure]]
+|-
+| <code>(string= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Common Lisp]]
+|-
+| <code>(string-compare ''string<sub>1</sub>'' ''string<sub>2</sub>'' ''p<'' ''p='' ''p>'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>(string= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[ISLISP]]
+|-
+| <code>compare ''string<sub>1</sub>'' ''string<sub>2</sub>''</code>
+|[[OCaml]]
+|-
+| <code>String.compare (''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Standard ML]] <ref>returns LESS, EQUAL, or GREATER</ref>
+|-
+| <code>compare ''string<sub>1</sub>'' ''string<sub>2</sub>''</code>
+|[[Haskell (programming language)|Haskell]] <ref>returns LT, EQ, or GT</ref>
+|-
+| <code>[string]::Compare(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Windows PowerShell]]
+|-
+| <code>[''string<sub>1</sub>'' compare:''string<sub>2</sub>'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>LLT(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LLE(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LGT(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LGE(''string<sub>1</sub>'',''string<sub>2</sub>'') </code>
+|[[Fortran]] <ref>returns <code>.TRUE.</code> or <code>.FALSE.</code>.  These functions are based on the ASCII collating sequence.</ref>
+|-
+| <code>''string<sub>1</sub>''.localeCompare(''string<sub>2</sub>'')</code>
+|[[JavaScript]]
+|-
+| <code>bytes.Compare([]byte(''string<sub>1</sub>''), []byte(''string<sub>2</sub>''))</code>
+|[[Go (programming language)|Go]]
+|-
+| <code>string compare ?-nocase? ?-length int? ''string<sub>1</sub>'' ''string<sub>2</sub>''</code>
+|[[Tcl]]
+|-
+| <code>compare(''string<sub>1</sub>'',''string<sub>2</sub>'',''count'')</code>
+|[[PL/I]]<ref name="lower1">IBM extension.</ref>
+|} 
+<source lang="python">
+# Example in Python
+cmp("hello", "world")      # returns -1
+</source>
+
+<source lang="rexx">
+/** Example in REXX */ 
+compare("hello", "world")  /* returns index of mismatch: 1 */
+</source>
+
+<source lang="scheme">
+; Example in Scheme
+(use-modules (srfi srfi-13))
+; returns index of mismatch: 0
+(string-compare "hello" "world" values values values)
+</source>
+<!-- endsection -->
+
+===Compare (relational operator-based, Boolean result)===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>string<sub>1</sub> OP string<sub>2</sub></code> OR <code>(compare string<sub>1</sub> string<sub>2</sub>)</code> returns Boolean.
+|-
+! Description
+| [[lexicographical order|Lexicographically]] compares two strings using a relational operator or function. Boolean result returned.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code> =, <>, <, >, <=</code> and <code>>=</code>
+|[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[OCaml]], [[Seed7]], [[Standard ML]], [[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[F Sharp (programming language)|F#]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code> =, /=, ≠, <, >, <=, ≤</code> and <code>≥</code>; Also: <code>EQ, NE, LT, LE, GE</code> and <code>GT</code>
+|[[ALGOL 68]]
+|-
+| <code>(stringOP? ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>, where <code>OP</code> can be any of <code>=, -ci=, <, -ci<, >, -ci>, <=, -ci<=, >=</code> and <code>-ci>=</code> (operators starting with '<code>-ci</code>' are case-insensitive)
+|[[Scheme (programming language)|Scheme]]
+|-
+| <code>(stringOP ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>, where <code>OP</code> can be any of <code>=, -ci=, <>, -ci<>, <, -ci<, >, -ci>, <=, -ci<=, >=</code> and <code>-ci>=</code> (operators starting with '<code>-ci</code>' are case-insensitive)
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>(stringOP ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>, where <code>OP</code> can be any of <code>=, -equal, /=, -not-equal, <, -lessp, >, -greaterp, <=, -not-greaterp, >=</code> and <code>-not-lessp</code> (the verbal operators are case-insensitive) 
+|[[Common Lisp]]
+|-
+| <code>(stringOP ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>, where <code>OP</code> can be any of <code>=, /=, <, >, <=,</code> and <code>>=</code>
+|[[ISLISP]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code> =, \=, <, >, <=</code> and <code>>=</code>
+|[[REXX]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code> =, ¬=, <, >, <=, >=, ¬<</code> and <code>¬></code>
+|[[PL/I]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>=, /=, <, >, <=</code> and <code>>=</code>
+|[[Ada (programming language)|Ada]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, /=, <, >, =<</code> and <code>>=</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, /=, <, >, <=</code> and <code>>=</code>
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>''eq'', ''ne'', ''lt'', ''gt'', ''le''</code> and <code>''ge''</code>
+|[[Perl]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, !=, <, >, <=</code> and <code>>=</code>
+|[[C++]] (STL), [[C Sharp (programming language)|C#]], [[D (programming language)|D]], [[Go (programming language)|Go]], [[JavaScript]], [[Python (programming language)|Python]], [[PHP]], [[Ruby (programming language)|Ruby]], Ya
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>-eq, -ceq, -ne, -cne, -lt, -clt, -gt, -cgt, -le, -cle, -ge,</code> and <code>-cge</code>  (operators starting with '<code>c</code>' are case-sensitive)
+|[[Windows PowerShell]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, ~=, <, >, <=</code> and <code>>=</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>=, ~=, <, >, <=</code> and <code>>=</code>
+|[[Smalltalk]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, /=, <, >, <=</code> and <code>>=; Also: .EQ., .NE., .LT., .LE., .GT.</code> and <code>.GE.</code>
+|[[Fortran]].<ref>The operators use the compiler's default collating sequence.</ref>
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code> where <code>OP</code> can be any of <code>=, <>, <, >, <=, >=</code> as well as worded equivalents
+| [[COBOL]]
+|-
+| <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code> where <code>OP</code> can be any of <code>==, <>, <, >, <=</code> and <code>>=</code>
+| [[Cobra (programming language)|Cobra]]
+|-
+| Are available in the syntax, but means comparison of the pointers pointing to the strings, not of the string contents.
+| [[C (programming language)|C]], [[Java]]
+|}
+
+<source lang="erlang">
+% Example in Erlang
+"hello" > "world".            % returns false
+</source>
+
+<source lang="powershell">
+# Example in Windows PowerShell
+"hello" -gt "world"           # returns false
+</source>
+
+<source lang="lisp">
+;; Example in Common Lisp
+(string> "art" "painting")      ; returns nil
+(string< "art" "painting")      ; returns non nil
+</source>
+<!-- endsection -->
+
+===Concatenation===
+{{see also|Concatenation}}
+
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>concatenate(string<sub>1</sub>,string<sub>2</sub>)</code> returns string.
+|-
+! Description
+| Concatenates (joins) two strings to each other, returning the combined string. Note that some languages like C have mutable strings, so really the second string is being appended to the first string and the mutated string is returned.
+|}
+<!-- table is missing entries for sh -->
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string<sub>1</sub>'' & ''string<sub>2</sub>''</code>
+|[[Ada (programming language)|Ada]], [[FreeBASIC]], [[Seed7]], [[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[COBOL]] (between literals only)
+|-
+| <code> [[strcat]](''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+| [[C (programming language)|C]], [[C++]] (<code>[[character (computing)|char]] [[Pointer (computer programming)|*]]</code> only)<ref>modifies ''<code>string<sub>1</sub></code>'', which must have enough space to store the result</ref>
+|-
+| <code>''string<sub>1</sub>'' . ''string<sub>2</sub>''</code>
+|[[Perl]], [[PHP]]
+|-
+| <code>''string<sub>1</sub>'' + ''string<sub>2</sub>''</code>
+|[[ALGOL 68]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[Cobra (programming language)|Cobra]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[Java (programming language)|Java]], [[JavaScript]], [[Windows PowerShell]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[F Sharp (programming language)|F#]], [[Turing (programming language)|Turing]], [[Visual Basic|VB]], Ya
+|-
+| <code>''string<sub>1</sub>'' ~ ''string<sub>2</sub>''</code>
+|[[D (programming language)|D]]
+|-
+| <code>(string-append ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Scheme (programming language)|Scheme]], [[ISLISP]]
+|-
+| <code>(concatenate 'string ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Common Lisp]]
+|-
+| <code>(str ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Clojure]]
+|-
+| <code>''string<sub>1</sub>'' <nowiki>||</nowiki> ''string<sub>2</sub>''</code>
+|[[REXX]], [[SQL]], [[PL/I]]
+|-
+| <code>''string<sub>1</sub>'' // ''string<sub>2</sub>''</code>
+|[[Fortran]]
+|-
+| <code>''string<sub>1</sub>'' ++ ''string<sub>2</sub>''</code>
+|[[Erlang (programming language)|Erlang]], [[Haskell (programming language)|Haskell]]
+|-
+| <code>''string<sub>1</sub>'' ^ ''string<sub>2</sub>''</code>
+|[[OCaml]], [[Standard ML]], [[F Sharp (programming language)|F#]]
+|-
+| <code>[''string<sub>1</sub>'' stringByAppendingString:''string<sub>2</sub>'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>''string<sub>1</sub>'' .. ''string<sub>2</sub>''</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string<sub>1</sub>'', ''string<sub>2</sub>''</code>
+|[[Smalltalk]]
+|-
+| <code>''string<sub>1</sub>'' ''string<sub>2</sub>''</code>
+|[[SNOBOL]]
+|-
+| <code>''string<sub>1</sub>string<sub>2</sub>''</code>
+|[[Bash shell]]
+|-
+| <code>''string<sub>1</sub>'' <> ''string<sub>2</sub>''</code>
+|[[Mathematica]]
+|}
+
+<source lang="pascal">
+{ Example in Pascal }
+'abc' + 'def';      // returns "abcdef"
+</source>
+
+<source lang="csharp">
+// Example in C#
+"abc" + "def";      // returns "abcdef"
+</source>
+
+<source lang="vb">
+' Example in Visual Basic
+"abc" & "def"       '  returns "abcdef"
+"abc" + "def"       '  returns "abcdef"
+"abc" & Null        '  returns "abc"
+"abc" + Null        '  returns Null
+</source>
+
+<source lang="d">
+// Example in D
+"abc" ~ "def";      // returns "abcdef"
+</source>
+
+<source lang=lisp>
+;; Example in common lisp
+(concatenate 'string "abc " "def " "ghi")  ; returns "abc def ghi"
+</source>
+<!-- endsection -->
+
+===Contains===
+
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>contains(''string'',''substring'')</code> returns boolean
+|-
+! Description
+| Returns whether ''string'' contains ''substring'' as a substring. This is equivalent to using [[#Find]] and then detecting that it does not result in the failure condition listed in the third column of the [[#Find]] section. However, some languages have a simpler way of expressing this test.
+|-
+| Related
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages
+|-
+| <code>''string_in_string''(''string'', '''loc int''', ''substring'')</code>
+| [[ALGOL 68]]
+|-
+| <code>''ContainsStr''(''string'', ''substring'')</code>
+| [[Object Pascal]] (Delphi)
+|-
+| <code>''string''.Contains(''substring)</code>
+| [[C Sharp (programming language)|C#]], [[Visual Basic .NET|VB .NET]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>''string''.contains(''substring'')</code>
+| [[Cobra (programming language)|Cobra]], [[Java (programming language)|Java]] (1.5+)
+|-
+| <code>''string''.indexOf(''substring'') &gt;= 0</code>
+|[[JavaScript]]
+|-
+| <code>strpos(''string'', ''substring'') !== false</code>
+|[[PHP]]
+|-
+| <code>pos(''string'', ''substring'') &lt;&gt; 0</code>
+|[[Seed7]]
+|-
+| <code>''substring'' in ''string''</code>
+|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]] (2.3+)
+|-
+| <code>string.find(''string'', ''substring'') ~= nil</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string''.include?(''substring'')</code>
+|[[Ruby (programming language)|Ruby]]
+|-
+| <code>Data.List.isInfixOf ''substring'' ''string''</code>
+|[[Haskell (programming language)|Haskell]] (GHC 6.6+)
+|-
+| <code>''string'' includesSubString: ''substring''</code>
+|[[Smalltalk]] (Squeak, Pharo)
+|-
+| <code>String.isSubstring ''substring'' ''string''</code>
+|[[Standard ML]]
+|-
+| <code>(search ''substring'' ''string'')</code>
+|[[Common Lisp]]
+|-
+| <code>(not (null (string-index ''substring'' ''string'')))</code>
+|[[ISLISP]]
+|-
+| <code>(substring? ''substring'' ''string'')</code>
+|[[Clojure]]
+|-
+| <code>! StringFreeQ[''string'', ''substring'']</code>
+|[[Mathematica]]
+|-
+| <code>index(''string'', ''substring'', ''startpos'')>0</code>
+|[[Fortran, PL/I]]<ref name="contain1">''startpos'' is IBM extension.</ref>
+|-
+| <code>strings.Contains(''string'', ''substring'')</code>
+| [[Go (programming language)|Go]]
+|-
+| <code>''string''.find(''substring'') != string::npos</code>
+| [[C++]]
+|-
+| <code>[''string'' containsString:''substring'']</code>
+|[[Objective-C]] (<code>NSString *</code> only, iOS 8+/OS X 10.10+)
+|}
+
+ ¢ Example in [[ALGOL 68]] ¢
+ string in string("e", '''loc int''', "Hello mate");      ¢ returns '''true''' ¢
+ string in string("z", '''loc int''', "word");            ¢ returns '''false''' ¢
+
+<source lang="csharp">
+// Example In C#
+"Hello mate".Contains("e");      // returns true
+"word".Contains("z");            // returns false
+</source>
+ 
+<source lang="python">
+#  Example in Python
+"e" in "Hello mate"              #  returns true
+"z" in "word"                    #  returns false
+</source>
+
+===Equality===
+<!-- startsection -->
+Tests if two strings are equal. See also [[#Compare (relational operator-based, Boolean result)|#Compare]] and [[#Compare (integer result)|#Compare]]. Note that doing equality checks via a generic [[#Compare (integer result)|Compare with integer result]] is not only confusing for the programmer but is often a significantly more expensive operation; this is especially true when using "[[String (computer science)#Representations|C-strings]]".
+
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string<sub>1</sub>'' == ''string<sub>2</sub>''</code>
+|[[Python (programming language)|Python]], [[C++]] (STL), [[C Sharp (programming language)|C#]], [[Cobra (programming language)|Cobra]], [[Go (programming language)|Go]], [[JavaScript]] (similarity), [[PHP]] (similarity), [[Ruby (programming language)|Ruby]], [[Erlang (programming language)|Erlang]], [[Haskell (programming language)|Haskell]], [[Lua (programming language)|Lua]], [[D (programming language)|D]], [[Mathematica]], Ya
+|-
+| <code>''string<sub>1</sub>'' === ''string<sub>2</sub>''</code>
+|[[JavaScript]], [[PHP]]
+|-
+| <code>''string<sub>1</sub>'' == ''string<sub>2</sub>'' or <br/> ''string<sub>1</sub>'' .EQ. ''string<sub>2</sub>''</code>
+|[[Fortran]]
+|-
+| <code>strcmp(''string<sub>1</sub>'', ''string<sub>2</sub>'') == 0</code>
+|[[C (programming language)|C]]
+|-
+| <code>(string=? ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Scheme (programming language)|Scheme]]
+|-
+| <code>(string= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Common Lisp]], [[ISLISP]]
+|-
+| <code>''string<sub>1</sub>'' = ''string<sub>2</sub>''</code>
+|[[ALGOL 68]], [[Ada (programming language)|Ada]], [[Object Pascal]] (Delphi), [[OCaml]], [[Pascal (programming language)|Pascal]], [[REXX]], [[Seed7]], [[Standard ML]], [[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[F Sharp (programming language)|F#]], [[Smalltalk]], [[PL/I]], [[COBOL]]
+|-
+| <code>test ''string<sub>1</sub>'' = ''string<sub>2</sub>'', or <br />[ ''string<sub>1</sub>'' = ''string<sub>2</sub>'' ]</code>
+|[[Bourne Shell]]
+|-
+| <code>''string<sub>1</sub>'' eq ''string<sub>2</sub>''</code>
+|[[Perl]]
+|-
+| <code>''string<sub>1</sub>''.equals(''string<sub>2</sub>'')</code>
+|[[Cobra (programming language)|Cobra]], [[Java (programming language)|Java]]
+|-
+| <code>''string<sub>1</sub>''.Equals(''string<sub>2</sub>'')</code>
+|[[C Sharp (programming language)|C#]]
+|-
+| <code>''string<sub>1</sub>'' -eq ''string<sub>2</sub>'', or <br />[string]::Equals(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Windows PowerShell]]
+|-
+| <code>[''string<sub>1</sub>'' isEqualToString:''string<sub>2</sub>''], or <br />[''string<sub>1</sub>'' isEqual:''string<sub>2</sub>'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|}
+
+<source lang="csharp">
+// Example in C#
+"hello" == "world"           // returns false
+</source>
+
+<source lang="vb">
+' Example in Visual Basic
+"hello" = "world"            '  returns false
+</source>
+
+<source lang="text">
+# Example in Windows PowerShell
+"hello" -eq "world"          #  returns false
+</source>
+<!-- endsection -->
+
+===Find===
+
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>find(''string'',''substring'')</code> returns integer
+|-
+! Description
+| Returns the position of the start of the first occurrence of ''substring'' in ''string''. If the ''substring'' is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as Boolean FALSE.
+|-
+| Related
+| instrrev
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages !! If not found
+|-
+| <code>string in string(substring, pos, ''string[startpos:]'')</code>
+|[[ALGOL 68]]
+|returns BOOL: TRUE or FALSE, and position in REF INT pos.
+|-
+| <code>InStr(«''startpos'',»''string'',''substring'')</code>
+|[[Visual Basic|VB]] (positions start at 1)
+|returns 0
+|-
+| <code>INSTR$(''string'',''substring'')</code>
+|[[BASIC]] (positions start at 1)
+|returns 0
+|-
+| <code>index(''string'',''substring'')</code>
+|[[AWK]]
+|returns 0
+|-
+| <code>index(''string'',''substring''«,''startpos''»)</code>
+|[[Perl]]
+|returns -1
+|-
+| <code>instr(«''startpos'',»''string'',''substring'')</code>
+|[[FreeBASIC]]
+|returns 0
+|-
+| <code>strpos(''string'',''substring''«,''startpos''»)</code>
+|[[PHP]]
+|returns FALSE
+|-
+| <code>locate(''string'', ''substring'')</code>
+|[[Ingres (database)|Ingres]]
+|returns string length + 1
+|-
+| <code>strstr(''string'', ''substring'')</code>
+|[[C (programming language)|C]], [[C++]] (<code>[[character (computing)|char]] [[Pointer (computer programming)|*]]</code> only, returns pointer to first character)
+|returns NULL
+|-
+| <code>std.string.indexOf(''string'', ''substring'')</code>
+|[[D (programming language)|D]]
+|returns -1
+|-
+| <code>pos(''string'', ''substring''«, ''startpos''»)</code>
+|[[Seed7]]
+|returns 0
+|-
+| <code>strings.Index(''string'', ''substring'')</code>
+|[[Go (programming language)|Go]]
+|returns -1
+|-
+| <code>pos(''substring'', ''string'')</code>
+|[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi)
+|returns 0
+|-
+| <code>pos(''substring'', ''string''«,''startpos''»)</code>
+|[[REXX]]
+|returns 0
+|-
+| <code>''string''.find(''substring''«,''startpos''»)</code>
+|[[C++]] (STL)
+|returns std::string::npos
+|-
+| <code>''string''.find(''substring''«,''startpos''«,''endpos''»»)</code>
+|rowspan=2|[[Python (programming language)|Python]]
+|returns -1
+|-
+| <code>''string''.index(''substring''«,''startpos''«,''endpos''»»)</code>
+|raises ValueError
+|-
+| <code>''string''.index(''substring''«,''startpos''»)</code>
+|[[Ruby (programming language)|Ruby]]
+|returns nil
+|-
+| <code>''string''.indexOf(''substring''«,''startpos''»)</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|returns -1
+|-
+| <code>''string''.IndexOf(''substring''«,''startpos''«, ''charcount''»»)</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|returns -1
+|-
+| <code>string:str(''string'', ''substring'')</code>
+|[[Erlang (programming language)|Erlang]]
+|returns 0
+|-
+| <code>(string-contains ''string'' ''substring'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|returns #f
+|-
+| <code>(search ''substring'' ''string'')</code>
+|[[Common Lisp]]
+|returns NIL
+|-
+| <code>(string-index ''substring'' ''string'')</code>
+|[[ISLISP]]
+|returns <code>nil</code>
+|-
+| <code>List.findIndex (List.isPrefixOf ''substring'') (List.tails ''string'')</code>
+|[[Haskell (programming language)|Haskell]] (returns Just ''index'')
+|returns Nothing
+|-
+| <code>Str.search_forward (Str.regexp_string ''substring'') ''string'' 0</code>
+|[[OCaml]]
+|raises Not_found
+|-
+| <code>Substring.size (#1 (Substring.position ''substring'' (Substring.full ''string'')))</code>
+|[[Standard ML]]
+|returns string length
+|-
+| <code>[''string'' rangeOfString:''substring''].location</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|returns NSNotFound
+|-
+| <code>string.find(''string'', ''substring'') <br /> (''string''):find(''substring'')</code>
+|[[Lua (programming language)|Lua]]
+|returns nil
+|-
+| <code>''string'' indexOfSubCollection: ''substring'' startingAt: ''startpos'' ifAbsent: ''aBlock'' <br /> ''string'' findString: ''substring'' startingAt: ''startpos'' </code>
+|[[Smalltalk]] (Squeak, Pharo)
+|evaluate aBlock which is a block closure (or any object understanding value) <br /> returns 0
+|-
+| <code>startpos = INDEX(''string'', ''substring'' «,''back''» «, ''kind''»)</code>
+|[[Fortran]]
+|returns 0 if substring is not in string; returns LEN(string)+1 if substring is empty
+|-
+| <code>POSITION(''substring'' IN ''string'')</code>
+|[[SQL]]
+|returns 0 (positions start at 1)
+|-
+| <code>index(''string'', ''substring'', ''startpos'' )</code>
+|[[PL/I]]<ref name="contain1"/>
+|returns 0 (positions start at 1)
+|-
+| <code>''string''.indexOf(''substring''«,''startpos''«, ''charcount''»»)</code>
+|[[Cobra (programming language)|Cobra]]
+|returns -1
+|}
+
+<source lang="lisp">
+; Examples in Common Lisp
+(search "e" "Hello mate")             ;  returns 1
+(search "z" "word")                   ;  returns NIL
+</source>
+
+<source lang="csharp">
+// Examples in C#
+"Hello mate".IndexOf("e");            // returns 1
+"Hello mate".IndexOf("e", 4);         // returns 9
+"word".IndexOf("z");                  // returns -1
+</source>
+
+<source lang="scheme">
+; Examples in Scheme
+(use-modules (srfi srfi-13))
+(string-contains "Hello mate" "e")    ;  returns 1
+(string-contains "word" "z")          ;  returns #f
+</source>
+
+<source lang="vb">
+' Examples in Visual Basic
+InStr("Hello mate", "e")              '  returns 2
+InStr(5, "Hello mate", "e")           '  returns 10
+InStr("word", "z")                    '  returns 0
+</source>
+
+<source lang="smalltalk">
+" Examples in Smalltalk "
+'Hello mate' indexOfSubCollection:'ate'  "returns 8"
+'Hello mate' indexOfSubCollection:'late' "returns 0"
+I'Hello mate' 
+    indexOfSubCollection:'late'
+    ifAbsent:[ 99 ]                      "returns 99"
+'Hello mate' 
+    indexOfSubCollection:'late'
+    ifAbsent:[ self error ]              "raises an exception"
+</source>
+
+<!-- endsection -->
+
+===Find character===
+
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>find_character(''string'',''char'')</code> returns integer
+|-
+! Description
+| Returns the position of the start of the first occurrence of the character ''char'' in ''string''. If the character is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as Boolean FALSE. This can be accomplished as a special case of [[#Find]], with a string of one character; but it may be simpler or more efficient in many languages to locate just one character. Also, in many languages, characters and strings are different types, so it is convenient to have such a function.
+|-
+| Related
+| find
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages !! If not found
+|-
+| <code>char in string(char, pos, ''string[startpos:]'')</code>
+|[[ALGOL 68]]
+|returns BOOL: TRUE or FALSE, and position in REF INT pos.
+|-
+| <code>instr(''string'', any ''char''«,''startpos''»)</code> (char, can contain more them one char, in which case the position of the first appearance of any of them is returned.)
+|[[FreeBASIC]]
+|returns 0
+|-
+| <code>strchr(''string'',''char'')</code>
+|[[C (programming language)|C]], [[C++]] (<code>[[character (computing)|char]] [[Pointer (computer programming)|*]]</code> only, returns pointer to character)
+|returns NULL
+|-
+| <code>std.string.find(''string'', ''dchar'')</code>
+|[[D (programming language)|D]]
+|returns -1
+|-
+| <code>''string''.find(''char''«,''startpos''»)</code>
+|[[C++]] (STL)
+|returns std::string::npos
+|-
+| <code>pos(''string'', ''char''«, ''startpos''»)</code>
+|[[Seed7]]
+|returns 0
+|-
+| <code>strings.IndexRune(''string'',''char'')</code>
+|[[Go (programming language)|Go]]
+|returns -1
+|-
+| <code>''string''.indexOf(''char''«,''startpos''»)</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|returns -1
+|-
+| <code>''string''.IndexOf(''char''«,''startpos''«, ''charcount''»»)</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|returns -1
+|-
+| <code>(position ''char'' ''string'')</code>
+|[[Common Lisp]]
+|returns NIL
+|-
+| <code>(char-index ''char'' ''string'')</code>
+|[[ISLISP]]
+|returns <code>nil</code>
+|-
+| <code>List.elemIndex ''char'' ''string''</code>
+|[[Haskell (programming language)|Haskell]] (returns Just ''index'')
+|returns Nothing
+|-
+| <code>String.index ''string'' ''char''</code>
+|[[OCaml]]
+|raises Not_found
+|-
+| <code>position = SCAN (''string'', ''set'' «, ''back''» «, ''kind''») or <br/> position = VERIFY (''string'', ''set'' «, ''back''» «, ''kind''»){{ref|Fortran find|[a]}}</code>
+|[[Fortran]]
+|returns zero
+|-
+| <code>''string'' indexOf: ''char'' ifAbsent: aBlock <br> ''string'' indexOf: ''char'' <br> ''string'' includes: ''char''</code>
+|[[Smalltalk]]
+|evaluate <code>aBlock</code> which is a <code>BlockClosure</code> (or any object understanding value) <br> returns 0 <br> returns <code>true</code> or <code>false</code>
+|-
+| <code>index(''string'', ''char'', ''startpos'' )</code>
+|[[PL/I]]<ref name="fc1">''<code>startpos</code>'' is IBM extension.</ref>
+|returns 0 (positions start at 1)
+|-
+|<code>''string''.index(?''char'')</code>
+|[[Ruby (programming language)|Ruby]]
+|returns nil
+|-
+|<code>''strpos(''string'',''char'',''startpos'')</code>
+|[[PHP]]
+|returns <code>false</code>
+|-
+| <code>''string''.indexOf(''char''«,''startpos''«, ''charcount''»»)</code>
+|[[Cobra (programming language)|Cobra]]
+|returns -1
+|}
+
+<source lang="csharp">
+// Examples in C#
+"Hello mate".IndexOf('e');              // returns 1
+"word".IndexOf('z')                     // returns -1
+</source>
+
+<source lang="lisp">
+; Examples in Common Lisp
+(position #\e "Hello mate")             ;  returns 1
+(position #\z "word")                   ;  returns NIL
+</source>
+<!-- endsection -->
+{{note|Fortran find|a}} Given a set of characters, SCAN returns the position of the first character found,<ref>{{cite web|url=http://fortranwiki.org/fortran/show/scan |title=scan in Fortran Wiki |publisher=Fortranwiki.org |date=2009-04-30 |accessdate=2013-08-18}}</ref> while VERIFY returns the position of the first character that does not belong to the set.<ref>{{cite web|url=http://fortranwiki.org/fortran/show/verify |title=verify in Fortran Wiki |publisher=Fortranwiki.org |date=2012-05-03 |accessdate=2013-08-18}}</ref>
+
+===Format===
+{{See also|printf format string}}
+<!-- startsection -->
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>format(''formatstring'', ''items'')</code> returns string
+|-
+! Description
+| Returns the formatted string representation of one or more items.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages !! Format string syntax
+|-
+| <code>associate(''file'', ''string''); [[putf]](''file'', ''$formatstring$'', ''items'')</code>
+|[[ALGOL 68]]
+|ALGOL
+|-
+| <code>Format(''item'', ''formatstring'')</code>
+|[[Visual Basic|VB]]
+| <code></code>
+|-
+| <code>[[sprintf]](''formatstring'', ''items'')</code>
+|[[Perl]], [[PHP]], [[Ruby (programming language)|Ruby]]
+|C
+|-
+| <code>io_lib:format(''formatstring'', ''items'')</code>
+|[[Erlang (programming language)|Erlang]]
+| <code></code>
+|-
+| <code>[[sprintf]](''outputstring'', ''formatstring'', ''items'')</code>
+|[[C (programming language)|C]]
+|C
+|-
+| <code>std.string.format(''formatstring'', ''items'')</code>
+|[[D (programming language)|D]]
+|C
+|-
+| <code>Format(''formatstring'', ''items'')</code>
+|[[Object Pascal]] (Delphi)
+| <code></code>
+|-
+| <code>fmt.Sprintf(''formatstring'', ''items'')</code>
+|[[Go (programming language)|Go]]
+|C
+|-
+| <code>[[printf]] -v ''outputstring'' ''formatstring'' ''items''</code>
+|[[Bash shell]]
+|C
+|-
+| <code>''formatstring'' % (''items'')</code>
+|[[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]]
+|C
+|-
+| <code>''formatstring''.format(''items'')</code>
+|Python 3.x
+|.NET
+|-
+| <code>Printf.sprintf ''formatstring''</code><ref>''<code>formatstring</code>'' must be a fixed literal at compile time for it to have the correct type.</ref><code> ''items''</code>
+| [[OCaml]], [[F Sharp (programming language)|F#]]
+|C
+|-
+| <code>Text.Printf.printf ''formatstring'' ''items''</code>
+|[[Haskell (programming language)|Haskell]] (GHC)
+|C
+|-
+| <code>String.format(''formatstring'', ''items'')</code>
+|[[Java (programming language)|Java]]
+|C
+|-
+| <code>String.Format(''formatstring'', ''items'')</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
+|.NET
+|-
+| <code>(format ''formatstring'' ''items'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 28)
+|Lisp
+|-
+| <code>([[Format (Common Lisp)|format]] nil ''formatstring'' ''items'')</code>
+|[[Common Lisp]]
+|Lisp
+|-
+| <code>(format ''formatstring'' ''items'')</code>
+|[[Clojure]]
+|Lisp
+|-
+| <code>''formatstring'' -f ''items''</code>
+|[[Windows PowerShell]]
+|.NET
+|-
+| <code>[NSString stringWithFormat:''formatstring'', ''items'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|C
+|-
+| <code>string.format(''formatstring'', ''items'') <br /> (''formatstring''):format(''items'')</code>
+|[[Lua (programming language)|Lua]]
+|C
+|-
+| <code>WRITE (''outputstring'', ''formatstring'') ''items''</code>
+|[[Fortran]]
+|Fortran
+|-
+| <code>put string(''string'') edit(''items'')(''format'')</code>
+|[[PL/I]]
+|PL/I (similar to Fortran)
+|-
+| <code>String.format(''formatstring'', ''items'')</code>
+|[[Cobra (programming language)|Cobra]]
+|.NET
+|}
+
+<source lang="csharp">
+// Example in C#
+String.Format("My {0} costs {1:C2}", "pen", 19.99); // returns "My pen costs $19.99"
+</source>
+
+<source lang="delphi">
+// Example in Object Pascal (Delphi)
+Format('My %s costs $%2f', ['pen', 19.99]);         // returns "My pen costs $19.99"
+</source>
+
+<source lang="java5">
+// Example in Java
+String.format("My %s costs $%2f", "pen", 19.99);    // returns "My pen costs $19.99"
+</source>
+
+<source lang="python">
+# Example in Python
+"My %s costs $%.2f" % ("pen", 19.99);                #  returns "My pen costs $19.99"
+"My {0} costs ${1:.2f}".format("pen", 19.99);        #  returns "My pen costs $19.99"
+</source>
+
+<source lang="Scheme">
+; Example in Scheme
+(format "My ~a costs $~1,2F" "pen" 19.99)           ;  returns "My pen costs $19.99"
+</source>
+
+<source lang=PLI>
+/* example in PL/I */
+put string(some_string) edit('My ', 'pen', ' costs', 19.99)(a,a,a,p'$$$V.99')
+/* returns "My pen costs $19.99" */
+</source>
+<!-- endsection -->
+
+===Inequality===
+<!-- startsection -->
+Tests if two strings are not equal. See also [[#Equality]].
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string<sub>1</sub>'' '''ne''' ''string<sub>2</sub>'', or ''string<sub>1</sub>'' NE ''string<sub>2</sub>''</code>
+|[[ALGOL 68]] - note: the operator "'''ne'''" is literally in '''bold''' type-font.
+|-
+| <code>''string<sub>1</sub>'' /= ''string<sub>2</sub>''</code>
+|[[ALGOL 68]], [[Ada (programming language)|Ada]], [[Erlang (programming language)|Erlang]], [[Fortran]], [[Haskell (programming language)|Haskell]] 
+|-
+| <code>''string<sub>1</sub>'' <> ''string<sub>2</sub>''</code>
+|[[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[OCaml]], [[PHP]], [[Seed7]], [[Standard ML]], [[F Sharp (programming language)|F#]], [[COBOL]], [[Cobra (programming language)|Cobra]]
+|-
+| <code>''string<sub>1</sub>'' # ''string<sub>2</sub>''</code>
+|[[BASIC]] (some implementations)
+|-
+| <code>''string<sub>1</sub>'' ne ''string<sub>2</sub>''</code>
+|[[Perl]] 
+|-
+| <code>(string<> ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>(string/= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Common Lisp]] 
+|-
+| <code>(string/= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[ISLISP]] 
+|-
+| <code>(not= ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
+|[[Clojure]] 
+|-
+| <code>''string<sub>1</sub>'' != ''string<sub>2</sub>''</code>
+|[[C++]] (STL), [[C Sharp (programming language)|C#]], [[Go (programming language)|Go]], [[JavaScript]] (not similar), [[PHP]] (not similar), [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[D (programming language)|D]], [[Mathematica]]
+|-
+| <code>''string<sub>1</sub>'' !== ''string<sub>2</sub>''</code>
+|[[JavaScript]], [[PHP]] 
+|-
+| <code>''string<sub>1</sub>'' \= ''string<sub>2</sub>''</code>
+|[[REXX]] 
+|-
+| <code>''string<sub>1</sub>'' ¬= ''string<sub>2</sub>''</code>
+|[[PL/I]] 
+|-
+| <code>test ''string<sub>1</sub>'' != ''string<sub>2</sub>'', or <br />[ ''string<sub>1</sub>'' != ''string<sub>2</sub>'' ]</code>
+|[[Bourne Shell]]
+|-
+| <code>''string<sub>1</sub>'' -ne ''string<sub>2</sub>'', or <br />-not [string]::Equals(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
+|[[Windows PowerShell]]
+|-
+| <code>''string<sub>1</sub>'' ~= ''string<sub>2</sub>''</code>
+|[[Lua (programming language)|Lua]], [[Smalltalk]]
+|}
+
+<source lang="csharp">
+// Example in C#
+"hello" != "world"    // returns true
+</source>
+
+<source lang="vb">
+' Example in Visual Basic
+"hello" <> "world"    '  returns true
+</source>
+
+<source lang="clojure">
+;; Example in Clojure
+(not= "hello" "world")  ; ⇒ true
+</source>
+
+<source lang="powershell">
+# Example in Windows PowerShell
+"hello" -ne "world"   #  returns true
+</source>
+<!-- endsection -->
+
+===index===
+''see'' [[#Find]]
+
+===indexof===
+''see'' [[#Find]]
+
+===instr===
+''see'' [[#Find]]
+
+===instrrev===
+''see'' [[#rfind]]
+
+===join===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code> join(''separator'', ''list_of_strings'')</code> returns a list of strings joined with a separator
+|-
+! Description
+| Joins the list of strings into a new string, with the separator string between each of the substrings. Opposite of ''split''.
+|-
+| Related
+| sprintf
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>std.string.join(''array_of_strings'', ''separator'')</code>
+|[[D (programming language)|D]]
+|-
+| <code>string:join(''list_of_strings'', ''separator'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>join(''separator'', ''list_of_strings'')</code>
+|[[Perl]], [[PHP]]
+|-
+| <code>implode(''separator'', ''array_of_strings'')</code>
+|[[PHP]]
+|-
+| <code>''separator''.join(''sequence_of_strings'')</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>''array_of_strings''.join(''separator'')</code>
+|[[Ruby (programming language)|Ruby]], [[JavaScript]]
+|-
+| <code>(string-join ''array_of_strings'' ''separator'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>([[Format (Common Lisp)|format]] nil "~{~a~^''separator''~}" ''array_of_strings'')</code>
+|[[Common Lisp]]
+|-
+| <code>(clojure.string/join ''separator'' ''list_of_strings'')
+(apply str (interpose ''separator'' ''list_of_strings''))</code>
+|[[Clojure]]
+|-
+| <code>strings.Join(''array_of_strings'', ''separator'')</code>
+|[[Go (programming language)|Go]]
+|-
+| <code>join(''array_of_strings'', ''separator'')</code>
+|[[Seed7]]
+|-
+| <code>String.concat ''separator'' ''list_of_strings''</code>
+|[[OCaml]]
+|-
+| <code>String.concatWith ''separator'' ''list_of_strings''</code>
+|[[Standard ML]]
+|-
+| <code>Data.List.intercalate ''separator'' ''list_of_strings''</code>
+|[[Haskell (programming language)|Haskell]] (GHC 6.8+)
+|-
+| <code>Join(''array_of_strings'', ''separator'')</code>
+|[[Visual Basic|VB]]
+|-
+| <code>String.Join(''separator'', ''array_of_strings'')</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
+|-
+| <code>&{$OFS=''$separator''; "''$array_of_strings''"}, or <br />''array_of_strings'' -join ''separator''</code>
+|[[Windows PowerShell]]
+|-
+| <code>[''array_of_strings'' componentsJoinedByString:''separator'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>table.concat(''table_of_strings'', ''separator'')</code>
+|[[Lua (programming language)|Lua]] 
+|-
+| <code><nowiki>{|String streamContents: [ :stream |</nowiki> ''collectionOfAnything'' asStringOn: stream delimiter: ''separator'' <nowiki>]</nowiki></code>
+|[[Smalltalk]] (Squeak, Pharo)
+|-
+| <code>''array_of_strings''.join(''separator''«, ''final_separator''»)</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+<source lang="csharp">
+// Example in C#
+String.Join("-", {"a", "b", "c"})  // "a-b-c"
+</source>
+
+<source lang="perl">
+# Example in Perl
+join( '-', ('a', 'b', 'c'));       # 'a-b-c'
+</source>
+<source lang="python">
+# Example in Python
+"-".join(["a", "b", "c"])          #  'a-b-c'
+</source>
+
+<source lang="ruby">
+# Example in Ruby
+["a", "b", "c"].join("-")          #  'a-b-c'
+</source>
+
+<source lang="scheme">
+; Example in Scheme
+(use-modules (srfi srfi-13))
+(string-join '("a" "b" "c") "-")   ;  "a-b-c"
+</source>
+<!-- endsection -->
+
+===lastindexof===
+''see'' [[#rfind]]
+
+===left===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>left(''string'',''n'')</code> returns string
+|-
+! Description
+| Returns the left ''n'' part of a string. If ''n'' is greater than the length of the string then most implementations return the whole string (exceptions exist - see code examples).
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+|<code>string (string'First .. string'First + ''n'' - 1)</code>
+|[[Ada (programming language)|Ada]]
+|-
+| <code>substr(''string'', 0, ''n'')</code>
+|[[AWK]] (changes string), [[Perl]], [[PHP]]
+|-
+| <code>LEFT$(''string'',''n'')</code>
+|[[BASIC]],[[Visual Basic|VB]]
+|-
+| <code>left(''string'',''n'')</code>
+||[[Visual Basic|VB]],[[FreeBASIC]], [[Ingres (database)|Ingres]]
+|-
+| <code>strncpy(''string2'', ''string'', ''n'')</code>
+|[[C (programming language)|C standard library]]
+|-
+| <code>''string''.substr(0,''n'')</code>
+|[[C++]] (STL)
+|-
+| <code>[''string'' substringToIndex:''n'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>(apply str (take ''n'' ''string''))</code>
+|[[Clojure]]
+|-
+| <code>''string''[0 .. ''n'']</code>
+|[[D (programming language)|D]]<ref>if n is larger than the length of the string, then in Debug mode ArrayRangeException is thrown, in Release mode, the behaviour is [[unspecified behavior|unspecified]].</ref>
+|-
+| <code>string:substr(''string'', ''start'', ''length'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>(subseq ''string'' 0 ''n'')</code>
+|[[Common Lisp]]
+|-
+| <code>''string''[:''n'']</code>
+|[[Cobra (programming language)|Cobra]], [[Go (programming language)|Go]], [[Python (programming language)|Python]]
+|-
+| <code>left(''string'',''n'' «,''padchar''»)</code>
+|[[REXX]], [[Erlang (programming language)|Erlang]]
+|-
+| <code>''string''[0, ''n''] <br /> ''string''[0..''n'' - 1]</code>
+|[[Ruby (programming language)|Ruby]]
+|-
+| <code>''string''[ .. ''n'']</code>
+|[[Seed7]]
+|-
+| <code>''string''.Substring(0,''n'')</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>leftstr(''string'', ''n'')</code>
+|[[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi)
+|-
+|<code>''copy'' (''string'',1,''n'')</code>
+|[[Turbo Pascal]]
+|-
+| <code>''string''.substring(0,''n'')</code>
+|[[Java (programming language)|Java]],<ref>if n is larger than the length of the string, Java will throw an IndexOutOfBoundsException</ref> [[JavaScript]] 
+|-
+| <code>(string-take ''string'' ''n'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>take ''n'' ''string''</code>
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>String.extract (''string'', ''n'', NONE)</code>
+|[[Standard ML]]
+|-
+| <code>String.sub ''string'' 0 ''n''</code>
+|[[OCaml]]<ref name="ReferenceA">if n is larger than length of string, raises Invalid_argument</ref>
+|-
+| <code>''string''.[..''n'']</code>
+|[[F Sharp (programming language)|F#]]
+|-
+| <code>string.sub(''string'', 1, ''n'') <br /> (''string''):sub(1, ''n'')</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' first: ''n''</code>
+|[[Smalltalk]] (Squeak, Pharo)
+|-
+| <code>''string''(:''n'')</code>
+|[[Fortran]]
+|-
+| <code>StringTake[''string'', ''n'']</code>
+|[[Mathematica]]<ref name="ReferenceB">if n is larger than length of string, throw the message "StringTake::take:"</ref>
+|-
+|<code>''string'' («FUNCTION» LENGTH(''string'') - ''n'':''n'')</code>
+|[[COBOL]]
+|-
+|<code>''string''.substring(0, ''n'')</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+<source lang="rexx">
+/* Examples in REXX */
+left("abcde", 3)         /* returns "abc"      */
+left("abcde", 8)         /* returns "abcde   " */
+left("abcde", 8, "*")    /* returns "abcde***" */
+</source>
+
+<source lang="scheme">
+; Examples in Scheme
+(use-modules (srfi srfi-13))
+(string-take "abcde", 3) ;  returns "abc" 
+(string-take "abcde", 8) ;  error
+</source>
+
+<source lang="Cpp">
+' Examples in Visual Basic
+Left("sandroguidi", 3)   '  returns "san" 
+Left("sandroguidi", 100) '  returns "sandroguidi"
+</source>
+
+<source lang="Cpp">
+// Examples in Ya
+"abcde"[0..3] // returns "abc"
+"abcde"[0..8] // returns "abcde"
+</source>
+
+<!-- endsection -->
+
+===len===
+''see'' [[#length]]
+
+<!-- endsection -->
+
+===length===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>length(''string'')</code> returns an integer number
+|-
+! Description
+| Returns the length of a string (not counting the [[null character|null terminator]] or any other of the string's internal structural information). An empty string returns a length of 0.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Returns !! Languages 
+|-
+|<code>string'Length</code>
+| <code></code>
+|[[Ada (programming language)|Ada]]
+|-
+|<code>UPB string</code>
+| <code></code>
+|[[ALGOL 68]]
+|-
+| <code>length(''string'')</code>
+| <code></code>
+|[[Ingres (database)|Ingres]], [[Perl]],  [[Pascal (programming language)|Pascal]], [[Object Pascal]] (Delphi), [[REXX]], [[Seed7]], [[SQL]], [[PL/I]]
+|-
+| <code>[[Len (programming)|len]](''string'')</code>
+| <code></code>
+|[[BASIC]], [[FreeBASIC]], [[Python (programming language)|Python]], [[Go (programming language)|Go]]
+|-
+| <code>length(''string''), string:len(''string'')</code>
+| <code></code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>[[Len (programming)|Len]](''string'')</code>
+| <code></code>
+|[[Visual Basic|VB]]
+|-
+| <code>''string''.Length</code>
+|Number of 16-bit [[UTF-16]]-encoded blocks
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>''string''.size OR ''string''.length</code>
+|Number of bytes<ref>Ruby lacks Unicode support</ref>
+|[[Ruby (programming language)|Ruby]]
+|-
+| <code>[[strlen]](''string'')</code>
+|Number of bytes
+|[[C (programming language)|C]], [[PHP]]
+|-
+| <code>''string''.length()</code>
+| <code></code>
+|[[C++]] (STL)
+|-
+| <code>''string''.length</code>
+| <code></code>
+|[[Cobra (programming language)|Cobra]], [[D (programming language)|D]], [[JavaScript]]
+|-
+| <code>''string''.length()</code>
+|Number of 16-bit [[UTF-16]]-encoded blocks
+|[[Java (programming language)|Java]]
+|-
+| <code>(string-length ''string'')</code>
+| <code></code>
+|[[Scheme (programming language)|Scheme]]
+|-
+| <code>(length ''string'')</code>
+| <code></code>
+|[[Common Lisp]], [[ISLISP]]
+|-
+| <code>(count ''string'')</code>
+| <code></code>
+|[[Clojure]]
+|-
+| <code>String.length ''string''</code>
+| <code></code>
+|[[OCaml]]
+|-
+| <code>size ''string''</code>
+| <code></code>
+|[[Standard ML]]
+|-
+| <code>length ''string''</code>
+|Number of Unicode codepoints
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>[''string'' length]</code>
+| <code></code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>string.len(''string'') <br /> (''string''):len() <br /> #''string''</code>
+| <code></code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' size</code>
+| <code></code>
+|[[Smalltalk]]
+|-
+| <code>LEN(''string''), or LEN_TRIM(''string'')</code>
+| <code></code>
+|[[Fortran]]
+|-
+| <code>StringLength[''string'']</code>
+| <code></code>
+|[[Mathematica]]
+|-
+|<code>Length(string)</code> or
+<code>Size(string)</code>
+| number of bytes as <code>$int+</code>
+| Ya
+|-
+|<code>«FUNCTION» LENGTH(''string'')</code> or
+<code>«FUNCTION» BYTE-LENGTH(''string'')</code>
+| number of characters and number of bytes, respectively
+| [[COBOL]]
+|}
+
+<source lang="csharp">
+// Examples in C#
+"hello".Length;      // returns 5
+"".Length;           // returns 0
+</source>
+
+<source lang="erlang">
+# Examples in Erlang
+string:len("hello"). %  returns 5
+string:len("").      %  returns 0
+</source>
+
+<source lang="perl">
+# Examples in Perl
+length("hello");     #  returns 5
+length("");          #  returns 0
+</source>
+
+<source lang="vb">
+' Examples in Visual Basic
+Len("hello")         '  returns 5
+Len("")              '  returns 0
+</source>
+
+<source lang="objc">
+//Examples in Objective-C
+[@"hello" Length]   //returns 5
+[@"" Length]   //returns 0
+</source>
+
+<source lang="lua">
+-- Examples in Lua
+("hello"):len() -- returns 5
+#"" -- returns 0
+</source>
+<!-- endsection -->
+
+===locate===
+
+''see'' [[#Find]]
+
+<!-- endsection -->
+
+===Lowercase===
+<!-- startsection -->
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>lowercase(''string'')</code> returns string
+|-
+! Description
+| Returns the string in lower case. 
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>LCase(''string'') </code>
+|[[Visual Basic|VB]]
+|-
+| <code>lcase(''string'') </code>
+|[[FreeBASIC]]
+|-
+| <code>lc(''string'')</code>
+|[[Perl]]
+|-
+|<code>tolower(''char'')</code>
+|[[C (programming language)|C]]<ref>operates on one character</ref>
+|-
+| <code>std.string.toLower(''string'') </code>
+|[[D (programming language)|D]]
+|-
+| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), ::tolower)</code><ref name="cpptransform">The <code>transform</code> function exists in the <code>std::</code> namespace. You must include the <code><algorithm></code> header file to use it. The <code>tolower</code> and <code>toupper</code> functions are in the global namespace, obtained by the <code><ctype.h></code> header file. The <code>std::tolower</code> and <code>std::toupper</code> names are overloaded and cannot be passed to <code>std::transform</code> without a cast to resolve a function overloading ambiguity, e.g. <code>std::transform(''string''.begin(), ''string''.end(), ''result''.begin(), (int (*)(int))std::tolower);</code></ref>
+| [[C++]]<ref><code>[[std::string]]</code> only, result is stored in string ''<code>result</code>'' which is at least as long as ''<code>string</code>'', and may or may not be ''<code>string</code>'' itself</ref>
+|-
+| <code>lowercase(''string'')</code>
+|[[Object Pascal]] (Delphi)
+|-
+| <code>strtolower(''string'')</code>
+|[[PHP]]
+|-
+| <code>lower(''string'')</code>
+|[[Seed7]]
+|-
+|<code>[[echo (command)|echo]] "string" <nowiki>|</nowiki> [[tr (program)|tr]] 'A-Z' 'a-z'</code>
+|[[Unix]]
+|-
+| <code>''string''.lower()</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>''string''.downcase</code>
+|[[Ruby (programming language)|Ruby]]<ref name="ReferenceC">only ASCII characters as Ruby lacks Unicode support</ref>
+|-
+| <code>strings.ToLower(''string'')</code>
+|[[Go (programming language)|Go]]
+|-
+| <code>(string-downcase ''string'')</code>
+|[[Scheme (programming language)|Scheme]] (R6RS), [[Common Lisp]]
+|-
+| <code>(lower-case ''string'')</code>
+|[[Clojure]]
+|-
+| <code>String.lowercase ''string''</code>
+|[[OCaml]]
+|-
+| <code>String.map Char.toLower ''string''</code>
+|[[Standard ML]]
+|-
+| <code>map Char.toLower ''string''</code>
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>''string''.toLowerCase()</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|-
+| <code>to_lower(''string'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>''string''.ToLower()</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>[''string'' lowercaseString]</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>string.lower(''string'') <br /> (''string''):lower()</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' asLowercase</code>
+|[[Smalltalk]]
+|-
+| <code>LOWER(''string'')</code>
+|[[SQL]]
+|-
+| <code>lowercase(''string'')</code>
+|[[PL/I]]<ref name="lower1">IBM extension.</ref>
+|-
+| <code>ToLowerCase[''string'']</code>
+|[[Mathematica]]
+|-
+| <code>«FUNCTION» LOWER-CASE(''string'')</code>
+|[[COBOL]]
+|-
+| <code>''string''.toLower</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+<source lang="csharp">
+// Example in C#
+"Wiki means fast?".ToLower();        // "wiki means fast?" 
+</source>
+
+<source lang="scheme">
+; Example in Scheme
+(use-modules (srfi srfi-13))
+(string-downcase "Wiki means fast?") ;  "wiki means fast?"
+</source>
+
+<source lang="c">
+/* Example in C */
+#include <ctype.h>
+#include <stdio.h>
+int main(void) {
+    char string[] = "Wiki means fast?";
+    int i;
+    for (i = 0; i < sizeof(string) - 1; ++i) {
+        /* transform characters in place, one by one */ 
+        string[i] = tolower(string[i]);
+    }
+    puts(string);                       /* "wiki means fast?" */
+    return 0;
+}
+</source>
+<!-- endsection -->
+
+===mid===
+''see'' [[#substring]]
+
+<!-- endsection -->
+
+===partition===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <string>.partition(''separator'') returns the sub-string before the separator; the separator; then the sub-string after the separator.
+|-
+! Description
+| Splits the given string by the separator and returns the three substrings that together make the original. 
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string''.partition(''separator'')</code>
+|[[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]](1.9+)
+|-
+| <code>lists:partition(''pred'', ''string'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>split /(''separator'')/, ''string'', 2</code>
+|[[Perl]]
+|}
+
+<source lang="python">
+# Examples in Python
+"Spam eggs spam spam and ham".partition('spam')   # ('Spam eggs ', 'spam', ' spam and ham')
+"Spam eggs spam spam and ham".partition('X')      # ('Spam eggs spam spam and ham', "", "")
+</source>
+
+<source lang="perl">
+# Examples in Perl
+split /(spam)/'Spam eggs spam spam and ham',2;   # ('Spam eggs ', 'spam', ' spam and ham');
+split /(X)/'Spam eggs spam spam and ham',2;      # ('Spam eggs spam spam and ham');
+</source>
+
+<!-- endsection -->
+
+===replace===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>replace(''string'', ''find'', ''replace'')</code> returns string
+|-
+! Description
+| Returns a string with ''find'' occurrences changed to ''replace''.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>changestr(''find'', ''string'', ''replace'')</code>
+|[[REXX]]
+|-
+| <code>std.string.replace(''string'', ''find'', ''replace'')</code>
+|[[D (programming language)|D]]
+|-
+| <code>Replace(''string'', ''find'', ''replace'')</code>
+|[[Visual Basic|VB]]
+|-
+| <code>replace(''string'', ''find'', ''replace'')</code>
+|[[Seed7]]
+|-
+| <code>''string''.Replace(''find'', ''replace'')</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
+|-
+| <code>str_replace(''find'', ''replace'', ''string'')</code>
+|[[PHP]]
+|-
+| <code>re:replace(''string'', ''find'', ''replace'', «{return, list}»)</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>''string''.replace(''find'', ''replace'')</code>
+|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]], [[Java (programming language)|Java]] (1.5+)
+|-
+| <code>''string''.replaceAll(''find_regex'', ''replace'')<ref name="regex" /></code>
+|[[Java (programming language)|Java]]
+|-
+| <code>''string''.gsub(''find'', ''replace'')</code>
+|[[Ruby (programming language)|Ruby]]
+|-
+| <code>''string'' =~ s/''find_regex''/''replace''/g<ref name="regex">The "find" string in this construct is interpreted as a [[regular expression]]. Certain characters have special meaning in regular expressions. If you want to find a string literally, you need to quote the special characters.</ref></code>
+|[[Perl]]
+|-
+| <code>''string''.replace(''find'', ''replace'', "g") <ref>third parameter is non-standard</ref> or<br /> ''string''.replace(/''find_regex''/g, ''replace'')<ref name="regex" /></code>
+|[[JavaScript]]
+|-
+| <code>[[echo (command)|echo]] "''string''" <nowiki>|</nowiki> [[sed]] 's/''find_regex''/''replace''/g'<ref name="regex" /></code>
+|[[Unix]]
+|-
+| <code>''string''.replace(''find'', ''replace''), or<br />''string'' -replace ''find_regex'', ''replace''<ref name="regex" /></code>
+|[[Windows PowerShell]]
+|-
+| <code>Str.global_replace (Str.regexp_string ''find'') ''replace'' ''string''</code>
+|[[OCaml]]
+|-
+| <code>[''string'' stringByReplacingOccurrencesOfString:''find'' withString:''replace'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>string.gsub(''string'', ''find'', ''replace'') <br /> (''string''):gsub(''find'', ''replace'')</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' copyReplaceAll: ''find'' with: ''replace''</code>
+|[[Smalltalk]] (Squeak, Pharo)
+|-
+| <code>string map {''find'' ''replace''} ''string''</code>
+|[[Tcl (programming language)|Tcl]]
+|-
+| <code>StringReplace[''string'', ''find'' -> ''replace'']</code>
+|[[Mathematica]]
+|-
+| <code>strings.Replace(''string'', ''find'', ''replace'', -1)</code>
+| [[Go (programming language)|Go]]
+|-
+| <code>INSPECT ''string'' REPLACING ALL/LEADING/FIRST ''find'' BY ''replace''</code>
+| [[COBOL]]
+|}
+
+<source lang="csharp">
+// Examples in C#
+"effffff".Replace("f", "jump");     // returns "ejumpjumpjumpjumpjumpjump"
+"blah".Replace("z", "y");           // returns "blah"
+</source>
+
+<source lang="java5">
+// Examples in Java
+"effffff".replace("f", "jump");     // returns "ejumpjumpjumpjumpjumpjump"
+"effffff".replaceAll("f*", "jump"); // returns "ejump"
+</source>
+
+<source lang="vb">
+' Examples in Visual Basic
+Replace("effffff", "f", "jump")     '  returns "ejumpjumpjumpjumpjumpjump"
+Replace("blah", "z", "y")           '  returns "blah"
+</source>
+
+<source lang="powershell">
+# Examples in Windows PowerShell
+"effffff" -replace "f", "jump"      #  returns "ejumpjumpjumpjumpjumpjump"
+"effffff" -replace "f*", "jump"     #  returns "ejump"
+</source>
+<!-- endsection -->
+
+===reverse===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>reverse(''string'')</code>
+|-
+! Description
+| Reverses the order of the characters in the string.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>reverse ''string''</code>
+|[[Perl]], [[Haskell (programming language)|Haskell]]
+|-
+| <code>lists:reverse(''string'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>strrev(''string'')</code>
+|[[PHP]]
+|-
+| <code>''string''[::-1]</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>(string-reverse ''string'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>(reverse ''string'')</code>
+|[[Common Lisp]]
+|-
+| <code>''string''.reverse</code>
+|[[Ruby (programming language)|Ruby]], [[D (programming language)|D]] (modifies string)
+|-
+| <code>new StringBuilder(''string'').reverse().toString()</code>
+|[[Java (programming language)|Java]]
+|-
+| <code>std::reverse(''string''.begin(), ''string''.end());</code>
+|[[C++]] (<code>[[std::string]]</code> only, modifies string)
+|-
+| <code>StrReverse(''string'')</code>
+|[[Visual Basic|VB]]
+|-
+| <code>''string''.Reverse().ToString()</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]]
+|-
+| <code>implode (rev (explode ''string''))</code>
+|[[Standard ML]]
+|-
+| <code>''string''.split("").reverse().join("")</code>
+|[[JavaScript]]
+|-
+| <code>string.reverse(''string'') <br /> (''string''):reverse()</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' reverse</code>
+|[[Smalltalk]]
+|-
+| <code>StringReverse[''string'']</code>
+|[[Mathematica]]
+|-
+|<code>reverse(''string'')</code>
+|[[PL/I]]
+|-
+|<code>«FUNCTION» REVERSE(''string'')</code>
+|[[COBOL]]
+|-
+|<code>''string''.toCharArray.toList.reversed.join('')</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+<source lang="perl">
+# Example in Perl
+reverse "hello"              # returns "olleh"
+</source>
+
+<source lang="python">
+# Example in Python
+"hello"[::-1]                # returns "olleh"
+</source>
+
+<source lang="scheme">
+; Example in Scheme
+(use-modules (srfi srfi-13))
+(string-reverse "hello")     ; returns "olleh"
+</source>
+<!-- endsection -->
+
+===rfind===
+<!-- startsection -->
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>rfind(''string'',''substring'')</code> returns integer
+|-
+! Description
+| Returns the position of the start of the last occurrence of ''substring'' in ''string''. If the ''substring'' is not found most of these routines return an invalid index value – -1 where indexes are 0-based, 0 where they are 1-based – or some value to be interpreted as Boolean FALSE.
+|-
+| Related
+| instr
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages !! If not found
+|-
+| <code>InStrRev(«''startpos'',» ''string'',''substring'')</code>
+|[[Visual Basic|VB]]
+|returns 0
+|-
+| <code>instrrev(«''startpos'',» ''string'',''substring'')</code>
+|[[FreeBASIC]]
+|returns 0
+|-
+| <code>rindex(''string'',''substring''«,''startpos''»)</code>
+|[[Perl]]
+|returns -1
+|-
+| <code>strrpos(''string'',''substring''«,''startpos''»)</code>
+|[[PHP]]
+|returns FALSE
+|-
+| <code>''string''.rfind(''substring''«,''startpos''»)</code>
+|[[C++]] (STL)
+|returns std::string::npos
+|-
+| <code>std.string.rfind(''string'', ''substring'')</code>
+|[[D (programming language)|D]]
+|returns -1
+|-
+| <code>''string''.rfind(''substring''«,''startpos''«, ''endpos''»»)</code>
+|[[Python (programming language)|Python]]
+|returns -1
+|-
+| <code>rpos(''string'', ''substring''«,''startpos''»)</code>
+|[[Seed7]]
+|returns 0
+|-
+| <code>''string''.rindex(''substring''«,''startpos''»)</code>
+|[[Ruby (programming language)|Ruby]]
+|returns nil
+|-
+| <code>strings.LastIndex(''string'', ''substring'')</code>
+|[[Go (programming language)|Go]]
+|returns -1
+|-
+| <code>''string''.lastIndexOf(''substring''«,''startpos''»)</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|returns -1
+|-
+| <code>''string''.LastIndexOf(''substring''«,''startpos''«, ''charcount''»»)</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|returns -1
+|-
+| <code>(search ''substring'' ''string'' :from-end t)</code>
+|[[Common Lisp]]
+|returns NIL
+|-
+| <code>[''string'' rangeOfString:''substring'' options:NSBackwardsSearch].location</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|returns NSNotFound
+|-
+| <code>Str.search_backward (Str.regexp_string ''substring'') ''string'' (Str.length ''string'' - 1)</code>
+|[[OCaml]]
+|raises Not_found
+|-
+| <code>string.match(''string'', '.*()'..''substring'') <br /> ''string'':match('.*()'..''substring'')</code>
+|[[Lua (programming language)|Lua]]
+|returns nil
+|-
+| <code>Ada.Strings.Unbounded.Index(Source => ''string'', Pattern => ''substring'', <br /> Going => Ada.Strings.Backward)</code>
+|[[Ada (programming language)|Ada]]
+|returns 0
+|-
+|<code>''string''.lastIndexOf(''substring''«,''startpos''«, ''charcount''»»)</code>
+|[[Cobra (programming language)|Cobra]]
+|returns -1
+|}
+
+<source lang="lisp">
+; Examples in Common Lisp
+(search "e" "Hello mate" :from-end t)     ;  returns 9
+(search "z" "word" :from-end t)           ;  returns NIL
+</source>
+
+<source lang="csharp">
+// Examples in C#
+"Hello mate".LastIndexOf("e");           // returns 9
+"Hello mate".LastIndexOf("e", 4);        // returns 1
+"word".LastIndexOf("z");                 // returns -1
+</source>
+
+<source lang="vb">
+' Examples in Visual Basic
+InStrRev("Hello mate", "e")              '  returns 10
+InStrRev(5, "Hello mate", "e")           '  returns 2
+InStrRev("word", "z")                    '  returns 0
+</source>
+
+<!-- endsection -->
+
+===right===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>right(''string'',''n'')</code> returns string
+|-
+! Description
+| Returns the right ''n'' part of a string. If ''n'' is greater than the length of the string then most implementations return the whole string (exceptions exist - see code examples).
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+|<code>string (string'Last - ''n'' + 1 .. string'Last)</code>
+|[[Ada (programming language)|Ada]]
+|-
+| <code>Right(''string'',''n'')</code>
+|[[Visual Basic|VB]]
+|-
+| <code>RIGHT$(''string'',''n'')</code>
+|[[BASIC]]
+|-
+| <code>right(''string'',''n'')</code>
+|[[FreeBASIC]], [[Ingres (database)|Ingres]]
+|-
+| <code>strcpy(''string2'', ''string''+''n'')</code> (n must not be greater than the length of ''string'')
+|[[C (programming language)|C]]
+|-
+| <code>''string''.Substring(''string''.Length()-''n'')</code>
+|[[C#(programming language)|C#]]
+|-
+| <code>''string''.substring(''string''.length()-''n'')</code>
+|[[Java (programming language)|Java]]
+|-
+| <code>''string''.slice(-''n'')</code>
+|[[JavaScript]]<ref>{{cite web|url=http://es5.github.com/#x15.5.4.13 |title=Annotated ES5 |publisher=Es5.github.com |date= |accessdate=2013-08-18}}</ref>
+|-
+| <code>right(''string'',''n'' «,''padchar''»)</code>
+|[[REXX]], [[Erlang (programming language)|Erlang]]
+|-
+| <code>substr(''string'',-''n'')</code>
+|[[Perl]], [[PHP]]
+|-
+| <code>''string''[-''n'':]</code>
+|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]]
+|-
+| <code>(string-take-right ''string'' ''n'')</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>''string''[-''n''..-1]</code>
+|[[Ruby (programming language)|Ruby]], Ya
+|-
+| <code>''string''[$-''n'' .. $]</code>
+|[[D (programming language)|D]]<ref>if n is larger than length of string, then in Debug mode ArrayRangeException is thrown, and unspecified behaviour in Release mode</ref>
+|-
+| <code>String.sub ''string'' (String.length ''string'' - ''n'') ''n''</code>
+|[[OCaml]]<ref name="ReferenceA"/>
+|-
+| <code>string.sub(''string'', -''n'') <br /> (''string''):sub(-''n'')</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' last: ''n''</code>
+|[[Smalltalk]] (Squeak, Pharo)
+|-
+| <code>StringTake[''string'', -''n'']</code>
+|[[Mathematica]]<ref name="ReferenceB"/>
+|-
+| <code>''string'' (1:''n'')</code>
+| [[COBOL]]
+|}
+
+<source lang="rexx">
+/* Examples in REXX */
+right("abcde", 3)              /* returns "cde"      */
+right("abcde", 8)              /* returns "   abcde" */
+right("abcde", 8, "*")         /* returns "***abcde" */
+</source>
+
+<source lang="scheme">
+; Examples in Scheme
+(use-modules (srfi srfi-13))
+(string-take-right "abcde", 3) ;  returns "cde" 
+(string-take-right "abcde", 8) ;  error
+</source>
+
+<source lang="vb">
+' Examples in Visual Basic
+Right("sandroguidi", 3)        '  returns "idi" 
+Right("sandroguidi", 100)      '  returns "sandroguidi" 
+</source>
+
+<source lang="java">
+// Examples in Java; extract rightmost 4 characters
+String str = "CarDoor";
+str.substring(str.length()-4); // returns 'Door'
+</source>
+
+<!-- endsection -->
+
+===rpartition===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <string>.rpartition(''separator'') Searches for the separator from right-to-left within the string then returns the sub-string before the separator; the separator; then the sub-string after the separator.
+|-
+! Description
+| Splits the given string by the right-most separator and returns the three substrings that together make the original. 
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>''string''.rpartition(''separator'')</code>
+|[[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]]
+|}
+
+<source lang="python">
+# Examples in Python
+"Spam eggs spam spam and ham".rpartition('spam')  ### ('Spam eggs spam ', 'spam', ' and ham')
+"Spam eggs spam spam and ham".rpartition('X')     ### ("", "", 'Spam eggs spam spam and ham')
+</source>
+<!-- endsection -->
+
+===slice===
+''see'' [[#substring]]
+
+<!-- endsection -->
+
+===split===
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <string>.split(''separator''[, ''limit'']) splits a string on separator, optionally only up to a limited number of substrings
+|-
+! Description
+| Splits the given string by occurrences of the separator (itself a string) and returns a list (or array) of the substrings. If ''limit'' is given, after ''limit'' - 1 separators have been read, the rest of the string is made into the last substring, regardless of whether it has any separators in it. The Scheme and Erlang implementations are similar but differ in several ways. JavaScript differs also in that it cuts, it does not put the rest of the string into the last element. [http://www.w3schools.com/jsref/jsref_split.asp See the example here]. The Cobra implementation will default to whitespace. Opposite of ''join''.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>split(/''separator''/, ''string''«, ''limit''»)</code>
+|[[Perl]]
+|-
+| <code>explode(''separator'', ''string''«, ''limit''»)</code>
+|[[PHP]]
+|-
+| <code>''string''.split(''separator''«, ''limit''-1»)</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>''string''.split(''separator''«, ''limit''»)</code>
+|[[Javascript]], [[Java (programming language)|Java]], [[Ruby (programming language)|Ruby]]
+|-
+| <code>string:tokens(''string'', ''sepchars'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>strings.Split(''string'', ''separator'')<br />strings.SplitN(''string'', ''separator'', ''limit'')</code>
+|[[Go (programming language)|Go]]
+|-
+| <code>(string-tokenize ''string''« ''charset''« ''start''« ''end''»»»)</code>
+|[[Scheme (programming language)|Scheme]] (SRFI 13)
+|-
+| <code>Split(''string'', ''sepchars''«, ''limit''»)</code>
+|[[Visual Basic|VB]]
+|-
+| <code>''string''.Split(''sepchars''«, ''limit''«, ''options''»»)</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[F Sharp (programming language)|F#]]
+|-
+| <code>''string'' -split ''separator''«, ''limit''«, ''options''»»</code>
+|[[Windows PowerShell]]
+|-
+| <code>Str.split (Str.regexp_string ''separator'') ''string''</code>
+|[[OCaml]]
+|-
+| <code>std.string.split(''string'', ''separator'')</code>
+|[[D (programming language)|D]]
+|-
+| <code>[''string'' componentsSeparatedByString:''separator'']</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+|<code>TStringList.Delimiter, TStringList.DelimitedText</code>
+|[[Object Pascal]]
+|-
+| <code>StringSplit[''string'', ''separator''«, ''limit''»]</code>
+|[[Mathematica]]
+|-
+| <code>''string''.split«(''sepchars''«, ''limit''«, ''options''»»)»</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+<source lang="csharp">
+// Example in C#
+"abc,defgh,ijk".Split(',');                 // {"abc", "defgh", "ijk"}
+"abc,defgh;ijk".Split(',', ';');            // {"abc", "defgh", "ijk"}
+</source>
+
+<source lang="erlang">
+% Example in Erlang
+string:tokens("abc;defgh;ijk", ";").        %  ["abc", "defgh", "ijk"]
+</source>
+
+<source lang="java">
+// Examples in Java
+"abc,defgh,ijk".split(",");                 // {"abc", "defgh", "ijk"}
+"abc,defgh;ijk".split(",|;");               // {"abc", "defgh", "ijk"}
+</source>
+
+<source lang="pascal">
+# Example in Pascal
+var
+  lStrings: TStringList;
+  lStr: string;
+begin
+  lStrings := TStringList.Create;
+  lStrings.Delimiter := ',';
+  lStrings.DelimitedText := 'abc,defgh,ijk';
+  lStr := lStrings.Strings[0]; // 'abc'
+  lStr := lStrings.Strings[1]; // 'defgh'
+  lStr := lStrings.Strings[2]; // 'ijk'
+end;
+</source>
+
+<source lang="perl">
+# Examples in Perl
+split(/spam/, 'Spam eggs spam spam and ham'); # ('Spam eggs ', ' ', ' and ham')
+split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
+</source>
+<!-- endsection -->
+
+===sprintf===
+''see'' [[#Format]]
+
+===strip===
+''see'' [[#trim]]
+
+<!-- endsection -->
+
+===strcmp===
+''see'' [[#Compare (integer result)]]
+
+<!-- endsection -->
+
+===substring===
+{{hatnote|See [[#substring|CharAt]] for base of startpos/endpos.}}
+
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>substring(''string'', ''startpos'', ''endpos'')</code> returns string <br /> <code>substr(''string'', ''startpos'', ''numChars'')</code> returns string
+|- 
+! Description  
+| Returns a substring of ''string'' between starting at ''startpos'' and ''endpos'', or starting at ''startpos'' of length ''numChars''.  The resulting string is truncated if there are fewer than ''numChars'' characters beyond the starting point. ''endpos'' represents the index after the last character in the substring.
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+|<code>string[''startpos'':''endpos'']</code>
+|[[ALGOL 68]] (changes base index)
+|-
+|<code>string (''startpos'' .. ''endpos'')</code>
+|[[Ada (programming language)|Ada]] (changes base index)
+|-
+| <code>Mid(''string'', ''startpos'', ''numChars'')</code>
+|[[Visual Basic|VB]]
+|-
+| <code>mid(''string'', ''startpos'', ''numChars'')</code>
+|[[FreeBASIC]]
+|-
+| <code>MID$(''string'', ''startpos'', ''numChars'')</code>
+|[[BASIC]]
+|-
+| <code>substr(''string'', ''startpos'', ''numChars'')</code>
+|[[AWK]] (changes string), [[Perl]],<ref name="substr2"/><ref name="substr4"/> [[PHP]]<ref name="substr2"/><ref name="substr4"/>
+|-
+| <code>substr(''string'', ''startpos'' «,''numChars'', ''padChar''»)</code>
+|[[REXX]]
+|-
+| <code>''string''[''startpos'':''endpos'']</code>
+|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]],<ref name="substr2"/><ref name="substr3"/> [[Go (programming language)|Go]]
+|-
+| <code>''string''[''startpos'', ''numChars''] <br /> ''string''[''startpos'' .. ''endpos''-1] <br /> ''string''[''startpos'' ... ''endpos'']</code>
+|[[Ruby (programming language)|Ruby]]<ref name="substr2"/><ref name="substr3"/>
+|-
+| <code>''string''[''startpos'' .. ''endpos''] <br /> ''string''[''startpos'' len ''numChars'']</code>
+|[[Seed7]]
+|-
+| <code>''string''.slice(''startpos''«, ''endpos''»)</code>
+|[[JavaScript]]<ref name="substr2"/><ref name="substr3"/>
+|-
+| <code>''string''.substr(''startpos''«, ''numChars''»)</code>
+|[[C++]] (STL), [[JavaScript]]
+|-
+| <code>''string''.Substring(''startpos'', ''numChars'')</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>''string''.substring(''startpos''«, ''endpos''»)</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|-
+| <code>copy(''string'', ''startpos'', ''numChars'')</code>
+|[[Object Pascal]] (Delphi)
+|-
+| <code>(substring ''string'' ''startpos'' ''endpos'')</code>
+|[[Scheme (programming language)|Scheme]]
+|-
+| <code>(subseq ''string'' ''startpos'' ''endpos'')</code>
+|[[Common Lisp]]
+|-
+| <code>(subseq ''string'' ''startpos'' ''endpos'')</code>
+|[[ISLISP]]
+|-
+| <code>String.sub ''string'' ''startpos'' ''numChars''</code>
+|[[OCaml]]
+|-
+| <code>substring (''string'', ''startpos'', ''numChars'')</code>
+|[[Standard ML]]
+|-
+| <code>string:sub_string(''string'', ''startpos'', ''endpos'')<br />string:substr(''string'', ''startpos'', ''numChars'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>strncpy(''result'', ''string'' + ''startpos'', ''numChars'');</code>
+|[[C (programming language)|C]]
+|-
+| <code>''string''[''startpos .. ''endpos''+1]</code>
+|[[D (programming language)|D]]
+|-
+| <code>take ''numChars'' $ drop ''startpos'' ''string''</code>
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>[''string'' substringWithRange:NSMakeRange(''startpos'', ''numChars'')]</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>''string''.[''startpos''..''endpos'']</code>
+|[[F Sharp (programming language)|F#]]
+|-
+| <code>string.sub(''string'', ''startpos'', ''endpos'') <br /> (''string''):sub(''startpos'', ''endpos'')</code>
+|[[Lua (programming language)|Lua]]<ref name="substr2"/><ref name="substr3"/>
+|-
+| <code>''string'' copyFrom: ''startpos'' to: ''endpos''</code>
+|[[Smalltalk]]
+|-
+| <code>''string''(''startpos'':''endpos'')</code>
+|[[Fortran]]
+|-
+| <code>SUBSTRING(''string'' FROM ''startpos'' «FOR ''numChars''»)</code>
+|[[SQL]]
+|-
+| <code>StringTake[''string'', {''startpos'', ''endpos''}]</code>
+|[[Mathematica]]<ref name="substr2"/><ref name="substr3"/>
+|-
+| <code>''string''[''startpos'' .. ''endpos'']</code>
+|Ya
+| <code>''string'' (''startpos'':''numChars'')</code>
+|}
+
+<source lang="csharp">
+// Examples in C#
+"abc".Substring(1, 1):      // returns "b"
+"abc".Substring(1, 2);      // returns "bc"
+"abc".Substring(1, 6);      // error
+</source>
+
+<source lang="lisp">
+;; Examples in Common Lisp
+(subseq "abc" 1 2)          ; returns "b"
+(subseq "abc" 2)            ; returns "c"
+</source>
+
+<source lang="erlang">
+% Examples in Erlang
+string:substr("abc", 2, 1). %  returns "b"
+string:substr("abc", 2).    %  returns "bc"
+</source>
+
+<source lang="python">
+# Examples in Python
+"abc"[1:2]                 #  returns "b"
+"abc"[1:3]                 #  returns "bc"
+</source>
+
+<source lang="rexx">
+/* Examples in REXX */
+substr("abc", 2, 1)         /* returns "b"      */
+substr("abc", 2)            /* returns "bc"     */
+substr("abc", 2, 6)         /* returns "bc    " */
+substr("abc", 2, 6, "*")    /* returns "bc****" */
+</source>
+
+<!-- endsection -->
+
+===Uppercase===
+<!-- startsection -->
+{| class="wikitable"
+|- style="background:#fffeed;"
+! Definition 
+| <code>uppercase(''string'')</code> returns string
+|-
+! Description
+| Returns the string in upper case. 
+|}
+{| class="wikitable sortable"
+|- style="text-align:left;"
+! Format !! Languages 
+|-
+| <code>UCase(''string'') </code>
+|[[Visual Basic|VB]]
+|-
+| <code>ucase(''string'') </code>
+|[[FreeBASIC]]
+|-
+| <code>toupper(''string'') </code>
+|[[AWK]] (changes string)
+|-
+| <code>uc(''string'')</code>
+|[[Perl]]
+|-
+|<code>toupper(''char'')</code>
+|[[C (programming language)|C]] (operates on one character)
+|-
+|<code>for(i=0,len=strlen(''string''); i&lt;len; i++) ''string''[i]=toupper(''string''[i]);</code>
+|[[C (programming language)|C]] (string / char array)
+|-
+| <code>std.string.toUpper(''string'')</code>
+|[[D (programming language)|D]]
+|-
+| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), toupper)<ref name="cpptransform" /></code>
+| [[C++]]<ref><code>[[std::string]]</code> only, result is stored in string ''result'' which is at least as long as ''string'', and may or may not be ''string'' itself</ref>
+|-
+| <code>uppercase(''string'')</code>
+|[[Object Pascal]] (Delphi)
+|-
+|<code>upcase(''char'')</code>
+|[[Object Pascal]] (Delphi) (operates on one character)
+|-
+| <code>strtoupper(''string'')</code>
+|[[PHP]]
+|-
+| <code>upper(''string'')</code>
+|[[Seed7]]
+|-
+|<code>[[echo (command)|echo]] "string" <nowiki>|</nowiki> [[tr (program)|tr]] 'a-z' 'A-Z' </code>
+|[[Unix]]
+|-
+| <code>translate(''string'')</code>, or<br/>
+<code>UPPER variables</code>, or<br/>
+<code>PARSE UPPER VAR  SrcVar DstVar</code>
+|[[REXX]]
+|-
+| <code>''string''.upper()</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>''string''.upcase</code>
+|[[Ruby (programming language)|Ruby]] <ref name="ReferenceC"/>
+|-
+| <code>strings.ToUpper(''string'')</code>
+|[[Go (programming language)|Go]]
+|-
+| <code>(string-upcase ''string'')</code>
+|[[Scheme (programming language)|Scheme]], [[Common Lisp]]
+|-
+| <code>String.uppercase ''string''</code>
+|[[OCaml]]
+|-
+| <code>String.map Char.toUpper ''string''</code>
+|[[Standard ML]]
+|-
+| <code>map Char.toUpper ''string''</code>
+|[[Haskell (programming language)|Haskell]]
+|-
+| <code>''string''.toUpperCase()</code>
+|[[Java (programming language)|Java]], [[JavaScript]]
+|-
+| <code>to_upper(''string'')</code>
+|[[Erlang (programming language)|Erlang]]
+|-
+| <code>''string''.ToUpper()</code>
+|[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+|-
+| <code>[''string'' uppercaseString]</code>
+|[[Objective-C]] (<code>NSString *</code> only)
+|-
+| <code>string.upper(''string'') <br /> (''string''):upper()</code>
+|[[Lua (programming language)|Lua]]
+|-
+| <code>''string'' asUppercase</code>
+|[[Smalltalk]]
+|-
+| <code>UPPER(''string'')</code>
+|[[SQL]]
+|-
+| <code>ToUpperCase[''string'']</code>
+|[[Mathematica]]
+|-
+| <code>«FUNCTION» UPPER-CASE(''string'')</code>
+|[[COBOL]]
+|-
+| <code>''string''.toUpper</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+<source lang="csharp">
+// Example in C#
+"Wiki means fast?".ToUpper();      // "WIKI MEANS FAST?" 
+</source>
+
+<source lang="rexx">
+/* Example in REXX */
+translate("Wiki means fast?")      /* "WIKI MEANS FAST?" */
+
+/* Example #2 */
+A='This is an example.'
+UPPER A                            /* "THIS IS AN EXAMPLE." */
+
+/* Example #3 */
+A='upper using Translate Function.'
+Translate UPPER VAR A Z            /* Z="UPPER USING TRANSLATE FUNCTION." */
+</source>
+
+<source lang="scheme">
+; Example in Scheme
+(use-modules (srfi srfi-13))
+(string-upcase "Wiki means fast?") ;  "WIKI MEANS FAST?"
+</source>
+
+<source lang="vb">
+' Example in Visual Basic
+UCase("Wiki means fast?")          '  "WIKI MEANS FAST?" 
+</source>
+<!-- endsection -->
+
+===trim===
+{{main|Trim (programming)}}
+'''<code>trim</code>''' or '''<code>strip</code>''' is used to remove whitespace from the beginning, end, or both beginning and end, of a string.
+{| class="wikitable sortable"
+|- 
+! Format !! Languages 
+|-
+| <code>''string''.Trim()<br/>''string''.TrimStart()<br/>''string''.TrimEnd()</code>
+|[[C Sharp (programming language)|C#]]
+|-
+| <code>(string-trim '(#\Space #\Tab #\Newline) ''string'')</code>
+|[[Common Lisp]]
+|-
+| <code>strings.TrimSpace(''string'')</code>
+| [[Go (programming language)|Go]]
+|-
+| <code>''string''.trim()</code>
+|[[Java (programming language)|Java]]
+|-
+| <code>''string''.trim()
+''string''.replace(^\s+|\s+$/g, "")</code>
+|[[JavaScript]]
+|-
+| <code>StringTrim[''string'']</code>
+|[[Mathematica]]
+|-
+| <code>trim(''string'')</code>
+|[[PHP]]
+|-
+|<code>string.strip()</code>
+|[[Python (programming language)|Python]]
+|-
+| <code>''string''.trim<br/>''string''.trimStart<br/>''string''.trimEnd</code>
+|[[Cobra (programming language)|Cobra]]
+|}
+
+==References==
+{{Reflist|refs=
+<ref name="at1">the index can be negative, which then indicates the number of places before the end of the string.</ref>
+
+<ref name="substr2">''<code>startpos</code>'' can be negative, which indicates to start that number of places before the end of the string.</ref>
+<ref name="substr3">''<code>endpos</code>'' can be negative, which indicates to end that number of places before the end of the string.</ref>
+<ref name="substr4">''<code>numChars</code>'' can be negative, which indicates to end that number of places before the end of the string.</ref>
+}}
+
+==External links==
+{{External links|date=August 2013}}
+*[http://perldoc.perl.org/index-functions-by-cat.html#Functions-for-SCALARs-or-strings Perl String Functions]
+*[https://docs.python.org/2/library/stdtypes.html#string-methods Python 2 String Methods]
+*[https://docs.python.org/3.3/library/stdtypes.html#string-methods Python 3 String Methods]
+*[http://srfi.schemers.org/srfi-13/srfi-13.html Scheme String Procedures]
+*[http://www.erlang.org/doc/man/string.html Erlang String Functions]
+*[http://msdn2.microsoft.com/en-us/library/system.string.aspx .NET String Methods and Properties]
+*[http://www.ruby-doc.org/core-1.8.7/classes/String.html Ruby String Class]
+*[http://www.php.net/manual/en/ref.strings.php PHP String functions]
+*{{javadoc:SE|java/lang|String|package=java.lang}} members
+*[http://haskell.org/ghc/docs/latest/html/libraries/ Haskell Hierarchical Libraries]
+*[http://dlang.org/arrays.html Arrays in D (in D strings are regular arrays)]
+*[http://www.digitalmars.com/d/2.0/phobos/std_string.html std.string from Phobos (D standard library)]
+*[http://www.lua.org/manual/5.1/manual.html#5.4 Lua String Functions]
+*[http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html OCaml String module]
+*[http://cl-cookbook.sourceforge.net/strings.html Common Lisp String manipulation]
+*[http://www.freebasic.net/wiki/wikka.php?wakka=CatPgString FreeBASIC String Functions]
+*[http://reference.wolfram.com/mathematica/guide/StringManipulation.html Reference.wolfram.com]
+
+{{DEFAULTSORT:Comparison Of Programming Languages (String Functions)}}
+[[Category:Programming language comparisons]]
+[[Category:String (computer science)]]

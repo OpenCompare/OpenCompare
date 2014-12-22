@@ -1,0 +1,357 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Based on
+! Binary?
+! Creator/Maintainer
+! Human-readable?
+! Schema/IDL?
+! Specification
+! Standard API
+! Standardized?
+! Supports reference?
+|-
+! ASN.1
+| N/A
+| Yes
+(BER, DER, PER, OER, or custom via ECN)
+| ISO, IEC, ITU-T
+| Yes
+(XER, GSER, or custom via ECN)
+| Yes (built-in)
+| ISO/IEC 8824; X.680 series of ITU-T Recommendations
+| N/A
+| Yes
+| Partial
+|-
+! Apache Avro
+| N/A
+| Yes
+| Apache Software Foundation
+| No
+| Yes (built-in)
+| Apache Avro™ 1.7.5 Specification
+| N/A
+| Yes
+| N/A
+|-
+! BSON
+| JSON
+| Yes
+| MongoDB
+| No
+| No
+| BSON Specification
+| No
+| Yes
+| No
+|-
+! Bencode
+| N/A
+| Partially
+(numbers and delimiters are ASCII)
+| Bram Cohen (creator)
+BitTorrent, Inc. (maintainer)
+| Partially
+| No
+| Part of BitTorrent protocol specification
+| No
+| Yes
+| No
+|-
+! Candle Markup
+| XML, JSON, JavaFX
+| No
+| Henry Luo
+| Yes
+| Yes
+(Candle Pattern Reference)
+| Candle Markup Reference
+| Yes
+(XQuery, XPath)
+| Yes
+| Yes
+(XPointer, XPath)
+|-
+! Comma-separated values (CSV)
+| N/A
+| No
+| RFC author:
+Yakov Shafranovich
+| Yes
+| No
+| RFC 4180
+(among others)
+| No
+| Partial
+(myriad informal variants used)
+| No
+|-
+! D-Bus Message Protocol
+| N/A
+| Yes
+| freedesktop.org
+| Yes
+(Type Signatures)
+| No
+| D-Bus Specification
+| Yes
+(see D-Bus)
+| Yes
+| No
+|-
+! Data::Dumper format (Core Perl Module)
+| Perl data types
+| ?
+| Gurusamy Sarathy (ActiveState developer)
+| Yes
+| ?
+| No
+| Yes
+| Yes
+| No
+|-
+! JSON
+| JavaScript syntax
+| No, but see UBJSON, BSON
+| Douglas Crockford
+| Yes
+| Partial
+(JSON Schema Proposal, Kwalify, Rx, Itemscript Schema)
+| RFC 4627
+(ancillary:
+RFC 6901,
+RFC 6902)
+| Partial
+(Clarinet, JSONQuery, JSONPath)
+| Yes
+| Yes
+(JSON Pointer (RFC 6901);
+alternately:
+JSONPath, JPath, JSPON, json:select())
+|-
+! MessagePack
+| JSON (loosely)
+| Yes
+| Sadayuki Furuhashi
+| No
+| No
+| MessagePack format specification
+| No
+| Yes
+| No
+|-
+! Netstring
+| N/A
+| Yes
+| Dan Bernstein
+| Yes
+| No
+| netstrings.txt
+| No
+| Yes
+| No
+|-
+! OGDL
+| ?
+| Yes
+(Binary Specification)
+| Rolf Veen
+| Yes
+| Yes
+(Schema WD)
+| Specification
+| 
+| Yes
+| Yes
+(Path Specification)
+|-
+! OpenDDL
+| C, PHP
+| No
+| Eric Lengyel
+| Yes
+| No
+| OpenDDL.org
+| Yes
+(OpenDDL Library)
+| Yes
+| Yes
+|-
+! PHP's  &
+| N/A
+| Yes
+| PHP Group
+| Yes
+| No
+| No
+| Yes
+| Yes
+| Yes
+|-
+! Property list
+| ?
+| Yes
+| NeXT (creator)
+Apple (maintainer)
+| Yes
+| ?
+| Public DTD for XML format
+| Cocoa, CoreFoundation, OpenStep, GnuStep
+| Partial
+| No
+|-
+! Protocol Buffers
+| N/A
+| Yes
+| Google
+| Partial
+| Yes (built-in)
+| Developer Guide: Encoding
+| 
+| Partial
+| No
+|-
+! ROOT
+| N/A
+| Yes
+| CERN & FNAL
+| Yes
+(optional XML output for debugging)
+| Yes
+(C++ object persistency framework)
+| N/A
+| Yes
+(Native C++ API, bindings for Python, Ruby, and others)
+| No
+| Yes
+|-
+! S-expression
+| Lisp, Netstring
+| Yes
+("Canonical representation")
+| Internet Draft author:
+Ron Rivest
+| Yes
+("Advanced transport representation")
+| No
+| "S-Expressions" Internet Draft
+| 
+| Partial
+(largely de facto)
+| No
+|-
+! SCaViS
+| N/A
+| Yes
+| jWork.ORG
+| Yes
+(XML, Java Serialization, ProtocolBuffers)
+| Yes
+(Java object persistency, XML, ProtocolBuffers)
+| N/A
+| Yes
+(Native Java API, bindings for Jython, JRuby, Groovy and others)
+| Yes
+| Yes
+|-
+! Smile
+| JSON
+| Yes
+| Tatu Saloranta
+| No
+| No
+| Smile Format Specification
+| No
+| Yes
+| No
+|-
+! Structured Data eXchange Format
+| N/A
+| Yes
+| Max Wildgrube
+| No
+| No
+| RFC 3072
+| 
+| Yes
+| No
+|-
+! Thrift
+| N/A
+| Yes
+| Facebook (creator)
+Apache (maintainer)
+| Partial
+| Yes (built-in)
+| Original whitepaper
+| 
+| No
+| No
+|-
+! UBJSON
+| JSON, BSON
+| Yes
+| The Buzz Media, LLC
+| No
+| No
+| 
+| No
+| No
+| No
+|-
+! XML
+| SGML
+| Partial
+(Binary XML)
+| W3C
+| Yes
+| Yes
+(XML schema, RELAX_NG)
+| W3C Recommendation:
+1.0 (Fifth Edition)
+1.1 (Second Edition)
+| Yes
+(DOM, SAX, XQuery, XPath)
+| Yes
+| Yes
+(XPointer, XPath)
+|-
+! XML-RPC
+| XML, SOAP
+| No
+| Dave Winer
+| Yes
+| No
+| XML-RPC Specification
+| No
+| Yes
+| No
+|-
+! YAML
+| C, Java, Perl, Python, Ruby, Email, HTML, MIME, URI, XML, SAX, SOAP, JSON
+| No
+| Clark Evans,
+Ingy döt Net,
+and Oren Ben-Kiki
+| Yes
+| Partial
+(Kwalify, Rx, built-in language type-defs)
+| Version 1.2
+| No
+| Yes
+| Yes
+|-
+! eXternal Data Representation (XDR)
+| N/A
+| Yes
+| Sun Microsystems (creator)
+IETF (maintainer)
+| No
+| Yes
+| RFC 4506
+| Yes
+| Yes
+| Yes
+|}

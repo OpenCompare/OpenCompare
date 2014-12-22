@@ -1,0 +1,3564 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Overview</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Developed by </td>
+          <td> Open source </td>
+          <td> Software license </td>
+          <td> Copyright owner </td>
+          <td> Latest stable version / release date </td>
+          <td> Origin </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Jack Lloyd </td>
+          <td> Yes </td>
+          <td> Simplified BSD License </td>
+          <td> Jack Lloyd </td>
+          <td> ) </td>
+          <td> US (Vermont) </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Peter Gutmann </td>
+          <td> Yes </td>
+          <td> Sleepycat License and commercial license </td>
+          <td> Peter Gutmann </td>
+          <td> ) </td>
+          <td> NZ </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> wolfSSL </td>
+          <td> Yes </td>
+          <td> GPLv2, v3 and commercial license </td>
+          <td> wolfSSL Inc. </td>
+          <td> ) </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> GnuTLS project </td>
+          <td> Yes </td>
+          <td> LGPL </td>
+          <td> Free Software Foundation </td>
+          <td> ) </td>
+          <td> EU (Greece and Sweden) </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> PeerSec Networks </td>
+          <td> Yes </td>
+          <td> GPLv2 and commercial license </td>
+          <td> PeerSec Networks </td>
+          <td> ) </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> Network Security Services </td>
+          <td> Mozilla, AOL, Red Hat, Sun, Oracle, Google and others </td>
+          <td> Yes </td>
+          <td> Mozilla Public License 2.0 </td>
+          <td> NSS contributors </td>
+          <td> ) </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> OpenSSL project </td>
+          <td> Yes </td>
+          <td> OpenSSL / SSLeay dual-license </td>
+          <td> Eric Young, Tim Hudson, Sun, OpenSSL project, and others </td>
+          <td>
+            )
+            <br/>
+            1.0.0o (15 October 2014; 33 days ago)
+            <br/>
+            0.9.8zc (15 October 2014; 33 days ago)
+          </td>
+          <td> Australia/EU </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> OpenBSD Project </td>
+          <td> Yes </td>
+          <td> OpenSSL / SSLeay dual-license </td>
+          <td>
+            Eric Young, Tim Hudson, Sun, OpenSSL project, OpenBSD Project, and others
+          </td>
+          <td> ) </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Offspark </td>
+          <td> Yes </td>
+          <td> GPLv2 or higher and commercial license </td>
+          <td> Brainspark B.V. (brainspark.nl) </td>
+          <td>
+            1.3.8 (July 11, 2014; 4 months ago )
+            <br/>
+            1.2.11 (July 11, 2014; 4 months ago )
+          </td>
+          <td> EU (Netherlands) </td>
+        </tr>
+        <tr>
+          <td> RSA BSAFE </td>
+          <td> RSA Security </td>
+          <td> No </td>
+          <td> Proprietary </td>
+          <td> RSA Security </td>
+          <td> ? </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> Microsoft </td>
+          <td> No </td>
+          <td> Proprietary </td>
+          <td> Microsoft Inc. </td>
+          <td> Windows 8.1 / 2013-11-13 </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Apple Inc. </td>
+          <td> Yes </td>
+          <td> APSL 2.0 </td>
+          <td> Apple Inc. </td>
+          <td> 55471.14 (OS X 10.9.2) / 2014-02-25 </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Realtimelogic LLC </td>
+          <td> No </td>
+          <td> Proprietary </td>
+          <td> Realtimelogic LLC </td>
+          <td> 2.1 / 2014-01-12 </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Oracle </td>
+          <td> Yes </td>
+          <td> GPLv2 and commercial license </td>
+          <td> Oracle </td>
+          <td> JDK 8 / 2014-03-18 </td>
+          <td> US </td>
+        </tr>
+        <tr>
+          <td> Bouncy Castle </td>
+          <td> The Legion of the Bouncy Castle Inc. </td>
+          <td> Yes </td>
+          <td> MIT License </td>
+          <td> Legion of the Bouncy Castle Inc. </td>
+          <td> ) </td>
+          <td> Australia </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Developed by </td>
+          <td> Open source </td>
+          <td> Software license </td>
+          <td> Copyright owner </td>
+          <td> Latest stable version / release date </td>
+          <td> Origin </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Protocol support</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> SSL 2.0 (insecure) </td>
+          <td> SSL 3.0 (insecure) </td>
+          <td> TLS 1.0 </td>
+          <td> TLS 1.1 </td>
+          <td> TLS 1.2 </td>
+          <td> DTLS 1.0 </td>
+          <td> DTLS 1.2 </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Beta </td>
+          <td> Beta </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> Disabled by default at compile time </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Disabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Enabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Beta </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel XP / 2003 </td>
+          <td> Disabled by default in MSIE 7 </td>
+          <td> Enabled by default </td>
+          <td> Enabled by default in MSIE 7 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel Vista / 2008 </td>
+          <td> Disabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 7 / 2008R2 </td>
+          <td> Disabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Enabled by default in MSIE 11 </td>
+          <td> Enabled by default in MSIE 11 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> SChannel 8 / 2012 </td>
+          <td> Disabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> SChannel 8.1 / 2012R2, 10 Technical Preview </td>
+          <td> Disabled by default </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Secure Transport OS X 10.2-10.7 / iOS 1-4 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport OS X 10.8-10.10 / iOS 5-8 </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td> Enabled by default </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> SSL 2.0 (insecure) </td>
+          <td> SSL 3.0 (insecure) </td>
+          <td> TLS 1.0 </td>
+          <td> TLS 1.1 </td>
+          <td> TLS 1.2 </td>
+          <td> DTLS 1.0 </td>
+          <td> DTLS 1.2 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>NSA Suite B Cryptography</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> TLS 1.2 Suite B </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Beta </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> TLS 1.2 Suite B </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Certifications</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> FIPS 140-1, FIPS 140-2 </td>
+          <td> FIPS 140-1, FIPS 140-2 </td>
+          <td> Common Criteria </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Level 1 </td>
+          <td> Level 2 </td>
+          <td> Common Criteria </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> In process </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> SafeZone FIPS Cryptographic Module: 1.0.3 and 1.0.3A (#1931) </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td>
+            Network Security Services: 3.2.2 (#247)
+            <br/>
+            Network Security Services Cryptographic Module: 3.11.4 (#815), 3.12.4 (#1278), 3.12.9.1 (#1837)
+          </td>
+          <td>
+            Netscape Security Module: 1 (#7), 1.01 (#47)
+            <br/>
+            Network Security Services: 3.2.2 (#248)
+            <br/>
+            Network Security Services Cryptographic Module: 3.11.4 (#814), 3.12.4 (#1279, #1280)
+          </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td>
+            OpenSSL FIPS Object Module: 1.0 (#624), 1.1.1 (#733), 1.1.2 (#918), 1.2, 1.2.1, 1.2.2, 1.2.3 or 1.2.4 (#1051)
+            <br/>
+            2.0, 2.0.1, 2.0.2, 2.0.3, 2.0.4, 2.0.5, 2.0.6, 2.0.7 or 2.0.8 (#1747)
+          </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td>
+            Cryptographic modules in Windows NT 4.0, 95, 95, 2000, XP, Server 2003, CE 5, CE 6, Mobile 6.x, Vista, Server 2008, 7, Server 2008 R2, 8, Server 2012, RT, Surface, Phone 8
+            <br/>
+            See details on Microsoft FIPS 140 Validated Cryptographic Modules
+          </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td>
+            Apple FIPS Cryptographic Module: 1.0 (OS X 10.6, #1514), 1.1 (OS X 10.7, #1701)
+            <br/>
+            Apple OS X CoreCrypto Module / CoreCrypto Kernel Module: 3.0 (OS X 10.8, #1964, #1956), 4.0 (OS X 10.9, #2015, #2016)
+            <br/>
+            Apple iOS CoreCrypto Module / CoreCrypto Kernel Module: 3.0 (iOS 6, #1963, #1944), 4.0 (iOS 7 , #2020, #2021)
+          </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Level 1 </td>
+          <td> Level 2 </td>
+          <td> Common Criteria </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> FIPS 140-1, FIPS 140-2 </td>
+          <td> FIPS 140-1, FIPS 140-2 </td>
+          <td> Common Criteria </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Key exchange algorithms (certificate-only)</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> RSA </td>
+          <td> RSA-EXPORT (insecure) </td>
+          <td> DHE-RSA (forward secrecy) </td>
+          <td> DHE-DSS (forward secrecy) </td>
+          <td> ECDH-ECDSA </td>
+          <td> ECDHE-ECDSA (forward secrecy) </td>
+          <td> ECDH-RSA </td>
+          <td> ECDHE-RSA (forward secrecy) </td>
+          <td> GOST R 34.10-94 / 34.10-2001 </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Client side only </td>
+          <td> Client side only </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel XP/2003 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Max 1024 bit </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel Vista/2008 </td>
+          <td> Yes </td>
+          <td> disabled by default </td>
+          <td> No </td>
+          <td> Max 1024 bit </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 7/2008R2, 8/2012, 8.1/2012R2 </td>
+          <td> Yes </td>
+          <td> disabled by default </td>
+          <td>
+            AES_GCM only
+            <br/>
+            1024bits only
+          </td>
+          <td> Max 1024 bit </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> except AES_GCM </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 10 Technical Preview </td>
+          <td> Yes </td>
+          <td> disabled by default </td>
+          <td>
+            AES_GCM only
+            <br/>
+            1024bits only
+          </td>
+          <td> Max 1024 bit </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Max 2048 bit </td>
+          <td> Max 2048 bit </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> RSA </td>
+          <td> RSA EXPORT (insecure) </td>
+          <td> DHE-RSA (forward secrecy) </td>
+          <td> DHE-DSS (forward secrecy) </td>
+          <td> ECDH-ECDSA </td>
+          <td> ECDHE-ECDSA (forward secrecy) </td>
+          <td> ECDH-RSA </td>
+          <td> ECDHE-RSA (forward secrecy) </td>
+          <td> GOST R 34.10-94 / 34.10-2001 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Key exchange algorithms (alternative key-exchanges)</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> SRP </td>
+          <td> SRP-DSS </td>
+          <td> SRP-RSA </td>
+          <td> PSK-RSA </td>
+          <td> PSK </td>
+          <td> DHE-PSK (forward secrecy) </td>
+          <td> ECDHE-PSK (forward secrecy) </td>
+          <td> DH-ANON (insecure) </td>
+          <td> ECDH-ANON (insecure) </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by default in Java 8 </td>
+          <td> Disabled by default in Java 8 </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> SRP </td>
+          <td> SRP-DSS </td>
+          <td> SRP-RSA </td>
+          <td> PSK-RSA </td>
+          <td> PSK </td>
+          <td> DHE-PSK (forward secrecy) </td>
+          <td> ECDHE-PSK (forward secrecy) </td>
+          <td> DH-ANON (insecure) </td>
+          <td> ECDH-ANON (insecure) </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Certificate verification methods</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Application-defined </td>
+          <td> PKIX path validation </td>
+          <td> CRL </td>
+          <td> OCSP </td>
+          <td> DANE (DNSSEC) </td>
+          <td> Trust on First Use (TOFU) </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Unknown </td>
+          <td> Yes </td>
+          <td> Unknown </td>
+          <td> Unknown </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Unknown </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> Unknown </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Application-defined </td>
+          <td> PKIX </td>
+          <td> CRL </td>
+          <td> OCSP </td>
+          <td> DANE </td>
+          <td> TOFU </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Encryption algorithms</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Stream cipher </td>
+          <td> Stream cipher </td>
+          <td> Stream cipher </td>
+          <td> None </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> AES GCM </td>
+          <td> AES CCM </td>
+          <td> AES CBC </td>
+          <td> Camellia GCM </td>
+          <td> Camellia CBC </td>
+          <td> ARIA GCM </td>
+          <td> ARIA CBC </td>
+          <td> SEED CBC </td>
+          <td> 3DES EDE CBC </td>
+          <td>
+            GOST 28147-89 CNT
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            RC4-128
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            ChaCha20-Poly1305
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            ChaCha20
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            Null
+            <br/>
+            (insecure)
+          </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Lowest priority </td>
+          <td>
+            PartialAs of November 2014, only available on private version of NSS integrated into Chromium and derived browsers (Google Chrome and Opera). Patch for NSS upstream has been submitted and under review.
+          </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td>
+            PartialAs of November 2014, only available on private version of OpenSSL integrated into Chromium and derived browsers (Google Chrome and Opera).
+          </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Lowest priority </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by default at compile time </td>
+        </tr>
+        <tr>
+          <td> SChannel XP/2003 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> 2003 only </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> SChannel Vista/2008 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> SChannel 7/2008R2, 8/2012 </td>
+          <td> except ECDHE_RSA </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td>
+            style=&quot;background:#FFB;vertical-align:middle;text-align:center; &quot; class=&quot;table-partial&quot;|RC4 can be disabled except as a fallback (Only when no cipher suites with other than RC4 is available, cipher suites with RC4 will be used as a fallback.)
+          </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> SChannel 8.1/2012R2 </td>
+          <td> except ECDHE_RSA </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled except as a fallback </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> Schannel 10 Technical Preview </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled except as a fallback </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> AES GCM </td>
+          <td> AES CCM </td>
+          <td> AES CBC </td>
+          <td> Camellia GCM </td>
+          <td> Camellia CBC </td>
+          <td> ARIA GCM </td>
+          <td> ARIA CBC </td>
+          <td> SEED CBC </td>
+          <td> 3DES EDE CBC </td>
+          <td>
+            GOST 28147-89 CNT
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            RC4-128
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            ChaCha20-Poly1305
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            ChaCha20
+            <br/>
+            (proposed)
+          </td>
+          <td>
+            Null
+            <br/>
+            (insecure)
+          </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Stream cipher </td>
+          <td> Stream cipher </td>
+          <td> Stream cipher </td>
+          <td> None </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Obsolete algorithms</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Stream cipher </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> IDEA CBC </td>
+          <td>
+            DES CBC
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            DES-40 CBC
+            <br/>
+            (EXPORT, insecure)
+          </td>
+          <td>
+            RC2-40 CBC
+            <br/>
+            (EXPORT, insecure)
+          </td>
+          <td>
+            RC4-40
+            <br/>
+            (EXPORT, insecure)
+          </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Disabled by Default </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> Disabled by default at compile time </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel XP/2003 </td>
+          <td> No </td>
+          <td> yes </td>
+          <td> yes </td>
+          <td> Yes </td>
+          <td> yes </td>
+        </tr>
+        <tr>
+          <td> SChannel Vista/2008 </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> SChannel 7/2008R2, 8/2012 </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> SChannel 8.1/2012R2 </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> Schannel 10 Technical Preview </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+          <td> Disabled by default </td>
+          <td> No </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> IDEA CBC </td>
+          <td>
+            DES CBC
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            DES-40 CBC
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            RC2-40 CBC
+            <br/>
+            (insecure)
+          </td>
+          <td>
+            RC4-40
+            <br/>
+            (insecure)
+          </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Block cipher with mode of operation </td>
+          <td> Stream cipher </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported elliptic curves</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Arbitrary prime curves </td>
+          <td> Arbitrary char2 curves </td>
+          <td> sect163k1 (1) </td>
+          <td> sect163r1 (2) </td>
+          <td> sect163r2 (3) </td>
+          <td> sect193r1 (4) </td>
+          <td> sect193r2 (5) </td>
+          <td> sect233k1 (6) </td>
+          <td> sect233r1 (7) </td>
+          <td> sect239k1 (8) </td>
+          <td> sect283k1 (9) </td>
+          <td> sect283r1 (10) </td>
+          <td> sect409k1 (11) </td>
+          <td> sect409r1 (12) </td>
+          <td> sect571k1 (13) </td>
+          <td> sect571r1 (14) </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td>
+            SChannel Vista/2008, 7/2008R2, 8/2012, 8.1/2012R2, 10 Technical Preview
+          </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Arbitrary prime curves </td>
+          <td> Arbitrary char2 curves </td>
+          <td> sect163k1 </td>
+          <td> sect163r1 </td>
+          <td> sect163r2 </td>
+          <td> sect193r1 </td>
+          <td> sect193r2 </td>
+          <td> sect233k1 </td>
+          <td> sect233r1 </td>
+          <td> sect239k1 </td>
+          <td> sect283k1 </td>
+          <td> sect283r1 </td>
+          <td> sect409k1 </td>
+          <td> sect409r1 </td>
+          <td> sect571k1 </td>
+          <td> sect571r1 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported elliptic curves</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> secp160k1 (15) </td>
+          <td> secp160r1 (16) </td>
+          <td> secp160r2 (17) </td>
+          <td> secp192k1 (18) </td>
+          <td> secp192r1 prime192v1 (19) </td>
+          <td> secp224k1 (20) </td>
+          <td> secp224r1 (21) </td>
+          <td> secp256k1 (22) </td>
+          <td> secp256r1 prime256v1 (23) </td>
+          <td> secp384r1 (24) </td>
+          <td> secp521r1 (25) </td>
+          <td> brainpoolP256r1 (26) </td>
+          <td> brainpoolP384r1 (27) </td>
+          <td> brainpoolP512r1 (28) </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Beta </td>
+          <td> Beta </td>
+          <td> Beta </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td>
+            SChannel Vista/2008, 7/2008R2, 8/2012, 8.1/2012R2, 10 Technical Preview
+          </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> secp160k1 </td>
+          <td> secp160r1 </td>
+          <td> secp160r2 </td>
+          <td> secp192k1 </td>
+          <td> secp192r1 prime192v1 </td>
+          <td> secp224k1 </td>
+          <td> secp224r1 </td>
+          <td> secp256k1 </td>
+          <td> secp256r1 prime256v1 </td>
+          <td> secp384r1 </td>
+          <td> secp521r1 </td>
+          <td> brainpoolP256r1 </td>
+          <td> brainpoolP384r1 </td>
+          <td> brainpoolP512r1 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Data integrity</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> HMAC-MD5 </td>
+          <td> HMAC-SHA1 </td>
+          <td> HMAC-SHA256/384 </td>
+          <td> AEAD </td>
+          <td> GOST 28147-89 IMIT </td>
+          <td> GOST R 34.11-94 </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel XP/2003, Vista/2008 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> XP SP3, 2003 SP2 via hotfix </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 7/2008R2, 8/2012, 8.1/2012R2 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> except ECDHE_RSA </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 10 Technical Preview </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> HMAC-MD5 </td>
+          <td> HMAC-SHA1 </td>
+          <td> HMAC-SHA256/384 </td>
+          <td> AEAD </td>
+          <td> GOST 28147-89 MAC </td>
+          <td> GOST R 34.11-94 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Compression</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td>
+            DEFLATE
+            <br/>
+            (insecure)
+          </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Disabled by default </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> DEFLATE </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Extensions</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td>
+            Secure
+            <br/>
+            Renegotiation
+          </td>
+          <td>
+            Server Name
+            <br/>
+            Indication
+          </td>
+          <td> ALPN </td>
+          <td>
+            Certificate Status
+            <br/>
+            Request
+          </td>
+          <td> OpenPGP </td>
+          <td> Supplemental Data </td>
+          <td> Session Ticket </td>
+          <td> Keying Material Exporter </td>
+          <td> Maximum Fragment Length </td>
+          <td> Truncated HMAC </td>
+          <td> TLS FALLBACK SCSV </td>
+          <td> Encrypt-then-MAC </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Beta </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No? </td>
+          <td> Yes </td>
+          <td> Yes? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No? </td>
+          <td> Yes </td>
+          <td> Yes? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel XP/2003 </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel Vista/2008 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 7/2008R2 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 8/2012 </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Client side only </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel 8.1/2012R2, 10 Technical Preview </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Unknown </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Unknown </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Secure Renegotiation </td>
+          <td> Server Name Indication </td>
+          <td> ALPN </td>
+          <td> Certificate Status Request </td>
+          <td> OpenPGP </td>
+          <td> Supplemental Data </td>
+          <td> Session Ticket </td>
+          <td> Keying Material Exporter </td>
+          <td> Maximum Fragment Length </td>
+          <td> Truncated HMAC </td>
+          <td> TLS FALLBACK SCSV </td>
+          <td> Encrypt-then-MAC </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Assisted cryptography</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> PKCS #11 device </td>
+          <td> Intel AES-NI </td>
+          <td> VIA PadLock </td>
+          <td> STM32F2 </td>
+          <td> Cavium NITROX </td>
+          <td> Freescale CAU/mmCAU </td>
+          <td> ARMv8-A </td>
+          <td> Microchip PIC32MZ </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> PKCS #11 device </td>
+          <td> Intel AES-NI </td>
+          <td> VIA PadLock </td>
+          <td> STM32F2 </td>
+          <td> Cavium NITROX </td>
+          <td> Freescale CAU/mmCAU </td>
+          <td> ARMv8-A </td>
+          <td> Microchip PIC32MZ </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>System-specific backends</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> /dev/crypto </td>
+          <td> Windows CSP </td>
+          <td> CommonCrypto </td>
+          <td> OpenSSL engine </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> Partial </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> /dev/crypto </td>
+          <td> Windows CSP </td>
+          <td> CommonCrypto </td>
+          <td> OpenSSL engine </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Cryptographic module/token support</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> TPM support </td>
+          <td> Hardware token support </td>
+          <td> Objects identified via </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> No </td>
+          <td> No </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> No </td>
+          <td> PKCS11 </td>
+          <td> User-defined label </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> Yes </td>
+          <td> PKCS11 </td>
+          <td> PKCS #11 URLs </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> No </td>
+          <td> PKCS11 </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> No </td>
+          <td> PKCS11 </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> Yes </td>
+          <td> PKCS11 (via 3rd party module) </td>
+          <td> Custom method </td>
+        </tr>
+        <tr>
+          <td> LibreSSL </td>
+          <td> Yes </td>
+          <td> PKCS11 (via 3rd party module) </td>
+          <td> Custom method </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> No </td>
+          <td> PKCS11 (via libpkcs11-helper) or standard hooks </td>
+          <td> Custom method </td>
+        </tr>
+        <tr>
+          <td> SChannel </td>
+          <td> No </td>
+          <td> Microsoft CryptoAPI </td>
+          <td> UUID, User-defined label </td>
+        </tr>
+        <tr>
+          <td> Secure Transport </td>
+          <td> </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> No </td>
+          <td> No </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> No </td>
+          <td>
+            PKCS11 Java Cryptography Architecture/
+            <br/>
+            Java Cryptography Extension
+          </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> TPM support </td>
+          <td> Hardware token support </td>
+          <td> Objects identified via </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Code dependencies</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Dependencies </td>
+          <td>
+            Optional
+            <br/>
+            dependencies
+          </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> C++11 </td>
+          <td>
+            sqlite, zlib (compression), bzip2  (compression), liblzma (compression)
+          </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> None </td>
+          <td> libc, zlib (compression) </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td>
+            libc
+            <br/>
+            nettle
+            <br/>
+            gmp
+          </td>
+          <td>
+            zlib (compression)
+            <br/>
+            p11-kit (PKCS #11)
+            <br/>
+            trousers (TPM)
+          </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> none </td>
+          <td> zlib (compression) </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL-open </td>
+          <td> libc or newlib </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td>
+            libc
+            <br/>
+            libnspr4
+            <br/>
+            libsoftokn3
+            <br/>
+            libplc4
+            <br/>
+            libplds4
+          </td>
+          <td> zlib (compression) </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> libc </td>
+          <td> zlib (compression) </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> libc </td>
+          <td>
+            libpkcs11-helper (PKCS #11)
+            <br/>
+            zlib (compression)
+          </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> None </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Java </td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Dependencies </td>
+          <td>
+            Optional
+            <br/>
+            dependencies
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Development environment</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Namespace </td>
+          <td> Build tools </td>
+          <td> API manual </td>
+          <td> Crypto back-end </td>
+          <td> OpenSSL compatibility Layer </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> Botan::TLS </td>
+          <td> Makefile </td>
+          <td> Sphinx </td>
+          <td> Included (monolithic) </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> crypt* </td>
+          <td> makefile, MSVC project workspaces </td>
+          <td> Programmers reference manual (PDF), architecture design manual (PDF) </td>
+          <td> Included (monolithic) </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td>
+            CyaSSL_*
+            <br/>
+            SSL_*
+          </td>
+          <td>
+            Autoconf, automake, libtool, MSVC project workspaces, XCode projects, CodeWarrior projects, MPLAB X projects, Keil, IAR, Clang, GCC
+          </td>
+          <td> Manual and API Reference (HTML, PDF) </td>
+          <td> Included (monolithic) </td>
+          <td> Yes (about 10% of API) </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> gnutls_* </td>
+          <td> Autoconf, automake, libtool </td>
+          <td> Manual and API reference (HTML, PDF) </td>
+          <td> External, libnettle </td>
+          <td> Yes (limited) </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td>
+            matrixSsl_*
+            <br/>
+            ps*
+          </td>
+          <td>
+            Makefile, MSVC project workspaces, Xcode projects for Mac OS X and iOS
+          </td>
+          <td> API Reference (PDF), Integration Guide </td>
+          <td> Included (pluggable) </td>
+          <td> Yes (Subset: SSL_read, SSL_write, etc.) </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td>
+            CERT_*
+            <br/>
+            SEC_*
+            <br/>
+            SECKEY_*
+            <br/>
+            NSS_*
+            <br/>
+            PK11_*
+            <br/>
+            SSL_*
+            <br/>
+            ...
+          </td>
+          <td> Makefile </td>
+          <td> Manual (HTML) </td>
+          <td> Included, PKCS#11 based </td>
+          <td> Yes (separate package called nss_compat_ossl) </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td>
+            SSL_*
+            <br/>
+            SHA1_*
+            <br/>
+            MD5_*
+            <br/>
+            EVP_*
+            <br/>
+            ...
+          </td>
+          <td> Makefile </td>
+          <td> Man pages </td>
+          <td> Included (monolithic) </td>
+          <td> N/A </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td>
+            ssl_*
+            <br/>
+            sha1_*
+            <br/>
+            md5_*
+            <br/>
+            x509parse_*
+            <br/>
+            ...
+          </td>
+          <td> Makefile, CMake, MSVC project workspaces </td>
+          <td> API Reference + High Level and Module Level Documentation (HTML) </td>
+          <td> Included (monolithic) </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> SharkSsl* </td>
+          <td> Makefile </td>
+          <td> (online) HTML Manual and API Reference </td>
+          <td> Included (monolithic) </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> javax.net.ssl </td>
+          <td> Makefile </td>
+          <td> API Reference (HTML) +Java SE 8 </td>
+          <td>
+            Java Cryptography Architecture/
+            <br/>
+            Java Cryptography Extension
+          </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Namespace </td>
+          <td> Build tools </td>
+          <td> API manual </td>
+          <td> Crypto back-end </td>
+          <td> OpenSSL compatibility layer </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Portability concerns</h1>
+      <table border="1">
+        <tr>
+          <td> Implementation </td>
+          <td> Platform requirements </td>
+          <td> Network requirements </td>
+          <td> Thread safety </td>
+          <td> Random seed </td>
+          <td> Able to cross-compile </td>
+          <td> No OS (bare metal) </td>
+          <td> Supported operating systems </td>
+        </tr>
+        <tr>
+          <td> Botan </td>
+          <td> C++11 </td>
+          <td> None </td>
+          <td> Thread-safe </td>
+          <td> Platform-dependent </td>
+          <td> Yes </td>
+          <td> </td>
+          <td> Most Windows and POSIX systems </td>
+        </tr>
+        <tr>
+          <td> cryptlib </td>
+          <td> C89 </td>
+          <td> POSIX send() and recv(). API to supply your own replacement </td>
+          <td> Thread-safe </td>
+          <td> Platform-dependent, including hardware sources </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td>
+            AMX, BeOS, ChorusOS, DOS, eCOS, FreeRTOS/OpenRTOS, uItron, MVS, OS/2, Palm OS, QNX Neutrino, RTEMS, Tandem NonStop, ThreadX, uC/OS II, Unix (AIX, FreeBSD, HPUX, Linux, OS X, Solaris, etc.), VDK, VM/CMS, VxWorks, Win16, Win32, Win64, WinCE/PocketPC/etc, XMK
+          </td>
+        </tr>
+        <tr>
+          <td> CyaSSL </td>
+          <td> C89 </td>
+          <td> POSIX send() and recv(). API to supply your own replacement. </td>
+          <td>
+            Thread-safe, needs mutex hooks if PThreads or WinThreads not available, can be turned off
+          </td>
+          <td> Random seed set through CTaoCrypt </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td>
+            Win32/64, Linux, Mac OS X, Solaris, ThreadX, VxWorks, FreeBSD, NetBSD, OpenBSD, embedded Linux, Haiku, OpenWRT, iPhone (iOS), Android, Nintendo Wii and Gamecube through DevKitPro, QNX, MontaVista, OpenCL, NonStop, TRON/ITRON/ÂµITRON, Micrium's ÂµC OS, FreeRTOS, SafeRTOS, Freescale MQX, Nucleus, TinyOS, HP/UX, Keil RTX, TI-RTOS
+          </td>
+        </tr>
+        <tr>
+          <td> GnuTLS </td>
+          <td> C89 </td>
+          <td> POSIX send() and recv(). API to supply your own replacement. </td>
+          <td>
+            Thread-safe, needs custom mutex hooks if neither POSIX nor Windows threads are available.
+          </td>
+          <td> Platform dependent </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td>
+            Generally any POSIX platforms or Windows, commonly tested platforms include GNU/Linux, Win32/64, Mac OS X, Solaris, OpenWRT, FreeBSD, NetBSD, OpenBSD.
+          </td>
+        </tr>
+        <tr>
+          <td> MatrixSSL </td>
+          <td> C89 </td>
+          <td> None </td>
+          <td> Thread-safe </td>
+          <td> Platform dependent </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> All </td>
+        </tr>
+        <tr>
+          <td> NSS </td>
+          <td> C89, NSPR </td>
+          <td> NSPR PR_Send() and PR_Recv(). API to supply your own replacement. </td>
+          <td> Thread-safe </td>
+          <td> Platform dependent </td>
+          <td> Yes (but cumbersome) </td>
+          <td> No </td>
+          <td>
+            AIX, Android, FreeBSD, NetBSD, OpenBSD, BeOS, HP-UX, IRIX, Linux, Mac OS X, OS/2, Solaris, OpenVMS, Amiga DE, Windows, WinCE, Sony PlayStation
+          </td>
+        </tr>
+        <tr>
+          <td> OpenSSL </td>
+          <td> C89? </td>
+          <td> ? </td>
+          <td> Needs mutex callbacks </td>
+          <td> Set through native API </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Unix, DOS (with djgpp), Windows, OpenVMS, MacOS, NetWare </td>
+        </tr>
+        <tr>
+          <td> PolarSSL </td>
+          <td> C89 </td>
+          <td> POSIX read() and write(). API to supply your own replacement. </td>
+          <td> Threading layer available (POSIX or own hooks) </td>
+          <td> Random seed set through entropy pool </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td>
+            Known to work on: Win32/64, Linux, Mac OS X, Solaris, FreeBSD, NetBSD, OpenBSD, OpenWRT, iPhone (iOS), Xbox, Android, SeggerOS
+          </td>
+        </tr>
+        <tr>
+          <td> SharkSSL </td>
+          <td> C89 </td>
+          <td> None: Transport agnostic API </td>
+          <td> Thread-safe: multiple ports </td>
+          <td> Random seed set through entropy pool and/or HW </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td>
+            INTEGRITY, MQX, SMX, ThreadX, VxWorks, SeggerOS, OSE, Android, Win 32/64, Linux 32/64, uCLinux, Mac OS X, OpenBSD, DD-WRT, OpenWrt
+          </td>
+        </tr>
+        <tr>
+          <td> JSSE </td>
+          <td> Java </td>
+          <td> Java SE network components </td>
+          <td> Thread-safe </td>
+          <td> Depends on java.security.SecureRandom </td>
+          <td> Yes </td>
+          <td> </td>
+          <td> Java based, platform-independent </td>
+        </tr>
+        <tr>
+          <td> Implementation </td>
+          <td> Platform requirements </td>
+          <td> Network requirements </td>
+          <td> Thread safety </td>
+          <td> Random seed </td>
+          <td> Able to cross-compile </td>
+          <td> No OS (bare metal) </td>
+          <td> Supported operating systems </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
