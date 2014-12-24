@@ -2,11 +2,6 @@
  * Created by gbecan on 17/12/14.
  */
 
-
-/**
- * Created by gbecan on 12/12/14.
- */
-
 var pcmApp = angular.module("pcmApp", []);
 
 /**
@@ -46,7 +41,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var kFeatures = $scope.pcm.features.array.sort(sortByName);
         for (var i = 0; i <  kFeatures.length; i++) {
             features.push({
-                data: property(kFeatures[i].name)
+                data: property(kFeatures[i].generated_KMF_ID)
             });
             featureHeaders.push(kFeatures[i].name);
         }
@@ -70,39 +65,47 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
          * @returns synchronization object
          */
         function model(product) {
-            var sync = {};
+            var id = product.generated_KMF_ID;
 
             // FIXME : this function is also used when creating a new product
 
             // FIXME : ugly stuff to get and set a value... We need to work with the ID !
-            sync.attr = function (attr, val) {
-                if (typeof val === 'undefined') {
-                    var kCells = product.values.array;
-                    for (var j = 0; j < kCells.length; j++) {
-                        var kCell = kCells[j];
-                        if (kCell.feature.name == attr) {
-                            return kCell.content;
-                        }
-                    }
-                } else {
-                    var kCells = product.values.array;
-                    for (var j = 0; j < kCells.length; j++) {
-                        var kCell = kCells[j];
-                        if (kCell.feature.name == attr) {
-                            kCell.content = val;
-                        }
-                    }
+//            sync.attr = function (attr, val) {
+//                if (typeof val === 'undefined') {
+//                    var kCells = product.values.array;
+//                    for (var j = 0; j < kCells.length; j++) {
+//                        var kCell = kCells[j];
+//                        if (kCell.feature.name == attr) {
+//                            return kCell.content;
+//                        }
+//                    }
+//                } else {
+//                    var kCells = product.values.array;
+//                    for (var j = 0; j < kCells.length; j++) {
+//                        var kCell = kCells[j];
+//                        if (kCell.feature.name == attr) {
+//                            kCell.content = val;
+//                        }
+//                    }
+//
+//                    return sync;
+//                }
+//            };
 
-                    return sync;
-                }
-            };
-
-            return sync;
+            return id;
         }
 
         function schema() {
             var newProduct = factory.createProduct();
-            // FIXME : add new product to PCM
+            $scope.pcm.addProducts(newProduct);
+
+            for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+                var cell = factory.createCell();
+                cell.feature = $scope.pcm.features.array[i];
+                cell.content = "";
+                newProduct.addValues(cell);
+            }
+
             return model(newProduct);
         }
 
@@ -113,7 +116,22 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
          */
         function property(attr) {
             return function (row, value) {
-                return row.attr(attr, value);
+                var product = $scope.pcm.findProductsByID(row);
+                //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
+                var cells = product.values.array
+                for (var i = 0; i < cells.length; i++) {
+                    var cell = cells[i];
+                    if (cell.feature.generated_KMF_ID === attr) {
+                        break;
+                    }
+                }
+
+                if (typeof value === 'undefined') {
+                     return cell.content;
+                } else {
+                    cell.content = value;
+                    return row;
+                }
             }
         }
 
