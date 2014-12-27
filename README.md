@@ -157,7 +157,7 @@ Getting and installing the tools
     $ cd $DEST_FOLDER
     $ git clone https://github.com/dukeboard/kevoree-modeling-framework.git
     $ cd kevoree-modeling-framework
-    $ git checkout org.kevoree.modeling.root-4.5.1
+    $ git checkout org.kevoree.modeling.root-3.5.12
 
 ### IntelliJ IdealC (IDE) 
 
@@ -185,16 +185,12 @@ Getting and installing the tools
 Environnement configuration
 ---------------------------
 
-In the file */.profile* (create it if it does’nt exist), append at the
+In the file *~/.profile* (create it if it does’nt exist), append at the
 end of the file :
 
-    IDEA_PATH="$DEST_FOLDER/idea-IC-129.354/bin"
     M2_HOME="/usr/share/maven2"
     PLAY2_HOME="$DEST_FOLDER/activator-1.2.10-minimal"
     # set PATH so it includes user's private bin if it exists
-    if [ -d $IDEA_PATH ] ; then
-    export PATH="$IDEA_PATH:$PATH"
-    fi
     if [ -d $M2_HOME ] ; then
     export PATH="$M2_HOME:$PATH"
     fi
@@ -221,7 +217,7 @@ if errors with java runtime 7 -\> forced version to 1.7 :
 Unit Tests
 ----------
 
-    $ cd org.diverse.PCM
+    $ cd $DEST_FOLDER/PCM/org.diverse.PCM
     $ git pull
     $ mvn test -Dtest=WikipediaMinerTest
     $ mvn test -Dtest=ParserTest
