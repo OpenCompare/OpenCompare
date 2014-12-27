@@ -14,7 +14,7 @@ comparison page, and transform it into a .pcm file (can be an .html and
 Development tools
 =================
 
-[Play](https://www.playframework.com/) Framework
+[Play Framework](https://www.playframework.com/)
 ------------------------------------------------
 
 Play is a framework for developing web application with Java and Scala.
@@ -23,18 +23,18 @@ concurrent, distributed, and resilient message-driven applications on
 the JVM, Play provides predictable and minimal resource consumption
 (CPU, memory, threads) for highly-scalable applications.
 
-IntelliJ
---------
+[IntelliJ](https://www.jetbrains.com/idea/download/)
+----------------------------------------------------
 
 IntelliJ is an IDE for Java, Scala and even Groovy. Specialized in
 entreprise, web and mobile development, IntelliJ includes an amazing set
 of tools which work out-of-the-box, such as Maven, Git, SVN and database
 tools.
 
-KMF Plugin
-----------
+[Kevoree Modeling Framework Plugin](https://github.com/dukeboard/kevoree-modeling-framework)
+--------------------------------------------------------------------------------------------
 
-This project include the use of KMF plugin (Kevoree Modeling Framework <https://github.com/dukeboard/kevoree-modeling-framework>).
+This project include the use of KMF plugin .
 
 Maven
 -----
@@ -128,6 +128,9 @@ template (display that is visible. e.g. replacing
   *  <span>[*PARSE*] = `WikipediaPcmParser` , `PageVisitor` ,
     `TableVisitor` , `NodeToTextVisitor`</span>
 
+Simplified PCM class diagram
+----------------------------
+
 ![image](images/simplified_data_model.png)
 
 Complete project installation on Debian
@@ -172,6 +175,11 @@ Getting and installing the tools
 
     # apt-get install openjdk-7-jre
 
+### Java runtime 8 JRE (prefered)
+
+    # echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    # sudo apt-get install oracle-java8-installer
+
 Environnement configuration
 ---------------------------
 
@@ -208,7 +216,7 @@ Launching
     $ cd ../PCM/org.diverse.PCM
     $ mvn clean install
 
-if errors with java -\> forced version to 1.7 :
+if errors with java runtime 7 -\> forced version to 1.7 :
 
     $ mvn clean install -Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1.7
 
@@ -220,7 +228,7 @@ Unit Tests
     $ mvn test -Dtest=WikipediaMinerTest
     $ mvn test -Dtest=ParserTest
 
-if errors with java -\> forced version to 1.7 :
+if errors with java runtime 7 -\> forced version to 1.7 :
 
     $ mvn test [...] Dmaven.compiler.target=1.7 -Dmaven.compiler.source=1.7
 
