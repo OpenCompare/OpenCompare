@@ -67,7 +67,7 @@ public class WikipediaPcmGenerationTest {
         return miner.parse(preprocessedCode);
     }
 
-    public Boolean createFolder(String path) throws IOException {
+    public Boolean createFolder(String path) {
         File file = new File(path);
         return file.exists() || file.mkdirs();
     }
@@ -145,7 +145,7 @@ public class WikipediaPcmGenerationTest {
     }
 
     @Test
-    public void GeneratePcms() throws IOException{
+    public void GeneratePcms() throws IOException {
 
         // This test is only done on error's generation file creation
         assertTrue(createFolder(output_path));
