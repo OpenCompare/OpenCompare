@@ -1,0 +1,530 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Autocorrection
+! Automatic
+suggestions
+! Command
+argument
+completion
+! Command
+builder
+! Command
+history
+! Command
+name
+completion
+! Context
+sensitive
+help
+! Directory history, stack or similar features
+! Implicit
+directory
+change
+! Integrated
+environment
+! Interactive
+table
+! Mandatory
+argument
+prompt
+! Menu/options
+prompt
+! Path
+completion
+! Progress
+indicator
+! Snippets
+! Syntax
+highlighting
+! Value
+prompt
+! Wildcard
+completion
+|-
+! 4DOS
+| No
+| No
+| Yes
+| No (except for  command for INI file directives)
+| Yes
+| Yes
+| Yes
+| (via popup, extended directory searches, , , , , , ,  commands and  function)
+| Yes
+| Yes
+| No
+| No
+| Yes (via  function, and indirectly via a combination of , ,  commands)
+| Yes
+| No
+| No
+| No
+| Yes (via ,  and  commands)
+| Yes
+|-
+! 4OS2
+| No
+| No
+| ?
+| No
+| Yes
+| ?
+| Yes
+| Yes
+| Yes
+| ?
+| No
+| No
+| ?
+| ?
+| No
+| No
+| No
+| ?
+| ?
+|-
+! BeanShell
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+|-
+! Bourne shell
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+|-
+! CCP
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+|-
+! COMMAND.COM
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No (only via external  command, in DR-DOS also via  /  internal commands)
+| No
+| No
+| No
+| No
+| No
+| No
+|-
+! Hamilton C shell
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes (, , )
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| Yes
+|-
+! OS/2
+CMD.EXE
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+|-
+! POSIX shell
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| Yes ()
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+|-
+! Scsh
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+|-
+! TCC (formerly 4NT)
+| No
+| No
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| (via popup, extended directory searches, , , , , , ,  commands and  function)
+| Yes
+| Yes
+| No
+| No
+| Yes (via  function, and indirectly via a combination of , ,  commands)
+| Yes
+| No
+| No
+| Yes
+| Yes (via , ,  and  commands)
+| Yes
+|-
+! VMS DCL
+| No
+| No
+| No
+| No
+| Yes
+| Minimum uniqueness scheme
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+|-
+! Windows
+CMD.EXE
+| No
+| No
+| No
+| No
+| Yes ()
+| partial
+| No
+| Yes (, )
+| No
+| No
+| No
+| No
+| No
+| partial
+| No
+| No
+| No
+| Yes (via  command)
+| No
+|-
+! Windows PowerShell
+| No
+| Yes
+| Yes
+| popup window
+| Yes ()
+| Yes
+| Yes
+| Yes; multiple stacks; multiple location types
+| No
+| Yes
+| popup window
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! ash
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| Yes
+| No
+|-
+! bash (v4.0)
+| No
+| No
+| when defined
+| No
+| Yes
+| Yes
+| No
+| Yes (, , )
+| optional
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| Yes
+|-
+! csh
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes (, , )
+| optional
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+|-
+! fish
+| Yes
+| Yes
+| when defined
+| No
+| Yes
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| Yes
+| Yes
+| Yes
+|-
+! ksh (ksh93t+)
+| No
+| No
+| No
+| No
+| Yes
+| Yes (extendable)
+| No
+| Yes ( builtin, ,  implemented as functions)
+| No
+| No
+| No
+| No
+| Yes
+| Yes (extendable)
+| No
+| No
+| No
+| Yes
+| No
+|-
+! pdksh
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+|-
+! rc
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| ?
+| No
+|-
+! tcsh
+| experimental
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| optional
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+|-
+! zsh
+| Yes
+| Yes (via  or user-defined)
+| when defined
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| optional
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| Yes
+|}

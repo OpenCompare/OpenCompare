@@ -1,0 +1,64 @@
+
+{"class":"pcm.PCM@3689009121420400071382","name":"","generated_KMF_ID":"3689009121420400071382","products":[
+{"class":"pcm.Product@16821858131420400071382","name":"Concise Binary Object Representation (CBOR)","generated_KMF_ID":"16821858131420400071382","values":[
+{"class":"pcm.Cell@18388151401420400071382","content":"","generated_KMF_ID":"18388151401420400071382","feature":["features[4233411271420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@20308405611420400071382","content":"","generated_KMF_ID":"20308405611420400071382","feature":["features[16720181421420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@20978512391420400071382","content":"True: \nFalse:","generated_KMF_ID":"20978512391420400071382","feature":["features[3883645291420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@149550391420400071382","content":"","generated_KMF_ID":"149550391420400071382","feature":["features[14325158681420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@8114700071420400071382","content":"","generated_KMF_ID":"8114700071420400071382","feature":["features[12406349441420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@6814353831420400071382","content":"","generated_KMF_ID":"6814353831420400071382","feature":["features[18324472811420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@10400699391420400071382","content":"","generated_KMF_ID":"10400699391420400071382","feature":["features[2935835841420400071382]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@3517597981420400071382","name":"BSON","generated_KMF_ID":"3517597981420400071382","values":[
+{"class":"pcm.Cell@13198387421420400071382","content":"Null type - 0 bytes for value","generated_KMF_ID":"13198387421420400071382","feature":["features[4233411271420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@7734600741420400071382","content":"double: little-endian binary64","generated_KMF_ID":"7734600741420400071382","feature":["features[2935835841420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@16325124651420400071382","content":"BSON embedded document with numeric keys","generated_KMF_ID":"16325124651420400071382","feature":["features[18324472811420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@282683401420400071382","content":"int32: 32-bit little-endian 2's complement or int64: 64-bit little-endian 2's complement","generated_KMF_ID":"282683401420400071382","feature":["features[16720181421420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@17233236461420400071382","content":"True: one byte \nFalse:","generated_KMF_ID":"17233236461420400071382","feature":["features[3883645291420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@9566971311420400071382","content":"UTF-8 encoded, preceded by int32 encoded string length in bytes","generated_KMF_ID":"9566971311420400071382","feature":["features[14325158681420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@4385557071420400071382","content":"BSON embedded document","generated_KMF_ID":"4385557071420400071382","feature":["features[12406349441420400071382]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@6327206761420400071382","name":"ASN.1\n(BER, PER or OER encoding)","generated_KMF_ID":"6327206761420400071382","values":[
+{"class":"pcm.Cell@850866601420400071382","content":"REAL; base-10 real values are represented as character strings in ISO 6093 format; binary real values are represented in a binary format that includes the mantissa, the base (2, 8, or 16), and the exponent; the special values NaN, -INF, +INF, and negative zero are also supported","generated_KMF_ID":"850866601420400071382","feature":["features[2935835841420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@8082732511420400071382","content":"Multiple valid types (VisibleString, PrintableString, GeneralString, UniversalString, UTF8String)","generated_KMF_ID":"8082732511420400071382","feature":["features[14325158681420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@12290575761420400071382","content":"BOOLEAN; BER: as 1 byte in binary form; PER: as 1 bit; OER: as 1 byte","generated_KMF_ID":"12290575761420400071382","feature":["features[3883645291420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@16647961871420400071382","content":"NULL type","generated_KMF_ID":"16647961871420400071382","feature":["features[4233411271420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@19941206721420400071382","content":"data specifications SET OF (unordered) and SEQUENCE OF (guaranteed order)","generated_KMF_ID":"19941206721420400071382","feature":["features[18324472811420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@3499709021420400071382","content":"INTEGER; BER: variable-length big-endian binary representation (up to 2^(2^1024) bits); PER Unaligned: a fixed number of bits if the integer type has a finite range; a variable number of bits otherwise; PER Aligned: a fixed number of bits if the integer type has a finite range and the size of the range is less than 65536; a variable number of octets otherwise; OER: one, two, or four octets (either signed or unsigned) if the integer type has a finite range that fits in that number of octets; a variable number of octets otherwise","generated_KMF_ID":"3499709021420400071382","feature":["features[16720181421420400071382]"],"interpretation":[]}
+,
+{"class":"pcm.Cell@668796121420400071382","content":"user definable type","generated_KMF_ID":"668796121420400071382","feature":["features[12406349441420400071382]"],"interpretation":[]}
+]}
+],"features":[
+{"class":"pcm.Feature@16720181421420400071382","name":"Integer","generated_KMF_ID":"16720181421420400071382"}
+,
+{"class":"pcm.Feature@2935835841420400071382","name":"Floating-point","generated_KMF_ID":"2935835841420400071382"}
+,
+{"class":"pcm.Feature@18324472811420400071382","name":"Array","generated_KMF_ID":"18324472811420400071382"}
+,
+{"class":"pcm.Feature@14325158681420400071382","name":"String","generated_KMF_ID":"14325158681420400071382"}
+,
+{"class":"pcm.Feature@3883645291420400071382","name":"Boolean","generated_KMF_ID":"3883645291420400071382"}
+,
+{"class":"pcm.Feature@12406349441420400071382","name":"Associative array/Object","generated_KMF_ID":"12406349441420400071382"}
+,
+{"class":"pcm.Feature@4233411271420400071382","name":"Null","generated_KMF_ID":"4233411271420400071382"}
+]}

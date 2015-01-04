@@ -1,0 +1,1524 @@
+<html>
+    <head>
+    		<meta charset="utf-8"/>
+    </head>
+    <body>
+    	<div>
+    <h1>Engine nomenclature</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Layout engine
+		  	</td><td>
+		  	Release version
+		  	</td><td>
+		  	Preview version
+		  	</td><td>
+		  	Used by
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Amaya
+		  	</td><td>
+		  	11.4.7
+		  	</td><td>
+		  	N/A
+		  	</td><td>
+		  	No longer developed; Amaya
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Blink
+		  	</td><td>
+		  	537.36
+		  	</td><td>
+		  	source code
+		  	</td><td>
+		  	Chromium/Chrome (28+), Opera (15+) and Yandex
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Gecko
+		  	</td><td>
+		  	)
+		  	</td><td>
+		  	)  daily release
+		  	</td><td>
+		  	All Mozilla software, including Firefox; SeaMonkey and Galeon; Camino; K-Meleon; Flock (up to 2.x); Debian IceWeasel; GNU IceCat (formerly GNU IceWeasel); Icedove, Iceape and Iceowl; Fennec. Also used by the Maple platform in 2010 and 2011 Samsung &quot;SmartTV&quot; devices which are based on the build used in Firefox 3.0. Nokia Asha platform is also using Gecko for web apps rendering.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	KHTML
+		  	</td><td>
+		  	4.12.3
+		  	</td><td>
+		  	N/A
+		  	</td><td>
+		  	Konqueror
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Presto
+		  	</td><td>
+		  	2.12.388
+		  	</td><td>
+		  	N/A
+		  	</td><td>
+		  	No longer developed; Opera and Opera Mobile use Blink now; Nintendo DS &amp; DSi Browser; Internet Channel
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Tasman
+		  	</td><td>
+		  	(IE 5.2.3 for Mac)
+		  	</td><td>
+		  	N/A
+		  	</td><td>
+		  	No longer developed (aborted in 2003); Internet Explorer 5+  for Mac OS X
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Trident
+		  	</td><td>
+		  	7.0 (IE 11)
+		  	</td><td>
+		  	N/A
+		  	</td><td>
+		  	Internet Explorer and other Internet Explorer shell like Maxthon (Microsoft Windows operating system only), Windows Phone 8
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	WebKit
+		  	</td><td>
+		  	534.20
+		  	</td><td>
+		  	nightly build
+		  	</td><td>
+		  	Tizen (both OS and browser), Safari (both desktop and mobile), Google Chrome (before 28), Maxthon 3, Shiira, iCab 4, OmniWeb 5.5+, Web, Adobe AIR, Midori, Adobe Dreamweaver CS4 and CS5, Android browser, Palm webOS browser, Symbian S60 browser, OWB, Steam, Rekonq, Arora, Flock (version 3+), RockMelt, Dolphin Browser, Sleipnir, Konqueror. Used by the LG Smart TV platform to enable web content on TVs.
+		  	</td>
+    	</tr> 
+    </table>
+    </div><div>
+    <h1>Values</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Value
+		  	</td><td>
+		  	Meaning
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Yes
+		  	</td><td>
+		  	Indicates that the layout engine fully supports this property/element when valid values are used.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	No
+		  	</td><td>
+		  	Indicates that the property/element is completely ignored.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Partial
+		  	</td><td>
+		  	Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Incorrect
+		  	</td><td>
+		  	Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Experimental
+		  	</td><td>
+		  	Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Dropped
+		  	</td><td>
+		  	Indicates that the property/element is no longer supported.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Nightly build
+		  	</td><td>
+		  	Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	Depends
+		  	</td><td>
+		  	Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+		  	</td>
+    	</tr> 
+    </table>
+    </div><div>
+    <h1>Deprecated HTML elements</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Element
+		  	</td><td>
+		  	Function
+		  	</td><td>
+		  	Supported first by
+		  	</td><td>
+		  	Deprecated in HTML version
+		  	</td><td>
+		  	Alternative solution
+		  	</td><td>
+		  	Trident
+		  	</td><td>
+		  	Gecko
+		  	</td><td>
+		  	WebKit
+		  	</td><td>
+		  	KHTML
+		  	</td><td>
+		  	Presto
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Insert an applet
+		  	</td><td>
+		  	HotJava
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Sets font styles
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	85
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Centers contents
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Directory list
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Applies font styles
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Adds a search field
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	312
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Partial
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Displays preformatted text
+		  	</td><td>
+		  	IETF
+		  	</td><td>
+		  	2
+		  	</td><td>
+		  	, , , CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	125
+		  	</td><td>
+		  	3.3
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Menu list
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Designates that all HTML be ignored, and to display the page as is
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	3.2
+		  	</td><td>
+		  	The  MIME type
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Strike-through
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	, CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Strike-through
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	, CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Underline
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	4
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Similar to  and , but ignores all HTML within and displays as is
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	2
+		  	</td><td>
+		  	, ,
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	125
+		  	</td><td>
+		  	3.3
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr> 
+    </table>
+    </div><div>
+    <h1>Deprecated HTML attributes</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Attribute
+		  	</td><td>
+		  	Element
+		  	</td><td>
+		  	Alternative solution
+		  	</td><td>
+		  	Trident
+		  	</td><td>
+		  	Gecko
+		  	</td><td>
+		  	WebKit
+		  	</td><td>
+		  	KHTML
+		  	</td><td>
+		  	Presto
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, , , , , , , , , , , , , , ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, , , ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	The  attribute
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	None
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	DTD
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	, , ,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	,
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr> 
+    </table>
+    </div><div>
+    <h1>Proprietary HTML elements</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Tag
+		  	</td><td>
+		  	Function
+		  	</td><td>
+		  	Introduced by
+		  	</td><td>
+		  	Alternative solution
+		  	</td><td>
+		  	Trident
+		  	</td><td>
+		  	Gecko
+		  	</td><td>
+		  	WebKit
+		  	</td><td>
+		  	KHTML
+		  	</td><td>
+		  	Presto
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to add sound to the background of a website
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Dropped
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to display a blinking text
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	Javascript, CSS
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Dropped
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to display a blockquote
+		  	</td><td>
+		  	WebTV, HTML 3.0
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Dropped
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to allow the addition of comments to HTML documents
+		  	</td><td>
+		  	Internet Explorer, WebTV
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Inline layers
+		  	</td><td>
+		  	Netscape (4 only)
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Synonym of img
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to create multiple layers of text and images which lay on top of each other in a given order
+		  	</td><td>
+		  	Netscape (4 only)
+		  	</td><td>
+		  	CSS, AJAX
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Used to display a scrolling, marquee-like text.
+		  	</td><td>
+		  	Internet Explorer, WebTV
+		  	</td><td>
+		  	JavaScript, CSS3
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	125
+		  	</td><td>
+		  	3.3
+		  	</td><td>
+		  	1.0
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Prevents any line breaks from occurring within the flow of a text
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Displays an alternative text for browsers which do not recognize the embed tag
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	Child elements of object used as fallback
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Adds whitespace in a layout
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	CSS
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Dropped
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Placed inside a nobr element to add a line break
+		  	</td><td>
+		  	Netscape
+		  	</td><td>
+		  	Unicode character zero-width space (U+200B)
+		  	</td><td>
+		  	Dropped
+		  	</td><td>
+		  	1.7
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	Delimits an XML data island inside an HTML page
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr> 
+    </table>
+    </div><div>
+    <h1>Proprietary HTML attributes</h1>
+    <table border="1">
+    <tr> 
+      	  <td>
+		  	Attribute
+		  	</td><td>
+		  	Deprecated for
+		  	</td><td>
+		  	Function
+		  	</td><td>
+		  	Supported first by
+		  	</td><td>
+		  	Trident
+		  	</td><td>
+		  	Gecko
+		  	</td><td>
+		  	WebKit
+		  	</td><td>
+		  	KHTML
+		  	</td><td>
+		  	Presto
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Determines whether background image scrolls with the background
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets colors for 3-D table borders in the , , , and  elements
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets colors for 3-D table borders in the , , , and  elements
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets colors for 3-D table borders in the , , , and  elements
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Uses the  element to place video or audio clips
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Uses the  element to place video or audio clips
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Defines function to call for an object.
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Defines the object to bind a scripting event.
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Partial
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Controls the display of the outer borders of a table in the table tag
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets the amount of space between frames
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets the margin between the browser window and the contents of the page
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Uses the  element to place video or audio clips
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets the margin between the browser window and the contents of the page
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Uses the  element to place video or audio clips
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Specifies a target window or frame for the output of a form
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	Yes
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr><tr> 
+      	  <td>
+		  	
+		  	</td><td>
+		  	
+		  	</td><td>
+		  	Sets vertical alignment of table caption
+		  	</td><td>
+		  	Internet Explorer
+		  	</td><td>
+		  	3.1
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	?
+		  	</td><td>
+		  	No
+		  	</td><td>
+		  	No
+		  	</td>
+    	</tr> 
+    </table>
+    </div>
+    </body>
+    </html>

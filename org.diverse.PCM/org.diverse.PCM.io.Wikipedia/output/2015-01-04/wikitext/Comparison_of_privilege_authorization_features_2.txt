@@ -1,0 +1,35 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! PolicyKit/pkexec:
+A privilege authorization feature, designed to be independent of the desktop environment in use and already adopted by GNOME In contrast to earlier systems, applications using PolicyKit never run with privileges above those of the current user. Instead, they indirectly make requests of the PolicyKit daemon, which is the only program that runs as root.
+|-
+! 
+| kdesu:
+A Qt graphical front-end to the su command for KDE.
+|-
+! 
+| kdesudo:
+A Qt graphical front-end to sudo that has replaced kdesu in Kubuntu, starting with Kubuntu 7.10.
+|-
+! 
+| beesu:
+A graphical front-end to the su command that has replaced gksu in Red Hat based operating systems. It has been developed mainly for RHEL and Fedora.
+|-
+! 
+| GKSu and GKsudo:
+GTK+ Graphical frontend to su and sudo. GKsu comes up automatically when a supported application needs to perform an action requiring root privileges.  A replacement, "gksu PolicyKit", which uses PolicyKit rather than su/sudo, is being developed as part of GNOME.
+|-
+! Sudo, running in Terminal window in Ubuntu
+| sudo:
+Created around 1980, sudo is a highly configurable Unix command line tool similar to su, but it allows certain users to run programs with root privileges without spawning a root shell or requiring root's password.
+|-
+! Sudo, running in Terminal window in Ubuntu
+| su:
+A command line tool for Unix. su (substitute user) allows users to switch the terminal to a different account by entering the username and password of that account. If no user name is given, the operating system's superuser account (known as "root") is used, thus providing a fast method to obtain a login shell with full privileges to the system. Issuing an exit command returns the user to their own account.
+|-
+! border|120px|Ktsuss
+| ktsuss:
+ktsuss stands for "keep the su simple, stupid", and is a graphical version of su. The idea of the project is to remain simple and bug free.
+|}

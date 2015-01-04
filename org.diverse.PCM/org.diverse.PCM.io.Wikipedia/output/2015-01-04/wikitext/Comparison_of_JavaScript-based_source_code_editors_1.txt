@@ -1,0 +1,531 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Ace (editor)
+! CodeMirror
+! CodePress
+! CodeTextArea
+! EditArea
+! Helene
+! MDK-Editor
+! Orion
+! markItUp!
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! Bracket matching
+| Yes
+| Yes
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+| Ctrl+B; no angle bracket matching
+| 
+| 
+| matching bracket ([{<>}]) always highlighted
+| Yes
+| No
+|-
+! Code folding
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| Some
+| No
+|-
+! Code snippets
+| Yes
+| through API/add-on
+| type 'for' or 'if' then Tab
+| No
+| Yes
+| No
+| JavaScript
+| Some
+| Yes
+|-
+! Code suggestion
+| Yes
+| example
+| No
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| CSS, HTML, JavaScript)
+| Yes through esprima content assist plugin
+| No
+|-
+! Implementation
+| 
+| nestable full parsers
+| pattern-based parser
+| 
+| 
+| 
+| parsers
+| pattern-based parser
+| 
+|-
+! Indent, new line keeps level
+| optional setting that is on by default
+| Yes
+| very limited
+| No
+| Yes
+| N/A (can't press Enter)
+| Yes
+| Yes
+| No
+|-
+! Indent, selected block
+| yes, including Shift+Tab
+| either automatically, or block-level indent/unindent
+| No
+| 
+| yes, including Shift+Tab
+| 
+| yes, including Shift+Tab and using context menu
+| yes, including Shift+Tab
+| 
+|-
+! Indent, syntax
+| Yes
+| Yes
+| 
+| 
+| No
+| 
+| No
+| Yes
+| 
+|-
+! IndentGuides
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+|-
+! Inline widgets
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+|-
+! Keyboard shortcuts
+| All Common Shortcuts & Custom Keybindings
+| fully configurable
+| 
+| 
+| some common used: Ctrl+f, Ctrl+g,Ctrl+z,Ctrl+y
+| 
+| All key combos (except F1 in IE7) can be bound to shortcuts
+| Yes
+| Yes
+|-
+! Line numbers
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| supports mouse selection
+| Yes
+| No
+|-
+! Multiple cursors / Block selection
+| Multiple cursors
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+|-
+! Non US charset support
+| Yes
+| Yes
+| 
+| 
+| 
+| 
+| No
+| Yes
+| 
+|-
+! Search & replace
+| regex supported
+| via API
+| 
+| No
+| toolbar button
+| 
+| has API for the studio
+| Yes
+| 
+|-
+! Spell checking
+| addon for context menu
+| No
+| browser-based
+| none
+| browser-based
+| none
+| No
+| No
+| browser-based
+|-
+! Syntax checking
+| HTML, CSS, JavaScript (using JSHint)
+| Some
+| No
+| 
+| 
+| No
+| HTML, JavaScript (using JSLint)
+| JavaScript (using JSLint)
+| 
+|-
+! Syntax highlight
+| Yes
+| Over 60 languages
+| limited mixed mode: HTML + JavaScript (no CSS), PHP + HTML (no JavaScript or CSS), Java, Perl, SQL
+| only keywords
+| only one language at a time: Perl, PHP, CSS, Javascript, Python, HTML, XML, VB, C, CPP, SQL, Pascal, Basic, Brainf*ck
+| PHP
+| mixed mode: PHP + HTML + JavaScript + CSS, single-mode: PHP, Javascript, CSS, XML; extensible
+| mixed mode: HTML + JavaScript and CSS, PHP, EJS; single mode: JavaScript, Java, JSON, CSS, Python, Ruby, XML, YAML (pluggable)
+| No
+|-
+! Tab support
+| Yes
+| Yes
+| Some
+| 
+| Yes
+| 
+| Yes
+| Yes
+| 
+|-
+! Toggle syntax highlight on/off
+| Yes
+| Yes
+| 
+| 
+| last example in demo
+| 
+| textmode
+| No
+| N/A
+|-
+! Toolbar
+| But command line console
+| No
+| 
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+|-
+! Undo/Redo
+| Yes
+| Yes
+| Yes
+| 
+| Yes
+| 
+| Differential Undo
+| Yes
+| 
+|-
+! Visual styling
+| Fully theme-able
+| CSS-based themes
+| 
+| font-type and font-size
+| 
+| 
+| 5 styles to choose from, having 2 font-sizes
+| Yes
+| 
+|-
+! XML matching tag highlight
+| Yes
+| Yes
+| No
+| 
+| 
+| 
+| Yes
+| No
+| 
+|}

@@ -1,0 +1,42 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Array
+! Associative array/Object
+! Boolean
+! Floating-point
+! Integer
+! Null
+! String
+|-
+! ASN.1
+(BER, PER or OER encoding)
+| data specifications SET OF (unordered) and SEQUENCE OF (guaranteed order)
+| user definable type
+| BOOLEAN; BER: as 1 byte in binary form; PER: as 1 bit; OER: as 1 byte
+| REAL; base-10 real values are represented as character strings in ISO 6093 format; binary real values are represented in a binary format that includes the mantissa, the base (2, 8, or 16), and the exponent; the special values NaN, -INF, +INF, and negative zero are also supported
+| INTEGER; BER: variable-length big-endian binary representation (up to 2^(2^1024) bits); PER Unaligned: a fixed number of bits if the integer type has a finite range; a variable number of bits otherwise; PER Aligned: a fixed number of bits if the integer type has a finite range and the size of the range is less than 65536; a variable number of octets otherwise; OER: one, two, or four octets (either signed or unsigned) if the integer type has a finite range that fits in that number of octets; a variable number of octets otherwise
+| NULL type
+| Multiple valid types (VisibleString, PrintableString, GeneralString, UniversalString, UTF8String)
+|-
+! BSON
+| BSON embedded document with numeric keys
+| BSON embedded document
+| True: one byte 
+False:
+| double: little-endian binary64
+| int32: 32-bit little-endian 2's complement or int64: 64-bit little-endian 2's complement
+| Null type - 0 bytes for value
+| UTF-8 encoded, preceded by int32 encoded string length in bytes
+|-
+! Concise Binary Object Representation (CBOR)
+| 
+| 
+| True: 
+False:
+| 
+| 
+| 
+| 
+|}

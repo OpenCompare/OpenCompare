@@ -1,0 +1,457 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Animation
+! Color depth
+! Color management
+! Compression
+ algorithm
+! Extendable
+! HDR format
+! Indexed color
+! Interlacing
+! Layers
+! Metadata
+! Multi-page
+! Raster/
+vector
+! Transparency
+|-
+! AI
+| No
+| 1, 8, 24, and 32 (possibly with multiple palettes)
+| Yes
+| Lossy and lossless
+| Unknown
+| No
+| Yes
+| No
+| Yes
+| Yes
+| No
+| Both
+| Yes
+|-
+! BMP
+| No
+| 1, 4, 8, 16, 24, and 32
+| Yes
+| None, RLE, JPEG, and PNG
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+| Raster
+| Yes
+|-
+! CDR
+| No
+| 1, 8, 24,and  32 (multiple palettes)
+| Yes
+| Lossy and lossless
+| Unknown
+| No
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| Both
+| Yes
+|-
+! CPC
+| No
+| 1
+| No
+| CPC
+| Yes, via embedded dictionary
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| Raster
+| No
+|-
+! EPS
+| No
+| Device specific
+| Yes
+| None, LZW, DEFLATE, RLE, DCT
+| Yes
+| Yes
+| No
+| N/A
+| Yes
+| Yes
+| Yes
+| Both
+| Yes
+|-
+! EXR
+| No
+| 16–128 (floating-point)
+| Yes
+| None, RLE, ZIP, Piz, PXR24, and B44
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Raster
+| Yes
+|-
+! Format
+| Animation
+| Color depth
+| Color management
+| Compression algorithm
+| Extendable
+| HDR format
+| Indexed color
+| Interlacing
+| Layers
+| Metadata
+| Multi-page
+| Raster/
+vector
+| Transparency
+|-
+! GIF
+| Yes
+| 1, 2, 3, 4, 5, 6, 7, and 8
+| No
+| LZW
+| Yes (GIF89a)
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Raster
+| Yes; 1b plane-only mask using color index
+|-
+! HD Photo / JPEG XR
+| No
+| 1, 2, 8, 16, 24, 32, 48, 64, and 128 (floating-point)
+| Yes
+| Lossy and lossless bi-orthogonal transform
+| Yes
+| Yes
+| No
+| Yes
+| No
+| Yes
+| Yes
+| Raster
+| Yes
+|-
+! ILBM
+| Yes,
+Palette-shifting
+| 1, 2, 4, 8, 16, 32, 64, 64 EHB, 128, 256 (8-bit), 4,096 (HAM6 pseudo 12-bit), 4,096 pure 12-bit, 262, 144 (HAM8 pseudo 18-bit), and 24-bit
+| No
+| Optional run-length encoding
+| Yes
+| No
+| Yes
+| Yes
+| No
+| Yes
+| No
+| Raster
+| No
+|-
+! IMA
+| No
+| 8-bit, 16-bit integer, 32-bit floating-point
+| Yes
+| Lossy and lossless original mutiresolution analysis transformation
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Raster
+| Yes
+|-
+! JPEG
+| No
+| 8-bit (greyscale), 12-bit, and 24-bit
+| Yes
+| Lossy (and partly lossless), DCT, RLE, and Huffman predictive nearest neighbor
+| No
+| No (see unofficial JPEG-HDR)
+| No
+| Yes
+| No
+| Yes
+| No
+| Raster
+| No
+|-
+! JPEG 2000
+| No
+| 8 and 16 (greyscale) with possibly color up to 48-bit
+| Yes
+| Lossy and lossless (DWT)
+| Unknown
+| No
+| No
+| Yes
+| No
+| Yes
+| No
+| Raster
+| Yes
+|-
+! ORA
+| No
+| 1, 2, 4, 8, 16, 24, 32, 48, and 64
+| Yes
+| Lossless
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Both
+| Yes
+|-
+! PAM
+| No
+| Up to 16
+| No
+| None
+| Yes
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| Raster
+| Yes
+|-
+! PCX
+| No
+| 1, 2, 4, 8, 24 and 32
+| No
+| None, RLE
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| Raster
+| Yes
+|-
+! PGF
+| No
+| greyscale: 1, 8, 16, 31; color: 12, 16, 24, 32, and 48
+| No
+| Lossy and lossless (DWT)
+| Unknown
+| No
+| Yes
+| Yes
+| No
+| Yes
+| No
+| Raster
+| Yes
+|-
+! PICT
+| No
+| 1, 2, 4, 8, 16, 24, and 32
+| Unknown
+| None, RLE, and QuickTime
+| No?
+| No
+| Yes
+| Unknown
+| No
+| Yes
+| No
+| Both
+| Yes
+|-
+! PLD
+| Yes
+| 1, 4, 8, 16, 24, 32, 48, and 64
+| Yes
+| Optional ZIP, JPEG
+| Yes
+| Yes
+| Unknown
+| Unknown
+| Yes
+| Yes
+| Yes
+| Both
+| Yes
+|-
+! PNG
+| No (but see MNG and APNG)
+| 1, 2, 4, 8, 16, 24, 32, 48, and 64
+| Yes
+| Lossless and DEFLATE
+| Yes, via chunks
+| No, see discussion
+| Yes (1–8 bit modes)
+| Yes, Adam7 algorithm
+| No
+| Yes
+| No
+| Raster
+| Yes; 8b, 16b per-pixel alpha channel; 8b for indexed
+|-
+! PPM
+| No
+| Up to 16
+| No
+| None
+| No
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| Raster
+| No
+|-
+! PSD
+| Yes
+| 1, 2, 4, 8, 16, 24, 32, 48, and 64
+| Yes
+| None and RLE
+| No?
+| Yes
+| Yes
+| N/A
+| Yes
+| Yes
+| No
+| Both
+| Yes; 8b, 16b per-pixel alpha channel
+|-
+! PSP
+| No
+| 1, 2, 8, 16, 24, 32, and 48
+| Unknown
+| None
+| Unknown
+| No
+| Yes
+| No
+| Yes
+| Yes
+| Unknown
+| Both
+| Yes; 8b and 16b per-pixel alpha channel
+|-
+! SVG
+| Yes (SMIL/SVG)
+| 24 and 32
+| Yes
+| None and lossless gzip
+| Yes, XML based
+| N/A
+| No
+| N/A
+| Yes
+| Yes
+| Yes (1.2 draft)
+| Vector
+| Yes
+|-
+! TGA
+| No
+| 1, 2, 4, 8, 16, 24, and 32
+| No
+| None, RLE, and other
+| Unknown
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+| Raster
+| Yes
+|-
+! TIFF
+| No
+| 1, 2, 4, 8, 16, 24, and 32
+| Yes
+| None, LZW, RLE, ZIP, and other
+| Yes, via tags
+| Yes, TIFF float
+| Yes (1–8 bit modes)
+| Yes, for JPEG compression
+| Yes
+| Yes
+| Yes
+| Both
+| Yes
+|-
+! WebP
+| Yes
+| 24 and 32
+| Yes
+| Lossy and lossless
+| Yes
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+| Raster
+| Yes
+|-
+! XAML
+| Yes
+| 32 and 64
+| No
+| None
+| Yes
+| Yes
+| No
+| N/A
+| Yes
+| Yes
+| Yes
+| Vector
+| Yes
+|-
+! XCF
+| Yes
+| 8, 24, and 32
+| Yes
+| None and lossless (gzip and bzip2)
+| Yes
+| No
+| Yes
+| N/A
+| Yes
+| Unknown
+| No
+| Both
+| Yes
+|}
