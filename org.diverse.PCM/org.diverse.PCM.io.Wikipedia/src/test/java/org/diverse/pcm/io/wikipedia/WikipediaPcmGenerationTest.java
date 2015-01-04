@@ -15,6 +15,7 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
 
 /*
  * PCM generations test class
@@ -25,7 +26,6 @@ public class WikipediaPcmGenerationTest {
 
     private WikipediaPageMiner miner = new WikipediaPageMiner();
 
-    private String pcm_file_list = "/resources/list_of_PCMs.txt";
     private String output_path = getCurrentFolderPath() + "/output/" + getCurrentFormattedDate() + "/";
     private String model_path = output_path + "model/";
     private String html_path = output_path + "html/";
@@ -50,6 +50,7 @@ public class WikipediaPcmGenerationTest {
 
         BufferedReader file = null;
         try {
+            String pcm_file_list = "/resources/list_of_PCMs.txt";
             file = new BufferedReader(new FileReader(getCurrentFolderPath() + pcm_file_list));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -155,12 +156,16 @@ public class WikipediaPcmGenerationTest {
         assertTrue(createFile(model_error_filepath));
 
         BufferedWriter buffer = new BufferedWriter(new FileWriter(model_error_filepath));
+
         while (pcms.hasNext()) {
             String title = pcms.next().toString();
             System.out.print("Traitement du PCM '" + title + "'");
 
             try {
                 Page page = parseFromTitle(title);
+                if (page.getMatrices().isEmpty()) {
+                    throw new Exception("Empty matrices");
+                }
                 writeToPCM(title, page);
                 writeToHTML(title, page);
                 writeToCSV(title, page);
