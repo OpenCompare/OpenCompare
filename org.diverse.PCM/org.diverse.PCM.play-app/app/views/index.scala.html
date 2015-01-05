@@ -7,24 +7,74 @@
 
 @main(true, header, footer){
 
-<div class="jumbotron text-center">
-    <h1>Open Compare</h1>
+<div>
+    <div class="row text-center">
+        <h1>OpenCompare</h1>
+    </div>
 
-    <p>
-        Product comparison matrices<br/>
-        Open data<br/>
-        Collaborative edition<br/>
-    </p>
+    <br/>
 
-    <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
-        <input name="request" class="form-control input-lg" placeholder="Product" ng-model="request">
-        <button type="submit" class="btn btn-default btn-lg">Compare</button>
-    </form>
+    <div class="row  text-center">
+        <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
+            <input name="request" class="form-control input-lg" placeholder="Product" ng-model="request">
+            <button type="submit" class="btn btn-default btn-lg">Compare</button>
+        </form>
+    </div>
 
-    <br>
-    <a type="button" class="btn btn-default" href="https://github.com/gbecan/PCM">
-        <img src="assets/images/github.png"> Find out more on Github
-    </a>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3">
+        <h4 class="text-center">Product comparison matrices</h4>
+        <p>
+
+        </p>
+        </div>
+
+        <div class="col-md-3">
+        <h4 class="text-center">Collaborative edition</h4>
+        <p>
+
+        </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-md-offset-3">
+            <h4 class="text-center">Open data <span class="red">(coming soon)</span></h4>
+            <p>
+
+            </p>
+        </div>
+
+        <div class="col-md-3">
+            <h4 class="text-center">Import/Export</h4>
+            <p>
+
+            </p>
+            <ul>
+                <li>Wikipedia</li>
+                <li>JSON</li>
+                <li>CSV</li>
+                <li>Raw HTML</li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row col-md-4 col-md-offset-4">
+        <h4 class="text-center">Open source</h4>
+        <p>
+            OpenCompare is open source.
+        </p>
+
+        <div class="text-center">
+        <a type="button" class="btn btn-default " href="https://github.com/gbecan/PCM">
+            <img src="assets/images/github.png"> Find out more on Github
+        </a>
+        </div>
+    </div>
 </div>
 
 <!--
