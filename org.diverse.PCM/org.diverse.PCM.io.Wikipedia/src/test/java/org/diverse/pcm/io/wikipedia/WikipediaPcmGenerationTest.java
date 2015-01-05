@@ -33,7 +33,7 @@ public class WikipediaPcmGenerationTest {
     private String wikitext_path = output_path + "wikitext/";
     private String model_error_filepath = output_path + "model_generation_errors.csv";
 
-    private Iterator pcms = getPcmList();
+    private Iterator<String> pcms = getPcmList();
     private String date = getCurrentFormattedDate();
 
     private String getCurrentFolderPath() {
@@ -44,21 +44,6 @@ public class WikipediaPcmGenerationTest {
             e.printStackTrace();
         }
         return path;
-    }
-
-    public Iterator<String> getPcmList() {
-
-        BufferedReader file = null;
-        try {
-            String pcm_file_list = "/resources/list_of_PCMs.txt";
-            file = new BufferedReader(new FileReader(getCurrentFolderPath() + pcm_file_list));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (file != null) {
-            return file.lines().iterator();
-        }
-        return new ArrayList<String>().iterator();
     }
 
     public Page parseFromTitle(String title) {
@@ -77,7 +62,7 @@ public class WikipediaPcmGenerationTest {
         return file.exists() || file.createNewFile();
     }
 
-    public String getCurrentFormattedDate() {
+    private String getCurrentFormattedDate() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         return dateFormat.format(cal.getTime());
@@ -144,6 +129,25 @@ public class WikipediaPcmGenerationTest {
         return path;
     }
 
+    public Iterator<String> getPcmList() {
+
+        String pcm_file_list = "/resources/list_of_PCMs.txt";
+        File existing_file = new File(pcm_file_list);
+        assertFalse(existing_file.exists());
+        BufferedReader file = null;
+        try {
+            file = new BufferedReader(new FileReader(getCurrentFolderPath() + pcm_file_list));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return file != null ? file.lines().iterator() : null;
+    }
+
+    @Test
+    public void CheckPcmsList() {
+        assertTrue(pcms.hasNext());
+    }
+
     @Test
     public void GeneratePcms() throws IOException {
 
@@ -158,7 +162,7 @@ public class WikipediaPcmGenerationTest {
         BufferedWriter buffer = new BufferedWriter(new FileWriter(model_error_filepath));
 
         while (pcms.hasNext()) {
-            String title = pcms.next().toString();
+            String title = pcms.next();
             System.out.print("Traitement du PCM '" + title + "'");
 
             try {
