@@ -9,7 +9,7 @@
 
 @pagination = {
 
-    <div class="row">
+    <div class="row text-center">
         <nav>
             <ul class="pagination">
                 <li @if(page<=1) {class="disabled"}>
@@ -38,7 +38,7 @@
     @pagination
 
     <div class="row">
-        <ul>
+        <ul class="results col-md-2 col-md-offset-5">
         @for(pcm <- pcms) {
             <li><a href="/view/@pcm.getId()">@pcm.getName()</a></li>
         }

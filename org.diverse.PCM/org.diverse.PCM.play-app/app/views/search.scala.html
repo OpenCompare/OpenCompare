@@ -5,12 +5,14 @@
 
 @main(true, header, footer) {
 
-        <div class="jumbotron">
-        <p>Searching @request</p>
-        <ul>
-            @results.map{ result =>
-                <li><a href="view/@result.getId()">@result.getPcm().getName()</a></li>
-            }
-        </ul>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h4>Comparison matrices corresponding to: "@request"</h4>
+                <ul>
+                    @results.map{ result =>
+                    <li><a href="view/@result.getId()">@result.getPcm().getName()</a></li>
+                    }
+                </ul>
+            </div>
         </div>
 }
