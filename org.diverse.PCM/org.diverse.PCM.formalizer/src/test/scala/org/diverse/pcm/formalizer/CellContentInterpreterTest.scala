@@ -24,19 +24,25 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     val page = miner.parse(Source.fromFile(path).getLines().mkString("\n"))
 
     val exporter = new PCMModelExporter
-    val pcm = exporter.export(page)
+    val pcms = exporter.export(page)
 
-    // Interpret cells
+
     val interpreter = new CellContentInterpreter
-    interpreter.interpretCells(pcm)
-
-    // Serialize
     val serializer = new PCMtoHTML
-    val html = serializer.toHTML(pcm)
-    new File("output/").mkdirs() // Create output directory
-    val writer = new FileWriter("output/out.html")
-    writer.write(html)
-    writer.close()
+
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      // Interpret cells
+      interpreter.interpretCells(pcm)
+
+      // Serialize
+      val html = serializer.toHTML(pcm)
+      new File("output/").mkdirs() // Create output directory
+      val writer = new FileWriter("output/out_" + index + ".html")
+      writer.write(html)
+      writer.close()
+    }
+
+
   }
 
 }
