@@ -27,6 +27,7 @@ public class WikipediaPcmGenerationTest {
     private WikipediaPageMiner miner = new WikipediaPageMiner();
 
     private String output_path = getCurrentFolderPath() + "/output/" + getCurrentFormattedDate() + "/";
+    private String resources_path = getCurrentFolderPath() + "/resources/";
     private String model_path = output_path + "model/";
     private String html_path = output_path + "html/";
     private String csv_path = output_path + "csv/";
@@ -131,12 +132,10 @@ public class WikipediaPcmGenerationTest {
 
     public Iterator<String> getPcmList() {
 
-        String pcm_file_list = "/resources/list_of_PCMs.txt";
-        File existing_file = new File(pcm_file_list);
-        assertFalse(existing_file.exists());
+        String pcm_file_list = resources_path + "list_of_PCMs.txt";
         BufferedReader file = null;
         try {
-            file = new BufferedReader(new FileReader(getCurrentFolderPath() + pcm_file_list));
+            file = new BufferedReader(new FileReader(pcm_file_list));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
