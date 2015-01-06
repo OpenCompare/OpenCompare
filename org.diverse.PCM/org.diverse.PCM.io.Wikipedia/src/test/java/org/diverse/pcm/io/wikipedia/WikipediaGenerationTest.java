@@ -22,7 +22,7 @@ import java.util.List;
  *
  *
  */
-public class WikipediaPcmGenerationTest {
+public class WikipediaGenerationTest {
 
     private WikipediaPageMiner miner = new WikipediaPageMiner();
 
