@@ -33,7 +33,13 @@ class WikipediaPageMiner {
       .option(HttpOptions.readTimeout(30000))
       .asString
     val xml = parseHTMLAsXML(editPage)
-    val code = (xml \\ "textarea").text
+    var code = (xml \\ "textarea").text
+    // Manage the page redirection if any
+    // TODO: arrange regex to get off the replace calls
+    if (code.contains("#REDIRECT")) {
+      val title = """\[\[(.*?)\]\]""".r findFirstIn code
+      code = getPageCodeFromWikipedia(title.get.replace("[", "").replace("]", ""))
+    }
     code
   }
 
