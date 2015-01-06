@@ -1,4 +1,4 @@
-package org.diverse.pcm.io.wikipedia;
+package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.impl.*;
 import org.diverse.pcm.api.java.*;
@@ -30,14 +30,14 @@ public class ModelTest {
     }
 
     @Test
-    public void ProductValueTest() {
+    public void ProductTest() {
         assertEquals(product.getName(), "Product1");
         // TODO: check why object reference change between instanciation and affection
         //assertTrue(product.getCells().contains(cell));
     }
 
     @Test
-    public void CellValueTest() {
+    public void CellTest() {
         assertEquals(cell.getContent(), "Value1");
         assertEquals(cell.getFeature(), feature);
         // TODO: check why object reference change between instanciation and affection
@@ -45,7 +45,7 @@ public class ModelTest {
     }
 
     @Test
-    public void FeatureValueTest() {
+    public void FeatureTest() {
         assertEquals(feature.getName(), "Feature1");
     }
 }
