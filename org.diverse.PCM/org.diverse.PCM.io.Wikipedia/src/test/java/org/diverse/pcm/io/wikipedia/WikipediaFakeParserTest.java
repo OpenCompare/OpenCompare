@@ -21,40 +21,18 @@ public class WikipediaFakeParserTest {
 
     private WikipediaPageMiner miner = new WikipediaPageMiner();
     private String resources_path = getCurrentFolderPath() + "/resources/";
+    File file = new File(resources_path + "Comparison_test.txt");
 
     int nbFeatures = 200;
     int nbProducts = 500;
-    File file;
     String code;
     String preprocessedCode;
     Page page;
     List<PCM> pcms;
 
-    @Before
-    public void setUp() throws Exception {
-        // TODO: check for sonar to mesure performance
-        file = new File(resources_path + "Comparison_test.txt");
-        createBrutalPCM();
-        code = loadFile(file);
-        preprocessedCode = miner.preprocess(code);
-        long debut = System.currentTimeMillis();
-        page = miner.parse(preprocessedCode);
-        long fin = System.currentTimeMillis();
-        System.out.println("TIME : " + (float) ((fin - debut)));
-        PCMModelExporter pcmExporter = new PCMModelExporter();
-        pcms = seqAsJavaList(pcmExporter.export(page));
-    }
-
-    private String getCurrentFolderPath() {
-        String path = "";
-        try {
-            path = new java.io.File(".").getCanonicalPath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return path;
-    }
-
+    /* Manage a file opening and returns its content
+    
+     */
     public String loadFile(File f) throws IOException {
         BufferedInputStream in = new BufferedInputStream(new FileInputStream(f));
         StringWriter out = new StringWriter();
@@ -67,7 +45,23 @@ public class WikipediaFakeParserTest {
         return out.toString();
     }
 
-    public void createBrutalPCM() throws IOException {
+    private String getCurrentFolderPath() {
+        String path = "";
+        try {
+            path = new java.io.File(".").getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return path;
+    }
+    
+    /* This method manage the generation of a "fake" comparison file
+       which is composed of product named "Product1" and feature, same way
+       *he pareticularity is that cell's value is named Product1Feature1
+       which is quite simple to test
+        
+     */
+    private void createBrutalPCM() throws IOException {
 
         FileWriter filew = new FileWriter(file);
         filew.write("{| class=\"wikitable sortable\"\n");
@@ -85,6 +79,20 @@ public class WikipediaFakeParserTest {
         }
         filew.write("|}");
         filew.close();
+    }
+    
+    @Before
+    public void setUp() throws Exception {
+        // TODO: check for sonar to mesure performance
+        createBrutalPCM();
+        code = loadFile(file);
+        preprocessedCode = miner.preprocess(code);
+        long debut = System.currentTimeMillis();
+        page = miner.parse(preprocessedCode);
+        long fin = System.currentTimeMillis();
+        System.out.println("TIME : " + (float) ((fin - debut)));
+        PCMModelExporter pcmExporter = new PCMModelExporter();
+        pcms = seqAsJavaList(pcmExporter.export(page));
     }
 
     @Test
@@ -110,6 +118,9 @@ public class WikipediaFakeParserTest {
         }
     }
     
+    /* Test cells value as the way explained in createBrutalPCM's docstring
+    
+     */
     @Test
     public void CellsValueTest() {
         for (PCM pcm: pcms) {
