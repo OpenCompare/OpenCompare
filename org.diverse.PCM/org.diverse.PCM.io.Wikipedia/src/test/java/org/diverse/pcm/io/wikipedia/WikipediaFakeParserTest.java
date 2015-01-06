@@ -55,9 +55,12 @@ public class WikipediaFakeParserTest {
         return path;
     }
     
-    /* This method manage the generation of a "fake" comparison file
-       which is composed of product named "Product1" and feature, same way
-       *he pareticularity is that cell's value is named Product1Feature1
+    /*
+        Create a fake pcm nbFeatures*nbProducts
+    
+        This method manage the generation of a "fake" comparison file
+       which is composed of product named "P1" and feature named "F1"
+       The particularity is that cell's value is named "P1F1"
        which is quite simple to test
         
      */
