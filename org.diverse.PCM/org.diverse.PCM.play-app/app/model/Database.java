@@ -26,13 +26,15 @@ public class Database {
     private PCMtoJson serializer = new PCMtoJsonImpl();
 
     private DB db;
+    private DBCollection pcms;
 
     private Database() {
         try {
             MongoClient mongoClient = new MongoClient("localhost", 27017);
             this.db = mongoClient.getDB("opencompare");
 
-            db.getCollection("pcms").createIndex(new BasicDBObject("name", "text"));
+            pcms = db.getCollection("pcms");
+            pcms.createIndex(new BasicDBObject("name", "text"));
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -41,7 +43,7 @@ public class Database {
 
 
     public List<PCMVariable> search(String request) {
-        DBCollection pcms = db.getCollection("pcms");
+
         DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
 
         DBCursor cursor = pcms.find(query);
@@ -55,13 +57,10 @@ public class Database {
     }
 
     public long count() {
-        DBCollection pcms = db.getCollection("pcms");
         return pcms.count();
     }
 
     public List<PCMInfo> list(int limit, int page) {
-        DBCollection pcms = db.getCollection("pcms");
-
         int skipped = (page - 1) * limit;
         DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("name", "1"))
                 .sort(new BasicDBObject("_id",1))
@@ -81,7 +80,6 @@ public class Database {
     }
 
     public void save(PCM pcm) {
-        DBCollection pcms = db.getCollection("pcms");
         String json = serializer.toJson(pcm);
         pcms.insert((DBObject) JSON.parse(json));
 
@@ -89,7 +87,6 @@ public class Database {
 
 
     public PCMVariable get(String id) {
-        DBCollection pcms = db.getCollection("pcms");
         DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
         DBObject result = pcms.findOne(searchById);
 
@@ -99,7 +96,6 @@ public class Database {
     }
 
     public void update(String id, String json) {
-        DBCollection pcms = db.getCollection("pcms");
         pcms.update(new BasicDBObject("_id", new ObjectId(id)), (DBObject) JSON.parse(json));
     }
 

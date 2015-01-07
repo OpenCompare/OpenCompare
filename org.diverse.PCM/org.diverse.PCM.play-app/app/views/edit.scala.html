@@ -16,7 +16,8 @@
 @main(true, header, footer) {
 
 <div ng-controller="PCMEditorController">
-    <h1 id="pcm-name">{{pcm.name}} <button role="button" class="btn btn-primary" ng-click="save()">Save</button></h1>
+    <input id="pcm-name" type="text" ng-model="pcm.name">
+    <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
 
 
 
