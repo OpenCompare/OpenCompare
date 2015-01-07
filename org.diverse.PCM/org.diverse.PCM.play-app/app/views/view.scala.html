@@ -1,0 +1,48 @@
+@(id : String, pcm : org.diverse.pcm.api.java.PCM)
+
+@header = {
+
+}
+
+@footer = {
+    <script>
+        var id = "@{Html(id)}";
+    </script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-viewer-controller.js")'></script>
+}
+
+@main(true, header, footer) {
+
+    <div ng-controller="PCMViewerController">
+        <h1 id="pcm-name">@pcm.getName() <a role="button" class="btn btn-primary" href="/edit/@id">Edit</a></h1>
+
+
+        <div class="table-responsive">
+        <table id="viewer" class="table table-bordered table-condensed table-striped">
+
+            <tr>
+                <th></th>
+                @for(feature <- pcm.getFeatures().sortBy(_.getName())) {
+                <th>
+                    @feature.getName()
+                </th>
+                }
+            </tr>
+
+            @for(product <- pcm.getProducts().sortBy(_.getName())) {
+
+            <tr>
+                <th>@product.getName()</th>
+                @for(cell <- product.getCells().sortBy(_.getFeature().getName())) {
+
+                    <td>@cell.getContent()</td>
+                }
+            </tr>
+
+            }
+        </table>
+        </div>
+
+    </div>
+}

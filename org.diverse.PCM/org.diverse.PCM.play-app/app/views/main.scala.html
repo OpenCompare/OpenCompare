@@ -1,28 +1,65 @@
-@(title: String)(content: Html)
+@(enableAngular : Boolean, header : Html = Html(""), footer : Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
-<html>
+<html @if(enableAngular) {ng-app="pcmApp"}>
 <head>
-    <title>@title</title>
+    <title>OpenCompare</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
+
     <style>
     body {
-        margin-top: 50px;
+        margin-top: 60px;
     }
     </style>
+
+    @header
+
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@title</a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#oc-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">OpenCompare</a>
             </div>
-        </div>
-    </div>
-    <div class="container">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="oc-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/list">List</a></li> <!-- class="active" -->
+                    <!--<li><a href="/about">About</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
+                        <div class="form-group">
+                            <input name="request" type="text" class="form-control" placeholder="Product">
+                        </div>
+                        <button type="submit" class="btn btn-default">Compare</button>
+                    </form>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
         @content
     </div>
+
+    <!-- Scripts -->
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+
+    @footer
 </body>
 </html>

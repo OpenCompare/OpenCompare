@@ -1,0 +1,29 @@
+@(id : String)
+
+@header = {
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/handsontable/handsontable.full.min.css")'>
+}
+
+@footer = {
+<script>
+    var id = "@{Html(id)}";
+</script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/handsontable/handsontable.full.min.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
+}
+
+@main(true, header, footer) {
+
+<div ng-controller="PCMEditorController">
+    <input id="pcm-name" type="text" ng-model="pcm.name">
+    <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
+
+
+
+    <div id="hot">
+    </div>
+
+</div>
+}
+

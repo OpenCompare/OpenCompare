@@ -1,9 +1,119 @@
-@(message: String)
+@header = {
+}
 
-@main("Welcome to Play Framework") {
+@footer = {
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/search-controller.js")'></script>
+}
 
-    <div class="well">
-        <h1>@message</h1>
+@main(true, header, footer){
+
+<div>
+    <div class="row text-center">
+        <h1>OpenCompare</h1>
     </div>
+
+    <br/>
+
+    <!-- Disclaimer -->
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 alert alert-warning text-justify">
+            <strong>Warning!</strong> OpenCompare is currently in development.
+            Some of its features may be limited or buggy.
+            You can help us to improve the website by contributing on <a href="https://github.com/gbecan/PCM">Github</a>.
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+        <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
+            <input name="request" class="form-control input-lg" placeholder="Product" ng-model="request">
+            <button type="submit" class="btn btn-default btn-lg">Compare</button>
+        </form>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3">
+        <h4 class="text-center">Product comparison matrices</h4>
+        <p class="text-justify">
+            Comparing product can be a tedious and time-consuming task. It requires to review numerous sources of information
+            that are often ambiguous and unstructured.
+            A simple way of comparing a set of products is to summarize their characteristics in a matrix.
+            Such matrices abound on the internet but often lack of services and are created without any guidelines.
+            The main objective of OpenCompare is to tackle these problems by creating a community around
+            product comparison matrices with the help of appropriated tools and services.
+        </p>
+        </div>
+
+        <div class="col-lg-3">
+        <h4 class="text-center">Collaborative edition</h4>
+        <p class="text-justify">
+            OpenCompare offers a simple graphical editor for product comparison matrices.
+            Everyone can contribute by creating new matrices or by improving existing ones.
+            Once a modification is saved, the new version of the matrix is directly made available.
+            This system enables a collaborative edition which places the community of contributors at the center of process.
+        </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3">
+            <h4 class="text-center">Open data <span class="red">(not available yet)</span></h4>
+            <p class="text-justify">
+            One objective of OpenCompare is to give free and unlimited access to its data.
+            Anyone should be able to access existing data about different products through a simple API.
+            </p>
+        </div>
+
+        <div class="col-lg-3">
+            <h4 class="text-center">Import/Export</h4>
+            <p class="text-justify">
+                OpenCompare aim at providing a central platform for using and editing product comparison matrices.
+                This is made possible through the import and export of various formats such as:
+            </p>
+            <ul>
+                <li>Wikipedia markup language</li>
+                <li>JSON</li>
+                <li>CSV</li>
+                <li>Raw HTML</li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row col-lg-6 col-lg-offset-3">
+        <h4 class="text-center">Open source</h4>
+        <p class="text-justify">
+            OpenCompare is developed by a small team at <a href="http://www.irisa.fr/en">IRISA</a>, a French research center.
+            We use it as a main platform for testing our different research projects around product comparison matrices.
+            Such matrices are very common but the lack of efficient tools makes them underexploited.
+            We believe that opening our source code can help the community of contributors and users of product comparison matrices.
+            It also give us the opportunity to get valuable feedback on our ongoing research.
+            As such, we welcome any contribution (e.g. translation, bug fix, new feature).
+        </p>
+
+        <div class="text-center">
+        <a type="button" class="btn btn-success " href="https://github.com/gbecan/PCM">
+            <img src="assets/images/github.png" height="25" width="25"> Find out more on Github
+        </a>
+        </div>
+    </div>
+</div>
+
+<!--
+<div ng-controller="PCMListController">
+
+
+<ul>
+<li ng-repeat="pcm in pcmList">
+<a href='@routes.Assets.at("repository/{{pcm}}")'>{{pcm}}</a>
+</li>
+</ul>
+
+</div>
+-->
+
 
 }
