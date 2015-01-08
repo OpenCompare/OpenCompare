@@ -27,4 +27,8 @@ public class PCMVariable {
     public void setPcm(PCM pcm) {
         this.pcm = pcm;
     }
+
+    public boolean hasIdentifier() {
+        return this.id != null;
+    }
 }

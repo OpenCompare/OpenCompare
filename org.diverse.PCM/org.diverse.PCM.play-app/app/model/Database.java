@@ -87,23 +87,53 @@ public class Database {
 
 
     public PCMVariable get(String id) {
-        DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
-        DBObject result = pcms.findOne(searchById);
+        if (ObjectId.isValid(id)) {
+            DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
+            DBObject result = pcms.findOne(searchById);
 
-        PCMVariable var = createPCMVariable(result);
+            PCMVariable var = createPCMVariable(result);
 
-        return var;
+            return var;
+        } else {
+            return new PCMVariable(null, null);
+        }
     }
 
     public void update(String id, String json) {
         pcms.update(new BasicDBObject("_id", new ObjectId(id)), (DBObject) JSON.parse(json));
     }
 
+    public String create(String json) {
+        DBObject newPCM = (DBObject) JSON.parse(json);
+        WriteResult result = pcms.insert(newPCM);
+        String id = newPCM.get("_id").toString();
+        return id;
+    }
+
     private PCMVariable createPCMVariable(DBObject object) {
-        String id = object.removeField("_id").toString();
-        String json = JSON.serialize(object);
-        PCM pcm = loader.load(json);
-        PCMVariable var = new PCMVariable(id, pcm);
+        PCMVariable var;
+        if (object == null) {
+            var = new PCMVariable(null,null);
+        } else {
+            String id = object.removeField("_id").toString();
+            String json = JSON.serialize(object);
+            PCM pcm = loader.load(json);
+            var = new PCMVariable(id, pcm);
+        }
         return var;
+    }
+
+    public boolean exists(String id) {
+        if (ObjectId.isValid(id)) {
+            DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
+            DBObject result = pcms.findOne(searchById);
+            return result != null;
+        } else {
+            return false;
+        }
+
+
+
+
     }
 }

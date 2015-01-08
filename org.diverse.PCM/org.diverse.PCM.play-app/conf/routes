@@ -2,17 +2,20 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Pages
 GET     /                                   controllers.Application.index()
 GET     /list                               controllers.Application.list(limit : Int = 50, page : Int = 1)
 GET     /list/$limit<[0-9]+>/$page<[0-9]+>  controllers.Application.list(limit : Int, page : Int)
 GET     /search                             controllers.Application.search(request : String)
 GET     /view/:id                           controllers.Application.view(id : String)
-GET     /get/:id                            controllers.Application.get(id : String)
-
 GET     /edit/:id                           controllers.Application.edit(id : String)
-POST    /save/:id                           controllers.Application.save(id : String)
-
 GET     /about                              controllers.Application.about()
+GET     /create                             controllers.Application.create()
+
+# API
+GET     /api/get/:id                            controllers.PCMAPI.get(id : String)
+POST    /api/save/:id                           controllers.PCMAPI.save(id : String)
+POST    /api/create                             controllers.PCMAPI.create()
 
 
 # Map static resources from the /public folder to the /assets URL path
