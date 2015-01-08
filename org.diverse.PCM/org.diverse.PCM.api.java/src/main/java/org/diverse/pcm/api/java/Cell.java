@@ -8,8 +8,7 @@ public interface Cell extends PCMElement {
 	Value getInterpretation();
 	void setInterpretation(Value interpretation);
 
-	Feature getFeature();
+    Feature getFeature();
     void setFeature(Feature feature);
 
-	Product getProduct();
 }
