@@ -34,4 +34,9 @@ public class PCMAPI extends Controller {
         return ok(id);
     }
 
+    public static Result remove(String id) {
+        Database.INSTANCE.remove(id);
+        return ok();
+    }
+
 }

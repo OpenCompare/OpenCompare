@@ -13,9 +13,10 @@ GET     /about                              controllers.Application.about()
 GET     /create                             controllers.Application.create()
 
 # API
-GET     /api/get/:id                            controllers.PCMAPI.get(id : String)
-POST    /api/save/:id                           controllers.PCMAPI.save(id : String)
-POST    /api/create                             controllers.PCMAPI.create()
+GET     /api/get/:id                        controllers.PCMAPI.get(id : String)
+POST    /api/save/:id                       controllers.PCMAPI.save(id : String)
+POST    /api/create                         controllers.PCMAPI.create()
+GET     /api/remove/:id                     controllers.PCMAPI.remove(id : String)
 
 
 # Map static resources from the /public folder to the /assets URL path

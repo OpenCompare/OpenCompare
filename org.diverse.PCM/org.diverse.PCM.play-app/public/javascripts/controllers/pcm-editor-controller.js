@@ -150,6 +150,15 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
     };
 
+    $scope.remove = function() {
+        if (typeof id !== 'undefined') {
+            $http.get("/api/remove/" + id).success(function(data) {
+                window.location.href = "/";
+                console.log("model removed");
+            });
+        }
+    };
+
 });
 
 

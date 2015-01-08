@@ -131,9 +131,9 @@ public class Database {
         } else {
             return false;
         }
+    }
 
-
-
-
+    public void remove(String id) {
+        pcms.remove(new BasicDBObject("_id", new ObjectId(id)));
     }
 }
