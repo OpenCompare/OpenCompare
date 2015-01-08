@@ -3,7 +3,7 @@ package org.diverse.pcm.api.java.impl;
 import org.diverse.pcm.api.java.Cell;
 import org.diverse.pcm.api.java.Feature;
 import org.diverse.pcm.api.java.Product;
-import org.diverse.pcm.api.java.Value;
+import org.diverse.pcm.api.java.value.BooleanValue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,13 +16,14 @@ public class ModelTest {
     Product product;
     Feature feature;
     Cell cell;
-    Value value;
+    BooleanValue value;
 
     @Before
     public void setUp() throws Exception {
         feature = factory.createFeature();
         feature.setName("Feature1");
         value = factory.createBooleanValue();
+        value.setValue(true);
         cell = factory.createCell();
         cell.setInterpretation(value);
         cell.setFeature(feature);
@@ -42,7 +43,7 @@ public class ModelTest {
     public void CellTest() {
         assertEquals(cell.getContent(), "Value1");
         assertEquals(cell.getFeature(), feature);
-        assertEquals(cell.getInterpretation(), value);
+        assertEquals(((BooleanValue)cell.getInterpretation()).getValue(), value.getValue());
     }
 
     @Test
