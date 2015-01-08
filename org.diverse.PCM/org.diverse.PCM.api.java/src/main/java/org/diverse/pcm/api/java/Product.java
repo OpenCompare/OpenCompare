@@ -10,5 +10,7 @@ public interface Product extends PCMElement {
 	List<Cell> getCells();
     void addCell(Cell cell);
     void removeCell(Cell cell);
+	Cell getCell(AbstractFeature abstractFeature);
+	Feature getFeature(Cell cell);
 
 }

@@ -10,5 +10,5 @@ public interface Cell extends PCMElement {
 
     Feature getFeature();
     void setFeature(Feature feature);
-	
+
 }
