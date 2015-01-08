@@ -1,67 +1,70 @@
-<?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
-  <ecore:EPackage name="pcm" nsURI="http://pcm" nsPrefix="pcm">
-    <eClassifiers xsi:type="ecore:EClass" name="PCM">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="/1"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1" eType="/0/Product" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1" eType="/0/AbstractFeature" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Product">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="/1"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1" eType="/0/Cell" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="AbstractFeature">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="/1"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Cell">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="/1"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="feature" eType="/0/Feature"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="product" eType="/0/Product"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="interpretation" eType="/0/Value" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="/0/AbstractFeature">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1" eType="/0/Cell" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="FeatureGroup" eSuperTypes="/0/AbstractFeature">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="subFeatures" upperBound="-1" eType="/0/AbstractFeature" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Value"/>
-    <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="/2"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="/1"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="/3"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="/4"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Multiple" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="subvalues" lowerBound="2" upperBound="-1" eType="/0/Value" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="NotAvailable" eSuperTypes="/0/Value"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Conditional" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="/0/Value" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="/0/Value" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Partial" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="/0/Value" containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DateValue" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="/1"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="/0/Value"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Dimension" eSuperTypes="/0/Value"/>
-    <eClassifiers xsi:type="ecore:EClass" name="NotApplicable" eSuperTypes="/0/Value"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="/0/Value">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="/1"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="/0/Value" containment="true"/>
-    </eClassifiers>
-  </ecore:EPackage>
-  <ecore:EDataType name="java.lang.String" instanceClassName="java.lang.String"/>
-  <ecore:EDataType name="java.lang.Integer" instanceClassName="java.lang.Integer"/>
-  <ecore:EDataType name="java.lang.Double" instanceClassName="java.lang.Double"/>
-  <ecore:EDataType name="java.lang.Boolean" instanceClassName="java.lang.Boolean"/>
-</xmi:XMI>
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pcm" nsURI="pcm" nsPrefix="pcm">
+ <eClassifiers xsi:type="ecore:EClass" name="PCM">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
+ eType="#//Product" containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+ eType="#//AbstractFeature" containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="AbstractFeature" abstract="true">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Product">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+ eType="#//Cell" containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature"/>
+ <eClassifiers xsi:type="ecore:EClass" name="FeatureGroup" eSuperTypes="#//AbstractFeature">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="subFeatures" upperBound="-1"
+ eType="#//AbstractFeature" containment="true"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Cell">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+ eType="#//Feature"/>
+ <eStructuralFeatures xsi:type="ecore:EReference" name="interpretation" eType="#//Value"
+ containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
+ <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Multiple" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="subvalues" lowerBound="2"
+ upperBound="-1" eType="#//Value" containment="true"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="NotAvailable" eSuperTypes="#//Value"/>
+ <eClassifiers xsi:type="ecore:EClass" name="Conditional" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
+ containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+ eType="#//Value" containment="true"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Partial" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Value"
+ containment="true"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="DateValue" eSuperTypes="#//Value">
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+ <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#//Value"/>
+ <eClassifiers xsi:type="ecore:EClass" name="Dimension" eSuperTypes="#//Value"/>
+ <eClassifiers xsi:type="ecore:EClass" name="NotApplicable" eSuperTypes="#//Value"/>
+ <eClassifiers xsi:type="ecore:EClass" name="Unit" eSuperTypes="#//Value">
+<eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
+ containment="true"/>
+ <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+ </eClassifiers>
+</ecore:EPackage>

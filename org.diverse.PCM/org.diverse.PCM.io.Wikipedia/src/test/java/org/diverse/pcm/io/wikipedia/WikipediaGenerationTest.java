@@ -34,7 +34,6 @@ public class WikipediaGenerationTest {
     private String wikitext_path = output_path + "wikitext/";
     private String model_error_filepath = output_path + "model_generation_errors.csv";
 
-    private Iterator<String> pcms = getPcmList();
     private String date = getCurrentFormattedDate();
 
     private String getCurrentFolderPath() {
@@ -144,10 +143,10 @@ public class WikipediaGenerationTest {
 
     @Test
     public void CheckPcmsList() {
-        assertTrue(pcms.hasNext());
+        assertTrue(getPcmList().hasNext());
     }
 
-    @Test
+/*    @Test
     public void GeneratePcms() throws IOException {
 
         // This test is only done on error's generation file creation
@@ -159,7 +158,7 @@ public class WikipediaGenerationTest {
         assertTrue(createFile(model_error_filepath));
 
         BufferedWriter buffer = new BufferedWriter(new FileWriter(model_error_filepath));
-
+        Iterator<String> pcms = getPcmList();
         while (pcms.hasNext()) {
             String title = pcms.next();
             System.out.print("Traitement du PCM '" + title + "'");
@@ -181,5 +180,5 @@ public class WikipediaGenerationTest {
             }
         }
         buffer.close();
-    }
+    }*/
 }
