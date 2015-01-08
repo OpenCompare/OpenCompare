@@ -1,9 +1,8 @@
 package org.diverse.pcm.api.java.impl;
 
-import org.diverse.pcm.api.java.*;
+import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.Product;
 import org.junit.Test;
-
-import java.util.function.Consumer;
 
 import static org.junit.Assert.*;
 
@@ -26,10 +25,9 @@ public class ProductImplTest {
     @Test
     public void setGetCellsTest() {
         product.addCell(cell);
-        // TODO: Same as ModelTest class, why object change from reference to another one after association
-        //System.out.println(product.getCells());
-        //System.out.println(cell);
-        //assertTrue(product.getCells().contains(cell));
+        System.out.println(product.getCells());
+        System.out.println(cell);
+        assertTrue(product.getCells().contains(cell));
     }
 
     @Test

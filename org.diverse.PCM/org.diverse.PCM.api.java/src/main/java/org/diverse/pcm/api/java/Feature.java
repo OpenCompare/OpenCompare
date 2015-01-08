@@ -1,6 +1,9 @@
 package org.diverse.pcm.api.java;
 
+import java.util.List;
+
 public interface Feature extends AbstractFeature {
 
-    Product getProduct(Cell cell);
+    List<Cell> getCells();
+    Cell getCell(Product product);
 }

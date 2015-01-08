@@ -1,9 +1,12 @@
 package org.diverse.pcm.api.java.impl;
 
-import org.diverse.pcm.api.java.impl.*;
-import org.diverse.pcm.api.java.*;
+import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.Feature;
+import org.diverse.pcm.api.java.Product;
+import org.diverse.pcm.api.java.Value;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 
@@ -32,16 +35,14 @@ public class ModelTest {
     @Test
     public void ProductTest() {
         assertEquals(product.getName(), "Product1");
-        // TODO: check why object reference change between instanciation and affection
-        //assertTrue(product.getCells().contains(cell));
+        assertTrue(product.getCells().contains(cell));
     }
 
     @Test
     public void CellTest() {
         assertEquals(cell.getContent(), "Value1");
         assertEquals(cell.getFeature(), feature);
-        // TODO: check why object reference change between instanciation and affection
-        //assertEquals(cell.getInterpretation(), value);
+        assertEquals(cell.getInterpretation(), value);
     }
 
     @Test
