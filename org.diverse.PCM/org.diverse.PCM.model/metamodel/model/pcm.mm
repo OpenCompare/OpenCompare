@@ -18,8 +18,6 @@ class pcm.Product  {
 }
 
 class pcm.Feature : pcm.AbstractFeature {
-    @contained
-    values : pcm.Cell[0,*]
 }
 
 class pcm.FeatureGroup : pcm.AbstractFeature {
@@ -30,7 +28,6 @@ class pcm.FeatureGroup : pcm.AbstractFeature {
 class pcm.Cell  {
     content : String
     feature : pcm.Feature
-    product : pcm.Product
     @contained
     interpretation : pcm.Value
 }
