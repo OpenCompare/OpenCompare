@@ -40,6 +40,20 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
         return cells;
     }
 
+
+
+    @Override
+    public Cell getCell(String feature) {
+        List<Cell> cell = getCells();
+        for(Cell kCell : cell){
+            if(kCell.getFeature().getName().equals(feature))
+                return  kCell;
+        }
+
+        return  null;
+    }
+
+
     @Override
     public void addCell(Cell cell) {
         kProduct.addValues(((CellImpl) cell).getkCell());

@@ -1,0 +1,19 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! C#
+|-
+! 
+| 
+|-
+! Notes on the Java implementation: Files.readAllBytes method reads a whole file into a byte array.
+ Files.write method writes a byte array into an output file, indicated by a Path object.
+ Files.write method also takes care of buffering and closing the output stream.
+ An explicit option should be specified for the Files.write method whether it should overwrite or append to the output file.
+ StandardOpenOption.CREATE indicates that the output file should be created or overwritten if exists.
+| Notes on the C# implementation: The  method returns an enumerable object which upon enumeration will read the file one line at a time.
+ The  method takes an enumerable and retrieves a line at a time and writes it until the enumeration ends.
+ The underlying reader will automatically allocate a buffer, thus there is no need to explicitly introduce a buffered stream.
+  automatically closes the output stream, also in the case of an abnormal termination.
+|}

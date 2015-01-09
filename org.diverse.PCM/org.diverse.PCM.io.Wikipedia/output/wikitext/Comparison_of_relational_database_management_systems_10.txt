@@ -1,0 +1,367 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Audit
+! Brute-force protection
+! Enterprise directory compatibility
+! Label Based Access Control (LBAC)
+! Native network encryption
+! Password complexity rules
+! Patch access
+! Resource limit
+! Run unprivileged
+! Security Certification
+! Separation of duties (RBAC)
+|-
+! 
+| Audit
+| Brute-force protection
+| Enterprise directory compatibility
+| Label Based Access Control (LBAC)
+| Native network encryption
+| Password complexity rules
+| Patch access
+| Resource limit
+| Run unprivileged
+| Security Certification
+| Separation of duties (RBAC)
+|-
+! 4D
+| ?
+| ?
+| Yes
+| ?
+| Yes (with SSL)
+| ?
+| Yes
+| ?
+| Yes
+| ?
+| ?
+|-
+! Adaptive Server Enterprise
+| Yes
+| Yes
+| Yes (optional ?)
+| ?
+| Yes (optional; to pay)
+| Yes
+| Partial (need to register; depend on which product)
+| Yes
+| Yes
+| Yes (EAL4+�)
+| Yes
+|-
+! Advantage Database Server
+| No
+| No
+| No
+| ?
+| Yes
+| No
+| Yes
+| No
+| Yes
+| ?
+| Yes
+|-
+! DB2
+| Yes
+| ?
+| Yes (LDAP, Kerberos…)
+| ?
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| Yes (EAL4+)
+| Yes
+|-
+! EXASolution
+| Yes
+| No
+| Yes (LDAP)
+| ?
+| No
+| No
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+|-
+! Empress Embedded Database
+| Yes
+| ?
+| No
+| ?
+| ?
+| No
+| Yes
+| No
+| Yes
+| No
+| Yes
+|-
+! Firebird
+| No
+| Yes
+| Yes (Windows trusted authenification)
+| ?
+| No
+| No
+| Partial (no security page)
+| No
+| Yes
+| ?
+| No
+|-
+! H2
+| ?
+| Yes
+| ?
+| ?
+| Yes
+| No
+| ?
+| Yes
+| Yes
+| No
+| Yes
+|-
+! HSQLDB
+| No
+| No
+| Yes
+| ?
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+| Yes
+|-
+! Informix Dynamic Server
+| Yes
+| ?
+| Yes
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| Yes
+| ?
+| Yes
+|-
+! Linter SQL RDBMS
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes (with SSL)
+| Yes (length only)
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! MariaDB
+| ?
+| No
+| Yes (with 5.2, but not on Windows servers)
+| ?
+| Yes (SSL)
+| No
+| Partial (no security page)
+| ?
+| Yes
+| No
+| ?
+|-
+! Microsoft SQL Server
+| Yes (From 2008)
+| ?
+| Yes (Microsoft Active Directory)
+| ?
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes (EAL4+)
+| Yes
+|-
+! Microsoft SQL Server Compact (Embedded Database)
+| Yes
+| No (not relevant)
+| No (not relevant)
+| ?
+| No (not relevant, only file permissions)
+| No (not relevant)
+| Yes
+| Yes
+| Yes (file access)
+| ?
+| No
+|-
+! MySQL
+| ?
+| No
+| Yes (with 5.5, but only in commercial edition)
+| ?
+| Yes (SSL with 4.0)
+| No
+| Partial (no security page)
+| ?
+| Yes
+| No
+| ?
+|-
+! OpenBase SQL
+| ?
+| ?
+| Yes (Open Directory, LDAP)
+| ?
+| Yes
+| No
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! OpenLink Virtuoso
+| Yes (optional)
+| Yes
+| Yes
+| ?
+| Yes
+| Yes (optional)
+| Yes (optional)
+| Yes (optional)
+| Yes
+| No
+| Yes
+|-
+! Oracle
+| Yes
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| Yes (EAL4+)
+| Yes
+|-
+! Pervasive PSQL
+| Yes
+| ?
+| No
+| ?
+| Yes
+| No
+| Yes
+| No
+| Yes
+| No
+| No
+|-
+! Polyhedra DBMS
+| Yes
+| No
+| No
+| ?
+| Yes  (with SSL. Optional)
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes
+|-
+! PostgreSQL
+| No
+| Yes (for 9.1)
+| Yes (LDAP, Kerberos…)
+| ?
+| Yes
+| Yes (as of 9.0 with passwordcheck module)
+| Yes
+| Yes
+| Yes
+| Yes (EAL1)
+| Yes
+|-
+! RDM Embedded
+| No
+| No
+| No
+| ?
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+|-
+! RDM Server
+| Yes
+| No
+| No
+| ?
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+|-
+! SQL Anywhere
+| Yes
+| ?
+| Yes (Kerberos)
+| ?
+| Yes
+| Yes
+| ?
+| No
+| Yes
+| Yes (EAL3+ as Adaptive Server Anywhere)
+| Yes
+|-
+! SQLite
+| Yes
+| No (not relevant)
+| No (not relevant)
+| ?
+| No (not relevant, only file permissions)
+| No (not relevant)
+| Partial (no security page)
+| Yes
+| Yes (file access)
+| No
+| No
+|-
+! solidDB
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+|}

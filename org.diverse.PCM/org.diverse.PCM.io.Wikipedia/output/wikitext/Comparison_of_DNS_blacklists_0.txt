@@ -1,0 +1,650 @@
+{| class="wikitable"
+|+ 
+|-
+|
+! Collateral Listings
+! DNS blacklist
+! Informational URL
+! Listing goal
+! Listing lifetime
+! Nomination
+! Notes
+! Notifies upon listing
+! Zone
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! ARM Research Labs, LLC GBUdb
+| no
+| Truncate
+| 
+| Extremely conservative list of single IP4 addresses that produce exclusively spam/malware as indicated by the GBUdb IP Reputation system. Most systems should be able to safely reject connections based on this list.
+| Automatic: Continuous while reputation statistics remain bad. Warning: Produces false positives, and has no remedy/removal process. IPs are dropped quickly if the statistics improve (within an hour). IPs are dropped within 36 hours (typ) if no more messages are seen (dead zombie).
+| Automatic: IPs are added when the GBUdb "cloud" statistics reach a probability figure that indicates 95% of messages produce a spam/malware pattern match and a confidence figure that indicates sufficient data to trust the probability data.
+| Source data is derived from a global network of Message Sniffer filtering nodes in real-time. Truncate data is updated from statistics every 10 minutes.
+| no
+| truncate.gbudb.net
+|-
+! Composite Blocking List
+| no
+| CBL
+| 
+| Only IP addresses exhibiting characteristics specific to open proxies, spamware, malware downloaders, botnets and the like.
+| less than a month after last listable event, self-removal via CBL lookup.
+| Automatic: large spamtraps, production mail servers and other detecton methods.
+| Use Spamhaus XBL or Spamhaus Zen instead; they include CBL.
+| no
+| cbl.abuseat.org
+ (also free available rsync access, on request see FAQ )
+|-
+! Distributed Realtime Blocking List
+| yes
+| drand DRBL node
+| 
+| IP addresses used to send spam to traps or members
+| Varies from spam type, rate and other sophisticated factors. 30 s to 1 week.
+| Automated [de]listing.
+| High IP network aggregate threshold >= 254.
+| no
+| spamtrap.drbl.drand.net
+|-
+! Dronebl
+| yes
+| dnsbl
+| 
+| All-in-one abusive hosts blacklist
+| Permanent until delisted via website.
+| Automated listing via distributed monitoring points
+| 
+| no
+| dnsbl.dronebl.org
+|-
+! Heise Zeitschriften Verlag GmbH & Co. KG, hosted by manitu GmbH
+| no
+| NiX Spam (nixspam)
+| 
+| Lists single IPs (no IP ranges) that send spam to spamtraps. Lists mailhosts, rather than domains, and thus blocks entire hosting providers and ISPs.
+| 12 hours after last listing or until self delisting
+| Automated listing due to spamtrap hits. Exceptions apply to bounces, NDRs and whitelisted IPs.
+| TXT records provide information of listing incident - NiX Spam also provides hashes for fuzzy checksum plugin (iXhash) for SpamAssassin.
+| yes (for ISPs/ESPs on request)
+| ix.dnsbl.manitu.net
+|-
+! Intercept - DNS Blacklist (DNSBL)
+| no
+| Intercept
+| 
+| IP addresses used to send spam to trap
+| Temporary, until spam stops
+| spamtraps
+| 
+| no
+| intercept.datapacket.net
+|-
+! Junk Email Filter
+| yes
+| Hostkarma
+| 
+| Detects viruses by behavior using fake high MX and tracking non-use of QUIT
+| Black list Data lives for 4 days. White list data lives for 10 days.
+| Automated [de]listing
+| 127.0.0.1=white 127.0.0.2=black 127.0.0.3=yellow
+| no
+| hostkarma.junkemailfilter.com
+blacklist.hostkarma.com
+|-
+! MegaRBL
+| no
+| RBL
+| 
+| IP addresses used to send spam to traps
+| Until delisting requested.
+| spamtraps, in order to avoid abusive reports (Competitors, false positive, etc...) only MegaRBL team can add an IP to the list.
+| Removal requests are quickly and manually reviewed and processed without fees.
+| yes
+| rbl.megarbl.net
+|-
+! ORBITrbl Aggressive RBL
+| yes
+| RBL
+| 
+| Unsolicited bulk/Commercial email senders (/24 IP address block)
+| Their web server is down
+| Feeder servers
+| Aggregate zone
+| no
+| rbl.orbitrbl.com
+|-
+! Passive Spam Block List
+| no
+| PSBL
+| 
+| IP addresses used to send spam to trap
+| Temporary, until spam stops
+| spamtraps
+| 
+| no
+| psbl.surriel.com
+(also free available via rsync )
+|-
+! Quorum.to
+| yes
+| ip-dnsbl
+| 
+| Stop spam from hosts that send no legitimate mail (list most non-mail-sending hosts).
+| Listings can be challenged.  Subscribers vote to decide sender status.
+| Listings based on "instant" automated checks, recipient nomination and traps.
+| Public list follows standard dnsbl protocol.  Subscription based service is more capable, but does not follow standard.
+| no
+| list.quorum.to. ( or per-subscriber: [id].list.quorum.to. )
+|-
+! SRN:SurGATE Reputation Network
+| yes
+| SRN
+| 
+| Spam sources, relay abusers
+| Automatic expiry (varies by type); webpage allows delisting
+| Feeder servers
+| Removal requests are quickly and manually reviewed and processed without fees.
+| no
+| srnblack.surgate.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| escalations.dnsbl
+| 
+| Netblocks of service providers believed to support spammers
+| Until delisting requested and matter resolved.
+| SORBS Admin fed.
+| Service providers are added on receipt of a 'third strike' spam
+| no
+| escalations.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| spam.dnsbl
+| 
+| Hosts that have allegedly sent spam to the admins of SORBS at any time
+| Until 1 year after the last spam is received and a request has been made or until the "fine" is paid for express delisting
+| SORBS Admin and Spamtrap.
+| 
+| no
+| spam.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| zombie.dnsbl
+| 
+| Hijacked networks
+| Until delisting requested.
+| SORBS Admin (manual submission)
+| 
+| no
+| zombie.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| badconf.rhsbl
+| 
+| Domains with invalid A or MX records in DNS
+| Until delisting requested.
+| Open submission via automated testing page.
+| 
+| no
+| badconf.rhsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| dul.dnsbl
+| 
+| Dynamic IP address ranges
+| Until delisting requested.
+| SORBS Admin (manual submission)
+| Not a list of dial-up IP addresses
+| no
+| dul.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| old.spam.dnsbl
+| 
+| Hosts that have sent spam to the admins of SORBS in the last year
+| Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net'
+| SORBS Admin and Spamtrap
+| 
+| no
+| old.spam.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| smtp.dnsbl
+| 
+| Open SMTP relay servers
+| Until delisting requested.
+| Feeder servers
+| 
+| no
+| smtp.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| misc.dnsbl
+| 
+| Additional proxy servers
+| Until delisting requested.
+| Feeder servers
+| Those not already listed in the HTTP or SOCKS databases
+| no
+| misc.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| block.dnsbl
+| 
+| Hosts demanding that they never be tested
+| N/A
+| Request by host
+| 
+| no
+| block.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| rhsbl
+| 
+| Aggregate RHS zones
+| N/A
+| N/A
+| 
+| no
+| rhsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| dnsbl
+| 
+| Unsolicited bulk/commercial email senders
+| N/A (See individual zones)
+| N/A (See individual zones)
+| Aggregate zone (all aggregates and what they include are listed on SORBS)
+| no
+| dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| web.dnsbl
+| 
+| IP addresses with vulnerabilities that are exploitable by spammers (e.g. FormMail scripts)
+| Until delisting requested or Automated Expiry
+| Feeder servers
+| 
+| no
+| web.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| recent.spam.dnsbl
+| 
+| Hosts that have sent spam to the admins of SORBS in the last 28 days
+| Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net'
+| SORBS Admin and Spamtrap
+| 
+| no
+| recent.spam.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| http.dnsbl
+| 
+| Open HTTP proxy servers
+| Until delisting requested.
+| Feeder servers
+| 
+| no
+| http.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| safe.dnsbl
+| 
+| Unsolicited bulk/commercial email senders
+| N/A (See individual zones)
+| N/A (See individual zones)
+| "Safe" Aggregate zone (all zones in dnsbl.sorbs.net except "recent" and "escalations")
+| no
+| safe.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| new.spam.dnsbl
+| 
+| Hosts that have sent spam to the admins of SORBS in the last 48 hours
+| Renewed every 20 minutes based inclusion in on 'spam.dnsbl.sorbs.net'
+| SORBS Admin and Spamtrap
+| 
+| no
+| new.spam.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| socks.dnsbl
+| 
+| Open SOCKS proxy servers
+| Until delisting requested.
+| Feeder servers
+| 
+| no
+| socks.dnsbl.sorbs.net
+|-
+! Spam and Open Relay Blocking System (SORBS)
+| yes
+| nomail.rhsbl
+| 
+| Domains which the owners have confirmed will not be used for sending email
+| Until delisting requested.
+| Owner submission
+| 
+| no
+| nomail.rhsbl.sorbs.net
+|-
+! SpamCannibal
+| yes
+| spamcannibal.org
+| 
+| IP addresses and related generic netblocks that have sent spam.
+| until removal requested and matter resolved by changing server DNS ptr record to a non-generic name.
+| spamtraps
+| Even if a particular IP has not sent spam, it may be included in a generic netblock which will provide many false positives. listed=127.0.0.2
+| no
+| bl.spamcannibal.org
+|-
+! SpamCop Blocking List
+| no
+| SCBL
+| 
+| IP addresses which have been used to transmit reported email to SpamCop users
+| Temporary, until spam stops, has self removal
+| users submit
+| 
+| yes (partial)
+| bl.spamcop.net
+|-
+! SpamRats
+| yes
+| RATSDYNA
+| 
+| IP addresses detected as abusive at ISP's using MagicMail Servers, with non-conforming reverse DNS service (See Best Practises) indicative of compromised systems
+| Listed until removed, and reverse DNS set to conform to Best Practises
+| Automatically Submitted
+| 
+| no
+| dyna.spamrats.com
+|-
+! SpamRats
+| yes
+| RATSNOPTR
+| 
+| IP addresses detected as abusive at ISP's using MagicMail Servers, with no reverse DNS service
+| Listed until removed, and reverse DNS configured
+| Automatically Submitted
+| 
+| no
+| noptr.spamrats.com
+|-
+! SpamRats
+| yes
+| RATSSPAM
+| 
+| IP addresses detected as abusive at ISP's using MagicMail Servers, and manually confirmed as spam sources
+| Listed until removed
+| Manually Submitted
+| 
+| no
+| spam.spamrats.com
+|-
+! Spamanalysis.org
+| yes
+| GeoBL
+| 
+| Lists hosts known as being in certain geographic locations.
+| Hosts reported as being incorrectly located may be delisted.
+| Users set their own list of blocked countries.
+| Allows basic monitoring, listed if A=127.0.0.2 or TXT=blocked
+| no
+| User-defined: [*].geobl.spamanalysis.org
+|-
+! Spamhaus
+| rarely (escalation)
+| SBL Advisory
+| 
+| Verified sources of spam, including spammers and their support services, per policy
+| From five minutes to a year or more, depending on issue and resolution
+| Manual
+| 
+| yes (partial)
+| sbl.spamhaus.org
+|-
+! Spamhaus
+| no
+| PBL Advisory
+| 
+| Addresses not meant to be initiating SMTP connections, such as residential dynamic IPs
+| self-removal (see spamhaus web site)
+| Manual, by providers controlling the IPs or by Spamhaus PBL Team
+| Should not be confused with the MAPS DUL and Wirehub Dynablocker lists
+| no
+| pbl.spamhaus.org
+|-
+! Spamhaus
+| per component list
+| SBL+XBL
+| 
+| A single lookup for querying the SBL and XBL databases
+| 
+| 
+| 
+| per component list
+| sbl-xbl.spamhaus.org
+|-
+! Spamhaus
+| per component list
+| Zen
+| 
+| A single lookup for querying the SBL, XBL and PBL databases.
+| 
+| 
+| Preferred list to check all Spamhaus listings with one query.
+| per component list
+| zen.spamhaus.org
+|-
+! Spamhaus
+| no
+| XBL Advisory
+| 
+| Illegal third-party exploits (e.g. open proxies, email spambots, malware download sitesand botnets)
+| Varies, under a month, self removal via Composite Blocking List lookup.
+| Third-party with automated additions
+| Consists of the Composite Blocking List
+| no
+| xbl.spamhaus.org
+|-
+! The Abusive Hosts Blocking List (AHBL)
+| yes
+| rhsbl
+| 
+| Domains sending spam, domains owned by spammers, comment spam domains, spammed URLs
+| Until delisting requested
+| Manual
+| 
+| no
+| rhsbl.ahbl.org
+|-
+! The Abusive Hosts Blocking List (AHBL)
+| yes
+| tor
+| 
+| Current tor relay and exit nodes
+| N/A
+| Automated
+| 
+| no
+| tor.ahbl.org
+|-
+! The Abusive Hosts Blocking List (AHBL)
+| yes
+| ircbl
+| 
+| Subset of dnsbl, contains only open proxies, compromised machines, comment spammers
+| Until delisting requested
+| Until delisting requested
+| Designed for use on IRC servers
+| no
+| ircbl.ahbl.org
+|-
+! The Abusive Hosts Blocking List (AHBL)
+| yes
+| dnsbl
+| 
+| Aggregate zone, contains UCE/bulk email senders, open proxies, open relays, trojaned/infected machines, comment/trackback spammers
+| Until delisting requested
+| Feeder systems, manual
+| Aggregate zone (all aggregates and what they include are listed on AHBL)
+| no
+| dnsbl.ahbl.org
+|-
+! UCEPROTECT-Network
+| yes
+| UCEPROTECT Level 3
+| 
+| ASN's with excessive UCEPROTECT Level 1 listings
+| Automatic removal as soon as Level 1 listings decrease below Level 3 listing border, optionally express delisting (fee)
+| Automatic calculated from UCEPROTECT-Level 1
+| Fully depending on Level 1
+| no
+| dnsbl-3.uceprotect.net
+(also free available via rsync )
+|-
+! UCEPROTECT-Network
+| yes
+| UCEPROTECT Level 2
+| 
+| Allocations with exceeded UCEPROTECT Level 1 listings
+| Automatic removal as soon as Level 1 listings decrease below Level 2 listing border, optionally express delisting (for a fee)
+| Automatic calculated from UCEPROTECT-Level 1
+| Fully depending on Level 1
+| no
+| dnsbl-2.uceprotect.net
+(also free available via rsync )
+|-
+! UCEPROTECT-Network
+| no
+| UCEPROTECT Level 1
+| 
+| Single IP addresses that send mail to spamtrap
+| Automatic expiration 7 days after the last abuse was seen, optionally express delisting for a small fee.
+| Automatic by a cluster of more than 60 trapservers
+| UCEPROTECT's primary and the only independent list
+| no
+| dnsbl-1.uceprotect.net
+(also free available via rsync )
+|-
+! Weighted Private Block List
+| no
+| WPBL
+| 
+| IP addresses used to send UBE to members
+| Temporary, until spam stops
+| spamtraps
+| 
+| no
+| db.wpbl.info
+|-
+! blocklist.de
+| no
+| dnsbl
+| 
+| IP-Addresses who Attacks other Server/Honeypots over ssh, imap, smtp, ftp, web, rfi, sqli, ddos....
+| Automatic: 48 Hours after the last Attack. But earlier remove is available over the Delist-Link
+| Automatic: over Honeypots and with over 515 Users and 630 Servers from blocklist.de via Fail2Ban or own scripts
+| Services is free! Source data is from Honeypot-Systems and over 515 User with 630 Servern there reports Attacks with Fail2Ban
+| yes
+| bl.blocklist.de
+|-
+! inps.de
+| maybe
+| inps.de-DNSBL
+| 
+| Single IP addresses
+| IP addresses are listed until they are removed manually via the website.
+| IP addresses can be reported as known spam sources by users, additionally automated listing if spam arrives at the mailservers of inps.de
+| A- and TXT records are available for each entry; Removal is free after 30 days for automatic additions and after 7 days for manual additions; otherwise removal fee is at least EUR 10,00.
+| no
+| dnsbl.inps.de
+|-
+! invaluement DNSBL
+| no
+| ivmSIP
+| 
+| Single IP addresses which only send UBE. Specializing in snowshoe spam and other 'under the radar' spams which evade many other DNSBLs. Has FP-level comparable to Zen.
+| Typically an automatic expiration 11 days after the last abuse was seen, but with some exceptions
+| Automatic (upon receipt of a spam to a real person's mailbox), with extensive whitelists and filtering to prevent false positives
+| Spam samples are always kept on file for each listing. Removal requests are manually reviewed and processed without fees.
+| no
+| N/A
+(paid access via rsync)
+|-
+! invaluement DNSBL
+| no
+| ivmURI
+| 
+| comparable to uribl.com and surbl.org, this is a list of IP addresses and domains which are used by spammers in the clickable links found in the body of spam messages
+| Typically an automatic expiration several weeks after the last abuse was seen.
+| Automatic (upon receipt of a spam to a real person's mailbox), with extensive whitelists and filtering to prevent false positives
+| Spam samples are always kept on file for each listing. Removal requests are quickly and manually reviewed and processed without fees.
+| no
+| N/A
+(paid access via rsync)
+|-
+! invaluement DNSBL
+| yes
+| ivmSIP/24
+| 
+| lists /24 blocks of IP addresses which usually only send UBE and containing at least several addresses which are confirmed emitters of junk mail. Collateral listings are kept to a minimum because subsections are often carved from /24 listings when spammers and legit senders share the same /24 block.
+| expiration time increases to many weeks as the fraction of IP addresses in the /24 block in question sending junk mail increases
+| Automatic once at least several IP addresses from a given block are individually listed on ivmSIP, with extensive whitelists and filtering to prevent false positives
+| Removal requests are quickly and manually reviewed and processed without fees.
+| no
+| N/A
+(paid access via rsync)
+|-
+! proxyBL
+| yes
+| dnsbl
+| 
+| Lists all types of open (publicly accessible) proxies
+| As long as proxy is verified open (automated)
+| Automated listing through crawling of websites
+| Time between verifications increases exponentially in relation to the number of times the host was verified an open proxy
+| no
+| dnsbl.proxybl.org
+|-
+! s5h.net Internet Services
+| yes
+| s5h.net
+| 
+| Spam sources from email, forums, referrer spam and dictionary attacks
+| Twelve months unless ISPs request removal earlier
+| Traps
+| By request. ISPs can provide request exclusion
+| no
+| all.s5h.net
+|}
