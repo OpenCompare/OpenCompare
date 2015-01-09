@@ -1,11 +1,7 @@
 package org.diverse.pcm.api.java.impl;
 
-import org.diverse.pcm.api.java.Cell;
-import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.api.java.util.PCMVisitor;
-
-import java.util.ArrayList;
-import java.util.List;
+import pcm.AbstractFeature;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -45,9 +41,7 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
 
         FeatureImpl feature = (FeatureImpl) o;
 
-        if (kFeature != null ? !kFeature.equals(feature.kFeature) : feature.kFeature != null) {
-            return false;
-        }
+        if (kFeature != null ? !kFeature.equals(feature.kFeature) : feature.kFeature != null) return false;
 
         return true;
     }
@@ -56,5 +50,4 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
     public int hashCode() {
         return kFeature != null ? kFeature.hashCode() : 0;
     }
-
 }

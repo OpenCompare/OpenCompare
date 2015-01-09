@@ -16,7 +16,5 @@ public abstract class ValueImpl implements Value {
     public pcm.Value getkValue() {
         return kValue;
     }
-
-
 }
 
