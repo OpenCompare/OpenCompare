@@ -54,8 +54,8 @@ public class CellImpl extends PCMElementImpl implements Cell {
             return new NotAvailableImpl((NotAvailable) kInterpretation);
         } else if (kInterpretation instanceof Conditional) {
             return new ConditionalImpl((Conditional) kInterpretation);
-        } else {
-            throw new UnsupportedOperationException(kInterpretation.getClass() + " interpretation type is not yet supported");
+        } else if (kInterpretation instanceof Partial) {
+            return new PartialImpl((Partial) kInterpretation);
         }
     }
 
