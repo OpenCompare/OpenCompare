@@ -6,6 +6,7 @@ import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.api.java.Value;
 import org.diverse.pcm.api.java.impl.value.*;
 import org.diverse.pcm.api.java.util.PCMVisitor;
+import org.diverse.pcm.api.java.value.Partial;
 import pcm.*;
 
 /**
@@ -53,8 +54,6 @@ public class CellImpl extends PCMElementImpl implements Cell {
             return new NotAvailableImpl((NotAvailable) kInterpretation);
         } else if (kInterpretation instanceof Conditional) {
             return new ConditionalImpl((Conditional) kInterpretation);
-        } else if (kInterpretation instanceof Partial) {
-            return new PartialImpl((Partial) kInterpretation);
         } else {
             throw new UnsupportedOperationException(kInterpretation.getClass() + " interpretation type is not yet supported");
         }
@@ -73,11 +72,6 @@ public class CellImpl extends PCMElementImpl implements Cell {
     @Override
     public void setFeature(Feature feature) {
         kCell.setFeature(((FeatureImpl) feature).getkFeature());
-    }
-
-    @Override
-    public Product getProduct() {
-        return new ProductImpl(kCell.getProduct());
     }
 
     @Override
