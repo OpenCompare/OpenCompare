@@ -107,6 +107,16 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+
+  def writeToPCMOld(title : String, page : Page) {
+    val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
   def writeToWikiText(title : String, page : Page) {
     val exporter = new PCMModelExporter
     val pcms = exporter.export(page)
