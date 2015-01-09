@@ -35,7 +35,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var products = [];
 
     if (typeof id === 'undefined') {
-
         // Create example PCM
         $scope.pcm = factory.createPCM();
 
@@ -55,7 +54,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         initializeHOT();
 
     } else {
-        
+
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
             initializeHOT();
