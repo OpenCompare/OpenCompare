@@ -7,7 +7,7 @@ import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl
-import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
+import org.diverse.pcm.io.wikipedia.export.{PCMModelExporterOld, WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
