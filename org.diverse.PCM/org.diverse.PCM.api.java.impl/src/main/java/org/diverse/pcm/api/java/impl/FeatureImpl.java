@@ -57,22 +57,4 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
         return kFeature != null ? kFeature.hashCode() : 0;
     }
 
-    @Override
-    public List<Cell> getCells() {
-        List<Cell> cells = new ArrayList<Cell>();
-        for (pcm.Cell kCell : kFeature.getValues()) {
-            cells.add(new CellImpl(kCell));
-        }
-        return cells;
-    }
-
-    @Override
-    public Cell getCell(Product product) {
-        for (Cell cell: getCells()) {
-            if (cell.getProduct().equals(product)) {
-                return cell;
-            }
-        }
-        return null;
-    }
 }
