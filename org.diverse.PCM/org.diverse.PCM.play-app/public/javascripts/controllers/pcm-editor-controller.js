@@ -35,31 +35,29 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var products = [];
 
     if (typeof id === 'undefined') {
+
+        // Create example PCM
         $scope.pcm = factory.createPCM();
+
+        var exampleFeature = factory.createFeature();
+        exampleFeature.name = "Feature";
+        $scope.pcm.addFeatures(exampleFeature);
+
+        var exampleProduct = factory.createProduct();
+        exampleProduct.name = "Product";
+        $scope.pcm.addProducts(exampleProduct);
+
+        var exampleCell = factory.createCell();
+        exampleCell.feature = exampleFeature;
+        exampleCell.content = "Yes";
+        exampleProduct.addValues(exampleCell);
+
         initializeHOT();
+
     } else {
+        
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
-
-            // Transform features to handonstable data structures
-            var kFeatures = $scope.pcm.features.array.sort(sortByName);
-            for (var i = 0; i < kFeatures.length; i++) {
-                features.push({
-                    data: property(kFeatures[i].generated_KMF_ID)
-                });
-                featureHeaders.push(kFeatures[i].name);
-            }
-
-            // Transform products to handonstable data structures
-            var kProducts = $scope.pcm.products.array.sort(sortByName);
-            for (var i = 0; i < kProducts.length; i++) {
-                var product = kProducts[i];
-
-                productHeaders.push(product.name);
-                products.push(model(product));
-
-            }
-
             initializeHOT();
         });
 
@@ -67,6 +65,25 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
 
     function initializeHOT() {
+        // Transform features to handonstable data structures
+        var kFeatures = $scope.pcm.features.array.sort(sortByName);
+        for (var i = 0; i < kFeatures.length; i++) {
+            features.push({
+                data: property(kFeatures[i].generated_KMF_ID)
+            });
+            featureHeaders.push(kFeatures[i].name);
+        }
+
+        // Transform products to handonstable data structures
+        var kProducts = $scope.pcm.products.array.sort(sortByName);
+        for (var i = 0; i < kProducts.length; i++) {
+            var product = kProducts[i];
+
+            productHeaders.push(product.name);
+            products.push(model(product));
+
+        }
+
         var container = document.getElementById('hot');
         var hot = new Handsontable(container,
             {
