@@ -1,6 +1,9 @@
 package org.diverse.pcm.io.wikipedia
 
 import java.io.{File, FileWriter, PrintWriter, StringWriter}
+import java.nio.file.{Paths, Files}
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.concurrent.Executors
 
 import org.diverse.pcm.api.java.PCM
@@ -107,6 +110,29 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+  def getDateForDirectory(): String = {
+    val today = Calendar.getInstance.getTime
+    val curTimeFormat = new SimpleDateFormat("dd-MM-yyyy")
+    val date = curTimeFormat.format(today)
+  date
+  }
+
+
+  def writeToPCMDaily(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+        dir.mkdir()
+    }
+    val writer = new FileWriter("output/model_"+date+"/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
 
   def writeToPCMOld(title : String, page : Page) {
     val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")

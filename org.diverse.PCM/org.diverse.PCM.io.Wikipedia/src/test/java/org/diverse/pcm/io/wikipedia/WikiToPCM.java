@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import static org.diverse.pcm.io.wikipedia.FileFunctions.*;
 import static org.junit.Assert.assertNotNull;
 
-public class TestExport {
+public class WikiToPCM {
     File folder = new File("../org.diverse.PCM.io.Wikipedia/input");
     File[] listOfFiles = folder.listFiles();
     File folder2 = new File("../org.diverse.PCM.io.Wikipedia/inputTest");
