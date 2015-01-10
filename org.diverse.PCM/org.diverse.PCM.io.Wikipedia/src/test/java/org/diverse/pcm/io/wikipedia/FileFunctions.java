@@ -18,17 +18,14 @@ public class FileFunctions {
         try {
             String line;
             while ((line = buff.readLine()) != null) {
-                string.append(line);
+
+                string.append(line+"\n");
             }
         } finally {
             buff.close();
         }
-
-        return string.toString();
-        /*
-        byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return new String(encoded, encoding);
-    */
+        String file = string.toString();
+        return file;
     }
 
     public static void appendToFile(Exception e, String title) {

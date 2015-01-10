@@ -134,6 +134,23 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     writer.close()
   }
 
+  def writeFromWikitextToPCMDaily(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"_2/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+    val writer = new FileWriter("output/model_"+date+"_2/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
+
   def writeToPCMOld(title : String, page : Page) {
     val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
     val exporter = new PCMModelExporterOld
@@ -157,7 +174,29 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
 
   }
-  
+
+  def writeToWikiTextDaily(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/wikitext_"+date+"/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+
+    val serializer = new WikiTextExporter
+
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val wikitext = serializer.toWikiText(pcm)
+      val writer = new FileWriter("output/wikitext_"+date+"/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
+      writer.write(wikitext)
+      writer.close()
+    }
+
+  }
+
   "The PCM parser" should "parse the example of tables from Wikipedia" in {
     val pcm = parsePCMFromFile("resources/example.pcm")
 //    println(pcm)
