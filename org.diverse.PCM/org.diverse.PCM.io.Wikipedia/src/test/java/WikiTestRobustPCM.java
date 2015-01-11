@@ -1,3 +1,5 @@
+package org.diverse.pcm.io.wikipedia;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,43 +27,40 @@ import java.io.*;
 import static org.junit.Assert.*;
 
 /**
- * Cette classe permet d'executer et de generér les.PCM non pas à partir de Wikipedia mais en local
- * Les Fichiers se trouvent dans le Repertoire de Code_PCM
- * C'est à partir de ces fichiers qu'on fait manuellement les jeux de test pour tester la robustesse du parser
+ * Cette classe permet d'executer et de gener�r les.PCM non pas � partir de fichier Wikitext  en local
+ * Les Fichiers se trouvent dans le Repertoire de Code_Wikitex
+ * C'est � partir de ces fichiers qu'on fait manuellement les jeux de test pour tester la robustesse du parser
  *
  */
-public class WikipediaRobustCode
+public class WikiTestRobustPCM
 
 
 {
-    private WikipediaPageMiner miner;
-    private Page page ;
-    private ParserTest parser_PCM ;
+
+    Page page;
+    WikipediaPageMiner miner;
+    ParserTest parser_PCM;
     
     @Before
-    public void setUp()
+    public void setUp() 
     {
-        page=null;
         miner=new WikipediaPageMiner();
         parser_PCM = new ParserTest();
-    }
-    
-    
-    
-    @Test
-    public void Test() 
-    {
+        page = null;
         
+    }
+    @Test
+    public void Test()
+    {
+        miner = new WikipediaPageMiner();
         String[] list_file = null;
         String ligne_file = null;
         String Edit_Code = null;
         String prepossed_code = null;
         StringBuffer edit;
-
-        String link = System.getProperty("user.dir") + "\\Code_PCM";
+        
+        String link = System.getProperty("user.dir") + "\\output\\wikitext";
         File repertoire = new File(link);
-
-
         if (repertoire.isDirectory()) {
 
             list_file = repertoire.list();;
@@ -69,46 +68,43 @@ public class WikipediaRobustCode
 
         /**
          * Parcours du Repertoire
-         *Trouver les .text et parsez-les
+         *Trouver les .pcm et parsez-les
          */
         for (int i = 0; i < list_file.length; i++) {
             String temp_file = list_file[i];
 
             System.out.println(temp_file);
-            BufferedReader lire_code_PCM = null;
+            BufferedReader lire_code_Wikitex = null;
             try {
-                lire_code_PCM = new BufferedReader(new FileReader(link + "\\" + temp_file));
-
+                lire_code_Wikitex = new BufferedReader(new FileReader(link + "\\" + temp_file));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-
-
+            
             if (temp_file.endsWith(".txt") == true)
+
                 try {
-                    while ((ligne_file = lire_code_PCM.readLine()) != null)
-
+                    while ((ligne_file = lire_code_Wikitex.readLine()) != null)
+                        //c'est ici que je fait le  test d'ajout de ligne aleatoire pour corrompre le fichier
                     {
-
-                        Edit_Code +=ligne_file.concat("<span>TestPCM</span>")+"\n";
+                        Edit_Code +=ligne_file.concat("<span>CorruptionPCM</span>")+"\n";
+                        Edit_Code +=ligne_file.concat("<span>PCMTEST</span>")+"\n";
                     }
-
                     StringBuffer new_Title=new StringBuffer(temp_file);
                     new_Title.delete(new_Title.indexOf(".txt"),temp_file.length());
-                    
                     edit = new StringBuffer(Edit_Code);
                     edit.delete(0,4);
 
                     page = miner.parse(edit.toString());
                     parser_PCM.writeToPCM(new_Title.toString(), page);
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+               Edit_Code=null;
+               edit=null;
 
         }
 
     }
+
 }
