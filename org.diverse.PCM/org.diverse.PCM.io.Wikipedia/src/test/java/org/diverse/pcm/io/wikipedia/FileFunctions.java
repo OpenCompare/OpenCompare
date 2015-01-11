@@ -5,6 +5,7 @@ import org.diverse.pcm.io.wikipedia.pcm.Page;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.*;
+import java.nio.file.Files;
 
 /* This is a class with useful function on files */
 public class FileFunctions {
@@ -72,6 +73,27 @@ public class FileFunctions {
             BufferedWriter out = new BufferedWriter(fstream);
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write(page.toString());
+        }
+        catch (Exception ie) {
+            throw new RuntimeException("Could not write Exception to file", ie);
+        }
+    }
+
+    public static void writeWikitextForHTML(StringBuilder wikitext, String title, String date){
+        File dir = new File ("output/wikitext_"+date+"_full/");
+        if(!dir.exists()){
+            try{
+                dir.mkdir();
+            } catch(SecurityException se){
+                //handle it
+            }
+        }
+        try {
+            File file = new File ("output/wikitext_"+date+"_full/"+title+".txt");
+            PrintWriter pWriter = new PrintWriter (file);
+
+            pWriter.write(wikitext.toString());
+            pWriter.close ();
         }
         catch (Exception ie) {
             throw new RuntimeException("Could not write Exception to file", ie);

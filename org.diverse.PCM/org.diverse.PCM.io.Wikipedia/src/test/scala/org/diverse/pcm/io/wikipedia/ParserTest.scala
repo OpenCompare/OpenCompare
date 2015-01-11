@@ -138,6 +138,34 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+  def writeToPCMDailyJSON2(title : String, page : Page) {
+
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"_JSON2/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+    //    val serializer = new PCMtoHTML
+    //    writer.write(serializer.toHTML(pcm))
+    val serializer = new PCMtoJsonImpl
+    val loader = new JSONLoaderImpl
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val path = "output/model_"+date+"_JSON2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val writer = new FileWriter(path)
+      writer.write(serializer.toJson(pcm))
+      writer.close()
+
+      loader.load(new File(path))
+
+    }
+
+  }
+
   def getDateForDirectory(): String = {
     val today = Calendar.getInstance.getTime
     val curTimeFormat = new SimpleDateFormat("dd-MM-yyyy")

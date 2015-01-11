@@ -69,8 +69,26 @@ public class TestCycle {
                         parser.writeToPCMDailyJSON(line, page);
 
                         //appel de la deuxième fonction
-                        testPCMtoWikitext(page, line);
+                       // testPCMtoWikitext(page, line);
+                        // Export page as a List<PCM>
+                        PCMModelExporter pcmExporterJSON = new PCMModelExporter();
+                        List<PCM> pcms = seqAsJavaList(pcmExporterJSON.export(page));
+                        assertFalse(pcms.isEmpty());
 
+                        // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
+                        // Ajout du StringBuilder pour avoir un seul fichier
+                        WikiTextExporter wikitextExporter = new WikiTextExporter();
+                        StringBuilder wikitextFinal = new StringBuilder(line);
+                        for (PCM pcmtowiki : pcms) {
+
+                            String wikitext = wikitextExporter.toWikiText(pcmtowiki);
+
+                            wikitextFinal.append(wikitext);
+                            //assertNotNull(wikitext);
+                            // Sauvegarde du WikiText
+                            parser.writeToWikiTextDaily(line, page);
+                        }
+                        writeWikitextForHTML(wikitextFinal, line, date);
 
                     } catch (Exception e) {
                         title = line;
@@ -88,7 +106,7 @@ public class TestCycle {
     }
 
 
-    /* Test pcm to wikitext with pcms(html) from previous test */
+    /* Test pcm to wikitext with pcms(html) from previous test
     public void testPCMtoWikitext(Page page, String line){
         // Export page as a List<PCM>
         PCMModelExporter pcmExporter = new PCMModelExporter();
@@ -106,8 +124,9 @@ public class TestCycle {
             // Sauvegarde du WikiText
             parser.writeToWikiTextDaily(line, page);
         }
+        writeWikitextForHTML(wikitextFinal, line, date);
     }
-
+ */
 
          /* Test wikitext to pcm */
        public void testWikitextToPCM() throws IOException {
@@ -134,18 +153,8 @@ public class TestCycle {
            /*     //System.out.print("Miner"+page.toString()+"FinMiner");
                    // PCM model export
                    PCMModelExporterOld pcmExporter = new PCMModelExporterOld();
-             */       PCM pcm = pcmExporter.export(page);
-                   parser.writeFromWikitextToPCMDaily(title, page);
-                   assertNotNull(pcm);
-
-                   PCMModelExporter pcmExporter = new PCMModelExporter();
-
-                   WikiTextExporter wikitextExporter = new WikiTextExporter();
-                   for (PCM pcm : pcms) {
-                       String wikitext = wikitextExporter.toWikiText(pcm);
-                       assertNotNull(wikitext);
-                   }
-
+             */       // Enregistrement du PCM (JSON) créer un daily ?
+                   parser.writeToPCMDailyJSON2(title, page);
 
                } catch (Exception e) {
                    String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4)+("\n\n");
