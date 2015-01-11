@@ -110,6 +110,34 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+  def writeToPCMDailyJSON(title : String, page : Page) {
+
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"_JSON/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+    //    val serializer = new PCMtoHTML
+    //    writer.write(serializer.toHTML(pcm))
+    val serializer = new PCMtoJsonImpl
+    val loader = new JSONLoaderImpl
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val path = "output/model_"+date+"_JSON/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val writer = new FileWriter(path)
+      writer.write(serializer.toJson(pcm))
+      writer.close()
+
+      loader.load(new File(path))
+
+    }
+
+  }
+
   def getDateForDirectory(): String = {
     val today = Calendar.getInstance.getTime
     val curTimeFormat = new SimpleDateFormat("dd-MM-yyyy")
@@ -118,15 +146,15 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
 
 
-  def writeToPCMDaily(title : String, page : Page) {
+  def writeToPCMDailyHTML(title : String, page : Page) {
     val date = getDateForDirectory()
-    val dir = new File("output/model_"+date+"/")
+    val dir = new File("output/model_"+date+"_HTML/")
     // Tests whether the directory denoted by this abstract pathname exists.
     val exists = dir.exists()
     if(!exists){
         dir.mkdir()
     }
-    val writer = new FileWriter("output/model_"+date+"/" + title.replaceAll(" ", "_") + ".pcm")
+    val writer = new FileWriter("output/model_"+date+"_HTML/" + title.replaceAll(" ", "_") + ".pcm")
     val exporter = new PCMModelExporterOld
     val pcm = exporter.export(page)
     val serializer = new PCMtoHTML
