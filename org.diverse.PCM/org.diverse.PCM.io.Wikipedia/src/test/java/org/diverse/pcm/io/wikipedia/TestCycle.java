@@ -1,5 +1,6 @@
 package org.diverse.pcm.io.wikipedia;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporterOld;
@@ -15,9 +16,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.diverse.pcm.io.wikipedia.FileFunctions.appendToFile;
-import static org.diverse.pcm.io.wikipedia.FileFunctions.readFile;
-import static org.diverse.pcm.io.wikipedia.FileFunctions.writeToPreprocessed;
+import static org.diverse.pcm.io.wikipedia.FileFunctions.*;
 import static org.junit.Assert.*;
 import static scala.collection.JavaConversions.*;
 
@@ -30,66 +29,70 @@ public class TestCycle {
 
 
     String filePath = "resources/list_of_PCMs2.txt";
+
     WikipediaPageMiner miner = new WikipediaPageMiner();
     ParserTest parser = new ParserTest();
 
     @org.junit.Test
     public void testCycle() {
         try {
-            System.out.println("Test Wiki to PCM");
-            //testWikiToPCM();
+            System.out.println("Test parse from Wikipedia to PCM");
+            testWikiToPCM();
             System.out.println("Test PCM to Wikitext");
             //testPCMtoWiki();
             System.out.println("Test Wikitext to PCM");
-            testWikitextToPCM();
-        } catch (IOException e) {
+            //testWikitextToPCM();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /* Test with a wikipedia sample with few own matrice */
-       public void testWikiToPCM() {
-           try {
-               BufferedReader buff = new BufferedReader(new FileReader(filePath));
-                   String line;
-                   String title;
-               try {
-                   while ((line = buff.readLine()) != null) {
-                       try {
-                           title = line;
-                           System.out.println(line);
+    public void testWikiToPCM() {
+        try {
+            BufferedReader buff = new BufferedReader(new FileReader(filePath));
+                String line;
+                String title;
+            try {
+                while ((line = buff.readLine()) != null) {
+                    try {
+                        title = line;
+                        System.out.println(line);
 
-                           // Parse article from Wikipedia
-                           String code = miner.getPageCodeFromWikipedia(line);
-                           String preprocessedCode = miner.preprocess(code);
-                           writeToPreprocessed(preprocessedCode, title);
+                        // Parse article from Wikipedia
+                        String code = miner.getPageCodeFromWikipedia(line);
+                        String preprocessedCode = miner.preprocess(code);
+                        writeToPreprocessed(preprocessedCode, title);
+                        Page page = miner.parse(preprocessedCode);
 
-                           Page page = miner.parse(preprocessedCode);
-                           // PCM model export
-                           PCMModelExporterOld pcmExporter = new PCMModelExporterOld();
-                           PCM pcm = pcmExporter.export(page);
-                           parser.writeToPCMDaily(title, page);
-                           assertNotNull(pcm);
-                       } catch (Exception e) {
-                           title = line;
-                           appendToFile(e, title);
-                           System.out.println("Error reported");
-                           ;
-                       }
-                   }
-               }catch (Exception e) {
-                       System.out.println(e.getMessage());
-                   }
-               } catch (Exception e) {
-                   System.out.println(e.getMessage());
-               }
+                        writeRawPages(page,line);
 
-           }
+                        // page export to pcm(html)
+                        PCMModelExporterOld pcmExporter = new PCMModelExporterOld();
+                        PCM pcm = pcmExporter.export(page);
+                        assertNotNull(pcm);
+                        parser.writeToPCMDaily(title, page);
+
+                        // Enregistrement du PCM (JSON) créer un daily ?
+                        parser.writeToPCM(line,page);
+
+                    } catch (Exception e) {
+                        title = line;
+                        appendToFile(e, title);
+                        System.out.println("Error reported");
+                    }
+                }
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
 
-
-
-    /* Test pcm to wiki with pcms from previous test */
+    /* Test pcm to wikitext with pcms(html) from previous test */
     public void testPCMtoWiki (){
         try {
             BufferedReader buff = new BufferedReader(new FileReader(filePath));
@@ -98,21 +101,15 @@ public class TestCycle {
                 while ((line = buff.readLine()) != null) {
 
                     System.out.println(line);
-                    System.out.println("...");
+
 
                     // Parse article from Wikipedia
                     String code = miner.getPageCodeFromWikipedia(line);
                     String preprocessedCode = miner.preprocess(code);
-                    //writePreprocessed(line, preprocessedCode); // save preProcessed
                     Page page = miner.parse(preprocessedCode);
 
-                    // Enregistrement du PCM ancienne version (html)
-                    parser.writeToPCMOld(line, page);
 
-                    // Enregistrement du PCM (JSON)
-                    parser.writeToPCM(line,page);
-
-                    // PCM list for wikitext
+                    // Export page as a List<PCM>
                     PCMModelExporter pcmExporter = new PCMModelExporter();
                     List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
                     assertFalse(pcms.isEmpty());

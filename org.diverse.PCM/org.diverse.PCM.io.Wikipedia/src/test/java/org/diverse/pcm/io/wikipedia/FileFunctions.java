@@ -66,4 +66,17 @@ public class FileFunctions {
         }
     }
 
+    public static void writeRawPages(Page page, String title) {
+        try {
+            FileWriter fstream = new FileWriter("output/raw_pages/"+title+".txt", true);
+            BufferedWriter out = new BufferedWriter(fstream);
+            PrintWriter pWriter = new PrintWriter(out, true);
+            pWriter.write(page.toString());
+        }
+        catch (Exception ie) {
+            throw new RuntimeException("Could not write Exception to file", ie);
+        }
+    }
+
+
 }
