@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.concurrent.Executors
 
-import org.diverse.pcm.api.java.PCM
+import org.diverse.pcm.api.java.{Product, PCM}
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl
@@ -155,6 +155,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val serializer = new PCMtoJsonImpl
     val loader = new JSONLoaderImpl
     for ((pcm, index) <- pcms.zipWithIndex) {
+
       val path = "output/model_"+date+"_JSON2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
       writer.write(serializer.toJson(pcm))
