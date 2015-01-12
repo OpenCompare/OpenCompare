@@ -26,7 +26,7 @@ import java.io.*;
 /**
  * Cette classe permet la création des PCMS1 à partir de Wikitest
  */
-public class WikiTestPCM1 extends ParsingAutomatisationTest
+public class WikiTestPCM1 extends ParsingAutomatisationTest 
 {
     private Page page;
     private WikipediaPageMiner miner;
@@ -100,10 +100,17 @@ public void test()
                 String test=miner.preprocess(edit.toString());
                 page = miner.parse(test);
 
+                try 
+                {
 
-                ParserTest parser_PCM = new ParserTest();
-                parser_PCM.writeToPCM(new_Title.toString(), page);
-
+                    ParserTest parser_PCM = new ParserTest();
+                    parser_PCM.writeToPCM(new_Title.toString(), page);
+                }
+                catch (Exception e)
+                {
+                   ReportedCsvFile(new_Title.toString(),e.getMessage());
+                    
+                }
 
             } catch (IOException e)
             {

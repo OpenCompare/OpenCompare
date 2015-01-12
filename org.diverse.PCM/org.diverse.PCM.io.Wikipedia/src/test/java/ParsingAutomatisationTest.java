@@ -23,11 +23,11 @@ import java.util.List;
 import static org.junit.Assert.assertNotNull;
 
 
-public class ParsingAutomatisationTest
+public class ParsingAutomatisationTest extends WikipediaPageMinerGeneratePCM
 
 {
 
-     private String tem_PCM;
+    private String tem_PCM;
     private Page page;
     private String patht;
 

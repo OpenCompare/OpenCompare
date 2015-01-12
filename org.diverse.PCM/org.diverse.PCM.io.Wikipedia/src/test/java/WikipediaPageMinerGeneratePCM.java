@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
 
-import org.diverse.*;
+
 import org.diverse.pcm.api.java.*;
 import org.diverse.pcm.api.java.Cell;
 import org.diverse.pcm.api.java.impl.CellImpl;
@@ -81,23 +81,71 @@ public class WikipediaPageMinerGeneratePCM
 
             String preprocessedCode = miner.preprocess(code);
 
-            Page page = miner.parse(preprocessedCode);
-
-
-
-                    /*
+            
+            try 
+            {
+                 Page page = miner.parse(preprocessedCode);
+                 /*
                     *Phase d'exportation vers Output vers le format.PCM
                     *
                     *
                      */
-            ParserTest test_scala=new ParserTest();
-
-            test_scala.writeToPCM(tem_PCM,page);
-
+                ParserTest test_scala = new ParserTest();
+                test_scala.writeToPCM(tem_PCM, page);
+            }
+            catch(Exception e)
+            {
+                ReportedCsvFile(tem_PCM,e.getMessage());
+                
+            }   
 
         }
     }
 
+
+    public void ReportedCsvFile(String title, String characteristic) throws IOException
+    {
+
+        String output = System.getProperty("user.dir") + "\\Reporting\\Bugs_Reportings.csv";
+        System.out.println(output);
+        File csvFile = new File(output);
+        if (!csvFile.exists())
+        {
+            BufferedWriter test = null;
+            try {
+                test = new BufferedWriter(new FileWriter(output));
+                test.write(title+",");
+                test.write(characteristic);
+                test.write("\n");
+
+               test.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        else {
+            PrintStream l_out = new PrintStream(new FileOutputStream(output, true));
+
+
+            l_out.print(title+",");
+            l_out.print(characteristic);
+            l_out.print("\n");
+
+            l_out.flush();
+            l_out.close();
+            l_out = null;
+
+
+        }
+
+
+    }
+    
+    
+    
+    
+    
 
 
 }
