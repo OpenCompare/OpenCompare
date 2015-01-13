@@ -1,6 +1,8 @@
 <h1 style="text-align:center; color:#2E36D4"> Wikipedia PCM project </h1>
+===
 <hr />
 <br />
+### STEPS AND PROCESSING :
 In this part, we will explain how the PCM project works with Wikipedia :  
 To begin, let's do a quick view of Wikipedia PCM system.  
 I give your attention on the red box, we can see a small picture of the California flag next to California name. If we click on "edit", we will be able to see how this part is represented :
@@ -8,8 +10,7 @@ I give your attention on the red box, we can see a small picture of the Californ
 
 ![imgWiki](images/PCMWiki.png "Image du PCM Wiki")
 
-
-Still in the red box, you can see <code> {{Flag | California}} </code>.  
+Still in the red box, you can see <code> {{Flag | California}} </code>.
 This is a template, a useful but not friendly function of Wikipedia to replace an instance by a smallest code. This is what will be transformed in his real value when our PCM project will preprocess the file. Let's explain this :
 <br />
 
@@ -33,3 +34,7 @@ The diagram in the following page summarizes what we have just described :
 <br />
 
 ![imgWikiGraphique](images/PCMgraphique.png "Image du diagramme")
+
+### CONCEPTION : 
+
+![imgWikiGraphique](images/conception.png "Image du diagramme")
