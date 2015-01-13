@@ -1,5 +1,6 @@
 package org.diverse.pcm.io.wikipedia;
 
+import org.apache.log4j.Level;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter;
@@ -17,6 +18,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static org.diverse.pcm.io.wikipedia.FileFunctions.*;
 import static org.junit.Assert.assertFalse;
@@ -33,6 +35,8 @@ public class TestCycle {
     List<PCM> pcms1;
     List<PCM> pcms2;
 
+    Logger logger = Logger.getLogger("TestCycle");
+
     @Before
     public void testCycle() {
         try {
@@ -42,107 +46,8 @@ public class TestCycle {
         }
     }
 
-    /* Test with a wikipedia sample with few own matrice */
-    public void cycleGenerator() {
-        WikipediaPageMiner miner = new WikipediaPageMiner();
-        ParserTest parser = new ParserTest();
-        try {
-            BufferedReader buff = new BufferedReader(new FileReader(filePath));
-                String line;
-                String title;
-            try {
-                while ((line = buff.readLine()) != null) {
-                    try {
-                        title = line;
-                        System.out.println("Wikipedia to PCM: "+line);
-
-                        // Parse article from Wikipedia
-                        String code = miner.getPageCodeFromWikipedia(line);
-                        String preprocessedCode = miner.preprocess(code);
-                        Page page = miner.parse(preprocessedCode);
-
-                        // Enregistrement du PCM (JSON) créer un daily ?
-                        parser.writeToPCMDaily(line, page);
-
-
-                        // Export page as a List<PCM>
-                        PCMModelExporter pcmExporterJSON = new PCMModelExporter();
-                        pcms1 = seqAsJavaList(pcmExporterJSON.export(page));
-                        assertFalse(pcms1.isEmpty());
-
-                        // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
-                        // Ajout du StringBuilder pour avoir un seul fichier
-                        WikiTextExporter wikitextExporter = new WikiTextExporter();
-                        StringBuilder wikitextFinal = new StringBuilder(line);
-                        for (PCM pcmtowiki : pcms1) {
-
-                            String wikitext = wikitextExporter.toWikiText(pcmtowiki);
-
-                            wikitextFinal.append(wikitext);
-                            // WikitextSave
-                            parser.writeToWikiTextDaily(line, page);
-                        }
-
-                        CycleGenerator2();
-                    } catch (Exception e) {
-                        title = line;
-                        appendToFile(e, title);
-                        System.out.println("Error reported");
-                    }
-                }
-            }catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
-    }
-
-         /* Test wikitext to pcm */
-       public void CycleGenerator2() throws IOException {
-           WikipediaPageMiner miner = new WikipediaPageMiner();
-           ParserTest parser = new ParserTest();
-           String pathString = "output/dailyOutput/"+ date +"/wikitext" ;
-
-           Path path = Paths.get(pathString);
-           File folder = new File(pathString);
-
-           File[] listOfFiles = folder.listFiles();
-
-           for (int i = 0; i < listOfFiles.length; i++) {
-
-
-               if (listOfFiles[i].isFile()) try {
-                   String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
-                   System.out.println("Wikitext to PCM -> File: " + listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4));
-                   // Parse article from Wikipedia
-                   String file = path+"/"+listOfFiles[i].getName();
-                   String code = readFile(file, Charset.defaultCharset());
-                   String preprocessedCode = miner.preprocess(code);
-                   Page page = miner.parse(preprocessedCode);
-                   parser.writeToPCMDaily2(title, page);
-
-                   PCMModelExporter pcmExporterJSON = new PCMModelExporter();
-                    pcms2 = seqAsJavaList(pcmExporterJSON.export(page));
-
-               } catch (Exception e) {
-                   String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4)+("\n\n");
-                   appendToFile(e, title);
-                   System.out.println("Error reported");
-               }
-               else if (listOfFiles[i].isDirectory()) {
-                   System.out.println("Directory " + listOfFiles[i].getName());
-               }
-
-           }
-
-
-       }
-
     @org.junit.Test
-         public void testSameProducts(){
+    public void testSameProducts(){
         int countPCM1 = 0;
         ReaderPCMJSON readerpcm = new ReaderPCMJSON();
         for(PCM pcm2 : pcms2){
@@ -150,6 +55,7 @@ public class TestCycle {
             assertTrue(readerpcm.containsAllProducts(pcm1, pcm1));
             countPCM1++;
         }
+
     }
 
     @org.junit.Test
@@ -179,7 +85,6 @@ public class TestCycle {
         }
     }
 
-
     @org.junit.Test
     public void testOrderCells(){
         int countPCM1 = 0;
@@ -195,5 +100,98 @@ public class TestCycle {
         }
     }
 
+    /* Test with a wikipedia sample with few own matrice */
+    public void cycleGenerator() {
+        WikipediaPageMiner miner = new WikipediaPageMiner();
+        ParserTest parser = new ParserTest();
+        try {
+            BufferedReader buff = new BufferedReader(new FileReader(filePath));
+            String line;
+            try {
+                while ((line = buff.readLine()) != null) {
+                    try {
+                        System.out.println("Wikipedia to PCM: "+line);
+
+                        // Parse article from Wikipedia
+                        String code = miner.getPageCodeFromWikipedia(line);
+                        String preprocessedCode = miner.preprocess(code);
+                        Page page = miner.parse(preprocessedCode);
+
+                        // Enregistrement du PCM (JSON) créer un daily ?
+                        parser.writeToPCMDaily(line, page);
+
+
+                        // Export page as a List<PCM>
+                        PCMModelExporter pcmExporterJSON = new PCMModelExporter();
+                        pcms1 = seqAsJavaList(pcmExporterJSON.export(page));
+                        if(!pcms1.isEmpty())
+                            logger.warning("pcms1 is Empty");
+                        assertFalse(pcms1.isEmpty());
+
+                        // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
+                        // Ajout du StringBuilder pour avoir un seul fichier
+                        WikiTextExporter wikitextExporter = new WikiTextExporter();
+                        StringBuilder wikitextFinal = new StringBuilder(line);
+                        for (PCM pcmtowiki : pcms1) {
+
+                            String wikitext = wikitextExporter.toWikiText(pcmtowiki);
+
+                            wikitextFinal.append(wikitext);
+                            // WikitextSave
+                            parser.writeToWikiTextDaily(line, page);
+                        }
+
+                        CycleGenerator2();
+                    } catch (Exception e) {
+                        appendToFile(e, line);
+                        System.out.println("Error reported");
+                    }
+                }
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    /* Test wikitext to pcm */
+    public void CycleGenerator2() throws IOException {
+        WikipediaPageMiner miner = new WikipediaPageMiner();
+        ParserTest parser = new ParserTest();
+        String pathString = "output/dailyOutput/"+ date +"/wikitext" ;
+
+        Path path = Paths.get(pathString);
+        File folder = new File(pathString);
+
+        File[] listOfFiles = folder.listFiles();
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+
+            if (listOfFiles[i].isFile()) try {
+                String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
+                System.out.println("Wikitext to PCM -> File: " + listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4));
+                // Parse article from Wikipedia
+                String file = path+"/"+listOfFiles[i].getName();
+                String code = readFile(file, Charset.defaultCharset());
+                String preprocessedCode = miner.preprocess(code);
+                Page page = miner.parse(preprocessedCode);
+                parser.writeToPCMDaily2(title, page);
+
+                PCMModelExporter pcmExporterJSON = new PCMModelExporter();
+                pcms2 = seqAsJavaList(pcmExporterJSON.export(page));
+            } catch (Exception e) {
+                String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4)+("\n\n");
+                appendToFile(e, title);
+                System.out.println("Error reported");
+            }
+            else if (listOfFiles[i].isDirectory()) {
+                System.out.println("Directory " + listOfFiles[i].getName());
+            }
+
+        }
+
+    }
 
 }
