@@ -1,10 +1,12 @@
 package org.diverse.pcm.io.wikipedia;
 
 import org.diverse.pcm.api.java.PCM;
+import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporterOld;
 import org.diverse.pcm.io.wikipedia.export.WikiTextExporter;
 import org.diverse.pcm.io.wikipedia.pcm.Page;
+import org.junit.Before;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,8 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.diverse.pcm.io.wikipedia.FileFunctions.*;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static scala.collection.JavaConversions.seqAsJavaList;
 
 /**
@@ -30,21 +31,19 @@ public class TestCycle {
     String date = format.format(new Date());
     String filePath = "resources/list_of_PCMs2.txt";
     List<PCM> pcms1;
+    List<PCM> pcms2;
 
-    @org.junit.Test
+    @Before
     public void testCycle() {
         try {
-            System.out.println("Test parse from Wikipedia -> PCM (html) + PCM(JSON) -> Wikitext");
-           testWikiToWikitext();
-            System.out.println("Test Wikitext to PCM");
-            testWikitextToPCM();
+           cycleGenerator();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /* Test with a wikipedia sample with few own matrice */
-    public void testWikiToWikitext() {
+    public void cycleGenerator() {
         WikipediaPageMiner miner = new WikipediaPageMiner();
         ParserTest parser = new ParserTest();
         try {
@@ -95,6 +94,7 @@ public class TestCycle {
                         }
                         writeWikitextForHTML(wikitextFinal, line, date);
 
+                        CycleGenerator2();
                     } catch (Exception e) {
                         title = line;
                         appendToFile(e, title);
@@ -108,10 +108,11 @@ public class TestCycle {
             System.out.println(e.getMessage());
         }
 
+
     }
 
          /* Test wikitext to pcm */
-       public void testWikitextToPCM() throws IOException {
+       public void CycleGenerator2() throws IOException {
            WikipediaPageMiner miner = new WikipediaPageMiner();
            ParserTest parser = new ParserTest();
            String pathString = "../org.diverse.PCM.io.Wikipedia/output/wikitext_" + date;
@@ -132,29 +133,11 @@ public class TestCycle {
                    String code = readFile(file, Charset.defaultCharset());
                    String preprocessedCode = miner.preprocess(code);
                    Page page = miner.parse(preprocessedCode);
-                   writeToPreprocessed(preprocessedCode, title+"2");
+                   writeToPreprocessed(preprocessedCode, title);
                    parser.writeToPCMDailyJSON2(title, page);
-/*
+
                    PCMModelExporter pcmExporterJSON = new PCMModelExporter();
-                    List<PCM> pcms2 = seqAsJavaList(pcmExporterJSON.export(page));
-                   int countPCM1 = 0;
-                   ReaderPCMJSON readerpcm = new ReaderPCMJSON();
-
-                   for(PCM pcm2 : pcms2){
-                        PCM pcm1 = pcms1.get(countPCM1);
-                       List<Product> produits =  pcm1.getProducts();
-
-                      assertTrue(readerpcm.containsAllProducts(produits, pcm2));
-                       assertTrue(readerpcm.containsAllContents(produits, pcm2));
-                       int repeatTests = 0;
-                       while(repeatTests < 20){
-                        assertTrue(readerpcm.sameRandomCell(pcm1, pcm2));
-                         assertTrue(readerpcm.sameRandomProduct(pcm1, pcm2));
-                         repeatTests++;
-                       }
-                       countPCM1++;
-                   }*/
-
+                    pcms2 = seqAsJavaList(pcmExporterJSON.export(page));
 
                } catch (Exception e) {
                    String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4)+("\n\n");
@@ -169,6 +152,60 @@ public class TestCycle {
 
 
        }
+
+    @org.junit.Test
+         public void testSameProducts(){
+        int countPCM1 = 0;
+        ReaderPCMJSON readerpcm = new ReaderPCMJSON();
+        for(PCM pcm2 : pcms2){
+            PCM pcm1 = pcms1.get(countPCM1);
+            assertTrue(readerpcm.containsAllProducts(pcm1, pcm1));
+            countPCM1++;
+        }
+    }
+
+    @org.junit.Test
+    public void testSameContents(){
+        int countPCM1 = 0;
+        ReaderPCMJSON readerpcm = new ReaderPCMJSON();
+        for(PCM pcm2 : pcms2){
+            PCM pcm1 = pcms1.get(countPCM1);
+            List<Product> produits =  pcm1.getProducts();
+            assertTrue(readerpcm.containsAllContents(produits, pcm2));
+            countPCM1++;
+        }
+    }
+
+    @org.junit.Test
+    public void testOrderProducts(){
+        int countPCM1 = 0;
+        ReaderPCMJSON readerpcm = new ReaderPCMJSON();
+        for(PCM pcm2 : pcms2){
+            PCM pcm1 = pcms1.get(countPCM1);
+            int repeatTests = 0;
+            while(repeatTests < 20){
+                assertTrue(readerpcm.sameRandomProduct(pcm1, pcm2));
+                repeatTests++;
+            }
+            countPCM1++;
+        }
+    }
+
+
+    @org.junit.Test
+    public void testOrderCells(){
+        int countPCM1 = 0;
+        ReaderPCMJSON readerpcm = new ReaderPCMJSON();
+        for(PCM pcm2 : pcms2){
+            PCM pcm1 = pcms1.get(countPCM1);
+            int repeatTests = 0;
+            while(repeatTests < 20){
+                assertTrue(readerpcm.sameRandomCell(pcm1, pcm2));
+                repeatTests++;
+            }
+            countPCM1++;
+        }
+    }
 
 
 }

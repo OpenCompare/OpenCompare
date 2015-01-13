@@ -3,7 +3,6 @@ package org.diverse.pcm.io.wikipedia;
 import org.diverse.pcm.api.java.Cell;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.Product;
-import org.diverse.pcm.api.java.impl.CellImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +15,26 @@ public class ReaderPCMJSON {
 
 
 
-    public boolean containsAllProducts(List<Product> products, PCM pcm){
-        ArrayList<Product> produits =  (ArrayList)pcm.getProducts();
-        return produits.containsAll(products);
+    public boolean containsAllProducts(PCM pcm1, PCM pcm2){
+        List<Product> products1 =  pcm1.getProducts();
+        List<String> products1names = new ArrayList<String>();
+        for(Product product1: products1){
+            products1names.add(product1.getName());
+        }
+        List<Product> products2 =  pcm2.getProducts();
+        List<String> products2names = new ArrayList<String>();
+        for(Product product2: products2){
+            products2names.add(product2.getName());
+        }
+
+        return products1names.containsAll(products2names);
     }
 
     public boolean containsAllContents(List<Product> products, PCM pcm){
-        ArrayList<Product> produits =  (ArrayList)pcm.getProducts();
+        List<Product> produits =  pcm.getProducts();
         boolean containsAll = false;
         for(Product prod : produits){
-            ArrayList<CellImpl> cellules = (ArrayList) prod.getCells();
+            List<Cell> cellules = prod.getCells();
                 containsAll = cellules.containsAll(prod.getCells());
             }
         return containsAll;
@@ -33,14 +42,13 @@ public class ReaderPCMJSON {
 
 
     public boolean containsContent(String value, PCM pcm){
-        ArrayList<Product> produits =  (ArrayList)pcm.getProducts();
+        List<Product> produits =  pcm.getProducts();
         boolean containsValue = false;
         for(Product prod : produits){
-            ArrayList<CellImpl> cellules = (ArrayList) prod.getCells();
-            for(CellImpl cellule : cellules){
+            List<Cell> cellules = prod.getCells();
+            for(Cell cellule : cellules){
                 containsValue = cellule.getContent().equals(value);
             }
-
         }
         return containsValue;
     }
@@ -67,18 +75,28 @@ public class ReaderPCMJSON {
     public boolean sameRandomProduct(PCM pcm1, PCM pcm2){
         List<Product> products1 =  pcm1.getProducts();
         List<Product> products2 =  pcm2.getProducts();
-        int i = randomRange(0, products1.size() - 1);
-        return products1.get(i).getName() ==  products2.get(i).getName();
+        if(pcm1.getProducts().size() == pcm2.getProducts().size()) {
+            int i = randomRange(0, products1.size() - 1);
+            return products1.get(i).getName() == products2.get(i).getName();
+        }
+        else{
+            return false;
+        }
     }
 
     public boolean sameRandomCell(PCM pcm1, PCM pcm2){
         List<Product> products1 =  pcm1.getProducts();
         List<Product> products2 =  pcm2.getProducts();
-        int i = randomRange(0, products1.size() - 1);
-        List<Cell> cells1 = products1.get(i).getCells();
-        List<Cell> cells2 = products1.get(i).getCells();
-        int j = randomRange(0, cells1.size()-1);
-        return cells1.get(i).getContent() ==  cells2.get(i).getContent();
+        if(pcm1.getProducts().size() == pcm2.getProducts().size()) {
+            int i = randomRange(0, products1.size() - 1);
+            List<Cell> cells1 = products1.get(i).getCells();
+            List<Cell> cells2 = products1.get(i).getCells();
+            int j = randomRange(0, cells1.size() - 1);
+            return cells1.get(i).getContent() == cells2.get(i).getContent();
+        }
+        else{
+            return false;
+        }
     }
 
     public static int randomRange(int min, int max){
