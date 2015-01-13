@@ -30,14 +30,35 @@ public class ReaderPCMJSON {
         return products1names.containsAll(products2names);
     }
 
-    public boolean containsAllContents(List<Product> products, PCM pcm){
-        List<Product> produits =  pcm.getProducts();
-        boolean containsAll = false;
-        for(Product prod : produits){
-            List<Cell> cellules = prod.getCells();
-                containsAll = cellules.containsAll(prod.getCells());
+    public boolean containsAllContents(PCM pcm1, PCM pcm2){
+        int countDif = 0;
+        List<Product> products1 =  pcm1.getProducts();
+        List<String> cellsNames1 = new ArrayList<String>();
+        for(Product product1: products1){
+            List<Cell> product1cells = product1.getCells();
+            int i = 0;
+            for(Cell product1cell: product1cells){
+               cellsNames1.add(i, product1cell.getContent());
+                i++;
             }
-        return containsAll;
+        }
+        List<Product> products2 =  pcm2.getProducts();
+        List<String> cellsNames2 = new ArrayList<String>();
+
+        for(Product product2: products2){
+            List<Cell> product2cells = product2.getCells();
+            int j = 0;
+            for(Cell product2cell: product2cells){
+                cellsNames2.add(j, product2cell.getContent());
+                j++;
+            }
+        }
+            for(String cellname: cellsNames1){
+                if(!cellsNames2.contains(cellname)){
+                    countDif++;
+                }
+            }
+        return countDif == 0;
         }
 
 

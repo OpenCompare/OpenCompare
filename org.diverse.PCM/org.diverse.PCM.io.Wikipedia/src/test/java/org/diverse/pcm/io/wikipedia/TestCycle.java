@@ -171,7 +171,7 @@ public class TestCycle {
         for(PCM pcm2 : pcms2){
             PCM pcm1 = pcms1.get(countPCM1);
             List<Product> produits =  pcm1.getProducts();
-            assertTrue(readerpcm.containsAllContents(produits, pcm2));
+            assertTrue(readerpcm.containsAllContents(pcm1, pcm1));
             countPCM1++;
         }
     }
