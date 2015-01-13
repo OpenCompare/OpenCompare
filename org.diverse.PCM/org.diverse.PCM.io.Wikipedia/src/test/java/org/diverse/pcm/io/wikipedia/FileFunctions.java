@@ -4,6 +4,8 @@ import org.diverse.pcm.io.wikipedia.pcm.Page;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /* This is a class with useful function on files */
 public class FileFunctions {
@@ -27,9 +29,11 @@ public class FileFunctions {
         return file;
     }
 
-    public static void appendToFile(Exception e, String title) {
+       public static void appendToFile(Exception e, String title) {
+           SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+           String date = format.format(new Date());
         try {
-            FileWriter fstream = new FileWriter("output/reporting/reporting.txt", true);
+            FileWriter fstream = new FileWriter("output/dailyOutput/"+ date +"reporting.txt", true);
             BufferedWriter out = new BufferedWriter(fstream);
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write("\n\n"+title+"\n");
@@ -41,19 +45,6 @@ public class FileFunctions {
         }
     }
 
-    public static void appendToFile1(Exception e, String title) {
-        try {
-            FileWriter fstream = new FileWriter("output/reporting/reporting1.txt", true);
-            BufferedWriter out = new BufferedWriter(fstream);
-            PrintWriter pWriter = new PrintWriter(out, true);
-            pWriter.write("\n\n"+title+"\n");
-            e.printStackTrace(pWriter);
-            pWriter.close();
-        }
-        catch (Exception ie) {
-            throw new RuntimeException("Could not write Exception to file", ie);
-        }
-    }
 
     public static void writeToPreprocessed(String preprocessed, String title) {
         try {
@@ -81,26 +72,6 @@ public class FileFunctions {
         }
     }
 
-    public static void writeWikitextForHTML(StringBuilder wikitext, String title, String date){
-        File dir = new File ("output/wikitext_"+date+"_full/");
-        if(!dir.exists()){
-            try{
-                dir.mkdir();
-            } catch(SecurityException se){
-                //handle it
-            }
-        }
-        try {
-            File file = new File ("output/wikitext_"+date+"_full/"+title+".txt");
-            PrintWriter pWriter = new PrintWriter (file);
-
-            pWriter.write(wikitext.toString());
-            pWriter.close ();
-        }
-        catch (Exception ie) {
-            throw new RuntimeException("Could not write Exception to file", ie);
-        }
-    }
 
 
 }

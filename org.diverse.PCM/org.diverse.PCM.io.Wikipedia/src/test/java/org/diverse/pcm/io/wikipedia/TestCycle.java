@@ -3,7 +3,6 @@ package org.diverse.pcm.io.wikipedia;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.Product;
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter;
-import org.diverse.pcm.io.wikipedia.export.PCMModelExporterOld;
 import org.diverse.pcm.io.wikipedia.export.WikiTextExporter;
 import org.diverse.pcm.io.wikipedia.pcm.Page;
 import org.junit.Before;
@@ -20,7 +19,8 @@ import java.util.Date;
 import java.util.List;
 
 import static org.diverse.pcm.io.wikipedia.FileFunctions.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static scala.collection.JavaConversions.seqAsJavaList;
 
 /**
@@ -59,24 +59,15 @@ public class TestCycle {
                         // Parse article from Wikipedia
                         String code = miner.getPageCodeFromWikipedia(line);
                         String preprocessedCode = miner.preprocess(code);
-                        writeToPreprocessed(preprocessedCode, title);
                         Page page = miner.parse(preprocessedCode);
 
-                        // page export to pcm(html)
-                        PCMModelExporterOld pcmExporter = new PCMModelExporterOld();
-                        PCM pcm = pcmExporter.export(page);
-
-                        assertNotNull(pcm);
-                        parser.writeToPCMDailyHTML(title, page);
-
                         // Enregistrement du PCM (JSON) créer un daily ?
-                        parser.writeToPCMDailyJSON(line, page);
+                        parser.writeToPCMDaily(line, page);
 
-                        //appel de la deuxième fonction
-                       // testPCMtoWikitext(page, line);
+
                         // Export page as a List<PCM>
                         PCMModelExporter pcmExporterJSON = new PCMModelExporter();
-                       pcms1 = seqAsJavaList(pcmExporterJSON.export(page));
+                        pcms1 = seqAsJavaList(pcmExporterJSON.export(page));
                         assertFalse(pcms1.isEmpty());
 
                         // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
@@ -88,11 +79,9 @@ public class TestCycle {
                             String wikitext = wikitextExporter.toWikiText(pcmtowiki);
 
                             wikitextFinal.append(wikitext);
-                            //assertNotNull(wikitext);
-                            // Sauvegarde du WikiText
+                            // WikitextSave
                             parser.writeToWikiTextDaily(line, page);
                         }
-                        writeWikitextForHTML(wikitextFinal, line, date);
 
                         CycleGenerator2();
                     } catch (Exception e) {
@@ -115,7 +104,7 @@ public class TestCycle {
        public void CycleGenerator2() throws IOException {
            WikipediaPageMiner miner = new WikipediaPageMiner();
            ParserTest parser = new ParserTest();
-           String pathString = "../org.diverse.PCM.io.Wikipedia/output/wikitext_" + date;
+           String pathString = "output/dailyOutput/"+ date +"/wikitext" ;
 
            Path path = Paths.get(pathString);
            File folder = new File(pathString);
@@ -133,8 +122,7 @@ public class TestCycle {
                    String code = readFile(file, Charset.defaultCharset());
                    String preprocessedCode = miner.preprocess(code);
                    Page page = miner.parse(preprocessedCode);
-                   writeToPreprocessed(preprocessedCode, title);
-                   parser.writeToPCMDailyJSON2(title, page);
+                   parser.writeToPCMDaily2(title, page);
 
                    PCMModelExporter pcmExporterJSON = new PCMModelExporter();
                     pcms2 = seqAsJavaList(pcmExporterJSON.export(page));
@@ -171,7 +159,7 @@ public class TestCycle {
         for(PCM pcm2 : pcms2){
             PCM pcm1 = pcms1.get(countPCM1);
             List<Product> produits =  pcm1.getProducts();
-            assertTrue(readerpcm.containsAllContents(pcm1, pcm1));
+            assertTrue(readerpcm.containsAllContents(pcm1, pcm2));
             countPCM1++;
         }
     }

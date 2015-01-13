@@ -110,10 +110,10 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
-  def writeToPCMDailyJSON(title : String, page : Page) {
+  def writeToPCMDaily(title : String, page : Page) {
 
     val date = getDateForDirectory()
-    val dir = new File("output/model_"+date+"_JSON/")
+    val dir = new File("output/dailyOutput/"+date+"/model/")
     // Tests whether the directory denoted by this abstract pathname exists.
     val exists = dir.exists()
     if(!exists){
@@ -127,7 +127,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val serializer = new PCMtoJsonImpl
     val loader = new JSONLoaderImpl
     for ((pcm, index) <- pcms.zipWithIndex) {
-      val path = "output/model_"+date+"_JSON/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val path = "output/dailyOutput/"+date+"/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
       writer.write(serializer.toJson(pcm))
       writer.close()
@@ -138,10 +138,10 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
-  def writeToPCMDailyJSON2(title : String, page : Page) {
+  def writeToPCMDaily2(title : String, page : Page) {
 
     val date = getDateForDirectory()
-    val dir = new File("output/model_"+date+"_JSON2/")
+    val dir = new File("output/dailyOutput/"+date+"/model2")
     // Tests whether the directory denoted by this abstract pathname exists.
     val exists = dir.exists()
     if(!exists){
@@ -155,7 +155,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val loader = new JSONLoaderImpl
     for ((pcm, index) <- pcms.zipWithIndex) {
 
-      val path = "output/model_"+date+"_JSON2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val path = "output/dailyOutput/"+date+"/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
       writer.write(serializer.toJson(pcm))
       writer.close()
@@ -170,6 +170,12 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val today = Calendar.getInstance.getTime
     val curTimeFormat = new SimpleDateFormat("dd-MM-yyyy")
     val date = curTimeFormat.format(today)
+    val dir = new File("output/dailyOutput/"+date+"/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
   date
   }
 
@@ -233,7 +239,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   def writeToWikiTextDaily(title : String, page : Page) {
     val date = getDateForDirectory()
-    val dir = new File("output/wikitext_"+date+"/")
+    val dir = new File("output/dailyOutput/"+date+"/wikitext/")
     // Tests whether the directory denoted by this abstract pathname exists.
     val exists = dir.exists()
     if(!exists){
@@ -246,7 +252,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
     for ((pcm, index) <- pcms.zipWithIndex) {
       val wikitext = serializer.toWikiText(pcm)
-      val writer = new FileWriter("output/wikitext_"+date+"/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
+      val writer = new FileWriter("output/dailyOutput/"+date+"/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
       writer.write(wikitext)
       writer.close()
     }

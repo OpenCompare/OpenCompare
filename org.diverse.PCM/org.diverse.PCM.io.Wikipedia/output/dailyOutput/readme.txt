@@ -1,0 +1,1 @@
+This file is here to add the dailyOutput folder to the commit
