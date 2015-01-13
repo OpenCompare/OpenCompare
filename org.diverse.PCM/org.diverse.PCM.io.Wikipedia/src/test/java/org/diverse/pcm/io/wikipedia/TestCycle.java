@@ -110,7 +110,7 @@ public class TestCycle {
             try {
                 while ((line = buff.readLine()) != null) {
                     try {
-                        System.out.println("Wikipedia to PCM: "+line);
+                        logger.info("Wikipedia to PCM: " + line);
 
                         // Parse article from Wikipedia
                         String code = miner.getPageCodeFromWikipedia(line);
@@ -146,7 +146,7 @@ public class TestCycle {
                         CycleGenerator2();
                     } catch (Exception e) {
                         appendToFile(e, line);
-                        System.out.println("Error reported");
+                        logger.warning("Error reported");
                     }
                 }
             }catch (Exception e) {
@@ -173,7 +173,7 @@ public class TestCycle {
 
             if (listOfFiles[i].isFile()) try {
                 String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4);
-                System.out.println("Wikitext to PCM -> File: " + listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4));
+                logger.info("Wikitext to PCM -> File: " + listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4));
                 // Parse article from Wikipedia
                 String file = path+"/"+listOfFiles[i].getName();
                 String code = readFile(file, Charset.defaultCharset());
@@ -186,10 +186,10 @@ public class TestCycle {
             } catch (Exception e) {
                 String title = listOfFiles[i].getName().substring(0, listOfFiles[i].getName().length() - 4)+("\n\n");
                 appendToFile(e, title);
-                System.out.println("Error reported");
+                logger.warning("Error reported");
             }
             else if (listOfFiles[i].isDirectory()) {
-                System.out.println("Directory " + listOfFiles[i].getName());
+                logger.warning("Directory " + listOfFiles[i].getName());
             }
 
         }
