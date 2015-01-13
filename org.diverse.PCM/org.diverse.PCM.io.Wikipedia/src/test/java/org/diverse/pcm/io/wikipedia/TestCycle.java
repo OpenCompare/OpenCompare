@@ -35,7 +35,7 @@ public class TestCycle {
     List<PCM> pcms1;
     List<PCM> pcms2;
 
-    Logger logger = Logger.getLogger("TestCycle");
+    private static Logger logger = Logger.getLogger("TestCycle");
 
     @Before
     public void testCycle() {
@@ -117,15 +117,17 @@ public class TestCycle {
                         String preprocessedCode = miner.preprocess(code);
                         Page page = miner.parse(preprocessedCode);
 
-                        // Enregistrement du PCM (JSON) créer un daily ?
+                        // Enregistrement du PCM (JSON) créer un d
                         parser.writeToPCMDaily(line, page);
-
+                        logger.info(line+"PCM JSON Enregistré");
 
                         // Export page as a List<PCM>
                         PCMModelExporter pcmExporterJSON = new PCMModelExporter();
                         pcms1 = seqAsJavaList(pcmExporterJSON.export(page));
-                        if(!pcms1.isEmpty())
+                        if(pcms1.isEmpty())
                             logger.warning("pcms1 is Empty");
+                        else
+                            logger.info("pcms1 OK");
                         assertFalse(pcms1.isEmpty());
 
                         // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
@@ -148,10 +150,10 @@ public class TestCycle {
                     }
                 }
             }catch (Exception e) {
-                System.out.println(e.getMessage());
+                logger.warning(e.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.warning(e.getMessage());
         }
 
     }
