@@ -147,7 +147,6 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     if(!exists){
       dir.mkdir()
     }
-
     val exporter = new PCMModelExporter
     val pcms = exporter.export(page)
     //    val serializer = new PCMtoHTML

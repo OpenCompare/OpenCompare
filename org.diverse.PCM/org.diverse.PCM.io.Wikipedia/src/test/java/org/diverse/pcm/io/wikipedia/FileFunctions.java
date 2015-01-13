@@ -4,8 +4,6 @@ import org.diverse.pcm.io.wikipedia.pcm.Page;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.nio.*;
-import java.nio.file.Files;
 
 /* This is a class with useful function on files */
 public class FileFunctions {
@@ -36,6 +34,7 @@ public class FileFunctions {
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write("\n\n"+title+"\n");
             e.printStackTrace(pWriter);
+            pWriter.close();
         }
         catch (Exception ie) {
             throw new RuntimeException("Could not write Exception to file", ie);
@@ -49,6 +48,7 @@ public class FileFunctions {
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write("\n\n"+title+"\n");
             e.printStackTrace(pWriter);
+            pWriter.close();
         }
         catch (Exception ie) {
             throw new RuntimeException("Could not write Exception to file", ie);
@@ -61,6 +61,7 @@ public class FileFunctions {
             BufferedWriter out = new BufferedWriter(fstream);
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write(preprocessed);
+            pWriter.close();
         }
         catch (Exception ie) {
             throw new RuntimeException("Could not write Exception to file", ie);
@@ -73,6 +74,7 @@ public class FileFunctions {
             BufferedWriter out = new BufferedWriter(fstream);
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write(page.toString());
+            pWriter.close();
         }
         catch (Exception ie) {
             throw new RuntimeException("Could not write Exception to file", ie);
