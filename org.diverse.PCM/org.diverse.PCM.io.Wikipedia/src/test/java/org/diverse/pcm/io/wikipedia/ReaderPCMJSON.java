@@ -113,7 +113,7 @@ public class ReaderPCMJSON {
             List<Cell> cells1 = products1.get(i).getCells();
             List<Cell> cells2 = products1.get(i).getCells();
             int j = randomRange(0, cells1.size() - 1);
-            return cells1.get(i).getContent() == cells2.get(i).getContent();
+            return cells1.get(j).getContent() == cells2.get(j).getContent();
         }
         else{
             return false;
