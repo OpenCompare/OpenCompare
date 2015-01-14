@@ -29,7 +29,7 @@ public class FileFunctions {
         return file;
     }
 
-       public static void appendToFile(Exception e, String title) {
+    public static void appendToFile(Exception e, String title) {
            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
            String date = format.format(new Date());
         try {
@@ -38,6 +38,21 @@ public class FileFunctions {
             PrintWriter pWriter = new PrintWriter(out, true);
             pWriter.write("\n\n"+title+"\n");
             e.printStackTrace(pWriter);
+            pWriter.close();
+        }
+        catch (Exception ie) {
+            throw new RuntimeException("Could not write Exception to file", ie);
+        }
+    }
+
+    public static void writeReporting(StringBuilder builder) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String date = format.format(new Date());
+        try {
+            FileWriter fstream = new FileWriter("output/dailyOutput/"+ date +"reporting.txt", true);
+            BufferedWriter out = new BufferedWriter(fstream);
+            PrintWriter pWriter = new PrintWriter(out, true);
+            pWriter.write(builder.toString());
             pWriter.close();
         }
         catch (Exception ie) {
@@ -71,7 +86,5 @@ public class FileFunctions {
             throw new RuntimeException("Could not write Exception to file", ie);
         }
     }
-
-
 
 }

@@ -1,5 +1,4 @@
 <h1 style="text-align:center; color:#2E36D4"> Wikipedia PCM project </h1>
-===
 <hr />
 <br />
 ### STEPS AND PROCESSING :
