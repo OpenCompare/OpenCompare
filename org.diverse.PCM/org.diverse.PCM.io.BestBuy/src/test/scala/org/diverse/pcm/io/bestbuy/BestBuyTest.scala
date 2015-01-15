@@ -1,6 +1,6 @@
-import org.scalatest.{BeforeAndAfterAll, Matchers, FlatSpec}
+package org.diverse.pcm.io.bestbuy
 
-import scalaj.http.{HttpOptions, Http}
+import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
@@ -16,7 +16,8 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
 
   it should "get the info on a product" in {
-    val info = api.getProductInfo("19914095")
+    val info = api.getProductInfo("9925379")
+
     println(info)
   }
 
