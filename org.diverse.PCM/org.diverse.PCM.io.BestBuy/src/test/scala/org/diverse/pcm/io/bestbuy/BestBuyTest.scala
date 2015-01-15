@@ -6,11 +6,13 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val api = new BestBuyAPI
 
-  "The BestBuy miner" should "list the products" in {
+  "The BestBuy miner" should "list the products SKU" in {
 
-    val products = api.getProducts()
-    for (product <- products) {
-      println(product)
+    val skus = api.listProductsSKU(Some("Laptop_Computers"), pageSize=100)
+    for (sku <- skus) {
+      println(sku)
+      val info = api.getProductInfo(sku)
+      println(info.details("System Memory (RAM)"))
     }
 
   }
