@@ -12,15 +12,13 @@
     <properties>
         <metamodel.ecore>./metamodel/model/pcm.mm</metamodel.ecore>
         <kmf.version>3.5.12</kmf.version>
+        <kmf.plugin.version>3.5.12</kmf.plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <play2.version>2.3.4</play2.version>
         <scala.version>2.10.4</scala.version>
-
-        <play2.plugin.version>1.0.0-alpha8</play2.plugin.version>
-        <sbt-compiler.plugin.version>1.0.0-beta4</sbt-compiler.plugin.version>
     </properties>
 
 
@@ -58,21 +56,5 @@
         </repository>
     </repositories>
 
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.nanoko.playframework</groupId>
-                    <artifactId>play2-maven-plugin</artifactId>
-                    <version>1.2.5</version>
-                    <configuration>
-                        <skipTests>true</skipTests>
-                    </configuration>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
-    </build>
 
 </project>
