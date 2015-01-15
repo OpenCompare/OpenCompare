@@ -42,6 +42,10 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         exampleFeature.name = "Feature";
         $scope.pcm.addFeatures(exampleFeature);
 
+        var exampleFeature1 = factory.createFeature();
+        exampleFeature1.name = "Feature1";
+        $scope.pcm.addFeatures(exampleFeature1);
+
         var exampleProduct = factory.createProduct();
         exampleProduct.name = "Product";
         $scope.pcm.addProducts(exampleProduct);
@@ -50,6 +54,11 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         exampleCell.feature = exampleFeature;
         exampleCell.content = "Yes";
         exampleProduct.addValues(exampleCell);
+
+        var exampleCell1 = factory.createCell();
+        exampleCell1.feature = exampleFeature1;
+        exampleCell1.content = "No";
+        exampleProduct.addValues(exampleCell1);
 
         initializeHOT();
 
