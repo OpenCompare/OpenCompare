@@ -16,8 +16,6 @@ class BestBuyAPI {
     // Restrict calls to 5 per seconds
     val time = System.currentTimeMillis() / 1000
 
-    println(timeLastCall + " === " + callsInLastSecond)
-
     if (time > timeLastCall) { // OK
       timeLastCall = time
       callsInLastSecond = 1
@@ -46,8 +44,6 @@ class BestBuyAPI {
     }
 
     url += "?page=" + page + "&pageSize=" + pageSize + "&show=sku&format=xml&" + apiKey
-
-    println(url)
 
     // Call API
     val result = callAPI(url)
