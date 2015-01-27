@@ -1,13 +1,16 @@
 package org.diverse.pcm.io.wikipedia
 
 import java.io.{File, FileWriter, PrintWriter, StringWriter}
+import java.nio.file.{Paths, Files}
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.concurrent.Executors
 
-import org.diverse.pcm.api.java.PCM
+import org.diverse.pcm.api.java.{Product, PCM}
 import org.diverse.pcm.api.java.export.PCMtoHTML
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl
 import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl
-import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
+import org.diverse.pcm.io.wikipedia.export.{PCMModelExporterOld, WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -107,6 +110,118 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }
 
+  def writeToPCMDaily(title : String, page : Page) {
+
+    val date = getDateForDirectory()
+    val dir = new File("output/dailyOutput/"+date+"/model/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+    //    val serializer = new PCMtoHTML
+    //    writer.write(serializer.toHTML(pcm))
+    val serializer = new PCMtoJsonImpl
+    val loader = new JSONLoaderImpl
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val path = "output/dailyOutput/"+date+"/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val writer = new FileWriter(path)
+      writer.write(serializer.toJson(pcm))
+      writer.close()
+
+      loader.load(new File(path))
+
+    }
+
+  }
+
+  def writeToPCMDaily2(title : String, page : Page) {
+
+    val date = getDateForDirectory()
+    val dir = new File("output/dailyOutput/"+date+"/model2")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+    //    val serializer = new PCMtoHTML
+    //    writer.write(serializer.toHTML(pcm))
+    val serializer = new PCMtoJsonImpl
+    val loader = new JSONLoaderImpl
+    for ((pcm, index) <- pcms.zipWithIndex) {
+
+      val path = "output/dailyOutput/"+date+"/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      val writer = new FileWriter(path)
+      writer.write(serializer.toJson(pcm))
+      writer.close()
+
+      loader.load(new File(path))
+
+    }
+
+  }
+
+  def getDateForDirectory(): String = {
+    val today = Calendar.getInstance.getTime
+    val curTimeFormat = new SimpleDateFormat("dd-MM-yyyy")
+    val date = curTimeFormat.format(today)
+    val dir = new File("output/dailyOutput/"+date+"/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+  date
+  }
+
+
+  def writeToPCMDailyHTML(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"_HTML/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+        dir.mkdir()
+    }
+    val writer = new FileWriter("output/model_"+date+"_HTML/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
+  def writeFromWikitextToPCMDaily(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/model_"+date+"_2/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+    val writer = new FileWriter("output/model_"+date+"_2/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
+
+  def writeToPCMOld(title : String, page : Page) {
+    val writer = new FileWriter("output/model/" + title.replaceAll(" ", "_") + ".pcm")
+    val exporter = new PCMModelExporterOld
+    val pcm = exporter.export(page)
+    val serializer = new PCMtoHTML
+    writer.write(serializer.toHTML(pcm))
+    writer.close()
+  }
+
   def writeToWikiText(title : String, page : Page) {
     val exporter = new PCMModelExporter
     val pcms = exporter.export(page)
@@ -121,7 +236,29 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
 
   }
-  
+
+  def writeToWikiTextDaily(title : String, page : Page) {
+    val date = getDateForDirectory()
+    val dir = new File("output/dailyOutput/"+date+"/wikitext/")
+    // Tests whether the directory denoted by this abstract pathname exists.
+    val exists = dir.exists()
+    if(!exists){
+      dir.mkdir()
+    }
+    val exporter = new PCMModelExporter
+    val pcms = exporter.export(page)
+
+    val serializer = new WikiTextExporter
+
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val wikitext = serializer.toWikiText(pcm)
+      val writer = new FileWriter("output/dailyOutput/"+date+"/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
+      writer.write(wikitext)
+      writer.close()
+    }
+
+  }
+
   "The PCM parser" should "parse the example of tables from Wikipedia" in {
     val pcm = parsePCMFromFile("resources/example.pcm")
 //    println(pcm)
