@@ -30,13 +30,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">OpenCompare</a>
+                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("images/logo_inverted_transparent.png")' height="25" width="51" > OpenCompare</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oc-navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="/list">List</a></li> <!-- class="active" -->
+                    <li><a href="/create">Create</a></li>
                     <!--<li><a href="/about">About</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -59,6 +60,17 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-58997269-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
     @footer
 </body>
