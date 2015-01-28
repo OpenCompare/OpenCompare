@@ -36,18 +36,18 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val code = reader.mkString
     reader.close
     val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode)
+    miner.parse(preprocessedCode, file)
   }
   
   def parseFromTitle(title : String) : Page = {
     val code = miner.getPageCodeFromWikipedia(title)
     val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode)
+    miner.parse(preprocessedCode, title)
   }
   
   def parseFromOfflineCode(title : String) : Page = {
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    miner.parse(code)
+    miner.parse(code, title)
   }
   
   def testArticle(title : String) : Page = {

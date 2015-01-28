@@ -13,6 +13,7 @@ import scala.collection.mutable.ListBuffer
 class Page {
 
   private val matrices : ListBuffer[Matrix] = new ListBuffer
+  var title = ""
   
   def getMatrices : List[Matrix] = {
     matrices.toList
