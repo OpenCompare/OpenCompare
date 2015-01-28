@@ -48,11 +48,13 @@ class PageVisitor(pageTitle : String) extends AstVisitor{
 	 */
 	def trim(s : String) : String = {
 	  val matcher = trimPattern.matcher(s)
-	  if (matcher.matches() && matcher.groupCount() == 1) {
+	  var trimmedString = if (matcher.matches() && matcher.groupCount() == 1) {
 		  matcher.group(1)
 	  } else {
 		  ""
 	  }
+    trimmedString = trimmedString.replaceAll("_", " ")
+    trimmedString
 	}
   
   def visit(e : LazyParsedPage) {
