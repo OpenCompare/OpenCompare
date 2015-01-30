@@ -29,7 +29,7 @@ class WikipediaPageMiner {
   def getPageCodeFromWikipedia(title : String): String = {
     val editPage = Http("http://en.wikipedia.org/w/index.php")
       .params("title" -> title.replaceAll(" ", "_"), "action" -> "edit")
-      .option(HttpOptions.connTimeout(1000))
+      .option(HttpOptions.connTimeout(10000))
       .option(HttpOptions.readTimeout(30000))
       .asString
     val xml = parseHTMLAsXML(editPage)
@@ -62,10 +62,11 @@ class WikipediaPageMiner {
   /**
    * Parse preprocessed wikitext
    * @param preprocessedCode : preprocessed wikitext code
+   * @param pageTitle : title of the parsed page
    */
-  def parse(preprocessedCode : String) : Page = {
-    val ast = parser.parseArticle(preprocessedCode, "");
-    val visitor = new PageVisitor
+  def parse(preprocessedCode : String, pageTitle : String) : Page = {
+    val ast = parser.parseArticle(preprocessedCode, "")
+    val visitor = new PageVisitor(pageTitle)
     visitor.go(ast)
     visitor.pcm
   }

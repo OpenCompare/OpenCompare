@@ -24,9 +24,10 @@ public class WikipediaMinerTest {
         WikipediaPageMiner miner = new WikipediaPageMiner();
 
         // Parse article from Wikipedia
-        String code = miner.getPageCodeFromWikipedia("Comparison_of_Nikon_DSLR_cameras");
+        String title = "Comparison_of_Nikon_DSLR_cameras";
+        String code = miner.getPageCodeFromWikipedia(title);
         String preprocessedCode = miner.preprocess(code);
-        Page page = miner.parse(preprocessedCode);
+        Page page = miner.parse(preprocessedCode, title);
 
 
         // HTML export
