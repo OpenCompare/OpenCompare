@@ -5,16 +5,13 @@ import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.PCMFactoryImpl;
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
 import org.diverse.pcm.api.java.io.JSONLoader;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by gbecan on 11/12/14.
@@ -22,7 +19,7 @@ import java.util.UUID;
 public class Database {
 
     public static Database INSTANCE = new Database();
-    private JSONLoader loader = new JSONLoaderImpl();
+    private KMFJSONLoader loader = new KMFJSONLoader();
     private PCMtoJson serializer = new PCMtoJsonImpl();
 
     private DB db;

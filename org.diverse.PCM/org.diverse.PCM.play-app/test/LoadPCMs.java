@@ -1,6 +1,6 @@
 import model.Database;
 import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
 import org.diverse.pcm.api.java.io.JSONLoader;
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class LoadPCMs {
         String path = "../org.diverse.PCM.io.Wikipedia/output/model";
         File dir = new File(path);
 
-        JSONLoader loader = new JSONLoaderImpl();
+        KMFJSONLoader loader = new KMFJSONLoader();
         CellContentInterpreter interpreter = new CellContentInterpreter();
 
         for (File file : dir.listFiles(new FilenameFilter() {

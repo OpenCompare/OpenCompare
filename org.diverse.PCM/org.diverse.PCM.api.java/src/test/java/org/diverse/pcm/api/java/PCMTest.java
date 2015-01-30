@@ -3,7 +3,6 @@ package org.diverse.pcm.api.java;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
-import org.diverse.pcm.api.java.io.JSONLoader;
 import org.diverse.pcm.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;

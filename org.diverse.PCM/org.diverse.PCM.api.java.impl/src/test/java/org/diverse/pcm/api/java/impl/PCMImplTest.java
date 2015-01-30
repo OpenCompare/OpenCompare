@@ -4,12 +4,12 @@ import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.PCMTest;
 import org.diverse.pcm.api.java.export.PCMtoJson;
 import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
-import org.diverse.pcm.api.java.io.JSONLoader;
+import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
+
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -37,7 +37,7 @@ public class PCMImplTest extends PCMTest {
         System.out.println(json);
 
         // Load
-        JSONLoader loader = new JSONLoaderImpl();
+        KMFJSONLoader loader = new KMFJSONLoader();
         PCM loadedPCM = loader.load(json);
 
         assertEquals(pcm.getName(), loadedPCM.getName());
