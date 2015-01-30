@@ -2,6 +2,7 @@ import model.Database;
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
 import org.diverse.pcm.api.java.io.JSONLoader;
+import org.diverse.pcm.formalizer.extractor.CellContentInterpreter;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class LoadPCMs {
         File dir = new File(path);
 
         JSONLoader loader = new JSONLoaderImpl();
+        CellContentInterpreter interpreter = new CellContentInterpreter();
 
         for (File file : dir.listFiles(new FilenameFilter() {
             @Override
@@ -26,6 +28,8 @@ public class LoadPCMs {
             }
         })) {
             PCM pcm = loader.load(file);
+            System.out.println(pcm.getName());
+            interpreter.interpretCells(pcm);
             Database.INSTANCE.save(pcm);
         }
     }

@@ -17,11 +17,12 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
 
   "CellContentInterpreter" should "interpret every cell in Wikipedia PCMs" in {
 
-    val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_AMD_processors.txt"
+    //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_AMD_processors.txt"
+    val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
 
     // Parse
     val miner = new WikipediaPageMiner
-    val page = miner.parse(Source.fromFile(path).getLines().mkString("\n"))
+    val page = miner.parse(Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
 
     val exporter = new PCMModelExporter
     val pcms = exporter.export(page)

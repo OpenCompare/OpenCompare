@@ -23,7 +23,7 @@ public class PartialImpl extends ValueImpl implements Partial {
 
     @Override
     public Value getValue() {
-        throw new UnsupportedOperationException(); // TODO
+        return ValueImpl.wrapValue(kPartial.getValue());
     }
 
     @Override

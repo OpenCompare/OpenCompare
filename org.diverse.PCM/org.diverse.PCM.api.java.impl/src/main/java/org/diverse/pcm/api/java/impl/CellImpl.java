@@ -36,27 +36,7 @@ public class CellImpl extends PCMElementImpl implements Cell {
     public Value getInterpretation() {
         pcm.Value kInterpretation = kCell.getInterpretation();
 
-        if (kInterpretation == null) {
-            return null;
-        } else if (kInterpretation instanceof BooleanValue) {
-            return new BooleanValueImpl((BooleanValue) kInterpretation);
-        } else if (kInterpretation instanceof IntegerValue) {
-            return new IntegerValueImpl((IntegerValue) kInterpretation);
-        } else if (kInterpretation instanceof StringValue) {
-            return new StringValueImpl((StringValue) kInterpretation);
-        } else if (kInterpretation instanceof RealValue) {
-            return new RealValueImpl((RealValue) kInterpretation);
-        } else if (kInterpretation instanceof Multiple) {
-            return new MultipleImpl((Multiple) kInterpretation);
-        } else if (kInterpretation instanceof NotAvailable) {
-            return new NotAvailableImpl((NotAvailable) kInterpretation);
-        } else if (kInterpretation instanceof Conditional) {
-            return new ConditionalImpl((Conditional) kInterpretation);
-        } else if (kInterpretation instanceof Partial) {
-            return new PartialImpl((Partial) kInterpretation);
-        } else {
-            throw new UnsupportedOperationException(kInterpretation.getClass() + " interpretation type is not yet supported");
-        }
+        return ValueImpl.wrapValue(kInterpretation);
     }
 
     @Override
