@@ -3,7 +3,6 @@ package controllers;
 import model.Database;
 import model.PCMInfo;
 import model.PCMVariable;
-import org.diverse.pcm.api.java.io.JSONLoader;
 import play.mvc.Controller;
 import play.mvc.Result;
 
