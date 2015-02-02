@@ -4,8 +4,7 @@ import com.mongodb.*;
 import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
 import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONExporter;
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
 
 import java.net.UnknownHostException;
@@ -19,7 +18,7 @@ public class Database {
 
     public static Database INSTANCE = new Database();
     private KMFJSONLoader loader = new KMFJSONLoader();
-    private PCMtoJson serializer = new PCMtoJsonImpl();
+    private KMFJSONExporter serializer = new KMFJSONExporter();
 
     private DB db;
     private DBCollection pcms;
@@ -76,7 +75,7 @@ public class Database {
     }
 
     public void save(PCM pcm) {
-        String json = serializer.toJson(pcm);
+        String json = serializer.export(pcm);
         pcms.insert((DBObject) JSON.parse(json));
 
     }

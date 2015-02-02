@@ -2,8 +2,7 @@ package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.PCMTest;
-import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONExporter;
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
 
 import static org.junit.Assert.*;
@@ -30,8 +29,8 @@ public class PCMImplTest extends PCMTest {
         pcm.setName("test");
 
         // Serialize
-        PCMtoJson serializer = new PCMtoJsonImpl();
-        String json = serializer.toJson(pcm);
+        KMFJSONExporter serializer = new KMFJSONExporter();
+        String json = serializer.export(pcm);
 
         System.out.println(pcm.getName());
         System.out.println(json);

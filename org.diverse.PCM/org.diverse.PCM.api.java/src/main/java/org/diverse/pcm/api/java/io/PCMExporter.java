@@ -5,13 +5,13 @@ import org.diverse.pcm.api.java.PCM;
 /**
  * Created by gbecan on 30/01/15.
  */
-public interface PCMSerializer {
+public interface PCMExporter {
 
     /**
-     * Serialize a PCM
+     * Export a PCM
      * @param pcm
      * @return
      */
-    String serialize(PCM pcm);
+    String export(PCM pcm);
 
 }

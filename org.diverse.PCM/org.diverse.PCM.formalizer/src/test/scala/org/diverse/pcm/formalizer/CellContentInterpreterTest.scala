@@ -1,8 +1,7 @@
 package org.diverse.pcm.formalizer
 
 import java.io.{File, FileWriter}
-
-import org.diverse.pcm.api.java.export.PCMtoHTML
+import org.diverse.pcm.api.java.io.HTMLExporter
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
 import org.diverse.pcm.io.wikipedia.WikipediaPageMiner
 import org.diverse.pcm.io.wikipedia.export.PCMModelExporter
@@ -29,7 +28,7 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
 
 
     val interpreter = new CellContentInterpreter
-    val serializer = new PCMtoHTML
+    val serializer = new HTMLExporter
 
     for ((pcm, index) <- pcms.zipWithIndex) {
       // Interpret cells
