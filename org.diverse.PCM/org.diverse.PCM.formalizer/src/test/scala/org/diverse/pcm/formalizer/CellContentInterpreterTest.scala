@@ -16,8 +16,8 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
 
   "CellContentInterpreter" should "interpret every cell in Wikipedia PCMs" in {
 
-    //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_AMD_processors.txt"
-    val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
+    val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_AMD_processors.txt"
+    //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
 
     // Parse
     val miner = new WikipediaPageMiner
