@@ -111,4 +111,68 @@ public abstract class PCMTest {
 
     }
 
+    @Test
+    public void testMerge() {
+        // Create PCM 1
+        PCM pcm1 = factory.createPCM();
+
+        Feature commonFeature1 = factory.createFeature();
+        commonFeature1.setName("Common feature");
+        pcm1.addFeature(commonFeature1);
+
+        Feature feature1 = factory.createFeature();
+        feature1.setName("Feature from PCM 1");
+        pcm1.addFeature(feature1);
+
+        Product commonProduct1 = factory.createProduct();
+        commonProduct1.setName("Common product");
+        pcm1.addProduct(commonProduct1);
+
+        Cell c11 = factory.createCell();
+        c11.setFeature(commonFeature1);
+        commonProduct1.addCell(c11);
+
+        Cell c12 = factory.createCell();
+        c12.setFeature(feature1);
+        commonProduct1.addCell(c12);
+
+
+        // Create PCM 2
+        PCM pcm2 = factory.createPCM();
+
+        Feature commonFeature2 = factory.createFeature();
+        commonFeature2.setName("Common feature");
+        pcm2.addFeature(commonFeature2);
+
+        Feature feature2 = factory.createFeature();
+        feature2.setName("Feature from PCM 2");
+        pcm2.addFeature(feature2);
+
+        Product commonProduct2 = factory.createProduct();
+        commonProduct2.setName("Common product");
+        pcm2.addProduct(commonProduct2);
+
+        Cell c21 = factory.createCell();
+        c21.setFeature(commonFeature2);
+        commonProduct2.addCell(c21);
+
+        Cell c22 = factory.createCell();
+        c22.setFeature(feature2);
+        commonProduct2.addCell(c22);
+
+        // Merge PCM 1 and 2
+        pcm1.merge(pcm2, factory);
+
+
+        // Check resulting PCM
+        assertEquals("number of features", 3, pcm1.getFeatures().size());
+        assertEquals("number of products", 1, pcm1.getProducts().size());
+        for (Product product : pcm1.getProducts()) {
+            assertEquals("number of cells", 3, product.getCells().size());
+        }
+
+
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package org.diverse.pcm.formalizer
 
-import java.io.{File, FileWriter}
+import java.io.{FilenameFilter, File, FileWriter}
+import org.diverse.pcm.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.diverse.pcm.api.java.io.HTMLExporter
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
 import org.diverse.pcm.io.wikipedia.WikipediaPageMiner
@@ -43,6 +44,33 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     }
 
 
+  }
+
+  it should "interpret the cell of all the Wikipedia PCMs" in {
+
+    val interpreter = new CellContentInterpreter
+    val loader = new KMFJSONLoader
+    val exporter = new KMFJSONExporter
+
+    val files = new File("../org.diverse.PCM.io.Wikipedia/output/model").listFiles(new FilenameFilter {
+      override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")
+    })
+
+    // Create output directory
+    new File("output/model").mkdirs()
+
+    // Interpret cells for every PCM
+    for (file <- files) {
+      // Interpret cells
+      val pcm = loader.load(file)
+      interpreter.interpretCells(pcm)
+      val json = exporter.export(pcm)
+
+      // Write modified PCM
+      val writer = new FileWriter("output/model/" + file.getName)
+      writer.write(json)
+      writer.close()
+    }
   }
 
 }

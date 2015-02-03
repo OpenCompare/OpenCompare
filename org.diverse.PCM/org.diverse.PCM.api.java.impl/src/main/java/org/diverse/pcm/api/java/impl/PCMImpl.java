@@ -3,11 +3,10 @@ package org.diverse.pcm.api.java.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.diverse.pcm.api.java.AbstractFeature;
-import org.diverse.pcm.api.java.Product;
+import org.diverse.pcm.api.java.*;
+import org.diverse.pcm.api.java.exception.MergeConflictException;
 import org.diverse.pcm.api.java.util.PCMVisitor;
 import pcm.FeatureGroup;
-import pcm.PCM;
 
 
 /**
@@ -21,7 +20,7 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
         this.kpcm = kpcm;
     }
 
-    public PCM getKpcm() {
+    public pcm.PCM getKpcm() {
         return kpcm;
     }
 
@@ -81,4 +80,123 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public void merge(PCM pcm, PCMFactory factory) throws MergeConflictException {
+        // Add new features
+        addNewFeatures(pcm, factory);
+
+
+        // Add new products
+        addNewProducts(pcm, factory);
+
+        // Merge cells
+        for (Product product : this.getProducts()) {
+            for (AbstractFeature aFeature : this.getFeatures()) {
+                if (aFeature instanceof Feature) {
+                    Feature feature = (Feature) aFeature;
+
+                    Cell cellInThis = product.findCell(feature);
+                    Cell cellInPCM = findCorrespondingCell(pcm, product, feature);
+
+                    if (cellInThis == null) {
+                        // Copy cell from 'pcm'
+                        Cell newCell = factory.createCell();
+                        newCell.setContent(cellInPCM.getContent());
+                        newCell.setFeature(feature);
+                        // TODO : copy interpretation
+                        product.addCell(newCell);
+                    } else if (cellInPCM == null) {
+                        // Nothing to do
+                    } else if (cellInThis.getContent().equals(cellInPCM.getContent())) {
+                        // Nothing to do
+                    } else {
+                        // Conflict
+                        throw new MergeConflictException();
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    private void addNewFeatures(PCM pcm, PCMFactory factory) {
+        for (AbstractFeature aFeature : pcm.getFeatures()) {
+
+            // Check if the feature already exists in this PCM
+            boolean existInThis = false;
+            for (AbstractFeature aFeatureInThis : this.getFeatures()) {
+                if (aFeature.getName().equals(aFeatureInThis.getName())) {
+                    existInThis = true;
+                    break;
+                }
+            }
+
+            // Copy feature from merged PCM if the feature is new
+            if (!existInThis) {
+                AbstractFeature newFeature;
+                if (aFeature instanceof Feature) {
+                    newFeature = factory.createFeature();
+                } else {
+                    newFeature = factory.createFeatureGroup();
+                    // TODO : handle sub features
+                }
+                newFeature.setName(aFeature.getName());
+
+                this.addFeature(newFeature);
+            }
+        }
+    }
+
+    private void addNewProducts(PCM pcm, PCMFactory factory) {
+
+
+        for (Product product : pcm.getProducts()) {
+
+            // Check if the product already exists in this PCM
+            boolean existInThis = false;
+            for (Product productInThis : this.getProducts()) {
+                if (product.getName().equals(productInThis.getName())) {
+                    existInThis = true;
+                    break;
+                }
+            }
+
+            // Copy product from merged PCM if the product is new
+            if (!existInThis) {
+                Product newProduct = factory.createProduct();
+                newProduct.setName(product.getName());
+
+                pcm.addProduct(newProduct);
+            }
+
+        }
+
+    }
+
+    private Cell findCorrespondingCell(PCM pcm, Product product, Feature feature) {
+        Cell correspondingCell = null;
+
+        // Find corresponding feature
+        Feature correspondingFeature = null;
+        for (AbstractFeature aFeatureInPCM : pcm.getFeatures()) {
+            if (aFeatureInPCM.getName().equals(feature.getName()) && aFeatureInPCM instanceof Feature) {
+                Feature featureInPCM = (Feature) aFeatureInPCM;
+                correspondingFeature = featureInPCM;
+                break;
+            }
+        }
+
+        // Find corresponding cell
+        for (Product productInPCM : pcm.getProducts()) {
+            if (productInPCM.getName().equals(product.getName())) {
+                correspondingCell = productInPCM.findCell(correspondingFeature);
+                break;
+            }
+        }
+
+        return correspondingCell;
+    }
+
 }
