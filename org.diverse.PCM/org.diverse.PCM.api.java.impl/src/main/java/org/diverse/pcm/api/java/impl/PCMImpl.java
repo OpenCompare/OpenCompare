@@ -1,7 +1,9 @@
 package org.diverse.pcm.api.java.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.diverse.pcm.api.java.*;
 import org.diverse.pcm.api.java.exception.MergeConflictException;
@@ -205,4 +207,44 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
         return correspondingCell;
     }
 
+    @Override
+    public boolean isValid() {
+
+        // List features
+        List<Feature> features = new ArrayList<Feature>();
+        for (AbstractFeature aFeature : this.getFeatures()) {
+            if (aFeature instanceof Feature) {
+                features.add((Feature) aFeature);
+            }
+        }
+
+        // Check uniqueness of feature names
+        Set<String> featureNames = new HashSet<String>();
+        for (Feature feature : features) {
+            featureNames.add(feature.getName());
+        }
+        if (featureNames.size() != features.size()) {
+            return false;
+        }
+
+        // Check uniqueness of product names
+        Set<String> productNames = new HashSet<String>();
+        for (Product product : this.getProducts()) {
+            productNames.add(product.getName());
+        }
+        if (productNames.size() != this.getProducts().size()) {
+            return false;
+        }
+
+        // Check that a cell exists for each pair of products and features.
+        for (Product product : this.getProducts()) {
+            for (Feature feature : features) {
+                if (product.findCell(feature) == null) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

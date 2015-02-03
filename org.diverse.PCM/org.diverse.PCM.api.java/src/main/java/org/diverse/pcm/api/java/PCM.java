@@ -22,5 +22,11 @@ public interface PCM extends PCMElement {
      * @param pcm
      */
     void merge(PCM pcm, PCMFactory factory) throws MergeConflictException;
+
+    /**
+     * Check if the PCM is well formed
+     * @return
+     */
+    boolean isValid();
 	
 }

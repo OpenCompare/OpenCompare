@@ -21,6 +21,30 @@ public abstract class PCMTest {
 
     protected PCMFactory factory;
 
+    // Utils functions
+    public Feature createFeature(PCM pcm, String name) {
+        Feature feature = factory.createFeature();
+        feature.setName(name);
+        pcm.addFeature(feature);
+        return feature;
+    }
+
+    public Product createProduct(PCM pcm, String name) {
+        Product product = factory.createProduct();
+        product.setName(name);
+        pcm.addProduct(product);
+        return product;
+    }
+
+    public Cell createCell(Product product, Feature feature, String content, Value interpretation) {
+        Cell cell = factory.createCell();
+        cell.setFeature(feature);
+        cell.setContent(content);
+        cell.setInterpretation(interpretation);
+        product.addCell(cell);
+        return cell;
+    }
+
     @Before
     public abstract void setUp();
 
@@ -157,27 +181,45 @@ public abstract class PCMTest {
 
     }
 
-    public Feature createFeature(PCM pcm, String name) {
-        Feature feature = factory.createFeature();
-        feature.setName(name);
-        pcm.addFeature(feature);
-        return feature;
+    @Test
+    public void testIsValid() {
+        PCM pcm = factory.createPCM();
+
+        Feature f1 = createFeature(pcm, "F1");
+        Feature f2 = createFeature(pcm, "F2");
+        assertTrue(pcm.isValid());
+
+        Feature f3 = createFeature(pcm, "F2");
+        assertFalse(pcm.isValid()); // Duplicated feature
+
+        pcm.removeFeature(f3);
+        assertTrue(pcm.isValid());
+
+        Product p1 = createProduct(pcm, "P1");
+        createCell(p1, f1, "C11", null);
+        assertFalse(pcm.isValid()); // Missing cell
+
+        createCell(p1, f2, "C12", null);
+        assertTrue(pcm.isValid());
+
+        Product p2 = createProduct(pcm, "P2");
+        createCell(p2, f1, "C21", null);
+        assertFalse(pcm.isValid()); // Missing cell
+
+        createCell(p2, f2, "C22", null);
+        assertTrue(pcm.isValid());
+
+        Product p3 = createProduct(pcm, "P2");
+        createCell(p3, f1, "C21", null);
+        createCell(p3, f2, "C22", null);
+        assertFalse(pcm.isValid()); // Duplicated product
+
+        pcm.removeProduct(p3);
+        assertTrue(pcm.isValid());
     }
 
-    public Product createProduct(PCM pcm, String name) {
-        Product product = factory.createProduct();
-        product.setName(name);
-        pcm.addProduct(product);
-        return product;
-    }
 
-    public Cell createCell(Product product, Feature feature, String content, Value interpretation) {
-        Cell cell = factory.createCell();
-        cell.setFeature(feature);
-        cell.setContent(content);
-        cell.setInterpretation(interpretation);
-        product.addCell(cell);
-        return cell;
-    }
+
+
 
 }
