@@ -41,7 +41,10 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public void setInterpretation(Value value) {
-       kCell.setInterpretation(((ValueImpl) value).getkValue());
+        if (value != null) {
+            kCell.setInterpretation(((ValueImpl) value).getkValue());
+        }
+
     }
 
     @Override

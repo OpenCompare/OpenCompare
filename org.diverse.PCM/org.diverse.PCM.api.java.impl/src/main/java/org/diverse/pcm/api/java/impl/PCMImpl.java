@@ -99,7 +99,14 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
                     Cell cellInThis = product.findCell(feature);
                     Cell cellInPCM = findCorrespondingCell(pcm, product, feature);
 
-                    if (cellInThis == null) {
+                    if (cellInThis == null && cellInPCM == null) {
+                        // Create empty cell
+                        Cell newCell = factory.createCell();
+                        newCell.setContent("N/A");
+                        newCell.setFeature(feature);
+                        newCell.setInterpretation(factory.createNotAvailable());
+                        product.addCell(newCell);
+                    } else if (cellInThis == null) {
                         // Copy cell from 'pcm'
                         Cell newCell = factory.createCell();
                         newCell.setContent(cellInPCM.getContent());
@@ -167,8 +174,7 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
             if (!existInThis) {
                 Product newProduct = factory.createProduct();
                 newProduct.setName(product.getName());
-
-                pcm.addProduct(newProduct);
+                this.addProduct(newProduct);
             }
 
         }

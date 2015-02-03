@@ -3,6 +3,8 @@ package org.diverse.pcm.api.java;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
+import org.diverse.pcm.api.java.exception.MergeConflictException;
+import org.diverse.pcm.api.java.io.HTMLExporter;
 import org.diverse.pcm.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
@@ -112,67 +114,70 @@ public abstract class PCMTest {
     }
 
     @Test
-    public void testMerge() {
+    public void testMerge() throws MergeConflictException {
         // Create PCM 1
         PCM pcm1 = factory.createPCM();
 
-        Feature commonFeature1 = factory.createFeature();
-        commonFeature1.setName("Common feature");
-        pcm1.addFeature(commonFeature1);
+        Feature commonFeature1 = createFeature(pcm1, "Common feature");
+        Feature feature1 = createFeature(pcm1, "Feature from PCM 1");
 
-        Feature feature1 = factory.createFeature();
-        feature1.setName("Feature from PCM 1");
-        pcm1.addFeature(feature1);
+        Product commonProduct1 = createProduct(pcm1, "Common product");
+        createCell(commonProduct1, commonFeature1, "", null);
+        createCell(commonProduct1, feature1, "", null);
 
-        Product commonProduct1 = factory.createProduct();
-        commonProduct1.setName("Common product");
-        pcm1.addProduct(commonProduct1);
+        Product product1 = createProduct(pcm1, "Product from PCM 1");
+        createCell(product1, commonFeature1, "", null);
+        createCell(product1, feature1, "", null);
 
-        Cell c11 = factory.createCell();
-        c11.setFeature(commonFeature1);
-        commonProduct1.addCell(c11);
-
-        Cell c12 = factory.createCell();
-        c12.setFeature(feature1);
-        commonProduct1.addCell(c12);
 
 
         // Create PCM 2
         PCM pcm2 = factory.createPCM();
 
-        Feature commonFeature2 = factory.createFeature();
-        commonFeature2.setName("Common feature");
-        pcm2.addFeature(commonFeature2);
+        Feature commonFeature2 = createFeature(pcm2, "Common feature");
+        Feature feature2 = createFeature(pcm2, "Feature from PCM 2");
 
-        Feature feature2 = factory.createFeature();
-        feature2.setName("Feature from PCM 2");
-        pcm2.addFeature(feature2);
+        Product commonProduct2 = createProduct(pcm2, "Common product");
+        createCell(commonProduct2, commonFeature2, "", null);
+        createCell(commonProduct2, feature2, "", null);
 
-        Product commonProduct2 = factory.createProduct();
-        commonProduct2.setName("Common product");
-        pcm2.addProduct(commonProduct2);
-
-        Cell c21 = factory.createCell();
-        c21.setFeature(commonFeature2);
-        commonProduct2.addCell(c21);
-
-        Cell c22 = factory.createCell();
-        c22.setFeature(feature2);
-        commonProduct2.addCell(c22);
+        Product product2 = createProduct(pcm2, "Product from PCM 2");
+        createCell(product2, commonFeature2, "", null);
+        createCell(product2, feature2, "", null);
 
         // Merge PCM 1 and 2
         pcm1.merge(pcm2, factory);
 
-
         // Check resulting PCM
         assertEquals("number of features", 3, pcm1.getFeatures().size());
-        assertEquals("number of products", 1, pcm1.getProducts().size());
+        assertEquals("number of products", 3, pcm1.getProducts().size());
         for (Product product : pcm1.getProducts()) {
             assertEquals("number of cells", 3, product.getCells().size());
         }
 
+    }
 
+    public Feature createFeature(PCM pcm, String name) {
+        Feature feature = factory.createFeature();
+        feature.setName(name);
+        pcm.addFeature(feature);
+        return feature;
+    }
 
+    public Product createProduct(PCM pcm, String name) {
+        Product product = factory.createProduct();
+        product.setName(name);
+        pcm.addProduct(product);
+        return product;
+    }
+
+    public Cell createCell(Product product, Feature feature, String content, Value interpretation) {
+        Cell cell = factory.createCell();
+        cell.setFeature(feature);
+        cell.setContent(content);
+        cell.setInterpretation(interpretation);
+        product.addCell(cell);
+        return cell;
     }
 
 }
