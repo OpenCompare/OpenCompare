@@ -18,14 +18,10 @@ import java.net.URL;
 public class MyPCMPrinterTest {
 
     @Test
-    public void testMyPCMPrinter() throws FileNotFoundException, URISyntaxException {
-
-        // Define a file containing a PCM
-        URL url = getClass().getResource("/example.pcm");
-        File pcmFile = new File(url.toURI());
-        assertTrue(pcmFile.exists());
+    public void testMyPCMPrinter() throws FileNotFoundException {
 
         // Load a PCM
+        File pcmFile = new File("pcms/example.pcm");
         PCMLoader loader = new KMFJSONLoader();
         PCM pcm = loader.load(pcmFile);
         assertNotNull(pcm);
