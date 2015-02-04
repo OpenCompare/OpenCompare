@@ -30,6 +30,8 @@ public class LoadPCMs {
             }
         })) {
             PCM pcm = loader.load(file);
+            pcm.setName(pcm.getName().replaceAll("_", " "));
+
             if (pcm.isValid()) {
                 interpreter.interpretCells(pcm);
                 Database.INSTANCE.save(pcm);

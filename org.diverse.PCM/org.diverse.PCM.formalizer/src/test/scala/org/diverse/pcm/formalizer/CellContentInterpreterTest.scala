@@ -1,6 +1,8 @@
 package org.diverse.pcm.formalizer
 
 import java.io.{FilenameFilter, File, FileWriter}
+import org.diverse.pcm.api.java.exception.MergeConflictException
+import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.diverse.pcm.api.java.io.HTMLExporter
 import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
@@ -59,17 +61,54 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     // Create output directory
     new File("output/model").mkdirs()
 
+
     // Interpret cells for every PCM
     for (file <- files) {
       // Interpret cells
       val pcm = loader.load(file)
-      interpreter.interpretCells(pcm)
-      val json = exporter.export(pcm)
+      if (pcm.isValid) {
+        interpreter.interpretCells(pcm)
+        val json = exporter.export(pcm)
 
-      // Write modified PCM
-      val writer = new FileWriter("output/model/" + file.getName)
-      writer.write(json)
-      writer.close()
+        // Write modified PCM
+        val writer = new FileWriter("output/model/" + file.getName)
+        writer.write(json)
+        writer.close()
+      }
+
+    }
+
+    // Interpret and merge PCMs
+    val groupedFiles = files.groupBy(f => f.getName.substring(0, f.getName.size - 6))
+    val factory = new PCMFactoryImpl
+    for (group <- groupedFiles) {
+      val mergedPCM = factory.createPCM();
+      mergedPCM.setName(group._1)
+
+      var error = false
+
+      for (file <- group._2) {
+        val pcm = loader.load(file)
+        if (pcm.isValid) {
+          interpreter.interpretCells(pcm)
+          try {
+            mergedPCM.merge(pcm, factory)
+          } catch {
+            case e : MergeConflictException => error = true
+          }
+
+        } else {
+          error = true
+        }
+      }
+
+//      if (!error) {
+//        val json = exporter.export(mergedPCM)
+//        val writer = new FileWriter("output/model/" + mergedPCM.getName)
+//        writer.write(json)
+//        writer.close()
+//      }
+
     }
   }
 
