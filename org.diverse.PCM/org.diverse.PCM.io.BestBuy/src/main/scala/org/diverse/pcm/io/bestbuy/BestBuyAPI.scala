@@ -11,18 +11,19 @@ class BestBuyAPI {
   var timeLastCall : Long = 0
   var callsInLastSecond : Int = 0
 
+  val maxAPICallsPerSeconds = 4
 
   def callAPI(url : String) : Elem = {
-    // Restrict calls to 5 per seconds
+    // Restrict API usage to at most 5 calls per seconds
     val time = System.currentTimeMillis() / 1000
 
     if (time > timeLastCall) { // OK
       timeLastCall = time
       callsInLastSecond = 1
-    }else if (time == timeLastCall && callsInLastSecond < 5) { // OK
+    } else if (time == timeLastCall && callsInLastSecond < maxAPICallsPerSeconds) { // OK
       callsInLastSecond += 1
-    } else if (time == timeLastCall && callsInLastSecond == 5) { // WAIT
-      Thread.sleep(1500) // wait 1.5s just to be sure
+    } else if (time == timeLastCall && callsInLastSecond == maxAPICallsPerSeconds) { // WAIT
+      Thread.sleep(1000) // wait 1s
       timeLastCall = System.currentTimeMillis() / 1000
       callsInLastSecond = 1
     }
