@@ -5,6 +5,7 @@ package org.diverse.pcm.io.bestbuy
  */
 class ProductInfo {
 
+  var name = ""
   var longDescription = ""
   var features = List[String]()
   var details = Map[String, String]()

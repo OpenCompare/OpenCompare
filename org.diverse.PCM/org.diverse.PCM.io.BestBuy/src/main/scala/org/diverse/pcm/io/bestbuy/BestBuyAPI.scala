@@ -62,11 +62,12 @@ class BestBuyAPI {
   def getProductInfo(sku : String) : ProductInfo = {
 
     // Show details (specification), long description and features (detailed textual description)
-    val url = apiURL + "products/" + sku + ".xml?show=details%2Cfeatures%2ClongDescription&" + apiKey
+    val url = apiURL + "products/" + sku + ".xml?show=name,details,features,longDescription&" + apiKey
     val result = callAPI(url)
 
     val productInfo = new ProductInfo
 
+    productInfo.name = (result \\ "name").text
     productInfo.longDescription = (result \\ "longDescription").text
 
     for (feature <- result \\ "feature") {
