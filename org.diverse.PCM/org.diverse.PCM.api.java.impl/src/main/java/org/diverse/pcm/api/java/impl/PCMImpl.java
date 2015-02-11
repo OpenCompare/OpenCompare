@@ -8,8 +8,6 @@ import java.util.Set;
 import org.diverse.pcm.api.java.*;
 import org.diverse.pcm.api.java.exception.MergeConflictException;
 import org.diverse.pcm.api.java.util.PCMVisitor;
-import pcm.FeatureGroup;
-
 
 /**
  * Created by gbecan on 08/10/14.
@@ -61,8 +59,8 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
         for (pcm.AbstractFeature kFeature : kpcm.getFeatures()) {
             if (kFeature instanceof pcm.Feature) {
                 features.add(new FeatureImpl((pcm.Feature) kFeature));
-            } else if (kFeature instanceof FeatureGroup) {
-                features.add(new FeatureGroupImpl((FeatureGroup) kFeature));
+            } else if (kFeature instanceof pcm.FeatureGroup) {
+                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
             }
         }
         return features;
@@ -76,6 +74,33 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     @Override
     public void removeFeature(AbstractFeature abstractFeature) {
         kpcm.removeFeatures(((AbstractFeatureImpl) abstractFeature).getkAbstractFeature());
+    }
+
+    @Override
+    public List<Feature> getConcreteFeatures() {
+        List<AbstractFeature> aFeatures = this.getFeatures();
+
+        List<Feature> features = new ArrayList<Feature>();
+        for (AbstractFeature aFeature : aFeatures) {
+            features.addAll(getConcreteFeatures(aFeature));
+        }
+
+        return features;
+    }
+
+    private List<Feature> getConcreteFeatures(AbstractFeature aFeature) {
+        List<Feature> features = new ArrayList<Feature>();
+
+            if (aFeature instanceof AbstractFeature) {
+                FeatureGroup featureGroup = (FeatureGroup) aFeature;
+                for (AbstractFeature subFeature : featureGroup.getFeatures()) {
+                    features.addAll(getConcreteFeatures(subFeature));
+                }
+            } else {
+                features.add((Feature) aFeature);
+            }
+
+        return features;
     }
 
     @Override

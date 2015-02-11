@@ -17,6 +17,8 @@ public interface PCM extends PCMElement {
 	void addFeature(AbstractFeature feature);
 	void removeFeature(AbstractFeature feature);
 
+    List<Feature> getConcreteFeatures();
+
     /**
      * Add information from another PCM
      * @param pcm
