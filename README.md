@@ -32,3 +32,26 @@ This github repository contains several projects :
     mvn clean install
 
  The directory _org.diverse.PCM/org.diverse.PCM.getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
+
+Note: for MacOS users, you may have to define explicitly JAVA_HOME and user a JRE >= 7 
+ 
+You can also use the following command to skip the tests: 
+
+    mvn clean install -DskipTests
+
+If you want to run the Play! application (basically the OpenCompare website), change directory to '''org.diverse.PCM.play-app''':
+
+    ./activator test
+
+will populate the database (before you need to launch MongoDB server through '''mongod''').
+
+Then, or if you already have populated the database, you can launch the HTTP server:
+
+    ./activator run
+
+Note that you need to set the PLAY2_HOME, typically with the activator containted in the app
+
+    PLAY2_HOME=/.../org.diverse.PCM/org.diverse.PCM.play-app/
+
+
+
