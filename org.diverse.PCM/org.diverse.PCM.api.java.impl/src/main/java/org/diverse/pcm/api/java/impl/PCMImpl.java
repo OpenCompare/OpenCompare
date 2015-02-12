@@ -156,7 +156,7 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
         // Merge cells
         for (Product product : this.getProducts()) {
-            for (AbstractFeature aFeature : this.getFeatures()) {
+            for (AbstractFeature aFeature : this.getFeatures()) { // TODO : check usage of getFeatures()
                 if (aFeature instanceof Feature) {
                     Feature feature = (Feature) aFeature;
 
@@ -193,11 +193,11 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     }
 
     private void addNewFeatures(PCM pcm, PCMFactory factory) {
-        for (AbstractFeature aFeature : pcm.getFeatures()) {
+        for (AbstractFeature aFeature : pcm.getFeatures()) { // TODO : check usage of getFeatures()
 
             // Check if the feature already exists in this PCM
             boolean existInThis = false;
-            for (AbstractFeature aFeatureInThis : this.getFeatures()) {
+            for (AbstractFeature aFeatureInThis : this.getFeatures()) { // TODO : check usage of getFeatures()
                 if (aFeature.getName().equals(aFeatureInThis.getName())) {
                     existInThis = true;
                     break;
@@ -250,9 +250,8 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
         // Find corresponding feature
         Feature correspondingFeature = null;
-        for (AbstractFeature aFeatureInPCM : pcm.getFeatures()) {
-            if (aFeatureInPCM.getName().equals(feature.getName()) && aFeatureInPCM instanceof Feature) {
-                Feature featureInPCM = (Feature) aFeatureInPCM;
+        for (Feature featureInPCM : pcm.getConcreteFeatures()) {
+            if (featureInPCM.getName().equals(feature.getName())) {
                 correspondingFeature = featureInPCM;
                 break;
             }
@@ -273,12 +272,7 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     public boolean isValid() {
 
         // List features
-        List<Feature> features = new ArrayList<Feature>();
-        for (AbstractFeature aFeature : this.getFeatures()) {
-            if (aFeature instanceof Feature) {
-                features.add((Feature) aFeature);
-            }
-        }
+        List<Feature> features = getConcreteFeatures();
 
         // Check uniqueness of feature names
         Set<String> featureNames = new HashSet<String>();

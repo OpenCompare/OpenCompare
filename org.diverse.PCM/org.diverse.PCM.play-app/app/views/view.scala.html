@@ -23,7 +23,7 @@
 
             <tr>
                 <th></th>
-                @for(feature <- pcm.getFeatures().sortBy(_.getName())) {
+                @for(feature <- pcm.getConcreteFeatures().sortBy(_.getName())) {
                 <th>
                     @feature.getName()
                 </th>
