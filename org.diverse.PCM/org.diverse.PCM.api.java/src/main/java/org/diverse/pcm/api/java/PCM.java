@@ -17,7 +17,25 @@ public interface PCM extends PCMElement {
 	void addFeature(AbstractFeature feature);
 	void removeFeature(AbstractFeature feature);
 
+    /**
+     * List all the features of the PCM (no feature group is returned)
+     * @return
+     */
     List<Feature> getConcreteFeatures();
+
+    /**
+     * Retrieve an existing feature
+     * If the feature does not exist, we create and add it to the PCM
+     * @return
+     */
+    Feature getOrCreateFeature(String name, PCMFactory factory);
+
+    /**
+     * Retrieve an existing product
+     * If the product does not exist, we create and add it to the PCM
+     * @return
+     */
+    Product getOrCreateProduct(String name, PCMFactory factory);
 
     /**
      * Add information from another PCM

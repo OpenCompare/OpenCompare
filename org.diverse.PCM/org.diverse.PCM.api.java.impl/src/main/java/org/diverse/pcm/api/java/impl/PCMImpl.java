@@ -91,7 +91,7 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
     private List<Feature> getConcreteFeatures(AbstractFeature aFeature) {
         List<Feature> features = new ArrayList<Feature>();
 
-            if (aFeature instanceof AbstractFeature) {
+            if (aFeature instanceof FeatureGroup) {
                 FeatureGroup featureGroup = (FeatureGroup) aFeature;
                 for (AbstractFeature subFeature : featureGroup.getFeatures()) {
                     features.addAll(getConcreteFeatures(subFeature));
@@ -101,6 +101,43 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
             }
 
         return features;
+    }
+
+    @Override
+    public Feature getOrCreateFeature(String name, PCMFactory factory) {
+
+        // Return the feature if it exists
+        List<Feature> features = this.getConcreteFeatures();
+        for (Feature feature : features) {
+            if (feature.getName().equals(name)) {
+                return feature;
+            }
+        }
+
+        // The feature does not exists, we create a new feature
+        Feature newFeature = factory.createFeature();
+        newFeature.setName(name);
+        this.addFeature(newFeature);
+
+        return newFeature;
+    }
+
+    @Override
+    public Product getOrCreateProduct(String name, PCMFactory factory) {
+        // Return the product if it exists
+        List<Product> products = this.getProducts();
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                return product;
+            }
+        }
+
+        // The product does not exists, we create a new product
+        Product newProduct = factory.createProduct();
+        newProduct.setName(name);
+        this.addProduct(newProduct);
+
+        return newProduct;
     }
 
     @Override

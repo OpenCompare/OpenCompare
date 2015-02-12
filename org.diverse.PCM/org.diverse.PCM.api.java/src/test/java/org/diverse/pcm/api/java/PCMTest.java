@@ -29,6 +29,13 @@ public abstract class PCMTest {
         return feature;
     }
 
+    public FeatureGroup createFeatureGroup(PCM pcm, String name) {
+        FeatureGroup featureGroup = factory.createFeatureGroup();
+        featureGroup.setName(name);
+        pcm.addFeature(featureGroup);
+        return featureGroup;
+    }
+
     public Product createProduct(PCM pcm, String name) {
         Product product = factory.createProduct();
         product.setName(name);
@@ -220,6 +227,23 @@ public abstract class PCMTest {
 
 
 
+    @Test
+    public void testGetConcreteFeatures() {
+        PCM pcm = factory.createPCM();
+        createFeature(pcm, "Top level feature");
+        FeatureGroup group = createFeatureGroup(pcm, "FG");
+
+        Feature subFeature1 = factory.createFeature();
+        subFeature1.setName("Sub feature 1");
+        group.addFeature(subFeature1);
+
+        Feature subFeature2 = factory.createFeature();
+        subFeature2.setName("Sub feature 2");
+        group.addFeature(subFeature2);
+
+        assertEquals("number of top level abstract features", 2, pcm.getFeatures().size());
+        assertEquals("number of features", 3, pcm.getConcreteFeatures().size());
+    }
 
 
 }
