@@ -28,13 +28,16 @@ This github repository contains several projects :
 * org.diverse.PCM.getting-started: minimal project that shows how to use the API
 
 ### Getting started :
+
     git clone https://github.com/gbecan/PCM.git
     mvn clean install
 
- The directory _org.diverse.PCM/org.diverse.PCM.getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
+To compile the project you must define two environment variables:
+* JAVA\_HOME must point to a JDK with a version >= 7
+* PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.diverse.PCM/org.diverse.PCM.play-app/
 
-Note: for MacOS users, you may have to define explicitly JAVA_HOME and user a JRE >= 7 
- 
+The directory _org.diverse.PCM/org.diverse.PCM.getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
+
 You can also use the following command to skip the tests: 
 
     mvn clean install -DskipTests
@@ -49,9 +52,6 @@ Then, or if you already have populated the database, you can launch the HTTP ser
 
     ./activator run
 
-Note that you need to set the PLAY2_HOME, typically with the activator containted in the app
-
-    PLAY2_HOME=/.../org.diverse.PCM/org.diverse.PCM.play-app/
 
 
 
