@@ -309,4 +309,19 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
         return true;
     }
+
+    @Override
+    public void normalize(PCMFactory factory) {
+        for (Product product : this.getProducts()) {
+            for (Feature feature : this.getConcreteFeatures()) {
+                if (product.findCell(feature) == null) {
+                    Cell cell = factory.createCell();
+                    cell.setFeature(feature);
+                    cell.setContent("N/A");
+                    cell.setInterpretation(factory.createNotAvailable());
+                    product.addCell(cell);
+                }
+            }
+        }
+    }
 }

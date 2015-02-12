@@ -48,5 +48,11 @@ public interface PCM extends PCMElement {
      * @return
      */
     boolean isValid();
+
+    /**
+     * Fill missing cells with not available cells
+     * @param factory
+     */
+    void normalize(PCMFactory factory);
 	
 }
