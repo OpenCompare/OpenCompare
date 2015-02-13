@@ -17,13 +17,15 @@ This project contains development artifacts used to perform research around prod
 This github repository contains several projects :
 
 * org.diverse.PCM.api.java: Java interface
-* org.diverse.PCM.api.js: Js interface
-* org.diverse.PCM.api.java.impl: Java implementation
-* org.diverse.PCM.api.js.impl: Js implementation
-* org.diverse.PCM.model: contain the data model, takes car of the code source generation
+* org.diverse.PCM.api.js: Javascript interface
+* org.diverse.PCM.api.java.impl: Java implementation of the API
+* org.diverse.PCM.api.js.impl: Js implementation of the API
+* org.diverse.PCM.model: contain the data model, takes car of the code source generation for the API
+* org.diverse.PCM.formalizer: interpret and formalize cells contained in PCMs
 * org.diverse.PCM.naiveFrontEnd: a naive website to show how to manipulate model in a browser
 * org.diverse.PCM.io.ShoppingWebSite: parses shopping.com and creates PCMs
-* org.diverse.PCM.io.Wikipedia: parses wikipedia and creates PCMs
+* org.diverse.PCM.io.Wikipedia: parses wikipedia pages and creates PCMs
+* org.diverse.PCM.io.BestBuy: parses bestbuy.com and creates PCMs
 * org.diverse.PCM.play-app: contain OpenCompare website (web editor for PCMs)
 * org.diverse.PCM.getting-started: minimal project that shows how to use the API
 
@@ -51,7 +53,4 @@ will populate the database (before you need to launch MongoDB server through '''
 Then, or if you already have populated the database, you can launch the HTTP server:
 
     ./activator run
-
-
-
 
