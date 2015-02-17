@@ -103,16 +103,23 @@ class WikipediaPageMiner {
       }
     }
 
-    // Detect holes in the matrix and add a cell if necessary
-    for (row <- 0 until normalizedMatrix.getNumberOfRows(); column <- 0 until normalizedMatrix.getNumberOfColumns()) {
-      if (!normalizedMatrix.getCell(row, column).isDefined) {
-        val emptyCell = new Cell("", false, row, 1, column, 1)
-        normalizedMatrix.setCell(emptyCell, row, column)
-      }
-    }
+    fillMissingCells(normalizedMatrix)
 
     normalizedMatrix
   }
 
+  /**
+   * Detect holes in the matrix and add a cell if necessary
+   * @param matrix
+   */
+  def fillMissingCells(matrix : Matrix) {
+
+    for (row <- 0 until matrix.getNumberOfRows(); column <- 0 until matrix.getNumberOfColumns()) {
+      if (!matrix.getCell(row, column).isDefined) {
+        val emptyCell = new Cell("", false, row, 1, column, 1)
+        matrix.setCell(emptyCell, row, column)
+      }
+    }
+  }
 
 }
