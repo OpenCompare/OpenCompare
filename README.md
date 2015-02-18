@@ -6,7 +6,7 @@ This project contains development artifacts used to perform research around prod
 ### Development tools :
  * [Play](https://www.playframework.com/)
  * Maven
- * Continous integration with Jenkins (https://ci.inria.fr/)
+ * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI: [![Build Status](https://travis-ci.org/gbecan/PCM.svg?branch=master)](https://travis-ci.org/gbecan/PCM)
  * We use intellij with the KMF plugin for the development
 
 ### Framework(s) :
