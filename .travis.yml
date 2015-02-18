@@ -1,4 +1,8 @@
 sudo: false
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.ivy2
 language: java
 env: PLAY2_HOME=$TRAVIS_BUILD_DIR/org.diverse.PCM/org.diverse.PCM.play-app/
 jdk:
