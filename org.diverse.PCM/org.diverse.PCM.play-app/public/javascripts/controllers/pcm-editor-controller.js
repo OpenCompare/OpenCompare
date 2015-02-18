@@ -2,8 +2,6 @@
  * Created by gbecan on 17/12/14.
  */
 
-var pcmApp = angular.module("pcmApp", []);
-
 /**
  * Sort two elements by their names (accessed with x.name)
  * @param a
