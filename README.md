@@ -2,6 +2,7 @@ PCM
 ===
 This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the diverse (DIVERsity-centric Software Engineering) research team (http://diverse.irisa.fr/).
 
+This project is released under Apache v2 License.
 
 ### Development tools :
  * [Play](https://www.playframework.com/)
