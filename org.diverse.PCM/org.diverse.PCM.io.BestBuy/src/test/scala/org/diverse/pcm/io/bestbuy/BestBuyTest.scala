@@ -12,7 +12,7 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "The BestBuy API" should "list the products SKU" in {
 
-    val skus = api.listProductsSKU(Some("Laptop_Computers"), pageSize=10)
+    val skus = api.listProductsSKU(Some("Laptops"), pageSize=10)
     skus.isEmpty should be (false)
 
   }
@@ -21,6 +21,7 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val info = api.getProductInfo("9925379")
     info.name shouldNot be ("")
   }
+
 
   "The BestBuy miner" should "generate a PCM from a list of product's SKU" in {
     val skus = List("8827378", "8790174", "8274088")

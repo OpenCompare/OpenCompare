@@ -30,18 +30,18 @@ class BestBuyAPI {
 
     // Call API
     Http(url)
-      .option(HttpOptions.connTimeout(1000))
+      .option(HttpOptions.connTimeout(5000))
       .option(HttpOptions.readTimeout(30000))
       .asXml
   }
 
-  def listProductsSKU(productTemplate : Option[String] = None, page : Int = 1, pageSize : Int = 10) : List[String] = {
+  def listProductsSKU(categoryName : Option[String] = None, page : Int = 1, pageSize : Int = 10) : List[String] = {
 
     // Create REST request
     var url = apiURL + "products"
 
-    if (productTemplate.isDefined) {
-      url += "(productTemplate=" + productTemplate.get + ")"
+    if (categoryName.isDefined) {
+      url += "(categoryPath.name=" + categoryName.get.replaceAll(" ", "%20") + ")"
     }
 
     url += "?page=" + page + "&pageSize=" + pageSize + "&show=sku&format=xml&" + apiKey
@@ -70,7 +70,7 @@ class BestBuyAPI {
     productInfo.name = (result \\ "name").text
     productInfo.longDescription = (result \\ "longDescription").text
 
-    for (feature <- result \\ "feature") {
+    for (feature <- result \\ "feature") yield {
       productInfo.addFeature(feature.text)
     }
 
