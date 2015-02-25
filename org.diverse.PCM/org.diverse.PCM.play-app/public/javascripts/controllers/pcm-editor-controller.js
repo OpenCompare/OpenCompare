@@ -27,17 +27,21 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var factory = new pcmMM.factory.DefaultPcmFactory();
     var loader = factory.createJSONLoader();
     var serializer = factory.createJSONSerializer();
-
+    var temp1; //Temp for HandsOnTable
     // Init
     var features = [];
     var featureHeaders = [];
     var productHeaders = [];
     var products = [];
+    var exp;
+    var ipValidatorRegexp = /^(?:\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b|null)$/,
+    number = /[0-9]+/,
+    bool=/(Yes|No)/,
+    text = /[a-z]+/;
 
     if (typeof id === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
-
         var exampleFeature = factory.createFeature();
         exampleFeature.name = "Feature";
         $scope.pcm.addFeatures(exampleFeature);
@@ -66,22 +70,52 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
+
             initializeHOT();
+
         });
 
+    }
+
+    //Function to get a random number between [min-max]
+    function getRandomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+   /**
+   * Get a random type :
+   * 1: Number
+   * 2: Bool (Yes/No)
+   * 3: Text
+   */
+    var getType= function(value){
+        switch (value){
+            case 0:
+                return number;
+            case 1:
+                return bool;
+            case 2:
+                return text;
+            defaul:
+                return text;
+        }
     }
 
 
     function initializeHOT() {
         // Transform features to handonstable data structures
         var kFeatures = $scope.pcm.features.array.sort(sortByName);
-        for (var i = 0; i < kFeatures.length; i++) {
-            features.push({
-                data: property(kFeatures[i].generated_KMF_ID)
-            });
-            featureHeaders.push(kFeatures[i].name);
-        }
 
+        for (var i = 0; i < kFeatures.length; i++) {
+
+            features.push({
+                // Associate a type to a columns
+                data: property(kFeatures[i].generated_KMF_ID), validator: getType(Math.round(getRandomNumber(0,2))), allowInvalid: true,color: 'orange'
+            });
+            console.log(features);
+            featureHeaders.push(kFeatures[i].name);
+
+        }
         // Transform products to handonstable data structures
         var kProducts = $scope.pcm.products.array.sort(sortByName);
         for (var i = 0; i < kProducts.length; i++) {
@@ -89,7 +123,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
             productHeaders.push(product.name);
             products.push(model(product));
-
+            //console.log(products);
         }
 
         var container = document.getElementById('hot');
@@ -101,10 +135,12 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 colHeaders: featureHeaders,
                 columns: features,
                 contextMenu: true,
+
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true
             });
+        temp1=hot;
     }
 
     /**
@@ -140,7 +176,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         return function (row, value) {
             var product = $scope.pcm.findProductsByID(row);
             //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
-            var cells = product.values.array
+            var cells = product.values.array;
             for (var i = 0; i < cells.length; i++) {
                 var cell = cells[i];
                 if (cell.feature.generated_KMF_ID === attr) {
@@ -174,7 +210,9 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             });
         }
     };
-
+    /**
+    *Remove PCM from server
+    */
     $scope.remove = function() {
         if (typeof id !== 'undefined') {
             $http.get("/api/remove/" + id).success(function(data) {
@@ -182,6 +220,13 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 console.log("model removed");
             });
         }
+    };
+    /**
+    * Validate the type of each columns
+    */
+    $scope.valider=function(){
+        // TO DO
+       temp1.setDataAtCell(0, 0, 'new value');
     };
 
 });
