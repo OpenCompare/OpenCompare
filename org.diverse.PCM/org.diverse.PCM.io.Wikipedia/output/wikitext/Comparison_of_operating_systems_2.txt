@@ -1,0 +1,474 @@
+{| class="wikitable"
+|+ Security
+|-
+|
+! Encrypted
+file
+systems
+! Integrated
+firewall
+! Manufacturer acknowledged unpatched vulnerabilities (severity is accounted for)
+! No execute (NX)
+page flag
+! Resource
+access
+control
+! Subsystem
+isolation
+mechanisms
+|-
+! 
+| Emulation
+| Encrypted
+file
+systems
+| Extremely critical
+(number / oldest)
+| Hardware
+| Highly critical
+(number / oldest)
+| Integrated
+firewall
+| Less critical
+(number / oldest)
+| Moderately critical
+(number / oldest)
+| Not critical
+(number / oldest)
+| Resource
+access
+control
+| Subsystem
+isolation
+mechanisms
+| Total
+(number / oldest)
+|-
+! 
+| No execute (NX)
+page flag
+| Encrypted
+file
+systems
+| Known unpatched vulnerabilities (severity is accounted for)
+| No execute (NX)
+page flag
+| Known unpatched vulnerabilities (severity is accounted for)
+| Integrated
+firewall
+| Known unpatched vulnerabilities (severity is accounted for)
+| Known unpatched vulnerabilities (severity is accounted for)
+| Known unpatched vulnerabilities (severity is accounted for)
+| Resource
+access
+control
+| Subsystem
+isolation
+mechanisms
+| Known unpatched vulnerabilities (severity is accounted for)
+|-
+! 
+| No execute (NX)
+page flag
+| Encrypted
+file
+systems
+| Secunia
+| No execute (NX)
+page flag
+| Secunia
+| Integrated
+firewall
+| Secunia
+| Secunia
+| Secunia
+| Resource
+access
+control
+| Subsystem
+isolation
+mechanisms
+| SecurityFocus
+|-
+! AIX 7.1
+| N/A
+| Yes
+| Unknown
+| Yes
+| Unknown
+| IPFilter, IPsec VPNs, basic IDS
+| Unknown
+| Unknown
+| Unknown
+| POSIX, ACLs, MAC, Trusted AIX - MLS, RBAC
+| chroot
+| 0
+|-
+! FreeBSD 8.1
+| Yes
+| Yes
+| 0
+| Yes
+| 0
+| IPFW2, IPFilter, PF
+| 0
+| 0
+| 0
+| POSIX, ACLs, MAC
+| chroot, jail, MAC partitions, BSD file flags set using chflags
+| >0
+|-
+! GhostBSD 3.1
+| Yes
+| Yes
+| 0
+| Yes
+| 0
+| IPFW2, IPFilter, PF
+| 0
+| 0
+| 0
+| POSIX, ACLs, MAC
+| chroot, jail, MAC partitions, BSD file flags set using chflags
+| >0
+|-
+! HP-UX 11.31
+| ?
+| No
+| 0
+| ?
+| 0
+| IPFilter
+| 2
+December 12, 2002;
+11 years ago
+| 3
+June 30, 2004;
+10 years ago
+| 0
+| POSIX, ACLs
+| chroot
+| >0
+|-
+! Inferno
+| No
+| ?
+| Unknown
+| No
+| Unknown
+| ?
+| Unknown
+| Unknown
+| Unknown
+| POSIX
+| Namespace, capability-based security, no superuser or setuid bit
+| >0
+|-
+! Linux 2.6.39
+| Yes
+| Yes
+| 0
+| Yes
+| 0
+| Netfilter, varied by distribution
+| 6
+June 24, 2004;
+10 years ago
+| 0
+| 11
+April 4, 2005;
+9 years ago
+| POSIX, ACLs, MAC
+| chroot, capability-based security, seccomp, SELinux, AppArmor
+| >0
+|-
+! Mac OS 9.2.2
+| No
+| No
+| 0
+| No
+| 0
+| No
+| 0
+| 0
+| 0
+| No
+| No
+| >0
+|-
+! NetBSD 6.1.2
+| No
+| Yes
+| Unknown
+| Yes
+| Unknown
+| IPFilter, NPF, PF
+| Unknown
+| Unknown
+| Unknown
+| POSIX, Veriexec, PaX, kauth
+| chroot, kauth, BSD file flags set using chflags
+| >0
+|-
+! NetWare 6.5 SP8
+| No
+| Yes
+| 0
+| Yes
+| 0
+| IPFLT.NLM
+| 2
+October 30, 2003;
+11 years ago
+| 1
+August 31, 2010;
+4 years ago
+| 0
+| Directory-enabled ACLs
+| Protected address spaces
+| 0
+|-
+! OES-Linux
+| No
+| Yes
+| Unknown
+| Yes
+| Unknown
+| IPFilter
+| Unknown
+| Unknown
+| Unknown
+| Directory-enabled ACLs
+| chroot
+| >0
+|-
+! OS X 10.6.4
+| Yes (Intel only)
+| Yes
+| 0
+| Yes (as of 10.5, X64 only)
+| 0
+| ipfw
+| 2
+January 8, 2007;
+7 years ago
+| 1
+April 14, 2009;
+5 years ago
+| 5
+November 22, 2006;
+7 years ago
+| POSIX, ACLs
+| chroot, BSD file flags set using chflags
+| >0
+|-
+! OS/2, eComStation
+| ?
+| No
+| 0
+| ?
+| 0
+| IPFilter
+| 0
+| 0
+| 0
+| ACLs
+| No
+| 0
+|-
+! OpenBSD 4.8
+| Yes
+| Yes
+| Unknown
+| Yes
+| Unknown
+| PF
+| Unknown
+| Unknown
+| Unknown
+| POSIX
+| chroot, systrace, BSD file flags set using chflags
+| >0
+|-
+! OpenSolaris 2009.06
+| No
+| Yes
+| 0
+| Yes
+| 0
+| IPFilter
+| 0
+| 0
+| 0
+| POSIX, RBAC, ACLs, least privilege, Trusted Extensions
+| chroot, Containers, Logical Domains
+| >0
+|-
+! OpenVMS 8.4
+| ?
+| ?
+| 0
+| Yes
+| 0
+| ?
+| 0
+| 0
+| 0
+| ACLs, privileges
+| logical name tables
+| Unknown
+|-
+! PC-BSD 8.1
+| ?
+| Yes
+| 0
+| ?
+| 0
+| IPFW2, IPFilter, PF
+| 0
+| 0
+| 0
+| POSIX, ACLs, MAC
+| chroot, jail, MAC partitions
+| >0
+|-
+! Plan 9
+| No
+| Yes
+| Unknown
+| No
+| Unknown
+| ipmux
+| Unknown
+| Unknown
+| Unknown
+| POSIX ?
+| Namespaces, capability-based security, no superuser or setuid bit
+| >0
+|-
+! QNX 6.5.0
+| ?
+| ?
+| 0
+| ?
+| 0
+| PF, from NetBSD
+| 5
+November 20, 2002;
+11 years ago
+| 0
+| 1
+November 7, 2002;
+12 years ago
+| POSIX
+| ?
+| Unknown
+|-
+! RISC OS
+| No
+| No
+| Unknown
+| No
+| Unknown
+| No
+| Unknown
+| Unknown
+| Unknown
+| No
+| No
+| Unknown
+|-
+! STOP 6, XTS-400
+| No
+| No
+| Unknown
+| No
+| Unknown
+| No
+| Unknown
+| Unknown
+| Unknown
+| POSIX, multilevel security, Biba Model mandatory integrity, ACLs, privileges, subtype mechanism
+| Multilevel security, Biba Model, subtype mechanism
+| Unknown
+|-
+! Solaris 10
+| No
+| Yes
+| 0
+| Yes
+| 2
+October 31, 2007;
+7 years ago
+| IPFilter
+| 3
+September 10, 2009;
+5 years ago
+| 5
+October 23, 2007;
+7 years ago
+| 2
+November 6, 2006;
+8 years ago
+| POSIX, RBAC, ACLs, least privilege, Trusted Extensions
+| chroot, Containers, Logical Domains
+| >0
+|-
+! Windows 8.1
+| Yes
+| Yes
+| 0
+| Yes
+| 0
+| Windows Firewall
+| 0
+| 0
+| 1
+May 30, 2014;
+5 months ago
+| ACLs, privileges, RBAC
+| Win32 WindowStation, desktop, job objects
+| [Unknown]
+|-
+! Windows Server 2012
+| Yes
+| Yes
+| 0
+| Yes
+| 0
+| Windows Firewall
+| 0
+| 0
+| 0
+| ACLs, privileges, RBAC
+| Win32 WindowStation, desktop, job objects
+| [Unknown]
+|-
+! ZETA
+| No
+| No
+| Unknown
+| No
+| Unknown
+| No
+| Unknown
+| Unknown
+| Unknown
+| POSIX
+| No
+| Unknown
+|-
+! z/OS 1.11
+| Yes
+| Optional
+| 0
+| Yes (storage protect key, execution key, APF, more)
+| 0
+| z/OS IPSecurity
+| 0
+| 0
+| 0
+| RACF
+| RACF, low storage protection, page protection, storage protect key, execution key, subspace group facility, APF, ACR (alternate CPU recovery), more
+| Unknown
+|}

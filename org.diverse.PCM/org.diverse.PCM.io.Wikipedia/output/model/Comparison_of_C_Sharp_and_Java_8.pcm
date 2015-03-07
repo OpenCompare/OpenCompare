@@ -1,0 +1,52 @@
+
+{"class":"pcm.PCM@12371763631421857778785","generated_KMF_ID":"12371763631421857778785","name":"Type erasure versus reified generics","products":[
+{"class":"pcm.Product@6614156641421857778785","generated_KMF_ID":"6614156641421857778785","name":"Cannot create new instances using a type parameter as the type","values":[
+{"class":"pcm.Cell@10377079761421857778785","content":"With a constructor constraint, generic methods or methods of generic classes can create instances of classes that have default constructors.","generated_KMF_ID":"10377079761421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@11807634051421857778785","generated_KMF_ID":"11807634051421857778785","name":"Reflection cannot be used to construct new generic realizations. During compilation extra code (typecasts) are injected into the client code of generics. This precludes creating new realizations later.","values":[
+{"class":"pcm.Cell@1941659081421857778785","content":"Reflection can be used to create new realizations for new combinations of type parameters.","generated_KMF_ID":"1941659081421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@14405175631421857778785","generated_KMF_ID":"14405175631421857778785","name":"There is no class literal for a concrete realization of a generic type","values":[
+{"class":"pcm.Cell@480450631421857778785","content":"A generic realization is an actual class.","generated_KMF_ID":"480450631421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@2201668601421857778785","generated_KMF_ID":"2201668601421857778785","name":"Cannot use primitive types as type parameters; instead, the developer must use the wrapper type corresponding to the primitive type. This incurs extra performance overhead by requiring boxing and unboxing conversions as well a memory and garbage collection pressure, as the wrappers will be heap-allocated as opposed to stack-allocated.","values":[
+{"class":"pcm.Cell@2300922391421857778785","content":"Primitive and value types are allowed as type parameters in generic realizations. At runtime code will be synthesized and compiled for each unique combination of type parameters upon first use. Generics that are realized with primitive/value type do not require boxing/unboxing conversions.","generated_KMF_ID":"2300922391421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@8250022071421857778785","generated_KMF_ID":"8250022071421857778785","name":"Static members are shared across all generic realizations (during type erasure all realizations are folded into a single class)","values":[
+{"class":"pcm.Cell@16576680171421857778785","content":"Static members are separate for each generic realization. A generic realization is a unique class.","generated_KMF_ID":"16576680171421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@16896962731421857778785","generated_KMF_ID":"16896962731421857778785","name":"Generic exceptions are not allowed and a type parameter cannot be used in a catch clause","values":[
+{"class":"pcm.Cell@4015123831421857778785","content":"Can both define generic exceptions and use those in catch clauses","generated_KMF_ID":"4015123831421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@7130224131421857778785","generated_KMF_ID":"7130224131421857778785","name":"Type checks and downcasts are injected into client code (the code referencing the generics). Compared to non-generic code with manual casts, these casts will be the same, but compared to compile-time verified code that would not need runtime casts and checks, these operations represent a performance overhead.","values":[
+{"class":"pcm.Cell@8089450311421857778785","content":"C#/.NET generics guarantee type-safety and are verified at compile time, making extra checks/casts are unnecessary at runtime. Hence, generic code will run faster than non-generic (or type-erased) code that require casts when handling non-generic or type-erased objects.","generated_KMF_ID":"8089450311421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@10432553451421857778785","generated_KMF_ID":"10432553451421857778785","name":"Type information is erased during compilation. Special extensions to reflection must be used to discover the original type.","values":[
+{"class":"pcm.Cell@19360893071421857778785","content":"Type information about C# generic types is fully preserved at runtime, and allows complete reflection support as well as instantiation of generic types.","generated_KMF_ID":"19360893071421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@11210091881421857778785","generated_KMF_ID":"11210091881421857778785","name":"Type parameters cannot be used in declarations of static fields/methods or in definitions of static inner classes","values":[
+{"class":"pcm.Cell@9273875851421857778785","content":"No restrictions on use of type parameters","generated_KMF_ID":"9273875851421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@395225691421857778785","generated_KMF_ID":"395225691421857778785","name":"is not allowed with type parameters or concrete generic realizations","values":[
+{"class":"pcm.Cell@6833702601421857778785","content":"The  and  operators work the same for type parameters as for any other type.","generated_KMF_ID":"6833702601421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@20693125871421857778785","generated_KMF_ID":"20693125871421857778785","name":"Cannot create an array where the component type is a type parameter","values":[
+{"class":"pcm.Cell@4389865441421857778785","content":"Type parameters represent actual, discrete classes and can be used like any other type within the generic definition.","generated_KMF_ID":"4389865441421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+,
+{"class":"pcm.Product@1668311691421857778785","generated_KMF_ID":"1668311691421857778785","name":"Cannot create an array where the component type is a generic realization (concrete parameterized type)","values":[
+{"class":"pcm.Cell@14652980481421857778785","content":"A generic realization is a 1st class citizen and can be used as any other class; also an array component","generated_KMF_ID":"14652980481421857778785","feature":["features[12864626871421857778785]"],"interpretation":[]}
+]}
+],"features":[
+{"class":"pcm.Feature@12864626871421857778785","generated_KMF_ID":"12864626871421857778785","name":"C#"}
+]}

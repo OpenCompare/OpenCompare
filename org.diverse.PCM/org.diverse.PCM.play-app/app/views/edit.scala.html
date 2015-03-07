@@ -2,6 +2,8 @@
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/handsontable/handsontable.full.min.css")'>
+     
+            <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editeur.css")'>
 }
 
 @footer = {
@@ -15,7 +17,9 @@
 
 @main(true, header, footer) {
 
-<div ng-controller="PCMEditorController">
+
+<div ng-controller="PCMEditorController"  style="overflow:auto, top : 50px , height: 300px"> 
+<P> <P>
     <input id="pcm-name" type="text" ng-model="pcm.name">
     <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
 

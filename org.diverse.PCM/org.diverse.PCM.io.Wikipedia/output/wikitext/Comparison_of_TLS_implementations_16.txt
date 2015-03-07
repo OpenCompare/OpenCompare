@@ -1,0 +1,79 @@
+{| class="wikitable"
+|+ Cryptographic module/token support
+|-
+|
+! Hardware token support
+! Objects identified via
+! TPM support
+|-
+! Botan
+| No
+| 
+| No
+|-
+! CyaSSL
+| No
+| 
+| No
+|-
+! GnuTLS
+| PKCS11
+| PKCS #11 URLs
+| Yes
+|-
+! Implementation
+| Hardware token support
+| Objects identified via
+| TPM support
+|-
+! JSSE
+| PKCS11 Java Cryptography Architecture/
+Java Cryptography Extension
+| 
+| No
+|-
+! LibreSSL
+| PKCS11 (via 3rd party module)
+| Custom method
+| Yes
+|-
+! MatrixSSL
+| PKCS11
+| 
+| No
+|-
+! NSS
+| PKCS11
+| 
+| No
+|-
+! OpenSSL
+| PKCS11 (via 3rd party module)
+| Custom method
+| Yes
+|-
+! PolarSSL
+| PKCS11 (via libpkcs11-helper) or standard hooks
+| Custom method
+| No
+|-
+! SChannel
+| Microsoft CryptoAPI
+| UUID, User-defined label
+| No
+|-
+! Secure Transport
+| 
+| 
+| 
+|-
+! SharkSSL
+| No
+| 
+| No
+|-
+! cryptlib
+| PKCS11
+| User-defined label
+| No
+|}

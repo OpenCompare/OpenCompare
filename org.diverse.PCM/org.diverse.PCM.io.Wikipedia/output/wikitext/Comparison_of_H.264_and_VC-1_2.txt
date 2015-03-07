@@ -1,0 +1,46 @@
+{| class="wikitable"
+|+ Features
+|-
+|
+! 
+! H.264
+|-
+! B frame used for predicting other pictures
+| Yes
+| Yes
+|-
+! Bitstream format
+| SPS (sequence parameter set),
+ PPS (picture parameters set),
+ slice header, macroblock
+| In advanced profile, each Bitstream Data Unit has its own header.
+Simple and Main profile provide neither sequence nor entry point headers.
+|-
+! Bitstream formats
+| NAL and byte stream
+| single bit stream
+|-
+! CABAC
+| Only supported in Main and higher profiles
+| No
+|-
+! Deblocking filter
+| In-loop only
+| In-loop filter and overlap transform
+|-
+! Slice
+| Contiguous or non-contiguous
+| Contiguous (integer number of macroblock rows only)
+|-
+! Sub-pixel interpolation methods
+| 6-tap filter for half pixels; averaging for quarter pixels
+| bicubic, bilinear
+|-
+! Variable Length Coding
+| Yes
+| Yes
+|-
+! Variable transform size
+| Only in High profile and above
+| Yes
+|}

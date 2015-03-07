@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Eight-bit environments</h1>
+      <table border="1">
+        <tr>
+          <td> Code range (hexadecimal) </td>
+          <td> UTF-8 </td>
+          <td> UTF-16 </td>
+          <td> UTF-32 </td>
+          <td> UTF-EBCDIC </td>
+          <td> GB 18030 </td>
+        </tr>
+        <tr>
+          <td> 000000 – 00007F </td>
+          <td> 1 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 1 </td>
+          <td> 1 </td>
+        </tr>
+        <tr>
+          <td> 000080 – 00009F </td>
+          <td> 2 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 1 </td>
+          <td>
+            2 for characters inherited from
+            <br/>
+            GB 2312/GBK (e.g. most
+            <br/>
+            Chinese characters) 4 for
+            <br/>
+            everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 0000A0 – 0003FF </td>
+          <td> 2 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 2 </td>
+          <td>
+            2 for characters inherited from
+            <br/>
+            GB 2312/GBK (e.g. most
+            <br/>
+            Chinese characters) 4 for
+            <br/>
+            everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 000400 – 0007FF </td>
+          <td> 2 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 3 </td>
+          <td>
+            2 for characters inherited from
+            <br/>
+            GB 2312/GBK (e.g. most
+            <br/>
+            Chinese characters) 4 for
+            <br/>
+            everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 000800 – 003FFF </td>
+          <td> 3 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 3 </td>
+          <td>
+            2 for characters inherited from
+            <br/>
+            GB 2312/GBK (e.g. most
+            <br/>
+            Chinese characters) 4 for
+            <br/>
+            everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 004000 – 00FFFF </td>
+          <td> 3 </td>
+          <td> 2 </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td>
+            2 for characters inherited from
+            <br/>
+            GB 2312/GBK (e.g. most
+            <br/>
+            Chinese characters) 4 for
+            <br/>
+            everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 010000 – 03FFFF </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td> 4 </td>
+        </tr>
+        <tr>
+          <td> 040000 – 10FFFF </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td> 4 </td>
+          <td> 5 </td>
+          <td> 4 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Seven-bit environments</h1>
+      <table border="1">
+        <tr>
+          <td> Code range (hexadecimal) </td>
+          <td> UTF-7 </td>
+          <td>
+            UTF-8 quoted-
+            <br/>
+            printable
+          </td>
+          <td> UTF-8 base64 </td>
+          <td> UTF-16 q.-p. </td>
+          <td> UTF-16 base64 </td>
+          <td> GB 18030 q.-p. </td>
+          <td> GB 18030 base64 </td>
+        </tr>
+        <tr>
+          <td>
+            ASCII
+            <br/>
+            graphic character
+            <br/>
+            (except U+003D “=”)
+          </td>
+          <td>
+            1 for &quot;direct characters&quot; (depends on the encoder setting for some code points), 2 for U+002B “+”, otherwise same as for 000080 – 00FFFF
+          </td>
+          <td> 1 </td>
+          <td> 1  </td>
+          <td> 4 </td>
+          <td> 2  </td>
+          <td> 1 </td>
+          <td> 1  </td>
+        </tr>
+        <tr>
+          <td> 00003D (equals sign) </td>
+          <td>
+            1 for &quot;direct characters&quot; (depends on the encoder setting for some code points), 2 for U+002B “+”, otherwise same as for 000080 – 00FFFF
+          </td>
+          <td> 3 </td>
+          <td> 1  </td>
+          <td> 6 </td>
+          <td> 2  </td>
+          <td> 3 </td>
+          <td> 1  </td>
+        </tr>
+        <tr>
+          <td>
+            ASCII
+            <br/>
+            control character:
+            <br/>
+            000000 – 00001F
+            <br/>
+            and 00007F
+          </td>
+          <td> as above, depending on directness </td>
+          <td> 1 or 3 depending on directness </td>
+          <td> 1  </td>
+          <td> 6 </td>
+          <td> 2  </td>
+          <td> 1 or 3 depending on directness </td>
+          <td> 1  </td>
+        </tr>
+        <tr>
+          <td> 000080 – 0007FF </td>
+          <td>
+            5 for an isolated case inside a run of single byte characters. For runs 2  per character plus padding to make it a whole number of bytes plus two to start and finish the run
+          </td>
+          <td> 6 </td>
+          <td> 2  </td>
+          <td> 2–6 depending on if the byte values need to be escaped </td>
+          <td> 2  </td>
+          <td>
+            4–6 for characters inherited from GB2312/GBK (e.g.
+            <br/>
+            most Chinese characters) 8 for everything else.
+          </td>
+          <td>
+            2  for characters inherited from GB2312/GBK (e.g.
+            <br/>
+            most Chinese characters) 5  for everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 000800 – 00FFFF </td>
+          <td>
+            5 for an isolated case inside a run of single byte characters. For runs 2  per character plus padding to make it a whole number of bytes plus two to start and finish the run
+          </td>
+          <td> 9 </td>
+          <td> 4 </td>
+          <td> 2–6 depending on if the byte values need to be escaped </td>
+          <td> 2  </td>
+          <td>
+            4–6 for characters inherited from GB2312/GBK (e.g.
+            <br/>
+            most Chinese characters) 8 for everything else.
+          </td>
+          <td>
+            2  for characters inherited from GB2312/GBK (e.g.
+            <br/>
+            most Chinese characters) 5  for everything else.
+          </td>
+        </tr>
+        <tr>
+          <td> 010000 – 10FFFF </td>
+          <td>
+            8 for isolated case, 5  per character plus padding to integer plus 2 for a run
+          </td>
+          <td> 12 </td>
+          <td> 5  </td>
+          <td>
+            8–12 depending on if the low bytes of the surrogates need to be escaped.
+          </td>
+          <td> 5  </td>
+          <td> 8 </td>
+          <td> 5  </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

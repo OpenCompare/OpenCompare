@@ -1,0 +1,471 @@
+{| class="wikitable"
+|+ Array system cross-reference list
+|-
+|
+! Bound check
+! Default base index
+! Dynamically-sized
+! Multidimensional
+! Specifiable base index
+! Specifiable index type
+! Vectorized operations
+|-
+! ALGOL 68
+| varies
+| 1
+| yes
+| yes
+| yes
+| no
+| user definable
+|-
+! APL
+| checked
+| ?
+| init
+| yes
+| 0 or 1
+| ?
+| yes
+|-
+! Ada
+| checked
+| index type
+| init
+| yes
+| yes
+| yes
+| some, others definable
+|-
+! BASIC
+| checked
+| 0
+| init
+| no
+| no
+| ?
+| ?
+|-
+! C
+| unchecked
+| 0
+| init, heap
+| yes, also array of array
+| no
+| no
+| no
+|-
+! C#
+| checked
+| 0
+| heap
+| yes
+| no
+| no
+| yes (LINQ select)
+|-
+! C++
+| unchecked
+| 0
+| heap
+| yes, also array of array
+| no
+| no
+| no
+|-
+! CFML
+| checked
+| 1
+| yes
+| yes, also array of array
+| no
+| no
+| no
+|-
+! COBOL
+| checked
+| 1
+| no
+| array of array
+| no
+| no
+| some intrinsics
+|-
+! Ch
+| checked
+| 0
+| init, heap
+| yes, also array of array
+| no
+| no
+| yes
+|-
+! Cobra
+| checked
+| 0
+| heap
+| array of array
+| no
+| no
+| ?
+|-
+! Common Lisp
+| checked
+| 0
+| yes
+| yes
+| no
+| ?
+| yes (map or map-into)
+|-
+! D
+| varies
+| 0
+| yes
+| yes
+| no
+| yes
+| ?
+|-
+! F#
+| checked
+| 0
+| heap
+| yes
+| no
+| no
+| yes (map)
+|-
+! Fortran
+| varies
+| 1
+| yes
+| yes
+| yes
+| yes
+| yes
+|-
+! FoxPro
+| checked
+| 1
+| yes
+| yes
+| no
+| ?
+| ?
+|-
+! FreeBASIC
+| checked
+| 0
+| init, init
+| yes
+| yes
+| no
+| ?
+|-
+! Go
+| checked
+| 0
+| no
+| array of array
+| no
+| no
+| no
+|-
+! Haskell
+| checked
+| none (specified on init)
+| init
+| yes, also array of array
+| yes
+| yes
+| ?
+|-
+! IDL
+| checked
+| 0
+| yes
+| yes
+| no
+| ?
+| yes
+|-
+! ISLISP
+| checked
+| 0
+| init
+| yes
+| no
+| ?
+| yes (map or map-into)
+|-
+! J
+| checked
+| 0
+| init
+| yes
+| no
+| ?
+| yes
+|-
+! Java
+| checked
+| 0
+| init
+| array of array
+| no
+| no
+| ?
+|-
+! JavaScript
+| checked
+| 0
+| yes
+| array of array
+| no
+| no
+| yes
+|-
+! Julia
+| checked
+| 1
+| yes
+| yes
+| no
+| yes
+| yes
+|-
+! Lua
+| checked
+| 1
+| yes
+| array of array
+| partial
+| ?
+| ?
+|-
+! MATLAB
+| checked
+| 1
+| yes
+| yes
+| no
+| ?
+| yes
+|-
+! Mathematica
+| checked
+| 1
+| yes
+| yes
+| no
+| no
+| yes
+|-
+! OCaml
+| checked by default
+| 0
+| init
+| array of array
+| no
+| no
+| ?
+|-
+! Oberon
+| checked
+| 0
+| no
+| yes
+| no
+| ?
+| ?
+|-
+! Oberon-2
+| checked
+| 0
+| yes
+| yes
+| no
+| ?
+| ?
+|-
+! Objective-C
+| checked
+| 0
+| yes
+| array of array
+| no
+| no
+| no
+|-
+! PHP
+| checked
+| 0
+| yes
+| yes
+| yes
+| yes
+| yes
+|-
+! PL/I
+| checked
+| 1
+| no
+| yes
+| yes
+| ?
+| ?
+|-
+! Pascal, Object Pascal
+| varies
+| index type
+| varies
+| yes
+| yes
+| yes
+| some
+|-
+! Perl
+| checked
+| 0
+| yes
+| array of array
+| yes ()
+| no
+| no
+|-
+! Perl 6
+| checked
+| 0
+| yes
+| yes
+| no
+| no
+| yes
+|-
+! Programming language
+| Bound check
+| Default base index
+| Dynamically-sized
+| Multidimensional
+| Specifiable base index
+| Specifiable index type
+| Vectorized operations
+|-
+! Python
+| checked
+| 0
+| yes
+| array of array
+| no
+| no
+| no
+|-
+! RPG
+| ?
+| 1
+| no
+| no
+| no
+| no
+| ?
+|-
+! Ruby
+| checked
+| 0
+| yes
+| array of array
+| no
+| no
+| ?
+|-
+! S-Lang
+| checked
+| 0
+| yes
+| yes
+| no
+| ?
+| yes
+|-
+! Scala
+| checked
+| 0
+| init
+| array of array
+| no
+| no
+| yes (map)
+|-
+! Scheme
+| checked
+| 0
+| init
+| array of array
+| no
+| ?
+| yes (map)
+|-
+! Smalltalk
+| checked
+| 1
+| yes
+| array of array
+| no
+| ?
+| ?
+|-
+! Swift
+| checked
+| 0
+| yes
+| array of array
+| no
+| no
+| ?
+|-
+! Visual Basic
+| checked
+| 0
+| yes
+| yes
+| yes
+| no
+| ?
+|-
+! Visual Basic .NET
+| checked
+| 0
+| yes
+| yes
+| no
+| no
+| yes (LINQ select)
+|-
+! Windows PowerShell
+| checked
+| 0
+| heap
+| yes
+| no
+| no
+| ?
+|-
+! XPath
+| checked
+| 1
+| yes
+| no
+| no
+| no
+| yes
+|-
+! Xojo
+| checked
+| 0
+| yes
+| yes
+| no
+| no
+| no
+|}

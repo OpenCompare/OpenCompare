@@ -1,14 +1,21 @@
 /**
+
  * Created by gbecan on 17/12/14.
+
  */
 
 var pcmApp = angular.module("pcmApp", []);
 
 /**
+
  * Sort two elements by their names (accessed with x.name)
+
  * @param a
+
  * @param b
+
  * @returns {number}
+
  */
 function sortByName(a, b) {
     if (a.name < b.name) {
@@ -19,6 +26,8 @@ function sortByName(a, b) {
         return 0;
     }
 }
+
+
 
 pcmApp.controller("PCMEditorController", function($scope, $http) {
     $scope.id = id;
@@ -60,12 +69,16 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
 
         /**
+
          * Synchronization function between handsontable and a PCM model of a product
+
          * @param product : KMF model of a product
+
          * @returns synchronization object
+
          */
         function model(product) {
-            var id = product.generated_KMF_ID;
+           var id = product.generated_KMF_ID;
 
             // FIXME : this function is also used when creating a new product
 
@@ -95,6 +108,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             return id;
         }
 
+		// add product
         function schema() {
             var newProduct = factory.createProduct();
             $scope.pcm.addProducts(newProduct);
@@ -108,11 +122,36 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
             return model(newProduct);
         }
+		
+		// add feature
+		function addFeature () {
+			var newFeature = factory.createFeature();
+			$scope.pcm.addFeature(newFeature);
+			
+			for (var i = 0 ; i < $scope.pcm.product.array.length ; i++) {
+				var cell = factory.createCell();
+				cell.feature = newFeature;
+				cell.content = "";
+				$scope.pcm.product.array[i].addValues(cell);
+			}
+			
+			return model(newFeature);
+		}
+		
+		// set feature name
+		function setFeatureName (name) {
+			
+		}
+
 
         /**
+
          * Bind handsontable cells to PCM cells
+
          * @param attr
+
          * @returns synchronization function
+
          */
         function property(attr) {
             return function (row, value) {
@@ -136,25 +175,65 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
 
         // Initialize handsontable
-        var hot = new Handsontable(container,
-            {
+		
+		var matrice = {
                 data: products,
                 dataSchema: schema,
-                rowHeaders: productHeaders,
-                colHeaders: featureHeaders,
-                columns: features,
-                contextMenu: true,
-                //stretchH: 'all', // Scroll bars ?!
-                manualColumnMove: true,
-                manualRowMove: true
-            });
+                 rowHeaders: productHeaders,
+                 colHeaders: featureHeaders,
+                 columns: features,
+                 //contextMenu: true,
+                 currentRowClassName: 'currentRow', 
+                 currentColClassName: 'currentCol',   
+                 fixedRowsTop: 0, //fixer les lignes 
+                 fixedColumnsLeft: 0, //fixer les colonnes
+                 //afterChange :;
+              };
 
+        var hot = new Handsontable(container,matrice);
+         resize();
 
     });
 
 
+function resize()
+  {
+var g=document.querySelectorAll("colgroup");
+
+var i,j,tmp,MaxWidth=0;
+
+   var w=document.getElementById("hot");
+
+  var tab=w.getElementsByClassName("rowHeader");
+  
+  for(i=0;i<tab.length;i++)
+{
+  span=tab[i];
+  width=span.offsetWidth;
+  if (width >= MaxWidth) 
+        MaxWidth=width;
+}
+ 
+ MaxWidth=MaxWidth+10;//le 10 pour calucler les espaces de debut et la fin de texte 
+
+for(i=0;i<g.length;i++)
+{
+    tab=g[i].querySelectorAll("col.rowHeader");
+  for(j=0;j<tab.length;j++)
+{
+  tab[j].setAttribute("style", "width:"+MaxWidth+"px;");
+}
+}
+
+
+ 
+
+    return;
+  }	
     /**
+
      * Save PCM on the server
+
      */
     $scope.save = function() {
         var jsonModel = serializer.serialize($scope.pcm);
@@ -164,8 +243,8 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         });
 
     };
-
 });
+	
 
 
 

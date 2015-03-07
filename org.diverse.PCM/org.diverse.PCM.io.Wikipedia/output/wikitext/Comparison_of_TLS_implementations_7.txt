@@ -1,0 +1,317 @@
+{| class="wikitable"
+|+ Encryption algorithms
+|-
+|
+! Block cipher with mode of operation
+! None
+! Stream cipher
+|-
+! Botan
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| Yes
+|-
+! CyaSSL
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! GnuTLS
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! Implementation
+| 3DES EDE CBC
+| AES CBC
+| AES CCM
+| AES GCM
+| ARIA CBC
+| ARIA GCM
+| Camellia CBC
+| Camellia GCM
+| ChaCha20
+(proposed)
+| ChaCha20-Poly1305
+(proposed)
+| GOST 28147-89 CNT
+(proposed)
+| Null
+(insecure)
+| RC4-128
+(insecure)
+| SEED CBC
+|-
+! Implementation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Block cipher with mode of operation
+| Stream cipher
+| Stream cipher
+| Block cipher with mode of operation
+| None
+| Stream cipher
+| Block cipher with mode of operation
+|-
+! JSSE
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! LibreSSL
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| Yes
+| Yes
+| Disabled by Default
+| Yes
+| Yes
+|-
+! MatrixSSL
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| Yes
+|-
+! NSS
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| PartialAs of November 2014, only available on private version of NSS integrated into Chromium and derived browsers (Google Chrome and Opera). Patch for NSS upstream has been submitted and under review.
+| No
+| Disabled by Default
+| Lowest priority
+| Yes
+|-
+! OpenSSL
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| PartialAs of November 2014, only available on private version of OpenSSL integrated into Chromium and derived browsers (Google Chrome and Opera).
+| Yes
+| Disabled by Default
+| Yes
+| Yes
+|-
+! PolarSSL
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| No
+| Disabled by default at compile time
+| Lowest priority
+| No
+|-
+! SChannel 7/2008R2, 8/2012
+| Yes
+| Yes
+| No
+| except ECDHE_RSA
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|RC4 can be disabled except as a fallback (Only when no cipher suites with other than RC4 is available, cipher suites with RC4 will be used as a fallback.)
+| No
+|-
+! SChannel 8.1/2012R2
+| Yes
+| Yes
+| No
+| except ECDHE_RSA
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Disabled except as a fallback
+| No
+|-
+! SChannel Vista/2008
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! SChannel XP/2003
+| Yes
+| 2003 only
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! Schannel 10 Technical Preview
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Disabled except as a fallback
+| No
+|-
+! Secure Transport
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|-
+! SharkSSL
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+| No
+| No
+| Yes
+| No
+| Disabled by default
+| Disabled by default
+| No
+|-
+! cryptlib
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| No
+| Disabled by Default
+| Yes
+| No
+|}

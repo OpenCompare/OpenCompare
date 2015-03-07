@@ -1,0 +1,102 @@
+{| class="wikitable"
+|+ Technical information
+|-
+|
+! GUI on by default
+! Kernel type
+! Package management
+! Primary APIs
+! Supported architectures
+! Supported file system
+! Update management
+|-
+! DragonFly BSD
+| No (X.Org available)
+| Hybrid
+| dports, pkgng
+| BSD, POSIX
+| x86, x86-64
+| HAMMER, UFS, FAT, ISO 9660, NFS, SMBFS, NTFS, ext2, others
+| Git
+|-
+! FreeBSD
+| No (X.Org available)
+| Monolithic with modules
+| ports tree, packages
+| BSD, POSIX
+| x86, x86-64, PC98, Itanium, UltraSPARC, ARM, MIPS, PPC, others
+| UFS, UFS2, ext2, FAT, ISO 9660, UDF, NFS, SMBFS, NetWare (nwfs), NTFS (limited read-write), ReiserFS (read only), XFS (experimental), ZFS, FUSE, Coda (experimental), AFS, others
+| source (svn, portsnap), network binary update (freebsd-update, PKGNG)
+|-
+! GhostBSD
+| Yes (GNOME)
+| Monolithic with modules
+| ports tree, packages
+| BSD, POSIX
+| x86, x86-64
+| UFS, UFS2, ext2, FAT, ISO 9660, UDF, NFS, SMBFS, NetWare (nwfs), NTFS (limited read-write), ReiserFS (read only), XFS (experimental), ZFS, FUSE, Coda (experimental), AFS, others
+| source (CVSup, portsnap), network binary update (freebsd-update)
+|-
+! MidnightBSD
+| No (X.Org available)
+| Monolithic with modules
+| ports tree, packages
+| BSD, POSIX, X11, GNUstep
+| x86, x86-64
+| UFS, UFS2, ext2, FAT, ISO 9660, UDF, NFS, SMBFS, NetWare (nwfs), NTFS (read only), others
+| source CVSup
+|-
+! NetBSD
+| No (X.Org or XFree86 included)
+| Monolithic with modules
+| pkgsrc, packages
+| BSD, POSIX
+| x86, 68k, Alpha, x86-64, PPC, SPARC, UltraSPARC, PowerPC, ARM, others
+| UFS, UFS2, ext2, FAT, ISO 9660, NFS, LFS, UDF, SMBFS, Coda, HFS+ (read only), EFS (read only), NTFS (read only), TMPFS, FUSE, PUFFS (BSD replacement of FUSE), ADOS (AmigaDOS file system), filecorefs (Acorn RISC OS file system), others
+| source (CVS, CVSup, rsync) or binary (using sysinst)
+|-
+! OS X / Darwin
+| Yes (Aqua)
+| Hybrid
+| OS X Installer
+| Carbon, Cocoa, BSD/POSIX, CF, X11 (since 10.3)
+| PPC, x86, x86-64, ARM
+| HFS+ (default), exFAT, HFS, UFS, AFP, ISO 9660, FAT, UDF, NFS, SMBFS, NTFS (read only), FTP, WebDAV, others
+| Software Update
+|-
+! OpenBSD
+| No (X.Org included)
+| Monolithic
+| ports tree, packages
+| BSD, POSIX
+| x86, 68k, Alpha, x86-64, SPARC, UltraSPARC, ARM, MIPS, PPC, VAX, others
+| UFS, UFS2, ext2, FAT, ISO 9660, UDF, NFS, NTFS (read only), AFS, FUSE, others
+| source (CVS, CVSup, rsync) or binary upgrade
+|-
+! PC-BSD
+| Yes (KDE)
+| Monolithic with modules
+| graphical installation wizard, ports tree
+| BSD, POSIX, X11, KDE
+| x86-64
+| UFS, UFS2, FAT, ISO 9660, NFS, SMBFS, NTFS (read only), ZFS, others
+| CVSup, Portsnap, network binary update (Online Update)
+|-
+! Tru64 UNIX
+| Yes (CDE)
+| Hybrid
+| setld
+| POSIX, UNIX 98, X11, CDE, others
+| Alpha
+| UFS, AdvFS, ISO 9660, UDF, NFS
+| dupatch
+|-
+! Ultrix
+| No (X11 included)
+| Monolithic
+| setld
+| BSD, POSIX (4.0 onwards)
+| VAX, PDP-11, MIPS
+| UFS + others
+| ?
+|}

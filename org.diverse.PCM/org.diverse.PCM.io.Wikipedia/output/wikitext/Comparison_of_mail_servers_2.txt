@@ -1,0 +1,591 @@
+{| class="wikitable"
+|+ Antispam Features
+|-
+|
+! Bayesian filters
+! DKIM
+! DMARC
+! DNSBL
+! Embedded Antispam
+! Embedded Antivirus
+! Greylisting
+! Regular expression
+! SPF
+! SURBL
+! Spamtrap
+! Tarpit
+|-
+! 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! Apache James
+| Yes
+| ?
+| ?
+| ?
+| Optional (Apache SpamAssassin)
+| Yes ClamAV
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Atmail
+| Yes
+| ?
+| ?
+| Yes
+| Yes SpamAssassin and Exim ACLs
+| Yes ClamAV
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! Axigen
+| Yes, in SpamAssassin
+| ?
+| ?
+| Yes
+| Yes SpamAssassin
+| Yes Commtouch
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+|-
+! Citadel
+| Optional (via SpamAssassin)
+| ?
+| ?
+| Yes
+| Optional (SpamAssassin)
+| Optional (ClamAV)
+| No
+| No
+| Optional (via SpamAssassin)
+| Yes
+| No
+| No
+|-
+! CommuniGate Pro
+| Optional
+| ?
+| ?
+| Yes
+| Optional (via SpamAssassin)
+| Optional (ClamAV)
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! Courier Mail Server
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| Yes Clamav
+| Yes
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+|-
+! Dovecot
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Eudora Internet Mail Server
+| ?
+| ?
+| ?
+| Yes
+| ?
+| ?
+| Yes
+| ?
+| ?
+| ?
+| Yes
+| ?
+|-
+! Exim
+| Optional with spamassassin etc.
+| Yes
+| Optional at build time
+| Yes
+| Optional any
+| Optional any
+| Yes
+| Yes
+| Optional at build time
+| Yes
+| Yes
+| Yes
+|-
+! FirstClass
+| Yes
+| ?
+| ?
+| Yes
+| ?
+| Yes Symantec
+| ?
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+|-
+! Gordano Messaging Suite
+| Yes
+| ?
+| ?
+| Yes
+| Yes Commtouch
+| Yes Commtouch, Authentium
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! GroupWise
+| ?
+| ?
+| ?
+| Yes
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Haraka
+| Optional with spamassassin etc.
+| Yes
+| ?
+| Yes
+| Optional SpamAssassin, MessageSniffer
+| Optional ClamAV, AVG, any via plugins
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! IBM Lotus Domino
+| ?
+| ?
+| ?
+| Yes
+| ?
+| ?
+| ?
+| ?
+| No
+| ?
+| ?
+| ?
+|-
+! IceWarp Mail Server
+| Yes
+| ?
+| ?
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! Ipswitch IMail Server
+| Yes
+| ?
+| ?
+| Yes
+| Yes Commtouch
+| Yes Symantec, BitDefender
+| No
+| Yes
+| Yes
+| Yes
+| No
+| No
+|-
+! Kerio Connect
+| Yes
+| Yes
+| ?
+| Yes
+| Yes
+| Optional Sophos + optional secondary (dual)
+| Yes
+| Yes
+| Yes
+| Yes
+| ?
+| Yes
+|-
+! Kolab
+| Optional with spamassassin etc.
+| ?
+| ?
+| Yes
+| Optional (via content filter interface)
+| Optional (via content filter interface)
+| Yes
+| Yes
+| Yes
+| ?
+| ?
+| ?
+|-
+! MDaemon Mail Server
+| Yes
+| ?
+| ?
+| Yes
+| Yes
+| Optional Kaspersky Lab
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! MagicMail
+| No
+| ?
+| ?
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| ?
+| No
+| Yes
+| ?
+|-
+! Mail Server
+| Bayesian filters
+| DKIM
+| DMARC
+| DNSBL
+| Embedded Antispam
+| Embedded Antivirus
+| Greylisting
+| Regular expression
+| SPF
+| SURBL
+| Spamtrap
+| Tarpit
+|-
+! Mailsite
+| Yes
+| ?
+| ?
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+|-
+! Mailtraq
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Mercury Mail Transport System
+| Yes (SpamHalter extension)
+| ?
+| ?
+| Yes
+| ?
+| Yes (ClamWall extension)
+| Yes (GreyWall extension)
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Microsoft Exchange Server
+| ?
+| ?
+| ?
+| Yes (2003 & later)
+| ?
+| ?
+| Yes
+| ?
+| Yes
+| ?
+| ?
+| Yes (2003 & later)
+|-
+! Momentum (Message Systems)
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! NetMail
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! OpenSMTPD
+| ?
+| Yes
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| Yes
+| ?
+| ?
+| ?
+|-
+! Oracle Communications Messaging Server
+| Optional with spamassassin etc.
+| ?
+| ?
+| Yes
+| Optional any
+| Optional any
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! Postfix
+| Optional with spamassassin etc.
+| Optional
+| Optional
+| Yes
+| Optional (via content filter interface)
+| Optional (via content filter interface)
+| Yes
+| Yes
+| Yes
+| ?
+| ?
+| ?
+|-
+! Sendmail
+| Optional with spamassassin etc.
+| Optional
+| Optional
+| Yes
+| Yes SpamAssassin
+| Yes ClamAV
+| Yes
+| ?
+| Optional
+| Yes (via milter/SA)
+| ?
+| ?
+|-
+! SparkEngine
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Synovel Collabsuite
+| Yes
+| ?
+| ?
+| Yes
+| Yes SpamAssassin
+| YesClamAV
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| ?
+|-
+! UW IMAP
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! WinGate
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! Zarafa
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+| External
+|-
+! Zimbra
+| Yes
+| Yes
+| ?
+| Yes
+| Yes SpamAssassin
+| Yes ClamAV
+| ?
+| ?
+| Yes
+| ?
+| ?
+| Yes
+|-
+! agorum core
+| No
+| ?
+| ?
+| No
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| No
+|-
+! hMailServer
+| No
+| Yes
+| ?
+| Yes
+| Yes SpamAssassin
+| Yes ClamAV
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+|-
+! qmail
+| No
+| ?
+| ?
+| ?
+| No
+| No
+| Yes
+| ?
+| ?
+| ?
+| ?
+| ?
+|}

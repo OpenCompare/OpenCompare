@@ -1,0 +1,597 @@
+{| class="wikitable"
+|+ Supported file systems
+|-
+|
+! BFS
+! Ext2
+! Ext3
+! FAT16, dosfs; FAT32, vfat
+! HAMMER
+! HFS
+! HFS+
+! ISO 9660
+! MINIXfs
+! NFS
+! NTFS
+! Other special file system
+! RAM disk, tmpfs
+! ReiserFS
+! SMBFS
+! UDF
+! UFS
+! UFS2
+! XFS
+! ZFS
+|-
+! AROS
+| 
+| 
+| 
+| Yes
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| SFS, AFFS
+| Yes
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! AuroraUX
+| No
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+| Yes
+| CIFS (native), QFS
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| 
+| No
+| Yes
+|-
+! Darwin, OpenDarwin
+| 
+| 
+| 
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| 
+| Yes
+| Yes
+| 
+| 
+| 
+| Yes
+| Yes
+| Yes
+| 
+| 
+| 
+|-
+! DragonFly BSD
+| 
+| Yes
+| 
+| Yes
+| Yes
+| 
+| 
+| Yes
+| 
+| Yes
+| Yes
+| HAMMER, nullfs
+| 
+| 
+| 
+| 
+| Yes
+| 
+| 
+| No
+|-
+! E/OS
+| Yes
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| Yes
+| Yes
+| No
+| 
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| 
+|-
+! FreeBSD
+| No
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+| Yes
+| FUSE, nullfs, UnionFS
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! FreeDOS
+| No
+| No
+| No
+| Yes
+| No
+| 
+| 
+| Yes
+| No
+| 
+| No
+| 
+| Yes
+| No
+| 
+| 
+| No
+| 
+| No
+| 
+|-
+! FreeRTOS
+| 
+| 
+| 
+| 
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| No
+|-
+! GNU
+| 
+| Yes
+| Yes
+| Yes
+| No
+| 
+| 
+| Yes
+| 
+| Yes
+| 
+| 
+| Yes
+| 
+| 
+| 
+| Yes
+| 
+| 
+| No
+|-
+! Haiku
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| 
+| 
+| 
+| 
+| 
+| Yes
+| 
+| 
+| 
+| No
+| 
+| 
+| 
+| 
+| 
+|-
+! HelenOS
+| No
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| No
+| locfs, exFAT
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| 
+|-
+! Inferno
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| kfs, most system services
+| Yes
+| No
+| No
+| No
+| No
+| No
+| No
+| 
+|-
+! KolibriOS
+| 
+| Yes
+| Yes
+| Yes
+| No
+| 
+| 
+| Yes
+| 
+| 
+| Yes
+| 
+| Yes
+| 
+| 
+| 
+| 
+| 
+| Yes
+| 
+|-
+! L4, Fiasco, Pistachio
+| 
+| 
+| 
+| Yes
+| No
+| 
+| 
+| 
+| 
+| 
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! Linux
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| 9P, FUSE, sysfs, configfs, Reiser4, JFS, Btrfs, UnionFS, Ext4
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! MINIX
+| No
+| Yes
+| 
+| Yes
+| No
+| 
+| 
+| 
+| Yes
+| 
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! MenuetOS
+| 
+| 
+| 
+| Yes
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! Name
+| BFS
+| Ext2
+| Ext3
+| FAT16, dosfs; FAT32, vfat
+| HAMMER
+| HFS
+| HFS+
+| ISO 9660
+| MINIXfs
+| NFS
+| NTFS
+| Other special file systems
+| RAM disk, tmpfs
+| ReiserFS
+| SMBFS
+| UDF
+| UFS
+| UFS2
+| XFS
+| ZFS
+|-
+! NetBSD
+| 
+| Yes
+| 
+| Yes
+| No
+| 
+| Yes
+| Yes
+| 
+| Yes
+| Yes
+| PUFFS, LFS, EFS
+| Yes
+| 
+| Yes
+| Yes
+| Yes
+| Yes
+| 
+| Yes
+|-
+! OpenBSD
+| No
+| Yes
+| 
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+| Yes
+| AFS
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+|-
+! OpenSolaris
+| No
+| No
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+| Yes
+| CIFS (native), QFS
+| Yes
+| No
+| Yes
+| Yes
+| Yes
+| 
+| No
+| Yes
+|-
+! Plan 9
+| No
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| Yes
+| No
+| Yes
+| 
+| Fossil, Venti, most system services
+| Yes
+| No
+| Yes
+| No
+| No
+| No
+| No
+| No
+|-
+! RTEMS
+| 
+| 
+| 
+| Yes
+| No
+| 
+| 
+| 
+| 
+| Yes
+| 
+| TarFS, TFTP FS, IMFS, miniIMFS
+| Yes
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! ReactOS
+| No
+| Yes
+| No
+| Yes
+| No
+| 
+| 
+| 
+| No
+| 
+| 
+| 
+| 
+| No
+| 
+| 
+| No
+| 
+| No
+| 
+|-
+! Syllable
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| 
+| 
+| Yes
+| 
+| 
+| Yes
+| AFS
+| Yes
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|-
+! eCos
+| 
+| Yes
+| 
+| Yes
+| No
+| 
+| 
+| 
+| 
+| 
+| 
+| MMFS, ROMfs, JFFS2, YAFFS
+| Yes
+| 
+| 
+| 
+| 
+| 
+| 
+| 
+|}

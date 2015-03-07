@@ -1,0 +1,203 @@
+{| class="wikitable"
+|+ Key exchange algorithms (certificate-only)
+|-
+|
+! DHE-DSS (forward secrecy)
+! DHE-RSA (forward secrecy)
+! ECDH-ECDSA
+! ECDH-RSA
+! ECDHE-ECDSA (forward secrecy)
+! ECDHE-RSA (forward secrecy)
+! GOST R 34.10-94 / 34.10-2001
+! RSA
+! RSA-EXPORT (insecure)
+|-
+! Botan
+| Yes
+| Yes
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! CyaSSL
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! GnuTLS
+| Yes
+| Yes
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! Implementation
+| DHE-DSS (forward secrecy)
+| DHE-RSA (forward secrecy)
+| ECDH-ECDSA
+| ECDH-RSA
+| ECDHE-ECDSA (forward secrecy)
+| ECDHE-RSA (forward secrecy)
+| GOST R 34.10-94 / 34.10-2001
+| RSA
+| RSA EXPORT (insecure)
+|-
+! JSSE
+| Max 2048 bit
+| Max 2048 bit
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| Disabled by default
+|-
+! LibreSSL
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! MatrixSSL
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! NSS
+| Client side only
+| Client side only
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| Disabled by default
+|-
+! OpenSSL
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+|-
+! PolarSSL
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! SChannel 10 Technical Preview
+| Max 1024 bit
+| AES_GCM only
+1024bits only
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes
+| disabled by default
+|-
+! SChannel 7/2008R2, 8/2012, 8.1/2012R2
+| Max 1024 bit
+| AES_GCM only
+1024bits only
+| No
+| No
+| Yes
+| except AES_GCM
+| No
+| Yes
+| disabled by default
+|-
+! SChannel Vista/2008
+| Max 1024 bit
+| No
+| No
+| No
+| Yes
+| Yes
+| No
+| Yes
+| disabled by default
+|-
+! SChannel XP/2003
+| Max 1024 bit
+| No
+| No
+| No
+| No
+| No
+| No
+| Yes
+| Yes
+|-
+! Secure Transport
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! SharkSSL
+| No
+| Yes
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| Yes
+| No
+|-
+! cryptlib
+| Yes
+| Yes
+| No
+| No
+| Yes
+| No
+| No
+| Yes
+| No
+|}

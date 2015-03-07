@@ -1,0 +1,2864 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <div>
+      <h1>Feature overview</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> Used in </td>
+          <td> Creator </td>
+          <td>
+            Executable
+            <br/>
+            format
+            <br/>
+            (also see
+            <br/>
+            section
+            <br/>
+            below)
+          </td>
+          <td> Type </td>
+          <td> Integrated firewall </td>
+          <td> SMP support </td>
+          <td>
+            Multiple architecture
+            <br/>
+            support
+            <br/>
+            (also see
+            <br/>
+            section below).
+          </td>
+          <td> Multitasking </td>
+          <td> Virtualization </td>
+          <td> Security </td>
+          <td> Profiling/Debugging </td>
+          <td> Soft real-time support </td>
+          <td> Hard real-time support </td>
+          <td> Can keep RTC in UT </td>
+        </tr>
+        <tr>
+          <td> Agnix </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Amiga Exec </td>
+          <td> AmigaOS </td>
+          <td> Commodore International </td>
+          <td> HUNK </td>
+          <td> Exokernel (atypical) </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Amiga Exec SG (2nd Generation) </td>
+          <td> AmigaOS 4 </td>
+          <td> Hyperion Entertainment </td>
+          <td> ELF/HUNK </td>
+          <td> Exokernel (atypical) </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> DragonFly BSD kernel </td>
+          <td> DragonFly BSD </td>
+          <td> Matt Dillon </td>
+          <td> ELF, others - platform dependent </td>
+          <td> hybrid </td>
+          <td>
+            IPFilter, Ipfirewall,
+            <br/>
+            PF
+          </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> chroot, jail, vkernel </td>
+          <td> Unix permissions </td>
+          <td> DDB, KGDB </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> FreeBSD,Debian GNU/kFreeBSD,Gentoo/FreeBSD,Orbis OS </td>
+          <td> The FreeBSD Project </td>
+          <td> ELF, others - platform dependent </td>
+          <td> monolithic </td>
+          <td>
+            IPFilter, Ipfirewall,
+            <br/>
+            PF
+          </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> chroot, jail, bhyve </td>
+          <td>
+            Unix permissions, POSIX.1e and NFSv4 ACLs, Capsicum, TrustedBSD MAC, OpenBSM
+          </td>
+          <td> KDB, DDB, KGDB, DTrace, hwpmc </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> GNU Hurd </td>
+          <td> GNU/Hurd (Arch Hurd, Debian GNU/Hurd, NixOS) </td>
+          <td> GNU Project/Free Software Foundation </td>
+          <td> ELF </td>
+          <td> multiserver microkernel </td>
+          <td> No </td>
+          <td> partial </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> chroot, Xen </td>
+          <td> Unix permissions, POSIX ACL, POSIX Capabilities </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> GNU Mach </td>
+          <td> part of GNU Hurd, used in GNU/Hurd </td>
+          <td> GNU Project/Free Software Foundation </td>
+          <td> ELF </td>
+          <td> microkernel </td>
+          <td> No </td>
+          <td> partial </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> chroot, Xen </td>
+          <td> Unix permissions, POSIX ACL, POSIX Capabilities </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Inferno kernel </td>
+          <td> Inferno </td>
+          <td> Bell Labs / Vita Nuova Holdings </td>
+          <td> ? </td>
+          <td> virtual machine </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> chroot, Xen </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> L4 </td>
+          <td> L4 </td>
+          <td> Jochen Liedtke </td>
+          <td> No </td>
+          <td> microkernel </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Afterburner/L4 , Marzipan , capabilities in L4/Fiasco </td>
+          <td> L4/Fiasco </td>
+          <td> L4/Fiasco </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td>
+            Linux, Android, webOS, Firefox OS, Chrome OS, Syllable Server, Mastodon Linux, OpenBSD/Linux, Plan 9/Linux, Sailfish OS, Tizen, others
+          </td>
+          <td> Linus Torvalds </td>
+          <td> ELF, others </td>
+          <td> monolithic </td>
+          <td>
+            *ipfwadm (2.0 –) ipchains (2.2 –)
+            <br/>
+            Netfilter (2.4 – 3.x)
+            <br/>
+            nftables (3.13 –)
+          </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> cgroups, chroot, Lguest, Xen, KVM, kvm-lite, LXC </td>
+          <td>
+            Unix permissions, POSIX ACL, POSIX Capabilities, keyctl, LSM(SELinux, SMACK, TOMOYO Linux, AppArmor)
+          </td>
+          <td>
+            OProfile, kprobe, SystemTap, JProbe, ftrace, KDB, KGDB, kernel marker, perf tools
+          </td>
+          <td> CONFIG_PREEMPT </td>
+          <td> (CONFIG_PREEMPT_RT Patch) </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Compute Node Linux </td>
+          <td> Compute Node Linux </td>
+          <td> Cray Inc. </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Mach </td>
+          <td> NeXTSTEP and OPENSTEP for Mach </td>
+          <td> Carnegie Mellon University </td>
+          <td> Mach-O </td>
+          <td> microkernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> MINIX 3 kernel </td>
+          <td> MINIX 3 </td>
+          <td> Andrew S. Tanenbaum </td>
+          <td> ELF, a.out </td>
+          <td> microkernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Unix permissions </td>
+          <td> Call profiling, statistical profiling, Minix Debugger (mdb) </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> MkLinux </td>
+          <td> ? </td>
+          <td> OSF Research Institute and Apple Computer </td>
+          <td> ? </td>
+          <td> microkernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> NetBSD kernel </td>
+          <td> NetBSD,GNU/kNetBSD (Debian GNU/NetBSD), </td>
+          <td> The NetBSD Project </td>
+          <td> ELF, others - platform dependent </td>
+          <td> monolithic, any kernel using RUMP architecture </td>
+          <td> IPFilter, PF, NPF </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Xen, chroot </td>
+          <td> kauth, Unix permissions </td>
+          <td> DDB, KGDB, tprof </td>
+          <td> POSIX real-time scheduling extensions </td>
+          <td> Kernel preemption </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> NetWare kernel </td>
+          <td> NetWare </td>
+          <td> Novell </td>
+          <td> NLM </td>
+          <td> hybrid </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> OpenBSD kernel </td>
+          <td> OpenBSD </td>
+          <td> OpenBSD developers </td>
+          <td> ELF, others - platform dependent </td>
+          <td> monolithic </td>
+          <td> PF </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Unix permissions </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> OS/2 kernel </td>
+          <td> OS/2 version 2 and above </td>
+          <td> IBM </td>
+          <td> LX </td>
+          <td> hybrid </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No PowerPC version developed but never officially released. </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Plan 9 kernel </td>
+          <td> Plan 9 from Bell Labs </td>
+          <td> Bell Labs </td>
+          <td> ? </td>
+          <td> hybrid </td>
+          <td> ipmux </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> ReactOS kernel </td>
+          <td> ReactOS </td>
+          <td> ReactOS Foundation </td>
+          <td> PE, others? </td>
+          <td> hybrid </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Rockbox kernel </td>
+          <td> Rockbox </td>
+          <td> The Rockbox Project </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> SunOS kernel </td>
+          <td> SunOS </td>
+          <td> Sun Microsystems </td>
+          <td> a.out </td>
+          <td> monolithic </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Unix permissions </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> Solaris,OpenSolaris,GNU/kOpenSolaris (Nexenta OS) </td>
+          <td> Sun Microsystems </td>
+          <td>
+            ELF (32-bit only until
+            <br/>
+            Solaris 7 in 1998)
+          </td>
+          <td> monolithic </td>
+          <td> IPFilter </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Zones, chroot </td>
+          <td>
+            Unix permissions, ACL, RBAC, Auditing, Privileges, Zones, Trusted Extensions
+          </td>
+          <td>
+            DTrace, CPU profiling, microstate accounting, perf counters, kernel lock stats, kstats, mdb, kmdb
+          </td>
+          <td> Real-time scheduler </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Trix kernel </td>
+          <td> Trix, GNU/kTrix </td>
+          <td> Massachusetts Institute of Technology </td>
+          <td> a.out </td>
+          <td> monolithic </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td>
+            Windows NT, 2000,
+            <br/>
+            XP, 2003, Vista, Windows 7, Windows 8
+          </td>
+          <td> Microsoft </td>
+          <td> PE, others? </td>
+          <td> hybrid </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Hyper-V </td>
+          <td> ACL </td>
+          <td> Event Tracing </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Unofficial </td>
+        </tr>
+        <tr>
+          <td> XNU (Darwin kernel) </td>
+          <td> Mac OS X, iOS,OpenDarwin,PureDarwinGNU/Darwin </td>
+          <td> Apple Computer </td>
+          <td> Mach-O </td>
+          <td> hybrid </td>
+          <td>
+            Ipfirewall,
+            <br/>
+            PF (starting in Lion)
+          </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Unix permissions, ACL </td>
+          <td> DTrace </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> SPARTAN kernel </td>
+          <td> HelenOS </td>
+          <td> Jakub Jermar </td>
+          <td> ELF </td>
+          <td> microkernel </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Kernel name </td>
+          <td> Used in </td>
+          <td> Creator </td>
+          <td>
+            Executable
+            <br/>
+            format
+            <br/>
+            (also see
+            <br/>
+            section
+            <br/>
+            below)
+          </td>
+          <td> Type </td>
+          <td> Integrated firewall </td>
+          <td> SMP support </td>
+          <td>
+            Multiple architecture
+            <br/>
+            support
+            <br/>
+            (also see
+            <br/>
+            section below).
+          </td>
+          <td> Multitasking </td>
+          <td> Virtualization </td>
+          <td> Security </td>
+          <td> Profiling/Debugging </td>
+          <td> Soft real-time support </td>
+          <td> Hard real-time support </td>
+          <td> Can keep RTC in UT </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Transport protocol support</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> TCP </td>
+          <td> UDP </td>
+          <td> SCTP </td>
+          <td> DCCP </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>In-kernel security</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> File access control </td>
+          <td> Disable memory execution support </td>
+          <td> Kernel ASLR </td>
+          <td> Mandatory access control </td>
+          <td> Capability-based security </td>
+          <td> In-kernel key management </td>
+          <td> Audit API </td>
+          <td> Sandbox </td>
+          <td> SYN flood protection </td>
+          <td> UDP flood protection </td>
+          <td> Ping flood protection </td>
+          <td> Smurf attack protection </td>
+          <td> Network Behavior Analysis </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> Traditional Unix permissions, POSIX ACL </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> LSM(SELinux, SMACK, TOMOYO Linux, AppArmor) </td>
+          <td> No </td>
+          <td> keyctl </td>
+          <td> fanotify </td>
+          <td> SELinux Sandbox, seccomp, KVM </td>
+          <td> SYN cookies </td>
+          <td> No? </td>
+          <td> No? </td>
+          <td> No? </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> FreeBSD Kernel </td>
+          <td> Traditional Unix permissions, POSIX and NFSv4 ACL </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> TrustedBSD MAC </td>
+          <td> Capsicum </td>
+          <td> ? </td>
+          <td> OpenBSM </td>
+          <td> Capsicum </td>
+          <td> SYN cookies </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris Kernel </td>
+          <td> Traditional Unix permissions, POSIX ACL, NFSv4 ACL </td>
+          <td> Default </td>
+          <td> ? </td>
+          <td> Solaris Trusted Extensions </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> Access control list </td>
+          <td> DEP </td>
+          <td> Yes </td>
+          <td> Mandatory Integrity Control </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> Traditional Unix permissions, access control list </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> TrustedBSD MAC </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> OpenBSM </td>
+          <td> Apple XNU Sandbox </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>In-kernel virtualization</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> Container (no resource management, no security) </td>
+          <td> Container (no resource management) </td>
+          <td> Container (resource management) </td>
+          <td> Paravirtualization </td>
+          <td> Full virtualization </td>
+          <td> User-space execution </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> chroot </td>
+          <td> LXC </td>
+          <td> LXC </td>
+          <td>
+            Virtio, Hyper-V (guest only), Xen (guest only), VMI (guest only), kvm-lite, lguest
+          </td>
+          <td> KVM </td>
+          <td> UML </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> chroot </td>
+          <td> jail </td>
+          <td> jail </td>
+          <td> Virtio, Xen (guest only) </td>
+          <td> BHyVe (KVM) </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> chroot </td>
+          <td> Solaris Containers / Zones </td>
+          <td> Solaris Containers / Zones </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> AppContainers </td>
+          <td> AppContainers </td>
+          <td> AppContainers </td>
+          <td> Hyper-V </td>
+          <td> Hyper-V </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> chroot </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>In-kernel server support</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> HTTP </td>
+          <td> FTP </td>
+          <td> NFS </td>
+          <td> CIFS </td>
+          <td> Name server </td>
+          <td> Transport-layer load balancer </td>
+          <td> Application-layer load balancer </td>
+          <td> 9P </td>
+          <td> SSL proxy </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> (TUX web server patch) </td>
+          <td> (TUX web server patch) </td>
+          <td> knfsd </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> IP Virtual Server </td>
+          <td> (KTCPVS) </td>
+          <td> (patch available) </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> KSSL </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> HTTP.sys </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Binary format support</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> a.out </td>
+          <td> ECOFF </td>
+          <td> ELF </td>
+          <td>
+            FDPIC
+            <br/>
+            ELF
+            <br/>
+            binaries
+            <br/>
+            (mmu less)
+          </td>
+          <td>
+            flat
+            <br/>
+            binaries
+            <br/>
+            (superH)
+          </td>
+          <td> HUNK </td>
+          <td> Mach-O </td>
+          <td>
+            Misc
+            <br/>
+            (wrapper
+            <br/>
+            based,
+            <br/>
+            like
+            <br/>
+            interpreters)
+          </td>
+          <td> PE </td>
+          <td>
+            SOM
+            <br/>
+            (PA-RISC,
+            <br/>
+            HP-UX)
+          </td>
+          <td> NLM </td>
+          <td> PEF </td>
+          <td> DOS COM </td>
+          <td> MZ </td>
+          <td> LE </td>
+          <td> LX </td>
+          <td> NE </td>
+        </tr>
+        <tr>
+          <td> Amiga Exec </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> HP-UX kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Some </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> MINIX 3 kernel </td>
+          <td> Some </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> NetBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> ReactOS kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Some </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>File system support</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel </td>
+          <td> Acorn ADFS </td>
+          <td> Amiga FFS </td>
+          <td> BeFS </td>
+          <td> BFS </td>
+          <td> cramfs </td>
+          <td> EFS </td>
+          <td> ext2 </td>
+          <td> ext3 </td>
+          <td> ext4 </td>
+          <td> FAT </td>
+          <td> FreeVxFS </td>
+          <td> HFS </td>
+          <td> HFS+ </td>
+          <td> HPFS </td>
+          <td> ISO 9660 </td>
+          <td> JFFS </td>
+          <td> JFFS2 </td>
+          <td> JFS </td>
+          <td> MINIX fs </td>
+          <td> NSS </td>
+          <td> NTFS </td>
+          <td> OCFS </td>
+          <td> QNX4 FS </td>
+          <td> System V FS </td>
+          <td> UDF </td>
+          <td> UFS </td>
+          <td> XFS </td>
+          <td> ZFS </td>
+          <td> ReiserFS </td>
+          <td> Reiser4 </td>
+          <td> Btrfs </td>
+          <td> HAMMER </td>
+          <td> Tux3 </td>
+          <td> exFAT </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> limited write </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> read only </td>
+          <td> Yes </td>
+          <td> read only </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> read only </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> read only </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> read only </td>
+          <td> Yes </td>
+          <td> limited write (only with empty journal) </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> limited write </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> write support? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> both FUSE and native </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> (experimental patch is available) </td>
+        </tr>
+        <tr>
+          <td> MINIX 3 kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Tools available, cannot mount </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NetWare kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> ReactOS kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> limited write </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> read only </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Networked file system support</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel Name </td>
+          <td> NFS </td>
+          <td> AFS </td>
+          <td> CIFS </td>
+          <td> Coda </td>
+          <td> 9P </td>
+          <td> Ceph </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported CPU instruction sets and microarchitectures</h1>
+      <table border="1">
+        <tr>
+          <td> kernel </td>
+          <td> DEC </td>
+          <td> DEC </td>
+          <td> ARM Holdings </td>
+          <td> ARM Holdings </td>
+          <td> HP </td>
+          <td> Intel </td>
+          <td> Intel </td>
+          <td> Intel </td>
+          <td> Intel </td>
+          <td> MIPS Technologies </td>
+          <td> MIPS Technologies </td>
+          <td> AIM </td>
+          <td> AIM </td>
+          <td> IBM </td>
+          <td> IBM </td>
+          <td> Renesas Electronics </td>
+          <td> Renesas Electronics </td>
+          <td> Renesas Electronics </td>
+          <td> Renesas Electronics </td>
+          <td> Renesas Electronics </td>
+          <td> Sun Microsystems </td>
+          <td> Sun Microsystems </td>
+          <td> Sun Microsystems </td>
+          <td> Motorola </td>
+          <td> Motorola </td>
+          <td> Analog Devices </td>
+          <td> Xilinx </td>
+          <td> Renesas Electronics </td>
+          <td> Renesas Electronics </td>
+          <td> Tensilica </td>
+          <td> Tensilica </td>
+          <td> Axis Communications </td>
+          <td> Fujitsu </td>
+          <td> Atmel </td>
+          <td> Panasonic </td>
+          <td> Hyperstone </td>
+          <td> Altera </td>
+          <td> Altera </td>
+          <td> Altera </td>
+          <td> WDC </td>
+          <td> Sunplus Technology </td>
+          <td> Tilera </td>
+          <td> Texas Instruments </td>
+        </tr>
+        <tr>
+          <td> kernel </td>
+          <td> VAX </td>
+          <td> Alpha </td>
+          <td> ARM </td>
+          <td> ARM </td>
+          <td> PA-RISC </td>
+          <td> x86 </td>
+          <td> x86 </td>
+          <td> i960 </td>
+          <td> IA-64 </td>
+          <td> MIPS </td>
+          <td> MIPS </td>
+          <td> PowerPC </td>
+          <td> PowerPC </td>
+          <td>
+            System/
+            <br/>
+            390
+          </td>
+          <td> z/Architecture </td>
+          <td> H8300 </td>
+          <td> M16C </td>
+          <td> M32R </td>
+          <td> SuperH </td>
+          <td> SuperH </td>
+          <td> SPARC </td>
+          <td> SPARC </td>
+          <td> SPARC </td>
+          <td> m68k </td>
+          <td> m68k </td>
+          <td> Blackfin (nommu) </td>
+          <td> MicroBlaze </td>
+          <td> 78K </td>
+          <td> V850 </td>
+          <td> Xtensa </td>
+          <td> Xtensa </td>
+          <td> ETRAX CRIS </td>
+          <td> FR-V </td>
+          <td> AVR32 </td>
+          <td> MN10300 </td>
+          <td> E1 (nommu) </td>
+          <td> Nios (nommu) </td>
+          <td> Nios II </td>
+          <td> Nios II </td>
+          <td> WDC 65C816 </td>
+          <td> S+core </td>
+          <td> Tilera </td>
+          <td> C6X </td>
+        </tr>
+        <tr>
+          <td> kernel </td>
+          <td> VAX </td>
+          <td> Alpha </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> PA-RISC </td>
+          <td> x86 </td>
+          <td> x86-64 </td>
+          <td> i960 </td>
+          <td> IA-64 </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> 32-bit </td>
+          <td> 64-bit </td>
+          <td>
+            System/
+            <br/>
+            390
+          </td>
+          <td> z/Architecture </td>
+          <td> H8300 </td>
+          <td> M16C </td>
+          <td> M32R </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> 32-bit </td>
+          <td> 64-bit </td>
+          <td> nommu </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> Blackfin (nommu) </td>
+          <td> MicroBlaze </td>
+          <td> 78K </td>
+          <td> V850 </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> ETRAX CRIS </td>
+          <td> FR-V </td>
+          <td> AVR32 </td>
+          <td> MN10300 </td>
+          <td> E1 (nommu) </td>
+          <td> Nios (nommu) </td>
+          <td> mmu </td>
+          <td> nommu </td>
+          <td> WDC 65C816 </td>
+          <td> S+core </td>
+          <td> Tilera </td>
+          <td> C6X </td>
+        </tr>
+        <tr>
+          <td> DragonFly BSD kernel </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No (dropped in 2.6.x) </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> MINIX 3 kernel </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> In progress </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> In progress </td>
+          <td> No </td>
+          <td> No </td>
+          <td> In progress </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NetBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> NetWare kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> OpenBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Rockbox kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> No </td>
+          <td> NT 5.0 RC1 and below only </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> NT 4.0 and below only </td>
+          <td> No </td>
+          <td> NT 3.51 and NT 4.0 only </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Windows CE kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> SPARTAN kernel </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> In Progress </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> FreeRTOS kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported kernel execution environment</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> Linux </td>
+          <td> Darwin </td>
+          <td> Windows NT </td>
+          <td> FreeBSD </td>
+          <td> NetBSD </td>
+          <td> Solaris </td>
+          <td> OSF/1 </td>
+          <td> Amiga Unix </td>
+          <td> SunOS </td>
+          <td> BSD/OS </td>
+          <td> IBCS2 systems </td>
+          <td> IRIX </td>
+          <td> Ultrix </td>
+          <td> NDIS </td>
+          <td> SVR4 </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Linux kernel </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> NetBSD kernel </td>
+          <td> Yes </td>
+          <td> No? ? </td>
+          <td> No? ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> OpenBSD kernel </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> No </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> ReactOS kernel </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> XNU </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Kernel name </td>
+          <td> Linux </td>
+          <td> Darwin </td>
+          <td> Windows NT </td>
+          <td> FreeBSD </td>
+          <td> NetBSD </td>
+          <td> Solaris </td>
+          <td> OSF/1 </td>
+          <td> Amiga Unix </td>
+          <td> SunOS </td>
+          <td> BSD/OS </td>
+          <td> IBCS2 systems </td>
+          <td> IRIX </td>
+          <td> Ultrix </td>
+          <td> NDIS </td>
+          <td> SVR4 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported cipher algorithms</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> DES </td>
+          <td> AES </td>
+          <td> Blowfish </td>
+          <td> Triple DES </td>
+          <td> Serpent </td>
+          <td> Twofish </td>
+          <td> CAST-128 </td>
+          <td> DES-X </td>
+          <td> IDEA </td>
+          <td> RC2 </td>
+          <td> RC5 </td>
+          <td> SEED </td>
+          <td> Skipjack </td>
+          <td> TEA </td>
+          <td> XTEA </td>
+          <td> CAST-256 </td>
+          <td> RC4 </td>
+          <td> Camellia </td>
+          <td> Anubis </td>
+          <td> KHAZAD </td>
+          <td> Salsa20 </td>
+          <td> FCrypt </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> Kernel name </td>
+          <td> DES </td>
+          <td> AES </td>
+          <td> Blowfish </td>
+          <td> Triple DES </td>
+          <td> Serpent </td>
+          <td> Twofish </td>
+          <td> CAST-128 </td>
+          <td> DES-X </td>
+          <td> IDEA </td>
+          <td> RC2 </td>
+          <td> RC5 </td>
+          <td> SEED </td>
+          <td> Skipjack </td>
+          <td> TEA </td>
+          <td> XTEA </td>
+          <td> CAST-256 </td>
+          <td> RC4 </td>
+          <td> Camellia </td>
+          <td> Anubis </td>
+          <td> KHAZAD </td>
+          <td> Salsa20 </td>
+          <td> FCrypt </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported compression algorithms</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> Deflate </td>
+          <td> zlib </td>
+          <td> LZO </td>
+          <td> LZJB </td>
+          <td> gzip </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported hash algorithms</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> CRC-32 (IEEE) </td>
+          <td> CRC32c </td>
+          <td> MD2 </td>
+          <td> MD4 </td>
+          <td> MD5 </td>
+          <td> SHA-1 </td>
+          <td> SHA-256 </td>
+          <td> SHA-384 </td>
+          <td> SHA-512 </td>
+          <td> Michael MIC </td>
+          <td> RIPEMD-128 </td>
+          <td> RIPEMD-160 </td>
+          <td> RIPEMD-256 </td>
+          <td> RIPEMD-320 </td>
+          <td> Tiger </td>
+          <td> Whirlpool </td>
+          <td> HMAC </td>
+          <td> MDC2 </td>
+          <td> GOST </td>
+          <td> LASH-160 </td>
+          <td> LASH-256 </td>
+          <td> LASH-384 </td>
+          <td> LASH-512 </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Solaris kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Windows NT kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> Yes </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+          <td> No </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Kernel name </td>
+          <td> CRC-32 (IEEE) </td>
+          <td> CRC32c </td>
+          <td> MD2 </td>
+          <td> MD4 </td>
+          <td> MD5 </td>
+          <td> SHA-1 </td>
+          <td> SHA-256 </td>
+          <td> SHA-384 </td>
+          <td> SHA-512 </td>
+          <td> Michael MIC </td>
+          <td> RIPEMD-128 </td>
+          <td> RIPEMD-160 </td>
+          <td> RIPEMD-256 </td>
+          <td> RIPEMD-320 </td>
+          <td> Tiger </td>
+          <td> Whirlpool </td>
+          <td> HMAC </td>
+          <td> MDC2 </td>
+          <td> GOST </td>
+          <td> LASH-160 </td>
+          <td> LASH-256 </td>
+          <td> LASH-384 </td>
+          <td> LASH-512 </td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h1>Supported Bluetooth protocols</h1>
+      <table border="1">
+        <tr>
+          <td> Kernel name </td>
+          <td> ACL </td>
+          <td> SCO </td>
+          <td> LMP </td>
+          <td> HCI </td>
+          <td> L2CAP </td>
+          <td> BNEP </td>
+          <td> RFComm. </td>
+          <td> SDP </td>
+          <td> TCP </td>
+          <td> AVTCP </td>
+          <td> AVDTP </td>
+          <td> OBEX </td>
+          <td> CMTP </td>
+          <td> HIDP </td>
+          <td> HCRP </td>
+          <td> CAPI </td>
+          <td> PPP </td>
+        </tr>
+        <tr>
+          <td> FreeBSD kernel </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Linux </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> Yes </td>
+          <td> Yes </td>
+          <td> ? </td>
+          <td> ? </td>
+          <td> ? </td>
+        </tr>
+        <tr>
+          <td> Kernel name </td>
+          <td> ACL </td>
+          <td> SCO </td>
+          <td> LMP </td>
+          <td> HCI </td>
+          <td> L2CAP </td>
+          <td> BNEP </td>
+          <td> RFComm. </td>
+          <td> SDP </td>
+          <td> TCP </td>
+          <td> AVTCP </td>
+          <td> AVDTP </td>
+          <td> OBEX </td>
+          <td> CMTP </td>
+          <td> HIDP </td>
+          <td> HCRP </td>
+          <td> CAPI </td>
+          <td> PPP </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

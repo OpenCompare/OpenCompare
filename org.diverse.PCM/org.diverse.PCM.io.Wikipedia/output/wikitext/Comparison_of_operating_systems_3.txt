@@ -1,0 +1,253 @@
+{| class="wikitable"
+|+ Commands
+|-
+|
+! AROS
+! FreeBSD
+! Linux
+! OS X
+! Solaris
+! Windows (cmd)
+! Windows (cygwin, SFU or MKS)
+! Windows (powershell)
+|-
+! change current directory
+| cd
+| cd
+| cd
+| cd
+| cd
+| cd (chdir)
+| cd
+| cd & Set-Location
+|-
+! change io priority
+| 
+| 
+| ionice
+| nice
+| ?
+| ?
+| ?
+| ?
+|-
+! change process priority
+| 
+| nice
+| nice, chrt
+| nice
+| nice
+| start /low, start /normal, start /high, start /realtime
+| nice
+| ?
+|-
+! clear console
+| 
+| clear
+| clear
+| clear
+| clear
+| cls
+| clear
+| clear
+|-
+! copy file(s)
+| copy
+| cp
+| cp
+| cp
+| cp
+| copy
+| cp
+| cp & Copy-Item
+|-
+! create directory
+| makedir
+| mkdir
+| mkdir
+| mkdir
+| mkdir
+| md (mkdir)
+| mkdir
+| mkdir
+|-
+! create file system
+| 
+| newfs
+| mkfs
+| mkfs
+| newfs,zpool / zfs create
+| format
+| ?
+| ?
+|-
+! create software raid
+| 
+| atacontrol, gmirror, zfs create
+| (mdadm—create)
+| diskutil appleRAID
+| metainit, zpool create
+| diskpart (mirror only)
+| ?
+| diskpart (mirror only)
+|-
+! delete directory
+| delete
+| rmdir
+| rmdir
+| rmdir
+| rmdir
+| rd (rmdir)
+| rmdir
+| rmdir
+|-
+! delete file(s)
+| delete
+| rm
+| rm
+| rm
+| rm
+| del (erase)
+| rm
+| rm & Remove-Item
+|-
+! description
+| AROS
+| FreeBSD
+| Linux
+| OS X
+| Solaris
+| Windows (cmd)
+| Windows (cygwin, SFU or MKS)
+| Windows (powershell)
+|-
+! file system check and recovery
+| 
+| fsck
+| fsck
+| fsck
+| fsck,n/a
+| chkdsk
+| ?
+| ?
+|-
+! kill processes
+| 
+| kill, killall
+| killall, pkill, kill, skill
+| kill, killall
+| kill, pkill
+| taskkill
+| kill
+| taskkill
+|-
+! list directory
+| list, dir
+| ls
+| ls
+| ls
+| ls
+| dir
+| ls
+| dir & ls & Get-ChildItem
+|-
+! mount device
+| mount
+| mount
+| mount
+| mount, diskutil mount
+| mount
+| mountvol
+| ?
+| mount & New-PSDrive
+|-
+! mount file as block device
+| 
+| mdconfig + mount
+| mount -o loop
+| hdid
+| lofiadm + mount
+| ?
+| ?
+| ?
+|-
+! move file(s)
+| move
+| mv
+| mv
+| mv
+| mv
+| move
+| mv
+| mv & Move-Item
+|-
+! rename file(s)
+| rename
+| mv
+| mv, rename
+| mv
+| mv
+| ren, rename
+| mv
+| ren, mv
+|-
+! run shell script with new shell
+| shell file.shell
+| sh file.sh
+| sh file.sh
+| sh file.sh
+| sh file.sh
+| cmd /c file.cmd
+| sh file.sh
+| ?
+|-
+! show network configuration
+| 
+| ifconfig
+| ip addr, ifconfig
+| ifconfig
+| ifconfig
+| ipconfig
+| ?
+| ipconfig
+|-
+! show network route
+| 
+| route
+| ip route, route
+| route
+| netstat -r
+| route
+| ?
+| ?
+|-
+! trace network route
+| 
+| traceroute
+| traceroute
+| traceroute
+| traceroute
+| tracert
+| ?
+| tracert
+|-
+! trace network route with pings
+| 
+| traceroute -I
+| traceroute -I & mtr
+| traceroute -I
+| traceroute -I
+| pathping
+| ?
+| pathping
+|-
+! unmount device
+| 
+| umount
+| umount
+| umount, diskutil unmount(disk)
+| umount
+| mountvol /d
+| ?
+| Remove-PSDrive
+|}
