@@ -1,19 +1,18 @@
-@(enableAngular : Boolean, header : Html = Html(""), footer : Html = Html(""))(content: Html)
+@(header : Html = Html(""), footer : Html = Html(""))(content: Html)
+
 
 <!DOCTYPE html>
-<html @if(enableAngular) {ng-app="pcmApp"}>
+<html ng-app="pcmApp">
 <head>
     <title>OpenCompare</title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
+
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
+    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
       <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editeur.css")'>
-
-    <style>
-    body {
-        margin-top: 60px;
-    }
-    </style>
 
     @header
 
@@ -21,7 +20,7 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarController">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -31,14 +30,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">OpenCompare</a>
+                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("images/logo_inverted_transparent.png")' height="25" width="51" > OpenCompare</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oc-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="/list">List</a></li> <!-- class="active" -->
-                    <!--<li><a href="/about">About</a></li>-->
+                    <li ng-class="{ active: isActive('/list')}"><a href="/list">List</a></li>
+                    <li ng-class="{ active: isActive('/create')}"><a href="/create">Create</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
@@ -60,6 +59,21 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <script>
+        var pcmApp = angular.module("pcmApp", []);
+    </script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/navbar-controller.js")'></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-58997269-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
     @footer
 </body>

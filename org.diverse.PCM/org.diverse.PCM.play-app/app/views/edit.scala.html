@@ -7,24 +7,44 @@
 }
 
 @footer = {
-<script>
-    var id = "@{Html(id)}";
-</script>
+@if(id != null) {
+    <script>
+        var id = "@{Html(id)}";
+    </script>
+}
 <script type='text/javascript' src='@routes.Assets.at("javascripts/handsontable/handsontable.full.min.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
 }
 
-@main(true, header, footer) {
+@main(header, footer) {
+
+<div ng-controller="PCMEditorController">
+    <input id="pcm-name" type="text" ng-model="pcm.name" placeholder="Title">
+    <button role="button" class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i> Save</button>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+
+    <!-- Remove modal -->
+    <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                    Removing the comparison matrix is definitive and cannot be undone. Please, confirm.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button role="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<div ng-controller="PCMEditorController"  style="overflow:auto, top : 50px , height: 300px"> 
-<P> <P>
-    <input id="pcm-name" type="text" ng-model="pcm.name">
-    <button role="button" class="btn btn-primary" ng-click="save()">Save</button>
-
-
-
+    <!-- Table editor -->
     <div id="hot">
     </div>
 

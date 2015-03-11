@@ -7,20 +7,18 @@
     <groupId>org.diverse.PCM</groupId>
     <artifactId>org.diverse.PCM</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
 
     <properties>
         <metamodel.ecore>./metamodel/model/pcm.mm</metamodel.ecore>
         <kmf.version>3.5.12</kmf.version>
+        <kmf.plugin.version>3.5.12</kmf.plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <play2.version>2.3.4</play2.version>
         <scala.version>2.10.4</scala.version>
-
-        <play2.plugin.version>1.0.0-alpha8</play2.plugin.version>
-        <sbt-compiler.plugin.version>1.0.0-beta4</sbt-compiler.plugin.version>
     </properties>
 
 
@@ -35,6 +33,7 @@
         <module>org.diverse.PCM.io</module>
         <module>org.diverse.PCM.formalizer</module>
         <module>org.diverse.PCM.play-app</module>
+        <module>org.diverse.PCM.getting-started</module>
 
     </modules>
 
@@ -43,6 +42,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -60,28 +60,18 @@
 
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.nanoko.playframework</groupId>
-                    <artifactId>play2-maven-plugin</artifactId>
-                    <version>1.2.5</version>
-                    <configuration>
-                        <skipTests>true</skipTests>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.2</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                    </configuration>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
 
 </project>

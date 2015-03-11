@@ -1,5 +1,7 @@
 package org.diverse.pcm.api.java;
 
+import org.diverse.pcm.api.java.exception.MergeConflictException;
+
 import java.util.List;
 
 public interface PCM extends PCMElement {
@@ -14,5 +16,43 @@ public interface PCM extends PCMElement {
 	List<AbstractFeature> getFeatures();
 	void addFeature(AbstractFeature feature);
 	void removeFeature(AbstractFeature feature);
+
+    /**
+     * List all the features of the PCM (no feature group is returned)
+     * @return
+     */
+    List<Feature> getConcreteFeatures();
+
+    /**
+     * Retrieve an existing feature
+     * If the feature does not exist, we create and add it to the PCM
+     * @return
+     */
+    Feature getOrCreateFeature(String name, PCMFactory factory);
+
+    /**
+     * Retrieve an existing product
+     * If the product does not exist, we create and add it to the PCM
+     * @return
+     */
+    Product getOrCreateProduct(String name, PCMFactory factory);
+
+    /**
+     * Add information from another PCM
+     * @param pcm
+     */
+    void merge(PCM pcm, PCMFactory factory) throws MergeConflictException;
+
+    /**
+     * Check if the PCM is well formed
+     * @return
+     */
+    boolean isValid();
+
+    /**
+     * Fill missing cells with not available cells
+     * @param factory
+     */
+    void normalize(PCMFactory factory);
 	
 }

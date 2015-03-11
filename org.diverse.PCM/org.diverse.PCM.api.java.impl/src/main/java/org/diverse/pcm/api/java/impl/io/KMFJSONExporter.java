@@ -1,19 +1,23 @@
-package org.diverse.pcm.api.java.impl.export;
+package org.diverse.pcm.api.java.impl.io;
 
 import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.export.PCMtoJson;
 import org.diverse.pcm.api.java.impl.PCMImpl;
+import org.diverse.pcm.api.java.io.PCMExporter;
 import org.kevoree.modeling.api.json.JSONModelSerializer;
 import pcm.factory.DefaultPcmFactory;
 
 /**
  * Created by gbecan on 13/10/14.
  */
-public class PCMtoJsonImpl implements PCMtoJson {
+public class KMFJSONExporter implements PCMExporter {
+
+    @Override
+    public String export(PCM pcm) {
+        return toJson(pcm);
+    }
 
     private DefaultPcmFactory factory = new DefaultPcmFactory();
 
-    @Override
     public String toJson(PCM pcm) {
         String json = "";
 

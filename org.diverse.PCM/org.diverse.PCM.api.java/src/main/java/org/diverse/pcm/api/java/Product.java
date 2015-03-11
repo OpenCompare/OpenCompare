@@ -11,4 +11,6 @@ public interface Product extends PCMElement {
     void addCell(Cell cell);
     void removeCell(Cell cell);
 
+    Cell findCell(Feature feature);
+
 }

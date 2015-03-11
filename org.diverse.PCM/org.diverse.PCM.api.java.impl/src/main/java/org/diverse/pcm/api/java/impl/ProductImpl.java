@@ -1,6 +1,7 @@
 package org.diverse.pcm.api.java.impl;
 
 import org.diverse.pcm.api.java.Cell;
+import org.diverse.pcm.api.java.Feature;
 import org.diverse.pcm.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
@@ -48,6 +49,30 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
     @Override
     public void removeCell(Cell cell) {
         kProduct.removeValues(((CellImpl) cell).getkCell());
+    }
+
+    @Override
+    public Cell findCell(Feature feature) {
+        // TODO : try to use built-in KMF features for finding a cell
+//        FeatureImpl featureImpl = (FeatureImpl) feature;
+//        String id = kProduct.getValues().get(0).getGenerated_KMF_ID();
+//        System.out.println(kProduct.getValues());
+//
+//        for(pcm.Cell cell : kProduct.getValues()) {
+//            System.out.println(cell.getFeature().getGenerated_KMF_ID());
+//        }
+//
+//        String query = "values[feature/id = " + featureImpl.getkFeature().getGenerated_KMF_ID() + "]";
+//        System.out.println(query);
+//        System.out.println(kProduct.select(query));
+
+        for (Cell cell : getCells()) {
+            if (cell.getFeature().equals(feature)) {
+                return cell;
+            }
+        }
+
+        return null;
     }
 
     @Override

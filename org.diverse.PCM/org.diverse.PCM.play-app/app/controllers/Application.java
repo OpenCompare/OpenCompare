@@ -1,19 +1,11 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import model.Database;
 import model.PCMInfo;
 import model.PCMVariable;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
-import org.diverse.pcm.api.java.io.JSONLoader;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application extends Controller {
@@ -42,32 +34,32 @@ public class Application extends Controller {
 
 
     public static Result view(String id) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm();
-        return ok(views.html.view.render(id, pcm));
-    }
+        PCMVariable var = Database.INSTANCE.get(id);
 
-    public static Result get(String id) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm();
-        PCMtoJson serializer = new PCMtoJsonImpl();
-        String json = serializer.toJson(pcm);
-        return ok(json);
-    }
+        if (var.hasIdentifier()) {
+            return ok(views.html.view.render(var.getId(), var.getPcm()));
+        } else {
+            return ok(views.html.edit.render(null));
+        }
 
-    public static Result save(String id) {
-        String json = request().body().asJson().toString();
-
-        String ipAddress = request().remoteAddress(); // TODO : For future work !
-
-        Database.INSTANCE.update(id, json);
-        return ok();
     }
 
     public static Result edit(String id) {
-        return ok(views.html.edit.render(id));
+        boolean exists = Database.INSTANCE.exists(id);
+        if (exists) {
+            return ok(views.html.edit.render(id));
+        } else {
+            return ok(views.html.edit.render(null));
+        }
+
     }
 
     public static Result about() {
         return ok(views.html.about.render());
+    }
+
+    public static Result create() {
+        return ok(views.html.edit.render(null));
     }
 
 }

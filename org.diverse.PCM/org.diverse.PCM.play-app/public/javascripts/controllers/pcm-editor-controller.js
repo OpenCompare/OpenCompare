@@ -4,8 +4,6 @@
 
  */
 
-var pcmApp = angular.module("pcmApp", []);
-
 /**
 
  * Sort two elements by their names (accessed with x.name)
@@ -30,7 +28,6 @@ function sortByName(a, b) {
 
 
 pcmApp.controller("PCMEditorController", function($scope, $http) {
-    $scope.id = id;
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -38,17 +35,54 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var loader = factory.createJSONLoader();
     var serializer = factory.createJSONSerializer();
 
-    $http.get("/get/" + $scope.id).success(function(data) {
-        $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
+    // Init
+    var features = [];
+    var featureHeaders = [];
+    var productHeaders = [];
+    var products = [];
 
-        var container = document.getElementById('hot');
+    if (typeof id === 'undefined') {
+        // Create example PCM
+        $scope.pcm = factory.createPCM();
 
+        var exampleFeature = factory.createFeature();
+        exampleFeature.name = "Feature";
+        $scope.pcm.addFeatures(exampleFeature);
+
+        var exampleFeature1 = factory.createFeature();
+        exampleFeature1.name = "Feature1";
+        $scope.pcm.addFeatures(exampleFeature1);
+
+        var exampleProduct = factory.createProduct();
+        exampleProduct.name = "Product";
+        $scope.pcm.addProducts(exampleProduct);
+
+        var exampleCell = factory.createCell();
+        exampleCell.feature = exampleFeature;
+        exampleCell.content = "Yes";
+        exampleProduct.addValues(exampleCell);
+
+        var exampleCell1 = factory.createCell();
+        exampleCell1.feature = exampleFeature1;
+        exampleCell1.content = "No";
+        exampleProduct.addValues(exampleCell1);
+
+        initializeHOT();
+
+    } else {
+
+        $http.get("/api/get/" + id).success(function (data) {
+            $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
+            initializeHOT();
+        });
+
+    }
+
+
+    function initializeHOT() {
         // Transform features to handonstable data structures
-        var features = [];
-        var featureHeaders = [];
-
-        var kFeatures = $scope.pcm.features.array.sort(sortByName);
-        for (var i = 0; i <  kFeatures.length; i++) {
+        var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
+        for (var i = 0; i < kFeatures.length; i++) {
             features.push({
                 data: property(kFeatures[i].generated_KMF_ID)
             });
@@ -56,9 +90,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
 
         // Transform products to handonstable data structures
-        var productHeaders = [];
-        var products = [];
-
         var kProducts = $scope.pcm.products.array.sort(sortByName);
         for (var i = 0; i < kProducts.length; i++) {
             var product = kProducts[i];
@@ -68,133 +99,105 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
         }
 
-        /**
-
-         * Synchronization function between handsontable and a PCM model of a product
-
-         * @param product : KMF model of a product
-
-         * @returns synchronization object
-
-         */
-        function model(product) {
-           var id = product.generated_KMF_ID;
-
-            // FIXME : this function is also used when creating a new product
-
-            // FIXME : ugly stuff to get and set a value... We need to work with the ID !
-//            sync.attr = function (attr, val) {
-//                if (typeof val === 'undefined') {
-//                    var kCells = product.values.array;
-//                    for (var j = 0; j < kCells.length; j++) {
-//                        var kCell = kCells[j];
-//                        if (kCell.feature.name == attr) {
-//                            return kCell.content;
-//                        }
-//                    }
-//                } else {
-//                    var kCells = product.values.array;
-//                    for (var j = 0; j < kCells.length; j++) {
-//                        var kCell = kCells[j];
-//                        if (kCell.feature.name == attr) {
-//                            kCell.content = val;
-//                        }
-//                    }
-//
-//                    return sync;
-//                }
-//            };
-
-            return id;
-        }
-
-		// add product
-        function schema() {
-            var newProduct = factory.createProduct();
-            $scope.pcm.addProducts(newProduct);
-
-            for (var i = 0; i < $scope.pcm.features.array.length; i++) {
-                var cell = factory.createCell();
-                cell.feature = $scope.pcm.features.array[i];
-                cell.content = "";
-                newProduct.addValues(cell);
-            }
-
-            return model(newProduct);
-        }
-		
-		// add feature
-		function addFeature () {
-			var newFeature = factory.createFeature();
-			$scope.pcm.addFeature(newFeature);
-			
-			for (var i = 0 ; i < $scope.pcm.product.array.length ; i++) {
-				var cell = factory.createCell();
-				cell.feature = newFeature;
-				cell.content = "";
-				$scope.pcm.product.array[i].addValues(cell);
-			}
-			
-			return model(newFeature);
-		}
-		
-		// set feature name
-		function setFeatureName (name) {
-			
-		}
-
-
-        /**
-
-         * Bind handsontable cells to PCM cells
-
-         * @param attr
-
-         * @returns synchronization function
-
-         */
-        function property(attr) {
-            return function (row, value) {
-                var product = $scope.pcm.findProductsByID(row);
-                //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
-                var cells = product.values.array
-                for (var i = 0; i < cells.length; i++) {
-                    var cell = cells[i];
-                    if (cell.feature.generated_KMF_ID === attr) {
-                        break;
-                    }
-                }
-
-                if (typeof value === 'undefined') {
-                     return cell.content;
-                } else {
-                    cell.content = value;
-                    return row;
-                }
-            }
-        }
-
-        // Initialize handsontable
-		
-		var matrice = {
+  
+        var container = document.getElementById('hot');
+        var hot = new Handsontable(container,
+            {
                 data: products,
                 dataSchema: schema,
-                 rowHeaders: productHeaders,
-                 colHeaders: featureHeaders,
-                 columns: features,
-                 //contextMenu: true,
-                 currentRowClassName: 'currentRow', 
-                 currentColClassName: 'currentCol',   
-                 fixedRowsTop: 0, //fixer les lignes 
-                 fixedColumnsLeft: 0, //fixer les colonnes
-                 //afterChange :;
-              };
+                rowHeaders: productHeaders,
+                colHeaders: featureHeaders,
+                columns: features,
+                contextMenu: true,
+                currentRowClassName: 'currentRow', 
+                currentColClassName: 'currentCol', 
+                //stretchH: 'all', // Scroll bars ?!
+                manualColumnMove: true,
+                manualRowMove: true,
+                fixedRowsTop: 0, //fixer les lignes 
+                fixedColumnsLeft: 0 //fixer les colonnes
+            });
+	resize();
+    }
 
-        var hot = new Handsontable(container,matrice);
-         resize();
+    function getConcreteFeatures(pcm) {
 
-    });
+        var aFeatures = pcm.features.array;
 
+        var features = [];
+        for (var i = 0; i < aFeatures.length; i++) {
+            var aFeature = aFeatures[i];
+            features = features.concat(getConcreteFeaturesRec(aFeature))
+        }
+
+        return features;
+    }
+
+    function getConcreteFeaturesRec(aFeature) {
+        var features = [];
+
+        if (typeof aFeature.subFeatures !== 'undefined') {
+            var subFeatures = aFeature.subFeatures.array;
+            for (var i = 0; i < subFeatures.length; i++) {
+                var subFeature = subFeatures[i];
+                features = features.concat(getConcreteFeaturesRec(subFeature));
+            }
+        } else {
+            features.push(aFeature);
+        }
+
+        return features;
+    }
+
+    /**
+     * Synchronization function between handsontable and a PCM model of a product
+     * @param product : KMF model of a product
+     * @returns synchronization object
+     */
+    function model(product) {
+        var idKMF = product.generated_KMF_ID;
+        return idKMF;
+    }
+
+    function schema() {
+        var newProduct = factory.createProduct();
+        $scope.pcm.addProducts(newProduct);
+
+        for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+            var cell = factory.createCell();
+            cell.feature = $scope.pcm.features.array[i];
+            cell.content = "";
+            newProduct.addValues(cell);
+        }
+
+        return model(newProduct);
+    }
+
+    /**
+     * Bind handsontable cells to PCM cells
+     * @param attr
+     * @returns synchronization function
+     */
+    function property(attr) {
+        return function (row, value) {
+            var product = $scope.pcm.findProductsByID(row);
+            //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
+            var cells = product.values.array
+            for (var i = 0; i < cells.length; i++) {
+                var cell = cells[i];
+                if (cell.feature.generated_KMF_ID === attr) {
+                    break;
+                }
+            }
+
+            if (typeof value === 'undefined') {
+                return cell.content;
+            } else {
+                cell.content = value;
+                return row;
+            }
+        }
+    }
 
 function resize()
   {
@@ -238,10 +241,25 @@ for(i=0;i<g.length;i++)
     $scope.save = function() {
         var jsonModel = serializer.serialize($scope.pcm);
 
-        $http.post("/save/" + $scope.id, JSON.parse(jsonModel)).success(function(data) {
-            console.log("model saved");
-        });
+        if (typeof id === 'undefined') {
+            $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
+                id = data;
+                console.log("model created with id=" + id);
+            });
+        } else {
+            $http.post("/api/save/" + id, JSON.parse(jsonModel)).success(function(data) {
+                console.log("model saved");
+            });
+        }
+    };
 
+    $scope.remove = function() {
+        if (typeof id !== 'undefined') {
+            $http.get("/api/remove/" + id).success(function(data) {
+                window.location.href = "/";
+                console.log("model removed");
+            });
+        }
     };
 });
 	
