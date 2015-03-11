@@ -27,7 +27,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var factory = new pcmMM.factory.DefaultPcmFactory();
     var loader = factory.createJSONLoader();
     var serializer = factory.createJSONSerializer();
-    var temp1; //Temp for HandsOnTable
+
     // Init
     var features = [];
     var featureHeaders = [];
@@ -38,7 +38,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     number = /[0-9]+/,
     bool=/(Yes|No)/,
     text = /[a-z]+/;
-
     if (typeof id === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
@@ -110,11 +109,10 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
             features.push({
                 // Associate a type to a columns
-                data: property(kFeatures[i].generated_KMF_ID), validator: getType(Math.round(getRandomNumber(0,2))), allowInvalid: true,color: 'orange'
+                data: property(kFeatures[i].generated_KMF_ID), validator: getType(Math.round(getRandomNumber(0,2))), allowInvalid: true
             });
             console.log(features);
             featureHeaders.push(kFeatures[i].name);
-
         }
         // Transform products to handonstable data structures
         var kProducts = $scope.pcm.products.array.sort(sortByName);
@@ -123,6 +121,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
             productHeaders.push(product.name);
             products.push(model(product));
+
             //console.log(products);
         }
 
@@ -134,13 +133,53 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 rowHeaders: productHeaders,
                 colHeaders: featureHeaders,
                 columns: features,
+                minSpareRows:0,
                 contextMenu: true,
 
+                validateTable: function(table) {
+                        var deferred = new $.Deferred(),
+                            waitingFor = [],
+                            invalid = [];
+
+                        function validatorChecker(validatorDeferred, invalid, i, j) {
+                            return function(isValid) {
+                                if(isValid) {
+                                    validatorDeferred.resolve();
+                                } else {
+                                    invalid.push([i, j]);
+                                    validatorDeferred.reject();
+                                }
+                            };
+                        }
+
+                        for(var i = 0; i < table.countRows() - table.getSettings().minSpareRows; ++i) {
+                            for(var j = 0; j < table.countCols() - table.getSettings().minSpareCols; ++j) {
+                                var validatorDeferred = new $.Deferred();
+                                waitingFor.push(validatorDeferred);
+                                table.validateCell(
+                                    table.getDataAtCell(i, j),
+                                    table.getCellMeta(i, j),
+                                    validatorChecker(validatorDeferred, invalid, i, j),
+                                    'validateCells'
+                                );
+                            }
+                        }
+
+                        $.when.apply($, waitingFor)
+                        .done(function() {
+                            deferred.resolve();
+                        })
+                        .fail(function() {
+                            deferred.reject(invalid);
+                        });
+
+                        return deferred.promise();
+                    },
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true
             });
-        temp1=hot;
+        $scope.hot=hot;
     }
 
     /**
@@ -206,7 +245,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             });
         } else {
             $http.post("/api/save/" + id, JSON.parse(jsonModel)).success(function(data) {
-                console.log("model saved");
+            console.log("model saved");
             });
         }
     };
@@ -224,9 +263,19 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     /**
     * Validate the type of each columns
     */
-    $scope.valider=function(){
+    $scope.validate=function(){
         // TO DO
-       temp1.setDataAtCell(0, 0, 'new value');
+       //alert(productHeaders.length);
+
+      /* for(var i=0;i<features.length;i++){
+            for(var j=0;j<productHeaders.length;j++){
+       //         temp1.setDataAtCell(j, i, temp1.getDataAtCell(j,i));
+       }}*/
+
+       //alert("done");
+       $scope.hot.validateCells(function(){
+       $scope.hot.render()});
+
     };
 
 });
