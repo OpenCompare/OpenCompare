@@ -11,36 +11,37 @@ class BestBuyAPI {
   var timeLastCall : Long = 0
   var callsInLastSecond : Int = 0
 
+  val maxAPICallsPerSeconds = 4
 
   def callAPI(url : String) : Elem = {
-    // Restrict calls to 5 per seconds
+    // Restrict API usage to at most 5 calls per seconds
     val time = System.currentTimeMillis() / 1000
 
     if (time > timeLastCall) { // OK
       timeLastCall = time
       callsInLastSecond = 1
-    }else if (time == timeLastCall && callsInLastSecond < 5) { // OK
+    } else if (time == timeLastCall && callsInLastSecond < maxAPICallsPerSeconds) { // OK
       callsInLastSecond += 1
-    } else if (time == timeLastCall && callsInLastSecond == 5) { // WAIT
-      Thread.sleep(1500) // wait 1.5s just to be sure
+    } else if (time == timeLastCall && callsInLastSecond == maxAPICallsPerSeconds) { // WAIT
+      Thread.sleep(1000) // wait 1s
       timeLastCall = System.currentTimeMillis() / 1000
       callsInLastSecond = 1
     }
 
     // Call API
     Http(url)
-      .option(HttpOptions.connTimeout(1000))
+      .option(HttpOptions.connTimeout(5000))
       .option(HttpOptions.readTimeout(30000))
       .asXml
   }
 
-  def listProductsSKU(productTemplate : Option[String] = None, page : Int = 1, pageSize : Int = 10) : List[String] = {
+  def listProductsSKU(categoryName : Option[String] = None, page : Int = 1, pageSize : Int = 10) : List[String] = {
 
     // Create REST request
     var url = apiURL + "products"
 
-    if (productTemplate.isDefined) {
-      url += "(productTemplate=" + productTemplate.get + ")"
+    if (categoryName.isDefined) {
+      url += "(categoryPath.name=" + categoryName.get.replaceAll(" ", "%20") + ")"
     }
 
     url += "?page=" + page + "&pageSize=" + pageSize + "&show=sku&format=xml&" + apiKey
@@ -61,14 +62,15 @@ class BestBuyAPI {
   def getProductInfo(sku : String) : ProductInfo = {
 
     // Show details (specification), long description and features (detailed textual description)
-    val url = apiURL + "products/" + sku + ".xml?show=details%2Cfeatures%2ClongDescription&" + apiKey
+    val url = apiURL + "products/" + sku + ".xml?show=name,details,features,longDescription&" + apiKey
     val result = callAPI(url)
 
     val productInfo = new ProductInfo
 
+    productInfo.name = (result \\ "name").text
     productInfo.longDescription = (result \\ "longDescription").text
 
-    for (feature <- result \\ "feature") {
+    for (feature <- result \\ "feature") yield {
       productInfo.addFeature(feature.text)
     }
 

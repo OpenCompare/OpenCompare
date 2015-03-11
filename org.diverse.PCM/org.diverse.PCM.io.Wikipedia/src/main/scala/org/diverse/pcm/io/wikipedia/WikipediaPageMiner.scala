@@ -29,11 +29,20 @@ class WikipediaPageMiner {
   def getPageCodeFromWikipedia(title : String): String = {
     val editPage = Http("http://en.wikipedia.org/w/index.php")
       .params("title" -> title.replaceAll(" ", "_"), "action" -> "edit")
-      .option(HttpOptions.connTimeout(1000))
+      .option(HttpOptions.connTimeout(10000))
       .option(HttpOptions.readTimeout(30000))
       .asString
     val xml = parseHTMLAsXML(editPage)
-    val code = (xml \\ "textarea").text
+    var code = (xml \\ "textarea").text
+
+    // Manage the page redirection if any
+    if (code.contains("#REDIRECT")) {
+      val titleMatch = """\[\[(.*?)\]\]""".r findFirstMatchIn  code
+      if (titleMatch.isDefined) {
+        val title = titleMatch.get.group(1)
+        code = getPageCodeFromWikipedia(title)
+      }
+    }
     code
   }
 
@@ -62,10 +71,11 @@ class WikipediaPageMiner {
   /**
    * Parse preprocessed wikitext
    * @param preprocessedCode : preprocessed wikitext code
+   * @param pageTitle : title of the parsed page
    */
-  def parse(preprocessedCode : String) : Page = {
-    val ast = parser.parseArticle(preprocessedCode, "");
-    val visitor = new PageVisitor
+  def parse(preprocessedCode : String, pageTitle : String) : Page = {
+    val ast = parser.parseArticle(preprocessedCode, "")
+    val visitor = new PageVisitor(pageTitle)
     visitor.go(ast)
     visitor.pcm
   }
@@ -93,16 +103,23 @@ class WikipediaPageMiner {
       }
     }
 
-    // Detect holes in the matrix and add a cell if necessary
-    for (row <- 0 until normalizedMatrix.getNumberOfRows(); column <- 0 until normalizedMatrix.getNumberOfColumns()) {
-      if (!normalizedMatrix.getCell(row, column).isDefined) {
-        val emptyCell = new Cell("", false, row, 1, column, 1)
-        normalizedMatrix.setCell(emptyCell, row, column)
-      }
-    }
+    fillMissingCells(normalizedMatrix)
 
     normalizedMatrix
   }
 
+  /**
+   * Detect holes in the matrix and add a cell if necessary
+   * @param matrix
+   */
+  def fillMissingCells(matrix : Matrix) {
+
+    for (row <- 0 until matrix.getNumberOfRows(); column <- 0 until matrix.getNumberOfColumns()) {
+      if (!matrix.getCell(row, column).isDefined) {
+        val emptyCell = new Cell("", false, row, 1, column, 1)
+        matrix.setCell(emptyCell, row, column)
+      }
+    }
+  }
 
 }

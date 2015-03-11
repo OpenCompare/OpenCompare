@@ -5,6 +5,7 @@ import org.diverse.pcm.api.java.impl.ValueImpl;
 import org.diverse.pcm.api.java.util.PCMVisitor;
 import org.diverse.pcm.api.java.value.Multiple;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +26,11 @@ public class MultipleImpl extends ValueImpl implements Multiple {
 
     @Override
     public List<Value> getSubValues() {
-        throw new UnsupportedOperationException(); // TODO
+        List<Value> subValues = new ArrayList<Value>();
+        for (pcm.Value kValue : kMultiple.getSubvalues()) {
+            subValues.add(ValueImpl.wrapValue(kValue));
+        }
+        return subValues;
     }
 
     @Override

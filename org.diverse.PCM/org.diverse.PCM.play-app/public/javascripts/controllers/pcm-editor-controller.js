@@ -2,8 +2,6 @@
  * Created by gbecan on 17/12/14.
  */
 
-var pcmApp = angular.module("pcmApp", []);
-
 /**
  * Sort two elements by their names (accessed with x.name)
  * @param a
@@ -74,7 +72,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
     function initializeHOT() {
         // Transform features to handonstable data structures
-        var kFeatures = $scope.pcm.features.array.sort(sortByName);
+        var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
         for (var i = 0; i < kFeatures.length; i++) {
             features.push({
                 data: property(kFeatures[i].generated_KMF_ID)
@@ -105,6 +103,36 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 manualColumnMove: true,
                 manualRowMove: true
             });
+    }
+
+    function getConcreteFeatures(pcm) {
+
+        var aFeatures = pcm.features.array;
+
+        var features = [];
+        for (var i = 0; i < aFeatures.length; i++) {
+            var aFeature = aFeatures[i];
+            features = features.concat(getConcreteFeaturesRec(aFeature))
+        }
+
+        return features;
+    }
+
+    function getConcreteFeaturesRec(aFeature) {
+
+        var features = [];
+
+        if (typeof aFeature.subFeatures !== 'undefined') {
+            var subFeatures = aFeature.subFeatures.array;
+            for (var i = 0; i < subFeatures.length; i++) {
+                var subFeature = subFeatures[i];
+                features = features.concat(getConcreteFeaturesRec(subFeature));
+            }
+        } else {
+            features.push(aFeature);
+        }
+
+        return features;
     }
 
     /**

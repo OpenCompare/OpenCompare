@@ -2,7 +2,7 @@ package org.diverse.pcm.api.java.impl.io;
 
 import org.diverse.pcm.api.java.PCM;
 import org.diverse.pcm.api.java.impl.PCMImpl;
-import org.diverse.pcm.api.java.io.JSONLoader;
+import org.diverse.pcm.api.java.io.PCMLoader;
 import org.kevoree.modeling.api.KMFContainer;
 import org.kevoree.modeling.api.json.JSONModelLoader;
 import org.kevoree.modeling.api.xmi.XMIModelLoader;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by gbecan on 12/12/14.
  */
-public class JSONLoaderImpl implements JSONLoader {
+public class KMFJSONLoader implements PCMLoader {
 
     private DefaultPcmFactory kpcmFactory = new DefaultPcmFactory();
     private JSONModelLoader loader = kpcmFactory.createJSONLoader();

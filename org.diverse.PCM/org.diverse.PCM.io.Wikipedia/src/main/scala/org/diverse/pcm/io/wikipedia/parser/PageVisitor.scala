@@ -31,12 +31,15 @@ import org.sweble.wikitext.`lazy`.parser.Enumeration
 import org.sweble.wikitext.`lazy`.parser.HorizontalRule
 import java.util.regex.Pattern
 
-class PageVisitor extends AstVisitor{
-  
+class PageVisitor(pageTitle : String) extends AstVisitor{
+
+
   var matrices : ListBuffer[Matrix] = ListBuffer()
   val pcm : Page = new Page
+  pcm.title = pageTitle
   var section : StringBuilder = new StringBuilder
   var inTitle : Boolean = false
+
   
   
   	private val trimPattern : Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
@@ -45,11 +48,13 @@ class PageVisitor extends AstVisitor{
 	 */
 	def trim(s : String) : String = {
 	  val matcher = trimPattern.matcher(s)
-	  if (matcher.matches() && matcher.groupCount() == 1) {
+	  var trimmedString = if (matcher.matches() && matcher.groupCount() == 1) {
 		  matcher.group(1)
 	  } else {
 		  ""
 	  }
+    trimmedString = trimmedString.replaceAll("_", " ")
+    trimmedString
 	}
   
   def visit(e : LazyParsedPage) {
@@ -64,7 +69,13 @@ class PageVisitor extends AstVisitor{
 	  val tableVisitor = new TableVisitor
 	  tableVisitor.go(e)
 	  for (matrix <- tableVisitor.matrices) {
-	    matrix.name = trim(section.toString)
+      val sectionTitle = section.toString
+      if (sectionTitle.isEmpty) {
+        matrix.name = trim(pageTitle)
+      } else {
+        matrix.name = trim(pageTitle + " - " + sectionTitle)
+      }
+
 	    pcm.addMatrix(matrix)
 	  }
   }
