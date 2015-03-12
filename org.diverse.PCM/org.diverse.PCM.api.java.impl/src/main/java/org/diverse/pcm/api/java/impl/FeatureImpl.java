@@ -41,7 +41,7 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
 
         FeatureImpl feature = (FeatureImpl) o;
 
-        if (kFeature != null ? !kFeature.equals(feature.kFeature) : feature.kFeature != null) return false;
+        if (kFeature != null ? !kFeature.getName().equals(feature.kFeature.getName()) : feature.kFeature != null) return false;
 
         return true;
     }
@@ -49,5 +49,10 @@ public class FeatureImpl extends AbstractFeatureImpl implements org.diverse.pcm.
     @Override
     public int hashCode() {
         return kFeature != null ? kFeature.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Feature(" + getName() + ")";
     }
 }

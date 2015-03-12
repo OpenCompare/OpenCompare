@@ -4,15 +4,12 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 import org.diverse.pcm.api.java.exception.MergeConflictException;
-import org.diverse.pcm.api.java.io.HTMLExporter;
+import org.diverse.pcm.api.java.util.DiffResult;
+import org.diverse.pcm.api.java.util.PCMElementComparator;
 import org.diverse.pcm.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by gbecan on 09/10/14.
@@ -245,5 +242,68 @@ public abstract class PCMTest {
         assertEquals("number of features", 3, pcm.getConcreteFeatures().size());
     }
 
+
+    @Test
+    public void testDiff() {
+        // Create PCM 1
+        PCM pcm1 = factory.createPCM();
+
+        Feature commonFeature1 = createFeature(pcm1, "Common feature");
+        Feature feature1 = createFeature(pcm1, "Feature from PCM 1");
+
+        Product commonProduct1 = createProduct(pcm1, "Common product");
+        createCell(commonProduct1, commonFeature1, "common cell 1", null);
+        createCell(commonProduct1, feature1, "", null);
+
+        Product product1 = createProduct(pcm1, "Product from PCM 1");
+        createCell(product1, commonFeature1, "", null);
+        createCell(product1, feature1, "", null);
+
+
+
+        // Create PCM 2
+        PCM pcm2 = factory.createPCM();
+
+        Feature commonFeature2 = createFeature(pcm2, "Common feature");
+        Feature feature2 = createFeature(pcm2, "Feature from PCM 2");
+
+        Product commonProduct2 = createProduct(pcm2, "Common product");
+        createCell(commonProduct2, commonFeature2, "common cell 2", null);
+        createCell(commonProduct2, feature2, "", null);
+
+        Product product2 = createProduct(pcm2, "Product from PCM 2");
+        createCell(product2, commonFeature2, "", null);
+        createCell(product2, feature2, "", null);
+
+
+        // Diff
+        DiffResult diffResult = pcm1.diff(pcm2, new PCMElementComparator() {
+            @Override
+            public boolean similarFeature(AbstractFeature f1, AbstractFeature f2) {
+                return f1.getName().equals(f2.getName());
+            }
+
+            @Override
+            public boolean similarProduct(Product p1, Product p2) {
+                return p1.getName().equals(p2.getName());
+            }
+
+            @Override
+            public boolean similarCell(Cell c1, Cell c2) {
+                return c1.getContent().equals(c2.getContent());
+            }
+        });
+
+
+        assertEquals("common features", 1, diffResult.getCommonFeatures().size());
+        assertEquals("features only in PCM 1", 1, diffResult.getFeaturesOnlyInPCM1().size());
+        assertEquals("features only in PCM 2", 1, diffResult.getFeaturesOnlyInPCM2().size());
+
+        assertEquals("common products", 1, diffResult.getCommonProducts().size());
+        assertEquals("products only in PCM 1", 1, diffResult.getProductsOnlyInPCM1().size());
+        assertEquals("products only in PCM 2", 1, diffResult.getProductsOnlyInPCM2().size());
+
+        assertEquals("differing cells", 1, diffResult.getDifferingCells().size());
+    }
 
 }
