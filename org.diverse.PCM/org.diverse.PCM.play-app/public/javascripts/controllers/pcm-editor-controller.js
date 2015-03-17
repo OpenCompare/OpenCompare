@@ -75,7 +75,8 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
         for (var i = 0; i < kFeatures.length; i++) {
             features.push({
-                data: property(kFeatures[i].generated_KMF_ID)
+                data: property(kFeatures[i].generated_KMF_ID),
+		ID : kFeatures[i].generated_KMF_ID
             });
             featureHeaders.push(kFeatures[i].name);
         }
@@ -98,11 +99,110 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 rowHeaders: productHeaders,
                 colHeaders: featureHeaders,
                 columns: features,
-                contextMenu: true,
+                //contextMenu: true,
+                contextMenu: contextMenu(),
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true
             });
+
+	  function contextMenu () {
+		  return {
+		  /*add_col : {
+			  name : 'add a column (DON\'T SAVE !!!)',
+			  callback: function (key, selection) {
+			      var header = prompt("Please enter your column name", "");
+			      if (header != null) {
+				  featureHeaders.push(header);
+				  var feature = factory.createFeature();
+				  features.push({
+				      data: feature,
+				      ID : feature.generated_KMF_ID
+				  });
+				  for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
+				      var cell = factory.createCell();
+				      cell.content = "";
+				      cell.feature = feature;
+				      $scope.pcm.products.array[i].addValues(cell);
+				  }
+				  alert(cell.feature);
+				  hot.render();
+			      }
+			  },
+		  },
+		  remove_col : {
+			  name : 'remove colomn(s) (DON\'T USE !!!)',
+			  callback: function (key, selection) {
+			      var start = selection.start.col;
+			      var end = selection.end.col;
+			      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
+				  var product = $scope.pcm.products.array[i];
+				  for (var j = 0 ; j < product.values.array.length ; j++) {
+				      var cell = product.values.array[j];
+				      for (var k = start ; k <= end ; k++) {
+					  if (cell.feature.generated_KMF_ID === features[k].ID) {
+					      product.values.array.splice(j,1,[]);
+					      j--;
+					      break;
+					  }
+				      }
+				  }
+			      }
+			      features.splice(start, end-start+1, []);
+			      featureHeaders.splice(start, end-start+1, []);
+			  },
+		  },*/
+		  set_column_name : {
+			  name : 'set column name',
+			  callback: function (key, selection) {
+				  var header = prompt("Please enter your column name", "");
+				  if (header != null) {
+				      featureHeaders.splice(selection.start.col, 1, header);
+				      features[selection.start.col].data.name = header;
+				      //$scope.pcm.findFeaturesById(features[selection.start.col].ID).name = header;
+				      
+				      var feature;
+				      for (var i = 0 ; i < $scope.pcm.features.array.length ; i++) {
+					  feature = $scope.pcm.features.array[i];
+					  if (feature.generated_KMF_ID === features[selection.start.col].ID) break;
+				      }
+				      feature.name = header;
+				      
+				      hot.render();
+				  }
+			  },
+			  disabled: function () {
+			      // if multiple columns selected : disable
+			      return hot.getSelected()[1] != hot.getSelected()[3];
+			  }
+		  },
+		  /*set_column_name : {
+			  name : 'set column name',
+			  callback: function (key, selection) {
+				  var header = prompt("Please enter your column name", "");
+			  if (header != null) {
+					  matrice.colHeaders[selection.end.col] = header;
+					  this.forceFullRender = true;
+					  this.view.render();
+				  }
+			  }
+		  },*/
+		  /*"hsep": "---------",
+		  "row_above": {
+			  disabled: function () {
+				  //if first row, disable this option
+				  return ($("#table").handsontable('getSelected')[0] === 0);
+				  }
+		  },
+		  "row_below": {},
+		  "remove_row": {
+			  disabled: function () {
+				  //if first row, disable this option
+				  return ($("#table").handsontable('getSelected')[0] === 0);
+			  }
+		  },*/
+		  };
+	  }
     }
 
     function getConcreteFeatures(pcm) {
