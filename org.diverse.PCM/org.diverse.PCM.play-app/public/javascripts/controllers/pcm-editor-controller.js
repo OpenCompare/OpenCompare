@@ -125,13 +125,12 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				      cell.feature = feature;
 				      $scope.pcm.products.array[i].addValues(cell);
 				  }
-				  alert(cell.feature);
 				  hot.render();
 			      }
 			  },
 		  },
 		  remove_col : {
-			  name : 'remove colomn(s) (DON\'T USE !!!)',
+			  name : 'remove colomn(s) (UNUSABLE)',
 			  callback: function (key, selection) {
 			      var start = selection.start.col;
 			      var end = selection.end.col;
@@ -140,16 +139,16 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				  for (var j = 0 ; j < product.values.array.length ; j++) {
 				      var cell = product.values.array[j];
 				      for (var k = start ; k <= end ; k++) {
-					  if (cell.feature.generated_KMF_ID === features[k].ID) {
-					      product.values.array.splice(j,1,[]);
+					  if (cell.feature.generated_KMF_ID == features[k].ID) {
+					      product.values.array.splice(j,1,undefined); // don't work
 					      j--;
 					      break;
 					  }
 				      }
 				  }
 			      }
-			      features.splice(start, end-start+1, []);
-			      featureHeaders.splice(start, end-start+1, []);
+			      features.splice(start, end-start+1, undefined);
+			      featureHeaders.splice(start, end-start+1, undefined);
 			  },
 		  },*/
 		  set_column_name : {
@@ -164,7 +163,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				      var feature;
 				      for (var i = 0 ; i < $scope.pcm.features.array.length ; i++) {
 					  feature = $scope.pcm.features.array[i];
-					  if (feature.generated_KMF_ID === features[selection.start.col].ID) break;
+					  if (feature.generated_KMF_ID == features[selection.start.col].ID) break;
 				      }
 				      feature.name = header;
 				      
@@ -176,29 +175,50 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 			      return hot.getSelected()[1] != hot.getSelected()[3];
 			  }
 		  },
-		  /*set_column_name : {
-			  name : 'set column name',
+		  "hsep": "---------",
+		  add_row : {
+			  name : 'add a row',
 			  callback: function (key, selection) {
-				  var header = prompt("Please enter your column name", "");
-			  if (header != null) {
-					  matrice.colHeaders[selection.end.col] = header;
-					  this.forceFullRender = true;
-					  this.view.render();
+			      var header = prompt("Please enter your row name", "");
+			      if (header != null) {
+				  productHeaders.push(header);
+				  var product = factory.createProduct();
+				  product.name = header;
+				  for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+				      var cell = factory.createCell();
+				      cell.feature = $scope.pcm.features.array[i];
+				      cell.content = "";
+				      product.addValues(cell);
 				  }
-			  }
-		  },*/
-		  /*"hsep": "---------",
-		  "row_above": {
-			  disabled: function () {
-				  //if first row, disable this option
-				  return ($("#table").handsontable('getSelected')[0] === 0);
-				  }
+				  $scope.pcm.addProducts(product);
+				  products.push(model(product));
+				  
+				  hot.render();
+			      }
+			  },
 		  },
-		  "row_below": {},
-		  "remove_row": {
+		  /*set_row_name : {
+			  name : 'set row name',
+			  callback: function (key, selection) {
+				  var header = prompt("Please enter your row name", "");
+				  if (header != null) {
+				      productHeaders.splice(selection.start.row, 1, header);
+				      //products[selection.start.row].data.name = header;
+				      //$scope.pcm.findproductsById(products[selection.start.col].ID).name = header;
+				      
+				      var product;
+				      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
+					  product = $scope.pcm.products.array[i];
+					  if (product.generated_KMF_ID == products[selection.start.row].ID) break;
+				      }
+				      product.name = header;
+				      
+				      hot.render();
+				  }
+			  },
 			  disabled: function () {
-				  //if first row, disable this option
-				  return ($("#table").handsontable('getSelected')[0] === 0);
+			      // if multiple columns selected : disable
+			      return hot.getSelected()[0] != hot.getSelected()[2];
 			  }
 		  },*/
 		  };
