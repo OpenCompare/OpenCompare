@@ -186,12 +186,12 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 			  }
 		  },
 		  "hsep": "---------",
-		  add_row : {
-			  name : 'add a row',
+		  add_row_before : {
+			  name : 'add a row before',
 			  callback: function (key, selection) {
 			      var header = prompt("Please enter your row name", "");
 			      if (header != null) {
-				  productHeaders.push(header);
+				  productHeaders.splice(selection.start.row, 0, header);
 				  var product = factory.createProduct();
 				  product.name = header;
 				  for (var i = 0; i < $scope.pcm.features.array.length; i++) {
@@ -201,7 +201,31 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				      product.addValues(cell);
 				  }
 				  $scope.pcm.addProducts(product);
-				  products.push(model(product));
+				  products.splice(selection.start.row, 0, model(product));
+				  
+				  hot.render();
+			      }
+			  },
+			  disabled: function () {
+			      return false;
+			  }
+		  },
+		  add_row_after : {
+			  name : 'add a row after',
+			  callback: function (key, selection) {
+			      var header = prompt("Please enter your row name", "");
+			      if (header != null) {
+				  productHeaders.splice(selection.end.row+1, 0, header);
+				  var product = factory.createProduct();
+				  product.name = header;
+				  for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+				      var cell = factory.createCell();
+				      cell.feature = $scope.pcm.features.array[i];
+				      cell.content = "";
+				      product.addValues(cell);
+				  }
+				  $scope.pcm.addProducts(product);
+				  products.splice(selection.end.row+1, 0, model(product));
 				  
 				  hot.render();
 			      }
