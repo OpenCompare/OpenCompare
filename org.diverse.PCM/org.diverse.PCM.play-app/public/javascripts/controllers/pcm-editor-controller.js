@@ -95,7 +95,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var hot = new Handsontable(container,
             {
                 data: products,
-                dataSchema: schema,
+                //dataSchema: schema,
                 rowHeaders: productHeaders,
                 colHeaders: featureHeaders,
                 columns: features,
@@ -128,29 +128,39 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				  hot.render();
 			      }
 			  },
-		  },
-		  remove_col : {
-			  name : 'remove colomn(s) (UNUSABLE)',
+			  disabled: function () {
+			      return false;
+			  }
+		  },*/
+		  remove_column : {
+			  name : 'remove colomn(s)',
 			  callback: function (key, selection) {
 			      var start = selection.start.col;
 			      var end = selection.end.col;
 			      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
 				  var product = $scope.pcm.products.array[i];
-				  for (var j = 0 ; j < product.values.array.length ; j++) {
-				      var cell = product.values.array[j];
+				  var array = product.values.array;
+				  for (var j = 0 ; j < array.length ; j++) {
+				      var cell = array[j];
 				      for (var k = start ; k <= end ; k++) {
 					  if (cell.feature.generated_KMF_ID == features[k].ID) {
-					      product.values.array.splice(j,1,undefined); // don't work
-					      j--;
+					      alert(array.length);
+					      product.removeValues(cell);
+					      alert(array.length);
 					      break;
 					  }
 				      }
 				  }
 			      }
-			      features.splice(start, end-start+1, undefined);
-			      featureHeaders.splice(start, end-start+1, undefined);
+			      features.splice(start, end-start+1);
+			      featureHeaders.splice(start, end-start+1);
+				  
+			      hot.render();
 			  },
-		  },*/
+			  disabled: function () {
+			      return false;
+			  }
+		  },
 		  set_column_name : {
 			  name : 'set column name',
 			  callback: function (key, selection) {
@@ -196,6 +206,35 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				  hot.render();
 			      }
 			  },
+			  disabled: function () {
+			      return false;
+			  }
+		  },
+		  remove_row : {
+			  name : 'remove row(s)',
+			  callback: function (key, selection) {
+			      var start = selection.start.row;
+			      var end = selection.end.row;
+			      
+			      var array = $scope.pcm.products.array;
+			      for (var i = 0 ; i < array.length ; i++) {
+				  var product = array[i];
+				  for (var j = start ; j <= end ; j++) {
+				      if (product.generated_KMF_ID == products[j]) {
+					  $scope.pcm.removeProducts(product);
+					  break;
+				      }
+				  }
+			      }
+			      
+			      products.splice(start, end-start+1);
+			      productHeaders.splice(start, end-start+1);
+				  
+			      hot.render();
+			  },
+			  disabled: function () {
+			      return false;
+			  }
 		  },
 		  /*set_row_name : {
 			  name : 'set row name',
