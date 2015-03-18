@@ -128,7 +128,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             features.push({
                 // Associate a type to a columns
                 data: property(kFeatures[i].generated_KMF_ID), validator: type, allowInvalid: true,
-                Type:type,
+                Type:type+"",
                 ID:kFeatures[i].generated_KMF_ID
             });
             console.log(features);
@@ -192,6 +192,17 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                                         features[selection.end.col].Type = bool;
                                         features[selection.end.col].validator = bool;
                                         break;
+                        // Get Type From a column
+                        case "GetType":
+
+                                        if(features[selection.end.col].Type == number){
+                                            alert("Type : Number");
+                                        }else if(features[selection.end.col].Type == bool){
+                                            alert("Type : Boolean");
+                                        }else{
+                                            alert("Type : String");
+                                        }
+                                        break;
 
                     }
                                         //features[selection.end.col].source= ['yes','No'];
@@ -201,7 +212,8 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 items:{
                     "numeric":{name:"numeric"},
                     "Text":{name:"text"},
-                    "Boolean":{name:"Boolean"}
+                    "Boolean":{name:"Boolean"},
+                    "GetType":{name:"GetType"}
 
 
                 }
