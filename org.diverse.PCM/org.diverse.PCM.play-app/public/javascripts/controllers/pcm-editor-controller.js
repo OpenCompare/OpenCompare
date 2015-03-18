@@ -236,21 +236,13 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 			      return false;
 			  }
 		  },
-		  /*set_row_name : {
+		  set_row_name : {
 			  name : 'set row name',
 			  callback: function (key, selection) {
 				  var header = prompt("Please enter your row name", "");
 				  if (header != null) {
 				      productHeaders.splice(selection.start.row, 1, header);
-				      //products[selection.start.row].data.name = header;
-				      //$scope.pcm.findproductsById(products[selection.start.col].ID).name = header;
-				      
-				      var product;
-				      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
-					  product = $scope.pcm.products.array[i];
-					  if (product.generated_KMF_ID == products[selection.start.row].ID) break;
-				      }
-				      product.name = header;
+				      $scope.pcm.findProductsByID(products[selection.start.row]).name = header;
 				      
 				      hot.render();
 				  }
@@ -259,7 +251,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 			      // if multiple columns selected : disable
 			      return hot.getSelected()[0] != hot.getSelected()[2];
 			  }
-		  },*/
+		  },
 		  };
 	  }
     }
