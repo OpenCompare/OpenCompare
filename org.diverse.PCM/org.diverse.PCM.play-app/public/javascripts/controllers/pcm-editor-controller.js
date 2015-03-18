@@ -145,17 +145,18 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         return idKMF;
     }
 
-    function schema() {
+    function schema(index) {
         var newProduct = factory.createProduct();
-        $scope.pcm.addProducts(newProduct);
+        if(typeof index !== 'undefined') {
+            $scope.pcm.addProducts(newProduct);
 
-        for (var i = 0; i < $scope.pcm.features.array.length; i++) {
-            var cell = factory.createCell();
-            cell.feature = $scope.pcm.features.array[i];
-            cell.content = "";
-            newProduct.addValues(cell);
+            for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+                var cell = factory.createCell();
+                cell.feature = $scope.pcm.features.array[i];
+                cell.content = "";
+                newProduct.addValues(cell);
+            }
         }
-
         return model(newProduct);
     }
 
