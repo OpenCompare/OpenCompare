@@ -106,10 +106,12 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var kFeatures = $scope.pcm.features.array.sort(sortByName);
 
         for (var i = 0; i < kFeatures.length; i++) {
-
+            var type=getType(Math.round(getRandomNumber(0,2)));
             features.push({
                 // Associate a type to a columns
-                data: property(kFeatures[i].generated_KMF_ID), validator: getType(Math.round(getRandomNumber(0,2))), allowInvalid: true
+                data: property(kFeatures[i].generated_KMF_ID), validator:type, allowInvalid: true,
+                Type:type,
+                ID:kFeatures[i].generated_KMF_ID
             });
             console.log(features);
             featureHeaders.push(kFeatures[i].name);
@@ -129,56 +131,56 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         var hot = new Handsontable(container,
             {
                 data: products,
-                dataSchema: schema,
+              //dataSchema: schema,
                 rowHeaders: productHeaders,
                 colHeaders: featureHeaders,
                 columns: features,
                 minSpareRows:0,
-                contextMenu: true,
-
-                validateTable: function(table) {
-                        var deferred = new $.Deferred(),
-                            waitingFor = [],
-                            invalid = [];
-
-                        function validatorChecker(validatorDeferred, invalid, i, j) {
-                            return function(isValid) {
-                                if(isValid) {
-                                    validatorDeferred.resolve();
-                                } else {
-                                    invalid.push([i, j]);
-                                    validatorDeferred.reject();
-                                }
-                            };
-                        }
-
-                        for(var i = 0; i < table.countRows() - table.getSettings().minSpareRows; ++i) {
-                            for(var j = 0; j < table.countCols() - table.getSettings().minSpareCols; ++j) {
-                                var validatorDeferred = new $.Deferred();
-                                waitingFor.push(validatorDeferred);
-                                table.validateCell(
-                                    table.getDataAtCell(i, j),
-                                    table.getCellMeta(i, j),
-                                    validatorChecker(validatorDeferred, invalid, i, j),
-                                    'validateCells'
-                                );
-                            }
-                        }
-
-                        $.when.apply($, waitingFor)
-                        .done(function() {
-                            deferred.resolve();
-                        })
-                        .fail(function() {
-                            deferred.reject(invalid);
-                        });
-
-                        return deferred.promise();
-                    },
+                contextMenu: contextMenu(),
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true
             });
+        function contextMenu(){
+        return {
+                callback : function (key, selection) {
+
+                    //var type = prompt("Please enter you type","");
+                    switch(key){
+                        // Give number type to current Column
+                        case "numeric":  $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
+                                         console.log(features[selection.end.col].validator));
+                                         features[selection.end.col].Type = number;
+                                         features[selection.end.col].validator = number;
+                                         break;
+                        // Give String type to current Column
+                        case "text":
+                                        $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
+                                        console.log(features[selection.end.col].validator));
+                                        features[selection.end.col].Type = text;
+                                        features[selection.end.col].validator = text;
+                                        break;
+                        // Give Boolean type to current Column
+                        case "Boolean":
+                                        $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
+                                        console.log(features[selection.end.col].validator));
+                                        features[selection.end.col].Type = bool;
+                                        features[selection.end.col].validator = bool;
+                                        break;
+
+                    }
+                                        //features[selection.end.col].source= ['yes','No'];
+
+                                    }
+                                    ,
+                items:{
+                    "numeric":{name:"numeric"},
+                    "Text":{name:"text"},
+                    "Boolean":{name:"Boolean"}
+
+                }
+        }}
+
         $scope.hot=hot;
     }
 
