@@ -30,7 +30,7 @@ class BestBuyAPI {
 
     // Call API
     Http(url)
-      .option(HttpOptions.connTimeout(5000))
+      .option(HttpOptions.connTimeout(10000))
       .option(HttpOptions.readTimeout(30000))
       .asXml
   }
@@ -67,7 +67,8 @@ class BestBuyAPI {
 
     val productInfo = new ProductInfo
 
-    productInfo.name = (result \\ "name").text
+    productInfo.name = (result.\("name")).text
+
     productInfo.longDescription = (result \\ "longDescription").text
 
     for (feature <- result \\ "feature") yield {
