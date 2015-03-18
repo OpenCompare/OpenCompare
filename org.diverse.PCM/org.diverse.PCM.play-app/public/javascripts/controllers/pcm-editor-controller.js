@@ -35,9 +35,27 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     var products = [];
     var exp;
     var ipValidatorRegexp = /^(?:\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b|null)$/,
-    number = /[0-9]+/,
-    bool=/(Yes|No)/,
-    text = /[a-z]+/;
+    number = function(value,callback){
+                            if(/[0-9]+/.test(value)){
+                            callback(true);
+                            }else{
+                            callback(false);
+                            }
+                 },
+    bool=function(value,callback){
+                              if(/(Yes|No)/.test(value)){
+                                  callback(true);
+                              }else{
+                                  callback(false);
+                                     }
+                                   },
+    text = function(value,callback){
+                              if(/[a-z]+/.test(value)){
+                                   callback(true);
+                              }else{
+                                   callback(false);
+                                     }
+                                };
     if (typeof id === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
@@ -109,7 +127,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             var type=getType(Math.round(getRandomNumber(0,2)));
             features.push({
                 // Associate a type to a columns
-                data: property(kFeatures[i].generated_KMF_ID), validator:type, allowInvalid: true,
+                data: property(kFeatures[i].generated_KMF_ID), validator: type, allowInvalid: true,
                 Type:type,
                 ID:kFeatures[i].generated_KMF_ID
             });
@@ -149,21 +167,28 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     switch(key){
                         // Give number type to current Column
                         case "numeric":  $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                                         console.log(features[selection.end.col].validator));
+                                         console.log(features[selection.end.col].validator);
                                          features[selection.end.col].Type = number;
-                                         features[selection.end.col].validator = number;
+                                         features[selection.end.col].validator = function(value,callback){
+                                                                                                if(number.test(value)){
+                                                                                                callback(true);
+                                                                                                }else{
+                                                                                                callback(false);
+                                                                                                }
+                                                                                     };
+
                                          break;
                         // Give String type to current Column
                         case "text":
                                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                                        console.log(features[selection.end.col].validator));
+                                        console.log(features[selection.end.col].validator);
                                         features[selection.end.col].Type = text;
                                         features[selection.end.col].validator = text;
                                         break;
                         // Give Boolean type to current Column
                         case "Boolean":
                                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                                        console.log(features[selection.end.col].validator));
+                                        console.log(features[selection.end.col].validator);
                                         features[selection.end.col].Type = bool;
                                         features[selection.end.col].validator = bool;
                                         break;
@@ -177,6 +202,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     "numeric":{name:"numeric"},
                     "Text":{name:"text"},
                     "Boolean":{name:"Boolean"}
+
 
                 }
         }}
@@ -277,7 +303,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
        //alert("done");
        $scope.hot.validateCells(function(){
        $scope.hot.render()});
-
     };
 
 });
