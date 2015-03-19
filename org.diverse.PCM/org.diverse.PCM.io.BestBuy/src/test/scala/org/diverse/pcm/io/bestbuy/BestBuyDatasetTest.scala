@@ -5,7 +5,7 @@ import java.io.{FileWriter, File}
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
-import org.diverse.pcm.api.java.io.HTMLExporter
+import org.diverse.pcm.api.java.io.{CSVExporter, HTMLExporter}
 import org.scalatest.{Matchers, FlatSpec}
 
 import collection.JavaConversions._
@@ -18,6 +18,7 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
   val api = new BestBuyAPI
   val categories = List("Laptops", "Washing Machines", "Digital SLR Cameras", "Refrigerators", "TVs", "No-Contract Phones", "All Printers", "Dishwashers", "Ranges")
   val baseOutputDirPath = "bestbuy-dataset/"
+
 
   ignore should "generate a dataset of product descriptions" in { // "BestBuy API"
 
@@ -72,19 +73,27 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
       // Merge specifications
       val mergedSpecifications = miner.mergeSpecifications(productInfos)
 
+      // Export to several formats
       val jsonExporter = new KMFJSONExporter
       val json = jsonExporter.export(mergedSpecifications)
-
-      val htmlExporter = new HTMLExporter
-      val html = htmlExporter.export(mergedSpecifications)
 
       val pcmWriter = new FileWriter(outputDirPath +  category + ".pcm")
       pcmWriter.write(json)
       pcmWriter.close()
 
+      val htmlExporter = new HTMLExporter
+      val html = htmlExporter.export(mergedSpecifications)
+
       val htmlWriter = new FileWriter(outputDirPath +  category + ".html")
       htmlWriter.write(html)
       htmlWriter.close()
+
+      val csvExporter = new CSVExporter
+      val csv = csvExporter.export(mergedSpecifications)
+
+      val csvWriter = new FileWriter(outputDirPath +  category + ".csv")
+      csvWriter.write(csv)
+      csvWriter.close()
 
     }
 
@@ -96,6 +105,16 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       val loader = new KMFJSONLoader
       val pcm = loader.load(pcmFile)
+
+
+      val csvExporter = new CSVExporter
+      val csv = csvExporter.export(pcm)
+
+      val csvWriter = new FileWriter(baseOutputDirPath +  category + "/" + category + ".csv")
+      csvWriter.write(csv)
+      csvWriter.close()
+
+
 
       val cells = pcm.getProducts.flatMap(_.getCells)
       val nbNA = cells.count(_.getContent == "N/A")
