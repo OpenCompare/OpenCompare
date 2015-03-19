@@ -4,10 +4,11 @@ import java.io.{FileWriter, File}
 
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
-import org.diverse.pcm.api.java.impl.io.KMFJSONExporter
+import org.diverse.pcm.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
 import org.diverse.pcm.api.java.io.HTMLExporter
 import org.scalatest.{Matchers, FlatSpec}
 
+import collection.JavaConversions._
 
 /**
  * Created by gbecan on 2/23/15.
@@ -15,10 +16,10 @@ import org.scalatest.{Matchers, FlatSpec}
 class BestBuyDatasetTest extends FlatSpec with Matchers {
 
   val api = new BestBuyAPI
-  val categories = List("Laptops", "Washing Machines", "Digital SLR Cameras", "Refrigerators", "TVs", "Cell Phones", "All Printers", "Dishwashers", "Ranges")
+  val categories = List("Laptops", "Washing Machines", "Digital SLR Cameras", "Refrigerators", "TVs", "No-Contract Phones", "All Printers", "Dishwashers", "Ranges")
   val baseOutputDirPath = "bestbuy-dataset/"
 
-  "BestBuy API" should "generate a dataset of product descriptions" in {
+  ignore should "generate a dataset of product descriptions" in { // "BestBuy API"
 
     val miner = new BestBuyMiner(new PCMFactoryImpl)
 
@@ -27,7 +28,9 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       val outputDirPath = baseOutputDirPath + category + "/"
 
-      val skus = api.listProductsSKU(Some(category), pageSize=50)
+      val skus = (for (i <- 1 to 3) yield {
+        api.listProductsSKU(Some(category), page=i, pageSize=100)
+      }).flatten.toList
 
       val outputDir = new File(outputDirPath)
       outputDir.mkdirs()
@@ -85,6 +88,30 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
     }
 
+  }
+
+  "BestBuy analysis" should "compute stats on dataset" in {
+    for (category <- categories) {
+      val pcmFile = new File(baseOutputDirPath + category + "/" + category + ".pcm")
+
+      val loader = new KMFJSONLoader
+      val pcm = loader.load(pcmFile)
+
+      val cells = pcm.getProducts.flatMap(_.getCells)
+      val nbNA = cells.count(_.getContent == "N/A")
+
+      val featuresWithoutNA = pcm.getConcreteFeatures.filter(f => pcm.getProducts.forall(_.findCell(f).getContent != "N/A"))
+
+      println(category)
+      println("products : " + pcm.getProducts.size())
+      println("features : " + pcm.getConcreteFeatures.size())
+
+      println("N/A : " + nbNA + " (" + (nbNA * 100) / cells.size  + "%)")
+      println("features without NA : " + featuresWithoutNA.size + " (" + (featuresWithoutNA.size * 100) / pcm.getConcreteFeatures.size  + "%)")
+      println(featuresWithoutNA.map(_.getName).mkString("[", ", ", "]"))
+
+      println()
+    }
   }
 
 }
