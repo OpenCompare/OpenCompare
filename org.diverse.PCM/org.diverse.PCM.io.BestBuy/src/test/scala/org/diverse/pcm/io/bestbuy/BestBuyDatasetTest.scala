@@ -103,33 +103,36 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
     for (category <- categories) {
       val pcmFile = new File(baseOutputDirPath + category + "/" + category + ".pcm")
 
-      val loader = new KMFJSONLoader
-      val pcm = loader.load(pcmFile)
+      if (pcmFile.exists()) {
+        val loader = new KMFJSONLoader
+        val pcm = loader.load(pcmFile)
 
 
-      val csvExporter = new CSVExporter
-      val csv = csvExporter.export(pcm)
+        val csvExporter = new CSVExporter
+        val csv = csvExporter.export(pcm)
 
-      val csvWriter = new FileWriter(baseOutputDirPath +  category + "/" + category + ".csv")
-      csvWriter.write(csv)
-      csvWriter.close()
+        val csvWriter = new FileWriter(baseOutputDirPath +  category + "/" + category + ".csv")
+        csvWriter.write(csv)
+        csvWriter.close()
 
 
 
-      val cells = pcm.getProducts.flatMap(_.getCells)
-      val nbNA = cells.count(_.getContent == "N/A")
+        val cells = pcm.getProducts.flatMap(_.getCells)
+        val nbNA = cells.count(_.getContent == "N/A")
 
-      val featuresWithoutNA = pcm.getConcreteFeatures.filter(f => pcm.getProducts.forall(_.findCell(f).getContent != "N/A"))
+        val featuresWithoutNA = pcm.getConcreteFeatures.filter(f => pcm.getProducts.forall(_.findCell(f).getContent != "N/A"))
 
-      println(category)
-      println("products : " + pcm.getProducts.size())
-      println("features : " + pcm.getConcreteFeatures.size())
+        println(category)
+        println("products : " + pcm.getProducts.size())
+        println("features : " + pcm.getConcreteFeatures.size())
 
-      println("N/A : " + nbNA + " (" + (nbNA * 100) / cells.size  + "%)")
-      println("features without NA : " + featuresWithoutNA.size + " (" + (featuresWithoutNA.size * 100) / pcm.getConcreteFeatures.size  + "%)")
-      println(featuresWithoutNA.map(_.getName).mkString("[", ", ", "]"))
+        println("N/A : " + nbNA + " (" + (nbNA * 100) / cells.size  + "%)")
+        println("features without NA : " + featuresWithoutNA.size + " (" + (featuresWithoutNA.size * 100) / pcm.getConcreteFeatures.size  + "%)")
+        println(featuresWithoutNA.map(_.getName).mkString("[", ", ", "]"))
 
-      println()
+        println()
+      }
+
     }
   }
 
