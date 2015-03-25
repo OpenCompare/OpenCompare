@@ -29,7 +29,6 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val pcm = miner.minePCM(skus)
 
     val exporter = new HTMLExporter
-    println(exporter.export(pcm))
 
     pcm.getProducts.size() should be (skus.size)
     pcm.getFeatures.size() shouldNot be (0)

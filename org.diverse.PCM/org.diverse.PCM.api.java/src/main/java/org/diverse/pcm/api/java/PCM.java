@@ -1,6 +1,8 @@
 package org.diverse.pcm.api.java;
 
 import org.diverse.pcm.api.java.exception.MergeConflictException;
+import org.diverse.pcm.api.java.util.DiffResult;
+import org.diverse.pcm.api.java.util.PCMElementComparator;
 
 import java.util.List;
 
@@ -54,5 +56,11 @@ public interface PCM extends PCMElement {
      * @param factory
      */
     void normalize(PCMFactory factory);
+
+    /**
+     * Compute the difference with another PCM
+     * @param pcm
+     */
+    DiffResult diff(PCM pcm, PCMElementComparator pcmElementComparator);
 	
 }
