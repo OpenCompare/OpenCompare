@@ -169,6 +169,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                         case "numeric":  $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
                                          console.log(features[selection.end.col].validator);
                                          features[selection.end.col].Type = number;
+                                        
                                          features[selection.end.col].validator = function(value,callback){
                                                                                                 if(number.test(value)){
                                                                                                 callback(true);
@@ -180,6 +181,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                                          break;
                         // Give String type to current Column
                         case "text":
+
                                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
                                         console.log(features[selection.end.col].validator);
                                         features[selection.end.col].Type = text;
