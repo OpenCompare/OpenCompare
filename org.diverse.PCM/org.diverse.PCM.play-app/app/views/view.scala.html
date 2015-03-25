@@ -12,10 +12,10 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-viewer-controller.js")'></script>
 }
 
-@main(true, header, footer) {
+@main(header, footer) {
 
     <div ng-controller="PCMViewerController">
-        <h1 id="pcm-name">@pcm.getName()  <a role="button" class="btn btn-primary" href="/edit/@id">Edit </a></h1>
+        <h1 id="pcm-name">@pcm.getName() <a role="button" class="btn btn-primary" href="/edit/@id"><i class="fa fa-pencil"></i> Edit</a></h1>
 
 
         <div class="table-responsive">
@@ -23,7 +23,7 @@
 
             <tr>
                 <th></th>
-                @for(feature <- pcm.getFeatures().sortBy(_.getName())) {
+                @for(feature <- pcm.getConcreteFeatures().sortBy(_.getName())) {
                 <th>
                     @feature.getName()
                 </th>

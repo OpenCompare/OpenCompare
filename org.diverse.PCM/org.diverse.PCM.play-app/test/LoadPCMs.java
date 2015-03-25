@@ -1,7 +1,10 @@
 import model.Database;
 import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
-import org.diverse.pcm.api.java.io.JSONLoader;
+import org.diverse.pcm.api.java.PCMFactory;
+import org.diverse.pcm.api.java.exception.MergeConflictException;
+import org.diverse.pcm.api.java.impl.PCMFactoryImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
+import org.diverse.pcm.formalizer.extractor.CellContentInterpreter;
 import org.junit.Test;
 
 import java.io.File;
@@ -17,7 +20,8 @@ public class LoadPCMs {
         String path = "../org.diverse.PCM.io.Wikipedia/output/model";
         File dir = new File(path);
 
-        JSONLoader loader = new JSONLoaderImpl();
+        KMFJSONLoader loader = new KMFJSONLoader();
+        CellContentInterpreter interpreter = new CellContentInterpreter();
 
         for (File file : dir.listFiles(new FilenameFilter() {
             @Override
@@ -26,7 +30,13 @@ public class LoadPCMs {
             }
         })) {
             PCM pcm = loader.load(file);
-            Database.INSTANCE.save(pcm);
+            pcm.setName(pcm.getName().replaceAll("_", " "));
+
+            if (pcm.isValid()) {
+                interpreter.interpretCells(pcm);
+                Database.INSTANCE.save(pcm);
+            }
         }
+
     }
 }

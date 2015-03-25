@@ -2,8 +2,6 @@
  * Created by gbecan on 17/12/14.
  */
 
-var pcmApp = angular.module("pcmApp", []);
-
 /**
  * Sort two elements by their names (accessed with x.name)
  * @param a
@@ -121,7 +119,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
     function initializeHOT() {
         // Transform features to handonstable data structures
-        var kFeatures = $scope.pcm.features.array.sort(sortByName);
+        var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
 
         for (var i = 0; i < kFeatures.length; i++) {
             var type=getType(Math.round(getRandomNumber(0,2)));
@@ -224,6 +222,36 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         $scope.hot=hot;
     }
 
+    function getConcreteFeatures(pcm) {
+
+        var aFeatures = pcm.features.array;
+
+        var features = [];
+        for (var i = 0; i < aFeatures.length; i++) {
+            var aFeature = aFeatures[i];
+            features = features.concat(getConcreteFeaturesRec(aFeature))
+        }
+
+        return features;
+    }
+
+    function getConcreteFeaturesRec(aFeature) {
+
+        var features = [];
+
+        if (typeof aFeature.subFeatures !== 'undefined') {
+            var subFeatures = aFeature.subFeatures.array;
+            for (var i = 0; i < subFeatures.length; i++) {
+                var subFeature = subFeatures[i];
+                features = features.concat(getConcreteFeaturesRec(subFeature));
+            }
+        } else {
+            features.push(aFeature);
+        }
+
+        return features;
+    }
+
     /**
      * Synchronization function between handsontable and a PCM model of a product
      * @param product : KMF model of a product
@@ -234,17 +262,18 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         return idKMF;
     }
 
-    function schema() {
+    function schema(index) {
         var newProduct = factory.createProduct();
-        $scope.pcm.addProducts(newProduct);
+        if(typeof index !== 'undefined') {
+            $scope.pcm.addProducts(newProduct);
 
-        for (var i = 0; i < $scope.pcm.features.array.length; i++) {
-            var cell = factory.createCell();
-            cell.feature = $scope.pcm.features.array[i];
-            cell.content = "";
-            newProduct.addValues(cell);
+            for (var i = 0; i < $scope.pcm.features.array.length; i++) {
+                var cell = factory.createCell();
+                cell.feature = $scope.pcm.features.array[i];
+                cell.content = "";
+                newProduct.addValues(cell);
+            }
         }
-
         return model(newProduct);
     }
 

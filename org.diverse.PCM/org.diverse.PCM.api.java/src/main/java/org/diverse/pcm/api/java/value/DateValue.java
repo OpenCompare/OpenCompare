@@ -8,5 +8,6 @@ import java.util.Date;
  * Created by gbecan on 09/10/14.
  */
 public interface DateValue extends Value {
-    Date getValue();
+    String getValue();
+    void setValue(String value);
 }

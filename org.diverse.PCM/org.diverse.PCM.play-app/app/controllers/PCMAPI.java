@@ -2,8 +2,7 @@ package controllers;
 
 import model.Database;
 import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
+import org.diverse.pcm.api.java.impl.io.KMFJSONExporter;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -14,8 +13,8 @@ public class PCMAPI extends Controller {
 
     public static Result get(String id) {
         PCM pcm = Database.INSTANCE.get(id).getPcm();
-        PCMtoJson serializer = new PCMtoJsonImpl();
-        String json = serializer.toJson(pcm);
+        KMFJSONExporter serializer = new KMFJSONExporter();
+        String json = serializer.export(pcm);
         return ok(json);
     }
 

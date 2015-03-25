@@ -60,12 +60,12 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public DateValue createDateValue() {
-        return null;
+        return new DateValueImpl(kFactory.createDateValue());
     }
 
     @Override
     public Dimension createDimension() {
-        return null;
+        return new DimensionImpl(kFactory.createDimension());
     }
 
     @Override
@@ -75,7 +75,7 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public NotApplicable createNotApplicable() {
-        return null;
+        return new NotApplicableImpl(kFactory.createNotApplicable());
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public Partial createPartial() {
-        return null;
+        return new PartialImpl(kFactory.createPartial());
     }
 
     @Override
@@ -95,12 +95,12 @@ public class PCMFactoryImpl implements PCMFactory {
 
     @Override
     public Unit createUnit() {
-        return null;
+        return new UnitImpl(kFactory.createUnit());
     }
 
     @Override
     public Version createVersion() {
-        return null;
+        return new VersionImpl(kFactory.createVersion());
     }
 
 }

@@ -1,19 +1,15 @@
-package org.diverse.pcm.api.java.export;
+package org.diverse.pcm.api.java.io;
 
 import org.diverse.pcm.api.java.*;
 import org.diverse.pcm.api.java.util.PCMVisitor;
 import org.diverse.pcm.api.java.value.*;
-import org.w3c.dom.Document;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.util.*;
 
 /**
  * Created by gbecan on 13/10/14.
  */
-public class PCMtoHTML implements PCMVisitor {
+public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     private StringBuilder builder;
 
@@ -22,6 +18,11 @@ public class PCMtoHTML implements PCMVisitor {
     private int featureDepth;
     private Map<Feature, Integer> featurePosition;
     private int nextFeaturePosition;
+
+    @Override
+    public String export(PCM pcm) {
+        return toHTML(pcm);
+    }
 
     public String toHTML(PCM pcm) {
         builder = new StringBuilder();

@@ -1,19 +1,11 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import model.Database;
 import model.PCMInfo;
 import model.PCMVariable;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.export.PCMtoJson;
-import org.diverse.pcm.api.java.impl.export.PCMtoJsonImpl;
-import org.diverse.pcm.api.java.impl.io.JSONLoaderImpl;
-import org.diverse.pcm.api.java.io.JSONLoader;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Application extends Controller {

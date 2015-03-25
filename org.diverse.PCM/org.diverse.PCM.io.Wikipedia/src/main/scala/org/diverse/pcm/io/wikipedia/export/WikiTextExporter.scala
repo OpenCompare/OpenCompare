@@ -21,7 +21,7 @@ class WikiTextExporter {
     builder ++= "|-\n" // new row
     builder ++= "|\n" // empty top left cell
 
-    for (feature <- pcm.getFeatures.sortBy(_.getName)) {
+    for (feature <- pcm.getFeatures.sortBy(_.getName)) { // TODO : check usage of getFeatures()
       builder ++= "! " // new header
       builder ++= feature.getName
       builder ++= "\n"
