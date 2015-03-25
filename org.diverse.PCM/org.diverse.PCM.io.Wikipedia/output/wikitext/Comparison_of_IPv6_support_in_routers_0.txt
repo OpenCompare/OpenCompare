@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+ Comparison table
+|+ Comparison of IPv6 support in routers -  Comparison table
 |-
 |
 ! Model
@@ -32,7 +32,7 @@
 | 
 |-
 ! Apple
-| AirPort Extreme (4th generation and newer)
+| AirPort Express (2nd Generation)
 | Yes
 | Supports IPv6 over WAN or via a network tunnel, cannot route IPv6 directly over DSL.
 | 
@@ -44,33 +44,21 @@
 | 
 |-
 ! Apple
-| AirPort Express (2nd Generation)
+| AirPort Extreme (4th generation and newer)
 | Yes
 | Supports IPv6 over WAN or via a network tunnel, cannot route IPv6 directly over DSL.
 | 
 |-
 ! Billion
-| BiPAC 7401VGP-X
-| No
-| 
-| 
-|-
-! Billion
-| BiPAC 7404VGO-X
+| BiPAC 7404VNP-X
 | Yes
 | 
 | 
 |-
 ! Billion
-| BiPAC 7800NL
+| BiPAC 7404VNO-X
 | Yes
 | 
-| 
-|-
-! Billion
-| BiPAC 7402X
-| Yes
-| Supported as of firmware version 6.21.
 | 
 |-
 ! Billion
@@ -80,9 +68,15 @@
 | 
 |-
 ! Billion
-| BiPAC 7404VGO-M
-| No
-| Firmware version 5.74 no support for IPv6.
+| BiPAC 7402X
+| Yes
+| Supported as of firmware version 6.21.
+| 
+|-
+! Billion
+| BiPAC 7402XL
+| Yes
+| Supported as of firmware version 6.21.
 | 
 |-
 ! Billion
@@ -98,50 +92,14 @@
 | 
 |-
 ! Billion
-| BiPAC 7800
-| Yes
-| Supported as of firmware version 1.06e.
-| 
-|-
-! Billion
-| BiPAC 7402GX
-| Yes
-| Supported as of firmware version 6.21.
-| 
-|-
-! Billion
 | BiPAC 7402NXL
 | No
 | 
 | 
 |-
 ! Billion
-| BiPAC 7401VGP-R3
+| BiPAC 7800NL
 | Yes
-| The recommended VoIP modem from Internode.
-| 
-|-
-! Billion
-| BiPAC 7404VNP-X
-| Yes
-| 
-| 
-|-
-! Billion
-| BiPAC 7402XL
-| Yes
-| Supported as of firmware version 6.21.
-| 
-|-
-! Billion
-| BiPAC 7800N
-| Yes
-| Supported as of firmware version 1.06d.
-| 
-|-
-! Billion
-| BiPAC 7700N
-| No
 | 
 | 
 |-
@@ -152,9 +110,51 @@
 | 
 |-
 ! Billion
-| BiPAC 7404VNO-X
+| BiPAC 7404VGO-M
+| No
+| Firmware version 5.74 no support for IPv6.
+| 
+|-
+! Billion
+| BiPAC 7800N
+| Yes
+| Supported as of firmware version 1.06d.
+| 
+|-
+! Billion
+| BiPAC 7404VGO-X
 | Yes
 | 
+| 
+|-
+! Billion
+| BiPAC 7800
+| Yes
+| Supported as of firmware version 1.06e.
+| 
+|-
+! Billion
+| BiPAC 7700N
+| No
+| 
+| 
+|-
+! Billion
+| BiPAC 7402GX
+| Yes
+| Supported as of firmware version 6.21.
+| 
+|-
+! Billion
+| BiPAC 7401VGP-X
+| No
+| 
+| 
+|-
+! Billion
+| BiPAC 7401VGP-R3
+| Yes
+| The recommended VoIP modem from Internode.
 | 
 |-
 ! Cisco
@@ -164,31 +164,19 @@
 | 
 |-
 ! Cisco
-| 830 Series
-| Yes
-| IPv6 supported by PLUS images of IOS release 12.3(4XG) forward.
-| 
-|-
-! Cisco
 | 1941
 | Yes
 | IPv6 supported by IPBase images of IOS release 15.x forward. (IPBase IOS - IPv6 traffic unfirewalled, Security IOS - IPv6 traffic firewalled.)
 | 
 |-
-! CradlePoint
-| MBR95
-| No
-| Firmware Version 5.0.0 IPv6 is not yet supported.
-| 
-|-
-! CradlePoint
-| MBR1400
+! Cisco
+| 830 Series
 | Yes
-| Supported starting with firmware 4.4.0
+| IPv6 supported by PLUS images of IOS release 12.3(4XG) forward.
 | 
 |-
 ! CradlePoint
-| CBA750B
+| IBR600
 | Yes
 | Supported starting with firmware 4.4.0
 | 
@@ -200,7 +188,13 @@
 | 
 |-
 ! CradlePoint
-| IBR600
+| CBA750B
+| Yes
+| Supported starting with firmware 4.4.0
+| 
+|-
+! CradlePoint
+| MBR1400
 | Yes
 | Supported starting with firmware 4.4.0
 | 
@@ -211,6 +205,24 @@
 | Supported starting with firmware 4.4.0
 | 
 |-
+! CradlePoint
+| MBR95
+| No
+| Firmware Version 5.0.0 IPv6 is not yet supported.
+| 
+|-
+! D-Link
+| DIR-655
+| Yes
+| IPv6 supported by hardware revision B. Earlier revisions do not support IPv6.
+| 
+|-
+! D-Link
+| DIR-685
+| No
+| 
+| 
+|-
 ! D-Link
 | DIR-601
 | Yes
@@ -218,25 +230,19 @@
 | 
 |-
 ! D-Link
-| DIR-300
+| DIR-865
 | No
 | 
+| 
+|-
+! D-Link
+| DIR-825
+| Yes
+| IPv6 supported by hardware revision B. Earlier revisions do not support IPv6. IPV6 traffic unfirewalled.
 | 
 |-
 ! D-Link
 | DIR-635
-| No
-| 
-| 
-|-
-! D-Link
-| DIR-852
-| No
-| 
-| 
-|-
-! D-Link
-| DIR-865
 | No
 | 
 | 
@@ -248,21 +254,9 @@
 | 
 |-
 ! D-Link
-| DIR-825
-| Yes
-| IPv6 supported by hardware revision B. Earlier revisions do not support IPv6. IPV6 traffic unfirewalled.
-| 
-|-
-! D-Link
 | DIR-615
 | Yes
 | IPv6 supported by hardware revisions C1 and E. Earlier revisions and revision D do not support IPv6.
-| 
-|-
-! D-Link
-| DIR-655
-| Yes
-| IPv6 supported by hardware revision B. Earlier revisions do not support IPv6.
 | 
 |-
 ! D-Link
@@ -272,9 +266,21 @@
 | 
 |-
 ! D-Link
-| DIR-685
+| DIR-300
 | No
 | 
+| 
+|-
+! D-Link
+| DIR-852
+| No
+| 
+| 
+|-
+! DrayTek
+| Vigor 2750 Series
+| Yes
+| Native dual-stack and broker (TSPC or AICCU) support
 | 
 |-
 ! DrayTek
@@ -290,25 +296,19 @@
 | 
 |-
 ! DrayTek
-| Vigor 2750 Series
-| Yes
-| Native dual-stack and broker (TSPC or AICCU) support
-| 
-|-
-! DrayTek
 | Vigor 2130 Series
 | Yes
 | Native dual-stack and broker (TSPC or AICCU) support
 | 
 |-
 ! DrayTek
-| Vigor 2850 Series
+| Vigor 2920 Series
 | Yes
 | Native dual-stack and broker (TSPC or AICCU) support
 | 
 |-
 ! DrayTek
-| Vigor 2920 Series
+| Vigor 2850 Series
 | Yes
 | Native dual-stack and broker (TSPC or AICCU) support
 | 
@@ -320,7 +320,7 @@
 | 
 |-
 ! FireBrick
-| FB2700
+| FB6000 series
 | Yes
 | 
 | 
@@ -338,7 +338,7 @@
 | 
 |-
 ! FireBrick
-| FB6000 series
+| FB2700
 | Yes
 | 
 | 
@@ -356,9 +356,9 @@
 | 
 |-
 ! Netgear
-| WNDR4500
+| WNDR3700/WNDR37AV
 | Yes
-| IPv6 supported on all shipping firmwares.
+| IPv6 supported ( Firmware Version 1.0.7.98), WNDR37AV is identical to a WNDR3700
 | 
 |-
 ! Netgear
@@ -374,9 +374,9 @@
 | 
 |-
 ! Netgear
-| WNDR3700/WNDR37AV
+| WNDR4500
 | Yes
-| IPv6 supported ( Firmware Version 1.0.7.98), WNDR37AV is identical to a WNDR3700
+| IPv6 supported on all shipping firmwares.
 | 
 |-
 ! TP-Link
@@ -410,13 +410,13 @@
 | 
 |-
 ! YAMAHA
-| RTX810
+| RTX1200
 | Yes
 | RTX1200 and all other Yamaha routers are enabled IPv6 function in their factory default settings.
 | 
 |-
 ! YAMAHA
-| RTX1200
+| RTX810
 | Yes
 | RTX1200 and all other Yamaha routers are enabled IPv6 function in their factory default settings.
 | 
@@ -440,7 +440,13 @@
 | 
 |-
 ! vantronix
-| .vtFW-EM2
+| .vtFW-EM2p
+| Yes
+| dynamic address translation to extend proven dual stack functionality
+| 
+|-
+! vantronix
+| .vtFW-C2
 | Yes
 | dynamic address translation to extend proven dual stack functionality
 | 
@@ -452,7 +458,7 @@
 | 
 |-
 ! vantronix
-| .vtFW-C2
+| .vtFW-ZL1 and .vtFWZL2
 | Yes
 | dynamic address translation to extend proven dual stack functionality
 | 
@@ -470,13 +476,7 @@
 | 
 |-
 ! vantronix
-| .vtFW-EM2p
-| Yes
-| dynamic address translation to extend proven dual stack functionality
-| 
-|-
-! vantronix
-| .vtFW-ZL1 and .vtFWZL2
+| .vtFW-EM2
 | Yes
 | dynamic address translation to extend proven dual stack functionality
 | 

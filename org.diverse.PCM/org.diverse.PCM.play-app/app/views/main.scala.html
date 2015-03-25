@@ -1,4 +1,4 @@
-@(header : Html = Html(""), footer : Html = Html(""))(content: Html)
+@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)
 
 
 <!DOCTYPE html>
@@ -49,8 +49,12 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
-    </nav>
 
+    </nav>
+             @toolbar
+
+
+      
     <div class="container-fluid">
         @content
     </div>

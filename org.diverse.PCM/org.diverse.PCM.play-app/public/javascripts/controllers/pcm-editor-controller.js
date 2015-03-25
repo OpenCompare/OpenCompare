@@ -114,11 +114,21 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true,
+                minSpareRows: 0,
+                minSpareCols: 0,
+                minRows:0,
                 fixedRowsTop: 0, //fixer les lignes 
-                fixedColumnsLeft: 0 //fixer les colonnes
+               fixedColumnsLeft: 0, //fixer les colonnes
+               //afterChange:fct()
             });
 	resize();
+
+      var t= hot.countRows ();
+
+    
+
     }
+
 
     function getConcreteFeatures(pcm) {
 
@@ -169,7 +179,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             cell.content = "";
             newProduct.addValues(cell);
         }
-
+     
         return model(newProduct);
     }
 

@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+ Status
+|+ Comparison of open-source wireless drivers - Status
 |-
 |
 ! Chipsets
@@ -42,36 +42,12 @@
 | Depends on the model
 |-
 ! ath
-| Qualcomm Atheros AR2413, AR2414, AR2417, AR2425, AR5210, AR5211, AR5212, AR5213, AR5413, AR5414, AR5423, AR5424
+| Qualcomm Atheros AR5523 based USB dongles
 | Reverse engineered
-| ath5k
-| Yes (since 2.6.25)
-| Dual GPL/BSD
+| ar5523
+| Yes
+| ISC
 | No
-|-
-! ath
-| Qualcomm Atheros chips with IEEE 802.11ac support
-| Written by Qualcomm Atheros
-| ath10k
-| Yes (since 3.11)
-| ISC
-| Yes
-|-
-! ath
-| Qualcomm Atheros AR6003, AR6004 (SDIO), AR6004 (USB)
-| Written by Qualcomm Atheros
-| ath6kl
-| Yes
-| ISC
-| Yes
-|-
-! ath
-| Wilocity wil6210, 802.11ad 60GHz
-| Written by Qualcomm Atheros
-| wil6210
-| Yes
-| ISC
-| Yes
 |-
 ! ath
 | Qualcomm Atheros chips with IEEE 802.11n support
@@ -82,12 +58,12 @@
 | No
 |-
 ! ath
-| Qualcomm Atheros AR5523 based USB dongles
-| Reverse engineered
-| ar5523
+| Qualcomm Atheros AR6003, AR6004 (SDIO), AR6004 (USB)
+| Written by Qualcomm Atheros
+| ath6kl
 | Yes
 | ISC
-| No
+| Yes
 |-
 ! ath
 | Qualcomm Atheros AR9170 (802.11n USB)
@@ -96,6 +72,30 @@
 | Yes (since 3.0)
 | GPL
 | No
+|-
+! ath
+| Qualcomm Atheros AR2413, AR2414, AR2417, AR2425, AR5210, AR5211, AR5212, AR5213, AR5413, AR5414, AR5423, AR5424
+| Reverse engineered
+| ath5k
+| Yes (since 2.6.25)
+| Dual GPL/BSD
+| No
+|-
+! ath
+| Wilocity wil6210, 802.11ad 60GHz
+| Written by Qualcomm Atheros
+| wil6210
+| Yes
+| ISC
+| Yes
+|-
+! ath
+| Qualcomm Atheros chips with IEEE 802.11ac support
+| Written by Qualcomm Atheros
+| ath10k
+| Yes (since 3.11)
+| ISC
+| Yes
 |-
 ! atmel
 | Atmel at76c502 at76c504 and at76c506 wireless cards
@@ -122,17 +122,17 @@
 | Experimental OSS firmware
 |-
 ! brcm80211
-| Broadcom 4313, 43224, 43225
+| Broadcom 4329, 4330, 4334, 43235, 43236, 43238
 | Written by Broadcom
-| brcmsmac
+| brcmfmac
 | Yes (since 3.2)
 | ISC
 | Yes
 |-
 ! brcm80211
-| Broadcom 4329, 4330, 4334, 43235, 43236, 43238
+| Broadcom 4313, 43224, 43225
 | Written by Broadcom
-| brcmfmac
+| brcmsmac
 | Yes (since 3.2)
 | ISC
 | Yes
@@ -250,22 +250,6 @@
 | Yes
 |-
 ! rt2x00
-| RT2571W, RT2573 & RT2671
-| rt2x00.serialmonkey.com
-| rt73usb
-| Yes
-| GPLv2+
-| Yes
-|-
-! rt2x00
-| RT2571 & RT2572
-| rt2x00.serialmonkey.com
-| rt2500usb
-| Yes
-| GPLv2+
-| No
-|-
-! rt2x00
 | RT2560
 | rt2x00.serialmonkey.com
 | rt2500pci
@@ -274,12 +258,29 @@
 | No
 |-
 ! rt2x00
+| RT2770, RT2870 & RT3070, RT3071 & RT3072
+RT3370, RT3572, RT5370, RT5572
+| rt2x00.serialmonkey.com
+| rt2800usb
+| Yes
+| GPLv2+
+| Yes
+|-
+! rt2x00
 | MediaTek (Ralink) RT2460
 | rt2x00.serialmonkey.com; From partial documentation and GPL drivers by Ralink
 | rt2400pci
 | Yes (since 2.6.24)
 | GPLv2+
 | No
+|-
+! rt2x00
+| RT2571W, RT2573 & RT2671
+| rt2x00.serialmonkey.com
+| rt73usb
+| Yes
+| GPLv2+
+| Yes
 |-
 ! rt2x00
 | RT2760, RT2790, RT2860, RT2880, RT2890, RT3052, RT3090, RT3091, RT3092
@@ -291,13 +292,12 @@ RT3390, RT3060, RT3062, RT3562, RT3592, RT5390, RT3290
 | Yes
 |-
 ! rt2x00
-| RT2770, RT2870 & RT3070, RT3071 & RT3072
-RT3370, RT3572, RT5370, RT5572
+| RT2571 & RT2572
 | rt2x00.serialmonkey.com
-| rt2800usb
+| rt2500usb
 | Yes
 | GPLv2+
-| Yes
+| No
 |-
 ! rtl818x
 | Realtek
@@ -316,9 +316,17 @@ RT3370, RT3572, RT5370, RT5572
 | 
 |-
 ! rtlwifi rtl-wifi
+| RTL8188EU e.g. in the TP-Link TL-WN725N
+| Written by Realtek et al.
+| rtl8188eu
+| Yes (since 3.12)
+| GPL
+| Yes
+|-
+! rtlwifi rtl-wifi
 | 
 | Written by Realtek et al.
-| rtl8723ae
+| rtl8192se
 | Yes
 | GPL
 | Yes
@@ -334,14 +342,6 @@ RT3370, RT3572, RT5370, RT5572
 ! rtlwifi rtl-wifi
 | 
 | Written by Realtek et al.
-| rtl8192cu
-| Yes
-| GPL
-| Yes
-|-
-! rtlwifi rtl-wifi
-| 
-| Written by Realtek et al.
 | rtl8192de
 | Yes
 | GPL
@@ -350,7 +350,23 @@ RT3370, RT3572, RT5370, RT5572
 ! rtlwifi rtl-wifi
 | 
 | Written by Realtek et al.
-| rtl8192se
+| rtl8192ce
+| Yes
+| GPL
+| Yes
+|-
+! rtlwifi rtl-wifi
+| 
+| Written by Realtek et al.
+| rtl8723ae
+| Yes
+| GPL
+| Yes
+|-
+! rtlwifi rtl-wifi
+| 
+| Written by Realtek et al.
+| rtl8192cu
 | Yes
 | GPL
 | Yes
@@ -363,21 +379,13 @@ RT3370, RT3572, RT5370, RT5572
 | GPL
 | 
 |-
-! rtlwifi rtl-wifi
+! ti
+| Texas Instruments TI wl1251 (SDIO/SPI)
+| Written by Nokia
+| wl1251
+| Yes
+| GPL
 | 
-| Written by Realtek et al.
-| rtl8192ce
-| Yes
-| GPL
-| Yes
-|-
-! rtlwifi rtl-wifi
-| RTL8188EU e.g. in the TP-Link TL-WN725N
-| Written by Realtek et al.
-| rtl8188eu
-| Yes (since 3.12)
-| GPL
-| Yes
 |-
 ! ti
 | Texas Instruments TI wl1271, wl1273, wl1281 and wl1283
@@ -391,14 +399,6 @@ RT3370, RT3572, RT5370, RT5572
 | Texas Instruments TI WiLink 8
 | Written by Texas Instruments
 | wl18xx
-| Yes
-| GPL
-| 
-|-
-! ti
-| Texas Instruments TI wl1251 (SDIO/SPI)
-| Written by Nokia
-| wl1251
 | Yes
 | GPL
 | 

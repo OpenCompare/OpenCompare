@@ -1,13 +1,25 @@
 {| class="wikitable"
-|+ Find character
+|+ Comparison of programming languages (string functions) - Find character
 |-
 |
 ! If not found
 ! Languages
 |-
 ! 
-| returns 0
-| Seed7
+| returns Nothing
+| Haskell (returns Just index)
+|-
+! 
+| returns zero
+| Fortran
+|-
+! 
+| returns NULL
+| C, C++ ( only, returns pointer to character)
+|-
+! 
+| returns -1
+| VB .NET, C#, Windows PowerShell, F#
 |-
 ! 
 | returns std::string::npos
@@ -22,28 +34,20 @@
 | OCaml
 |-
 ! 
-| returns -1
-| VB .NET, C#, Windows PowerShell, F#
-|-
-! 
-| returns NULL
-| C, C++ ( only, returns pointer to character)
-|-
-! 
 | returns NIL
 | Common Lisp
 |-
 ! 
-| returns nil
-| Ruby
+| returns 0
+| Seed7
 |-
 ! 
-| returns Nothing
-| Haskell (returns Just index)
+| returns
+| ISLISP
 |-
 ! 
-| returns 0 (positions start at 1)
-| PL/I
+| returns
+| PHP
 |-
 ! 
 | returns -1
@@ -58,18 +62,6 @@
 | ALGOL 68
 |-
 ! 
-| returns
-| ISLISP
-|-
-! 
-| returns
-| PHP
-|-
-! 
-| returns zero
-| Fortran
-|-
-! 
 | evaluate  which is a  (or any object understanding value) 
  returns 0 
  returns  or
@@ -78,6 +70,14 @@
 ! 
 | returns -1
 | Cobra
+|-
+! 
+| returns nil
+| Ruby
+|-
+! 
+| returns 0 (positions start at 1)
+| PL/I
 |-
 ! (char, can contain more them one char, in which case the position of the first appearance of any of them is returned.)
 | returns 0

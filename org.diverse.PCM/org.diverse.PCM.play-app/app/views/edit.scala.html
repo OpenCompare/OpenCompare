@@ -10,6 +10,7 @@
 @if(id != null) {
     <script>
         var id = "@{Html(id)}";
+
     </script>
 }
 <script type='text/javascript' src='@routes.Assets.at("javascripts/handsontable/handsontable.full.min.js")'></script>
@@ -17,14 +18,35 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
 }
 
-@main(header, footer) {
+@toolbar = {
+
+    <nav class="navbar"  role="navigation">
+                <div class="container-fluid">
+
+     <div class="mytoolbar" >
+ 
+            <!-- Brand and toggle get grouped for better mobile display -->
+                    <input id="pcm-name" type="text" ng-model="pcm.name" placeholder="Title" > 
+                    <button role="button" class="btn btn-primary" ng-click="save()" ><i class="fa fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+
+</div>
+</div>
+                </nav>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+}
+
+@main(header, footer, toolbar) {
 
 <div ng-controller="PCMEditorController">
-    <input id="pcm-name" type="text" ng-model="pcm.name" placeholder="Title">
-    <button role="button" class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i> Save</button>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+    <div id="editor-toolbar">
 
-    <!-- Remove modal -->
+  
+
+    </div>
+
     <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -41,6 +63,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 

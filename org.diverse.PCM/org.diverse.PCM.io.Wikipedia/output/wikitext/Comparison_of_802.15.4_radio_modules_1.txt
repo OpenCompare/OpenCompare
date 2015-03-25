@@ -1,5 +1,5 @@
 {| class="wikitable"
-|+ Integrated MCU and transceiver modules
+|+ Comparison of 802.15.4 radio modules -  Integrated MCU and transceiver modules
 |-
 |
 ! 
@@ -26,43 +26,7 @@
 | 256 kB
 | UART, SPI
 | 32 MHz 8-bit 8051
-| A2530E24A Data sheet
-| 11 mm x 19 mm
-| 8 kB
-| 28 mA
-| July, 2012
-| CC2530 Data sheet
-| -95 dBm
-| 1 µA
-| 130 mA
-| 15 dBm
-|-
-! Anaren
-| 
-| Printed Trace
-| AIR-ZNP, based on TI Z-Stack
-| 256 kB
-| UART, SPI
-| 32 MHz 8-bit 8051
 | A2530R24A Data sheet
-| 11 mm x 19 mm
-| 8 kB
-| 25 mA
-| July, 2012
-| CC2530 Data sheet
-| -90 dBm
-| 1 µA
-| 34 mA
-| 4 dBm
-|-
-! Anaren
-| 
-| U.FL connector
-| AIR-ZNP, based on TI Z-Stack
-| 256 kB
-| UART, SPI
-| 32 MHz 8-bit 8051
-| A2530R24C Data sheet
 | 11 mm x 19 mm
 | 8 kB
 | 25 mA
@@ -90,6 +54,42 @@
 | 1 µA
 | 106 mA
 | 13 dBm
+|-
+! Anaren
+| 
+| U.FL connector
+| AIR-ZNP, based on TI Z-Stack
+| 256 kB
+| UART, SPI
+| 32 MHz 8-bit 8051
+| A2530R24C Data sheet
+| 11 mm x 19 mm
+| 8 kB
+| 25 mA
+| July, 2012
+| CC2530 Data sheet
+| -90 dBm
+| 1 µA
+| 34 mA
+| 4 dBm
+|-
+! Anaren
+| 
+| Printed Trace
+| AIR-ZNP, based on TI Z-Stack
+| 256 kB
+| UART, SPI
+| 32 MHz 8-bit 8051
+| A2530E24A Data sheet
+| 11 mm x 19 mm
+| 8 kB
+| 28 mA
+| July, 2012
+| CC2530 Data sheet
+| -95 dBm
+| 1 µA
+| 130 mA
+| 15 dBm
 |-
 ! Atmel
 | 
@@ -206,24 +206,6 @@
 | 192 kB
 | UART, SPI, TWI
 | 32 bit, ARM Cortex-M3
-| ZICM357SP0 datasheet brochure
-| 23.9 mm x 16.6 mm
-| 12 kB
-| 30 mA
-| Apr, 2012
-| EM357 datasheet brochure
-| -100 dBm
-| 1 uA
-| 31 mA
-| 8 dBm
-|-
-! California Eastern Laboratories
-| 
-| PCB Trace Antenna or RF Port for External Antenna
-| ZigBee PRO stack: EmberZNet PRO
-| 192 kB
-| UART, SPI, TWI
-| 32 bit, ARM Cortex-M3
 | ZICM357SP2 datasheet brochure
 | 23.9 mm x 16.6 mm
 | 12 kB
@@ -234,6 +216,24 @@
 | 1 uA
 | 58 mA
 | 20 dBm
+|-
+! California Eastern Laboratories
+| 
+| PCB Trace Antenna or RF Port for External Antenna
+| ZigBee PRO stack: EmberZNet PRO
+| 192 kB
+| UART, SPI, TWI
+| 32 bit, ARM Cortex-M3
+| ZICM357SP0 datasheet brochure
+| 23.9 mm x 16.6 mm
+| 12 kB
+| 30 mA
+| Apr, 2012
+| EM357 datasheet brochure
+| -100 dBm
+| 1 uA
+| 31 mA
+| 8 dBm
 |-
 ! Digi International
 | 
@@ -252,6 +252,24 @@
 | 1 µA
 | 40 mA, 35 mA
 | 3 dBm, 1 dBm
+|-
+! Digi International
+| 
+| integrated Whip, chip or U.FL connector, RPSMA connector
+| ZigBee stack, DigiMesh network protocol
+| 60 kB
+| UART
+| 8-bit 689S08A HCS08
+| Series 1 XBee-PRO manual
+| 24.38 mm x 32.94 mm
+| 4 kB
+| 55 mA
+| Dec, 2006
+| Freescale MC13193 datasheet
+| -100 dBm
+| 10 µA, 50 µA
+| 250 mA, 340 mA, 180 mA
+| 18 dBm, 10 dBm
 |-
 ! Digi International
 | 
@@ -278,24 +296,6 @@
 | 60 kB
 | UART
 | 8-bit 689S08A HCS08
-| Series 1 XBee-PRO manual
-| 24.38 mm x 32.94 mm
-| 4 kB
-| 55 mA
-| Dec, 2006
-| Freescale MC13193 datasheet
-| -100 dBm
-| 10 µA, 50 µA
-| 250 mA, 340 mA, 180 mA
-| 18 dBm, 10 dBm
-|-
-! Digi International
-| 
-| integrated Whip, chip or U.FL connector, RPSMA connector
-| ZigBee stack, DigiMesh network protocol
-| 60 kB
-| UART
-| 8-bit 689S08A HCS08
 | Series 1 XBee manual
 | 24.38 mm x 27.61 mm
 | 4 kB
@@ -306,288 +306,6 @@
 | 10 µA, 50 µA
 | 45 mA
 | 0 dBm
-|-
-! Dresden elektronik
-| 
-| Chip ceramic antenna
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 128 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO
-| 8-bit ATmega
-| deRFmega128-22M00 2.4 GHz
- datasheet
-| 23.6 mm x 13.2 mm x 3.0 mm
-| 16 kB
-| 18 mA
-| 2012
-| ATmega128RFA1
- datasheet
-| -98 dBm
-| < 1 µA
-| 18 mA
-| +3 dBm
-|-
-! Dresden elektronik
-| 
-| Chip ceramic antenna
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| USB, JTAG, Debug
-| 32-bit ARM Cortex-M3
-| deRFusb-23E00 JTAG 2.4 GHz
-deRFusb-23E06 JTAG 2.4 GHz
- datasheet
-| 63.5 mm x 19.0 mm x 9.5 mm
-| 48 kB
-| 45 mA
-| 2012
-| ATSAM3S4B
- datasheet
-
-AT86RF231
- datasheet
-| -97 dBm
-| 32 mA
-| 51 mA
-| +3 dBm
-|-
-! Dresden elektronik
-| 
-| RF pads
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 128 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO
-| 8-bit ATmega
-| deRFmega128-22M10 2.4 GHz
- datasheet
-| 19.0 mm x 13.2 mm x 3.0 mm
-| 16 kB
-| 18 mA
-| 2012
-| ATmega128RFA1
- datasheet
-| -98 dBm
-| < 1 µA
-| 18 mA
-| +3 dBm
-|-
-! Dresden elektronik
-| 
-| RF pads
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO, USB
-| 32-bit ARM Cortex-M3
-| deRFsam3-13M10 868, 915 MHz
- datasheet
-| 21.5 mm x 13.2 mm x 3.0 mm
-| 48 kB
-| 37 mA
-| 2013
-| ATSAM3S4A
- datasheet
-
- AT86RF212
- datasheet
-| -110 dBm
-| < 6 µA
-| 50 mA
-| +5 or +10 dBm
-|-
-! Dresden elektronik
-| 
-| RF pads
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO
-| 8-bit ATmega
-| deRFmega256-23M12 2.4 GHz
- datasheet
-| 21.5 mm x 13.2 mm x 3.0 mm
-| 32 kB
-| 17 mA
-| 2013
-| ATmega256RFR2
- datasheet
-| -104 dBm
-| < 1 µA
-| 233 mA
-| 23 dBm
-|-
-! Dresden elektronik
-| 
-| Chip ceramic antenna
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| USB, optional: JTAG, Debug
-| 32-bit ARM Cortex-M3
-| deRFusb-13E00 868, 915 MHz
-deRFusb-13E06 868, 915 MHz
- datasheet
-| 71.0 mm x 23.0 mm x 8.7 mm
-| 48 kB
-| 45 mA
-| 2012
-| ATSAM3S4B
- datasheet
-
-AT86RF212
- datasheet
-| -106 dBm
-| 32 mA
-| 51 mA
-| +9 dBm
-|-
-! Dresden elektronik
-| 
-| Chip ceramic antenna
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| USB, JTAG, Debug
-| 32-bit ARM Cortex-M3
-| deRFusb-13E00 JTAG 868, 915 MHz
-deRFusb-13E06 JTAG 868, 915 MHz
- datasheet
-| 63.5 mm x 19.0 mm x 9.5 mm
-| 48 kB
-| 45 mA
-| 2012
-| ATSAM3S4B
- datasheet
-
-AT86RF212
- datasheet
-| -106 dBm
-| 32 mA
-| 51 mA
-| +9 dBm
-|-
-! Dresden elektronik
-| 
-| Chip ceramic antenna
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| USB, optional: JTAG, Debug
-| 32-bit ARM Cortex-M3
-| deRFusb-23E00 2.4 GHz
-deRFusb-23E06 2.4 GHz
- datasheet
-| 71.0 mm x 23.0 mm x 8.7 mm
-| 48 kB
-| 45 mA
-| 2012
-| ATSAM3S4B
- datasheet
-
-AT86RF231
- datasheet
-| -97 dBm
-| 32 mA
-| 51 mA
-| +3 dBm
-|-
-! Dresden elektronik
-| 
-| RF pads
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO, USB
-| 32-bit ARM Cortex-M3
-| deRFsam3-23M10-2 2.4 GHz
- datasheet
-| 21.5 mm x 13.2 mm x 3.0 mm
-| 48 kB
-| 41 mA
-| 2013
-| ATSAM3S4A
- datasheet
-
- AT86RF232
- datasheet
-| -100 dBm
-| < 6 µA
-| 45 mA
-| +3 dBm
-|-
-! Dresden elektronik
-| 
-| RF pads
-| MAC stack
-
- ZigBee (BitCloud)
-
- 6LoWPAN
-
- Atmel
-| 256 kB
-| JTAG, UART, I²C, ADC, SPI, GPIO
-| 8-bit ATmega
-| deRFmega256-23M10 2.4 GHz
- datasheet
-| 19.0 mm x 13.2 mm x 3.0 mm
-| 32 kB
-| 11 mA
-| 2013
-| ATmega256RFR2
- datasheet
-| -98 dBm
-| < 1 µA
-| 19 mA
-| +3.5 dBm
 |-
 ! Dresden elektronik
 | 
@@ -641,6 +359,308 @@ AT86RF231
 | 19 mA
 | +3.5 dBm
 |-
+! Dresden elektronik
+| 
+| Chip ceramic antenna
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 128 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO
+| 8-bit ATmega
+| deRFmega128-22M00 2.4 GHz
+ datasheet
+| 23.6 mm x 13.2 mm x 3.0 mm
+| 16 kB
+| 18 mA
+| 2012
+| ATmega128RFA1
+ datasheet
+| -98 dBm
+| < 1 µA
+| 18 mA
+| +3 dBm
+|-
+! Dresden elektronik
+| 
+| Chip ceramic antenna
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| USB, JTAG, Debug
+| 32-bit ARM Cortex-M3
+| deRFusb-13E00 JTAG 868, 915 MHz
+deRFusb-13E06 JTAG 868, 915 MHz
+ datasheet
+| 63.5 mm x 19.0 mm x 9.5 mm
+| 48 kB
+| 45 mA
+| 2012
+| ATSAM3S4B
+ datasheet
+
+AT86RF212
+ datasheet
+| -106 dBm
+| 32 mA
+| 51 mA
+| +9 dBm
+|-
+! Dresden elektronik
+| 
+| Chip ceramic antenna
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| USB, optional: JTAG, Debug
+| 32-bit ARM Cortex-M3
+| deRFusb-13E00 868, 915 MHz
+deRFusb-13E06 868, 915 MHz
+ datasheet
+| 71.0 mm x 23.0 mm x 8.7 mm
+| 48 kB
+| 45 mA
+| 2012
+| ATSAM3S4B
+ datasheet
+
+AT86RF212
+ datasheet
+| -106 dBm
+| 32 mA
+| 51 mA
+| +9 dBm
+|-
+! Dresden elektronik
+| 
+| RF pads
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 128 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO
+| 8-bit ATmega
+| deRFmega128-22M10 2.4 GHz
+ datasheet
+| 19.0 mm x 13.2 mm x 3.0 mm
+| 16 kB
+| 18 mA
+| 2012
+| ATmega128RFA1
+ datasheet
+| -98 dBm
+| < 1 µA
+| 18 mA
+| +3 dBm
+|-
+! Dresden elektronik
+| 
+| RF pads
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO, USB
+| 32-bit ARM Cortex-M3
+| deRFsam3-23M10-2 2.4 GHz
+ datasheet
+| 21.5 mm x 13.2 mm x 3.0 mm
+| 48 kB
+| 41 mA
+| 2013
+| ATSAM3S4A
+ datasheet
+
+ AT86RF232
+ datasheet
+| -100 dBm
+| < 6 µA
+| 45 mA
+| +3 dBm
+|-
+! Dresden elektronik
+| 
+| Chip ceramic antenna
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| USB, JTAG, Debug
+| 32-bit ARM Cortex-M3
+| deRFusb-23E00 JTAG 2.4 GHz
+deRFusb-23E06 JTAG 2.4 GHz
+ datasheet
+| 63.5 mm x 19.0 mm x 9.5 mm
+| 48 kB
+| 45 mA
+| 2012
+| ATSAM3S4B
+ datasheet
+
+AT86RF231
+ datasheet
+| -97 dBm
+| 32 mA
+| 51 mA
+| +3 dBm
+|-
+! Dresden elektronik
+| 
+| RF pads
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO
+| 8-bit ATmega
+| deRFmega256-23M12 2.4 GHz
+ datasheet
+| 21.5 mm x 13.2 mm x 3.0 mm
+| 32 kB
+| 17 mA
+| 2013
+| ATmega256RFR2
+ datasheet
+| -104 dBm
+| < 1 µA
+| 233 mA
+| 23 dBm
+|-
+! Dresden elektronik
+| 
+| Chip ceramic antenna
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| USB, optional: JTAG, Debug
+| 32-bit ARM Cortex-M3
+| deRFusb-23E00 2.4 GHz
+deRFusb-23E06 2.4 GHz
+ datasheet
+| 71.0 mm x 23.0 mm x 8.7 mm
+| 48 kB
+| 45 mA
+| 2012
+| ATSAM3S4B
+ datasheet
+
+AT86RF231
+ datasheet
+| -97 dBm
+| 32 mA
+| 51 mA
+| +3 dBm
+|-
+! Dresden elektronik
+| 
+| RF pads
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO, USB
+| 32-bit ARM Cortex-M3
+| deRFsam3-13M10 868, 915 MHz
+ datasheet
+| 21.5 mm x 13.2 mm x 3.0 mm
+| 48 kB
+| 37 mA
+| 2013
+| ATSAM3S4A
+ datasheet
+
+ AT86RF212
+ datasheet
+| -110 dBm
+| < 6 µA
+| 50 mA
+| +5 or +10 dBm
+|-
+! Dresden elektronik
+| 
+| RF pads
+| MAC stack
+
+ ZigBee (BitCloud)
+
+ 6LoWPAN
+
+ Atmel
+| 256 kB
+| JTAG, UART, I²C, ADC, SPI, GPIO
+| 8-bit ATmega
+| deRFmega256-23M10 2.4 GHz
+ datasheet
+| 19.0 mm x 13.2 mm x 3.0 mm
+| 32 kB
+| 11 mA
+| 2013
+| ATmega256RFR2
+ datasheet
+| -98 dBm
+| < 1 µA
+| 19 mA
+| +3.5 dBm
+|-
+! Embit
+| 
+| RF Pads, U.FL Connector
+| Wireless M-Bus stack
+| 128 kB / 96 kB / 64 kB
+| UART, SPI, JTAG
+| 16 bit MSP430
+| EMB-WMB169PA, 169 MHz
+ webpage datasheet brochure
+| 29 mm x 22 mm
+| 10 kB / 8 kB / 6 kB
+| 27 mA (full sens.)
+| 2012
+| MSP430F534x
+ datasheet
+| -122 dBm
+| <2 uA
+| 57 mA@ +15dBm
+| up to 30 dBm
+|-
 ! Embit
 | 
 | PCB Antenna, U.FL Connector, RF pads
@@ -660,6 +680,26 @@ AT86RF231
 | <1.1 uA
 | 132 mA@ +20dBm
 | 20 dBm
+|-
+! Embit
+| 
+| Ceramic Antenna, U.FL Connector, RF pads
+| Atmel Lightweight Mesh, Atmel MAC (IEEE 802.15.4), Atmel BitCloud (ZigBee PRO)
+| 128 kB
+| UART, SPI, JTAG
+| 8/16 bit AVR XMEGA
+| EMB-ZRF212B, 868 MHz, 915 MHz
+ webpage datasheet brochure
+| 29 mm x 22 mm
+| 8 kB
+| 10 mA
+| 2013
+| ATxmega128D3
+ datasheet
+| -110 dBm
+| 1.3 uA
+| 17 mA@ +5dBm
+| 10 dBm
 |-
 ! Embit
 | 
@@ -701,56 +741,16 @@ AT86RF231
 | 57 mA@ +15dBm
 | 15 dBm
 |-
-! Embit
-| 
-| Ceramic Antenna, U.FL Connector, RF pads
-| Atmel Lightweight Mesh, Atmel MAC (IEEE 802.15.4), Atmel BitCloud (ZigBee PRO)
-| 128 kB
-| UART, SPI, JTAG
-| 8/16 bit AVR XMEGA
-| EMB-ZRF212B, 868 MHz, 915 MHz
- webpage datasheet brochure
-| 29 mm x 22 mm
-| 8 kB
-| 10 mA
-| 2013
-| ATxmega128D3
- datasheet
-| -110 dBm
-| 1.3 uA
-| 17 mA@ +5dBm
-| 10 dBm
-|-
-! Embit
-| 
-| RF Pads, U.FL Connector
-| Wireless M-Bus stack
-| 128 kB / 96 kB / 64 kB
-| UART, SPI, JTAG
-| 16 bit MSP430
-| EMB-WMB169PA, 169 MHz
- webpage datasheet brochure
-| 29 mm x 22 mm
-| 10 kB / 8 kB / 6 kB
-| 27 mA (full sens.)
-| 2012
-| MSP430F534x
- datasheet
-| -122 dBm
-| <2 uA
-| 57 mA@ +15dBm
-| up to 30 dBm
-|-
 ! FlexiPanel Ltd
 | 
 | integral
 | Microchip ZigBee
-| 64 kB
+| 32 kB
 | UART, SPI
-| PIC18LF4620
-| Pixie summary datasheet
+| PIC18LF2520
+| Pixie Lite summary datasheet
 | 
-| 4 kB
+| 1.5 kB
 | 25 mA
 | Mar, 2008
 | Texas Instruments CC2420 datasheet errata
@@ -763,12 +763,12 @@ AT86RF231
 | 
 | integral
 | Microchip ZigBee
-| 32 kB
+| 64 kB
 | UART, SPI
-| PIC18LF2520
-| Pixie Lite summary datasheet
+| PIC18LF4620
+| Pixie summary datasheet
 | 
-| 1.5 kB
+| 4 kB
 | 25 mA
 | Mar, 2008
 | Texas Instruments CC2420 datasheet errata
@@ -838,24 +838,6 @@ AT86RF231
 | 256 kB
 | UART, SPI
 | 32 MHz 32-bit RISC
-| JN5168-001-M03 Data sheet
-| 16 mm x 30 mm
-| 32 kB
-| 17 mA
-| 2013
-| JN5168 Data sheet
-| -95 dBm
-| 0.15 µA
-| 15 mA
-| 2.5 dBm
-|-
-! NXP
-| 
-| U.FL connector
-| JenNet stack ZigBee stack
-| 256 kB
-| UART, SPI
-| 32 MHz 32-bit RISC
 | JN5168-001-M06 Data sheet
 | 16 mm x30 mm
 | 32 kB
@@ -866,6 +848,24 @@ AT86RF231
 | 0.15 µA
 | 175 mA
 | 22 dBm
+|-
+! NXP
+| 
+| U.FL connector
+| JenNet stack ZigBee stack
+| 256 kB
+| UART, SPI
+| 32 MHz 32-bit RISC
+| JN5168-001-M03 Data sheet
+| 16 mm x 30 mm
+| 32 kB
+| 17 mA
+| 2013
+| JN5168 Data sheet
+| -95 dBm
+| 0.15 µA
+| 15 mA
+| 2.5 dBm
 |-
 ! Nivis, LLC.
 | 
@@ -905,6 +905,24 @@ AT86RF231
 |-
 ! Panasonic
 | 
+| RF out or ceramic antenna
+| Freescale Beestack
+| 60 kB
+| UART, SPI
+| 8-bit MC9S08GT HC08
+| PAN4555 datasheet
+| 12.2 mm x 16.4 mm x 2.2 mm
+| 4 kB
+| 37 mA
+| 2008
+| MC1321x datasheet
+| -92 dBm
+| 0.25 µA, 1.9 µA, 36 µA, 1.6 mA
+| 36.5 mA
+| -4 dBm, 0 dBm
+|-
+! Panasonic
+| 
 | SMD RF out, ceramic antenna or U.FL
 | Freescale Beestack
 | 60 kB
@@ -939,24 +957,6 @@ AT86RF231
 | 35.5 mA, 41.5 mA, 28 mA
 | 3 dBm, 5 dBm, -32 dBm
 |-
-! Panasonic
-| 
-| RF out or ceramic antenna
-| Freescale Beestack
-| 60 kB
-| UART, SPI
-| 8-bit MC9S08GT HC08
-| PAN4555 datasheet
-| 12.2 mm x 16.4 mm x 2.2 mm
-| 4 kB
-| 37 mA
-| 2008
-| MC1321x datasheet
-| -92 dBm
-| 0.25 µA, 1.9 µA, 36 µA, 1.6 mA
-| 36.5 mA
-| -4 dBm, 0 dBm
-|-
 ! RF Monolithics
 | 
 | RFIO pad
@@ -964,8 +964,8 @@ AT86RF231
 | 128 kB
 | UART, SPI,
 | 8-bit 8051
-| ZMN2405HP datasheet
-| 40.6 mm x 21.2 mm
+| ZMN2430HP datasheet
+| 30.48 mm x 25 mm
 | 8 kB
 | 33 mA
 | 2008
@@ -995,6 +995,24 @@ AT86RF231
 |-
 ! RF Monolithics
 | 
+| RFIO pad
+| ZigBee stack, RFM’s CSM standard module application profile
+| 128 kB
+| UART, SPI,
+| 8-bit 8051
+| ZMN2405HP datasheet
+| 40.6 mm x 21.2 mm
+| 8 kB
+| 33 mA
+| 2008
+| Texas Instruments CC2430 datasheet errata
+| -95 dBm
+| 3 µA
+| 130 mA
+| 17 dBm
+|-
+! RF Monolithics
+| 
 | built-in
 | ZigBee stack, RFM’s CSM standard module application profile
 | 128 kB
@@ -1010,42 +1028,6 @@ AT86RF231
 | 3 µA
 | 130 mA
 | 15 dBm
-|-
-! RF Monolithics
-| 
-| built-in
-| ZigBee stack, RFM’s CSM standard module application profile
-| 128 kB
-| UART, SPI,
-| 8-bit 8051
-| ZMN2405HPA datasheet
-| 47 mm x 21.2 mm
-| 8 kB
-| 33 mA
-| 2008
-| Texas Instruments CC2430 datasheet errata
-| -95 dBm
-| 3 µA
-| 130 mA
-| 15 dBm
-|-
-! RF Monolithics
-| 
-| RFIO pad
-| ZigBee stack, RFM’s CSM standard module application profile
-| 128 kB
-| UART, SPI,
-| 8-bit 8051
-| ZMN2405 datasheet
-| 30.5 mm x 21.2 mm
-| 8 kB
-| 27 mA
-| 2008
-| Texas Instruments CC2430 datasheet errata
-| -92 dBm
-| 3 µA
-| 28 mA
-| 0 dBm
 |-
 ! RF Monolithics
 | 
@@ -1072,8 +1054,26 @@ AT86RF231
 | 128 kB
 | UART, SPI,
 | 8-bit 8051
-| ZMN2430HP datasheet
-| 30.48 mm x 25 mm
+| ZMN2405 datasheet
+| 30.5 mm x 21.2 mm
+| 8 kB
+| 27 mA
+| 2008
+| Texas Instruments CC2430 datasheet errata
+| -92 dBm
+| 3 µA
+| 28 mA
+| 0 dBm
+|-
+! RF Monolithics
+| 
+| built-in
+| ZigBee stack, RFM’s CSM standard module application profile
+| 128 kB
+| UART, SPI,
+| 8-bit 8051
+| ZMN2405HPA datasheet
+| 47 mm x 21.2 mm
 | 8 kB
 | 33 mA
 | 2008
@@ -1081,70 +1081,16 @@ AT86RF231
 | -95 dBm
 | 3 µA
 | 130 mA
-| 17 dBm
+| 15 dBm
 |-
 ! Radiocrafts
 | 
-| integrated, MMCX connector or RF on pin connector
+| integrated or RF-on-pin connector
 | Texas Instruments Z-stack or any third-party ZigBee stack
 | 32 kB
-| UART, SPI, JTAG, ISP
-| 8-bit ATmega128
-| RC2202datasheet
-| 16.5 mm x 29.2 mm x 3.5 mm
-| 2 kB
-| 26 mA
-| 2008
-| Texas Instruments CC2420 datasheet errata
-| -94 dBm
-| 1.3 µA
-| 23 mA
-| 0 dBm
-|-
-! Radiocrafts
-| 
-| integrated or RF-on-pin connector
-| Texas Instruments Z-stack or any third-party ZigBee stack
-| 128 kB
-| UART, SPI, JTAG, ISP
-| 8-bit ATmega1281
-| RC2201HP datasheet
-| 16.5 mm x 35.6 mm x 3.5 mm
-| 8 kB
-| 28 mA
-| Jan 2008
-| Texas Instruments CC2420 datasheet errata
-| -92 dBm
-| 40 µA, 2 µA
-| 140 mA
-| 17 dBm
-|-
-! Radiocrafts
-| 
-| integrated, MMCX connector or RF on pin connector
-| Texas Instruments Z-stack or any third-party ZigBee stack
-| 64 kB
-| UART, SPI, JTAG, ISP
-| 8-bit ATmega128
-| RC2204datasheet
-| 16.5 mm x 29.2 mm x 3.5 mm
-| 4 kB
-| 30 mA
-| 2008
-| Texas Instruments CC2420 datasheet errata
-| -94 dBm
-| 23 µA, 1.3 µA
-| 27 mA
-| 0 dBm
-|-
-! Radiocrafts
-| 
-| integrated or RF-on-pin connector
-| Texas Instruments Z-stack or any third-party ZigBee stack
-| 64 kB
 | UART, SPI, proprietary serial debugging interface
 | 8-bit 8051
-| RC2304 datasheet
+| RC2302 datasheet
 | 12.7 mm x 25.4 mm x 2.5 mm
 | 8 kB
 | 27 mA
@@ -1177,10 +1123,46 @@ AT86RF231
 | 
 | integrated or RF-on-pin connector
 | Texas Instruments Z-stack or any third-party ZigBee stack
-| 32 kB
+| 128 kB
+| UART, SPI, JTAG, ISP
+| 8-bit ATmega1281
+| RC2201HP datasheet
+| 16.5 mm x 35.6 mm x 3.5 mm
+| 8 kB
+| 28 mA
+| Jan 2008
+| Texas Instruments CC2420 datasheet errata
+| -92 dBm
+| 40 µA, 2 µA
+| 140 mA
+| 17 dBm
+|-
+! Radiocrafts
+| 
+| integrated or RF-on-pin connector
+| Texas Instruments Z-stack or any third-party ZigBee stack
+| 128 kB
 | UART, SPI, proprietary serial debugging interface
 | 8-bit 8051
-| RC2302 datasheet
+| RC2300 datasheet
+| 12.7 mm x 25.4 mm x 2.5 mm
+| 8 kB
+| 27 mA
+| Jul 2008
+| Texas Instruments CC2430 (CC2431 for location engine option)datasheet errata
+| -92 dBm
+| 300 µA, 0.9 µA, 0.6 µA
+| 27 mA
+| 0 dBm
+|-
+! Radiocrafts
+| 
+| integrated or RF-on-pin connector
+| Texas Instruments Z-stack or any third-party ZigBee stack
+| 64 kB
+| UART, SPI, proprietary serial debugging interface
+| 8-bit 8051
+| RC2304 datasheet
 | 12.7 mm x 25.4 mm x 2.5 mm
 | 8 kB
 | 27 mA
@@ -1211,24 +1193,6 @@ AT86RF231
 |-
 ! Radiocrafts
 | 
-| integrated or RF-on-pin connector
-| Texas Instruments Z-stack or any third-party ZigBee stack
-| 128 kB
-| UART, SPI, proprietary serial debugging interface
-| 8-bit 8051
-| RC2300 datasheet
-| 12.7 mm x 25.4 mm x 2.5 mm
-| 8 kB
-| 27 mA
-| Jul 2008
-| Texas Instruments CC2430 (CC2431 for location engine option)datasheet errata
-| -92 dBm
-| 300 µA, 0.9 µA, 0.6 µA
-| 27 mA
-| 0 dBm
-|-
-! Radiocrafts
-| 
 | integrated, MMCX connector or RF on pin connector
 | Texas Instruments Z-stack or any third-party ZigBee stack
 | 128 kB
@@ -1243,6 +1207,42 @@ AT86RF231
 | -94 dBm
 | 23 µA, 1.3 µA
 | 27 mA
+| 0 dBm
+|-
+! Radiocrafts
+| 
+| integrated, MMCX connector or RF on pin connector
+| Texas Instruments Z-stack or any third-party ZigBee stack
+| 64 kB
+| UART, SPI, JTAG, ISP
+| 8-bit ATmega128
+| RC2204datasheet
+| 16.5 mm x 29.2 mm x 3.5 mm
+| 4 kB
+| 30 mA
+| 2008
+| Texas Instruments CC2420 datasheet errata
+| -94 dBm
+| 23 µA, 1.3 µA
+| 27 mA
+| 0 dBm
+|-
+! Radiocrafts
+| 
+| integrated, MMCX connector or RF on pin connector
+| Texas Instruments Z-stack or any third-party ZigBee stack
+| 32 kB
+| UART, SPI, JTAG, ISP
+| 8-bit ATmega128
+| RC2202datasheet
+| 16.5 mm x 29.2 mm x 3.5 mm
+| 2 kB
+| 26 mA
+| 2008
+| Texas Instruments CC2420 datasheet errata
+| -94 dBm
+| 1.3 µA
+| 23 mA
 | 0 dBm
 |-
 ! Radios, Inc.
@@ -1319,24 +1319,6 @@ AT86RF231
 |-
 ! Telegesis Ltd
 | 
-| integrated
-| Ember ZNet Stack
-| 128 kB
-| SIF
-| 16-bit 12 MHz RISC
-| ETRX2USB brochure datasheet
-| 
-| 5 kB
-| 62 mA
-| 2008
-| Ember (now Silicon Labs) EM250 factsheet datasheet
-| 
-| 32 mA, 27 mA, 26 mA
-| 55 mA, 62 mA
-| 3 dBm, 18 dBm
-|-
-! Telegesis Ltd
-| 
 | integrated, U.FL connector or 50Ω pad
 | Ember ZNet Stack
 | 128 kB
@@ -1388,4 +1370,22 @@ AT86RF231
 | <1 µA
 | 31 mA
 | 8 dBm
+|-
+! Telegesis Ltd
+| 
+| integrated
+| Ember ZNet Stack
+| 128 kB
+| SIF
+| 16-bit 12 MHz RISC
+| ETRX2USB brochure datasheet
+| 
+| 5 kB
+| 62 mA
+| 2008
+| Ember (now Silicon Labs) EM250 factsheet datasheet
+| 
+| 32 mA, 27 mA, 26 mA
+| 55 mA, 62 mA
+| 3 dBm, 18 dBm
 |}

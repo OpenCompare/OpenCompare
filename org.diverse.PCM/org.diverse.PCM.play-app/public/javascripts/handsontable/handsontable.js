@@ -352,6 +352,7 @@ Handsontable.Core = function (rootElement, userSettings) {
           break;
 
         case "remove_col":
+        
           datamap.removeCol(index, amount);
 
           for(var row = 0, len = datamap.getAll().length; row < len; row++){
@@ -2114,6 +2115,8 @@ Handsontable.Core = function (rootElement, userSettings) {
       else if (ending) {
         break;
       }
+
+      
       i--;
     }
     return empty;
