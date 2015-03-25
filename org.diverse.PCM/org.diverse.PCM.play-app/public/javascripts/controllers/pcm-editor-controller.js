@@ -108,59 +108,97 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
 	  function contextMenu () {
 		  return {
-		  /*add_col : {
-			  name : 'add a column (DON\'T SAVE !!!)',
+		  add_col_before : {
+			  name : 'add a column before',
 			  callback: function (key, selection) {
 			      var header = prompt("Please enter your column name", "");
 			      if (header != null) {
-				  featureHeaders.push(header);
+				  featureHeaders.splice(selection.start.col, 0, header);
 				  var feature = factory.createFeature();
-				  features.push({
-				      data: feature,
+				  feature.name = header;
+				  features.splice(selection.start.col, 0, {
+				      data: property(feature.generated_KMF_ID),
 				      ID : feature.generated_KMF_ID
 				  });
+				  $scope.pcm.addFeatures(feature);
 				  for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
 				      var cell = factory.createCell();
 				      cell.content = "";
 				      cell.feature = feature;
 				      $scope.pcm.products.array[i].addValues(cell);
 				  }
+				  
 				  hot.render();
 			      }
 			  },
 			  disabled: function () {
 			      return false;
 			  }
-		  },*/
-		  remove_column : {
-			  name : 'remove colomn(s)',
+		  },
+		  add_col_after : {
+			  name : 'add a column after',
 			  callback: function (key, selection) {
-			      var start = selection.start.col;
-			      var end = selection.end.col;
-			      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
-				  var product = $scope.pcm.products.array[i];
-				  var array = product.values.array;
-				  for (var j = 0 ; j < array.length ; j++) {
-				      var cell = array[j];
-				      for (var k = start ; k <= end ; k++) {
-					  if (cell.feature.generated_KMF_ID == features[k].ID) {
-					      alert(array.length);
-					      product.removeValues(cell);
-					      alert(array.length);
-					      break;
-					  }
-				      }
+			      var header = prompt("Please enter your column name", "");
+			      if (header != null) {
+				  featureHeaders.splice(selection.end.col+1, 0, header);
+				  var feature = factory.createFeature();
+				  feature.name = header;
+				  features.splice(selection.end.col+1, 0, {
+				      data: property(feature.generated_KMF_ID),
+				      ID : feature.generated_KMF_ID
+				  });
+				  $scope.pcm.addFeatures(feature);
+				  for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
+				      var cell = factory.createCell();
+				      cell.content = "";
+				      cell.feature = feature;
+				      $scope.pcm.products.array[i].addValues(cell);
 				  }
-			      }
-			      features.splice(start, end-start+1);
-			      featureHeaders.splice(start, end-start+1);
 				  
-			      hot.render();
+				  hot.render();
+			      }
 			  },
 			  disabled: function () {
 			      return false;
 			  }
 		  },
+		  /*remove_column : {
+			  name : 'remove column(s) (DON\'T SAVE !!!)',
+			  callback: function (key, selection) {
+			      var start = selection.start.col;
+			      var end = selection.end.col;
+			      for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
+				  var product = $scope.pcm.products.array[i];
+				  var array = product.values.array.slice(0);
+				  for (var j = 0 ; j < array.length ; j++) {
+				      var cell = array[j];
+				      for (var k = start ; k <= end ; k++) {
+					  if (cell.feature.generated_KMF_ID == features[k].ID) {
+					      product.removeValues(cell);
+					      break;
+					  }
+				      }
+				  }
+			      }
+			      var array = $scope.pcm.features.array.slice(0);
+			      for (var i = 0 ; i < array.length ; i++) {
+				  var feature = array[i];
+				  for (var j = start ; j <= end ; j++) {
+				      if (feature.generated_KMF_ID == features[k].ID) {
+					  $scope.pcm.removeFeatures(feature);
+					  break;
+				      }
+				  }
+			      }
+			      features.splice(start, end-start+1);
+			      featureHeaders.splice(start, end-start+1);
+			      
+			      hot.render();
+			  },
+			  disabled: function () {
+			      return false;
+			  }
+		  },*/
 		  set_column_name : {
 			  name : 'set column name',
 			  callback: function (key, selection) {
@@ -168,7 +206,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 				  if (header != null) {
 				      featureHeaders.splice(selection.start.col, 1, header);
 				      features[selection.start.col].data.name = header;
-				      //$scope.pcm.findFeaturesById(features[selection.start.col].ID).name = header;
+				      //$scope.pcm.findFeaturesById(features[selection.start.col.ID]).name = header;
 				      
 				      var feature;
 				      for (var i = 0 ; i < $scope.pcm.features.array.length ; i++) {
@@ -343,7 +381,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         return function (row, value) {
             var product = $scope.pcm.findProductsByID(row);
             //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
-            var cells = product.values.array
+            var cells = product.values.array;
             for (var i = 0; i < cells.length; i++) {
                 var cell = cells[i];
                 if (cell.feature.generated_KMF_ID === attr) {
