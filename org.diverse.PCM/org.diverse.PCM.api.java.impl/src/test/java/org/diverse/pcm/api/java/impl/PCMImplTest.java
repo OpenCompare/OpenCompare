@@ -32,9 +32,6 @@ public class PCMImplTest extends PCMTest {
         KMFJSONExporter serializer = new KMFJSONExporter();
         String json = serializer.export(pcm);
 
-        System.out.println(pcm.getName());
-        System.out.println(json);
-
         // Load
         KMFJSONLoader loader = new KMFJSONLoader();
         PCM loadedPCM = loader.load(json);

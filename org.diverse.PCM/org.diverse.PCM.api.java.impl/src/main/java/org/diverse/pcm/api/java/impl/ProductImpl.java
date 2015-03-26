@@ -79,4 +79,10 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
     }
+
+
+    @Override
+    public String toString() {
+        return "Product(" + getName() + ")";
+    }
 }

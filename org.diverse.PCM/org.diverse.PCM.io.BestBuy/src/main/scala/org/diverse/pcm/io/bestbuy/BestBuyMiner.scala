@@ -11,12 +11,18 @@ class BestBuyMiner(factory : PCMFactory) {
   private val bestBuyAPI = new BestBuyAPI
 
   def minePCM(skus : List[String]) : PCM = {
+    // Create product, features and cells
+    val productInfos = for (sku <- skus) yield {
+      bestBuyAPI.getProductInfo(sku)
+    }
+
+    mergeSpecifications(productInfos)
+  }
+
+  def mergeSpecifications(productInfos : List[ProductInfo]): PCM = {
     val pcm = factory.createPCM();
 
-    // Create product, features and cells
-    for (sku <- skus) {
-      val productInfo = bestBuyAPI.getProductInfo(sku)
-
+    for (productInfo <- productInfos) {
       val productName = productInfo.name
       val product = factory.createProduct()
       product.setName(productName)
