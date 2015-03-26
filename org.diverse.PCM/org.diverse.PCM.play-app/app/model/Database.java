@@ -22,14 +22,25 @@ public class Database {
 
     private DB db;
     private DBCollection pcms;
+    private String mongoVersion;
 
     private Database() {
         try {
             MongoClient mongoClient = new MongoClient("localhost", 27017);
             this.db = mongoClient.getDB("opencompare");
+            mongoVersion = db.command("buildInfo").getString("version");
 
             pcms = db.getCollection("pcms");
-            pcms.createIndex(new BasicDBObject("name", "text"));
+            boolean indexInitialized = false;
+            for (DBObject indexInfo : pcms.getIndexInfo()) {
+                if (indexInfo.get("name").equals("name_text")) {
+                    indexInitialized = true;
+                }
+            }
+
+            if (!indexInitialized) {
+                pcms.createIndex(new BasicDBObject("name", "text"));
+            }
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
@@ -39,14 +50,21 @@ public class Database {
 
     public List<PCMVariable> search(String request) {
 
-        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
+        List<PCMVariable> results = new ArrayList<PCMVariable>();
 
+        // $search operator requires mongo >= 2.6
+        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
         DBCursor cursor = pcms.find(query);
 
-        List<PCMVariable> results = new ArrayList<PCMVariable>();
         for (DBObject result : cursor) {
             results.add(createPCMVariable(result));
         }
+
+        // Code snippet for text search with mongo < 2.6
+//        DBObject query = new BasicDBObject();
+//        query.put("text", pcms.getName());
+//        query.put("search", request);
+//        CommandResult commandResult = db.command(query);
 
         return results;
     }
