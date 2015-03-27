@@ -1,7 +1,7 @@
 package org.diverse.pcm.io.bestbuy
 
 import scala.xml.Elem
-import scalaj.http.{Http, HttpOptions}
+import scalaj.http.{HttpException, Http, HttpOptions}
 
 class BestBuyAPI {
 
@@ -29,10 +29,15 @@ class BestBuyAPI {
     }
 
     // Call API
-    Http(url)
-      .option(HttpOptions.connTimeout(10000))
-      .option(HttpOptions.readTimeout(30000))
-      .asXml
+    try {
+      Http(url)
+        .option(HttpOptions.connTimeout(10000))
+        .option(HttpOptions.readTimeout(20000))
+        .asXml
+    } catch {
+      case e : HttpException => callAPI(url)
+    }
+
   }
 
   def listProductsSKU(categoryName : Option[String] = None, page : Int = 1, pageSize : Int = 10) : List[String] = {
@@ -41,7 +46,7 @@ class BestBuyAPI {
     var url = apiURL + "products"
 
     if (categoryName.isDefined) {
-      url += "(categoryPath.name=" + categoryName.get.replaceAll(" ", "%20") + ")"
+      url += "(categoryPath.name=" + categoryName.get.replaceAll(" ", "%20") + "&marketplace=*)"
     }
 
     url += "?page=" + page + "&pageSize=" + pageSize + "&show=sku&format=xml&" + apiKey
@@ -62,20 +67,22 @@ class BestBuyAPI {
   def getProductInfo(sku : String) : ProductInfo = {
 
     // Show details (specification), long description and features (detailed textual description)
-    val url = apiURL + "products/" + sku + ".xml?show=name,details,features,longDescription&" + apiKey
+    val url = apiURL + "products/" + sku + ".xml?show=all&" + apiKey
     val result = callAPI(url)
 
     val productInfo = new ProductInfo
 
+    productInfo.completeXMLDescription = result
+
     productInfo.name = (result.\("name")).text
 
-    productInfo.longDescription = (result \\ "longDescription").text
+    productInfo.longDescription = (result.\("longDescription")).text
 
-    for (feature <- result \\ "feature") yield {
+    for (feature <- result.\("features").\("feature")) {
       productInfo.addFeature(feature.text)
     }
 
-    for (detail <- result \\ "detail") {
+    for (detail <- result.\("details").\("detail")) {
       val name = (detail \\ "name").text
       val value = (detail \\ "value").text
       productInfo.addDetail(name, value)

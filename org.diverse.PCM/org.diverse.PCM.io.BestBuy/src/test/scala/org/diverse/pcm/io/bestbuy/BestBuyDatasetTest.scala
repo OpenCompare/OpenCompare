@@ -16,7 +16,8 @@ import collection.JavaConversions._
 class BestBuyDatasetTest extends FlatSpec with Matchers {
 
   val api = new BestBuyAPI
-  val categories = List("Laptops", "Washing Machines", "Digital SLR Cameras", "Refrigerators", "TVs", "No-Contract Phones", "All Printers", "Dishwashers", "Ranges")
+  //val categories = List("Laptops", "Washing Machines", "Digital SLR Cameras", "Refrigerators", "TVs", "No-Contract Phones", "All Printers", "Dishwashers", "Ranges")
+  val categories = List("Laptops")
   val baseOutputDirPath = "bestbuy-dataset/"
 
 
@@ -29,8 +30,8 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       val outputDirPath = baseOutputDirPath + category + "/"
 
-      val skus = (for (i <- 1 to 3) yield {
-        api.listProductsSKU(Some(category), page=i, pageSize=100)
+      val skus = (for (i <- 1 to 20) yield {
+        api.listProductsSKU(Some(category), page=i, pageSize=50)
       }).flatten.toList
 
       val outputDir = new File(outputDirPath)
@@ -39,6 +40,11 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       val productInfos = for (sku <- skus) yield {
         val productInfo = api.getProductInfo(sku)
+
+        // Information (XML dump)
+        val xmlWriter = new FileWriter(outputDirPath + sku + ".xml")
+        xmlWriter.write(productInfo.completeXMLDescription.toString())
+        xmlWriter.close()
 
         // Overview
         val text = new StringBuilder
