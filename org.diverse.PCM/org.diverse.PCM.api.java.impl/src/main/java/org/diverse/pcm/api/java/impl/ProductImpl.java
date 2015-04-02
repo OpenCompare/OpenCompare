@@ -85,4 +85,20 @@ public class ProductImpl implements org.diverse.pcm.api.java.Product {
     public String toString() {
         return "Product(" + getName() + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductImpl product = (ProductImpl) o;
+
+        return !(kProduct != null ? !kProduct.equals(product.kProduct) : product.kProduct != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return kProduct != null ? kProduct.hashCode() : 0;
+    }
 }

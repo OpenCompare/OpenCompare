@@ -116,7 +116,7 @@ class PCMAnalyzer {
         val content = cell.getContent.toLowerCase
         if (content == "yes" || content == "no") {
           "boolean"
-        } else if (content.matches(".*\\d+.*")) {
+        } else if (content.matches(".*\\d.*")) {
           "numeric"
         } else {
           "textual"
