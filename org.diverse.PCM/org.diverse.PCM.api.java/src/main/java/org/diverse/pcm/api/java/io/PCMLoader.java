@@ -4,6 +4,7 @@ import org.diverse.pcm.api.java.PCM;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by gbecan on 30/01/15.
@@ -23,5 +24,5 @@ public interface PCMLoader {
      * @return
      * @throws java.io.FileNotFoundException
      */
-    PCM load(File file) throws FileNotFoundException;
+    PCM load(File file) throws IOException;
 }
