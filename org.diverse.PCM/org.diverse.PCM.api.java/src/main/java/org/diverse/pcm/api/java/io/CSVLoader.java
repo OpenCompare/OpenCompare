@@ -45,7 +45,8 @@ public class CSVLoader implements PCMLoader {
         // Features
         String[] featureNames = reader.readNext();
         ArrayList<Feature> features = new ArrayList<Feature>();
-        for (String featureName : featureNames) {
+        for (int i = 1; i < featureNames.length; i++) {
+            String featureName = featureNames[i];
             Feature feature = factory.createFeature();
             feature.setName(featureName);
             pcm.addFeature(feature);
