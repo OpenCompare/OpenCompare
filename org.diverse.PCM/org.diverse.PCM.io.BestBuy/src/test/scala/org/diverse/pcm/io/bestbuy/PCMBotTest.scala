@@ -61,25 +61,29 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   "PCMBot experiment" should "run on BestBuy specifications" in {
     forAll (bestbuySpecificationPCMs) { (path : String) =>
-      val loader = new KMFJSONLoader
-      val pcm = loader.load(new File(path))
-      val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
-      val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
-
+      if (new File(path).exists()) {
+        val loader = new KMFJSONLoader
+        val pcm = loader.load(new File(path))
+        val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
+        val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
+      }
     }
   }
 
 
   it should "run on BestBuy overviews" in {
     forAll (bestbuyOverviewPCMs) { (path : String) =>
-      val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
-      val pcm = loader.load(new File(path))
-      val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
-      val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
+      if(new File(path).exists()) {
+        val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
+        val pcm = loader.load(new File(path))
+        val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
+        val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
 
-      println(path)
-      println("#empty cells = " + emptyCells)
-      //println("boolean features = " + booleanFeature)
+        println(path)
+        println("#cells = " + pcm.getConcreteFeatures.size() * pcm.getProducts.size())
+        println("#empty cells = " + emptyCells)
+        //println("boolean features = " + booleanFeature)
+      }
     }
   }
 
