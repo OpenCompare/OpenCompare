@@ -2,7 +2,9 @@ package org.diverse.pcm.io.bestbuy
 
 import java.io.File
 
+import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
+import org.diverse.pcm.api.java.io.CSVLoader
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{Matchers, FlatSpec}
 
@@ -59,8 +61,21 @@ class PCMBotTest extends FlatSpec with Matchers {
     forAll (bestbuySpecificationPCMs) { (path : String) =>
       val loader = new KMFJSONLoader
       val pcm = loader.load(new File(path))
-      println(analyzer.emptyCells(pcm))
+      val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
+      val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
 
+    }
+  }
+
+
+  it should "run on BestBuy overviews" in {
+    forAll (bestbuyOverviewPCMs) { (path : String) =>
+      val loader = new CSVLoader(new PCMFactoryImpl)
+      val pcm = loader.load(new File(path))
+      val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
+      val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
+      
+      println(emptyCells)
     }
   }
 

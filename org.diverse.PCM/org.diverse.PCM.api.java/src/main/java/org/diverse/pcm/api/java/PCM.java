@@ -62,5 +62,10 @@ public interface PCM extends PCMElement {
      * @param pcm
      */
     DiffResult diff(PCM pcm, PCMElementComparator pcmElementComparator);
+
+    /**
+     * Invert the matrix (products become features and vice versa)
+     */
+    void invert(PCMFactory factory);
 	
 }
