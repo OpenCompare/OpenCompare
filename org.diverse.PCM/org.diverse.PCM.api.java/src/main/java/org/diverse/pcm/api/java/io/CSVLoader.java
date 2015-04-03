@@ -63,9 +63,9 @@ public class CSVLoader implements PCMLoader {
 
     private PCM load(CSVReader reader) throws IOException {
         if (productsAsLines) {
-            return loadProductFirst(reader);
-        } else {
             return loadFeatureFirst(reader);
+        } else {
+            return loadProductFirst(reader);
         }
     }
 
@@ -95,7 +95,7 @@ public class CSVLoader implements PCMLoader {
             for (int i = 1; i < line.length; i++) {
                 Cell cell = factory.createCell();
                 cell.setContent(line[i]);
-                cell.setFeature(features.get(i));
+                cell.setFeature(features.get(i - 1));
                 product.addCell(cell);
             }
 
@@ -132,7 +132,7 @@ public class CSVLoader implements PCMLoader {
                 Cell cell = factory.createCell();
                 cell.setContent(line[i]);
                 cell.setFeature(feature);
-                products.get(i).addCell(cell);
+                products.get(i - 1).addCell(cell);
             }
 
             line = reader.readNext();

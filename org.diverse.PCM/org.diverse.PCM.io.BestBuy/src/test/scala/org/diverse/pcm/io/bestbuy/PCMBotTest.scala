@@ -8,6 +8,8 @@ import org.diverse.pcm.api.java.io.CSVLoader
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{Matchers, FlatSpec}
 
+import collection.JavaConversions._
+
 /**
  * Created by gbecan on 4/2/15.
  */
@@ -70,16 +72,16 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   it should "run on BestBuy overviews" in {
     forAll (bestbuyOverviewPCMs) { (path : String) =>
-      val loader = new CSVLoader(new PCMFactoryImpl)
+      val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
       val pcm = loader.load(new File(path))
       val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
       val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
-      
-      println(emptyCells)
+
+      println(path)
+      println("#empty cells = " + emptyCells)
+      //println("boolean features = " + booleanFeature)
     }
   }
-
-
 
 
 }

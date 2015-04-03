@@ -34,7 +34,7 @@ class PCMAnalyzer {
       val product2 = pcm2.getProducts.find(p => comparator.similarProduct(product1, p))
 
       if (product2.isDefined) {
-        // A cell similar cell exists in pcm2 for a similar feature
+        // A similar cell exists in pcm2 for a similar feature
         if (product2.get.getCells.exists(cell2 =>
           comparator.similarCell(cell1, cell2) &&
           comparator.similarFeature(cell1.getFeature, cell2.getFeature))) {
@@ -76,7 +76,7 @@ class PCMAnalyzer {
         val content = cell.getContent
         val feature = cell.getFeature
 
-        if (content == "N/A" || content == "") {
+        if (isEmpty(content)) {
           nbEmptyCells += 1
           nbEmptyCellsPerFeature += feature -> (nbEmptyCellsPerFeature(feature) + 1)
           nbEmptyCellsPerProduct += product -> (nbEmptyCellsPerProduct(product) + 1)
@@ -112,28 +112,48 @@ class PCMAnalyzer {
     // Detect type of each feature
     for ((feature, cells) <- cellsByFeature) {
       // Detect type of cells
-      val cellTypes = cells.map {cell =>
-        val content = cell.getContent.toLowerCase
-        if (content == "yes" || content == "no") {
-          "boolean"
-        } else if (content.matches(".*\\d.*")) {
-          "numeric"
+      val cellTypes = cells.map { cell =>
+        val content = cell.getContent
+        if (isEmpty(content)) {
+          None
+        } else if (isBoolean(content)) {
+          Some("boolean")
+        } else if (isNumeric(content)) {
+          Some("numeric")
         } else {
-          "textual"
+          Some("textual")
         }
-      }
+      }.flatten
 
       // Take the most represented type
-      val mainType = cellTypes.groupBy(t => t).map(t => (t._1, t._2.size)).maxBy(_._2)._1
-      mainType match {
-        case "boolean" => booleanFeatures = feature :: booleanFeatures
-        case "numeric" => numericFeatures = feature :: numericFeatures
-        case "textual" => textualFeatures = feature :: textualFeatures
+      if (!cellTypes.isEmpty) {
+        val mainType = cellTypes.groupBy(t => t).map(t => (t._1, t._2.size)).maxBy(_._2)._1
+        mainType match {
+          case "boolean" => booleanFeatures = feature :: booleanFeatures
+          case "numeric" => numericFeatures = feature :: numericFeatures
+          case "textual" => textualFeatures = feature :: textualFeatures
+        }
       }
-
     }
 
     (booleanFeatures, numericFeatures, textualFeatures)
+  }
+
+
+  def isEmpty (content : String) : Boolean = {
+    content.toLowerCase == "n/a" || content == ""
+  }
+
+  def isBoolean(content : String) : Boolean = {
+    content.toLowerCase == "yes" ||
+      content.toLowerCase == "no" ||
+    // FIXME : 0 or 1 is also numeric !!!
+      content == "0" ||
+      content == "1"
+  }
+
+  def isNumeric(content : String) : Boolean = {
+    content.matches(".*\\d.*")
   }
 
 

@@ -61,4 +61,9 @@ public class CellImpl extends PCMElementImpl implements Cell {
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public String toString() {
+        return "Cell(" + kCell.getContent() + ")";
+    }
 }
