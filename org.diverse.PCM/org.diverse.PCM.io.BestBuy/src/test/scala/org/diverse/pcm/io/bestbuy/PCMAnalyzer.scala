@@ -5,7 +5,6 @@ import org.diverse.pcm.api.java.{Cell, Product, Feature, PCM}
 
 import scala.collection.mutable
 import collection.JavaConversions._
-import scala.collection.mutable.ListBuffer
 
 /**
  * Created by gbecan on 4/2/15.
@@ -55,7 +54,7 @@ class PCMAnalyzer {
    */
   def emptyCells(pcm : PCM) : (Int, Map[Feature, Int], Map[Product, Int]) = {
 
-    var nbEmptyCells = 0;
+    var nbEmptyCells = 0
     val nbEmptyCellsPerFeature = mutable.Map.empty[Feature, Int]
     val nbEmptyCellsPerProduct = mutable.Map.empty[Product, Int]
 
@@ -70,7 +69,7 @@ class PCMAnalyzer {
 
 
     // Compute number of empty cells
-    for (product <- pcm.getProducts()) {
+    for (product <- pcm.getProducts) {
       for (cell <- product.getCells) {
 
         val content = cell.getContent
@@ -112,7 +111,7 @@ class PCMAnalyzer {
     // Detect type of each feature
     for ((feature, cells) <- cellsByFeature) {
       // Detect type of cells
-      val cellTypes = cells.map { cell =>
+      val cellTypes = cells.flatMap { cell =>
         val content = cell.getContent
         if (isEmpty(content)) {
           None
@@ -123,10 +122,10 @@ class PCMAnalyzer {
         } else {
           Some("textual")
         }
-      }.flatten
+      }
 
       // Take the most represented type
-      if (!cellTypes.isEmpty) {
+      if (cellTypes.nonEmpty) {
         val mainType = cellTypes.groupBy(t => t).map(t => (t._1, t._2.size)).maxBy(_._2)._1
         mainType match {
           case "boolean" => booleanFeatures = feature :: booleanFeatures
