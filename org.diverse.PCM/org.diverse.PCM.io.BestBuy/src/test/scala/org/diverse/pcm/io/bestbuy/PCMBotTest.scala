@@ -1,20 +1,24 @@
 package org.diverse.pcm.io.bestbuy
 
-import java.io.{FilenameFilter, File}
+import java.io.{FileWriter, FilenameFilter, File}
 
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
-import org.diverse.pcm.api.java.io.CSVLoader
+import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
 import org.diverse.pcm.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{Matchers, FlatSpec}
 
 import collection.JavaConversions._
+import scala.util.Random
 
 /**
  * Created by gbecan on 4/2/15.
  */
 class PCMBotTest extends FlatSpec with Matchers {
+
+  val outputDir = new File("experiment_results")
+  outputDir.mkdirs()
 
   val analyzer = new PCMAnalyzer
 
@@ -106,25 +110,37 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
+  def loadDataset(path : String) : (List[String], List[ProductInfo]) = {
+    println("dataset = " + path)
+
+    val skus = new File(path).listFiles(new FilenameFilter {
+      override def accept(file: File, s: String): Boolean = s.endsWith(".xml")
+    }).map(file => file.getName.substring(0, file.getName.length - 4)).toList
+
+    println("#products = " + skus.size)
+
+    // Load products
+    val products = for (sku <- skus) yield {
+      val loader = new ProductInfoLoader
+      val productInfo = loader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
+      productInfo.sku = sku
+      productInfo
+    }
+
+    (skus, products)
+  }
+
+  def writeToFile(path : String, content : String) = {
+    val writer = new FileWriter(path)
+    writer.write(content)
+    writer.close()
+  }
+
   "Product filters" should "be applied on BestBuy dataset" in {
 
     forAll (bestBuyDatasets) { (path : String) =>
       if (new File(path).exists()) {
-        println("dataset = " + path)
-
-        val skus = new File(path).listFiles(new FilenameFilter {
-          override def accept(file: File, s: String): Boolean = s.endsWith(".xml")
-        }).map(file => file.getName.substring(0, file.getName.length - 4)).toList
-
-        println("#products = " + skus.size)
-
-        // Load products
-        val products = for (sku <- skus) yield {
-          val loader = new ProductInfoLoader
-          val productInfo = loader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
-          productInfo.sku = sku
-          productInfo
-        }
+        val (skus, products) = loadDataset(path)
 
         val filter = new ProductFilter with ManufacturerFilter with PriceFilter with MarketPlaceFilter with CategoryFilter {
           override def manufacturers : Set[String] = Set("HP")
@@ -144,6 +160,41 @@ class PCMBotTest extends FlatSpec with Matchers {
 
     }
 
+  }
+
+  it should "generate homogeneous PCMs" in {
+
+    val maxNumberOfProducts = 10
+    val miner = new BestBuyMiner(new PCMFactoryImpl)
+    val csvExporter = new CSVExporter
+
+    forAll (bestBuyDatasets) { (path: String) =>
+      if (new File(path).exists()) {
+        val (skus, products) = loadDataset(path)
+
+        val filter = new ProductFilter with ManufacturerFilter with MarketPlaceFilter with RandomFilter {
+          override def numberOfProducts: Int = maxNumberOfProducts
+
+          override def manufacturers: Set[String] = Set("HP")
+        }
+
+        val filteredProducts = filter.select(products)
+
+        println("#remaining products = " + filteredProducts.size)
+
+        println(filteredProducts.map(_.sku))
+
+        val pcm = miner.mergeSpecifications(filteredProducts)
+        val csv = csvExporter.export(pcm)
+        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
+        testOutputDir.mkdirs()
+
+        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
+
+        println(analyzer.emptyCells(pcm)._1)
+
+      }
+    }
   }
 
 }
