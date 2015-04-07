@@ -72,6 +72,8 @@ class BestBuyAPI {
 
     val productInfo = new ProductInfo
 
+    productInfo.sku = sku
+
     productInfo.completeXMLDescription = result
 
     productInfo.name = (result.\("name")).text
