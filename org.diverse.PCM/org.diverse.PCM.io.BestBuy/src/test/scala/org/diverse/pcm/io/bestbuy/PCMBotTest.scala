@@ -109,36 +109,39 @@ class PCMBotTest extends FlatSpec with Matchers {
   "Product filters" should "be applied on BestBuy dataset" in {
 
     forAll (bestBuyDatasets) { (path : String) =>
-      println("dataset = " + path)
+      if (new File(path).exists()) {
+        println("dataset = " + path)
 
-      val skus = new File(path).listFiles(new FilenameFilter {
-        override def accept(file: File, s: String): Boolean = s.endsWith(".xml")
-      }).map(file => file.getName.substring(0, file.getName.length - 4)).toList
+        val skus = new File(path).listFiles(new FilenameFilter {
+          override def accept(file: File, s: String): Boolean = s.endsWith(".xml")
+        }).map(file => file.getName.substring(0, file.getName.length - 4)).toList
 
-      println("#products = " + skus.size)
+        println("#products = " + skus.size)
 
-      // Load products
-      val products = for (sku <- skus) yield {
-        val loader = new ProductInfoLoader
-        val productInfo = loader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
-        productInfo.sku = sku
-        productInfo
+        // Load products
+        val products = for (sku <- skus) yield {
+          val loader = new ProductInfoLoader
+          val productInfo = loader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
+          productInfo.sku = sku
+          productInfo
+        }
+
+        val filter = new ProductFilter with ManufacturerFilter with PriceFilter with MarketPlaceFilter with CategoryFilter {
+          override def manufacturers : Set[String] = Set("HP")
+
+          override def minPrice: Double = 549.99
+          override def maxPrice: Double = 549.99
+
+          override def categories: Set[String] = Set("Laptops", "PC Laptops")
+        }
+
+        val filteredProducts = filter.select(products)
+
+        println("#remaining products = " + filteredProducts.size)
+
+        println(filteredProducts.map(_.sku))
       }
 
-      val filter = new ProductFilter with ManufacturerFilter with PriceFilter with MarketPlaceFilter with CategoryFilter {
-        override def manufacturers : Set[String] = Set("HP")
-
-        override def minPrice: Double = 549.99
-        override def maxPrice: Double = 549.99
-
-        override def categories: Set[String] = Set("Laptops", "PC Laptops")
-      }
-
-      val filteredProducts = filter.select(products)
-
-      println("#remaining products = " + filteredProducts.size)
-
-      println(filteredProducts.map(_.sku))
     }
 
   }
