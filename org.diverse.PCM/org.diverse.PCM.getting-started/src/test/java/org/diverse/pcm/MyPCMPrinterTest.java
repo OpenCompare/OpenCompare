@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -18,7 +19,7 @@ import java.net.URL;
 public class MyPCMPrinterTest {
 
     @Test
-    public void testMyPCMPrinter() throws FileNotFoundException {
+    public void testMyPCMPrinter() throws IOException {
 
         // Load a PCM
         File pcmFile = new File("pcms/example.pcm");

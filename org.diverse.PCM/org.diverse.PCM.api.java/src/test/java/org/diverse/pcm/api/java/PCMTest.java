@@ -306,4 +306,35 @@ public abstract class PCMTest {
         assertEquals("differing cells", 1, diffResult.getDifferingCells().size());
     }
 
+    @Test
+    public void testInvert() {
+        // Create PCM
+        PCM pcm = factory.createPCM();
+
+        Feature f1 = createFeature(pcm, "F1");
+        Feature f2 = createFeature(pcm, "F2");
+
+        Product p1 = createProduct(pcm, "P1");
+        Product p2 = createProduct(pcm, "P2");
+
+        createCell(p1, f1, "CP1F1", null);
+        createCell(p1, f2, "CP1F2", null);
+        createCell(p2, f1, "CP2F1", null);
+        createCell(p2, f2, "CP2F2", null);
+
+        // Check inverted PCM
+        pcm.invert(factory);
+
+        assertEquals("#features", 2, pcm.getConcreteFeatures().size());
+        assertEquals("#products", 2, pcm.getProducts().size());
+        for (Product product : pcm.getProducts()) {
+            assertTrue("new product is an original feature", product.getName().startsWith("F"));
+
+            for (Cell cell : product.getCells()) {
+                assertTrue("new feature is an original product", cell.getFeature().getName().startsWith("P"));
+                assertEquals("cell name", "C" + cell.getFeature().getName() + product.getName(), cell.getContent());
+            }
+        }
+    }
+
 }

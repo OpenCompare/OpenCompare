@@ -21,6 +21,12 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
   val baseOutputDirPath = "bestbuy-dataset/"
 
 
+  def writeToFile(path : String, content : String) = {
+    val writer = new FileWriter(path)
+    writer.write(content)
+    writer.close()
+  }
+
   ignore should "generate a dataset of product descriptions" in { // "BestBuy API"
 
     val miner = new BestBuyMiner(new PCMFactoryImpl)
@@ -42,9 +48,7 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
         val productInfo = api.getProductInfo(sku)
 
         // Information (XML dump)
-        val xmlWriter = new FileWriter(outputDirPath + sku + ".xml")
-        xmlWriter.write(productInfo.completeXMLDescription.toString())
-        xmlWriter.close()
+        writeToFile(outputDirPath + sku + ".xml", productInfo.completeXMLDescription.toString())
 
         // Overview
         val text = new StringBuilder
@@ -55,12 +59,9 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
         }
 
-        val overviewWriter = new FileWriter(outputDirPath + sku + ".txt")
-        overviewWriter.write(text.toString())
-        overviewWriter.close()
+        writeToFile(outputDirPath + sku + ".txt", text.toString())
 
         // Specification
-
         val spec = productInfo.details.toList
         val features = spec.map(_._1)
         val product = spec.map(_._2)
@@ -82,24 +83,15 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
       // Export to several formats
       val jsonExporter = new KMFJSONExporter
       val json = jsonExporter.export(mergedSpecifications)
-
-      val pcmWriter = new FileWriter(outputDirPath +  category + ".pcm")
-      pcmWriter.write(json)
-      pcmWriter.close()
+      writeToFile(outputDirPath +  category + ".pcm", json)
 
       val htmlExporter = new HTMLExporter
       val html = htmlExporter.export(mergedSpecifications)
-
-      val htmlWriter = new FileWriter(outputDirPath +  category + ".html")
-      htmlWriter.write(html)
-      htmlWriter.close()
+      writeToFile(outputDirPath +  category + ".html", html)
 
       val csvExporter = new CSVExporter
       val csv = csvExporter.export(mergedSpecifications)
-
-      val csvWriter = new FileWriter(outputDirPath +  category + ".csv")
-      csvWriter.write(csv)
-      csvWriter.close()
+      writeToFile(outputDirPath +  category + ".csv", csv)
 
     }
 

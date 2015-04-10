@@ -8,6 +8,7 @@ import scala.xml.XML
  */
 class ProductInfo {
 
+  var sku = ""
   var name = ""
   var longDescription = ""
   var features = mutable.ListBuffer[String]()

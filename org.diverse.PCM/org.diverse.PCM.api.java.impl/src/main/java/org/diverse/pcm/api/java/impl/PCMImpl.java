@@ -444,4 +444,49 @@ public class PCMImpl implements org.diverse.pcm.api.java.PCM {
 
         result.setDifferingCells(differingCells);
     }
+
+    @Override
+    public void invert(PCMFactory factory) {
+        // FIXME : feature groups ???
+
+        // Save original features and products
+        List<Feature> originalFeatures = this.getConcreteFeatures();
+        List<Product> originalProducts = this.getProducts();
+
+        Map<Feature, Product> featureToProduct = new HashMap<Feature, Product>(); // Mapping between original features and new products
+
+        for (Product originalProduct : originalProducts) {
+            // Remove original product
+            this.removeProduct(originalProduct);
+
+            // Create new feature
+            Feature newFeature = factory.createFeature();
+            newFeature.setName(originalProduct.getName());
+            this.addFeature(newFeature);
+
+            // Bind cells to this new feature and a new product
+            for (Cell cell : originalProduct.getCells()) {
+                Feature originalFeature = cell.getFeature();
+                Product newProduct = featureToProduct.get(originalFeature);
+
+                if (newProduct == null) {
+                    // Remove original feature
+                    this.removeFeature(originalFeature);
+
+                    // Create new product
+                    newProduct = factory.createProduct();
+                    newProduct.setName(originalFeature.getName());
+                    this.addProduct(newProduct);
+
+                    // Update mapping between original features and new products
+                    featureToProduct.put(originalFeature, newProduct);
+                }
+
+                // Bind cell to its new feature and product
+                newProduct.addCell(cell);
+                cell.setFeature(newFeature);
+            }
+        }
+
+    }
 }
