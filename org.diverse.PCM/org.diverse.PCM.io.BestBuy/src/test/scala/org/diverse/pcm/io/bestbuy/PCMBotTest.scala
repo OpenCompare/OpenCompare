@@ -1,16 +1,15 @@
 package org.diverse.pcm.io.bestbuy
 
-import java.io.{FileWriter, FilenameFilter, File}
+import java.io.{File, FileWriter, FilenameFilter}
 
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
 import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
 import org.diverse.pcm.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
-import collection.JavaConversions._
-import scala.util.Random
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 4/2/15.
@@ -21,6 +20,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   outputDir.mkdirs()
 
   val analyzer = new PCMAnalyzer
+  val factory = new PCMFactoryImpl
 
   val bestBuyDatasets = Table(
     ("Path to Best Buy dataset"),
@@ -165,7 +165,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   it should "generate homogeneous PCMs" in {
 
     val maxNumberOfProducts = 10
-    val miner = new BestBuyMiner(new PCMFactoryImpl)
+    val miner = new BestBuyMiner(factory)
     val csvExporter = new CSVExporter
 
     forAll (bestBuyDatasets) { (path: String) =>
@@ -197,5 +197,22 @@ class PCMBotTest extends FlatSpec with Matchers {
     }
   }
 
+
+  it should "cluster products" in {
+    forAll (bestBuyDatasets) { (path: String) =>
+      if (new File(path).exists()) {
+        val (skus, productsInfo) = loadDataset(path)
+        val miner = new BestBuyMiner(factory)
+        val pcm = miner.mergeSpecifications(productsInfo)
+        val products = pcm.getProducts().toList
+
+        val clusterer = new ProductClusterer
+        val clusters = clusterer.computeClustersOfProducts(products, 0.01)
+
+        clusters.foreach(println(_))
+
+      }
+    }
+  }
 }
 

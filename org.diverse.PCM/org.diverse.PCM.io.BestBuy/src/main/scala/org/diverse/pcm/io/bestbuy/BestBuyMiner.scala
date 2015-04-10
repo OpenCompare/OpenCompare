@@ -23,7 +23,7 @@ class BestBuyMiner(factory : PCMFactory) {
     val pcm = factory.createPCM();
 
     for (productInfo <- productInfos) {
-      val productName = productInfo.name
+      val productName = productInfo.sku
       val product = factory.createProduct()
       product.setName(productName)
       pcm.addProduct(product)
