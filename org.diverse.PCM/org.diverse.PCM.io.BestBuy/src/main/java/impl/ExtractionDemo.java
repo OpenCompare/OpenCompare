@@ -2,6 +2,7 @@ package impl;
 
 import bestbuyAPI.DataSetFactory;
 import bestbuyAPI.ProductQuery;
+import org.diverse.pcm.api.java.Product;
 import persistence.BestBuyProductRepository;
 import persistence.impl.JsonBestBuyProductRepositoryImpl;
 import java.io.IOException;
@@ -32,6 +33,13 @@ public class ExtractionDemo {
         // 3. Create the PCM from the list of products.
         BestBuyMiner miner = new BestBuyMiner();
         PCM pcm = miner.createPCM(products);
+
+        // 4. Calculate clusters of products
+        Clusterer clusterer = new Clusterer();
+
+
+        clusterer.printSimilarityMatrixOfProjects(clusterer.calculateProductSimilarityMatrix(pcm),"data/datasets/",pcm);
+
 
         LOG.info("Nb of products in PCM = {}", pcm.getProducts().size());
         LOG.info("Nb of features in PCM = {}", pcm.getFeatures().size());

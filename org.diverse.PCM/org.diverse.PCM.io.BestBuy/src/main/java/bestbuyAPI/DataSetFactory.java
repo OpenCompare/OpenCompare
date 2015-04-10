@@ -42,7 +42,11 @@ public class DataSetFactory {
                 new BestBuyProduct[products.size()]));
 
         File file = new File(String.format(
-                "%s%s.txt", "Other Sources/datasets/", categoryId));
+                "%s%s.txt", "data/datasets/", categoryId));
+        System.out.println("the name: " + file.getPath());
+
+        if (!file.getParentFile().exists())
+            file.getParentFile().mkdirs();
 
         if (!file.exists()) {
             file.createNewFile();

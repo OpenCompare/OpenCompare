@@ -24,7 +24,7 @@ public class JsonBestBuyProductRepositoryImpl
         byte[] encoded;
         try {
             Path path = Paths.get(
-                    String.format("%s%s.txt", "Other Sources/datasets/",
+                    String.format("%s%s.txt", "data/datasets/",
                             categoryId));
             encoded = Files.readAllBytes(path);
         } catch (IOException ex) {
