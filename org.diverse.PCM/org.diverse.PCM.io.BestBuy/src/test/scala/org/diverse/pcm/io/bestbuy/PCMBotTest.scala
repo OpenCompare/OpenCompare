@@ -84,7 +84,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
 
 
-  "PCMBot experiment" should "run on BestBuy specifications" in {
+  ignore should "run on BestBuy specifications" in {
     forAll (bestbuySpecificationPCMs) { (path : String) =>
       if (new File(path).exists()) {
         val loader = new KMFJSONLoader
@@ -139,7 +139,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     writer.close()
   }
 
-  "Product filters" should "be applied on BestBuy dataset" in {
+  ignore should "be applied on BestBuy dataset" in {
 
     forAll (bestBuyDatasets) { (path : String) =>
       if (new File(path).exists()) {
@@ -204,8 +204,6 @@ class PCMBotTest extends FlatSpec with Matchers {
     val in = new File(inDir.getAbsolutePath + "/" + inFile)
     val out = new File(outDir.getAbsolutePath + "/" + in.getName)
     Files.copy(in.toPath, out.toPath)
-    println("from " + in.getAbsolutePath)
-    println("to " + out.getAbsolutePath)
   }
 
   "PCMBot experiment" should "cluster products" in {
@@ -236,7 +234,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         println()
 
         // Create output directory
-        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
+        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + "clustering" + File.separator + path)
         testOutputDir.mkdirs()
 
         // Export global PCM to CSV
@@ -288,7 +286,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
 
         // Create output directory
-        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
+        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + "random" + File.separator + path)
         testOutputDir.mkdirs()
 
 
