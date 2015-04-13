@@ -1,6 +1,7 @@
 package org.diverse.pcm.io.bestbuy
 
 import java.io.{File, FileWriter, FilenameFilter}
+import java.nio.file.{Files, FileSystems}
 
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
@@ -21,6 +22,8 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   val analyzer = new PCMAnalyzer
   val factory = new PCMFactoryImpl
+  val miner = new BestBuyMiner(factory)
+  val csvExporter = new CSVExporter
 
   val bestBuyDatasets = Table(
     ("Path to Best Buy dataset"),
@@ -93,7 +96,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  it should "run on BestBuy overviews" in {
+  ignore should "run on BestBuy overviews" in {
     forAll (bestbuyOverviewPCMs) { (path : String) =>
       if(new File(path).exists()) {
         val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
@@ -162,10 +165,9 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   }
 
-  it should "generate homogeneous PCMs" in {
+  ignore should "generate homogeneous PCMs" in {
 
     val maxNumberOfProducts = 10
-    val miner = new BestBuyMiner(factory)
     val csvExporter = new CSVExporter
 
     forAll (bestBuyDatasets) { (path: String) =>
@@ -189,7 +191,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
         testOutputDir.mkdirs()
 
-        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
+//        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
 
         println(analyzer.emptyCells(pcm)._1)
 
@@ -198,18 +200,123 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  it should "cluster products" in {
+  def copy(inDir : File, inFile : String, outDir : File) {
+    val in = new File(inDir.getAbsolutePath + "/" + inFile)
+    val out = new File(outDir.getAbsolutePath + "/" + in.getName)
+    Files.copy(in.toPath, out.toPath)
+    println("from " + in.getAbsolutePath)
+    println("to " + out.getAbsolutePath)
+  }
+
+  "PCMBot experiment" should "cluster products" in {
     forAll (bestBuyDatasets) { (path: String) =>
-      if (new File(path).exists()) {
+      val datasetDir = new File(path)
+      if (datasetDir.exists()) {
+
+        println("loading product infos")
         val (skus, productsInfo) = loadDataset(path)
-        val miner = new BestBuyMiner(factory)
+
+        println("creating PCM")
         val pcm = miner.mergeSpecifications(productsInfo)
-        val products = pcm.getProducts().toList
+        val products = pcm.getProducts.toList
 
+
+        println("clustering")
+        val maxSize = 10
         val clusterer = new ProductClusterer
-        val clusters = clusterer.computeClustersOfProducts(products, 0.01)
+        val clusters = clusterer.computeClustersOfProducts(products, None, Some(maxSize))
 
-        clusters.foreach(println(_))
+        println("output")
+        // Debug
+        println(clusters.map(_.size).sum)
+        println("10 elements clusters = " + clusters.filter(_.size == 10).size)
+        //        for (cluster <- clusters if cluster.size == maxSize) {
+        //          println(cluster)
+        //        }
+        println()
+
+        // Create output directory
+        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
+        testOutputDir.mkdirs()
+
+        // Export global PCM to CSV
+        val csv = csvExporter.export(pcm)
+        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
+
+        // Export clusters
+        for ((cluster, index) <- clusters.zipWithIndex if cluster.size == 10) {
+          val outputDirCluster = new File(testOutputDir.getAbsolutePath + "/cluster_" + index)
+          outputDirCluster.mkdirs()
+
+          val productList = cluster.map(_.getName).mkString("\n")
+          writeToFile(outputDirCluster.getAbsolutePath + "/products.txt", productList)
+
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
+          val clusterCSV = csvExporter.export(clusterPCM)
+          writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
+
+          for (product <- cluster) {
+            val sku = product.getName
+            copy(datasetDir, sku + ".txt", outputDirCluster)
+            copy(datasetDir, sku + ".csv", outputDirCluster)
+            copy(datasetDir, sku + ".xml", outputDirCluster)
+          }
+
+
+
+        }
+
+
+
+      }
+    }
+  }
+
+  it should "randomly select products" in {
+    forAll (bestBuyDatasets) { (path: String) =>
+
+      val filter = new ProductFilter with RandomFilter {
+        override def numberOfProducts: Int = 10
+      }
+
+      val datasetDir = new File(path)
+      if (datasetDir.exists()) {
+
+        println("loading product infos")
+        val (skus, productsInfo) = loadDataset(path)
+
+
+        // Create output directory
+        val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
+        testOutputDir.mkdirs()
+
+
+        for (index <- 1 to 100) {
+          val selectedProducts = filter.select(productsInfo)
+
+          val outputDirCluster = new File(testOutputDir.getAbsolutePath + "/random_" + index)
+          outputDirCluster.mkdirs()
+
+          val productList = selectedProducts.map(_.sku).mkString("\n")
+          writeToFile(outputDirCluster.getAbsolutePath + "/products.txt", productList)
+
+          val clusterPCM = miner.mergeSpecifications(selectedProducts)
+          val clusterCSV = csvExporter.export(clusterPCM)
+          writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
+
+          for (product <- selectedProducts) {
+            val sku = product.sku
+            copy(datasetDir, sku + ".txt", outputDirCluster)
+            copy(datasetDir, sku + ".csv", outputDirCluster)
+            copy(datasetDir, sku + ".xml", outputDirCluster)
+          }
+
+        }
+
+
+
+
 
       }
     }
