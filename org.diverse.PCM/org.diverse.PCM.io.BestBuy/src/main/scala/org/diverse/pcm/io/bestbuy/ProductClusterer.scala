@@ -1,5 +1,6 @@
 package org.diverse.pcm.io.bestbuy
 
+import ch.usi.inf.sape.hac.agglomeration.{CompleteLinkage, AgglomerationMethod}
 import org.diverse.pcm.api.java.Product
 import org.diverse.pcm.formalizer.clustering.HierarchicalClusterer
 
@@ -36,19 +37,23 @@ class ProductClusterer {
 
     val intersection = featuresP1.intersect(featuresP2)
 
-    -intersection.size.toDouble
+    val allFeaturesP1 = p1.getCells.map(_.getFeature.getName).toSet
+    val allFeaturesP2 = p2.getCells.map(_.getFeature.getName).toSet
+    val allFeatures = allFeaturesP1 union allFeaturesP2
+
+    (allFeatures.size - intersection.size.toDouble) / allFeatures.size
   }
 
   def getFeatureNamesWithoutEmptyValues(product : Product) : Set[String] = {
     product.getCells.filter(_.getContent != "N/A").map(_.getFeature.getName).toSet
   }
 
-  def computeClustersOfProducts(products : List[Product], threshold : Option[Double], maxClusterSize : Option[Int]): List[List[Product]] = {
+  def computeClustersOfProducts(products : List[Product], threshold : Option[Double], maxClusterSize : Option[Int], agglomerationMethod : AgglomerationMethod = new CompleteLinkage): List[List[Product]] = {
 //    productMap = products.map(p => (p.getName -> p)).toMap
 //    val clusterer = new HierarchicalClusterer[String](productDissimilarityMetric, threshold, maxClusterSize)
 //    val nameClusters = clusterer.cluster(products.map(_.getName))
 //    val clusters = nameClusters.map(c => c.map(name => productMap(name)))
-    val clusterer = new HierarchicalClusterer[Product](productDissimilarityMetric, threshold, maxClusterSize)
+    val clusterer = new HierarchicalClusterer[Product](productDissimilarityMetric, threshold, maxClusterSize, agglomerationMethod)
     clusterer.cluster(products)
   }
 

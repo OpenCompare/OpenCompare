@@ -7,14 +7,15 @@ import ch.usi.inf.sape.hac.dendrogram.{Dendrogram, DendrogramBuilder, Dendrogram
 class HierarchicalClusterer[T](
 		val dissimilarityMetric : (T,T) => Double,
 		val threshold : Option[Double],
-		val maxClusterSize : Option[Int]
+		val maxClusterSize : Option[Int],
+		val agglomerationMethod: AgglomerationMethod = new CompleteLinkage
 ) {
 
   
 	def cluster(values : List[T]) : List[List[T]] = {
 		val experiment = new ClusteringExperiment(values.toIndexedSeq) 
 		val dissimilarityMeasure = new ClusteringDissimilarityMeasure(dissimilarityMetric)
-		val agglomerationMethod : AgglomerationMethod = new CompleteLinkage
+		//val agglomerationMethod : AgglomerationMethod = new CompleteLinkage
 		val dendrogramBuilder = new DendrogramBuilder(experiment.getNumberOfObservations())
 		val clusterer = new HierarchicalAgglomerativeClusterer(experiment, dissimilarityMeasure, agglomerationMethod)
 		clusterer.cluster(dendrogramBuilder)

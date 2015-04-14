@@ -3,6 +3,7 @@ package org.diverse.pcm.io.bestbuy
 import java.io.{File, FileWriter, FilenameFilter}
 import java.nio.file.{Files, FileSystems}
 
+import ch.usi.inf.sape.hac.agglomeration.{SingleLinkage, AverageLinkage}
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
 import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
@@ -206,7 +207,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     Files.copy(in.toPath, out.toPath)
   }
 
-  "PCMBot experiment" should "cluster products" in {
+  ignore should "cluster products" in { // "PCMBot experiment"
     forAll (bestBuyDatasets) { (path: String) =>
       val datasetDir = new File(path)
       if (datasetDir.exists()) {
@@ -271,7 +272,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     }
   }
 
-  it should "randomly select products" in {
+  ignore should "randomly select products" in {
     forAll (bestBuyDatasets) { (path: String) =>
 
       val filter = new ProductFilter with RandomFilter {
@@ -319,5 +320,58 @@ class PCMBotTest extends FlatSpec with Matchers {
       }
     }
   }
+
+
+  "AFM Synthesis experiment" should "cluster products" in {
+    forAll (bestBuyDatasets) { (path: String) =>
+      val datasetDir = new File(path)
+      if (datasetDir.exists()) {
+
+        println("loading product infos")
+        val (skus, productsInfo) = loadDataset(path)
+
+        println("creating PCM")
+        val pcm = miner.mergeSpecifications(productsInfo)
+        val products = pcm.getProducts.toList
+
+
+        println("clustering")
+        val threshold = 0.5
+        val agglomerationMethod = new SingleLinkage
+        val clusterer = new ProductClusterer
+        val clusters = clusterer.computeClustersOfProducts(products, Some(threshold), None, agglomerationMethod)
+
+        println("output")
+        // Debug
+        println(clusters.map(_.size).sum)
+        println("number of products per clusters = " + (products.size.toDouble / clusters.size))
+        println("max cluster size = " + (clusters.map(_.size).max))
+        println()
+
+        // Create output directory
+        val testOutputDir = new File("afm-synthesis-dataset/" + path)
+        testOutputDir.mkdirs()
+
+        // Export global PCM to CSV
+        val csv = csvExporter.export(pcm)
+        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
+
+        // Export clusters
+        for ((cluster, index) <- clusters.zipWithIndex) {
+
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
+          val clusterCSV = csvExporter.export(clusterPCM)
+          writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + ".csv", clusterCSV)
+
+        }
+
+
+
+      }
+    }
+  }
+
 }
+
 
