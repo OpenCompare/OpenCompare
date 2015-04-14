@@ -1,9 +1,11 @@
 package org.diverse.pcm.io.bestbuy
 
 import java.io.{File, FileWriter, FilenameFilter}
-import java.nio.file.{Files, FileSystems}
+import java.nio.file.Files
 
-import ch.usi.inf.sape.hac.agglomeration.{SingleLinkage, AverageLinkage}
+import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
+import com.github.tototoshi.csv.CSVWriter
+import org.diverse.pcm.api.java
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
 import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
@@ -223,7 +225,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         println("clustering")
         val maxSize = 10
         val clusterer = new ProductClusterer
-        val clusters = clusterer.computeClustersOfProducts(products, None, Some(maxSize))
+        val clusters = clusterer.computeClustersOfProducts(products, None, Some(maxSize), None)
 
         println("output")
         // Debug
@@ -336,10 +338,19 @@ class PCMBotTest extends FlatSpec with Matchers {
 
 
         println("clustering")
-        val threshold = 0.5
-        val agglomerationMethod = new SingleLinkage
         val clusterer = new ProductClusterer
-        val clusters = clusterer.computeClustersOfProducts(products, Some(threshold), None, agglomerationMethod)
+
+        val threshold = None//Some(0.5)
+        val maxClusterSize = None
+        val mergingCondition = Some((c1 : List[java.Product], c2 : List[java.Product]) => {
+          val clusterProductInfo = productsInfo.filter(p => c1.map(_.getName).contains(p.sku) || c2.map(_.getName).contains(p.sku))
+          val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
+          val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
+          percentageOfNA < 0.25
+        })
+        val agglomerationMethod = new SingleLinkage
+
+        val clusters = clusterer.computeClustersOfProducts(products, threshold, maxClusterSize, mergingCondition, agglomerationMethod)
 
         println("output")
         // Debug
@@ -356,17 +367,23 @@ class PCMBotTest extends FlatSpec with Matchers {
         val csv = csvExporter.export(pcm)
         writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
 
+        // Create file for statistics
+        val statsFile = new File(testOutputDir.getAbsolutePath + "/stats.csv")
+        val statsWriter = CSVWriter.open(statsFile)
+        statsWriter.writeRow(Seq("id", "size", "percentage of N/A"))
+
         // Export clusters
         for ((cluster, index) <- clusters.zipWithIndex) {
-
           val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val clusterCSV = csvExporter.export(clusterPCM)
           writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + ".csv", clusterCSV)
 
+          val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
+          statsWriter.writeRow(Seq(index, cluster.size, percentageOfNA))
         }
 
-
+        statsWriter.close()
 
       }
     }

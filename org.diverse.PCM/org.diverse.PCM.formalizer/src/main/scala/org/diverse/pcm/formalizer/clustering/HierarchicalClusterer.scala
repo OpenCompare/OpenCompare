@@ -8,6 +8,7 @@ class HierarchicalClusterer[T](
 		val dissimilarityMetric : (T,T) => Double,
 		val threshold : Option[Double],
 		val maxClusterSize : Option[Int],
+		val mergingCondition : Option[(List[T], List[T]) => Boolean],
 		val agglomerationMethod: AgglomerationMethod = new CompleteLinkage
 ) {
 
@@ -22,7 +23,7 @@ class HierarchicalClusterer[T](
 		extractClusters(experiment, dendrogramBuilder.getDendrogram)
 	}
 
-	private def extractClusters[T](experiment : ClusteringExperiment[T], dendrogram : Dendrogram) : List[List[T]] = {
+	private def extractClusters(experiment : ClusteringExperiment[T], dendrogram : Dendrogram) : List[List[T]] = {
 
 		def extractClustersRecursion(node : DendrogramNode) : List[List[T]] = {
 			node match {
@@ -40,7 +41,8 @@ class HierarchicalClusterer[T](
 						left.size == 1 &&
 							right.size == 1 &&
 							(!threshold.isDefined || n.getDissimilarity < threshold.get) &&
-							(!maxClusterSize.isDefined || (left.head.size + right.head.size) <= maxClusterSize.get)
+							(!maxClusterSize.isDefined || (left.head.size + right.head.size) <= maxClusterSize.get) &&
+							(!mergingCondition.isDefined || mergingCondition.get(left.head, right.head))
 					) {
 						List((left ::: right).flatten)
 

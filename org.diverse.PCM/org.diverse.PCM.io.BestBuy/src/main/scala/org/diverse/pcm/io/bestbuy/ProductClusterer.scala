@@ -48,12 +48,18 @@ class ProductClusterer {
     product.getCells.filter(_.getContent != "N/A").map(_.getFeature.getName).toSet
   }
 
-  def computeClustersOfProducts(products : List[Product], threshold : Option[Double], maxClusterSize : Option[Int], agglomerationMethod : AgglomerationMethod = new CompleteLinkage): List[List[Product]] = {
+  def computeClustersOfProducts(
+                                 products : List[Product],
+                                 threshold : Option[Double],
+                                 maxClusterSize : Option[Int],
+                                 mergingCondition : Option[(List[Product], List[Product]) => Boolean],
+                                 agglomerationMethod : AgglomerationMethod = new CompleteLinkage)
+  : List[List[Product]] = {
 //    productMap = products.map(p => (p.getName -> p)).toMap
 //    val clusterer = new HierarchicalClusterer[String](productDissimilarityMetric, threshold, maxClusterSize)
 //    val nameClusters = clusterer.cluster(products.map(_.getName))
 //    val clusters = nameClusters.map(c => c.map(name => productMap(name)))
-    val clusterer = new HierarchicalClusterer[Product](productDissimilarityMetric, threshold, maxClusterSize, agglomerationMethod)
+    val clusterer = new HierarchicalClusterer[Product](productDissimilarityMetric, threshold, maxClusterSize, mergingCondition, agglomerationMethod)
     clusterer.cluster(products)
   }
 
