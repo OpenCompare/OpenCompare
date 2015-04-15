@@ -218,8 +218,10 @@ class PCMBotTest extends FlatSpec with Matchers {
         val (skus, productsInfo) = loadDataset(path)
 
         println("creating PCM")
-        val pcm = miner.mergeSpecifications(productsInfo)
+        val filter = new ProductFilter with MarketPlaceFilter
+        val pcm = miner.mergeSpecifications(filter.select(productsInfo))
         val products = pcm.getProducts.toList
+
 
 
         println("clustering")
@@ -231,9 +233,6 @@ class PCMBotTest extends FlatSpec with Matchers {
         // Debug
         println(clusters.map(_.size).sum)
         println("10 elements clusters = " + clusters.filter(_.size == 10).size)
-        //        for (cluster <- clusters if cluster.size == maxSize) {
-        //          println(cluster)
-        //        }
         println()
 
         // Create output directory
@@ -277,7 +276,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   ignore should "randomly select products" in {
     forAll (bestBuyDatasets) { (path: String) =>
 
-      val filter = new ProductFilter with RandomFilter {
+      val filter = new ProductFilter with MarketPlaceFilter with RandomFilter {
         override def numberOfProducts: Int = 10
       }
 
@@ -287,6 +286,8 @@ class PCMBotTest extends FlatSpec with Matchers {
         println("loading product infos")
         val (skus, productsInfo) = loadDataset(path)
 
+        println("#filtered products = " + (new ProductFilter with MarketPlaceFilter).select(productsInfo).size)
+        println("#filtered products + random = " + filter.select(productsInfo).size)
 
         // Create output directory
         val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + "random" + File.separator + path)
@@ -324,7 +325,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  "AFM Synthesis experiment" should "cluster products" in {
+  "AFM Synthesis experiment" should "cluster products" in { //"AFM Synthesis experiment"
     forAll (bestBuyDatasets) { (path: String) =>
       val datasetDir = new File(path)
       if (datasetDir.exists()) {
@@ -342,11 +343,13 @@ class PCMBotTest extends FlatSpec with Matchers {
 
         val threshold = None//Some(0.5)
         val maxClusterSize = None
+        val percentageOfNAThreshold = 0.25
+
         val mergingCondition = Some((c1 : List[java.Product], c2 : List[java.Product]) => {
           val clusterProductInfo = productsInfo.filter(p => c1.map(_.getName).contains(p.sku) || c2.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
-          percentageOfNA < 0.25
+          percentageOfNA <= percentageOfNAThreshold
         })
         val agglomerationMethod = new SingleLinkage
 
@@ -374,13 +377,27 @@ class PCMBotTest extends FlatSpec with Matchers {
 
         // Export clusters
         for ((cluster, index) <- clusters.zipWithIndex) {
+          // Create PCM
           val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
+
+          // TODO : mutation
+
+          // Export to CSV
           val clusterCSV = csvExporter.export(clusterPCM)
           writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + ".csv", clusterCSV)
 
+          // Compute statistics
           val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
           statsWriter.writeRow(Seq(index, cluster.size, percentageOfNA))
+
+          // Regroup interesting clusters
+          if (percentageOfNA <= percentageOfNAThreshold && clusterPCM.getProducts.size() >= 10) {
+            val category = path.substring("bestbuy-dataset/".size)
+            val resultingDatasetDir = new File("afm-synthesis-dataset/dataset")
+            resultingDatasetDir.mkdirs()
+            writeToFile(resultingDatasetDir.getAbsolutePath + "/" + category + "_" + index + ".csv", clusterCSV)
+          }
         }
 
         statsWriter.close()
