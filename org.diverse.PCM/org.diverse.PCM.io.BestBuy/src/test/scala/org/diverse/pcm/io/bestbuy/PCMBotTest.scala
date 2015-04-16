@@ -9,7 +9,7 @@ import org.diverse.pcm.api.java
 import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
-import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
+import org.diverse.pcm.api.java.io.{HTMLExporter, CSVExporter, CSVLoader}
 import org.diverse.pcm.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
@@ -59,38 +59,50 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   )
 
+  //  val bestbuyOverviewPCMs = Table(
+  //    ("Path to PCM"),
+  //    ("vminer-dataset-diff/All Printers/Epson/finalPCM.csv"),
+  //    ("vminer-dataset-diff/All Printers/Canon/finalPCM.csv"),
+  //    ("vminer-dataset-diff/All Printers/Brother/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Ranges/Whirlpool/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Ranges/KitchenAid/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Ranges/Frigidaire/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Refrigerators/Whirlpool/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Refrigerators/Samsung/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Refrigerators/GE/GE1/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Refrigerators/GE/GE2/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Camera/Canon/finalPCM.csv"),
+  //    ("vminer-dataset-diff/TVs/Sony/finalPCM.csv"),
+  //    ("vminer-dataset-diff/TVs/LG/finalPCM.csv"),
+  //    ("vminer-dataset-diff/TVs/Samsung/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Washing Machines/LG/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Washing Machines/Samsung/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Washing Machines/GE/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Laptops/Dell/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Laptops/Asus/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Laptops/Hp/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Cell phones/Motorola/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Cell phones/LG/finalPCM.csv"),
+  //    ("vminer-dataset-diff/Cell phones/Samsung/finalPCM.csv")
+  //  )
+
+
   val bestbuyOverviewPCMs = Table(
-    ("Path to PCM"),
-    ("vminer-dataset-diff/All Printers/Epson/finalPCM.csv"),
-    ("vminer-dataset-diff/All Printers/Canon/finalPCM.csv"),
-    ("vminer-dataset-diff/All Printers/Brother/finalPCM.csv"),
-    ("vminer-dataset-diff/Ranges/Whirlpool/finalPCM.csv"),
-    ("vminer-dataset-diff/Ranges/KitchenAid/finalPCM.csv"),
-    ("vminer-dataset-diff/Ranges/Frigidaire/finalPCM.csv"),
-    ("vminer-dataset-diff/Refrigerators/Whirlpool/finalPCM.csv"),
-    ("vminer-dataset-diff/Refrigerators/Samsung/finalPCM.csv"),
-    ("vminer-dataset-diff/Refrigerators/GE/GE1/finalPCM.csv"),
-    ("vminer-dataset-diff/Refrigerators/GE/GE2/finalPCM.csv"),
-    ("vminer-dataset-diff/Camera/Canon/finalPCM.csv"),
-    ("vminer-dataset-diff/TVs/Sony/finalPCM.csv"),
-    ("vminer-dataset-diff/TVs/LG/finalPCM.csv"),
-    ("vminer-dataset-diff/TVs/Samsung/finalPCM.csv"),
-    ("vminer-dataset-diff/Washing Machines/LG/finalPCM.csv"),
-    ("vminer-dataset-diff/Washing Machines/Samsung/finalPCM.csv"),
-    ("vminer-dataset-diff/Washing Machines/GE/finalPCM.csv"),
-    ("vminer-dataset-diff/Laptops/Dell/finalPCM.csv"),
-    ("vminer-dataset-diff/Laptops/Asus/finalPCM.csv"),
-    ("vminer-dataset-diff/Laptops/Hp/finalPCM.csv"),
-    ("vminer-dataset-diff/Cell phones/Motorola/finalPCM.csv"),
-    ("vminer-dataset-diff/Cell phones/LG/finalPCM.csv"),
-    ("vminer-dataset-diff/Cell phones/Samsung/finalPCM.csv")
+    "Path to PCM",
+    "manual-dataset/All Printers/Filter-Category/Laser Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Category/All-in-one-Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand-Category/Brother-Laser-Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand-Category/Brother-All-In-One Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand-Category/Canon-Laser-Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand-Category/Epson-All-In-One Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand-Category/Canon-All-In-One Printers/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand/Epson/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand/Canon/finalPCM.csv",
+    "manual-dataset/All Printers/Filter-Brand/Brother/finalPCM.csv"
   )
 
-
-
-
   ignore should "run on BestBuy specifications" in {
-    forAll (bestbuySpecificationPCMs) { (path : String) =>
+    forAll(bestbuySpecificationPCMs) { (path: String) =>
       if (new File(path).exists()) {
         val loader = new KMFJSONLoader
         val pcm = loader.load(new File(path))
@@ -101,15 +113,17 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  ignore should "run on BestBuy overviews" in {
-    forAll (bestbuyOverviewPCMs) { (path : String) =>
-      if(new File(path).exists()) {
+  "toto" should "run on BestBuy overviews" in {
+    forAll(bestbuyOverviewPCMs) { (path: String) =>
+      if (new File(path).exists()) {
         val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
         val pcm = loader.load(new File(path))
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
 
         println(path)
+        println("#products = " + pcm.getProducts().size)
+        println("#features = " + pcm.getConcreteFeatures().size)
         println("#cells = " + pcm.getConcreteFeatures.size() * pcm.getProducts.size())
         println("#empty cells = " + emptyCells)
         //println("boolean features = " + booleanFeature)
@@ -118,7 +132,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  def loadDataset(path : String) : (List[String], List[ProductInfo]) = {
+  def loadDataset(path: String): (List[String], List[ProductInfo]) = {
     println("dataset = " + path)
 
     val skus = new File(path).listFiles(new FilenameFilter {
@@ -138,7 +152,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     (skus, products)
   }
 
-  def writeToFile(path : String, content : String) = {
+  def writeToFile(path: String, content: String) = {
     val writer = new FileWriter(path)
     writer.write(content)
     writer.close()
@@ -146,14 +160,15 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   ignore should "be applied on BestBuy dataset" in {
 
-    forAll (bestBuyDatasets) { (path : String) =>
+    forAll(bestBuyDatasets) { (path: String) =>
       if (new File(path).exists()) {
         val (skus, products) = loadDataset(path)
 
         val filter = new ProductFilter with ManufacturerFilter with PriceFilter with MarketPlaceFilter with CategoryFilter {
-          override def manufacturers : Set[String] = Set("HP")
+          override def manufacturers: Set[String] = Set("HP")
 
           override def minPrice: Double = 549.99
+
           override def maxPrice: Double = 549.99
 
           override def categories: Set[String] = Set("Laptops", "PC Laptops")
@@ -175,7 +190,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val maxNumberOfProducts = 10
     val csvExporter = new CSVExporter
 
-    forAll (bestBuyDatasets) { (path: String) =>
+    forAll(bestBuyDatasets) { (path: String) =>
       if (new File(path).exists()) {
         val (skus, products) = loadDataset(path)
 
@@ -196,7 +211,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
         testOutputDir.mkdirs()
 
-//        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
+        //        writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
 
         println(analyzer.emptyCells(pcm)._1)
 
@@ -205,14 +220,15 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  def copy(inDir : File, inFile : String, outDir : File) {
+  def copy(inDir: File, inFile: String, outDir: File) {
     val in = new File(inDir.getAbsolutePath + "/" + inFile)
     val out = new File(outDir.getAbsolutePath + "/" + in.getName)
     Files.copy(in.toPath, out.toPath)
   }
 
-  ignore should "cluster products" in { // "PCMBot experiment"
-    forAll (bestBuyDatasets) { (path: String) =>
+  ignore should "cluster products" in {
+    // "PCMBot experiment"
+    forAll(bestBuyDatasets) { (path: String) =>
       val datasetDir = new File(path)
       if (datasetDir.exists()) {
 
@@ -266,9 +282,7 @@ class PCMBotTest extends FlatSpec with Matchers {
           }
 
 
-
         }
-
 
 
       }
@@ -276,7 +290,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
   ignore should "randomly select products" in {
-    forAll (bestBuyDatasets) { (path: String) =>
+    forAll(bestBuyDatasets) { (path: String) =>
 
       val filter = new ProductFilter with MarketPlaceFilter with RandomFilter {
         override def numberOfProducts: Int = 10
@@ -319,9 +333,6 @@ class PCMBotTest extends FlatSpec with Matchers {
         }
 
 
-
-
-
       }
     }
   }
@@ -342,11 +353,83 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  "PCMBot experiment" should "compute metrics on experiment results" in {
-    
+  "PCMBot experiment" should "compute metrics on manual dataset" in {
+    val manualDatasetDir = new File("manual-dataset")
+    val statsFile = new File("manual-dataset/metrics.csv")
+    val statsWriter = CSVWriter.open(statsFile)
+
+    statsWriter.writeRow(Seq(
+      "category",
+      "filter",
+      "name",
+      "#products",
+      "#features",
+      "#N/A",
+      "avg #N/A per feature",
+      "avg #N/A per product"))
+
+    val loader = new CSVLoader(factory, ';', '"', false)
+
+    if (manualDatasetDir.exists()) {
+      // Load specifications
+      for (categoryDir <- manualDatasetDir.listFiles() if categoryDir.isDirectory) {
+        val category = categoryDir.getName
+
+        for (filterDir <- categoryDir.listFiles() if filterDir.isDirectory) {
+          val filter = filterDir.getName
+
+          for (pcmDir <- filterDir.listFiles() if pcmDir.isDirectory) {
+
+            var pcmFile = new File(pcmDir.getAbsolutePath + "/finalPCM.csv")
+
+            if (pcmFile.exists()) {
+              analyzePCM(statsWriter, loader, category, filter, pcmDir, pcmFile)
+            } else {
+              // Subfolder
+              for (pcmSubDir <- pcmDir.listFiles() if pcmSubDir.isDirectory) {
+                pcmFile = new File(pcmSubDir.getAbsolutePath + "/finalPCM.csv")
+                analyzePCM(statsWriter, loader, category, filter, pcmSubDir, pcmFile)
+              }
+            }
+
+          }
+
+
+        }
+      }
+
+      // Generate specification
+
+      // Compute metrics
+
+    }
+
+    statsWriter.close()
   }
 
-  ignore should "cluster products" in { //"AFM Synthesis experiment
+  def analyzePCM(statsWriter: CSVWriter, loader: CSVLoader, category: String, filter: String, pcmDir: File, pcmFile: File): Unit = {
+    val name = pcmDir.getName
+    val pcm = loader.load(pcmFile)
+    println(pcmFile.getAbsolutePath)
+    println("exists? = " + pcmFile.exists())
+    val htmlExporter = new HTMLExporter
+    writeToFile(pcmDir.getAbsolutePath + "/finalPCM.html", htmlExporter.export(pcm))
+
+
+
+    val numberOfProducts = pcm.getProducts.size()
+    val numberOfFeatures = pcm.getConcreteFeatures.size()
+
+    val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(pcm)
+    val avgNAsByFeature = nasByFeature.map(_._2).sum.toDouble / numberOfFeatures
+    val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
+
+
+    statsWriter.writeRow(Seq(category, filter, name, numberOfProducts, numberOfFeatures, nas, avgNAsByFeature, avgNAsByProduct))
+  }
+
+  ignore should "cluster products" in {
+    //"AFM Synthesis experiment
 
     val resultingDatasetDir = new File("afm-synthesis-dataset/dataset")
     resultingDatasetDir.mkdirs()
@@ -354,7 +437,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val resultingDatasetStatsWriter = CSVWriter.open(resultingDatasetStatsFile)
     resultingDatasetStatsWriter.writeRow(Seq("id", "size", "percentage of N/A"))
 
-    forAll (bestBuyDatasets) { (path: String) =>
+    forAll(bestBuyDatasets) { (path: String) =>
       val datasetDir = new File(path)
       if (datasetDir.exists()) {
 
@@ -369,17 +452,17 @@ class PCMBotTest extends FlatSpec with Matchers {
 
         // Filters features that have too much N/As
         // FIXME : the clustering never ends when filtering
-//        val filteredFeatures = analyzer.emptyCells(pcm)._2.filter(_._2 > (0.2 * products.size)).map(_._1).toList // 20% of N/A is too much !
-//
-//        for (product <- products) {
-//          for (cell <- product.getCells) {
-//            if (filteredFeatures.contains(cell.getFeature)) {
-//              product.removeCell(cell)
-//            }
-//          }
-//        }
-//
-//        filteredFeatures.foreach(pcm.removeFeature(_))
+        //        val filteredFeatures = analyzer.emptyCells(pcm)._2.filter(_._2 > (0.2 * products.size)).map(_._1).toList // 20% of N/A is too much !
+        //
+        //        for (product <- products) {
+        //          for (cell <- product.getCells) {
+        //            if (filteredFeatures.contains(cell.getFeature)) {
+        //              product.removeCell(cell)
+        //            }
+        //          }
+        //        }
+        //
+        //        filteredFeatures.foreach(pcm.removeFeature(_))
 
         println("valid? = " + pcm.isValid)
 
@@ -387,11 +470,11 @@ class PCMBotTest extends FlatSpec with Matchers {
         println("clustering")
         val clusterer = new ProductClusterer
 
-        val threshold = None//Some(0.5)
+        val threshold = None //Some(0.5)
         val maxClusterSize = None
         val percentageOfNAThreshold = 0.25
 
-        val mergingCondition = Some((c1 : List[java.Product], c2 : List[java.Product]) => {
+        val mergingCondition = Some((c1: List[java.Product], c2: List[java.Product]) => {
           val clusterProductInfo = productsInfo.filter(p => c1.map(_.getName).contains(p.sku) || c2.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
@@ -461,7 +544,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  def mutate(productInfos : List[ProductInfo], pcm : PCM) : List[PCM] = {
+  def mutate(productInfos: List[ProductInfo], pcm: PCM): List[PCM] = {
 
     val badFeatures = analyzer.emptyCells(pcm)._2.filter(_._2 > (0.2 * pcm.getProducts.size)).map(_._1).toList // 20% of N/A is too much !
 
@@ -482,7 +565,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     pcm :: mutatedPCMs.toList
   }
 
-  def copyProductInfos(productInfos : List[ProductInfo]) : List[ProductInfo] = {
+  def copyProductInfos(productInfos: List[ProductInfo]): List[ProductInfo] = {
     for (productInfo <- productInfos) yield {
       val copyOfProductInfo = new ProductInfo
       copyOfProductInfo.sku = productInfo.sku
