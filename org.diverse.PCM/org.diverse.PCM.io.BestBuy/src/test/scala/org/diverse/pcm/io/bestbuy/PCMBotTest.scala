@@ -6,6 +6,7 @@ import java.nio.file.Files
 import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java
+import org.diverse.pcm.api.java.PCM
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
 import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
@@ -14,6 +15,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.JavaConversions._
+import scala.util.Random
 
 /**
  * Created by gbecan on 4/2/15.
@@ -325,19 +327,63 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  "AFM Synthesis experiment" should "cluster products" in { //"AFM Synthesis experiment"
-    forAll (bestBuyDatasets) { (path: String) =>
+  ignore should "count products" in {
+    forAll(bestBuyDatasets) { (path: String) =>
       val datasetDir = new File(path)
       if (datasetDir.exists()) {
 
         println("loading product infos")
         val (skus, productsInfo) = loadDataset(path)
 
+        val filter = new ProductFilter with MarketPlaceFilter
+        println("#products = " + filter.select(productsInfo).size)
+      }
+    }
+  }
+
+
+  "PCMBot experiment" should "compute metrics on experiment results" in {
+    
+  }
+
+  ignore should "cluster products" in { //"AFM Synthesis experiment
+
+    val resultingDatasetDir = new File("afm-synthesis-dataset/dataset")
+    resultingDatasetDir.mkdirs()
+    val resultingDatasetStatsFile = new File("afm-synthesis-dataset/stats_bestbuy.csv")
+    val resultingDatasetStatsWriter = CSVWriter.open(resultingDatasetStatsFile)
+    resultingDatasetStatsWriter.writeRow(Seq("id", "size", "percentage of N/A"))
+
+    forAll (bestBuyDatasets) { (path: String) =>
+      val datasetDir = new File(path)
+      if (datasetDir.exists()) {
+
+        // Load dataset
+        println("loading product infos")
+        val (skus, productsInfo) = loadDataset(path)
+
+        // Create PCM
         println("creating PCM")
         val pcm = miner.mergeSpecifications(productsInfo)
         val products = pcm.getProducts.toList
 
+        // Filters features that have too much N/As
+        // FIXME : the clustering never ends when filtering
+//        val filteredFeatures = analyzer.emptyCells(pcm)._2.filter(_._2 > (0.2 * products.size)).map(_._1).toList // 20% of N/A is too much !
+//
+//        for (product <- products) {
+//          for (cell <- product.getCells) {
+//            if (filteredFeatures.contains(cell.getFeature)) {
+//              product.removeCell(cell)
+//            }
+//          }
+//        }
+//
+//        filteredFeatures.foreach(pcm.removeFeature(_))
 
+        println("valid? = " + pcm.isValid)
+
+        // Clustering
         println("clustering")
         val clusterer = new ProductClusterer
 
@@ -355,6 +401,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
         val clusters = clusterer.computeClustersOfProducts(products, threshold, maxClusterSize, mergingCondition, agglomerationMethod)
 
+        // Print stats
         println("output")
         // Debug
         println(clusters.map(_.size).sum)
@@ -381,28 +428,72 @@ class PCMBotTest extends FlatSpec with Matchers {
           val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
 
-          // TODO : mutation
 
-          // Export to CSV
-          val clusterCSV = csvExporter.export(clusterPCM)
-          writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + ".csv", clusterCSV)
+          // Mutate cluster by filtering features that have too much N/As
+          val mutatedPCMs = mutate(clusterProductInfo, clusterPCM)
 
-          // Compute statistics
-          val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
-          statsWriter.writeRow(Seq(index, cluster.size, percentageOfNA))
+          for ((mutatedPCM, indexMutated) <- mutatedPCMs.zipWithIndex) {
+            // Export to CSV
+            val mutatedCSV = csvExporter.export(mutatedPCM)
+            writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + "_" + indexMutated + ".csv", mutatedCSV)
 
-          // Regroup interesting clusters
-          if (percentageOfNA <= percentageOfNAThreshold && clusterPCM.getProducts.size() >= 10) {
-            val category = path.substring("bestbuy-dataset/".size)
-            val resultingDatasetDir = new File("afm-synthesis-dataset/dataset")
-            resultingDatasetDir.mkdirs()
-            writeToFile(resultingDatasetDir.getAbsolutePath + "/" + category + "_" + index + ".csv", clusterCSV)
+            // Compute statistics
+            val percentageOfNA = analyzer.emptyCells(mutatedPCM)._1 / (mutatedPCM.getConcreteFeatures.size() * mutatedPCM.getProducts.size).toDouble
+            statsWriter.writeRow(Seq(index, cluster.size, percentageOfNA))
+
+            // Regroup interesting clusters
+            if (percentageOfNA <= percentageOfNAThreshold && mutatedPCM.getProducts.size() >= 10) {
+              val category = path.substring("bestbuy-dataset/".size)
+              val name = category + "_" + index + "_" + indexMutated
+              writeToFile(resultingDatasetDir.getAbsolutePath + "/" + name + ".csv", mutatedCSV)
+              resultingDatasetStatsWriter.writeRow(Seq(name, cluster.size, percentageOfNA))
+            }
           }
+
         }
 
         statsWriter.close()
 
       }
+    }
+
+    resultingDatasetStatsWriter.close()
+  }
+
+
+  def mutate(productInfos : List[ProductInfo], pcm : PCM) : List[PCM] = {
+
+    val badFeatures = analyzer.emptyCells(pcm)._2.filter(_._2 > (0.2 * pcm.getProducts.size)).map(_._1).toList // 20% of N/A is too much !
+
+    val mutatedPCMs = for (i <- 1 to 10) yield {
+      val selectedBadFeatures = Random.shuffle(badFeatures).take(badFeatures.size / 2)
+
+      val copyOfProductInfos = copyProductInfos(productInfos)
+      for (copyOfProductInfo <- copyOfProductInfos) {
+        for (selectedBadFeature <- selectedBadFeatures) {
+          copyOfProductInfo.details -= selectedBadFeature.getName
+        }
+      }
+
+      val mutatedPCM = miner.mergeSpecifications(copyOfProductInfos)
+      mutatedPCM
+    }
+
+    pcm :: mutatedPCMs.toList
+  }
+
+  def copyProductInfos(productInfos : List[ProductInfo]) : List[ProductInfo] = {
+    for (productInfo <- productInfos) yield {
+      val copyOfProductInfo = new ProductInfo
+      copyOfProductInfo.sku = productInfo.sku
+      copyOfProductInfo.name = productInfo.name
+      copyOfProductInfo.longDescription = productInfo.longDescription
+      copyOfProductInfo.features = for (feature <- productInfo.features) yield {
+        feature
+      }
+      copyOfProductInfo.details = productInfo.details
+      copyOfProductInfo.completeXMLDescription = productInfo.completeXMLDescription
+      copyOfProductInfo
     }
   }
 
