@@ -6,13 +6,15 @@ import java.nio.file.Files
 import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java
-import org.diverse.pcm.api.java.PCM
+import org.diverse.pcm.api.java.{AbstractFeature, Cell, PCM}
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
 import org.diverse.pcm.api.java.io.{HTMLExporter, CSVExporter, CSVLoader}
+import org.diverse.pcm.api.java.util.PCMElementComparator
 import org.diverse.pcm.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
+import uk.ac.shef.wit.simmetrics.similaritymetrics.Levenshtein
 
 import scala.collection.JavaConversions._
 import scala.io.Source
@@ -364,16 +366,47 @@ class PCMBotTest extends FlatSpec with Matchers {
       "category",
       "filter",
       "name",
-      "#products",
-      "#features",
-      "#N/A",
-      "avg #N/A per feature",
-      "avg #N/A per product",
+
+      "over #products",
+      "over #features",
+      "over #N/A",
+
+      "over #boolean",
+      "over #numeric",
+      "over #textual",
+
+      "over min #N/A per feature",
+      "over max #N/A per feature",
+      "over median #N/A per feature",
+      "over avg #N/A per feature",
+
+      "over min #N/A per product",
+      "over max #N/A per product",
+      "over median #N/A per product",
+      "over avg #N/A per product",
+
       "spec #products",
       "spec #features",
       "spec #N/A",
+
+      "spec #boolean",
+      "spec #numeric",
+      "spec #textual",
+
+      "spec min #N/A per feature",
+      "spec max #N/A per feature",
+      "spec median #N/A per feature",
       "spec avg #N/A per feature",
-      "spec avg #N/A per product"))
+
+      "spec min #N/A per product",
+      "spec max #N/A per product",
+      "spec median #N/A per product",
+      "spec avg #N/A per product",
+
+      "diff #features of overview in spec",
+      "diff #cells of overview in spec",
+      "diff #features of spec in overview",
+      "diff #cells of spec in overview"))
 
     val loader = new CSVLoader(factory, ';', '"', false)
 
@@ -416,21 +449,29 @@ class PCMBotTest extends FlatSpec with Matchers {
 
   def analyzePCM(statsWriter: CSVWriter, loader: CSVLoader, category: String, filter: String, pcmDir: File, pcmFile: File): Unit = {
     val name = pcmDir.getName
-    val pcm = loader.load(pcmFile)
-    println(pcmFile.getAbsolutePath)
+    val overviewPCM = loader.load(pcmFile)
+    println(pcmFile.getAbsolutePath.substring(64))
     println("exists? = " + pcmFile.exists())
     val htmlExporter = new HTMLExporter
-    writeToFile(pcmDir.getAbsolutePath + "/finalPCM.html", htmlExporter.export(pcm))
+    writeToFile(pcmDir.getAbsolutePath + "/finalPCM.html", htmlExporter.export(overviewPCM))
 
     // Stats on overview
 
-    val numberOfProducts = pcm.getProducts.size()
-    val numberOfFeatures = pcm.getConcreteFeatures.size()
+    val numberOfProducts = overviewPCM.getProducts.size()
+    val numberOfFeatures = overviewPCM.getConcreteFeatures.size()
 
-    val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(pcm)
+    val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(overviewPCM)
+    val minNAsByFeature = nasByFeature.map(_._2).min
+    val maxNAsByFeature = nasByFeature.map(_._2).max
+    val medNAsByFeature = nasByFeature.map(_._2).toList.sorted.get(nasByFeature.size/2)
     val avgNAsByFeature = nasByFeature.map(_._2).sum.toDouble / numberOfFeatures
+
+    val minNAsByProduct = nasByProduct.map(_._2).min
+    val maxNAsByProduct = nasByProduct.map(_._2).max
+    val medNAsByProduct = nasByProduct.map(_._2).toList.sorted.get(nasByProduct.size/2)
     val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
 
+    val (booleans, numeric, textual) = analyzer.featureTypes(overviewPCM)
 
     // Create spec PCM
     val specFiles = pcmDir.listFiles(new FilenameFilter {
@@ -459,14 +500,81 @@ class PCMBotTest extends FlatSpec with Matchers {
     val specNumberOfFeatures = specPCM.getConcreteFeatures.size()
 
     val (specNAs, specNAsByFeature, specNAsByProduct) = analyzer.emptyCells(specPCM)
+    val specMinNAsByFeature = specNAsByFeature.map(_._2).min
+    val specMaxNAsByFeature = specNAsByFeature.map(_._2).max
+    val specMedNAsByFeature = specNAsByFeature.map(_._2).toList.sorted.get(specNAsByFeature.size/2)
     val specAvgNAsByFeature = specNAsByFeature.map(_._2).sum.toDouble / specNumberOfFeatures
+
+    val specMinNAsByProduct = specNAsByProduct.map(_._2).min
+    val specMaxNAsByProduct = specNAsByProduct.map(_._2).max
+    val specMedNAsByProduct = specNAsByProduct.map(_._2).toList.sorted.get(specNAsByProduct.size/2)
     val specAvgNAsByProduct = specNAsByProduct.map(_._2).sum.toDouble / specNumberOfProducts
+
+    val (specBooleans, specNumeric, specTextual) = analyzer.featureTypes(specPCM)
+
+    // Diff
+
+    val pcmComparator = new PCMElementComparator {
+
+      val comparator = new Levenshtein
+
+      override def similarFeature(f1: AbstractFeature, f2: AbstractFeature): Boolean = {
+        //comparator.getSimilarity(f1.getName, f2.getName) >= 0.5
+        val nameF1 = f1.getName.toLowerCase
+        val nameF2 = f2.getName.toLowerCase
+        nameF1.contains(nameF2) || nameF2.contains(nameF1)
+      }
+      // Levenshtein 0.6
+
+      override def similarCell(c1: Cell, c2: Cell): Boolean = {
+        val contentC1 = c1.getContent.toLowerCase
+        val contentC2 = c2.getContent.toLowerCase
+        contentC1.contains(contentC2) || contentC2.contains(contentC1)
+      }
+      // c1 substring c2 || c2 substring c1
+
+      override def similarProduct(p1: java.Product, p2: java.Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+    }
+
+    val (featuresInCommonOverVSSpec, cellsInCommonOverVSSpec) = analyzer.diff(overviewPCM, specPCM, pcmComparator)
+//    println
+//    println("------------------")
+//    println
+    val (featuresInCommonSpecVSOver, cellsInCommonSpecVSOver) = analyzer.diff(specPCM, overviewPCM, pcmComparator)
 
     // Write stats
     statsWriter.writeRow(Seq(
-      category, filter, name, numberOfProducts, numberOfFeatures, nas, avgNAsByFeature, avgNAsByProduct,
-      specNumberOfProducts, specNumberOfFeatures, specNAs, specAvgNAsByFeature, specAvgNAsByProduct
+      category, filter, name,
+      // Overview
+      numberOfProducts, numberOfFeatures, nas,
+      booleans.size, numeric.size, textual.size,
+
+      minNAsByFeature,
+      maxNAsByFeature,
+      medNAsByFeature,
+      avgNAsByFeature,
+
+      minNAsByProduct,
+      maxNAsByProduct,
+      medNAsByProduct,
+      avgNAsByProduct,
+
+      // Spec
+      specNumberOfProducts, specNumberOfFeatures, specNAs,
+      specBooleans.size, specNumeric.size, specTextual.size,
+      specMinNAsByFeature,
+      specMaxNAsByFeature,
+      specMedNAsByFeature,
+      specAvgNAsByFeature,
+
+      specMinNAsByProduct,
+      specMaxNAsByProduct,
+      specMedNAsByProduct,
+      specAvgNAsByProduct,
+      // Diff
+      featuresInCommonOverVSSpec.size, cellsInCommonOverVSSpec.size, featuresInCommonSpecVSOver.size, cellsInCommonSpecVSOver.size
     ))
+
   }
 
 

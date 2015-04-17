@@ -24,6 +24,8 @@ class PCMAnalyzer {
     for (feature1 <- pcm1.getConcreteFeatures) {
       if (pcm2.getConcreteFeatures.exists(feature2 => comparator.similarFeature(feature1, feature2))) {
         featuresInCommon = feature1 :: featuresInCommon
+//        val f2 = pcm2.getConcreteFeatures.find(feature2 => comparator.similarFeature(feature1, feature2)).get
+//        println(feature1.getName + " vs " + f2.getName)
       }
     }
 
