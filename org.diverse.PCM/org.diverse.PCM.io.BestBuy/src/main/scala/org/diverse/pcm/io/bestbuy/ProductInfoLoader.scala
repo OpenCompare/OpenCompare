@@ -23,9 +23,9 @@ class ProductInfoLoader {
     // FIXME : not really deserializing the product info but it should be close enough for the experiment
 
     // Read overview
-    for (feature <- Source.fromFile(overview).getLines()) {
-      productInfo.addFeature(feature)
-    }
+//    for (feature <- Source.fromFile(overview).getLines()) {
+//      productInfo.addFeature(feature)
+//    }
 
     // Read specification
 

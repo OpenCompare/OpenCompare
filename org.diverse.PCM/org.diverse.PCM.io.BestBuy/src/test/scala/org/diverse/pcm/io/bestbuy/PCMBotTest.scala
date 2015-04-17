@@ -15,6 +15,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.collection.JavaConversions._
+import scala.io.Source
 import scala.util.Random
 
 /**
@@ -29,6 +30,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   val factory = new PCMFactoryImpl
   val miner = new BestBuyMiner(factory)
   val csvExporter = new CSVExporter
+  val api = new BestBuyAPI
 
   val bestBuyDatasets = Table(
     ("Path to Best Buy dataset"),
@@ -353,7 +355,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  "PCMBot experiment" should "compute metrics on manual dataset" in {
+  "PCMBot experiment" should "compute metrics on manual dataset" in { //"PCMBot experiment"
     val manualDatasetDir = new File("manual-dataset")
     val statsFile = new File("manual-dataset/metrics.csv")
     val statsWriter = CSVWriter.open(statsFile)
@@ -366,7 +368,12 @@ class PCMBotTest extends FlatSpec with Matchers {
       "#features",
       "#N/A",
       "avg #N/A per feature",
-      "avg #N/A per product"))
+      "avg #N/A per product",
+      "spec #products",
+      "spec #features",
+      "spec #N/A",
+      "spec avg #N/A per feature",
+      "spec avg #N/A per product"))
 
     val loader = new CSVLoader(factory, ';', '"', false)
 
@@ -415,7 +422,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val htmlExporter = new HTMLExporter
     writeToFile(pcmDir.getAbsolutePath + "/finalPCM.html", htmlExporter.export(pcm))
 
-
+    // Stats on overview
 
     val numberOfProducts = pcm.getProducts.size()
     val numberOfFeatures = pcm.getConcreteFeatures.size()
@@ -425,8 +432,101 @@ class PCMBotTest extends FlatSpec with Matchers {
     val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
 
 
-    statsWriter.writeRow(Seq(category, filter, name, numberOfProducts, numberOfFeatures, nas, avgNAsByFeature, avgNAsByProduct))
+    // Create spec PCM
+    val specFiles = pcmDir.listFiles(new FilenameFilter {
+      override def accept(file: File, s: String): Boolean = s.endsWith(".csv") && s != "finalPCM.csv" && s != "spec.csv"
+    })
+
+
+    val productInfoLoader = new ProductInfoLoader
+    val path = pcmDir.getAbsolutePath
+
+    val productInfos = for (specFile <- specFiles.toList) yield {
+      val sku = specFile.getName.substring(0, specFile.getName.length - 4)
+      val productInfo = productInfoLoader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
+      productInfo.sku = sku
+      productInfo
+    }
+
+    val specPCM = miner.mergeSpecifications(productInfos)
+
+    val specWriter = new CSVExporter
+    writeToFile(pcmDir.getAbsolutePath + "/spec.csv", specWriter.export(specPCM))
+
+    // Stats on specification
+
+    val specNumberOfProducts = specPCM.getProducts.size()
+    val specNumberOfFeatures = specPCM.getConcreteFeatures.size()
+
+    val (specNAs, specNAsByFeature, specNAsByProduct) = analyzer.emptyCells(specPCM)
+    val specAvgNAsByFeature = specNAsByFeature.map(_._2).sum.toDouble / specNumberOfFeatures
+    val specAvgNAsByProduct = specNAsByProduct.map(_._2).sum.toDouble / specNumberOfProducts
+
+    // Write stats
+    statsWriter.writeRow(Seq(
+      category, filter, name, numberOfProducts, numberOfFeatures, nas, avgNAsByFeature, avgNAsByProduct,
+      specNumberOfProducts, specNumberOfFeatures, specNAs, specAvgNAsByFeature, specAvgNAsByProduct
+    ))
   }
+
+
+
+
+
+  ignore should "find missing specifications in manual dataset" in {
+    val list = new File("manual-dataset/notfound_sku.txt")
+    val outputDirPath = "manual-dataset/missing/"
+    new File(outputDirPath).mkdirs()
+
+    if (list.exists()) {
+      val skus = Source.fromFile(list).getLines().toList
+
+      for (sku <- skus) {
+        println(sku)
+        val productInfo = api.getProductInfo(sku)
+        println(productInfo.name)
+
+        // Information (XML dump)
+        writeToFile(outputDirPath + sku + ".xml", productInfo.completeXMLDescription.toString())
+
+        // Overview
+        val text = new StringBuilder
+        text.append(productInfo.longDescription + "\n")
+
+        for (feature <- productInfo.features) {
+          text.append(feature.replaceAll("\n", ". ") + "\n")
+
+        }
+
+        writeToFile(outputDirPath + sku + ".txt", text.toString())
+
+        // Specification
+        val spec = productInfo.details.toList
+        val features = spec.map(_._1)
+        val product = spec.map(_._2)
+
+        val specFile = new File(outputDirPath + sku + ".csv")
+        val specWriter = CSVWriter.open(specFile)
+
+        specWriter.writeRow(features)
+        specWriter.writeRow(product)
+
+        specWriter.close();
+
+      }
+    }
+  }
+
+
+
+  //"PCMBot experiment" should "compare overview PCM with spec PCM"
+
+
+
+
+  // ---------------------------------------------------------------------------------------------------------------- //
+
+
 
   ignore should "cluster products" in {
     //"AFM Synthesis experiment
