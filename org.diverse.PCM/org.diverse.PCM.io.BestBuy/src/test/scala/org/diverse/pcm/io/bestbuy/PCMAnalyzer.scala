@@ -147,10 +147,7 @@ class PCMAnalyzer {
 
   def isBoolean(content : String) : Boolean = {
     content.toLowerCase == "yes" ||
-      content.toLowerCase == "no" ||
-    // FIXME : 0 or 1 is also numeric !!!
-      content == "0" ||
-      content == "1"
+      content.toLowerCase == "no"
   }
 
   def isNumeric(content : String) : Boolean = {

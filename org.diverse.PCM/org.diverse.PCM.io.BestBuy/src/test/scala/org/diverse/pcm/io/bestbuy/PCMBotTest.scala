@@ -34,6 +34,29 @@ class PCMBotTest extends FlatSpec with Matchers {
   val csvExporter = new CSVExporter
   val api = new BestBuyAPI
 
+  val pcmComparator = new PCMElementComparator {
+
+    val comparator = new Levenshtein
+
+    override def similarFeature(f1: AbstractFeature, f2: AbstractFeature): Boolean = {
+      //comparator.getSimilarity(f1.getName, f2.getName) >= 0.5
+      val nameF1 = f1.getName.toLowerCase
+      val nameF2 = f2.getName.toLowerCase
+      nameF1.contains(nameF2) || nameF2.contains(nameF1)
+    }
+    // Levenshtein 0.6
+
+    override def similarCell(c1: Cell, c2: Cell): Boolean = {
+      val contentC1 = c1.getContent.toLowerCase
+      val contentC2 = c2.getContent.toLowerCase
+      contentC1.contains(contentC2) || contentC2.contains(contentC1)
+    }
+    // c1 substring c2 || c2 substring c1
+
+    override def similarProduct(p1: java.Product, p2: java.Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+  }
+
+
   val bestBuyDatasets = Table(
     ("Path to Best Buy dataset"),
     ("bestbuy-dataset/All Printers"),
@@ -62,34 +85,6 @@ class PCMBotTest extends FlatSpec with Matchers {
     ("bestbuy-dataset/No-Contract Phones/No-Contract Phones.pcm")
 
   )
-
-  //  val bestbuyOverviewPCMs = Table(
-  //    ("Path to PCM"),
-  //    ("vminer-dataset-diff/All Printers/Epson/finalPCM.csv"),
-  //    ("vminer-dataset-diff/All Printers/Canon/finalPCM.csv"),
-  //    ("vminer-dataset-diff/All Printers/Brother/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Ranges/Whirlpool/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Ranges/KitchenAid/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Ranges/Frigidaire/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Refrigerators/Whirlpool/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Refrigerators/Samsung/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Refrigerators/GE/GE1/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Refrigerators/GE/GE2/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Camera/Canon/finalPCM.csv"),
-  //    ("vminer-dataset-diff/TVs/Sony/finalPCM.csv"),
-  //    ("vminer-dataset-diff/TVs/LG/finalPCM.csv"),
-  //    ("vminer-dataset-diff/TVs/Samsung/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Washing Machines/LG/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Washing Machines/Samsung/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Washing Machines/GE/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Laptops/Dell/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Laptops/Asus/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Laptops/Hp/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Cell phones/Motorola/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Cell phones/LG/finalPCM.csv"),
-  //    ("vminer-dataset-diff/Cell phones/Samsung/finalPCM.csv")
-  //  )
-
 
   val bestbuyOverviewPCMs = Table(
     "Path to PCM",
@@ -357,11 +352,101 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
+  // ---------------------------------------------------------------------------------------------------------------- //
+
   "PCMBot experiment" should "compute metrics on manual dataset" in { //"PCMBot experiment"
     val manualDatasetDir = new File("manual-dataset")
     val statsFile = new File("manual-dataset/metrics.csv")
     val statsWriter = CSVWriter.open(statsFile)
+    initStatsFile(statsWriter)
 
+    val loader = new CSVLoader(factory, ';', '"', false)
+
+    if (manualDatasetDir.exists()) {
+      // Load specifications
+      for (categoryDir <- manualDatasetDir.listFiles() if categoryDir.isDirectory) {
+        val category = categoryDir.getName
+
+        for (filterDir <- categoryDir.listFiles() if filterDir.isDirectory) {
+          val filter = filterDir.getName
+
+          for (pcmDir <- filterDir.listFiles() if pcmDir.isDirectory) {
+
+            var pcmFile = new File(pcmDir.getAbsolutePath + "/finalPCM.csv")
+
+            if (pcmFile.exists()) {
+              analyzePCM(statsWriter, loader, category, filter, pcmDir, pcmFile)
+            } else {
+              // Subfolder
+              for (pcmSubDir <- pcmDir.listFiles() if pcmSubDir.isDirectory) {
+                pcmFile = new File(pcmSubDir.getAbsolutePath + "/finalPCM.csv")
+                analyzePCM(statsWriter, loader, category, filter, pcmSubDir, pcmFile)
+              }
+            }
+
+          }
+
+
+        }
+      }
+
+    }
+
+    statsWriter.close()
+  }
+
+
+  it should "compute metrics on random dataset" in { //"PCMBot experiment"
+  val datasetDir = new File("random-dataset")
+    val statsFile = new File(datasetDir.getAbsolutePath + "/metrics.csv")
+    val statsWriter = CSVWriter.open(statsFile)
+    initStatsFile(statsWriter)
+
+    val loader = new CSVLoader(factory, ';', '"', false)
+
+    if (datasetDir.exists()) {
+      for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {
+        val category = categoryDir.getName
+        val filter = "random"
+
+          for (pcmDir <- categoryDir.listFiles() if pcmDir.isDirectory) {
+            var pcmFile = new File(pcmDir.getAbsolutePath + "/finalPCM.csv")
+            analyzePCM(statsWriter, loader, category, filter, pcmDir, pcmFile)
+          }
+
+      }
+
+    }
+
+    statsWriter.close()
+  }
+
+  it should "compute metrics on clustering dataset" in { //"PCMBot experiment"
+  val datasetDir = new File("clustering-dataset")
+    val statsFile = new File(datasetDir.getAbsolutePath + "/metrics.csv")
+    val statsWriter = CSVWriter.open(statsFile)
+    initStatsFile(statsWriter)
+
+    val loader = new CSVLoader(factory, ';', '"', false)
+
+    if (datasetDir.exists()) {
+      for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {
+        val category = categoryDir.getName
+        val filter = "clustering"
+
+        for (pcmDir <- categoryDir.listFiles() if pcmDir.isDirectory) {
+          var pcmFile = new File(pcmDir.getAbsolutePath + "/finalPCM.csv")
+          analyzePCM(statsWriter, loader, category, filter, pcmDir, pcmFile)
+        }
+
+      }
+
+    }
+
+    statsWriter.close()
+  }
+
+  def initStatsFile(statsWriter : CSVWriter): Unit = {
     statsWriter.writeRow(Seq(
       "category",
       "filter",
@@ -407,173 +492,134 @@ class PCMBotTest extends FlatSpec with Matchers {
       "diff #cells of overview in spec",
       "diff #features of spec in overview",
       "diff #cells of spec in overview"))
-
-    val loader = new CSVLoader(factory, ';', '"', false)
-
-    if (manualDatasetDir.exists()) {
-      // Load specifications
-      for (categoryDir <- manualDatasetDir.listFiles() if categoryDir.isDirectory) {
-        val category = categoryDir.getName
-
-        for (filterDir <- categoryDir.listFiles() if filterDir.isDirectory) {
-          val filter = filterDir.getName
-
-          for (pcmDir <- filterDir.listFiles() if pcmDir.isDirectory) {
-
-            var pcmFile = new File(pcmDir.getAbsolutePath + "/finalPCM.csv")
-
-            if (pcmFile.exists()) {
-              analyzePCM(statsWriter, loader, category, filter, pcmDir, pcmFile)
-            } else {
-              // Subfolder
-              for (pcmSubDir <- pcmDir.listFiles() if pcmSubDir.isDirectory) {
-                pcmFile = new File(pcmSubDir.getAbsolutePath + "/finalPCM.csv")
-                analyzePCM(statsWriter, loader, category, filter, pcmSubDir, pcmFile)
-              }
-            }
-
-          }
-
-
-        }
-      }
-
-      // Generate specification
-
-      // Compute metrics
-
-    }
-
-    statsWriter.close()
   }
 
   def analyzePCM(statsWriter: CSVWriter, loader: CSVLoader, category: String, filter: String, pcmDir: File, pcmFile: File): Unit = {
     val name = pcmDir.getName
-    val overviewPCM = loader.load(pcmFile)
-    println(pcmFile.getAbsolutePath.substring(64))
-    println("exists? = " + pcmFile.exists())
-    val htmlExporter = new HTMLExporter
-    writeToFile(pcmDir.getAbsolutePath + "/finalPCM.html", htmlExporter.export(overviewPCM))
+    println(pcmFile.getAbsolutePath)
+    val specLoader = new CSVLoader(factory)
 
-    // Stats on overview
+    var stats : List[Any] = List(category, filter, name)
 
-    val numberOfProducts = overviewPCM.getProducts.size()
-    val numberOfFeatures = overviewPCM.getConcreteFeatures.size()
 
-    val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(overviewPCM)
-    val minNAsByFeature = nasByFeature.map(_._2).min
-    val maxNAsByFeature = nasByFeature.map(_._2).max
-    val medNAsByFeature = nasByFeature.map(_._2).toList.sorted.get(nasByFeature.size/2)
-    val avgNAsByFeature = nasByFeature.map(_._2).sum.toDouble / numberOfFeatures
+    // Overview
+    if (pcmFile.exists()) {
 
-    val minNAsByProduct = nasByProduct.map(_._2).min
-    val maxNAsByProduct = nasByProduct.map(_._2).max
-    val medNAsByProduct = nasByProduct.map(_._2).toList.sorted.get(nasByProduct.size/2)
-    val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
+      val overviewPCM = loader.load(pcmFile)
 
-    val (booleans, numeric, textual) = analyzer.featureTypes(overviewPCM)
+      val numberOfProducts = overviewPCM.getProducts.size()
+      val numberOfFeatures = overviewPCM.getConcreteFeatures.size()
+
+      val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(overviewPCM)
+      val minNAsByFeature = nasByFeature.map(_._2).min
+      val maxNAsByFeature = nasByFeature.map(_._2).max
+      val medNAsByFeature = nasByFeature.map(_._2).toList.sorted.get(nasByFeature.size/2)
+      val avgNAsByFeature = nasByFeature.map(_._2).sum.toDouble / numberOfFeatures
+
+      val minNAsByProduct = nasByProduct.map(_._2).min
+      val maxNAsByProduct = nasByProduct.map(_._2).max
+      val medNAsByProduct = nasByProduct.map(_._2).toList.sorted.get(nasByProduct.size/2)
+      val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
+
+      val (booleans, numeric, textual) = analyzer.featureTypes(overviewPCM)
+
+      stats = stats ::: List(
+        numberOfProducts, numberOfFeatures, nas,
+        booleans.size, numeric.size, textual.size,
+
+        minNAsByFeature,
+        maxNAsByFeature,
+        medNAsByFeature,
+        avgNAsByFeature,
+
+        minNAsByProduct,
+        maxNAsByProduct,
+        medNAsByProduct,
+        avgNAsByProduct)
+    } else {
+      stats = stats ::: List("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA")
+    }
+
+
 
     // Create spec PCM
-    val specFiles = pcmDir.listFiles(new FilenameFilter {
-      override def accept(file: File, s: String): Boolean = s.endsWith(".csv") && s != "finalPCM.csv" && s != "spec.csv"
-    })
+//    val specFiles = pcmDir.listFiles(new FilenameFilter {
+//      override def accept(file: File, s: String): Boolean = s.endsWith(".csv") && s != "finalPCM.csv" && s != "spec.csv" && s != "pcm.csv"
+//    })
+//
+//
+//    val productInfoLoader = new ProductInfoLoader
+//    val path = pcmDir.getAbsolutePath
+//
+//    val productInfos = for (specFile <- specFiles.toList) yield {
+//      val sku = specFile.getName.substring(0, specFile.getName.length - 4)
+//      val productInfo = productInfoLoader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
+//      productInfo.sku = sku
+//      productInfo
+//    }
+//
+//    val specPCM = miner.mergeSpecifications(productInfos)
+//
+//    val specWriter = new CSVExporter
+//    writeToFile(pcmDir.getAbsolutePath + "/spec.csv", specWriter.export(specPCM))
 
+    val specFile = new File(pcmDir.getAbsolutePath + "/spec.csv")
 
-    val productInfoLoader = new ProductInfoLoader
-    val path = pcmDir.getAbsolutePath
+    // Spec
+    if (specFile.exists()) {
+      val specPCM = specLoader.load(specFile)
 
-    val productInfos = for (specFile <- specFiles.toList) yield {
-      val sku = specFile.getName.substring(0, specFile.getName.length - 4)
-      val productInfo = productInfoLoader.load(new File(path + "/" + sku + ".txt"), new File(path + "/" + sku + ".csv"), new File(path + "/" + sku + ".xml"))
-      productInfo.sku = sku
-      productInfo
+      // Stats on specification
+
+      val specNumberOfProducts = specPCM.getProducts.size()
+      val specNumberOfFeatures = specPCM.getConcreteFeatures.size()
+
+      val (specNAs, specNAsByFeature, specNAsByProduct) = analyzer.emptyCells(specPCM)
+      val specMinNAsByFeature = specNAsByFeature.map(_._2).min
+      val specMaxNAsByFeature = specNAsByFeature.map(_._2).max
+      val specMedNAsByFeature = specNAsByFeature.map(_._2).toList.sorted.get(specNAsByFeature.size/2)
+      val specAvgNAsByFeature = specNAsByFeature.map(_._2).sum.toDouble / specNumberOfFeatures
+
+      val specMinNAsByProduct = specNAsByProduct.map(_._2).min
+      val specMaxNAsByProduct = specNAsByProduct.map(_._2).max
+      val specMedNAsByProduct = specNAsByProduct.map(_._2).toList.sorted.get(specNAsByProduct.size/2)
+      val specAvgNAsByProduct = specNAsByProduct.map(_._2).sum.toDouble / specNumberOfProducts
+
+      val (specBooleans, specNumeric, specTextual) = analyzer.featureTypes(specPCM)
+
+      stats = stats ::: List(
+        specNumberOfProducts, specNumberOfFeatures, specNAs,
+        specBooleans.size, specNumeric.size, specTextual.size,
+        specMinNAsByFeature,
+        specMaxNAsByFeature,
+        specMedNAsByFeature,
+        specAvgNAsByFeature,
+
+        specMinNAsByProduct,
+        specMaxNAsByProduct,
+        specMedNAsByProduct,
+        specAvgNAsByProduct)
+    } else {
+      stats = stats ::: List("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA")
     }
 
-    val specPCM = miner.mergeSpecifications(productInfos)
 
-    val specWriter = new CSVExporter
-    writeToFile(pcmDir.getAbsolutePath + "/spec.csv", specWriter.export(specPCM))
-
-    // Stats on specification
-
-    val specNumberOfProducts = specPCM.getProducts.size()
-    val specNumberOfFeatures = specPCM.getConcreteFeatures.size()
-
-    val (specNAs, specNAsByFeature, specNAsByProduct) = analyzer.emptyCells(specPCM)
-    val specMinNAsByFeature = specNAsByFeature.map(_._2).min
-    val specMaxNAsByFeature = specNAsByFeature.map(_._2).max
-    val specMedNAsByFeature = specNAsByFeature.map(_._2).toList.sorted.get(specNAsByFeature.size/2)
-    val specAvgNAsByFeature = specNAsByFeature.map(_._2).sum.toDouble / specNumberOfFeatures
-
-    val specMinNAsByProduct = specNAsByProduct.map(_._2).min
-    val specMaxNAsByProduct = specNAsByProduct.map(_._2).max
-    val specMedNAsByProduct = specNAsByProduct.map(_._2).toList.sorted.get(specNAsByProduct.size/2)
-    val specAvgNAsByProduct = specNAsByProduct.map(_._2).sum.toDouble / specNumberOfProducts
-
-    val (specBooleans, specNumeric, specTextual) = analyzer.featureTypes(specPCM)
 
     // Diff
+    if (pcmFile.exists() && specFile.exists()) {
+      val overviewPCM = loader.load(pcmFile)
+      val specPCM = specLoader.load(specFile)
 
-    val pcmComparator = new PCMElementComparator {
+      val (featuresInCommonOverVSSpec, cellsInCommonOverVSSpec) = analyzer.diff(overviewPCM, specPCM, pcmComparator)
+      val (featuresInCommonSpecVSOver, cellsInCommonSpecVSOver) = analyzer.diff(specPCM, overviewPCM, pcmComparator)
 
-      val comparator = new Levenshtein
-
-      override def similarFeature(f1: AbstractFeature, f2: AbstractFeature): Boolean = {
-        //comparator.getSimilarity(f1.getName, f2.getName) >= 0.5
-        val nameF1 = f1.getName.toLowerCase
-        val nameF2 = f2.getName.toLowerCase
-        nameF1.contains(nameF2) || nameF2.contains(nameF1)
-      }
-      // Levenshtein 0.6
-
-      override def similarCell(c1: Cell, c2: Cell): Boolean = {
-        val contentC1 = c1.getContent.toLowerCase
-        val contentC2 = c2.getContent.toLowerCase
-        contentC1.contains(contentC2) || contentC2.contains(contentC1)
-      }
-      // c1 substring c2 || c2 substring c1
-
-      override def similarProduct(p1: java.Product, p2: java.Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+      stats = stats ::: List(featuresInCommonOverVSSpec.size, cellsInCommonOverVSSpec.size, featuresInCommonSpecVSOver.size, cellsInCommonSpecVSOver.size)
+    } else {
+      stats = stats ::: List("NA", "NA", "NA", "NA")
     }
 
-    val (featuresInCommonOverVSSpec, cellsInCommonOverVSSpec) = analyzer.diff(overviewPCM, specPCM, pcmComparator)
-//    println
-//    println("------------------")
-//    println
-    val (featuresInCommonSpecVSOver, cellsInCommonSpecVSOver) = analyzer.diff(specPCM, overviewPCM, pcmComparator)
-
     // Write stats
-    statsWriter.writeRow(Seq(
-      category, filter, name,
-      // Overview
-      numberOfProducts, numberOfFeatures, nas,
-      booleans.size, numeric.size, textual.size,
-
-      minNAsByFeature,
-      maxNAsByFeature,
-      medNAsByFeature,
-      avgNAsByFeature,
-
-      minNAsByProduct,
-      maxNAsByProduct,
-      medNAsByProduct,
-      avgNAsByProduct,
-
-      // Spec
-      specNumberOfProducts, specNumberOfFeatures, specNAs,
-      specBooleans.size, specNumeric.size, specTextual.size,
-      specMinNAsByFeature,
-      specMaxNAsByFeature,
-      specMedNAsByFeature,
-      specAvgNAsByFeature,
-
-      specMinNAsByProduct,
-      specMaxNAsByProduct,
-      specMedNAsByProduct,
-      specAvgNAsByProduct,
-      // Diff
-      featuresInCommonOverVSSpec.size, cellsInCommonOverVSSpec.size, featuresInCommonSpecVSOver.size, cellsInCommonSpecVSOver.size
-    ))
+    statsWriter.writeRow(stats.toSeq)
 
   }
 
