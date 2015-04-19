@@ -112,7 +112,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
-  "toto" should "run on BestBuy overviews" in {
+  ignore should "run on BestBuy overviews" in {
     forAll(bestbuyOverviewPCMs) { (path: String) =>
       if (new File(path).exists()) {
         val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
@@ -447,51 +447,57 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
   def initStatsFile(statsWriter : CSVWriter): Unit = {
-    statsWriter.writeRow(Seq(
+
+    var stats = List(
       "category",
       "filter",
-      "name",
+      "name")
 
-      "over #products",
-      "over #features",
-      "over #N/A",
+    val pcmStats = List(
+      "#products",
+      "#features",
+      "#N/A",
 
-      "over #boolean",
-      "over #numeric",
-      "over #textual",
+      "min #N/A per feature",
+      "max #N/A per feature",
+      "median #N/A per feature",
+      "avg #N/A per feature",
 
-      "over min #N/A per feature",
-      "over max #N/A per feature",
-      "over median #N/A per feature",
-      "over avg #N/A per feature",
+      "min #N/A per product",
+      "max #N/A per product",
+      "median #N/A per product",
+      "avg #N/A per product",
 
-      "over min #N/A per product",
-      "over max #N/A per product",
-      "over median #N/A per product",
-      "over avg #N/A per product",
+      "#boolean",
+      "boolean #N/A",
+      "boolean min #N/A per feature",
+      "boolean max #N/A per feature",
+      "boolean median #N/A per feature",
+      "boolean avg #N/A per feature",
 
-      "spec #products",
-      "spec #features",
-      "spec #N/A",
+      "#numeric",
+      "numeric #N/A",
+      "numeric min #N/A per feature",
+      "numeric max #N/A per feature",
+      "numeric median #N/A per feature",
+      "numeric avg #N/A per feature",
 
-      "spec #boolean",
-      "spec #numeric",
-      "spec #textual",
+      "#textual",
+      "textual #N/A",
+      "textual min #N/A per feature",
+      "textual max #N/A per feature",
+      "textual median #N/A per feature",
+      "textual avg #N/A per feature")
 
-      "spec min #N/A per feature",
-      "spec max #N/A per feature",
-      "spec median #N/A per feature",
-      "spec avg #N/A per feature",
+    stats = stats ::: pcmStats.map(header => "over " + header)
+    stats = stats ::: pcmStats.map(header => "spec " + header)
 
-      "spec min #N/A per product",
-      "spec max #N/A per product",
-      "spec median #N/A per product",
-      "spec avg #N/A per product",
-
-      "diff #features of overview in spec",
+    stats = stats ::: List("diff #features of overview in spec",
       "diff #cells of overview in spec",
       "diff #features of spec in overview",
-      "diff #cells of spec in overview"))
+      "diff #cells of spec in overview")
+
+    statsWriter.writeRow(stats.toSeq)
   }
 
   def analyzePCM(statsWriter: CSVWriter, loader: CSVLoader, category: String, filter: String, pcmDir: File, pcmFile: File): Unit = {
@@ -503,44 +509,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
 
     // Overview
-    if (pcmFile.exists()) {
-
-      val overviewPCM = loader.load(pcmFile)
-
-      val numberOfProducts = overviewPCM.getProducts.size()
-      val numberOfFeatures = overviewPCM.getConcreteFeatures.size()
-
-      val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(overviewPCM)
-      val minNAsByFeature = nasByFeature.map(_._2).min
-      val maxNAsByFeature = nasByFeature.map(_._2).max
-      val medNAsByFeature = nasByFeature.map(_._2).toList.sorted.get(nasByFeature.size/2)
-      val avgNAsByFeature = nasByFeature.map(_._2).sum.toDouble / numberOfFeatures
-
-      val minNAsByProduct = nasByProduct.map(_._2).min
-      val maxNAsByProduct = nasByProduct.map(_._2).max
-      val medNAsByProduct = nasByProduct.map(_._2).toList.sorted.get(nasByProduct.size/2)
-      val avgNAsByProduct = nasByProduct.map(_._2).sum.toDouble / numberOfProducts
-
-      val (booleans, numeric, textual) = analyzer.featureTypes(overviewPCM)
-
-      stats = stats ::: List(
-        numberOfProducts, numberOfFeatures, nas,
-        booleans.size, numeric.size, textual.size,
-
-        minNAsByFeature,
-        maxNAsByFeature,
-        medNAsByFeature,
-        avgNAsByFeature,
-
-        minNAsByProduct,
-        maxNAsByProduct,
-        medNAsByProduct,
-        avgNAsByProduct)
-    } else {
-      stats = stats ::: List("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA")
-    }
-
-
+    stats = stats ::: statsOnPCM(loader, pcmFile)
 
     // Create spec PCM
 //    val specFiles = pcmDir.listFiles(new FilenameFilter {
@@ -563,47 +532,9 @@ class PCMBotTest extends FlatSpec with Matchers {
 //    val specWriter = new CSVExporter
 //    writeToFile(pcmDir.getAbsolutePath + "/spec.csv", specWriter.export(specPCM))
 
-    val specFile = new File(pcmDir.getAbsolutePath + "/spec.csv")
-
     // Spec
-    if (specFile.exists()) {
-      val specPCM = specLoader.load(specFile)
-
-      // Stats on specification
-
-      val specNumberOfProducts = specPCM.getProducts.size()
-      val specNumberOfFeatures = specPCM.getConcreteFeatures.size()
-
-      val (specNAs, specNAsByFeature, specNAsByProduct) = analyzer.emptyCells(specPCM)
-      val specMinNAsByFeature = specNAsByFeature.map(_._2).min
-      val specMaxNAsByFeature = specNAsByFeature.map(_._2).max
-      val specMedNAsByFeature = specNAsByFeature.map(_._2).toList.sorted.get(specNAsByFeature.size/2)
-      val specAvgNAsByFeature = specNAsByFeature.map(_._2).sum.toDouble / specNumberOfFeatures
-
-      val specMinNAsByProduct = specNAsByProduct.map(_._2).min
-      val specMaxNAsByProduct = specNAsByProduct.map(_._2).max
-      val specMedNAsByProduct = specNAsByProduct.map(_._2).toList.sorted.get(specNAsByProduct.size/2)
-      val specAvgNAsByProduct = specNAsByProduct.map(_._2).sum.toDouble / specNumberOfProducts
-
-      val (specBooleans, specNumeric, specTextual) = analyzer.featureTypes(specPCM)
-
-      stats = stats ::: List(
-        specNumberOfProducts, specNumberOfFeatures, specNAs,
-        specBooleans.size, specNumeric.size, specTextual.size,
-        specMinNAsByFeature,
-        specMaxNAsByFeature,
-        specMedNAsByFeature,
-        specAvgNAsByFeature,
-
-        specMinNAsByProduct,
-        specMaxNAsByProduct,
-        specMedNAsByProduct,
-        specAvgNAsByProduct)
-    } else {
-      stats = stats ::: List("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA")
-    }
-
-
+    val specFile = new File(pcmDir.getAbsolutePath + "/spec.csv")
+    stats = stats ::: statsOnPCM(specLoader, specFile)
 
     // Diff
     if (pcmFile.exists() && specFile.exists()) {
@@ -624,8 +555,54 @@ class PCMBotTest extends FlatSpec with Matchers {
   }
 
 
+  def statsOnPCM(loader : CSVLoader, pcmFile : File) : List[Any] = {
+    if (pcmFile.exists()) {
+
+      val pcm = loader.load(pcmFile)
+
+      val numberOfProducts = pcm.getProducts.size()
+      val numberOfFeatures = pcm.getConcreteFeatures.size()
+
+      val (nas, nasByFeature, nasByProduct) = analyzer.emptyCells(pcm)
+      val minMaxMedAvgNAsByFeature = minMaxMedAvg(nasByFeature.map(_._2).toList)
+      val minMaxMedAvgNAsByProduct = minMaxMedAvg(nasByProduct.map(_._2).toList)
+
+      val (booleans, numeric, textual) = analyzer.featureTypes(pcm)
+      val booleanNAsByFeature = booleans.map(f => nasByFeature(f))
+      val booleanMinMaxMedAvgNAsByFeature = minMaxMedAvg(booleanNAsByFeature)
+      val booleanNAs = booleanNAsByFeature.sum
+
+      val numericNAsByFeature = numeric.map(f => nasByFeature(f))
+      val numericMinMaxMedAvgNAsByFeature = minMaxMedAvg(numericNAsByFeature)
+      val numericNAs = numericNAsByFeature.sum
+
+      val textualNAsByFeature = textual.map(f => nasByFeature(f))
+      val textualMinMaxMedAvgNAsByFeature = minMaxMedAvg(textualNAsByFeature)
+      val textualNAs = textualNAsByFeature.sum
+
+      List(numberOfProducts, numberOfFeatures, nas) :::
+        minMaxMedAvgNAsByFeature :::
+          minMaxMedAvgNAsByProduct :::
+        List(booleans.size, booleanNAs) ::: booleanMinMaxMedAvgNAsByFeature :::
+        List(numeric.size, numericNAs) ::: numericMinMaxMedAvgNAsByFeature :::
+        List(textual.size, textualNAs) ::: textualMinMaxMedAvgNAsByFeature
+
+    } else {
+      (for (i <- 1 to 29) yield {"NA"}).toList
+    }
+  }
 
 
+  def minMaxMedAvg(numbers : List[Int]) : List[Any] = {
+    if (numbers.isEmpty) {
+      List("NA", "NA", "NA", "NA")
+    } else {
+      List(numbers.min,
+        numbers.max,
+        numbers.sorted.get(numbers.size/2),
+        numbers.sum.toDouble / numbers.size)
+    }
+  }
 
   ignore should "find missing specifications in manual dataset" in {
     val list = new File("manual-dataset/notfound_sku.txt")
