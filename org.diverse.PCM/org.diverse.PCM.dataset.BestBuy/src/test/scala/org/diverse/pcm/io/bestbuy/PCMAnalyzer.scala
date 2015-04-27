@@ -1,10 +1,10 @@
 package org.diverse.pcm.io.bestbuy
 
 import org.diverse.pcm.api.java.util.PCMElementComparator
-import org.diverse.pcm.api.java.{Cell, Product, Feature, PCM}
+import org.diverse.pcm.api.java.{Cell, Feature, PCM, Product}
 
+import scala.collection.JavaConversions._
 import scala.collection.mutable
-import collection.JavaConversions._
 
 /**
  * Created by gbecan on 4/2/15.

@@ -6,11 +6,11 @@ import java.nio.file.Files
 import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java
-import org.diverse.pcm.api.java.{AbstractFeature, Cell, PCM}
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.KMFJSONLoader
-import org.diverse.pcm.api.java.io.{HTMLExporter, CSVExporter, CSVLoader}
+import org.diverse.pcm.api.java.io.{CSVExporter, CSVLoader}
 import org.diverse.pcm.api.java.util.PCMElementComparator
+import org.diverse.pcm.api.java.{AbstractFeature, Cell, PCM}
 import org.diverse.pcm.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}

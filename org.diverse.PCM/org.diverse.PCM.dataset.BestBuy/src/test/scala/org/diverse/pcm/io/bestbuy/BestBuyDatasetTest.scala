@@ -1,14 +1,14 @@
 package org.diverse.pcm.io.bestbuy
 
-import java.io.{FileWriter, File}
+import java.io.{File, FileWriter}
 
 import com.github.tototoshi.csv.CSVWriter
 import org.diverse.pcm.api.java.impl.PCMFactoryImpl
-import org.diverse.pcm.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
+import org.diverse.pcm.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.diverse.pcm.api.java.io.{CSVExporter, HTMLExporter}
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
-import collection.JavaConversions._
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 2/23/15.
