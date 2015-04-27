@@ -1,0 +1,216 @@
+This is a comparison of the [[Open XML Paper Specification|OpenXPS]] [[document file format]] with the [[Portable Document Format|PDF]] [[file format]]. Both file format standards are essentially [[Container format (digital)|containers]] for representing [[Content (media and publishing)|digital content]] in a paper-like fashion.
+
+==Design aims==
+The differences between Open XML Paper Specification (OpenXPS) and the Portable Document Format (PDF) can be traced to their [[Virtual Heritage|heritage]] and the manner of their development, as they have different design goals and different groups providing input.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="reliable source needed for the whole section (April 2014)">citation needed</span>]]</i>&#93;</sup>
+
+The different goals in the development of OpenXPS and PDF resulted in different principles and design tradeoffs between the file formats.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="reliable source needed for the whole sentence (April 2014)">citation needed</span>]]</i>&#93;</sup>
+
+==Comparison==
+{| class="wikitable sortable" cellpadding="1" style="font-size:85%; border:gray solid 1px; text-align:center; width:100%;"
+|- style="background: #ececec"
+! style="width:15em" | File format
+! OpenXPS
+! PDF
+|-
+! style="text-align:left; background: #ececec;" | Based on a format<br />developed by
+| [[Microsoft]]
+| [[Adobe Systems]]
+|-
+! style="text-align:left; background: #ececec;" | Standardized by
+| [[Ecma International]]
+| [[International Organization for Standardization|ISO]]
+|-
+! style="text-align:left; background: #ececec;" | First public release date
+| 2006
+| 1993
+|-
+! style="text-align:left; background: #ececec;" | Latest stable version
+| Ecma International Standard ECMA-388 — Open XML Paper Specification — 1st Edition
+| ISO 32000-1:2008 — Document management — Portable document format — Part 1: PDF 1.7
+|-
+! style="text-align:left; background: #ececec;" | Latest standardised version
+| Ecma International Standard ECMA-388 — Open XML Paper Specification — 1st Edition
+| ISO 32000-1:2008 — Document management — Portable document format — Part 1: PDF 1.7
+|-
+! style="text-align:left; background: #ececec;" | Language type
+| [[Markup language]] ([[XML]])
+| PDF is a database of objects that may be created from [[PostScript]] or generated directly by an application.
+|-
+! style="text-align:left; background: #ececec;" | XML schema representation
+| [[XML Schema (W3C)]] (XSD) and [[RELAX NG]] (ISO/IEC 19757-2)
+| N/A
+|-
+! style="text-align:left; background: #ececec;" | Compression format
+| [[ZIP (file format)|ZIP]]
+| [[LZW]] for both text and images; JPEG, [[JPEG 2000]], and [[Run-length encoding|RLE]] for images only
+|-
+! style="text-align:left; background: #ececec;" | Container structure
+| [[Open Packaging Conventions]] (ISO/IEC 29500-2:2008)
+| 
+|-
+! style="text-align:left; background: #ececec;" | [[3D computer graphics|3D graphic content]]
+| [[X3D]] (ISO/IEC 19775/19776)
+| [[Universal 3D|U3D]] (Standard ECMA-363)
+|-
+ 
+|-
+! style="text-align:left; background: #ececec;" | Full file content compression
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Compression of collections of objects
+|-
+! style="text-align:left; background: #ececec;" | Fast page by page download from web servers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Multiple documents in one file
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Document bookmarks and outline
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Reflowable document|Reflowable]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| With Tagged PDF
+|-
+! style="text-align:left; background: #ececec;" | Hyperlinks
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Page thumbnails
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Annotations]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Image transparencies
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Gradient fills
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Alpha channel]] in color definitions
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align:left; background: #ececec;" | Support for multiple transparency blending modes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Change tracking
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align:left; background: #ececec;" | Password protection
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Digital signatures
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[JPEG]] (RGB and CMYK) (ISO/IEC 10918-1)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[JPEG 2000]] (ISO/IEC 15444-1)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[JBIG2]] for grayscale images
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Portable Network Graphics|PNG]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Tagged Image File Format|TIFF]] (RGB and CMYK)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align:left; background: #ececec;" | [[HD Photo|HD Photo / JPEG XR]] (ISO/IEC 29199-2:2009)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align:left; background: #ececec;" | [[Grayscale|Gray]] support
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[RGB]] support
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[CMYK]] support
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | [[Spot color]] support
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="text-align:left; background: #ececec;" | Filename extensions
+| <tt>oxps</tt>
+| <tt>pdf</tt>
+|-
+! style="text-align:left; background: #ececec;" | Internet media types
+| <tt>application/oxps</tt>
+| <tt>application/pdf</tt>
+|-
+! style="text-align:left; background: #ececec;" | Standard licensing
+|
+* Ecma copyrighted free download
+|
+* ISO copyrighted free download
+|- style="background: #ececec" class="sortbottom"
+! File format
+! OpenXPS
+! PDF
+|}
+
+==See also==
+*[[Comparison of document markup languages]]
+*[[List of document markup languages]]
+
+==Further reading==
+* <span class="citation book">Cohn, Richard. ''The Portable Document Format Reference Manual''. [[International Standard Book Number|ISBN]]&nbsp;[[Special:BookSources/978-0201626285|978-0201626285]].</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.au=Cohn%2C+Richard&rft.aufirst=Richard&rft.aulast=Cohn&rft.btitle=The+Portable+Document+Format+Reference+Manual&rft.genre=book&rft.isbn=978-0201626285&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation book">King, James C. [http://portal.acm.org/citation.cfm?doid=1012807.1012810 ''A format design case study: PDF'']. [[International Standard Book Number|ISBN]]&nbsp;[[Special:BookSources/1-58113-848-2|1-58113-848-2]].</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aufirst=James+C.&rft.au=King%2C+James+C.&rft.aulast=King&rft.btitle=A+format+design+case+study%3A+PDF&rft.genre=book&rft_id=http%3A%2F%2Fportal.acm.org%2Fcitation.cfm%3Fdoid%3D1012807.1012810&rft.isbn=1-58113-848-2&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+==References==
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+*[http://www.ecma-international.org/publications/standards/Ecma-388.htm ECMA-388] Open XML Paper Specification
+*[http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502 ISO 32000-1:2008] Document management — Portable document format — Part 1: PDF 1.7
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Office document file formats|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Office document file formats|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Office_document_file_formats&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Multi-purpose [[Office suite|office]] [[document file format]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Editable document formats</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Compound Document Format]]
+* [[Microsoft Office XML formats]]
+* [[Office Open XML]]
+* [[Open Document Architecture]]
+* [[OpenDoc]]
+* [[OpenDocument]]
+* [[OpenOffice.org XML]]
+* [[Revisable-Form Text]]
+* [[Rich Text Format]]
+* [[Uniform Office Format]]
+* [[DOC (computing)|Word Document]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Fixed document formats</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[DjVu]]
+* [[Envoy (WordPerfect)|Envoy]]
+* [[Open XML Paper Specification]]
+* [[Portable Document Format]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Character encoding]]
+** [[ASCII]]
+** [[Unicode]]
+* [[TeX]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Markup language comparisons]]

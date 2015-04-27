@@ -1,0 +1,138 @@
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(May 2010)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+This is an incomplete list of [[software]] that reads [[S.M.A.R.T.]] (Self-Monitoring, Analysis, and Reporting Technology) data from [[hard drives]].
+
+{| class="wikitable sortable " style="font-size: 90%; text-align: center;"
+|-
+! scope="col" | Name
+! scope="col" | Operating system
+! scope="col" | License
+! scope="col" | User interface
+! scope="col" | Fixed drives
+! scope="col" | [[USB]], [[eSATA]] and<br />removable drives
+! scope="col" | [[RAID]] support<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup><ref name="RAID" group="lower-alpha"></ref>
+! scope="col" | Shows S.M.A.R.T. attributes
+! scope="col" | Hard drive<br />self-testing
+! scope="col" | Notification
+! scope="col" | Notes
+|-
+! scope="row" | [[AIDA64]]
+| [[Windows]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Trialware]]
+| GUI
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|(S)ATA
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|most USB
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Some RAID controllers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | Monitoring only available in the Business Edition
+| <br style="clear:both;" />
+|-
+! scope="row" | [[Argus Monitor]]
+| [[Windows]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Trialware]]
+| GUI
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|eSATA, USB
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Some RAID controllers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | By window, sound, email, program execution at choosable parameter changes, threshold
+| Also shows temperature of CPU, GPU, CPU core speed, Intel Turbo Boost status, CPU power consumption, system load and system fan speeds. Can control speed of GPU and system fans.
+|-
+! scope="row" | [[Defraggler]]
+| [[Windows]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Freeware]]
+| GUI
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|eSATA, USB
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Primarily a [[defragmenter]]; support basic S.M.A.R.T. stat display, includes the one-word summary of drive-health.
+|-
+! scope="row" | [[Disk Utility]]
+| [[OS X]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]
+| GUI
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Summary information includes one line for S.M.A.R.T.
+|-
+! scope="row" | [[GNOME Disks]]
+| [[Linux]]
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[LGPL]] v2+
+| GUI
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[USB]] (when used with Live CD)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | GNOME pop-up notification
+| [[LiveCD]]s are available for download, allowing the user to use GNOME Disks without any changes to the computer.
+|-
+! scope="row" | [[smartmontools]]
+| [[Windows]], [[Unix-like]] ([[Linux]], [[OS X]], [[BSD]], etc.)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]] v2
+| CLI and GUI (via [[Smartmontools#User interface|GSmartControl and HDD Guardian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|All for Linux, some for other Unix-like
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|See list of supported devices; SAT driver required on OS X only
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Several RAID controllers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | window, sound, email, program execution at choosable parameter changes, threshold
+| [[LiveCD]]s are available for download, allowing the user to use smartmontools without any changes to the computer.
+|-
+! scope="row" | [[Speccy]]
+| [[Windows]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Freeware]]
+| GUI
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|eSATA, USB
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| <br style="clear:both;" />
+|-
+! scope="row" | [[SpinRite]]
+| [[DOS]], [[FreeDOS]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]
+| GUI
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| <br style="clear:both;" />
+|-
+! scope="col" | Name
+! scope="col" | Operating system
+! scope="col" | License, price
+! scope="col" | User interface
+! scope="col" | Fixed drives
+! scope="col" | [[USB]], [[eSATA]] and<br />removable drives
+! scope="col" | [[RAID]] support<ref name="RAID" group="lower-alpha"></ref>
+! scope="col" | Shows S.M.A.R.T. attributes
+! scope="col" | Hard drive<br />self-testing
+! scope="col" | Notification
+! scope="col" | Notes
+|}
+
+== Notes ==
+<div class="reflist " style=" list-style-type: lower-alpha;">
+<references group="lower-alpha"></references></div>
+
+== References ==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+
+
+[[Category:Software comparisons|S.M.A.R.T. Tools]]
+[[Category:Hard disk computer storage]]

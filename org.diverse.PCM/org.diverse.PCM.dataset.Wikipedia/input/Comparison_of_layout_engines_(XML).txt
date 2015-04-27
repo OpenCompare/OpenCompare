@@ -1,0 +1,431 @@
+The following tables compare [[XML]] compatibility and support for a number of [[layout engine]]s. Please see the individual products' articles for further information. Unless otherwise specified in footnotes, comparisons are based on the stable versions without any add-ons, extensions or external programs.
+
+Version number, if possible, is provided for feature that is fully supported. Proprietary extensions are not included.
+
+== Explanation of the tables ==
+=== Engine nomenclature ===
+
+Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
+
+{| class="wikitable"
+! Layout engine
+! Release version
+! Preview version
+! Used by
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
+| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Amaya (web browser)|Amaya]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
+| 537.36
+| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
+|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+), [[Yandex Browser|Yandex]] and [[Liebao]].
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
+| 
+37.0.2 <small>(April&nbsp;20, 2015<span class="noprint">&#059;&#032;7 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-04-20</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/37.0.2/releasenotes/
+  | title                  = Firefox — Notes (37.0.2) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2015-04-20
+  | accessdate             = 2015-04-20}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+<br />
+ESR 31.6.0 <small>(March&nbsp;31, 2015<span class="noprint">&#059;&#032;27 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-03-31</span>)</span><ref>{{cite web
+  | url                    = https://www.mozilla.org/en-US/firefox/31.6.0/releasenotes/
+  | title                  = Firefox — Notes (31.6.0) — Mozilla
+  | publisher              = [[mozilla.org]]
+  | publication-date       = 2015-03-31
+  | accessdate             = 2015-03-31}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
+| 
+;Beta
+38.0 Beta 6 <small>(April&nbsp;21, 2015<span class="noprint">&#059;&#032;6 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-04-21</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/38.0beta/releasenotes/
+ | title = Firefox — Beta Notes (38.0beta) — Mozilla
+ | date = 2015-04-03
+ | accessdate = 2015-04-03
+}}</ref><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/beta/all/
+ | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
+ | accessdate = 2015-04-22
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
+;Developer Edition
+39.0a2 <small>(April&nbsp;3, 2015<span class="noprint">&#059;&#032;24 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-04-03</span>)</span><ref>{{Cite web
+ | url = https://www.mozilla.org/en-US/firefox/39.0a2/auroranotes/
+ | title = Firefox — Aurora Notes (39.0a2) — Mozilla
+ | date = 2015-04-03
+ | accessdate = 2015-04-05
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
+;Nightly
+40.0a1 <small>(March&nbsp;30, 2015<span class="noprint">&#059;&#032;28 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-03-30</span>)</span><ref>{{Cite web
+  | url = https://wiki.mozilla.org/RapidRelease/Calendar
+  | title = RapidRelease/Calendar - MozillaWiki
+  | accessdate = 2015-02-26
+}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
+|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino (web browser)|Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Cyberfox]]; [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
+| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Konqueror]]<ref group="note" name="switch" />
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
+| 2.12.388
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
+| (IE 5.2.3 for Mac)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
+| 7.0 (IE 11)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
+|-
+!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
+| 534.20
+| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
+|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
+
+===Values===
+Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
+
+{| class="wikitable"
+|-
+! Value
+! Meaning
+|-
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Indicates that the layout engine fully supports this property/element when valid values are used.
+|-
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Indicates that the property/element is completely ignored.
+|-
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
+|-
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
+|-
+| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
+| Indicates that the property/element is no longer supported.
+|-
+| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
+| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
+|-
+| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
+|-
+|}
+
+==Core technologies==
+A general overview of what core XML technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[XML namespace]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.1
+|-
+! style="text-align: left" | xml:id
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+|-
+! style="text-align: left" | [[XML Events]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[XInclude]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.1
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.1
+|-
+! style="text-align: left" | XML Fragment Interchange
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | Associating [[Cascading Style Sheets|CSS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 5.0&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|419
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|}
+
+==XSL technologies==
+A general overview of what XSL technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[XSL Transformations|XSLT]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 6.0&#93;</sup><ref group="note">Trident relies on the [[MSXML]] library to implement XML processing. MSXML3 and MSXML4 implement XSLT 1.0, while MSXML2 implements the December 1998 XSL Working Draft, which predates XSLT 1.0 and is not fully compatible with it. Further complicating matters is that the MSXML libraries can coexist, but only one of them will be used by Trident, depending on a setting in the Windows Registry. Prior to the release of Internet Explorer 6, MSXML2 was the default XML library for Trident, but MSXML3 or MSXML4 could be installed separately and then registered as the default if desired. Regardless of which version was the default, any version, if installed, could be invoked directly by Microsoft-specific scripting code in the document being rendered by Trident.</ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|314
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[XSL Formatting Objects|XSL-FO]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[EXSLT]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+|}
+
+==Linking technologies==
+A general overview of what XML linking technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[XLink]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Gecko, as of version 1.8, only supports simple XLinks, and only for [[Scalable Vector Graphics|SVG]] and [[MathML]].</ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Prince XML supports only simple XLinks.</ref>
+|-
+! style="text-align: left" | [[XML Base]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
+|-
+! style="text-align: left" | [[XPointer]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+|}
+
+==Query technologies==
+A general overview of what XML query technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[XPath 1.0]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.8
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[XPath 2.0]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[XQuery]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+|}
+
+== Schema technologies ==
+A general overview of what [[XML schema]] technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[Document Type Definition|DTD]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Only inline DTDs are allowed, external DTDs are ignored.</ref>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Prior to version 2.0, only inline DTDs are allowed; external DTDs are ignored. In 2.0, it is possible to load external DTDs, but not cross-domain.</ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
+|-
+! style="text-align: left" | [[XML Schema (W3C)|XML Schema]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! style="text-align: left" | [[RELAX NG]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+|}
+
+==Security technologies==
+A general overview of what XML security technologies are supported.
+{| style="text-align: center; width: 95%" class="wikitable"
+! |
+! style="width: 12%;" | [[Trident (layout engine)|Trident]]
+! style="width: 12%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 12%;" | [[WebKit]]
+! style="width: 12%;" | [[KHTML]]
+! style="width: 12%;" | [[Presto (layout engine)|Presto]]
+! style="width: 12%;" | [[Prince XML]]
+|-
+! style="text-align: left" | [[XML Signature]]
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="3" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" | [[XML Encryption]]
+| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="text-align: left" | XML Key Management
+|-
+|}
+
+==Notes==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="note"></references></div>
+
+==References==
+===Specifications===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="spec"></references></div>
+
+===Gecko references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="g"></references></div>
+*<span class="citation web">[http://www.mozilla.org/newlayout/xml/ "Mozilla Developer Documentation"]. ''Mozilla XML support''<span class="reference-accessdate">. Retrieved <span class="nowrap">May 1,</span> 2005</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Mozilla+Developer+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.mozilla.org%2Fnewlayout%2Fxml%2F&rft.jtitle=Mozilla+XML+support&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+===WebKit references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="w"></references></div>
+*<span class="citation web">[http://trac.webkit.org/wiki/SpecSupport/ "WebKit Standards Support Targets"]. ''Webkit XML support''<span class="reference-accessdate">. Retrieved <span class="nowrap">February 3,</span> 2010</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=WebKit+Standards+Support+Targets&rft.genre=article&rft_id=http%3A%2F%2Ftrac.webkit.org%2Fwiki%2FSpecSupport%2F&rft.jtitle=Webkit+XML+support&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+===Presto references===
+*<span class="citation web">[http://www.opera.com/docs/specs/ "Opera Documentation"]. ''Web specifications supported in Opera''<span class="reference-accessdate">. Retrieved <span class="nowrap">May 1,</span> 2005</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Opera+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.opera.com%2Fdocs%2Fspecs%2F&rft.jtitle=Web+specifications+supported+in+Opera&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+===Prince XML references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="r"></references></div>
+*<span class="citation web">[http://www.princexml.com/doc/6.0/ "Prince XML Developer Documentation"]. ''Prince XML support''<span class="reference-accessdate">. Retrieved <span class="nowrap">May 1,</span> 2005</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Prince+XML+Developer+Documentation&rft.genre=article&rft_id=http%3A%2F%2Fwww.princexml.com%2Fdoc%2F6.0%2F&rft.jtitle=Prince+XML+support&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+
+===Other references===
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Layout engine]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Blink (layout engine)|Blink]]
+*[[Gecko (software)|Gecko]]
+*[[KHTML]]
+*[[MARTHA (layout engine)|MARTHA]]
+*[[Prince (software)|Prince]]
+*[[Servo (layout engine)|Servo]]
+*[[Trident (layout engine)|Trident]]
+*[[Spartan browser rendering engine|Spartan]]
+*[[WebKit]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Amaya (web browser)|Amaya]]
+*[[Boxely]]
+*[[Gazelle (web browser)|Gazelle]]
+*[[GtkHTML]]
+*[[HTMLayout]]
+*[[iCab]]
+*[[Mariner (layout engine)|Mariner]]
+*[[Presto (layout engine)|Presto]]
+*[[Tasman (layout engine)|Tasman]]
+*[[Tkhtml]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Comparison of layout engines (HTML)|HTML]]
+**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
+*[[Comparison of layout engines (HTML5)|HTML5]]
+**[[Comparison of layout engines (HTML5 media)|media]]
+**[[Comparison of layout engines (HTML5 canvas)|canvas]]
+*[[Comparison of layout engines (XML)|XML]]
+**[[Comparison of layout engines (XHTML)|XHTML]]
+***[[Comparison of layout engines (XHTML 1.1)|1.1]]
+**[[Comparison of layout engines (MathML)|MathML]]
+**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
+*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
+*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
+*[[Comparison of layout engines (Document Object Model)|DOM]]
+*[[Comparison of layout engines (graphics)|Graphics]]
+*[[Comparison of layout engines (web typography)|Typography]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Layout engine comparisons]]

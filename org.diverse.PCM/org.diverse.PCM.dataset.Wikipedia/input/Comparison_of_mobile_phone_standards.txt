@@ -1,0 +1,834 @@
+<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(August 2007)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+A '''comparison of mobile phone standards''' can be done in many ways.
+
+==Issues==
+[[Global System for Mobile Communications]] (GSM, around 80–85% market share) and [[IS-95]] (around 10–15% market share) were the two most prevalent 2G mobile communication technologies in 2007. In 3G, the most prevalent technology was [[UMTS]] with [[CDMA-2000]] in close contention.
+
+All radio access technologies have to solve the same problems: to divide the finite [[RF spectrum]] among multiple users as efficiently as possible. GSM uses [[Time division multiple access|TDMA]] and [[FDMA]] for user and cell separation. UMTS, IS-95 and CDMA-2000 use [[CDMA]]. [[WiMAX]] and [[LTE (telecommunication)|LTE]] use [[OFDM]].
+
+* [[Time division multiple access|Time-division multiple access (TDMA)]]  provides multiuser access by chopping up the channel into sequential time slices. Each user of the channel takes turns to transmit and receive signals. In reality, only one person is actually using the channel at a specific moment.  This is analogous to [[time-sharing]] on a large computer server.
+
+* [[Frequency division multiple access|Frequency-division multiple access (FDMA)]] provides multiuser access by separating the used frequencies. This is used in GSM to separate cells, which then use TDMA to separate users within the cell.
+
+* [[CDMA|Code-division multiple access (CDMA)]]  This uses a [[digital modulation]] called [[spread spectrum]] which spreads the voice data over a very wide channel in [[pseudorandom number|pseudorandom]] fashion using a user or cell specific pseudorandom code. The receiver undoes the randomization to collect the bits together and produce the original data. As the codes are pseudorandom and selected in such a way as to cause minimal interference to one another, multiple users can talk at the same time and multiple cells can share the same frequency. This causes an added signal noise forcing all users to use more power, which in exchange decreases cell range and battery life.
+
+* [[Orthogonal Frequency Division Multiple Access]] (OFDMA) uses bundling of multiple small frequency bands that are orthogonal to one another to provide for separation of users. The users are multiplexed in the frequency domain by allocating specific sub-bands to individual users. This is often enhanced by also performing TDMA and changing the allocation periodically so that different users get different sub-bands at different times.
+
+In theory, CDMA, TDMA and FDMA have exactly the same spectral efficiency but practically, each has its own challenges – power control in the case of CDMA, timing in the case of TDMA, and frequency generation/filtering in the case of FDMA.
+
+For a classic example for understanding the fundamental difference of TDMA and CDMA imagine a cocktail party, where couples are talking to each other in a single room.  The room represents the available bandwidth: 
+
+:TDMA: A speaker takes turns talking to a listener. The speaker talks for a short time and then stops to let another couple talk. There is never more than one speaker talking in the room, no one has to worry about two conversations mixing. The drawback is that it limits the practical number of discussions in the room (bandwidth wise).
+
+:CDMA: any speaker can talk at any time; however each uses a different language. Each listener can only understand the language of their partner.  As more and more couples talk, the background noise (representing the ''noise floor'') gets louder, but because of the difference in languages, conversations do not mix. The drawback is that at some point, one cannot talk any louder. After this if the noise still rises (more people join the party/cell) the listener cannot make out what the talker is talking about without coming closer to the talker. In effect, CDMA cell coverage decreases as the number of active users increases. This is called cell breathing.
+
+== Comparison table ==
+{| class="wikitable" style="font-size: smaller; text-align: center; width: auto; table-layout: fixed;"
+|-
+! style="width:12em" | Feature
+! [[Nordic Mobile Telephone|NMT]]
+! [[GSM]]
+! [[Universal Mobile Telecommunications System|UMTS]] (3GSM)
+! [[IS-95]] (CDMA one)
+! [[IS-2000]] (CDMA 2000)
+! [[LTE (telecommunication)|LTE]]
+|-
+! Technology
+| [[FDMA]]
+| [[Time division multiple access|TDMA]] and [[FDMA]]
+| [[W-CDMA]]
+| [[CDMA]]
+| [[CDMA]]
+| [[OFDMA]]
+|-
+! Generation
+| [[1G]]
+| [[2G]]
+| [[3G]]
+| [[2G]]
+| [[3G]]
+| [[4G]]
+|-
+! [[Code|Encoding]]
+| [[Analog signal|Analog]]
+| [[Digital signal|Digital]]
+| [[Digital signal|Digital]]
+| [[Digital signal|Digital]]
+| [[Digital signal|Digital]]
+| [[Digital signal|Digital]]
+|-
+! Year of First Use
+| 1981
+| 1991
+| 2001
+| 1995
+| 2000 / 2002
+| 2009
+|-
+! [[Roaming]]
+| Nordics and several other European countries
+| Worldwide, all countries except Japan and South Korea
+| Worldwide
+| Limited
+| Limited
+| Limited
+|-
+! Handset interoperability
+| None
+| [[SIM card]]
+| [[SIM card]]
+| None
+| [[Removable User Identity Module|RUIM]] (rarely used)
+| [[SIM card]]
+|-
+! Common Interference
+| None
+| Some electronics, e.g. amplifiers
+| None
+| None
+| None
+| None
+|-
+! Signal quality/coverage area
+| Good coverage due to low frequencies
+| Good coverage indoors on 850/900&nbsp;MHz. Repeaters possible. 35&nbsp;km hard limit.
+| Smaller cells and lower indoors coverage on 2100&nbsp;MHz; equivalent coverage indoors and superior range to GSM on 850/900&nbsp;MHz.
+| Unlimited cell size, low transmitter power permits large cells
+| Unlimited cell size, low transmitter power permits large cells
+|
+|-
+! Frequency utilization/Call density
+| Very low density
+| 0.2&nbsp;MHz = 8 timeslots. Each timeslot can hold up to 2 calls (4 calls with VAMOS) through interleaving.
+| 5&nbsp;MHz = 2 Mbit/s. 42Mbit/s for HSPA+. Each call uses 1.8-12 kbit/s depending on chosen quality and audio complexity.
+| Lower than CDMA-2000?
+| 1.228&nbsp; MHz = 3Mbit/s
+|
+|-
+! [[Handoff]]
+| Hard
+| Hard
+| Soft
+| Soft
+| Soft
+| Hard
+|-
+! Voice and Data at the same time
+| No
+| Yes [[General Packet Radio Service|GPRS]] Class A
+| Yes
+| No
+| No EVDO / Yes SVDO
+| No (data only)<br/>Voice possible though [[VoLTE]] or fallback to 2G/3G
+|-
+|}
+
+== Strengths and Weaknesses of IS-95 and GSM ==
+
+=== Advantages of GSM ===
+
+* Less signal deterioration inside buildings.
+* Ability to use [[Cell phone repeater|repeater]]s.
+* [[Talktime]] is generally higher in GSM phones due to the pulse nature of transmission.
+* The availability of [[Subscriber Identity Module]]s allows users to switch networks and handsets at will, aside from a [[SIM lock|subsidy lock]].
+* GSM [[List of mobile network operators|covers virtually all parts of the world]] so international [[roaming]] is not a problem.
+* The much bigger number of [[List of mobile network operators|subscribers globally]] creates a better [[network effect]] for GSM handset makers, carriers and end users.
+
+=== Disadvantages of GSM ===
+
+* Interferes with some electronics, especially certain audio amplifiers.
+* Intellectual property is concentrated among a few industry participants, creating barriers to entry for new entrants and limiting competition among phone manufacturers. Situation is however worse in CDMA-based systems like IS-95, where Qualcomm is the major IP holder.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (January 2008)">citation needed</span>]]</i>&#93;</sup>
+* GSM has a fixed maximum cell site range of 120&nbsp;km, which is imposed by [[Timing advance|technical limitations]].  This is expanded from the old limit of 35&nbsp;km.
+
+=== Advantages of IS-95 ===
+
+* Capacity is IS-95's biggest asset; it can accommodate more users per [[MHz]] of [[Bandwidth (signal processing)|bandwidth]] than any other technology.
+* Has no built-in limit to the number of concurrent users.
+* Uses precise clocks that do not limit the distance a tower can cover.
+* Consumes less power and covers large areas so cell size in IS-95 is larger.
+* Able to produce a reasonable call with lower signal (cell phone reception) levels.
+* Uses [[Soft handover|soft handoff]], reducing the likelihood of dropped calls.
+* IS-95's variable rate voice coders reduce the rate being transmitted when speaker is not talking, which allows the channel to be packed more efficiently.
+* Has a well-defined path to higher data rates.
+
+=== Disadvantages of IS-95 ===
+
+* Most technologies are patented and must be licensed from [[Qualcomm]].
+* ''Breathing'' of base stations, where coverage area shrinks under load. As the number of subscribers using a particular site goes up, the range of that site goes down.
+* Because IS-95 towers interfere with each other, they are normally installed on much shorter towers.  Because of this, IS-95 may not perform well in hilly terrain.
+* USSD, PTT, concatenated/E-sms are not supported by IS-95/CDMA
+* IS-95 covers a smaller portion of the world, and IS-95 phones are generally unable to roam internationally.
+* Manufacturers are often hesitant to release IS-95 devices due to the smaller market, so features are sometimes late in coming to IS-95 devices.
+* Even barring [[SIM lock|subsidy locks]], CDMA phones are linked by [[Electronic Serial Number|ESN]] to a specific network, thus phones are typically not portable across providers.
+
+== Development of the Market Share of Mobile Standards ==
+
+This graphic compares the market shares of the different mobile standards.
+
+[[Image:Cellphone-subscribers-by-technology.svg|none|frame|Cellphone subscribers by technology (left Y axis) and total number of subscribers globally (right Y axis)]]
+
+In a fast-growing market, GSM/3GSM (red) grows faster than the market and is gaining market share, the CDMA family (blue) grows at about the same rate as the market, while other technologies (grey) are being phased out
+
+==Comparison of wireless Internet standards==
+As a reference, a comparison of mobile and non-mobile wireless Internet standards follows.
+{| class="wikitable sortable"
+|+ Comparison of mobile Internet access methods
+! Common <br> Name !! Family !! Primary Use !! Radio Tech !! [[Downstream (networking)|Downstream]] <br> (Mbit/s) !! [[Upstream (networking)|Upstream]] <br> (Mbit/s) !! Notes
+|-
+! [[HSPA+]]
+| [[3GPP]] || 3G Data || [[Code Division Multiple Access|CDMA]]/[[Frequency division duplex|FDD]]<br />[[MIMO]] || 21<br />42<br />84<br />672 || 5.8<br />11.5<br />22<br />168 || [[List of HSPA+ networks|HSPA+ is widely deployed]]. Revision 11 of the 3GPP states that  [[HSPA+]] is expected to have a throughput capacity of 672&nbsp;Mbit/s.
+|-
+! [[3GPP Long Term Evolution|LTE]]
+| [[3GPP]] || General 4G || [[OFDMA]]/[[MIMO]]/[[SC-FDMA]] || 100 Cat3<br />150  Cat4<br />300 Cat5<br /> (in 20&nbsp;MHz FDD) <ref name="ltedef">{{cite web |title= LTE |date= 2009 |work= 3GPP web site |url= http://www.3gpp.org/article/lte |accessdate= August 20, 2011 }}</ref><br /> || 50  Cat3/4<br />75  Cat5<br /> (in 20&nbsp;MHz FDD)<ref name="ltedef"/> || [[LTE Advanced|LTE-Advanced]] update expected to offer peak rates up to 1&nbsp;Gbit/s fixed speeds and 100 Mb/s to mobile users.
+|-
+! [[WiMAX|WiMax rel 1]]
+| [[802.16]] || WirelessMAN || [[MIMO]]-[[Orthogonal frequency-division multiple access|SOFDMA]] || 37 (10&nbsp;MHz TDD) || 17 (10&nbsp;MHz TDD) ||  With 2x2 MIMO.<ref name=autogenerated1>{{cite web|url=http://www.wimaxforum.org/sites/wimaxforum.org/files/document_library/wimax_802.16m.pdf |publisher=WiMax Forum |title=WiMAX and the IEEE 802.16m Air Interface Standard |date=4 April 2010 |accessdate=2012-02-07}}</ref>
+|-
+! [[WiMAX|WiMax rel 1.5]]
+| [[802.16-2009]] || WirelessMAN || [[MIMO]]-[[Orthogonal frequency-division multiple access|SOFDMA]] || 83 (20&nbsp;MHz TDD)<br>141 (2x20&nbsp;MHz FDD) || 46 (20&nbsp;MHz TDD)<br>138 (2x20&nbsp;MHz FDD) ||  With 2x2 MIMO.Enhanced with 20&nbsp;MHz channels in 802.16-2009<ref name=autogenerated1 />
+|-
+! [[WiMax|WiMAX rel 2]]
+| [[802.16m]] || WirelessMAN || [[MIMO]]-[[Orthogonal frequency-division multiple access|SOFDMA]] || <u>2x2 MIMO</u><br>110 (20&nbsp;MHz TDD)<br>183 (2x20&nbsp;MHz FDD)<br><u>4x4 MIMO</u><br>219 (20&nbsp;MHz TDD)<br>365 (2x20&nbsp;MHz FDD) || <u>2x2 MIMO</u><br>70 (20&nbsp;MHz TDD)<br>188 (2x20&nbsp;MHz FDD)<br><u>4x4 MIMO</u><br>140 (20&nbsp;MHz TDD)<br>376 (2x20&nbsp;MHz FDD) || Also, low mobility users can aggregate multiple channels to get a download throughput of up to 1&nbsp;Gbit/s<ref name=autogenerated1 />
+|-
+! [[Flash-OFDM]]
+| Flash-OFDM || Mobile Internet<br />mobility up to 200&nbsp;mph (350&nbsp;km/h) || [[Flash-OFDM]] || 5.3<br />10.6<br />15.9 || 1.8<br />3.6<br />5.4 || Mobile range 30&nbsp;km (18 miles)<br />extended range 55 km (34 miles) 
+|-
+! [[HIPERMAN]]
+| HIPERMAN || Mobile Internet || [[OFDM]] || colspan="2" style="text-align:center;"| 56.9 ||
+|-
+! [[Wi-Fi]]
+| 802.11<br/>([[IEEE 802.11n|11n]]) || Mobile&nbsp;Internet|| [[OFDM]]/[[MIMO]] || colspan="2" style="text-align:center;"| 288.8 (using 4x4 configuration in 20&nbsp;MHz bandwidth) or 600 (using 4x4 configuration in 40&nbsp;MHz bandwidth)|| 
+[[High-gain antenna | Antenna]], [[RF front end]] enhancements and minor protocol timer tweaks have helped deploy long range [[Point-to-point (network topology)| P2P]] networks compromising on radial coverage, throughput and/or spectra efficiency ([http://www.alvarion.com/news-center/global-press-releases/158-worlds-longest-wi-fi-connection-made-by-the-swedish-space-corporation 310&nbsp;km] & [http://www.eslared.org.ve/articulos/Long%20Distance%20WiFi%20Trial.pdf 382&nbsp;km]) <br> 
+|-
+! [[iBurst]]
+| [[IEEE 802.20|802.20]] || Mobile&nbsp;Internet || [[HC-SDMA]]/[[Time division duplex|TDD]]/[[MIMO]] || 95 || 36 || Cell Radius: 3–12 km<br />Speed: 250&nbsp;km/h<br />Spectral Efficiency: 13 bits/s/Hz/cell<br />Spectrum Reuse Factor: "1"
+|-
+! [[Enhanced Data Rates for GSM Evolution#EDGE Evolution|EDGE Evolution]]
+| [[GSM]] || Mobile&nbsp;Internet || [[Time division multiple access|TDMA]]/[[Frequency division duplex|FDD]] || 1.6 || 0.5 || [[3GPP]] Release 7
+|-
+! [[UMTS]] W-CDMA<br />[[High Speed Packet Access|HSPA]] ([[HSDPA]]+[[HSUPA]])
+| [[UMTS|UMTS/3GSM]] || General 3G || [[Code Division Multiple Access|CDMA]]/[[Frequency division duplex|FDD]]<br /><br />CDMA/FDD/[[MIMO]] || 0.384<br />14.4 || 0.384<br />5.76 || [[List of HSDPA networks|HSDPA is widely deployed]]. Typical downlink rates today 2&nbsp;Mbit/s, ~200&nbsp;kbit/s uplink; HSPA+ downlink up to 56&nbsp;Mbit/s. 
+|-
+! [[UMTS-TDD]]
+| UMTS/3GSM || Mobile Internet || [[Code Division Multiple Access|CDMA]]/[[Time division duplex|TDD]] || colspan="2" style="text-align:center;"| 16 || Reported speeds according to [http://www.ipwireless.com/technology/ IPWireless] using 16QAM modulation similar to [[HSDPA]]+[[HSUPA]]
+|-
+! [[EV-DO]]&nbsp;Rel.&nbsp;0<br />EV-DO&nbsp;Rev.A<br />EV-DO&nbsp;Rev.B
+| CDMA2000 || Mobile Internet || [[Code Division Multiple Access|CDMA]]/[[Frequency division duplex|FDD]] || 2.45<br />3.1<br />4.9xN || 0.15<br />1.8<br />1.8xN || Rev B note: N is the number of 1.25&nbsp;MHz carriers used. EV-DO is not designed for voice, and requires a fallback to 1xRTT when a voice call is placed or received.
+|}
+
+Notes: All speeds are theoretical maximums and will vary by a number of factors, including the use of external antennas, distance from the tower and the ground speed (e.g. communications on a train may be poorer than when standing still). Usually the bandwidth is shared between several terminals. The performance of each technology is determined by a number of constraints, including the [[spectral efficiency]] of the technology, the cell sizes used, and the amount of spectrum available. For more information, see ''[[Comparison of wireless data standards]]''. 
+
+For more comparison tables, see [[Bit rate#Progress trends|bit rate progress trends]], [[comparison of mobile phone standards]], [[spectral efficiency comparison table]] and [[OFDM system comparison table]].
+
+== See also ==
+* [[Comparison of wireless data standards]]
+* [[Spectral_efficiency#Comparison_table|Spectral efficiency comparison table]]
+* [[SMS]] - contain the content of its standardization
+
+== References ==
+
+<references/>
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Cellular network standards|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Cellular network standards|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Cellular_network_standards&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Cellular network|Cellular network standards]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Mobile radio telephone|0G]] ([[radiotelephone|radio telephones]])</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile Telephone Service|MTS]]
+* [[MTD (mobile network)|MTA
+*   MTB
+*   MTC
+*   MTD]]
+* [[Improved Mobile Telephone Service|IMTS]]
+* [[Advanced Mobile Telephone System|AMTS]]
+* [[OLT (mobile network)|OLT]]
+* [[Autoradiopuhelin]]
+* [[B-Netz]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[1G]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">[[Advanced Mobile Phone System|AMPS]] family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[Advanced Mobile Phone System|AMPS]] (TIA/EIA/IS-3, ANSI/TIA/EIA-553)
+* N-AMPS (TIA/EIA/IS-91)
+* [[Total Access Communication System|TACS]]
+* [[Total Access Communication System|ETACS]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">Other</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[Nordic Mobile Telephone|NMT]]
+* [[C-Netz|C-450]]
+* [[Hicap]]
+* [[Mobitex]]
+* [[DataTAC]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[2G]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">[[GSM]]/[[3GPP]] family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[GSM]]
+* [[Circuit Switched Data|CSD]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">[[3rd Generation Partnership Project 2|3GPP2]] family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* cdmaOne ([[IS-95|TIA/EIA/IS-95]] and ANSI-J-STD 008)
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">[[Advanced Mobile Phone System|AMPS]] family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[Digital AMPS|D-AMPS]] ([[IS-54]] and [[IS-136]])
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">Other</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[Cellular digital packet data|CDPD]]
+* [[iDEN]]
+* [[Personal Digital Cellular|PDC]]
+* [[Personal Handy-phone System|PHS]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[2G#Evolution|2G transitional<br />(2.5G, 2.75G)]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">[[GSM]]/[[3GPP]] family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[High-Speed Circuit-Switched Data|HSCSD]]
+* [[General Packet Radio Service|GPRS]]
+* [[Enhanced Data Rates for GSM Evolution|EDGE/EGPRS]] (UWC-136)
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">3GPP2 family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[CDMA2000|CDMA2000 1X]] (TIA/EIA/IS-2000)
+* 1X Advanced
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[WiDEN]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[3G|3G (IMT-2000)]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">[[3GPP]] family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[Universal Mobile Telecommunications System|UMTS]]
+** [[W-CDMA (UMTS)|UTRA-FDD / W-CDMA]]
+** [[TD-SCDMA|UTRA-TDD LCR / TD-SCDMA]]
+** [[TD-CDMA|UTRA-TDD HCR / TD-CDMA]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">3GPP2 family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* CDMA2000 [[Evolution-Data Optimized|1xEV-DO Release 0]] (TIA/IS-856)
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[3G#Evolution|3G transitional<br />(3.5G, 3.75G, 3.9G)]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">3GPP family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[High Speed Packet Access |HSPA]]
+** [[High-Speed Downlink Packet Access|HSDPA]]
+** [[High-Speed Uplink Packet Access|HSUPA]]
+* [[Evolved HSPA|HSPA+]]
+* [[LTE (telecommunication)|LTE]] ([[E-UTRA]])
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">3GPP2 family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* CDMA2000 [[Evolution-Data Optimized|1xEV-DO Revision A]] (TIA/EIA/IS-856-A)
+* [[Evolution-Data Optimized|EV-DO Revision B]] (TIA/EIA/IS-856-B)
+* DO Advanced
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">[[Institute of Electrical and Electronics Engineers|IEEE]] family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[WiMAX|Mobile WiMAX]]
+** [[IEEE 802.16|IEEE 802.16e]]
+* [[Orthogonal frequency-division multiplexing#FLASH-OFDM|Flash-OFDM]]
+* [[iBurst]]
+** [[IEEE 802.20]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[4G]]<br />([[IMT Advanced]])</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:10em">3GPP family</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[LTE Advanced]] ([[E-UTRA]])
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:10em">IEEE family</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+* [[WiMAX]] ([[IEEE 802.16]]m)
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[5G]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><td colspan="2" class="navbox-list navbox-even" style="padding:0px"><div style="padding:0em 0.25em">
+* [[concept|conceptual]] (currently under formal research & development)
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related articles</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Cellular network]]s
+* [[Mobile telephony]]
+* [[History of mobile phones|History]]
+* [[List of mobile phone standards|List of standards]]
+* [[Comparison of mobile phone standards|Comparison of standards]]
+* [[Channel access method]]s
+* [[Spectral efficiency#Comparison table|Spectral efficiency comparison table]]
+* [[Cellular frequencies]]
+* [[GSM frequency bands]]
+* [[UMTS frequency bands]]
+* [[Mobile broadband]]
+* [[Next Generation Mobile Networks|NGMN Alliance]]
+* [[MIMO]]
+</div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Mobile phones|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Mobile phones|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Mobile_phones&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Mobile phone]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile phone features|Features]]
+* [[GSM]]
+** [[GSM services|services]]
+* [[History of mobile phones|History]]
+* [[Mobile operating system|Operating system]]
+* [[Mobile security|Security]]
+* [[Mobile telephony|Telephony]]
+** [[airplane mode]]
+* [[Text messaging]]
+** [[Short Message Service|SMS]]
+** [[Multimedia Messaging Service|MMS]]
+* [[Mobile phone spam|Spam]]
+* [[Mobile phone tracking|Tracking]]
+* [[Mobile Web|Web browsing]]
+** [[HTML5 in mobile devices|HTML5]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Software</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Mobile app|Apps]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile application development|Development]]
+* [[List of mobile software distribution platforms|Distribution]]
+* [[Mobile application management|Management]]
+* [[Mobile cloud computing|Cloud computing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Mobile commerce|Commerce]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile banking|Banking]]
+* [[Mobile marketing|Marketing]]
+** [[Mobile advertising|advertising]]
+** [[Mobile campaign|campaigns]]
+* [[Mobile payment|Payments]]
+** [[Mobile donating|donating]]
+* [[Mobile ticketing|Ticketing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Mobile content|Content]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile blogging|Blogging]]
+* [[Push email|Email]]
+* [[Mobile gambling|Gambling]]
+* [[Mobile game|Gaming]]
+* [[mHealth|Health]]
+* [[Mobile instant messaging|Instant messaging]]
+* [[M-learning|Learning]]
+* [[Mobile music|Music]]
+* [[Mobile news|News]]
+* [[Mobile search|Search]]
+** [[Mobile local search|local]]
+* [[Mobile social network|Social]]
+** [[Mobile social address book|address book]]
+* [[Mobile television|Television]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[:Category:Mobile phone culture|Culture]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile phone charm|Charms]]
+* [[Mobile comic|Comics]]
+* [[Mobile dating|Dating]]
+* [[Japanese mobile phone culture]]
+* [[Cell phone novel|Novels]]
+* [[Ringtone]]s
+** [[silent mode]]
+* [[SMS language|Txtspk]]
+* [[Mobile wallpaper|Wallpaper]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Mobile device|Devices]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[:Category:Mobile phone manufacturers|Manufacturers]]
+* [[List of 3D-enabled mobile phones|3D phone]]
+* [[Camera phone]]
+* [[Car phone]]
+* [[Feature phone]]
+* [[Projector phone]]
+* [[Satellite phone]]
+* [[Smartphone]]
+* [[SIM lock]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Form factor (mobile phones)|Form factors]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Form factor (mobile phones)#Bar|Bar]]
+* [[Flip (form)|Flip]]
+* [[Phablet]]
+* [[Form factor (mobile phones)#Slider|Slider]]
+* [[Watch phone|Watch]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Comparison of smartphones|Smartphones]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Android (operating system)|Android devices]]
+** [[Android rooting|rooting]]
+* [[List_of_iOS_devices#iPhone|iPhone]]
+** [[iOS jailbreaking]]
+* [[List of open-source mobile phones|Open-source mobile phones]]
+* [[List of Symbian devices|Symbian devices]]
+* [[List of Windows Phone devices|Windows Phone devices]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Environment <br /> and health</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[BlackBerry thumb]]
+* [[Mobile phones and driving safety|Driving safety]]
+* [[Electronic waste]]
+* [[Common External Power Supply|External power supply]]
+* [[Phantom Vibration Syndrome]]
+* [[Mobile phone radiation and health|Radiation and health]]
+* [[Mobile phone recycling|Recycling]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Law</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Carrier IQ]]
+* [[Restrictions on cell phone use while driving in the United States|Use restrictions while driving]]
+* [[Legality of recording by civilians]]
+* [[Photography and the law]]
+* [[Telephone tapping]]
+* [[Texting while driving]]
+* [[Mobile phones in prison]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Networking</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Channel capacity]]
+* [[Cellular frequencies|Frequencies]]
+* [[Multi-band device|Multi-band]]
+* [[List of mobile network operators|Network operators]]
+* [[Roaming]]
+* [[Mobile phone signal|Signal]]
+* [[Subscriber identity module|SIM]] ([[Dual SIM]])
+* [[Comparison of mobile phone standards|Standards comparison]]
+* [[Tethering]]
+* [[Mobile VoIP|VoIP]]
+* [[Wireless Application Protocol|WAP]]
+* [[XHTML Mobile Profile|XHTML-MP]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Generations</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Mobile radio telephone|0G]]
+* [[1G]]
+* [[2G]]
+* [[3G]]
+** [[3G adoption|adoption]]
+* [[3.5G]]
+* [[4G]]
+* [[5G]]
+</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Telecommunications|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Telecommunications|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Telecommunications&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Telecommunication]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of telecommunication|History]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">[[File:Telecom-icon.svg|50px|right|Telecommunications symbol]]
+* [[Beacon#For defensive communications|Beacon]] 
+* [[History of broadcasting|Broadcasting]] 
+* [[Communications satellite#History|Communications satellite]] 
+* [[Computer network#History|Computer network]] 
+* [[Drums in communication|Drums]] 
+* [[Electrical telegraph#History|Electrical telegraph]] 
+* [[Fax#History|Fax]] 
+* [[Heliograph#History|Heliographs]] 
+* [[Hydraulic telegraph#Greek hydraulic semaphore system|Hydraulic telegraph]] 
+* [[History of the Internet|Internet]] 
+* [[Mass media#History|Mass media]] 
+* [[History of mobile phones|Mobile phone]] 
+* [[Optical communication|Optical telecommunication]]
+* [[Semaphore line#History|Optical telegraphy]] 
+* [[Photophone]]
+* [[History of the prepaid mobile phone|Prepaid mobile phone]]
+* [[History of radio|Radio]]
+* [[Radiotelephone]]
+* [[Communications satellite|Satellite communications]]
+* [[Smoke signal]]s
+* [[History of telecommunication|Telecommunications history]]
+* [[Telegraphy]] 
+* [[History of the telephone|Telephone]] 
+* ''[[The Telephone Cases]]'' 
+* [[History of television|Television]]
+* [[Timeline of communication technology]]
+* [[Submarine communications cable#Early history: telegraph and coaxial cables|Undersea telegraph line]]
+* [[Videoconferencing#History|Videoconferencing]]
+* [[Videophone#Early history|Videophone]]
+* [[History of videotelephony|Videotelephony]]</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Pioneers</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Edwin Howard Armstrong]] 
+* [[John Logie Baird]] 
+* [[Alexander Graham Bell]]
+* [[Tim Berners-Lee]]
+* [[Jagadish Chandra Bose]]
+* [[Vint Cerf]]
+* [[Claude Chappe]] 
+* [[Lee de Forest]]
+* [[Philo Farnsworth]] 
+* [[Reginald Fessenden]]
+* [[Elisha Gray]]
+* [[Guglielmo Marconi]] 
+* [[Alexander Stepanovich Popov]]
+* [[Johann Philipp Reis]]
+* [[Nikola Tesla]]
+* [[Camille Papin Tissot]]
+* [[Alfred Vail]] 
+* [[Charles Wheatstone]] 
+* [[Vladimir K. Zworykin]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Transmission medium|Transmission<br/>media]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Coaxial cable]] 
+* [[Free-space optical communication|Free-space optical]] 
+* [[Optical fiber]] 
+* [[Radio wave]]s 
+* [[Telephone line]]s 
+* [[Microwave#Communication|Terrestrial microwave]]
+* [[IEEE P1906.1|Molecules]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Network topology]]<br/>and switching</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications link|Links]]
+* [[Node (networking)|Nodes]]
+* [[Terminal (telecommunication)|Terminal node]]
+* [[Network switch]]ing&nbsp;([[Circuit switching|circuit]]
+*   [[Packet switching|packet]])
+* [[Telephone exchange]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Multiplexing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Multi-user MIMO#SDMA|Space-division]]
+* [[Frequency-division multiplexing|Frequency-division]]
+* [[Time-division multiplexing|Time-division]]
+* [[Polarization-division multiplexing|Polarization-division]]
+* [[Orbital angular momentum multiplexing|Orbital angular-momentum]]
+* [[Code division multiple access|Code-division]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Telecommunications network|Network]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[ARPANET]] 
+* [[BITNET]] 
+* [[Computer network|Computer]]
+* [[Ethernet]] 
+* [[FidoNet]] 
+* [[Internet]] 
+* [[Integrated Services Digital Network|ISDN]] 
+* [[Local area network|LAN]]
+* [[Mobile telephony|Mobile]]
+* [[Next-generation network|NGN]]
+* [[Public switched telephone network|Public Switched Telephone]] 
+* [[Radio network|Radio]] 
+* [[Telecommunications equipment]]
+* [[Television network|Television]] 
+* [[Telex]] 
+* [[Wide area network|WAN]] 
+* [[Wireless network|Wireless]]
+* [[World Wide Web]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">By continent</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Africa topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Africa topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Africa_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Telecommunications in  Africa</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Sovereign state]]s</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Algeria |Algeria]]
+* [[Telecommunications in  Angola |Angola]]
+* [[Telecommunications in  Benin |Benin]]
+* [[Telecommunications in  Botswana |Botswana]]
+* [[Telecommunications in  Burkina Faso |Burkina Faso]]
+* [[Telecommunications in  Burundi |Burundi]]
+* [[Telecommunications in  Cameroon |Cameroon]]
+* [[Telecommunications in  Cape Verde |Cape Verde]]
+* [[Telecommunications in  the_Central African Republic |Central African Republic]]
+* [[Telecommunications in  Chad |Chad]]
+* [[Telecommunications in  Comoros |Comoros]]
+* [[Telecommunications in  the_Democratic Republic of the Congo |Democratic Republic of the Congo]]
+* [[Telecommunications in  the_Republic of the Congo |Republic of the Congo]]
+* [[Telecommunications in  Djibouti |Djibouti]]
+* [[Telecommunications in  Egypt |Egypt]]
+* [[Telecommunications in  Equatorial Guinea |Equatorial Guinea]]
+* [[Telecommunications in  Eritrea |Eritrea]]
+* [[Telecommunications in  Ethiopia |Ethiopia]]
+* [[Telecommunications in  Gabon |Gabon]]
+* [[Telecommunications in  the_Gambia |The Gambia]]
+* [[Telecommunications in  Ghana |Ghana]]
+* [[Telecommunications in  Guinea |Guinea]]
+* [[Telecommunications in  Guinea-Bissau |Guinea-Bissau]]
+* [[Telecommunications in  Ivory Coast |Ivory Coast (Côte d'Ivoire)]]
+* [[Telecommunications in  Kenya |Kenya]]
+* [[Telecommunications in  Lesotho |Lesotho]]
+* [[Telecommunications in  Liberia |Liberia]]
+* [[Telecommunications in  Libya |Libya]]
+* [[Telecommunications in  Madagascar |Madagascar]]
+* [[Telecommunications in  Malawi |Malawi]]
+* [[Telecommunications in  Mali |Mali]]
+* [[Telecommunications in  Mauritania |Mauritania]]
+* [[Telecommunications in  Mauritius |Mauritius]]
+* [[Telecommunications in  Morocco |Morocco]]
+* [[Telecommunications in  Mozambique |Mozambique]]
+* [[Telecommunications in  Namibia |Namibia]]
+* [[Telecommunications in  Niger |Niger]]
+* [[Telecommunications in  Nigeria |Nigeria]]
+* [[Telecommunications in  Rwanda |Rwanda]]
+* [[Telecommunications in  São Tomé and Príncipe |São Tomé and Príncipe]]
+* [[Telecommunications in  Senegal |Senegal]]
+* [[Telecommunications in  Seychelles |Seychelles]]
+* [[Telecommunications in  Sierra Leone |Sierra Leone]]
+* [[Telecommunications in  Somalia |Somalia]]
+* [[Telecommunications in  South Africa |South Africa]]
+* [[Telecommunications in  South Sudan |South Sudan]]
+* [[Telecommunications in  Sudan |Sudan]]
+* [[Telecommunications in  Swaziland |Swaziland]]
+* [[Telecommunications in  Tanzania |Tanzania]] 
+* [[Telecommunications in  Togo |Togo]]
+* [[Telecommunications in  Tunisia |Tunisia]]
+* [[Telecommunications in  Uganda |Uganda]]
+* [[Telecommunications in  Zambia |Zambia]]
+* [[Telecommunications in  Zimbabwe |Zimbabwe]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">[[List of states with limited recognition|States with limited<br/>recognition]]</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  the_Sahrawi Arab Democratic Republic |Sahrawi Arab Democratic Republic]]
+* [[Telecommunications in  Somaliland |Somaliland]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">[[Dependent territory|Dependencies]] and<br/>other territories</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"><div>
+    
+* [[Telecommunications in  the_Canary Islands |Canary Islands]]&nbsp;/ [[Telecommunications in  Ceuta |Ceuta]]&nbsp;/ [[Telecommunications in  Melilla |Melilla]]&nbsp;/ [[Telecommunications in  Plazas de soberanía |Plazas de soberanía]]&nbsp;<small style="font-size:85%;">(Spain)</small>
+* [[Telecommunications in  Madeira |Madeira]]&nbsp;<small style="font-size:85%;">(Portugal)</small>
+* [[Telecommunications in  Mayotte |Mayotte]]&nbsp;/ [[Telecommunications in  Réunion |Réunion]]&nbsp;<small style="font-size:85%;">(France)</small> 
+* [[Telecommunications in  Saint Helena |Saint Helena]]&nbsp;/ [[Telecommunications in  Ascension Island |Ascension Island]]&nbsp;/ [[Telecommunications in  Tristan da Cunha |Tristan da Cunha]]&nbsp;<small style="font-size:85%;">(United Kingdom)</small>
+* [[Telecommunications in  Western Sahara |Western Sahara]]
+</div></div></td></tr></table><div>
+</div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Asia topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Asia topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Asia_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Telecommunications in  Asia</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[List of sovereign states|Sovereign states]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Afghanistan |Afghanistan]]
+* [[Telecommunications in  Armenia |Armenia]]
+* [[Telecommunications in  Azerbaijan |Azerbaijan]]
+* [[Telecommunications in  Bahrain |Bahrain]]
+* [[Telecommunications in  Bangladesh |Bangladesh]]
+* [[Telecommunications in  Bhutan |Bhutan]]
+* [[Telecommunications in  Brunei |Brunei]]
+* [[Telecommunications in  Burma |Burma (Myanmar)]]
+* [[Telecommunications in  Cambodia |Cambodia]]
+* [[Telecommunications in  China |China]]
+* [[Telecommunications in  Cyprus |Cyprus]]
+* [[Telecommunications in  East Timor |East Timor (Timor-Leste)]]
+* [[Telecommunications in  Egypt |Egypt]]
+* [[Telecommunications in  Georgia (country) |Georgia]]
+* [[Telecommunications in  India |India]]
+* [[Telecommunications in  Indonesia |Indonesia]]
+* [[Telecommunications in  Iran |Iran]]
+* [[Telecommunications in  Iraq |Iraq]]
+* [[Telecommunications in  Israel |Israel]]
+* [[Telecommunications in  Japan |Japan]]
+* [[Telecommunications in  Jordan |Jordan]]
+* [[Telecommunications in  Kazakhstan |Kazakhstan]]
+* [[Telecommunications in  North Korea |North Korea]]
+* [[Telecommunications in  South Korea |South Korea]]
+* [[Telecommunications in  Kuwait |Kuwait]]
+* [[Telecommunications in  Kyrgyzstan |Kyrgyzstan]]
+* [[Telecommunications in  Laos |Laos]]
+* [[Telecommunications in  Lebanon |Lebanon]]
+* [[Telecommunications in  Malaysia |Malaysia]]
+* [[Telecommunications in  the Maldives |Maldives]]
+* [[Telecommunications in  Mongolia |Mongolia]]
+* [[Telecommunications in  Nepal |Nepal]]
+* [[Telecommunications in  Oman |Oman]]
+* [[Telecommunications in  Pakistan |Pakistan]]
+* [[Telecommunications in  the Philippines |Philippines]]
+* [[Telecommunications in  Qatar |Qatar]]
+* [[Telecommunications in  Russia |Russia]]
+* [[Telecommunications in  Saudi Arabia |Saudi Arabia]]
+* [[Telecommunications in  Singapore |Singapore]]
+* [[Telecommunications in  Sri Lanka |Sri Lanka]]
+* [[Telecommunications in  Syria |Syria]]
+* [[Telecommunications in  Tajikistan |Tajikistan]]
+* [[Telecommunications in  Thailand |Thailand]]
+* [[Telecommunications in  Turkey |Turkey]]
+* [[Telecommunications in  Turkmenistan |Turkmenistan]]
+* [[Telecommunications in  the United Arab Emirates |United Arab Emirates]]
+* [[Telecommunications in  Uzbekistan |Uzbekistan]]
+* [[Telecommunications in  Vietnam |Vietnam]]
+* [[Telecommunications in  Yemen |Yemen]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[List of states with limited recognition|States with<br/>limited recognition]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Abkhazia |Abkhazia]]
+* [[Telecommunications in  the_Nagorno-Karabakh Republic |Nagorno-Karabakh]]
+* [[Telecommunications in  Northern Cyprus |Northern Cyprus]]
+* [[Telecommunications in  the Palestinian territories |Palestine]]
+* [[Telecommunications in  South Ossetia |South Ossetia]]
+* [[Telecommunications in  Taiwan |Taiwan]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Dependent territory|Dependencies]] and<br/>other territories</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  the British Indian Ocean Territory |British Indian Ocean Territory]]
+* [[Telecommunications in  Christmas Island |Christmas Island]]
+* [[Telecommunications in  the Cocos (Keeling) Islands |Cocos (Keeling) Islands]]
+* [[Telecommunications in  Hong Kong |Hong Kong]]
+* [[Telecommunications in  Macau |Macau]]
+</div></td></tr></table><div>
+</div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Europe topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Europe topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Europe_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Telecommunications in  Europe ]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Sovereign state]]s</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Albania |Albania]]
+* [[Telecommunications in  Andorra |Andorra]]
+* [[Telecommunications in  Austria |Austria]]
+* [[Telecommunications in  Azerbaijan |Azerbaijan]]
+* [[Telecommunications in  Belarus |Belarus]]
+* [[Telecommunications in  Belgium |Belgium]]
+* [[Telecommunications in  Bosnia and Herzegovina |Bosnia and Herzegovina]]
+* [[Telecommunications in  Bulgaria |Bulgaria]]
+* [[Telecommunications in  Croatia |Croatia]]
+* [[Telecommunications in  the Czech Republic |Czech Republic]]
+* [[Telecommunications in  Denmark |Denmark]]
+* [[Telecommunications in  Estonia |Estonia]]
+* [[Telecommunications in  Finland |Finland]]
+* [[Telecommunications in  France |France]]
+* [[Telecommunications in  Georgia (country) |Georgia]]
+* [[Telecommunications in  Germany |Germany]]
+* [[Telecommunications in  Greece |Greece]]
+* [[Telecommunications in  Hungary |Hungary]]
+* [[Telecommunications in  Iceland |Iceland]]
+* [[Telecommunications in  the Republic of Ireland |Ireland]]
+* 
+* [[Telecommunications in  Italy |Italy]]
+* [[Telecommunications in  Kazakhstan |Kazakhstan]]
+* [[Telecommunications in  Latvia |Latvia]]
+* [[Telecommunications in  Liechtenstein |Liechtenstein]]
+* [[Telecommunications in  Lithuania |Lithuania]]
+* [[Telecommunications in  Luxembourg |Luxembourg]]
+* [[Telecommunications in  the Republic of Macedonia |Macedonia]]
+* [[Telecommunications in  Malta |Malta]]
+* [[Telecommunications in  Moldova |Moldova]]
+* [[Telecommunications in  Monaco |Monaco]]
+* [[Telecommunications in  Montenegro |Montenegro]]
+* [[Telecommunications in  the Netherlands |Netherlands]]
+* [[Telecommunications in  Norway |Norway]]
+* [[Telecommunications in  Poland |Poland]]
+* [[Telecommunications in  Portugal |Portugal]]
+* [[Telecommunications in  Romania |Romania]]
+* [[Telecommunications in  Russia |Russia]]
+* [[Telecommunications in  San Marino |San Marino]]
+* [[Telecommunications in  Serbia |Serbia]]
+* [[Telecommunications in  Slovakia |Slovakia]]
+* [[Telecommunications in  Slovenia |Slovenia]]
+* [[Telecommunications in  Spain |Spain]]
+* [[Telecommunications in  Sweden |Sweden]]
+* [[Telecommunications in  Switzerland |Switzerland]]
+* [[Telecommunications in  Turkey |Turkey]]
+* [[Telecommunications in  Ukraine |Ukraine]]
+* [[Telecommunications in  the United Kingdom |United Kingdom]]
+*
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">[[List of states with limited recognition|States with limited<br/>recognition]]</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Abkhazia |Abkhazia]]
+* [[Telecommunications in  Kosovo |Kosovo]]
+* [[Telecommunications in  Transnistria |Transnistria]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">[[Dependent territory|Dependencies]] and<br/>other territories</div></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Åland |Åland]]
+* [[Telecommunications in  the Faroe Islands |Faroe Islands]]
+* [[Telecommunications in  Gibraltar |Gibraltar]]
+* [[Telecommunications in  Guernsey |Guernsey]]
+* [[Telecommunications in  Jersey |Jersey]]
+* [[Telecommunications in  the Isle of Man |Isle of Man]]
+* [[Telecommunications in  Svalbard |Svalbard]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other entities</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*  [[Telecommunications in  the European Union |European Union]]
+</div></td></tr></table><div>
+</div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:North America topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:North America topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:North_America_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Telecommunications in   North America</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Sovereign states</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Antigua and Barbuda |Antigua and Barbuda]]
+* [[Telecommunications in  the_Bahamas |Bahamas]]
+* [[Telecommunications in  Barbados |Barbados]]
+* [[Telecommunications in  Belize |Belize]]
+* [[Telecommunications in  Canada |Canada]]
+* [[Telecommunications in  Costa Rica |Costa Rica]]
+* [[Telecommunications in  Cuba |Cuba]]
+* [[Telecommunications in  Dominica |Dominica]]
+* [[Telecommunications in  the_Dominican Republic |Dominican Republic]]
+* [[Telecommunications in  El Salvador |El Salvador]]
+* [[Telecommunications in  Grenada |Grenada]]
+* [[Telecommunications in  Guatemala |Guatemala]]
+* [[Telecommunications in  Haiti |Haiti]]
+* [[Telecommunications in  Honduras |Honduras]]
+* [[Telecommunications in  Jamaica |Jamaica]]
+* [[Telecommunications in  Mexico |Mexico]]
+* [[Telecommunications in  Nicaragua |Nicaragua]]
+* [[Telecommunications in  Panama |Panama]]
+* [[Telecommunications in  Saint Kitts and Nevis |Saint Kitts and Nevis]]
+* [[Telecommunications in  Saint Lucia |Saint Lucia]]
+* [[Telecommunications in  Saint Vincent and the Grenadines |Saint Vincent and the Grenadines]]
+* [[Telecommunications in  Trinidad and Tobago |Trinidad and Tobago]]
+* [[Telecommunications in  the_United States |United States]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">Dependencies and<br/>other territories</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Anguilla |Anguilla]]
+* [[Telecommunications in  Aruba |Aruba]]
+* [[Telecommunications in  Bermuda |Bermuda]]
+* [[Telecommunications in  Bonaire |Bonaire]]
+* [[Telecommunications in  the_British Virgin Islands |British Virgin Islands]]
+* [[Telecommunications in  the_Cayman Islands |Cayman Islands]]
+* [[Telecommunications in  Curaçao |Curaçao]]
+* [[Telecommunications in  Greenland |Greenland]]
+* [[Telecommunications in  Guadeloupe |Guadeloupe]]
+* [[Telecommunications in  Martinique |Martinique]]
+* [[Telecommunications in  Montserrat |Montserrat]]
+* [[Telecommunications in  Navassa Island |Navassa Island]]
+*[[Telecommunications in  Puerto Rico |Puerto Rico]]
+* [[Telecommunications in  Saint Barthélemy |Saint Barthélemy]]
+* [[Telecommunications in  the_Collectivity of Saint Martin |Saint Martin]]
+* [[Telecommunications in  Saint Pierre and Miquelon |Saint Pierre and Miquelon]]
+* [[Telecommunications in  Saba |Saba]]
+* [[Telecommunications in  Sint Eustatius |Sint Eustatius]]
+* [[Telecommunications in  Sint Maarten |Sint Maarten]]
+* [[Telecommunications in  the_Turks and Caicos Islands |Turks and Caicos Islands]]
+* [[Telecommunications in  the_United States Virgin Islands |United States Virgin Islands]]
+</div></td></tr></table><div>
+</div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Oceania topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Oceania topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Oceania_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Telecommunications in  Oceania</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Sovereign state]]s</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Australia |Australia]]
+* [[Telecommunications in  Fiji |Fiji]]
+* [[Telecommunications in  Indonesia |Indonesia]]
+* [[Telecommunications in  Kiribati |Kiribati]]
+* [[Telecommunications in  the_Marshall Islands |Marshall Islands]]
+* [[Telecommunications in  the_Federated States of Micronesia |Federated States of Micronesia]]
+* [[Telecommunications in  Nauru |Nauru]]
+* [[Telecommunications in  New Zealand |New Zealand]]
+* [[Telecommunications in  Palau |Palau]]
+* [[Telecommunications in  Papua New Guinea |Papua New Guinea]]
+* [[Telecommunications in  Samoa |Samoa]]
+* [[Telecommunications in  the_Solomon Islands |Solomon Islands]]
+* [[Telecommunications in  Tonga |Tonga]]
+* [[Telecommunications in  Tuvalu |Tuvalu]]
+* [[Telecommunications in  Vanuatu |Vanuatu]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Realm of New Zealand|Associated states<br/>of New Zealand]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  the_Cook Islands |Cook Islands]]
+* [[Telecommunications in  Niue |Niue]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Dependent territory|Dependencies]]<br/>and other territories</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  American Samoa |American Samoa]]
+* [[Telecommunications in  Christmas Island |Christmas Island]]
+* [[Telecommunications in  the Cocos (Keeling) Islands |Cocos (Keeling) Islands]]
+* [[Telecommunications in  Easter Island |Easter Island]]
+* [[Telecommunications in  French Polynesia |French Polynesia]]
+* [[Telecommunications in  Guam |Guam]]
+* [[Telecommunications in  Hawaii |Hawaii]]
+* [[Telecommunications in  New Caledonia |New Caledonia]]
+* [[Telecommunications in  Norfolk Island |Norfolk Island]]
+* [[Telecommunications in  the_Northern Mariana Islands |Northern Mariana Islands]]
+* [[Telecommunications in  the_Pitcairn Islands |Pitcairn Islands]]
+* [[Telecommunications in  Tokelau |Tokelau]]
+* [[Telecommunications in  Wallis and Futuna |Wallis and Futuna]]
+</div></td></tr></table><div>
+</div><table class="nowraplinks collapsible autocollapse navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:South America topic|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:South America topic|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:South_America_topic&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">Telecommunications in  South America</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[List of sovereign states|Sovereign states]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  Argentina |Argentina]]
+* [[Telecommunications in  Bolivia |Bolivia]]
+* [[Telecommunications in  Brazil |Brazil]]
+* [[Telecommunications in  Chile |Chile]]
+* [[Telecommunications in  Colombia |Colombia]]
+* [[Telecommunications in  Ecuador |Ecuador]]
+* [[Telecommunications in  Guyana |Guyana]]
+* [[Telecommunications in  Paraguay |Paraguay]]
+* [[Telecommunications in  Peru |Peru]]
+* [[Telecommunications in  Suriname |Suriname]]
+* [[Telecommunications in  Uruguay |Uruguay]]
+* [[Telecommunications in  Venezuela |Venezuela]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group"><div style="padding:0.1em 0;line-height:1.2em;">[[Dependent territory|Dependencies]] and<br/>other territories</div></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecommunications in  the_Falkland Islands |Falkland Islands]]
+* [[Telecommunications in  French Guiana |French Guiana]]
+* [[Telecommunications in  South Georgia and the South Sandwich Islands |<span style="white-space:normal;">South Georgia and the South Sandwich Islands</span>]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+* [[File:Folder Hexagonal Icon.svg|Category|16x16px|link=]] '''[[:Category:Telecommunications|Telecommunications]]'''
+* [[File:Commons-logo.svg|Commons page|16x16px|link=]] '''[[commons:Category:Telecommunication|Telecommunication]]'''
+* [[File:Portal-puzzle.svg|Portal|16x16px|link=]] '''[[Portal:Telecommunication|Telecommunication]]'''
+* [[File:Portal-puzzle.svg|Portal|16x16px|link=]] '''[[Portal:Mass surveillance|Mass surveillance]]'''
+</div></td></tr></table></td></tr></table>
+
+
+
+
+
+
+
+[[Category:Mobile telecommunications]]
+[[Category:Mobile phone standards]]

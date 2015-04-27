@@ -1,0 +1,323 @@
+<table class="metadata plainlinks ambox ambox-style ambox-lead_too_short" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article's '''[[Wikipedia:Manual of Style/Lead section|lead section]] may not adequately [[Wikipedia:summary style|summarize]] key points of its contents'''.<span class="hide-when-compact"> Please consider expanding the lead to [[Wikipedia:Manual of Style/Lead section#Provide an accessible overview|provide an accessible overview]] of all important aspects of the article.</span>  <small>''(October 2010)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+Given a system transforming a set of inputs to output values, described by a [[Function (mathematics)|mathematical function]] ''f'',
+[[Mathematical optimization|optimization]] refers to the generation and selection of a best solution from some set of available alternatives, by systematically choosing input values from within an allowed set, computing the value of the function, and recording the best value found during the process. Many real-world and theoretical problems may be modeled in this general framework. For example,
+the inputs can be design parameters of a motor, the output can be the power consumption, or the inputs
+can be business choices and the output can be the obtained profit, or the inputs can describe the configuration
+of a physical system and the output can be its energy.
+
+An [[optimization problem]] can be represented in the following way
+:''Given:'' a [[function (mathematics)|function]] ''f'' : ''A''  '''R''' from some [[Set (mathematics)|set]] ''A'' to the [[real number]]s
+:''Search for:'' an element ''x''<sub>0</sub> in ''A'' such that ''f''(''x''<sub>0</sub>) ≤ ''f''(''x'') for all ''x'' in ''A'' ("minimization").
+
+Typically, ''A'' is some [[subset]] of the [[Euclidean space]] '''R'''<sup>''n''</sup>, often specified by a set of ''[[constraint (mathematics)|constraint]]s'', equalities or inequalities that the members of ''A'' have to satisfy.  
+Maximization can be reduced to minimization by multiplying the function by minus one.
+
+The use of '''optimization software''' requires that the function ''f'' is defined in a suitable
+programming language and linked to
+the optimization software. The optimization software will deliver input values in ''A'', 
+the software module realizing ''f'' will deliver the computed value ''f''(''x'').
+In this manner, a clear '''separation of concerns''' is obtained: different optimization
+software modules can be easily tested on the same function ''f'', or a given
+optimization software can be used for different functions ''f''.
+
+The following tables provide a comparison of optimization software libraries, either specialized or general purpose libraries with significant optimization coverage.
+
+{| class="wikitable sortable" style="font-size: smaller; text-align: center; width: auto;"
+|-
+! style="width: 12em"|
+! Language
+! Latest stable version
+! Academic/noncommercial<br>use is free
+! Can be used in<br>proprietary aps
+! License
+! Notes
+|-
+! [[ALGLIB]]
+| C++, C#, FreePascal, VBA
+| 3.8.0 / August 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Dual (Commercial, GPL)
+| General purpose library, includes optimization package.
+|-
+! [[AMPL]]
+| C
+| October 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Dual (Commercial, academic)
+| A popular algebraic modeling language for linear, mixed-integer and nonlinear optimization. Student and AMPL for courses versions are available for free.
+|-
+! [[GNU Scientific Library]]
+| C
+| 1.16 / July 2013 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| GPL
+| Free library provided by GNU project.
+|-
+! [[GNU Linear Programming Kit]]
+| C
+| 4.52 / July 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| GPL
+| Free library for linear programming (LP) and mixed integer programming (MIP).
+|-
+! [[IMSL Numerical Libraries]]
+| C, Java, C#, Fortran, Python
+| many components
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Proprietary
+| 
+|-
+! [[LIONsolver]]
+| C++, Java 
+| 2.0.198 / October 2011
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Proprietary
+| Support for interactive and learning optimization,
+according to [[Reactive search optimization|RSO]] principles
+.
+|-
+! [[Math Kernel Library|MKL]]
+| C++, Fortran
+| 11.1 / October 2013
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Proprietary
+| Numerical library from Intel. MKL is specialized on linear algebra,<br>but contains some optimization-related functionality.
+|-
+! [[NAG Numerical Libraries]]
+| C, Fortran
+| Mark 24 / October 2013
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Proprietary
+| 
+|-
+! [[NMath]]
+| C#
+| 5.3 / May 2013
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Proprietary
+| C# numerical library built on top of MKL.
+|-
+! [[OptaPlanner]]
+| Java
+| 6.0.1.Final / Dec 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ASL
+| Lightweight optimization solver in Java
+|-
+! [[SciPy]]
+| Python
+| 0.13.1 / November 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| BSD
+| General purpose numerical library from Enthought.
+|-
+|}
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+* [http://www.orms-today.org/surveys/LP/LP-survey.html OR/MS Today: 2013 Linear Programming Software Survey]
+* [http://www.orms-today.org/surveys/nlp/nlp.html OR/MS Today: 1998 Nonlinear Programming Software Survey]
+
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible uncollapsed navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Mathematical optimization software|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Mathematical optimization software|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Mathematical_optimization_software&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Mathematical optimization|Mathematical optimization software]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">Data formats</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* LP
+* [[MPS (format)|MPS]]
+* [[nl (format)|nl]]
+* [[OptML]]
+* [[OSiL]]
+* [[sol (format)|sol]]
+* [[xMPS]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Mathematical modeling|Modeling]] tools</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[AIMMS]]
+* [[AMPL]]
+* [[APMonitor]]
+* CMPL
+* [[Pyomo]]
+* CVX
+* [[CVXOPT]]
+* [[CVXPY]]
+* [[General Algebraic Modeling System|GAMS]]
+* [[GNU Linear Programming Kit|GNU MathProg]]
+* JuMP
+* [[LINDO]]
+* [[CPLEX|OPL]]
+* [[Mathematical Programming Language|MPL]]
+* [[OptimJ]]
+* PICOS
+* [[COIN-OR#PuLP|PuLP]]
+* [[FICO Xpress|Xpress-Mosel]]
+* [[YALMIP]]
+* [[SCIP (optimization software)#SCIP Optimization Suite|ZIMPL]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Linear programming|LP]] / [[Linear programming#Integer unknowns|MILP]]<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* ABACUS<sup>&lowast;</sup>
+* [[APOPT]]<sup>&lowast;</sup>
+* [[COIN-OR|BCP]]<sup>&lowast;</sup>
+* [[BDMLP]]
+* [[BPMPD]]
+* [[BPOPT]]
+* [[COIN-OR#CLP|CLP]]
+* [[COIN-OR#CBC|CBC]]<sup>&lowast;</sup>
+* [[CPLEX]]<sup>&lowast;</sup>
+* [[CSDP (optimization software)|CSDP]]
+* [[DSDP (optimization software)|DSDP]]
+* [[FortMP]]<sup>&lowast;</sup>
+* [[SCIP (optimization software)#SCIP Optimization Suite|GCG]]<sup>&lowast;</sup>
+* [[GIPALS32]]
+* [[GNU Linear Programming Kit|GLPK/GLPSOL]]<sup>&lowast;</sup>
+* [[Gurobi]]<sup>&lowast;</sup>
+* [[HOPDM]]
+* [[KNITRO]]<sup>&lowast;</sup>
+* [[LINDO]]<sup>&lowast;</sup>
+* lp_solve<sup>&lowast;</sup>
+* [[Robert J. Vanderbei|LOQO]]
+* [[MINOS (optimization software)|MINOS]]
+* [[MINTO]]<sup>&lowast;</sup>
+* [[MOSEK]]<sup>&lowast;</sup>
+* [[OOPS (optimization software)|OOPS]]
+* [[OOQP]]
+* [[PCx]]
+* [[QSopt]]
+* [[SAS/OR]]<sup>&lowast;</sup>
+* [[SCIP (optimization software)|SCIP]]<sup>&lowast;</sup>
+* [[SCIP (optimization software)#SCIP Optimization Suite|SoPlex]]
+* [[SOPT-IP]]<sup>&lowast;</sup>
+* Sulum Optimization Tools<sup>&lowast;</sup>
+* [[COIN-OR#SYMPHONY|SYMPHONY]]<sup>&lowast;</sup>
+* [[XA (optimization software)|XA]]<sup>&lowast;</sup>
+* [[FICO Xpress|Xpress-Optimizer]]<sup>&lowast;</sup>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Quadratic programming|QP]] / MIQP<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[APOPT]]<sup>&lowast;</sup>
+* [[BPMPD]]
+* [[BPOPT]]
+* [[BQPD]]
+* [[COIN-OR#CBC|CBC]]<sup>&lowast;</sup>
+* [[COIN-OR#CLP|CLP]]
+* [[CPLEX]]<sup>&lowast;</sup>
+* [[FortMP]]<sup>&lowast;</sup>
+* [[GloMIQO]]<sup>&lowast;</sup>
+* [[Gurobi]]<sup>&lowast;</sup>
+* [[IPOPT]]
+* [[KNITRO]]<sup>&lowast;</sup>
+* [[LINDO]]<sup>&lowast;</sup>
+* [[LSSOL]]
+* [[Robert J. Vanderbei|LOQO]]
+* [[MINOS (optimization software)|MINOS]]
+* [[MOSEK]]<sup>&lowast;</sup>
+* [[OOPS (optimization software)|OOPS]]
+* [[OOQP]]
+* [[QPOPT]]
+* [[QPSOL]]
+* [[SCIP (optimization software)|SCIP]]<sup>&lowast;</sup>
+* [[XA (optimization software)|XA Quadratic Solver]]
+* [[FICO Xpress|Xpress-Optimizer]]<sup>&lowast;</sup>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Quadratically constrained quadratic program|QCP]] / MIQCP<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[APOPT]]<sup>&lowast;</sup>
+* [[BPMPD]]
+* [[BPOPT]]
+* [[CPLEX]]<sup>&lowast;</sup>
+* [[GloMIQO]]<sup>&lowast;</sup>
+* [[Gurobi]]<sup>&lowast;</sup>
+* [[IPOPT]]
+* [[KNITRO]]<sup>&lowast;</sup>
+* [[LINDO]]<sup>&lowast;</sup>
+* [[Robert J. Vanderbei|LOQO]]
+* [[MINOS (optimization software)|MINOS]]
+* [[MOSEK]]<sup>&lowast;</sup>
+* [[SCIP (optimization software)|SCIP]]<sup>&lowast;</sup>
+* [[FICO Xpress|Xpress-Optimizer]]<sup>&lowast;</sup>
+* [[FICO Xpress|Xpress-SLP]]<sup>&lowast;</sup>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Second-order cone programming|SOCP]] / MISOCP<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[CPLEX]]<sup>&lowast;</sup>
+* [[DSDP (optimization software)|DSDP]]
+* [[Gurobi]]<sup>&lowast;</sup>
+* [[LINDO]]<sup>&lowast;</sup>
+* [[Robert J. Vanderbei|LOQO]]
+* [[MOSEK]]<sup>&lowast;</sup>
+* [[SCIP (optimization software)|SCIP]]<sup>&lowast;</sup>
+* [[SDPT3]]
+* [[SeDuMi]]
+* [[FICO Xpress|Xpress-Optimizer]]<sup>&lowast;</sup>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Semidefinite programming|SDP]] / MISDP<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[CSDP (optimization software)|CSDP]]
+* [[DSDP (optimization software)|DSDP]]
+* [[MOSEK]]
+* [[PENBMI]] 
+* [[PENSDP]] 
+* [[SCIP-SDP]]<sup>&lowast;</sup>
+* [[SDPA]]
+* [[SDPT3]]
+* [[SeDuMi]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Nonlinear programming|NLP]] / MINLP<sup style="font-weight:normal;">&lowast;</sup> solvers</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[ALGENCAN]]
+* [[AlphaECP]]<sup>&lowast;</sup>
+* [[ANTIGONE]]<sup>&lowast;</sup>
+* [[AIMMS Outer Approximation (optimization software)|AOA]]<sup>&lowast;</sup> 
+* [[APOPT]]<sup>&lowast;</sup>
+* [[BARON]]<sup>&lowast;</sup>
+* [[Bonmin]]<sup>&lowast;</sup> 
+* [[BPOPT]]
+* [[CONOPT]]
+* [[DICOPT]]<sup>&lowast;</sup> 
+* [[FilMINT]]<sup>&lowast;</sup> 
+* [[FilterSQP]]
+* [[Galahad library]]
+* ipfilter
+* [[IPOPT]]
+* [[KNITRO]]<sup>&lowast;</sup>
+* [[LANCELOT]]
+* [[LINDO]]<sup>&lowast;</sup>
+* [[Robert J. Vanderbei|LOQO]]
+* [[LRAMBO]]
+* [[MIDACO]]<sup>&lowast;</sup>
+* [[MILANO]]<sup>&lowast;</sup>
+* [[MINLP_BB]]<sup>&lowast;</sup> 
+* [[MINOS (optimization software)|MINOS]]
+* Minotaur<sup>&lowast;</sup>
+* [[MISQP]]<sup>&lowast;</sup>
+* [[NLPQLP]]
+* [[NPSOL]]
+* [[OQNLP]]<sup>&lowast;</sup>
+* [[PATHNLP]]
+* [[PENNON]]
+* [[SBB (optimization software)|SBB]]<sup>&lowast;</sup> 
+* [[SCIP (optimization software)|SCIP]]<sup>&lowast;</sup>
+* [[SNOPT]]<sup>&lowast;</sup>
+* [[SQPlab]]
+* [[WORHP]]
+* [[FICO Xpress|Xpress-SLP]]<sup>&lowast;</sup>
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Global optimization|GO]]  solvers</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[BARON]]
+* [[Couenne]]<sup>&lowast;</sup>
+* [[LINDO]]
+* [[SCIP (optimization software)| SCIP]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Constraint programming|CP]] solvers</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* Artelys Kalis
+* Choco
+* [[Comet (programming language)|Comet]]
+* [[CPLEX|CPLEX CP Optimizer]]
+* [[Gecode]]
+* Google CP Solver
+* [[JaCoP (solver)|JaCoP]]
+* OscaR
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="vertical-align:top;">[[Metaheuristic]] solvers</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[OptaPlanner]]
+* LocalSolver
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow hlist" colspan="2"><div>
+* '''[[List of optimization software]]'''
+* '''[[Comparison of optimization software]]'''
+</div></td></tr></table></td></tr></table>
+[[Category:Numerical software| ]]

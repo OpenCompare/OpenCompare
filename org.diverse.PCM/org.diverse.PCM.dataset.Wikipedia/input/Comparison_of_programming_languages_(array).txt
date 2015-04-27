@@ -1,0 +1,850 @@
+<strong class="error"><span class="scribunto-error" id="mw-scribunto-error-0">Lua error in Module:Message_box at line 245: attempt to index field 'talk' (a nil value).</span></strong>
+<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Comparison of programming languages|General comparison]]
+* [[Comparison of programming languages (syntax)|Basic syntax]]
+* [[Comparison of programming languages (basic instructions)|Basic instructions]]
+* [[Comparison of programming languages (array)|Arrays]]
+* [[Comparison of programming languages (mapping)|Associative arrays]]
+* [[Comparison of programming languages (strings)|String operations]]
+* [[Comparison of programming languages (string functions)|String functions]]
+* [[Comparison of programming languages (list comprehension)|List comprehension]]
+* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
+* [[Constructor (object-oriented programming)|Object-oriented constructors]]
+* [[Comparison of database access|Database access]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Evaluation strategy]]
+* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Comparison of web application frameworks|Web application frameworks]]
+* [[Comparison of the Java and .NET platforms]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* Comparison of individual programming languages
+** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
+** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
+** [[Comparison of ALGOL 68 and C++]]
+** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
+** [[Compatibility of C and C++]]
+** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
+** [[Comparison of Object Pascal and C]]
+** [[Comparison of Pascal and C]]
+** [[Comparison of Java and C++]]
+** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
+** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
+** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
+</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+
+This '''comparison of programming languages (array)''' compares the features of [[array data structure]]s or [[matrix (mathematics)|matrix]] processing for over 48 various computer [[programming language]]s.
+
+== Syntax ==
+
+=== Array dimensions ===
+
+The following list contains [[programming language syntax|syntax]] examples on how to determine the dimensions (index of the first element, the last element and/or the size in elements).
+
+Note particularly that some languages index from zero while others index from one.  At least since Dijkstra's famous essay, zero-based indexing has been seen as superior, and new languages tend to use it.
+
+{| class="wikitable sortable" style="font-size: 90%;"
+|- 
+! Languages !!Size !! First !! Last
+|-
+| [[Ada (programming language)|Ada]]
+| <tt>''name''Length</tt> || <tt>''name''First</tt> || <tt>''name''Last</tt>
+|-
+|[[ALGOL 68]]
+| <tt>UPB ''name'' - LWB ''name''+1</tt> <br/><tt>2 UPB ''name'' - 2 LWB ''name''+1</tt> <br/> etc.|| <tt>LWB ''name''</tt> <br/><tt>2 LWB ''name''</tt> <br/> etc.|| <tt>UPB ''name''</tt> <br/>
+<tt>2 UPB ''name''</tt> <br/> etc.
+|-
+| [[C Sharp (programming language)|C#]], [[Visual Basic .NET]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
+| <tt>''name''.Length</tt> || <tt>''name''.GetLowerBound(''dimension'')</tt> || <tt>''name''.GetUpperBound(''dimension'')</tt>
+|-
+| [[CFML]]
+|<tt>arrayLen(''name'')</tt> <br/> <tt>''name''.len()</tt> || <tt>1</tt> || <tt>''name''.len()</tt>
+|-
+| [[Ch (computer programming)|Ch]]
+| <tt>max(shape(''name''))</tt> || <tt>0</tt> || <tt>max(shape(''name''))-1</tt>
+|-
+| [[Cobra (programming language)|Cobra]]
+| <tt>''name''.length</tt> || <tt>0</tt> || <tt>''name''.length-1</tt>
+|-
+| [[Common Lisp]]
+| <tt>(length ''name'')</tt> || <tt>0</tt> || <tt>(1- (length ''name''))</tt>
+|-
+| [[Fortran]]
+| <tt>SIZE(''name'')</tt> || <tt>LBOUND(''name'')</tt> || <tt>UBOUND(''name'')</tt>
+|-
+| [[Go (programming language)|Go]]
+| <tt>len(''name'')</tt> || <tt>0</tt> || <tt>len(''name'') - 1</tt> 
+|-
+| [[Haskell (programming language)|Haskell]]
+| <tt>rangeSize (bounds ''name'')</tt> || <tt>fst (bounds ''name'')</tt> || <tt>snd (bounds ''name'')</tt>
+|-
+| [[Haxe]]
+|  <tt>''name''.length</tt> || <tt>0</tt> || <tt>''name''.length - 1</tt>
+|-
+| [[ISLISP]]
+| <tt>(length ''name'')</tt>|| <tt>0</tt> || <tt>(1- (length ''name''))</tt>
+|-
+| [[Java (programming language)|Java]], [[JavaScript]], [[D (programming language)|D]], [[Scala (programming language)|Scala]]
+| <tt>''name''.length</tt> || <tt>0</tt> || <tt>''name''.length - 1</tt>
+|-
+| [[J (programming language)|J]]
+| <tt>#''name''</tt> || <tt>0</tt> || <tt><:@#''name''</tt>
+|-
+| [[Lua (programming language)|Lua]]
+| <tt>#''name''</tt> || <tt>1</tt> || <tt>#''name''</tt>
+|-
+| [[Mathematica]]
+|<tt>Length[''name'']</tt> || <tt>1</tt> <br/> <tt>First[''name'']</tt> || <tt>-1</tt> <br/> <tt>Last[''name'']</tt>
+|-
+| [[MATLAB]], [[GNU Octave]], [[Julia (programming language)|Julia]]
+|<tt>length(''name'')</tt> || <tt>1</tt> || <tt>end</tt>
+|-:
+| [[Object Pascal]]
+|<tt>Length(''name'')</tt> || <tt>0</tt><br/><tt>low(''name'')</tt> || <tt>Length(''name'')-1</tt><br/><tt>high(''name'')</tt>
+|-
+| [[Objective-C]] (<code>NSArray *</code> only)
+| <tt>[''name'' count]</tt> || <tt>0</tt> || <tt>[''name'' count] - 1</tt>
+|-
+| [[OCaml]]
+| <tt>Array.length ''name''</tt>|| <tt>0</tt> || <tt>Array.length ''name'' - 1</tt> 
+|-
+| [[Perl]]
+| <tt>scalar(@''name'')</tt> || <tt>$[</tt> || <tt>$#''name''</tt>
+|-
+| [[Perl 6]]
+| @<tt>''name''.elems</tt> || <tt>0</tt> || <tt>@''name''.end</tt>
+|-
+| [[PHP]]
+| <tt>count(</tt>$<tt>''name'')</tt> || <tt>0</tt> || <tt>count(</tt>$<tt>''name'') - 1</tt>
+|-
+| [[Python (programming language)|Python]]
+| <tt>len(''name'')</tt> || <tt>0</tt> || <tt>-1</tt> <br/> <tt>len(''name'') - 1</tt> 
+|-
+| [[Ruby (programming language)|Ruby]]
+| <tt>''name''.size</tt> || <tt>0</tt> <br /><tt>''name''.first</tt> || <tt>-1</tt> <br/> <tt>''name''.size - 1</tt> <br/><tt>''name''.last</tt>
+|-
+| [[Rust (programming language)|Rust]]
+| <tt>''name''.len()</tt> || <tt>0</tt> || <tt>''name''.len() - 1</tt>
+|-
+| [[S-Lang (programming library)|S-Lang]]
+| <tt>length(''name'')</tt> || <tt>0</tt> || <tt>-1</tt> <br/> <tt>length(''name'')-1</tt>
+|-
+| [[Scheme (programming language)|Scheme]]
+| <tt>(vector-length ''vector'')</tt> || <tt>0</tt> || <tt>(- (vector-length ''vector'') 1)</tt>
+|-
+| [[Smalltalk]]
+| <tt>''name'' size</tt> || <tt>1</tt> <br/><tt>''name'' first</tt> || <tt>''name'' size</tt> <br/><tt>''name'' last</tt>
+|-
+|[[Visual Basic]]
+| <tt>UBound(''name'')-LBound(''name'')+1</tt> || <tt>LBound(''name'')</tt> || <tt>UBound(''name'')</tt>
+|-
+|[[Xojo]]
+| <tt>UBound(''name'')</tt> || <tt>0</tt> || <tt>UBound(''name'')</tt>
+|}
+
+=== Indexing ===
+
+The following list contains Syntax examples on how a single element of an array can be accessed.
+
+{| class="wikitable" 
+|- 
+! Format !! Languages 
+|-
+| <tt>name'''['''index''']''' or name'''['''index<sub>1</sub>''',''' index<sub>2</sub>''']''' etc.</tt>
+| [[ALGOL 68]], [[Pascal (programming language)|Pascal]], [[Object Pascal]], [[C Sharp (programming language)|C#]], [[S-Lang (programming library)|S-Lang]]
+|-
+| <tt>name'''['''index''']'''</tt>
+| [[ActionScript]], [[C (programming language)|C]], [[CFML]], [[Ch (computer programming)|Ch]], [[Cobra (programming language)|Cobra]], [[C++]], [[D (programming language)|D]], [[Go (programming language)|Go]], [[Haxe]], [[Java (programming language)|Java]],  [[JavaScript]], [[Julia (programming language)|Julia]], [[Lua (programming language)|Lua]], [[Objective-C]] (<code>NSArray *</code>), [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Rust (programming language)|Rust]], [[Swift (Apple programming language)|Swift]]
+|-
+| <tt>'''$'''name'''['''index''']'''</tt>
+| [[Perl]], [[PHP]], [[Windows PowerShell]]
+|-
+| <tt>'''@'''name'''['''index''']'''</tt>
+| [[Perl 6]]
+|-
+| <tt>name'''('''index''')'''</tt>
+| [[Ada (programming language)|Ada]], [[BASIC]], [[COBOL]], [[Fortran]], [[IBM RPG|RPG]], [[GNU Octave]], [[MATLAB]], [[Scala (programming language)|Scala]], [[Visual Basic]], [[Visual Basic .NET]], [[Xojo]]
+|-
+| <tt>name'''.('''index''')'''</tt>
+| [[OCaml]]
+|-
+| <tt>name'''.['''index''']'''</tt>
+| [[F Sharp (programming language)|F#]]
+|-
+| <tt>name''' ! '''index</tt>
+| [[Haskell (programming language)|Haskell]]
+|-
+| <tt>'''(vector-ref''' name index''')'''</tt>
+| [[Scheme (programming language)|Scheme]]
+|-
+| <tt>'''(aref''' name index''')'''</tt>
+| [[Common Lisp]]
+|-
+| <tt>'''(elt''' name index''')'''</tt>
+| [[ISLISP]]
+|-
+| <tt>name '''[<span/>['''index''']]'''</tt>
+| [[Mathematica]]
+|-
+| <tt>name''' at:'''index</tt>
+| [[Smalltalk]] 
+|-
+| <tt>'''['''name''' objectAtIndex:'''index''']'''</tt>
+| [[Objective-C]] (<code>NSArray *</code> only)
+|-
+| <tt>index'''{'''name</tt>
+| [[J (programming language)|J]]
+|-
+| <tt>name.item(index) or name @ index</tt>
+| [[Eiffel (programming language)|Eiffel]]
+|}
+
+===Slicing===
+
+The following list contains syntax examples on how a range of element of an array can be accessed.
+
+In the following table:
+*<tt>first</tt> - the index of the first element in the slice
+*<tt>last</tt> - the index of the last element in the slice
+*<tt>end</tt> - one more than the index of last element in the slice
+*<tt>len</tt> - the length of the slice (= end - first)
+*<tt>step</tt> - the number of array elements in each (default 1)
+
+{| class="wikitable"
+|- 
+! Format !! Languages 
+|-
+| <tt>name'''['''first''':'''last''']'''</tt>
+| [[ALGOL 68]], [[Julia (programming language)|Julia]]
+|-
+| <tt>name'''['''first''':'''end''':'''step''']'''</tt>
+| [[Python (programming language)|Python]], [[Go (programming language)|Go]]
+|-
+| <tt>name'''['''first'''..'''last''']'''</tt>
+| [[Pascal (programming language)|Pascal]], [[Object Pascal]], [[Delphi]], [[D (programming language)|D]]
+|-
+| <tt>'''$'''name'''['''first'''..'''last''']'''</tt>
+| [[Windows PowerShell]]
+|-
+| <tt>'''@'''name'''['''first'''..'''last''']'''</tt>
+| [[Perl]]
+|-
+| <tt>name'''['''first'''..'''last''']''' <br /> name'''['''first'''...'''end''']''' <br /> name'''['''first''', '''len''']'''</tt>
+| [[Ruby (programming language)|Ruby]]
+|-
+| <tt>name'''('''first'''..'''last''')'''</tt>
+| [[Ada (programming language)|Ada]]
+|-
+| <tt>name'''('''first''':'''last''')'''</tt>
+| [[Fortran]], [[GNU Octave]], [[MATLAB]]
+|-
+| <tt>name'''[<span/>['''first''';;'''last''']]'''</tt>
+| [[Mathematica]]
+|-
+| <tt>name'''[<span/>['''first''':'''last''']]'''</tt>
+| [[S-Lang (programming library)|S-Lang]]
+|-
+| <tt>name'''.['''first'''..'''last''']'''</tt>
+| [[F Sharp (programming language)|F#]]
+|-
+| <tt>name'''.slice('''first''', '''last''')'''</tt>
+| [[Haxe]], [[JavaScript]], [[Scala (programming language)|Scala]]
+|-
+| <tt>name'''.slice('''first''', '''len''')'''</tt>
+| [[CFML]]
+|-
+| <tt>'''array_slice('''name''', '''first''', '''len''')'''</tt>
+| [[PHP]]
+|-
+| <tt>'''(subseq''' name first end''')'''</tt>
+| [[Common Lisp]]
+|-
+| <tt>'''(subseq''' name first end''')'''</tt>
+| [[ISLISP]]
+|-
+| <tt>'''Array.sub''' name first len</tt>
+| [[OCaml]]
+|-
+| <tt>'''['''name''' subarrayWithRange:NSMakeRange('''first''', '''len''')]'''&#160;&#160;&#160;</tt>
+| [[Objective-C]] (<code>NSArray *</code> only)
+|-
+| <tt>'''('''first'''([+i.@(-~)'''end'''){'''name</tt>
+| [[J (programming language)|J]]
+|-
+| <tt>name'''['''first'''..<'''end''']''' <br /> name'''['''first'''...'''last''']'''</tt>
+| [[Swift (Apple programming language)|Swift]]
+|-
+| <tt>name'''['''first'''..'''end''']''' </tt>
+| [[Rust (programming language)|Rust]]
+|-
+| <tt>name'''['''first''':'''end''']''' </tt>
+| [[Cobra (programming language)|Cobra]]
+|}
+
+==Array system cross-reference list==
+
+{| class="sortable wikitable" style="text-align: center; font-size: smaller;"
+|+ 
+! [[Programming language]]
+! [[Array data type#Index origin|Default base index]]
+! Specifiable index type
+! Specifiable base index
+! [[bounds checking|Bound check]]
+! [[array data type#Multi-dimensional arrays|Multidimensional]]
+! Dynamically-sized
+! [[array programming|Vectorized operations]]
+|-
+| [[Ada (programming language)|Ada]]
+| style="background:honeydew;"  | index type
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:azure;"     | init
+| style="background:cornsilk;"  | some, others definable
+|-
+| [[ALGOL 68]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | no
+| style="background:honeydew;"  | yes
+| style="background:cornsilk;"  | varies
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:azure;"     | user definable
+|-
+| [[APL (programming language)|APL]]
+| style="background:grey80;"    | ?
+| style="background:grey80;"    | ?
+| style="background:cornsilk;"  | 0 or 1
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:azure;"     | init
+| style="background:honeydew;"  | yes
+|-
+| [[BASIC]]
+| style="background:cornsilk;"     | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:seashell;"  | no
+| style="background:azure;"     | init
+| style="background:grey80;"    | ?
+|-
+| [[C (programming language)|C]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:seashell;"  | unchecked
+| style="background:honeydew;"  | yes, also array of array
+| style="background:lavender;"  | init, heap
+| style="background:seashell;"  | no
+|-
+| [[Ch (computer programming)|Ch]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:seashell;"  | checked
+| style="background:honeydew;"  | yes, also array of array
+| style="background:lavender;"  | init, heap
+| style="background:seashell;"  | yes
+|-
+| [[C++]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:seashell;"  | unchecked
+| style="background:honeydew;"  | yes, also array of array
+| style="background:AliceBlue;" | heap
+| style="background:seashell;"  | no
+|-
+| [[C Sharp (programming language)|C#]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:AliceBlue;" | heap
+| style="background:honeydew;"  | yes ([[LINQ]] select)
+|-
+| [[CFML]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes, also array of array
+| style="background:seashell;"  | yes
+| style="background:seashell;"    | no
+|-
+| [[COBOL]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | array of array
+| style="background:seashell;"  | no
+| style="background:grey80;"    | some intrinsics
+|-
+| [[Cobra (programming language)|Cobra]]
+| style="background:cornsilk;"  | 0
+| style="background:cornsilk;"  | no
+| style="background:cornsilk;"  | no
+| style="background:azure;"     | checked
+| style="background:azure;"     | array of array
+| style="background:azure;"     | heap
+| style="background:grey80;"    | ?
+|-
+| [[Common Lisp]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes (map or map-into)
+|-
+| [[D (programming language)|D]]
+| style="background:cornsilk;"  | 0
+| style="background:honeydew;"  | yes
+| style="background:seashell;"  | no
+| style="background:cornsilk;"  | varies
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[F Sharp (programming language)|F#]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:AliceBlue;" | heap
+| style="background:honeydew;"  | yes (map)
+|-
+| [[FreeBASIC]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:azure;"     | init, init
+| style="background:grey80;"    | ?
+|-
+| [[Fortran]]
+| style="background:azure;"     | 1
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:cornsilk;"  | varies
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[FoxPro]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Go (programming language)|Go]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+|-
+| [[Haskell (programming language)|Haskell]]
+| style="background:grey80;"    | 0
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes, also array of array
+| style="background:azure;"     | init
+| style="background:grey80;"    | ?
+|-
+| [[IDL (programming language)|IDL]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[ISLISP]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | init
+| style="background:honeydew;"  | yes (map or map-into)
+|-
+| [[J (programming language)|J]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:azure;"     | init
+| style="background:honeydew;"  | yes
+|-
+| [[Java (programming language)|Java]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:azure;"     | init
+| style="background:grey80;"    | ?
+|-
+| [[JavaScript]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | no
+| style="background:grey80;"    | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[Julia (programming language)|Julia]]
+| style="background:azure;"  | 1
+| style="background:grey80;"    | yes
+| style="background:grey80;"    | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[Lua (programming language)|Lua]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | ?
+| style="background:cornsilk;"  | partial
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Mathematica]]
+| style="background:azure;"     | 1
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[MATLAB]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[Oberon (programming language)|Oberon]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:seashell;"  | no
+| style="background:grey80;"    | ?
+|-
+| [[Oberon-2]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Objective-C]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:seashell;"  | no
+|-
+| [[OCaml]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked by default
+| style="background:cornsilk;"  | array of array
+| style="background:azure;"     | init
+| style="background:grey80;"    | ?
+|-
+| [[Pascal (programming language)|Pascal]], [[Object Pascal]]
+| style="background:honeydew;"  | index type
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:cornsilk;"  | varies
+| style="background:honeydew;"  | yes
+| style="background:cornsilk;"  | varies
+| style="background:cornsilk;"  | some
+|-
+| [[Perl]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | yes (<code>$[</code>)
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | no
+|-
+| [[Perl 6]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[PHP]]
+| style="background:cornsilk;"  | 0
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[PL/I]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | ?
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:grey80;"    | yes
+| style="background:grey80;"    | no
+| style="background:grey80;"    | ?
+|-
+| [[Python (programming language)|Python]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | no
+|-
+| [[IBM RPG|RPG]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | ?
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:grey80;"    | ?
+|-
+| [[Ruby (programming language)|Ruby]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[S-Lang (programming library)|S-Lang]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+|-
+| [[Scala (programming language)|Scala]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:azure;"     | init
+| style="background:honeydew;"  | yes (map)
+|-
+| [[Scheme (programming language)|Scheme]]
+| style="background:cornsilk;"  | 0
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:azure;"     | init
+| style="background:honeydew;"  | yes (map)
+|-
+| [[Smalltalk]]
+| style="background:azure;"     | 1
+| style="background:grey80;"    | ?
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Swift (Apple programming language)|Swift]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:cornsilk;"  | array of array
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Visual Basic]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:grey80;"    | ?
+|-
+| [[Visual Basic .NET]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes ([[LINQ]] select)
+|-
+| [[Windows PowerShell]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | heap
+| style="background:grey80;"    | ?
+|-
+| [[Xojo]]
+| style="background:cornsilk;"  | 0
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | no
+|-
+| [[XPath]]
+| style="background:azure;"     | 1
+| style="background:seashell;"  | no
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | checked
+| style="background:seashell;"  | no
+| style="background:honeydew;"  | yes
+| style="background:honeydew;"  | yes
+
+|-class="sortbottom"
+! Programming language
+! Default base index
+! Specifiable index type
+! Specifiable base index
+! Bound check
+! Multidimensional
+! Dynamically-sized
+! Vectorized operations
+
+|}
+
+== Vectorized array operations ==
+
+Some compiled languages such as [[Ada (programming language)|Ada]] and [[Fortran]], and some scripting languages such as [[IDL (programming language)|IDL]], [[MATLAB]], and [[S-Lang (programming library)|S-Lang]], have native support for vectorized operations on arrays.  For example, to perform an element by element sum of two arrays, <tt>a</tt> and <tt>b</tt> to produce a third <tt>c</tt>, it is only necessary to write
+
+In addition to support for vectorized arithmetic and relational operations, these languages also vectorize common mathematical functions such as sine. For example, if <tt>x</tt> is an array, then
+
+will result in an array <tt>y</tt> whose elements are sine of the corresponding elements of the array <tt>x</tt>.
+
+Vectorized index operations are also supported.  As an example,
+<source lang="fortran">
+    even = x(2::2);
+    odd = x(::2);
+</source>
+is how one would use [[Fortran]] to create arrays from the even and odd entries of an array.  Another common use of vectorized indices is a filtering operation.  Consider a clipping operation of a sine wave where amplitudes larger than 0.5 are to be set to 0.5.  Using [[S-Lang (programming library)|S-Lang]], this may accomplished by
+
+
+=== Mathematical matrices management ===
+{| class="wikitable"
+! Language/<br>Library !! Create !! Determinant !! Transpose !! Element !! Column !! Row !! [[Eigenvalues]] 
+|-
+| [[Fortran]]
+| <tt>m = RESHAPE([x11, x12, ...], SHAPE(m))</tt>
+| 
+| <tt>TRANSPOSE<wbr/>(m)</tt>
+| <tt>m(i,j)</tt>
+| <tt>m(:,j)</tt>
+| <tt>m(i,:)</tt>
+|
+|-
+| [[Ch (computer programming)|Ch]] 
+| <tt>m = {...}</tt>
+| <tt>determinant<wbr/>(m)</tt>
+| <tt>transpose<wbr/>(m)</tt>
+| <tt><span class="nowrap">m[i-1][j-1]</span></tt>
+| <tt>shape<wbr/>(m,0)</tt>
+| <tt>shape<wbr/>(m,1)</tt>
+| <tt>eigen<wbr/>(output, m, NULL)</tt>
+|-
+| [[Mathematica]]
+| <tt>m = &#123;&#123;x11, x12, ...}, ...}</tt>
+| <tt>Det[m]</tt>
+| <tt>Transpose<wbr/>[m]</tt>
+| <tt></tt>
+| <tt><span class="nowrap"></span></tt>
+| <tt></tt>
+| <tt>Eigenvalues<wbr/>[m]</tt>
+|-
+| [[MATLAB]] /<br/>[[GNU Octave]]
+| <tt>m = [...]</tt>
+| <tt>det(m)</tt>
+| <tt>m'</tt>
+| <tt>m(i,j)</tt>
+| <tt>m(:,j)</tt>
+| <tt>m(i,:)</tt>
+| <tt>eig(m)</tt>
+|-
+| [[NumPy]]
+| <tt>m = mat(...)</tt>
+| <tt>linalg.det(m)</tt>
+| <tt>m.T</tt>
+| <tt><span class="nowrap">m[i-1,j-1]</span></tt>
+| <tt>m[:,i-1]</tt>
+| <tt>m[i-1,:]</tt>
+| <tt>linalg.eigvals(m)</tt>
+|-
+| [[S-Lang]]
+| <tt>m = reshape<wbr/>([x11, x12, ...], [new-dims])</tt>
+|
+| <tt>m = transpose<wbr/>(m)</tt>
+| <tt>m[i,j]</tt><wbr/>
+| <tt>m[*,j]</tt>
+| <tt>m[j,*]</tt>
+|
+|-
+| [[SymPy]]
+| <tt>m = Matrix(...)</tt>
+| 
+| <tt>m.T</tt>
+| <tt><span class="nowrap">m[i-1,j-1]</span></tt>
+|
+|
+|
+|-
+|}
+
+== References ==
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+[[Category:Arrays]]
+[[Category:Programming language comparisons]]

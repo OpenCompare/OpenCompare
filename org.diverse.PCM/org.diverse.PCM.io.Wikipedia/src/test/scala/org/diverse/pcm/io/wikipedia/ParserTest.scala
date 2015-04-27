@@ -127,71 +127,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     pcm.getMatrices.size should be (1)
    }
 
-  ignore should "preprocess every available Wikipedia PCM" in {
-    val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
-    val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
-    wikipediaPCMsFile.close
 
-    val tasks : Seq[Future[String]] = for(article <- wikipediaPCMs) yield future {
-      var result = new StringBuilder
-      if (article.startsWith("//")) {
-        result ++= "IGNORED : " + article
-      } else {
-        result ++= article
-        var retry = false
-        do {
-          try {
-
-            // Preprocess Wikipedia page
-            val code = miner.getPageCodeFromWikipedia(article)
-            val preprocessedCode = miner.preprocess(code)
-
-            // Save preprocessed page
-            val writer = new FileWriter("input/" + article.replaceAll(" ", "_") + ".txt")
-            writer.write(preprocessedCode)
-            writer.close()
-
-          } catch {
-            // case e : UnknownHostException => retry = true
-            case e : Throwable =>
-              val sw = new StringWriter();
-              val pw = new PrintWriter(sw);
-              e.printStackTrace(pw);
-              result ++= sw.toString();
-          }
-        } while (retry)
-      }
-      result.toString
-    } (executionContext)
-
-    for (task <- tasks) {
-      val result = Await.result(task, 10.minutes)
-//      println(result)
-    }
-  }
-
-  it should "parse every available PCM in Wikipedia" in {
-    val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
-    val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
-    wikipediaPCMsFile.close
-
-    for(article <- wikipediaPCMs) {
-      if (article.startsWith("//")) {
-        println("IGNORED : " + article)
-      } else {
-        println(article)
-        try {
-
-          // Parse preprocessed Wikipedia page
-          val pcms = testArticle(article)
-
-        } catch {
-          case e : Throwable => e.printStackTrace()
-        }
-      }
-    }
-
-  }
 
 //   it should "parse the same PCM from a URL and from a file containing the code" in {
 //     val fromFile = parsePCMFromFile("resources/amd.pcm")

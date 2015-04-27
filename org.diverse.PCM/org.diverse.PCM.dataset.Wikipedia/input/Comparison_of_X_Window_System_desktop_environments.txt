@@ -1,0 +1,701 @@
+<table class="metadata plainlinks ambox ambox-style ambox-essay-like" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''is written like a [[Wikipedia:What Wikipedia is not#ESSAY|personal reflection or opinion essay]] that states the Wikipedia editor's particular [[feeling]]s about a topic, rather than the opinions of experts'''.<span class="hide-when-compact"> Please [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit help improve it] by rewriting it in an [[Wikipedia:Encyclopedic style|encyclopedic style]].</span>  <small>''(December 2007)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+
+A [[desktop environment]] is a collection of software designed to give functionality and a certain [[look and feel]] to an [[operating system]].
+
+This article applies to [[operating system]]s which are capable of running the [[X Window System]], mostly [[Unix]] and [[Unix-like]] operating systems such as [[Linux]], [[Minix]], [[Solaris (operating system)|Solaris]], [[FreeBSD]], and [[Mac OS X]]. [[Microsoft Windows]] is incapable of natively running X applications; however, third-party X servers like [[Cygwin/X]], [[Hummingbird Ltd.|Exceed]], or [[Xming]] are available.
+
+== Technical elements of a desktop environment ==
+<div class="hatnote boilerplate seealso">See also: [[Elements of graphical user interfaces]]</div>
+A [[desktop environment]] (DE) can be broken up into several components that function independently and interact with one another to provide the look and feel and functionality of the desktop environment. A fundamental part of a DE is the [[window manager]] or WM. A window manager creates a certain way for application windows to present themselves to the user. It manages the various application windows, keeping track of which ones are open and providing features to switch between them. Another important element of a DE is the [[file manager]]. This application manages files/ folders and presents them in a way that the user finds convenient. It provides file operations like viewing, copying or moving, changing [[permissions]] and deleting. DEs usually provide utilities to set wallpapers and screensavers, display icons on the desktop, and perform some administrative tasks. They may optionally include word processors, CD/DVD writing applications, web browsers and e-mail clients.
+
+There are some exceptions: Window managers like [[Fluxbox]], [[wmii]] and [[Ratpoison]] operate independently of a desktop environment and were written with this objective in mind. Additional hand-picked applications add functionality such as a panel and volume management which gives them some of the qualities of a full DE. This contrasts the behaviour of WMs like [[Metacity]] and [[KWin]] which were not written with the objective of operating independently of a DE.
+
+[[KDE Software Compilation]] and [[GNOME]] are written almost completely on special [[software library|software libraries]] [[Qt (toolkit)|Qt]] and [[GTK+]] respectively. This usually means that virtually every component of the desktop environment including the [[file manager]] explicitly depends on that library for its functioning.
+
+[[File:Dolphin File Manager.png|thumb|KDE file manager Dolphin running under GNOME]]
+Notably, nothing prevents the user from installing any number of software libraries of his/her choice. In practice, software written on major libraries can be run under any desktop environment. Running a package designed for one desktop (which essentially means that it's written using the same libraries as the desktop itself is) within a different desktop can be visually displeasing, as well as incurring the RAM penalty of loading libraries that wouldn't otherwise be required.
+
+Some of the differences which can influence the choice of desktop environment are:
+* [[Look and feel]] of the desktop environment. The user will be more comfortable with a certain look and feel that he/she may or may not already be familiar with.
+* Flexibility and configurability of the desktop environment. A sophisticated user might want a highly configurable desktop environment to make the desktop environment work the way he/she wants. A beginning user might just want an easy-to-use environment to which he/she will adjust.
+* Personal preferences for choice of software, which has two aspects:
+** Each desktop environment comes packaged with various default software and various "ways things are done" under that desktop. A casual user might like a highly integrated graphical interface to change various settings while a more experienced user might prefer to use individual configuration utilities or even [[Command-line interface|CLI]] tools.
+** Desktops are also often closely tied into various major functional components of the desktop manager (example: [[file manager]], [[web browser|browser]], [[word processor]]); whilst "mix and match" is possible, it is generally pleasing to make choices which result in a consistent look and feel of programs under the chosen desktop environment. Making choices based on what software integrates with a chosen desktop environment necessarily limits the weight that can be given to other application features.
+
+==Desktop comparison information==
+
+=== Overview ===
+<span id="Outer view of different classes of desktop environments"></span>
+{| class="wikitable"
+!
+! colspan=7 | Full environments
+! colspan=1 | [[Shell (computing)|Shell]] (semi-environment)
+|----
+!
+! [[KDE Software Compilation]]
+! [[LXQt]]
+! [[GNOME]]
+! [[MATE (software)|MATE]]
+! [[Xfce]], [[LXDE]] and [[ROX Desktop]]
+! [[Étoilé]]
+! [[EDE]]
+! [[Enlightenment (window manager)|Enlightenment]]
+|----
+! Main objective
+| Full desktop environment, graphical, easy to use, targeted at everyone. Focus on providing advanced features and configurability.
+| Lightweight desktop environment, modular, portable.
+| Full desktop environment, graphical, easy to use, targeted at everyone. Emphasis on ergonomics and workflow simplification.
+| Forked from GNOME. Emphasis on providing the traditional [[desktop metaphor]] eschewed by GNOME 3.
+| colspan=3|Lightweight desktop environment, modular, portable.
+| Advanced graphical libraries, tools and environments
+|----
+! Programming language
+| colspan=2|Mainly C++, as Qt is written in C++
+| colspan=3|Mainly C, as GTK+ is written in C
+| Objective-C
+| C++
+| C
+|----
+! Additional library dependencies
+| [[KDELibs]], [[KDE Frameworks 5]]
+| requires window manager
+| libgnome
+| libmate
+| libxfce* for Xfce.
+|
+| libede
+| [[Enlightenment Foundation Libraries|EFL]]
+|----
+! Toolkit used
+| colspan=2 align="center"|[[Qt (software)|Qt]]
+| colspan=3 align="center"|[[GTK+]]
+| [[GNUstep]]
+| [[FLTK]] (previously eFLTK)
+| [[Enlightenment Foundation Libraries|Elementary]] (provided by EFL)
+|----
+! Size (base system, X installed)
+| ~210 MB
+| ~20 MB
+| colspan=2|~180 MB
+| Xfce: ~15 MB, ROX: ~780 KB
+|
+| EDE: ~3 MB
+| DR16: ~3 MB, DR17: ~15MB
+|}
+
+=== Default programs packaged ===
+This table shows basic information on the programs distributed with some desktop environments for the [[X Window System]].
+
+{| class="wikitable"
+! !! [[KDE Software Compilation]] !! [[GNOME]] !! [[MATE (software)|Mate]] !! [[Xfce]] !! [[LXDE]] !! [[ROX Desktop]] !! [[Étoilé]] !! [[EDE]] !! [[Enlightenment (software)|Enlightenment]]
+|-
+! [[X window manager]]
+| [[KWin]]
+| [[Mutter (window manager)|Mutter]]
+| [[MATE (software)#Software components|Marco]]
+| [[Xfce#Xfwm|Xfwm4]]
+| [[Openbox]]
+| OroboROX
+| Azalea
+| edewm
+| Enlightenment
+|-
+! [[X display manager (program type)|X display manager]]
+| [[KDE Display Manager|KDM]],  [[Simple Desktop Display Manager|SDDM]]
+| [[GNOME Display Manager|GDM]]
+|
+|
+| LXDM
+|
+|
+| elma
+| [[Entrance (display manager)|Entrance]]
+|-
+! [[File manager]]
+| [[Dolphin (software)|Dolphin]] ([[Konqueror]] before [[KDE Software Compilation 4|SC 4]])
+| [[GNOME Files|Files]]
+| [[MATE (software)#Software components|Caja]]
+| [[Thunar]]
+| [[PCMan File Manager|PCManFM]]
+| ROX Filer
+|
+| Efiler
+| EFM, Entropy
+|-
+! [[Widget toolkit]]
+| [[Qt (framework)|Qt]]
+| colspan=5| [[GTK+]]
+| [[GNUstep]]
+| [[FLTK]] (previously eFLTK)
+| Elementary
+|-
+! [[Terminal emulator]]
+| [[Konsole]]
+| [[GNOME Terminal]]
+| [[MATE (software)#Software components|MATE Terminal]]
+| [[Terminal (Xfce)|Terminal]]
+| LXTerminal
+| ROXTerm
+| [[aterm]]
+|
+| Terminology
+|-
+! [[Text editor]]
+| [[KWrite]] ([[Kate (text editor)|Kate]] before SC 4)
+| [[gedit]]
+| [[MATE (software)#Software components|Pluma]]
+| [[Xfce#Mousepad|Mousepad]], [[Leafpad]]
+| [[Leafpad]]
+| Edit
+| [[TextEdit]]
+|
+| Eyesight, Ecrire
+|-
+! [[Video player (software)|Video player]]
+| [[kdemultimedia#Dragon Player|Dragon Player]] ([[Kaffeine]] before [[KDE Software Compilation 4|SC 4]])
+| [[GNOME Videos|Videos]]
+|
+| rowspan="2"| Parole
+| lxine
+| mplayer-rox
+|
+|
+| Enna (media center), Eclair
+|-
+! [[Audio player (software)|Audio player]]
+| [[JuK]], [[Amarok (software)|Amarok]]
+| [[Banshee (media player)|Banshee]], [[Rhythmbox]]
+|
+| LXMusic
+| MusicBox
+| Melodie
+|
+| Enjoy
+|-
+! [[Optical disc authoring software|CD burners]]
+| [[K3b]]
+| [[Brasero (software)|Brasero]]
+|
+| Xfburn
+|
+| RoxISO
+|
+|
+|
+|-
+! [[CD ripper]]
+| [[K3b]], KAudioCreator
+| [[Sound Juicer]]
+|
+|
+|
+| Ripper
+|
+|
+| Extrackt
+|-
+! [[Image viewer]]
+| [[Gwenview]]
+| [[Eye of GNOME]]
+| [[MATE (software)#Software components|Eye of MATE]]
+| Ristretto
+| GPicView
+| Picky
+|
+| Eimage
+| Ephoto
+|-
+! [[Office suite]]
+| [[Calligra Suite]], [[KOffice]]
+| GnomeOffice
+|
+|
+|
+|
+|
+|
+|
+|-
+! [[Web browser]]
+| [[Konqueror]]
+| [[Web (web browser)|Web]]
+|
+| [[Midori (web browser)|Midori]]
+|
+|
+|
+|
+| Eve
+|-
+! [[E-mail client]]
+| [[Kontact#E-Mail|Kmail]]
+| rowspan="2"| [[Evolution (software)|Evolution]]
+|
+|
+|
+| [[GNUMail]]
+|
+|
+|
+|-
+! [[Personal information management#Personal information manager|Personal information manager]]
+| [[Kontact]]
+|
+|
+|
+| Contacts
+|
+|
+|
+|-
+! [[Instant messenger]]
+| [[Kopete]], [[KDE Telepathy]]
+| [[Empathy (software)|Empathy]]
+|
+|
+|
+|
+|
+|
+| Shotgun
+|-
+! [[File archiver|Archive manager]]
+| [[Ark (software)|Ark]]
+| [[File Roller]]
+| [[MATE (software)#Software components|Engrampa]]
+| [[Xarchiver]], Squeeze
+| [[Xarchiver]]
+| Archive
+|
+|
+|
+|-
+! [[PDF]] viewer
+| [[Okular]] ([[KPDF]] before [[KDE Software Compilation 4|SC 4]])
+| [[Evince]]
+| [[MATE (software)#Software components|Atril]]
+|
+|
+|
+| Vindaloo
+|
+| Epdf
+|-
+! [[Integrated development environment|IDE]]
+| [[KDevelop]]
+| [[Anjuta]]
+|
+|
+|
+|
+| [[Gorm (computing)|Gorm]], ProjectCenter
+|
+|
+|-
+! [[Widget engine]]
+| built-in – [[KDE Plasma Workspaces|Plasma]] ([[SuperKaramba]] before [[KDE Software Compilation 4|SC 4]])
+| [[gDesklets]]
+|
+|
+|
+|
+|
+|
+| Elementary
+|-
+! [[Software license|Licenses]] used
+| [[GPL]], [[LGPL]], [[BSD licenses|BSD]], others
+| [[GPL]], [[LGPL]]
+| [[GPL]], [[LGPL]]
+| [[GPL]], [[LGPL]], [[BSD licenses|BSD]]
+| [[GPL]], [[LGPL]]
+| [[GPL]]
+| [[GPL]], [[BSD licenses|BSD]]
+| [[GPL]], [[LGPL]]
+| [[BSD licenses|BSD]], [[LGPL]]
+|-
+! !! KDE Software Compilation !! GNOME !! MATE !! Xfce !! LXDE !! ROX Desktop !! Étoilé !! EDE !! Enlightenment
+|}
+
+Note that Razor-qt has become [[LXQt]], a port of LXDE to the Qt framework.
+
+=== Comparison of ease of use and stability ===
+GNOME's graphical file manager Nautilus is intended to be very easy to use and has many features, which make it easy for new Linux users to pick up without reading any documentation. KDE's file manager Dolphin is described as focused on usability.  Prior to KDE version 4, the KDE project's standard file manager was Konqueror, which was also designed for ease of use.
+
+Both GNOME and KDE come with many graphical configuration tools, reducing the need to manually edit configuration files for new users. They have extensive bundled software such as graphical menu editors, text editors, audio players, and software for doing administrative work. All applications installed in most distributions are automatically added to the GNOME and KDE menus. No major configuration changes are necessary to begin working. However, by using graphical tools, the extent to which the desktops can be configured is determined by the power provided by those tools.
+
+
+
+== Compatibility and interoperability issues ==
+Some desktop environments and window managers claim that they support applications made for other desktop environments explicitly. For example, Fluxbox states KDE support in its feature list. Using software made specifically for the desktop environment in use or window manager agnostic software is a way to avoid these issues. For software developers, the [[Portland Project]] has released a set of common interfaces that allows applications to integrate across many desktop environments.
+
+==System resources utilization==
+Tests with the default installation of [[Ubuntu Linux|Ubuntu]] show that [[LXDE]] 0.5's memory utilization is lower than that of [[Xfce]] 4.6, which in turn is lower than that of [[GNOME]] 2.29, with [[KDE Software Compilation|KDE]] 4.4 using the most RAM compared to the aforementioned desktops.
+
+== See also ==
+* [[Comparison of X window managers]]
+* [[Comparison of file managers]]
+* [[Croquet Project]]
+* [[freedesktop.org]]
+* [[Minimalism (computing)]]
+* [[Software bloat]]
+
+== References ==
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:X desktop environments and window managers|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:X desktop environments and window managers|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:X_desktop_environments_and_window_managers&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Desktop environment]]s, [[widget toolkit]]s, and [[X window manager|window manager]]s based on the [[X Window System]] or [[Wayland (display server protocol)|Wayland]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Desktop environment]]s<br /><small>([[Comparison of X Window System desktop environments|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[GTK+]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Cinnamon (software)|Cinnamon]]
+*[[GNOME]]
+*[[GPE]]
+*[[LXDE]]
+*[[MATE (software)|MATE]]
+*[[Pantheon (desktop environment)|Pantheon]]
+*[[ROX Desktop]]
+*[[Sugar (software)|Sugar]]
+*[[Xfce]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Qt (software)|Qt]]-based</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Hawaii (desktop environment)|Hawaii]]
+*[[KDE Software Compilation|KDE SC]]
+*[[LXQt]]
+*[[Open Palmtop Integrated Environment|OPIE]]
+*[[MoonLightDE]]
+*[[Razor-qt]]
+*[[Trinity (desktop environment)|Trinity]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Motif (software)|Motif]]-based</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Common Desktop Environment|CDE]]
+*[[IRIX Interactive Desktop]]
+*[[Visual User Environment|VUE]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[EDE]] ([[FLTK]]-based)
+*[[Étoilé]] ([[GNUstep]]-based)
+*[[Mezzo (desktop environment)|Mezzo]]
+*[[OpenWindows]] ([[OLIT]]-based)
+*[[UDE]]
+*[[Enlightenment (software)|Enlightenment]] ([[Enlightenment Foundation Libraries|EFL]]-based)
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Graphical shell]]s</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[GNOME Shell]]
+*[[KDE Plasma 4]]
+*[[KDE Plasma 5]]
+*[[Maynard (software)|Maynard]]
+*[[Unity (user interface)|Unity]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager]]s<br /><small>([[Comparison of X window managers|Comparison]])</small></th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Compiz]]
+* [[KWin]]
+* [[Metacity]]
+* [[Muffin (software)|Muffin]]
+* [[Mutter (software)|Mutter]]
+* [[Xfwm]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Awesome (window manager)|awesome]]
+* [[dwm]]
+* [[i3 (window manager)|i3]]
+* [[Ion (window manager)|Ion]]
+* [[larswm]]
+* [[PWM (window manager)|PWM]]
+* [[ratpoison]]
+* [[wmii]]
+* [[xmonad]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[4Dwm]]
+* [[9wm]]
+* [[AfterStep]]
+* [[amiwm]]
+* [[Blackbox]]
+* [[cwm (window manager)|cwm]]
+* [[Fluxbox]]
+* [[FLWM]]
+* [[FVWM]]
+* [[Hackedbox]]
+* [[IceWM]]
+* [[JWM]]
+* [[Matchbox (window manager)|Matchbox]]
+* [[Motif Window Manager]]
+* [[olwm]]
+* [[Openbox]]
+* [[PekWM]]
+* [[Sawfish (window manager)|Sawfish]]
+* [[twm]]
+* [[Window Maker]]
+* [[WindowLab]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Wayland compositor]]s</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Enlightenment (software)|Enlightenment]]
+* [[Gala Window Manager|Gala]]
+* [[KWin]]
+* [[Mutter (software)|Mutter]]
+* [[Muffin (software)|Muffin]]
+* [[Mir (software)|Mir]]
+* [[Weston (software)|Weston]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Dock (computing)|Dock]]
+*[[Pager (GUI)|Pager]]
+*[[Taskbar]]
+*[[Title bar]]
+*[[Window decoration|Window decorator]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Display server]]
+*[[Graphical user interface|GUI]]
+*[[GUI widget]]
+*[[Painter's algorithm]]
+*[[Resolution independence]]
+*[[Shell (computing)|Shell]]
+*[[Virtual desktop]]
+*[[Widget toolkit]]
+*[[WIMP (computing)|WIMP]]
+*[[Windowing system]]
+</div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="3"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:XWinSys|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:XWinSys|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:XWinSys&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[X Window System]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X Window System protocols and architecture|Architecture]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*'''[[X Window System core protocol|Core protocol]]'''
+*[[X Window selection]]
+*[[X Toolkit Intrinsics]]
+*[[X Window authorization]]
+*[[X11 color names]]
+*[[X Input Method]]
+*[[Wayland (display server protocol)|Wayland]]
+</div></td><td class="navbox-image" rowspan="9" style="width:0%;padding:0px 0px 0px 2px"><div>[[File:X11.svg|64px]]</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Extensions</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[X Image Extension]]
+*[[X keyboard extension]]
+*[[RandR]]
+*[[X Rendering Extension]]
+*[[Shape extension]]
+*[[MIT-SHM|Shared memory extension]]
+*[[XDM (display manager)|X Display Manager Control Protocol]]
+*[[X video extension]]
+*[[X-Video Motion Compensation]]
+*[[AIGLX]]
+*[[GLX]]
+*[[Multi-Pointer X]]
+*[[Display PostScript]]
+*[[Composite (graphics)|Composite]]
+*[[Xinerama]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components<br>and notable<br>implementations</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[display server]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*'''[[X.Org Server]]'''
+*[[Cygwin/X]]
+*[[X-Win32]]
+*[[X386]]
+*[[XFree86]]
+*[[XGGI]]
+*[[XDarwin]]
+*[[Xming]]
+*[[Xsgi]]
+*[[Xsun]]
+*[[Xgl]]
+*[[Xnest]]
+*[[Xephyr]]
+*[[XQuartz]]
+*[[XWayland]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">client libraries</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Xlib]]
+*[[XCB]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X display manager (program type)|display managers]]<br>[[X session manager|session manager]]s</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[GNOME Display Manager|GDM]]
+*[[KDE Display Manager|KDM]]
+*[[Simple Desktop Display Manager|SDDM]]
+*[[XDM (display manager)|XDM]]
+*[[LightDM]]
+*[[LXDE|LXDM]]
+*[[SLiM]]
+*[[Entrance (display manager)|Entrance]]
+*[[WINGs Display Manager|WDM]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[X window manager|window manager]]s</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[compositing window manager|Compositing]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Compiz]]
+* [[KWin]]
+* [[Metacity]]
+* [[Mutter (software)|Mutter]]
+* [[Xfwm]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[tiling window manager|Tiling]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Awesome (window manager)|awesome]]
+* [[dwm]]
+* [[i3 (window manager)|i3]]
+* [[Ion (window manager)|Ion]]
+* [[PWM (window manager)|PWM]]
+* [[ratpoison]]
+* [[wmii]]
+* [[xmonad]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[stacking window manager|Stacking]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[AfterStep]]
+* [[amiwm]]
+* [[Blackbox]]
+* [[cwm (window manager)|cwm]]
+* [[Enlightenment (software)|Enlightenment]]
+* [[Fluxbox]]
+* [[FVWM]]
+* [[IceWM]]
+* [[JWM]]
+* [[Matchbox (window manager)|Matchbox]]
+* [[Motif Window Manager|mwm]]
+* [[Openbox]]
+* [[PekWM]]
+* [[Sawfish (window manager)|Sawfish]]
+* [[twm]]
+* [[Window Maker]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Standards</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Inter-Client Communication Conventions Manual|ICCCM]]
+*[[Extended Window Manager Hints|EWMH]]
+*[[Direct Save Protocol|XDS]]
+*[[freedesktop.org]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Applications</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[xcalc]]
+*[[xclock]]
+*[[Xedit (X11)|xedit]]
+*[[xload]]
+*[[xterm]]
+*[[xeyes]]
+*[[Comparison of X Window System desktop environments|desktop environments]]
+</div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:FOSS|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:FOSS|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:FOSS&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Free and open-source software]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Alternative terms for free software]]
+*[[Comparison of open source and closed source]]
+*[[Comparison of open-source software hosting facilities]]
+*[[List of formerly proprietary software|Formerly proprietary software]]
+*[[List of free and open-source Android applications|Free and open-source Android applications]] 
+*[[List of free and open-source software packages|Free and open-source software packages]]
+*[[Free software]]
+*[[List of free-software events|Free software events]]
+*[[Free software movement]]
+*[[List of free software project directories|Free software project directories]]
+*[[List of free software web applications|Free software web applications]] 
+*[[Gratis versus libre]] 
+*[[Long-term support]]
+*[[Open-source software]]
+*[[Outline of free software|Outline]]
+*[[Software Package Data Exchange|SPDX]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of open-source operating systems|Operating system<br/> families]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[AROS Research Operating System|AROS]] 
+*[[Berkeley Software Distribution|BSD]] 
+*[[Contiki]]
+*[[Darwin (operating system)|Darwin]] 
+*[[eCos]] 
+*[[FreeDOS]] 
+*[[GNU]] 
+*[[Haiku (operating system)|Haiku]] 
+*[[Inferno (operating system)|Inferno]] 
+*[[Linux]] 
+*[[Mach (kernel)|Mach]] 
+*[[MINIX]] 
+*[[OpenSolaris]] 
+*[[Plan 9 from Bell Labs|Plan 9]] 
+*[[ReactOS]]
+*[[TUD:OS]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Open-source software development|Development]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Basic For Qt]] 
+*[[Eclipse (software)|Eclipse]] 
+*[[Free Pascal]]
+*[[FreeBASIC]]
+*[[Gambas]]
+*[[GNU Compiler Collection|GCC]]
+*[[Java (programming language)|Java]]
+*[[Julia (programming language)|Julia]]
+*[[LLVM]] 
+*[[Lua (programming language)|Lua]] 
+*[[NetBeans]] 
+*[[Open64]] 
+*[[OpenSSH]] 
+*[[Perl]] 
+*[[PHP]] 
+*[[Python (programming language)|Python]] 
+*[[ROSE (compiler framework)|ROSE]] 
+*[[Ruby (programming language)|Ruby]] 
+*[[Smalltalk]]
+*[[Tcl]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of free and open-source software|History]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[GNU#History|GNU]] 
+*[[History of Haiku (operating system)|Haiku]] 
+*[[History of Linux|Linux]] 
+*[[Mozilla]] 
+**[[History of Mozilla Application Suite|Application Suite]] 
+**[[History of Firefox|Firefox]] 
+**[[History of Mozilla Thunderbird|Thunderbird]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Organizations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Android (operating system)|Android Open Source Project]] 
+*[[Apache Software Foundation]] 
+*[[Blender Foundation]]
+*[[The Document Foundation]]
+*[[Eclipse Foundation]] 
+*[[Free Software Foundation]]
+**[[Free Software Foundation Europe|Europe]] 
+**[[Free Software Foundation of India|India]] 
+**[[Free Software Foundation Latin America|Latin America]]
+*[[FreeBSD Foundation]] 
+*[[freedesktop.org]] 
+*[[Free Software Movement of India|FSMI]] 
+*[[GNOME Foundation]] 
+*[[GNU Project]] 
+*[[Google Code]] 
+*[[KDE e.V.]] 
+*[[Linux Foundation]] 
+*[[Mozilla Foundation]] 
+*[[Open Knowledge Foundation]]
+*[[Open Source Geospatial Foundation]] 
+*[[Open Source Initiative]] 
+*[[OpenBSD Foundation]] 
+*[[Software Freedom Conservancy]] 
+*[[SourceForge]] 
+*[[Symbian Foundation]] 
+*[[Ubuntu Foundation]]
+*[[VideoLAN|VideoLAN Organization]] 
+*[[Wikimedia Foundation]] 
+*[[X.Org Foundation]]
+*[[Xiph.Org Foundation]] 
+*[[XMPP Standards Foundation]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Free software license|Licenses]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Apache License|Apache]] 
+*[[Apple Public Source License|APSL]] 
+*[[Artistic License|Artistic]] 
+*[[Beerware]]
+*[[Boost Software License|Boost]]
+*[[BSD licenses|BSD]]
+*[[CC0]] 
+*[[Common Development and Distribution License|CDDL]]
+*[[Eclipse Public License|EPL]] 
+*[[GNU General Public License|GNU GPL]] 
+*[[GNU Lesser General Public License|GNU LGPL]] 
+*[[ISC license|ISC]] 
+*[[MIT License|MIT]] 
+*[[Mozilla Public License|MPL]] 
+*[[Shared source#Open Source licenses|Ms-PL/RL]] 
+*[[WTFPL]]
+*[[zlib License|zlib]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">License types<br/> and standards</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Comparison of free and open-source software licenses]]
+*[[Contributor License Agreement]] 
+*[[Copyfree]]
+*[[Copyleft]]
+*[[Debian Free Software Guidelines]] 
+*[[Definition of Free Cultural Works]]
+*[[Free license]]
+*[[The Free Software Definition]]
+*[[The Open Source Definition]]
+*[[Open-source license]]
+*[[Permissive free software licence]]
+*[[Public domain]]
+*[[Viral license]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Challenges</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Binary blob]] 
+*[[Digital rights management]]
+*[[Free and open-source graphics device driver]]
+*[[Comparison of open-source wireless drivers]]
+*[[Hardware restriction]]s 
+*[[License proliferation]] 
+*[[Mozilla Corporation software rebranded by the Debian project|Mozilla software rebranding]] 
+*[[Proprietary software]] 
+*[[SCO–Linux controversies]]
+*[[UEFI_Secure_Boot#Secure_boot|Secure boot]] 
+*[[Software patents and free software|Software patents]]
+*[[Open-source software security|Software security]]
+*[[Trusted Computing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*''[[The Cathedral and the Bazaar]]''
+*[[Fork (software development)|Forking]] 
+*[[Linux distribution]] 
+*[[Microsoft Open Specification Promise]] 
+*''[[Revolution OS]]''
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2" style="font-weight:bold"><div>
+*[[File:Symbol book class2.svg|Wikipedia book|16x16px|link=]] [[Book:Free and Open Source Software|Book]]
+*[[File:Folder Hexagonal Icon.svg|Category|16x16px|link=]] [[:Category:Free software|Category]]
+*[[File:Commons-logo.svg|Commons page|16x16px|link=]] [[:commons:Category:Free software|Commons]]
+*[[File:Portal-puzzle.svg|Portal|16x16px|link=]] [[Portal:Free software|Portal]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Software comparisons|Desktop environments]]
+[[Category:Desktop environments| ]]

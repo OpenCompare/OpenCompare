@@ -1,0 +1,790 @@
+This is a comparison of popular [[Internet]] applications in regard to their support of the [[IPv6]] protocol.
+
+==Applications==
+
+{| class="wikitable sortable" style="font-size: 85%; text-align: center; width: 100%"
+|-
+! Application
+! Category
+! [[IPv6]] supported?
+! [[IPv6 address#Link-local addresses and zone indices|Zone ID]] supported?
+! Earliest version # with IPv6 support
+! Notes
+! Reference links
+|-
+| [[AbsoluteTelnet]]
+| [[SSH client]], [[Telnet]] client, [[SSH file transfer protocol|SFTP Client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 5.01
+| Supports SSH, Telnet, and SFTP
+| [http://www.celestialsoftware.net/]
+|-
+| [[Active Directory]]
+| [[Lightweight Directory Access Protocol|LDAP]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2008
+| 
+| [http://technet.microsoft.com/en-us/library/dd578336(WS.10).aspx] [http://www.networkworld.com/community/blog/configuring-microsoft-active-directory-suppor] [http://technet.microsoft.com/en-us/library/dd379498(WS.10).aspx]
+|-
+| [[Apache HTTP server|Apache httpd]]
+| [[Web server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 2.0.14
+| "Virtual hosts on IPv6 addresses are broken in versions until 2.0.28"
+| [http://tldp.org/HOWTO/Linux+IPv6-HOWTO/hints-daemons-apache2..html]
+|-
+| [[Apple Mail]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+| [[BIND]]
+| [[Domain name system|DNS]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|
+|
+|
+|-
+| BSD [[Telnet]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1.2?
+| Telnet and telnetd from OpenBSD.
+|
+|-
+| [[Cerberus FTP Server]]
+| [[FTP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 3.0
+| Supports RFC 2428 FTP Extensions for IPv6
+| [http://www.cerberusftp.com/products/features/index.html]
+|-
+| [[CUPS]]
+| [[Digital printing]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.2
+|
+| [http://www.cups.org/documentation.php/whatsnew.html]
+|-
+| [[cURL]]
+| [[Download manager|File transfer software]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|-
+| [[ejabberd]]
+| [[XMPP]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 0.7 or older
+| Jabber server
+| [https://github.com/ivan/ejabberd/commit/99aac0acce17cb43dbcd333194bf3412d1a39943]
+|-
+| [[ffproxy]]
+| [[Proxy server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.5
+| Non-caching proxy.
+| 
+|-
+| [[FileZilla]]
+| [[FTP]], [[FTPS]] and [[SSH File Transfer Protocol|SFTP]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 3.1.0-beta1
+| 
+| [http://filezilla-project.org/client_features.php][http://filezilla-project.org/versions.php#3.1.0-beta1]
+|-
+| [[File Transfer Protocol|ftp.exe]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 5.1 (XP)
+| Standard Windows FTP client.
+|
+|-
+| [[Google Chrome]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+| Initial
+| Scope identifier support is not working in Chromium (the open-source browser from which Chrome is built) as of 2014-06-10 [https://code.google.com/p/chromium/issues/detail?id=70762].
+|
+|-
+| [[Hiawatha webserver|Hiawatha]]
+| [[Web server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 6.0
+|
+|
+|-
+| [[Internet Information Services|IIS]]
+| [[Web server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 6.0
+| Versions before 7.0 do not support [[bandwidth throttling]], client IP address restrictions, [[FTP]], or [[NNTP]].
+| [http://blogs.iis.net/nazim/archive/2008/05/03/using-ipv6-with-iis7.aspx]
+|-
+| [[Internet Explorer]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 4.01
+| Versions before 7.0 may not be able to handle numerical addresses. Macintosh versions do not support IPv6. Scope identifier support verified in version 11.0 [http://msdn.microsoft.com/en-us/library/windows/desktop/ms740593(v=vs.85).aspx]; may be present in earlier versions (unverified).
+| [http://research.microsoft.com/msripv6/ReadMe.htm][http://msdn.microsoft.com/downloads/sdks/platform/tpipv6/faq.asp][http://arstechnica.com/articles/paedia/IPv6.ars/4]
+|-
+| [[Irssi]]
+| [[IRC]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 0.7.15
+|
+| [http://svn.irssi.org/repos/irssi/tags/r_0_7_16/NEWS]
+|-
+| [[jabberd2]]
+| [[XMPP]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 2.0
+| Jabber server
+|
+|-
+| [[Java (programming language)|Java]]
+| [[Programming language]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1.4.2
+| Support on Windows XP/2003 was added in Java 1.5.0
+| [http://java.sun.com/j2se/1.4.2/docs/relnotes/features.html#networking][http://java.sun.com/j2se/1.5.0/docs/guide/net/enhancements-1.5.0.html][http://java.sun.com/j2se/1.5.0/docs/guide/net/ipv6_guide/]
+|-
+| [[Konqueror]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2.2
+|
+| [http://www.kde.org/announcements/changelogs/changelog2_1to2_2.php]
+|-
+| [[lighttpd]]
+| [[Web server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|
+|
+|
+|-
+| Linux CIFS [[Virtual file system|VFS]]
+| [[Server Message Block|SMB/CIFS]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.49
+| cifs vfs version 1.48 is part of kernel 2.6.21
+| [http://linux-cifs.samba.org/]
+|-
+| Linux NetKit [[File Transfer Protocol|ftp]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 0.17?
+| Standard Linux FTP client.
+|
+|-
+| Linux NetKit [[Telnet]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 0.17?
+| Standard Linux telnet client and server.
+|
+|-
+| [[MaraDNS]]
+| [[Domain name system|DNS]] server
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|
+|
+|
+|-
+| [[Microsoft DNS]]
+| [[Domain name system|DNS]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 5.0 (2000)
+| [[Windows 2000]] DNS can handle [[IPv6#IPv6 and the Domain Name System|AAAA records]], but the operating system does not ship with IPv6.
+| [http://www.microsoft.com/technet/network/deploy/confeat/domain.mspx]
+|-
+| [[Microsoft Outlook]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2007
+|
+|[http://technet.microsoft.com/en-us/network/hh994905.aspx]
+|-
+| [[Microsoft SQL Server]]
+| [[Database]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 2005 (9.0)
+| 
+| [http://msdn.microsoft.com/en-us/library/ms345359(SQL.90).aspx], [http://blogs.msdn.com/b/sql_protocols/archive/2005/10/12/480192.aspx]
+|-
+| [[mIRC]]
+| [[IRC]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 7.1
+|
+|
+|-
+| [[Mozilla Application Suite|Mozilla]] / [[SeaMonkey]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| IPv6 is not preferred by default on [[Mac OS X]].
+| [http://www.mozilla.org/releases/mozilla1.7/README.html] [http://kb.mozillazine.org/Network.dns.disableIPv6] [http://arstechnica.com/articles/paedia/IPv6.ars/4]
+|-
+| [[Mozilla Firefox]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 1.5
+| IPv6 is not preferred by default on [[Mac OS X]] in Firefox 1.5 or 2.0, only in 3.0. Firefox is not able to connect to a SOCKS-Proxy with IPv6 and does not support PAC-Scripts what return IPv6.
+
+Scope identifier support was working at one time but is broken in the current version as of 2014-06-10 [https://bugzilla.mozilla.org/show_bug.cgi?id=700999].
+| [http://arstechnica.com/articles/paedia/IPv6.ars/4] [http://kb.mozillazine.org/Network.dns.disableIPv6] [https://bugzilla.mozilla.org/show_bug.cgi?id=909021]
+|-
+| [[Mozilla Thunderbird]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| Version 2.0 & later appears to work with [[Mac OS X]] Version 10.4.9.
+| [http://slashdot.org/comments.pl?sid=231405&threshold=0&commentsort=0&mode=thread&pid=18799313#18804565]
+|-
+| [[MPlayer]]
+| [[Media player (application software)|Multimedia player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|
+| For example in HTTP streaming.
+|
+|-
+| [[MySQL]]
+| [[Database]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 5.5.3
+| Disabled by default before 5.6.6.
+| [http://dev.mysql.com/doc/refman/5.5/en/ipv6-support.html] [http://dev.mysql.com/doc/refman/5.6/en/ipv6-server-config.html]
+|-
+| [[nginx]]
+| [[Web server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 0.7.36
+| Full support implemented in 0.8.22
+| [http://kovyrin.net/2010/01/16/enabling-ipv6-support-in-nginx/] [http://nginx.org/en/CHANGES]
+|-
+| [[Nmap]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 3.10ALPHA1
+| Zone ID support since version 4.65
+| [http://insecure.org/nmap/changelog.html]
+|-
+| [[Nortel Networks]] VPN client
+| [[VPN]] client
+| ?
+|
+| 
+| 
+| [http://products.nortel.com/go/product_content.jsp?segId=0&parId=0&prod_id=34820&locale=en-US]
+|-
+| [[Novell eDirectory]]
+| [[Lightweight Directory Access Protocol|LDAP]] server
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|-
+| [[OpenArena]]
+| [[PC game|Game]]/[[First-person shooter|FPS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 0.8.1 or older
+| 
+|
+|-
+| [[OpenLDAP]]
+| [[Lightweight Directory Access Protocol|LDAP]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2.0.0
+|
+| [http://www.openldap.org/devel/cvsweb.cgi/~checkout~/Attic/CHANGES?rev=1.5.2.9]
+|-
+| [[OpenSSH]]
+| [[SSH client]]/server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|-
+| [[OpenTTD]]
+| [[PC game|Game]]/[[Business simulation game|simulation]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 1.0.0
+|
+| [http://wiki.openttd.org/OpenTTD_1.0.0]
+|-
+| [[OpenVPN]]
+| [[VPN]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2.3
+| Partial support starting with version 2.0.
+| [http://openvpn.net/faq.html] [http://openvpn.net/index.php/open-source/faq/77-server/287-is-ipv6-support-plannedin-the-works.html]
+|-
+| [[Opera (web browser)|Opera]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 7.20b
+| IPv6 support on Macintosh was added in Opera 9.0
+| [http://www.ipv6tf.org/index.php?page=news/newsroom&id=77] [http://www.opera.com/docs/changelogs/windows/720b/index.dml] [http://www.opera.com/docs/changelogs/linux/720b7/index.dml] [http://www.opera.com/docs/changelogs/mac/900/index.dml]
+|-
+| [[Oracle (database)|Oracle]]
+| [[Database]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 11gR1
+| 
+| [http://metalink.oracle.com/metalink/plsql/showdoc?db=Not&id=783570.1]
+|-
+| [[Outlook Express]]
+| [[e-mail client]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+|
+| [[Windows Mail]] on the [[Windows Vista]] platform has IPv6 support.
+| [http://www.ipv6style.jp/en/20070115/vista_lifehack1.html]
+|-
+| [[Pidgin (software)|Pidgin]]
+| [[Instant messenger]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2.0 (GAIM had support in older builds)
+| IPv6 is enabled on [[Linux]] builds, but not on [[Win32]] builds.
+| [http://developer.pidgin.im/ticket/1075]
+|-
+| [[PokerTH]]
+| [[PC game|Game]]/[[Card game|Card]]/[[Texas hold 'em|Holdem]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 0.6.2
+| 
+|
+|-
+| [[Polipo]]
+| [[Proxy server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 0.8
+| Can be used for proxying between IPv4 and IPv6
+| 
+|-
+| [[PostgreSQL]]
+| [[Database]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 7.4 (8.1 on Windows)
+| IPv6 broken in [[AIX]] version 
+| 
+|-
+| [[Privoxy]]
+| [[Proxy server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 3.0.13 beta
+|
+| [http://www.privoxy.org/announce.txt] [http://www.privoxy.org/3.0.13/user-manual/whatsnew.html]
+|-
+| [[PuTTY]]
+| [[SSH client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 0.58
+| Fully functional (also Zone ID's) from 0.59
+| [http://www.chiark.greenend.org.uk/~sgtatham/putty/changes.html]
+|-
+| [[Quagga (software)|Quagga]]
+| [[Routing]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 
+| OSPFv3 area support is incomplete.
+| [http://www.quagga.net/docs/docs-multi/IPv6-Support.html#IPv6-Support] [http://www.quagga.net/docs/docs-multi/OSPF6-area.html#OSPF6-area]
+|-
+| [[rsync]]
+| differential file synchronizer
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2.5.0
+| native IPv6 support since 2.5.0, but hosts allow/deny in rsync.conf didn't work until 2.5.6.
+| [http://samba.org/ftp/rsync/old-versions/rsync-2.5.0.NEWS] [http://samba.org/ftp/rsync/old-versions/rsync-2.5.6-NEWS]
+|-
+| [[rTorrent]]
+| [[BitTorrent (protocol)|BitTorrent]] client
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|-
+| RusHub
+| [[Direct Connect (file sharing)|Direct Connect]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 2.3.3
+| 
+| [http://wiki.mydc.ru/%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F_%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B9_RusHub#rushub_v_2.3.3.2C_lua_plugin_v_2.3]
+|-
+| [[Safari (web browser)|Safari]]
+| [[Web browser]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| [http://arstechnica.com/articles/paedia/IPv6.ars/4]
+|-
+| [[Samba (software)|Samba]]
+| [[Server Message Block|SMB/CIFS]] client/server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 3.2.0
+| 
+| [http://samba.org/samba/history/samba-3.2.0.html]
+|-
+| [[Simple DNS Plus]]
+| [[Domain name system|DNS]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 5.0 (Jan 2008)
+| 
+| [http://www.simpledns.com/kb.aspx?kbid=1222]
+|-
+| [[Skype]]
+| [[VoIP]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| 
+| [http://forum.skype.com/index.php?showtopic=632023]
+|-
+| [[SmartFTP]]
+| [[FTP]] and SFTP client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 
+| 
+| 
+|-
+| [[srelay]]
+| [[SOCKS server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 
+| 
+| 
+|-
+| [[Squid cache]]
+| [[Proxy server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 3.1
+| [http://squidproxy.wordpress.com/] [http://www.squid-cache.org/Versions/v3/3.1/]
+|-
+| [[Teeworlds]]
+| [[PC game|Game]]/[[Side-scrolling video game|Side-scroller]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 0.6.0
+| 
+|
+|-
+| [[Telnet|telnet.exe]]
+| [[Console application]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 5.1 (XP)
+| Standard Windows telnet client.
+|
+|-
+| [[The Bat!]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 3.95.01
+| E-mail client for Windows.
+| [https://www.ritlabs.com/en/news/index.php?ELEMENT_ID=1758]
+|-
+| [[TightVNC]]
+| [[VNC]]
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|
+| Protocol version 3.5
+| Experimental IPv6 builds were made available in 2004.
+| [http://jungla.dit.upm.es/~acosta/paginas/vncIPv6.html]
+|-
+| [[Tinc (protocol)|tinc]]
+| [[VPN]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.0
+| Defaults to IPv6; can be set to IPv4-only.
+| [http://www.tinc-vpn.org/faq]
+|-
+| [[tinydns]]
+| [[Domain name system|DNS]] server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 1.05?
+|
+| [http://cr.yp.to/djbdns.html]
+|-
+| [[Trillian (software)|Trillian]]
+| [[Instant Messenger]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 
+| [http://bugs.ceruleanstudios.com/show_bug.cgi?id=11530]
+|-
+| [[UDP Speed Test 3]]
+| [[Network Speed Test Tool]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 3.05
+| Unicast, Broadcast, Multicast, Anycast.
+| [http://www.myjavaserver.com/~skybuck/]
+|-
+| [[VLC media player|VLC]]
+| [[Media player (application software)|Multimedia player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+| [[UploadFTP]]
+| [[FTP]], [[FTPS]] and [[SSH File Transfer Protocol|SFTP]] Client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 2.0
+| 
+| [http://www.upload-ftp.com/features]
+|-
+| [[VMware vSphere Client]]
+| [[Systems management client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 4.0.0
+| Performance reports do not support IPv6, but everything else appears to.  This was tested using IPv6>IPv4 PT, where the server is on the IPv4 side.<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:No original research|<span title="The material near this tag possibly contains original research. (November 2012)">original research?</span>]]</i>&#93;</sup>
+|
+|-
+| [[Warzone 2100]]
+| [[PC game|Game]]/[[Real-time strategy|RTS]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 3.1.1 or older
+|
+|
+|-
+| [[Webmin]]
+| Web-based remote administration tool
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.530
+| 
+| [http://www.webmin.com/changes.html]
+|-
+| [[WeeChat]]
+| [[IRC client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 0.1.3
+|
+| [http://www.weechat.org/features/]
+|-
+| [[Wget]]
+| [[Download manager|File transfer software]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.9?
+| May default to IPv4 transfers: "-6" option used to override.
+| [http://svn.dotsrc.org/repo/wget/trunk/src/ChangeLog]
+|-
+| [[Winamp]]
+| [[Media player (application software)|Multimedia player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 5.34
+|
+| [http://betas.intercom.net/index.php?name=News&file=article&sid=1550]
+|-
+| [[Windows Live Mail]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| Initial
+|
+| 
+|-
+| [[Windows Mail]]
+| [[e-mail client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| Initial
+|
+|
+|-
+| [[Windows Media Player]]
+| [[Media player (application software)|Multimedia player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 9.0?
+|
+| [http://www.uk6x.com/applicationservices/mp3radio.html]
+|-
+| Windows [[Server Message Block|File and print sharing]]
+| [[Server Message Block|SMB/CIFS]] client/server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 5.2 (Server 2003)
+| [[Windows XP]] 32-bit does not support IPv6 at the SMB/CIFS layer. The protocol is available for other applications ("ipv6 install" pre-SP1; protocol install afterwards).
+| [http://www.microsoft.com/technet/network/ipv6/ipv6faq.mspx] [http://www.microsoft.com/technet/abouttn/flash/promo/lettertoeditor/lte041205.mspx] [http://www.ipv6tf.org/index.php?page=meet/faqs&faq_id=2600&q=27]
+|-
+| [[World of Warcraft]]
+| [[PC game|Game]]/[[Massively multiplayer online role-playing game|MMORPG]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| patch 4.1.0
+| 
+|
+|-
+| [[WWWOFFLE]]
+| [[Proxy server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2.6d
+| 
+| [http://www.gedanken.demon.co.uk/wwwoffle/version-2.9/FAQ.html]
+|-
+| [[XChat]]
+| [[IRC]] client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.7.0
+|
+| [http://www.xchat.org/changelog.txt]
+|-
+| [[xinetd]]
+| Networking [[Daemon (computer software)|daemon]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.89
+| Version 2.3.3 or newer recommended to avoid security issues.
+| [http://tldp.org/HOWTO/Linux+IPv6-HOWTO/hints-daemons-xinetd.html]
+|-
+| [[µTorrent]]
+| [[BitTorrent client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.8
+|
+|
+|-
+| [[Transmission (BitTorrent client)|Transmission]]
+| [[BitTorrent client]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 1.5
+|No official Windows version.
+|
+|-
+| [[Cisco Systems|Cisco]] AnyConnect
+| [[Virtual private network|VPN]] Client
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2.0
+| No split tunneling allowed in IPv6.  ASA 8.4 software required for full IPv6 mode.
+| [http://www.cisco.com/en/US/docs/security/vpn_client/anyconnect/anyconnect25/administration/guide/anyconnectadmin25.html] [http://www.cisco.com/en/US/docs/security/asa/asa84/configuration/guide/vpn_anyconnect.html#wp1108722]
+|-
+|}
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+==See also==
+*[[IPv6 transition mechanisms]]
+
+==External links==
+*[http://www.ipv6-to-standard.org/ Vendor-Application database]
+*[http://www.deepspace6.net/docs/ipv6_status_page_apps.html "Current Status of IPv6 Support for Networking Applications"]: last updated in 7-2007.
+*[http://6net.iif.hu/ipv6_apps IPv6 Application and Patch Database]
+*[http://www.ipv6.org/v6-apps.html "IPv6 Enabled Applications"]: last updated in 3-2003.
+*[http://tldp.org/HOWTO/Linux+IPv6-HOWTO/chapter-hints-daemons.html "Hints for IPv6-enabled daemons"]: chapter 21 of TLDP's Linux IPv6 HOWTO.
+*[http://www.kame.net/newsletter/19980604/ Implementing AF-independent application] by [[Jun-ichiro itojun Hagino]].
+*[http://gsyc.escet.urjc.es/~eva/IPv6-web/ipv6.html Porting Applications to IPv6] by Eva M. Castro.
+*[http://tools.ietf.org/html/rfc4007#section-11 RFC 4007 - IPv6 Scoped Address Architecture], details the textual representation of zone indices.
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:IPv6|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:IPv6|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:IPv6&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Internet Protocol]] [[IPv6|version 6]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[IPv6]]
+*[[IPv6 address]]
+*[[IPv6 packet]]
+*[[Mobile IPv6]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Deployment</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[IPv6 deployment]]
+*[[World IPv6 Day and World IPv6 Launch Day]]
+*[[Comparison of IPv6 application support]]
+*[[Comparison of IPv6 support in routers]]
+*[[Comparison of IPv6 support in operating systems]]
+*[[Comparison of IPv6 support by major transit providers]]
+*[[List of IPv6 tunnel brokers]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">IPv4 to IPv6 topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[IPv4 address exhaustion]]
+*[[IPv6 transition mechanisms]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related protocols</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[DHCPv6]]
+*[[ICMPv6]]
+**[[Neighbor Discovery Protocol]]
+**[[Secure Neighbor Discovery]]
+**[[Multicast Router Discovery]]
+*[[Site Multihoming by IPv6 Intermediation]]
+</div></td></tr></table></td></tr></table>
+
+
+
+[[Category:IPv6]]
+[[Category:Software comparisons|IPv6 application support]]

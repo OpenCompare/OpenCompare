@@ -1,0 +1,772 @@
+There are a number of [[Unix-like]] [[operating system]]s based on or descended from the '''[[Berkeley Software Distribution]] (BSD) series of [[Unix]] variants'''. The three most notable descendants in current use are [[FreeBSD]], [[OpenBSD]], and [[NetBSD]], which are all derived from [[386BSD]] and [[4.4BSD]]-Lite, by various routes. Both NetBSD and FreeBSD started life in 1993, initially derived from 386BSD, but in 1994 migrating to a 4.4BSD-Lite code base. OpenBSD was [[Fork (software development)|forked]] in 1995 from NetBSD. Other notable derivatives include [[DragonFly BSD]], which was forked from FreeBSD 4.8, and [[Apple Inc.]]'s [[iOS (Apple)|iOS]] and [[OS X]], with its [[Darwin (operating system)|Darwin]] base including a large amount of code derived from [[FreeBSD]].
+
+Most of the current BSD operating systems are [[open source]] and available for download, free of charge, under the [[BSD License]], the most notable exceptions being OS X and iOS. They also generally use a [[monolithic kernel]] architecture, apart from OS X and DragonFly BSD which feature [[hybrid kernel]]s. The various open source BSD projects generally develop the kernel and [[user space|userland]] programs and libraries together, the source code being managed using a single central source repository.
+
+In the past, BSD was also used as a basis for several proprietary versions of UNIX, such as [[Sun Microsystems|Sun]]'s [[SunOS]], [[Sequent Computer Systems|Sequent]]'s [[Dynix]], [[NeXT]]'s [[NeXTSTEP]], [[Digital Equipment Corporation|DEC]]'s [[Ultrix]] and OSF/1 AXP (now [[Tru64 UNIX]]). Parts of NeXT's software became the foundation for [[OS X]] which, together with iOS, is among the most commercially successful BSD variants in the general market.
+
+==Aims and philosophies==
+
+===DragonFly BSD===
+[[DragonFly BSD]] aims to be inherently easy to understand and develop for multi-processor infrastructures. Forking from FreeBSD 4.8, the main goal of the project is to radically change the kernel architecture, introducing [[microkernel]]-like [[message passing]] which will enhance scaling and reliability on [[symmetric multiprocessing]] platforms while also being applicable to [[Non-Uniform Memory Access|NUMA]] and [[Cluster (computing)|clustered]] systems. The long-term goal is to provide a transparent [[single system image]] in clustered environments. DragonFly BSD originally supported both the [[IA-32]] and [[x86-64]] (or AMD64) platforms, however version 4.0 dropped support for IA-32. Matthew Dillon, the founder of DragonFly BSD, believes supporting fewer platforms makes it easier for a project to do a proper ground-up [[Symmetric Multiprocessor|SMP]] implementation.
+
+===FreeBSD===
+[[FreeBSD]] aims to make an operating system usable for any purpose. It is intended to run a wide variety of applications, be easy to use, contain cutting edge features, and be highly scalable on very high load network servers. FreeBSD is free and open source, and the project prefers the BSD license. However, they sometimes accept [[non-disclosure agreement]]s (NDAs) and include a limited number of closed-source [[Hardware abstraction layer|HAL]] modules for specific device drivers in their source tree, to support the hardware of companies who do not provide purely open source drivers (such as HALs to program [[software-defined radio]]s so that vendors do not share their proprietary algorithms). To maintain a high level of quality and provide good support for "production quality [[commercial off-the-shelf]] (COTS) workstation, server, and high-end embedded systems", FreeBSD focuses on a narrow set of architectures. A significant focus of development over the last five years<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Manual of Style/Dates and numbers#Chronological items|<span title="The time period mentioned near this tag is ambiguous. (August 2013)">when?</span>]]</i>&#93;</sup> has been fine-grained locking and [[Symmetric multiprocessing|SMP]] scalability. Other recent work includes [[Common Criteria]] security functionality, such as mandatory access control and security event audit support.
+
+====PC-BSD====
+[[PC-BSD]] aims at user friendliness for the layperson. [[KDE]] was the default [[desktop environment]] up to PC-BSD8, but as of PC-BSD9 a range of environments including KDE, [[GNOME]], [[Xfce]], and [[LXDE]], and many window managers are available to choose from during the installation. An easy to use software manager is included, which downloads and installs binary packages in PC-BSD's own .pbi format. Each version of PC-BSD remains directly descended from the same version of [[FreeBSD]]. The FreeBSD community will typically point users looking for an "easy" BSD to the PC-BSD project.
+
+====JunOS====
+[[JunOS]] is the FreeBSD-based [[Proprietary software|proprietary]] and closed-source operating system distributed with [[Juniper Networks]] hardware.
+
+===NetBSD===
+[[NetBSD]] aims to provide a freely redistributable operating system that professionals, hobbyists, and researchers can use in any manner they wish. The main focus is portability, through the use of clear distinctions between machine-dependent and machine-independent code. It runs on a wide variety of 32-bit and 64-bit processor architectures and hardware platforms, and is intended to interoperate well with other operating systems. NetBSD places emphasis on correct design, well-written code, stability, and efficiency. Where practical, close compliance with open API and protocol standards is also aimed for. In June, 2008, the NetBSD Foundation moved to a two clause BSD license, citing changes at UCB and industry applicability. [[NPF (firewall)|NPF]] is a project spawn by NetBSD.
+
+===OpenBSD===
+[[OpenBSD]] aims at security, correctness, and being as free as possible. Security policies include revealing security flaws publicly, known as [[Full disclosure (computer security)|full disclosure]]; thoroughly [[auditing]] code for bugs and security issues; various security features, including the [[W^X]] page protection technology and heavy use of randomization; a "[[secure by default]]" philosophy including disabling all non-essential services and having sane initial settings; and integrated [[cryptography]], originally made easier due to relaxed [[Canadian]] export laws relative to the [[United States]]. Concerning software freedom, OpenBSD prefers the [[BSD license|BSD]] or [[ISC license]], with the [[GNU General Public License|GPL]] acceptable only for existing software which is impractical to replace, such as the [[GNU Compiler Collection]]. NDAs are never considered acceptable. In common with its parent, NetBSD, OpenBSD strives to run on a wide variety of hardware.
+
+The OpenBSD project has spawned numerous child projects such as [[OpenSSH]], [[OpenNTPD]], [[OpenBGPD]], [[OpenSMTPD]], [[PF (firewall)|PF]], [[Common Address Redundancy Protocol|CARP]], and [[LibreSSL]]. Many of these are designed to replace restricted alternatives.
+
+==Popularity==
+[[File:Bsd distributions usage.svg|thumb|200px|[[Bar chart]] showing the proportion of users of each [[Berkeley Software Distribution|BSD]] variant from a BSD usage survey from September 2005.]]
+In September 2005, the BSD Certification Group, after advertising on a number of mailing lists, surveyed 4,330 BSD users, 3,958 of whom took the survey in English, to assess the relative popularity of the various BSD operating systems. About 77% of respondents used FreeBSD, 33% used OpenBSD, 16% used NetBSD, 2.6% used Dragonfly, and 6.6% used other (potentially non-BSD) systems. Other languages offered were Brazilian and European Portuguese, German, Italian, and Polish. Note that there was no control group or pre-screening of the survey takers. Those who checked "Other" were asked to specify that operating system.
+
+Because survey takers were permitted to select more than one answer, the percentages shown in the graph, which are out of the number survey of participants, add up to greater than 100%. If a survey taker filled in more than one choice for "other", this is still only counted as one vote for other on this chart.
+
+Another attempt to profile worldwide BSD usage is the *BSDstats Project, whose primary goal is to demonstrate to hardware vendors the penetration of BSD and viability of hardware drivers for the operating system. The project collects data monthly from any BSD system administrators willing to participate, and currently records the BSD market share of participating FreeBSD, OpenBSD, NetBSD, DragonflyBSD, Debian GNU/kFreeBSD, PC-BSD, and MirBSD systems.
+
+[[DistroWatch]], well known in the Linux community and often used as a rough guide to free operating system popularity, publishes page hits for each of the Linux distributions and other operating systems it covers. As of June 10, 2013, using a data span of the last six months it placed FreeBSD in 20th place with 529 hits per day; PC-BSD in 40th place with 295 hits per day; GhostBSD in 66th place with 193 hits, NetBSD in 78th place with 172 hits per day; OpenBSD in 82nd place with 165 hits per day; and MidnightBSD in 194th place with 38 hits per day.
+
+==Names, logos, slogans==
+The names FreeBSD and OpenBSD are references to software freedom: both in cost and [[open source]].
+NetBSD's name is a tribute to the [[Internet]], which brought the original developers together.
+
+The first BSD mascot was the [[BSD daemon]], named after a common type of [[Unix]] software program, a ''[[daemon (computer software)|daemon]]''. FreeBSD still uses the image, a red cartoon [[daemon (mythology)|daemon]] named Beastie, wielding a pitchfork, as its mascot today. In 2005, after a competition, a stylized version of Beastie's head designed and drawn by Anton Gural was chosen as the FreeBSD logo. The FreeBSD slogan is "The Power to Serve."
+
+The NetBSD flag, designed in 2004 by Grant Bisset, is inspired by the original NetBSD logo, designed in 1994 by Shawn Mueller, portraying a number of BSD daemons raising a flag on top of a mound of computer equipment. This was based on a [[World War II]] photograph, [[Raising the Flag on Iwo Jima]]. The Board of Directors of The NetBSD Foundation believed this was too complicated, too hard to reproduce and had negative cultural ramifications and was thus not a suitable image for NetBSD in the corporate world. The new, simpler flag design replaced this. The NetBSD slogan is "Of course it runs NetBSD", referring to the operating system's portability.
+
+Originally, OpenBSD used the BSD daemon as a mascot, sometimes with an added [[Halo (religious iconography)|halo]] as a distinguishing mark, but OpenBSD later replaced its BSD daemon with [[Puffy (mascot)|Puffy]]. Although Puffy is usually referred to as a [[pufferfish]], the spikes on the cartoon images give him a closer likeness to the [[porcupinefish]]. The logo is a reference to the fish's defensive capabilities and to the [[Blowfish (cipher)|Blowfish]] cryptography algorithm used in OpenSSH. OpenBSD also has a number of slogans including "Secure by default", which was used in the first OpenBSD song, "E-railed", and "Free, Functional & Secure", and OpenBSD has released at least one original song with every release since 3.0.
+
+The DragonFly BSD logo, designed by Joe Angrisano, is a [[dragonfly]] named Fred. A number of unofficial logos by various authors also show the dragonfly or stylized versions of it. DragonFly BSD considers itself to be "the logical continuation of the FreeBSD 4.x series." FireflyBSD has a similar logo, a firefly, showing its close relationship to DragonFly BSD. In fact, the FireflyBSD website states that proceeds from sales will go to the development of DragonFly BSD, suggesting that the two may in fact be very closely related.
+
+[[PicoBSD]]'s slogan is "For the little BSD in all of us," and its logo includes a version of FreeBSD's Beastie as a child, showing its close connection to FreeBSD, and the minimal amount of code needed to run as a [[Live CD]].
+
+A number of BSD OSes use stylized version of their respective names for logos. This includes OS X, PC-BSD, GhostBSD, DesktopBSD, ClosedBSD, and [[MicroBSD]]. The OS X logo is the [[Roman numeral]] for 10. This is intended to emphasize the change from previous versions of [[Mac OS]], which were not based on BSD and had version numbers expressed using the [[arabic numeral]]s up to 9. PC-BSD's slogan is "Personal computing, served up BSD style!", GhostBSD's "A simple, secure BSD served on a Desktop." DesktopBSD's "A Step Towards BSD on the Desktop." MicroBSD's slogan is "The small secure unix like OS."
+
+[[MirOS]]'s site collects a variety of BSD mascots and [[Tux]], the [[Linux]] mascot, together, illustrating the project's aim of supporting both BSD and Linux kernels. MirOS's slogan is "a wonderful operating system for a world of peace."
+<div style="clear:both;"></div>
+
+==General information==
+
+{| class="sortable wikitable" style="font-size: 90%; text-align: center; width: auto;"
+|-
+! rowspan="2" |
+! rowspan="2" | Primary developers
+! rowspan="2" | First public release
+! rowspan="2" | Based on
+! colspan="2" | Latest stable version
+! rowspan="2" | Cost ([[United States dollar|USD]])
+! rowspan="2" | Preferred [[software license|license]]
+! rowspan="2" | Purpose
+! rowspan="2" | Short description
+|-
+! Version
+! Release Date
+|-
+! [[FreeBSD]]
+| The [[FreeBSD]] Project
+| 1993-12-01
+| [[386BSD]], [[4.4BSD]]-Lite
+| 10.1
+| 2014-11-14
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD licenses#2-clause|Simplified BSD]]
+| [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
+| Aims for maximum performance.
+|-
+! [[OpenBSD]]
+| The [[OpenBSD]] Project
+| 1996-09-01
+| [[NetBSD|NetBSD 1.0]]
+| 5.6
+| 2014-11-01
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[ISC license|ISC]]
+| [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
+| Aims for maximum security.
+|-
+! [[NetBSD]]
+| The [[NetBSD]] Project
+| 1993-05-01
+| [[386BSD]], [[4.4BSD]]-Lite
+| 6.1.5
+| 2014-10-07
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD licenses#2-clause|Simplified BSD]]
+| [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
+| Aims for maximum portability.
+|-
+! [[DragonFly BSD]]
+| [[Matt Dillon (computer scientist)|Matt Dillon]]
+| 2004-07-12
+| [[FreeBSD]] 4.8
+| 4.0.3
+| 2015-01-21
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD licenses#3-clause|Modified BSD]]
+| [[Server (computing)|Server]], [[Computer workstation|Workstation]], [[Network-attached storage|Network Appliance]], [[Embedded system|Embedded]]
+| Aims for maximum scalability.
+|-
+! [[386BSD]] <ref name="a1" group="Note"></ref>
+| [[William Jolitz|William]] and [[Lynne Jolitz]]
+| 1992-03-01
+| [[4.3BSD]] Net/2
+| 1.0
+| 1994-11-01
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Open source general purpose
+| Historical
+|-
+! [[BSD/OS]] (BSD/386) <ref name="a1" group="Note"></ref>
+| [[BSDi]], [[Wind River Systems]]
+| 1993-03-01
+| [[4.3BSD]] Net/2, [[4.4BSD]]
+| 5.1
+| 2003-10-01
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Proprietary software|Proprietary]]
+| General purpose
+| Historical
+|-
+! [[SunOS]] <ref name="a1" group="Note"></ref><ref name="a2" group="Note"></ref>
+| [[Sun Microsystems]]
+| 1982
+| 4.xBSD, [[UNIX System V]]
+| 4.1.4
+| 1994-11-01
+| Included in hardware and support charges
+| [[Proprietary software|Proprietary]]
+| [[Server (computing)|Server]], [[Computer workstation|Workstation]]
+| Historical ([[Solaris (operating system)|Solaris]] is a different code base)
+|-
+! [[Ultrix]] <ref name="a1" group="Note"></ref>
+| [[Digital Equipment Corporation]]
+| 1984
+| 4.2BSD, [[UNIX System V|SVR2]]
+| 4.5
+| 1995
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Proprietary software|Proprietary]]
+| General Purpose
+| Historical (ran on [[Digital Equipment Corporation|DEC]] [[VAX]] & [[MIPS architecture|MIPS]] systems or [[emulator]]s).
+|-
+! [[Tru64 UNIX]] (DEC OSF/1, Digital UNIX)
+| [[Digital Equipment Corporation|DEC]], [[Compaq]], [[HP]]
+| 1993
+| 4.3BSD, 4.4BSD, [[Mach kernel|Mach]] 2.5, [[UNIX System V]]
+| 5.1B-6
+| 2010-10-01
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free $99 (non-commercial)
+| [[Proprietary software|Proprietary]]
+| General Purpose
+| Only runs on [[DEC Alpha|HP Alpha]] systems or [[emulator]]s.
+|-
+! [[OS X]]
+| [[Apple Inc.]]
+| 2001-03-24
+| [[Darwin (operating system)|Darwin]]
+| 10.10 "Yosemite"
+| 2014-10-16
+| Client: Free<br /> Server (add-on application): $19.99
+| [[Open source]] core system (see Darwin) with [[proprietary software|proprietary]] higher level API layers locking to Apple hardware
+| [[Computer workstation|Workstation]], Home Desktop, [[Server (computing)|Server]]
+| Locked to Apple hardware use only
+|-
+! [[iOS (Apple)|iOS]]
+| [[Apple Inc.]]
+| 2007-06-01
+| [[Darwin (operating system)|Darwin]]
+| 8
+| 2014-09-17
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Proprietary software|Proprietary]]
+| [[Embedded system|Embedded]] [[mobile device]]
+| Ships with Apple iPhone, iPad, iPod Touch, Apple TV
+|-
+! [[Darwin (operating system)|Darwin]]
+| [[Apple Inc.]]
+| 2001-03-01
+| [[NeXTSTEP]], [[FreeBSD]], [[Mac OS]]
+| 13.0.0
+| 2012-06-11
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Apple Public Source License|APSL]], [[GNU General Public License|GPL]] and others
+| [[Computer workstation|Workstation]], Home Desktop, [[Server (computing)|Server]]
+| The kernel and certain userland components of OS X
+|-
+! [[PC-BSD]]
+| [[Berkeley Software Design|iXsystems, Inc.]]
+| 2006-04-29
+| [[FreeBSD]]
+| 10.0.1
+| 2014-03-14
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Desktop
+| Easy to use while maintaining full use of FreeBSD base
+|-
+! [[GhostBSD]]
+| Eric Turgeon, Fomoro Daniel Soromou
+| 2009-11-01
+| [[FreeBSD]]
+| 4.0 (FreeBSD 10.0)
+| 2014-09-25
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Desktop, [[Computer workstation|Workstation]]
+| Easy to use, full FreeBSD w/ [[GNOME]], [[MATE (software)|Mate]], [[Xfce]], [[LXDE]] or [[Openbox]].
+|-
+! [[DesktopBSD]]
+| Peter Hofer, Daniel Seuffert
+| 2005-07-25
+| [[FreeBSD]]
+| 1.7
+| 2009-09-07
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Desktop
+| Easy to use
+|-
+! ClosedBSD
+| Joshua Bergeron and [http://www.closedbsd.org/contributions.html various contributors]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]]
+| 1.0B (floppy), 1.0-RC1 (CD)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Proprietary software|Proprietary]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| firewall/[[Network address translation|NAT]], boot floppy, [[Live CD]]
+|-
+! [[FreeSBIE]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]]
+| 2.0.3
+| 2007-02-01
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| colspan="2" |[[Live CD]] of FreeBSD. DistroWatch lists as discontinued.
+|-
+! [[PicoBSD]]
+| Michael Bialecki
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]]
+| 0.42
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| boot floppy
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Anonym.OS]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| 2005-01-01
+| [[OpenBSD]] 3.8
+| none (beta only)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| Anonymous browsing
+| [[Live CD]]
+|-
+! [[MirOS BSD]]
+| The MirOS Project
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OpenBSD]] 3.1
+| #10
+| 2008-03-16
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| European
+|-
+! [[ekkoBSD]] <ref name="a1" group="Note"></ref>
+| Rick Collette
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OpenBSD]] 3.3
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Server (computing)|Server]]
+| easy to administer
+|-
+! [[MicroBSD]] <ref name="a1" group="Note"></ref>
+| Bulgarians
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OpenBSD]] 3.0/3.4
+| 0.6
+| 2003-10-27
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| General purpose
+| Small, secure
+|-
+! [[OliveBSD]]
+| Gabriel Paderni
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OpenBSD]] 3.8
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Live CD]]
+| DistroWatch lists as discontinued.
+|-
+! [[Gentoo/FreeBSD]]
+| [[Gentoo Linux]] developers
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[GNU General Public License|GPL]], BSD
+| Server, Workstation, Network Appliance
+| uses Gentoo framework
+|-
+! [[Gentoo/Alt|Gentoo OpenBSD]]
+| [[Gentoo Linux]] developers
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[OpenBSD]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| GPL, BSD
+| Server, Workstation, Network Appliance, Embedded
+| uses Gentoo framework
+|-
+! [[Gentoo/Alt|Gentoo NetBSD]]
+| [[Gentoo Linux]] developers
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[NetBSD]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| GPL, BSD
+| Server, Workstation, Network Appliance, Embedded
+| uses Gentoo framework
+|-
+! Gentoo DragonflyBSD
+| Robert Sebastian Gerus (project not yet officially supported by Gentoo)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[DragonFly BSD]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| Server, Workstation, Network Appliance
+| uses Gentoo framework
+|-
+! [[Debian GNU/FreeBSD|Debian GNU/kFreeBSD]]
+| The [http://www.debian.org/ports/kfreebsd-gnu/ Debian GNU/kFreeBSD] team
+| 2011-02-06
+| [[GNU]], [[FreeBSD]]
+| 7.5
+| 2014-04-26
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| DFSG
+| General purpose
+| GNU userspace on FreeBSD kernel
+|-
+! [[Debian GNU/NetBSD]]
+| The [http://www.debian.org/ports/netbsd/ Debian GNU/kNetBSD] team
+| Abandoned
+| [[GNU]], [[NetBSD]]
+| Abandoned
+| Abandoned
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| DFSG
+| General purpose
+| GNU userspace on NetBSD kernel
+|-
+! [[MidnightBSD]]
+| Lucas Holt
+| 2007-08-04
+| [[FreeBSD]] 6.1 beta
+| 0.5
+| 2014-09-22
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Desktop
+| [[GNUstep]] based Desktop Environment
+|-
+! [[pfSense]]
+| [http://www.pfsense.org/index.php?option=com_content&task=view&id=59&Itemid=58 various contributors]
+| 2006-10-04
+| [[FreeBSD]]
+| 2.2
+| 2015-01-23
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| Security appliance
+| firewall/[[Network address translation|NAT]], [[Live CD]]
+|-
+! Paxym FreeBSD for Octeon
+| Paxym Inc.
+| 2007-12-11
+| [[FreeBSD]] 7.0
+| 4.7
+| 2008-08-13
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Proprietary software|Proprietary]]
+| Network, Storage, Security Applications: Routers/UTM/Firewall/NAS
+| For [[Cavium Networks]] Octeon [[MIPS architecture]] multicore processors 
+|-
+! MaheshaBSD 
+|
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]] 8
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+| [[FreeBSD]] multipurpose
+|
+|-
+! KarmaBSD 
+|
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[FreeBSD]] 8 <br /> [[OpenBSD]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Free software]]
+| [[FreeBSD]], [[OpenBSD]] Firewall, MP3 player, backup, others
+|  
+|-
+! Jibbed [http://www.jibbed.org]
+|
+|
+| [[OpenBSD]], [[NetBSD]]
+| 6.0
+|
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[BSD License|BSD]]
+|
+| colspan="2" |[[Live CD]] of NetBSD
+|-
+!
+! Developer
+! First public release
+! Based on
+! Version
+! Release Date
+! Cost ([[United States dollar|USD]])
+! Preferred [[software license|license]]
+! Purpose
+! Short description
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+==Technical information==
+{| class="wikitable" style="font-size: 90%; text-align: center; width: auto;"
+|-
+!
+! Supported [[computer architecture|architectures]]
+! Supported [[file system]]s<ref name="b1" group="Note"></ref>
+! [[Kernel (computer science)|Kernel]] type
+! [[Graphical user interface|GUI]] on by default<ref name="b2" group="Note"></ref>
+! [[Package management system|Package management]]
+! Update management
+! Primary [[Application programming interface|APIs]]<ref name="b3" group="Note"></ref>
+|-
+! [[FreeBSD]]
+| [[x86]], [[x86-64]], [[PC-9800|PC98]], [[Itanium]], [[UltraSPARC]], [[ARM architecture|ARM]], [[MIPS architecture|MIPS]], [[PowerPC|PPC]], [http://www.freebsd.org/platforms/ others] 
+| [[Unix File System|UFS]], [[UFS2]], [[ext2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]], [[SMBFS]], NetWare (nwfs), [[NTFS]] (limited read-write), [[ReiserFS]] (read only), [[XFS]] (experimental), [[ZFS]], [[Filesystem in Userspace|FUSE]], [[Coda (file system)|Coda]] (experimental), [[Andrew File System|AFS]], others
+| [[Monolithic kernel|Monolithic]] with modules
+| No ([[X.Org Server|X.Org]] available)
+| ports tree, packages
+| source ([[Apache Subversion|svn]], portsnap), network binary update (freebsd-update, pkg)
+| BSD, [[POSIX]]
+|-
+! [[OpenBSD]]
+| [[x86]], [[68k]], [[DEC Alpha|Alpha]], [[x86-64]], [[SPARC]], [[UltraSPARC]], [[ARM architecture|ARM]], [[MIPS architecture|MIPS]], [[PowerPC|PPC]], [[VAX]], [http://www.openbsd.org/plat.html others]
+| [[Unix File System|UFS]], [[UFS2]], [[ext2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]], [[NTFS]] (read only), [[Andrew File System|AFS]], [[Filesystem in Userspace|FUSE]], others
+| [[Monolithic kernel|Monolithic]]<ref name="b5" group="Note"></ref>
+| No ([[X.Org Server|X.Org]] included)<ref name="b6" group="Note"></ref>
+| ports tree, packages
+| source ([[Concurrent Versions System|CVS]], CVSync, [[rsync]]) or binary upgrade
+| BSD, [[POSIX]]
+|-
+! [[NetBSD]]
+| [[x86]], [[68k]], [[DEC Alpha|Alpha]], [[x86-64]], [[PowerPC|PPC]], [[SPARC]], [[UltraSPARC]], [[PowerPC]], [[ARM architecture|ARM]], [http://www.netbsd.org/Ports/#ports-by-cpu others]
+| [[Unix File System|UFS]], [[UFS2]], [[ext2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Network File System (protocol)|NFS]], [[Log-structured File System (BSD)|LFS]], [[Universal Disk Format|UDF]], [[SMBFS]], [[Coda (file system)|Coda]], [[HFS Plus|HFS+]] (read only), [[Extent File System|EFS]] (read only), [[NTFS]] (read only), [[TMPFS]], [[Filesystem in Userspace|FUSE]], PUFFS (BSD replacement of FUSE), ADOS ([[AmigaDOS]] file system), filecorefs (Acorn [[RISC OS]] file system), others
+| [[Monolithic kernel|Monolithic]] with modules
+| No ([[X.Org Server|X.Org]] or [[XFree86]] included)<ref name="b7" group="Note"></ref>
+| [[pkgsrc]], packages
+| source ([[Concurrent Versions System|CVS]], [[CVSup]], [[rsync]]) or binary (using sysinst)
+| BSD, [[POSIX]]
+|-
+! [[Ultrix]]
+| [[VAX]], [[PDP-11]], [[MIPS architecture|MIPS]]
+| UFS + [http://www.supelec.fr/decus/faq/faq-ultrix.html#D4 others]
+| [[Monolithic kernel|Monolithic]]
+| No ([[X11]] included)
+| setld
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| BSD, [[POSIX]] (4.0 onwards)
+|-
+! [[Tru64 UNIX]]
+| [[DEC Alpha|Alpha]]
+| [[Unix File System|UFS]], [[AdvFS]], [[ISO 9660]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]]
+| [[Hybrid kernel|Hybrid]]
+| Yes ([[Common Desktop Environment|CDE]])
+| setld
+| dupatch
+| [[POSIX]], [[UNIX 98]], [[X11]], [[Common Desktop Environment|CDE]], others
+|-
+! [[OS X]] / [[Darwin (operating system)|Darwin]]
+| [[PowerPC|PPC]], [[x86]], [[x86-64]], [[ARM architecture|ARM]]
+| [[HFS Plus|HFS+]] (default), [[Extended File Allocation Table|exFAT]], [[Hierarchical File System|HFS]], [[Unix File System|UFS]], [[Apple Filing Protocol|AFP]], [[ISO 9660]], [[File Allocation Table|FAT]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]], [[SMBFS]], [[NTFS]] (read only), [[File Transfer Protocol|FTP]], [[WebDAV]], others
+| [[Hybrid kernel|Hybrid]]
+| Yes ([[Aqua (GUI)|Aqua]])
+| [[Installer (OS X)|OS X Installer]]
+| [[Apple Software Update|Software Update]]
+| [[Carbon (API)|Carbon]], [[Cocoa (API)|Cocoa]], BSD/[[POSIX]], [[Core Foundation|CF]], [[X11]] (since 10.3)
+|-
+! [[DragonFly BSD]]
+| [[x86-64]]
+| [[HAMMER]], [[Unix File System|UFS]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Network File System (protocol)|NFS]], [[SMBFS]], [[NTFS]], [[ext2]], others
+| [[Hybrid kernel|Hybrid]]
+| No ([[X.Org Server|X.Org]] available)
+| dports, pkgng
+| [[Git (software)|Git]]
+| BSD, [[POSIX]]
+|-
+! [[PC-BSD]]
+| [[x86-64]]
+| [[Unix File System|UFS]], [[UFS2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Network File System (protocol)|NFS]], [[SMBFS]], [[NTFS]] (read only), [[ZFS]], others
+| [[Monolithic kernel|Monolithic]] with modules
+| Yes ([[KDE]])
+| graphical installation [[wizard (software)|wizard]], ports tree
+| [[CVSup]], [http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/portsnap.html Portsnap], network binary update (Online Update)
+| BSD, [[POSIX]], [[X11]], [[KDE]]
+|-
+! [[MidnightBSD]]
+| [[x86]], [[x86-64]]
+| [[Unix File System|UFS]], [[UFS2]], [[ext2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]], [[SMBFS]], NetWare (nwfs), [[NTFS]] (read only), others
+| [[Monolithic kernel|Monolithic]] with modules
+| No ([[X.Org Server|X.Org]] available)
+| ports tree, packages
+| source [[CVSup]]
+| BSD, [[POSIX]], [[X11]], [[GNUstep]]
+|-
+! [[GhostBSD]]
+| [[x86]], [[x86-64]] 
+| [[Unix File System|UFS]], [[UFS2]], [[ext2]], [[File Allocation Table|FAT]], [[ISO 9660]], [[Universal Disk Format|UDF]], [[Network File System (protocol)|NFS]], [[SMBFS]], NetWare (nwfs), [[NTFS]] (limited read-write), [[ReiserFS]] (read only), [[XFS]] (experimental), [[ZFS]], [[Filesystem in Userspace|FUSE]], [[Coda (file system)|Coda]] (experimental), [[Andrew File System|AFS]], others
+| [[Monolithic kernel|Monolithic]] with modules
+| Yes ([[MATE (software)|MATE]])
+| ports tree, packages
+| source ([[CVSup]], portsnap), network binary update (freebsd-update)
+| BSD, [[POSIX]]
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+==Security features==
+{| class="wikitable" style="font-size: 90%; text-align: center; width: auto;"
+|-
+! rowspan="2" |
+! rowspan="2" | Resource access control
+! rowspan="2" | Security logging
+! rowspan="2" | Subsystem isolation mechanisms
+! rowspan="2" | Integrated [[Firewall (networking)|firewall]]
+! rowspan="2" | Encrypted file systems
+! colspan="2" | [[NX bit|Data execution prevention]]
+|-
+! hardware
+! emulation
+|-
+! [[OS X]]
+| [[File system permissions|Unix]], [[Access control list|ACLs]]
+| [[syslog]], CAPP event auditing, [[OpenBSM]]
+| [[chroot]], [[Sandbox (computer security)|sandbox]]
+| [[ipfirewall|IPFW2]] (deprecated), [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c4" group="Note"></ref> || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[FreeBSD]]
+| [[File system permissions|Unix]], [[Access control list|ACLs]], [[Mandatory Access Control|MAC]]
+| [[syslog]], CAPP event auditing, [[OpenBSM]]
+| [[chroot]], [[Operating system-level virtualization|jail]], [[Mandatory Access Control|MAC]] partitions, Capsicum
+| [[ipfirewall|IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c3" group="Note"></ref>
+|-
+! [[PC-BSD]]
+| [[File system permissions|Unix]], [[Access control list|ACLs]], [[Mandatory access control|MAC]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[chroot]], [[Operating system-level virtualization|jail]], [[Mandatory access control|MAC]] Partitions
+| [[ipfirewall|IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c2" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GhostBSD]]
+| [[File system permissions|Unix]], [[Access control list|ACLs]], [[Mandatory Access Control|MAC]]
+| [[syslog]], CAPP event auditing, [[OpenBSM]]
+| [[chroot]], [[Operating system-level virtualization|jail]], [[Mandatory Access Control|MAC]] partitions, Capsicum
+| [[ipfirewall|IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c3" group="Note"></ref>
+|-
+! [[MidnightBSD]]
+| [[File system permissions|Unix]], [[Access control list|ACLs]], [[Mandatory Access Control|MAC]]
+| [[syslog]]
+| [[chroot]], [[jail (computer security)|jail]], [[Mandatory access control|MAC]] partitions
+| [[ipfirewall|IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[DragonFly BSD]]
+| [[File system permissions|Unix]]
+| [[syslog]]
+| [[chroot]], [[Operating system-level virtualization|jail]], VKernel
+| [[ipfirewall|IPFW2]], [[IPFilter]], [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[NetBSD]]
+| [[File system permissions|Unix]], [[Veriexec]]
+| syslog
+| [[chroot]], [[privilege separation]]
+| [[IPFilter]], [[PF (firewall)|PF]], [[NPF (firewall)|NPF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OpenBSD]]
+| [[File system permissions|Unix]]
+| syslog
+| [[chroot]], [[systrace]], [[privilege separation]]
+| [[PF (firewall)|PF]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<ref name="c1" group="Note"></ref>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+<div class="reflist " style=" list-style-type: decimal;">
+<references group="Note"></references></div>
+
+==See also==
+<div class="noprint portal tright" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em">
+<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px">
+<tr style="vertical-align:middle"><td style="text-align:center">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon|class=noviewer]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold">[[Portal:Free software|Free software portal]]</td></tr></table></div>
+* [[List of BSD operating systems]]
+* [[BSD license]]
+* [[Comparison of open source operating systems]]
+* [[Comparison of operating systems]]
+
+==Notes and references==
+<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+===Other sources===
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/freebsd.htm "FreeBSD"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=FreeBSD&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Ffreebsd.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/openbsd.htm "OpenBSD"]. ''Operating System Technical Comparison''<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=OpenBSD&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fopenbsd.htm&rft.jtitle=Operating+System+Technical+Comparison&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/netbsd.htm "NetBSD"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=NetBSD&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fnetbsd.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/sunos.htm "SunOS"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=SunOS&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fsunos.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">[http://web.archive.org/web/20060209052109/http://www.ocf.berkeley.edu/solaris/versions/ "SunOS & Solaris version history"]. Berkeley. Archived from [http://www.ocf.berkeley.edu/solaris/versions/ the original] on 2006-02-09<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.btitle=SunOS+%26+Solaris+version+history&rft.genre=book&rft_id=http%3A%2F%2Fwww.ocf.berkeley.edu%2Fsolaris%2Fversions%2F&rft.pub=Berkeley&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">[http://web.archive.org/web/20060519112826/http://www.supelec.fr/decus/faq/faq-ultrix.html "Ultrix FAQ"]. 1996-11-04. Archived from [http://www.supelec.fr/decus/faq/faq-ultrix.html the original] on 2006-05-19<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.btitle=Ultrix+FAQ&rft.date=1996-11-04&rft.genre=book&rft_id=http%3A%2F%2Fwww.supelec.fr%2Fdecus%2Ffaq%2Ffaq-ultrix.html&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">Milo ' (1998-06-22). [http://www.osdata.com/oses/ultrix.htm "Ultrix"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Ultrix&rft.aulast=Milo+%27&rft.au=Milo+%27&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fultrix.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/macosx.htm "Mac OS X"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Mac+OS+X&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fmacosx.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">Milo et al. (1998-06-22). [http://www.osdata.com/oses/mxs.htm "Mac OS X Server"]. ''Operating System Technical Comparison''. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.atitle=Mac+OS+X+Server&rft.aulast=Milo&rft.au=Milo&rft.date=1998-06-22&rft.genre=article&rft_id=http%3A%2F%2Fwww.osdata.com%2Foses%2Fmxs.htm&rft.jtitle=Operating+System+Technical+Comparison&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">[http://bsdeviant.org/ "BSDeviant download page"]. Bsdeviant.org<span class="reference-accessdate">. Retrieved <span class="nowrap">2008-06-30</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.btitle=BSDeviant+download+page&rft.genre=book&rft_id=http%3A%2F%2Fbsdeviant.org%2F&rft.pub=Bsdeviant.org&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span> A semi-official download page.
+* <span class="citation web">[http://bsd.slashdot.org/article.pl?sid=03/11/25/2331244 "ekkoBSD 1.0 BETA1B Released"]. Slashdot. 2003-11-25<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-03</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.btitle=ekkoBSD+1.0+BETA1B+Released&rft.date=2003-11-25&rft.genre=book&rft_id=http%3A%2F%2Fbsd.slashdot.org%2Farticle.pl%3Fsid%3D03%2F11%2F25%2F2331244&rft.pub=Slashdot&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">Milo et al. (1998-05-31). [http://www.osdata.com/ "Operating System Technical Comparison"]. OSdata<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-02</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aulast=Milo&rft.au=Milo&rft.btitle=Operating+System+Technical+Comparison&rft.date=1998-05-31&rft.genre=book&rft_id=http%3A%2F%2Fwww.osdata.com%2F&rft.pub=OSdata&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span class="citation-comment" style="display:none; color:#33aa33">CS1 maint: Explicit use of et al. ([[:Category:CS1 maint: Explicit use of et al.|link]])</span>[[Category:CS1 maint: Explicit use of et al.]]
+* <span class="citation web">Brown, Martin (2004-08-10). [http://www.serverwatch.com/tutorials/article.php/3393051 "Differentiating Among BSD Distros"]. Jupitermedia Corporation. p.&nbsp;4<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-03</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.au=Brown%2C+Martin&rft.aufirst=Martin&rft.aulast=Brown&rft.btitle=Differentiating+Among+BSD+Distros&rft.date=2004-08-10&rft.genre=book&rft_id=http%3A%2F%2Fwww.serverwatch.com%2Ftutorials%2Farticle.php%2F3393051&rft.pages=4&rft.pub=Jupitermedia+Corporation&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* <span class="citation web">Schneider, Wolfram; Gilliam, Josh and Schultz, Steven M. (1997–2004). [ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/share/misc/bsd-family-tree "The UNIX system family tree: Research and BSD"] <span style="font-size:85%;">(ASCII)</span>. The NetBSD Foundation<span class="reference-accessdate">. Retrieved <span class="nowrap">2006-06-03</span></span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aufirst=Wolfram&rft.aulast=Schneider&rft.au=Schneider%2C+Wolfram&rft.btitle=The+UNIX+system+family+tree%3A+Research+and+BSD&rft.date=1997-2004&rft.genre=book&rft_id=ftp%3A%2F%2Fftp.netbsd.org%2Fpub%2FNetBSD%2FNetBSD-current%2Fsrc%2Fshare%2Fmisc%2Fbsd-family-tree&rft.pub=The+NetBSD+Foundation&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span> <span style="display:none;font-size:100%" class="error citation-comment">Cite uses deprecated parameter <code style="color:inherit; border:inherit; padding:inherit;">&#124;coauthors=</code> ([[Help:CS1 errors#deprecated_params|help]])</span>[[Category:Pages containing cite templates with deprecated parameters]]
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Berkeley Software Distribution|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Berkeley Software Distribution|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Berkeley_Software_Distribution&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Berkeley Software Distribution]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Bob Fabry]]
+* [[Keith Bostic]]
+* [[Marshall Kirk McKusick]]
+* [[Michael J. Karels]]
+* [[Bill Joy]]
+* [[Samuel Leffler]]
+* [[Jordan Hubbard]]
+* [[Theo de Raadt]]
+* [[Poul-Henning Kamp]]
+* [[Lynne Jolitz|Lynne]] and [[William Jolitz]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Derivatives</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Active</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[FreeBSD]]
+* [[OpenBSD]]
+* [[NetBSD]]
+* [[DragonFly BSD]]
+* [[PC-BSD]]
+* [[Junos]]
+* [[Darwin (operating system)|Darwin]]
+* [[PlayStation 3 system software|PS3]]/[[PlayStation 4 system software|PS4 operating system]]
+* [[List of BSD operating systems|...]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Discontinued</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[386BSD]]
+* [[BSD/OS]]
+* [[SunOS]]
+* [[Ultrix]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Companies</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Sleepycat Software]]
+* [[Walnut Creek CDROM]]
+* [[Berkeley Software Design]]
+* [[iXsystems]]
+* [[Deciso]]
+* [[pfSense|Electric Sheep Fencing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other topics</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Comparison of BSD operating systems|Comparison]]
+* [[BSD licenses|Licensing]]
+* [[BSD Daemon]]
+* [[Computer Systems Research Group]]
+</div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Unix|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Unix|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Unix&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Unix]] and [[Unix-like]] [[operating system]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+* ''[[A/UX]]''
+* [[IBM AIX|AIX]]
+* [[Android (operating system)|Android]]
+* [[BlackBerry 10]]
+* [[Berkeley Software Distribution|BSD]]
+** ''[[386BSD]]''
+** [[DragonFly BSD]]
+** [[FreeBSD]]
+** [[NetBSD]]
+** [[OpenBSD]]
+* [[Coherent (operating system)|Coherent]]
+* [[Chrome OS]]
+* [[GNU]]
+* [[HP-UX]]
+* [[iOS]]
+* ''[[IRIX]]''
+* [[Linux]]
+* [[LynxOS]]
+* [[MINIX]]
+* [[NeXTSTEP]]
+* [[OS X]]
+** [[Darwin (operating system)|Darwin]]
+* [[Plan 9 from Bell Labs|Plan 9]]
+* [[QNX]]
+* ''[[Research Unix]]''
+* [[SCO OpenServer]]
+* [[Solaris (operating system)|Solaris]]
+* ''[[SunOS]]''
+* ''[[UNIX System V|System V]]''
+* [[Tru64 UNIX]]
+* ''[[Ultrix]]''
+* [[UnixWare]]
+* ''[[Xenix]]''
+* ''[[List of Unix systems|more...]]''
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+* [[File:Folder Hexagonal Icon.svg|Category|16x16px|link=]] '''[[:Category:Unix|Category]]'''
+* [[File:Commons-logo.svg|Commons page|16x16px|link=]] '''[[commons:Unix|Commons]]'''
+* [[File:Symbol book class2.svg|Wikipedia book|16x16px|link=]] '''[[b:Unix|Book]]'''
+</div></td></tr></table></td></tr></table>
+
+
+
+[[Category:Berkeley Software Distribution|*Comparison]]
+[[Category:Operating system comparisons|BSD operating systems]]

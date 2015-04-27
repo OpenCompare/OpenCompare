@@ -1,0 +1,212 @@
+[[Category:Wikipedia pages with incorrect protection templates|ExpandTemplates]]
+This article provides introductory information about the RGB, HSV, and HSL color models from a computer graphics (Web page, image) perspective. An introduction to colors is also provided to support the main discussion.
+
+==Color Basics==
+[[Image:Simple RGB color wheel.png|right|A simple color wheel based on the additive colors.]]
+
+===Primary Colors and Hue===
+(See [[Color perception|Color vision]], [[Additive colors|Additive color]], [[Hue#cite_note-2|Hue]] for more information.)
+
+First, "color" refers to the human brain's subjective interpretation of combinations of a narrow band of wavelengths of light. For this reason, the definition of "color" is not based on a strict set of physical phenomena. Therefore, even basic concepts like "primary colors" are not clearly defined. For example, traditional "Painter's Colors" use red, blue, and yellow as the primary colors, "Printer's Colors" use cyan, yellow, and magenta, and "Light Colors" use red, green, and blue. "Light colors", more formally known as additive colors, are formed by combining red, green, and blue light. This article refers to additive colors and refers to red, green, and blue as the primary colors. 
+
+Hue is a term describing a pure color, that is, a color not modified by tinting or shading (see below). In additive colors, hues are formed by combining two primary colors. When two primary colors are combined in equal intensities, the result is a "secondary color".
+
+===Color Wheel===
+(See [[Color wheel]] for more information.)
+
+A color wheel is a tool that provides a visual representation of the relationships between all possible hues. The primary colors are arranged around a circle at equal (120 degree) intervals. (Warning: Color wheels frequently depict "Painter's Colors" primary colors, which leads to a different set of hues than additive colors.) The illustration shows a simple color wheel based on the additive colors. Note that the position (top, right) of the starting color, typically red, is arbitrary, as is the order of green and blue (clockwise, counter-clockwise). The illustration also shows the secondary colors, yellow, cyan, and magenta, located half-way between (60 degrees) the primary colors.
+
+==Complementary Color==
+(See [[Complementary color]] for more information.)
+
+The complement of a hue is the hue that is opposite it (180 degrees) on the color wheel. Using additive colors, mixing a hue and its complement in equal amounts produces white.
+
+===Tints, Shades===
+(See [[Tints and shades]] for more information.)
+
+The following discussion uses an illustration involving three projectors pointing to the same spot on a screen. Each projector is capable of generating one hue. The "intensities" of each projector are "matched" and can be equally adjusted from zero to full. (Note: "Intensity" is used here in the same sense as the RGB color model. The subject of matching, or "[[gamma correction]]", is beyond the level of this article.) 
+
+A ''shade'' is produced by "dimming" a hue. Painters refer to this as "adding black". In our illustration, one project is set to full intensity, a second is set to some intensity between zero and full, and third is set to zero. "Dimming" is accomplished by decreasing each projector's intensity setting to the same fraction of its start setting.
+
+In the shade example, with any fully shaded hue, that all three projectors are set to zero intensity, resulting in black.
+
+A ''tint'' is produced by "lightening" a hue. Painters refer to this as "adding white". In our illustration, one project is set to full intensity, a second is set to some intensity between zero and full, and third is set to zero. "Lightening" is accomplished by increasing each projector's intensity setting by the same fraction from its start setting to full. 
+
+In the tinting example, note that the third projector is now contributing. When the hue is fully lightened, all three projectors are each at full intensity, and the result is white. 
+
+Note an attribute of the total intensity in the additive model. If full intensity for one projector is 1, then a primary color has a combined intensity of 1. A secondary color has a total intensity of 2. White has a total intensity of 3. Tinting, or "adding white", increases the total intensity of the hue. While this is simply a fact, the HSL model will take this fact into account in its design.
+
+===Tones===
+(See [[Colorfulness]] for more information.)
+
+''Tone'' is a general term, typically used by painters, to refer to the effects of reducing the "colorfulness" of a hue.; painters refer to it as "adding gray". Note that gray is not a color or even a single concept but refers to all the range of values between black and white where all three primary colors are equally represented. The general term is provided as more specific terms have conflicting definitions in different color models. Thus, shading takes a hue toward black, tinting takes a hue towards white, and tones cover the range between.
+
+==Choosing a Color Model==
+No one color model is necessarily "better" than another. Typically, the choice of a color model is dictated by external factors, such as a graphics tool or the need to specify colors according to the CSS2 or CSS3 standard. The following discussion only describes how the models function, centered on the concepts of hue, shade, tint, and tone.
+
+===RGB===
+(See [[RGB|RGB Color Model]] for more information.)
+
+The RGB model's approach to colors is important because:
+* It directly reflects the physical properties of "Truecolor" displays
+* As of 2011, most graphics tools support it, even if they prefer another color model
+* It is the only means of specifying a specific color in the CSS2 standard  for Web pages
+In the model, a color is described by specifying the intensity levels of the colors red, green, and blue. The typical range of intensity values for each color, 0–255,  is based on taking a binary number with 32 bits and breaking it up into four bytes of 8 bits each. 8 bits can hold a value from 0 to 255. The fourth byte is used to specify the "[[Alpha compositing|alpha]]", or the opacity, of the color. Opacity comes into play when layers with different colors are stacked. If the color in the top layer is less than fully opaque (alpha < 255), the color from underlying layers "shows through". 
+
+In the RGB model, hues are represented by specifying one color as full intensity (255), a second color with a variable intensity, and the third color with no intensity (0).
+
+The following provides some examples using red as the full-intensity and green as the partial-intensity colors; blue is always zero:
+{| class="wikitable"
+|-
+! Red !! Green !! Result
+|-
+| 255 || 0 ||<span style="background: #ff0000;">&nbsp;red (255, 0, 0)&nbsp;</span>
+|-
+| 255 || 128 ||<span style="background: #ff8000;">&nbsp;orange (255, 128, 0)&nbsp;</span>
+|-
+| 255 || 255 ||<span style="background: #ffff00;">&nbsp;yellow (255, 255, 0)&nbsp;</span>
+|}
+
+Shades are created by multiplying the intensity of each primary color by 1 minus the shade factor, in the range 0 to 1. A shade factor of 0 does nothing to the hue, a shade factor of 1 produces black:
+:new intensity = current intensity * (1 – shade factor)
+
+The following provides examples using orange:
+{| class="wikitable"
+|-
+! 0 !! .25 !! .5 !! .75 !! 1.0
+|-
+|<span style="background: #ff8000;">&nbsp;(255, 128, 0)&nbsp;</span>
+|<span style="background: #C06000;">&nbsp;(192, 96, 0)&nbsp;</span>
+|<span style="background: #804000; color: #fff;">&nbsp;(128, 64, 0)&nbsp;</span>
+|<span style="background: #402000; color: #fff;">&nbsp;(64, 32, 0)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|}
+
+Tints are created by modifying each primary color as follows: the intensity is increased so that the ''difference'' between the intensity and full intensity (255) is ''decreased'' by the tint factor, in the range 0 to 1. A tint factor of 0 does nothing, a tint factor of 1 produces white: <br />
+:new intensity = current intensity + (255 – current intensity) * tint factor
+
+The following provides examples using orange:
+{| class="wikitable"
+|-
+! 0 !! .25 !! .5 !! .75 !! 1.0
+|-
+|<span style="background: #ff8000;">&nbsp;(255, 128, 0)&nbsp;</span>
+|<span style="background: #ffa040;">&nbsp;(255, 160, 64)&nbsp;</span>
+|<span style="background: #ffc080;">&nbsp;(255, 192, 128)&nbsp;</span>
+|<span style="background: #ffe0c0;">&nbsp;(255, 224, 192)&nbsp;</span>
+|<span style="background: #ffffff;">&nbsp;(255, 255, 255)&nbsp;</span>
+|}
+
+Tones are created by applying both a shade and a tint. The order in which the two operations are performed does not matter, with the following restriction: when a tint operation is performed on a shade, the intensity of the dominant color becomes the "full intensity"; that is, the intensity value of the dominant color must be used in place of 255.
+
+The following provides examples using orange:
+{| class="wikitable"
+|-
+! !! 0 !! .25 !! .5 !! .75 !! 1.0
+|-
+! 0
+|<span style="background: #ff8000;">&nbsp;(255, 128, 0)&nbsp;</span>
+|<span style="background: #C06000;">&nbsp;(192, 96, 0)&nbsp;</span>
+|<span style="background: #804000; color: #fff;">&nbsp;(128, 64, 0)&nbsp;</span>
+|<span style="background: #402000; color: #fff;">&nbsp;(64, 32, 0)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|-
+! .25
+|<span style="background: #ffa040;">&nbsp;(255, 160, 64)&nbsp;</span>
+|<span style="background: #c07830;">&nbsp;(192, 144, 96)&nbsp;</span>
+|<span style="background: #805020; color: #fff;">&nbsp;(128, 80, 32)&nbsp;</span>
+|<span style="background: #402810; color: #fff;">&nbsp;(64, 40, 16)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|-
+! .5
+|<span style="background: #ffc080;">&nbsp;(255, 192, 128)&nbsp;</span>
+|<span style="background: #C09060;">&nbsp;(192, 144, 96)&nbsp;</span>
+|<span style="background: #806040; color: #fff;">&nbsp;(128, 96, 64)&nbsp;</span>
+|<span style="background: #403020; color: #fff;">&nbsp;(64, 48, 32)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|-
+! .75
+|<span style="background: #ffe0c0;">&nbsp;(255, 240, 192)&nbsp;</span>
+|<span style="background: #c0a890;">&nbsp;(192, 168, 144)&nbsp;</span>
+|<span style="background: #807060; color: #fff;">&nbsp;(128, 112, 96)&nbsp;</span>
+|<span style="background: #403830; color: #fff;">&nbsp;(64, 56, 48)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|-
+! 1.0
+|<span style="background: #ffff;">&nbsp;(255, 255, 255)&nbsp;</span>
+|<span style="background: #c0c0c0;">&nbsp;(192, 192, 192)&nbsp;</span>
+|<span style="background: #808080; color: #fff;">&nbsp;(128, 128, 128)&nbsp;</span>
+|<span style="background: #404040; color: #fff;">&nbsp;(64, 64, 64)&nbsp;</span>
+|<span style="background: #000000; color: #fff;">&nbsp;(0, 0, 0)&nbsp;</span>
+|}
+
+===HSV===
+(See [[HSL and HSV]] for more information.)
+
+The HSV, or HSB, model describes colors in terms of hue, saturation, and value (brightness). Note that the range of values for each attribute is arbitrarily defined by various tools or standards. Be sure to determine the value ranges before attempting to interpret a value.
+
+Hue corresponds directly to the concept of hue in the Color Basics section. The advantages of using hue are
+*The angular relationship between tones around the color circle is easily identified
+*Shades, tints, and tones can be generated easily without affecting the hue
+
+Saturation corresponds directly to the concept of tint in the Color Basics section, except that full saturation produces no tint, while zero saturation produces white, a shade of gray, or black.
+
+Value corresponds directly to the concept of intensity in the Color Basics section.
+*Pure colors are produced by specifying a hue with full saturation and value
+*Shades are produced by specifying a hue with full saturation and less than full value
+*Tints are produced by specifying a hue with less than full saturation and full value
+*Tones are produced by specifying a hue and both less than full saturation and value
+*White is produced by specifying zero saturation and full value, regardless of hue
+*Black is produced by specifying zero value, regardless of hue or saturation
+*Shades of gray are produced by specifying zero saturation and between zero and full value
+The advantage of HSV is that each of its attributes corresponds directly to the basic color concepts, which makes it conceptually simple. The perceived disadvantage of HSV is that the saturation attribute corresponds to tinting, so desaturated colors have increasing total intensity. For this reason, the CSS3 standard plans to support RGB and HSL but not HSV.
+
+===HSL===
+(See [[HSL and HSV]] for more information.)
+
+The HSL model describes colors in terms of hue, saturation, and lightness (also called luminance). (Note: the definition of saturation in HSL is substantially different from HSV, and lightness is not intensity.) The model has two prominent properties:
+*The transition from black to a hue to white is symmetric and is controlled solely by increasing lightness
+*Decreasing saturation transitions to a shade of gray dependent on the lightness, thus keeping the overall intensity relatively constant
+The properties mentioned above have led to the wide use of HSL, in particular, in the CSS3 color model.
+
+As in HSV, hue corresponds directly to the concept of hue in the Color Basics section. The advantages of using hue are
+*The angular relationship between tones around the color circle is easily identified
+*Shades, tints, and tones can be generated easily without affecting the hue
+
+Lightness combines the concepts of shading and tinting from the Color Basics section. Assuming full saturation, lightness is neutral at the midpoint value, for example 50%, and the hue displays unaltered. As lightness decreases below the midpoint, it has the effect of shading. Zero lightness produces black. As the value increases above 50%, it has the effect of tinting, and full lightness produces white.
+
+At zero saturation, lightness controls the resulting shade of gray. A value of zero still produces black, and full lightness still produces white. The midpoint value results in the "middle" shade of gray, with an RGB value of (128,128,128).
+
+Saturation, or the lack of it, produces tones of the reference hue that converge on the zero-saturation shade of gray, which is determined by the lightness. The following examples uses the hues red, orange, and yellow at midpoint lightness with decreasing saturation. The resulting RGB value and the total intensity is shown.
+{| class="wikitable"
+|-
+! 1.0 !! .75 !! .5 !! .25 !! 0
+|-
+|<span style="background: #ff0000; color: white;">&nbsp;(255, 0, 0), 256&nbsp;</span>
+|<span style="background: #d02020; color: white;">&nbsp;(224, 32, 32), 288&nbsp;</span>
+|<span style="background: #b04040; color: white;">&nbsp;(192, 64, 64), 320&nbsp;</span>
+|<span style="background: #a06060; color: white;">&nbsp;(160, 96, 96), 352&nbsp;</span>
+|<span style="background: #808080; color: white;">&nbsp;(128, 128, 128), 384&nbsp;</span>
+|-
+|<span style="background: #ff8000; color: white;">&nbsp;(255, 128, 0), 384&nbsp;</span>
+|<span style="background: #d08020; color: white;">&nbsp;(224, 128, 32), 384&nbsp;</span>
+|<span style="background: #b08040; color: white;">&nbsp;(192, 128, 64), 384&nbsp;</span>
+|<span style="background: #a08060; color: white;">&nbsp;(160, 128, 96), 384&nbsp;</span>
+|<span style="background: #808080; color: white;">&nbsp;(128, 128, 128), 384&nbsp;</span>
+|-
+|<span style="background: #ffff00;">&nbsp;(255, 255, 0), 512&nbsp;</span>
+|<span style="background: #d0d020; color: white;">&nbsp;(224, 224, 32), 480&nbsp;</span>
+|<span style="background: #b0b040; color: white;">&nbsp;(192, 192, 64), 448&nbsp;</span>
+|<span style="background: #a0a060; color: white;">&nbsp;(160, 160, 96), 416&nbsp;</span>
+|<span style="background: #808080; color: white;">&nbsp;(128, 128, 128), 384&nbsp;</span>
+|}
+Note that the physical nature of additive color prevents the scheme from working exactly except for hues halfway between the primary and secondary colors. However, the total intensity of the tones resulting from decreasing saturation are much closer than tinting alone, as in HSV.
+
+==See also==
+*[[Color scheme]] This article describes different ways of combining colors in a pleasing manner.
+
+==References==
+<references />
+
+[[Category:Computer graphics]]
+[[Category:Computing comparisons]]

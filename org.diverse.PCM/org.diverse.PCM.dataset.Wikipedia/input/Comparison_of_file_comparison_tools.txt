@@ -1,0 +1,1515 @@
+
+This article compares [[computer software]] tools that compare [[Computer file|files]], and in many cases [[Directory (computing)|directories or folders]], whether it is their main purpose or as part of more general [[file management]].
+
+==General==
+Basic general information about [[file comparison]] software.
+{| class="wikitable sortable"
+|- 
+! Name
+! Creator
+! [[FOSS]]
+! Free
+! First public release date
+! Year of latest stable version
+! Windows
+! Macintosh
+! Linux
+! Other platforms
+! Max Supported File Size
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Beyond Compare]]
+| Scooter Software
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; [[Proprietary software|Proprietary]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; [[$US]]30 (std), 50 (pro)
+| 1996
+| 2015 (v4.0.7)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Compare++]]
+| Coode Software
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; $29.95, 30-day free trial
+| 2010
+| 2013 (v2.15)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff]], [[diff3]]
+| [[AT&T]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[BSD licenses|BSD 3-clause]], [[BSD licenses|BSD 4-clause]], [[CDDL]], GPL, Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1974
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[Mac OS X]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ported to most platforms as part of [[Source Code Control System|SCCS]]
+| > 2GB but less than 64 bits
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | SG DiffMerge
+| SourceGear 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; $US19 
+| 2003
+| 2013-10 (4.2.0)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | DiffTool
+| Ludwig Gruber
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; (on [[Google Play]] Store)
+| 2014
+| 2015 (1.44)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Android
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Diffuse
+| Derrick Moser
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2006
+| 2014-07 (0.4.8)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[PyGtk]]+
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Eclipse (software)|Eclipse]] (compare) 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[Eclipse Public License]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2004-07-21
+| 2014-09-26
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[Java (programming language)|Java]]
+| 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ediff]]
+| Michael Kifer
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1994
+| 2.81.4
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[Mac OS X]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[Emacs]]
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ExamDiff Pro]]
+| PrestoSoft
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; $35, free file-only version
+| 1998
+| 2014 (v7.0.1.6)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[Windows 98|Win98]] and up)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Far Manager]] (compare)
+| Eugene Roshal (original); FAR Group
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Revised [[BSD license]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1996
+| 2014 August (v 3.0 build 4040)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Microsoft File Compare|fc]]
+| Microsoft
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; Part of [[Operating System|OS]]
+| 1987
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (DOS)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Apple Developer Tools#FileMerge|FileMerge]]
+| [[Apple Inc.]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; (part of [[Apple Developer Tools]])
+| 1993 (part of [[NEXTSTEP]] 3.2)
+| 2014 (v2.8)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Mac OS X)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Guiffy SureMerge]]
+| Guiffy Software
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; $37.50(Pro), 75(eXpert)
+| 2000
+| 2015 March (v11.1)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[Java (programming language)|Java]]
+| > 2GB
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IntelliJ IDEA]] (compare)
+| JetBrains
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| 2007 (v6.0.5)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[jEdit#Plugins|jEdit JDiff plugin]]
+| Various
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; GPL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1998
+| 2012 (3.3.0)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[Java (programming language)|Java]]
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | KDiff3
+| Joachim Eibl
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2002
+| 2014-07 (0.9.98)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Qt4 or Qt5
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Kompare]]
+| Otto Bruggeman
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPLv2+]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Mac OS X)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Lazarus (software)|Lazarus]] Diff
+| [[Lazarus (software)]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; GPL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| 2000
+| 2009
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| FreeBSD
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Meld (software)|Meld]]
+| Stephen Kennedy
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPLv2+]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2002
+| 2014-12-30 (v3.12.3)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Berkeley Software Distribution|BSD]], [[Solaris (operating system)|Solaris]]
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Notepad++|Notepad++ (compare)]]
+| Various
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPLv3]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2009
+| 2015-01-06 (1.5.6.6)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Perforce|Perforce P4Merge]]
+| [[Perforce]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| 2014 (2014.3)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Sun Solaris
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Pretty Diff]]
+| Austin Cheney
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; MIT-compatible
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2009
+| 2014-11-26
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[World Wide Web|Web]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[World Wide Web|Web]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[World Wide Web|Web]])
+| [[Node.js]], [[Windows Script Host]]
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Tkdiff]]
+| Tkdiff
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; [[GNU General Public License|GPLv2+]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2003 (or before)
+| 2011-11-27 (v4.2)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[Tcl]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Tcl)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Tcl)
+| Anything with Tcl
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Total Commander]] (compare)
+| Christian Ghisler
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| 2010-12-17 (v7.56a)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[TextWrangler|twdiff]] (TextWrangler Diff Helper)
+| Bare Bones Software, Inc.
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; with [[TextWrangler]]
+|  
+| 2012 (1.0 (v22))
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[vim (text editor)#Features and improvements over vi|vimdiff]]
+| [[Bram Moolenaar]] et al.
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; GPL-compatible
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2001
+| 2006-05-07 (v7.0)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Anything with [[vim (text editor)|vim]]
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinDiff]]
+| Microsoft
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; Part of Platform SDK
+| 1992
+| 2003 ? (v6.1)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinMerge]]
+| Dean Grimm
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; GPL
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1998
+| 2013-02-03 (v2.14.0)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ([[Windows 95|Win95]] and up)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+| 2 [[GiB]]
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Unified Code Count (UCC)|UCC]]
+| USC CSSE
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; USC-CSSE Limited Public License
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2009
+| 2010-07
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes {2.6.9}
+| Sun Solaris
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[UltraCompare]]
+| IDM Computer Solutions, Inc.
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; Proprietary
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; $24.95, 30-day free trial
+| 
+| 2014 (v15)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+|-
+
+|-
+! Name
+! Creator
+! [[FOSS]]
+! Free
+! First public release date
+! Year of latest stable version
+! Windows
+! Macintosh
+! Linux
+! Other platforms
+! Max Supported File Size
+|}
+
+==Compare features==
+{| class="sortable wikitable" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: auto;"
+|- style="background: #ececec;"
+! style="width:12em" | Name
+! Show in-line changes
+! Directory comparison
+! Binary comparison
+! Moved lines
+! 3-way comparison
+! Merge
+! Structured comparison
+! Manual compare aligment
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Beyond Compare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Files and Folders)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Pro only)
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Compare++]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (C/C++,C#,Java,Javascript,CSS3)
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| partly
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff3]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (non-optional)
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | SG DiffMerge
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|line alignment marker
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | DiffTool
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (folders)
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Diffuse
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|''arbitrary'' file diffs, but not a 3-way diff
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| line alignment, isolate
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Eclipse (software)|Eclipse]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ediff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ExamDiff Pro]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (ExamDiff Pro Master, only) 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|manual synchronization
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Far Manager]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Via plugin) 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Via plugin) 
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Microsoft File Compare|fc]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Apple Developer Tools#FileMerge|FileMerge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (optional ancestor)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Guiffy SureMerge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IntelliJ IDEA]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[jEdit|jEdit JDiff plugin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | KDiff3
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| alignment marker, split/join
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Kompare]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Lazarus (software)|Lazarus]] Diff
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Meld (software)|Meld]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| line alignment, unlink scroll
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Notepad++|Notepad++ (compare)]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Perforce|Perforce P4Merge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Pretty Diff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Tkdiff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Total Commander]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| resync comparasion
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[vim (text editor)#Features and improvements over vi|vimdiff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via DirDiff plugin)
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"| can do 2, 3, or 4 file diffs, but not a 3-way diff
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinDiff
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinMerge
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Unified Code Count (UCC)|UCC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|- style="background: #ececec;" class="sortbottom"
+! style="width:12em" | Name
+! Show in-line changes
+! Directory comparison
+! Binary comparison
+! Moved lines
+! 3-way comparison
+! Merge
+! Structured comparison
+|}
+
+==API / editor features==
+{| class="sortable wikitable" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: auto;"
+|- style="background: #ececec;"
+! style="width:12em" | Name
+! [[Graphical User Interface|GUI]]
+! [[Command Line Interface|CLI]]
+! Scripting
+! Horizontal / Vertical
+! Syntax Highlighting
+! Reports
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Beyond Compare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|XML, HTML, CSV, Text, Unix Patch
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Compare++]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTML, Text(combined or side-by-side)
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| horizontal
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes pipe to diff-highlight
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff3]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| horizontal
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | SG DiffMerge
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| both
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTML, Text(unified, traditional or side-by-side)
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | DiffTool
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|by Intent()
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| landscape + portrait
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Text
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Diffuse
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Eclipse (software)|Eclipse]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ediff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|elisp
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ExamDiff Pro]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| optional
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|UNIX, HTML, Diff
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Far Manager]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Microsoft File Compare|fc]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| horizontal
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Apple Developer Tools#FileMerge|FileMerge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Guiffy SureMerge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Java API
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTML, Text, Unix Patch
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IntelliJ IDEA]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[jEdit|jEdit JDiff plugin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | KDiff3
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Kompare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| vertical
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Lazarus (software)|Lazarus]] Diff
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Meld (software)|Meld]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| horizontal
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Notepad++|Notepad++ (compare)]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Perforce|Perforce P4Merge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Pretty Diff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|JavaScript
+| Both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| XHTML
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Tkdiff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Total Commander]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| optional
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[vim (text editor)#Features and improvements over vi|vimdiff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|vim script
+| both
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTML
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinDiff
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| horizontal
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Text
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinMerge
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|CSV, Tab-delimited, HTML, XML
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Unified Code Count (UCC)|UCC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| vertical
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Text, CSV
+|- style="background: #ececec;" class="sortbottom"
+! style="width:12em" | Name
+! [[Graphical User Interface|GUI]]
+! [[Command Line Interface|CLI]]
+! Scripting
+! Horizontal / Vertical
+! Syntax Highlighting
+! Reports
+|}
+
+==Other features==
+Some other features which did not fit in previous table
+
+{| class="sortable wikitable" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: auto;"
+|- style="background: #ececec;"
+! style="width:12em" | Name
+! ZIP support
+! FTP support
+! Version Control browsing
+! Patch creation
+! Patch application
+! Patch preview
+! Unicode support
+! XML-aware
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Beyond Compare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Compare++]]
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|SVN, CVS, Git, Microsoft TFS, Perforce, VSS using command line
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes with patch
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes with patch
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff3]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | SG DifMferge
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Git, Mercurial, SVN, Microsoft TFS, VSS 2005
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | DiffTool
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes + APK
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Diffuse
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Baazar, CVS, Darks Git, Mercurial, Monotone, RCS, SVN, SVK
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Eclipse (software)|Eclipse]] (compare)
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Concurrent Versions System|CVS]], [[Subversion]], [[Git (software)|Git]], [[Mercurial]], [[GNU_Bazaar| Baazar]]
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ediff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|RCS, CVS, SVN, Mercurial, git (anything supported by Emacs' VC-mode)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ExamDiff Pro]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|normal diff only
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Far Manager]] (compare)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Microsoft File Compare|fc]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Apple Developer Tools#FileMerge|FileMerge]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|supported by OS
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Guiffy SureMerge]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IntelliJ IDEA]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[jEdit|jEdit JDiff plugin]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | KDiff3
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Kompare]]
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Lazarus (software)|Lazarus]] Diff
+|
+|
+|
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Meld (software)|Meld]]
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Concurrent Versions System|CVS]], [[Subversion]], [[Git (software)|Git]], [[Mercurial]], [[GNU_Bazaar| Baazar]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Notepad++|Notepad++ (compare)]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Git, Subversion (compare against base)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Perforce|Perforce P4Merge]]
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Pretty Diff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Tkdiff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|CVS, RCS, Subversion
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Total Commander]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[vim (text editor)#Features and improvements over vi|vimdiff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinDiff
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinMerge
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| Mercurial, Subversion,  Visual Source Safe, Rational ClearCase
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Unified Code Count (UCC)|UCC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|- style="background: #ececec;" class="sortbottom"
+! style="width:12em" | Name
+! ZIP support
+! FTP support
+! Version Control browsing
+! Patch creation
+! Patch application
+! Patch preview
+! Unicode support
+! XML-aware
+|}
+
+==Aspects==
+What aspects can be / are compared?
+{| class="sortable wikitable" style="font-size: 85%; border: gray solid 1px; border-collapse: collapse; text-align: center; width: auto;"
+|- style="background: #ececec;"
+! style="width:12em" | Name
+! Filename casing
+! CRC
+! Filedate
+! Daylight saving
+! Character casing
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Beyond Compare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Compare++]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[diff3]]
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | SG DiffMerge
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Diffuse
+|
+|
+|
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | DiffTool
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Eclipse (software)|Eclipse]] (compare)
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ediff]]
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ExamDiff Pro]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Far Manager]] (compare)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Microsoft File Compare|fc]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Apple Developer Tools#FileMerge|FileMerge]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Guiffy SureMerge]]
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|filesystem dependent
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IntelliJ IDEA]] (compare)
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[jEdit|jEdit JDiff plugin]]
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | KDiff3
+|
+|
+|
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Kompare]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Lazarus (software)|Lazarus]] Diff
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Meld (software)|Meld]]
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Notepad++|Notepad++ (compare)]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Perforce|Perforce P4Merge]]
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Pretty Diff]]
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Tkdiff]]
+|
+|
+|
+|
+|
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Total Commander]] (compare)
+|
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|  style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (in synchronize only)
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[vim (text editor)#Features and improvements over vi|vimdiff]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinDiff
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|when different
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | WinMerge
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|
+| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
+|-
+! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Unified Code Count (UCC)|UCC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|- class="sortbottom" style="background: #ececec;"
+! style="width:12em" | Name
+! Filename casing
+! CRC
+! Filedate
+! Daylight saving
+! Character casing
+|}
+
+==Timezone effects==
+When files are transferred across time zones and between Microsoft [[File Allocation Table|FAT]] and [[NTFS]] [[file system]]s, the timestamp displayed by the same file may change, so that identical files with different storage histories are deemed different by a comparer that requires the timestamps to match. The difference is an exact number of hours up to 23 (same minutes and seconds) if the file was transported across zones; there is also a one-hour difference within a single zone caused by the transition between winter and [[daylight-saving time]] (DST). Some, but not all, file comparison and synchronisation software can be configured to ignore the DST and time-zone differences. Software known to have daylight-saving compensation is marked in the [[#Aspects|Aspects]] table.
+
+==See also==
+* [[File comparison]]
+* [[File synchronization]]
+* [[Comparison of file synchronization software]]
+* [[List of disk cloning software]]
+* [[Comparison of disk cloning software]]
+
+==References==
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+
+
+
+[[Category:File comparison tools|*]]
+[[Category:Software comparisons|File comparison tools]]

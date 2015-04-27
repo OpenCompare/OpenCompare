@@ -1,0 +1,96 @@
+[[H.264]] and [[VC-1]] are popular video compression standards gaining use in the industry as of 2007<sup class="plainlinks noprint asof-tag update" style="display:none;">[//en.wikipedia.org/w/index.php?title=ExpandTemplates&action=edit &#91;update&#93;]</sup>.
+
+==Overview==
+
+{|class="wikitable"
+!!![[VC-1]]!![[H.264]]
+|-
+|Goals
+|Designed to offer very high image quality with excellent compression efficiency
+|Designed to meet a variety of industry needs with many profiles and levels, allowing for varying compression, quality and CPU usage levels, where the lowest level is for portable devices, designed with low CPU usage in mind, while the high levels are designed with very high quality and compression efficiency in mind<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (March 2008)">citation needed</span>]]</i>&#93;</sup> 
+|-
+|Example industry use
+|Supports 4:2:0 compression / color space
+|Supports studio archiving requirements with 4:4:4 color space; <br> separate black and white (BW) video mode
+|-
+|Licensing costs
+| colspan="2" style="text-align:center;"| Similar
+|-
+|Documentation
+|Not free.  Reference decoder, comes with external documentation.
+|? AVC/H264 Licensing costs and terms from MPEG LA. Reference encoder and decoder free as well. Additionally, JVT & M4IF mailing lists are available where one may receive answers on AVC related questions.
+|}
+
+==Terminology==
+All sources for the below information are from the respective specifications listed in the overview section.
+{|class="wikitable"
+! Feature !! [[VC-1]] !! [[H.264]]
+|-
+|Partition sizes||16×16 and 8×8 || 16×16, 16×8, 8×16, 8×8, 8×4, 4×8, and 4×4 
+|-
+|[[Integer transform]] || 8×8, 4×8, 8×4, and 4×4 || 4×4; 8×8 available in High Profile only
+|-
+|[[Film frame#Video frames|Frame]] || colspan="2" style="text-align:center;"| Used for progressive or interlaced content
+|-
+|[[Macroblock]] sizes|| colspan="2" style="text-align:center;"| 16×16 only
+|-
+|Motion vector|| colspan="2" style="text-align:center;"| Two dimensional vector offset from current position to [[reference frame (video)|reference frame]] 
+|-
+|Picture|| colspan="2" style="text-align:center;"| A field or frame 
+|-
+|Skipped macroblock|| colspan="2" style="text-align:center;"| No data is encoded for macroblock
+|}
+
+==Features==
+{|class="wikitable"
+!!![[VC-1]]!![[H.264]]
+|-
+|[[Bitstream]] formats||single bit stream||[[Network Abstraction Layer|NAL]] and [[byte stream]]
+|-
+|[[Bitstream]] format||In advanced profile, each Bitstream Data Unit has its own header.<br>Simple and Main profile provide neither sequence nor entry point headers. ||SPS (sequence parameter set),<br> PPS (picture parameters set),<br> slice header, macroblock<br>
+|-
+|Deblocking filter||In-loop filter and overlap transform||In-loop only
+|-
+|[[CABAC]]||No||Only supported in Main and higher profiles
+|-
+|Variable transform size||Yes||Only in High profile and above
+|-
+|Slice||Contiguous (integer number of macroblock rows only)||Contiguous or non-contiguous
+|-
+|Sub-pixel interpolation methods||[[bicubic]], [[bilinear interpolation|bilinear]]
+||6-tap filter for half pixels; averaging for quarter pixels
+|-
+|[[Variable-length code|Variable Length Coding]] || colspan="2" style="text-align:center;"| Yes
+|-
+|[[Video compression picture types#Bi-predictive pictures (or slices)|B frame]] used for predicting other pictures || colspan="2" style="text-align:center;"| Yes
+|}
+
+==References==
+<references/>
+
+==External links==
+* [http://www.mpegla.com/main/programs/AVC/Pages/FAQ.aspx AVC/H264 Licensing costs and terms from MPEG LA]
+* [http://i.cmpnet.com/videsignline/2006/03/ti-table1.jpg EEtimes comparison of video codecs] [http://www.eetimes.com/news/latest/showArticle.jhtml?articleID=184417335&pgno=4]
+* [http://www.m4if.org/exhibitions/NAB2005/presentations/session3-cvandusen.pdf NAB2005 presentation: codec comparison slides 13-14]
+* [http://forum.doom9.org/showthread.php?t=128498 Codec challenge comparison on Doom9 with professional VC1 encoder, PeP, and x264 for H264 => x264 win the first round]
+* [http://www.avsforum.com/avs-vb/showthread.php?p=9931723&&#post9931723 Microsoft employee discusses differences between VC-1 and H.264]
+* [http://forum.doom9.org/showthread.php?p=674819#post674819 Comparison at Doom9]
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Video processing|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Video processing|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Video_processing&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Video processing]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Video post-processing|Post-processing]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Deblocking filter (video)|Deblocking]]
+* [[Image scaling|Resizing]]
+* [[Deinterlacing]]
+* [[Video denoising|Denoising]]
+* [[Deflicking]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Special processing</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Film colorization]]&nbsp;([[Film tinting|tinting]])
+* [[Color grading]]
+* [[Filmizing]]
+* [[Super-resolution]]
+* [[Uncompressed video|Uncompressed]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">24 to 30&nbsp;[[Frame rate|fps]] conversion</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Telecine]]&nbsp;([[Telecine#2:3_pulldown|3:2 pulldown]])
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">30 to 24&nbsp;[[Frame rate|fps]] conversion</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Inverse_telecine#Reverse telecine (a.k.a. inverse telecine (IVTC), reverse pulldown)|Inverse telecine]]
+</div></td></tr></table></td></tr></table>
+[[Category:Video compression]]

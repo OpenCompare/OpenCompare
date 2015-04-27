@@ -1,0 +1,352 @@
+'''[[HTML5]]''' can be used as an alternative to '''[[Adobe Flash]]'''. Both include features for playing audio and [[video]] within [[web page]]s, and integrated [[vector graphics]] are possible with both.
+
+"HTML5" in this article sometimes refers not just to the [[HTML5]] specification, which does not itself define ways to do animation and interactivity within web pages, but to HTML5 and related standards like [[JavaScript]] or [[CSS 3]]. Animation using JavaScript is also possible with HTML 4.
+
+==Comparison table==
+The table below compares the features of the Flash platform, the HTML5 specification and the features implemented in modern [[web browser]]s.
+
+{| class="sortable wikitable" style="font-size: 90%; text-align: center;"
+|-
+!
+! [[HTML5]] standard
+! HTML [[web browser]] features
+! [[Adobe Flash]] features
+|-
+! Date started
+! Work began in 2003 <br/> Working Draft as of 2011
+! N/A
+! Work began in 1996 <br/> Version 1 released in 1997
+|-
+! Desktop operating systems
+! N/A
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Microsoft Windows]], Apple Mac [[OS X]], [[Linux]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Microsoft Windows]], Apple Mac [[OS X]], <br/> [[Linux]] ([[#Software support|PPAPI-only after 11.2]])</sup>, [[Solaris (operating system)|Solaris]]
+|-
+! Mobile operating systems
+! N/A
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Windows Phone]] 8+, [[Android (operating system)|Android]] 2.3+, Apple [[iOS]] 6+, [[Symbian]] Belle+, [[BlackBerry]] OS 7+
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Up to [[Android (operating system)|Android]] 4.0 (unofficially for Android 4.1 and above), [[BlackBerry PlayBook]], [[BlackBerry 10]] v10.0 - 10.3.0 (10.3.1 unofficially supported), [[Windows RT]]
+|-
+! [[Video game console]]s
+! [[PlayStation Vita]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Xbox 360]], [[Sony PlayStation 3]], Nintendo [[Wii]]
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Sony [[PlayStation 3]] (Flash 9 only), Nintendo [[Wii]] (Flash Lite only)
+|-
+! Device support
+! N/A
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Limited access to [[web camera]], [[microphone]], [[accelerometer]], [[GPS]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Full access to [[web camera]], [[microphone]], [[accelerometer]], [[GPS]]
+|-
+! Market penetration
+! N/A
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|~96% of internet connected PCs are CSS 2/3 [[ACID]] compliant,<br/> ~99% support JavaScript 1.5 or above, ~91% of devices support basic SVG
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|~95% of internet connected PCs<br/>(~83% have Flash Player 11, ~17% have 10 and below)
+|-
+! Vector graphics formats
+! N/A
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Scalable Vector Graphics]] (SVG) supported on ~91% of browsers
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[SWF]] with embedded graphics
+|-
+! Bitmap effects
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Varying support of Filters in CSS3 (e.g. Glow, Blur, Drop Shadow, Sepia)
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, applied to text or graphics (e.g. Glow, Drop Shadow, Bevel)
+|-
+! Vector text display
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with [[Saffron Type System]]
+|-
+! Font support
+! N/A
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Installed fonts and custom fonts using [[Web typography|CSS 3 web fonts]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Installed fonts and embedded fonts
+|-
+! Text [[Spatial anti-aliasing|anti-aliasing]]
+! N/A
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, implemented in most browsers, for system and custom fonts
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, in most cases<sup><span style="font-weight:normal"><span class="citation wikicite" id="endnote_b"><b>[[#ref_b|^2]]</b></span></sup>
+|-
+! Text [[tab stop]]s
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Only supported inside "pre" tags
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with Text Layout Framework
+|-
+! Liquid text layout
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, using the "div" tag and CSS styling
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|No, but text fields can be resized in ActionScript
+|-
+! Tabular data
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, using the "table" tag
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|No, but text fields can be arranged into a grid
+|-
+! Linked text frames<sup><span style="font-weight:normal"><span class="citation wikicite" id="endnote_a"><b>[[#ref_a|^1]]</b></span></span></sup>
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with Text Layout Framework
+|-
+! Programming languages
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[JavaScript]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[ActionScript]], [[Adobe Pixel Bender|Pixel Bender]]
+|-
+! [[C++]] support
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Cross-compiling of C++ code to JavaScript using [[Emscripten]]
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Native code execution with [[Google Native Client]] in [[Google Chrome]] only
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Cross-compiling of C++ code to run in Flash Player using FlasCC
+|-
+! Source code format
+! Plaintext
+! Plaintext JavaScript with limited [[obfuscation]]
+! [[Compiler|Compiled]] [[bytecode]], can be obfuscated
+|-
+! Data formats
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[CSS]] 3, [[HTML]], [[XML]], [[JSON]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[JSON]], [[XML]], Subset of [[CSS]] 1
+|-
+! Data compression
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|[[GZIP]] compression for HTML, JS and CSS files (on supported servers)
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[LZMA]] or [[DEFLATE]] for SWF files
+|-
+! Image formats
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Portable Network Graphics|PNG]], [[JPEG]], Animated [[Graphics Interchange Format|GIF]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Portable Network Graphics|PNG]], [[JPEG]], [[JPEG-XR]], Single-frame [[Graphics Interchange Format|GIF]]
+|-
+! Video formats
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Varying support of [[H.264]], [[WebM]] and [[Ogg Theora]] (see [[HTML5 video]])
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|H.264, [[Sorenson Spark]], and [[VP6|On2 VP6]]
+|-
+! Streaming video
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Pseudo-streaming only of [[WebM]] and [[Ogg Theora]] using [[video tag]]
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Flash Video]], [[H.264]] and partial support for [[MP4]]
+|-
+! Audio formats
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Varying support of [[MP3]], [[Ogg]] [[Vorbis]], [[WAV]] [[Pulse-code modulation|PCM]], [[Advanced Audio Coding|AAC]] and  [[WebM Project|WebM]] [[Vorbis]] (see [[HTML5 audio]])
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[MP3]], [[WAV]] and [[Advanced Audio Coding|AAC]] audio files or embedded sound
+|-
+! Fullscreen support
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Supported on some browsers
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with warning displayed
+|-
+! Encryption [[Digital rights management|DRM]]
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|With obfuscation
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|No, all files being plaintext, except for obfuscation
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|No, binary formatted files can be decompiled, this is merely obfuscation
+|-
+! [[File system]] access
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Varying support of single file upload, and [[drag and drop]] of files onto browser
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Support for single file upload and generation,<br/> AIR only: full create/read/write access to file system
+|-
+! Bitmap manipulation
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Varying support for HTML5 "canvas" element
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, using the BitmapData class
+|-
+! Binary manipulation
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|No, unless JavaScript [[JavaScript syntax#Array|Arrays]] are used for the same
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, using the ByteArray class
+|-
+! [[BLOB|Large binary data]]
+! style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Using Web Sockets to stream binary or XML data
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, embedded or streaming binary data
+|-
+! Offline storage
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
+! style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Using [[Web storage]] or [[HTTP cookie]] to store binary or XML data
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Using [[Local Shared Object]]s to store [[Action Message Format|AMF]]-formatted data
+|-
+! Metadata
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Meta tag]]s
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Can be included in [[meta tag]]s
+! style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Extensible Metadata Platform]]
+|}
+
+===Notes===
+#<span class="citation wikicite" id="endnote_a"><b>[[#ref_a|^]]</b></span>Allows text to overflow into other text boxes, useful for [[desktop publishing]].
+#<span class="citation wikicite" id="endnote_b"><b>[[#ref_b|^]]</b></span>Static text created using the [[Adobe Flash Professional|Flash editor]] is automatically embedded and anti-aliased. Text fields created using ActionScript need fonts to be manually embedded for anti-aliasing to work.
+
+==Comparison==
+
+=== Software support ===
+
+==== Flash ====
+
+Web browsers cannot render Flash media themselves, instead it is rendered primarily using the [[proprietary software|proprietary]] but freely available [[Adobe Flash Player]]. Until 2008, there was no official specification which was allowed to be used to create an alternative player. Alternative players have been developed before 2008, but they support Flash to a lesser degree than the official one.
+
+The latest version of the Adobe Flash Player runs on [[Microsoft Windows]], [[Mac OS X]], [[Research In Motion|RIM]], [[QNX]] and [[Google TV]].
+
+Earlier versions run on [[Android (operating system)|Android]] 2.2-4.0.x (Flash has been released for 4.0, but Adobe has announced that they will discontinue support for Android 4.1 and higher.) (Flash 11.2), [[PlayStation 3]] (Flash 9), [[PSP]] (Flash 6). [[Adobe Flash Lite]] runs on [[Wii]], [[Symbian]], [[Maemo]] Linux, [[Windows Mobile]], and [[Chumby]].
+
+Apple does not allow Flash to run on [[iOS]], the operating system which runs on [[iPad]], [[iPhone]], [[iPod Touch]] and [[Apple TV]]. Apple stated that it has no plans to do so.
+
+In February 2012, Adobe announced it would discontinue development of Flash Player on Linux for all browsers except Google Chrome by dropping the support for [[NPAPI]] and using only Chrome’s [[PPAPI]].
+
+==== HTML 5 ====
+All web browsers support [[HTML]] and other [[Web standards]] to various degree. Adobe released a tool that converts Flash to [[HTML5]], and in June 2011, Google released an experimental tool that does the same.
+
+As of December 2013<sup class="plainlinks noprint asof-tag update" style="display:none;">[//en.wikipedia.org/w/index.php?title=ExpandTemplates&action=edit &#91;update&#93;]</sup>, versions of browsers such as [[Google Chrome|Chrome]], [[Firefox]], [[Internet Explorer]],[[Opera (web browser)|Opera]], and [[Safari (web browser)|Safari]] implement HTML5 to a considerable degree. However, some portions of the HTML5 specification were still being implemented by browser makers.
+
+As of January 2015, [[YouTube]] will default to HTML5 players to better support more devices.
+
+=== Vendor neutrality ===
+Until 2008, the use of Flash was covered by restrictive licenses. The conditions prohibited use of the specification to develop any software (including players) which could render or read (and thus convert) SWF files, and required the output SWF files to be compatible with Adobe’s players.
+
+In 2008, restrictions on use of the SWF and FLV/F4V specifications were dropped, and some specifications were released. However, the “SWF File Format Specification Version 10” allegedly did not contain all the needed information, did not contain much information that hasn’t been previously known by the community, and itself could not be copied, printed out in more than one copy, distributed, resold or translated, without written approval of Adobe Systems Incorporated.
+
+Flash is not an [[open standard]]&nbsp;&ndash;&#32;it is controlled by [[Adobe Systems]]&nbsp;&ndash;&#32;whereas HTML5 is largely controlled by a committee ([[WHATWG]]) made up of three companies&nbsp;&ndash;&#32;[[Opera Software]], the [[Mozilla Foundation]], and Apple.
+
+Various people have praised Flash over the years for rendering consistently across platforms. Constructing sites in Flash is a way to prevent ''code forking,'' whereby different versions of a site are created for different browsers.
+
+Speaking at 'Adobe Max' in 2011, Itai Asseo likewise said that, unlike HTML 5, Flash offers a way to develop applications that work across platforms. HTML 5, he said, is currently implemented differently (if at all) by different browsers. Although the Flash browser plugin is not supported on the Apple iPhone OS, Flash applications can be exported to Adobe AIR, which runs on that operating system as a native application. In the same talk, Mr. Asseo lamented the return to another browser war (as seen in the late 1990s). If Flash falls out of favor, he said, web developers will either have to develop many different versions of their web sites and native applications to take into account different HTML 5 implementations, deny access to browsers that do not support their version of HTML, or dramatically reduce the functionality of their sites in order to deliver content to the least-advanced browser.
+
+=== Authoring ===
+Constructing Flash websites using Adobe tools is relatively easier than with integrated development environments for CSS, HTML, and JavaScript; however, many of Adobe's tools are expensive and [[proprietary software]].
+
+Tools for HTML5 are just starting to come to market; in the meantime, Adobe has released a first version of a Flash-to-HTML5 conversion tool for existing content and are working on creating new tooling for HTML5 as well, like [[Adobe Edge]].
+
+Because HTML5 is an open format, tools like those for Flash can be built for it, too. Applications like Hype and [[Adobe Edge]] are already on the market.
+
+=== Performance ===
+<div class="hatnote boilerplate seealso">See also: [[Adobe Flash#Performance|Performance of Adobe Flash]]</div>
+
+Some users&nbsp;&ndash;&#32;especially those on [[Mac OS X]] and [[Linux]]&nbsp;&ndash;&#32;have complained about the relatively high [[CPU time|CPU usage]] of Flash for video playback.<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Identifying reliable sources|<span title="The material near this tag may rely on an unreliable source. (December 2010)">unreliable source?</span>]]</i>&#93;</sup> This was partially because the Flash plugin did not use the GPU to render video. Adobe has responded to some of those criticisms in the 10.1 and 10.2 releases of the Flash plugin by offloading H.264 video decoding to dedicated hardware and by introducing a new video API called Stage Video.<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Identifying reliable sources|<span title="The material near this tag may rely on an unreliable source. (January 2011)">unreliable source?</span>]]</i>&#93;</sup> In addition, the use of the newer [[ActionScript]] 3.0 inside Flash movies instead of the older ActionScript 2.0 improves code execution speed by a factor of around 10. But older websites that use ActionScript 2.0 will not benefit from this. The software routines written by developers can also affect the performance of applications built in Flash, reasons that would affect HTML5 animations as well.
+
+An HTML vs Flash comparison in 2010 listed non-Flash technologies as being slower than Flash when used for non-video animations, but in January 2012 some of them were faster.
+
+=== Features ===
+Flash has the ability to specify measurements in sub-pixel increments. This can result in a crisper and generally more pleasant appearance of Flash web sites. When confronted with CSS and HTML measurements on a sub-pixel scale, web browsers will round either up or down, depending on the browser, which leads to inconsistency and unreliability in the display of those pages.
+
+Flash offers webcam support, while HTML and related technologies did not until recently.<span class="cleanup-needed-content" style="background-color: #fff9f9; color: DarkSlateGray; border: 1px solid #ffdcdc;"></span><sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Please clarify|<span title="The text near this tag may need clarification or removal of jargon. (November 2012)">clarification needed</span>]]</i>&#93;</sup>
+
+There are, however, people working on adding "device support" (device API) to the HTML5 specification, which would allow for videoconferencing, access to webcams, microphones, USB-thumbdrives and other USB- or serial devices.
+
+==== DRM ====
+Flash includes [[digital rights management|DRM]] support.
+
+HTML5 does not include any [[digital rights management]] functionality. Implementations can support DRM outside the scope of HTML, for example in [[codec]]s. The proposal to add DRM features to HTML5 itself has been criticised by those who consider openness and vendor-neutrality (both server- and client-side) one of the most important properties of HTML, because DRM is incompatible with [[free software]], and in the proposed form potentially not more vendor-neutral than proprietary plug-ins like Flash.
+
+=== Accessibility ===
+Both Flash and HTML text can be read by screen readers. However, special care must be taken to ensure Flash movies are read correctly. For example, if a Flash movie is set to repeat indefinitely, this can cause a screen reader to repeat the content endlessly. Selecting the "Make object accessible" check box in Adobe Flash Professional will create a text-only version of the object for screen readers. It will also hide any motion from the screen reader. Since Flash content is usually placed on a single webpage, it appears as a single entry in search engine result pages, unless techniques like [[deep linking]] are used with libraries like [[SWFAddress]] to provide multiple links within Flash websites and web applications. [[graphical user interface|User interface widgets]] in Flash objects don't always behave like their host native counterparts. Keyboard, mouse and other accessibility shortcuts may not work unless the webpage developer explicitly adds support for it.
+
+=== Search engines ===
+
+Both Flash content and HTML content can be indexed by Google, Yahoo!, and Bing, although bi-directional text (e.g.[[Arabic]], [[Hebrew]]) is not supported by Google. Yahoo! added support for indexing Flash sites in 2008, although Google had been able to index them for several years before that. Bing added support for Flash sites in 2010.
+
+=== iOS devices ===
+<div class="hatnote relarticle mainarticle">Main article: [[Apple and Adobe Flash controversy]]</div>
+
+Apple has been promoting [[HTML5]] as an alternative to Flash for video and other content on the iOS, citing performance reasons for not allowing [[Adobe Flash Player]] to be installed on iOS devices, including the [[iPhone]], [[iPod touch]] and [[iPad]]. Flash applications can be packaged as native iOS applications using the [[Adobe Integrated Runtime]] and the iOS Packager.
+
+== See also ==
+<span style="float:right"><div class="noprint portal tright" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em">
+<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px">
+<tr style="vertical-align:middle"><td style="text-align:center">[[File:Internet map 1024.jpg|32x28px|alt=Portal icon|class=noviewer]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold">[[Portal:Computer science|Computer science portal]]</td></tr>
+<tr style="vertical-align:middle"><td style="text-align:center">[[File:Crystal Clear app browser.png|32x28px|alt=Portal icon|class=noviewer]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold">[[Portal:Internet|Internet portal]]</td></tr></table></div></span>
+* [[Comparison of vector graphics editors]]
+* [[CSS animation]]
+* [[Flash animation]]
+* [[HTML5test]]
+* [[Adobe Flash#Security|Security of Adobe Flash]]
+* [[SVG animation]]
+* [[Synchronized Multimedia Integration Language]]
+
+== References ==
+<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
+<references group=""></references></div>
+
+== External links ==
+* [http://www.epaperflip.com/adobe-flash-vs-html-5-who-will-win-cold-war/ INFOGRAPHIC - The Cold War Between Adobe Flash and HTML 5]
+* [http://html5demos.com/ Demos of browser support for HTML5] 
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible {{{state}}} navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="3"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Adobe Flash|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Adobe Flash|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Adobe_Flash&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Adobe Flash]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">File formats</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[ActionScript|ActionScript]] (AS)
+* [[Action Message Format|Action Message Format]] (AMF)
+* [[Flash Video|Flash Video]] (FLV)
+* [[FXG|Flash XML Graphics]] (FXG)
+* [[Local shared object|Local Shared Objects]] (LSO)
+* [[MXML]]
+* [[SWF|Flash Movie]] (SWF)
+* [[Adobe SWC file|Flash Code Library]] (SWC)
+</div></td><td class="navbox-image" rowspan="5" style="width:0%;padding:0px 0px 0px 2px"><div>[[File:Adobe Flash Player v11 icon.png]]</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Software<br/>([[List of Adobe Flash software|List]])</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Viewers</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Player]]
+* [[Adobe Flash Lite]]
+* [[Adobe Integrated Runtime|Adobe AIR]]
+* [[Scaleform GFx]]
+* [[Gnash]]
+* [[Lightspark]]
+* [[Shumway (software)|Shumway]]
+* [[Swfdec]]
+* [[Gameswf]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[List of 2D animation software|Animation tools]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Professional]]
+* [[Adobe Flash Catalyst]] 
+* [[Ajax Animator]]
+* [[SWiSH Max]]
+* [[Stencyl]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Integrated development environment|IDEs]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Professional]]
+* [[Adobe Flash Builder]]
+* [[FlashDevelop]]
+* [[Powerflasher FDT]]
+* [[OpenLaszlo]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Compiler]]s</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Professional]]
+* [[Apache Flex]]
+* [[CrossBridge]]
+* [[Haxe]]
+* [[MTASC]]
+* [[OpenFL]]
+* [[SWFTools]]
+* [[swfmill]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Debuggers</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Scout]]
+* [[Firebug (software)#FlashFirebug|FlashFirebug]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Converters</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Media Live Encoder]]
+* [[SWFTools]]
+* [[swfmill]]
+* [[SWF2EXE software]]
+* [[Google Swiffy]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Library (computing)|Libraries]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Tamarin (software)|ActionScript Virtual Machine]]
+* [[Ming library|Ming]]
+* [[SWFAddress]]
+* [[SWFObject]]
+* [[Papervision3D]]
+* [[Stage3D]]
+* [[Away3D]]
+* [[Flare3D]]
+* [[Starling Framework|Starling]]
+* [[List of Flex frameworks]]
+* [[PureMVC]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Server-side software</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Adobe Flash Media Server]]
+* [[Adobe Flash Cast]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Comparison of HTML5 and Flash]]
+* [[Apple and Adobe Flash controversy]]
+* [[Flash animation]]
+** [[List of Flash animated films|Films]]
+** [[List of Flash animated television series|Television]]
+* [[Protected Streaming]]
+* [[Real Time Messaging Protocol]]
+* [[Real Time Media Flow Protocol]]
+</div></td></tr></table></td></tr></table>
+
+
+
+[[Category:HTML5]]
+[[Category:Adobe Flash]]
+[[Category:Software comparisons|HTML5 and Flash]]

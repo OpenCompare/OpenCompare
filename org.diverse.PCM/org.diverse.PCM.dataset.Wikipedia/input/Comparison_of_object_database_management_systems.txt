@@ -1,0 +1,260 @@
+
+
+
+
+
+
+
+
+
+
+This is a '''comparison of notable object database management systems''', showing what fundamental [[object database]] features are implemented natively.
+
+{| class="sortable wikitable" style="width: 100%; text-align: center"
+! style="width: 25%" | Name
+! Current Stable Version
+! [[Computer languages|Language(s)]]
+! [[SQL]] support
+! [[Datatypes]]
+! [[Software license|License]]
+! Description
+|-
+! style="text-align:left;" | [[Caché (software)|Caché]]
+|2014.2
+| [[Caché ObjectScript]] (dynamic language), Basic. Java/.NET object mapping supported.
+| SQL subset. Object notation allowed. Supports embedded SQL, dynamic SQL and xDBC access.
+| 
+| [[Proprietary software|Proprietary]]
+| MUMPS ancestry. Includes built-in support for XML, Web/AJAX and an EMB system called Ensemble. Supports embedded, client/server and distributed implementations.
+|-
+! style="text-align:left;" | [[ConceptBase]]
+|
+| [[Telos (computer science)|Telos]]
+| CBQL (based on [[Datalog]])
+| no types but classes
+| open source, FreeBSD-style license
+| historical db, active rules, meta-modeling, deductive rules
+|-
+! style="text-align:left;" | [[Db4o]]
+| 8.0
+| [[C Sharp (programming language)|C#]], [[Java (programming language)|Java]]
+| [http://code.google.com/p/db4o-sql/ db4o-sql]
+| .NET and Java data types
+| [[GPL]], custom, [[Proprietary software|proprietary]]
+| Native Queries, LINQ support, automatic schema evolution, Transparent Activation/Persistence, replication to RDBMS, Object Manager plugin for Visual Studio and Eclipse
+|-
+! style="text-align:left;" | [[Gemstone (database)|GemStone/S]]
+| 3.2.2
+| [[Smalltalk]]
+| None
+| Objects and code
+| [[Proprietary software|Proprietary]], free version available
+| Persistent, transactional, multi-user Smalltalk developed by [[GemTalk Systems]]. 
+|-
+! style="text-align:left;" | [[NeoDatis ODB]]
+|
+| [[C Sharp (programming language)|C#]], [[Java (programming language)|Java]], [[Mono (software)|Mono]]
+| 
+| 
+| [[LGPL]]
+| Embedded and Client/Server
+|-
+! style="text-align:left;" | [[ObjectDatabase++]]
+| 3.4
+| C++, [[TScript]], .NET
+|
+| 
+| [[Proprietary software|Proprietary]]
+| Embedded
+|-
+! style="text-align:left;" | [[ObjectDB]]
+| 2.4.6
+| Java
+| None, uses [[Java Persistence API|JPA]] or [[Java Data Objects|JDO]]
+| 
+| [[Proprietary software|Proprietary]]
+| 
+|-
+! style="text-align:left;" | [[Objectivity/DB]]
+| 10.2.1
+| [[C++]], [[C Sharp (programming language)|C#]], [[Java (programming language)|Java]], [[Python (programming language)|Python]], [[Smalltalk]] and [[XML]]
+| SQL superset
+| 
+| [[Proprietary software|Proprietary]]
+| Distributed, Parallel Query Engine
+|-
+! style="text-align:left;" | [[Objectstore|ObjectStore]]
+| 7.2 (July 2011)
+| [[C++]], [[Java (programming language)|Java]], interoperable with .NET
+| SQL subset (also has own object query language)
+| 
+| [[Proprietary software|Proprietary]]
+| Embedded database supporting efficient, distributed management of C++ and Java objects.  Avoids the complexities and limitations of ORM products such as Hibernate by storing objects directly with their relationships intact.  Uses a page-based mapping system for fast locking and efficient, distributed, client-side caching.
+|-
+! style="text-align:left;" | [[ODABA]]
+| 12.3.0 (August 2013)
+| C++, .NET
+| SQL subset, DQL
+| Basic Types, Classes, Multiple inheritance, Weak Typed
+| [[GNU GPL|GPL]]
+| [[Terminology-oriented database]]
+|-
+! style="text-align:left;" | [[OpenAccess]]
+| 2.2
+| [[C++]]
+| no
+| 
+| [[Proprietary software|Proprietary]]
+| [[EDA database]]
+|-
+! style="text-align:left;" | [[Virtuoso Universal Server|OpenLink Virtuoso]]
+| 5.0.11
+| [[C++]], [[Java (programming language)|Java/JSP]], ASP, [[ASPX]], Mono, [[Resource Description Framework|RDF]], [[SPARQL]], [[SPARUL]], [[SQL]], Perl, [[Python (programming language)|Python]], [[PHP]], [[Ruby (programming language)|Ruby]], [[XML]], ODBC, JDBC, ADO.NET, more
+| SQL 9x/200x
+| 
+| [[GNU GPL|GPL]] or proprietary
+| 
+|-
+! style="text-align:left;" | [[Perst]]
+| 4.2
+| [[Java (programming language)|Java]] (including [[Java SE]], [[Java ME]] & [[Android (operating system)|Android]]), [[C Sharp (programming language)|C#]] (including [[.NET Framework|.NET]], [[.NET Compact Framework]], [[Mono (software)|Mono]] & [[Silverlight]])
+| JSQL - object-oriented subset of SQL
+| Java and .NET data types
+| [[GPL]], Proprietary
+| Small footprint [[embedded database]]. Diverse [[database index|indexes]] and specialized [[collection class]]es; [[LINQ]]; replication; [[ACID|ACID transactions]]; native [[full text search]]; includes Silverlight, Android and Java ME demo apps.
+|-
+! style="text-align:left;" | [[Picolisp]]
+| 3.1.1
+| Picolisp
+| 
+| 
+| [[MIT License]]
+| DB built into the language
+|-
+! style="text-align:left;" | [http://siaqodb.com/ siaqodb]
+| 4.0
+| [[C Sharp (programming language)|C#]], [[.NET Framework|.NET]], [[Mono (software)|Mono]], [[WinRT]], [[Silverlight]],  [[Windows Phone]], [[Android (operating system)|Android]], [[iOS]], [[Unity3D]], [[.NET Compact Framework]]
+| LINQ
+| .NET data types, classes
+| Commercial
+| NoSQL embedded database for .NET that runs on .NET, Mono, WinRT, iOS, Android, WindowsPhone, Unity3D,Compact Framework
+
+|-
+! style="text-align:left;" | [[Twig (database)|Twig]]
+|
+| Java
+| 
+| 
+| [[Apache license]] 2.0
+| Built on [[Google App Engine]]'s low-level [[Datastore API]]
+|-
+! style="text-align:left;" | [http://www.VelocityDB.com/ VelocityDB]
+| 4.x
+| [[C Sharp (programming language)|C#]], [[.NET Framework|.NET]], [[Windows Phone]], [[Xamarin]], [[Android (operating system)|Android]], [[iOS]]
+| LINQ
+| .NET data types
+| Commercial
+| Embedded/distributed database for .NET. Enhanced with graph api is [http://www.VelocityGraph.com/ VelocityGraph].
+|-
+! style="text-align:left;" | [[Versant Object Database]]
+|
+| 
+| 
+| 
+|[[Proprietary software|Proprietary]] 
+| 
+|-
+! style="text-align:left;" | [[Wakanda (software)|WakandaDB]]
+| 4
+| [[JavaScript]], [[C++]]
+| No support. Use [[REST]] & SSJS instead
+| [[JavaScript]] and [[4th Dimension (software)|4D]] data types
+| [[Affero General Public License|AGPL]], proprietary
+| NoSQL REST / Server-Side JavaScript engine. Integrates Webkit JavaScriptCore engine with HTML5 JS APIs supported on the server. Tables and columns are replaced by JavaScript DataClasses and attributes.
+|-
+! style="text-align:left;" | [[Zope Object Database]]
+|
+| [[Python (programming language)|Python]], C
+| No support. Object indexing and searching is done through ZCatalog facility.
+| 
+| [[Zope Public License]]
+| 
+|}
+
+==See also==
+*[[Comparison of object-relational database management systems]]
+*[[Comparison of relational database management systems]]
+*[[Object-relational database]]
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Databases|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Databases|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Databases&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Database management system]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+*[[Database model]]s
+*[[Database normalization]]
+*[[Database storage structures|Database storage]]
+*[[Distributed database management system|Distributed DBMS]]
+*[[Federated database system]]
+*[[Referential integrity]]
+*[[Relational algebra]]
+*[[Relational calculus]]
+*[[Relational database]]
+*[[Relational database management system|Relational DBMS]]
+*[[Relational model]]
+*[[Object-relational database]]
+*[[Transaction processing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Concepts</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Database]]
+*[[ACID]]
+*[[Create, read, update and delete|CRUD]]
+*[[Null (SQL)|Null]]
+*[[Candidate key (Template)|Candidate key]]
+*[[Foreign key]]
+*[[Primary key]]
+*[[Superkey (Template)|Superkey]]
+*[[Surrogate key]]
+*[[Armstrong's axioms]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Objects</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Relation (database)|Relation]]
+**[[Table (database)|table]]
+**[[Column (database)|column]]
+**[[Row (database)|row]]
+*[[View (SQL)|View]]
+*[[Database transaction|Transaction]]
+*[[Transaction log|Log]]
+*[[Database trigger|Trigger]]
+*[[Index (database)|Index]]
+*[[Stored procedure]]
+*[[Cursor (databases)|Cursor]]
+*[[Partition (database)|Partition]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Concurrency control]]
+*[[Data dictionary]]
+*[[Java Database Connectivity|JDBC]]
+*[[XQuery API for Java|XQJ]]
+*[[Open Database Connectivity|ODBC]]
+*[[Query language]]
+*[[Query optimizer]]
+*[[Query plan]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Functions</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[Database administration and automation|Administration and automation]]
+* [[Query optimization]]
+* [[Database replication|Replication]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+; Database products 
+:[[List of object-oriented database management systems|Object-oriented]]
+::[[Comparison of object-relational database management systems|comparison]]
+:[[List of relational database management systems|Relational]]
+::[[Comparison of relational database management systems|comparison]]
+:[[Document-oriented database|Document-oriented]]
+:[[Graph database|Graph]]
+:[[NoSQL]]
+:[[NewSQL]]
+</div></td></tr></table></td></tr></table>
+
+[[Category:Object-oriented database management systems]]
+[[Category:Database software comparisons|object database management systems]]
+
+[[pl:Lista obiektowych systemów zarządzania bazami danych]]
+[[pt:Anexo:Lista de sistemas de gerenciamento de bancos de dados orientados a objeto]]

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>org.diverse.PCM.dataset</artifactId>
+        <groupId>org.diverse.PCM</groupId>
+        <version>0.2-SNAPSHOT</version>
+        <relativePath>../org.diverse.PCM.dataset/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>org.diverse.PCM.dataset.Wikipedia</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.diverse.PCM</groupId>
+            <artifactId>org.diverse.PCM.api.java</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.diverse.PCM</groupId>
+            <artifactId>org.diverse.PCM.api.java.impl</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.diverse.PCM.io</groupId>
+            <artifactId>org.diverse.PCM.io.Wikipedia</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.10.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scalaj</groupId>
+            <artifactId>scalaj-http_2.10</artifactId>
+            <version>0.3.16</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ccil.cowan.tagsoup</groupId>
+            <artifactId>tagsoup</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.10</artifactId>
+            <version>2.2.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.7</version>
+            <configuration>
+            <skipTests>true</skipTests>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

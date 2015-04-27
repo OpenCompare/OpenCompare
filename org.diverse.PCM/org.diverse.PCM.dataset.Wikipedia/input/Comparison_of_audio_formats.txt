@@ -1,0 +1,1939 @@
+The following tables compare general and technical information for a variety of [[audio coding format]]s.  For listening tests comparing the perceived audio quality of audio formats and codecs, see the article [[Codec listening test]].
+
+== General information ==
+{| class="wikitable sortable" style="font-size: 85%; text-align: center;"
+|+General Information about Audio Compression Formats - creator/company, license/price etc.
+|-
+! [[Audio compression format]]
+! Creator
+! First public release date
+! Latest stable version
+! [[Encoder]] cost
+! Player cost
+! [[Proprietary software|Proprietary]] implementations (codecs)
+! [[Open-source]] implementations (codecs)
+! Application (besides consumer audio)
+! Music reproduction (consumer audio)
+! [[Telephony]] app
+! [[Audio compression (data)#Lossless|Lossless audio compression]]
+! [[Patented]]
+! [[Digital rights management|DRM]]
+|-
+! [[Advanced Audio Coding|AAC]]
+| [[International Organization for Standardization|ISO]]/[[International Electrotechnical Commission|IEC]] MPEG Audio Committee
+| 1997
+| ISO/IEC 14496-3
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[FAAC]] (encoding only), [[iTunes]], [[Nero Digital|Nero Digital Audio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [[FAAD2]] (decoding only), [[FFmpeg]], [[Android (operating system)|Android]] OpenCORE AAC (decoding only), Audiocogs (decoding only)
+| Digital TV service, Internet streaming
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free [[FairPlay]] (.m4p only, discontinued)
+|-
+! [[Dolby Digital|AC-3]]
+| [[Dolby Laboratories]]
+| 1992
+| [[Advanced Television Systems Committee standards|ATSC]] A52:2012
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[DVD players]], [[digital television]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FFmpeg]], liba52 (decoding only), Aften (encoding only), libavc (2.0 channels max)
+| Theatrical movie presentation, Digital TV service & home-video (personal recorders, DVD, etc.)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Apple Lossless|ALAC]]
+| [[Apple Inc.]]
+| 2004-04-28
+| [[QuickTime]] 7.6
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[QuickTime]], [[iTunes]], [[RealPlayer]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| MacOSforge, [[FFmpeg]], Audiocogs (decoding only)
+| -
+| Music archival
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Possible, but never implemented
+|-
+! [[Audio Lossless Coding|ALS]]
+| [[International Organization for Standardization|ISO]]/[[International Electrotechnical Commission|IEC]] MPEG Audio Committee
+| 2005
+| ISO/IEC 14496-3
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[mp4als]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only)
+| -
+| -
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Multi-Band Excitation|AMBE]]
+| Digital Voice Systems
+| ?
+| ?
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| ?
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|mbelib
+| Low bandwidth HF/VHF digital radio, VoIP trunking
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| ?
+|-
+! [[Adaptive multi-rate compression|AMR]]
+| [[3GPP]]
+| 1999-06-22
+| [[ETSI]] TS 126 071 V9.0.0 (2009)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[QuickTime]], [[RealPlayer]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg (decoding only), FFmpeg with OpenCORE libraries, [[Android (operating system)|Android]]
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[AMR-WB]]<br/>(G.722.2)
+| [[3GPP]]
+| 2001-04-10
+| [[ETSI]] TS 126 190 V8.0.0 (2009-01)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[QuickTime]], [[RealPlayer]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg (decoding only), FFmpeg with [[VisualOn]] libraries, [[Android (operating system)|Android]] (decoding only), opencore-amr for both encoding and decoding
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[AMR-WB+]]
+| [[3GPP]]
+| 2004-06-14
+| [[ETSI]] TS 126 290 V8.0.0 (2009-01)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| ?
+| ?
+| [[voice recording]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[apt-X]]
+| APTX
+| 1989
+| 2007
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Broadcast audio codecs: Systembase, APT, AVT, [[Harris Corporation]], MAYAH, Prodys, Qbit; wireless headphones: [[iSkin]], JayBird Gear, DTS discs for movies
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| Low latency [[Studio/transmitter link]], [[Bluetooth]] A2DP stereo, digital [[wireless microphone]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[Adaptive Transform Acoustic Coding|ATRAC]]
+| [[Sony]] Corp.
+| 1991
+| ATRAC3plus
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[MiniDisc]], [[Walkman]], [[VAIO]], [[Clie]], [[PlayStation 3]], [[PlayStation Portable]], [[Sony Dynamic Digital Sound|SDDS]], SonicStage, [[SoundForge]], [[RealPlayer]], ConnectPlayer
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only, ATRAC Advanced Lossless are not supported)
+| [[voice recording]], theatrical movie presentation
+| -
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+|-
+! [[Broadcom#BroadVoice|BroadVoice]] (BV16, BV32)
+| [[Broadcom]]
+| 2009-08-19
+| 1.2
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| ?
+| ?
+| Speech, VoIP, Low latency, [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[CELT]]
+| [[Xiph.Org Foundation]], Jean-Marc Valin
+| 2007-12-08
+| 0.11.1
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|libcelt, [[FFmpeg]] with libcelt library (decoding only)
+| Speech, VoIP, Low latency, [[Studio/transmitter link]], wireless audio
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[Codec2]]
+| David Rowe
+| 2010
+| Developmental
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|c2enc, c2dec
+| Low bandwidth HF/VHF digital radio, VoIP trunking
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[Dolby Digital Plus|Enhanced AC-3]]
+| [[Dolby Laboratories]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Advanced Television Systems Committee standards|ATSC]] A52:2012
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[Digital television]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FFmpeg]]
+| Theatrical movie presentation, digital TV service & home-video (personal recorders, DVD, etc.)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Free Lossless Audio Codec|FLAC]]
+| [[Xiph.Org Foundation]], Josh Coalson
+| 2001-07-20
+| 1.3.1
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FLAC]], Flake (encoding only), [[FFmpeg]], FLACCL (encoding only), Audiocogs (decoding only)
+| -
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.711]]
+| [[ITU-T]]
+| 1972 ([[ITU-T]] standard from 1988)
+| G.711 Appendix II (02/00)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Various proprietary [[VoIP]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FFmpeg]], [[Ekiga]], [[Asterisk (PBX)]] and almost any [[VoIP]] software
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.722]]
+| ITU-T
+| 1988-11
+|
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Various proprietary [[VoIP]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Asterisk (PBX)]], [[QuteCom]], FFmpeg
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.722.1]]
+| ITU-T
+| 1999-09
+| G.722.1 (05/05)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Various proprietary [[VoIP]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeSWITCH]], [[PJSIP]], etc
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.722.2]]<br/>(AMR-WB)
+| ITU-T (adopted directly from 3GPP)
+| 2002-01
+| G.722.2 (07/03)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[QuickTime]], [[RealPlayer]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg (decoding only), FFmpeg with [[VisualOn]] libraries, [[Android (operating system)|Android]] (decoding only)
+| [[voice recording]], audio
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.723.1]]
+| ITU-T
+| 1996-03
+| G.723.1 (05/06)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Various proprietary [[VoIP]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.726]]
+| ITU-T
+| 1990-12
+|
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Various proprietary [[VoIP]] software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FFmpeg]], [[Ekiga]] and other [[VoIP]] software
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.728]]
+| ITU-T
+| 1992-09
+|
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Various proprietary [[VoIP]] software
+|
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[G.729]]
+| ITU-T
+| 1996-03
+| G.729 (01/07)
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| Various proprietary [[VoIP]] software
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only)
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[GSM-FR]]
+| [[ETSI]] Special Mobile Group
+| 1990-1994 (ETS 300 580-2)
+| ETSI EN 300 961 V8.1.1 (2000–11)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg (decoding only), FFmpeg with external library libgsm, [[Ekiga]] and other [[VoIP]] software
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| ?
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[iLBC]]
+| Global IP Solutions
+| 2002
+| RFC 3951
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Cisco IP Communicator]], old versions of [[Skype]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Ekiga]], [[Asterisk (PBX)]] and other [[VoIP]] software, FFmpeg with libilbc library
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[internet Speech Audio Codec|iSAC]]
+| Global IP Solutions
+| ?
+|
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Yahoo! Messenger
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[WebRTC]]
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| ?
+|-
+! [[Monkey's Audio]]
+| Matthew T. Ashland
+| 2000
+| 4.12
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Monkey's Audio]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only)
+| -
+| Music Archival
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[MPEG-1 Audio Layer II|MP2]] (MPEG-1, 2 Audio Layer II)
+| [[International Organization for Standardization|ISO]]/[[International Electrotechnical Commission|IEC]] MPEG Audio Committee
+| 1993
+| ISO/IEC 11172-3, ISO/IEC 13818-3
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| various [[DVD]] software, video software, audio software
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[TooLAME]] (encoding only), TwoLAME (encoding only), [[FFmpeg]]
+| [[Digital Audio Broadcasting|DAB]], [[Digital Video Broadcasting|DVB]], [[DVD]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| ?
+|-
+! [[MPEG-1 Audio Layer 3|MP3]]
+| [[International Organization for Standardization|ISO]]/[[International Electrotechnical Commission|IEC]] MPEG Audio Committee
+| 1993
+| ISO/IEC 11172-3, ISO/IEC 13818-3
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free ''(See [[#Notes|notes]])''
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free ''(See [[#Notes|notes]])''
+| [[FhG]], [[l3enc]], MP3enc, (old implementations: [[Xing Technology|Xing]] TOMPG, SCMPX)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[LAME]] (encoding only), [[FFmpeg]] (decoding only), [[MPEG Audio Decoder|libmad]] (decoding only), Audiocogs (decoding only), (old implementations: BladeEnc)
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes<br />''(but see [[#Notes|notes]])''
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes (optional, rarely used)
+|-
+! [[Musepack]]
+| Frank Klemm/MDT
+| 1997
+| 1.30 (2009-04-02)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Musepack]], [[FFmpeg]] (decoding only)
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[Nellymoser Asao Codec|Nellymoser Asao]]
+| [[Nellymoser|Nellymoser Inc.]]
+| 2002
+| ?
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[Adobe Flash]], [[Flash Player]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FFmpeg]]
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| ?
+|-
+! [[Opus (codec)|Opus]]
+| [[Internet Engineering Task Force|IETF]]
+| 2012-09-11
+| RFC 6716 (libopus&nbsp;1.1)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|libopus, FFmpeg
+| Speech, [[VoIP]], Low latency, [[Studio/transmitter link]], wireless audio
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+
+! [[ SBC (codec)|SBC]]
+| Frans de Bont
+| 2009
+| Free for [[Bluetooth]]
+| Free for [[Bluetooth]]
+|
+|
+|
+| Bluetooth audio
+|
+|
+| No
+| Yes
+| No
+|-
+
+! [[Shorten (file format)|Shorten]]
+| Tony Robinson
+| 1993-03-30
+| 3.6.1
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| Shorten
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only)
+| -
+| -
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|No (with commercial use restriction)
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[SILK]]
+| [[Skype Limited]]
+| 2009-01-07
+|
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Skype]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|SILK Speech Codec
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Siren Codec|Siren]] 7
+| PictureTel Corp. (now [[Polycom]] Inc.)
+| 1999
+|
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Microsoft Office Communicator]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[FreeSWITCH]] (libg722_1, [[aMSN]] (libsiren - part of libmsn)
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Speex]]
+| [[Xiph.Org Foundation]], Jean-Marc Valin
+| 2003-03-24
+| 1.1.12
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| [[Adobe Flash Player]] 10
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Speex]], FFmpeg with libspeex library
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[SVOPC]]
+| [[Skype Limited]]
+| 2007
+|
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| [[Skype]]
+|
+| [[voice recording]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[TTA_(codec)|True Audio (TTA)]]
+| TAU Software
+| 1999
+| 2.2
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[TTA_(codec)|TTA]], [[FFmpeg]] (decoding only)
+| -
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[TwinVQ]]
+| [[Nippon Telegraph and Telephone]]
+| 1996 (?)
+|
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+| [[Winamp]] with VQF plugin, NTT TwinVQ player/encoder, Yamaha SoundVQ player, Nero Media Player
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[FFmpeg]] (decoding only)
+| speech
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Vorbis]] ([[Ogg]])
+| [[Xiph.Org Foundation]]
+| 2000-05-11
+| 1.3.5
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[libvorbis]], [[aoTuV]], [[FFmpeg]]
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[WavPack]]
+| Conifer Software
+| 1998
+| 4.70.1
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[WavPack]], [[FFmpeg]] (decoding only)
+| -
+| -
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|No
+|-
+! [[Windows Media Audio]]
+| [[Microsoft]]
+| 1999
+| 11.0
+| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Free [[Windows Media Encoder]]
+| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Free for licensees of the Windows operating system
+| [[Windows Media Player]], [[Windows Media Encoder]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|FFmpeg (decoding only for ''Pro'', ''Lossless'' and ''Voice'')
+| internet streaming
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free Yes
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|Non-free
+|- class="sortbottom"
+! [[Audio compression format]]
+! Creator
+! First public release date
+! Latest stable version
+! [[Encoder]] cost
+! Player cost
+! [[Proprietary software|Proprietary]] implementations (codecs)
+! [[Open-source]] implementations (codecs)
+! Application (besides consumer audio)
+! Music reproduction (consumer audio)
+! [[Telephony]] app
+! [[Audio compression (data)#Lossless|Lossless audio compression]]
+! [[Patented]]
+! [[Digital rights management|DRM]]
+|}
+
+=== Notes ===
+# The 'Music' category is merely a guideline on commercialized uses of a particular format, not a technical assessment of its capabilities.  (For example, in terms of marketshare, MP3 and AAC dominate the personal audio market, though many other formats are comparably well suited to fill this role from a purely technical standpoint.)
+# First public release date is first of either specification publishing or source releasing, or in the case of closed-specification, closed-source codecs, is the date of first binary releasing. Many developing codecs have pre-releases consisting of pre-1.0 versions and perhaps 1.0 release candidates (RCs), although 1.0 may not necessarily be the release version.
+# Latest stable version is that of specification or reference tools.
+# If there happens to be OSI licensed software available for a particular format, this does not necessarily permit one to use said codec free of charge. Likewise, if there is only proprietary licensed software available for a particular format, one might be able to use the codec free of charge.
+# MP3 license and patent status: The MP3 format is patented and therefore subject to license (expires latest: 2017). However with multiple contenders for the patent, it is far from certain in the market who is the patent holder with the right to set pricing and royalties. A [http://www.mp3licensing.com/ sample of prices for ''one'' patent-holder] is available. In practice, there is a wide range of MP3 authoring software and MP3 encoding worldwide is often performed on a private basis and unpaid, with patent rights unenforced against end-users. See [[MP3#Licensing and patent issues]].
+
+== Operating system support ==
+{| class="wikitable sortable" style="text-align: center"
+|+Audio codec OS support
+! [[Audio codec|Codec]]
+! [[Microsoft Windows|Windows]]
+! [[Mac OS X]]
+! [[GNU/Linux]]
+! [[BSD]]
+! [[Unix]]
+! [[Palm OS]]
+! [[Symbian OS]]
+! [[Rockbox]]
+! [[Android (operating system)|Android]]
+|-
+! [[Advanced Audio Coding|AAC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Apple Lossless|ALAC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[apt-X]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (January 2014)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (January 2014)">citation needed</span>]]</i>&#93;</sup>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[CELT]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FLAC]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Monkey's Audio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MPEG-1 Audio Layer 3|MP3]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Musepack]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Opus (codec)|Opus]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[RealAudio]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Speex]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Vorbis]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[TTA_(codec)|True Audio (TTA)]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[WavPack]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Windows Media Audio|WMA]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br><small>(in old versions)</small>
+|}
+
+== Multimedia frameworks support ==
+{| class="wikitable sortable" style="text-align: center"
+|+Multimedia Frameworks Support for Audio Compression Formats
+! [[Audio compression format]]
+! [[Audio Compression Manager|ACM]]
+! [[DirectShow]]
+! [[QuickTime]]
+! [[GStreamer]]
+! [[FFmpeg]]
+|-
+! [[8SVX]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Advanced Audio Coding|AAC]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]], Monogram)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[HE-AAC]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]], Monogram)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Dolby AC-3|AC3]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[E-AC-3]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Adaptive Multi-Rate audio codec|AMR]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+
+
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer Ugly Plug-ins]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Apple Lossless]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Cook Codec]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[ATRAC3]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[ATRAC3plus]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[DTS (sound system)|DCA aka DTS]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[DTS-HD Master Audio|DTS-HD]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[FLAC]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer Base Plug-ins]], [[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Monkey's Audio]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[WavPack]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Shorten (file format)|Shorten]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Sonic Audio
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[MP3]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes (GStreamer Ugly, [[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[RealAudio]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]], GStreamer DLL loader plugin + Binary Codec Packages)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Speex]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer#Plug-ins|GStramer Good Plug-ins]], [[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Vorbis]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer#Plug-ins|GStreamer Base Plug-ins]], [[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! La
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Lossless Predictive Audio Compression|LPAC]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Windows Media Audio]] v1
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Windows Media Audio]] v2
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Windows Media Audio]] Pro
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Windows Media Audio]] Lossless
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[flip4mac]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Windows Media Audio]] Voice
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Musepack]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]], Monogram)
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Meridian Lossless Packing]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Nellymoser Asao Codec in Flash]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[OptimFROG]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Truespeech]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[TTA_(codec)|True Audio (TTA)]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[Perian]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[QCELP]]
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[ffdshow]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Yes ([[GStreamer FFmpeg plug-in]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Audio compression format]]
+! [[Audio Compression Manager|ACM]]
+! [[DirectShow]]
+! [[QuickTime]]
+! [[GStreamer]]
+! [[FFmpeg]]
+|}
+
+== Technical details ==
+{| class="wikitable sortable" style="text-align: center"
+|+Technical Details of Lossy Audio Compression Formats
+|-
+! [[Audio compression format]]
+! [[Algorithm]]
+! [[Sampling frequency|Sample Rate]]
+! style="width: 15em" | [[Bit rate]]
+! [[Latency (audio)|Latency]]
+! [[Constant bit rate|CBR]]
+! [[Variable bit rate|VBR]]
+! style="width: 10em" | [[Stereophonic sound|Stereo]]
+! [[Surround sound|Multichannel]]
+|-
+! [[Advanced Audio Coding|AAC]]
+| [[Modified discrete cosine transform|MDCT]], Hybrid [[Sub-band coding|Subband]] (AAC-HE)
+| 8–192&nbsp;kHz
+| 8–529&nbsp;kbit/s (stereo)
+| 20–405&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual, Mid/Side, Intensity, Parametric
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 48 channels
+|-
+! [[A/52|AC3]]
+| [[Modified discrete cosine transform|MDCT]]
+| 32, 44.1, 48&nbsp;kHz
+| 32–640&nbsp;kbit/s
+| 40.6&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 6 channels
+|-
+! [[Multi-Band Excitation|AMBE]]
+| ?
+| 8&nbsp;kHz
+| 2, 9.6&nbsp;kbit/s
+| ?
+| ?
+| ?
+| ?
+| ?
+|-
+! [[Adaptive multi-rate compression|AMR]]
+| [[ACELP]]
+| 8&nbsp;kHz
+| 4.75, 5.15, 5.90, 6.70, 7.40, 7.95, 10.20, 12.20&nbsp;kbit/s
+| 25&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[AMR-WB]]<br/>(G.722.2)
+| [[ACELP]]
+| 16&nbsp;kHz
+| 6.60, 8.85, 12.65, 14.25, 15.85, 18.25, 19.85, 23.05, 23.85&nbsp;kbit/s
+| 25&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: only in [[MPEG-4 Part 12]] [[container format (digital)|container]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[AMR-WB+]]
+| [[ACELP]]
+| 8, 11.025, 16, 22.05, 32, 44.1, 48&nbsp;kHz
+| 6–36&nbsp;kbit/s (mono)<br/>7–48&nbsp;kbit/s (stereo)
+| 60–90&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[apt-X]]
+| [[Sub-band coding|Subband]]
+| 24–48&nbsp;kHz (stereo)
+| 192–384&nbsp;kbit/s (stereo)
+| 2&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (4:1)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 8 channels
+|-
+! [[Adaptive Transform Acoustic Coding#ATRAC1|ATRAC1]]
+| [[Modified discrete cosine transform|MDCT]]-Hybrid [[Sub-band coding|Subband]]
+| 44.1&nbsp;kHz
+| 292&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual Only
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Adaptive Transform Acoustic Coding#ATRAC3|ATRAC3]]
+| [[Modified discrete cosine transform|MDCT]]-Hybrid [[Sub-band coding|Subband]]
+| 44.1&nbsp;kHz
+| 66, 105, 132, 146, 176, 264, 352&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual (LP2), Mid/Side (LP4)
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Adaptive Transform Acoustic Coding#ATRAC3plus|ATRAC3plus]]
+| [[Modified discrete cosine transform|MDCT]]-Hybrid [[Sub-band coding|Subband]]
+| 44.1&nbsp;kHz
+| 48–352&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 6 channels
+|-
+! [[Broadcom#BroadVoice|BroadVoice]] (BV16, BV32)
+| Two-Stage Noise Feedback Coding (TSNFC)
+| 8, 16&nbsp;kHz
+| 16, 32&nbsp;kbit/s 
+| 5&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Codec2]]
+| [[Speech encoding|Speech]]
+| 8&nbsp;kHz
+| 1.2, 1.4, 2.4, 2.55&nbsp;kbit/s
+| 20–40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Half Rate|GSM-HR]]
+| [[Vector sum excited linear prediction|VSELP]]
+| 8&nbsp;kHz
+| 5.6&nbsp;kbit/s
+| 25&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GSM-FR]]
+| [[Long Term Prediction|RPE-LTP]]
+| 8&nbsp;kHz
+| 13&nbsp;kbit/s
+| 20–30&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[GSM-EFR]]
+| [[ACELP]]
+| 8&nbsp;kHz
+| 12.2&nbsp;kbit/s
+| 20–30&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[HVXC]]
+| [[Speech encoding|Speech]]
+| 8&nbsp;kHz
+| 2, 4&nbsp;kbit/s
+| 36&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[iLBC]]
+| [[Linear predictive coding|Block Independent LPC]]
+| 8&nbsp;kHz
+| 13.33, 15.20&nbsp;kbit/s
+| 25, 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Internet Speech Audio Codec|iSAC]]
+| Transform coding
+| 16, 32&nbsp;kHz
+| 10–52&nbsp;kbit/s
+| 33, 63&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MPEG-1 Audio Layer 3|MP3]] (MPEG-1, 2, 2.5 Audio Layer III)
+| [[Modified discrete cosine transform|MDCT]], Hybrid [[Sub-band coding|Subband]]
+| 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48&nbsp;kHz
+| 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 192, 224, 256, 320&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual, Mid/Side, [[Intensity stereo|Intensity]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MPEG-1 Audio Layer II]] (MP2)
+| [[Sub-band coding|Subband]]
+| 32, 44.1, 48&nbsp;kHz
+| 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384&nbsp;kbit/s
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: but decoders are not required to support it
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual, [[Intensity stereo|Intensity]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MPEG-2 Audio Layer II]] (MP2)
+| [[Sub-band coding|Subband]]
+| '''16''', '''22.05''', '''24'''&nbsp;kHz'''
+| '''8''', '''16''', '''24''', 32, '''40''', 48, 56, 64, 80, 96, 112, 128, '''144''', 160&nbsp;kbit/s
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: but decoders are not required to support it
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: up to 5 full range audio channels and an LFE-channel with [[MPEG Multichannel]]
+|-
+! [[Musepack]]
+| [[Sub-band coding|Subband]]
+| 32, 37.8, 44.1, 48&nbsp;kHz
+| 3–1300&nbsp;kbit/s
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 8 channels
+|-
+! [[Opus (codec)|Opus]]
+| [[Linear_prediction|LP]], [[Modified discrete cosine transform|MDCT]]
+| 8–48&nbsp;kHz
+| 6–510&nbsp;kbit/s
+| 5–66.5&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 255 channels
+|-
+! [[RealAudio]]
+| [[Modified discrete cosine transform|MDCT]]
+| Varies (see [[RealAudio|article]])
+| Varies (see [[RealAudio|article]])
+| Varies
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 6 channels
+|-
+! [[SILK]]
+| [[Long Term Prediction|LTP]]
+| 8, 12, 16, 24&nbsp;kHz
+| 6–40&nbsp;kbit/s
+| 25&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Siren Codec|Siren]] 7
+| Derived from PT716plus, MLT
+| 16&nbsp;kHz
+| 16, 24, 32&nbsp;kbit/s
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Siren Codec|Siren]] 14
+| MLT
+| 32&nbsp;kHz
+| 24, 32, 48&nbsp;kbit/s (mono)<br/>48, 64, 96&nbsp;kbit/s (stereo)
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Siren Codec|Siren]] 22
+| MLT
+| 48&nbsp;kHz
+| 32, 48, 64&nbsp;kbit/s (mono)<br/>64, 96, 128&nbsp;kbit/s (stereo)
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Speex]]
+| [[Code-excited linear prediction|CELP]]
+| 8, 16, 32, (48)&nbsp;kHz
+| 2.15–24.6&nbsp;kbit/s ([[narrowband|NB]])<br/>4–44.2&nbsp;kbit/s ([[wideband|WB]])
+| 30&nbsp;ms (NB)<br/>34&nbsp;ms (WB)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: [[Intensity stereo|Intensity]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[VMR-WB]]
+| [[ACELP]]
+| 16&nbsp;kHz
+| 8.55, 4.0, 0.8, 13.3, 6.2, 2.7, 1.0&nbsp;kbit/s
+| 33.75&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Vorbis]] ([[Ogg]])
+| [[Modified discrete cosine transform|MDCT]]
+| 1&nbsp;Hz to 200&nbsp;kHz
+| variable
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes/ABR
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Dual, Lossless, Phase, Point ([[Intensity stereo|Intensity]])
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 255 channels
+|-
+! [[WavPack|WavPack Lossy]]
+| Prediction, Quantization
+| 1&nbsp;Hz to 16.777216&nbsp;MHz
+| 196&nbsp;kbit/s and up in lossy mode (for CD audio)
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 256 channels
+|-
+! [[Windows Media Audio#Windows Media Audio|Windows Media Audio Standard]]
+| [[Modified discrete cosine transform|MDCT]]
+| 8, 11.025, 16, 22.05, 32, 44.1, 48&nbsp;kHz
+| 8–768&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[WMA Pro|Windows Media Audio Pro]]
+| [[Modified discrete cosine transform|MDCT]]
+| 8, 11.025, 16, 22.05, 32, 44.1, 48, 88.2, 96&nbsp;kHz
+| 4–768&nbsp;kbit/s
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: At least 8 channels, expandable
+|}
+
+{| class="wikitable sortable" style="text-align: center"
+|+Technical Details of Lossless Audio Compression Formats
+|-
+! [[Audio compression format]]
+! [[Algorithm]]
+! [[Sampling frequency|Sample Rate]]
+! Bits per sample
+! [[Latency (audio)|Latency]]
+! style="width: 10em" | [[Stereophonic sound|Stereo]]
+! Multichannel
+|-
+! [[Apple Lossless|ALAC]]
+| [[Lossless encoding|Lossless]]
+| 1–384000&nbsp;Hz
+| 16, 20, 24, 32
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 8 channels
+|-
+! [[FLAC]]
+| [[Lossless encoding|Lossless]]
+| 1–655350&nbsp;Hz
+| 8, 16, 20, 24, 32
+| 4.3–92&nbsp;ms (46.4&nbsp;ms typical)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 8 channels
+|-
+! [[Monkey's Audio]]
+| [[Lossless encoding|Lossless]]
+| 1–655350&nbsp;Hz
+| 8, 16, 24
+| insignificant
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 8 channels
+|-
+! [[RealAudio|RealAudio Lossless]]
+| [[Lossless encoding|Lossless]]
+| Varies (see [[RealAudio|article]])
+| Varies (see [[RealAudio|article]])
+| Varies
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 6 channels
+|-
+! [[TTA (codec)|True Audio (TTA)]]
+| [[Lossless encoding|Lossless]]
+| 0–4&nbsp;GHz
+| 1 to > 64
+| 1045&nbsp;ms (typical)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 65535 channels
+|-
+! [[WavPack|WavPack Lossless]]
+| [[Lossless encoding|Lossless]], Hybrid
+| 1&nbsp;Hz to 16.777216&nbsp;MHz
+| Varies in lossless mode; supports 32-bit float input; 2.2 minimum in lossy mode
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 256 channels
+|-
+! [[Windows Media Audio 9 Lossless|Windows Media Audio Lossless]]
+| [[Lossless encoding|Lossless]]
+| 8, 11.025, 16, 22.05, 32, 44.1, 48, 88.2, 96&nbsp;kHz
+| 16, 24
+| >100&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: Up to 6 channels
+|}
+
+{| class="wikitable sortable" style="text-align: center"
+|+Technical Details of ITU-T Audio Compression Formats
+|-
+! [[Audio compression format]]
+! [[Algorithm]]
+! [[Sampling frequency|Sample Rate]]
+! style="width: 15em" | [[Bit rate]]
+! Bits per sample
+! [[Latency (audio)|Latency]]
+! [[Constant bit rate|CBR]]
+! [[Variable bit rate|VBR]]
+! style="width: 10em" | [[Stereophonic sound|Stereo]]
+! Multichannel
+|-
+! [[G.711]]
+| [[companding]] [[A-law]] or [[μ-law]], [[Pulse-code modulation|PCM]]
+| 8&nbsp;kHz
+| 64&nbsp;kbit/s
+| 8 bit ([[Logarithmic scale|log]])
+| 125&nbsp;µs (typical)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.711#G.711.0|G.711.0]]
+| [[Lossless compression]] of [[G.711]]
+| 8&nbsp;kHz
+| 0.2–65.6&nbsp;kbit/s
+| 8 bit ([[Logarithmic scale|log]])
+| 5–40&nbsp;ms
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.711#G.711.1|G.711.1]]
+| [[Modified discrete cosine transform|MDCT]], [[A-law]], [[μ-law]]
+| 8, 16&nbsp;kHz
+| 64, 80, 96&nbsp;kbit/s
+| 16 bit
+| 11.875&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.718]]
+| [[CELP]], [[Modified discrete cosine transform|MDCT]], [[Lossy encoding|Lossy]]
+| 8, 16&nbsp;kHz
+| 8, 12, 12.65, 16, 24, 32&nbsp;kbit/s
+| 16 bit
+| 42.875–43.875&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.718]]B
+| [[CELP]], [[Modified discrete cosine transform|MDCT]], [[Lossy encoding|Lossy]], Sinusoidal Coding
+| 32&nbsp;kHz
+| 36, 40, 48&nbsp;kbit/s
+| 16 bit
+| 49.625&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.719]]
+| [[Lossy encoding|Lossy]], (incorporates elements of [[Siren Codec]] and Ericsson technology)
+| 48&nbsp;kHz
+| 32–88&nbsp;kbit/s in 4&nbsp;kbit/s steps, 88–128&nbsp;kbit/s in 8&nbsp;kbit/s steps
+| 16 bit
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: only in [[MPEG-4 Part 12]] [[container format (digital)|container]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: only in [[MPEG-4 Part 12]] [[container format (digital)|container]]
+|-
+! [[G.721]]
+| [[ADPCM]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 32&nbsp;kbit/s
+| 13 bit
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.722]]
+| [[sub-band coding|sub-band]] [[ADPCM]], [[Lossy encoding|Lossy]]
+| 16&nbsp;kHz
+| 64&nbsp;kbit/s<br/>(comprises 48, 56 or 64&nbsp;kbit/s audio and 16, 8 or 0&nbsp;kbit/s auxiliary data)
+| 14 bit
+| 4&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.722.1]]
+| Modulated Lapped Transform, (based on [[Siren Codec]]), [[Lossy encoding|Lossy]]
+| 16&nbsp;kHz
+| 24, 32&nbsp;kbit/s
+| 16 bit
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.722.1]]C
+| Modulated Lapped Transform, (based on [[Siren Codec]]), [[Lossy encoding|Lossy]]
+| 32&nbsp;kHz
+| 24, 32, 48&nbsp;kbit/s
+| 16 bit
+| 40&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.722.2]] (AMR-WB)
+| multi-rate wideband [[ACELP]], [[Lossy encoding|Lossy]]
+| 16&nbsp;kHz
+| 6.60, 8.85, 12.65, 14.25, 15.85, 18.25, 19.85, 23.05, 23.85&nbsp;kbit/s
+| 14 bit
+| 25&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes: only in [[MPEG-4 Part 12]] [[Container format (digital)|container]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.723]]
+| [[ADPCM]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 24, 40&nbsp;kbit/s
+| 13 bit
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.723.1]]
+| MP-MLQ, [[ACELP]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 5.3, 6.3&nbsp;kbit/s
+| 13 bit
+| 37.5&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.726]]
+| [[ADPCM]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 16, 24, 32, 40&nbsp;kbit/s
+| 13 bit
+| 125&nbsp;µs
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.727]]
+| [[ADPCM]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 16, 24, 32, 40&nbsp;kbit/s
+| 13 bit
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.728]]
+| low-delay [[CELP]], [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 16&nbsp;kbit/s
+| 13 bit
+| 0.625&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.729]]
+| CS-ACELP, [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 8&nbsp;kbit/s
+| 13 bit
+| 15&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.729]]D
+| CS-ACELP, [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 6.4&nbsp;kbit/s
+| 13 bit
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.729]]E
+| CS-ACELP, [[Lossy encoding|Lossy]]
+| 8&nbsp;kHz
+| 11.8&nbsp;kbit/s
+| 13 bit
+| 15&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[G.729.1]]
+| [[CELP]], TDBWE, TDAC, [[Lossy encoding|Lossy]]
+| 8, 16&nbsp;kHz
+| 8&nbsp;kbit/s, 12–32&nbsp;kbit/s in 2&nbsp;kbit/s steps
+| 16 bit
+| 48.9375&nbsp;ms
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+=== Notes ===
+* The latency listed here is the total delay (frame size, plus all lookahead) at the normal operating sample rate (typically 44.1&nbsp;kHz).
+* [[Lossless compression]] will have a [[variable bit rate]].
+
+== See also ==
+<div class="noprint portal tright" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em">
+<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px">
+<tr style="vertical-align:middle"><td style="text-align:center">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon|class=noviewer]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold">[[Portal:Free software|Free software portal]]</td></tr></table></div>
+* [[Codec listening test]]
+* [[Comparison of audio player software]]
+* [[Comparison of video player software]]
+* [[List of codecs]]
+** [[Open source codecs and containers]]
+* [[Comparison of video codecs]]
+* [[Comparison of container formats]]
+
+== Notes and references ==
+<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+== External links ==
+* [http://www.extremetech.com/article2/0,1558,1560783,00.asp Comparative test April, 2004]
+* [http://tech.ebu.ch/publications/tech3296 EBU subjective listening tests on low-bitrate audio codecs]
+* [http://wiki.hydrogenaud.io/index.php?title=Lossless_comparison Hydrogenaudio comparison of lossless formats]
+* Tsabary, Eldad. “[http://cec.concordia.ca/econtact/9_4/tsabary.html A Survey of Audio Coders for Electronic-Art Music].” ''eContact! 9.4 — Perte auditive et sujets connexes / Hearing (Loss) and Related Issues'' (May 2007). Montréal: [[Canadian Electroacoustic Community|CEC]].
+* Rodman, Jeffrey "[http://www.polycom.com/global/documents/whitepapers/codecs_white_paper.pdf VoIP to 20&nbsp;kHz: Codec Choices for High Definition Voice Telephony]" (July, 2008)
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Compression software|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Compression software|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Compression_software&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Data compression]] software</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of file archivers|Archivers]] with<br /> compression<br/> <small style="font-size:85%;">([[Comparison of file archivers|comparison]])</small></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:7em">[[Free software]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[7-Zip]]
+*[[Ark (software)|Ark]]
+*[[Haiku Applications#Expander|Expander]]
+*[[File Roller]]
+*[[FreeArc]]
+*[[Info-ZIP]]
+*[[KGB Archiver]]
+*[[PAQ]]
+*[[PeaZip]]
+*[[The Unarchiver]] (decompression only)
+* [[tar (computing)|tar]]
+*[[Xarchiver]]
+*[[Zipeg]]
+*[[ZPAQ]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:7em">[[Freeware]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Filzip]]
+*[[IZArc]]
+*[[LHA (file format)|LHA]]
+*[[StuffIt Expander]] (decompression only)
+*[[TUGZip]]
+*[[ZipGenius]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:7em">[[Commercial software|Commercial]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[ARC (file format)|ARC]]
+*[[ALZip]]
+*[[Archive Utility]]
+*[[ARJ]]
+*[[BetterZip]]
+*[[JAR (software)|JAR]]
+*[[MacBinary]]
+*[[PKZIP|PKZIP/SecureZIP]]
+*[[PowerArchiver]]
+*[[StuffIt]]
+*[[WinAce]]
+*[[WinRAR]]
+*[[WinZip]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Non-archiving<br/>compressors</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:7em">Generic</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[bzip2]]
+*[[compress]]
+*[[gzip]]
+*[[lzip]]
+*[[lzop]]
+*[[pack (compression)|pack]]
+*[[rzip]]
+*[[XZ Utils]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:7em">[[Executable compression|For code]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">[[UPX]]</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Audio compression (data)|Audio<br /> compression]]<br/> <small style="font-size:85%;">([[Comparison of audio coding formats|comparison]])</small></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:7em;padding-top:5px; padding-bottom:5px">[[Lossy compression|Lossy]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Fraunhofer FDK AAC]]
+*[[Nero AAC Codec]]
+*[[FAAC|Freeware Advanced Audio Coder (FAAC)]]
+*[[Helix (multimedia project)|Helix DNA Producer]]
+*[[l3enc]]
+*[[LAME]]
+*[[TooLAME]]
+*[[libavcodec]]
+*[[CELT|libcelt]]
+*[[Opus (audio format)|libopus]]
+*[[speex|libspeex]]
+*[[Musepack]]
+*[[Vorbis|libvorbis]]
+* [[Windows Media Encoder]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:7em;padding-top:5px; padding-bottom:5px">[[Lossless compression|Lossless]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Apple Lossless|ALAC]]
+*[[FLAC]]
+*[[libavcodec]]
+*[[Monkey's Audio]]
+* [[Audio Lossless Coding|mp4als]]
+*[[OptimFROG]]
+*[[Shorten (file format)|Shorten]]
+*[[TTA (codec)|TTA]] (True Audio)
+*[[WavPack]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Video compression|Video<br /> compression]]<br/> <small style="font-size:85%;">([[Comparison of video codecs|comparison]])</small></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:7em">[[Lossy compression|Lossy]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[MPEG-4 Part 2|MPEG-4 ASP]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[3ivx]]
+*[[DivX]]
+*[[Nero Digital]]
+*[[FFmpeg]]
+*[[HDX4]]
+*[[Xvid]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[H.264/MPEG-4 AVC|H.264 /<br/>MPEG-4 AVC]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[CoreAVC]]
+*[[Blu-code]]
+*[[DivX]]
+*[[FFmpeg]]
+*[[Nero Digital]]
+*[[OpenH264]]
+*[[QuickTime]]
+*[[x264]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[High Efficiency Video Coding|HEVC]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[DivX]]
+*[[x265]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Others</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[CineForm]]
+*[[Cinepak]]
+*[[Daala]]
+*[[DNxHD codec|DNxHD]]
+*[[Helix (multimedia project)|Helix DNA Producer]]
+*[[Indeo]]
+*[[libavcodec]]
+*[[Dirac (video compression format)|Schrödinger (Dirac)]]
+*[[Smart Bitrate Control|SBC]]
+*[[Sorenson codec|Sorenson]]
+*[[VP7]]
+*[[Theora|libtheora]]
+*[[VP8|libvpx]]
+*[[Windows Media Encoder]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:7em">[[Lossless compression|Lossless]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[FFV1]]
+*[[Huffyuv]]
+*[[Lagarith]]
+*[[MSU Lossless Video Codec|MSU Lossless]]
+*[[YULS]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
+* See also: [[Template:Compression methods|compression methods]] and [[Template:Compression formats|compression formats]]
+</div></td></tr></table></td></tr></table>
+
+
+
+[[Category:Audio codecs| ]]
+[[Category:Software comparisons|Audio Codecs]]

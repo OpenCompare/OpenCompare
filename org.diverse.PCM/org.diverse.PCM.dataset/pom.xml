@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>../org.diverse.PCM.dataset.BestBuy</module>
+        <module>../org.diverse.PCM.dataset.Wikipedia</module>
     </modules>
 
     <build>
@@ -24,6 +25,20 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

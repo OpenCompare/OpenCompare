@@ -1,0 +1,839 @@
+The following tables compare general and technical information for a number of [[online analytical processing]] (OLAP) servers. Please see the individual products articles for further information.
+
+==General information==
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+! OLAP Server
+! Company
+! Website
+! Latest stable version
+! [[Software license]]
+! License Pricing
+|-
+! [[Essbase]]
+| [[Oracle Corporation|Oracle]]
+|
+| 11.1.2.4
+| [[Proprietary software|Proprietary]]
+| [http://www.oracle.com/us/corporate/pricing/index.htm]
+|-
+! [[icCube]]
+| [[icCube]]
+|
+| 4.8.2
+| [[Proprietary software|Proprietary]]
+| community/[http://www.iccube.com/price-list/]
+|-
+! [[Jedox|Jedox OLAP Server]]
+| [[Jedox]]
+|
+| 5.1 SR4
+| [[GNU General Public License|GPL]] v2 or [[EULA]], [[Proprietary software|Proprietary]]
+| -
+|-
+ ! Infor BI OLAP Server
+| [[Infor]]
+|
+| 10.6.0
+| [[Proprietary software|Proprietary]]
+| -
+|-
+! [[Microsoft Analysis Services]]
+| [[Microsoft]]
+|
+| 2014
+| [[Proprietary software|Proprietary]]
+| [http://www.microsoft.com/sqlserver/2008/en/us/pricing.aspx]
+|-
+! MicroStrategy Intelligence Server
+| [[MicroStrategy]]
+|
+| 9
+| [[Proprietary software|Proprietary]]
+| -
+|-
+! [[Mondrian OLAP server]]
+| [[Pentaho]]
+|
+| 3.7
+| [[Eclipse Public License|EPL]]
+| free
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| [[Oracle Corporation|Oracle]]
+|
+| 11g R2
+| [[Proprietary software|Proprietary]]
+| [http://www.oracle.com/us/corporate/pricing/index.htm]
+|-
+! [[SAS System|SAS OLAP Server]]
+| [[SAS Institute]]
+|
+| 9.4
+| [[Proprietary software|Proprietary]]
+| -
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| [[SAP AG|SAP]]
+|
+| 7.30
+| [[Proprietary software|Proprietary]]
+| -
+|-
+! [[TM1|Cognos TM1]]
+| [[IBM]]
+|
+| 10.2.2 FP3
+| [[Proprietary software|Proprietary]]
+| -
+|-
+! [[Cubes (OLAP server)|Cubes]]
+| [[Open source|Open source community]]
+|
+| 1.0.1
+| [[MIT License|MIT]]
+| -
+|}
+
+==Data storage modes==
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+! OLAP Server
+! [[MOLAP]]
+! [[ROLAP]]
+! [[HOLAP]]
+! Offline
+|-
+! [[Essbase]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [http://www.iccube.com/support/documentation/user_guide/using/offline_cubes.html Offline Cubes]
+|-
+! Infor BI OLAP Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|Local cubes
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Microsoft Analysis Services]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Local cubes,<br /> [[PowerPivot|PowerPivot for Excel]]
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://www.microstrategy.com/Software/Products/User_Interfaces/Office/ MicroStrategy Office],<br /> [http://www.microstrategy.com/Software/Products/Service_Modules/Report_Services/ Dynamic Dashboards]
+|-
+! [[Mondrian OLAP server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[SAS System|SAS OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[TM1|IBM TM1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|
+|-
+! [[IBM Cognos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Cubes (OLAP server)]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|}
+
+==APIs and query languages==
+APIs and query languages OLAP servers support.
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+! OLAP Server
+! [[XML for Analysis]]
+! [[OLE DB for OLAP]]
+! [[Multidimensional Expressions|MDX]]
+! [[Stored procedures]]
+! Custom functions
+! [[SQL]]
+! [[LINQ]]
+! Visualization
+! [[JSON]]
+|-
+! [[Essbase]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SmartView (Excel-AddIn), WebAnalysis, Financial Reports
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Java (programming language)|Java]], [[R (programming language)|R]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Java (programming language)|Java]], [[Javascript]]
+|-
+! Infor BI OLAP Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|OLAP Rules, Push Rules, Application Engine
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Application Studio
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Cube Rules, SVS Triggers
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Microsoft Analysis Services]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[.NET framework|.NET]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Microsoft Excel, Microsoft Power BI
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Mondrian OLAP server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Java (programming language)|Java]], PL/SQL, [[OLAP DML]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[SAS System|SAS OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Web Report Studio
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[TM1|Cognos TM1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| TM1 Web/TM1 Contributor, IBM Cognos Insight, IBM Cognos Cafe for Excel
+|-
+! [[Cubes (OLAP server)|Cubes]]
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| Cubes Viewer
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+==OLAP distinctive features==
+
+A list of OLAP features that are not supported by all vendors. All vendors support features such as parent-child, multilevel hierarchy, drilldown.
+
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+!OLAP Server
+!Real Time
+!Semi-additive measures
+!Write-back
+!Many-to-Many 
+!Partitioning
+|-
+! [[Essbase]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Infor BI OLAP Server
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Microsoft Analysis Services]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Mondrian OLAP server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | Planned
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[TM1]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[IBM Cognos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[SAS OLAP Server]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Cubes (OLAP server)|Cubes]]
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|}
+
+==System limits==
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+!OLAP Server
+!# cubes
+!# measures
+!# dimensions
+!# dimensions in cube
+!# hierarchies in dimension
+!# levels in hierarchy
+!# dimension members
+|-
+! [[Essbase]]
+| ?
+| ?
+| ?
+| 24
+| 256
+| ?
+| 20,000,000 (ASO), 1,000,000 (BSO)
+|-
+! [[icCube]]
+| 2,147,483,647
+| 2,147,483,647
+| 2,147,483,647
+| ?
+| 2,147,483,647
+| 2,147,483,647
+| 2,147,483,647
+|-
+! Infor BI OLAP Server
+| ?
+| 10,000,000
+| ?
+| 30
+| ?
+| ?
+| 10,000,000
+|-
+! [[Jedox|Jedox OLAP Server]]
+| 2^32 (32 bits) / 2^64 (64 bits)
+| ?
+| 2^32 (32 bits) / 2^64 (64 bits)
+| 250
+| 2^32
+| 2^32
+| 2^32
+|-
+! [[Microsoft Analysis Services]]
+| 2,147,483,647
+| 2,147,483,647
+| 2,147,483,647
+| ?
+| 2,147,483,647
+| 2,147,483,647
+| 2,147,483,647
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| ?
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+|-
+! [[SAS System|SAS OLAP Server]]
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| 1024
+| 128
+| ?
+| 128
+| 19
+| 4,294,967,296
+|-
+! [[TM1]]
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| ?
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| 256
+| Unrestricted<ref name="fn0" group="lower-alpha"></ref>
+| ?
+| ?
+|}
+<ref name="fn0" group="lower-alpha">Please update as 'unrestricted', is just not possible</ref>
+<div class="reflist columns references-column-width" style="-moz-column-width: Please update as 'unrestricted', is just not possible; -webkit-column-width: Please update as 'unrestricted', is just not possible; column-width: Please update as 'unrestricted', is just not possible; list-style-type: lower-alpha;">
+<references group="lower-alpha"></references></div>
+
+==Security==
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+!rowspan="2"| OLAP Server
+!rowspan="2"| Authentication
+!rowspan="2"| Network encryption
+!rowspan="2"| On-the-Fly<ref name="fn1" group="lower-alpha"></ref>
+!colspan="3"| Data access
+|-
+!Cell security
+!Dimension security
+!Visual totals
+|-
+! [[Essbase]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Essbase authentication, [[LDAP]] authentication, [[Microsoft Active Directory]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|HTTP Basic/Form Authentication, Windows SSO (NTLM,Kerberos)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Infor BI OLAP Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|OLAP authentication, Infor Federation Services, [[LDAP]], [[Microsoft Active Directory]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Jedox authentication, [[LDAP]], [[Microsoft Active Directory]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[Microsoft Analysis Services]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[NTLM]], [[Kerberos (protocol)|Kerberos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]] and [[SSPI]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Host authentication, database authentication, [[LDAP]], <br />[[Microsoft Active Directory]], [[NTLM]], SiteMinder, Tivoli, SAP, [[Kerberos (protocol)|Kerberos]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]], AES
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Oracle Database authentication
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]]
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|-
+! [[SAS System|SAS OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Host authentication,SAS token authentication, [[LDAP]], [[Microsoft Active Directory]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[TM1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Builtin, [[LDAP]], [[Microsoft Active Directory]], [[NTLM]], IBM Cognos BI authentication
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Transport Layer Security|SSL]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|}
+<ref name="fn1" group="lower-alpha">On-the-Fly : The ability to define authentication dynamically via programmatic interfaces. New users do not require restarting the server or redefining the security.</ref>
+<div class="reflist columns references-column-width" style="-moz-column-width: On-the-Fly : The ability to define authentication dynamically via programmatic interfaces. New users do not require restarting the server or redefining the security.; -webkit-column-width: On-the-Fly : The ability to define authentication dynamically via programmatic interfaces. New users do not require restarting the server or redefining the security.; column-width: On-the-Fly : The ability to define authentication dynamically via programmatic interfaces. New users do not require restarting the server or redefining the security.; list-style-type: lower-alpha;">
+<references group="lower-alpha"></references></div>
+
+==Operating systems==
+The OLAP servers can run on the following [[operating system]]s:
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+! OLAP Server
+! Windows
+! Linux
+! UNIX
+! z/OS
+|-
+! [[Essbase]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! Infor BI OLAP Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Microsoft Analysis Services]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Mondrian OLAP server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[SAS System|SAS OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+! [[TM1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+! [[Cubes (OLAP server)|Cubes]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+<cite id="os_java">Note (1):</cite>The server availability depends on [[JVM|Java Virtual Machine]] not on the [[operating system]]</cite>
+
+==Support information==
+{| class="wikitable sortable"  style="font-size: 100%; text-align: center; width: auto;"
+|-
+! OLAP Server
+! Issue Tracking System
+! Forum/Blog
+! Roadmap
+! Source code
+|-
+! [[Essbase]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://support.oracle.com myOracle Support]
+| [http://forums.oracle.com/forums/main.jspa?categoryID=84]
+| [http://communities.ioug.org/Portals/2/Oracle_Essbase_Roadmap_Sep_09.pdf]
+| Closed
+|-
+! [[icCube]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [http://issues.iccube.com/ YouTrack]
+| |[http://www.iccube.com/support/forum]
+| 
+| Open
+|-
+! Infor BI OLAP Server
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Infor Xtreme
+| 
+| Available upon request
+| Closed
+|-
+! [[Jedox|Jedox OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://bugs.palo.net/mantis/main_page.php Mantis]
+| [http://www.jedox.com/community/palo-forum/board.php?boardid=9]
+|
+| Open
+|-
+! [[Microsoft Analysis Services]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[https://connect.microsoft.com/SQLServer Connect]
+| [http://social.msdn.microsoft.com/Forums/en-US/sqlanalysisservices/threads]
+| -
+| Closed
+|-
+! [[MicroStrategy|MicroStrategy Intelligence Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [https://resource.microstrategy.com/Support/MainSearch.aspx MicroStrategy Resource Center]
+| [https://resource.microstrategy.com/Forum/]
+| -
+| Closed
+|-
+! [[Mondrian OLAP server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://jira.pentaho.com/browse/MONDRIAN Jira]
+| [http://forums.pentaho.org/forumdisplay.php?f=79]
+| [http://mondrian.pentaho.org/documentation/roadmap.php]
+| Open
+|-
+! [[Oracle OLAP|Oracle Database OLAP Option]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://support.oracle.com myOracle Support]
+| [http://forums.oracle.com/forums/main.jspa?categoryID=84]
+|
+| Closed
+|-
+! [[SAS System|SAS OLAP Server]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[http://support.sas.com/forums/index.jspa Support]
+| [http://blogs.sas.com/]
+|
+| Closed
+|-
+! [[SAP NetWeaver Business Intelligence|SAP NetWeaver BW]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [http://service.sap.com/ OSS]
+| [http://forums.sdn.sap.com/index.jspa]
+| [http://esworkplace.sap.com/socoview(bD1lbiZjPTAwMSZkPW1pbg==)/render.asp?id=2270EAD629814D05A7ECECECECC8D002&fragID=&packageid=DEE98D07DF9FA9F1B3C7001A64D3F462]
+| Closed
+|-
+! [[TM1]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"| [http://ibm.com/support/servicerequest/ IBM Service Request]
+| [http://www.tm1forum.com/viewforum.php?f=3]
+|
+| Closed
+|-
+! [[Cubes (OLAP server)|Cubes]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[https://github.com/databrewery/cubes/issues Cubes – Github Issues]
+| [https://groups.google.com/forum/#!forum/cubes-discuss]
+| [https://github.com/DataBrewery/cubes/wiki/Roadmap]
+| [https://github.com/DataBrewery/cubes Open]
+|}
+
+==See also==
+* [[Palo (OLAP database)]]
+* [[Cubes (OLAP server)|Cubes]] (light-weight open-source OLAP server)
+
+==References==
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Data warehouse|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Data warehouse|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Data_warehouse&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Data warehouse]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Creating the data warehouse</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:8em">Concepts</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Database]]
+*[[Dimension (data warehouse)|Dimension]]
+*[[Dimensional modeling]]
+*[[Fact (data warehouse)|Fact]]
+*[[Online analytical processing|OLAP]]
+*[[Star schema]]
+*[[Aggregate (Data Warehouse)|Aggregate]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Variants</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Anchor Modeling]]
+*[[Column-oriented DBMS]]
+*[[Data Vault Modeling]]
+*[[HOLAP]]
+*[[MOLAP]]
+*[[ROLAP]]
+*[[Operational data store]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Elements</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Data dictionary]]/[[Metadata]]
+*[[Data mart]]
+*[[Sixth normal form]]
+*[[Surrogate key]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Fact</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Fact table]]
+*[[Early-arriving fact]]
+*[[Measure (data warehouse)|Measure]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Dimension</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Dimension table]]
+*[[Degenerate dimension|Degenerate]]
+*[[Slowly changing dimension|Slowly changing]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Filling</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Extract, transform, load|Extract-Transform-Load (ETL)]]
+*[[Data extraction|Extract]]
+*[[Data transformation|Transform]]
+*[[Data loading|Load]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Using the data warehouse</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:8em">Concepts</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Business intelligence]]
+*[[Dashboard (business)|Dashboard]]
+*[[Data mining]]
+*[[Decision support system|Decision support system (DSS)]]
+*[[OLAP cube]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Languages</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Data Mining Extensions|Data Mining Extensions (DMX)]]
+*[[MultiDimensional eXpressions|MultiDimensional eXpressions (MDX)]]
+*[[XML for Analysis|XML for Analysis (XMLA)]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Tools</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Business intelligence tools]]
+*[[List of reporting software|Reporting software]]
+*[[Spreadsheets|Spreadsheet]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0"><tr><th scope="col" class="navbox-title" colspan="2" style=";"><span style="float:left;width:6em">&nbsp;</span><div style="font-size:110%">Related</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:8em">People</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Bill Inmon]]
+*[[Ralph Kimball]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:8em">Products</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
+*[[Comparison of OLAP Servers]]
+*[[:Category:Data warehousing products|Data warehousing products and their producers]]
+</div></td></tr></table><div></div></td></tr></table><div></div></td></tr></table></td></tr></table>
+
+
+
+[[Category:Online analytical processing| ]]
+[[Category:Software comparisons|OLAP Servers]]
+[[Category:Data management]]
+[[Category:Data warehousing products]]

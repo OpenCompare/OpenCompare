@@ -1,0 +1,429 @@
+<table class="plainlinks ombox ombox-content" role="presentation"><tr><td class="mbox-image">[[File:Ambox important.svg|40x40px|link=|alt=]]</td><td class="mbox-text">This section or list '''is incomplete'''. Please help to improve it, or discuss the issue on the [[:ExpandTemplates|talk page]].</td></tr></table>
+
+'''Comparison of [[Electronic design automation]] (EDA) software'''
+
+==Free and Open Source Software (FOSS)==
+{| class="wikitable sortable"
+|-
+! Name !! Architecture !! License !! [[Routing_(EDA)|Autorouter]] !! Comment
+|-
+| [[Electric (software)|Electric]] || [[FreeBSD|*BSD]], [[Java (programming language)|Java]] || GPL || Yes || [[Very-large-scale integration|VLSI]] circuit design tool with connectivity at all levels. Can also be used for schematic entry and [[Printed circuit board|PCB]] design.
+|-
+| [[FreePCB]]|||[[Microsoft Windows|w32]]|| GPL || Yes || A [[printed circuit board]] design program for [[Microsoft Windows]]. '''FreePCB''' allows for up to 16 copper layers, both [[metric system|metric]] and [[United States customary units|English]] units, and export of designs in [[Gerber format]]. Boards can be partially or fully autorouted with the [[FreeRouting]] autorouter by using the FpcROUTE Specctra DSN file translator.
+|-
+| [[gEDA]]|| [[FreeBSD|*BSD]], [[Linux]], [[Mac OS X|Mac]] || GPL || || schematic, simulation, PCB editor, gerber view
+|-
+| [[Icarus Verilog]]|| [[FreeBSD|*BSD]], [[Linux]], [[Mac OS X|Mac]] || GPL || ||[[Verilog]] simulator
+|-
+| [[KiCad]]|| [[FreeBSD|*BSD]], [[Microsoft_Windows|Windows]], [[Linux]], [[Mac OS X|Mac]] || [[GNU_General_Public_License|GNU GPL]] || Built-in, or [http://www.freerouting.net FreeRouting] || Full package for schematic and board design, etc. Dsign rule checking. User-defined symbols and footprints. Gerber/ drill file creation. Sophisticated graphic interface. Active [https://groups.yahoo.com/neo/groups/kicad-users/info user community].
+|-
+| [[KTechLab]] || [[Linux]] || GPL || n/a || KTechLab is a schematic capture and simulator. It is specifically geared toward mixed signal simulation of analog components and small digital processors.
+|-
+| [[Magic (software)|Magic]] || Linux || BSD license || no || A popular [[very-large-scale integration]] layout tool
+|-
+| [[Oregano (software)|Oregano]]|| || GPL || no || Schematic capture + spice simulation
+|-
+| [[Quite Universal Circuit Simulator]] || [[Linux]], [[Solaris (operating system)|Solaris]], [[Mac OS X|Mac]], [[NetBSD]], [[FreeBSD]], [[Microsoft Windows|w32]] || GPL || || [[Schematic capture]] + Verilog + VHDL + simulation
+|-
+| [[Verilator]] || Posix || GPL || || Verilator is the fastest free Verilog HDL simulator. It compiles synthesizable Verilog into cycle accurate C++ or [[SystemC]] code following 2-state synthesis (zero delay) semantics. Benchmarks reported on its website suggest it is several times faster than commercial event driven simulators such as [[ModelSim]], NC-Verilog and VCS, while not quite as fast as commercial cycle accurate modeling tools such as Carbon ModelStudio and ARC VTOC.
+|-
+| [[XCircuit]] ||[[Unix]] || GPL || || Used to produce netlists and publish high-quality drawings.
+|}
+
+==Comparison of EDA packages==
+{| class="wikitable sortable" style="text-align: center; font-size: 85%; width: auto; table-layout: fixed;"
+|-
+! Application and developer
+! Latest [[Software versioning|version/release]] + date
+! [[Schematic capture|Schematic]]?
+! [[Electronic circuit simulation|Simulation]]?
+! [[Printed circuit board|PCB]] editing?
+! Runs on [[Unix-like|POSIX style systems]]?
+! Runs on Windows?
+! Other platforms?
+! Open <br> source?
+! User Interface Language(s)
+! Imports
+! Exports
+! Scripting support
+|-
+!  [[Advanced Design System]] by Keysight [[EEsof]] EDA
+| 2015.015<br/>2014-12-11
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[SuSE]], [[RHEL]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| HSPICE, SPICE, Spectre netlists; [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], artwork; more
+| HSPICE, SPICE, Spectre netlists; [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], artwork; more
+| Python, Application Extension Language (proprietary; "AEL")
+|-
+!  [[Aldec|Active-HDL]] by [[Aldec]]
+| 2011-10<br/>9.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| EDIF, Viewlogic, more
+| PDF, HTML, Verilog, VHDL, EDIF, Zuken, more
+|-
+! [[Altium Designer]] (former Protel) and PCAD by [[Altium]]
+| 2013-02-13<br/>Release 2013
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| Multilingual
+| OrCAD, Allegro, PADS Logic, PADS PCB, Expedition, DxDesigner, EAGLE, Gerber, STEP, IDF, more
+| PDF, [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], DXF, STEP, OrCAD, more
+| Delphi, JS, VB
+|-
+! [[Autotrax|AutoTRAX DEX]] by [[DEX 2020]]
+| 2012-10-05<br/>1.11.37
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| Various
+| EAGLE, P-CAD, PADS, OrCAD, Gerber, DXF
+| [[Gerber format|Gerber]]/[[Excellon format|drill]], DXF, P-CAD, PADS, OrCAD
+|-
+! [[CADSTAR]], Board Designer, and Visula by [[Zuken]]
+| 2011-11-08<br/>13
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, Spice
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| PADS, OrCAD, P-CAD, Protel, DXF, IDF
+| PDF, [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], DXF, IDF more
+|-
+! [[CircuitLogix]] by Logic Design Inc.
+| 2013-01<br/>Release 9.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| SPICE, Gerber, DXF
+| SPICE, PDF, [[Gerber format|Gerber]], DXF,
+|-
+! [[CR-5000]] by [[Zuken]]
+| 2011-05-17<br/>13
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, SI & PI
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[UNIX]], [[Linux]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]], [[Japanese language|jp]]
+| EDIF, DXF, IGES, IDF, BSDL, STEP, ACIS, [[Gerber format|Gerber]]/[[Excellon format|drill]], more
+| PDF, [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]] (must request), DXF, STEP, IPC D-356, IPC-2581, EPS, ACIS
+|-
+! [[DipTrace]] by Novarm
+| 2014-07-21<br/>2.4.0.2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[Macintosh|Mac]], [[Wine_(software)|Wine]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| 18 languages
+| EAGLE, P-CAD, PADS, OrCAD, Gerber, DXF
+| [[Gerber format|Gerber]]/[[Excellon format|drill]], DXF, P-CAD, PADS, OrCAD
+|-
+! [[DesignSpark PCB]] from RS Components
+| 2015-01-15<br/>7.0.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, Spice
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| Various
+| EAGLE, DXF, EDIF
+| [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], IDF, PDF, more
+|-
+! [[EAGLE (program)|EAGLE]] by CadSoft Computer
+| 2014-11-27<br/>7.2.0
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|LTspice
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Linux]], [[Macintosh|Mac]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[German language|de]], [[English language|en]], [[Chinese language|zh]], [[Hungarian language|hu]]
+| EAGLE (XML), ACCEL (P-CAD, Altium, Protel), ULTIBOARD, Netlists, BMP, Custom
+| EAGLE (XML), Protel, Netlists, Images, PDF, Gerber, Excellon, Sieb&Meyer, HPGL, PostScript/EPS, PDF, Images, HyperLynx, Custom
+| Proprietary User Language Programming (ULP)
+|-
+! [[EDWinXP]] from Visionics
+| 2010-02<br/>1.90
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]], [[Japanese language|jp]]
+| [[ODB++]]
+| [[ODB++]]
+|-
+! [[Fritzing]]
+| 2014-07-14<br/>0.9.0b
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, + breadboard
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[Linux]], [[Macintosh|Mac]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[English language|en]], [[German language|de]], [[Dutch language|nl]], [[Spanish language|es]], [[Italian language|it]], [[French language|fr]], [[Portuguese language|pt]], [[Russian language|ru]], [[Chinese language|zh]], [[Japanese language|jp]], ...
+| gEDA symbols, KiCad symbols, SVG
+| Gerber, DIY etching, BOM, SVG, PDF, EPS
+|-
+! [[gEDA]]
+| 2013-09-25<br/>1.8.2
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[Linux]], [[Macintosh|Mac]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[English language|en]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| [[Gerber format|Gerber]]/[[Excellon format|drill]]
+|-
+! [[KiCad]]
+| 2013-07-07-BZR4022
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[Linux]], [[Macintosh|Mac]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[German language|de]], [[English language|en]], [[Spanish language|es]], [[French language|fr]], [[Portuguese language|pt]], [[Russian language|ru]]
+| TinyCAD net lists, OrCAD EDIF
+| PDF, [[Gerber format|Gerber]]/[[Excellon format|drill]], netlist, VRML2, IDFv3
+|-
+! Various [[SmartSpice]], Expert, Guardian, Hipex, and more products by [[Silvaco]]
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background: #90ff90;"|[[Linux]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]], [[Chinese language|cn]], [[Korean language|kr]], [[Japanese language|jp]]
+| Various: HSPICE, Spectre, Verilog-A, SPICE, EDIF, GDSII
+| Various: SPICE, SPEF, GDSII
+|-
+! Various (Board Station, PADS, Expedition, DxDesigner, HyperLynx, ECAD Collaborator...), by [[Mentor Graphics]]
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| [[ODB++]]
+| G[[Gerber format|Gerber]]/[[Excellon format|drill]], [[bill of materials|BoM]], IDF, [[ODB++]]
+|-
+! [[Micro-Cap]] by [[Spectrum Software]]
+| 2014-07-14<br/>11
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]], [[Japanese language|jp]]
+| HSPICE, PSPICE, SPICE3, netlists, Images, IBIS, Touchstone
+| SPICE text file, netlist, BOM ,Protel,Accel,OrCad,PADS netlists, Schematic and Analysis Plots Images, Numeric Output Text,Excel
+|-
+! PCB Investigator by easyLogix [[Schindler & Schill GmbH]]
+| 2012-06<br/>3.4.4
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| [[ODB++]], [[Gerber format|Gerber]]/[[Excellon format|drill]], Sieb&Meyer, GenCAD 1.4, DXF, IPC2581
+| [[ODB++]], [[DXF]], Catia-Script, X-File, BOM, GenCAD 1.4, [[Gerber format|Gerber]], other
+|-
+! [[Pulsonix]] 
+| <br/>Release 8.5
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+|  Allegro, Altium, CadStar, Eagle, OrCAD, PADS, P-CAD, Protel, Gerber, STEP, DXF, IDF, more
+| [[Gerber format|Gerber]]/[[Excellon format|drill]], [[ODB++]], IPC-2581, Gerber X2, PDF, DXF, STEP, IDF, BOM, more
+|-
+! [[SLED]] by [[Dolphin Integration]]
+| 2013, December<br>Release 6.1
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Linux]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| EDIF, ASCII, Several netlist formats
+| EDIF, Several netlist formats, CSDF, SPI3, more
+|-
+! [[TARGET 3001!]]
+|  V17.3.0.20<br>2015-01-28
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]], [[German language|de]], [[French language|fr]]
+| EAGLE, DXF, Gerber, XGerber, Excellon, BMP, CXF, STEP 3D
+| XGerber, Excellon, HPGL, G-Code (Milling), CXF, [[ISO_10303|STEP 3D]], BOMs, Pick&Place, Testpoints, Netlists, [[Wavefront_.obj_file|OBJ]], [[Pov_ray|POV-RAY]]
+|-
+! [[NI Ultiboard]] and [[NI Multisim|Multisim]] by [[National Instruments]]
+| 13
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| MS*, MP*, EWB, Spice, OrCAD, UltiCap, Protel, Gerber, DXF, Ultiboard 4&5, Calay
+| BOM, [[Gerber format|Gerber]]/[[Excellon format|drill]], IGES (3D), DXF (2D & 3D), SVG
+|-
+! Various Allegro and [[OrCAD]] products by [[Cadence Design Systems]]
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #90ff90;"|[[AIX]], [[Solaris (operating system)|Solaris]], [[Linux]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| Several
+| Gerber, DXF, IDF, IFF, PADS, PCAD
+| DXF, IDF, IPC356, OrCAD netlist, [[ODB++]]
+| Proprietary SKILL language, and some TCL
+|-
+! [[Viewlogic]] by [[Synopsys]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+|-
+! [[Scheme-it]] by [[Digi-Key]]
+| N/A
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background: #90ff90;"| [[Web application]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
+|-
+! [[123D|123D Circuits]] by [[Autodesk]]
+| N/A
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|  style="background: #90ff90;"| [[Web application]]
+| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|No
+| [[English language|en]]
+| Eagle
+| Gerber
+|-
+! Application and developer
+! Latest [[Software versioning|version/release]] + date
+! [[Schematic capture|Schematic]]?
+! [[Electronic circuit simulation|Simulation]]?
+! [[Printed circuit board|PCB]] editing?
+! Runs on [[Unix-like|POSIX style systems]]?
+! Runs on Windows?
+! Other platforms?
+! Open <br> source?
+! User Interface Language(s)
+! Imports
+! Exports
+! Scripting support
+|}
+
+
+
+Note: ODB++ support is drawn partly from lists by Artwork Conversion Software and [[Mentor Graphics]]
+
+== See also ==
+* [[Electronic design automation|Electronic Design Automation (EDA)]]
+* [[List of EDA companies]]
+* [[Schematic editor]]
+* [[SPICE]], a general purpose [[analog circuit]] [[Electronic circuit simulation|simulator]].
+
+== References ==
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+Please check the latest information on the various web sites
+
+
+
+[[Category:Electronic design automation software|*]]
+[[Category:Free electronic design automation software|*]]
+
+[[hi:ईडीए सॉफ्टवेयरों की तुलना]]

@@ -1,0 +1,1674 @@
+
+ 
+<table class="metadata plainlinks ambox ambox-content ambox-Weasel" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Ambox important.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''contains [[Wikipedia:Manual_of_Style/Words_to_watch#Unsupported_attributions|weasel words]]: vague phrasing that often accompanies [[Wikipedia:Neutral point of view|biased]] or [[Wikipedia:Verifiability|unverifiable]] information'''.<span class="hide-when-compact"> Such statements should be [[Wikipedia:Manual_of_Style/Words_to_watch#Improving_weasel-worded_statements|clarified or removed]].</span>  <small>''(March 2011)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+<div class="hatnote"><span class="plainlinks selfreference">The correct title of this article is '''Comparison of C# and Java'''. The substitution or omission of the [[number sign|#]] is because of [[Wikipedia:Naming conventions (technical restrictions)|technical restrictions]].</span></div>
+<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Comparison of programming languages|General comparison]]
+* [[Comparison of programming languages (syntax)|Basic syntax]]
+* [[Comparison of programming languages (basic instructions)|Basic instructions]]
+* [[Comparison of programming languages (array)|Arrays]]
+* [[Comparison of programming languages (mapping)|Associative arrays]]
+* [[Comparison of programming languages (strings)|String operations]]
+* [[Comparison of programming languages (string functions)|String functions]]
+* [[Comparison of programming languages (list comprehension)|List comprehension]]
+* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
+* [[Constructor (object-oriented programming)|Object-oriented constructors]]
+* [[Comparison of database access|Database access]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Evaluation strategy]]
+* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* [[Comparison of web application frameworks|Web application frameworks]]
+* [[Comparison of the Java and .NET platforms]]</td>
+</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
+* Comparison of individual programming languages
+** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
+** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
+** [[Comparison of ALGOL 68 and C++]]
+** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
+** [[Compatibility of C and C++]]
+** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
+** [[Comparison of Object Pascal and C]]
+** [[Comparison of Pascal and C]]
+** [[Comparison of Java and C++]]
+** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
+** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
+** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
+</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+
+This article compares the '''[[C Sharp (programming language)|C#]]''' programming language with the  '''[[Java (programming language)|Java]]''' programming language. While the focus of this article is mainly the [[programming language]]s and their features, such a comparison will necessarily also consider some [[Computing platform|platform]] features and some [[Library (computing)|library]] features. For a more detailed comparison of the platforms, please see [[Comparison of the Java and .NET platforms]].
+
+Java and C# are similar programming languages that are statically, [[Strong typing|strongly]], and [[manifest typing|manifestly]] [[Type system|typed]], both are [[Class (computer science)|class-based]] [[Object-oriented programming|object-oriented]], both are designed with semi-[[Interpreter (computing)|interpretation]] or [[Just-in-time compilation|runtime compilation]] in mind, both use [[garbage collection (computer science)|garbage-collection]], and both are "[[Curly bracket programming language|curly brace languages]]" like [[C (programming language)|C]] and [[C++]].
+
+== Types ==
+<table class="metadata plainlinks ambox ambox-style ambox-very_long" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This page '''may be [[Wikipedia:Article size|too long]] to read and navigate comfortably'''.<span class="hide-when-compact"> Please consider [[WP:splitting|splitting]] content into sub-articles, [[Wikipedia:Summary style|condensing]] it, or adding or removing [[Help:Section#Subsections|subheadings]].</span>  <small>''(October 2014)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"|[[#Data types|Data types]]!! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Type system#Unified type system|Single-root (unified) type system]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but wrapper types || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Signedness|Signed integers]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; 8, 16, 32, 64 bits || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; 8, 16, 32, 64 bits
+|-
+|[[Unsigned integers]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; but some method support. || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; 8, 16, 32, 64 bits
+|-
+|[[Primitive data type#Characters and strings|Character]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Date/time || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; reference type || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; value type
+|-
+|IEEE 754 [[binary32]] floating point number || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|IEEE 754 [[binary64]] floating point number || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Boolean type]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|High precision decimal number || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but see 'Arbitrary size decimals' below || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|128-bit (28 digits) Decimal type
+|-
+|[[#Advanced numeric types|Arbitrary size decimals]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Reference type; no operators || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No
+|-
+|[[Primitive data type#Characters and strings|Strings]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Immutable reference type, Unicode || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Immutable reference type, Unicode
+|-
+|[[#Advanced numeric types|Arbitrary size integers]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Reference type; no operators || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[#Advanced numeric types|Complex numbers]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[#Reference types|Reference types]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[#Arrays and collections|Arrays]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[#Value types|Value types]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; only primitive types || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Type annotations || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[#Enumerations|Enumerated types]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; reference type || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; scalar
+|-
+|[[#Lifted (nullable) types|Lifted (nullable) types]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but wrapper types || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Tuples]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; limited 3rd party available. || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but standard library support with limited arity
+|-
+|[[#Pointers|Pointers]] || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; only method references   || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+=== Unified type system ===
+Both languages are statically typed with class-based object orientation. In Java the [[primitive types]] are special in that they are not [[object-oriented]] and they could not have been defined using the language itself. They also do not share a common ancestor with reference types. The Java [[reference type]]s all derive from a common root type. C# has a unified [[type system]] in which all types (besides unsafe pointers) ultimately derive from a common root type. Consequently, all types implement the methods of this root type, and extension methods defined for the <code>object</code> type apply to all types, even primitive <code>int</code> literals and [[Delegate (CLI)|delegate]]s. Note, that unlike Java, this allows C# to support objects with encapsulation that are not reference types.
+
+In Java, compound types are synonymous with reference types; methods cannot be defined for a type unless it is also a ''class'' reference type. In C# the concepts of encapsulation and methods have been decoupled from the reference requirement so that a type can support methods and encapsulation without being a reference type. Only reference types support virtual methods and specialization, however.
+
+Both languages support a number of built-in types that are copied and passed by value rather than by reference. Java calls these types [[primitive type]]s, while they are called ''simple types'' in C#. The simple/primitive types typically have native support from the underlying processor architecture.
+
+The C# primitive/simple types implement a number of interfaces and consequently offer a number of methods directly on instances of the types - even on the literals. The C# type names are also merely ''aliases'' for [[Common Language Runtime]] types. The C# <code>System.Int64</code> type is exactly the same type as the <code>long</code> type; the only difference is that the former is the canonical .NET name while the latter is a C# alias for it.
+
+Java does not offer methods directly on the primitive types. Instead methods that operate on the primitive values are offered through companion [[Primitive wrapper class|wrapper classes]]. A fixed set of such wrapper classes exist, each of which wraps one of the fixed set of primitive types. As an example, the Java <code>Long</code> type is a [[reference type]] that wraps the primitive <code>long</code> type. They are ''not'' the same type, however.
+
+=== Data types ===
+
+==== Numeric types ====
+'''Signed integers'''
+
+Both Java and C# support [[signedness|signed]] integers with bit widths of 8, 16, 32 and 64 bits. They use the same name/aliases for the types, except for the 8-bit integer which is called a <tt>byte</tt> in Java and a <tt>sbyte</tt> (signed byte) in C#.
+
+'''Unsigned integers'''
+
+C# supports [[signedness|unsigned]] in addition to the [[signedness|signed]] integer types. The unsigned types are <tt>byte</tt>, <tt>ushort</tt>, <tt>uint</tt> and <tt>ulong</tt> for 8, 16, 32 and 64 bit widths, respectively. Unsigned arithmetic operating on the types are supported as well. For example, adding two unsigned integers (<tt>uint</tt>s) still yields a <tt>uint</tt> as a result; not a long or signed integer.
+
+Java does not feature unsigned integer types. In particular, Java lacks a primitive type for an unsigned [[byte]]. Instead Java's <tt>byte</tt> type is sign extended which is a common source of bugs and confusion.
+
+Unsigned integers were deliberately left out of Java because [[James Gosling]] believed that programmers would not understand how unsigned arithmetic works.<blockquote>In programming language design, one of the standard problems is that the language grows so complex that nobody can understand it. One of the little experiments I tried was asking people about the rules for unsigned arithmetic in C. It turns out nobody understands how unsigned arithmetic in C works. There are a few obvious things that people understand, but many people don't understand it.</blockquote>
+
+'''High-precision decimal numbers'''
+
+C# has a type and literal notation for high-precision (28 decimal digits) decimal arithmetic which is appropriate for financial and monetary calculations.  Contrary to the <tt>float</tt> and <tt>double</tt> data types, decimal fractional numbers such as 0.1 can be represented exactly in the decimal representation. In the float and double representations, such numbers often have non-terminating binary expansions, making those representations more prone to round-off errors.
+
+While Java lacks such a built-in type, the Java library does feature an ''arbitrary precision'' decimal type. This is not considered a language type and it does not support the usual arithmetic operators; rather it is a reference type that must be manipulated using the type methods. See more about arbitrary size/precision numbers [[#Advanced numeric types|below]].
+
+==== Advanced numeric types ====
+Both languages offer library-defined [[Arbitrary-precision arithmetic|arbitrary size integer]] types.
+
+Only Java offers a data type for [[Arbitrary-precision arithmetic|arbitrary precision decimal point]] calculations and only C# offers a type for working with [[complex numbers]].
+
+In both languages the number of operations that can be performed on the advanced numeric types are limited compared to the built-in [[IEEE 754]] floating point types. For instance, none of the arbitrary size types support [[square root]] or [[logarithms]].
+
+C# allows library defined types to be integrated with existing types and operators by using custom implicit/explicit conversions and operator overloading. See example [[#Integration of library defined types]]
+
+==== Characters ====
+Both languages feature a native <code>char</code> (character) datatype as a simple type. Although the <code>char</code> type can be used with bit-wise operators, this is actually accomplished by promoting the <code>char</code> value to an integer value before the operation. Thus, the result of a bitwise operation is a numeric type, not a character, in both languages.
+
+==== Built-in compound data types ====
+Both languages treat [[String (computer science)|string]]s as ([[immutable object|immutable]]) objects of reference type. In both languages the type contains a number of methods to manipulate strings, parse, format etc. In both languages [[regular expression]]s are considered an external feature and are implemented in separate classes.
+
+Both languages' libraries define classes for working with dates and calendars in different cultures. The Java <code>java.util.Date</code> is a mutable reference type, where the C# <code>System.DateTime</code> is a struct value type. C# additionally defines a <code>TimeSpan</code> type for working with time periods. Both languages support date and time arithmetic according to different cultures.
+
+=== User-defined value type (struct) ===
+C# allows the programmer to create user-defined [[value type]]s, using the <code>struct</code> keyword. Unlike classes and like the standard primitives, such value types are passed and assigned by value rather than by reference. They can also be part of an object (either as a field or [[Boxed type|boxed]]), or stored in an array without the memory indirection that normally exists for class types.
+
+Because value types have no notion of a ''<code>null</code>'' value and can be used in arrays without initialization, they always come with an implicit default constructor that essentially fills the struct memory space with zeroes. The programmer can only define additional constructors with one or more arguments. Value types do not have [[virtual method table]]s, and because of that (and the fixed memory footprint), they are implicitly sealed. However, value types ''can'' (and frequently do) implement interfaces. For example, the built-in integer types implement a number of interfaces.
+
+Apart from the built-in primitive types, Java does not include the concept of value types.
+
+=== Enumerations ===
+Both languages define enumerations, but they are implemented in fundamentally different ways.  As such, enumerations are one area where tools designed to automatically translate code between the two languages (such as Java to C# converters) fail.
+
+C# has implemented enumerations in a manner similar to C, that is as wrappers around the bit-flags implemented in primitive integral types (int, byte, short, etc.).  This has performance benefits and improves interaction with C/C++ compiled code, but provides fewer features and can lead to bugs if low-level value types are directly cast to an enumeration type, as is allowed in the C# language.  In contrast, Java implements enumerations as full featured collection of instances, requiring more memory and not aiding interaction with C/C++ code, but providing additional features in reflection and intrinsic behavior. The implementation in each language is described in the table below.
+
+{| class=wikitable
+!
+! Java
+! C#
+|-
+| Definition
+| In Java, the enumeration type is a [[Class (computer programming)|class]], and its values are [[Object (computer science)|objects]] (instances) of that class. The only valid values are the ones listed in the enumeration. The enumeration type may declare [[Member variable|fields]], allowing each individual enumerated value to reference additional data associated uniquely with that specific value. The enumeration type may also declare or override [[Method (computer programming)|methods]], or implement [[Protocol (object-oriented programming)|interfaces]].
+| [[Enumeration]]s in C# are implicitly derived from the <code>Enum</code> type that again is a value type derivative. The value set of a C# enumeration is defined by the ''underlying type'' that can be a signed or unsigned integer type of 8, 16, 32 or 64 bits. The enumeration definition defines names for the selected integer values. By default the first name is assigned the value 0 (zero) and the following names are assigned in increments of 1. Any value of the underlying primitive type is a valid value of the enumeration type, though an explicit cast may be needed to assign it.
+|-
+| Combining
+| Java enumeration set and map collections provide functionality to combine multiple enumeration values to a combined value. These special collections allows compiler optimization to minimize the overhead incurred by using collections as the combination mechanism.
+| C# supports bit-mapped enumerations where an actual value may be a combination of enumerated values bitwise or'ed together. The formatting and parsing methods implicitly defined by the type will attempt to use these values.
+|}
+
+In both C# and Java, programmers can use enumerations in a [[switch statement]] without conversion to a string or primitive integer type. However, C# disallows fall-throughs unless the case statement does not contain any code, as they are a main cause for hard-to-find bugs. Fall-throughs must be explicitly declared using goto case
+
+=== Delegates/method references ===
+C# implements object-oriented method pointers in the form of [[Delegate (CLI)|delegate]]s. A delegate is a special type that can capture a [[Type safety|type-safe]] reference to a method. This reference can then be stored in a delegate-type variable or passed to a method through a delegate parameter for later invocation. C# delegates support [[Covariance and contravariance (computer science)|covariance and contravariance]], and can hold a reference to any signature-compatible static method, instance method, anonymous method or [[Anonymous function|lambda expression]].
+
+Delegates should not be confused with closures and inline functions. The concepts are related because a reference to a closure/inline function must be captured in a delegate reference to be useful at all. But a delegate does not always reference an inline function; it can also reference existing static or instance methods. Delegates form the basis of C# [[#Events|events]] but should not be confused with those either.
+
+Delegates were deliberately left out of Java because they were considered unnecessary and detrimental to the language, and because of potential performance issues. Instead, alternative mechanisms are used. The [[wrapper pattern]], which resembles the delegates of C# in that it allows the client to access one or more client-defined methods through a known interface, is one such mechanism.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (March 2012)">citation needed</span>]]</i>&#93;</sup> Another is the use of [[Adapter pattern|adapter]] objects using inner classes, which the designers of Java argued are a better solution than bound method references.
+
+See also example [[#C#delegates and equivalent Java constructs]]
+
+=== Lifted (nullable) types ===
+C# allows value/primitive/simple types to be "lifted" to allow the special <code>null</code> value in addition to the type's native values. A type is lifted by adding a <code>?</code> suffix to the type name, this is equivalent to using the <code>Nullable<T></code> [[Generic programming|generic]] type, where <code>T</code> is the type to be lifted. Conversions are implicitly defined to convert between values of the base and the lifted type. The lifted type can be compared against <code>null</code> or it can be tested for <code>HasValue</code>. Also, lifted operators are implicitly and automatically defined based on their non-lifted base, where — with the exception of some boolean operators — a null argument will propagate to the result.
+
+Java does not support type lifting as a concept, but all of the built-in primitive types have corresponding wrapper types, which do support the <code>null</code> value by virtue of being reference types (classes).<br/>
+According to the Java spec, any attempt to dereference the <code>null</code> reference must result in an exception being thrown at run-time, specifically a <code>NullPointerException</code>. (It would not make sense to dereference it otherwise, because, by definition, it points to no object in memory.) This also applies when attempting to [[Auto-unboxing|unbox]] a variable of a wrapper type, which evaluates to <code>null</code>: the program will throw an exception, because actually there is no object to be unboxed - and therefore no boxed value to take part in the subsequent computation.
+
+The following example illustrates the different behavior. In C#, the lifted * operator propagates the <code>null</code> value of the operand; in Java, unboxing the null reference throws an exception.
+
+Not all C# lifted operators have been defined to propagate <code>null</code> unconditionally, if one of the operands is <code>null</code>. Specifically, the [[boolean operators]] have been lifted to support [[ternary logic]] thus keeping impedance with [[SQL]].
+
+The Java boolean operators do not support ternary logic, nor is it implemented in the base class library.
+
+=== Late-bound (dynamic) type ===
+C# features a [[Name binding|late bound]] dynamic type that supports no-reflection dynamic invocation, interoperability with dynamic languages as well as ad-hoc binding to (for example) document object models. The <code>dynamic</code> type resolves member access dynamically at runtime as opposed to statically/virtual at compile time. The member lookup mechanism is extensible with traditional reflection as a fall-back mechanism.
+
+There are several use cases for the <code>dynamic</code> type in C#:
+*Less verbose use of reflection: By casting an instance to the <code>dynamic</code> type, members such as properties, methods, events etc. can be directly invoked on the instance without using the reflection API directly.
+*Interoperability with dynamic languages: The dynamic type comes with a [[hub-and-spoke]] support for implementing dynamically typed objects and common runtime infrastructure for efficient member lookup.
+*Creating dynamic abstractions on the fly: For instance, a dynamic object could provide simpler access to document object models such as [[XML]] or [[XHTML]] documents.
+
+Java does not support a late-bound type. The use cases for C# dynamic type have different corresponding constructs in Java:
+*For dynamic late-bound ''by-name'' invocation of preexisting types, reflection should be used.
+*For interoperability with dynamic languages, some form of interoperability API specific to that language will have to be used. The Java Virtual Machine platform does have multiple dynamic languages implemented on top of it, but there is no common standard for how to pass objects between languages. Usually this will involve some form of reflection or reflection-like API. As an example of how to use JavaFX objects from Java.
+*For creating and interacting with objects entirely at runtime, e.g. interaction with a document object model abstraction, a specific abstraction API will have to be used.
+
+The C# <code>dynamic</code> enables seamless interoperability with dynamic (late-bound) languages by allowing C# code to manipulate foreign objects using the same syntax as if they were native C# objects. Lacking this capability, Java developers must use a Java based API to access such objects. Consider a Ruby class (defined in a file called <code>Deepthought.rb</code>) that has two attributes (a, b) with read/write accessors and a <code>Calculate</code> method that returns the product of the attributes. The following examples illustrate how to instantiate and use such a class from within Java and C#, respectively.
+
+See also example [[#Interoperability with dynamic languages]]
+
+=== Pointers ===
+Java does not permit pointers or pointer-arithmetic within the Java runtime environment. The Java language designers reasoned that pointers were one of the primary features that enable programmers to inject bugs into their code and chose not to support them. Java does not allow for directly passing and receiving objects/structures to/from the underlying operating system and thus does not need to model objects/structures to such a specific memory layout, layouts which frequently would involve pointers. Java's communication with the underlying operating system is instead based upon [[Java Native Interface|JNI]] where communication with/adaption to an underlying operating system is handled through an external "glue" layer.
+
+While C# does allow use of [[pointer (computer programming)|pointer]]s and corresponding pointer arithmetic, the C# language designers had the same concerns that pointers could potentially be used to bypass the strict rules for object access. Thus, C# by default also does not permit pointers. However, because pointers are required when calling many native functions, pointers are actually allowed in an explicit "unsafe" mode. Code blocks or methods that use the pointers must be marked with the <code>unsafe</code> keyword to be able to use pointers, and the compiler requires the <tt>/unsafe</tt> switch to allow compilation of such code. Assemblies which are compiled using the <tt>/unsafe</tt> switch are marked as such and may only execute if explicitly trusted. This allows programmers to use pointers and pointer arithmetic to directly pass and receive objects to/from the operating system or other native APIs using the native memory layout for those objects, while at the same time isolate such potentially unsafe code in specifically trusted assemblies.
+
+=== Reference types ===
+
+In both languages [[Reference (computer science)|references]] are a central concept. All instances of classes are ''by reference''.
+
+While not directly evident in the language syntax ''per se'', both languages support the concept of [[weak reference|''weak'' references]]. An instance that is only referenced by weak references is eligible for garbage collection just as if there were no references at all. In both languages this feature is exposed through the associated libraries, even though it is really a core runtime feature.
+
+In addition to weak references, Java has ''[[soft reference]]s''. Soft references are much like weak references, but the JVM will not deallocate softly-referenced objects until the memory is actually needed.
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Reference types !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Garbage collection (computer science)|Garbage collection]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Weak reference]]s || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Reference queue (interaction with garbage collection) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Soft reference|Soft]] and [[Phantom reference|Phantom]] references || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|[[Proxy pattern|Proxy support]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; proxy generation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; object contexts
+|}
+
+=== Arrays and collections ===
+
+[[Array data structure|Arrays]] and [[Collection (computing)|collections]] are concepts featured by both languages.
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| [[Array data type|Arrays]] and [[Collection (computing)|Collections]] !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Abstract data type]]s || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|One-dimensional, zero-based index arrays || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Multidimensional arrays, rectangular (single array)|| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Multidimensional arrays, jagged (arrays of arrays)|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Non-zero based arrays || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+|-
+|Unified arrays and collections || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Associative array|Maps/dictionaries]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Sorted dictionaries || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Sets || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Sorted sets || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Lists/vectors || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Queue (data structure)|Queues/stacks]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Priority queue]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|Bags/multisets || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Concurrency optimized collections || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+|}
+
+The syntax used to declare and access arrays is identical, except that C# has added syntax for declaring and manipulating multidimensional arrays.
+
+{| class="wikitable" style="width:90%;"
+|-
+! style="width:50%;"| Java !! style="width:50%;"| C#
+|-
+| Arrays are implicitly direct specializations of <code>Object</code>. They are not unified with collection types.
+| Arrays in C# are implicit specializations of the <code>System.Array</code> class that implements a number of collection interfaces.
+|-
+| Arrays and collections are completely separate with no unification. Arrays cannot be passed where sequences or collections are expected
+| Arrays can be passed where sequences (<code>IEnumerable</code>s) or collections/list interfaces are expected. However, the collection operations that alter the number of elements (insert/add/remove) will throw exceptions as these operations are not supported by arrays.
+|-
+| The <code>for</code> statement accepts either arrays or <code>Iterable</code>s. All collections implement <code>Iterable</code>. This means that the same short syntax can be used in for-loops.
+| The <code>foreach</code> statement iterates through a sequence using the <code>IEnumerable</code> or<code>IEnumerable&lt;T&gt;</code> interface. Because arrays always implicitly implement these interfaces, the loop will iterate through arrays as well.
+|-
+|colspan=2|In both languages arrays are covariant. This means that a <code>String[]</code> array is assignable to variables of <code>Object[]</code> because <code>String</code> is a specialization of (assignable to) <code>Object</code>. In both languages the arrays will perform a type check when inserting new values because type-safety would otherwise be compromised. This is in contrast to how generic collections have been implemented in both languages.
+|-
+| No [[Two-dimensional array|multidimensional arrays]] (rectangular arrays), but arrays of references to arrays ([[jagged array]]s).
+| [[Two-dimensional array|Multidimensional arrays]] (rectangular arrays), as well as arrays of references to arrays ([[jagged array]]s).
+|-
+| Arrays cannot be resized (though use of the <code>System.arraycopy()</code> method can allow for multi-step array resizing)
+| Arrays can be resized while preserving existing values using the <code>Array.Resize()</code> static array method.
+|-
+| Implemented as a [[retrofit]] for the <code lang=Java>java.util</code> library having extra features, like data structures like sets and linked sets, and has a number of algorithms to manipulate elements of a collection, like finding the largest element based on some Comparator object, finding the smallest element, finding sublists within a list, reverse the contents of a list, shuffle the contents of a list, create immutable versions of a collection, performs sorts, and make binary searches.
+| The C# collections framework consists of classes from the <code>System.Collections</code> and the <code>System.Collections.Generic</code> namespaces with a number of useful interfaces, abstract classes, and data structures. Net 3.5 added <code>System.Linq</code> namespace contains various extension methods for querying collections, such as <code>Join</code>, <code>Union</code>, <code>Distinct</code>, <code>All</code>, <code>Average</code>, <code>Aggregate</code> and many others. Queries using these methods are called [[LINQ]] queries.
+|}
+
+Multidimensional arrays can in some cases increase performance because of increased [[Memory locality|locality]] (as there is a single pointer dereference instead of one for every dimension of the array, as is the case for jagged arrays). However, since all array element access in a multidimensional array requires multiplication/shift between the two or more dimensions, this is an advantage only in very random access scenarios.
+
+Another difference is that the entire multidimensional array can be allocated with a single application of operator <code>new</code>, while jagged arrays require loops and allocations for every dimension. Note, though, that Java provides a syntactic construct for allocating a jagged array with regular lengths; the loops and multiple allocations are then performed by the virtual machine and need not be explicit at the source level.
+
+Both languages feature an extensive set of collection types that includes various ordered and unordered types of lists, maps/dictionaries, sets, etc.
+
+Java does support also the syntax of C/C++:
+
+{| class="wikitable"
+|-
+! Java !! C#
+|-
+| <source lang=Java>
+ // Is valid, as numbers is an object of type short[] 
+ short[] numbers = new short[100];
+ // Is valid, but it isn't clear that values 
+ // is an object of type double[]
+ double values[] = new double[100];</source> || <source lang=CSharp>
+ // Is valid, as numbers is an object of type short[] 
+ short[] numbers = new short[100];
+ double values[] = new double[100]; // Won't compile!</source>
+|}
+
+== Expressions and operators ==
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Expressions and operators !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Arithmetic operators || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Logical operators || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Bitwise logic operators || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Conditional || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|String concatenation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Casts || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Boxing (programming)|Boxing]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; implicit || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; implicit
+|-
+|[[Auto-unboxing|Unboxing]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; implicit || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; explicit
+|-
+|Lifted operators || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Overflow control || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Strict floating point evaluation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; opt-in/out || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|Verbatim (here-)strings || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+===Boxing and unboxing===
+Both languages allow [[Autoboxing|automatic boxing]] and unboxing, i.e. they allow for implicit casting between any primitive types and the corresponding reference types. <br/>
+In C#, the primitive types are subtypes of the Object type. In Java this is not true; any given primitive type and the corresponding wrapper type have no specific relationship with each other, except for autoboxing and unboxing, which act as [[syntactic sugar]] for interchanging between them. This was done intentionally, to maintain backward compatibility with prior versions of Java, in which no automatic casting was allowed, and the programmer worked with two separate sets of types: the primitive types, and the wrapper (reference) type hierarchy.
+
+This difference has the following consequences. First of all, in C#, primitive types can define methods, such as an override of Object's <code>ToString()</code> method. In Java, this task is accomplished by the [[primitive wrapper class]]es. <br/>
+Secondly, in Java an extra cast is needed whenever one tries to directly [[Reference (computer science)|dereference]] a primitive value, as it will not be boxed automatically. The expression <code>((Integer)42).toString()</code> will convert an integer literal to string in Java while <code>42.ToString()</code> performs the same operation in C#. This is because the latter one is actually an instance call on the primitive value <code>42</code>, while the former one is an instance call on an object of type <tt>java.lang.Integer</tt>.
+
+Finally, another difference is that Java makes heavy use of boxed types in [[Generic programming|generics]] (see [[#Generics|below]]).
+
+==Statements==
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Statements !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Loop (computing)|Loops]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Conditional (programming)|Conditionals]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Flow control || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Assignment (computer science)|Assignment]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Exception control || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Variable declaration || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Variable type inference || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Deterministic disposal (ARM-blocks) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (starting with [[Java 7]]) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+== Syntax ==
+Both languages are considered "curly brace" languages in the C/C++ family. Overall the syntaxes of the languages are very similar. The syntax at the statement and expression level is almost identical with obvious inspiration from the C/C++ tradition. At type definition level (classes and interfaces) some minor differences exist. Java is explicit about extending classes and implementing interfaces, while C# infers this from the kind of types a new class/interface derives from.
+
+C# supports more features than Java, which to some extent is also evident in the syntax that specifies more keywords and more grammar rules than Java.
+
+=== Keywords and backward compatibility ===
+As the languages evolved, the language designers for both languages have faced situations where they wanted to extend the languages with new keywords or syntax. New keywords in particular may break existing code at source level, i.e. older code may no longer compile, if presented to a compiler for a later version of the language. Language designers are keen to avoid such regressions. The designers of the two languages have been following different paths when addressing this problem.
+
+Java language designers have avoided new keywords as much as possible, preferring instead to introduce new syntactic constructs that were not legal before or to reuse existing keywords in new contexts. This way they didn't jeopardize backward compatibility. An example of the former can be found in how the <code>for</code> loop was extended to accept iterable types. An example of the latter can be found in how the <code>extends</code> and (especially) the <code>super</code> keywords were reused for specifying type bounds when generics were introduced in Java 1.5. At one time (Java 1.4) a new keyword <code>assert</code> was introduced that was not reserved as a keyword before. This had the potential to render previously valid code invalid, if for instance the code used <code>assert</code> as an identifier. The designers chose to address this problem with a four-step solution: 1) Introducing a compiler switch that indicates if Java 1.4 or later should be used, 2) Only marking <code>assert</code> as a keyword when compiling as Java 1.4 and later, 3) Defaulting to 1.3 to avoid rendering previous (non 1.4 aware code) invalid and 4) Issue warnings, if the keyword is used in Java 1.3 mode, in order to allow the developers to change the code.
+
+C# language designers have introduced several new keywords since the first version. However, instead of defining these keywords as ''global'' keywords, they define them as ''context sensitive'' keywords. This means that even when they introduced (among others) the <code>partial</code> and <code>yield</code> keywords in C# 2.0, the use of those words as identifiers is still valid as there is no clash possible between the use as keyword and the use as identifier, given the context. Thus, the present C# syntax is fully backward compatible with source code written for any previous version without specifying the language version to be used.
+
+{| class="wikitable"
+|-
+! keyword !! feature, example usage
+|-
+| <code>checked</code>, <code>unchecked</code> || In C#, <code>checked</code> statement blocks or expressions can enable run-time checking for [[arithmetic overflow]].
+|-
+| <code>get</code>, <code>set</code> || C# implements [[property (computer science)|properties]] as part of the language syntax with their optional corresponding <code>get</code> and <code>set</code> accessors, as an alternative for the [[accessor method]]s used in Java, which is not a language feature but a coding-pattern based on method name conventions.
+|-
+| <code>goto</code> || C# supports the <code>[[goto (command)|goto]]</code> keyword. This can occasionally be useful, for example for implementing [[finite state machine]]s or for [[Code generation (compiler)|generated code]], but the use of a more structured method of [[control flow]] is usually recommended (see [[Goto#Usage|criticism of the goto statement]]). Java does not support the <code>goto</code> statement (but <code>goto</code> is a reserved word). However, Java does support labeled <code>break</code> and <code>continue</code> statements, which in certain situations can be used when a <code>goto</code> statement might otherwise be used.
+
+<source lang=CSharp>
+switch(color)
+{
+    case Color.Blue:
+         Console.WriteLine("Color is blue"); break;
+    case Color.DarkBlue:
+         Console.WriteLine("Color is dark");
+         goto case Color.Blue;
+    // ...
+}
+</source>
+|-
+| <code>lock</code> || In C#, the <code>lock</code> keyword is a shorthand for synchronizing access to a block of code across threads (using a <code>Monitor</code>), wrapped in a <code>try</code> … <code>finally</code> block.
+|-
+| <code>out</code>, <code>ref</code> || C# has support for output and reference [[parameter (computer science)|parameters]]. These allow returning multiple output values from a method, or passing values by reference.
+|-
+| <code>strictfp</code> || Java uses <code>[[strictfp]]</code> to guarantee the results of floating point operations remain the same across platforms.
+|-
+| <code>switch</code> || In C#, the [[switch statement]] also operates on strings and longs. Fallthrough is allowed for empty statements and possible via 'goto case' for statements containing code. Java's switch statement does not operate on strings (before [[Java 7]]) nor <code>long</code> primitive type but falls through for all statements (excluding those with '<code>break</code>').
+|-
+| <code>synchronized</code> || In Java, the <code>synchronized</code> keyword is a shorthand for synchronizing access to a block of code across threads (using a <code>Monitor</code>), wrapped in a <code>try</code> … <code>finally</code> block.
+|-
+| <code>throws</code> || Java requires every method to declare the checked exceptions or superclasses of the checked exceptions that it can throw. Any method can also optionally declare the unchecked exception that it throws. C# has no such syntax.
+<source lang=Java>
+public int readItem() throws java.io.IOException
+{
+    // ...
+}
+</source>
+|-
+| <code>using</code> || In C#, <code>using</code> causes the <code>Dispose</code> method (implemented via the <code>IDisposable</code> interface) of the object declared to be executed after the code block has run or when an exception is thrown within the code block.
+<source lang=CSharp>
+// Create a small file "test.txt", write a string,
+// ... and close it (even if an exception occurs)
+using (StreamWriter file = new StreamWriter("test.txt"))
+{
+    file.Write("test");
+}
+</source>
+In Java SE 7 a similar construct has been added called try-with-resources :
+<source lang=Java>
+try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    return br.readLine();
+}
+</source>
+|}
+
+== Object orientation programming ==
+Both C# and Java are designed from the ground up as [[Object oriented programming|object-oriented]] languages using [[dynamic dispatch]], with syntax similar to [[C++]] (C++ in turn derives from [[C (programming language)|C]]). Neither language is a superset of C or C++, however.
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Object orientation!! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Class (computer science)|Classes]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|mandatory || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|mandatory
+|-
+|[[Interface (computer science)|Interfaces]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Class (computer science)#Abstract and concrete|Abstract classes]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Member accessibility levels || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; public, package, protected, private || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; public, internal, protected, private, protected internal
+|-
+|Class-level [[Class (computer science)#Local and inner|inner classes]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes;<code>static</code> inner classes are class level || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; all inner classes are class level
+|-
+|Instance-level inner classes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|Statement-level (local) [[Class (computer science)#Unnamed|anonymous classes]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; Without methods
+|-
+|[[Partial class]]es || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but see AspectJ || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Implicit (inferred) anonymous classes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Deprecation]]/obsolescence || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Overload versioning || style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Enums can implement interfaces || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|[[Property (programming)|Properties]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No, but see [[JavaBeans]] spec || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Event (computing)|Events]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Provided by standard libraries || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Built-in language feature
+|-
+|[[Operator overloading]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Indexers || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Implicit conversions || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Explicit conversions || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+=== Partial class ===
+C# allows a class definition to be split across several source files using a feature called ''partial classes''. Each part must be marked with the keyword <code>partial</code>. All the parts must be presented to the compiler as part of a single compilation. Parts can reference members from other parts. Parts can implement interfaces and one part can define a base class. The feature is useful in code generation scenarios (such as [[user interface|UI]] design), where a code generator can supply one part and the developer another part to be compiled together. The developer can thus edit their part without the risk of a code generator overwriting that code at some later time. Unlike the class extension mechanism, a partial class allows "circular" dependencies among its parts as they are guaranteed to be resolved at compile time. Java has no corresponding concept.
+
+=== Inner and local classes ===
+Both languages allow ''inner classes'', where a class is defined lexically inside another class. However, in each language these inner classes have rather different semantics.
+
+In Java, unless the inner class is declared <code>static</code>, a reference to an instance of an inner class carries a reference to the outer class with it. As a result, code in the inner class has access to both the static and non-static members of the outer class. To create an instance of a non-static inner class, one has to name the instance of the embracing outer class. This is done via a new <code>new</code>-operator introduced in JDK 1.3: <code>outerClassInstance.new Outer.InnerClass()</code>. This can be done in any class that has a reference to an instance of the outer class.
+
+In C#, an inner class is conceptually the same as a normal class. In a sense, the outer class only acts as a namespace. Thus, code in the inner class cannot access non-static members of the outer class unless it does so through an explicit reference to an instance of the outer class. Programmers can declare the inner class ''private'' to allow only the outer class to have any access to it.
+
+Java provides another feature called ''local classes'' or ''anonymous classes'', which can be defined within a method body. These are generally used to implement an interface with only one or two methods, which are typically event handlers. However, they can also be used to override virtual methods of a superclass. The methods in those local classes have access to the outer method's local variables declared <code>final</code>. C# satisfies the use-cases for these by providing anonymous [[Delegate (CLI)|delegate]]s; see [[#Event handling|event handling]] for more about this.
+
+C# also provides a feature called ''anonymous types/classes'', but it is rather different from Java's concept with the same name. It allows the programmer to instantiate a class by providing only a set of names for the properties the class should have, and an expression to initialize each. The types of the properties are inferred from the types of those expressions. These implicitly-declared classes are derived directly from ''object''.
+
+=== Event ===
+C# multicast-delegates are used with ''events''. Events provide support for [[event-driven programming]] and is an implementation of the [[observer pattern]]. To support this there is a specific syntax to define events in classes, and operators to register, unregister or combine event handlers.
+
+See [[#Delegates / method references|here]] for information about how events are implemented in Java.
+
+=== Operator overloading and conversions ===
+[[Operator overloading]] and user-defined [[type conversion|casts]] are separate features that both aim to allow new types to become first-class citizens in the type system. By using these features in C#, types such as [[Complex numbers|<code>Complex</code>]] and [[decimal128|<code>decimal</code>]] have been integrated so that the usual operators like addition and multiplication work with the new types. Unlike C++, C# does restrict the use of operator overloading, prohibiting it for the operators <code>new</code>, <code>( )</code>, <code>||</code>, <code>&&</code>, <code>=</code>, and any variations of compound statements like <code>+=</code>. But compound operators will call overloaded simple operators, like <code>-=</code> calling <code>-</code> and <code>=</code>.
+
+Java does not include operator overloading, nor custom conversions in order to prevent abuse of the feature and to keep the language simple.
+
+=== Indexer ===
+C# also includes ''indexers'' that can be considered a special case of operator overloading (like the C++ <code>operator[]</code>), or parameterized <code>get</code>/<code>set</code> properties. An indexer is a property named <code>this[]</code> that uses one or more parameters (indexes); the indices can be objects of any type:
+
+<source lang=CSharp>
+myList[4] = 5;
+string name = xmlNode.Attributes["name"];
+orders = customerMap[theCustomer];
+</source>
+
+Java does not include indexers. The common Java pattern involves writing explicit getters and setters where a C# programmer would use an indexer.
+
+=== Fields and initialization ===
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Fields and initialization !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Field (computer science)|Fields]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Constant (programming)|Constants]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; but no support for constant passed parameters
+|-
+|Static (class) [[Constructor (object-oriented programming)|constructors]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Instance constructors || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Destructor (computer science)|Finalizers/destructors]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Instance initializers || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; can be simulated with instance constructor
+|-
+|Object [[Initialization (programming)|initialization]]  || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Bottom-up <br/>(fields and constructors) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Top-down (fields); bottom-up (constructors)
+|-
+|Object initializers || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Collection initializers || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; can be modelled || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Array initializers || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+==== Object initialization ====
+
+In both C# and Java, an object's fields can be initialized either by ''variable initializers'' (expressions that can be assigned to variables where they are defined) or by ''constructors'' (special subroutines that are executed when an object is being created). In addition, Java contains ''instance initializers'', which are anonymous blocks of code with no arguments that are run after the explicit (or implicit) call to a superclass's constructor but before the constructor is executed.
+
+C# initializes object fields in the following order when creating an object:
+
+# Derived static fields
+# Derived static constructor
+# Derived instance fields
+# Base static fields
+# Base static constructor
+# Base instance fields
+# Base instance constructor
+# Derived instance constructor
+
+Some of the above fields may not be applicable (e.g. if an object does not have ''static fields''). ''Derived fields'' are those that are defined in the object's direct class, while ''base field'' is a term for the fields that are defined in one of the object's superclasses. Note that an object representation in memory contains all fields defined in its class or any of its superclasses, even, if some fields in superclasses are defined as private.
+
+It is guaranteed that any field initializers take effect before any constructors are called, since both the instance constructor of the object's class and its superclasses are called after field initializers are called. There is, however, a potential trap in object initialization when a virtual method is called from a base constructor. The overridden method in a subclass may reference a field that is defined in the subclass, but this field may not have been initialized because the constructor of the subclass that contains field initialization is called after the constructor of its base class.
+
+In Java, the order of initialization is as follows:
+
+# Invocation of another constructor (either of the object's class or of the object's superclass)
+# Instance variable initializers and instance initializers (in the order they appear in the source code)
+# The constructor body
+
+Like in C#, a new object is created by calling a specific constructor. Within a constructor, the first statement may be an invocation of another constructor. If this is omitted, the call to the argumentless constructor of the superclass is added implicitly by the compiler. Otherwise, either another overloaded constructor of the object's class can be called explicitly, or a superclass constructor can be called. In the former case, the called constructor will again call another constructor (either of the object's class or its subclass) and the chain sooner or later ends up at the call to one of the constructors of the superclass.
+
+After another constructor is called (that causes direct invocation of the superclass constructor, and so forth, down to the Object class), instance variables defined in the object's class are initialized. Even if there are no variable initializers explicitly defined for some variables, these variables are initialized to default values. Note that instance variables defined in superclasses are already initialized by this point, because they were initialized by a superclass constructor when it was called (either by the constructor's code or by variable initializers performed before the constructor's code or implicitly to default values). In Java, variable initializers are executed according to their textual order in the source file.
+
+Finally, the constructor body is executed. This ensures proper order of initialization, i.e. the fields of a base class finish initialization before initialization of the fields of an object class begins.
+
+There are two main potential traps in Java's object initialization. First, variable initializers are expressions that can contain method calls. Since methods can reference any variable defined in the class, the method called in a variable initializer can reference a variable that is defined below the variable being initialized. Since initialization order corresponds to textual order of variable definitions, such a variable would not be initialized to the value prescribed by its initializer and would contain the default value.
+Another potential trap is when a method that is overridden in the derived class is called in the base class constructor, which can lead to behavior the programmer would not expect when an object of the derived class is created. According to the initialization order, the body of the base class constructor is executed before variable initializers are evaluated and before the body of the derived class constructor is executed. The overridden method called from the base class constructor can, however, reference variables defined in the derived class, but these are not yet initialized to the values specified by their initializers or set in the derived class constructor. The latter issue applies to C# as well, but in a less critical form since in C# methods are not over ridable by default.
+
+=== Resource disposal ===
+Both languages mainly use [[garbage collection (computer science)|garbage collection]] as a means of reclaiming memory resources, rather than explicit deallocation of memory. In both cases, if an object holds resources of different kinds other than memory, such as file handles, graphical resources, etc., then it will have to be notified explicitly when the application no longer uses it. Both C# and Java offer interfaces for such deterministic [[dispose pattern|disposal]] and both C# and Java (since Java 7) feature automatic resource management statements that will automatically invoke the disposal/close methods on those interfaces.
+
+=== Methods ===
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Methods and properties !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Static imports || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Virtual methods|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Virtual by default || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Non-virtual by default
+|-
+|[[Abstraction (computer science)|Abstract]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Sealing || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Explicit interface implementation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Default methods in Java 8 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Value (input) parameters || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Reference (input/output) parameters || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Output (output) parameters || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Constant (immutable) parameters || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes;[[#Constant/immutable parameters|final]] parameters || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|[[Variadic function|Variadic methods]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Optional arguments || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Named arguments || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Generator (computer programming)|Generator methods]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Extension / default methods || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Conditional methods || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Partial methods || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+==== Extension methods and default methods ====
+
+Using a special ''this'' designator on the first parameter of a method, C# allows the method to act as if it were a member method of the type of the first parameter. This ''extension'' of the foreign class is purely syntactical. The extension method must be declared <tt>static</tt> and defined within a purely static class. The method must obey any member access restriction like any other method external to the class; thus static methods cannot break object encapsulation. The "extension" is only active within scopes where the namespace of the static host class has been imported.
+
+Since Java 8, Java has a similar feature called ''default methods'', which are methods with a body declared on interfaces. As opposed to C# extension methods, Java default methods are instance methods on the interface which declare them. Definition of default methods in classes that implement the interface is optional: If the class does not define the method, the default definition is used instead.
+
+Both the C# extension methods and the Java default methods allow a class to override the default implementation of the extension/default method, respectively. In both languages this override is achieved by defining a method on the class that should use an alternate implementation of the method.
+
+C# scope rules defines that if a matching method is found on a class, it takes precedence over a matching extension method. In Java any class declared to implement an interface with default method is assumed to have the default methods implementions, ''unless'' the class implements the method itself.
+
+==== Partial methods ====
+
+Related to ''partial classes'' C# allows partial methods to be specified within partial classes. A partial method is an intentional declaration of a method with a number of restrictions on the signature. These restrictions ensure that if a definition is not actually provided by any class part, then the method and every call to it can be safely erased. This feature allows code to provide a large number of interception points (like the [[Template method pattern|template method]] [[Design Patterns|GoF]] design pattern) without paying any runtime overhead if these extension points are not being used by another class part at compile time. Java has no corresponding concept.
+
+==== Virtual methods ====
+''Methods'' in C# are non-[[Virtual function|virtual]] by default, and have to be declared virtual explicitly, if desired. In Java, all non-static non-private methods are virtual. Virtuality guarantees that the most recent [[Method overriding (programming)|override]] for the method will always be called, but incurs a certain runtime cost on invocation as these invocations cannot be normally [[Inline expansion|inlined]], and require an indirect call via the [[virtual method table]]. However, some JVM implementations, including the Oracle reference implementation, implement inlining of the most commonly called virtual methods.
+
+Java methods are virtual by default (although they can be "sealed" by using the <code>final</code> modifier to disallow overriding). There is no way to let [[subclass (computer science)|derived classes]] define a new, unrelated method with the same name.
+
+This means that by default in Java, and only when explicitly enabled in C#, new methods may be defined in a derived class with the same name and signature as those in its base class. When the method is called on a superclass reference of such an object, the "deepest" overridden implementation of the [[base class]]' method will be called according to the specific subclass of the object being referenced.
+
+In some cases, when a subclass introduces a method with the same name and signature as a method already present in the [[base class]], problems can occur. In Java, this will mean that the method in the derived class will implicitly override the method in the base class, even though that may not be the intent of the designers of either class.
+
+To mitigate this, C# requires that if a method should be overridden, the <code>override</code> keyword must be specified. Otherwise, the method will "hide" the inherited method. A compiler warning to this effect is issued, which can be silenced by specifying the <code>new</code> keyword. This avoids the problem that can arise from a base class being extended with a protected/public method whose signature is already in use by a derived class.
+
+==== Constant/immutable parameters ====
+In Java, it is possible to make the passed parameters to a method unchangeable by using the <source lang="Java" enclose="none">final</source>
+[[Category:Articles with example Java code]] keyword. The language C# does not have this functionality.
+{| class="wikitable"
+|-
+! Java !! C#
+|-
+| <source lang=Java>
+    /**
+     * Getter for a value from the value array
+     * @param index
+     * @return Requested value or -1, if the index is out of bounds.
+     */
+    public short getValue(final short index) {
+        if (index < values.length) {
+            index++;    // ERROR: The final local variable INDEX cannot be assigned.
+                        // It must be blank and not using a compound assignment
+            return values[index];
+        }
+        else return -1;
+    }</source> || <center>no C# language equivalent</center>
+|}
+
+This missing feature, however, has only limited use. For primitive types that are implemented as [[call by value]], a modified value of a passed parameter inside the method does not affect the caller. Thus, for primitive types, to pass a parameter as <source lang="Java" enclose="none">final</source>
+[[Category:Articles with example Java code]] is only preventing a change of this parameter's value. For passed objects, a <source lang="Java" enclose="none">final</source>
+[[Category:Articles with example Java code]] parameter would prevent that another object is assigned to it, which is indeed a gain. It will, however, not prevent the data contained by the object from being mutated.
+
+Both languages do not support essential feature of [[const-correctness]] that exists in [[C (programming language)|C]]/[[C++]], which makes a method constant.
+
+Interestingly, Java defines the word "constant" arbitrarily as a <source lang="Java" enclose="none">static final</source>
+[[Category:Articles with example Java code]] field. Only these variables are capital-only variables, where the names are separated with an [[underscore]]. A parameter that is only <source lang="Java" enclose="none">final</source>
+[[Category:Articles with example Java code]] is not considered as a constant, also it may be so in the case of a [[primitive data type]] or an [[immutable class]], like a <source lang="Java" enclose="none">String</source>
+[[Category:Articles with example Java code]].
+
+==== Generator methods ====
+<div class="hatnote">Further information: [[Generator (computer programming)]]</div>
+Any C# method declared as returning <code>IEnumerable</code>, <code>IEnumerator</code> or the generic versions of these interfaces can be implemented using <code>yield</code> syntax. This is a form of limited, compiler-generated continuations and can drastically reduce the code required to traverse or generate sequences, although that code is just generated by the compiler instead. The feature can also be used to implement infinite sequences, e.g. the sequence of [[Fibonacci numbers]].
+
+Java does not have an equivalent feature. Instead generators are typically defined by providing a specialized implementation of a well-known collection or iterable interface, which will compute each element on demand. For such a generator to be used in a ''for each'' statement, it must implement interface <code>java.lang.Iterable</code>.
+
+See also example [[#Fibonacci sequence|Fibonacci sequence]] below.
+
+==== Explicit interface implementation ====
+C# also has ''explicit interface implementation'' that allows a class to specifically implement methods of an [[interface (computer science)|interface]], separate to its own class methods, or to provide different implementations for two methods with the same name and signature inherited from two base interfaces.
+
+In either language, if a method (or property in C#) is specified with the same name and signature in multiple interfaces, the members will clash when a class is designed that implements those interfaces. An implementation will by default implement a common method for all of the interfaces. If separate implementations are required (because the methods really do serve separate purposes, or because return values differ between the interfaces) C#'s explicit interface implementation will solve the problem, though allowing different results for the same method, depending on the current cast of the object. In Java there is no way to solve this problem other than refactoring one or more of the interfaces to avoid name clashes.
+
+==== Reference (in/out) parameters ====
+
+The arguments to a method are passed by value in Java. This applies to both primitives and objects. (Objects are passed by value by copying their references.) This means that a method operates on copies of the primitives passed to it instead of on the actual variables. In C#, it is possible to enforce a reference with the <code lang=CSharp>ref</code> keyword, similar to C++ and in a sense to C. This feature of C# is particularly useful when one wants to create a method that returns more than one object. In Java trying to return multiple values from a method is not supported.
+
+{|  style="width:100%; border:none;"
+|-
+!width=50%| Java !! style="width:50%;"| C#
+|- valign=top
+| <source lang=Java>public class PassByRefTest {
+
+    public static void changeMe(String s) {
+        s = "Changed";
+    }
+    
+    public static void swap(int x, int y) {
+        int temp = x;
+        
+        x = y;
+        y = temp;
+    }
+    
+    public static void main(String[] args) {
+        int a = 5, b = 20;
+        String s = "still unchanged";
+        
+        swap(a, b);
+        changeMe(s);
+        
+        System.out.println( "a = " + a + ", " + 
+                            "b = " + b + ", " +
+                            "s = " + s );
+    }
+}</source> || <source lang=CSharp>class PassByRefTest {
+
+    public static void ChangeMe(out string s) {
+        s = "Changed"; 
+    }
+
+    public static void Swap(ref int x, ref int y) {
+        int temp = x;
+
+        x = y;
+        y = temp;
+    }
+
+    public static void Main(string[] args) {
+        int a = 5, b = 10; 
+        string s = "still unchanged";
+
+        Swap(ref a, ref b); 
+        ChangeMe(out s);
+
+        System.Console.WriteLine("a = " + a + ", " +
+                                 "b = " + b + ", " +
+                                 "s = " + s);
+    }
+}</source>
+|- valign=top
+| <code>a = 5, b = 20, s = still unchanged</code>  || <code>a  = 10, b  = 5, s = Changed</code>
+|}
+
+=== Exceptions ===
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Exceptions !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Checked exceptions || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|Try-catch-finally || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+====Checked exceptions====
+Java supports [[checked exceptions]] (in addition to [[checked exceptions|unchecked exceptions]]). C# only supports unchecked exceptions. Checked exceptions force the programmer to either declare the exception thrown in a method, or to catch the thrown exception using a <code>try-catch</code> clause.
+
+Checked exceptions can encourage good programming practice, ensuring that all errors are dealt with. However [[Anders Hejlsberg]], chief C# language architect, argues that they were to some extent an experiment in Java and that they have not been shown to be worthwhile except in small example programs.
+
+One criticism is that checked exceptions encourage programmers to use an empty catch block (<code>catch (Exception e) {}</code>), which silently swallows exceptions, rather than letting the exceptions propagate to a higher-level exception-handling routine. In some cases, however, [[exception chaining]] can be applied instead, by re-throwing the exception in a wrapper exception. For example, if an object is changed to access a database instead of a file, an <code>[http://docs.oracle.com/javase/8/docs/api/java/sql/SQLException.html SQLException]</code> could be caught and re-thrown as an <code>[http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html IOException]</code>, since the caller may not need to know the inner workings of the object.
+
+However, not all programmers agree with this stance, with James Gosling and others maintaining that checked exceptions are a good idea and it's people misusing them that cause the issues. Silently catching exceptions is possible, yes, but you have to explicitly say what you want to do with the exception as opposed to unchecked exceptions that let you do nothing by default. You can ignore it, but you have to explicitly write code to ignore it.
+
+====Try-catch-finally====
+There are also differences between the two languages in treating the <code>try-finally</code> statement. The <code>finally</code> block is always executed, even if the <code>try</code> block contains control-passing statements like <code>throw</code> or <code>return</code>. In Java, this may result in unexpected behavior, if the <code>try</code> block is left by a <code>return</code> statement with some value, and then the <code>finally</code> block that is executed afterward is also left by a <code>return</code> statement with a different value. C# resolves this problem by prohibiting any control-passing statements like <code>return</code> or <code>break</code> in the <code>finally</code> block.
+
+A common reason for using <code>try-finally</code> blocks is to guard resource managing code, thus guaranteeing the release of precious resources in the finally block. C# features the <code>using</code> statement as a syntactic shorthand for this common scenario, in which the <code>Dispose()</code> method of the object of the <code>using</code> is always called.
+
+A rather subtle difference is the moment a stack trace is created when an exception is being thrown. In Java, the stack trace is created in the moment the exception is created.
+
+<source lang=Java>
+class Foo {
+    Exception e = new Exception();
+    int foo() throws Exception {
+        throw e;
+    }
+}
+</source>
+
+The exception in the statement above will always contain the constructor's stack-trace - no matter how often foo is called.
+In C# on the other hand, the stack-trace is created the moment "throw" is executed.
+<source lang=CSharp>
+class Foo 
+{
+    Exception e = new Exception();
+    int foo()
+    {
+        try 
+        {
+            throw e;
+        } 
+        catch (Exception e) 
+        {
+            throw;
+        }
+    }
+}
+</source>
+
+In the code above, the exception will contain the stack-trace of the first throw-line. When catching an exception, there are two options in case the exception should be rethrown: <code>throw</code> will just rethrow the original exception with the original stack, while <code>throw e</code> would have created a new stack trace.
+
+==== Finally blocks ====
+
+Java allows flow of control to leave the <code>finally</code> block of a <code>try</code> statement, regardless of the way it was entered. This can cause another control flow statement (such as <code>return</code>) to be terminated mid-execution. For example:
+
+<source lang=Java>
+int foo() {
+    try {
+        return 0;
+    } finally {
+        return 1;
+    }
+}
+</source>
+
+In the above code, the <code>return</code> statement within <code>try</code> block causes control to leave it, and therefore <code>finally</code> block is executed before the actual return happens. However, <code>finally</code> block itself performs a return as well; thus, the original return that caused it to be entered is not actually executed, and the above method returns 1 rather than 0.
+
+C# does not allow any statements that allow control flow to leave the <code>finally</code> block prematurely, except for <code>throw</code>. In particular, <code>return</code> is not allowed at all, <code>goto</code> is not allowed if the target label is outside the <code>finally</code> block, and <code>continue</code> and <code>break</code> are not allowed if the nearest enclosing loop is outside the <code>finally</code> block.
+
+== Generics ==
+
+<div class="hatnote boilerplate seealso">See also: [[Generic programming]]</div>
+
+In the field of [[generic programming|generics]] the two languages show a superficial syntactical similarity, but they have deep underlying differences.
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Generics !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Implementation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Type erasure]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[Reification (computer science)|Reification]]
+|-
+|Runtime realization || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Covariance and contravariance (computer science)|Covariance]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Covariance and contravariance (computer science)|Contravariance]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Reference type constraint || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; implicit || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Value/primitive type constraint || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Constructor constraint || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Relation constraint || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Primitive/value type support || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Migration compatibility || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|}
+
+=== Type erasure versus reified generics ===
+[[Generics in Java]] are a language-only construction; they are implemented only in the compiler. The generated classfiles include generic signatures only in form of metadata (allowing the compiler to compile new classes against them). The runtime has no knowledge of the generic type system; generics are not part of the [[JVM]]. Instead, generics classes and methods are transformed during compilation through a process known as [[type erasure]]. During this process the compiler replaces all generic types with their ''raw'' version and inserts casts/checks appropriately in client code where the type and its methods are used. The resulting byte code will contain no references to any generic types or parameters (See also [[Generics in Java]]). <br/>
+The language specification intentionally prohibits certain uses of generics; this is necessary to allow for implementing generics through [[type erasure]], and to allow for migration compatibility.
+
+C# builds on support for generics from the virtual execution system itself, i.e. it is not just a language feature. The language is merely a front-end for cross-language generics support in the [[Common Language Runtime|CLR]]. During compilation generics are verified for correctness, but code generation for actually ''implementing'' the generics are deferred to class-load time. Client code (code invoking generic methods/properties) are fully compiled and can safely assume generics to be type-safe. This is called [[Reification (computer science)|reification]]. At runtime, when a unique set of type parameters for a generic class/method/delegate is encountered for the first time, the class loader/verifier will synthesize a concrete class descriptor and generate method implementations. During the generation of method implementations all reference types will be considered a single type, as reference types can safely share the same implementations. Note, this is merely for the purpose of ''implementing'' code. Different sets of reference types will still have unique type descriptors; their method tables will merely point to the same code.
+
+The following list illustrates some differences between Java and C# when managing generics. It is not exhaustive:
+
+{| class="wikitable"
+|-
+! style="width:50%;"|Java !! style="width:50%;"|C#
+|-
+| Type checks and downcasts are injected into client code (the code ''referencing'' the generics). Compared to non-generic code with manual casts, these casts will be the same, but compared to compile-time verified code that would not need runtime casts and checks, these operations represent a performance overhead.
+| C#/.NET generics guarantee type-safety and are verified at compile time, making extra checks/casts are unnecessary at runtime. Hence, generic code will run ''faster'' than non-generic (or type-erased) code that require casts when handling non-generic or type-erased objects.
+|-
+| Cannot use primitive types as type parameters; instead, the developer must use the wrapper type corresponding to the primitive type. This incurs extra performance overhead by requiring boxing and unboxing conversions as well a memory and garbage collection pressure, as the wrappers will be heap-allocated as opposed to stack-allocated.
+| Primitive and value types are allowed as type parameters in generic realizations. At runtime code will be synthesized and compiled for each unique combination of type parameters upon first use. Generics that are realized with primitive/value type do not require boxing/unboxing conversions.
+|-
+| Generic exceptions are not allowed and a type parameter cannot be used in a catch clause
+| Can both define generic exceptions and use those in catch clauses
+|-
+| Static members are shared across all generic realizations (during type erasure all realizations are folded into a single class)
+| Static members are separate for each generic realization. A generic realization is a unique class.
+|-
+| Type parameters cannot be used in declarations of static fields/methods or in definitions of static inner classes
+| No restrictions on use of type parameters
+|-
+| Cannot create an array where the component type is a generic realization (concrete parameterized type)
+<source lang=Java>
+Object tenPairs =
+    new Pair<Integer, String>[10]; // error
+</source>
+| A generic realization is a 1st class citizen and can be used as any other class; also an array component
+<source lang=CSharp>
+object tenPairs =
+    new Pair<int, string>[10]; // OK
+</source>
+|-
+| Cannot create an array where the component type is a type parameter
+<source lang=Java>
+public class Lookup<TKey,TValue> {
+    public TValue[] getEmptyValues(TKey key) {
+        return new TValue[0]; // error
+    }
+}
+</source>
+| Type parameters represent actual, discrete classes and can be used like any other type within the generic definition.
+<source lang=CSharp>
+public class Lookup<TKey, TValue> {
+    public TValue[] GetEmptyValues(TKey key) {
+        return new TValue[0]; // OK
+    }
+}
+</source>
+|-
+| There is no class literal for a concrete realization of a generic type
+| A generic realization is an actual class.
+|-
+| <code>instanceof</code> is not allowed with type parameters or concrete generic realizations
+| The <code>is</code> and <code>as</code> operators work the same for type parameters as for any other type.
+|-
+| Cannot create new instances using a type parameter as the type
+| With a constructor constraint, generic methods or methods of generic classes can create instances of classes that have default constructors.
+|-
+| Type information is erased during compilation. Special extensions to reflection must be used to discover the original type.
+| Type information about C# generic types is fully preserved at runtime, and allows complete reflection support as well as instantiation of generic types.
+|-
+| Reflection cannot be used to construct new generic realizations. During compilation extra code (typecasts) are injected into the ''client'' code of generics. This precludes creating new realizations later.
+| Reflection can be used to create new realizations for new combinations of type parameters.
+|}
+
+C# allows generics directly for primitive types. Java, instead, allows the use of boxed types as type parameters (e.g., <code>List&lt;Integer&gt;</code> instead of <code>List&lt;int&gt;</code>). This comes at a cost since all such values need to be boxed/unboxed when used, and they all need to be heap-allocated. However, a generic type can be specialized with an array type of a primitive type in Java, for example <code>List&lt;int[]&gt;</code> is allowed.
+
+=== Migration compatibility ===
+Java's type erasure design was motivated by a design requirement to achieve ''migration compatibility'' - not to be confused with [[backward compatibility]]. In particular, the original requirement was "''… there should be a clean, demonstrable migration path for the Collections APIs that were introduced in the Java 2 platform''". This was designed so that any new generic collections should be passable to methods that expected one of the pre-existing collection classes.
+
+C# generics were introduced into the language while preserving full backward compatibility, but did not preserve full ''migration compatibility'': Old code (pre C# 2.0) runs unchanged on the new generics-aware runtime without recompilation. As for ''migration compatibility'', new generic collection classes and interfaces were developed that supplemented the non-generic .NET 1.x collections rather than replacing them. In addition to generic collection interfaces, the new generic collection classes implement the non-generic collection interfaces where possible. This prevents the use of new generic collections with pre-existing (non-generic aware) methods, if those methods are coded to use the collection ''classes''.
+
+=== Covariance and contravariance ===
+<div class="hatnote">Further information: [[Covariance and contravariance (computer science)]]</div>
+Covariance and contravariance is supported by both languages. Java has use-site variance that allows a single generic class to declare members using both co- and contravariance. C# has define-site variance for generic interfaces and delegates. Variance is not supported directly on classes but is supported through their implementation of variant interfaces. C# also has use-site covariance support for methods and delegates.
+
+== Functional programming ==
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| [[#Functional programming|Functional programming]] !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Method references || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (As of [[Java 8]]) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Closure (computer science)|Closures]] || style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|All lambdas do not introduce a new level of scope. All referenced variables must be effectively final(As of [[Java 8]]) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Lambda expressions]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (As of [[Java 8]]) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Abstract syntax tree|Expression trees]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Generic query language || style="background:#F99;vertical-align:middle;text-align:center;background: #8CF;" class="table-no"|No; but see '[[Java 8]] Stream' [[Monad (functional programming)|(Monad)]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Tail recursion compiler optimizations || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (January 2014)">citation needed</span>]]</i>&#93;</sup> || style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Only on x64
+|}
+
+=== Closures ===
+A closure is an inline function that captures variables from its lexical scope.
+
+C# supports closures as anonymous methods or [[Anonymous function#C#lambda expressions|lambda expressions]] with full-featured [[Closure (computer science)|closure]] semantics.
+
+In Java, anonymous inner classes will remain the preferred way to emulate closures until Java 8 has become the new standard. This is a more verbose construction. This approach also has some differences compared to real closures, notably more controlled access to variables from the enclosing scopes: only final members can be referenced. Java 8, however introduces lambdas that fully inherit the current scope and, in fact, do not introduce a new scope.
+
+When a reference to a method can be passed around for later execution, a problem arises about what to do when the method has references to variables/parameters in its lexical scope. C# closures can access any variable/parameter from its lexical scope. In Java's anonymous inner classes, only references to final members of the lexical scope are allowed, thus requiring the developer to mark which variables to make available, and in what state (possibly requiring boxing).
+
+While Java does not currently feature closures, it has been announced that some form of closures or lambdas will be included in JDK 8 that at latest update (10 October 2010) is scheduled for release "late 2012".
+
+===Lambdas and expression trees===
+C# and Java feature a special type of in-line [[Closure (computer science)|closure]]s called [[Anonymous function|lambdas]]. These are anonymous methods: they have a signature and a body, but no name. They are mainly used to specify local function-valued arguments in calls to other methods, a technique mainly associated with [[functional programming]].
+
+C# allows to use lambda functions as a way to define special data structures called expression trees. Whether they are seen as an executable function or as a data structure depends on compiler [[type inference]] and what type of variable or parameter they are assigned or cast to. Lambdas and expression trees play key roles in [[LINQ]].
+
+==Metadata==
+<table class="metadata plainlinks ambox mbox-small-left ambox-content" role="presentation"><tr><td class="mbox-image">[[File:Wiki letter w cropped.svg|20px|alt=&#91;icon&#93;]]</td><td class="mbox-text"><span class="mbox-text-span">This section requires [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expansion].  <small>''(February 2015)''</small></span></td></tr></table>
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| [[Metadata]] !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Metadata annotations/attributes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Interface based; user-defined annotations can be created || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Class based
+|-
+|Positional arguments || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; unless a single argument || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Named arguments || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Default values || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|At definition || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Through initialization
+|-
+|Nested types || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Specialization || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Conditional metadata || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+== Preprocessing, compilation and packaging ==
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| [[Preprocessor|Preprocessing]], [[Compiler|Compilation]] and [[Modular programming|Packaging]] !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Namespaces]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Packages || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Namespaces
+|-
+|File contents || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Restricted || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+|-
+|Packaging || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Package || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Assembly
+|-
+|Classes/assembly search path || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|ClassPath || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Both compile-time and runtime
+|-
+|Conditional compilation || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Custom errors/warnings || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; AnnotationProcessor || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Explicit regions || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+=== Namespaces and file contents ===
+
+In C#, [[namespace]]s are similar to those in [[C++]]. Unlike [[Java package|package]] names in Java, a namespace is not in any way tied to the location of the source file. While it is not strictly necessary for a Java source file location to mirror its package directory structure, it is the conventional organization.
+
+Both languages allow importing of classes (e.g., <code>'''import''' java.util.*</code> in Java), allowing a class to be referenced using only its name. Sometimes classes with the same name exist in multiple namespaces or packages. Such classes can be referenced by using fully qualified names, or by importing only selected classes with different names. To do this, Java allows importing a single class (e.g., <code>'''import''' java.util.List</code>). C# allows importing classes under a new local name using the following syntax: <code>'''using''' Console = System.Console</code>. It also allows importing specializations of classes in the form of <code>'''using''' IntList = System.Collections.Generic.List&lt;'''int'''&gt;</code>.
+
+Java has a [[static import]] syntax that allows using the short name of some or all of the static methods/fields in a class (e.g., allowing <code>foo(bar)</code> where <code>foo()</code> can be statically imported from another class). C# has a static class syntax (not to be confused with static inner classes in Java), which restricts a class to only contain static methods. C# 3.0 introduces [[extension method]]s to allow users to statically add a method to a type (e.g., allowing <code>foo.bar()</code> where <code>bar()</code> can be an imported extension method working on the type of <code>foo</code>).
+
+The [[Sun Microsystems]] Java compiler requires that a source file name must match the only public class inside it, while C# allows multiple public classes in the same file, and puts no restrictions on the file name. C# 2.0 and later allows splitting a class definition into several files by using the <code>partial</code> keyword in the source code. In Java, a public class will always be in its own source file. In C#, source code files and logical units separation are not tightly related.
+
+=== Conditional compilation ===
+
+Unlike Java, C# implements [[conditional compilation]] using [[preprocessor directive]]s. It also provides a <code>Conditional</code> [[Annotation|attribute]] to define methods that are only called when a given compilation constant is defined. This way, [[Assertion (computing)|assertions]] can be provided as a framework feature with the method <code>Debug.Assert()</code>, which is only evaluated when the <code>DEBUG</code> constant is defined. Since version 1.4, Java provides a language feature for assertions, which are turned off at runtime by default but can be enabled using the <code>-enableassertions</code> or <code>-ea</code> switch when invoking the JVM.
+
+== Threading and asynchronous features ==
+
+Both languages include thread [[synchronization]] mechanisms as part of their language syntax.
+
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| [[Thread (computer science)|Threading]] and [[Synchronization (computer science)|Synchronization]] !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|Threads || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Thread pool pattern|Thread pool]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Task-based parallelism || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Semaphore (programming)|Semaphores]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Monitor (synchronization)|Monitors]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Thread-local variables || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; ThreadStaticAttribute
+|}
+
+=== Task-based parallelism ===
+With .NET Framework 4.0, a new task-based programming model was introduced to replace the existing event-based asynchronous model. The API is based around the <code>Task</code> and <code>Task<T></code> classes. Tasks can be composed and chained.
+
+By convention, every method that returns a <code>Task</code> should have its name postfixed with ''Async''.
+
+<source lang="csharp">
+public static class SomeAsyncCode 
+{
+    public static Task<XDocument> GetContentAsync()
+    {
+        HttpClient httpClient = new HttpClient();
+        return httpClient.GetStringAsync("www.contoso.com").ContinueWith((task) => {
+            string responseBodyAsText = task.Result;
+            return XDocument.Parse(responseBodyAsText); 
+        });
+    }
+}
+
+var t = SomeAsyncCode.GetContentAsync().ContinueWith((task) => {
+    var xmlDocument = task.Result;
+});
+
+t.Start();
+
+</source>
+
+In C# 5 a set of language and compiler extensions was introduced to make it easier to work with the task model. These language extensions included the notion of <code>async</code> methods and the <code>await</code> statement that make the program flow appear synchronous.
+
+<source lang="csharp">
+public static class SomeAsyncCode 
+{
+    public static async Task<XDocument> GetContentAsync()
+    {
+        HttpClient httpClient = new HttpClient();
+        string responseBodyAsText = await httpClient.GetStringAsync("www.contoso.com");
+        return XDocument.Parse(responseBodyAsText); 
+    }
+}
+
+var xmlDocument = await SomeAsyncCode.GetContentAsync();
+
+// The Task will be started on call with await.
+
+</source>
+
+From this [[syntactic sugar]] the C# compiler generates a state-machine that handles the necessary continuations without developers having to think about it.
+
+==Additional features==
+
+===Numeric applications===
+To adequately support applications in the field of mathematical and financial computation, several language features exist.
+
+Javas [[strictfp]] keyword enables strict floating-point calculations for a region of code. Strict floating-point calculations require that even if a platform offers higher precision during calculations, intermediate results must be converted to single/double. This ensures that strict floating point calculations return exactly the same result on all platforms. Without strict floating point a platform implementation is free to use higher precision for intermediate results during calculation. C# allows an implementation for a given hardware architecture to always use a higher precision for intermediate results if available, i.e. C# does not allow the programmer to optionally force intermediate results to use the potential lower precision of float/double.
+
+C# provides a built-in decimal type, which has higher precision (but less range) than the Java/C# double. The decimal type is a 128-bit data type suitable for financial and monetary calculations. The decimal type can represent values ranging from 1.0 × 10<sup>−28</sup> to approximately 7.9 × 10<sup>28</sup> with 28-29 significant digits. The structure uses C# operator overloading so that decimals can be manipulated using operators such as +, -, * and /, like other primitive data types.
+
+The <code>[http://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html BigDecimal]</code> and <code>[http://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html BigInteger]</code> types provided with Java allow arbitrary-precision representation of decimal numbers and integer numbers, respectively. Java standard library does not have classes to deal with complex numbers.
+
+The BigInteger, and Complex types provided with C# allow representation and manipulation of arbitrary-precision integers and complex numbers, respectively. The structures use C# operator overloading so that instances can be manipulated using operators such as +, -, * and /, like other primitive data types. C# standard library does not have classes to deal with arbitrary-precision floating point numbers (see [[Arbitrary-precision arithmetic#Arbitrary-precision software|software for arbitrary-precision arithmetic]]).
+
+C# can help mathematical applications with the <code>checked</code> and <code>unchecked</code> operators that allow the enabling or disabling of run-time checking for [[arithmetic overflow]] for a region of code.
+
+=== Language integrated query (LINQ) ===
+
+<div class="hatnote">Further information: [[LINQ]]</div>
+
+C#s [[LINQ|Language Integrated Query (LINQ)]] is a collection of features designed to work together to allow for in-language querying capabilities and is a distinguishing feature between Java and C#.
+
+LINQ consists of the following features:
+
+* Extension methods allow existing interfaces or classes to be extended with new methods. Implementations can be shared or an interface can have a dedicated implementation.
+* Lambdas allow for expression of criteria in a functional fashion.
+* Expression trees allow a specific implementation to capture a lambda as an [[abstract syntax tree]] rather than an executable block. This can be utilized by implementations to represent criteria in a different language, e.g. in the form of an [[Where (SQL)|SQL where clause]] as is the case with e.g. [[Linq#LINQ to SQL (formerly called DLINQ)|Linq, LINQ to SQL]].
+* Anonymous types and type inference supports capturing and working with the result type of a query. A query may both join and project over query sources that may lead to a result type that cannot be named.
+* Query expressions to support a syntax familiar to [[SQL]] users.
+* Nullable (lifted) types to allow for a better match with query providers that support nullable types, like e.g. [[SQL]].
+
+=== Native interoperability ===
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Native interoperability !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Cross-language interoperability]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with [[Nashorn (JavaScript engine)|Nashorn]], [[CORBA]], [[JNI]] or [[Java Native Access|JNA]]) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; C# was designed for it
+|-
+|External/native methods || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Marshalling (computer science)|Marshalling]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|External glue code required || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes; metadata controlled
+|-
+|[[Pointer (computer programming)|Pointer]]s and arithmetics || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No; but references exist || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Native types || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Fixed-size buffers || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Explicit stack allocation || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|Address-of || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Object pinning#Moving vs. non-moving|Object pinning (fix variable to address)]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+The [[Java Native Interface]] (JNI) feature allows Java programs to call non-Java code. However, JNI does require the code being called to follow several conventions and imposes restrictions on types and names used. This means that an extra adaption layer between legacy code and Java is often needed. This adaption code must be coded in a non-Java language, often C or C++. [[Java Native Access]] (JNA) allows easier calling of native code that only requires writing Java code, but comes at a performance cost.
+
+In addition, third party [[Library (computing)|libraries]] provide for Java-[[Component Object Model|COM]] bridging, e.g. JACOB ([[Free software|free]]), and J-Integra for COM ([[Proprietary software|proprietary]]).
+
+.NET Platform Invoke ([[Platform Invocation Services|P/Invoke]]) offers the same capability by allowing calls from C# to what Microsoft refers to as [[Managed code|unmanaged code]]. Through metadata attributes the programmer can control exactly how the parameters and results are [[Marshalling (computer science)|marshalled]], thus avoiding the external glue code required by the equivalent JNI in Java. P/Invoke allows almost complete access to procedural APIs (such as Win32 or POSIX), but limited access to C++ class libraries.
+
+In addition, .NET Framework also provides a .NET-COM bridge, allowing access to COM components as, if they were first-class .NET objects.
+
+C# also allows the programmer to disable the normal type-checking and other safety features of the [[Common Language Runtime|CLR]], which then enables the use of [[Pointer (computer programming)|pointer variables]]. When using this feature, the programmer must mark the code using the <code>unsafe</code> keyword. JNI, P/Invoke, and "unsafe" code are equally risky features, exposing possible security holes and application instability. An advantage of unsafe, managed code over P/Invoke or JNI is that it allows the programmer to continue to work in the familiar C# environment to accomplish some tasks that otherwise would require calling out to unmanaged code. An assembly (program or library) using unsafe code must be compiled with a special switch and will be marked as such. This enables runtime environments to take special precautions before executing potentially harmful code.
+
+=== Platform support ===
+{| class="wikitable" style="width:80%;"
+|-
+! style="width:40%;"| Platform support !! style="width:30%;"|Java !! style="width:30%;"|C#
+|-
+|[[Linux]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Mono
+|-
+|[[Mac OS X]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Mono
+|-
+|[[Solaris (operating system)|Solaris]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Mono
+|-
+|[[FreeBSD]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Mono
+|-
+|[[IBM AIX|AIX]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial?
+|-
+|[[iOS (Apple)|iOS]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via RoboVM or [[Codename One]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Xamarin MonoTouch
+|-
+|[[Microsoft Windows|Windows]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Windows Mobile]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Windows Phone]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via [[Codename One]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Windows Store|Windows 8 Modern]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|[[Android (operating system)|Android]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via [[Dalvik (software)|Dalvik]], [[ART (software)|ART]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via Xamarin MonoDroid
+|-
+|[[Java ME|Feature phones]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|-
+|[[Symbian]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Deprecated
+|-
+|[[BlackBerry OS|Blackberry]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|via cross-compiler
+|}
+
+=== Runtime environments ===
+Java (the programming language) is designed to execute on the Java platform via the [[Java Runtime Environment]] (JRE). The Java platform includes the [[Java Virtual Machine]] (JVM) as well as a common set of libraries. The JRE was originally designed to support interpreted execution with final compilation as an option. Most JRE environments execute fully or at least partially compiled programs, possibly with [[adaptive optimization]]. The Java compiler produces [[Java bytecode]]. Upon execution the bytecode is loaded by the Java runtime and either interpreted directly or compiled to machine instructions and then executed. <div class="hatnote">Further information: [[Java Runtime Environment]]</div>
+
+C# is designed to execute on the [[Common Language Runtime]] (CLR). The CLR is designed to execute fully compiled code. The C# compiler produces [[Common Intermediate Language]] instructions. Upon execution the runtime loads this code and compiles to machine instructions on the target architecture. <div class="hatnote">Further information: [[Common Language Runtime]]</div>
+
+== Examples ==
+
+=== Input/output ===
+
+Example illustrating how to copy text one line at a time from one file to another, using both languages.
+
+{| width=100% |class="wikitable"
+|-
+!width=50%| Java
+!width=50%| C#
+|-
+|valign=top|<source lang=Java>
+import java.io.*;
+
+class FileIOTest
+{
+    public static void main(String[] args) throws IOException
+    {
+        byte[] content = Files.readAllBytes(Paths.get("input.txt"));
+        Files.write(Paths.get("output.txt"), content, StandardOpenOption.CREATE);
+    }
+}
+</source>
+|valign=top|<source lang=CSharp>
+using System.IO;
+
+class FileIOTest 
+{
+    public static void Main(string[] args) 
+    {
+        var lines = File.ReadLines("input.txt");
+        File.WriteAllLines("output.txt", lines);
+    }
+}
+</source>
+|-
+|valign=top|Notes on the Java implementation:
+* Files.readAllBytes method reads a whole file into a byte array.
+* Files.write method writes a byte array into an output file, indicated by a Path object.
+* Files.write method also takes care of buffering and closing the output stream.
+* An explicit option should be specified for the Files.write method whether it should overwrite or append to the output file.
+* StandardOpenOption.CREATE indicates that the output file should be created or overwritten if exists.
+|valign=top|Notes on the C# implementation:
+* The <tt>ReadLines</tt> method returns an enumerable object which upon enumeration will read the file one line at a time.
+* The <tt>WriteAllLines</tt> method takes an enumerable and retrieves a line at a time and writes it until the enumeration ends.
+* The underlying reader will automatically allocate a buffer, thus there is no need to explicitly introduce a buffered stream.
+* <tt>WriteAllLines</tt> automatically closes the output stream, also in the case of an abnormal termination.
+|}
+
+=== Integration of library defined types ===
+
+C# allows library defined types to be integrated with existing types and operators by using custom implicit/explicit conversions and operator overloading as illustrated by the following example:
+{| style="width:100%;"
+|-
+! style="width:50%;"|Java !! style="width:50%;"| C#
+|-
+|
+<source lang=Java>
+BigInteger bigNumber =
+   new BigInteger("123456789012345678901234567890");
+
+BigInteger answer = bigNumber.multiply(new BigInteger("42"));
+BigInteger square = bigNumber.multiply(bigNumber);
+BigInteger sum = bigNumber.add(bigNumber);
+</source>
+|
+<source lang=CSharp>
+var bigNumber =
+   BigInteger.Parse("123456789012345678901234567890");
+
+var answer = bigNumber * 42;
+var square = bigNumber * bigNumber;
+var sum = bigNumber + bigNumber;
+</source>
+|}
+
+=== C# delegates and equivalent Java constructs ===
+
+{| style="width:100%;"
+|-
+! style="width:50%;"| Java !! style="width:50%;"| C#
+|- valign="top"
+|
+<source lang=Java>
+    // define a common interface for all invokeable objects
+    // (will use the wrapper pattern)
+    interface Invokeable{
+        boolean invoke(String arg);
+    }
+
+    // a target class
+    class Target{
+        public boolean targetMethod(String arg){
+            // do something
+            return true;
+        }
+    }
+
+    // usage
+    void doSomething(){
+        // construct a target with the target method
+        final Target target = new Target();
+        Invokeable ivk = target::targetMethod;
+        boolean result = ivk.invoke("argumentstring");
+    }
+</source>
+|
+<source lang=CSharp>
+    // a target class
+    class Target
+    {
+        public bool TargetMethod(string arg)
+        {
+            // do something
+            return true;
+        }
+    }
+
+    // usage
+    void DoSomething()
+    {
+        // construct a target with the target method
+        var target = new Target();
+
+        // capture the delegate for later invocation
+        Func<string, bool> dlg = target.TargetMethod;
+
+        // invoke the delegate
+        bool result = dlg("argumentstring");
+    }
+</source>
+|}
+
+=== Type lifting ===
+
+{| style="width:100%;"
+|-
+! style="width:50%;"| Java !! style="width:50%;"| C#
+|-
+|
+<source lang=Java>
+Integer a = 42;
+Integer b = null;
+
+// This will generate a runtime NullPointerException,
+// because it attempts to unbox the null value.
+Integer c = a * b; </source>
+|
+<source lang=CSharp>
+int? a = 42;
+int? b = null;
+
+// c will receive the null value
+// because * is lifted and one of the operands are null
+int? c = a * b;
+</source>
+|}
+
+===Interoperability with dynamic languages===
+This example illustrates how Java and C# can be used to create and invoke an instance of class which is implemented in another programming language. The "Deepthought" class is implemented using the [[Ruby (programming language)|Ruby programming language]] and represents a simple calculator which will multiply two input values (<tt>a</tt> and <tt>b</tt>) when the <tt>Calculate</tt> method is invoked.
+{|  style="width:100%; border:none;"
+|-
+!width=50%|Java
+!width=50%|C#
+|-
+|valign=top|<source lang=Java>
+// initialize the engine
+
+ScriptEngineManager factory = new ScriptEngineManager();
+ScriptEngine engine = factory.getEngineByName("jruby");
+Invocable invocable = (Invocable) engine;
+
+FileReader fr = new FileReader("Deepthought.rb");
+engine.eval(fr);
+</source>
+|valign=top|<source lang=CSharp>
+// initialize the engine
+
+var runtime = ScriptRuntime.CreateFromConfiguration();
+dynamic globals = runtime.Globals;
+
+runtime.ExecuteFile("Deepthought.rb");
+</source>
+|-
+|valign=top|<source lang=Java>
+// create a new instance of "Deepthought" calculator
+Object calcClass = engine.eval("Deepthought");
+Object calc = invocable.invokeMethod(calcClass, "new");
+
+// set calculator input values
+invocable.invokeMethod(calc, "a=", 6);
+invocable.invokeMethod(calc, "b=", 7);
+
+// calculate the result 
+Object answer = invocable.invokeMethod(calc, "Calculate");
+
+</source>
+|valign=top|<source lang=CSharp>
+// create a new instance of "Deepthought" calculator
+var calc = globals.Deepthought.@new();
+
+// set calculator input values
+calc.a = 6;
+calc.b = 7;
+
+// calculate the result 
+var answer = calc.Calculate();
+</source>
+|- valign=top
+|
+Notes for the Java implementation:
+* Ruby accessors names are generated from the attribute name with a <code>=</code> suffix. When assigning values, Java developers must use the Ruby accessor method name.
+* Dynamic objects from a foreign language are not first-class objects in that they must be manipulated through an API.
+|
+Notes for the C# implementation:
+* Objects returned from properties or methods of <code>dynamic</code> objects are themselves of <code>dynamic</code> type. When type inference (the <code>var</code> keyword) is used, the variables calc and answer are inferred dynamic/late-bound.
+* Dynamic, late-bounds objects are first-class citizens that can be manipulated using C# syntax even though they have been created by an external language.
+*<code>new</code> is a reserved word. The <code>@</code> prefix allows keywords to be used as identifiers.
+|
+|}
+
+=== Fibonacci sequence ===
+
+This example illustrates how the [[Fibonacci sequence]] can be implemented using the two languages. The C# version takes advantage of C# [[#Generator methods|generator methods]]. Both the Java and the C# examples use [[K&R style]] for code formatting of classes,  methods and statements.
+
+{|  style="width:100%; border:none;"
+|-
+!Java
+!C#
+|-
+|width=50%|<source lang=Java>
+// The fibonacci sequence
+class Fibonacci implements Iterable<Integer> {
+
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            private int a = 0;
+            private int b = 1;
+
+            @Override
+            public boolean hasNext() {
+                return true; // Infinite sequence
+            }
+
+            @Override
+            public Integer next() {
+                int tmp = a;
+                a = b;
+                b = a + tmp;
+                return tmp; // Boxing conversion
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException(
+                        "Not supported by the Fibonacci sequence.");
+            }
+        };
+    }
+}
+</source>
+|width=50% valign=top|<source lang=CSharp>
+// The Fibonacci sequence
+public static IEnumerable<int> Fibonacci() {
+    int a = 0;
+    int b = 1;
+
+    while (true) {
+        yield return a;
+        a += b;
+        yield return b;
+        b += a;
+    }
+}
+</source>
+|-
+|width=50%|<source lang=Java>
+// print the 10 first Fibonacci numbers
+int i = 0;
+for(int it : new Fibonacci()) {
+    System.out.println(it);
+    if (++i >= 10) break;
+}
+</source>
+|width=50% valign=top|<source lang=CSharp>
+// print the 10 first Fibonacci numbers
+foreach (var it in Fibonacci().Take(10)) {
+    Console.WriteLine(it);
+}
+</source>
+|- valign="top"
+|Notes for the Java version:
+* The infinite Fibonacci sequence is represented by the <tt>Fibonacci</tt> class (as opposed to a method). 
+* The <tt>Fibonacci</tt> class implements the <tt>Iterator</tt> interface, which allows client code to request the Fibonacci numbers one at a time.
+* The class implements the <tt>hasNext()</tt> method as always returning <tt>true</tt> since the Fibonacci sequence is infinite
+* The <tt>next()</tt> method calculates and returns the next number.
+* The <tt>Iterator</tt> interface formally also allows the client to request removal of numbers. As the Fibonacci sequence is a mathematically defined sequence, the <tt>remove</tt> method is implemented as ''unsupported''.
+* The <tt>@Override</tt> annotation is necessary to avoid compiler warnings about possible unintentional overriding of base class methods.
+* Because <tt>int</tt> is a primitive type and <tt>Iterable<></tt> is a generic interface, the Java compiler generates a boxing conversion for each number.
+
+|Notes for the C# version:
+* The infinite Fibonacci sequence is represented by the static <tt>Fibonacci</tt> method (as opposed to a class).
+* The method is defined as returning instances of the interface <tt>IEnumerable&lt;int&gt;</tt>, which allows client code to repeatedly request the next number of a sequence
+* The <tt>yield</tt> keyword converts the method into a generator method. 
+* The method body calculates and returns Fibonacci numbers.
+* The <tt>yield return</tt> statement returns the next number of the sequence and creates a continuation so that subsequent invocations of the <tt>IEnumerable</tt> interface's <tt>MoveNext</tt> method will continue execution from the following statement with all local variables intact.
+* The implementation uses two <tt>yield return</tt> statements to alternate calculations instead of using a temporary tmp variable.
+|}
+
+==See also==
+* [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and VB.NET]]
+* [[Comparison of Java and C++]]
+* [[Java (programming language)|Java programming language]]
+* [[Comparison of the Java and .NET platforms]]
+
+==References==
+<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+* [http://msdn.microsoft.com/en-us/gg715299.aspx Moving to C# and the .NET Framework] at [[MSDN]]
+* [http://msdn.microsoft.com/en-us/library/ms836794.aspx C# and Java: Comparing Programming Languages] at [[MSDN]]
+* [http://www.javacamp.org/javavscsharp/ Java vs. C# - Code for Code Comparison]
+* [http://www.osnews.com/story.php?news_id=5602 Nine Language Performance Round-up]
+* [[Microsoft Developer Network|MSDN]]: [http://msdn.microsoft.com/en-us/library/ms228602.aspx The C# Programming Language for Java Developers]
+* [http://www.ecma-international.org/publications/standards/Ecma-334.htm Standard ECMA-334 C# Language specification]
+* [http://java.sun.com/docs/books/jls/ Java Language Specification (Sun)]
+
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Common Language Infrastructure|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Common Language Infrastructure|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Common_Language_Infrastructure&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Common Language Infrastructure]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Architecture</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Application domain]]
+*[[Code Access Security]]
+*[[Common Intermediate Language]] (CIL)
+**[[List of CIL instructions|CIL instructions]]
+*[[Common Type System]] (CTS)
+*[[Platform Invocation Services]] (P/Invoke)
+*[[Virtual Execution System]] (VES)
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Assembly (CLI)|Assembly]]
+*[[Delegate (CLI)|Delegate]]
+*[[Manifest (CLI)|Manifest]]
+*[[Metadata (CLI)|Metadata]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Standard Libraries (CLI)|Standard Libraries]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[Standard Libraries (CLI)#Kernel Profile|Kernel Profile]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Standard Libraries (CLI)#Base Class Library|Base Class Library]] (BCL)
+*[[Standard Libraries (CLI)#Runtime Infrastructure Library|Runtime Infrastructure Library]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Standard Libraries (CLI)#Compact Profile|Compact Profile]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Standard Libraries (CLI)#Network Library|Network Library]]
+*[[Standard Libraries (CLI)#Reflection Library|Reflection Library]]
+*[[Standard Libraries (CLI)#XML Library|XML Library]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Standard Libraries (CLI)#Extended Array Library|Extended Array Library]]
+*[[Standard Libraries (CLI)#Extended Numerics Library|Extended Numerics Library]]
+*[[Standard Libraries (CLI)#Parallel Library|Parallel Library]]
+*[[Standard Libraries (CLI)#Vararg Library|Vararg Library]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Implementations</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Microsoft</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[.NET Framework]]
+*[[.NET Compact Framework]]
+*[[.NET Micro Framework]]
+*[[Shared Source Common Language Infrastructure]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Mono (software)|Mono]]
+*[[Portable.NET]]
+</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[List of CLI languages|Languages]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Microsoft</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[C Sharp (programming language)|C#]]
+**[[Microsoft Visual C Sharp|Visual C#]]
+*[[Visual Basic .NET]]
+*[[C++/CLI]]
+**[[Managed Extensions for C++|Managed]]
+*[[F Sharp (programming language)|F#]]
+*[[J Sharp|J#]]
+*[[JScript .NET]]
+*[[Windows PowerShell]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Axum (programming language)|Axum]]
+*[[A Sharp (.NET)|A#]]
+*[[Boo (programming language)|Boo]]
+*[[Cobra (programming language)|Cobra]]
+*[[IronScheme]]
+** [[IronLisp]]
+*[[IronPython]]
+*[[IronRuby]]
+*[[Nemerle]]
+*[[Oxygene (programming language)|Oxygene]]
+*[[Phalanger (compiler)|Phalanger]]
+*[[P Sharp|P#]]
+*[[Scala (programming language)|Scala]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Comparison</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Comparison of C Sharp and Java|C# and Java]]
+*[[Comparison of C Sharp and Visual Basic .NET|C# and Visual Basic .NET]]
+*[[Comparison of the Java and .NET platforms|Java and .NET platforms]]
+*[[Comparison of Visual Basic and Visual Basic .NET|Visual Basic and Visual Basic .NET]]
+</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="3"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Java (software platform)|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Java (software platform)|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Java_(software_platform)&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Java (software platform)|Java]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Java platforms</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Java (programming language)|Java language]]
+*[[Java virtual machine|JVM]]
+*[[Java Platform, Micro Edition|Micro Edition]]
+*[[Java Platform, Standard Edition|Standard Edition]]
+*[[Java Platform, Enterprise Edition|Enterprise Edition]]
+*[[Java Card]]
+*[[Android software development#SDK|Android SDK]]
+</div></td><td class="navbox-image" rowspan="13" style="width:0%;padding:0px 0px 0px 2px"><div>[[File:Wave.svg|75px]]</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Oracle technologies</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Squawk virtual machine|Squawk]]
+*[[Java Development Kit]]
+*[[OpenJDK]]
+*[[Java virtual machine]]
+*[[JavaFX]]
+*[[Maxine Virtual Machine|Maxine VM]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Platform technologies</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Java applet|Applets]]
+*[[Java servlet|Servlets]]
+*[[MIDlet]]s
+*[[JavaServer Pages|JSP]]
+*[[Java Web Start|Web Start (JNLP)]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Major third-party technologies</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Eclipse (software)|Eclipse]]
+*[[GNU Classpath]]
+*[[Google Web Toolkit|GWT]]
+*[[Apache Harmony|Harmony]]
+*[[Hibernate (Java)|Hibernate]]
+*[[IcedTea]]
+*[[Jazelle]]
+*[[Spring Framework|Spring]]
+*[[Apache Struts|Struts]]
+*[[TopLink]]
+*[[WildFly]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">History</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[Java version history]]
+*[[Java Community Process]]
+*[[Sun Microsystems]]
+*[[Free Java implementations]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Major programming languages</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+*[[BeanShell]]
+*[[Clojure]]
+*[[Groovy (programming language)|Groovy]]
+*[[Oxygene (programming language)|Oxygene]]
+*[[Tcl/Java|Java Tcl]]
+*[[JRuby]]
+*[[Jython]]
+*[[Processing_(programming_language)|Processing]]
+*[[Rhino (JavaScript engine)|Rhino]]
+*[[Scala (programming language)|Scala]]
+*[[List of JVM languages |more…]]
+</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Java conferences</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+* [[JavaOne]]
+</div></td></tr></table></td></tr></table>
+
+
+
+
+
+
+[[Category:Programming language comparisons|C Sharp and Java]]
+[[Category:Java (programming language)]]
+[[Category:C programming language family]]

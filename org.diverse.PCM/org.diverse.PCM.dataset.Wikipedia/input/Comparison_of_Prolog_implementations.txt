@@ -1,0 +1,582 @@
+The following '''Comparison of Prolog implementations''' provides a reference for the relative feature sets and performance of different implementations of the [[Prolog]] computer [[programming language]].
+
+==Portability==
+There are Prolog implementations that are radically different, with different syntax and different semantics (e.g. Visual Prolog) and sub-communities have developed around different implementations. 
+
+Code that strictly conforms to the ISO-Prolog core language is portable across ISO-compliant implementations. However, the ISO standard for modules was never accepted by most Prolog implementors.
+
+Factors that can adversely affect portability include:  use of bounded vs. unbounded integer arithmetic, additional types such as string objects, advanced numeric types (rationals, complex), feature extensions such as [[Unicode]], threads, and tabling.  Use of libraries unavailable in other implementations and library organisation: 
+<blockquote>Currently, the way predicates are spread over the libraries and system built-ins differs enormously. [...] Fortunately, there are only few cases where we find predicates with the same name but different semantics (e.g. <tt>delete/3</tt>)</blockquote>
+
+==Main features==
+{| class="wikitable"
+|-
+! colspan="3" | Platform
+! colspan="8" | Features
+! colspan="3" | Toolkit
+!| Prolog Mechanics
+|-
+! style="background:#ffdead;" | Name
+! style="background:#ffdead;" | OS
+! style="background:#ffdead;" | Licence
+! style="background:#ffdead;" | Native Graphics
+! style="background:#ffdead;" | Compiled Code
+! style="background:#ffdead;" | Unicode
+! style="background:#ffdead;" | Object Oriented
+! style="background:#ffdead;" | Native OS Control
+! style="background:#ffdead;" | Stand Alone Executable
+! style="background:#ffdead;" | C Interface
+! style="background:#ffdead;" | Java Interface
+! style="background:#ffdead;" | Interactive Interpreter
+! style="background:#ffdead;" | Debugger
+! style="background:#ffdead;" | Code Profiler
+! style="background:#ffdead;" | Syntax
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[BProlog]]
+|[[Unix]], [[Microsoft Windows|Windows]], [[Mac OS X]]
+|Free for non-commercial uses
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|ISO-Prolog, plus event-handling, CLP(FD), and tabling
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[JIProlog]]
+|[[JVM]], [[Android (operating system)|Android]]
+|[[Shareware]]/Commercial and [[Affero General Public License|AGPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes via Java
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes via Java
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|ISO-Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ciao (programming language)|Ciao]]
+|[[Unix]], [[Microsoft Windows|Windows]], [[Mac OS X]]
+|[[GPL]], [[GNU Lesser General Public License|LGPL]]
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|ISO-Prolog, plus extensions
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.lpa.co.uk/dos.htm DOS-PROLOG]
+|[[MS-DOS]]
+|[[Shareware]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|Edinburgh Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[GNU Prolog]]
+|[[Unix]], [[Microsoft Windows|Windows]], [[Mac OS X]]
+|[[GNU General Public License|GPL]], [[LGPL]]
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|ISO-Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.jekejeke.ch/ Jekejeke Prolog]
+|[[JVM]], [[Android (operating system)|Android]]
+|[http://www.jekejeke.ch/idatab/doclet/prod/en/docs/20_lics/package.jsp Distribution Evaluation]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|ISO-Prolog, Java API
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://jlogic.sourceforge.net/ JLog]
+|[[JVM]]
+|[[GNU General Public License|GPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|ISO-Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://jlogic.sourceforge.net/ JScriptLog]
+|Web Browser
+|[[GNU General Public License|GPL]]
+|
+|
+|
+|
+|
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|ISO-Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://java.net/projects/jTrolog jTrolog]
+|[[JVM]]
+|[[GNU Lesser General Public License|LGPL]]
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|ISO-Prolog [http://jtrolog.dev.java.net/test_results/resultsISO.html tests]
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.lpa.co.uk/win.htm LPA-PROLOG]
+|[[Microsoft Windows|Windows]]
+|Commercial
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|Edinburgh Prolog with extensions
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|Open Prolog
+|[[Mac OS]]
+|[[Freeware]]
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Poplog]] Prolog
+|[[Linux]] (32- and 64-bit), [[Unix]], [[Microsoft Windows|Windows]] 
+|Free Open Source
+|Only through [[POP-11]], on Linux
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|Edinburgh Prolog, with interfaces to Poplog Common Lisp and Pop-11
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SICStus Prolog]]
+|[[Unix]], [[Linux]], [[Microsoft Windows|Windows]], [[Mac OS X]]
+|[[Software license|Commercial]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Comparison of Prolog standards compliance|ISO-Prolog]]
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Strawberry Prolog]]
+|[[Microsoft Windows|Windows]], [[Unix]]
+|[[Freeware]], Commercial
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|Not ISO-Prolog + extensions
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SWI-Prolog]]
+|[[Unix]], [[Linux]], [[Microsoft Windows|Windows]], [[Mac OS X]]
+|[[GNU Lesser General Public License|LGPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|ISO-Prolog, Edinburgh Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[tuProlog]]
+|[[JVM]], [[Android (operating system)|Android]]
+|[[GNU Lesser General Public License|LGPL]]
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|ISO-Prolog
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Visual Prolog]]
+|[[Microsoft Windows|Windows]]
+|[[Freeware]], Commercial
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[XSB|XSB Prolog]]
+|[[Linux]], [[Microsoft Windows|Windows]], [[Solaris (operating system)|Solaris]], [[Mac OS X]]
+|[[GNU Lesser General Public License|LGPL]]
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|ISO-Prolog, tabled WFS
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YAP-Prolog]]
+|[[Linux]], [[Microsoft Windows|Windows]], [[Solaris (operating system)|Solaris]], [[Mac OS X]], [[HP-UX]]
+|[[GNU General Public License|GPL]] or Artistic (user choice)
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|Edinburgh, ISO-Prolog, Quintus and SICStus Prolog compatible
+|}
+
+==Operating system and Web-related features==
+{| class="wikitable"
+|-
+! colspan="5" | 
+! colspan="4" | Web-related
+|-
+! style="background:#ffdead;" | Name
+! style="background:#ffdead;" | Conditional compilation
+! style="background:#ffdead;" | Sockets
+! style="background:#ffdead;" | Multi-threading
+! style="background:#ffdead;" | Tabling
+! style="background:#ffdead;" | HTTP client
+! style="background:#ffdead;" | HTTP server
+! style="background:#ffdead;" | HTML Parser
+! style="background:#ffdead;" | RDF Triple store
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[BProlog]]
+|
+|
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ciao (programming language)|Ciao]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[GNU Prolog]]
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.jekejeke.ch/ Jekejeke Prolog]
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[LPA-Prolog]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SICStus Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SWI-Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Visual Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[XSB]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YAP-Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|
+|
+|
+|}
+
+==Static analysis==
+{| class="wikitable"
+|-
+! style="background:#ffdead;" | Name
+! style="background:#ffdead;" | Type checker
+! style="background:#ffdead;" | Determinacy checker
+! style="background:#ffdead;" | Call-pattern checker
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ciao (programming language)|Ciao]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[GNU Prolog]]
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.jekejeke.ch/ Jekejeke Prolog]
+| 
+| 
+| 
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SICStus Prolog]]
+|
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SWI-Prolog]]
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Visual Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[XSB]]
+|
+|
+|
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YAP-Prolog]]
+|
+|
+|
+|}
+
+==Optimizations==
+{| class="wikitable"
+|-
+! style="background:#ffdead;" | Name
+! style="background:#ffdead;" | [[Tail-call optimization|Tail-Call Optimization]]
+! style="background:#ffdead;" | Choice Point Elimination
+! style="background:#ffdead;" | Environment Trimming
+! style="background:#ffdead;" | [[Term_indexing|Just-in-Time Indexing]]
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Ciao (programming language)|Ciao]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[GNU Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[http://www.jekejeke.ch/ Jekejeke Prolog]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (runtime)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (runtime)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (runtime)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SICStus Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[SWI-Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Visual Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (compile time)
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (compile time)
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A (compile time)</small> 
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[XSB]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| ?
+|-
+|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[YAP-Prolog]]
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|}
+
+==Benchmarks==
+* Benchmarking issues: [http://www.cs.kuleuven.be/publicaties/rapporten/cw/CW312.abs.html Odd Prolog benchmarking], Performance differences.
+* Benchmarking software: [http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/prolog/code/library/0.html older], [http://www.ims.uni-stuttgart.de/ftp/pub/languages/prolog/benchmarks/Dobry's_Benchmarks.txt Dobry], [http://portal.acm.org/citation.cfm?id=893977 Aquarius benchmark suite], (Bothe, 1990), [http://www.cs.kuleuven.be/~bmd/hProlog/iclpgcbenches.tar.gz (Demoen et al. 2001)], [http://www.cs.unipr.it/China/Benchmarks/descriptions benchmark descriptions]
+* Benchmarking results: [http://probp.com/performance.htm B-Prolog], [http://www.sics.se/isl/sicstuswww/site/performance.html SICStus], XSB, SICStus vs Yap vs hProlog
+* Benchmarking results: [http://web.archive.org/web/20110719062358/http://www.michaels-website.de/2010/08/prolog-in-the-jvm-survey-of-prolog-engines-written-in-java/ Survey of java prolog engines] by Michael Zeising
+* Benchmarking results: [http://rulebench.projects.semwebcentral.org OpenRuleBench yearly open-source benchmark of rule engines]
+
+== References ==
+
+<div class="reflist " style=" list-style-type: decimal;">
+<references group=""></references></div>
+
+==External links==
+
+* [http://www.complang.tuwien.ac.at/ulrich/prolog_misc/systems.html Overview of Prolog Systems] by Ulrich Neumerkel
+
+* [http://www.complang.tuwien.ac.at/ulrich/iso-prolog/conformity_assessment Conformity assessment I: Syntax]
+
+[[Category:Prolog programming language family]]
