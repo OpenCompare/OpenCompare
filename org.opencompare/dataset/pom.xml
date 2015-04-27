@@ -3,17 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>org.diverse.PCM</artifactId>
-        <groupId>org.diverse.PCM</groupId>
+        <groupId>org.opencompare</groupId>
+        <artifactId>opencompare</artifactId>
         <version>0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.diverse.PCM.dataset</artifactId>
+    <groupId>org.opencompare.dataset</groupId>
+    <artifactId>dataset</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>../org.diverse.PCM.dataset.BestBuy</module>
-        <module>../org.diverse.PCM.dataset.Wikipedia</module>
+        <module>../dataset-best-buy</module>
+        <module>../dataset-wikipedia</module>
     </modules>
 
     <dependencies>
