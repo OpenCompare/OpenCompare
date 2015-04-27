@@ -16,6 +16,29 @@
         <module>../org.diverse.PCM.dataset.Wikipedia</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.10</artifactId>
+            <version>2.2.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <dataset.skip.test>true</dataset.skip.test>
+    </properties>
+
+
+    <profiles>
+        <profile>
+            <id>buildDataset</id>
+            <properties>
+                <dataset.skip.test>false</dataset.skip.test>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
@@ -23,7 +46,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.4.2</version>
                 <configuration>
-                    <skipTests>true</skipTests>
+                    <skipTests>${dataset.skip.test}</skipTests>
                 </configuration>
             </plugin>
 
@@ -40,46 +63,29 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>1.0</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>WDF TestSuite.txt</filereports>
+                    <skipTests>${dataset.skip.test}</skipTests>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>buildDataset</id>
-            <build>
-                <plugins>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.4.2</version>
-                        <configuration>
-                            <skipTests>false</skipTests>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.scalatest</groupId>
-                        <artifactId>scalatest-maven-plugin</artifactId>
-                        <version>1.0</version>
-                        <configuration>
-                            <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-                            <junitxml>.</junitxml>
-                            <filereports>WDF TestSuite.txt</filereports>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>test</id>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>

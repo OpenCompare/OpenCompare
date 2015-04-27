@@ -1,9 +1,12 @@
 package org.diverse.pcm.io.wikipedia
 
-import java.io.{File, PrintWriter, StringWriter, FileWriter}
+import java.io._
 import java.util.concurrent.Executors
 
+import org.diverse.pcm.api.java.exception.MergeConflictException
+import org.diverse.pcm.api.java.impl.PCMFactoryImpl
 import org.diverse.pcm.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
+import org.diverse.pcm.formalizer.extractor.CellContentInterpreter
 import org.diverse.pcm.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
 import org.diverse.pcm.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, Matchers, FlatSpec}
@@ -186,6 +189,72 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
       }
     }
 
+  }
+
+
+
+  "Formalizer" should "interpret the cell of all the Wikipedia PCMs" in {
+
+    val interpreter = new CellContentInterpreter
+    val loader = new KMFJSONLoader
+    val exporter = new KMFJSONExporter
+
+    val files = new File("output/model").listFiles(new FilenameFilter {
+      override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")
+    })
+
+    // Create output directory
+    new File("output/formalized/model").mkdirs()
+
+
+    // Interpret cells for every PCM
+    for (file <- files) {
+      // Interpret cells
+      val pcm = loader.load(file)
+      if (pcm.isValid) {
+        interpreter.interpretCells(pcm)
+        val json = exporter.export(pcm)
+
+        // Write modified PCM
+        val writer = new FileWriter("output/formalized/model/" + file.getName)
+        writer.write(json)
+        writer.close()
+      }
+
+    }
+
+    // Interpret and merge PCMs
+    val groupedFiles = files.groupBy(f => f.getName.substring(0, f.getName.size - 6))
+    val factory = new PCMFactoryImpl
+    for (group <- groupedFiles) {
+      val mergedPCM = factory.createPCM();
+      mergedPCM.setName(group._1)
+
+      var error = false
+
+      for (file <- group._2) {
+        val pcm = loader.load(file)
+        if (pcm.isValid) {
+          interpreter.interpretCells(pcm)
+          try {
+            mergedPCM.merge(pcm, factory)
+          } catch {
+            case e : MergeConflictException => error = true
+          }
+
+        } else {
+          error = true
+        }
+      }
+
+      //      if (!error) {
+      //        val json = exporter.export(mergedPCM)
+      //        val writer = new FileWriter("output/model/" + mergedPCM.getName)
+      //        writer.write(json)
+      //        writer.close()
+      //      }
+
+    }
   }
 
 }
