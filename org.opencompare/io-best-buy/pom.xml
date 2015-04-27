@@ -3,45 +3,33 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>org.diverse.PCM.io</artifactId>
-        <groupId>org.diverse.PCM.io</groupId>
+        <artifactId>io</artifactId>
+        <groupId>org.opencompare.io</groupId>
         <version>0.2-SNAPSHOT</version>
-        <relativePath>../org.diverse.PCM.io/pom.xml</relativePath>
+        <relativePath>../io/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.diverse.PCM.io.Wikipedia</artifactId>
+    <artifactId>io-best-buy</artifactId>
 
     <dependencies>
+
         <dependency>
-            <groupId>org.diverse.PCM</groupId>
-            <artifactId>org.diverse.PCM.api.java</artifactId>
+            <groupId>org.opencompare</groupId>
+            <artifactId>api-java</artifactId>
             <version>0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.diverse.PCM</groupId>
-            <artifactId>org.diverse.PCM.api.java.impl</artifactId>
+            <groupId>org.opencompare</groupId>
+            <artifactId>api-java-impl</artifactId>
             <version>0.2-SNAPSHOT</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>2.10.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.sweble.wikitext</groupId>
-            <artifactId>swc-engine</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.sweble.wikitext</groupId>
-            <artifactId>swc-parser-lazy</artifactId>
-            <version>1.1.1</version>
         </dependency>
 
         <dependency>
@@ -51,22 +39,60 @@
         </dependency>
 
         <dependency>
-            <groupId>org.ccil.cowan.tagsoup</groupId>
-            <artifactId>tagsoup</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-
-
-        <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.10</artifactId>
             <version>2.2.2</version>
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.tototoshi</groupId>
+            <artifactId>scala-csv_2.10</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.1.3.RELEASE</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.4</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20141113</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.opencompare</groupId>
+            <artifactId>formalizer</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>sape.inf.usi.ch</groupId>
+            <artifactId>sape.inf.usi.ch.hac</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/hac.jar</systemPath>
+        </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
@@ -83,15 +109,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-surefire-plugin</artifactId>-->
-                <!--<version>2.7</version>-->
-                <!--<configuration>-->
-                    <!--<skipTests>true</skipTests>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
 
             <plugin>
                 <groupId>org.scalatest</groupId>

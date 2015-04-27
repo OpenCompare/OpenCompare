@@ -3,26 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>org.diverse.PCM.io</artifactId>
-        <groupId>org.diverse.PCM.io</groupId>
+        <artifactId>opencompare</artifactId>
+        <groupId>org.opencompare</groupId>
         <version>0.2-SNAPSHOT</version>
-        <relativePath>../org.diverse.PCM.io/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>org.diverse.PCM.io.BestBuy</artifactId>
+    <artifactId>formalizer</artifactId>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.diverse.PCM</groupId>
-            <artifactId>org.diverse.PCM.api.java</artifactId>
+            <groupId>org.opencompare</groupId>
+            <artifactId>api-java</artifactId>
             <version>0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.diverse.PCM</groupId>
-            <artifactId>org.diverse.PCM.api.java.impl</artifactId>
+            <groupId>org.opencompare</groupId>
+            <artifactId>api-java-impl</artifactId>
             <version>0.2-SNAPSHOT</version>
         </dependency>
 
@@ -33,55 +32,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.scalaj</groupId>
-            <artifactId>scalaj-http_2.10</artifactId>
-            <version>0.3.16</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.10</artifactId>
             <version>2.2.2</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.tototoshi</groupId>
-            <artifactId>scala-csv_2.10</artifactId>
-            <version>1.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>4.1.3.RELEASE</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.4.4</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20141113</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.diverse.PCM</groupId>
-            <artifactId>org.diverse.PCM.formalizer</artifactId>
-            <version>0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -92,9 +46,16 @@
             <systemPath>${basedir}/lib/hac.jar</systemPath>
         </dependency>
 
-    </dependencies>
+       <dependency>
+            <groupId>org.opencompare.io</groupId>
+            <artifactId>io-wikipedia</artifactId>
+            <version>0.2-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency></dependencies>
 
     <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
@@ -108,6 +69,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
 
             <plugin>
@@ -130,5 +100,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
