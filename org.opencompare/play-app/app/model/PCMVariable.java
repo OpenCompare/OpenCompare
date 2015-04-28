@@ -1,6 +1,6 @@
 package model;
 
-import org.diverse.pcm.api.java.PCM;
+import org.opencompare.api.java.PCM;
 
 /**
  * Created by gbecan on 12/12/14.

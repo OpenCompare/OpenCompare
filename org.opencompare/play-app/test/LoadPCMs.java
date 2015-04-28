@@ -1,10 +1,7 @@
 import model.Database;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.PCMFactory;
-import org.diverse.pcm.api.java.exception.MergeConflictException;
-import org.diverse.pcm.api.java.impl.PCMFactoryImpl;
-import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
-import org.diverse.pcm.formalizer.extractor.CellContentInterpreter;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.impl.io.KMFJSONLoader;
+import org.opencompare.formalizer.extractor.CellContentInterpreter;
 import org.junit.Test;
 
 import java.io.File;

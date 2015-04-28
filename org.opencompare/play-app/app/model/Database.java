@@ -3,9 +3,9 @@ package model;
 import com.mongodb.*;
 import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.impl.io.KMFJSONExporter;
-import org.diverse.pcm.api.java.impl.io.KMFJSONLoader;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.impl.io.KMFJSONExporter;
+import org.opencompare.api.java.impl.io.KMFJSONLoader;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;

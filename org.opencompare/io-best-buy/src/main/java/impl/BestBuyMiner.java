@@ -2,12 +2,12 @@ package impl;
 
 import domain.BestBuyProduct;
 import java.util.List;
-import org.diverse.pcm.api.java.Cell;
-import org.diverse.pcm.api.java.Feature;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.PCMFactory;
-import org.diverse.pcm.api.java.Product;
-import org.diverse.pcm.api.java.impl.PCMFactoryImpl;
+import org.opencompare.api.java.Cell;
+import org.opencompare.api.java.Feature;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMFactory;
+import org.opencompare.api.java.Product;
+import org.opencompare.api.java.impl.PCMFactoryImpl;
 
 /**
  * BestBuyMiner provides methods to manipulate and analyze bestbuy products.

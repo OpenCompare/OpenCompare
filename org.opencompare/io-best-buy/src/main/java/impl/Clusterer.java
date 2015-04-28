@@ -1,8 +1,8 @@
 package impl;
 
-import org.diverse.pcm.api.java.Cell;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.Product;
+import org.opencompare.api.java.Cell;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.Product;
 
 import java.io.*;
 import java.util.TreeSet;

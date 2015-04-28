@@ -1,8 +1,8 @@
 package controllers;
 
 import model.Database;
-import org.diverse.pcm.api.java.PCM;
-import org.diverse.pcm.api.java.impl.io.KMFJSONExporter;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import play.mvc.Controller;
 import play.mvc.Result;
 
