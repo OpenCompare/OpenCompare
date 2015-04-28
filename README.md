@@ -37,7 +37,7 @@ This github repository contains several projects :
 
 To compile the project you must define two environment variables:
 * JAVA\_HOME must point to a JDK with a version >= 7
-* PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.opencomare/play-app/
+* PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.opencompare/play-app/
 
 The directory _org.diverse.PCM/org.diverse.PCM.getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
 
