@@ -17,18 +17,18 @@ This project is released under Apache v2 License.
 ### Projects :
 This github repository contains several projects :
 
-* org.diverse.PCM.api.java: Java interface
-* org.diverse.PCM.api.js: Javascript interface
-* org.diverse.PCM.api.java.impl: Java implementation of the API
-* org.diverse.PCM.api.js.impl: Js implementation of the API
-* org.diverse.PCM.model: contain the data model, takes car of the code source generation for the API
-* org.diverse.PCM.formalizer: interpret and formalize cells contained in PCMs
-* org.diverse.PCM.naiveFrontEnd: a naive website to show how to manipulate model in a browser
-* org.diverse.PCM.io.ShoppingWebSite: parses shopping.com and creates PCMs
-* org.diverse.PCM.io.Wikipedia: parses wikipedia pages and creates PCMs
-* org.diverse.PCM.io.BestBuy: parses bestbuy.com and creates PCMs
-* org.diverse.PCM.play-app: contain OpenCompare website (web editor for PCMs)
-* org.diverse.PCM.getting-started: minimal project that shows how to use the API
+* api-java: Java interface
+* api-js: Javascript interface
+* api-java-impl: Java implementation of the API
+* api-js-impl: Js implementation of the API
+* model: contain the data model, takes car of the code source generation for the API
+* formalizer: interpret and formalize cells contained in PCMs
+* naiveFrontEnd: a naive website to show how to manipulate model in a browser
+* io-shopping-website: parses shopping.com and creates PCMs
+* io-wikipedia: parses wikipedia pages and creates PCMs
+* io.BestBuy: parses bestbuy.com and creates PCMs
+* play-app: contain OpenCompare website (web editor for PCMs)
+* getting-started: minimal project that shows how to use the API
 
 ### Getting started :
 
@@ -37,7 +37,7 @@ This github repository contains several projects :
 
 To compile the project you must define two environment variables:
 * JAVA\_HOME must point to a JDK with a version >= 7
-* PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.diverse.PCM/org.diverse.PCM.play-app/
+* PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.opencomare/play-app/
 
 The directory _org.diverse.PCM/org.diverse.PCM.getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
 
