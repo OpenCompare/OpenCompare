@@ -1,9 +1,8 @@
 package org.opencompare.dataset.bestbuy
 
 import org.opencompare.api.java
-import org.opencompare.api.java.{PCM, Feature, Cell}
 import org.opencompare.api.java.util.PCMElementComparator
-import org.diverse.pcm.api.java.Product
+import org.opencompare.api.java.{Cell, Feature, PCM}
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable

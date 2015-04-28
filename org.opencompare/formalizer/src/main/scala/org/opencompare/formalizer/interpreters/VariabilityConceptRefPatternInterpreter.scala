@@ -1,9 +1,8 @@
 package org.opencompare.formalizer.interpreters
 
-import org.diverse.pcm.api.java.Value
 import java.util.regex.Matcher
 
-import org.opencompare.api.java.{Value, Product, Feature}
+import org.opencompare.api.java.{Feature, Product, Value}
 
 class VariabilityConceptRefPatternInterpreter (
     validHeaders : List[String],

@@ -1,19 +1,9 @@
 package org.opencompare.formalizer.extractor
 
-import org.diverse.pcm.api.java
-import org.diverse.pcm.api.java.Value
-import org.opencompare.api.java.{Value, PCM, Feature, Product}
+import org.opencompare.api.java.{Feature, PCM, Product, Value}
+import org.opencompare.formalizer.interpreters.{BooleanPatternInterpreter, DoublePatternInterpreter, EmptyPatternInterpreter, IntegerPatternInterpreter, MultiplePatternInterpreter, PartialPatternInterpreter, PatternInterpreter, UnknownPatternInterpreter, VariabilityConceptRefPatternInterpreter}
 
 import scala.collection.JavaConversions._
-import org.opencompare.formalizer.interpreters.BooleanPatternInterpreter
-import org.opencompare.formalizer.interpreters.UnknownPatternInterpreter
-import org.opencompare.formalizer.interpreters.EmptyPatternInterpreter
-import org.opencompare.formalizer.interpreters.MultiplePatternInterpreter
-import org.opencompare.formalizer.interpreters.PartialPatternInterpreter
-import org.opencompare.formalizer.interpreters.VariabilityConceptRefPatternInterpreter
-import org.opencompare.formalizer.interpreters.PatternInterpreter
-import org.opencompare.formalizer.interpreters.DoublePatternInterpreter
-import org.opencompare.formalizer.interpreters.IntegerPatternInterpreter
 
 class CellContentInterpreter() {
 

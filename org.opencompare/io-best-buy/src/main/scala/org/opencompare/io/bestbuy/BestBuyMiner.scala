@@ -1,9 +1,6 @@
 package org.opencompare.io.bestbuy
 
-import org.opencompare.api.java.{PCMFactory, PCM}
-
-import scala.collection.JavaConversions._
-import org.diverse.pcm.api.java.PCMFactory
+import org.opencompare.api.java.{PCM, PCMFactory}
 
 /**
  * Created by gbecan on 09/02/15.

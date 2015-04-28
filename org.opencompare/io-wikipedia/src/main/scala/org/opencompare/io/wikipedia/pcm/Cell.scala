@@ -1,6 +1,5 @@
 package org.opencompare.io.wikipedia.pcm
 
-import org.opencompare.api.java.Cell
 import org.opencompare.api.java.impl.PCMFactoryImpl
 
 
@@ -17,7 +16,7 @@ class Cell(
      content
   }
 
-  def toPCM() : Cell = {
+  def toPCM() : org.opencompare.api.java.Cell = {
     val factory = new PCMFactoryImpl()
     val cell = factory.createCell()
     cell.setContent(content)

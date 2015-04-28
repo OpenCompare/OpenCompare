@@ -22,24 +22,24 @@ public abstract class ValueImpl implements Value {
     public static ValueImpl wrapValue(pcm.Value kValue) {
         if (kValue == null) {
             return null;
-        } else if (kValue instanceof BooleanValue) {
-            return new BooleanValueImpl((BooleanValue) kValue);
-        } else if (kValue instanceof IntegerValue) {
-            return new IntegerValueImpl((IntegerValue) kValue);
-        } else if (kValue instanceof StringValue) {
-            return new StringValueImpl((StringValue) kValue);
-        } else if (kValue instanceof RealValue) {
-            return new RealValueImpl((RealValue) kValue);
-        } else if (kValue instanceof Multiple) {
-            return new MultipleImpl((Multiple) kValue);
-        } else if (kValue instanceof NotApplicable) {
-            return new NotApplicableImpl((NotApplicable) kValue);
-        } else if (kValue instanceof NotAvailable) {
-            return new NotAvailableImpl((NotAvailable) kValue);
-        } else if (kValue instanceof Conditional) {
-            return new ConditionalImpl((Conditional) kValue);
-        } else if (kValue instanceof Partial) {
-            return new PartialImpl((Partial) kValue);
+        } else if (kValue instanceof pcm.BooleanValue) {
+            return new BooleanValueImpl((pcm.BooleanValue) kValue);
+        } else if (kValue instanceof pcm.IntegerValue) {
+            return new IntegerValueImpl((pcm.IntegerValue) kValue);
+        } else if (kValue instanceof pcm.StringValue) {
+            return new StringValueImpl((pcm.StringValue) kValue);
+        } else if (kValue instanceof pcm.RealValue) {
+            return new RealValueImpl((pcm.RealValue) kValue);
+        } else if (kValue instanceof pcm.Multiple) {
+            return new MultipleImpl((pcm.Multiple) kValue);
+        } else if (kValue instanceof pcm.NotApplicable) {
+            return new NotApplicableImpl((pcm.NotApplicable) kValue);
+        } else if (kValue instanceof pcm.NotAvailable) {
+            return new NotAvailableImpl((pcm.NotAvailable) kValue);
+        } else if (kValue instanceof pcm.Conditional) {
+            return new ConditionalImpl((pcm.Conditional) kValue);
+        } else if (kValue instanceof pcm.Partial) {
+            return new PartialImpl((pcm.Partial) kValue);
         } else {
             throw new UnsupportedOperationException(kValue.getClass() + " interpretation type is not yet supported");
         }

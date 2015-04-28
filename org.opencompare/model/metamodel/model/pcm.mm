@@ -1,6 +1,6 @@
 
 class pcm.PCM  {
-    name : String
+    name : String[0,1]
     @contained
     products : pcm.Product[0,*]
     @contained
@@ -8,11 +8,11 @@ class pcm.PCM  {
 }
 
 class pcm.AbstractFeature  {
-    name : String
+    name : String[0,1]
 }
 
 class pcm.Product  {
-    name : String
+    name : String[0,1]
     @contained
     values : pcm.Cell[0,*]
 }
@@ -26,29 +26,29 @@ class pcm.FeatureGroup : pcm.AbstractFeature {
 }
 
 class pcm.Cell  {
-    content : String
+    content : String[0,1]
     feature : pcm.Feature
     @contained
-    interpretation : pcm.Value
+    interpretation : pcm.Value[0,1]
 }
 
 class pcm.Value  {
 }
 
 class pcm.IntegerValue : pcm.Value {
-    value : Int
+    value : Int[0,1]
 }
 
 class pcm.StringValue : pcm.Value {
-    value : String
+    value : String[0,1]
 }
 
 class pcm.RealValue : pcm.Value {
-    value : Double
+    value : Double[0,1]
 }
 
 class pcm.BooleanValue : pcm.Value {
-    value : Bool
+    value : Bool[0,1]
 }
 
 class pcm.Multiple : pcm.Value {
@@ -68,11 +68,11 @@ class pcm.Conditional : pcm.Value {
 
 class pcm.Partial : pcm.Value {
     @contained
-    value : pcm.Value
+    value : pcm.Value[0,1]
 }
 
 class pcm.DateValue : pcm.Value {
-    value : String
+    value : String[0,1]
 }
 
 class pcm.Version : pcm.Value {
@@ -85,7 +85,7 @@ class pcm.NotApplicable : pcm.Value {
 }
 
 class pcm.Unit : pcm.Value {
-    unit : String
+    unit : String[0,1]
     @contained
     value : pcm.Value
 }

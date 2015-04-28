@@ -1,8 +1,8 @@
 package org.opencompare.formalizer.interpreters
 
 import java.util.regex.Matcher
-import org.diverse.pcm.api.java.Value
-import org.opencompare.api.java.{Value, Product, Feature}
+
+import org.opencompare.api.java.{Feature, Product, Value}
 
 class EmptyPatternInterpreter (
     validHeaders : List[String],

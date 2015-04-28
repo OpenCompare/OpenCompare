@@ -5,13 +5,11 @@ import java.nio.file.Files
 
 import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
-import org.diverse.pcm.api.java
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.{PCM, Cell, AbstractFeature, Product}
 import org.opencompare.api.java.impl.io.KMFJSONLoader
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.PCMElementComparator
-import org.diverse.pcm.api.java.PCM
+import org.opencompare.api.java.{AbstractFeature, Cell, PCM, Product}
 import org.opencompare.io.bestbuy._
 import org.opencompare.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._

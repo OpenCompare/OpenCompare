@@ -1,8 +1,7 @@
 package org.opencompare.io.wikipedia.export
 
-import org.diverse.pcm.api.java.PCM
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.{PCM, FeatureGroup, Feature, AbstractFeature}
+import org.opencompare.api.java.{AbstractFeature, Feature, FeatureGroup, PCM}
 import org.opencompare.io.wikipedia.WikipediaPageMiner
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
 

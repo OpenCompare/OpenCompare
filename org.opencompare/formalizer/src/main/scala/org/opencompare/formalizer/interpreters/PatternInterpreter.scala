@@ -1,12 +1,9 @@
 package org.opencompare.formalizer.interpreters
 
-import _root_.java.util.regex.{Pattern, Matcher}
+import _root_.java.util.regex.{Matcher, Pattern}
 
-import org.diverse.pcm.api.java
-import org.diverse.pcm.api.java.Value
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.{Value, PCMFactory, Feature, Product}
-import scala.collection.JavaConversions._
+import org.opencompare.api.java.{Feature, PCMFactory, Product, Value}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 
 abstract class PatternInterpreter(
