@@ -7,7 +7,7 @@ This project is released under Apache v2 License.
 ### Development tools :
  * [Play](https://www.playframework.com/)
  * Maven
- * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI: [![Build Status](https://travis-ci.org/gbecan/PCM.svg?branch=master)](https://travis-ci.org/gbecan/PCM)
+ * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI: [![Build Status](https://travis-ci.org/gbecan/OpenCompare.svg?branch=master)](https://travis-ci.org/gbecan/PCM)
  * We use intellij with the KMF plugin for the development
 
 ### Framework(s) :
