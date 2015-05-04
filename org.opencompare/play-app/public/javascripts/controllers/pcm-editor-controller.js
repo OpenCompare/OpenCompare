@@ -134,7 +134,9 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             var type = getType(Math.round(getRandomNumber(0, 2)));
             features.push({
                 // Associate a type to a columns
-                data: property(kFeatures[i].generated_KMF_ID), validator: type, allowInvalid: true,
+                data: property(kFeatures[i].generated_KMF_ID),
+                validator: type,
+                allowInvalid: true,
                 Type: type + "",
                 ID: kFeatures[i].generated_KMF_ID
             });
@@ -207,11 +209,11 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                             }
 
                             hot.render();
+                            console.log(hot.countCols());
+                            console.log(hot.countRenderedCols());
                         }
                     },
-                    disabled: function () {
-                        return false;
-                    }
+                    disabled: false
                 },
                 add_col_after: {
                     name: 'Insert column on the right',
@@ -228,7 +230,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                             $scope.pcm.addFeatures(feature);
                             for (var i = 0; i < $scope.pcm.products.array.length; i++) {
                                 var cell = factory.createCell();
-                                cell.content = "";
+                                cell.content = "N/A";
                                 cell.feature = feature;
                                 $scope.pcm.products.array[i].addValues(cell);
                             }
@@ -240,43 +242,45 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                         return false;
                     }
                 },
-                /*remove_column : {
-                 name : 'remove column(s) (DON\'T SAVE !!!)',
-                 callback: function (key, selection) {
-                 var start = selection.start.col;
-                 var end = selection.end.col;
-                 for (var i = 0 ; i < $scope.pcm.products.array.length ; i++) {
-                 var product = $scope.pcm.products.array[i];
-                 var array = product.values.array.slice(0);
-                 for (var j = 0 ; j < array.length ; j++) {
-                 var cell = array[j];
-                 for (var k = start ; k <= end ; k++) {
-                 if (cell.feature.generated_KMF_ID == features[k].ID) {
-                 product.removeValues(cell);
-                 break;
-                 }
-                 }
-                 }
-                 }
-                 var array = $scope.pcm.features.array.slice(0);
-                 for (var i = 0 ; i < array.length ; i++) {
-                 var feature = array[i];
-                 for (var j = start ; j <= end ; j++) {
-                 if (feature.generated_KMF_ID == features[k].ID) {
-                 $scope.pcm.removeFeatures(feature);
-                 break;
-                 }
-                 }
-                 }
-                 features.splice(start, end-start+1);
-                 featureHeaders.splice(start, end-start+1);
+                remove_column : {
+                    name : 'Remove column(s)',
+                    callback: function (key, selection) {
+                        var start = selection.start.col;
+                        var end = selection.end.col;
 
-                 hot.render();
-                 },
-                 disabled: function () {
-                 return false;
-                 }
-                 },*/
+                        // Remove cells
+                        $scope.pcm.products.array.forEach(function(product) {
+                            var cellsToRemove = [];
+
+                            product.values.array.forEach(function(cell) {
+                                for (var i = start ; i <= end ; i++) {
+                                    if (cell.feature.generated_KMF_ID == features[i].ID) {
+                                        cellsToRemove.push(cell);
+                                    }
+                                }
+                            });
+
+                            cellsToRemove.forEach(function(cell) {
+                                product.removeValues(cell);
+                            });
+                        });
+
+                        // Remove features
+                        for (var i = start ; i <= end ; i++) {
+                            var feature = $scope.pcm.findFeaturesByID(features[i].ID);
+                            if (feature != null) {
+                                $scope.pcm.removeFeatures(feature);
+                            }
+
+                        }
+
+                        featureHeaders.splice(start, end - start + 1);
+                        features.splice(start, end - start + 1);
+
+                        hot.render();
+                    },
+                    disabled: false
+                },
                 set_column_name: {
                     name: 'Rename column',
                     callback: function (key, selection) {
@@ -356,16 +360,13 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                         var start = selection.start.row;
                         var end = selection.end.row;
 
-                        var array = $scope.pcm.products.array;
-                        for (var i = 0; i < array.length; i++) {
-                            var product = array[i];
-                            for (var j = start; j <= end; j++) {
-                                if (product.generated_KMF_ID == products[j]) {
+                        $scope.pcm.products.array.forEach(function(product) {
+                            for (var i = start; i <= end; i++) {
+                                if (product.generated_KMF_ID == products[i]) {
                                     $scope.pcm.removeProducts(product);
-                                    break;
                                 }
                             }
-                        }
+                        });
 
                         products.splice(start, end - start + 1);
                         productHeaders.splice(start, end - start + 1);
@@ -493,7 +494,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             for (var i = 0; i < $scope.pcm.features.array.length; i++) {
                 var cell = factory.createCell();
                 cell.feature = $scope.pcm.features.array[i];
-                cell.content = "";
+                cell.content = "N/A";
                 newProduct.addValues(cell);
             }
         }
@@ -510,14 +511,17 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             var product = $scope.pcm.findProductsByID(row);
             //var cell = product.select("values[feature/id == " + attr + "]").get(0); // FIXME : does not work ! We need to find the cell that correponds to the feature id
             var cells = product.values.array;
+            var cell = null;
+
             for (var i = 0; i < cells.length; i++) {
-                var cell = cells[i];
+                cell = cells[i];
                 if (cell.feature.generated_KMF_ID === attr) {
                     break;
                 }
             }
 
             if (typeof value === 'undefined') {
+                //console.log(product.name + ", " + cell.feature.name + " : " + cell.content);
                 return cell.content;
             } else {
                 cell.content = value;
