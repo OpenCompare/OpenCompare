@@ -125,7 +125,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
     }
 
-
     function initializeHOT() {
         // Transform features to handonstable data structures
         var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
@@ -155,88 +154,64 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
 
   
         var container = document.getElementById('hot');
-        var hot = new Handsontable(container,
-            {
-                data: products,
-                dataSchema: schema,
-                rowHeaders: productHeaders,
-                colHeaders: featureHeaders,
-                columns: features,
-                currentRowClassName: 'currentRow',
-                currentColClassName: 'currentCol', 
-                contextMenu: contextMenu(),
-                //contextMenu : true,
-                //stretchH: 'all', // Scroll bars ?!
-                manualColumnMove: true,
-                manualRowMove: true,
-                minSpareRows: 0,
-                minSpareCols: 0,
-                minRows:0,
-                fixedRowsTop: 0,
-                fixedColumnsLeft: 0
-            });
+        var settings = {
+            data: products,
+            dataSchema: schema,
+            rowHeaders: productHeaders,
+            colHeaders: featureHeaders,
+            columns: features,
+            currentRowClassName: 'currentRow',
+            currentColClassName: 'currentCol',
+            contextMenu: contextMenu(),
+            //contextMenu : true,
+            //stretchH: 'all', // Scroll bars ?!
+            manualColumnMove: true,
+            manualRowMove: true,
+            minSpareRows: 0,
+            minSpareCols: 0,
+            minRows:0,
+            fixedRowsTop: 0,
+            fixedColumnsLeft: 0
+        };
+        var hot = new Handsontable(container, settings);
 
         resize();
 
         $scope.hot = hot;
+
+        function insertColumn(index) {
+            var header = prompt("Please enter your column name", "");
+            if (header != null) {
+                var feature = createFeature(header);
+                
+                featureHeaders.splice(index, 0, header);
+
+                var featureProperty = {
+                    data: property(feature.generated_KMF_ID),
+                    //validator: type,
+                    //allowInvalid: true,
+                    //Type: type + "",
+                    ID: feature.generated_KMF_ID
+                }
+                features.splice(index, 0, featureProperty);
+
+                hot.updateSettings(settings);
+            }
+        }
 
         function contextMenu() {
             return {
                 add_col_before: {
                     name: 'Insert column on the left',
                     callback: function (key, selection) {
-                        var header = prompt("Please enter your column name", "");
-                        if (header != null) {
-
-                            // Add header
-                            featureHeaders.splice(selection.start.col, 0, header);
-
-                            // Create feature
-                            var feature = factory.createFeature();
-                            feature.name = header;
-                            features.splice(selection.start.col, 0, {
-                                data: property(feature.generated_KMF_ID),
-                                ID: feature.generated_KMF_ID
-                            });
-                            $scope.pcm.addFeatures(feature);
-
-                            // Create corresponding cells for all products
-                            for (var i = 0; i < $scope.pcm.products.array.length; i++) {
-                                var cell = factory.createCell();
-                                cell.content = "";
-                                cell.feature = feature;
-                                $scope.pcm.products.array[i].addValues(cell);
-                            }
-
-                            hot.render();
-                            console.log(hot.countCols());
-                            console.log(hot.countRenderedCols());
-                        }
+                        insertColumn(selection.start.col);
                     },
                     disabled: false
                 },
                 add_col_after: {
                     name: 'Insert column on the right',
                     callback: function (key, selection) {
-                        var header = prompt("Please enter your column name", "");
-                        if (header != null) {
-                            featureHeaders.splice(selection.end.col + 1, 0, header);
-                            var feature = factory.createFeature();
-                            feature.name = header;
-                            features.splice(selection.end.col + 1, 0, {
-                                data: property(feature.generated_KMF_ID),
-                                ID: feature.generated_KMF_ID
-                            });
-                            $scope.pcm.addFeatures(feature);
-                            for (var i = 0; i < $scope.pcm.products.array.length; i++) {
-                                var cell = factory.createCell();
-                                cell.content = "N/A";
-                                cell.feature = feature;
-                                $scope.pcm.products.array[i].addValues(cell);
-                            }
-
-                            hot.render();
-                        }
+                        insertColumn(selection.start.col + 1);
                     },
                     disabled: function () {
                         return false;
@@ -446,6 +421,23 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
     }
 
+
+    function createFeature(name) {
+        // Create feature
+        var feature = factory.createFeature();
+        feature.name = name;
+        $scope.pcm.addFeatures(feature);
+
+        // Create corresponding cells for all products
+        for (var i = 0; i < $scope.pcm.products.array.length; i++) {
+            var cell = factory.createCell();
+            cell.content = "";
+            cell.feature = feature;
+            $scope.pcm.products.array[i].addValues(cell);
+        }
+
+        return feature;
+    }
 
     function getConcreteFeatures(pcm) {
 
