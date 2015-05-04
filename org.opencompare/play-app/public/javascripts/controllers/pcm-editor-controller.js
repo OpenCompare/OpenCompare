@@ -138,7 +138,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 Type: type + "",
                 ID: kFeatures[i].generated_KMF_ID
             });
-            console.log(features);
             featureHeaders.push(kFeatures[i].name);
         }
         // Transform products to handonstable data structures
@@ -164,6 +163,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 currentRowClassName: 'currentRow',
                 currentColClassName: 'currentCol', 
                 contextMenu: contextMenu(),
+                //contextMenu : true,
                 //stretchH: 'all', // Scroll bars ?!
                 manualColumnMove: true,
                 manualRowMove: true,
@@ -181,11 +181,15 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         function contextMenu() {
             return {
                 add_col_before: {
-                    name: 'add a column before',
+                    name: 'Insert column on the left',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your column name", "");
                         if (header != null) {
+
+                            // Add header
                             featureHeaders.splice(selection.start.col, 0, header);
+
+                            // Create feature
                             var feature = factory.createFeature();
                             feature.name = header;
                             features.splice(selection.start.col, 0, {
@@ -193,6 +197,8 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                                 ID: feature.generated_KMF_ID
                             });
                             $scope.pcm.addFeatures(feature);
+
+                            // Create corresponding cells for all products
                             for (var i = 0; i < $scope.pcm.products.array.length; i++) {
                                 var cell = factory.createCell();
                                 cell.content = "";
@@ -208,7 +214,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     }
                 },
                 add_col_after: {
-                    name: 'add a column after',
+                    name: 'Insert column on the right',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your column name", "");
                         if (header != null) {
@@ -272,7 +278,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                  }
                  },*/
                 set_column_name: {
-                    name: 'set column name',
+                    name: 'Rename column',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your column name", "");
                         if (header != null) {
@@ -297,7 +303,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                 },
                 "hsep": "---------",
                 add_row_before: {
-                    name: 'add a row before',
+                    name: 'Insert row above',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your row name", "");
                         if (header != null) {
@@ -321,7 +327,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     }
                 },
                 add_row_after: {
-                    name: 'add a row after',
+                    name: 'Insert row below',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your row name", "");
                         if (header != null) {
@@ -345,7 +351,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     }
                 },
                 remove_row: {
-                    name: 'remove row(s)',
+                    name: 'Remove row(s)',
                     callback: function (key, selection) {
                         var start = selection.start.row;
                         var end = selection.end.row;
@@ -371,7 +377,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
                     }
                 },
                 set_row_name: {
-                    name: 'set row name',
+                    name: 'Rename row',
                     callback: function (key, selection) {
                         var header = prompt("Please enter your row name", "");
                         if (header != null) {
