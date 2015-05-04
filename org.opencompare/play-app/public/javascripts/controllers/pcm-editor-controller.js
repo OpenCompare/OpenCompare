@@ -183,7 +183,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             var header = prompt("Please enter your column name", "");
             if (header != null) {
                 var feature = createFeature(header);
-                
+
                 featureHeaders.splice(index, 0, header);
 
                 var featureProperty = {
