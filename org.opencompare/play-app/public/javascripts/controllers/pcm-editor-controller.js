@@ -125,6 +125,7 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
         }
     }
 
+
     function initializeHOT() {
         // Transform features to handonstable data structures
         var kFeatures = getConcreteFeatures($scope.pcm).sort(sortByName); // $scope.pcm.features.array
