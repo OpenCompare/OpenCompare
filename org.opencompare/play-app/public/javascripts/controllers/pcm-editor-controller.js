@@ -27,7 +27,7 @@ function sortByName(a, b) {
 
 
 
-pcmApp.controller("PCMEditorController", function($scope, $http) {
+pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -172,13 +172,17 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             minSpareCols: 0,
             minRows:0,
             fixedRowsTop: 0,
-            fixedColumnsLeft: 0
+            fixedColumnsLeft: 0,
+            afterChange: function() {
+                $rootScope.$broadcast('modified');
+            }
         };
         var hot = new Handsontable(container, settings);
 
         resize();
 
         $scope.hot = hot;
+
 
         function insertColumn(index) {
             var header = prompt("Please enter your column name", "");
@@ -566,13 +570,16 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
             $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
+                $rootScope.$broadcast('saved');
             });
         } else {
             $http.post("/api/save/" + id, JSON.parse(jsonModel)).success(function(data) {
-            console.log("model saved");
+                console.log("model saved");
+                $rootScope.$broadcast('saved');
             });
         }
     };
+
     /**
     *Remove PCM from server
     */
@@ -608,7 +615,6 @@ pcmApp.controller("PCMEditorController", function($scope, $http) {
     // Bind events from toolbar to functions of the editor
 
     $scope.$on('save', function(event, args) {
-        console.log("ok");
         $scope.save();
     });
 

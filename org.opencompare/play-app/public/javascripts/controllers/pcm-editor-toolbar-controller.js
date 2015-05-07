@@ -4,14 +4,13 @@
 
 pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
+    $scope.saved = true;
 
     /**
      * Save PCM on the server
      */
     $scope.save = function() {
-        console.log("saving...");
         $rootScope.$broadcast('save');
-
     };
 
     /**
@@ -28,5 +27,13 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     $scope.validate=function(){
         $rootScope.$broadcast('validate');
     };
+
+    $scope.$on('modified', function(event, args) {
+        $scope.saved = false;
+    });
+
+    $scope.$on('saved', function(event, args) {
+        $scope.saved = true;
+    });
 
 });

@@ -26,8 +26,8 @@
 
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
-                <button role="button" class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i> Save</button>
-                <button role="button" class="btn btn-warning" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
+                <button role="button" class="btn btn-default" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
+                <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
 
             </div>
