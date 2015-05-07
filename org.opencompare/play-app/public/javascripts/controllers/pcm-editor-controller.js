@@ -5,15 +5,10 @@
  */
 
 /**
-
  * Sort two elements by their names (accessed with x.name)
-
  * @param a
-
  * @param b
-
  * @returns {number}
-
  */
 function sortByName(a, b) {
     if (a.name < b.name) {
@@ -41,28 +36,31 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
     var productHeaders = [];
     var products = [];
     var exp;
-    var ipValidatorRegexp = /^(?:\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b|null)$/,
-    number = function(value,callback){
-                            if(/[0-9]+/.test(value)){
-                            callback(true);
-                            }else{
-                            callback(false);
-                            }
-                 },
-    bool=function(value,callback){
-                              if(/(Yes|No)/.test(value)){
-                                  callback(true);
-                              }else{
-                                  callback(false);
-                                     }
-                                   },
-    text = function(value,callback){
-                              if(/[a-z]+/.test(value)){
-                                   callback(true);
-                              }else{
-                                   callback(false);
-                                     }
-                                };
+
+    var number = function(value,callback){
+        if(/[0-9]+/.test(value)){
+            callback(true);
+        }else{
+            callback(false);
+        }
+    };
+
+    var bool=function(value,callback){
+        if(/(Yes|No)/.test(value)){
+            callback(true);
+        }else{
+            callback(false);
+        }
+    };
+
+    var text = function(value,callback){
+        if(/[a-z]+/.test(value)){
+            callback(true);
+        }else{
+            callback(false);
+        }
+    };
+
     if (typeof id === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
@@ -106,12 +104,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
         return Math.random() * (max - min) + min;
     }
 
-   /**
-   * Get a random type :
-   * 1: Number
-   * 2: Bool (Yes/No)
-   * 3: Text
-   */
+    /**
+     * Get a random type :
+     * 1: Number
+     * 2: Bool (Yes/No)
+     * 3: Text
+     */
     var getType= function(value){
         switch (value){
             case 0:
@@ -120,8 +118,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                 return bool;
             case 2:
                 return text;
-            defaul:
-                return text;
+                defaul:
+                    return text;
         }
     }
 
@@ -153,7 +151,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
             //console.log(products);
         }
 
-  
+
         var container = document.getElementById('hot');
         var settings = {
             data: products,
@@ -191,11 +189,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
                 featureHeaders.splice(index, 0, header);
 
+                var type = getType(Math.round(getRandomNumber(0, 2)));
                 var featureProperty = {
                     data: property(feature.generated_KMF_ID),
-                    //validator: type,
-                    //allowInvalid: true,
-                    //Type: type + "",
+                    validator: type,
+                    allowInvalid: true,
+                    Type: type + "",
                     ID: feature.generated_KMF_ID
                 }
                 features.splice(index, 0, featureProperty);
@@ -378,16 +377,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                     name: "numeric",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                        console.log(features[selection.end.col].validator);
                         features[selection.end.col].Type = number;
+                        features[selection.end.col].validator = number;
 
-                        features[selection.end.col].validator = function (value, callback) {
-                            if (number.test(value)) {
-                                callback(true);
-                            } else {
-                                callback(false);
-                            }
-                        };
+                        hot.updateSettings(settings);
+                        hot.validateCells();
                     }
                 },
 
@@ -395,35 +389,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                     name: "text",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                        console.log(features[selection.end.col].validator);
                         features[selection.end.col].Type = text;
                         features[selection.end.col].validator = text;
+
+                        hot.updateSettings(settings);
+                        hot.validateCells();
                     }
                 },
                 validator_boolean: {
                     name: "boolean",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
-                        console.log(features[selection.end.col].validator);
                         features[selection.end.col].Type = bool;
                         features[selection.end.col].validator = bool;
-                    }
-                },
-                validator_getype: {
-                    name: "get type",
-                    callback: function (key, selection) {
-                        if (features[selection.end.col].Type == number) {
-                            alert("Type : Number");
-                        } else if (features[selection.end.col].Type == bool) {
-                            alert("Type : Boolean");
-                        } else {
-                            alert("Type : String");
-                        }
+
+                        hot.updateSettings(settings);
+                        hot.validateCells();
                     }
                 }
-            };
+            }
 
         }
+
     }
 
 
@@ -557,7 +544,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
         }
 
         return;
-  }	
+    }
     /**
 
      * Save PCM on the server
@@ -581,8 +568,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
     };
 
     /**
-    *Remove PCM from server
-    */
+     *Remove PCM from server
+     */
     $scope.remove = function() {
         if (typeof id !== 'undefined') {
             $http.get("/api/remove/" + id).success(function(data) {
@@ -594,18 +581,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
 
     /**
-    * Validate the type of each columns
-    */
+     * Validate the type of each columns
+     */
     $scope.validate=function(){
         // TO DO
-       //alert(productHeaders.length);
+        //alert(productHeaders.length);
 
-      /* for(var i=0;i<features.length;i++){
-            for(var j=0;j<productHeaders.length;j++){
-       //         temp1.setDataAtCell(j, i, temp1.getDataAtCell(j,i));
-       }}*/
+        /* for(var i=0;i<features.length;i++){
+         for(var j=0;j<productHeaders.length;j++){
+         //         temp1.setDataAtCell(j, i, temp1.getDataAtCell(j,i));
+         }}*/
 
-       //alert("done");
+        //alert("done");
         $scope.hot.validateCells(function(){
             $scope.hot.render()
         });
