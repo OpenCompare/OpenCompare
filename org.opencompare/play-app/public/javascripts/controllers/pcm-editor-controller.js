@@ -258,7 +258,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
                         hot.updateSettings(settings);
                     },
-                    disabled: false
+                    disabled: function() {
+                        var numberOfColumnsToRemove = hot.getSelected()[3] - hot.getSelected()[1] + 1
+                        return features.length - numberOfColumnsToRemove  < 1
+                    }
                 },
                 set_column_name: {
                     name: 'Rename column',
@@ -352,8 +355,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
                         hot.updateSettings(settings);
                     },
-                    disabled: function () {
-                        return false;
+                    disabled: function() {
+                        var numberOfRowsToRemove = hot.getSelected()[2] - hot.getSelected()[0] + 1
+                        return products.length - numberOfRowsToRemove  < 1
                     }
                 },
                 set_row_name: {
