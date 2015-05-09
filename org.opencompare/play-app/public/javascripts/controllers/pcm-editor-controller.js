@@ -256,7 +256,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                         featureHeaders.splice(start, end - start + 1);
                         features.splice(start, end - start + 1);
 
-                        hot.render();
+                        hot.updateSettings(settings);
                     },
                     disabled: false
                 },
@@ -302,7 +302,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                             $scope.pcm.addProducts(product);
                             products.splice(selection.start.row, 0, model(product));
 
-                            hot.render();
+                            hot.updateSettings(settings);
                         }
                     },
                     disabled: function () {
@@ -326,7 +326,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                             $scope.pcm.addProducts(product);
                             products.splice(selection.end.row + 1, 0, model(product));
 
-                            hot.render();
+                            hot.updateSettings(settings);
                         }
                     },
                     disabled: function () {
@@ -350,7 +350,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                         products.splice(start, end - start + 1);
                         productHeaders.splice(start, end - start + 1);
 
-                        hot.render();
+                        hot.updateSettings(settings);
                     },
                     disabled: function () {
                         return false;
