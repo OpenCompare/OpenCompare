@@ -374,7 +374,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                 },
                 "hsep1": "---------",
                 validator_numeric: {
-                    name: "numeric",
+                    name: "Type: numeric",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
                         features[selection.end.col].Type = number;
@@ -386,7 +386,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                 },
 
                 validator_text: {
-                    name: "text",
+                    name: "Type: textual",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
                         features[selection.end.col].Type = text;
@@ -397,7 +397,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
                     }
                 },
                 validator_boolean: {
-                    name: "boolean",
+                    name: "Type: boolean",
                     callback: function (key, selection) {
                         $scope.pcm.findFeaturesByID(features[selection.end.col].ID).type = type;
                         features[selection.end.col].Type = bool;
