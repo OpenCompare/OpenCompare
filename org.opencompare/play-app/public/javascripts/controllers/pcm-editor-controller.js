@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
+pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiGridConstants) {
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -12,7 +12,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
     var serializer = factory.createJSONSerializer();
 
     $scope.gridOptions = {
-        //columnDefs: 'columns',
+        columnDefs: [],
         data: 'pcmData',
         //enableSorting: true
         onRegisterApi: function( gridAPI ) {
@@ -73,15 +73,26 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
             return productData;
         });
 
+        $scope.pcmData = products;
+
         var productNames = pcm.products.array.map(function (product) {
             return product.name
         });
 
-        $scope.pcmData = products;
+        // Define columns
+        $scope.gridOptions.columnDefs = pcm.features.array.map(function (feature) {
+            return {
+                name: feature.name,
+                enableCellEdit: true,
+                enableSorting: true,
+                enableHiding: true
+            }
+        });
 
+        // Row header
         var cellTemplate = 'ui-grid/selectionRowHeader';
         $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
-        console.log($scope.gridAPI)
+
     }
 
 
