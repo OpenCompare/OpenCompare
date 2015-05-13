@@ -13,13 +13,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
 
     $scope.gridOptions = {
         //columnDefs: 'columns',
-        data: 'pcmData'
+        data: 'pcmData',
         //enableSorting: true
-        //onRegisterApi: function( gridApi ) {
-        //    $scope.gridApi = gridApi;
-        //    var cellTemplate = 'ui-grid/selectionRowHeader';   // you could use your own template here
-        //    $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 30, cellTemplate: cellTemplate} );
-        //}
+        onRegisterApi: function( gridAPI ) {
+            $scope.gridAPI = gridAPI;
+        }
     };
 
     if (typeof id === 'undefined') {
@@ -69,21 +67,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
             features.map(function(feature) {
                 var cell = findCell(product, feature);
                 productData[feature.name] = cell.content;
+                //productData.rowHeaderCol = product.name;
             });
 
             return productData;
         });
 
-        //$scope.columns = features.map(function (feature) {
-        //    return {
-        //        name: feature.name,
-        //        field: feature.name
-        //    }
-        //});
-        $scope.pcmData = products;
-        //console.log($scope.pcmData)
-        //console.log($scope.columns)
+        var productNames = pcm.products.array.map(function (product) {
+            return product.name
+        });
 
+        $scope.pcmData = products;
+
+        var cellTemplate = 'ui-grid/selectionRowHeader';
+        $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
+        console.log($scope.gridAPI)
     }
 
 
