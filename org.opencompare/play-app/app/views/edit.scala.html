@@ -1,7 +1,6 @@
 @(id : String)
 
 @header = {
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editor.css")'>
 }
 
@@ -9,11 +8,9 @@
     @if(id != null) {
         <script>
             var id = "@{Html(id)}";
-
         </script>
     }
 
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-toolbar-controller.js")'></script>
@@ -71,7 +68,7 @@
         </form>
     </div>
 
-    <div id="matrix" class="row">
+    <div id="matrix" class="row" ui-grid="gridOptions">
     </div>
 
 </div>

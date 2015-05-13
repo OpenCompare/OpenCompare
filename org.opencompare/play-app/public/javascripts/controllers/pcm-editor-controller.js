@@ -1,7 +1,5 @@
 /**
-
  * Created by gbecan on 17/12/14.
-
  */
 
 
@@ -12,6 +10,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
     var factory = new pcmMM.factory.DefaultPcmFactory();
     var loader = factory.createJSONLoader();
     var serializer = factory.createJSONSerializer();
+
+    $scope.gridOptions = {
+        //columnDefs: 'columns',
+        data: 'pcmData'
+        //enableSorting: true
+        //onRegisterApi: function( gridApi ) {
+        //    $scope.gridApi = gridApi;
+        //    var cellTemplate = 'ui-grid/selectionRowHeader';   // you could use your own template here
+        //    $scope.gridApi.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: '', width: 30, cellTemplate: cellTemplate} );
+        //}
+    };
 
     if (typeof id === 'undefined') {
         // Create example PCM
@@ -38,17 +47,45 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
         exampleCell1.content = "No";
         exampleProduct.addValues(exampleCell1);
 
-        // TODO : init PCM editor
+        initializeEditor($scope.pcm)
 
     } else {
 
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
-
-            // TODO : init PCM editor
+            initializeEditor($scope.pcm)
         });
 
     }
+
+    function initializeEditor(pcm) {
+
+        // Convert PCM model to editor format
+        var features = getConcreteFeatures(pcm);
+
+        var products = pcm.products.array.map(function(product) {
+            var productData = {};
+
+            features.map(function(feature) {
+                var cell = findCell(product, feature);
+                productData[feature.name] = cell.content;
+            });
+
+            return productData;
+        });
+
+        //$scope.columns = features.map(function (feature) {
+        //    return {
+        //        name: feature.name,
+        //        field: feature.name
+        //    }
+        //});
+        $scope.pcmData = products;
+        //console.log($scope.pcmData)
+        //console.log($scope.columns)
+
+    }
+
 
     /**
      * Save PCM on the server
@@ -71,7 +108,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
     };
 
     /**
-     *Remove PCM from server
+     * Remove PCM from server
      */
     $scope.remove = function() {
         if (typeof id !== 'undefined') {
@@ -82,6 +119,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http) {
         }
     };
 
+    /**
+     * Validate type of cells
+     */
     $scope.validate = function() {
       // TODO : validate cells in the editor
     };

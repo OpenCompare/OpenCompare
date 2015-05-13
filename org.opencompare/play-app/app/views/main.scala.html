@@ -12,6 +12,7 @@
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))'>
+    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
 
     @header
@@ -63,9 +64,12 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
+
     <script>
-        var pcmApp = angular.module("pcmApp", []);
+        var pcmApp = angular.module("pcmApp", ['ui.grid']);
     </script>
+
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/navbar-controller.js")'></script>
 
     <script>
