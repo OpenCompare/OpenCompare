@@ -59,12 +59,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     function initializeEditor(pcm) {
 
         // Convert PCM model to editor format
-        var features = getConcreteFeatures(pcm);
+        $scope.features = getConcreteFeatures(pcm);
 
         var products = pcm.products.array.map(function(product) {
             var productData = {};
 
-            features.map(function(feature) {
+            $scope.features.map(function(feature) {
                 var cell = findCell(product, feature);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
@@ -145,6 +145,33 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
         return pcm;
     }
+
+    $scope.addFeature = function() {
+        var featureName = "test" // FIXME : need some mechanisms to avoid the binding of two new features to the same column
+        var columnDef = {
+            name: featureName,
+            enableCellEdit: true,
+            enableSorting: true,
+            enableHiding: true
+        };
+
+        $scope.pcmData.forEach(function (productData) {
+            productData[featureName] = "";
+        });
+
+        $scope.gridOptions.columnDefs.push(columnDef);
+    };
+
+    $scope.addProduct = function() {
+        var productData = {};
+        productData.name = "";
+
+        $scope.features.forEach(function(feature) {
+            productData[feature.name] = "";
+        });
+
+        $scope.pcmData.push(productData);
+    };
 
     /**
      * Save PCM on the server
