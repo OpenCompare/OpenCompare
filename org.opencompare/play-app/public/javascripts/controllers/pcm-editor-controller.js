@@ -81,18 +81,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         });
 
         // Define columns
-        $scope.gridOptions.columnDefs = pcm.features.array.map(function (feature) {
-            return {
+        var columnDefs = [];
+
+        columnDefs.push({
+            name: 'name',
+            enableCellEdit: true,
+            enableSorting: true,
+            enableHiding: true
+        });
+        // TODO : define the first column as row header (following code might help)
+        // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
+
+        pcm.features.array.forEach(function (feature) {
+             columnDefs.push({
                 name: feature.name,
                 enableCellEdit: true,
                 enableSorting: true,
                 enableHiding: true
-            }
+            });
         });
 
-        // Row header
-        var cellTemplate = 'ui-grid/selectionRowHeader';
-        $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
+        $scope.gridOptions.columnDefs = columnDefs;
+
 
     }
 
@@ -113,7 +123,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
             for (var featureData in productData) { // FIXME : order is not preserved
                 if (productData.hasOwnProperty(featureData)
                     && featureData !== "$$hashKey"
-                    && featureData !== "name") { // FIXME : not really good for now... it includes and can conflict with other properties
+                    && featureData !== "name") { // FIXME : not really good for now... it can conflict with feature names
 
                     // Create feature if not exsiting
                     if (!featuresMap.hasOwnProperty(featureData)) {
