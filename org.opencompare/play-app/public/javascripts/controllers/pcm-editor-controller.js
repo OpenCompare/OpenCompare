@@ -66,6 +66,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
             features.map(function(feature) {
                 var cell = findCell(product, feature);
+                productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
                 //productData.rowHeaderCol = product.name;
             });
@@ -96,10 +97,51 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     }
 
 
+    function convertGridToPCM(pcmData) {
+        var pcm = factory.createPCM();
+        pcm.name = $scope.pcm.name;
+
+        var featuresMap = {};
+
+        pcmData.forEach(function(productData) {
+            // Create product
+            var product = factory.createProduct();
+            product.name = productData.name;
+            pcm.addProducts(product);
+
+            // Create cells
+            for (var featureData in productData) { // FIXME : order is not preserved
+                if (productData.hasOwnProperty(featureData)
+                    && featureData !== "$$hashKey"
+                    && featureData !== "name") { // FIXME : not really good for now... it includes and can conflict with other properties
+
+                    // Create feature if not exsiting
+                    if (!featuresMap.hasOwnProperty(featureData)) {
+                        var feature = factory.createFeature();
+                        feature.name = featureData;
+                        pcm.addFeatures(feature);
+                        featuresMap[featureData] = feature;
+                    }
+                    var feature = featuresMap[featureData]
+
+                    // Create cell
+                    var cell = factory.createCell();
+                    cell.feature = feature;
+                    cell.content = productData[featureData];
+                    product.addValues(cell);
+                }
+            }
+        });
+
+        return pcm;
+    }
+
     /**
      * Save PCM on the server
      */
     $scope.save = function() {
+
+        $scope.pcm = convertGridToPCM($scope.pcmData)
         var jsonModel = serializer.serialize($scope.pcm);
 
         if (typeof id === 'undefined') {
