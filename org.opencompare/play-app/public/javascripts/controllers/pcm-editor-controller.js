@@ -84,7 +84,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         var columnDefs = [];
 
         columnDefs.push({
-            name: 'name',
+            name: 'Product',
+            field: "name",
             enableCellEdit: true,
             enableSorting: true,
             enableHiding: true

@@ -1,8 +1,9 @@
 import play.Project._
+import scala.xml.XML
 
-name := """PCM app"""
+name := """OpenCompare"""
 
-version := "0.2-SNAPSHOT"
+version := XML.loadFile("pom.xml").\("version").text
 
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.2.2",
