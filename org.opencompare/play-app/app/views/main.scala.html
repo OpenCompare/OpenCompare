@@ -65,9 +65,11 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.bootstrap-autohidingnavbar.min.js")'></script>
 
     <script>
         var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit']);
+        $("nav.navbar-fixed-top").autoHidingNavbar();
     </script>
 
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/navbar-controller.js")'></script>
