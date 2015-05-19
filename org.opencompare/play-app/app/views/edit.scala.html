@@ -24,6 +24,7 @@
 
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
+                <button role="button" class="btn btn-default"  data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
                 <button role="button" class="btn btn-default" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
                 <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
@@ -51,6 +52,25 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Remove</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modalCancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                    Cancel edition will lose all unsaved changes.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cancel()">Yes</button>
                 </div>
             </div>
         </div>

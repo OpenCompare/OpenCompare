@@ -209,6 +209,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     };
 
     /**
+     * Cancel edition
+     */
+    $scope.cancel = function() {
+        window.location = "/view/" + id;
+    };
+
+    /**
      * Validate type of cells
      */
     $scope.validate = function() {
@@ -224,6 +231,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
     $scope.$on('remove', function(event, args) {
         $scope.remove();
+    });
+
+    $scope.$on('cancel', function(event, args) {
+        $scope.cancel();
     });
 
     $scope.$on('validate', function(event, args) {
