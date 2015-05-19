@@ -23,7 +23,7 @@
         <plugins>
             <plugin>
                 <groupId>org.kevoree.modeling</groupId>
-                <artifactId>org.kevoree.modeling.kotlin.generator.mavenplugin</artifactId>
+                <artifactId>org.kevoree.modeling.generator.mavenplugin</artifactId>
                 <version>${kmf.plugin.version}</version>
                 <extensions>true</extensions>
                 <executions>
@@ -34,9 +34,7 @@
                         </goals>
                         <configuration>
                             <js>false</js>
-                            <ecore>${metamodel.ecore}</ecore>
-                            <events>false</events>
-                            <persistence>false</persistence>
+                            <metaModelFile>${metamodel.ecore}</metaModelFile>
                         </configuration>
                     </execution>
                 </executions>
