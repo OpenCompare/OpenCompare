@@ -1,0 +1,62 @@
+@header = {
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/importer.css")'>
+}
+
+@footer = {
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-importer-controller.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/lib/csvToArray.js")'></script>
+}
+
+@toolbar = {
+
+    <nav class="navbar"  role="navigation" >
+        <div class="container-fluid">
+
+            <div class="importer-toolbar" >
+
+                <button type="button" class="btn btn-confirm" data-toggle="modal" data-target="#modalConfirm"><i class="fa fa-valid"></i> @Messages("importer.button.confirm")</button>
+
+            </div>
+        </div>
+    </nav>
+
+}
+
+@main(header, footer, toolbar) {
+
+<div id="importer" ng-controller="PCMImporterController">
+
+    <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">@Messages("importer.button.confirm.message")</h4>
+                </div>
+                <div class="modal-body">
+                    @Messages("importer.button.confirm.desc")
+                    <br />
+                    <label>@Messages("importer.pcm.title") : <input type="string" id="pcm_title" name="PCM title" size="25"/></label>
+
+                    <br />
+                    <label>@Messages("importer.csv.separator") : <input type="string" id="csv_separator" name="Csv separator" size="3"/></label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@Messages("importer.button.cancel")</button>
+                    <button type="button" class="btn btn-confirm" data-dismiss="modal" ng-click="confirm()">@Messages("importer.button.confirm")</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <input type="file" id="import_file" name="file"/>
+    </div>
+
+</div>
+}
+

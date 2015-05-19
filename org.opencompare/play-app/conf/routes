@@ -10,6 +10,7 @@ GET     /search                             controllers.Application.search(reque
 GET     /view/:id                           controllers.Application.view(id : String)
 GET     /edit/:id                           controllers.Application.edit(id : String)
 GET     /create                             controllers.Application.create()
+GET     /import                             controllers.Application.importer()
 
 # API
 GET     /api/get/:id                        controllers.PCMAPI.get(id : String)

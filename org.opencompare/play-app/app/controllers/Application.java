@@ -58,4 +58,7 @@ public class Application extends Controller {
         return ok(views.html.edit.render(null));
     }
 
+    public static Result importer() {
+        return ok(views.html.importer.render());
+    }
 }
