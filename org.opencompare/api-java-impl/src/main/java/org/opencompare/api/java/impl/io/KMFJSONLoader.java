@@ -1,26 +1,42 @@
 package org.opencompare.api.java.impl.io;
 
+import org.kevoree.modeling.api.Callback;
+import org.kevoree.modeling.api.json.JsonModelLoader;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.io.PCMLoader;
-import org.kevoree.modeling.api.KMFContainer;
-import org.kevoree.modeling.api.json.JSONModelLoader;
-import pcm.factory.DefaultPcmFactory;
+import pcm.PcmModel;
+import pcm.PcmUniverse;
+import pcm.PcmView;
+import pcm.impl.PcmViewImpl;
 
 import java.io.*;
-import java.util.List;
 
 /**
  * Created by gbecan on 12/12/14.
  */
 public class KMFJSONLoader implements PCMLoader {
 
-    private DefaultPcmFactory kpcmFactory = new DefaultPcmFactory();
-    private JSONModelLoader loader = kpcmFactory.createJSONLoader();
+
+
+    private JsonModelLoader loader = new JsonModelLoader();
+    
 
     @Override
     public PCM load(String json) {
-        List<KMFContainer> containers = loader.loadModelFromString(json);
+        PcmModel model = new PcmModel();
+        PcmUniverse universe = model.newUniverse();
+        PcmView view = new PcmViewImpl(System.currentTimeMillis(), universe);
+
+
+        JsonModelLoader.load(view, json, new Callback<Throwable>() {
+            @Override
+            public void on(Throwable throwable) {
+
+            }
+        });
+
+
         return load(containers);
     }
 
