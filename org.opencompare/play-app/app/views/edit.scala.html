@@ -24,7 +24,7 @@
 
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
-                <button role="button" class="btn btn-default"  data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
+                <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
                 <button role="button" class="btn btn-default" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
                 <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
@@ -66,7 +66,7 @@
                     <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
                 </div>
                 <div class="modal-body">
-                    Cancel edition will lose all unsaved changes.
+                    Cancel edition will lose all unsaved changes
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
@@ -89,11 +89,11 @@
     </div>
 
     <div class="row">
-        <button role="button" class="btn btn-default" ng-click="addFeature()">Add Feature</button>
-        <button role="button" class="btn btn-default" ng-click="addProduct()">Add Product</button>
+        <button role="button" class="btn btn-default" ng-click="addFeature()"><i class="fa fa-plus"></i> Add Feature</button>
+        <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Add Product</button>
     </div>
 
-    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-edit>
+    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit>
     </div>
 
 </div>

@@ -14,11 +14,27 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
+        enableRowSelection: true,
+        enableRowHeaderSelection: false,
         //enableSorting: true
-        onRegisterApi: function( gridAPI ) {
-            $scope.gridAPI = gridAPI;
-        }
     };
+
+    $scope.gridOptions.onRegisterApi = function(gridApi){
+        //set gridApi on scope
+        $scope.gridApi = gridApi;
+        gridApi.selection.on.rowSelectionChanged($scope,function(row){
+            var msg = 'row selected ' + row.isSelected;
+            console.log(msg);
+        });
+
+        gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
+            var msg = 'rows changed ' + rows.length;
+            console.log(msg);
+        });
+    };
+    $scope.gridOptions.multiSelect = false;
+    $scope.gridOptions.modifierKeysToMultiSelect = false;
+    $scope.gridOptions.noUnselect = true;
 
     if (typeof id === 'undefined') {
         // Create example PCM
@@ -104,7 +120,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
         $scope.gridOptions.columnDefs = columnDefs;
 
-
     }
 
 
@@ -174,11 +189,29 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         $scope.pcmData.push(productData);
     };
 
+    $scope.addProductRow = function(row) {
+        var index = $scope.gridOptions.data.indexOf(row.entity);
+        var productData = {};
+        productData.name = "";
+
+        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+            productData[featureData.name] = "";
+        });
+
+        $scope.pcmData.push(productData);
+        console.log(index);
+    };
+
+    $scope.removeProduct = function(row) {
+        var index = $scope.gridOptions.data.indexOf(row.entity);
+        $scope.pcmData.splice(index, 1);
+        console.log("test remove");
+    };
+
     /**
      * Save PCM on the server
      */
     $scope.save = function() {
-
         $scope.pcm = convertGridToPCM($scope.pcmData)
         var jsonModel = serializer.serialize($scope.pcm);
 
