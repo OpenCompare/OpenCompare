@@ -16,25 +16,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         data: 'pcmData',
         enableRowSelection: true,
         enableRowHeaderSelection: false,
-        //enableSorting: true
+        headerRowHeight: 200
     };
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.selection.on.rowSelectionChanged($scope,function(row){
-            var msg = 'row selected ' + row.isSelected;
-            console.log(msg);
-        });
-
-        gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
-            var msg = 'rows changed ' + rows.length;
-            console.log(msg);
+            var index = $scope.pcmData.indexOf(row.entity);
+            console.log(index);
         });
     };
+
     $scope.gridOptions.multiSelect = false;
     $scope.gridOptions.modifierKeysToMultiSelect = false;
-    $scope.gridOptions.noUnselect = true;
+    $scope.gridOptions.noUnselect = false;
 
     if (typeof id === 'undefined') {
         // Create example PCM
@@ -98,6 +94,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
         // Define columns
         var columnDefs = [];
+        var index = 0;
+        columnDefs.push({
+            name: ' ',
+            cellTemplate: '<div class="buttonsCell">' +
+            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-minus"></i></button>'+
+            '<button role="button" ng-click="grid.appScope.editProduct()"><i class="fa fa-pencil"></i></button>'+
+            '</div>',
+            enableCellEdit: false,
+            enableSorting: false,
+            enableHiding: false,
+            width: 60,
+            enableColumnMenu: false
+        });
 
         columnDefs.push({
             name: 'Product',
@@ -203,9 +212,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     };
 
     $scope.removeProduct = function(row) {
-        var index = $scope.gridOptions.data.indexOf(row.entity);
+        var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
-        console.log("test remove");
     };
 
     /**
