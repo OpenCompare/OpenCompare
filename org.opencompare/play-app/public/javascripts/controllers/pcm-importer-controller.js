@@ -1,5 +1,5 @@
 /**
- * Created by gbecan on 17/12/14.
+ * Created by smangin on 19/05/15.
  */
 
 
@@ -101,9 +101,10 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
         pcm.name = title;
 
         array_pcm = CSVToArray(file, separator)
-        var featuresMap = {};
+        var featuresMap = [];
         if (header) {
             var headers = array_pcm[0];
+            delete array_pcm[0];
             var i = 0;
             headers.forEach(function(name) {
                 // Create feature if not exsisting
@@ -113,28 +114,25 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
                     pcm.addFeatures(feature);
                     featuresMap[i] = feature;
                 }
+                i += 1;
             });
-            delete array_pcm[1];
-            i += 1;
         }
+
         array_pcm.forEach(function(productData) {
             // Create product
             var product = factory.createProduct();
-            product.name = productData.name;
 
             // Create cells
             var i = 0;
-            for (var featureData in productData) { // FIXME : order is not preserved
+            productData.forEach(function(featureData) { // FIXME : order is not preserved
                 var feature = featuresMap[i];
-                if (featureData !== "$$hashKey") {
-                    // Create cell
-                    var cell = factory.createCell();
-                    cell.feature = feature;
-                    cell.content = featureData;
-                    product.addValues(cell);
-                }
+                // Create cell
+                var cell = factory.createCell();
+                cell.feature = feature;
+                cell.content = featureData;
+                product.addValues(cell);
                 i += 1;
-            }
+            })
             pcm.addProducts(product);
         });
         return pcm;
@@ -156,6 +154,7 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
             var data = evt.target.result;
             var pcm = convertCsvToPCM(title, data, separator, header)
             var jsonModel = serializer.serialize(pcm);
+            console.log(jsonModel);
             $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
