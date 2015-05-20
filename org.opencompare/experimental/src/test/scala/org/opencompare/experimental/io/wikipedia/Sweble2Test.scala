@@ -83,7 +83,7 @@ class Sweble2Test extends FlatSpec with Matchers {
     "[[Category:Municipalities of Braga District]]\n[[Category:Vila Verde| ]]\n\n" +
     "{{Braga-geo-stub}}"
 
-  
+
 
   "Sweble 2 parser" should "parse simple wikitext" in {
     val parser = new Sweble2Parser
