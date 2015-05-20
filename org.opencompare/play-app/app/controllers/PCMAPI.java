@@ -3,6 +3,7 @@ package controllers;
 import model.Database;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
+import org.opencompare.api.java.io.CSVExporter;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -38,4 +39,21 @@ public class PCMAPI extends Controller {
         return ok();
     }
 
+    public static Result convert(String id, String ext) {
+        String data = null;
+
+        PCM pcm = Database.INSTANCE.get(id).getPcm();
+        if (ext == "json") {
+            KMFJSONExporter serializer = new KMFJSONExporter();
+            String json = serializer.export(pcm);
+            data = json;
+        } else if (ext == "csv") {
+            CSVExporter serializer = new CSVExporter();
+            String csv = serializer.export(pcm);
+            data = csv;
+        } else {
+            return badRequest("Extension type error. Return only 'csv' and 'json' format !");
+        }
+        return ok(data);
+    }
 }
