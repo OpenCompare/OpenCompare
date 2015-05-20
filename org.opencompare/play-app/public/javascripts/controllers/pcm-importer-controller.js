@@ -96,74 +96,72 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
         return( arrData );
     }
 
-    function convertCsvToPCM(title, file, separator) {
+    function convertCsvToPCM(title, file, separator, header) {
         var pcm = factory.createPCM();
         pcm.name = title;
 
-        var featuresMap = {};
         array_pcm = CSVToArray(file, separator)
+        var featuresMap = {};
+        if (header) {
+            var headers = array_pcm[0];
+            var i = 0;
+            headers.forEach(function(name) {
+                // Create feature if not exsisting
+                if (!featuresMap.hasOwnProperty(name)) {
+                    var feature = factory.createFeature();
+                    feature.name = name;
+                    pcm.addFeatures(feature);
+                    featuresMap[i] = feature;
+                }
+            });
+            delete array_pcm[1];
+            i += 1;
+        }
         array_pcm.forEach(function(productData) {
             // Create product
             var product = factory.createProduct();
             product.name = productData.name;
-            pcm.addProducts(product);
 
             // Create cells
+            var i = 0;
             for (var featureData in productData) { // FIXME : order is not preserved
-                if (productData.hasOwnProperty(featureData)
-                    && featureData !== "$$hashKey"
-                    && featureData !== "name") { // FIXME : not really good for now... it can conflict with feature names
-
-                    // Create feature if not exsiting
-                    if (!featuresMap.hasOwnProperty(featureData)) {
-                        var feature = factory.createFeature();
-                        feature.name = featureData;
-                        pcm.addFeatures(feature);
-                        featuresMap[featureData] = feature;
-                    }
-                    var feature = featuresMap[featureData]
-
+                var feature = featuresMap[i];
+                if (featureData !== "$$hashKey") {
                     // Create cell
                     var cell = factory.createCell();
                     cell.feature = feature;
-                    cell.content = productData[featureData];
+                    cell.content = featureData;
                     product.addValues(cell);
                 }
+                i += 1;
             }
+            pcm.addProducts(product);
         });
-
         return pcm;
     }
 
     /**
-     * Validate type of cells
+     * Validate
      */
     $scope.confirm = function() {
-        var data = null;
+        var f = document.getElementById('import_file').files[0];
         var title = document.getElementById('pcm_title').value;
         var separator = document.getElementById('csv_separator').value;
-        var f = document.getElementById('import_file').files[0];
-        var import_file = new FileReader();
-        import_file.onloadend = function(e){
-            data = e.target.result;
-            //send you binary data via $http or $resource or do anything else with it
-            alert( "Got the file.\n"
-              +"name: " + f.name + "\n"
-              +"type: " + f.type + "\n"
-              +"size: " + f.size + " bytes\n"
-              + "starts with: " + data
-            );
-            return data
-        }
-        import_file.readAsText(f);
-        console.log(import_file.result);
-        var pcm = convertCsvToPCM(title, import_file, separator)
-        var jsonModel = serializer.serialize(pcm);
-
-        $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
-            id = data;
-            console.log("model created with id=" + id);
-        });
+        var header = document.getElementById('csv_header').value;
+        var r = new FileReader();
+        // FileReader is asynchronous.
+        // The handler is mandatory.
+        // Prefered 'onloadend' which is called whatever appends (success, error)
+        r.onloadend = function(evt) {
+            var data = evt.target.result;
+            var pcm = convertCsvToPCM(title, data, separator, header)
+            var jsonModel = serializer.serialize(pcm);
+            $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
+                id = data;
+                console.log("model created with id=" + id);
+            });
+        };
+        r.readAsText(f);
 
     };
 

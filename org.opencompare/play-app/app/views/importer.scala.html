@@ -38,10 +38,15 @@
                 <div class="modal-body">
                     @Messages("importer.button.confirm.desc")
                     <br />
+                    <br />
                     <label>@Messages("importer.pcm.title") : <input type="string" id="pcm_title" name="PCM title" size="25"/></label>
 
                     <br />
                     <label>@Messages("importer.csv.separator") : <input type="string" id="csv_separator" name="Csv separator" size="3"/></label>
+
+                    <br />
+                    <label>@Messages("importer.csv.header") : <input type="checkbox" id="csv_header" name="Csv header" size="3"/></label>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">@Messages("importer.button.cancel")</button>
