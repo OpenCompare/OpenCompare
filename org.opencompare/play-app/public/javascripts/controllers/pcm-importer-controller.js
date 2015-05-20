@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
+pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $location) {
 
     var pcmMM = Kotlin.modules['pcm'].pcm;
     var factory = new pcmMM.factory.DefaultPcmFactory();
@@ -158,6 +158,7 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
             $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
+                $location.path('/list');
             });
         };
         r.readAsText(f);
