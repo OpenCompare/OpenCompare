@@ -154,11 +154,11 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $
             var data = evt.target.result;
             var pcm = convertCsvToPCM(title, data, separator, header)
             var jsonModel = serializer.serialize(pcm);
-            console.log(jsonModel);
+            alert(jsonModel);
             $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
-                $location.path('/list');
+                window.location = '/edit/' + id;
             });
         };
         r.readAsText(f);
