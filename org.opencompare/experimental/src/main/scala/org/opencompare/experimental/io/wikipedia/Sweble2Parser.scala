@@ -9,7 +9,7 @@ import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
 import org.sweble.wikitext.parser.parser.PreprocessorToParserTransformer
 import org.sweble.wikitext.parser.utils.SimpleParserConfig
 import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
-import org.sweble.wikitext.parser.nodes.{WtPreproWikitextPage, WikitextNodeFactoryImpl, WikitextNodeFactory}
+import org.sweble.wikitext.parser.nodes._
 import org.sweble.wom3.swcadapter.AstToWomConverter
 import org.sweble.wom3.util.Wom3Toolbox
 
@@ -38,10 +38,21 @@ class Sweble2Parser {
     val ast = parser.parseArticle(code, title)
     val pageTitle = PageTitle.make(wikiConfig, "title")
     val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), ast)
+
     val roundTripCode = Wom3Toolbox.womToWmXPath(wom3Doc)
 
     println(roundTripCode)
     println(code.equals(roundTripCode))
+
+    println()
+    println("--------------------------")
+    println()
+
+    val textNode = wom3Doc.getDocumentElement.getElementsByTagName("text").item(0)
+    println("REMOVING : " + textNode.getTextContent)
+    textNode.getParentNode.removeChild(textNode)
+
+    println(Wom3Toolbox.womToWmXPath(wom3Doc))
 
   }
 
