@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiGridConstants) {
+pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $timeout, uiGridConstants) {
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -14,23 +14,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
-        enableRowSelection: true,
+        enableRowSelection: false,
+        enableCellSelection : true,
+        enableCellEditOnFocus : true,
         enableRowHeaderSelection: false,
+        modifierKeysToMultiSelectCells: true,
         headerRowHeight: 200
     };
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
         //set gridApi on scope
         $scope.gridApi = gridApi;
-        gridApi.selection.on.rowSelectionChanged($scope,function(row){
-            var index = $scope.pcmData.indexOf(row.entity);
-            console.log(index);
+        gridApi.cellNav.on.navigate($scope,function(newRowCol, oldRowCol){
+            console.log('navigation event');
         });
     };
-
-    $scope.gridOptions.multiSelect = false;
-    $scope.gridOptions.modifierKeysToMultiSelect = false;
-    $scope.gridOptions.noUnselect = false;
 
     if (typeof id === 'undefined') {
         // Create example PCM
@@ -105,7 +103,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
             enableSorting: false,
             enableHiding: false,
             width: 60,
-            enableColumnMenu: false
+            enableColumnMenu: false,
+            allowCellFocus: false
         });
 
         columnDefs.push({
@@ -198,8 +197,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         $scope.pcmData.push(productData);
     };
 
-    $scope.addProductRow = function(row) {
-        var index = $scope.gridOptions.data.indexOf(row.entity);
+    /**
+     * Add a new product and focus on this new
+     * @param row
+     */
+    $scope.addProductAndFocus = function(row) {
         var productData = {};
         productData.name = "";
 
@@ -208,12 +210,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         });
 
         $scope.pcmData.push(productData);
-        console.log(index);
+        $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+        console.log("Focus");
     };
 
     $scope.removeProduct = function(row) {
         var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
+    };
+
+
+    $scope.scrollToFocus = function( rowIndex, colIndex ) {
+        $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
     };
 
     /**

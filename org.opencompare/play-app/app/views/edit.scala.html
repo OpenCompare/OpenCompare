@@ -89,11 +89,11 @@
     </div>
 
     <div class="row">
-        <button role="button" class="btn btn-default" ng-click="addFeature()"><i class="fa fa-plus"></i> Add Feature</button>
-        <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Add Product</button>
+        <button role="button" class="btn btn-default" ng-click="addFeature()"><i class="fa fa-plus"></i> New Feature</button>
+        <button role="button" class="btn btn-default" ng-click="addProductAndFocus()"><i class="fa fa-plus"></i> New Product</button>
     </div>
 
-    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit>
+    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-pinning>
     </div>
 
 </div>
