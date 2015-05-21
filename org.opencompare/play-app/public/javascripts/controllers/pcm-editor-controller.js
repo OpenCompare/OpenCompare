@@ -102,7 +102,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableHiding: false,
             width: 30,
             enableColumnMenu: false,
-            allowCellFocus: false
+            allowCellFocus: false,
+            enableColumnMoving: false
         });
 
         columnDefs.push({
@@ -110,7 +111,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             field: "name",
             enableCellEdit: true,
             enableSorting: true,
-            enableHiding: true
+            enableHiding: true,
+            enableColumnMoving: false
         });
         // TODO : define the first column as row header (following code might help)
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
@@ -120,7 +122,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 name: feature.name,
                 enableCellEdit: true,
                 enableSorting: true,
-                enableHiding: true
+                enableHiding: true,
+                menuItems: [
+                    {
+                        title: 'Delete Feature',
+                        icon: 'fa fa-trash-o',
+                        action: function($event) {
+                            var index = 0;
+                            $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                               if(featureData.name === feature.name) {
+                                   var index2 = 0;
+                                   $scope.pcmData.forEach(function () {
+                                       delete $scope.pcmData[index2][featureData.name];
+                                       index2++;
+                                   });
+                                   $scope.gridOptions.columnDefs.splice(index, 1);
+                               }
+                               index++;
+                            });
+                            console.log("Feature is deleted");
+                        }
+                    }
+                ]
             });
         });
 
@@ -147,7 +170,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     && featureData !== "$$hashKey"
                     && featureData !== "name") { // FIXME : not really good for now... it can conflict with feature names
 
-                    // Create feature if not exsiting
+                    // Create feature if not existing
                     if (!featuresMap.hasOwnProperty(featureData)) {
                         var feature = factory.createFeature();
                         feature.name = featureData;
@@ -164,7 +187,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             }
         });
-
         return pcm;
     }
 
