@@ -9,7 +9,7 @@ import play.mvc.Result;
 import java.util.List;
 
 public class Application extends Controller {
-    
+
     public static Result index() {
         return ok(views.html.index.render());
     }

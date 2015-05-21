@@ -18,7 +18,7 @@ POST    /api/save/:id                       controllers.PCMAPI.save(id : String)
 POST    /api/create                         controllers.PCMAPI.create()
 GET     /api/remove/:id                     controllers.PCMAPI.remove(id : String)
 GET     /api/convert/{id}.{<csv|json>ext}   controllers.PCMAPI.convert(id : String, ext : String)
-
+POST    /api/import                         controllers.PCMAPI.importer()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)
