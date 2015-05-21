@@ -89,11 +89,37 @@
     </div>
 
     <div class="row">
-        <button role="button" class="btn btn-default" ng-click="addFeature()"><i class="fa fa-plus"></i> New Feature</button>
+        <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> New Feature</button>
         <button role="button" class="btn btn-default" ng-click="addProductAndFocus()"><i class="fa fa-plus"></i> New Product</button>
     </div>
 
-    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-pinning>
+    <div class="modal fade" id="modalNewFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create a new Feature</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="featureName">Feature name: </label>
+                    <input ng-model="featureName" type="text" id="featureName">
+                    <label for="featureType">Feature type: </label>
+                    <select ng-model="featureType">
+                        <option value="0">Integer</option>
+                        <option value="1" selected="selected">String</option>
+                        <option value="2">Boolean</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addFeature()">Create</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav>
     </div>
 
 </div>

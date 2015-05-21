@@ -18,7 +18,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableCellSelection : true,
         enableCellEditOnFocus : true,
         enableRowHeaderSelection: false,
-        modifierKeysToMultiSelectCells: true,
         headerRowHeight: 200
     };
 
@@ -96,13 +95,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         columnDefs.push({
             name: ' ',
             cellTemplate: '<div class="buttonsCell">' +
-            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-minus"></i></button>'+
-            '<button role="button" ng-click="grid.appScope.editProduct()"><i class="fa fa-pencil"></i></button>'+
+            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
             '</div>',
             enableCellEdit: false,
             enableSorting: false,
             enableHiding: false,
-            width: 60,
+            width: 30,
             enableColumnMenu: false,
             allowCellFocus: false
         });
@@ -171,9 +169,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
-        var featureName = "test" // FIXME : need some mechanisms to avoid the binding of two new features to the same column
+        var featureName = $scope.featureName; // FIXME : need some mechanisms to avoid the binding of two new features to the same column
         var columnDef = {
             name: featureName,
+            field: 'New Feature',
             enableCellEdit: true,
             enableSorting: true,
             enableHiding: true
