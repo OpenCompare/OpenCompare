@@ -142,6 +142,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             });
                             console.log("Feature is deleted");
                         }
+                    },
+                    {
+                        title: 'Rename Feature',
+                        icon: 'fa fa-pencil',
+                        action: function($event) {
+                            $('#modalRenameFeature').modal('show');
+                            $scope.oldFeatureName = feature.name;
+                            $scope.featureName = feature.name;
+                        }
                     }
                 ]
             });
@@ -191,7 +200,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
-        var featureName = $scope.featureName; // FIXME : need some mechanisms to avoid the binding of two new features to the same column
+        var featureName = $scope.featureName;
         var columnDef = {
             name: featureName,
             field: 'New Feature',
@@ -205,6 +214,63 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         $scope.gridOptions.columnDefs.push(columnDef);
+    };
+
+    $scope.copyPasteFeature = function(featureToPast) {
+        var featureName = $scope.featureName;
+        var columnDef = {
+            name: featureName,
+            enableCellEdit: true,
+            enableSorting: true,
+            enableHiding: true
+        };
+
+        $scope.pcmData.forEach(function (productData) {
+            productData[featureName] = productData[featureToPast];
+        });
+        $scope.gridOptions.columnDefs.push(columnDef);
+    };
+
+    $scope.renameFeature = function() {
+        var index = 0;
+        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+            if(featureData.name === $scope.oldFeatureName) {
+                var featureName = $scope.featureName;
+                $scope.pcmData.forEach(function (productData) {
+                    productData[featureName] = productData[$scope.oldFeatureName];
+                    delete productData[$scope.oldFeatureName];
+                });
+
+                var colDef = {
+                    name: featureName,
+                    enableCellEdit: true,
+                    enableSorting: true,
+                    enableHiding: true
+                };
+                $scope.gridOptions.columnDefs.splice(index, 1, colDef)
+
+                console.log(index);
+                //$timeout(function(){ $scope.gridApi.colMovable.moveColumn($scope.gridOptions.columnDefs.length-1, index);}, 100);
+                //  $timeout(function(){ $scope.deleteFeature();}, 100);
+            }
+            index++;
+        });
+    };
+
+    $scope.deleteFeature = function() {
+        var index = 0;
+        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+            if(featureData.name === $scope.oldFeatureName) {
+                var index2 = 0;
+                $scope.pcmData.forEach(function () {
+                    delete $scope.pcmData[index2][$scope.oldFeatureName];
+                    index2++;
+                });
+                $scope.gridOptions.columnDefs.splice(index, 1);
+            }
+            index++;
+        });
+        console.log("Feature is deleted");
     };
 
     $scope.addProduct = function() {
