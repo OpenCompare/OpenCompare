@@ -3,12 +3,7 @@
  */
 
 
-pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $location) {
-
-    var pcmMM = Kotlin.modules['pcm'].pcm;
-    var factory = new pcmMM.factory.DefaultPcmFactory();
-    var loader = factory.createJSONLoader();
-    var serializer = factory.createJSONSerializer();
+pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
 
     // Default values
     $scope.type = 'csv';
@@ -19,8 +14,7 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $
     };
     $scope.csv = {
         separator: ',',
-        quote: '',
-        header: false,
+        quote: '"',
     };
 
     /**
@@ -36,7 +30,6 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $
                 title: $scope.pcm.title,
                 separator: $scope.csv.separator,
                 quote: $scope.csv.quote,
-                header: $scope.csv.header,
                 productAsLines: $scope.pcm.productAsLines,
                 fileContent: evt.target.result,
                 type: $scope.type,
@@ -44,7 +37,7 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http, $
             $http.post("/api/import", datas)
                 .success(function(data, status, headers, config) {
                     console.log("model created with id=" + data);
-                    window.location = '/edit/' + data;
+                    window.location = '/view/' + data;
                 })
                 .error(function(data, status, headers, config){
                     alert(data);

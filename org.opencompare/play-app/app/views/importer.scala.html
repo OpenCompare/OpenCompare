@@ -9,20 +9,7 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/lib/csvToArray.js")'></script>
 }
 
-@toolbar = {
-
-    <nav class="navbar" role="navigation" >
-        <div class="container-fluid">
-
-            <div class="importer-toolbar" >
-
-                <button type="submit" class="btn btn-success center-block" form="import_pcm"><i class="fa fa-valid"></i> @Messages("importer.button.confirm")</button>
-
-            </div>
-        </div>
-    </nav>
-
-}
+@toolbar = {}
 
 @main(header, footer, toolbar) {
 
@@ -31,7 +18,7 @@
             <div class="row-fluid">
                 <div class="col-md-12">
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label class="col-md-4 control-label">@Messages("importer.type")</label>
                         <div class="col-md-8">
                             <select ng-model="type" id="type" name="Importation type">
@@ -39,7 +26,7 @@
                                 <option value="json">json</option>
                             </select>
                         </div>
-                    </div>
+                    </div-->
                     <div class="form-group">
                         <label class="col-md-4 control-label">@Messages("importer.select")</label>
                         <div class="col-md-8">
@@ -73,13 +60,10 @@
                                 <input ng-model="csv.quote" type="string" id="quote" name="Csv quote" size="3"/>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">@Messages("importer.csv.header")</label>
-                            <div class="col-md-8">
-                                <input ng-model="csv.header" type="checkbox" id="header" name="Csv header" size="3"/>
-                            </div>
-                        </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success center-block" form="import_pcm"><i class="fa fa-valid"></i> @Messages("importer.button.confirm")</button>
                 </div>
             </div>
         </form>

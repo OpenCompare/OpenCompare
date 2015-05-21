@@ -101,11 +101,12 @@ public class PCMAPI extends Controller {
 
             // Effective load
             CSVLoader loader = new CSVLoader(factory, separator, quote, productAsLines);
-            try {
-                pcm = loader.load(fileContent);
-            } catch (IndexOutOfBoundsException e) {
-                return internalServerError("Index out of bound exception : " + e.getLocalizedMessage());
-            }
+            //try {
+            pcm = loader.load(fileContent);
+            //} catch (IndexOutOfBoundsException e) {
+            //    return internalServerError("Index out of bound exception : " + e.getLocalizedMessage());
+            //
+            //}
             pcm.setName(dynamicForm.get("title"));
 
         } else {
