@@ -293,11 +293,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         productData.name = "";
 
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
-            productData[featureData.name] = "";
+            if(featureData.name == " " || featureData.name == "Product") { // There must be a better way but working for now
+                delete productData[featureData.name];
+            }
+            else{
+                productData[featureData.name] = "";
+            }
         });
 
         $scope.pcmData.push(productData);
         $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+        console.log($scope.pcmData[6]);
         console.log("Focus");
     };
 
