@@ -89,7 +89,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         $scope.pcmData = products;
-
+        var isNumber = [];
+        var isBoolean = [];
         var productNames = pcm.products.array.map(function (product) {
             return product.name
         });
@@ -125,9 +126,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         // TODO : define the first column as row header (following code might help)
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
-
+        console.log(isNumber);
         pcm.features.array.forEach(function (feature) {
-            var colDef = $scope.newColDef(feature.name);
+            var colDef = $scope.newColumnDef(feature.name, $scope.featureType);
             columnDefs.push(colDef);
         });
 
@@ -179,7 +180,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcmData.forEach(function (productData) {
             productData[featureName] = "";
         });
-        var columnDef = $scope.newColumnDef(featureName);
+        var columnDef = $scope.newColumnDef(featureName, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         $rootScope.$broadcast('modified');
     };
@@ -194,7 +195,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     delete productData[$scope.oldFeatureName];
                 });
 
-                var colDef = $scope.newColumnDef(featureName);
+                var colDef = $scope.newColumnDef(featureName, $scope.featureType);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef)
             }
             index++;
@@ -275,7 +276,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
     };
 
-    $scope.newColDef = function(featureName) {
+    $scope.newColumnDef = function(featureName, featureType) {
+            if(!featureType) {
+                featureType = "";
+            }
             var columnDef = {
                 name: featureName,
                 enableCellEdit: true,
@@ -326,6 +330,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
                ]
             };
+        switch(featureType) {
+            case 'boolean':
+                columnDef.editableCellTemplate = 'ui-grid/dropdownEditor';
+                columnDef.editDropdownValueLabel= 'bool';
+                columnDef.editDropdownOptionsArray = [
+                    { id: 'Yes', bool: 'Yes' },
+                    { id: 'No', bool: 'No' }
+                ];
+                break;
+            case 'number':
+                columnDef.type = 'number';
+                break;
+        }
         return columnDef;
     };
 
