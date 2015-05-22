@@ -18,6 +18,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableCellSelection : true,
         enableCellEditOnFocus : true,
         enableRowHeaderSelection: false,
+        enableColumnResizing: false,
         headerRowHeight: 200
     };
 
@@ -258,7 +259,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 name: featureName,
                 enableCellEdit: true,
                 enableSorting: true,
-                enableHiding: true,
+                enableHiding: false,
                 menuItems: [
                 {
                     title: 'Delete Feature',
@@ -286,6 +287,32 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         $('#modalRenameFeature').modal('show');
                         $scope.oldFeatureName = featureName;
                         $scope.featureName = featureName;
+                    }
+                },
+                {
+                    title: 'Hide/Unhide',
+                    icon: 'fa fa-eye',
+                    action: function($event) {
+                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                            if(featureData.name === featureName) {
+                                if(featureData.maxWidth == '15') {
+                                    featureData.maxWidth = '*';
+                                    featureData.displayName = featureData.name;
+                                    featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                                        return 'showCell';
+                                    }
+                                    $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN);
+                                }
+                                else {
+                                    featureData.maxWidth = '15';
+                                    featureData.displayName = "";
+                                    featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                                        return 'hideCell';
+                                    }
+                                    $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN);
+                                }
+                            }
+                        });
                     }
                 }
                ]
