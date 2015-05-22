@@ -54,10 +54,6 @@ public class Application extends Controller {
 
     }
 
-    public static Result about() {
-        return ok(views.html.about.render());
-    }
-
     public static Result create() {
         return ok(views.html.edit.render(null));
     }

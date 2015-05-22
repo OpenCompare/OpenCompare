@@ -14,7 +14,7 @@ import java.io.FilenameFilter;
 public class LoadPCMs {
     @Test
     public void testLoadWikipediaPCMs() throws FileNotFoundException {
-        String path = "../org.diverse.PCM.io.Wikipedia/output/model";
+        String path = "../dataset-wikipedia/output/formalized/model";
         File dir = new File(path);
 
         KMFJSONLoader loader = new KMFJSONLoader();

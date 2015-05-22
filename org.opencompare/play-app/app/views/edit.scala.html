@@ -25,9 +25,9 @@
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
                 <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
-                <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> @Messages("edit.button.save")</button>
+                <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> @Messages("edit.button.validate")</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> @Messages("edit.button.remove")</button>
 
             </div>
         </div>
@@ -82,16 +82,16 @@
     <div class="row">
         <form class="form-inline">
             <div class="form-group col-lg-5">
-                    <label for="pcm-name" class="control-label">Title </label>
-                    <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder="Title">
+                    <label for="pcm-name" class="control-label">@Messages("edit.title") </label>
+                    <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='@Messages("edit.title.placeholder")'>
             </div>
         </form>
     </div>
     <br />
     <div class="row">
         <div class="col-xs-9">
-            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> New Feature</button>
-            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> New Product</button>
+            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> @Messages("edit.button.addfeature")</button>
+            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> @Messages("edit.button.addproduct")</button>
         </div>
     </div>
 
