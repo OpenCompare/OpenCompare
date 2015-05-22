@@ -82,15 +82,19 @@
     <div class="row">
         <form class="form-inline">
             <div class="form-group">
-                <label for="pcm-name" class="control-label">Title </label>
-                <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder="Title">
+                <div class="col-xs-9">
+                    <label for="pcm-name" class="control-label">Title </label>
+                    <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder="Title">
+                </div>
             </div>
         </form>
     </div>
-
+    <br />
     <div class="row">
-        <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> New Feature</button>
-        <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> New Product</button>
+        <div class="col-xs-9">
+            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> New Feature</button>
+            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> New Product</button>
+        </div>
     </div>
 
     <div class="modal fade" id="modalNewFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

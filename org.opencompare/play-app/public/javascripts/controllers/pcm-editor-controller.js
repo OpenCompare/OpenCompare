@@ -19,6 +19,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableCellEditOnFocus : true,
         enableRowHeaderSelection: false,
         enableColumnResizing: false,
+        enableFiltering: true,
         headerRowHeight: 200
     };
 
@@ -99,6 +100,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
             '</div>',
             enableCellEdit: false,
+            enableFiltering: false,
             enableSorting: false,
             enableHiding: false,
             width: 30,
@@ -170,31 +172,50 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
-        var featureName = $scope.featureName;
-        var columnDef = $scope.newColumnDef($scope.featureName);
-
+        var featureName = $scope.checkIfNameExists($scope.featureName);
         $scope.pcmData.forEach(function (productData) {
             productData[featureName] = "";
         });
-
+        var columnDef = $scope.newColumnDef(featureName);
         $scope.gridOptions.columnDefs.push(columnDef);
     };
 
     $scope.renameFeature = function() {
+        var featureName = $scope.checkIfNameExists($scope.featureName);
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name === $scope.oldFeatureName) {
-                var featureName = $scope.featureName;
                 $scope.pcmData.forEach(function (productData) {
                     productData[featureName] = productData[$scope.oldFeatureName];
                     delete productData[$scope.oldFeatureName];
                 });
 
-                var colDef = $scope.newColumnDef($scope.featureName);
+                var colDef = $scope.newColumnDef(featureName);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef)
             }
             index++;
         });
+    };
+
+    $scope.checkIfNameExists = function(name) {
+
+        if(!name) {
+            var newName = "New Feature";
+        }
+        else {
+            var newName = name;
+        }
+        var index = 0;
+        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+            var featureDataWithoutNumbers = featureData.name.replace(/[0-9]/g, '');
+            if(featureDataWithoutNumbers === newName ){
+                index++;
+            }
+        });
+        if(index != 0) {
+            newName = newName + index;
+        }
+        return newName;
     };
 
     $scope.deleteFeature = function() {
