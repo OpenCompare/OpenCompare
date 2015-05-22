@@ -47,6 +47,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
 
         initializeEditor($scope.pcm)
 
+    } else if (pcm)  {
+        $scope.pcm = pcm;
+        initializeEditor($scope.pcm)
     } else {
 
         $http.get("/api/get/" + id).success(function (data) {
