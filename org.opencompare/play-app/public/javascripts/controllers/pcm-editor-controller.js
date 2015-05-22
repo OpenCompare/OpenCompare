@@ -110,6 +110,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         columnDefs.push({
             name: 'Product',
             field: "name",
+            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                return 'productCell';
+            },
             enableCellEdit: true,
             enableSorting: true,
             enableHiding: true,
@@ -210,22 +213,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         console.log("Feature is deleted");
     };
 
-    $scope.addProduct = function() {
-        var productData = {};
-        productData.name = "";
-
-        $scope.gridOptions.columnDefs.forEach(function(featureData) {
-            productData[featureData.name] = "";
-        });
-
-        $scope.pcmData.push(productData);
-    };
-
     /**
      * Add a new product and focus on this new
      * @param row
      */
-    $scope.addProductAndFocus = function(row) {
+    $scope.addProduct = function(row) {
         var productData = {};
         productData.name = "";
 
@@ -262,36 +254,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 enableHiding: false,
                 menuItems: [
                 {
-                    title: 'Delete Feature',
-                    icon: 'fa fa-trash-o',
-                    action: function($event) {
-                        var index = 0;
-                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
-                            if(featureData.name === featureName) {
-                                var index2 = 0;
-                                $scope.pcmData.forEach(function () {
-                                    delete $scope.pcmData[index2][featureData.name];
-                                    index2++;
-                                });
-                                $scope.gridOptions.columnDefs.splice(index, 1);
-                            }
-                            index++;
-                        });
-                        console.log("Feature is deleted");
-                    }
-                },
-                {
-                    title: 'Rename Feature',
-                    icon: 'fa fa-pencil',
-                    action: function($event) {
-                        $('#modalRenameFeature').modal('show');
-                        $scope.oldFeatureName = featureName;
-                        $scope.featureName = featureName;
-                    }
-                },
-                {
                     title: 'Hide/Unhide',
-                    icon: 'fa fa-eye',
+                     icon: 'fa fa-eye',
                     action: function($event) {
                         $scope.gridOptions.columnDefs.forEach(function(featureData) {
                             if(featureData.name === featureName) {
@@ -313,6 +277,34 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                                 }
                             }
                         });
+                    }
+                },
+                {
+                    title: 'Rename Feature',
+                    icon: 'fa fa-pencil',
+                    action: function($event) {
+                        $('#modalRenameFeature').modal('show');
+                        $scope.oldFeatureName = featureName;
+                        $scope.featureName = featureName;
+                    }
+                },
+                {
+                    title: 'Delete Feature',
+                    icon: 'fa fa-trash-o',
+                    action: function($event) {
+                        var index = 0;
+                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                            if(featureData.name === featureName) {
+                                var index2 = 0;
+                                $scope.pcmData.forEach(function () {
+                                    delete $scope.pcmData[index2][featureData.name];
+                                    index2++;
+                                });
+                                $scope.gridOptions.columnDefs.splice(index, 1);
+                            }
+                            index++;
+                        });
+                        console.log("Feature is deleted");
                     }
                 }
                ]
