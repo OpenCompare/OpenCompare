@@ -126,11 +126,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         // TODO : define the first column as row header (following code might help)
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
-        console.log(isNumber);
-        pcm.features.array.forEach(function (feature) {
-            var colDef = $scope.newColumnDef(feature.name, $scope.featureType);
-            columnDefs.push(colDef);
-        });
+        console.log( pcm.features.array.length);
+        if(pcm.features.array.length > 2){
+            pcm.features.array.forEach(function (feature) {
+                var colDef = $scope.newColumnDef(feature.name, $scope.featureType);
+                columnDefs.push(colDef);
+            });
+        }
 
         $scope.gridOptions.columnDefs = columnDefs;
 
@@ -342,6 +344,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             case 'number':
                 columnDef.type = 'number';
                 break;
+
         }
         return columnDef;
     };
