@@ -29,6 +29,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         gridApi.cellNav.on.navigate($scope,function(newRowCol, oldRowCol){
             console.log('navigation event');
         });
+        gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef){
+            $rootScope.$broadcast('modified');
+        });
     };
 
     if (typeof id === 'undefined') {
@@ -124,8 +127,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
 
         pcm.features.array.forEach(function (feature) {
-            var colDef = $scope.newColumnDef(feature.name);
-             columnDefs.push(colDef);
+            var colDef = $scope.newColDef(feature.name);
+            columnDefs.push(colDef);
         });
 
         $scope.gridOptions.columnDefs = columnDefs;
@@ -178,6 +181,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         var columnDef = $scope.newColumnDef(featureName);
         $scope.gridOptions.columnDefs.push(columnDef);
+        $rootScope.$broadcast('modified');
     };
 
     $scope.renameFeature = function() {
@@ -195,6 +199,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             }
             index++;
         });
+        $rootScope.$broadcast('modified');
     };
 
     $scope.checkIfNameExists = function(name) {
@@ -218,13 +223,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return newName;
     };
 
-    $scope.deleteFeature = function() {
+    $scope.deleteFeature = function(featureName) {
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
-            if(featureData.name === $scope.oldFeatureName) {
+            if(featureData.name === featureName) {
                 var index2 = 0;
                 $scope.pcmData.forEach(function () {
-                    delete $scope.pcmData[index2][$scope.oldFeatureName];
+                    delete $scope.pcmData[index2][featureData.name];
                     index2++;
                 });
                 $scope.gridOptions.columnDefs.splice(index, 1);
@@ -232,6 +237,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             index++;
         });
         console.log("Feature is deleted");
+        $rootScope.$broadcast('modified');
     };
 
     /**
@@ -253,13 +259,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         $scope.pcmData.push(productData);
         $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
-        console.log($scope.pcmData[6]);
-        console.log("Focus");
+        console.log("Product added");
+        $rootScope.$broadcast('modified');
     };
 
     $scope.removeProduct = function(row) {
         var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
+        console.log("Product removed")
+        $rootScope.$broadcast('modified');
     };
 
 
@@ -267,7 +275,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
     };
 
-    $scope.newColumnDef = function(featureName) {
+    $scope.newColDef = function(featureName) {
             var columnDef = {
                 name: featureName,
                 enableCellEdit: true,
@@ -313,19 +321,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     title: 'Delete Feature',
                     icon: 'fa fa-trash-o',
                     action: function($event) {
-                        var index = 0;
-                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
-                            if(featureData.name === featureName) {
-                                var index2 = 0;
-                                $scope.pcmData.forEach(function () {
-                                    delete $scope.pcmData[index2][featureData.name];
-                                    index2++;
-                                });
-                                $scope.gridOptions.columnDefs.splice(index, 1);
-                            }
-                            index++;
-                        });
-                        console.log("Feature is deleted");
+                        $scope.deleteFeature(featureName);
                     }
                 }
                ]

@@ -25,7 +25,7 @@
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
                 <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button role="button" class="btn btn-default" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
+                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
                 <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> Validate</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
 
@@ -81,11 +81,9 @@
     <!-- Table editor -->
     <div class="row">
         <form class="form-inline">
-            <div class="form-group">
-                <div class="col-xs-9">
+            <div class="form-group col-lg-5">
                     <label for="pcm-name" class="control-label">Title </label>
                     <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder="Title">
-                </div>
             </div>
         </form>
     </div>
