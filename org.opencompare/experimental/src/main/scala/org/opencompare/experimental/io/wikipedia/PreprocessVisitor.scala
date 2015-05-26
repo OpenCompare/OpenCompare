@@ -8,6 +8,11 @@ import org.sweble.wikitext.parser.nodes._
  */
 class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
+  override def iterate(e: WtNode): Unit = {
+    println(e)
+    super.iterate(e)
+  }
+
   override def visit(e: WtTableImplicitTableBody): Unit = iterate(e)
 
   override def visit(e: WtRedirect): Unit = iterate(e)
@@ -32,10 +37,7 @@ class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorN
 
   override def visit(e: WtXmlAttributes): Unit = iterate(e)
 
-  override def visit(e: WtText): Unit = {
-    println(e)
-    iterate(e)
-  }
+  override def visit(e: WtText): Unit = iterate(e)
 
   override def visit(e: WtIgnored): Unit = iterate(e)
 
