@@ -50,7 +50,7 @@ public class PCMAPI extends Controller {
     private static PCM loadCsv(String fileContent, char separator, char quote){
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote);
         //try {
-            PCM pcm = loader.load(fileContent);
+            PCM pcm = loader.load(fileContent); // FIXME : Check for index out of bound in wiki Miner, bug #30
         //} catch (IndexOutOfBoundsException e) {
         //    return internalServerError("Index out of bound exception : " + e.getLocalizedMessage());
         //
@@ -132,11 +132,11 @@ public class PCMAPI extends Controller {
 
         // Normalizing and validating the matrix, just in case
         pcm.normalize(pcmFactory);
-        //if (!pcm.isValid()) {
+        //if (!pcm.isValid()) { FIXME: does not work ??
         //    return internalServerError("This matrix is not valid !");
         //}
 
-        // TODO : bad idea to redirect to a page in this API.
+        // FIXME : bad idea to redirect to a page in this API.
         //return ok(jsonExporter.toJson(pcm));
         return ok(views.html.edit.render(null, pcm));
     }
