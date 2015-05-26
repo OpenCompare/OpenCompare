@@ -37,13 +37,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     if (typeof id === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
-        var exampleFeature = factory.createFeature();
+        /*var exampleFeature = factory.createFeature();
         exampleFeature.name = "Feature";
         $scope.pcm.addFeatures(exampleFeature);
-
-        var exampleFeature1 = factory.createFeature();
-        exampleFeature1.name = "Feature1";
-        $scope.pcm.addFeatures(exampleFeature1);
 
         var exampleProduct = factory.createProduct();
         exampleProduct.name = "Product";
@@ -52,12 +48,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var exampleCell = factory.createCell();
         exampleCell.feature = exampleFeature;
         exampleCell.content = "Yes";
-        exampleProduct.addValues(exampleCell);
-
-        var exampleCell1 = factory.createCell();
-        exampleCell1.feature = exampleFeature1;
-        exampleCell1.content = "No";
-        exampleProduct.addValues(exampleCell1);
+        exampleProduct.addValues(exampleCell);*/
 
         initializeEditor($scope.pcm)
 
@@ -126,13 +117,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         // TODO : define the first column as row header (following code might help)
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
-        console.log( pcm.features.array.length);
-        if(pcm.features.array.length > 2){
             pcm.features.array.forEach(function (feature) {
                 var colDef = $scope.newColumnDef(feature.name, $scope.featureType);
                 columnDefs.push(colDef);
             });
-        }
 
         $scope.gridOptions.columnDefs = columnDefs;
 
