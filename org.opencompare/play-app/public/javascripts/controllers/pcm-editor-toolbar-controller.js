@@ -14,10 +14,17 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     };
 
     /**
-     *Remove PCM from server
+     * Remove PCM from server
      */
     $scope.remove = function() {
         $rootScope.$broadcast('remove');
+    };
+
+    /**
+     * Cancel edition
+     */
+    $scope.cancel = function() {
+        $rootScope.$broadcast('cancel');
     };
 
 
