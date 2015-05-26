@@ -10,6 +10,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     var factory = new pcmMM.factory.DefaultPcmFactory();
     var loader = factory.createJSONLoader();
     var serializer = factory.createJSONSerializer();
+    var columnsType = [];
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -80,8 +81,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         $scope.pcmData = products;
-        var isNumber = [];
-        var isBoolean = [];
         var productNames = pcm.products.array.map(function (product) {
             return product.name
         });
@@ -117,9 +116,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         // TODO : define the first column as row header (following code might help)
         // $scope.gridAPI.core.addRowHeaderColumn( { name: 'rowHeaderCol', displayName: 'Product', cellTemplate: cellTemplate} );
+        var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
                 var colDef = $scope.newColumnDef(feature.name, $scope.featureType);
                 columnDefs.push(colDef);
+                colIndex++;
+                columnsType[feature.name] = $scope.getType(feature.name);
+                console.log(columnsType[feature.name]);
             });
 
         $scope.gridOptions.columnDefs = columnDefs;
@@ -212,6 +215,51 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             newName = newName + index;
         }
         return newName;
+    };
+
+    $scope.isEmptyCell = function(name) {
+        if(!name || name == "" || name == "N/A" || name == "?") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+    $scope.getType = function(featureName) {
+        rowIndex = 0;
+        var isInt = 0;
+        var isBool = 0;
+        var isString = 0;
+
+        while($scope.pcmData[rowIndex]) {
+            if(!angular.equals(parseInt($scope.pcmData[rowIndex][featureName]), NaN)) {
+                isInt++;
+            }
+            else if(($scope.pcmData[rowIndex][featureName] === "Yes") ||  ($scope.pcmData[rowIndex][featureName] === "No")) {
+                isBool++;
+            }
+            else if(!$scope.isEmptyCell($scope.pcmData[rowIndex][featureName])){
+                isString++;
+            }
+            rowIndex++;
+        }
+        var type = "";
+        if(isInt > isBool) {
+            if(isInt > isString) {
+                type = "integer";
+            }
+            else {
+                type = "string";
+            }
+        }
+        else if(isBool > isString) {
+            type = "boolean";
+        }
+        else {
+            type = "string";
+        }
+        return type;
     };
 
     $scope.deleteFeature = function(featureName) {
