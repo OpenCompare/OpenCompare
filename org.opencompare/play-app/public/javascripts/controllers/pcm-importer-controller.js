@@ -6,8 +6,8 @@
 pcmApp.controller("PCMImporterController", function($rootScope, $scope) {
 
     // Default values
-    $scope.file = null;
     $scope.config = {
+        file: null,
         title: "",
         productAsLines: true,
         separator: ',',

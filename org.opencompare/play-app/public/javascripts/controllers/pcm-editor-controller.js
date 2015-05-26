@@ -19,8 +19,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
             $scope.gridAPI = gridAPI;
         }
     };
-
-    if (typeof id === 'undefined') {
+    console.log(typeof id);
+    console.log(typeof data)
+    if (typeof id === 'undefined' && typeof data === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
         var exampleFeature = factory.createFeature();
@@ -44,19 +45,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, uiG
         exampleCell1.feature = exampleFeature1;
         exampleCell1.content = "No";
         exampleProduct.addValues(exampleCell1);
-
         initializeEditor($scope.pcm)
 
-    } else if (pcm)  {
-        $scope.pcm = pcm;
+    } else if (typeof data != 'undefined')  {
+        $scope.pcm = loader.loadModelFromString(data).get(0);
         initializeEditor($scope.pcm)
+
     } else {
-
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
             initializeEditor($scope.pcm)
         });
-
     }
 
     function initializeEditor(pcm) {

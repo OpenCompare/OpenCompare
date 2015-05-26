@@ -2,6 +2,7 @@ package controllers;
 
 import model.Database;
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.io.wikipedia.WikipediaPageMiner;
 import org.opencompare.io.wikipedia.pcm.Page;
 import org.opencompare.io.wikipedia.export.PCMModelExporter;
@@ -11,11 +12,16 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
+import play.Logger;
+import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -47,14 +53,12 @@ public class PCMAPI extends Controller {
         return pcms.get(0);
     }
 
-    private static PCM loadCsv(String fileContent, char separator, char quote){
-        CSVLoader loader = new CSVLoader(pcmFactory, separator, quote);
+    private static PCM loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+        CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         //try {
             PCM pcm = loader.load(fileContent); // FIXME : Check for index out of bound in wiki Miner, bug #30
-        //} catch (IndexOutOfBoundsException e) {
+        //} catch (Exception e) {
         //    return internalServerError("Index out of bound exception : " + e.getLocalizedMessage());
-        //
-        //}
         return pcm;
     }
 
@@ -84,26 +88,27 @@ public class PCMAPI extends Controller {
         return ok();
     }
 
-    public static Result convertById(String id, String ext) {
+    public static Result convertById(String id, String type) {
         PCM pcm = Database.INSTANCE.get(id).getPcm();
         String data;
-        if (ext.equals("json")) {
+        if (type.equals("json")) {
             data = jsonExporter.export(pcm);
-        } else if (ext.equals("csv")) {
+        } else if (type.equals("csv")) {
             data = csvExporter.export(pcm);
         } else {
-            return badRequest("Extension type error. Return only 'csv' and 'json' format !");
+            return badRequest("Extension type error. Return only 'csv' and 'json' type !");
         }
         return ok(data);
     }
 
     public static Result convertByFile(String type) {
-        PCM pcm;
+        PCM pcm = new PCMImpl(null);
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         Boolean productAsLines = Boolean.valueOf(dynamicForm.get("productAsLines"));
         String title = dynamicForm.get("title");
+
 
         if (type.equals("wikipedia")) {
 
@@ -111,20 +116,22 @@ public class PCMAPI extends Controller {
 
         } else if (type.equals("csv")) {
             // Options
-            String fileContent = dynamicForm.get("fileContent");
+            //String fileContent = dynamicForm.field("file").value(); TODO: DynamicForm does not manage multipart form data
+            Http.MultipartFormData body = request().body().asMultipartFormData();
+            Http.MultipartFormData.FilePart fileContent = body.getFile("file");
+
             char separator = dynamicForm.get("separator").charAt(0);
             char quote = '"';
             String delimiter = dynamicForm.get("quote");
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-
-            pcm = PCMAPI.loadCsv(fileContent, separator, quote);
-            pcm.setName(title);
-            // Reversing the matrix if specified
-            if (!productAsLines) {
-                pcm.invert(pcmFactory);
+            try {
+                pcm = PCMAPI.loadCsv(fileContent.getFile(), separator, quote, productAsLines);
+            } catch (IOException e) {
+                return internalServerError("Undefined I/O error has occured.");
             }
+            pcm.setName(title);
 
         } else {
             return internalServerError("Type not found or invalid.");
@@ -138,7 +145,7 @@ public class PCMAPI extends Controller {
 
         // FIXME : bad idea to redirect to a page in this API.
         //return ok(jsonExporter.toJson(pcm));
-        return ok(views.html.edit.render(null, pcm));
+        return ok(views.html.edit.render(null, Json.parse(jsonExporter.export(pcm))));
     }
 
 }
