@@ -12,7 +12,7 @@
     }
     @if(data != null) {
         <script>
-            var data ='@{Html(data.toString())}';
+            var data = '@{Html(data.toString().replace("'","\\\'"))}';
         </script>
     }
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>

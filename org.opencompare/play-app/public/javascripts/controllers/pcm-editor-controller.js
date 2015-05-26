@@ -33,8 +33,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             $rootScope.$broadcast('modified');
         });
     };
-    console.log(typeof id);
-    console.log(typeof data)
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
