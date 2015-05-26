@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("PCMImporterController", function($rootScope, $scope, $http) {
+pcmApp.controller("PCMImporterController", function($rootScope, $scope) {
 
     // Default values
     $scope.file = null;
