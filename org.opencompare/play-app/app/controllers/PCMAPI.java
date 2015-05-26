@@ -106,7 +106,6 @@ public class PCMAPI extends Controller {
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
-        Boolean productAsLines = Boolean.valueOf(dynamicForm.get("productAsLines"));
         String title = dynamicForm.get("title");
 
 
@@ -120,6 +119,10 @@ public class PCMAPI extends Controller {
             Http.MultipartFormData body = request().body().asMultipartFormData();
             Http.MultipartFormData.FilePart fileContent = body.getFile("file");
 
+            Boolean productAsLines = false;
+            if (dynamicForm.get("productAsLines") != null) {
+                productAsLines = true;
+            }
             char separator = dynamicForm.get("separator").charAt(0);
             char quote = '"';
             String delimiter = dynamicForm.get("quote");
