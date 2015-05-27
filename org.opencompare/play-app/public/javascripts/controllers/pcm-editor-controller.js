@@ -50,12 +50,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
     };
 
-    if (typeof id === 'undefined') {
+    if (typeof id === 'undefined' && typeof data === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
         /* var exampleFeature = factory.createFeature();
         exampleFeature.name = "Feature";
         $scope.pcm.addFeatures(exampleFeature);
+
+        var exampleFeature1 = factory.createFeature();
+        exampleFeature1.name = "Feature1";
+        $scope.pcm.addFeatures(exampleFeature1);
 
         var exampleProduct = factory.createProduct();
         exampleProduct.name = "Product";
@@ -64,19 +68,26 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var exampleCell = factory.createCell();
         exampleCell.feature = exampleFeature;
         exampleCell.content = "Yes";
-        exampleProduct.addValues(exampleCell);*/
+        exampleProduct.addValues(exampleCell);
+
+        var exampleCell1 = factory.createCell();
+        exampleCell1.feature = exampleFeature1;
+        exampleCell1.content = "No";
+        exampleProduct.addValues(exampleCell1);*/
+        initializeEditor($scope.pcm)
+
+    } else if (typeof data != 'undefined')  {
+        $scope.pcm = loader.loadModelFromString(data).get(0);
         initializeEditor($scope.pcm)
 
     } else {
-
         $http.get("/api/get/" + id).success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
             initializeEditor($scope.pcm)
         });
-
     }
 
-    $scope.newColumnDef = function(featureName, featureType) {
+    function newColumnDef(featureName, featureType) {
         if(!featureType) {
             featureType = "string";
         }
@@ -144,7 +155,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return columnDef;
     };
 
-    $scope.getType = function(featureName) {
+    function getType (featureName) {
         rowIndex = 0;
         var isInt = 0;
         var isBool = 0;
@@ -157,7 +168,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             else if(($scope.pcmData[rowIndex][featureName] === "Yes") ||  ($scope.pcmData[rowIndex][featureName] === "No")) {
                 isBool++;
             }
-            else if(!$scope.isEmptyCell($scope.pcmData[rowIndex][featureName])){
+            else if(!isEmptyCell($scope.pcmData[rowIndex][featureName])){
                 isString++;
             }
             rowIndex++;
@@ -180,6 +191,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return type;
     };
 
+
+    function isEmptyCell(name) {
+        if(!name || name == "" || name == "N/A" || name == "?") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
 
     $scope.validate = function() {
         $scope.gridOptions.columnDefs.forEach(function (featureData){
@@ -245,14 +265,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
-                var colDef = $scope.newColumnDef(feature.name, $scope.getType(feature.name));
+                var colDef = newColumnDef(feature.name, getType(feature.name));
                 columnDefs.push(colDef);
                 colIndex++;
             });
 
         $scope.gridOptions.columnDefs = columnDefs;
         if($scope.pcmData.length > 0){
-            $scope.validate();
+            $scope.gridOptions.columnDefs.forEach(function (featureData){
+                validation[featureData.name] = []
+                for(var i = 0; i < $scope.pcmData.length; i++) {
+                    validation[featureData.name][i] = true;
+                }
+            });
         }
     }
 
@@ -295,6 +320,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
+        console.log($scope.pcmData);
         if(!$scope.featureType) {
             $scope.featureType = "string";
         }
@@ -303,7 +329,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             productData[featureName] = "";
         });
         console.log($scope.featureType);
-        var columnDef = $scope.newColumnDef(featureName, $scope.featureType);
+        var columnDef = newColumnDef(featureName, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         columnsType[featureName] = $scope.featureType;
         validation[featureName] = [];
@@ -322,12 +348,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     productData[featureName] = productData[$scope.oldFeatureName];
                     delete productData[$scope.oldFeatureName];
                 });
-
-                var colDef = $scope.newColumnDef(featureName, $scope.featureType);
+                var colDef = newColumnDef(featureName, $scope.featureType);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef)
             }
             index++;
         });
+        columnsType[featureName] = $scope.featureType;
+        validation[featureName] = [];
+        for(var i = 0; i < $scope.pcmData.length; i++) {
+            validation[featureName][i] = true;
+        }
         $rootScope.$broadcast('modified');
     };
 
@@ -352,15 +382,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return newName;
     };
 
-    $scope.isEmptyCell = function(name) {
-        if(!name || name == "" || name == "N/A" || name == "?") {
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
-
     $scope.validateType = function (productName, featureType) {
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
@@ -369,7 +390,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         else if((productName === "Yes") ||  (productName === "No")) {
             type = "boolean";
         }
-        else if(!$scope.isEmptyCell(productName)){
+        else if(!isEmptyCell(productName)){
             type = "string";
         }
         return type === featureType;
