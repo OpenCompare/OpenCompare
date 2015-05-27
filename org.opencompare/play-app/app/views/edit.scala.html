@@ -1,4 +1,4 @@
-@(id : String)
+@(id : String = null, data : play.api.libs.json.JsValue = null)
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editor.css")'>
@@ -10,7 +10,11 @@
             var id = "@{Html(id)}";
         </script>
     }
-
+    @if(data != null) {
+        <script>
+            var data = '@{Html(data.toString().replace("'","\\\'"))}';
+        </script>
+    }
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-toolbar-controller.js")'></script>
