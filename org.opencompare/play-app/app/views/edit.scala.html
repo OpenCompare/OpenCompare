@@ -32,7 +32,6 @@
                 <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> @Messages("edit.button.save")</button>
                 <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": !validated, "btn btn-success": validated}' ng-click="validate()"><i class="fa" ng-class='{"fa-exclamation-triangle": !validated, "fa-check-circle": validated}'></i> @Messages("edit.button.validate")</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> @Messages("edit.button.remove")</button>
-
             </div>
         </div>
     </nav>
@@ -122,7 +121,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="modal fade" id="modalRenameFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -130,25 +128,41 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create a new Feature</h4>
+                    <h4 class="modal-title" id="myModalLabel">Rename feature</h4>
                 </div>
                 <div class="modal-body">
                     <label for="featureName">Feature name: </label>
                     <input ng-model="featureName" type="text" id="featureName" value="{featureName}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">Rename</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalChangeType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Change feature type</h4>
+                </div>
+                <div class="modal-body">
                     <label for="featureType">Feature type: </label>
                     <select ng-model="featureType">
-                        <option value="0">Integer</option>
-                        <option value="1" selected="selected">String</option>
-                        <option value="2">Boolean</option>
+                        <option value="string">String</option>
+                        <option value="number">Number</option>
+                        <option value="boolean">Boolean</option>
                     </select>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">Create</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="changeType()">Change</button>
                 </div>
             </div>
         </div>
-
     </div>
 
     <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-move-columns ui-grid-resize-columns>

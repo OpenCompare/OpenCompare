@@ -138,6 +138,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     }
                 },
                 {
+                    title: 'Change Type',
+                    icon: 'fa fa-pencil',
+                    action: function($event) {
+                        $('#modalChangeType').modal('show');
+                        $scope.oldFeatureName = featureName;
+                        $scope.featureName = featureName;
+                        $scope.featureType = columnsType[featureName];
+                    }
+                },
+                {
                     title: 'Delete Feature',
                     icon: 'fa fa-trash-o',
                     action: function($event) {
@@ -361,21 +371,35 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name === $scope.oldFeatureName) {
+                if($scope.oldFeatureName === $scope.featureName){
+                    featureName = $scope.oldFeatureName;
+                }
                 $scope.pcmData.forEach(function (productData) {
                     productData[featureName] = productData[$scope.oldFeatureName];
-                    delete productData[$scope.oldFeatureName];
+                    if($scope.featureName != $scope.oldFeatureName) {
+                        delete productData[$scope.oldFeatureName];
+                    }
                 });
                 var colDef = newColumnDef(featureName, $scope.featureType);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef)
             }
             index++;
         });
-        columnsType[featureName] = $scope.featureType;
+        columnsType[featureName] = columnsType[$scope.oldFeatureName];
         validation[featureName] = [];
         for(var i = 0; i < $scope.pcmData.length; i++) {
             validation[featureName][i] = true;
         }
+        if($scope.featureName != $scope.oldFeatureName) {
+            delete columnsType[$scope.oldFeatureName];
+            delete validation[$scope.oldFeatureName];
+        }
         $rootScope.$broadcast('modified');
+    };
+
+    $scope.changeType = function () {
+        var featureName = $scope.featureName;
+        columnsType[featureName] = $scope.featureType;
     };
 
     $scope.checkIfNameExists = function(name) {
@@ -400,6 +424,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validateType = function (productName, featureType) {
+        console.log(featureType);
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
