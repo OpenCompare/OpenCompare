@@ -30,7 +30,7 @@
 
                 <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
                 <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> @Messages("edit.button.save")</button>
-                <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> @Messages("edit.button.validate")</button>
+                <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": !validated, "btn btn-success": validated}' ng-click="validate()"><i class="fa" ng-class='{"fa-exclamation-triangle": !validated, "fa-check-circle": validated}'></i> @Messages("edit.button.validate")</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> @Messages("edit.button.remove")</button>
 
             </div>

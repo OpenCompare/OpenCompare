@@ -37,12 +37,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         validation[colDef.name] = [];
                     }
                     validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = false;
+                    $rootScope.$broadcast('warning');
                 }
                 else{
                     if(!validation[colDef.name]) {
                         validation[colDef.name] = [];
                     }
                     validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = true;
+                    if(isCompletelyValidated()){
+                        $rootScope.$broadcast('completelyValidated');
+                    }
                 }
                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                 $rootScope.$broadcast('modified');
@@ -165,7 +169,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             if(!angular.equals(parseInt($scope.pcmData[rowIndex][featureName]), NaN)) {
                 isInt++;
             }
-            else if(($scope.pcmData[rowIndex][featureName] === "Yes") ||  ($scope.pcmData[rowIndex][featureName] === "No")) {
+            else if(($scope.pcmData[rowIndex][featureName].toLowerCase() === "yes") ||  ($scope.pcmData[rowIndex][featureName].toLowerCase() === "no")) {
                 isBool++;
             }
             else if(!isEmptyCell($scope.pcmData[rowIndex][featureName])){
@@ -201,14 +205,27 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
     };
 
+    function isCompletelyValidated(){
+        var valid = true;
+        $scope.gridOptions.columnDefs.forEach(function (featureData) {
+            for (var i = 0; i < $scope.pcmData.length; i++) {
+                if(valid) {
+                    valid = validation[featureData.name][i];
+                }
+            };
+        });
+        return valid;
+    };
+
     $scope.validate = function() {
         $scope.gridOptions.columnDefs.forEach(function (featureData){
             validation[featureData.name] = []
             for(var i = 0; i < $scope.pcmData.length; i++) {
                 validation[featureData.name][i] = true;
             }
-            $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         });
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+        $rootScope.$broadcast("completelyValidated");
 
     };
 
@@ -387,13 +404,24 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
         }
-        else if((productName === "Yes") ||  (productName === "No")) {
+        else if((productName.toLowerCase() === "yes") ||  (productName.toLowerCase() === "no")) {
             type = "boolean";
         }
         else if(!isEmptyCell(productName)){
             type = "string";
         }
-        return type === featureType;
+        else {
+            type = "none"
+        }
+        if(type == "none") {
+            return true;
+        }
+        else if (featureType == "string") {
+            return true;
+        }
+        else {
+            return type === featureType;
+        }
     };
 
     $scope.validateEverything = function () {
@@ -401,6 +429,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.deleteFeature = function(featureName) {
+        delete validation[featureName];
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name === featureName) {
@@ -433,8 +462,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 productData[featureData.name] = "";
             }
         });
-
         $scope.pcmData.push(productData);
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
         console.log("Product added");
         $rootScope.$broadcast('modified');

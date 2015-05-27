@@ -5,6 +5,7 @@
 pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.saved = true;
+    $scope.validated = true;
 
     /**
      * Save PCM on the server
@@ -37,6 +38,14 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.$on('modified', function(event, args) {
         $scope.saved = false;
+    });
+
+    $scope.$on('warning', function(even, args) {
+        $scope.validated = false;
+    });
+
+    $scope.$on('completelyValidated', function(even, args) {
+        $scope.validated = true;
     });
 
     $scope.$on('saved', function(event, args) {
