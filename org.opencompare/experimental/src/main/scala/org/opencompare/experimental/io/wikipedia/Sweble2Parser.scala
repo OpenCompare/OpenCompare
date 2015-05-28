@@ -1,5 +1,6 @@
 package org.opencompare.experimental.io.wikipedia
 
+import java.io.FileWriter
 import java.time.LocalTime
 
 import org.joda.time.DateTime
@@ -18,26 +19,57 @@ import org.sweble.wom3.util.Wom3Toolbox
  */
 class Sweble2Parser {
 
+  /**
+   * Used for reading/writing to database, files, etc.
+   * Code From the book "Beginning Scala"
+   * http://www.amazon.com/Beginning-Scala-David-Pollak/dp/1430219890
+   */
+  def using[A <: {def close(): Unit}, B](param: A)(f: A => B): B =
+    try { f(param) } finally { param.close() }
+
+  def writeToFile(fileName:String, data:String) =
+    using (new FileWriter(fileName)) {
+      fileWriter : FileWriter => fileWriter.write(data)
+    }
+
   def parse(code : String, title : String): Unit = {
+
+    println("--------------------------------------------------")
+    println("----------------- Pre-processing -----------------")
+    println("--------------------------------------------------")
+    println()
 
     val wikiConfig = DefaultConfigEnWp.generate()
     val parserConfig = new SimpleParserConfig()
 
     val preprocessor = new WikitextPreprocessor(parserConfig)
     val preprocessVisitor = new PreprocessVisitor
-    val preproAST = preprocessor.parseArticle(code, title).asInstanceOf[WtPreproWikitextPage]
-    val preprocessArticle = PreprocessorToParserTransformer.transform(preproAST)
-
-    preprocessVisitor.go(preproAST)
+    val preprocAST = preprocessor.parseArticle(code, title).asInstanceOf[WtPreproWikitextPage]
+    preprocessVisitor.go(preprocAST)
+    writeToFile("./preprocessedAst.dump", preprocAST.toString)
+    val preprocessArticle = PreprocessorToParserTransformer.transform(preprocAST)
 
     println()
-    println("--------------------------")
+    println("--------------------------------------------------")
+    println("--------------------- Parsing --------------------")
+    println("--------------------------------------------------")
     println()
 
     val parser = new WikitextParser(parserConfig)
-    val ast = parser.parseArticle(code, title)
+    val parserVisitor = new ParserVisitor()
+    val ast = parser.parseArticle(preprocessArticle, title)
+    writeToFile("./parsedAst.dump", ast.toString)
+    parserVisitor.go(ast)
     val pageTitle = PageTitle.make(wikiConfig, "title")
     val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), ast)
+    writeToFile("./wom.xml", wom3Doc.toString)
+
+
+    println()
+    println("--------------------------------------------------")
+    println("----------------- RoundTripping ------------------")
+    println("--------------------------------------------------")
+    println()
 
     val roundTripCode = Wom3Toolbox.womToWmXPath(wom3Doc)
 
@@ -45,7 +77,9 @@ class Sweble2Parser {
     println(code.equals(roundTripCode))
 
     println()
-    println("--------------------------")
+    println("--------------------------------------------------")
+    println("------------------- Cleaning ---------------------")
+    println("--------------------------------------------------")
     println()
 
     val textNode = wom3Doc.getDocumentElement.getElementsByTagName("text").item(0)
