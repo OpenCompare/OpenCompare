@@ -40,11 +40,11 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
         $scope.saved = false;
     });
 
-    $scope.$on('warning', function(even, args) {
+    $scope.$on('warning', function(event, args) {
         $scope.validated = false;
     });
 
-    $scope.$on('completelyValidated', function(even, args) {
+    $scope.$on('completelyValidated', function(event, args) {
         $scope.validated = true;
     });
 

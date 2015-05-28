@@ -1,19 +1,18 @@
 /**
- * Created by hvallee on 5/22/15.
+ * Created by hvallee on 5/27/15.
  */
 
-pcmApp.controller("PCMEditorCustomFilterController", function($rootScope, $scope, $timeout, $compile) {
+pcmApp.controller('PCMEditorCustomFilterController', function($rootScope, $scope, $compile, $timeout ) {
     var $elm;
 
-    $scope.$on.showAgeModal = function() {
-        $scope.listOfAges = [];
+    $scope.showFilter = function() {
+        $scope.ListToFilter = [];
 
-        $scope.col.grid.appScope.gridOptions.data.forEach( function ( row ) {
-            if ( $scope.listOfAges.indexOf( row.age ) === -1 ) {
-                $scope.listOfAges.push( row.age );
-            }
+        $scope.pcmData.forEach( function ( productData ) {
+            console.log()
+            $scope.ListToFilter.push( productData[name] );
         });
-        $scope.listOfAges.sort();
+        $scope.ListToFilter.sort();
 
         $scope.gridOptions = {
             data: [],
@@ -64,4 +63,16 @@ pcmApp.controller("PCMEditorCustomFilterController", function($rootScope, $scope
             $elm.remove();
         }
     };
+
+    $scope.$on('showFilter', function(event, args) {
+        console.log("dqdqsd");
+        $scope.showFilter();
+    });
 })
+
+    .directive('myCustomDropdown', function() {
+        return {
+            template: '<select class="form-control" ng-model="colFilter.term" ng-options="option.id as option.value for option in colFilter.options"></select>'
+        };
+    })
+;
