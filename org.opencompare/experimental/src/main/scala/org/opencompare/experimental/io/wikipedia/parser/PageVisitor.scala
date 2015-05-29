@@ -66,7 +66,7 @@ class PageVisitor(pageTitle: String) extends AstVisitor[WtNode] with CompleteWik
   def visit(e: WtSection) {
     inTitle = true
     section = new StringBuilder
-    dispatch(e)
+    //dispatch(e) recursive iteration !!!
     inTitle = false
     iterate(e)
   }
