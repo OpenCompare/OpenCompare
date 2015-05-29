@@ -4,6 +4,7 @@ import java.io.FileWriter
 import java.time.LocalTime
 
 import org.joda.time.DateTime
+import org.opencompare.experimental.io.wikipedia.parser._
 import org.sweble.wikitext.engine.PageTitle
 import org.sweble.wikitext.engine.config.ParserConfigImpl
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
@@ -46,7 +47,7 @@ class Sweble2Parser {
     val preprocessVisitor = new PreprocessVisitor
     val preprocAST = preprocessor.parseArticle(code, title).asInstanceOf[WtPreproWikitextPage]
     preprocessVisitor.go(preprocAST)
-    writeToFile("./preprocessedAst.dump", preprocAST.toString)
+    writeToFile("./preprocessedAst.dump", preprocessVisitor.getPreprocessedCode())
     val preprocessArticle = PreprocessorToParserTransformer.transform(preprocAST)
 
     println()
@@ -56,10 +57,12 @@ class Sweble2Parser {
     println()
 
     val parser = new WikitextParser(parserConfig)
-    val parserVisitor = new ParserVisitor()
     val ast = parser.parseArticle(preprocessArticle, title)
+    val parserVisitor = new PageVisitor(title)
     writeToFile("./parsedAst.dump", ast.toString)
     parserVisitor.go(ast)
+    writeToFile("./pcms.csv", parserVisitor.pcm.toCSV())
+    println(parserVisitor.pcm.toCSV())
     val pageTitle = PageTitle.make(wikiConfig, "title")
     val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), ast)
     writeToFile("./wom.xml", wom3Doc.toString)

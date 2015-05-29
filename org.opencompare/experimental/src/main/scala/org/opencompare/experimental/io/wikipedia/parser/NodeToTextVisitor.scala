@@ -1,16 +1,38 @@
-package org.opencompare.experimental.io.wikipedia
+package org.opencompare.experimental.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
 import org.sweble.wikitext.parser.nodes._
 
-/**
- * Created by gbecan on 5/20/15.
- */
-class ParserVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class NodeToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+
+  private val builder = new StringBuilder
 
   override def iterate(e: WtNode): Unit = {
-    println(e)
+    println("NodeToTextVisitor: " + e)
     super.iterate(e)
+  }
+  def getText(): String = {
+    builder.toString
+  }
+
+  def visit(e: WtNodeList) {
+    iterate(e)
+  }
+
+  def visit(e: WtText) {
+    builder ++= e.getContent()
+  }
+
+  def visit(e: WtInternalLink) {
+    if (!e.getTarget.isEmpty) {
+      builder ++= e.getTarget.getAsString
+    } else if (!e.getTarget().getAsString.endsWith(".png")) {
+      dispatch(e.getTitle())
+    }
+  }
+
+  def visit(e: WtLinkTitle) {
+    iterate(e)
   }
 
   override def visit(e: WtTableImplicitTableBody): Unit = iterate(e)
@@ -36,8 +58,6 @@ class ParserVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRet
   override def visit(e: WtWhitespace): Unit = iterate(e)
 
   override def visit(e: WtXmlAttributes): Unit = iterate(e)
-
-  override def visit(e: WtText): Unit = iterate(e)
 
   override def visit(e: WtIgnored): Unit = iterate(e)
 
@@ -93,13 +113,9 @@ class ParserVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRet
 
   override def visit(e: WtSection): Unit = iterate(e)
 
-  override def visit(e: WtInternalLink): Unit = iterate(e)
-
   override def visit(e: WtExternalLink): Unit = iterate(e)
 
   override def visit(e: WtXmlEntityRef): Unit = iterate(e)
-
-  override def visit(e: WtNodeList): Unit = iterate(e)
 
   override def visit(e: WtBody): Unit = iterate(e)
 
@@ -114,8 +130,6 @@ class ParserVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRet
   override def visit(e: WtName): Unit = iterate(e)
 
   override def visit(e: WtListItem): Unit = iterate(e)
-
-  override def visit(e: WtLinkTitle): Unit = iterate(e)
 
   override def visit(e: WtLinkOptions): Unit = iterate(e)
 
@@ -144,10 +158,4 @@ class ParserVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRet
   override def visit(e: WtXmlAttributeGarbage): Unit = iterate(e)
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
-
-  // Extra
-  def visit(e: WtLctVarConv): Unit = iterate(e)
-  def visit(e: WtLctFlags): Unit = iterate(e)
-
 }
-
