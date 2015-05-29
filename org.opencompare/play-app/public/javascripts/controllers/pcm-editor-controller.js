@@ -117,6 +117,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                                 if(featureData.maxWidth == '15') {
                                     featureData.maxWidth = '*';
                                     featureData.displayName = featureData.name;
+                                    featureData.enableFiltering = true;
                                     featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
                                         return 'showCell';
                                     }
@@ -125,6 +126,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                                 else {
                                     featureData.maxWidth = '15';
                                     featureData.displayName = "";
+                                    featureData.enableFiltering = false;
                                     featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
                                         return 'hideCell';
                                     }
@@ -171,9 +173,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         return "This value doesn't seem to match the feature type, validate if you want to keep it.";
                     }
                 }
-        };
+        };console.log(featureType);
         if(featureType == "string") {
-            columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button ng-click='grid.appScope.showFilter(col)'>Filter</button></div>";
+            columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button ng-click='grid.appScope.showFilter(col)'>Filter column</button><button ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
             columnDef.filter.noTerm = true;
             columnDef.filter.condition = function (searchTerm, cellValue) {
                 if(columnsFilters[featureName]) {
@@ -191,6 +193,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     return true;
                 }
             }
+        }
+        else if(featureType == "number") {
+            var filterLess = [];
+            filterLess.condition = uiGridConstants.filter.LESS_THAN;
+            filterLess.placeholder= '<';
+            var filterGreater = [];
+            filterGreater.condition = uiGridConstants.filter.GREATER_THAN;
+            filterGreater.placeholder= '> or =';
+            columnDef.filters = [];
+            columnDef.filters.push(filterGreater);
+            columnDef.filters.push(filterLess);
         }
         return columnDef;
     };
@@ -311,11 +324,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
                 return 'productCell';
             },
+            placeholder: 'Find',
             enableCellEdit: true,
             enableSorting: true,
-            enableHiding: true,
+            enableHiding: false,
             enableColumnMoving: false
         });
+        columnDefs[1].filter = [];
+        columnDefs[1].filter.placeholder = 'Find';
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
                 var colDef = newColumnDef(feature.name, getType(feature.name));
@@ -646,6 +662,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             $elm.remove();
         }
     };
+
+    $scope.removeFilter = function(col) {
+        var featureName = col.name;
+        console.log(columnsFilters[featureName]);
+        delete columnsFilters[featureName];
+        console.log(columnsFilters[featureName]);
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    }
 
     // Bind events from toolbar to functions of the editor
 
