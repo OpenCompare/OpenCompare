@@ -28,14 +28,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableRowHeaderSelection: false,
         enableColumnResizing: false,
         enableFiltering: true,
-        headerRowHeight: 100
+        headerRowHeight: 300,
     };
+
+    $scope.gridOptions.height = $scope.gridOptions.data.length*20+30;
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, oldValue, newValue){
-            if(oldValue != newValue) {
+            if(colDef.name != "Product" && oldValue != newValue) {
                 if(!$scope.validateType(rowEntity[colDef.name], columnsType[colDef.name])) {
                     if(!validation[colDef.name]) {
                         validation[colDef.name] = [];
@@ -172,58 +174,62 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     if(!validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                         return "This value doesn't seem to match the feature type, validate if you want to keep it.";
                     }
+                    else {
+                        //return $scope.grid.getCellValue(row, col);
+                    }
                 }
         };
-        // TODO: a switch is better and don't use "==" but ".equals"
-        if(featureType == "string") {
-            columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button ng-click='grid.appScope.showFilter(col)'>Filter column</button><button ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
-            columnDef.filter.noTerm = true;
-            columnDef.filter.condition = function (searchTerm, cellValue) {
-                if(columnsFilters[featureName]) {
-                    var inFilter = false;
-                    var index = 0;
-                    while(!inFilter && index < columnsFilters[featureName].length) {
-                        if(cellValue == columnsFilters[featureName][index]) {
-                            inFilter = true;
+        switch(featureType) {
+            case "string":
+                columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button ng-click='grid.appScope.showFilter(col)'>Filter</button><button ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
+                columnDef.filter.noTerm = true;
+                columnDef.filter.condition = function (searchTerm, cellValue) {
+                    if(columnsFilters[featureName]) {
+                        var inFilter = false;
+                        var index = 0;
+                        while(!inFilter && index < columnsFilters[featureName].length) {
+                            if(cellValue == columnsFilters[featureName][index]) {
+                                inFilter = true;
+                            }
+                            index++;
                         }
-                        index++;
+                        return inFilter;
                     }
-                    return inFilter;
+                    else {
+                        return true;
+                    }
                 }
-                else {
-                    return true;
+                break;
+            case "number":
+                var filterLess = [];
+                filterLess.condition = uiGridConstants.filter.LESS_THAN;
+                filterLess.placeholder= '<';
+                var filterGreater = [];
+                filterGreater.condition = uiGridConstants.filter.GREATER_THAN;
+                filterGreater.placeholder= '> or =';
+                columnDef.filters = [];
+                columnDef.filters.push(filterGreater);
+                columnDef.filters.push(filterLess);
+                break;
+            case "boolean":
+                var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
+                columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='1' ng-false-value='0'></div>";
+                columnDef.filter.noTerm = true;
+                columnDef.filter.condition = function (searchTerm, cellValue) {
+                    if(columnsFilters[featureName] == 1) {
+                        if(getBooleanValue(cellValue)) {
+                            return true;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+                    else {
+                        return true;
+                    }
                 }
-            }
-        }
-        else if(featureType == "number") {
-            var filterLess = [];
-            filterLess.condition = uiGridConstants.filter.LESS_THAN;
-            filterLess.placeholder= '<';
-            var filterGreater = [];
-            filterGreater.condition = uiGridConstants.filter.GREATER_THAN;
-            filterGreater.placeholder= '> or =';
-            columnDef.filters = [];
-            columnDef.filters.push(filterGreater);
-            columnDef.filters.push(filterLess);
-        }
-        else if(featureType == "boolean")
-        {
-            var filterName = 'filter'+featureName.replace(/\s/g, '');
-            columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='1' ng-false-value='0'></div>";
-            columnDef.filter.noTerm = true;
-            columnDef.filter.condition = function (searchTerm, cellValue) {
-                if(columnsFilters[featureName] == 1) {
-                   if(getBooleanValue(cellValue)) {
-                       return true;
-                   }
-                   else {
-                       return false;
-                   }
-                }
-                else {
-                    return true;
-                }
-            }
+                break;
+
         }
         return columnDef;
     };
@@ -285,6 +291,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     function isCompletelyValidated(){
         var valid = true;
         $scope.gridOptions.columnDefs.forEach(function (featureData) {
+            if(!validation[featureData.name]) {
+                validation[featureData.name] = [];
+            }
             for (var i = 0; i < $scope.pcmData.length; i++) {
                 if(valid) {
                     valid = validation[featureData.name][i];
@@ -318,7 +327,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 var cell = findCell(product, feature);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
-                //productData.rowHeaderCol = product.name;
             });
 
             return productData;
@@ -352,13 +360,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
                 return 'productCell';
             },
-            placeholder: 'Find',
             enableCellEdit: true,
             enableSorting: true,
             enableHiding: false,
             enableColumnMoving: false
         });
         columnDefs[1].filter = [];
+        columnDefs[1].filter.condition = function(searchTerm, cellValue) {
+            if(cellValue.toLowerCase().indexOf(searchTerm) != -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
         columnDefs[1].filter.placeholder = 'Find';
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
@@ -417,7 +432,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
-        console.log($scope.pcmData);
         if(!$scope.featureType) {
             $scope.featureType = "string";
         }
@@ -425,7 +439,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcmData.forEach(function (productData) {
             productData[featureName] = "";
         });
-        console.log($scope.featureType);
         var columnDef = newColumnDef(featureName, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         columnsType[featureName] = $scope.featureType;
@@ -494,7 +507,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validateType = function (productName, featureType) {
-        console.log(featureType);
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
@@ -623,7 +635,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcmData.forEach( function ( productData ) {
             if ($scope.ListToFilter.indexOf(productData[feature.name] ) === -1 ) {
                 $scope.ListToFilter.push(productData[feature.name]);
-                console.log(productData[feature.name]);
             }
         });
         $scope.ListToFilter.sort();
@@ -677,6 +688,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.closeFilter = function() {
         var featureName = $scope.featureToFilter;
         var selec = $scope.gridApi2.selection.getSelectedRows();
+        if(selec.length == 0) {
+            $scope.gridOptions2.data.forEach(function (productData){
+                selec.push(productData);
+            });
+        }
         $scope.colFilter = [];
         $scope.colFilter.listTerm = [];
 
@@ -689,6 +705,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if ($elm) {
             $elm.remove();
         }
+        console.log(columnsFilters[featureName]);
     };
 
     $scope.removeFilter = function(col) {
