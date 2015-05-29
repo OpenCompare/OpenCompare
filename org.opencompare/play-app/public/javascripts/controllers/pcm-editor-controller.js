@@ -173,7 +173,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         return "This value doesn't seem to match the feature type, validate if you want to keep it.";
                     }
                 }
-        };console.log(featureType);
+        };
+        // TODO: a switch is better and don't use "==" but ".equals"
         if(featureType == "string") {
             columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button ng-click='grid.appScope.showFilter(col)'>Filter column</button><button ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
             columnDef.filter.noTerm = true;
@@ -204,6 +205,25 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             columnDef.filters = [];
             columnDef.filters.push(filterGreater);
             columnDef.filters.push(filterLess);
+        }
+        else if(featureType == "boolean")
+        {
+            var filterName = 'filter'+featureName.replace(/\s/g, '');
+            columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='1' ng-false-value='0'></div>";
+            columnDef.filter.noTerm = true;
+            columnDef.filter.condition = function (searchTerm, cellValue) {
+                if(columnsFilters[featureName] == 1) {
+                   if(getBooleanValue(cellValue)) {
+                       return true;
+                   }
+                   else {
+                       return false;
+                   }
+                }
+                else {
+                    return true;
+                }
+            }
         }
         return columnDef;
     };
@@ -244,6 +264,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return type;
     };
 
+    function getBooleanValue(name){
+        if(name.toLowerCase() === "yes") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     function isEmptyCell(name) {
         if(!name || name == "" || name == "N/A" || name == "?") {
@@ -342,7 +370,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.gridOptions.columnDefs = columnDefs;
         if($scope.pcmData.length > 0){
             $scope.gridOptions.columnDefs.forEach(function (featureData){
-                validation[featureData.name] = []
+                validation[featureData.name] = [];
                 for(var i = 0; i < $scope.pcmData.length; i++) {
                     validation[featureData.name][i] = true;
                 }
@@ -669,7 +697,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         delete columnsFilters[featureName];
         console.log(columnsFilters[featureName]);
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-    }
+    };
+
+    $scope.applyBooleanFilter = function(col, value){
+        columnsFilters[col.name] = value;
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    };
 
     // Bind events from toolbar to functions of the editor
 
