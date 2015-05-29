@@ -112,7 +112,11 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
 
   def getNumberFromString(s: String): Int = {
     val numberRegex = "(\\d)*".r
-    (numberRegex findFirstIn s).getOrElse("0").toInt
+    var num = 0
+    if (s.nonEmpty) {
+      num = (numberRegex findFirstIn s).getOrElse("0").toInt
+    }
+    num
   }
 
   def visit(e: WtTableRow) = {
