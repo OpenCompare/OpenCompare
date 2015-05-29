@@ -8,6 +8,9 @@ import org.kevoree.modeling.api.json.JSONModelLoader;
 import pcm.factory.DefaultPcmFactory;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -25,9 +28,10 @@ public class KMFJSONLoader implements PCMLoader {
     }
 
     @Override
-    public PCM load(File file) throws FileNotFoundException {
+    public PCM load(File file) throws IOException {
         InputStream in = new BufferedInputStream(new FileInputStream(file));
         List<KMFContainer> containers = loader.loadModelFromStream(in);
+
         try {
             in.close();
         } catch (IOException e) {
@@ -35,6 +39,9 @@ public class KMFJSONLoader implements PCMLoader {
         }
         return load(containers);
 
+//        byte[] bytes = Files.readAllBytes(file.toPath());
+//        String json = new String(bytes, StandardCharsets.UTF_8);
+//        return load(json);
     }
 
     private PCM load(List<KMFContainer> containers) {
