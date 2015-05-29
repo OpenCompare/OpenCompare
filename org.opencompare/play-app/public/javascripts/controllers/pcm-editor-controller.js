@@ -14,6 +14,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     // Validate pcm type
     var columnsType = [];
     var validation = [];
+    $scope.validating = false;
 
     //Custom filters
     var $elm;
@@ -166,12 +167,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             ],
             cellClass: function(grid, row, col) {
-                if(!validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
+                if(validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)] && $scope.validating) {
                     return 'warningCell';
                 }
             },
             cellTooltip: function(row, col) {
-                    if(!validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
+                    if(validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                         return "This value doesn't seem to match the feature type, validate if you want to keep it.";
                     }
                     else {
@@ -304,15 +305,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validate = function() {
-        $scope.gridOptions.columnDefs.forEach(function (featureData){
+        $scope.validating = !$scope.validating;
+        /*$scope.gridOptions.columnDefs.forEach(function (featureData){
             console.log(featureData.filters);
             validation[featureData.name] = []
             for(var i = 0; i < $scope.pcmData.length; i++) {
                 validation[featureData.name][i] = true;
             }
-        });
+        });*/
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-        $rootScope.$broadcast("completelyValidated");
+        $rootScope.$broadcast("validating");
     };
 
     function initializeEditor(pcm) {
@@ -386,8 +388,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if($scope.pcmData.length > 0){
             $scope.gridOptions.columnDefs.forEach(function (featureData){
                 validation[featureData.name] = [];
+                var index = 0;
                 for(var i = 0; i < $scope.pcmData.length; i++) {
-                    validation[featureData.name][i] = true;
+                        validation[featureData.name][i] = true;
                 }
             });
         }
@@ -507,6 +510,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validateType = function (productName, featureType) {
+        console.log(productName);
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
