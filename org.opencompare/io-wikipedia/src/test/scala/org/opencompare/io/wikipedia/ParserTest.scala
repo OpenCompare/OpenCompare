@@ -120,22 +120,8 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   "The PCM parser" should "parse the example of tables from Wikipedia" in {
     val pcm = parsePCMFromFile("resources/example.pcm")
-//    println(pcm)
     pcm.getMatrices.size should be (1)
    }
-
-
-
-//   it should "parse the same PCM from a URL and from a file containing the code" in {
-//     val fromFile = parsePCMFromFile("resources/amd.pcm")
-//     val fromURL = parseFromTitle("Comparison_of_AMD_processors")
-//
-//     fromFile.getMatrices.size should be (1)
-//     fromURL.getMatrices.size should be (1)
-//     fromFile.getMatrices(0).toString should be (fromURL.getMatrices(0).toString)
-//
-//   }
-
 
 
    it should "parse these PCMs" in {
@@ -145,29 +131,5 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 	     testArticle(article)
      }
    }
-   
-   
 
-
-//   "Scalaj-http" should "download the code of a wikipedia page" in {
-//	   val xmlPage = Http("http://en.wikipedia.org/w/index.php?title=Comparison_of_AMD_processors&action=edit")
-//	   .option(HttpOptions.connTimeout(1000))
-//	   .option(HttpOptions.readTimeout(10000))
-//	   .asXml
-//	   //XML.load("http://en.wikipedia.org/w/index.php?title=Comparison_of_AMD_processors&action=edit")
-//	   val code = (xmlPage \\ "textarea").text
-//
-//	   val expectedCode = Source.fromFile("resources/amd.pcm").mkString
-//	   code should be (expectedCode)
-//
-//   }
-//
-//   it should "download the code of a wikipedia template" in {
-//     val xmlPage = Http.post("https://en.wikipedia.org/wiki/Special:ExpandTemplates")
-//     .params("wpInput" -> "{{yes}}")
-//     .asXml
-//
-//     val code = (xmlPage \\ "textarea").filter(_.attribute("id") exists (_.text == "output")).text
-//     code should be ("style=\"background: #90ff90; color: black; vertical-align: middle; text-align: center; \" class=\"table-yes\"|Yes")
-//   }
 }
