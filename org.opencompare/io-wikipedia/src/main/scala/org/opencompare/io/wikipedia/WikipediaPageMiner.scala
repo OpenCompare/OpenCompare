@@ -5,8 +5,9 @@ import java.io.StringReader
 import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
 import org.opencompare.io.wikipedia.parser.{PageVisitor, PreprocessVisitor}
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
-import org.sweble.wikitext.`lazy`.{LazyParser, LazyPreprocessor}
-import org.sweble.wikitext.engine.utils.SimpleWikiConfiguration
+import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
+import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
+import org.sweble.wikitext.parser.utils.SimpleParserConfig
 import org.xml.sax.InputSource
 
 import scala.xml.Node
@@ -18,9 +19,12 @@ import scalaj.http.{Http, HttpOptions}
  */
 class WikipediaPageMiner {
 
-  private val config = new SimpleWikiConfiguration()
-  private val parser = new LazyParser(config)
-  private val preprocessor = new LazyPreprocessor(config)
+
+  private val parserConfig = new SimpleParserConfig()
+  private val preprocessor = new WikitextPreprocessor(parserConfig)
+  private val parser = new WikitextParser(parserConfig)
+
+  private val wikiConfig = DefaultConfigEnWp.generate()
 
   /**
    * Retrieve Wikitext code of an article on Wikipedia servers

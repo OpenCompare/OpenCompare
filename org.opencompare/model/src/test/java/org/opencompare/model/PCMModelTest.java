@@ -2,6 +2,7 @@ package org.opencompare.model;
 
 import org.junit.Test;
 import org.kevoree.modeling.api.Callback;
+import org.kevoree.modeling.api.KObject;
 import org.kevoree.modeling.api.json.JsonModelLoader;
 import org.kevoree.modeling.api.json.JsonModelSerializer;
 import pcm.PCM;
@@ -27,7 +28,7 @@ public class PCMModelTest {
         PcmModel pcmModel = new PcmModel();
         pcmModel.connect();
         PcmUniverse universe = pcmModel.newUniverse();
-        PcmView view = new PcmViewImpl(System.currentTimeMillis(), universe);
+        PcmView view = universe.time(0l);
 
         PCM pcm = view.createPCM();
         pcm.setName("PCM name");
@@ -64,16 +65,22 @@ public class PCMModelTest {
         PcmModel pcmModel = new PcmModel();
         pcmModel.connect();
         PcmUniverse universe = pcmModel.newUniverse();
-        PcmView view = new PcmViewImpl(System.currentTimeMillis(), universe);
+        final PcmView view = universe.time(0l);
 
-        JsonModelLoader.load(view, json, new Callback<Throwable>() {
+
+
+        view.json().load(json).then(new Callback<Throwable>() {
             @Override
             public void on(Throwable throwable) {
-                System.out.println("callback : " + throwable);
+                view.lookup(1l).then(new Callback<KObject>() {
+                    @Override
+                    public void on(KObject kObject) {
+                        PCM pcm = (PCM) kObject;
+                        assertEquals("PCM name", pcm.getName());
+                    }
+                });
             }
         });
-
-        System.out.println(view.getRoot().next());
 
     }
 }

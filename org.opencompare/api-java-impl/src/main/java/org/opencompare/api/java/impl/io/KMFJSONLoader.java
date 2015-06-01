@@ -12,6 +12,7 @@ import pcm.impl.PcmViewImpl;
 
 import java.io.*;
 
+
 /**
  * Created by gbecan on 12/12/14.
  */
@@ -41,9 +42,10 @@ public class KMFJSONLoader implements PCMLoader {
     }
 
     @Override
-    public PCM load(File file) throws FileNotFoundException {
+    public PCM load(File file) throws IOException {
         InputStream in = new BufferedInputStream(new FileInputStream(file));
         List<KMFContainer> containers = loader.loadModelFromStream(in);
+
         try {
             in.close();
         } catch (IOException e) {
@@ -51,6 +53,9 @@ public class KMFJSONLoader implements PCMLoader {
         }
         return load(containers);
 
+//        byte[] bytes = Files.readAllBytes(file.toPath());
+//        String json = new String(bytes, StandardCharsets.UTF_8);
+//        return load(json);
     }
 
     private PCM load(List<KMFContainer> containers) {

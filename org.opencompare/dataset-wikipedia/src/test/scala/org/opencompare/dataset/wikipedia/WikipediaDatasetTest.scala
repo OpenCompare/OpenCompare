@@ -1,6 +1,7 @@
 package org.opencompare.dataset.wikipedia
 
 import java.io._
+import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 
 import org.opencompare.api.java.exception.MergeConflictException
@@ -64,10 +65,16 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     pcm
   }
 
-  def writeToHTML(title : String, pcm : Page) {
-    val writer = new FileWriter("output/html/" + title.replaceAll(" ", "_") + ".html")
-    writer.write((new PrettyPrinter(80,2)).format(pcm.toHTML))
+  def writeToFile(path : String, content: String): Unit = {
+    val writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8))
+    writer.write(content)
     writer.close()
+  }
+
+  def writeToHTML(title : String, pcm : Page) {
+    val path = "output/html/" + title.replaceAll(" ", "_") + ".html"
+    val content = (new PrettyPrinter(80,2)).format(pcm.toHTML)
+    writeToFile(path, content)
   }
 
   def dumpCellsInFile(title : String, pcm : Page) {
@@ -87,9 +94,9 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
   }
 
   def writeToCSV(title : String, pcm : Page) {
-    val writer = new FileWriter("output/csv/" + title.replaceAll(" ", "_") + ".csv")
-    writer.write(pcm.toCSV)
-    writer.close()
+    val path = "output/csv/" + title.replaceAll(" ", "_") + ".csv"
+    val content = pcm.toCSV
+    writeToFile(path, content)
   }
 
   def writeToPCM(title : String, page : Page) {
@@ -101,12 +108,9 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val loader = new KMFJSONLoader
     for ((pcm, index) <- pcms.zipWithIndex) {
       val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
-      val writer = new FileWriter(path)
-      writer.write(serializer.toJson(pcm))
-      writer.close()
-
+      val content = serializer.toJson(pcm)
+      writeToFile(path, content)
       loader.load(new File(path))
-
     }
 
   }
@@ -119,9 +123,8 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
     for ((pcm, index) <- pcms.zipWithIndex) {
       val wikitext = serializer.toWikiText(pcm)
-      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
-      writer.write(wikitext)
-      writer.close()
+      val path = "output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt"
+      writeToFile(path, wikitext)
     }
 
   }
@@ -146,9 +149,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
             val preprocessedCode = miner.preprocess(code)
 
             // Save preprocessed page
-            val writer = new FileWriter("input/" + article.replaceAll(" ", "_") + ".txt")
-            writer.write(preprocessedCode)
-            writer.close()
+            writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", preprocessedCode)
 
           } catch {
             // case e : UnknownHostException => retry = true
@@ -199,6 +200,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val interpreter = new CellContentInterpreter
     val loader = new KMFJSONLoader
     val exporter = new KMFJSONExporter
+    val factory = new PCMFactoryImpl
 
     val files = new File("output/model").listFiles(new FilenameFilter {
       override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")
@@ -213,20 +215,18 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
       // Interpret cells
       val pcm = loader.load(file)
       if (pcm.isValid) {
+        pcm.normalize(factory)
         interpreter.interpretCells(pcm)
         val json = exporter.export(pcm)
 
         // Write modified PCM
-        val writer = new FileWriter("output/formalized/model/" + file.getName)
-        writer.write(json)
-        writer.close()
+        writeToFile("output/formalized/model/" + file.getName, json)
       }
 
     }
 
     // Interpret and merge PCMs
     val groupedFiles = files.groupBy(f => f.getName.substring(0, f.getName.size - 6))
-    val factory = new PCMFactoryImpl
     for (group <- groupedFiles) {
       val mergedPCM = factory.createPCM();
       mergedPCM.setName(group._1)

@@ -41,11 +41,9 @@ public class CSVLoader implements PCMLoader {
 
     @Override
     public PCM load(String pcm) {
-        CSVReader reader = new CSVReader(new StringReader(pcm), separator, quote);
         PCM loadedPCM = null;
         try {
-            loadedPCM = load(reader);
-            reader.close();
+            loadedPCM = load(new StringReader(pcm));
         } catch (IOException e) {
 
         }
@@ -54,19 +52,19 @@ public class CSVLoader implements PCMLoader {
 
     @Override
     public PCM load(File file) throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(file), separator, quote);
-        PCM pcm = load(reader);
-        reader.close();
-
-        return pcm;
+        return load(new FileReader(file));
     }
 
-    private PCM load(CSVReader reader) throws IOException {
+    public PCM load(Reader reader) throws IOException {
+        CSVReader csvReader = new CSVReader(reader, separator, quote);
+        PCM pcm;
         if (productsAsLines) {
-            return loadFeatureFirst(reader);
+            pcm = loadFeatureFirst(csvReader);
         } else {
-            return loadProductFirst(reader);
+            pcm = loadProductFirst(csvReader);
         }
+        csvReader.close();
+        return pcm;
     }
 
     private PCM loadFeatureFirst(CSVReader reader) throws IOException {
@@ -95,7 +93,17 @@ public class CSVLoader implements PCMLoader {
             for (int i = 1; i < line.length; i++) {
                 Cell cell = factory.createCell();
                 cell.setContent(line[i]);
+
+                // Create an arbitrary feature if the number of cells is greater than the number of features
+                if (i > features.size()) {
+                    Feature newFeature = factory.createFeature();
+                    newFeature.setName("Feature");
+                    pcm.addFeature(newFeature);
+                    features.add(newFeature);
+                }
+
                 cell.setFeature(features.get(i - 1));
+
                 product.addCell(cell);
             }
 
@@ -132,6 +140,15 @@ public class CSVLoader implements PCMLoader {
                 Cell cell = factory.createCell();
                 cell.setContent(line[i]);
                 cell.setFeature(feature);
+
+                // Create an arbitrary product if the number of cells is greater than the number of products
+                if (i > products.size()) {
+                    Product newProduct = factory.createProduct();
+                    newProduct.setName("Product");
+                    pcm.addProduct(newProduct);
+                    products.add(newProduct);
+                }
+
                 products.get(i - 1).addCell(cell);
             }
 

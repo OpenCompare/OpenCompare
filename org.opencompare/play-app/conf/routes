@@ -10,13 +10,15 @@ GET     /search                             controllers.Application.search(reque
 GET     /view/:id                           controllers.Application.view(id : String)
 GET     /edit/:id                           controllers.Application.edit(id : String)
 GET     /create                             controllers.Application.create()
+GET     /import/:ext                        controllers.Application.importer(ext : String)
+#POST    /preview                            controllers.Application.preview()
 
 # API
 GET     /api/get/:id                        controllers.PCMAPI.get(id : String)
 POST    /api/save/:id                       controllers.PCMAPI.save(id : String)
 POST    /api/create                         controllers.PCMAPI.create()
 GET     /api/remove/:id                     controllers.PCMAPI.remove(id : String)
-
+POST    /api/convert/:ext                   controllers.PCMAPI.convertByFile(ext : String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                       controllers.Assets.at(path="/public", file)

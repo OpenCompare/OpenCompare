@@ -1,11 +1,11 @@
-package org.opencompare.io.wikipedia.parser
+package org.opencompare.experimental.io.wikipedia.parser
 
 import java.util.regex.Pattern
 
 import de.fau.cs.osr.ptk.common.AstVisitor
-import org.opencompare.io.wikipedia.pcm.{Matrix, Page}
-import org.sweble.wikitext.parser.nodes._
+import org.opencompare.io.wikipedia.pcm.{Page, Matrix}
 
+import org.sweble.wikitext.parser.nodes._
 import scala.collection.mutable.ListBuffer
 
 class PageVisitor(pageTitle: String) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
@@ -16,6 +16,11 @@ class PageVisitor(pageTitle: String) extends AstVisitor[WtNode] with CompleteWik
   pcm.title = pageTitle
   var section: StringBuilder = new StringBuilder
   var inTitle: Boolean = false
+
+  override def iterate(e: WtNode): Unit = {
+    println("PageVisitor: " + e)
+    super.iterate(e)
+  }
 
   private val trimPattern: Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
 
@@ -195,6 +200,4 @@ class PageVisitor(pageTitle: String) extends AstVisitor[WtNode] with CompleteWik
   override def visit(e: WtPreproWikitextPage): Unit = iterate(e)
 
   override def visit(e: WtTemplateArgument): Unit = iterate(e)
-
-  def visit(e: WtLinkTarget.WtNoLink): Unit = {}
 }

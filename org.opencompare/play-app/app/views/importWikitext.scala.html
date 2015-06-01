@@ -1,0 +1,37 @@
+@header = {
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/importer.css")'>
+}
+
+@footer = {
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-importer-controller.js")'></script>
+}
+
+@toolbar = {}
+
+@main(header, footer, toolbar) {
+
+    <div id="importer" class="row" ng-controller="PCMImporterController">
+        <form name="importPcm" id="import_pcm" class="form-horizontal" method="post" action="/api/convert/wikipedia">
+            <div class="row-fluid">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">@Messages("importer.select.url")</label>
+                        <div class="col-md-8">
+                            <input ng-model="config.title" type="string" name="title" id="title" size="80%" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success center-block" form="import_pcm"><i class="fa fa-valid"></i> @Messages("importer.button.confirm")</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+}
+
