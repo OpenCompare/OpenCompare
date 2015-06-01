@@ -93,4 +93,12 @@ public class DiffResult {
     public void setDifferingCells(List<Pair<Cell, Cell>> differingCells) {
         this.differingCells = differingCells;
     }
+
+    public Boolean hasDifferences() {
+        return !this.differingCells.isEmpty()
+            & !this.featuresOnlyInPCM1.isEmpty()
+            & !this.featuresOnlyInPCM2.isEmpty()
+            & !this.productsOnlyInPCM1.isEmpty()
+            & !this.productsOnlyInPCM2.isEmpty();
+    }
 }
