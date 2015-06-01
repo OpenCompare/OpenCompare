@@ -52,7 +52,7 @@ class Page {
   }
 
   def toPCM() : PCM = {
-    val factory = new PCMFactoryImpl
+    val factory = PCMFactoryImpl.INSTANCE
     val pcm = factory.createPCM()
 
     // TODO : set name

@@ -30,7 +30,7 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
   ignore should "generate a dataset of product descriptions" in { // "BestBuy API"
 
-    val miner = new BestBuyMiner(new PCMFactoryImpl)
+    val miner = new BestBuyMiner(PCMFactoryImpl.INSTANCE)
 
     for (category <- categories) {
       println(category)

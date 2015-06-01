@@ -10,7 +10,7 @@ import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
  */
 class PCMModelExporter {
 
-  private val factory = new PCMFactoryImpl
+  private val factory = PCMFactoryImpl.INSTANCE
   private val miner = new WikipediaPageMiner
 
   def export(page : Page) : List[PCM] = {

@@ -19,7 +19,7 @@ public class BestBuyMiner {
     private final PCMFactory pcmFactory;
 
     public BestBuyMiner() {
-        this.pcmFactory = new PCMFactoryImpl();
+        this.pcmFactory = PCMFactoryImpl.INSTANCE;
     }
 
     /**

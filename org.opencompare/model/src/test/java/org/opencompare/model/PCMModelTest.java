@@ -5,15 +5,13 @@ import org.kevoree.modeling.api.Callback;
 import org.kevoree.modeling.api.KObject;
 import org.kevoree.modeling.api.json.JsonModelLoader;
 import org.kevoree.modeling.api.json.JsonModelSerializer;
-import pcm.PCM;
-import pcm.PcmModel;
-import pcm.PcmUniverse;
-import pcm.PcmView;
+import pcm.*;
 import pcm.impl.PcmViewImpl;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -87,5 +85,7 @@ public class PCMModelTest {
         KObject kObject = view.lookup(1l).getResult();
         PCM pcm = (PCM) kObject;
         assertEquals("PCM name", pcm.getName());
+
+        System.out.println(view.now());
     }
 }

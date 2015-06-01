@@ -9,6 +9,6 @@ public class CSVLoaderTest extends org.opencompare.api.java.io.CSVLoaderTest {
 
     @Override
     public void setUp() {
-        factory = new PCMFactoryImpl();
+        factory = PCMFactoryImpl.INSTANCE;
     }
 }

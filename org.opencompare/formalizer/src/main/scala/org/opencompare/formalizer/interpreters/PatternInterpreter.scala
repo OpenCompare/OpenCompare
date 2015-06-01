@@ -13,7 +13,7 @@ abstract class PatternInterpreter(
     val confident : Boolean
     ) {
 
-  val factory : PCMFactory = new PCMFactoryImpl
+  val factory : PCMFactory = PCMFactoryImpl.INSTANCE
 
 	private val pattern : Pattern =  Pattern.compile(regex, Pattern.UNICODE_CHARACTER_CLASS |
 	    Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE | Pattern.DOTALL)

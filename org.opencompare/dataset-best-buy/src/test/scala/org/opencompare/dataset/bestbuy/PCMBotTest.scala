@@ -29,7 +29,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   outputDir.mkdirs()
 
   val analyzer = new PCMAnalyzer
-  val factory = new PCMFactoryImpl
+  val factory = PCMFactoryImpl.INSTANCE
   val miner = new BestBuyMiner(factory)
   val csvExporter = new CSVExporter
   val api = new BestBuyAPI
@@ -115,7 +115,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   ignore should "run on BestBuy overviews" in {
     forAll(bestbuyOverviewPCMs) { (path: String) =>
       if (new File(path).exists()) {
-        val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
+        val loader = new CSVLoader(PCMFactoryImpl.INSTANCE, ';', '"', false)
         val pcm = loader.load(new File(path))
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)

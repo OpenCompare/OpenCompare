@@ -25,7 +25,7 @@ class BestBuyTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "The BestBuy miner" should "generate a PCM from a list of product's SKU" in {
     val skus = List("8827378", "8790174", "8274088")
-    val miner = new BestBuyMiner(new PCMFactoryImpl)
+    val miner = new BestBuyMiner(PCMFactoryImpl.INSTANCE)
     val pcm = miner.minePCM(skus)
 
     val exporter = new HTMLExporter

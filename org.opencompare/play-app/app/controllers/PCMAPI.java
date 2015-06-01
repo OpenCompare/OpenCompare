@@ -33,7 +33,7 @@ import static scala.collection.JavaConversions.*;
  */
 public class PCMAPI extends Controller {
 
-    private static final PCMFactory pcmFactory = new PCMFactoryImpl();
+    private static final PCMFactory pcmFactory = PCMFactoryImpl.INSTANCE;
     private static final PCMModelExporter pcmExporter = new PCMModelExporter();
     private static final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private static final CSVExporter csvExporter = new CSVExporter();

@@ -12,9 +12,11 @@ import pcm.PcmView;
  */
 public class PCMFactoryImpl implements PCMFactory {
 
+    public static final PCMFactoryImpl INSTANCE = new PCMFactoryImpl();
+
     private PcmView view;
 
-    public PCMFactoryImpl() {
+    private PCMFactoryImpl() {
         PcmModel model = new PcmModel();
         model.connect();
         PcmUniverse universe = model.newUniverse();

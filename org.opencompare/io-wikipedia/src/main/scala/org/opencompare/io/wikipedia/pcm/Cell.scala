@@ -17,7 +17,7 @@ class Cell(
   }
 
   def toPCM() : org.opencompare.api.java.Cell = {
-    val factory = new PCMFactoryImpl()
+    val factory = PCMFactoryImpl.INSTANCE
     val cell = factory.createCell()
     cell.setContent(content)
     cell

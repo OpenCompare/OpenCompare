@@ -200,7 +200,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val interpreter = new CellContentInterpreter
     val loader = new KMFJSONLoader
     val exporter = new KMFJSONExporter
-    val factory = new PCMFactoryImpl
+    val factory = PCMFactoryImpl.INSTANCE
 
     val files = new File("output/model").listFiles(new FilenameFilter {
       override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")

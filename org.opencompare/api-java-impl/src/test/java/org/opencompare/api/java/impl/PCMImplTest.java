@@ -18,7 +18,7 @@ public class PCMImplTest extends PCMTest {
 
     @Override
     public void setUp() {
-        factory = new PCMFactoryImpl();
+        factory = PCMFactoryImpl.INSTANCE;
     }
 
     @Test
