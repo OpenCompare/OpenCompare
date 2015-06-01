@@ -154,4 +154,6 @@ class NodeToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorN
   override def visit(e: WtXmlAttributeGarbage): Unit = iterate(e)
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
+
+  def visit(e: WtLinkTarget.WtNoLink): Unit = {}
 }

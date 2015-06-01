@@ -401,4 +401,6 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   override def visit(e: WtPreproWikitextPage): Unit = iterate(e)
 
   override def visit(e: WtTemplateArgument): Unit = iterate(e)
+
+  def visit(e: WtLinkTarget.WtNoLink): Unit = {}
 }
