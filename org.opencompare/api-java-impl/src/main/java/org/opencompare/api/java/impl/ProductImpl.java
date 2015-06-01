@@ -36,8 +36,12 @@ public class ProductImpl implements Product {
     @Override
     public List<Cell> getCells() {
         List<Cell> cells = new ArrayList<Cell>();
-        for (pcm.Cell kCell : kProduct.getValues()) {
-            cells.add(new CellImpl(kCell));
+        try {
+            for (pcm.Cell kCell : kProduct.getValues().getResult()) {
+                cells.add(new CellImpl(kCell));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return cells;
     }

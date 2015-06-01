@@ -32,8 +32,12 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public Value getInterpretation() {
-        pcm.Value kInterpretation = kCell.getInterpretation();
-
+        pcm.Value kInterpretation = null;
+        try {
+            kInterpretation = kCell.getInterpretation().getResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return ValueImpl.wrapValue(kInterpretation);
     }
 
@@ -47,7 +51,12 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public Feature getFeature() {
-        return new FeatureImpl(kCell.getFeature());
+        try {
+            return new FeatureImpl(kCell.getFeature().getResult());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

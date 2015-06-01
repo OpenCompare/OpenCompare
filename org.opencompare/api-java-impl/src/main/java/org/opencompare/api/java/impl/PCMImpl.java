@@ -37,8 +37,12 @@ public class PCMImpl implements PCM {
     @Override
     public List<Product> getProducts() {
         List<Product> products = new ArrayList<Product>();
-        for (pcm.Product kProduct : kpcm.getProducts()) {
-            products.add(new ProductImpl(kProduct));
+        try {
+            for (pcm.Product kProduct : kpcm.getProducts().getResult()) {
+                products.add(new ProductImpl(kProduct));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return products;
     }
@@ -56,12 +60,16 @@ public class PCMImpl implements PCM {
     @Override
     public List<AbstractFeature> getFeatures() {
         List<AbstractFeature> features = new ArrayList<AbstractFeature>();
-        for (pcm.AbstractFeature kFeature : kpcm.getFeatures()) {
-            if (kFeature instanceof pcm.Feature) {
-                features.add(new FeatureImpl((pcm.Feature) kFeature));
-            } else if (kFeature instanceof pcm.FeatureGroup) {
-                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
+        try {
+            for (pcm.AbstractFeature kFeature : kpcm.getFeatures().getResult()) {
+                if (kFeature instanceof pcm.Feature) {
+                    features.add(new FeatureImpl((pcm.Feature) kFeature));
+                } else if (kFeature instanceof pcm.FeatureGroup) {
+                    features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return features;
     }

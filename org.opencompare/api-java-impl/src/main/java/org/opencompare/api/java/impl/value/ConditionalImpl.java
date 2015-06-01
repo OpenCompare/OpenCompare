@@ -23,7 +23,12 @@ public class ConditionalImpl extends ValueImpl implements Conditional {
 
     @Override
     public Value getValue() {
-        return ValueImpl.wrapValue(kConditional.getValue());
+        try {
+            return ValueImpl.wrapValue(kConditional.getValue().getResult());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -33,7 +38,12 @@ public class ConditionalImpl extends ValueImpl implements Conditional {
 
     @Override
     public Value getCondition() {
-        return ValueImpl.wrapValue(kConditional.getCondition());
+        try {
+            return ValueImpl.wrapValue(kConditional.getCondition().getResult());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

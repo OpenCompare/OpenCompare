@@ -68,7 +68,7 @@ public class PCMModelTest {
         final PcmView view = universe.time(0l);
 
 
-
+        // Asynchronous
         view.json().load(json).then(new Callback<Throwable>() {
             @Override
             public void on(Throwable throwable) {
@@ -82,5 +82,10 @@ public class PCMModelTest {
             }
         });
 
+        // Synchronous
+        view.json().load(json).getResult();
+        KObject kObject = view.lookup(1l).getResult();
+        PCM pcm = (PCM) kObject;
+        assertEquals("PCM name", pcm.getName());
     }
 }

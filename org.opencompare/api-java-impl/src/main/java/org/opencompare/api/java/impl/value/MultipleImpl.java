@@ -27,8 +27,12 @@ public class MultipleImpl extends ValueImpl implements Multiple {
     @Override
     public List<Value> getSubValues() {
         List<Value> subValues = new ArrayList<Value>();
-        for (pcm.Value kValue : kMultiple.getSubvalues()) {
-            subValues.add(ValueImpl.wrapValue(kValue));
+        try {
+            for (pcm.Value kValue : kMultiple.getSubvalues().getResult()) {
+                subValues.add(ValueImpl.wrapValue(kValue));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return subValues;
     }
