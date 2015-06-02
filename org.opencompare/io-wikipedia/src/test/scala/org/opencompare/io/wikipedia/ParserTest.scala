@@ -3,7 +3,9 @@ package org.opencompare.io.wikipedia
 import java.io.{File, FileWriter}
 import java.util.concurrent.Executors
 
+import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
+import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.io.wikipedia.export.{PCMModelExporter, WikiTextExporter}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
@@ -11,11 +13,13 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scala.concurrent.ExecutionContext
 import scala.io.Source
 import scala.xml.PrettyPrinter
-
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
   val miner = new WikipediaPageMiner
+  val pcmExporter = new PCMModelExporter
+  val csvExporter = new CSVExporter
+  val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
   override def beforeAll() {
 
@@ -117,7 +121,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }
 
   }
-  
+
   "The PCM parser" should "parse the example of tables from Wikipedia" in {
     val pcm = parsePCMFromFile("resources/example.pcm")
     pcm.getMatrices.size should be (1)
