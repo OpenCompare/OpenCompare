@@ -28,15 +28,19 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     ("includes"),
     ("internal_link"),
     ("rowspan"),
+    ("rowspan_colspan"),
     ("uri"),
     ("xml_tag")
   )
 
+  def readFailedUnitTests(title : String) : String = {
+    Source.fromFile("resources/FailedUnitTests/" + title).mkString
+  }
   def readUnitTests(title : String) : String = {
-    Source.fromFile("resources/ImportSpec/UnitTests/" + title).mkString
+    Source.fromFile("resources/UnitTests/" + title).mkString
   }
 
-  "Each wikitext syntaxes" should "be identical to this corresponding Csv" in {
+  "Each wikitext syntax" should "be identical to this corresponding Csv representation" in {
     forAll (syntaxes) { (filename: String) => {
       val wiki = readUnitTests(filename + ".wikitext")
       val csv = readUnitTests(filename + ".csv")
@@ -45,11 +49,23 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       val renderingPcm = csvLoader.load(csv)
       val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
 
+      diff.hasDifferences shouldBe false
+    }}
+  }
+
+  "Each wikitext syntax" should "not be identical to this corresponding Csv representation" in {
+    forAll (syntaxes) { (filename: String) => {
+      val wiki = readFailedUnitTests(filename + ".wikitext")
+      val csv = readFailedUnitTests(filename + ".csv")
+
+      val wikiPcm = pcmExporter.export(miner.parse(wiki, "Title")).head
+      val renderingPcm = csvLoader.load(csv)
+      val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
+
       println(readUnitTests(filename + ".csv"))
       println(csvExporter.export(renderingPcm))
 
-
-      diff.hasDifferences shouldBe false
+      diff.hasDifferences shouldBe true
     }}
   }
 }
