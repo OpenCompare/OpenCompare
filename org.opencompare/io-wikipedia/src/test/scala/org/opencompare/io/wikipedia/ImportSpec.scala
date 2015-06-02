@@ -1,6 +1,6 @@
 package org.opencompare.io.wikipedia
 
-import _root_.java.io.FileReader
+import java.io.{File, FileReader}
 
 import org.opencompare.api.java.PCM
 import org.opencompare.api.java.impl.PCMFactoryImpl
@@ -25,6 +25,7 @@ class ImportSpec extends FlatSpec with Matchers with BeforeAndAfterAll {
   val syntaxes = Table(
     ("Syntax test"),
     ("boolean"),
+    ("colspan"),
     ("core_functions"),
     ("includes"),
     ("internal_link"),
