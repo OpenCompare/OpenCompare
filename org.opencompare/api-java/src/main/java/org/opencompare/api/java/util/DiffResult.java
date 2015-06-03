@@ -102,27 +102,26 @@ public class DiffResult {
             || !this.productsOnlyInPCM2.isEmpty();
     }
 
-    public void print() {
-        System.out.println("### Products " + this.getPcm1().getName() + " differences");
+    public String toString() {
+        String result = "PCM(" + this.getPcm1().getName() + ")\n";
         for (Product product : this.getProductsOnlyInPCM1()) {
-            System.out.println(" - " + product.getName());
+            result += " - " + product + "\n";
         }
-        System.out.println("### Products " + this.getPcm2().getName() + " differences");
-        for (Product product : this.getProductsOnlyInPCM2()) {
-            System.out.println(" - " + product.getName());
-        }
-        System.out.println("### Features of '" + this.getPcm1().getName() + "' differences");
         for (Feature feature : this.getFeaturesOnlyInPCM1()) {
-            System.out.println(" - " + feature.getName());
+            result += " - " + feature + "\n";
         }
-        System.out.println("### Features of '" + this.getPcm2().getName() + "' differences");
+        result += "PCM(" + this.getPcm2().getName() + ")" + "\n";
+        for (Product product : this.getProductsOnlyInPCM2()) {
+            result += " - " + product + "\n";
+        }
         for (Feature feature : this.getFeaturesOnlyInPCM2()) {
-            System.out.println(" - " + feature.getName());
+            result += " - " + feature + "\n";
         }
-        System.out.println("### Cells differences");
+        result += "Cells differences" + "\n";
         for (Pair<Cell, Cell> cell : this.getDifferingCells()) {
-            System.out.println(" - Cell 1 => Feature " + cell._1.getFeature() + " = " + cell._1.getContent());
-            System.out.println(" - Cell 2 => Feature " + cell._2.getFeature() + " = " + cell._2.getContent());
+            result += " - Cell 1 " + cell._1 + "From " + cell._1.getFeature() + "\n";
+            result += " - Cell 2 " + cell._2 + cell._2.getFeature() + "\n";
         }
+        return result;
     }
 }

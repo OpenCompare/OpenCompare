@@ -5,6 +5,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.SimplePCMElementComparator
 import org.opencompare.io.wikipedia.export.{PCMModelExporter, WikiTextExporter}
+import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.io.Source
@@ -14,11 +15,6 @@ import scala.io.Source
  */
 class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
-  var pcm1 : PCM = _
-  var pcm2 : PCM = _
-  var csv : String = _
-  var code : String = _
-
   val miner = new WikipediaPageMiner
   val pcmFactory = new PCMFactoryImpl
   val pcmExporter = new PCMModelExporter
@@ -27,35 +23,51 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
   val path = "resources/ImportTest/"
-
-  override def beforeAll(): Unit = {
-    csv = Source.fromFile(path + "base.csv").mkString
-    code = Source.fromFile(path + "base.wikitext").mkString
-    pcm1 = pcmFactory.createPCM()
-    pcm2 = pcmFactory.createPCM()
-    pcm1 = pcmExporter.export(miner.parse(code, "Title")).head
-  }
+  val intputs = Table(
+    ("Example"),
+    ("basic"),
+    ("basic_inline")
+    //("amd_proc") //TODO: Must implement features group
+  )
 
   "A PCM" should "be identical to the wikitext it came from" in {
-    pcm2 = csvLoader.load(csv)
-    var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+    forAll(intputs) {
+      (filename: String) => {
+        val csv = Source.fromFile(path + filename + ".csv").mkString
+        val code = Source.fromFile(path + filename + ".wikitext").mkString
+        val preprocessedCode = miner.preprocess(code)
+        val pcm1 = pcmExporter.export(miner.parse(preprocessedCode, "From Wikitext")).head
+        val pcm2 = csvLoader.load(csv)
+        pcm2.setName("From CSV")
 
-    println(csvExporter.export(pcm1))
-    println(csvExporter.export(pcm2))
-    diff.print()
-
-    diff.hasDifferences shouldBe false
+        var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+        println("===================================================================================================")
+        println("                                   " + filename)
+        println("====================================================================================================")
+        println()
+        println(diff.toString)
+        diff.hasDifferences shouldBe false
+      }
+    }
   }
+  it should "be the same as the one created with it's wikitext representation" in {
+    forAll(intputs) {
+      (filename: String) => {
+        val csv = Source.fromFile(path + filename + ".csv").mkString
+        val code = Source.fromFile(path + filename + ".wikitext").mkString
+        val precode1 = miner.preprocess(code)
+        val pcm1 = pcmExporter.export(miner.parse(precode1, "From Wikitext")).head
+        val precode2 = miner.preprocess(wikiTextExporter.toWikiText(pcm1))
+        val pcm2 = pcmExporter.export(miner.parse(precode2, "From PCM1 Wikitext")).head
 
-  it should "be the same as the one created from it's wikitext representation" in {
-    pcm2 = pcmExporter.export(miner.parse(wikiTextExporter.toWikiText(pcm1), "Title")).head
-    var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-
-    println(csvExporter.export(pcm1))
-    println(csvExporter.export(pcm2))
-    diff.print()
-
-    diff.hasDifferences shouldBe false
+        var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+        println("===================================================================================================")
+        println("                                   " + filename)
+        println("====================================================================================================")
+        println()
+        println(diff.toString)
+        diff.hasDifferences shouldBe false
+      }
+    }
   }
-
 }

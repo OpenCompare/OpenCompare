@@ -20,6 +20,7 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val csvExporter = new CSVExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
+  val path = "resources/SyntaxTest/"
   val syntaxes = Table(
     ("Syntax test"),
     ("boolean"),
@@ -33,26 +34,29 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     ("xml_tag")
   )
 
-  val path = "resources/ImportTest/"
-
-  def readFailedUnitTests(title : String) : String = {
-    Source.fromFile(path + "FailedUnitTests/" + title).mkString
+  def loadWiki(title : String) : String = {
+    Source.fromFile(path + title + ".wikitext").mkString
   }
-  def readUnitTests(title : String) : String = {
-    Source.fromFile(path + "UnitTests/" + title).mkString
+  def loadCsv(title : String) : String = {
+    Source.fromFile(path + title + ".csv").mkString
   }
 
-  "Each wikitext syntax" should "be identical to this corresponding Csv representation" in {
-    forAll (syntaxes) { (filename: String) => {
-      val wiki = readUnitTests(filename + ".wikitext")
-      val csv = readUnitTests(filename + ".csv")
+  forAll (syntaxes) { (filename: String) => {
+    "Wikitext syntax for " + filename should "match this csv representation" in {
+      val wiki = loadWiki(filename)
+      val csv = loadCsv(filename)
 
-      val wikiPcm = pcmExporter.export(miner.parse(wiki, "Title")).head
+      val wikiPcm = pcmExporter.export(
+        miner.parse(
+          miner.preprocess(wiki), filename + " from wikitext")
+      ).head
       val renderingPcm = csvLoader.load(csv)
+      renderingPcm.setName(filename + " from Csv")
       val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
 
-      diff.print()
+      println(diff.toString)
       diff.hasDifferences shouldBe false
     }}
   }
+
 }
