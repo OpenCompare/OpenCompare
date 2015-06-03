@@ -41,22 +41,24 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     Source.fromFile(path + title + ".csv").mkString
   }
 
-  forAll (syntaxes) { (filename: String) => {
-    "Wikitext syntax for " + filename should "match this csv representation" in {
-      val wiki = loadWiki(filename)
-      val csv = loadCsv(filename)
+  forAll (syntaxes) {
+    (filename: String) => {
+      "Wikitext syntax for " + filename should "match this csv representation" in {
+        val wiki = loadWiki(filename)
+        val csv = loadCsv(filename)
 
-      val wikiPcm = pcmExporter.export(
-        miner.parse(
-          miner.preprocess(wiki), filename + " from wikitext")
-      ).head
-      val renderingPcm = csvLoader.load(csv)
-      renderingPcm.setName(filename + " from Csv")
-      val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
+        val wikiPcm = pcmExporter.export(
+          miner.parse(
+            miner.preprocess(wiki), filename + " from wikitext")
+        ).head
+        val renderingPcm = csvLoader.load(csv)
+        renderingPcm.setName(filename + " from Csv")
+        val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
 
-      println(diff.toString)
-      diff.hasDifferences shouldBe false
-    }}
+        println(diff.toString)
+        diff.hasDifferences shouldBe false
+      }
+    }
   }
 
 }

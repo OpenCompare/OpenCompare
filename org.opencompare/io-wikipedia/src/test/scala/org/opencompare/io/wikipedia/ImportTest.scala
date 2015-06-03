@@ -30,9 +30,9 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     //("amd_proc") //TODO: Must implement features group
   )
 
-  "A PCM" should "be identical to the wikitext it came from" in {
-    forAll(intputs) {
-      (filename: String) => {
+  forAll(intputs) {
+    (filename: String) => {
+      "A " + filename.replace('_', ' ') + " PCM" should "be identical to the wikitext it came from" in {
         val csv = Source.fromFile(path + filename + ".csv").mkString
         val code = Source.fromFile(path + filename + ".wikitext").mkString
         val preprocessedCode = miner.preprocess(code)
@@ -41,18 +41,10 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         pcm2.setName("From CSV")
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-        println("===================================================================================================")
-        println("                                   " + filename)
-        println("====================================================================================================")
-        println()
         println(diff.toString)
         diff.hasDifferences shouldBe false
       }
-    }
-  }
-  it should "be the same as the one created with it's wikitext representation" in {
-    forAll(intputs) {
-      (filename: String) => {
+      it should "be the same as the one created with it's wikitext representation" in {
         val csv = Source.fromFile(path + filename + ".csv").mkString
         val code = Source.fromFile(path + filename + ".wikitext").mkString
         val precode1 = miner.preprocess(code)
@@ -61,10 +53,6 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         val pcm2 = pcmExporter.export(miner.parse(precode2, "From PCM1 Wikitext")).head
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-        println("===================================================================================================")
-        println("                                   " + filename)
-        println("====================================================================================================")
-        println()
         println(diff.toString)
         diff.hasDifferences shouldBe false
       }
