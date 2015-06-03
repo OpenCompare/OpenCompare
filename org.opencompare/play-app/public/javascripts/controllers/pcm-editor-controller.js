@@ -241,7 +241,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     function getType (featureName) {
-        rowIndex = 0;
+        var rowIndex = 0;
         var isInt = 0;
         var isBool = 0;
         var isString = 0;
@@ -251,7 +251,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 if (!angular.equals(parseInt($scope.pcmData[rowIndex][featureName]), NaN)) {
                     isInt++;
                 }
-                else if ($scope.isBooleanValue($scope.pcmData[rowIndex][featureName])) {
+                else if (isBooleanValue($scope.pcmData[rowIndex][featureName])) {
                     isBool++;
                 }
                 else if (!isEmptyCell($scope.pcmData[rowIndex][featureName])) {
@@ -494,7 +494,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
         }
-        else if($scope.isBooleanValue(productName)) {
+        else if(isBooleanValue(productName)) {
             type = "boolean";
         }
         else if(!isEmptyCell(productName)){
@@ -514,9 +514,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
     };
 
-    $scope.isBooleanValue = function(productName) {
+    function isBooleanValue(productName) {
         return((productName.toLowerCase() === "yes") ||  (productName.toLowerCase() === "true") ||  (productName.toLowerCase() === "no") ||  (productName.toLowerCase() === "false"));
-    };
+    }
 
     $scope.validateEverything = function () {
         if($scope.pcmData.length > 0){
@@ -745,9 +745,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
 })
 
-.directive('editorView', function() {
+    .directive('embeddedEditor', function() {
         return {
-            templateUrl: '/assets/html/pcmEditor.html'
+            templateUrl: 'pcmEditor.html'
+        };
+    })
+
+    .directive('openCompareEditor', function() {
+        return {
+            templateUrl: '/assets/editor/pcmEditor.html'
         };
     });
-
