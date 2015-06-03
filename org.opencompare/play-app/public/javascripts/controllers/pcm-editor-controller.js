@@ -29,7 +29,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableRowHeaderSelection: false,
         enableColumnResizing: false,
         enableFiltering: true,
-        headerRowHeight: 200,
+        headerRowHeight: 200
     };
 
     $scope.gridOptions.height = $scope.gridOptions.data.length*20+30;
@@ -358,7 +358,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         columnDefs[1].filter = [];
         columnDefs[1].filter.condition = function(searchTerm, cellValue) {
-            if(cellValue.toLowerCase().indexOf(searchTerm) != -1) {
+            if(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
                 return true;
             }
             else {
@@ -490,7 +490,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validateType = function (productName, featureType) {
-        console.log(productName);
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
@@ -713,14 +712,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if ($elm) {
             $elm.remove();
         }
-        console.log(columnsFilters[featureName]);
     };
 
     $scope.removeFilter = function(col) {
         var featureName = col.name;
-        console.log(columnsFilters[featureName]);
         delete columnsFilters[featureName];
-        console.log(columnsFilters[featureName]);
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
@@ -747,8 +743,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.validate();
     });
 
-});
-	
+})
 
-
+.directive('editorView', function() {
+        return {
+            templateUrl: '/assets/html/pcmEditor.html'
+        };
+    });
 
