@@ -119,8 +119,8 @@ public class DiffResult {
         }
         result += "Cells differences" + "\n";
         for (Pair<Cell, Cell> cell : this.getDifferingCells()) {
-            result += " - Cell 1 " + cell._1 + "From " + cell._1.getFeature() + "\n";
-            result += " - Cell 2 " + cell._2 + cell._2.getFeature() + "\n";
+            result += " 1 - " + cell._1 + " From " + cell._1.getFeature() + "\n";
+            result += " 2 - " + cell._2 + " From " + cell._2.getFeature() + "\n";
         }
         return result;
     }

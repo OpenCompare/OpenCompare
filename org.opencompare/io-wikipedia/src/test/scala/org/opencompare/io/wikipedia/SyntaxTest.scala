@@ -31,7 +31,8 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     ("rowspan"),
     ("rowspan_colspan"),
     ("uri"),
-    ("xml_tag")
+    ("xml_tag"),
+    ("empty")
   )
 
   def loadWiki(title : String) : String = {
@@ -51,10 +52,14 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
           miner.parse(
             miner.preprocess(wiki), filename + " from wikitext")
         ).head
-        val renderingPcm = csvLoader.load(csv)
-        renderingPcm.setName(filename + " from Csv")
-        val diff = wikiPcm.diff(renderingPcm, new SimplePCMElementComparator)
-
+        val waitingPcm = csvLoader.load(csv)
+        waitingPcm.setName(filename + " from Csv")
+        val diff = wikiPcm.diff(waitingPcm, new SimplePCMElementComparator)
+        println("#### Waiting for : ####")
+        println(csv)
+        println("#### Received : ####")
+        println(csvExporter.export(wikiPcm))
+        println("#### Diff result : ####")
         println(diff.toString)
         diff.hasDifferences shouldBe false
       }
