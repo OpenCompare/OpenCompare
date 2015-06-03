@@ -26,9 +26,11 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val wikiTextExporter = new WikiTextExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
+  val path = "resources/ImportTest/"
+
   override def beforeAll(): Unit = {
-    csv = Source.fromFile("resources/ImportSpec/Base/base.csv").mkString
-    code = Source.fromFile("resources/ImportSpec/Base/base.wikitext").mkString
+    csv = Source.fromFile(path + "base.csv").mkString
+    code = Source.fromFile(path + "base.wikitext").mkString
     pcm1 = pcmFactory.createPCM()
     pcm2 = pcmFactory.createPCM()
     pcm1 = pcmExporter.export(miner.parse(code, "Title")).head
@@ -38,12 +40,20 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     pcm2 = csvLoader.load(csv)
     var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
 
+    println(csvExporter.export(pcm1))
+    println(csvExporter.export(pcm2))
+    diff.print()
+
     diff.hasDifferences shouldBe false
   }
 
   it should "be the same as the one created from it's wikitext representation" in {
     pcm2 = pcmExporter.export(miner.parse(wikiTextExporter.toWikiText(pcm1), "Title")).head
     var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+
+    println(csvExporter.export(pcm1))
+    println(csvExporter.export(pcm2))
+    diff.print()
 
     diff.hasDifferences shouldBe false
   }

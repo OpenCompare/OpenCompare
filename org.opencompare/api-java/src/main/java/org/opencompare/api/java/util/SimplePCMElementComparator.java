@@ -10,16 +10,16 @@ import org.opencompare.api.java.Product;
 public class SimplePCMElementComparator implements PCMElementComparator {
     @Override
     public boolean similarFeature(AbstractFeature f1, AbstractFeature f2) {
-        return f1.equals(f2);
+        return !f1.getName().equalsIgnoreCase(f2.getName());
     }
 
     @Override
     public boolean similarProduct(Product p1, Product p2) {
-        return p1.equals(p2);
+        return !p1.getName().equalsIgnoreCase(p2.getName());
     }
 
     @Override
     public boolean similarCell(Cell c1, Cell c2) {
-        return c1.getContent().equals(c2.getContent());
+        return !c1.getContent().equals(c2.getContent());
     }
 }

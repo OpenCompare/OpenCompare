@@ -96,9 +96,33 @@ public class DiffResult {
 
     public Boolean hasDifferences() {
         return !this.differingCells.isEmpty()
-            & !this.featuresOnlyInPCM1.isEmpty()
-            & !this.featuresOnlyInPCM2.isEmpty()
-            & !this.productsOnlyInPCM1.isEmpty()
-            & !this.productsOnlyInPCM2.isEmpty();
+            || !this.featuresOnlyInPCM1.isEmpty()
+            || !this.featuresOnlyInPCM2.isEmpty()
+            || !this.productsOnlyInPCM1.isEmpty()
+            || !this.productsOnlyInPCM2.isEmpty();
+    }
+
+    public void print() {
+        System.out.println("### Products " + this.getPcm1().getName() + " differences");
+        for (Product product : this.getProductsOnlyInPCM1()) {
+            System.out.println(" - " + product.getName());
+        }
+        System.out.println("### Products " + this.getPcm2().getName() + " differences");
+        for (Product product : this.getProductsOnlyInPCM2()) {
+            System.out.println(" - " + product.getName());
+        }
+        System.out.println("### Features of '" + this.getPcm1().getName() + "' differences");
+        for (Feature feature : this.getFeaturesOnlyInPCM1()) {
+            System.out.println(" - " + feature.getName());
+        }
+        System.out.println("### Features of '" + this.getPcm2().getName() + "' differences");
+        for (Feature feature : this.getFeaturesOnlyInPCM2()) {
+            System.out.println(" - " + feature.getName());
+        }
+        System.out.println("### Cells differences");
+        for (Pair<Cell, Cell> cell : this.getDifferingCells()) {
+            System.out.println(" - Cell 1 => Feature " + cell._1.getFeature() + " = " + cell._1.getContent());
+            System.out.println(" - Cell 2 => Feature " + cell._2.getFeature() + " = " + cell._2.getContent());
+        }
     }
 }
