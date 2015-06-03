@@ -19,6 +19,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     //Custom filters
     var $elm;
     var columnsFilters = [];
+    $scope.loading = false;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -29,7 +30,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableRowHeaderSelection: false,
         enableColumnResizing: false,
         enableFiltering: true,
-        headerRowHeight: 200
+        headerRowHeight: 150
     };
 
     $scope.gridOptions.height = $scope.gridOptions.data.length*20+30;
@@ -89,10 +90,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         initializeEditor($scope.pcm)
 
     } else {
-        $http.get("/api/get/" + id).success(function (data) {
+        $scope.loading = true;
+        $http.get("/api/get/" + id).
+            success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
             initializeEditor($scope.pcm)
-        });
+            })
+            .finally(function () {
+                $scope.loading = false; })
     }
 
     function newColumnDef(featureName, featureType) {
@@ -106,6 +111,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableSorting: true,
             enableHiding: false,
             enableFiltering: true,
+            minWidth: 150,
             filter: {term: ''},
             menuItems: [
                 {
@@ -354,7 +360,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableCellEdit: true,
             enableSorting: true,
             enableHiding: false,
-            enableColumnMoving: false
+            enableColumnMoving: false,
+            minWidth: 150
         });
         columnDefs[1].filter = [];
         columnDefs[1].filter.condition = function(searchTerm, cellValue) {

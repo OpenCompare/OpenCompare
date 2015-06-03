@@ -127,7 +127,12 @@
         </div>
     </div>
 
-    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-move-columns ui-grid-resize-columns>
+    <div id="matrix" class="grid" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-move-columns ui-grid-resize-columns>
+        <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
+            <div class="msg">
+                <span class="loader"> Loading Data...</span>
+            </div>
+        </div>
     </div>
 
 </div>
