@@ -30,10 +30,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableRowHeaderSelection: false,
         enableColumnResizing: false,
         enableFiltering: true,
-        headerRowHeight: 150
+        rowHeight: 30
     };
-
-    $scope.gridOptions.height = $scope.gridOptions.data.length*20+30;
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
         //set gridApi on scope
@@ -62,27 +60,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         // Create example PCM
         $scope.pcm = factory.createPCM();
-        /* var exampleFeature = factory.createFeature();
-        exampleFeature.name = "Feature";
-        $scope.pcm.addFeatures(exampleFeature);
-
-        var exampleFeature1 = factory.createFeature();
-        exampleFeature1.name = "Feature1";
-        $scope.pcm.addFeatures(exampleFeature1);
-
-        var exampleProduct = factory.createProduct();
-        exampleProduct.name = "Product";
-        $scope.pcm.addProducts(exampleProduct);
-
-        var exampleCell = factory.createCell();
-        exampleCell.feature = exampleFeature;
-        exampleCell.content = "Yes";
-        exampleProduct.addValues(exampleCell);
-
-        var exampleCell1 = factory.createCell();
-        exampleCell1.feature = exampleFeature1;
-        exampleCell1.content = "No";
-        exampleProduct.addValues(exampleCell1);*/
         initializeEditor($scope.pcm)
 
     } else if (typeof data != 'undefined')  {
@@ -202,7 +179,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     else {
                         return true;
                     }
-                }
+                };
                 break;
             case "number":
                 var filterLess = [];
@@ -221,30 +198,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm, cellValue) {
                     if(columnsFilters[featureName] == 1) {
-                        if(getBooleanValue(cellValue) == "yes") {
-                            return true;
-                        }
-                        else {
-                            return false;
-                        }
+                        return getBooleanValue(cellValue) == "yes";
                     }
                     else if(columnsFilters[featureName] == 2) {
-                        if(getBooleanValue(cellValue) == "no") {
-                            return true;
-                        }
-                        else {
-                            return false;
-                        }
+                        return getBooleanValue(cellValue) == "no";
                     }
                     else {
                         return true;
                     }
-                }
+                };
                 break;
 
         }
         return columnDef;
-    };
+    }
 
     function getType (featureName) {
         var rowIndex = 0;
@@ -371,7 +338,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             else {
                 return false;
             }
-        }
+        };
         columnDefs[1].filter.placeholder = 'Find';
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
@@ -381,6 +348,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             });
 
         $scope.gridOptions.columnDefs = columnDefs;
+        $scope.gridApi.grid.gridHeight = $(window).height()/3*2;
+        $scope.gridOptions.enableVerticalScrollbar = 2;
     }
 
     function convertGridToPCM(pcmData) {
