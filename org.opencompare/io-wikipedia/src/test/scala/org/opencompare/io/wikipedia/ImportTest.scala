@@ -9,6 +9,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.io.Source
+import scala.reflect.io.{File, Directory}
 
 /**
  * Created by smangin on 01/06/15.
@@ -22,34 +23,57 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val wikiTextExporter = new WikiTextExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
-  val path = "resources/ImportTest/"
-  val intputs = Table(
-    ("Example"),
-    ("basic"),
-    ("basic_inline")
-    //("amd_proc") //TODO: Must implement features group
+  def getResources: List[(java.io.File, java.io.File)] = {
+    val classLoader = getClass().getClassLoader()
+    val path = classLoader.getResource("ImportTest/")
+    val file = new java.io.File(path.getPath)
+    val folder = new Directory(file)
+    val paths = folder.files.filter(_.isFile).map(f => f.parent.path + File.separator + f.stripExtension).toList.distinct
+    paths.map(
+      name => (
+        new java.io.File(name + ".csv"),
+        new java.io.File(name + ".wikitext")
+        )
+    )
+  }
+
+  val inputs = Table(
+    ("Import test csv", "wiki"), getResources: _*
   )
 
-  forAll(intputs) {
-    (filename: String) => {
-      "A " + filename.replace('_', ' ') + " PCM" should "be identical to the wikitext it came from" in {
-        val csv = Source.fromFile(path + filename + ".csv").mkString
-        val code = Source.fromFile(path + filename + ".wikitext").mkString
-        val preprocessedCode = miner.preprocess(code)
-        val pcm1 = pcmExporter.export(miner.parse(preprocessedCode, "From Wikitext")).head
-        val pcm2 = csvLoader.load(csv)
+  forAll(inputs) {
+    (csv: java.io.File, wiki: java.io.File) => {
+      val name = csv.getName.replace(".csv", "")
+      val csvCode = Source.fromFile(csv).mkString
+      val wikiCode = Source.fromFile(wiki).mkString
+      val pcm1 = pcmExporter.export(
+        miner.parse(
+          miner.preprocess(wikiCode), "From Wikitext")
+      ).head
+
+      "A " + name + " PCM" should "be identical to the wikitext it came from" in {
+        val pcm2 = csvLoader.load(csvCode)
         pcm2.setName("From CSV")
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
         diff.hasDifferences shouldBe false
       }
+
       it should "be the same as the one created with it's wikitext representation" in {
-        val csv = Source.fromFile(path + filename + ".csv").mkString
-        val code = Source.fromFile(path + filename + ".wikitext").mkString
-        val precode1 = miner.preprocess(code)
-        val pcm1 = pcmExporter.export(miner.parse(precode1, "From Wikitext")).head
-        val precode2 = miner.preprocess(wikiTextExporter.toWikiText(pcm1))
-        val pcm2 = pcmExporter.export(miner.parse(precode2, "From PCM1 Wikitext")).head
+        val pcm2 = pcmExporter.export(
+          miner.parse(
+            miner.preprocess(
+              wikiTextExporter.toWikiText(pcm1)
+            ), "From PCM1 Wikitext")
+        ).head
+
+        var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+        diff.hasDifferences shouldBe false
+      }
+
+      it should "be the same as the one created with it's csv representation" in {
+        val pcm2 = csvLoader.load(csvExporter.export(pcm1))
+        pcm2.setName("From PCM1 Csv")
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
         diff.hasDifferences shouldBe false
