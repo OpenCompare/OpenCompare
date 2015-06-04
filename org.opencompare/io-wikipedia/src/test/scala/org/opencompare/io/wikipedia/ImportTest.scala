@@ -41,7 +41,6 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         pcm2.setName("From CSV")
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-        println(diff.toString)
         diff.hasDifferences shouldBe false
       }
       it should "be the same as the one created with it's wikitext representation" in {
@@ -53,7 +52,6 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         val pcm2 = pcmExporter.export(miner.parse(precode2, "From PCM1 Wikitext")).head
 
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-        println(diff.toString)
         diff.hasDifferences shouldBe false
       }
     }

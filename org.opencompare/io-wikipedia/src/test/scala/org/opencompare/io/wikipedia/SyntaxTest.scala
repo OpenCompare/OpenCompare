@@ -11,59 +11,50 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.concurrent.ExecutionContext
 import scala.io.Source
+import scala.reflect.io.{File, Directory}
 
 class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
-  
+
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
   val miner = new WikipediaPageMiner
   val pcmExporter = new PCMModelExporter
-  val csvExporter = new CSVExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
 
-  val path = "resources/SyntaxTest/"
+  def getResources: List[(java.io.File, java.io.File)] = {
+    val classLoader = getClass().getClassLoader()
+    val path = classLoader.getResource("SyntaxTest/")
+    val file = new java.io.File(path.getPath)
+    val folder = new Directory(file)
+    val paths = folder.files.filter(_.isFile).map(f => f.parent.path + File.separator + f.stripExtension).toList.distinct
+    paths.map(
+      name => (
+        new java.io.File(name + ".csv"),
+        new java.io.File(name + ".wikitext")
+        )
+    )
+  }
+
   val syntaxes = Table(
-    ("Syntax test"),
-    ("boolean"),
-    ("colspan"),
-    ("core_functions"),
-    ("includes"),
-    ("internal_link"),
-    ("rowspan"),
-    ("rowspan_colspan"),
-    ("uri"),
-    ("xml_tag"),
-    ("empty")
+    ("Syntax test csv", "wiki"), getResources: _*
   )
 
-  def loadWiki(title : String) : String = {
-    Source.fromFile(path + title + ".wikitext").mkString
-  }
-  def loadCsv(title : String) : String = {
-    Source.fromFile(path + title + ".csv").mkString
-  }
-
-  forAll (syntaxes) {
-    (filename: String) => {
-      "Wikitext syntax for " + filename should "match this csv representation" in {
-        val wiki = loadWiki(filename)
-        val csv = loadCsv(filename)
-
+  forAll(syntaxes) {
+    (csv: java.io.File, wiki: java.io.File) => {
+      val name = csv.getName.replace(".csv", "")
+      "Wikitext syntax for " + name should "match this csv representation" in {
+        val csvCode = Source.fromFile(csv).mkString
+        val wikiCode = Source.fromFile(wiki).mkString
         val wikiPcm = pcmExporter.export(
           miner.parse(
-            miner.preprocess(wiki), filename + " from wikitext")
+            miner.preprocess(wikiCode), name + " from wikitext")
         ).head
-        val waitingPcm = csvLoader.load(csv)
-        waitingPcm.setName(filename + " from Csv")
-        val diff = wikiPcm.diff(waitingPcm, new SimplePCMElementComparator)
-        println("#### Waiting for : ####")
-        println(csv)
-        println("#### Received : ####")
-        println(csvExporter.export(wikiPcm))
-        println("#### Diff result : ####")
-        println(diff.toString)
+        val csvPcm = csvLoader.load(csvCode)
+        csvPcm.setName(name + " from Csv")
+        val diff = wikiPcm.diff(csvPcm, new SimplePCMElementComparator)
         diff.hasDifferences shouldBe false
       }
     }
   }
 
 }
+
