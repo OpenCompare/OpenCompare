@@ -552,7 +552,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Add a new product and focus on this new
      * @param row
      */
-    $scope.addProduct = function(row) {
+    $scope.addProduct = function() {
         var productData = {};
         productData.name = "";
 
@@ -569,13 +569,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
         console.log("Product added");
         $rootScope.$broadcast('modified');
+        var parameters = $scope.pcmData[$scope.pcmData.length-1];
+        $scope.newCommand('addProduct', parameters);
     };
 
     $scope.removeProduct = function(row) {
         var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
-        console.log("Product removed")
         $rootScope.$broadcast('modified');
+        var parameters = [row.entity.$$hashKey, row.entity];
+        $scope.newCommand('removeProduct', parameters);
     };
 
 
@@ -587,7 +590,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var command = [];
         command.push(type);
         command.push(parameters);
-        $scope.commands.push(command);
+        $scope.commands[$scope.commandsIndex] = command;
         $scope.commandsIndex++;
         $scope.canUndo = true;
     };
@@ -605,6 +608,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             product[parameters[1]] = parameters[2];
                         }
                     });
+                    break;
+                case 'removeProduct':
+                    var parameters = command[1];
+                    $scope.pcmData.push(parameters[1]);
+                    $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+                    break;
+                case 'addProduct':
+                    var parameters = command[1];
+                    $scope.pcmData.forEach(function(product){
+                        if(product.$$hashKey == parameters.$$hashKey) {
+                            $scope.pcmData.splice($scope.pcmData.indexOf(product), 1);
+                        }
+                    });
+                    break;
             }
             if($scope.commandsIndex <= 0){
                 $scope.canUndo = false;
@@ -623,6 +640,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             product[parameters[1]] = parameters[3];
                         }
                     });
+                    break;
+                case 'removeProduct':
+                    var parameters = command[1];
+                    $scope.pcmData.forEach(function(product){
+                        if(product.$$hashKey == parameters.$$hashKey) {
+                            $scope.pcmData.splice($scope.pcmData.indexOf(product), 1);
+                        }
+                    });
+                    break;
+                case 'addProduct':
+                    var parameters = command[1];
+                    $scope.pcmData.push(parameters);
+                    $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+                    break;
             }
             $scope.commandsIndex++;
             $scope.canUndo = true;
