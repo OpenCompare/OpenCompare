@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile ) {
+pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile) {
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -21,6 +21,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     var columnsFilters = [];
     $scope.loading = false;
 
+    //Undo/redo
+    $scope.commands = [];
+    $scope.commandsIndex = 0;
+    $scope.canUndo = false;
+    $scope.canRedo = false;
+
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
@@ -36,7 +42,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.gridOptions.onRegisterApi = function(gridApi){
         //set gridApi on scope
         $scope.gridApi = gridApi;
-        gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, oldValue, newValue){
+        gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
             if(colDef.name != "Product" && oldValue != newValue) {
                 if(!$scope.validateType(rowEntity[colDef.name], columnsType[colDef.name])) {
                     if(!validation[colDef.name]) {
@@ -52,6 +58,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = true;
                 }
                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+                var commandParameters = [rowEntity.$$hashKey, colDef.name, oldValue, newValue];
+                $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
             }
         });
@@ -97,8 +105,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     action: function($event) {
                         $scope.gridOptions.columnDefs.forEach(function(featureData) {
                             if(featureData.name === featureName) {
-                                if(featureData.maxWidth == '15') {
+                                if(featureData.maxWidth == '20') {
                                     featureData.maxWidth = '*';
+                                    featureData.minWidth = '150';
                                     featureData.displayName = featureData.name;
                                     featureData.enableFiltering = true;
                                     featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -107,7 +116,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                                     $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN);
                                 }
                                 else {
-                                    featureData.maxWidth = '15';
+                                    featureData.maxWidth = '20';
+                                    featureData.minWidth = '20';
                                     featureData.displayName = "";
                                     featureData.enableFiltering = false;
                                     featureData.cellClass = function(grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -283,7 +293,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         // Convert PCM model to editor format
         var features = getConcreteFeatures(pcm);
-
         var products = pcm.products.array.map(function(product) {
             var productData = {};
 
@@ -297,6 +306,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         $scope.pcmData = products;
+       // $scope.chronicle = Chronicle.record('pcmData', $scope);
         var productNames = pcm.products.array.map(function (product) {
             return product.name
         });
@@ -315,7 +325,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             width: 30,
             enableColumnMenu: false,
             allowCellFocus: false,
-            enableColumnMoving: false
+            enableColumnMoving: false,
+            EXCESS_ROWS: 10
         });
 
         columnDefs.push({
@@ -348,8 +359,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             });
 
         $scope.gridOptions.columnDefs = columnDefs;
-        $scope.gridApi.grid.gridHeight = $(window).height()/3*2;
-        $scope.gridOptions.enableVerticalScrollbar = 2;
+        if($scope.gridApi) {
+            $scope.gridApi.grid.gridHeight = $(window).height()/3*2;
+        }
     }
 
     function convertGridToPCM(pcmData) {
@@ -571,6 +583,54 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
     };
 
+    $scope.newCommand = function(type, parameters){
+        var command = [];
+        command.push(type);
+        command.push(parameters);
+        $scope.commands.push(command);
+        $scope.commandsIndex++;
+        $scope.canUndo = true;
+    };
+
+    $scope.undo = function() {
+        if($scope.commandsIndex > 0) {
+            $scope.commandsIndex--;
+            $scope.canRedo = true;
+            var command = $scope.commands[$scope.commandsIndex];
+            switch(command[0]) {
+                case 'edit':
+                    var parameters = command[1];
+                    $scope.pcmData.forEach(function(product){
+                        if(product.$$hashKey == parameters[0]) {
+                            product[parameters[1]] = parameters[2];
+                        }
+                    });
+            }
+            if($scope.commandsIndex <= 0){
+                $scope.canUndo = false;
+            }
+        }
+    };
+
+    $scope.redo = function() {
+        if($scope.commandsIndex < $scope.commands.length) {
+            var command = $scope.commands[$scope.commandsIndex];
+            switch(command[0]) {
+                case 'edit':
+                    var parameters = command[1];
+                    $scope.pcmData.forEach(function(product){
+                        if(product.$$hashKey == parameters[0]) {
+                            product[parameters[1]] = parameters[3];
+                        }
+                    });
+            }
+            $scope.commandsIndex++;
+            $scope.canUndo = true;
+            if($scope.commandsIndex >= $scope.commands.length){
+                $scope.canRedo = false;
+            }
+        }
+    };
 
     /**
      * Save PCM on the server
@@ -723,12 +783,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     .directive('embeddedEditor', function() {
         return {
-            templateUrl: 'pcmEditor.html'
+            templateUrl: 'pcm-editor.html'
         };
     })
 
     .directive('openCompareEditor', function() {
         return {
-            templateUrl: '/assets/editor/pcmEditor.html'
+            templateUrl: '/assets/editor/pcm-editor.html'
         };
     });

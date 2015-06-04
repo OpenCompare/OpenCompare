@@ -39,7 +39,6 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     $scope.$on('modified', function(event, args) {
         $scope.saved = false;
     });
-
     $scope.$on('validating', function(event, args) {
         $scope.validating = !$scope.validating;
     });
