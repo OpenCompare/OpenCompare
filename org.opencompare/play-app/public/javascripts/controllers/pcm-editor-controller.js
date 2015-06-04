@@ -644,7 +644,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 case 'removeProduct':
                     var parameters = command[1];
                     $scope.pcmData.forEach(function(product){
-                        if(product.$$hashKey == parameters.$$hashKey) {
+                        if(product.$$hashKey == parameters[0]) {
                             $scope.pcmData.splice($scope.pcmData.indexOf(product), 1);
                         }
                     });
