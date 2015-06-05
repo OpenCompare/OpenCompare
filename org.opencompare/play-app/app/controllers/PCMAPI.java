@@ -1,9 +1,12 @@
 package controllers;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import model.Database;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.io.wikipedia.WikipediaPageMiner;
+import org.opencompare.io.wikipedia.export.WikiTextExporter;
 import org.opencompare.io.wikipedia.pcm.Page;
 import org.opencompare.io.wikipedia.export.PCMModelExporter;
 import org.opencompare.api.java.PCMFactory;
@@ -21,7 +24,9 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +43,7 @@ public class PCMAPI extends Controller {
     private static final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
+    private static final WikiTextExporter wikiExporter = new WikiTextExporter();
 
     private static PCM loadWikitext(String title){
         WikipediaPageMiner miner = new WikipediaPageMiner();
@@ -54,6 +60,11 @@ public class PCMAPI extends Controller {
     }
 
     private static PCM loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+        CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
+        PCM pcm = loader.load(fileContent);
+        return pcm;
+    }
+    private static PCM loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         PCM pcm = loader.load(fileContent);
         return pcm;
@@ -88,17 +99,17 @@ public class PCMAPI extends Controller {
     public static Result convertById(String id, String type) {
         PCM pcm = Database.INSTANCE.get(id).getPcm();
         String data;
-        if (type.equals("json")) {
-            data = jsonExporter.export(pcm);
-        } else if (type.equals("csv")) {
+        if (type.equals("csv")) {
             data = csvExporter.export(pcm);
+        } else if (type.equals("wikitext")) {
+            data = wikiExporter.toWikiText(pcm);
         } else {
-            return badRequest("Type error. Return only 'csv' and 'json' types.");
+            return badRequest("Type error. Return only 'csv' or 'wikitext' types.");
         }
         return ok(data);
     }
 
-    public static Result convertByFile(String type) {
+    public static Result importFromFile(String type) {
         PCM pcm = new PCMImpl(null);
 
         // Getting form values
@@ -116,9 +127,14 @@ public class PCMAPI extends Controller {
 
         } else if (type.equals("csv")) {
             // Options
-            //String fileContent = dynamicForm.field("file").value(); FIXME: DynamicForm does not manage multipart form data
-            Http.MultipartFormData body = request().body().asMultipartFormData();
-            Http.MultipartFormData.FilePart fileContent = body.getFile("file");
+            String fileContent = "";
+            try {
+                Http.MultipartFormData body = request().body().asMultipartFormData();
+                Http.MultipartFormData.FilePart file = body.getFile("file");
+                fileContent = Files.toString(file.getFile(), Charsets.UTF_8);
+            } catch (Exception e) {
+                fileContent = dynamicForm.field("file").value();
+            }
 
             Boolean productAsLines = false;
             if (dynamicForm.get("productAsLines") != null) {
@@ -131,7 +147,7 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             try {
-                pcm = PCMAPI.loadCsv(fileContent.getFile(), separator, quote, productAsLines);
+                pcm = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
             } catch (IOException e) {
                 return internalServerError("This CSV file is not well formatted."); // TODO: manage the different kind of exceptions
             }
@@ -152,4 +168,43 @@ public class PCMAPI extends Controller {
         return ok(views.html.edit.render(null, Json.parse(jsonExporter.export(pcm))));
     }
 
+    public static Result exportToFile(String type) {
+        PCM pcm = new PCMImpl(null);
+        String result = "";
+        // Getting form values
+        DynamicForm dynamicForm = Form.form().bindFromRequest();
+        String title = dynamicForm.get("title");
+        String fileContent = dynamicForm.field("file").value();
+        pcm = jsonLoader.load(fileContent);
+
+        if (type.equals("wikitext")) {
+
+            result = wikiExporter.toWikiText(pcm);
+
+        } else if (type.equals("csv")) {
+
+            Boolean productAsLines = false;
+            if (dynamicForm.get("productAsLines") != null) {
+                productAsLines = true;
+            }
+            char separator = dynamicForm.get("separator").charAt(0);
+            char quote = '"';
+            String delimiter = dynamicForm.get("quote");
+            if (delimiter.length() != 0) {
+                quote = delimiter.charAt(0);
+            }
+            result = csvExporter.export(pcm);
+
+        } else {
+            return internalServerError("File format not found or invalid.");
+        }
+
+        // Normalizing and validating the matrix, just in case
+        pcm.normalize(pcmFactory);
+        //if (!pcm.isValid()) { FIXME: does not work ??
+        //    return internalServerError("This matrix is not valid !");
+        //}
+
+        return found(result);
+    }
 }
