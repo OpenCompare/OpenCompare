@@ -13,7 +13,7 @@ import scala.reflect.io.{File, Directory}
 /**
  * Created by smangin on 01/06/15.
  */
-abstract class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
+abstract class CircularImportExportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   // Inidicates a folder with a list of file to test concordingly to the import/export classes
   val resource : URL
@@ -29,7 +29,8 @@ abstract class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll 
   }
 
   val inputs = Table(
-    ("Import test for " + resource.getPath), getResources: _*
+    ("Import test for " + resource.getPath),
+    getResources: _*
   )
 
   forAll(inputs) {
