@@ -902,19 +902,24 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.export_loading = true;
         $scope.pcm = convertGridToPCM($scope.pcmData)
         $scope.export_content = "";
-        data = {
-            file: serializer.serialize($scope.pcm),
-            title: $scope.pcm.title,
-            productAsLines: true,
-            separator: ',',
-            quote: '"'
-        }
-        $http.post("/api/export/" + args, data)
-            .success(function(data, status, headers, config) {
-                $scope.export_content = data;
-                $scope.export_loading = false;
+        $http.post(
+            "/api/export/" + args,
+            {
+                file: serializer.serialize($scope.pcm),
+                title: $scope.pcm.title,
+                productAsLines: true,
+                separator: ',',
+                quote: '"'
+            }, {
+                responseType: "text/plain",
+                transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
+                    return d;
+                }
+            })
+            .success(function(response, status, headers, config) {
+                $scope.export_content = response;
             }).error(function(data, status, headers, config) {
-                console.log(status)
+                console.log(data)
             });
     });
 })

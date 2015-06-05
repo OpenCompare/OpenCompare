@@ -205,6 +205,6 @@ public class PCMAPI extends Controller {
         //    return internalServerError("This matrix is not valid !");
         //}
 
-        return found(result);
+        return ok(result);
     }
 }
