@@ -50,15 +50,12 @@ public class PCMAPI extends Controller {
         // PCM model export
         List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
 
-        return pcms.get(0);
+        return pcms.get(0); // TODO: manage several matrices case inside the page
     }
 
     private static PCM loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
-        //try {
-            PCM pcm = loader.load(fileContent); // FIXME : Check for index out of bound in wiki Miner, bug #30
-        //} catch (Exception e) {
-        //    return internalServerError("Index out of bound exception : " + e.getLocalizedMessage());
+        PCM pcm = loader.load(fileContent);
         return pcm;
     }
 
@@ -96,7 +93,7 @@ public class PCMAPI extends Controller {
         } else if (type.equals("csv")) {
             data = csvExporter.export(pcm);
         } else {
-            return badRequest("Extension type error. Return only 'csv' and 'json' type !");
+            return badRequest("Type error. Return only 'csv' and 'json' types.");
         }
         return ok(data);
     }
@@ -111,11 +108,15 @@ public class PCMAPI extends Controller {
 
         if (type.equals("wikipedia")) {
 
-            pcm = PCMAPI.loadWikitext(title);
+            try {
+                pcm = PCMAPI.loadWikitext(title);
+            } catch (Exception e) {
+                return internalServerError("This page has not been found or is empty."); // TODO: manage the different kind of exceptions
+            }
 
         } else if (type.equals("csv")) {
             // Options
-            //String fileContent = dynamicForm.field("file").value(); TODO: DynamicForm does not manage multipart form data
+            //String fileContent = dynamicForm.field("file").value(); FIXME: DynamicForm does not manage multipart form data
             Http.MultipartFormData body = request().body().asMultipartFormData();
             Http.MultipartFormData.FilePart fileContent = body.getFile("file");
 
@@ -132,12 +133,12 @@ public class PCMAPI extends Controller {
             try {
                 pcm = PCMAPI.loadCsv(fileContent.getFile(), separator, quote, productAsLines);
             } catch (IOException e) {
-                return internalServerError("Undefined I/O error has occured.");
+                return internalServerError("This CSV file is not well formatted."); // TODO: manage the different kind of exceptions
             }
             pcm.setName(title);
 
         } else {
-            return internalServerError("Type not found or invalid.");
+            return internalServerError("File format not found or invalid.");
         }
 
         // Normalizing and validating the matrix, just in case

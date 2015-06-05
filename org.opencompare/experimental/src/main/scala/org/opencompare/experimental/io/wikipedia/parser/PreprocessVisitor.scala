@@ -1,15 +1,15 @@
-package org.opencompare.io.wikipedia.parser
+package org.opencompare.experimental.io.wikipedia.parser
 
 import java.io.StringReader
 
 import de.fau.cs.osr.ptk.common.AstVisitor
 import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
-import org.sweble.wikitext.parser.nodes._
 import org.xml.sax.InputSource
 
 import scala.xml.Node
 import scala.xml.parsing.NoBindingFactoryAdapter
 import scalaj.http.{Http, HttpOptions}
+import org.sweble.wikitext.parser.nodes._
 
 class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
@@ -260,6 +260,4 @@ class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorN
   override def visit(e: WtXmlAttributeGarbage): Unit = iterate(e)
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
-
-  def visit(e: WtLinkTarget.WtNoLink): Unit = {}
 }
