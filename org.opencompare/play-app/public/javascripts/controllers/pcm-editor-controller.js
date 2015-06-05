@@ -280,7 +280,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         else {
             return false;
         }
-    };
+    }
 
     $scope.validate = function() {
         $scope.validating = !$scope.validating;
@@ -453,7 +453,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     $scope.changeType = function () {
         var featureName = $scope.featureName;
-        columnsType[featureName] = $scope.featureType;
+        var found = false;
+        for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
+            if($scope.gridOptions.columnDefs[i].name == featureName) {
+                var oldType = columnsType[featureName];
+                found = true;
+                $scope.gridOptions.columnDefs.splice(i, 1);
+                var colDef = newColumnDef(featureName, $scope.featureType);
+                $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
+                var parameters = [featureName, oldType, $scope.featureType];
+                $scope.newCommand('changeType', parameters);
+            }
+        }
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
     $scope.checkIfNameExists = function(name) {
@@ -535,11 +547,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name === featureName) {
+                var parameters = [];
+                var values = [];
                 var index2 = 0;
-                $scope.pcmData.forEach(function () {
+                $scope.pcmData.forEach(function (productData) {
+                    var value = [productData.$$hashKey, productData[featureName]];
+                    values.push(value);
                     delete $scope.pcmData[index2][featureData.name];
                     index2++;
                 });
+                parameters.push($scope.gridOptions.columnDefs[index]);
+                parameters.push(values);
+                parameters.push(index);
+                $scope.newCommand('removeFeature', parameters);
                 $scope.gridOptions.columnDefs.splice(index, 1);
             }
             index++;
@@ -577,7 +597,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
         $rootScope.$broadcast('modified');
-        var parameters = [row.entity.$$hashKey, row.entity];
+        var parameters = [row.entity.$$hashKey, row.entity, index];
         $scope.newCommand('removeProduct', parameters);
     };
 
@@ -611,8 +631,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     break;
                 case 'removeProduct':
                     var parameters = command[1];
-                    $scope.pcmData.push(parameters[1]);
-                    $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+                    $scope.pcmData.splice(parameters[2], 0, parameters[1]);
+                    $timeout(function(){ $scope.scrollToFocus(parameters[2], 1); }, 100);// Not working without a timeout
                     break;
                 case 'addProduct':
                     var parameters = command[1];
@@ -621,6 +641,36 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             $scope.pcmData.splice($scope.pcmData.indexOf(product), 1);
                         }
                     });
+                    break;
+                case 'removeFeature':
+                    var parameters = command[1];
+                    var values = parameters[1];
+                    $scope.gridOptions.columnDefs.splice(parameters[2], 0, parameters[0]);
+                    $scope.pcmData.forEach(function(product){
+                        var i = 0;
+                        var found = false;
+                        while(i < values.length && !found) {
+                            if(product.$$hashKey == values[i][0]) {
+                                product[parameters[0].name] = values[i][1];
+                                found = true;
+                            }
+                            i++;
+                        }
+                    });
+                    break;
+                case 'changeType':
+                    var parameters = command[1];
+                    var featureName = parameters[0];
+                    var found = false;
+                    for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
+                        if($scope.gridOptions.columnDefs[i].name == featureName) {
+                            found = true;
+                            $scope.gridOptions.columnDefs.splice(i, 1);
+                            var colDef = newColumnDef(featureName, parameters[1]);
+                            $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
+                        }
+                    }
+                    $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     break;
             }
             if($scope.commandsIndex <= 0){
@@ -653,6 +703,30 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     var parameters = command[1];
                     $scope.pcmData.push(parameters);
                     $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
+                    break;
+                case 'removeFeature':
+                    var parameters = command[1];
+                    var featureName = parameters[0].name;
+                    var index2 = 0;
+                    $scope.pcmData.forEach(function () {
+                        delete $scope.pcmData[index2][featureName];
+                        index2++;
+                    });
+                    $scope.gridOptions.columnDefs.splice(parameters[2], 1);
+                    break;
+                case 'changeType':
+                    var parameters = command[1];
+                    var featureName = parameters[0];
+                    var found = false;
+                    for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
+                        if($scope.gridOptions.columnDefs[i].name == featureName) {
+                            found = true;
+                            $scope.gridOptions.columnDefs.splice(i, 1);
+                            var colDef = newColumnDef(featureName, parameters[2]);
+                            $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
+                        }
+                    }
+                    $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     break;
             }
             $scope.commandsIndex++;
