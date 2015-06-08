@@ -14,11 +14,12 @@ import scala.reflect.io.{File, Directory}
 /**
  * Created by smangin on 01/06/15.
  */
-abstract class CircularImportTest(
+abstract class CircularTest(
   val resource : URL,
   val pcmFactory : PCMFactory,
+  val initLoader : PCMLoader,
   val exporter : PCMExporter,
-  val loader : PCMLoader
+  val importer : PCMLoader
    ) extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   var inputs : TableFor1[File] = _
@@ -36,14 +37,18 @@ abstract class CircularImportTest(
     (file: File) => {
       val name = file.stripExtension
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
-        val pcm1 = loader.load(Source.fromURI(file.toURI).mkString)
+        val pcm1 = initLoader.load(Source.fromURI(file.toURI).mkString)
         pcm1.setName("Original")
         pcm1.normalize(pcmFactory)
-        val pcm2 = loader.load(exporter.export(pcm1))
+        val pcm2 = importer.load(exporter.export(pcm1))
         pcm2.normalize(pcmFactory)
         pcm2.setName("From PCM1")
 
+        val csvExporter = new CSVExporter
+        println(csvExporter.export(pcm1))
+        println(csvExporter.export(pcm2))
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+        println(diff.toString)
         withClue(diff.toString) {
           diff.hasDifferences shouldBe false
         }
