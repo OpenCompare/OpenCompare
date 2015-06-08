@@ -46,22 +46,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-            if(colDef.name != "Product" && oldValue != newValue) {
-                if(!$scope.validateType(rowEntity[colDef.name], columnsType[colDef.name])) {
-                    if(!validation[colDef.name]) {
+            if(oldValue != newValue) {
+                if (colDef.name != "Product") {
+                if (!$scope.validateType(rowEntity[colDef.name], columnsType[colDef.name])) {
+                    if (!validation[colDef.name]) {
                         validation[colDef.name] = [];
                     }
                     validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = false;
                     $rootScope.$broadcast('warning');
                 }
-                else{
-                    if(!validation[colDef.name]) {
+                else {
+                    if (!validation[colDef.name]) {
                         validation[colDef.name] = [];
                     }
                     validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = true;
                 }
                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-                var commandParameters = [rowEntity.$$hashKey, colDef.name, oldValue, newValue];
+                    var commandParameters = [rowEntity.$$hashKey, colDef.name, oldValue, newValue];
+                }
+                else {
+                    var commandParameters = [rowEntity.$$hashKey, 'name', oldValue, newValue];
+                }
+
                 $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
             }
