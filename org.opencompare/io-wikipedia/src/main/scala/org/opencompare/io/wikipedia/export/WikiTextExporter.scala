@@ -1,13 +1,14 @@
 package org.opencompare.io.wikipedia.export
 
 import org.opencompare.api.java.PCM
+import org.opencompare.api.java.io.PCMExporter
 
 import collection.JavaConversions._
 
 /**
  * Created by gbecan on 26/11/14.
  */
-class WikiTextExporter {
+class WikiTextExporter  extends PCMExporter {
 
   def toWikiText(pcm : PCM) : String = {
 
@@ -49,5 +50,7 @@ class WikiTextExporter {
 
     builder.toString()
   }
+
+  override def export(pcm: PCM): String = toWikiText(pcm)
 
 }
