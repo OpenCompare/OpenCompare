@@ -79,7 +79,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         initializeEditor($scope.pcm)
 
     } else {
-        /* Load a PCM from databse */
+        /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
             success(function (data) {
@@ -493,6 +493,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
                 var parameters = [featureName, oldType, $scope.featureType];
                 $scope.newCommand('changeType', parameters);
+                columnsType[featureName] = $scope.featureType;
             }
         }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
@@ -564,7 +565,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 for(var i = 0; i < initValid.length; i++) {
                     var featureName = initValid[i];
                     if(featureName != " ") {
-                        validation[featureName][index] =  $scope.validateType(productData[featureName], getType(featureName));
+                        validation[featureName][index] =  $scope.validateType(productData[featureName], columnsType[featureName]);
                     }
                 }
                 index++;
