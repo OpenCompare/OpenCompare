@@ -44,11 +44,7 @@ abstract class CircularTest(
         pcm2.normalize(pcmFactory)
         pcm2.setName("From PCM1")
 
-        val csvExporter = new CSVExporter
-        println(csvExporter.export(pcm1))
-        println(csvExporter.export(pcm2))
         var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
-        println(diff.toString)
         withClue(diff.toString) {
           diff.hasDifferences shouldBe false
         }
