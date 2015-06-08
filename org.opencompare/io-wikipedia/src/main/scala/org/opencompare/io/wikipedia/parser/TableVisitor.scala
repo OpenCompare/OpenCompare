@@ -144,11 +144,13 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
     if (!ignoredXMLElement) {
       if (cellContent.toString().startsWith("||")) {
         cellContent.delete(0, 2)
-        currentMatrix.setCell(new Cell("", false, row, 1, column, 1), row, column)
+        currentMatrix.setCell(new Cell("", "", false, row, 1, column, 1), row, column)
         column += 1
       }
 
-      val cell = new Cell(trim(cellContent.toString()), isHeader, row, rowspan, column, colspan)
+      val content = trim(cellContent.toString())
+      val rawContent = content // FIXME : get real raw content
+      val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
 
       // Handle rowspan and colspan
       for (rowShift <- 0 until rowspan; colShift <- 0 until colspan) {

@@ -168,10 +168,13 @@ class PCMModelExporter {
 
       // Create cells
       for (c <- nbProductColumns until matrix.getNumberOfColumns())  {
-        val content = matrix.getCell(r, c).get.content
+        val extractedCell = matrix.getCell(r, c).get
+        val content = extractedCell.content
+        val rawContent = extractedCell.rawContent
 
         val cell = factory.createCell()
         cell.setContent(content)
+        cell.setRawContent(rawContent)
         product.addCell(cell)
 
         val feature = features(nbFeatureRows - 1, c)
