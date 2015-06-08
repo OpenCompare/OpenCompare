@@ -6,6 +6,7 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.saved = true;
     $scope.validating = false;
+    $scope.edit = false;
 
     /**
      * Save PCM on the server
@@ -32,8 +33,13 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     /**
      * Validate the type of each columns
      */
-    $scope.validate=function(){
+    $scope.validate= function() {
         $rootScope.$broadcast('validate');
+    };
+
+    $scope.setEdit = function(bool) {
+        $scope.edit = bool;
+        $rootScope.$broadcast('setGridEdit', bool);
     };
 
     $scope.$on('modified', function(event, args) {
@@ -49,6 +55,14 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.$on('saved', function(event, args) {
         $scope.saved = true;
+    });
+
+    $scope.$on('setToolbarEdit', function(event, args) {
+        $scope.edit = args;
+    });
+
+    $scope.$on('setPcmName', function(event, args) {
+        $scope.pcmName = args;
     });
 
 });
