@@ -8,7 +8,7 @@ import collection.JavaConversions._
 /**
  * Created by gbecan on 26/11/14.
  */
-class WikiTextExporter  extends PCMExporter {
+class WikiTextExporter {
 
   def toWikiText(pcm : PCM) : String = {
 
@@ -50,7 +50,5 @@ class WikiTextExporter  extends PCMExporter {
 
     builder.toString()
   }
-
-  override def export(pcm: PCM): String = toWikiText(pcm)
 
 }
