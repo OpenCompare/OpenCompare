@@ -1,0 +1,58 @@
+"Format","Filename
+ extension","Created
+ by","Introduced in","Based on","Integrity check","Recovery record","Encryption supported","Unicode filenames","Modification date resolution"
+"Archiving only","Archiving only","Archiving only","Archiving only","Archiving only","Archiving only","Archiving only","Archiving only","Archiving only","Archiving only"
+"Archive (ar)",".a","CSRG","?","Original","No","No","No","No","1 s"
+"cpio",".cpio","Bell Labs","1983 Unix System V","?","Partial, select formats only","No","No","No","1 s"
+"Shell Archive (shar and makeself)",".shar, .run","?","1994 4.4BSD","Original","Yes, commonly MD5","Partial","Partial","Partial","arbitrary (typically 1 s)"
+"Tape Archive (tar)",".tar","Bell Labs","1975 Version 6 Unix","?","Partial, metadata only. Full integrity providable by filters such as gzip.","No","No","Optional","1 s"
+"Extended TAR format (pax)",".tar","OpenGroup","2001","Sun proposal + TAR","metadata","No","No","Yes","arbitrary (typically 1 ns)"
+"BagIt","-","The Library of Congress","2007","file system","Yes","No","No","Yes","No"
+"Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression","Archiving and Compression"
+"7z",".7z","Igor Pavlov","2000","LZMA","Yes,
+ CRC32","No","Yes,
+ AES-256","Yes","1 ms (maybe better?)"
+"ACE",".ace","Marcel Lemke","?","?","Yes","Yes","Yes, Blowfish","Yes","?"
+"AFA",".afa","Vicente Sánchez-Alarcos","2009","Original","Yes","Yes","Yes, AES and CAST","Yes","?"
+"ARC",".arc","Thom Henderson (SEA)","1985","?","CRC16","No","weak XOR only","No","2s"
+"ARJ",".arj","Robert Jung","1991","AR001 and AR002","Yes","Yes","weak XOR with initial constant","No","?"
+"B1",".b1","Catalina Group Ltd","2011","LZMA","Yes","No","Yes, AES","Yes","?"
+"Cabinet",".cab","Microsoft","1992 Windows 3.1","DEFLATE","Optional PKCS7 Authenticode signature","No","Optional (with SDK)","Yes","2 s"
+"Compact File Set",".cfs","Joe Lowe (Pismo Technic Inc.)","2008","ZIP/LZMA","Yes","?","Yes","Yes","?"
+"Compact Pro",".cpt","Bill Goodman","1990 (as ""Compactor"")","Original","Yes","No","Yes","?","?"
+"Disk Archive (DAR)",".dar","Denis Corbin","2002","Original","Yes","Yes","Yes","Yes","1 s"
+"DGCA",".dgc","Shin-ichi Tsuruta","2001","GCA","Yes","Yes","Yes","Yes","?"
+"FreeArc",".arc","Bulat Ziganshin","2006","LZMA, PPMD, TTA","Yes","Yes","Yes, AES, Blowfish, Twofish and Serpent","Yes","?"
+"LHA (also LZH)",".lzh, .lha","Haruyasu Yoshizaki","1988","Frozen","Only on recent LHA releases","No","No","No","1–2 s"
+"LZX",".lzx","Jonathan Forbes and Tomi Poutanen","1995","LZ77","Only on recent LZX releases","?","?","?","?"
+"Sparc",".arc","David Pilling","1989","?","?","?","?","?","?"
+"WinMount format",".mou","?","2007","?","Yes","Yes","Yes","Yes","?"
+"Macintosh Disk Image",".dmg","Apple Computer","2001 Mac OS X","Original","Yes","?","Yes","?","?"
+"Partition Image (PartImage)","?","François Dupoux and Franck Ladurelle","2000","?","?","?","?","?","?"
+"PAQ (Several formats)","?","Matt Mahoney","20022006","Original","?","?","?","?","?"
+"PEA",".pea","Giorgio Tani","2006","Original, Deflate based compression","Yes Adler32, CRC32, CRC64, MD5, SHA1, RIPEMD-160, SHA256, SHA512, Whirlpool","No","Yes Authenticated Encryption, AES128 and AES256 in EAX mode","Yes system dependent","Yes arbitrary"
+"PIM",".pim","Ilia Muraviev","20042008","Original","Yes","No","No","Yes","No"
+"Quadruple D",".qda","Taku Hayase (aka sandman)","1997","?","?","?","?","?","?"
+"RAR",".rar","Eugene Roshal","1993","Original","Yes,
+ CRC32,
+ BLAKE2","Yes,
+ Reed-Solomon","Yes,
+ AES-256","Yes,
+ UTF-8","2 s, 1 s, 6.5536 ms, 25.6 µs or 100 ns"
+"RK",".rk","M Software, Ltd.","2004","Original","Yes","No","Yes, AES, Square, Twofish","Yes","1 s"
+"StuffIt (also SIT)",".sit","Raymond Lau","1987","?","?","?","Yes","?","?"
+"StuffIt X (also SITx)",".sitx","Aladdin/Allume Systems","2002","?","?","Optional","Yes, RC4,Blowfish,
+AES,DES","Yes","?"
+"UltraCompressor II",".uc .uc0 .uc2
+ .ucn .ur2 .ue2","Nico de Vries","1992–1996","LZ77 and Huffman coding","Yes","Yes","Yes, triple DES","?","?"
+"Windows Image",".wim","Microsoft","?","Original","Optional","?","No","Yes","?"
+"ZIP (also PKZIP)",".zip","Phil Katz","1989","DEFLATE","Yes","No","Yes, AES","Yes","2 s"
+"ZPAQ",".zpaq","Matt Mahoney","2009","PAQ","Yes, SHA-1","No","Yes, AES-256","Yes","?"
+"Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution","Software Packaging and Distribution"
+"Debian package (deb)",".deb","Debian","1994 Debian 0.91","ar, tar, and gzip","Yes","No","No","Yes","1 s"
+"Macintosh Installer",".pkg, .mpkg (metapackage)","NeXT","1989 NeXTSTEP 1.0","pax and gzip","Yes","?","?","Yes","?"
+"RPM Package Manager (RPM)",".rpm","Red Hat","1995 Red Hat Linux 1.0","cpio and gzip","Yes","?","?","?","1 s"
+"Slackware Package",".tgz","Patrick Volkerding","1993 Slackware 1.0","tar and gzip","Yes","No","No","?","?"
+"Windows Installer (also MSI)",".msi","Microsoft","2000 Windows 2000","OLE Structured Storage, Cabinet and SQL","Optional PKCS7 Authenticode Signature","No","No","No","2 s"
+"Java Archive (JAR)",".jar","Sun Microsystems","1997 JDK 1.1","PKZIP","Yes","?","?","Yes","?"
+"Google Chrome extension package",".crx","Google","2009 (Chrome 4.0)","Zip","?","?","Yes","?","?"
