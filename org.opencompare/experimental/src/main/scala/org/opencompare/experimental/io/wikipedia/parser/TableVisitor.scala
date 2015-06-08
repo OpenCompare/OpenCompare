@@ -1,9 +1,12 @@
-package org.opencompare.io.wikipedia.parser
+package org.opencompare.experimental.io.wikipedia.parser
 
 import java.util.regex.Pattern
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text
+import java.util.regex.Pattern
+
 import de.fau.cs.osr.ptk.common.AstVisitor
+import de.fau.cs.osr.ptk.common.ast.AstNode
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
 import org.sweble.wikitext.parser.nodes._
 
@@ -31,6 +34,11 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   private val trimPattern: Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
 
   private val ignoredXMLStack: Stack[Boolean] = new Stack()
+
+  override def iterate(e: WtNode): Unit = {
+    println("TableVisitor: " + e)
+    super.iterate(e)
+  }
 
   private def ignoredXMLElement: Boolean = {
     if (ignoredXMLStack.nonEmpty) {
@@ -89,7 +97,7 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
 
     if (!e.getValue().isEmpty()) {
       val value = e.getValue().get(0) match {
-        case t: WtText => t.toString()
+        case t: Text => t.toString()
         case _ => ""
       }
 
@@ -103,8 +111,12 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   }
 
   def getNumberFromString(s: String): Int = {
-    val numberRegex = "(\\d)+".r
-    (numberRegex findFirstIn s).getOrElse("1").toInt
+    val numberRegex = "(\\d)*".r
+    var num = 0
+    if (s.nonEmpty) {
+      num = (numberRegex findFirstIn s).getOrElse("0").toInt
+    }
+    num
   }
 
   def visit(e: WtTableRow) = {
@@ -401,6 +413,4 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   override def visit(e: WtPreproWikitextPage): Unit = iterate(e)
 
   override def visit(e: WtTemplateArgument): Unit = iterate(e)
-
-  def visit(e: WtLinkTarget.WtNoLink): Unit = {}
 }

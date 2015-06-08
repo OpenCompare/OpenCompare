@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import static scala.collection.JavaConversions.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,11 +21,11 @@ import java.util.List;
 public class WikipediaMinerTest {
 
     @Test
-    public void test() {
+    public void test() throws IOException {
         WikipediaPageMiner miner = new WikipediaPageMiner();
 
         // Parse article from Wikipedia
-        String title = "Comparison_of_Nikon_DSLR_cameras";
+        String title = "Comparison_of_AMD_processors";
         String code = miner.getPageCodeFromWikipedia(title);
         String preprocessedCode = miner.preprocess(code);
         Page page = miner.parse(preprocessedCode, title);
