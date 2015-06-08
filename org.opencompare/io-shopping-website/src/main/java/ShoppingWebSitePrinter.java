@@ -163,7 +163,7 @@ public class ShoppingWebSitePrinter {
                                         Cell c = myFactory.createCell();
                                         c.setContent(values.get(0));
                                         c.setFeature(f);
-                                        pcmProd.addValues(c);
+                                        pcmProd.addCells(c);
 
                                     } else {
 
@@ -177,7 +177,7 @@ public class ShoppingWebSitePrinter {
                                         }
                                         c.setInterpretation(m);
                                         c.setFeature(f);
-                                        pcmProd.addValues(c);
+                                        pcmProd.addCells(c);
                                     }
                                 }
                             }
@@ -235,8 +235,8 @@ public class ShoppingWebSitePrinter {
                                 vMax.setValue(Double.valueOf(product.getMaxPrice().getValue()));
                                 cMax.setInterpretation(vMax);
 
-                                pcmProd.addValues(cMin);
-                                pcmProd.addValues(cMax);
+                                pcmProd.addCells(cMin);
+                                pcmProd.addCells(cMax);
                                 populateSpecProduct(pcmProd, _pcm, product);
 
                                 _pcm.addProducts(pcmProd) ;

@@ -29,7 +29,7 @@ public class  PCMUtils {
                         Cell c = myFactory.createCell();
                         c.setContent("");
                         c.setFeature((Feature)abstractFeature);
-                        product.addValues(c);
+                        product.addCells(c);
                     }
                 }
             }else{
@@ -40,7 +40,7 @@ public class  PCMUtils {
 
     private static boolean hasFeature(Product p, Feature f){
         boolean res = false ;
-        List<Cell> cellList = p.getValues() ;
+        List<Cell> cellList = p.getCells() ;
         for (Cell cell : cellList) {
             if(cell.getFeature().equals(f))
             {

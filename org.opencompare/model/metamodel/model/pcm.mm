@@ -14,7 +14,7 @@ class pcm.AbstractFeature  {
 class pcm.Product  {
     name : String[0,1]
     @contained
-    values : pcm.Cell[0,*]
+    cells : pcm.Cell[0,*]
 }
 
 class pcm.Feature : pcm.AbstractFeature {
@@ -27,6 +27,7 @@ class pcm.FeatureGroup : pcm.AbstractFeature {
 
 class pcm.Cell  {
     content : String[0,1]
+    rawContent : String[0,1]
     feature : pcm.Feature
     @contained
     interpretation : pcm.Value[0,1]

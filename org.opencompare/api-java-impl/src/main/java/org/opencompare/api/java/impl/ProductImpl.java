@@ -36,7 +36,7 @@ public class ProductImpl implements Product {
     @Override
     public List<Cell> getCells() {
         List<Cell> cells = new ArrayList<Cell>();
-        for (pcm.Cell kCell : kProduct.getValues()) {
+        for (pcm.Cell kCell : kProduct.getCells()) {
             cells.add(new CellImpl(kCell));
         }
         return cells;
@@ -44,12 +44,12 @@ public class ProductImpl implements Product {
 
     @Override
     public void addCell(Cell cell) {
-        kProduct.addValues(((CellImpl) cell).getkCell());
+        kProduct.addCells(((CellImpl) cell).getkCell());
     }
 
     @Override
     public void removeCell(Cell cell) {
-        kProduct.removeValues(((CellImpl) cell).getkCell());
+        kProduct.removeCells(((CellImpl) cell).getkCell());
     }
 
     @Override

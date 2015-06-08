@@ -215,7 +215,7 @@ public class ShoppingWebSiteParser {
                                         Cell c = myFactory.createCell();
                                         c.setContent(values.get(0));
                                         c.setFeature(f);
-                                        pcmProd.addValues(c);
+                                        pcmProd.addCells(c);
 
                                     } else {
 
@@ -229,7 +229,7 @@ public class ShoppingWebSiteParser {
                                             m.addSubvalues(sv);
                                         }
                                         c.setInterpretation(m);
-                                        pcmProd.addValues(c);
+                                        pcmProd.addCells(c);
                                     }
                                 }
                             }
@@ -279,8 +279,8 @@ public class ShoppingWebSiteParser {
                                 vMax.setValue(Double.valueOf(product.getMaxPrice().getValue()));
                                 cMax.setInterpretation(vMax);
 
-                                pcmProd.addValues(cMin);
-                                pcmProd.addValues(cMax);
+                                pcmProd.addCells(cMin);
+                                pcmProd.addCells(cMax);
                                 populateSpecProduct(pcmProd, _pcm, product);
 
                                 _pcm.addProducts(pcmProd) ;
