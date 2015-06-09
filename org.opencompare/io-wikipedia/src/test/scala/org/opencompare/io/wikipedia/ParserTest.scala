@@ -24,7 +24,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   override def beforeAll() {
 
-    new File("csv/").mkdirs()
+    new File("input/").mkdirs()
     new File("output/csv/").mkdirs()
     new File("output/html/").mkdirs()
     new File("output/dump/").mkdirs()
@@ -47,7 +47,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
   
   def parseFromOfflineCode(title : String) : Page = {
-    val code = Source.fromFile("csv/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
+    val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
     miner.parse(code, title)
   }
   
