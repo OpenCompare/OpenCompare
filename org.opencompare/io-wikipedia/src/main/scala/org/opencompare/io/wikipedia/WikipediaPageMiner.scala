@@ -1,8 +1,12 @@
 package org.opencompare.io.wikipedia
 
-import java.io.StringReader
+import java.io._
 
 import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
+import org.opencompare.api.java.PCM
+import org.opencompare.api.java.impl.PCMFactoryImpl
+import org.opencompare.api.java.io.{PCMLoader, PCMExporter}
+import org.opencompare.io.wikipedia.export.PCMModelExporter
 import org.opencompare.io.wikipedia.parser.{PageVisitor, PreprocessVisitor}
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
@@ -10,6 +14,7 @@ import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 import org.sweble.wikitext.parser.utils.SimpleParserConfig
 import org.xml.sax.InputSource
 
+import scala.io.Source
 import scala.xml.Node
 import scala.xml.parsing.NoBindingFactoryAdapter
 import scalaj.http.{Http, HttpOptions}
@@ -125,5 +130,4 @@ class WikipediaPageMiner {
       }
     }
   }
-
 }

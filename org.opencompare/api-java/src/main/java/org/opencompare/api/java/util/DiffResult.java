@@ -103,25 +103,13 @@ public class DiffResult {
     }
 
     public String toString() {
-        String result = "PCM(" + this.getPcm1().getName() + ")\n";
-        for (Product product : this.getProductsOnlyInPCM1()) {
-            result += " - " + product + "\n";
-        }
-        for (Feature feature : this.getFeaturesOnlyInPCM1()) {
-            result += " - " + feature + "\n";
-        }
-        result += "PCM(" + this.getPcm2().getName() + ")" + "\n";
-        for (Product product : this.getProductsOnlyInPCM2()) {
-            result += " - " + product + "\n";
-        }
-        for (Feature feature : this.getFeaturesOnlyInPCM2()) {
-            result += " - " + feature + "\n";
-        }
-        result += "Cells differences" + "\n";
-        for (Pair<Cell, Cell> cell : this.getDifferingCells()) {
-            result += " 1 - " + cell._1 + " From " + cell._1.getFeature() + "\n";
-            result += " 2 - " + cell._2 + " From " + cell._2.getFeature() + "\n";
-        }
+        String result = "";
+        result += this.getProductsOnlyInPCM1() + " unique products in PCM(" + this.getPcm1().getName() + ")\n";
+        result += this.getFeaturesOnlyInPCM1() + " unique features in PCM(" + this.getPcm1().getName() + ")\n";
+        result += this.getProductsOnlyInPCM2() + " unique products in PCM(" + this.getPcm2().getName() + ")\n";
+        result += this.getFeaturesOnlyInPCM2() + " unique features in PCM(" + this.getPcm2().getName() + ")\n";
+        result += this.getDifferingCells().size() + " differing cells";
         return result;
     }
+
 }
