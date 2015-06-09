@@ -62,7 +62,7 @@ function getConcreteFeaturesRec(aFeature) {
 }
 
 function findCell(product, feature) {
-    var cells = product.values.array;
+    var cells = product.cells.array;
     for (var i = 0; i < cells.length; i++) {
         var cell = cells[i];
         if (cell.feature.name === feature.name) {

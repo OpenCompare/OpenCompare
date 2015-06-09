@@ -6,10 +6,13 @@ import static org.junit.Assert.assertEquals;
 import org.opencompare.api.java.exception.MergeConflictException;
 import org.opencompare.api.java.util.DiffResult;
 import org.opencompare.api.java.util.PCMElementComparator;
+import org.opencompare.api.java.util.SimplePCMElementComparator;
 import org.opencompare.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Created by gbecan on 09/10/14.
@@ -277,22 +280,7 @@ public abstract class PCMTest {
 
 
         // Diff
-        DiffResult diffResult = pcm1.diff(pcm2, new PCMElementComparator() {
-            @Override
-            public boolean similarFeature(AbstractFeature f1, AbstractFeature f2) {
-                return f1.getName().equals(f2.getName());
-            }
-
-            @Override
-            public boolean similarProduct(Product p1, Product p2) {
-                return p1.getName().equals(p2.getName());
-            }
-
-            @Override
-            public boolean similarCell(Cell c1, Cell c2) {
-                return c1.getContent().equals(c2.getContent());
-            }
-        });
+        DiffResult diffResult = pcm1.diff(pcm2, new SimplePCMElementComparator());
 
 
         assertEquals("common features", 1, diffResult.getCommonFeatures().size());
@@ -335,6 +323,22 @@ public abstract class PCMTest {
                 assertEquals("cell name", "C" + cell.getFeature().getName() + product.getName(), cell.getContent());
             }
         }
+    }
+
+    @Test
+    public void testGetCellsFromFeature() {
+        PCM pcm = factory.createPCM();
+        Feature feature = createFeature(pcm, "feature");
+
+        Product p1 = createProduct(pcm, "p1");
+        Product p2 = createProduct(pcm, "p2");
+
+        createCell(p1, feature, "C1", null);
+        createCell(p2, feature, "C2", null);
+
+        List<Cell> cells = feature.getCells();
+        assertEquals("get cells from feature", 2, cells.size());
+
     }
 
 }

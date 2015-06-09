@@ -5,6 +5,7 @@
 pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.saved = true;
+    $scope.validating = false;
 
     /**
      * Save PCM on the server
@@ -27,7 +28,12 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
         $rootScope.$broadcast('cancel');
     };
 
-
+    /**
+     * Export
+     */
+    $scope.export = function(format) {
+        $rootScope.$broadcast('export', format);
+    };
     /**
      * Validate the type of each columns
      */
@@ -37,6 +43,13 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.$on('modified', function(event, args) {
         $scope.saved = false;
+    });
+    $scope.$on('validating', function(event, args) {
+        $scope.validating = !$scope.validating;
+    });
+
+    $scope.$on('completelyValidated', function(event, args) {
+        $scope.validated = true;
     });
 
     $scope.$on('saved', function(event, args) {

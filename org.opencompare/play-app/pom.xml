@@ -121,6 +121,41 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>1.7.4</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <phase>package</phase><!-- When omitted defaults to 'process-resources' -->
+                        <configuration>
+                            <charset>UTF-8</charset>
+                            <webappSourceDir>${basedir}</webappSourceDir>
+                            <cssSourceDir>public/stylesheets</cssSourceDir>
+                            <cssSourceFiles>
+                                <cssSourceFile>editor.css</cssSourceFile>
+                            </cssSourceFiles>
+                            <cssFinalFile>style.css</cssFinalFile>
+                            <cssTargetDir>WEB-INF/classes/public/editor</cssTargetDir>
+                            <jsSourceDir>public/javascripts/</jsSourceDir>
+                            <jsSourceFiles>
+                                <jsSourceFile>controllers/pcm-editor-controller.js</jsSourceFile>
+                                <jsSourceFile>pcm-api.js</jsSourceFile>
+                                <jsSourceFile>kmf/pcm.min.js</jsSourceFile>
+                            </jsSourceFiles>
+                            <jsFinalFile>script.js</jsFinalFile>
+                            <jsTargetDir>WEB-INF/classes/public/editor</jsTargetDir>
+                            <jsEngine>CLOSURE</jsEngine>
+                        </configuration>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
         <pluginManagement>

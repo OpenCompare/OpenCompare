@@ -39,6 +39,18 @@
                             <persistence>false</persistence>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ModelGen-JS</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <js>true</js>
+                            <ecore>${metamodel.ecore}</ecore>
+                            <events>false</events>
+                            <persistence>false</persistence>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

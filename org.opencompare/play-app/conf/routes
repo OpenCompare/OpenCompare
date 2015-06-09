@@ -3,23 +3,24 @@
 # ~~~~
 
 # Pages
-GET     /                                   controllers.Application.index()
-GET     /list                               controllers.Application.list(limit : Int = 50, page : Int = 1)
-GET     /list/$limit<[0-9]+>/$page<[0-9]+>  controllers.Application.list(limit : Int, page : Int)
-GET     /search                             controllers.Application.search(request : String)
-GET     /view/:id                           controllers.Application.view(id : String)
-GET     /edit/:id                           controllers.Application.edit(id : String)
-GET     /create                             controllers.Application.create()
-GET     /import/:ext                        controllers.Application.importer(ext : String)
+GET         /                                         controllers.Application.index()
+GET         /list                                     controllers.Application.list(limit : Int = 50, page : Int = 1)
+GET         /list/$limit<[0-9]+>/$page<[0-9]+>        controllers.Application.list(limit : Int, page : Int)
+GET         /search                                   controllers.Application.search(request : String)
+GET         /view/:id                                 controllers.Application.view(id : String)
+GET         /edit/:id                                 controllers.Application.edit(id : String)
+GET         /create                                   controllers.Application.create()
+GET         /import/:ext                              controllers.Application.importer(ext : String)
 #POST    /preview                            controllers.Application.preview()
 
 # API
-GET     /api/get/:id                        controllers.PCMAPI.get(id : String)
-POST    /api/save/:id                       controllers.PCMAPI.save(id : String)
-POST    /api/create                         controllers.PCMAPI.create()
-GET     /api/remove/:id                     controllers.PCMAPI.remove(id : String)
-POST    /api/convert/:ext                   controllers.PCMAPI.convertByFile(ext : String)
+GET         /api/get/:id                              controllers.PCMAPI.get(id : String)
+POST        /api/save/:id                             controllers.PCMAPI.save(id : String)
+POST        /api/create                               controllers.PCMAPI.create()
+GET         /api/remove/:id                           controllers.PCMAPI.remove(id : String)
+POST        /api/import/:ext                         controllers.PCMAPI.importFromFile(ext : String)
+POST        /api/export/:ext                          controllers.PCMAPI.exportToFile(ext : String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                       controllers.Assets.at(path="/public", file)
-GET     /webjars/*file                      controllers.WebJarAssets.at(file)
+GET         /assets/*file                             controllers.Assets.at(path="/public", file)
+GET         /webjars/*file                            controllers.WebJarAssets.at(file)

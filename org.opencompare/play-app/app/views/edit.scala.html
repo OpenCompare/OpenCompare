@@ -12,148 +12,43 @@
     }
     @if(data != null) {
         <script>
-            var data ='@{Html(data.toString())}';
+            var data = '@{Html(data.toString().replace("'","\\\'"))}';
         </script>
     }
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-toolbar-controller.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 }
 
 @toolbar = {
-
     <nav class="navbar"  role="navigation" >
         <div class="container-fluid">
 
             <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
 
                 <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> @Messages("edit.button.save")</button>
-                <button role="button" class="btn btn-default" ng-click="validate()"><i class="fa fa-check-circle"></i> @Messages("edit.button.validate")</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> @Messages("edit.button.remove")</button>
-
+                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
+                <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+                <div class="btn-group" ng-class='{open: open}'>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'><i class="fa fa-download"></i> @Messages("navbar.export") <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.csv")</a></li>
+                        <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.wikipedia")</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
-
 }
 
 @main(header, footer, toolbar) {
-
-<div id="editor" ng-controller="PCMEditorController">
-
-    <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                    Removing the comparison matrix is definitive and cannot be undone. Please, confirm.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Remove</button>
-                </div>
-            </div>
-        </div>
-
+<div>
+    <div open-compare-editor ng-controller="PCMEditorController">
     </div>
-
-    <div class="modal fade" id="modalCancel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                    Cancel edition will lose all unsaved changes
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cancel()">Yes</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    <!-- Table editor -->
-    <div class="row">
-        <form class="form-inline">
-            <div class="form-group col-lg-5">
-                    <label for="pcm-name" class="control-label">@Messages("edit.title") </label>
-                    <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='@Messages("edit.title.placeholder")'>
-            </div>
-        </form>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-xs-9">
-            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> @Messages("edit.button.addfeature")</button>
-            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> @Messages("edit.button.addproduct")</button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalNewFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create a new Feature</h4>
-                </div>
-                <div class="modal-body">
-                    <label for="featureName">Feature name: </label>
-                    <input ng-model="featureName" type="text" id="featureName">
-                    <label for="featureType">Feature type: </label>
-                    <select ng-model="featureType">
-                        <option value="" selected="selected">String</option>
-                        <option value="number">Number</option>
-                        <option value="boolean">Boolean</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addFeature()">Create</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="modal fade" id="modalRenameFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create a new Feature</h4>
-                </div>
-                <div class="modal-body">
-                    <label for="featureName">Feature name: </label>
-                    <input ng-model="featureName" type="text" id="featureName" value="{featureName}">
-                    <label for="featureType">Feature type: </label>
-                    <select ng-model="featureType">
-                        <option value="0">Integer</option>
-                        <option value="1" selected="selected">String</option>
-                        <option value="2">Boolean</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">Create</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="matrix" class="row" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-move-columns ui-grid-resize-columns>
-    </div>
-
-    </div>
+</div>
 }
 

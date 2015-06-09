@@ -31,6 +31,16 @@ public class CellImpl extends PCMElementImpl implements Cell {
     }
 
     @Override
+    public String getRawContent() {
+        return kCell.getRawContent();
+    }
+
+    @Override
+    public void setRawContent(String s) {
+        kCell.setRawContent(s);
+    }
+
+    @Override
     public Value getInterpretation() {
         pcm.Value kInterpretation = kCell.getInterpretation();
 
