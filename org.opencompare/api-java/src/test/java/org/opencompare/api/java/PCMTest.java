@@ -11,6 +11,8 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * Created by gbecan on 09/10/14.
  */
@@ -335,6 +337,22 @@ public abstract class PCMTest {
                 assertEquals("cell name", "C" + cell.getFeature().getName() + product.getName(), cell.getContent());
             }
         }
+    }
+
+    @Test
+    public void testGetCellsFromFeature() {
+        PCM pcm = factory.createPCM();
+        Feature feature = createFeature(pcm, "feature");
+
+        Product p1 = createProduct(pcm, "p1");
+        Product p2 = createProduct(pcm, "p2");
+
+        createCell(p1, feature, "C1", null);
+        createCell(p2, feature, "C2", null);
+
+        List<Cell> cells = feature.getCells();
+        assertEquals("get cells from feature", 2, cells.size());
+
     }
 
 }
