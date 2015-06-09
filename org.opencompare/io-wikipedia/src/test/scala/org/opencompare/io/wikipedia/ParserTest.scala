@@ -13,6 +13,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scala.concurrent.ExecutionContext
 import scala.io.Source
 import scala.xml.PrettyPrinter
+
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
@@ -23,7 +24,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   override def beforeAll() {
 
-    new File("CircularTest/").mkdirs()
+    new File("csv/").mkdirs()
     new File("output/csv/").mkdirs()
     new File("output/html/").mkdirs()
     new File("output/dump/").mkdirs()
@@ -46,7 +47,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
   
   def parseFromOfflineCode(title : String) : Page = {
-    val code = Source.fromFile("CircularTest/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
+    val code = Source.fromFile("csv/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
     miner.parse(code, title)
   }
   

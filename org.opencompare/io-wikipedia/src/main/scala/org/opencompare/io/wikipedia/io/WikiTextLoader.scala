@@ -7,19 +7,22 @@ import org.opencompare.api.java.io.PCMLoader
 import org.opencompare.io.wikipedia.WikipediaPageMiner
 import org.opencompare.io.wikipedia.export.PCMModelExporter
 
+import scala.io.Source
+
 /**
- * Created by gbecan on 26/11/14.
+ * Created by  on 26/11/14.
  */
 class WikiTextLoader  extends PCMLoader {
 
   val loader = new WikipediaPageMiner
+  val exporter = new PCMModelExporter
 
   override def load(code: String): PCM = {
-    loader.load(code)
+    exporter.export(loader.parse(loader.preprocess(code), "")).head
   }
 
   override def load(file: File): PCM = {
-    loader.load(file)
+    this.load(Source.fromFile(file).mkString)
   }
 
 }

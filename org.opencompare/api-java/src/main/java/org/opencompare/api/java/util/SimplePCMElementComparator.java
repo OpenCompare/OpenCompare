@@ -4,6 +4,8 @@ import org.opencompare.api.java.AbstractFeature;
 import org.opencompare.api.java.Cell;
 import org.opencompare.api.java.Product;
 
+import java.util.List;
+
 /**
  * Created by smangin on 6/1/15.
  */
@@ -39,5 +41,15 @@ public class SimplePCMElementComparator implements PCMElementComparator {
             return false;
         }
         return c1.getContent().equalsIgnoreCase(c2.getContent());
+    }
+
+    @Override
+    public Product disambiguateProduct(Product product, List<Product> products) {
+        return products.get(0);
+    }
+
+    @Override
+    public AbstractFeature disambiguateFeature(AbstractFeature feature, List<AbstractFeature> features) {
+        return features.get(0);
     }
 }
