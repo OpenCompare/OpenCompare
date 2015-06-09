@@ -223,7 +223,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         };
         switch(featureType) {
             case "string":
-                columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)'><i class='fa fa-search'></i></button><button class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
+                columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)'><i class='fa fa-search'></i></button><button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm, cellValue) {
                     if(columnsFilters[featureName]) {
@@ -400,7 +400,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         $scope.pcmDataRaw = productsRaw;
         $scope.pcmData = products;
-
         /* Define columns */
         var columnDefs = [];
             /* First column is for the remove button */
@@ -1085,6 +1084,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         columnsFilters[col.name] = value;
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    };
+
+    $scope.isFilterOn = function(col) {
+
+        return columnsFilters[col.name];
     };
 
     // Bind events from toolbar to functions of the editor
