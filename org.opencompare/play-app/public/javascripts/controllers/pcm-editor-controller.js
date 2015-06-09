@@ -2,7 +2,6 @@
  * Created by gbecan on 17/12/14.
  */
 
-
 pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile) {
 
     // Load PCM
@@ -30,6 +29,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     //Edit mode
     $scope.edit = false;
+    var pcmRaw = [];
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -43,33 +43,44 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.gridOptions.onRegisterApi = function(gridApi){
+        var contentValue;
+        var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
-        gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-            if(oldValue != newValue) {
-                if (colDef.name != "Product") {
-                if (!$scope.validateType(rowEntity[colDef.name], columnsType[colDef.name])) {
-                    if (!validation[colDef.name]) {
-                        validation[colDef.name] = [];
-                    }
-                    validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = false;
-                    $rootScope.$broadcast('warning');
+        gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
+            if(pcmRaw[rowEntity.$$hashKey]) {
+                rawValue = pcmRaw[rowEntity.$$hashKey][colDef.name];
+                contentValue = rowEntity[colDef.name];
+                rowEntity[colDef.name] = rawValue;
+            }
+            else {
+                pcmRaw = [];
+                for(var i = 0; i < $scope.pcmData.length; i++) {
+                    pcmRaw[$scope.pcmData[i].$$hashKey] = $scope.pcmDataRaw[i];
                 }
-                else {
-                    if (!validation[colDef.name]) {
-                        validation[colDef.name] = [];
-                    }
-                    validation[colDef.name][$scope.pcmData.indexOf(rowEntity)] = true;
-                }
-                $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
-                    var commandParameters = [rowEntity.$$hashKey, colDef.name, oldValue, newValue];
-                }
-                else {
-                    var commandParameters = [rowEntity.$$hashKey, 'name', oldValue, newValue];
+                if(pcmRaw[rowEntity.$$hashKey]) {
+                    rawValue = pcmRaw[rowEntity.$$hashKey][colDef.name];
+                    contentValue = rowEntity[colDef.name];
+                    rowEntity[colDef.name] = rawValue;
                 }
 
+            }
+        });
+        gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+            if(oldValue != newValue) {
+                var commandParameters = [];
+                if (colDef.name != "Product") {
+                    commandParameters = [rowEntity.$$hashKey, colDef.name, oldValue, getVisualRepresentation(newValue)];
+                }
+                else {
+                    var commandParameters = [rowEntity.$$hashKey, 'name', oldValue,  getVisualRepresentation(newValue)];
+                }
                 $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
+                /* Update value based on visual representation and raw */
+                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue);
+                $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
+                pcmRaw = [];
             }
         });
     };
@@ -97,7 +108,25 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             })
     }
 
-    /* Create a new ColumnDef for the ui-grid */
+    /**
+     * Get the visual representation of a raw data
+     * @param cellValue
+     * @returns {Array.<T>|string|Blob|ArrayBuffer|*}
+     */
+    function getVisualRepresentation(cellValue) {
+        /*$http.get("/api/visualRepresentation/" + cellValue).success(function(data) {
+            window.location.href = "/";
+        });*/
+        var newValue = cellValue.slice(2, -2);
+        return newValue;
+    }
+
+    /**
+     *  Create a new ColumnDef for the ui-grid
+     * @param featureName
+     * @param featureType
+     * @returns colDef
+     */
     function newColumnDef(featureName, featureType) {
         if(!featureType) {
             featureType = "string";
@@ -244,7 +273,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         return columnDef;
     }
 
-    /* Return the type of a column */
+    /**
+     * Return the type of a column
+     * @param featureName
+     * @returns {string}
+     */
     function getType (featureName) {
         var rowIndex = 0;
         var isInt = 0;
@@ -304,13 +337,43 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
     }
 
+    /**
+     * Validate data based of type columns
+     */
     $scope.validate = function() {
+        /* change validation mode */
         $scope.validating = !$scope.validating;
-        $scope.validateEverything();
+        /* Init validation array */
+        if($scope.pcmData.length > 0){
+            var initValid = [];
+            var index = 0;
+            $scope.gridOptions.columnDefs.forEach(function (featureData){
+                if(featureData.name != " " && featureData.name != "Product"){
+                    validation[featureData.name] = [];
+                    initValid[index] = featureData.name;
+                    index++;
+                }
+            });
+            /* Fill in validation array */
+            index = 0;
+            $scope.pcmData.forEach(function (productData){
+                for(var i = 0; i < initValid.length; i++) {
+                    var featureName = initValid[i];
+                    if(featureName != " ") {
+                        validation[featureName][index] =  $scope.validateType(productData[featureName], columnsType[featureName]);
+                    }
+                }
+                index++;
+            });
+        }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         $rootScope.$broadcast("validating");
     };
 
+    /**
+     * Initialize the editor
+     * @param pcm
+     */
     function initializeEditor(pcm) {
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
         /* Convert PCM model to editor format */
@@ -324,11 +387,19 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             });
             return productData;
         });
-
-        $scope.pcmData = products;
-        var productNames = pcm.products.array.map(function (product) {
-            return product.name
+        // Return data rawcontent
+        var productsRaw = pcm.products.array.map(function(product) {
+            var productDataRaw = {};
+            features.map(function(feature) {
+                var cell = findCell(product, feature);
+                productDataRaw.name = product.name; // FIXME : may conflict with feature name
+                productDataRaw[feature.name] = '{{'+cell.content+'}}';// TODO: replace content with rawcontent when implemented
+            });
+            return productDataRaw;
         });
+        $scope.pcmDataRaw = productsRaw;
+        $scope.pcmData = products;
+
         /* Define columns */
         var columnDefs = [];
             /* First column is for the remove button */
@@ -367,12 +438,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Specific filter for products */
         columnDefs[1].filter = [];
         columnDefs[1].filter.condition = function(searchTerm, cellValue) {
-            if(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            return(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1)
         };
         columnDefs[1].filter.placeholder = 'Find';
 
@@ -430,13 +496,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     $scope.addFeature = function() {
+
         if(!$scope.featureType) {
             $scope.featureType = "string";
         }
+
+        /* Initialize data */
         var featureName = $scope.checkIfNameExists($scope.featureName);
         $scope.pcmData.forEach(function (productData) {
             productData[featureName] = "";
         });
+
+        /* Define the new column*/
         var columnDef = newColumnDef(featureName, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         columnsType[featureName] = $scope.featureType;
@@ -451,6 +522,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.renameFeature = function() {
+
         var featureName = $scope.checkIfNameExists($scope.featureName);
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
@@ -488,6 +560,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.changeType = function () {
+
         var featureName = $scope.featureName;
         var found = false;
         for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
@@ -506,6 +579,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.checkIfNameExists = function(name) {
+
         var newName = "";
         if(!name) {
             newName = "New Feature";
@@ -527,6 +601,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.validateType = function (productName, featureType) {
+
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
             type = "number";
@@ -552,34 +627,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     function isBooleanValue(productName) {
+
         return((productName.toLowerCase() === "yes") ||  (productName.toLowerCase() === "true") ||  (productName.toLowerCase() === "no") ||  (productName.toLowerCase() === "false"));
     }
 
-    $scope.validateEverything = function () {
-        if($scope.pcmData.length > 0){
-            var initValid = [];
-            var index = 0;
-            $scope.gridOptions.columnDefs.forEach(function (featureData){
-                if(featureData.name != " " && featureData.name != "Product"){
-                    validation[featureData.name] = [];
-                    initValid[index] = featureData.name;
-                    index++;
-                }
-            });
-            index = 0;
-            $scope.pcmData.forEach(function (productData){
-                for(var i = 0; i < initValid.length; i++) {
-                    var featureName = initValid[i];
-                    if(featureName != " ") {
-                        validation[featureName][index] =  $scope.validateType(productData[featureName], columnsType[featureName]);
-                    }
-                }
-                index++;
-            });
-        }
-    };
-
     $scope.deleteFeature = function(featureName) {
+
         delete validation[featureName];
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
@@ -610,6 +663,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * @param row
      */
     $scope.addProduct = function() {
+
         var productData = {};
         productData.name = "";
 
@@ -631,6 +685,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.removeProduct = function(row) {
+
         var index = $scope.pcmData.indexOf(row.entity);
         $scope.pcmData.splice(index, 1);
         $rootScope.$broadcast('modified');
@@ -640,10 +695,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
 
     $scope.scrollToFocus = function( rowIndex, colIndex ) {
+
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
     };
 
     $scope.newCommand = function(type, parameters){
+
         var command = [];
         command.push(type);
         command.push(parameters);
@@ -653,6 +710,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.undo = function() {
+
         if($scope.commandsIndex > 0) {
             $scope.commandsIndex--;
             $scope.canRedo = true;
@@ -739,6 +797,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.redo = function() {
+
         if($scope.commandsIndex < $scope.commands.length) {
             var command = $scope.commands[$scope.commandsIndex];
             var parameters = command[1];
@@ -825,6 +884,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Save PCM on the server
      */
     $scope.save = function() {
+
         $scope.pcm = convertGridToPCM($scope.pcmData)
         var jsonModel = serializer.serialize($scope.pcm);
 
@@ -846,6 +906,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Remove PCM from server
      */
     $scope.remove = function() {
+
         if (typeof id !== 'undefined') {
             $http.get("/api/remove/" + id).success(function(data) {
                 window.location.href = "/";
@@ -855,6 +916,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.setEdit = function(bool) {
+
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
         $timeout(function(){ initializeEditor($scope.pcm)}, 100);
@@ -865,14 +927,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Cancel edition
      */
     $scope.cancel = function() {
+
         window.location = "/view/" + id;
     };
 
-    $scope.isFiltered = (function (featureName) {
+    $scope.isFiltered = (function () {
+
         return $scope.ListToFilter.indexOf(productData[feature.name]) != -1;
     });
 
     $scope.showFilter = function(feature) {
+
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
         $scope.pcmData.forEach( function ( productData ) {
@@ -929,6 +994,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.closeFilter = function() {
+
         var featureName = $scope.featureToFilter;
         var selec = $scope.gridApi2.selection.getSelectedRows();
         if(selec.length == 0) {
@@ -951,12 +1017,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
 
     $scope.removeFilter = function(col) {
+
         var featureName = col.name;
         delete columnsFilters[featureName];
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
     $scope.applyBooleanFilter = function(col, value){
+
         columnsFilters[col.name] = value;
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
