@@ -2,6 +2,7 @@ package org.opencompare.dataset.bestbuy
 
 import java.io.{File, FileWriter, FilenameFilter}
 import java.nio.file.Files
+import java.util
 
 import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
@@ -54,6 +55,10 @@ class PCMBotTest extends FlatSpec with Matchers {
     // c1 substring c2 || c2 substring c1
 
     override def similarProduct(p1: Product, p2: Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+
+    override def disambiguateProduct(product: Product, products: util.List[Product]): Product = products.head
+
+    override def disambiguateFeature(feature: AbstractFeature, features: util.List[AbstractFeature]): AbstractFeature = features.head
   }
 
 
