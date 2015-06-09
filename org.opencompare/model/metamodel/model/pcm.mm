@@ -18,6 +18,7 @@ class pcm.Product  {
 }
 
 class pcm.Feature : pcm.AbstractFeature {
+    cells : pcm.Cell[0,*] oppositeOf feature
 }
 
 class pcm.FeatureGroup : pcm.AbstractFeature {
@@ -28,7 +29,7 @@ class pcm.FeatureGroup : pcm.AbstractFeature {
 class pcm.Cell  {
     content : String[0,1]
     rawContent : String[0,1]
-    feature : pcm.Feature
+    feature : pcm.Feature oppositeOf cells
     @contained
     interpretation : pcm.Value[0,1]
 }

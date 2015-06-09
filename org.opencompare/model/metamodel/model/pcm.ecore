@@ -16,14 +16,17 @@
         eType="#//Cell" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//Cell" eOpposite="#//Cell/feature"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureGroup" eSuperTypes="#//AbstractFeature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subFeatures" upperBound="-1"
         eType="#//AbstractFeature" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell">
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
-        eType="#//Feature"/>
+        eType="#//Feature" eOpposite="#//Feature/cells"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interpretation" eType="#//Value"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
