@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.opencompare.api.java.exception.MergeConflictException;
 import org.opencompare.api.java.util.DiffResult;
 import org.opencompare.api.java.util.PCMElementComparator;
+import org.opencompare.api.java.util.SimplePCMElementComparator;
 import org.opencompare.api.java.value.BooleanValue;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
@@ -277,22 +278,7 @@ public abstract class PCMTest {
 
 
         // Diff
-        DiffResult diffResult = pcm1.diff(pcm2, new PCMElementComparator() {
-            @Override
-            public boolean similarFeature(AbstractFeature f1, AbstractFeature f2) {
-                return f1.getName().equals(f2.getName());
-            }
-
-            @Override
-            public boolean similarProduct(Product p1, Product p2) {
-                return p1.getName().equals(p2.getName());
-            }
-
-            @Override
-            public boolean similarCell(Cell c1, Cell c2) {
-                return c1.getContent().equals(c2.getContent());
-            }
-        });
+        DiffResult diffResult = pcm1.diff(pcm2, new SimplePCMElementComparator());
 
 
         assertEquals("common features", 1, diffResult.getCommonFeatures().size());
