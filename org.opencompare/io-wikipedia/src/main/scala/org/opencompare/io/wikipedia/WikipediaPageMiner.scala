@@ -22,7 +22,7 @@ import scalaj.http.{Http, HttpOptions}
 /**
  * Created by gbecan on 13/10/14.
  */
-class WikipediaPageMiner extends PCMLoader {
+class WikipediaPageMiner {
 
 
   private val parserConfig = new SimpleParserConfig()
@@ -130,11 +130,4 @@ class WikipediaPageMiner extends PCMLoader {
       }
     }
   }
-
-  override def load(code: String): PCM = {
-    var page = parse(code, "")
-    page.toPCM()
-  }
-
-  override def load(file: File): PCM = load(Source.fromFile(file).mkString)
 }
