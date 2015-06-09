@@ -14,6 +14,7 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
   var page = new Page
 
   private val nodeToText = new NodeToTextVisitor
+  private val tableVisitor = new TableVisitor
 
   private var sectionStack : mutable.Stack[String] = _
 
@@ -38,7 +39,9 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
 
   override def visit(wtTemplateArguments: WtTemplateArguments): Unit = {println("not implemented yet")}
 
-  override def visit(wtUnorderedList: WtUnorderedList): Unit = {println("not implemented yet")}
+  override def visit(wtUnorderedList: WtUnorderedList): Unit = {
+//    println("not implemented yet")
+  }
 
   override def visit(wtValue: WtValue): Unit = {println("not implemented yet")}
 
@@ -122,12 +125,15 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
 
   override def visit(wtTable: WtTable): Unit = {
     println("table")
+    val name = sectionStack.top
+    val matrices = tableVisitor.extract(wtTable, name)
+    matrices.foreach(matrix => page.addMatrix(matrix))
   }
 
   override def visit(wtSection: WtSection): Unit = {
     println("section")
     val heading = nodeToText.extractString(wtSection.getHeading)
-    println("heading : " + heading)
+    println("\theading : " + heading)
     sectionStack.push(heading)
 
     dispatch(wtSection.getBody)
@@ -152,7 +158,7 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
   }
 
   override def visit(wtBody: WtBody): Unit = {
-    println("body")
+    iterate(wtBody)
   }
 
   override def visit(wtBold: WtBold): Unit = {println("not implemented yet")}
@@ -162,7 +168,9 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
     iterate(wtParsedWikitextPage)
   }
 
-  override def visit(wtOrderedList: WtOrderedList): Unit = {println("not implemented yet")}
+  override def visit(wtOrderedList: WtOrderedList): Unit = {
+//    println("not implemented yet")
+  }
 
   override def visit(wtOnlyInclude: WtOnlyInclude): Unit = {println("not implemented yet")}
 
@@ -196,7 +204,9 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
 
   override def visit(wtSemiPreLine: WtSemiPreLine): Unit = {println("not implemented yet")}
 
-  override def visit(wtXmlComment: WtXmlComment): Unit = {println("not implemented yet")}
+  override def visit(wtXmlComment: WtXmlComment): Unit = {
+//    println("not implemented yet")
+  }
 
   override def visit(wtXmlAttributeGarbage: WtXmlAttributeGarbage): Unit = {println("not implemented yet")}
 
