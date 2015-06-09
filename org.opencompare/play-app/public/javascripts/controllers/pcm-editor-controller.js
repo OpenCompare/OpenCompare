@@ -488,7 +488,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     var cell = factory.createCell();
                     cell.feature = feature;
                     cell.content = productData[featureData];
-                    product.addValues(cell);
+                    product.addCells(cell);
                 }
             }
         });

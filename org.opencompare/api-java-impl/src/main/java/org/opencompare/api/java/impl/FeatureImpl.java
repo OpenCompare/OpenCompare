@@ -1,8 +1,12 @@
 package org.opencompare.api.java.impl;
 
+import org.opencompare.api.java.Cell;
 import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.util.PCMVisitor;
 import pcm.AbstractFeature;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -28,6 +32,15 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
     @Override
     public void setName(String s) {
         kFeature.setName(s);
+    }
+
+    @Override
+    public List<Cell> getCells() {
+        List<Cell> cells = new ArrayList<Cell>();
+        for (pcm.Cell kCell : kFeature.getCells()) {
+            cells.add(new CellImpl(kCell));
+        }
+        return cells;
     }
 
     @Override
