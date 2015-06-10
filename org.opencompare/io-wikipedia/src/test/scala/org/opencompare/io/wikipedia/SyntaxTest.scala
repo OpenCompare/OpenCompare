@@ -3,6 +3,7 @@ package org.opencompare.io.wikipedia
 import java.util.concurrent.Executors
 
 import org.opencompare.api.java.impl.PCMFactoryImpl
+import org.opencompare.api.java.impl.io.KMFJSONExporter
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.SimplePCMElementComparator
 import org.opencompare.io.wikipedia.export.PCMModelExporter
@@ -19,6 +20,7 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val miner = new WikipediaPageMiner
   val pcmExporter = new PCMModelExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
+  val kmfJSONExporter = new KMFJSONExporter
 
   def getResources: List[(java.io.File, java.io.File)] = {
     val classLoader = getClass().getClassLoader()
@@ -51,7 +53,11 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         val csvPcm = csvLoader.load(csvCode)
         csvPcm.setName(name + " from Csv")
         val diff = wikiPcm.diff(csvPcm, new SimplePCMElementComparator)
-        diff.hasDifferences shouldBe false
+
+        withClue(kmfJSONExporter.export(wikiPcm)) {
+          diff.hasDifferences shouldBe false
+        }
+
       }
     }
   }
