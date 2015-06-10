@@ -29,7 +29,12 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
         $rootScope.$broadcast('cancel');
     };
 
-
+    /**
+     * Export
+     */
+    $scope.export = function(format) {
+        $rootScope.$broadcast('export', format);
+    };
     /**
      * Validate the type of each columns
      */

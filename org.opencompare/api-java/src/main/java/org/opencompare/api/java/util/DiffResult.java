@@ -93,4 +93,23 @@ public class DiffResult {
     public void setDifferingCells(List<Pair<Cell, Cell>> differingCells) {
         this.differingCells = differingCells;
     }
+
+    public Boolean hasDifferences() {
+        return !this.differingCells.isEmpty()
+            || !this.featuresOnlyInPCM1.isEmpty()
+            || !this.featuresOnlyInPCM2.isEmpty()
+            || !this.productsOnlyInPCM1.isEmpty()
+            || !this.productsOnlyInPCM2.isEmpty();
+    }
+
+    public String toString() {
+        String result = "";
+        result += this.getProductsOnlyInPCM1() + " unique products in PCM(" + this.getPcm1().getName() + ")\n";
+        result += this.getFeaturesOnlyInPCM1() + " unique features in PCM(" + this.getPcm1().getName() + ")\n";
+        result += this.getProductsOnlyInPCM2() + " unique products in PCM(" + this.getPcm2().getName() + ")\n";
+        result += this.getFeaturesOnlyInPCM2() + " unique features in PCM(" + this.getPcm2().getName() + ")\n";
+        result += this.getDifferingCells().size() + " differing cells";
+        return result;
+    }
+
 }

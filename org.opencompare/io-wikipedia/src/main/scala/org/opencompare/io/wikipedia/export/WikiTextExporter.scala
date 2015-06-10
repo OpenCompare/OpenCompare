@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.export
 
 import org.opencompare.api.java.PCM
+import org.opencompare.api.java.io.PCMExporter
 
 import collection.JavaConversions._
 
