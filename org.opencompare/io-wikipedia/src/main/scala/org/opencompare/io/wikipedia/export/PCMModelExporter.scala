@@ -25,22 +25,24 @@ class PCMModelExporter {
 
       pcm.setName(matrix.name)
 
-      // Get number of rows (resp. columns) for features (resp. products)
-      val nbFeatureRows = nFirstLine(matrix, 1).map(_.rowspan).max
-      val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max
+      if (!nFirstLine(matrix, 1).isEmpty) {
+        // Get number of rows (resp. columns) for features (resp. products)
+        val nbFeatureRows = nFirstLine(matrix, 1).map(_.rowspan).max
+        val nbProductColumns = nFirstColumns(matrix, 1).map(_.colspan).max
 
 
-      // Detect holes in the matrix and add a cell if necessary
-      miner.fillMissingCells(matrix)
+        // Detect holes in the matrix and add a cell if necessary
+        miner.fillMissingCells(matrix)
 
-      // Extract features
-      val features = extractFeatures(matrix, pcm, nbFeatureRows)
+        // Extract features
+        val features = extractFeatures(matrix, pcm, nbFeatureRows)
 
-      // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
-      val normalizedMatrix = miner.normalize(matrix)
+        // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
+        val normalizedMatrix = miner.normalize(matrix)
 
-      // Extract products and cells
-      extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
+        // Extract products and cells
+        extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
+      }
 
       pcm
     }
