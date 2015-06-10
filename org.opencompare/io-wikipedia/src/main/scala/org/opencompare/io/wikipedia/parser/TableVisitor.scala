@@ -203,6 +203,8 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
     }
 
     if (!emptyElement) {
+      println(e.getName)
+
       val ignored = e.getName() match {
         case "small" if isSignificantXMLElement(e) => false
         case "big" => false
@@ -210,6 +212,9 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
         case "center" => false
         case "span" if isSignificantXMLElement(e) => false
         case "div" => false
+        case "noinclude" => false
+        case "onlyinclude" => false
+        case "includeonly" => true
         case _ => true
       }
 
