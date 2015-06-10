@@ -50,6 +50,9 @@ class TableVisitor(
   }
 
   override def visit(wtTableRow: WtTableRow): Unit = {
+    // TODO
+    // TODO : wtTableRow.getXmlAttributes
+
     if (row == 0 && matrix.cells.nonEmpty) {
       row += 1
       column = 0
@@ -66,16 +69,16 @@ class TableVisitor(
   override def visit(wtTableHeader: WtTableHeader): Unit = {
     dispatch(wtTableHeader.getXmlAttributes)
 
-    processCell(wtTableHeader.getBody, true)
+    processCell(wtTableHeader, true)
   }
 
   override def visit(wtTableCell: WtTableCell): Unit = {
     dispatch(wtTableCell.getXmlAttributes)
 
-    processCell(wtTableCell.getBody, false)
+    processCell(wtTableCell, false)
   }
 
-  private def processCell(cellBody : WtNode, isHeader : Boolean) {
+  private def processCell(cellNode : WtNode, isHeader : Boolean) {
 
     // Skip cells defined by rowspan
     while (matrix.getCell(row, column).isDefined) {
@@ -84,15 +87,15 @@ class TableVisitor(
 
     // Extract raw cell content
     val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
-    val rawContent = rawContentExtractor.extract(cellBody)
+    val rawContent = rawContentExtractor.extract(cellNode)
 
     // Extract cell content
     val contentExtractor = new CellContentExtractor(preprocessor, parser)
-    val content = contentExtractor.extractCellContent(rawContent)
-
-//    println("body= " + cellBody)
-//    println("raw content= " + rawContent)
-//    println("content= " + content)
+    val cellCode = "{|\n" +
+      "|-\n" +
+      "| " + rawContent + "\n" +
+      "|}"
+    val content = contentExtractor.extractCellContent(cellCode)
 
     // Create cell
     val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
@@ -200,7 +203,7 @@ class TableVisitor(
   override def visit(wtPageSwitch: WtPageSwitch): Unit = {}
 
   override def visit(wtTableCaption: WtTableCaption): Unit = {
-
+    // TODO
   }
 
 

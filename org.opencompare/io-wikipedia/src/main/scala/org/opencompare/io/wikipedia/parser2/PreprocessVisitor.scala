@@ -11,7 +11,7 @@ import scala.xml.Node
 import scala.xml.parsing.NoBindingFactoryAdapter
 import scalaj.http.{Http, HttpOptions}
 
-class TemplatePreprocessor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
   val code = new StringBuilder
 

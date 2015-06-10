@@ -25,25 +25,31 @@ class CellContentExtractor(
 
     // Expand template with preprocessor
     val preprocessorAST = preprocessor.parseArticle(code, title)
-    val templatePreprocessor = new TemplatePreprocessor
+    val templatePreprocessor = new PreprocessVisitor
     templatePreprocessor.go(preprocessorAST)
     val preprocessedCode = templatePreprocessor.getPreprocessedCode()
 
     // Parse content of cell
     val ast = parser.parseArticle(preprocessedCode, title)
-    cellContent = new StringBuilder()
+
     ignoredXMLStack = new Stack()
+    cellContent = new StringBuilder()
 
     go(ast)
 
+    // Treat special cases for cell content
     content = if (!ignoredXMLElement) {
       if (cellContent.toString().startsWith("||")) {
         cellContent.delete(0, 2)
       }
+
       trim(cellContent.toString())
     } else {
       ""
     }
+
+//    println(ast)
+//    println("content= " +  content)
 
     content
   }
@@ -70,7 +76,7 @@ class CellContentExtractor(
   }
 
   def visit(e: WtTable) = {
-
+    iterate(e)
   }
 
   def visit(e: WtNodeList) = {
@@ -87,7 +93,7 @@ class CellContentExtractor(
   }
 
   def visit(e: WtTableRow) = {
-
+    iterate(e)
   }
 
   def visit(e: WtTableHeader) = {
@@ -95,7 +101,7 @@ class CellContentExtractor(
   }
 
   def visit(e: WtTableCell) = {
-
+    iterate(e)
   }
 
 
@@ -284,7 +290,9 @@ class CellContentExtractor(
 
   override def visit(e: WtLinkOptionResize): Unit = iterate(e)
 
-  override def visit(e: WtImStartTag): Unit = iterate(e)
+  override def visit(e: WtImStartTag): Unit = {
+    iterate(e)
+  }
 
   override def visit(e: WtImEndTag): Unit = iterate(e)
 

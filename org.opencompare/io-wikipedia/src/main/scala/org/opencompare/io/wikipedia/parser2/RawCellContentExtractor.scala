@@ -1,5 +1,7 @@
 package org.opencompare.io.wikipedia.parser2
 
+import java.util.regex.Pattern
+
 import org.joda.time.DateTime
 import org.sweble.wikitext.engine.PageTitle
 import org.sweble.wikitext.engine.config.WikiConfig
@@ -12,10 +14,23 @@ import org.sweble.wom3.util.Wom3Toolbox
  */
 class RawCellContentExtractor(val wikiConfig : WikiConfig) {
 
+  private val trimPattern : Pattern = Pattern.compile("[\\s|!]*([\\s\\S]*?)\\s*")
+
   def extract(cell : WtNode) : String = {
     val pageTitle = PageTitle.make(wikiConfig, "title")
     val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
-    Wom3Toolbox.womToWmXPath(wom3Doc)
+    val code = Wom3Toolbox.womToWmXPath(wom3Doc)
+
+    trim(code)
+  }
+
+  def trim(s: String): String = {
+    val matcher = trimPattern.matcher(s)
+    if (matcher.matches() && matcher.groupCount() == 1) {
+      matcher.group(1)
+    } else {
+      ""
+    }
   }
 
 }
