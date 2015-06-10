@@ -5,6 +5,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 
 class Cell(
   val content : String,
+  val rawContent : String,
   val isHeader : Boolean,
   val row : Int,
   val rowspan : Int,

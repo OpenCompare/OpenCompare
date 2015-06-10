@@ -107,7 +107,7 @@ class WikipediaPageMiner {
           val row = cell.row + rowShift
           val column = cell.column + columnShift
 
-          val duplicate = new Cell(cell.content, cell.isHeader, row, 1, column, 1)
+          val duplicate = new Cell(cell.content, cell.rawContent, cell.isHeader, row, 1, column, 1)
           normalizedMatrix.setCell(duplicate, row, column)
       }
     }
@@ -125,7 +125,7 @@ class WikipediaPageMiner {
 
     for (row <- 0 until matrix.getNumberOfRows(); column <- 0 until matrix.getNumberOfColumns()) {
       if (!matrix.getCell(row, column).isDefined) {
-        val emptyCell = new Cell("", false, row, 1, column, 1)
+        val emptyCell = new Cell("", "", false, row, 1, column, 1)
         matrix.setCell(emptyCell, row, column)
       }
     }
