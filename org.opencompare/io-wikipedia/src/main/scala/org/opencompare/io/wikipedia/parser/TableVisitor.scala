@@ -170,9 +170,11 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
 
   def visit(e: WtInternalLink) = {
     if (!ignoredXMLElement) {
+      val target = e.getTarget().getAsString()
+
       if (e.getTitle().isEmpty) {
-        cellContent ++= e.getTarget().getAsString()
-      } else if (!e.getTarget().getAsString.endsWith(".png")) {
+        cellContent ++= target
+      } else if (!target.endsWith(".png")) {
         dispatch(e.getTitle())
       }
     }
@@ -180,6 +182,7 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
 
   def visit(e: WtExternalLink) = {
     if (!ignoredXMLElement) {
+
       if (e.getTitle().isEmpty()) {
         //		    val target = e.getTarget()
         //		    cellContent ++= target.getProtocol() + ":" + target.getPath()
@@ -203,8 +206,6 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
     }
 
     if (!emptyElement) {
-      println(e.getName)
-
       val ignored = e.getName() match {
         case "small" if isSignificantXMLElement(e) => false
         case "big" => false
@@ -283,7 +284,7 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   }
 
   def visit(e: WtXmlAttributeGarbage) = {
-    cellContent ++= e + "|"
+//    cellContent ++= e + "|" // FIXME : this line has been commented without thorough testing
   }
 
   def visit(e: WtDefinitionList) {
@@ -331,7 +332,9 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
 
   override def visit(e: WtXmlElement): Unit = iterate(e)
 
-  override def visit(e: WtImageLink): Unit = iterate(e)
+  override def visit(e: WtImageLink): Unit = {
+
+  }
 
   override def visit(e: WtTemplateParameter): Unit = iterate(e)
 
