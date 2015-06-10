@@ -65,7 +65,7 @@ class WikipediaPageMiner2 {
   def mine(code : String, title : String): List[PCM] = {
 
     val ast = parser.parseArticle(code, title)
-    val structuralVisitor = new PageVisitor
+    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, parser)
     structuralVisitor.go(ast)
     val page = structuralVisitor.page
 

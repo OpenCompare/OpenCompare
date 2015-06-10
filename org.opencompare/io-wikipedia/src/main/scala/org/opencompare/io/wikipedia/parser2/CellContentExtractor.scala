@@ -1,36 +1,53 @@
-package org.opencompare.io.wikipedia.parser
+package org.opencompare.io.wikipedia.parser2
 
 import java.util.regex.Pattern
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text
 import de.fau.cs.osr.ptk.common.AstVisitor
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
+import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 import org.sweble.wikitext.parser.nodes._
 
 import scala.collection.mutable.{ListBuffer, Stack}
 
-class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class CellContentExtractor(
+                            val preprocessor : WikitextPreprocessor,
+                            val parser : WikitextParser
+                            ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
-  val matrices: ListBuffer[Matrix] = ListBuffer()
-
-  private val matrixStack: Stack[Matrix] = new Stack()
-
-  private def currentMatrix = matrixStack.top
-
-  private val rowStack: Stack[Int] = new Stack()
-  private val columnStack: Stack[Int] = new Stack()
-
-  private var row: Int = 0
-  private var column: Int = 0
-
-  private var rowspan: Int = 0
-  private var colspan: Int = 0
-
+  private var content : String = ""
   private var cellContent: StringBuilder = new StringBuilder
-
   private val trimPattern: Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
+  private var ignoredXMLStack: Stack[Boolean] = new Stack()
 
-  private val ignoredXMLStack: Stack[Boolean] = new Stack()
+
+  def extractCellContent(code : String): String = {
+    val title = ""
+
+    // Expand template with preprocessor
+    val preprocessorAST = preprocessor.parseArticle(code, title)
+    val templatePreprocessor = new TemplatePreprocessor
+    templatePreprocessor.go(preprocessorAST)
+    val preprocessedCode = templatePreprocessor.getPreprocessedCode()
+
+    // Parse content of cell
+    val ast = parser.parseArticle(preprocessedCode, title)
+    cellContent = new StringBuilder()
+    ignoredXMLStack = new Stack()
+
+    go(ast)
+
+    content = if (!ignoredXMLElement) {
+      if (cellContent.toString().startsWith("||")) {
+        cellContent.delete(0, 2)
+      }
+      trim(cellContent.toString())
+    } else {
+      ""
+    }
+
+    content
+  }
+
 
   private def ignoredXMLElement: Boolean = {
     if (ignoredXMLStack.nonEmpty) {
@@ -53,31 +70,7 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   }
 
   def visit(e: WtTable) = {
-    val matrix = new Matrix
-    matrixStack.push(matrix)
-    matrices += matrix
 
-    // Save old values of row and column
-    rowStack.push(row)
-    columnStack.push(column)
-    row = 0
-    column = 0
-
-    // Iterate over each row
-    iterate(e)
-
-    matrixStack.pop
-
-    // Clear previous cell
-    cellContent = new StringBuilder()
-
-    // Restore old values of row and column
-    rowStack.pop
-    columnStack.pop
-    if (rowStack.nonEmpty && columnStack.nonEmpty) {
-      row = rowStack.top
-      column = columnStack.top
-    }
   }
 
   def visit(e: WtNodeList) = {
@@ -85,20 +78,6 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   }
 
   def visit(e: WtXmlAttribute) = {
-    val name = e.getName().getAsString()
-
-    if (!e.getValue().isEmpty()) {
-      val value = e.getValue().get(0) match {
-        case t: WtText => t.toString()
-        case _ => ""
-      }
-
-      name match {
-        case "rowspan" => rowspan = getNumberFromString(value)
-        case "colspan" => colspan = getNumberFromString(value)
-        case _ =>
-      }
-    }
 
   }
 
@@ -108,58 +87,17 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
   }
 
   def visit(e: WtTableRow) = {
-    if (row == 0 && currentMatrix.cells.nonEmpty) {
-      row += 1
-      column = 0
-    }
-    if (!e.getBody().isEmpty()) {
-      iterate(e)
-      row += 1
-      column = 0
-    }
+
   }
 
   def visit(e: WtTableHeader) = {
-    handleCell(e, true)
+
   }
 
   def visit(e: WtTableCell) = {
-    handleCell(e, false)
+
   }
 
-  def handleCell(e: WtNode, isHeader: Boolean) {
-    rowspan = 1
-    colspan = 1
-
-    if (!ignoredXMLElement) {
-      // Skip cells defined by rowspan
-      while (currentMatrix.getCell(row, column).isDefined) {
-        column += 1
-      }
-    }
-
-    cellContent = new StringBuilder()
-    iterate(e)
-
-    if (!ignoredXMLElement) {
-      if (cellContent.toString().startsWith("||")) {
-        cellContent.delete(0, 2)
-        currentMatrix.setCell(new Cell("", "", false, row, 1, column, 1), row, column)
-        column += 1
-      }
-
-      val content = trim(cellContent.toString())
-      val rawContent = content // FIXME : get real raw content
-      val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
-
-      // Handle rowspan and colspan
-      for (rowShift <- 0 until rowspan; colShift <- 0 until colspan) {
-        currentMatrix.setCell(cell, row + rowShift, column + colShift)
-      }
-
-      column += colspan
-    }
-  }
 
   def visit(e: WtText) = {
     if (!ignoredXMLElement) {
@@ -236,7 +174,7 @@ class TableVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetu
       val attribute = it.next().asInstanceOf[WtXmlAttribute]
       val name = attribute.getName().getAsString()
 
-      val nodeToTextVisitor = new NodeToTextVisitor
+      val nodeToTextVisitor = new org.opencompare.io.wikipedia.parser.NodeToTextVisitor
       nodeToTextVisitor.go(attribute.getValue())
       val value = nodeToTextVisitor.getText
 

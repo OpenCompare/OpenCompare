@@ -2,6 +2,8 @@ package org.opencompare.io.wikipedia.parser2
 
 import de.fau.cs.osr.ptk.common.AstVisitor
 import org.opencompare.io.wikipedia.pcm.Page
+import org.sweble.wikitext.engine.config.WikiConfig
+import org.sweble.wikitext.parser.{WikitextPreprocessor, WikitextParser}
 import org.sweble.wikitext.parser.nodes._
 
 import scala.collection.mutable
@@ -9,12 +11,15 @@ import scala.collection.mutable
 /**
  * Created by gbecan on 6/9/15.
  */
-class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class PageVisitor(
+                   val wikiConfig : WikiConfig,
+                   val preprocessor : WikitextPreprocessor,
+                   val parser : WikitextParser
+                   ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
   var page = new Page
 
   private val nodeToText = new NodeToTextVisitor
-  private val tableVisitor = new TableVisitor
 
   private var sectionStack : mutable.Stack[String] = _
 
@@ -124,8 +129,13 @@ class PageVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoRetur
   override def visit(wtTableCaption: WtTableCaption): Unit = {println("not implemented yet")}
 
   override def visit(wtTable: WtTable): Unit = {
-    println("table")
-    val name = sectionStack.top
+    val name = if (sectionStack.isEmpty) {
+      ""
+    } else {
+      sectionStack.top
+    }
+
+    val tableVisitor = new TableVisitor(wikiConfig, preprocessor, parser)
     val matrices = tableVisitor.extract(wtTable, name)
     matrices.foreach(matrix => page.addMatrix(matrix))
   }

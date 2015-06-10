@@ -16,7 +16,7 @@ import scala.reflect.io.{File, Directory}
  */
 class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
-  val miner = new WikipediaPageMiner
+  val miner = new WikipediaPageMiner2
   val pcmFactory = new PCMFactoryImpl
   val pcmExporter = new PCMModelExporter
   val csvExporter = new CSVExporter
@@ -46,10 +46,25 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       val name = csv.getName.replace(".csv", "")
       val csvCode = Source.fromFile(csv).mkString
       val wikiCode = Source.fromFile(wiki).mkString
-      val pcm1 = pcmExporter.export(
-        miner.parse(
-          miner.preprocess(wikiCode), "From Wikitext")
-      ).head
+      val pcm1 = try {
+        val pcms = miner.mine(wikiCode, "From Wikitext")
+        //        pcmExporter.export(
+        //        miner.parse(
+        //          miner.preprocess(wikiCode), "From Wikitext")
+        //      ).head
+
+        if (pcms.nonEmpty) {
+          pcms.head
+        } else {
+          pcmFactory.createPCM()
+        }
+
+      } catch {
+        case e : Exception => {
+          e.printStackTrace()
+          pcmFactory.createPCM()
+        }
+      }
 
       "A " + name + " PCM" should "be identical to the wikitext it came from" in {
         val pcm2 = csvLoader.load(csvCode)
@@ -60,14 +75,15 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       }
 
       it should "be the same as the one created with it's wikitext representation" in {
-        val pcm2 = pcmExporter.export(
-          miner.parse(
-            miner.preprocess(
-              wikiTextExporter.toWikiText(pcm1)
-            ), "From PCM1 Wikitext")
-        ).head
+        val pcm2 = miner.mine(wikiTextExporter.toWikiText(pcm1), "From Wikitext").head
+//          pcmExporter.export(
+//          miner.parse(
+//            miner.preprocess(
+//              wikiTextExporter.toWikiText(pcm1)
+//            ), "From PCM1 Wikitext")
+//        ).head
 
-        var diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
+        val diff = pcm1.diff(pcm2, new SimplePCMElementComparator)
         diff.hasDifferences shouldBe false
       }
 
