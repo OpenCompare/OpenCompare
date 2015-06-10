@@ -1,14 +1,12 @@
 package org.opencompare.io.wikipedia.parser2
 
 import de.fau.cs.osr.ptk.common.AstVisitor
-import org.joda.time.DateTime
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
-import org.sweble.wikitext.engine.PageTitle
 import org.sweble.wikitext.engine.config.WikiConfig
-import org.sweble.wikitext.parser.{WikitextPreprocessor, WikitextParser}
 import org.sweble.wikitext.parser.nodes._
-import org.sweble.wom3.swcadapter.AstToWomConverter
-import org.sweble.wom3.util.Wom3Toolbox
+import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
+
+import scala.collection.JavaConversions._
 
 import scala.collection.mutable
 
@@ -52,10 +50,17 @@ class TableVisitor(
   }
 
   override def visit(wtTableRow: WtTableRow): Unit = {
-    // TODO
-    // TODO : wtTableRow.getXmlAttributes
-    iterate(wtTableRow.getBody)
-    row += 1 // TODO : support rowspan
+    if (row == 0 && matrix.cells.nonEmpty) {
+      row += 1
+      column = 0
+    }
+
+    if (wtTableRow.getBody().nonEmpty) {
+      iterate(wtTableRow)
+      row += 1
+      column = 0
+    }
+
   }
 
   override def visit(wtTableHeader: WtTableHeader): Unit = {
@@ -72,6 +77,11 @@ class TableVisitor(
 
   private def processCell(cellBody : WtNode, isHeader : Boolean) {
 
+    // Skip cells defined by rowspan
+    while (matrix.getCell(row, column).isDefined) {
+      column += 1
+    }
+
     // Extract raw cell content
     val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
     val rawContent = rawContentExtractor.extract(cellBody)
@@ -80,17 +90,20 @@ class TableVisitor(
     val contentExtractor = new CellContentExtractor(preprocessor, parser)
     val content = contentExtractor.extractCellContent(rawContent)
 
-    println("body= " + cellBody)
-    println("raw content= " + rawContent)
-    println("content= " + content)
+//    println("body= " + cellBody)
+//    println("raw content= " + rawContent)
+//    println("content= " + content)
 
     // Create cell
     val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
-    matrix.setCell(cell, row, column)
+
+    // Handle rowspan and colspan
+    for (rowShift <- 0 until rowspan; colShift <- 0 until colspan) {
+      matrix.setCell(cell, row + rowShift, column + colShift)
+    }
 
     // Update positions
-    column += 1 // TODO : support colspan
-
+    column += colspan
     rowspan = 1
     colspan = 1
   }
@@ -114,7 +127,9 @@ class TableVisitor(
 
   override def visit(wtWhitespace: WtWhitespace): Unit = {}
 
-  override def visit(wtXmlAttributes: WtXmlAttributes): Unit = {}
+  override def visit(wtXmlAttributes: WtXmlAttributes): Unit = {
+    iterate(wtXmlAttributes)
+  }
 
   override def visit(wtText: WtText): Unit = {}
 
@@ -142,7 +157,27 @@ class TableVisitor(
 
   override def visit(wtLinkOptionResize: WtLinkOptionResize): Unit = {}
 
-  override def visit(wtXmlAttribute: WtXmlAttribute): Unit = {}
+  override def visit(wtXmlAttribute: WtXmlAttribute): Unit = {
+    val name = wtXmlAttribute.getName.getAsString
+
+    if (wtXmlAttribute.getValue.nonEmpty) {
+      val value = wtXmlAttribute.getValue.head match {
+        case t : WtText => t.toString()
+        case _ => ""
+      }
+
+      name match {
+        case "rowspan" => rowspan = getNumberFromString(value)
+        case "colspan" => colspan = getNumberFromString(value)
+        case _ =>
+      }
+    }
+  }
+
+  def getNumberFromString(s: String): Int = {
+    val numberRegex = "(\\d)+".r
+    (numberRegex findFirstIn s).getOrElse("1").toInt
+  }
 
   override def visit(wtXmlEmptyTag: WtXmlEmptyTag): Unit = {}
 
@@ -165,7 +200,7 @@ class TableVisitor(
   override def visit(wtPageSwitch: WtPageSwitch): Unit = {}
 
   override def visit(wtTableCaption: WtTableCaption): Unit = {
-    // TODO
+
   }
 
 
