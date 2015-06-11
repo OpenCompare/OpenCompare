@@ -4,12 +4,13 @@ import java.io._
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 
+import com.github.tototoshi.csv.{CSVWriter, CSVReader}
 import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -24,9 +25,13 @@ import scala.xml.PrettyPrinter
 class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  val miner = new WikiTextLoader
+  var templateProcessor : WikiTextTemplateProcessor = _
+  var miner : WikiTextLoader = _
+
+  val templateCacheFile = new File("resources/template-cache.csv")
 
   override def beforeAll() {
+    super.beforeAll()
 
     new File("input/").mkdirs()
     new File("output/csv/").mkdirs()
@@ -34,6 +39,38 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     new File("output/dump/").mkdirs()
     new File("output/model/").mkdirs()
     new File("output/wikitext/").mkdirs()
+
+    // Load cache for templates
+    if (templateCacheFile.exists()) {
+      val csvLoader = CSVReader.open(templateCacheFile)
+
+      val initialCache = (for (line : Seq[String] <- csvLoader.iterator if line.size == 2) yield {
+          val template = line(0)
+          val expandedTemplate = line(1)
+          template -> expandedTemplate
+      }).toMap
+
+      csvLoader.close()
+
+      templateProcessor = new WikiTextTemplateProcessor(initialCache)
+
+    } else {
+      templateProcessor = new WikiTextTemplateProcessor()
+    }
+
+    miner = new WikiTextLoader(templateProcessor)
+  }
+
+
+  override protected def afterAll(): Unit = {
+    super.afterAll()
+
+    val csvWriter = CSVWriter.open(templateCacheFile)
+    for (line <- templateProcessor.templateCache) {
+      csvWriter.writeRow(Seq(line._1, line._2))
+    }
+
+    csvWriter.close()
   }
 
   def parsePCMFromFile(file : String) : Page= {

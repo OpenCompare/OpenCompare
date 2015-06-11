@@ -1,17 +1,10 @@
 package org.opencompare.io.wikipedia.parser
 
-import java.io.StringReader
-
 import de.fau.cs.osr.ptk.common.AstVisitor
-import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.sweble.wikitext.parser.nodes._
-import org.xml.sax.InputSource
 
-import scala.xml.Node
-import scala.xml.parsing.NoBindingFactoryAdapter
-import scalaj.http.{Http, HttpOptions}
-
-class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class PreprocessVisitor(templateProcessor : WikiTextTemplateProcessor) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
   val code = new StringBuilder
 
@@ -20,52 +13,8 @@ class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorN
   var isInTemplateArg = false
   var templateArg = new StringBuilder
 
-  val templateCache: collection.mutable.Map[String, String] = collection.mutable.Map()
-
   def getPreprocessedCode(): String = {
     code.toString
-  }
-
-  /**
-   * Expand template in WikiCode with the special page on English version of Wikipedia
-   */
-  def expandTemplate(template: String): String = {
-    val cachedTemplate = templateCache.get(template)
-    if (cachedTemplate.isDefined) {
-      cachedTemplate.get
-    } else {
-      // Ask expanded template
-      val expandTemplatesPage = Http.post("https://en.wikipedia.org/wiki/Special:ExpandTemplates")
-        .params("wpInput" -> template, "wpRemoveComments" -> "1", "wpRemoveNowiki" -> "1")
-        .option(HttpOptions.connTimeout(1000))
-        .option(HttpOptions.readTimeout(30000))
-        .asString
-
-      // Filter the returned page
-      val xml = parseHTMLAsXML(expandTemplatesPage)
-      val textareas = xml \\ "textarea"
-      var expandedTemplate = textareas.filter(_.attribute("id") exists (_.text == "output")).text
-
-      // Remove line breaks
-      if (expandedTemplate.length >= 2) {
-        expandedTemplate = expandedTemplate.substring(1, expandedTemplate.length - 1)
-      }
-
-      // Add template to cache
-      templateCache += template -> expandedTemplate
-
-      expandedTemplate
-    }
-  }
-
-  /**
-   * Clean HTML to get strict XML
-   */
-  private def parseHTMLAsXML(htmlCode: String): Node = {
-    val adapter = new NoBindingFactoryAdapter
-    val htmlParser = (new SAXFactoryImpl).newSAXParser()
-    val xml = adapter.loadXML(new InputSource(new StringReader(htmlCode)), htmlParser)
-    xml
   }
 
   def visit(e: WtPreproWikitextPage) {
@@ -118,7 +67,7 @@ class PreprocessVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitorN
     template ++= "}}"
 
     // Call special page on wikipedia to expand the template
-    val expandedTemplate = expandTemplate(template.toString())
+    val expandedTemplate = templateProcessor.expandTemplate(template.toString())
     //    println("-----")
     //    println(e)
     //    println(template.toString)

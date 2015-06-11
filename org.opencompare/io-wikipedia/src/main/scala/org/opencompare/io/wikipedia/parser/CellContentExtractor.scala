@@ -3,6 +3,7 @@ package org.opencompare.io.wikipedia.parser
 import java.util.regex.Pattern
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.sweble.wikitext.parser.nodes._
 import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 
@@ -10,6 +11,7 @@ import scala.collection.mutable.Stack
 
 class CellContentExtractor(
                             val preprocessor : WikitextPreprocessor,
+                            val templateProcessor : WikiTextTemplateProcessor,
                             val parser : WikitextParser
                             ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
@@ -24,7 +26,7 @@ class CellContentExtractor(
 
     // Expand template with preprocessor
     val preprocessorAST = preprocessor.parseArticle(code, title)
-    val templatePreprocessor = new PreprocessVisitor
+    val templatePreprocessor = new PreprocessVisitor(templateProcessor)
     templatePreprocessor.go(preprocessorAST)
     val preprocessedCode = templatePreprocessor.getPreprocessedCode()
 

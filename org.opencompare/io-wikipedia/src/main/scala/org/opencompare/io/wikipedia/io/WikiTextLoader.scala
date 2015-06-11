@@ -21,7 +21,14 @@ import scalaj.http.{Http, HttpOptions}
 /**
  * Created by  on 26/11/14.
  */
-class WikiTextLoader  extends PCMLoader {
+class WikiTextLoader(
+                    val templateProcessor: WikiTextTemplateProcessor = new WikiTextTemplateProcessor()
+                      )  extends PCMLoader {
+
+  // Constructor for Java compatibility with default parameters
+  def this() {
+    this(new WikiTextTemplateProcessor())
+  }
 
   private val parserConfig = new SimpleParserConfig()
   private val preprocessor = new WikitextPreprocessor(parserConfig)
@@ -82,7 +89,7 @@ class WikiTextLoader  extends PCMLoader {
 
   def mineInternalRepresentation(code : String, title : String): Page = {
     val ast = parser.parseArticle(code, title)
-    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, parser)
+    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, templateProcessor, parser)
     structuralVisitor.go(ast)
     val page = structuralVisitor.page
     page

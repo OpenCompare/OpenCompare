@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
 import org.sweble.wikitext.engine.config.WikiConfig
 import org.sweble.wikitext.parser.nodes._
@@ -16,6 +17,7 @@ import scala.collection.mutable
 class TableVisitor(
                     val wikiConfig: WikiConfig,
                     val preprocessor : WikitextPreprocessor,
+                    val templateProcessor : WikiTextTemplateProcessor,
                     val parser : WikitextParser
                     ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
@@ -28,7 +30,7 @@ class TableVisitor(
   private var colspan : Int = 1
 
   private val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
-  private val contentExtractor = new CellContentExtractor(preprocessor, parser)
+  private val contentExtractor = new CellContentExtractor(preprocessor, templateProcessor, parser)
 
   def extract(wtTable: WtTable, name : String) : List[Matrix] = {
     matrices = mutable.ListBuffer.empty[Matrix]
@@ -43,7 +45,7 @@ class TableVisitor(
   }
 
   override def visit(wtTable: WtTable): Unit = {
-    val recursiveTableVisitor = new TableVisitor(wikiConfig, preprocessor, parser)
+    val recursiveTableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
     val recursiveMatrices = recursiveTableVisitor.extract(wtTable, "") // TODO : name of the matrix
     matrices ++= recursiveMatrices
   }
