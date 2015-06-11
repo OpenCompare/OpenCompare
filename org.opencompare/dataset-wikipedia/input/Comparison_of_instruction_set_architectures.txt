@@ -7,7 +7,7 @@ The width of addresses may or may not be different from the width of data.
 Early 32-bit microprocessors often had a 24-bit address, as did the [[System/360]] processors.
 
 === Operands ===
-<div class="hatnote relarticle mainarticle">Main article: [[instruction set#Number of operands|instruction set § Number of operands]]</div>
+{{main| instruction set#Number of operands}}
 
 The number of operands is one of the factors that may give an indication about the performance of the instruction set.
 A three-operand architecture will allow
@@ -26,6 +26,8 @@ An architecture may use "big" or "little" endianness, or both, or be configurabl
 == Instruction sets ==
 Usually the number of registers is a power of two, e.g. 8, 16, 32. In some cases a hardwired-to-zero pseudo-register is included, as "part" of [[register file]]s of architectures, mostly to simplify indexing modes. This table only counts the integer "registers" usable by general instructions at any moment. Architectures always include special-purpose registers such as the program pointer (PC). Those are not counted unless mentioned. Note that some architectures, such as SPARC, have [[register window]]s; for those architectures, the count below indicates how many registers are available within a register window. Also, non-architected registers for [[register renaming#Architectural vs physical registers|register renaming]] are not counted.
 
+Note, a common type of architecture, "load-store", is a synonym for "Register Register" below, meaning no instructions access memory except special – load to register(s) – and store from register(s) – with the possible exceptions of atomic memory operations for locking.
+
 The table below compares basic information about instruction sets to be implemented in the CPU architectures:
 
 {| class="wikitable sortable" border="1" style="font-size: 90%"
@@ -35,8 +37,8 @@ The table below compares basic information about instruction sets to be implemen
 ! Introduced
 ! Max # [[operand]]s
 ! Type
-! Design 
-! [[Processor register|Registers]]
+! Design <!-- Design Strategy/Philosophy -->
+! [[Processor register|Registers]] (excluding FP/vector)
 ! Instruction encoding
 ! [[Branch (computer science)|Branch]] evaluation
 ! [[Endianness]]
@@ -51,13 +53,13 @@ The table below compares basic information about instruction sets to be implemen
 | 3
 | Register Register
 | [[Reduced instruction set computer|RISC]]
-| 32 (including "zero")
+| 32 (including "zero")<!-- 31 64-bit GPRs, 31 64-bit FPRs, one of both is hardwired zero -->
 | Fixed <small>(32-bit)</small>
 | Condition register
 | Bi
-| <span title="Motion Video Instructions" style="border-bottom:1px dotted">MVI</span>, <span title="Byte-Word Extensions" style="border-bottom:1px dotted">BWX</span>, <span title="Floating-point Extensions" style="border-bottom:1px dotted">FIX</span>, <span title="Count Extensions" style="border-bottom:1px dotted">CIX</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{H:title|Motion Video Instructions|MVI}}, {{H:title|Byte-Word Extensions|BWX}}, {{H:title|Floating-point Extensions|FIX}}, {{H:title|Count Extensions|CIX}}
+| {{No}}
+| {{Unknown}}
 |-
 | [[ARM architecture|ARM]]
 | 32
@@ -67,27 +69,27 @@ The table below compares basic information about instruction sets to be implemen
 | Register Register
 | RISC
 | 16 (including [[Program counter|PC]] and [[Stack pointer|SP]])
-| Fixed <small>(32-bit)</small>, Thumb: Fixed <small>(16-bit)</small>, Thumb-2: Variable <small>(16 and 32-bit)</small>
+| Fixed <small>(32-bit)</small>, Thumb: Fixed <small>(16-bit)</small>, Thumb-2: Variable <small>(16- and 32-bit)</small>
 | Condition code
 | Bi
-| NEON, [[Jazelle]], <span title="Vector Floating Point" style="border-bottom:1px dotted">VFP</span>, [[ARM architecture#Security Extensions (TrustZone)|TrustZone]], <abbr    title="">LPAE</abbr>
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| NEON, [[Jazelle]], {{H:title|Vector Floating Point|VFP}}, [[ARM architecture#Security Extensions (TrustZone)|TrustZone]], {{Abbr|LPAE||Large Physical Address Extension}}
+| {{Unknown}}
+| {{No}}
 |-
 | [[ARMv8-A]]
 | 64/32
-| ARMv8-A
-| 2011
+| ARMv8-A<ref>[http://www.arm.com/files/downloads/ARMv8_Architecture.pdf ARMv8 Technology Preview]</ref>
+| 2011<ref>{{cite web |url= http://www.computerworld.com/s/article/9221262/ARM_goes_64_bit_with_new_ARMv8_chip_architecture/ |title= ARM goes 64-bit with new ARMv8 chip architecture |accessdate= 26 May 2012}}</ref>
 | 3
 | Register Register
 | RISC
 | 32 (including SP)
-| Fixed <small>(32-bit)</small>. In ARMv7 compatibility mode: Thumb: Fixed <small>(16-bit)</small>, Thumb-2: Variable <small>(16 and 32-bit)</small>, A64
+| Fixed <small>(32-bit)</small>. In ARMv7 compatibility mode: Thumb: Fixed <small>(16-bit)</small>, Thumb-2: Variable <small>(16- and 32-bit)</small>, A64
 | Condition code
 | Bi
-| NEON, [[Jazelle]], <span title="Vector Floating Point" style="border-bottom:1px dotted">VFP</span>, [[ARM architecture#Security Extensions (TrustZone)|TrustZone]]
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| None (all extensions of ARMv7 are non-optional)
+| {{Unknown}}
+| {{No}}
 |-
 | [[Atmel AVR instruction set|AVR]]
 | 8
@@ -97,27 +99,27 @@ The table below compares basic information about instruction sets to be implemen
 | Register Register
 | RISC
 | 32 (16 on "reduced architecture")
-| Variable <small>(mostly 16-bit, 4 instructions are 32-bit)</small>
-| Condition register, skip conditioned on an IO or general purpose register bit, compare and skip
+| Variable <small>(mostly 16-bit, four instructions are 32-bit)</small>
+| Condition register, skip conditioned on an I/O or general purpose register bit, compare and skip
 | Little
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[AVR32]]
 | 32
 | Rev 2
-| 2006 
+| 2006 <!-- AVR family 1996, first AVR32 chip in 2006 -->
 | 2–3
 |
 | RISC
-| 15 
-| Variable
+| 15 <!-- Up to 15× general-purpose 32-bit registers -->
+| Variable<ref>{{cite web | url= http://www.atmel.com/dyn/resources/prod_documents/doc32000.pdf | title= AVR32 Architecture Document | publisher= [[Atmel]] | accessdate= 2008-06-15}}</ref>
 |
-| Big 
+| Big <!-- have special endian-translating load and store instructions -->
 | [[Java Virtual Machine]]
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[Blackfin]]
 | 32
@@ -125,25 +127,25 @@ The table below compares basic information about instruction sets to be implemen
 | 2000
 |
 |
-| RISC
-| 8 
+| RISC<ref>{{cite web | url= http://www.analog.com/en/embedded-processing-dsp/blackfin/content/blackfin_architecture/fca.html | title= Blackfin Processor Architecture Overview | publisher= [[Analog Devices]] | accessdate= 2009-05-10}}</ref>
+| 8 <!-- 8× 32-bit registers -->
 |
 |
-| Little
+| Little<ref>{{cite web | url= http://www.analog.com/FAQs/FAQDisplay.html?DSPKBContentID=752A11D1-9E11-4A7F-91AC-CA3C264C5667 | title= Blackfin memory architecture | publisher= [[Analog Devices]] | accessdate= 2009-12-18}}</ref>
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[Transmeta Crusoe|Crusoe]]
 | 32
 |
 | 2000
 | 1
-| Register Register
-| VLIW
-| 64
-| Variable <small>(64 or 128&nbsp;bits)</small>
-| Condition code
+| Register Register<ref name="crusoe-arch">{{cite web |url=http://www.realworldtech.com/crusoe-exposed/ |title=Crusoe Exposed: Transmeta TM5xxx Architecture 2 |publisher=Real World Technologies}}</ref>
+| VLIW<ref name="crusoe-arch" /><ref name="technology-behind-crusoe">{{cite web |url=http://www.cs.ucf.edu/~lboloni/Teaching/EEL5708_2004/slides/paper_aklaiber_19jan00.pdf |title=The Technology Behind Crusoe Processors |author=Alexander Klaiber |publisher=Transmeta Corporation |date=January 2000 |accessdate=December 6, 2013}}</ref>
+| 64<ref name="crusoe-arch" /><ref name="technology-behind-crusoe" />
+| Variable <small>(64- or 128-bit)</small><ref name="technology-behind-crusoe" />
+| Condition code<ref name="crusoe-arch" />
 | Little
 |
 |
@@ -161,8 +163,8 @@ The table below compares basic information about instruction sets to be implemen
 |
 | Big
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[eSi-RISC]]
 | 16/32
@@ -172,12 +174,12 @@ The table below compares basic information about instruction sets to be implemen
 | Register Register
 | RISC
 | 8–72
-| Variable<small> (16 or 32-bit)</small>
+| Variable<small> (16- or 32-bit)</small>
 | Compare and branch and condition register
 | Bi
 | User-defined instructions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
+| {{No}}
 |-
 | [[Itanium]] (IA-64)
 | 64
@@ -186,13 +188,13 @@ The table below compares basic information about instruction sets to be implemen
 |
 | Register Register
 | [[Explicitly parallel instruction computing|EPIC]]
-| 128 
+| 128 <!-- 128× 64-bit general purpose registers, 128× 80-bit floating-point registers, 64× 1-bit predicate registers -->
 |
 | Condition register
 | Bi (selectable)
 | Intel Virtualization Technology
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
+| {{No}}
 |-
 | [[M32R]]
 | 32
@@ -201,13 +203,13 @@ The table below compares basic information about instruction sets to be implemen
 |
 |
 | RISC
-| 16 
+| 16 <!-- 16× 32-bit registers -->
 | Fixed <small>(16- or 32-bit)</small>
 |
 | Bi
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[Motorola 68k]]
 | 32
@@ -221,8 +223,8 @@ The table below compares basic information about instruction sets to be implemen
 | Condition register
 | Big
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[LatticeMico32|Mico32]]
 | 32
@@ -231,28 +233,28 @@ The table below compares basic information about instruction sets to be implemen
 | 3
 | Register Register
 | RISC
-| 32
+| 32<ref>{{cite web | url= http://www.latticesemi.com/products/intellectualproperty/ipcores/mico32/mico32architecture.cfm | title= LatticeMico32 Architecture | publisher= [[Lattice Semiconductor]] | accessdate= 2009-12-18}}</ref>
 | Fixed <small>(32-bit)</small>
 | Compare and branch
 | Big
 | User-defined instructions
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}<ref>{{cite web | url= http://www.latticesemi.com/products/intellectualproperty/ipcores/mico32/mico32opensourcelicensing.cfm | title= Open Source Licensing | publisher= [[Lattice Semiconductor]] | accessdate= 2009-12-18}}</ref>
+| {{Yes}}
 |-
 | [[MIPS architecture|MIPS]]
 | 64 <small>(32→64)</small>
-| 5 
+| 5 <!-- 21 October 1996 -->
 | 1981
 | 1–3
 | Register Register
 | RISC
-| 4–32 (including "zero")
+| 4–32 (including "zero")<!-- 15× 32-bit GPRs (R0=0), 16× 32-bit FP regs (paired DP). MIPS64 has 31× 64-bit GPRs. R0=0 sometimes counted as 32nd GPR, but isn't. Some customized chip may have much fewer register in order to fixed the custom instruction set for specific use, ex: Emotion engine -->
 | Fixed <small>(32-bit)<small>
 | Condition register
 | Bi
 | [[MDMX]], [[MIPS-3D]]
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Unknown}}
+| {{No}}
 |-
 | [[MMIX]]
 | 64
@@ -261,13 +263,13 @@ The table below compares basic information about instruction sets to be implemen
 | 3
 | Register Register
 | RISC
-| 256 
+| 256 <!-- 256× 64-bit general-purpose registers and 32× 64-bit special-purpose registers -->
 | Fixed <small>(32-bit)</small>
 |
 | Big
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
 |-
 | [[MOS Technology 6502|6502]]
 | 8
@@ -277,7 +279,7 @@ The table below compares basic information about instruction sets to be implemen
 | Register Memory
 | CISC
 | 1
-| Variable <small>(8 to 32&nbsp;bits)</small>
+| Variable <small>(8- to 32-bit)</small>
 | Condition register
 | Little
 |
@@ -285,15 +287,15 @@ The table below compares basic information about instruction sets to be implemen
 |
 |-
 | [[65k]]
-| 64&nbsp;<small>(8→64)</small>
+| 64&nbsp;<small>(8→64)</small><ref name="65k arch">{{cite web |url=http://6502.org/users/andre/65k/specsprog.html |title=The 65k Project |publisher=Advanced 6502 |accessdate=20 December 2013}}</ref>
 |
 | 2006?
 | 1
-| Memory Memory<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (May 2014)">citation needed</span>]]</i>&#93;</sup>
+| Memory Memory{{citation needed|date=May 2014}}
 | CISC
 | 1
-| Variable <small>(8&nbsp;bits to 256&nbsp;bytes)</small>
-| Compare and branch<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (December 2013)">citation needed</span>]]</i>&#93;</sup>
+| Variable <small>(8-bit to 256&nbsp;bytes)</small>
+| Compare and branch{{citation needed|date=December 2013}}
 | Little
 |
 |
@@ -306,32 +308,32 @@ The table below compares basic information about instruction sets to be implemen
 | 5
 | Memory Memory
 | CISC
-| 8 
+| 8 <!-- Up to 8× general-purpose 32-bit registers -->
 | Variable Huffman coded, up to 23&nbsp;bytes long
-| Condition Code
+| Condition code
 | Little
 | BitBlt instructions
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[OpenRISC]]
 | 32, 64
 |
 | 2010
 | 3
-| Load-store
+| Register Register
 | RISC
-| 16 or 32 
+| 16 or 32 <!-- 32-bit registers -->
 | Fixed
 | 
 | 
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
 |-
 | [[PA-RISC]] (HP/PA)
 | 64 <small>(32→64)</small>
-| 2.0 
+| 2.0 <!-- 1996 -->
 | 1986
 | 3
 | Register Register
@@ -339,14 +341,14 @@ The table below compares basic information about instruction sets to be implemen
 | 32
 | Fixed <small>(32-bit)</small>
 | Compare and branch
-| Big → Bi 
+| Big → Bi <!-- 1.0 is big-endian, 1.1 and 2.0 are bi-endian -->
 | [[Multimedia Acceleration eXtensions]] (MAX), MAX-2
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{No}}
+| {{Unknown}}
 |-
 | [[PowerPC]]
 | 32/64&nbsp;<small>(32→64)</small>
-| 2.07 
+| 2.07<ref>{{cite web | url=https://www.power.org/documentation/power-isa-v-2-07b/ | title= Power ISA 2.07 | publisher= [[IBM]] | accessdate= 2013-08-12}}</ref> <!-- Power ISA 2.07 released in May 10, 2013 -->
 | 1991
 | 3
 | Register Register
@@ -356,23 +358,23 @@ The table below compares basic information about instruction sets to be implemen
 | Condition code
 | Big/Bi
 | [[AltiVec]], APU, [[AltiVec#VSX|VSX]], [[Cell (microprocessor)|Cell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{No}}
 |-
 | [[RISC-V]]
 | 32, 64
 | 
 | 2010
 |
-| Load-store
+| Register Register
 | RISC
-| 62 
+| 62 <!-- 31 integer registers and 31 floating-point registers. -->
 | Variable
 |
 | Little
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+| {{Yes}} <!-- BSD License -->
+| {{Yes}} <!-- BSD License -->
 |-
 | [[S+core]]
 | 16/32
@@ -386,23 +388,23 @@ The table below compares basic information about instruction sets to be implemen
 |
 | Little
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[SPARC]]
 | 64 <small>(32→64)</small>
-| V9
+| OSA2015<ref>http://www.oracle.com/technetwork/server-storage/sun-sparc-enterprise/documentation/sparc-processor-2516655.html Oracle SPARC Processor Documentation</ref>
 | 1985
 | 3
 | Register Register
 | RISC
-| 32 (including "zero")
+| 32 (including "zero")<!-- 8 globals but %g0 always zero; at least 3 register windows of 16, not counting overlap -->
 | Fixed <small>(32-bit)</small>
 | Condition code
-| Big → Bi 
-| [[Visual Instruction Set|VIS]] 1.0, 2.0, 3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Big → Bi <!-- Historically big-endian, V9 is bi-endian -->
+| [[Visual Instruction Set|VIS]] 1.0, 2.0, 3.0, 4.0
+| {{Yes}}
+| {{Yes}}<ref>http://sparc.org/technical-documents/#ArchLic SPARC Architecture License</ref>
 |-
 | [[SuperH]] (SH)
 | 32
@@ -413,26 +415,26 @@ The table below compares basic information about instruction sets to be implemen
 | RISC
 | 16
 | Fixed <small>(16- or 32-bit)</small>, Variable
-| Condition Code (Single Bit)
+| Condition Code (Single bit)
 | Bi
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | System/360 / [[System/370]] / [[z/Architecture]]
 | 64 <small>(32→64)</small>
-| 3 
+| 3 <!-- ARCHLVL 3 in 2008 -->
 | 1964
 |
 | Register Memory / Memory Memory
 | CISC
-| 16 
-| Variable 
+| 16 <!-- 16× 64/32-bit general purpose registers, 16× 64-bit floating point registers, 16× 32-bit access registers, 16× 64/32-bit control registers -->
+| Variable <!-- 2, 4 or 6 bytes long -->
 | Condition code
 | Big
 |
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[Transputer]]
 | 32 <small>(4→64)</small>
@@ -457,27 +459,27 @@ The table below compares basic information about instruction sets to be implemen
 | Memory Memory
 | CISC
 | 16
-| Variable 
+| Variable <!-- 1 to 321 bytes -->
 | Compare and branch
 | Little
 | VAX Vector Architecture
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{Unknown}}
+| {{Unknown}}
 |-
 | [[x86]]
-| 16, 32, 64
+| 16, 32, 64 (16→32→64) 
 |
 | 1978
 | 2 (integer)<br>3 (AVX-512)
 | Register Memory
 | CISC
-| <div class="plainlist"><ul><li>6 in 16-bit</li><li>8 in 32-bit</li><li>16 in 64-bit</li></ul></div>
-| Variable 
+| {{ubl|6 in 16-bit|8 in 32-bit|16 in 64-bit}}<!-- general-purpose registers; floating-point stack and SSE registers not counted -->
+| Variable <!-- 1 to 16 bytes -->
 | Condition code
 | Little
 | [[x87]], [[IA-32]], [[MMX (instruction set)|MMX]], [[3DNow!]], [[Streaming SIMD Extensions|SSE]], [[SSE2]], [[Physical Address Extension|PAE]], [[x86-64]], [[SSE3]], [[SSE4]], [[SSE5]], [[Advanced Vector Extensions|AVX]], [[AES instruction set|AES]], [[FMA instruction set|FMA]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
+| {{No}}
 |-
 | [[Z80]]
 | 8
@@ -500,8 +502,8 @@ The table below compares basic information about instruction sets to be implemen
 ! Introduced
 ! Max # operands
 ! Type
-! Design 
-! Registers
+! Design <!-- Design Strategy/Philosophy -->
+! Registers (excluding FP/vector)
 ! Instruction encoding
 ! Branch evaluation
 ! Endianness
@@ -511,9 +513,7 @@ The table below compares basic information about instruction sets to be implemen
 |}
 
 == See also ==
-<div class="noprint portal tright" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em">
-<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px">
-<tr style="vertical-align:middle"><td style="text-align:center">[[File:Internet map 1024.jpg|32x28px|alt=Portal icon|class=noviewer]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold">[[Portal:Computer science|Computer science portal]]</td></tr></table></div>
+{{Portal|Computer science}}
 * [[Central processing unit]] (CPU)
 * [[CPU design]]
 * [[Comparison of CPU microarchitectures]]
@@ -523,126 +523,9 @@ The table below compares basic information about instruction sets to be implemen
 * [[Benchmark (computing)]]
 
 == References ==
-<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist|30em}}
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:CPU technologies|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:CPU technologies|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:CPU_technologies&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Central processing unit|CPU technologies]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Computer architecture|Architecture]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Harvard architecture|Harvard]] ([[Modified Harvard architecture|Modified Harvard]])
-* [[von Neumann architecture|von Neumann]]
-* [[Dataflow architecture|Dataflow]]
-* [[Transport triggered architecture|TTA]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Instruction set]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Application-specific instruction-set processor|ASIP]]
-* [[Complex instruction set computing|CISC]] 
-* [[Explicit Data Graph Execution|EDGE]] 
-* [[Explicitly parallel instruction computing|EPIC]]
-* [[Minimal instruction set computer|MISC]] 
-* [[One instruction set computer|OISC]]
-* [[Reduced instruction set computing|RISC]]
-* [[Very long instruction word|VLIW]]
-* [[No instruction set computing|NISC]] 
-* [[Zero instruction set computer|ZISC]]
-* [[TRIPS architecture|TRIPS]]
-* [[Comparison of instruction set architectures|Comparison]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Word (computer architecture)|Word size]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[1-bit architecture|1-bit]]
-* [[4-bit]]
-* [[8-bit]]
-* [[Word (computer architecture)#Table of word sizes|9-bit]]
-* [[Ferranti Mercury|10-bit]]
-* [[12-bit]]
-* [[Apollo Guidance Computer|15-bit]]
-* [[16-bit]]
-* [[18-bit]]
-* [[Z3 (computer)|22-bit]]
-* [[24-bit]]
-* [[UNIVAC III|25-bit]]
-* [[Saturn Launch Vehicle Digital Computer|26-bit]]
-* [[D-17B|27-bit]]
-* [[31-bit]]
-* [[32-bit]]
-* [[ZEBRA (computer)|33-bit]]
-* [[Fast Universal Digital Computer M-2|34-bit]] 
-* [[36-bit]]
-* [[Word (computer architecture)#Table of word sizes|39-bit]]
-* [[IAS machine|40-bit]] 
-* [[48-bit]]
-* [[Atanasoff–Berry computer|50-bit]] 
-* [[60-bit]]
-* [[64-bit computing|64-bit]]
-* [[128-bit]]
-* [[256-bit]]
-* [[512-bit]]
-* [[Word (computer architecture)#Variable word architectures|variable]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Instruction cycle|Execution]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Instruction pipeline|Instruction pipelining]]
-** [[Bubble (computing)|Bubble]]
-** [[Operand forwarding]]
-* [[Out-of-order execution]]
-** [[Register renaming]]
-* [[Speculative execution]]
-** [[Branch predictor]]
-** [[Memory dependence prediction]]
-* [[Hazard (computer architecture)|Hazard]]s
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Parallel computing|Parallel level]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Bit-level parallelism|Bit]]
-** [[Bit-serial architecture|Bit-serial]]
-** [[Word (computer architecture)|Word]]
-* [[Instruction-level parallelism|Instruction]]
-** [[Scalar processor|Scalar]]
-** [[Superscalar]]
-* [[Data parallelism|Data]]
-** [[Vector processor|Vector]]
-* [[Memory-level parallelism|Memory]]
-* [[Task parallelism|Task]]
-** [[Thread (computing)|Thread]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Multithreading (computer architecture)|Multithreading]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Temporal multithreading]]
-* [[Simultaneous multithreading]]
-** [[Hyper-threading]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Flynn's taxonomy]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[SISD]]
-* [[SIMD]]
-* [[MISD]]
-* [[MIMD]]
-** [[SPMD]]
-* [[Addressing mode]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Types</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Digital signal processor]] (DSP)
-* [[General-purpose computing on graphics processing units|GPGPU]]
-* [[Microcontroller]] 
-* [[Physics processing unit]]
-* [[System on a chip]] (SoC)
-* [[Cellular architecture|Cellular]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Components</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Address generation unit]] (AGU)
-* [[Arithmetic logic unit]] (ALU)
-* [[Barrel shifter]]
-* [[Floating-point unit]] (FPU)
-* [[Back-side bus]]
-* ([[Multiplexer]], [[Demultiplexer]])
-* [[Processor register|Registers]]
-* [[Memory management unit]] (MMU)
-* [[Translation lookaside buffer]] (TLB)
-* [[CPU cache|Cache]]
-* [[Register file]]
-* [[Microcode]]
-* [[Control unit]]
-* [[Clock rate]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Power management|Power<br/> management]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[Advanced Power Management|APM]]
-* [[Advanced Configuration and Power Interface|ACPI]]
-* [[Dynamic frequency scaling]]
-* [[Dynamic voltage scaling]]
-* [[Clock gating]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">CPU hardware [[Computer security|security]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[NX bit]]
-* [[Hardware restriction]] ([[firmware]])
-* [[Trusted Execution Technology]]
-* [[Secure cryptoprocessor]]
-* [[Hardware security module]]
-* [[Hengzhi chip]]
-</div></td></tr></table></td></tr></table>
+{{CPU technologies}}
 
 [[Category:Instruction set architectures]]
 [[Category:Computer architecture]]

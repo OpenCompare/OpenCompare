@@ -30,7 +30,6 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     new File("output/html/").mkdirs()
     new File("output/dump/").mkdirs()
     new File("output/model/").mkdirs()
-    new File("output/model2/").mkdirs()
     new File("output/wikitext/").mkdirs()
   }
 
@@ -129,7 +128,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
    }
 
 
-   ignore should "parse these PCMs" in {
+   it should "parse these PCMs" in {
 	   val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
 	   for(article <- wikipediaPCMs) yield {
        println(article)
@@ -137,22 +136,4 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
      }
    }
 
-  "The PCM parser v2" should "parse pages from Wikipedia" in {
-    val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
-    val miner2 = new WikiTextLoader
-    val serializer = new KMFJSONExporter
-
-    for(title <- wikipediaPCMs) yield {
-      println(title)
-      val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-      val pcms = miner2.mine(code, title)
-
-      for ((pcm, index) <- pcms.zipWithIndex) {
-        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
-        val writer = new FileWriter(path)
-        writer.write(serializer.toJson(pcm))
-        writer.close()
-      }
-    }
-  }
 }

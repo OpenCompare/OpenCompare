@@ -1,6 +1,15 @@
-In computing, a '''[[distributed file system]]''' ('''DFS''') or '''network file system''' is any [[file system]] that allows access to [[computer file|files]] from multiple hosts [[resource sharing|sharing]] via a [[computer network]]. This makes it possible for multiple users on multiple machines to share files and storage resources.
+In computing, a [[distributed file system]] (DFS) or network file system is any [[file system]] that allows access to [[computer file|files]] from multiple hosts [[resource sharing|sharing]] via a [[computer network]]. This makes it possible for multiple users on multiple machines to share files and storage resources.
 
-Distributed file systems differ in their performance, mutability of content, handling of concurrent writes, handling of permanent or temporary loss of nodes or storage, and their policy of storing content.
+Distributed file systems differ in their performance, mutability of content, handling of concurrent writes, handling of permanent or temporary loss of nodes or storage, and their policy of storing content.<ref>
+{{Citation
+|publisher = Amazon
+|author = Yaniv Pessach
+|url = http://openlibrary.org/books/OL25423189M/Distributed_Storage_Concepts_Algorithms_and_Implementations
+|title = Distributed Storage
+|edition = Distributed Storage: Concepts, Algorithms, and Implementations
+|publication-date = 2013
+}}
+</ref>
 
 ==Locally managed==
 {| class="wikitable sortable" style="width: auto; table-layout: fixed;  text-align: center;"
@@ -10,58 +19,75 @@ Distributed file systems differ in their performance, mutability of content, han
 ! License
 ! Access API
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Ceph (file system)|Ceph]]
+! {{rh}} |[[Ceph (file system)|Ceph]]
 | C++
 | LGPL
 | librados (C, C++, Python, Ruby), [[Amazon S3|S3]], Swift, [[Filesystem in Userspace|FUSE]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[FhGFS]]
+! {{rh}} |[[FhGFS]]
 | C / C++
-| FRAUNHOFER FS (FhGFS) EULA,
+| FRAUNHOFER FS (FhGFS) EULA,<ref>{{cite web
+| url=http://www.fhgfs.com/docs/FraunhoferFS_EULA.txt
+| title=FRAUNHOFER FS (FhGFS) END USER LICENSE AGREEMENT
+| date=2012-02-22
+| publisher=[[Fraunhofer Society]]}}</ref>
 GPLv2 client
 | [[Posix#POSIX.1|POSIX]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[GlusterFS]]
+! {{rh}} |[[GlusterFS]]
 | C
 | GPLv3
 | libglusterfs, [[Filesystem in Userspace|FUSE]], NFS, SMB, Swift, libgfapi
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Moose File System|MooseFS]]
+! {{rh}} |[[ObjectiveFS]]<ref>{{cite web
+| url=https://objectiveFS.com
+| title=ObjectiveFS official website}}</ref>
+| C
+| Proprietary
+| [[Posix#POSIX.1|POSIX]], [[Filesystem in Userspace|FUSE]]
+|-
+! {{rh}} |[[Moose File System|MooseFS]]<ref>{{cite web
+| url=http://en.wikipedia.org/wiki/Moose_File_System
+| title=About MooseFS}}</ref>
 | C
 | GPLv2
 | [[Posix#POSIX.1|POSIX]], [[Filesystem in Userspace|FUSE]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Quantcast File System]]
+! {{rh}} |[[Quantcast File System]]
 | C
 | Apache License 2.0
 | C++ client, [[Filesystem in Userspace|FUSE]] (C++ server: MetaServer and ChunkServer are both in C++)
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Lustre (file system)|Lustre]]
+! {{rh}} |[[Lustre (file system)|Lustre]]
 | C
 | GPLv2
 | [[Posix#POSIX.1|POSIX]], liblustre, [[Filesystem in Userspace|FUSE]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[OpenAFS]]
+! {{rh}} |[[OpenAFS]]
 | C
 | IBM Public License
 | [[Virtual file system]], [[Installable File System]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Tahoe-LAFS]]
+! {{rh}} |[[Tahoe-LAFS]]
 | Python
-| [[GNU GPL]] 2+ and other
+| [[GNU GPL]] 2+ and other<ref>{{cite web
+| url=https://tahoe-lafs.org/trac/tahoe-lafs/browser/docs/about.rst#license
+| title=About Tahoe-LAFS}}</ref>
 | HTTP (browser or [[Command-line interface|CLI]]), [[SSH File Transfer Protocol|SFTP]], [[File Transfer Protocol|FTP]], [[Filesystem in Userspace|FUSE]] via [[SSHFS]], pyfilesystem
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[HDFS]]
+! {{rh}} |[[HDFS]]
 | Java
 | Apache License 2.0
 | Java and C client, HTTP
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[XtreemFS]]
+! {{rh}} |[[XtreemFS]]
 | Java, C++
 | BSD License
 | libxtreemfs (Java, C++), [[Filesystem in Userspace|FUSE]]
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |Ori
+! {{rh}} |Ori<ref>{{cite web
+| url=http://ori.scs.stanford.edu
+| title=Ori: A Secure Distributed File System}}</ref>
 | C, C++
 | MIT
 | libori, [[Filesystem in Userspace|FUSE]]
@@ -75,27 +101,30 @@ GPLv2 client
 ! Run by
 ! Access API
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Amazon S3]]
+| {{rh}} |[[Amazon S3]]
 | [[Amazon.com]]
 | [[HTTP]] ([[REST]]/[[SOAP]])
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Google Cloud Storage]]
+| {{rh}} |[[Google Cloud Storage]]
 | [[Google]]
 | [[HTTP]] ([[REST]])
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |SWIFT (part of [[OpenStack]])
+| {{rh}} |SWIFT (part of [[OpenStack]])
 | [[Rackspace]], [[Hewlett-Packard]], others
 | [[HTTP]] ([[REST]])
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Microsoft Azure]]
+| {{rh}} |[[Microsoft Azure]]
 | [[Microsoft]]
 | [[HTTP]] ([[REST]])
 |-
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |[[Cleversafe]]
+| {{rh}} |[[Cleversafe]]
 | [[Cleversafe]]
 | [[HTTP]] ([[REST]])
 |}
+
+==Comparison==
+Some researchers have made a functional and experimental analysis of several distributed file systems including HDFS, Ceph, Gluster and Lustre.<ref>{{cite web|last1=Séguin|first1=Cyril|last2=Depardon|first2=Benjamin|last3=Le Mahec|first3=Gaël|title=Analysis of Six Distributed File Systems|url=https://hal.archives-ouvertes.fr/file/index/docid/789086/filename/a_survey_of_dfs.pdf|website=HAL}}</ref>
 
 ==See also==
 *[[Distributed file system]]
@@ -107,4 +136,4 @@ GPLv2 client
 [[Category:Network file systems]]
 
 
-<table class="metadata plainlinks stub" role="presentation" style="background:transparent"><tr><td>[[File:Emoji_u1f4be.svg|30px|alt=Stub icon]]</td><td><i>This [[computer storage]]–related article is a [[Wikipedia:stub|stub]]. You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].</i><div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Compu-storage-stub|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Compu-storage-stub|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Compu-storage-stub&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+{{compu-storage-stub}}

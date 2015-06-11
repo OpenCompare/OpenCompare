@@ -27,6 +27,9 @@ class TableVisitor(
   private var rowspan : Int = 1
   private var colspan : Int = 1
 
+  private val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
+  private val contentExtractor = new CellContentExtractor(preprocessor, parser)
+
   def extract(wtTable: WtTable, name : String) : List[Matrix] = {
     matrices = mutable.ListBuffer.empty[Matrix]
 
@@ -34,7 +37,7 @@ class TableVisitor(
     matrix.name = name
     matrices += matrix
 
-    go(wtTable.getBody) // FIXME : implement other methods to make it working
+    go(wtTable.getBody)
 
     matrices.toList
   }
@@ -86,11 +89,14 @@ class TableVisitor(
     }
 
     // Extract raw cell content
-    val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
     val rawContent = rawContentExtractor.extract(cellNode)
 
+    if (rawContent.toLowerCase.contains("yes")) {
+      println(cellNode)
+      println("rawcontent= " + rawContent)
+    }
+
     // Extract cell content
-    val contentExtractor = new CellContentExtractor(preprocessor, parser)
     val cellCode = "{|\n" +
       "|-\n" +
       "| " + rawContent + "\n" +
@@ -203,7 +209,7 @@ class TableVisitor(
   override def visit(wtPageSwitch: WtPageSwitch): Unit = {}
 
   override def visit(wtTableCaption: WtTableCaption): Unit = {
-    // TODO
+
   }
 
 

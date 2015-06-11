@@ -1,186 +1,63 @@
-The following tables compare support for different [[Web typography#File formats|font formats]] and support for CSS3 font resources for a number of layout engines. [[Web typography#Web fonts|Web fonts]] were initially defined (but later dropped) from CSS2, then added into CSS3. The specification is supported by an increasing number of web browsers.
+The following tables compare support for different [[Web typography#File formats|font formats]] and support for CSS3 font resources for a number of layout engines. [[Web typography#Web fonts|Web fonts]] were initially defined (but later dropped) from CSS2, then added into CSS3. The specification is supported by an increasing number of web browsers.<ref>{{citation |url=http://randsco.com/index.php/2009/07/04/p680 |title=Cross Browser Font Embedding with the CSS3 @font-face selector |date=2009-07-04 |publisher=Randsco |last=Kimler |first=Scott}}</ref><ref>{{citation |url=http://webfonts.info/wiki/index.php?title=%40font-face_browser_support |title=@font-face browser support}}</ref>
 
-== Explanation of the tables ==
-=== Engine nomenclature ===
-
-Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
-
-{| class="wikitable"
-! Layout engine
-! Release version
-! Preview version
-! Used by
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
-| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed; [[Amaya (web browser)|Amaya]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
-| 537.36
-| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
-|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+) and [[Yandex Browser|Yandex]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
-| 
-33.1.1 <small>(November&nbsp;14, 2014<span class="noprint">&#059;&#032;3 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-14</span>)</span><ref>{{cite web
-  | url                    = https://www.mozilla.org/en-US/firefox/33.1.1/releasenotes/
-  | title                  = Firefox — Notes (33.1.1) — Mozilla
-  | publisher              = [[mozilla.org]]
-  | publication-date       = 2014-11-14
-  | accessdate             = 2014-11-14}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
-<br />
-ESR 31.2.0 <small>(October&nbsp;14, 2014<span class="noprint">&#059;&#032;34 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-14</span>)</span><ref>{{cite web
-  | url                    = https://www.mozilla.org/en-US/firefox/31.2.0/releasenotes/
-  | title                  = Firefox — Notes (31.2.0) — Mozilla
-  | publisher              = [[mozilla.org]]
-  | publication-date       = 2014-10-14
-  | accessdate             = 2014-10-14}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
-| 
-;Beta
-34.0 Beta 9 <small>(November&nbsp;15, 2014<span class="noprint">&#059;&#032;2 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-15</span>)</span><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/34.0beta/releasenotes/
- | title = Firefox — Beta Notes (34.0beta) — Mozilla
- | date = 2014-10-16
- | accessdate = 2014-10-21
-}}</ref><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/beta/all/
- | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
- | accessdate = 2014-11-15
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
-;Developer Edition
-35.0a2 <small>(November&nbsp;10, 2014<span class="noprint">&#059;&#032;7 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-10</span>)</span><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/35.0a2/auroranotes/
- | title = Firefox — Aurora Notes (35.0a2) — Mozilla
- | date = 2014-11-10
- | accessdate = 2014-11-12
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
-;Nightly
-36.0a1 <small>(October&nbsp;14, 2014<span class="noprint">&#059;&#032;34 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-14</span>)</span><ref>{{Cite web
-  | url = https://wiki.mozilla.org/RapidRelease/Calendar
-  | title = RapidRelease/Calendar - MozillaWiki
-  | accessdate = 2014-10-15
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
-|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino (web browser)|Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
-| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|[[Konqueror]]<ref group="note" name="switch" />
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
-| 2.12.388
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
-| (IE 5.2.3 for Mac)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
-| 7.0 (IE 11)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
-| 534.20
-| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
-|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
-|}
-
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
-
-===Values===
-Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
-
-{| class="wikitable"
-|-
-! Value
-! Meaning
-|-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Indicates that the layout engine fully supports this property/element when valid values are used.
-|-
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| Indicates that the property/element is completely ignored.
-|-
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
-|-
-| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
-| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
-|-
-| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
-| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
-|-
-| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
-| Indicates that the property/element is no longer supported.
-|-
-| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
-| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
-|-
-| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
-| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
-|-
-|}
+{{Layout engine nomenclature}}
+{{Explanation of the tables2}}
 
 ==Support for CSS font resources==
-<div class="hatnote relarticle mainarticle">Main article: [[Comparison of layout engines (Cascading Style Sheets)]]</div>
-CSS3 specified a mechanism for downloading and displaying fonts within a web page. This table compare support for that mechanism. Note that  Embedded OpenType [[Embedded OpenType|(EOT)]] font download does not bring in the entire OpenType font and therefore, the most prominent feature of Open Type, ligature support, does not come with EOT. Trident before version 5.0 supports only EOT. EOT is not sufficient for smartfonts that rely on ligatures.
+{{Main | Comparison of layout engines (Cascading Style Sheets)}}
+CSS3 specified a mechanism for downloading and displaying fonts within a web page.<ref group="spec">{{citation |url=http://www.w3.org/TR/css3-fonts/#font-resources |title=CSS Fonts Module Level 3 - Font resources |publisher=W3C}}</ref> This table compare support for that mechanism. Note that  Embedded OpenType [[Embedded OpenType|(EOT)]]<ref group="spec" name="eot-spec" /> font download does not bring in the entire OpenType font and therefore, the most prominent feature of Open Type, ligature support, does not come with EOT. Trident before version 5.0 supports only EOT. EOT is not sufficient for smartfonts that rely on ligatures.
 {| style="text-align: center; width: 95%;" | class="wikitable" 
 ! colspan="2" |
-! style="width: 15%;" | [[Trident (layout engine)|Trident]]
-! style="width: 15%;" | [[Gecko (layout engine)|Gecko]]
-! style="width: 15%;" | [[WebKit]]
-! style="width: 15%;" | [[Presto (layout engine)|Presto]]
+! style="width: 15%;" | [[Trident (layout engine)|Trident]]<ref group="t" name="trident-font-face">{{citation |url=http://msdn.microsoft.com/en-us/library/ms530303(VS.85).aspx |title=About Font Embedding |publisher=Microsoft}}</ref>
+! style="width: 15%;" | [[Gecko (layout engine)|Gecko]]<ref group="g">{{citation |url=https://developer.mozilla.org/en/CSS/@font-face |title=@font-face |publisher=Mozilla}}</ref>
+! style="width: 15%;" | [[WebKit]]<ref group="w">{{citation |url=http://webkit.org/blog/124/downloadable-fonts/ |title=Downloadable Fonts |publisher=Apple |last=Hyatt |first=Dave |date=2007-10-03}}</ref>
+! style="width: 15%;" | [[Presto (layout engine)|Presto]]<ref group="p">{{citation |url=http://dev.opera.com/articles/view/presto-2-2-and-opera-10-a-first-look/ |title=Opera Presto 2.2 and Opera 10 — a first look |publisher=Opera |last=Mills |first=Chris |date=2008-12-04}}</ref><ref group="p">{{citation |url=http://dev.opera.com/articles/view/seven-web-fonts-showcases/ |title=Seven Web Fonts showcases |date=2009-09-01 |publisher=Opera}}</ref>
 |-
 ! colspan="7" | Grammar and rules
 |-
 ! CSS3
 ! <code>@font-face</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 4.0&#93;</sup> 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525<ref group="note"> Prior to version 4.0, [[Google Chrome]] had font support disabled. </ref>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.2
+| {{IE|4.0}} 
+| {{yes|1.9.1}}
+| {{yes|525}}{{#tag:ref | Prior to version 4.0, [[Google Chrome]] had font support disabled.<ref group="w">{{citation |url=http://code.google.com/p/chromium/issues/detail?id=9633 |title=Issue 9633: Disable web fonts by default |publisher=Google |date=2009-04-01}}</ref><ref group="w">{{citation |url=http://groups.google.com/group/chromium-dev/browse_thread/thread/c3b3db4339d3642c/c0040c5d39cfa1db?pli=1 |title=Full pass of acid3 - Chromium-dev |publisher=Google |date=2009-07-03}}</ref><ref group="w">{{citation |url=http://code.google.com/p/chromium/issues/detail?id=17818 |title=Issue 17818: Enabled dynamic / web font support in a secure manner |publisher=Google |date=2009-07-27}}</ref><ref group="w">{{citation |url=http://paulirish.com/2009/chrome-and-font-face-a-summary/ |title=Chrome and @font-face: It's here! |date=2010-01-25 |last=Irish |first=Paul}}</ref> | group=note}}
+| {{yes|2.2}}
 |-
 ! colspan="7" | Descriptors
 |-
 ! rowspan="8" | CSS3
 ! <code>font-family</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 4.0&#93;</sup> 
-| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
-| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
-| rowspan="4" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.2
+| {{IE|4.0}} 
+| rowspan="4" {{yes|1.9.1}}
+| rowspan="4" {{yes|525}}
+| rowspan="4" {{yes|2.2}}
 |-
 ! <code>src</code>
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Doesn't understand the <code>format()</code> or <code>local()</code> identifiers.</ref>
+| {{partial}}{{#tag:ref|Doesn't understand the <code>format()</code> or <code>local()</code> identifiers.<ref group="t">{{citation |url=http://webfonts.info/wiki/index.php?title=@font-face_support_in_Internet_Explorer |title=@font-face support in Internet Explorer}}</ref>|group=note}}
 |-
 ! <code>font-style</code>
-| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 4.0&#93;</sup>
+| rowspan="2" {{IE|4.0}}
 |-
 ! <code>font-weight</code>
 |-
 ! <code>font-stretch</code>
-| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| rowspan="2" {{yes|5.0}}<ref group="t" name="ie9-preview">{{citation |url=http://msdn.microsoft.com/en-us/ie/ff468705.aspx |title=Internet Explorer Platform Preview Guide for Developers |publisher=Microsoft}}</ref>
+| {{yes|9.0}}<ref group="g">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=3512 |title=Bug 3512 - (font-stretch) Implement font-stretch property |publisher=Mozilla}}</ref>
+| {{no}}<ref group="w">{{citation |url=https://bugs.webkit.org/show_bug.cgi?id=12530 |title=Bug 12530 - CSS3: Support the font-stretch property |publisher=WebKit}}</ref>
+| rowspan="2" {{no}}
 |-
 ! <code>unicode-range</code>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<ref group="note">Doesn't understand multiple, comma-separated ranges.</ref>
+| {{no}}<ref group="g">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=475891 |title=Bug 475891 - implement unicode-range support in user font set |publisher=Mozilla}}</ref>
+| {{partial}}{{#tag:ref|Doesn't understand multiple, comma-separated ranges.<ref group="w">{{citation |url=http://webfonts.info/wiki/index.php?title=@font-face_support_in_Safari |title=@font-face support in Safari}}</ref>|group=note}}
 |-
 ! <code>font-variant</code>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|24.0
-| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes|24.0}}<ref group="g">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=549861 |title=Bug 549861 - (font-variant) implement parsing of font feature properties |publisher=Mozilla}}</ref>
+| rowspan="2" {{no}}
+| rowspan="2" {{no}}
 |-
 ! <code>font-feature-settings</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|6.0
-| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
+| {{yes|6.0}}<ref group="t">{{cite web |url=http://msdn.microsoft.com/en-us/library/ie/hh869409 |title=font-feature-settings property |publisher=Microsoft |accessdate=8 November 2013}}</ref>
+| {{table-experimental}}<ref group="g">{{Citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=511339 |publisher=Mozilla |title=Bug 511339 - implement experimental support for -moz-font-feature-settings}}</ref>
 |}
 
 ==Support in HTML and XML documents==
@@ -192,29 +69,29 @@ This table compares support for font formats applied with the <code>@font-face</
 ! style="width: 15%;" | [[WebKit]]
 ! style="width: 15%;" | [[Presto (layout engine)|Presto]]
 |-
-! style="text-align: left;" | Embedded OpenType [[Embedded OpenType|(EOT)]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|&lt;3.1<sup>&#91;IE 4.0&#93;</sup>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | Embedded OpenType [[Embedded OpenType|(EOT)]]<ref group="spec" name="eot-spec">{{citation |url=http://www.w3.org/Submission/EOT/ |title=Embedded OpenType (EOT) File Format |publisher=Microsoft, Monotype Imaging |date=2008-03-05 |last=Nelson |first=Paul}}</ref>
+| {{IE|4.0}}
+| {{no}}<ref group="g" name="moz-eot">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=520357 |title=Bug 520357 - support new web font format (EOT Lite) in @font-face |publisher=Mozilla}}</ref>
+| {{no}}<ref group="w" name="webkit-eot">{{citation |url=https://bugs.webkit.org/show_bug.cgi?id=20542 |title=Bug 20542 - Adding EOT Font Rendering capability |publisher=WebKit}}</ref>
+| {{no}}
 |-
-! style="text-align: left;" | TrueType [[TrueType|(TTF)]]
-| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| rowspan="2" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
-| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
-| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.2
+! style="text-align: left;" | TrueType [[TrueType|(TTF)]]<ref group="spec" name="ttf-spec">{{citation |url=http://developer.apple.com/textfonts/TTRefMan/index.html |title=TrueType Reference Manual |publisher=Apple}}</ref>
+| rowspan="2" {{yes|5.0}}<ref group="t" name="ie9-preview"/>
+| rowspan="2" {{yes|1.9.1}}
+| rowspan="3" {{yes|525}}
+| rowspan="3" {{yes|2.2}}
 |-
-! style="text-align: left;" | OpenType [[OpenType|(OTF)]]
+! style="text-align: left;" | OpenType [[OpenType|(OTF)]]<ref group="spec" name="otf-spec">{{citation |url=http://www.microsoft.com/typography/otspec/ |title=OpenType specification |publisher=Microsoft}}</ref>
 |-
-! style="text-align: left;" | Scalable Vector Graphics [[Scalable Vector Graphics|(SVG)]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | Scalable Vector Graphics [[Scalable Vector Graphics|(SVG)]]<ref group="spec" name="svg-spec">{{citation |url=http://www.w3.org/TR/SVG11/fonts.html |title=Scalable Vector Graphics (SVG) 1.1 Specification - Fonts |publisher=W3C}}</ref>
+| {{no}}
+| {{no}}<ref group="g" name="moz-svg">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=119490 |title=Bug 119490 - Implement SVG fonts |publisher=Mozilla}}</ref>
 |-
-! style="text-align: left;" | Web Open Font Format [[Web Open Font Format|(WOFF)]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.2
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|533
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.7
+! style="text-align: left;" | Web Open Font Format [[Web Open Font Format|(WOFF)]]<ref group="spec" name="w3c-woff">{{citation |url=http://www.w3.org/Submission/WOFF/ |title=WOFF File Format 1.0 |publisher=W3C, Mozilla, Type Supply, LettError |date=2010-04-08 |last1=Kew |first1=Jonathan |last2=Leming |first2=Tal |last3=van Blokland |first3=Erik}}</ref><ref group="spec" name="woff-spec">{{citation |url=http://people.mozilla.com/~jkew/woff/woff-spec-latest.html |title=WOFF File Format |publisher=Mozilla, Type Supply, LettError |date=2009-10-23 |last1=Kew |first1=Jonathan |last2=Leming |first2=Tal |last3=van Blokland |first3=Erik}}</ref>
+| {{yes|5.0}}<ref group="t">{{citation |url=http://blogs.msdn.com/ie/archive/2010/04/23/meet-woff-the-standard-web-font-format.aspx |title=Meet WOFF, The Standard Web Font Format |date=2010-04-23 |publisher=Microsoft |first=Sylvain |last=Galineau}}</ref>
+| {{yes|1.9.2}}
+| {{yes|533}}<ref group="w" name="webkit-woff">{{citation |url=https://bugs.webkit.org/show_bug.cgi?id=31302 |title=Bug 31302 - Add WOFF support for @font-face |publisher=WebKit}}</ref><ref group="w">{{citation |url=https://bugs.webkit.org/show_bug.cgi?id=38217 |title=Bug 38217 - {{Bracket|chromium}} Add WOFF support |publisher=WebKit}}</ref><ref group="w">{{citation |url=http://www.html5rocks.com/tutorials/webfonts/quick/ |title=Quick Guide to Implement Webfonts via @font-face |publisher=HTML5Rocks |first=Paul |last=Irish |date=2010-08-02}}</ref>
+| {{yes|2.7}}
 |-
 |}
 
@@ -223,37 +100,37 @@ This table compares support for font formats applied with the <code>@font-face</
 {| style="text-align: center; width: 95%;" | class="wikitable" 
 ! Format
 ! style="width: 15%;" | [[Trident (layout engine)|Trident]]
-! style="width: 15%;" | [[Gecko (layout engine)|Gecko]]
+! style="width: 15%;" | [[Gecko (layout engine)|Gecko]]<ref group="g">{{citation |url=https://bugzilla.mozilla.org/show_bug.cgi?id=468237 |title=Bug 468237 - SVG image using a font specified via @font-face doesn't use the font after it loads |publisher=Mozilla}}</ref>
 ! style="width: 15%;" | [[WebKit]]
 ! style="width: 15%;" | [[Presto (layout engine)|Presto]]
 |-
-! style="text-align: left;" | Embedded OpenType [[Embedded OpenType|(EOT)]]
-| rowspan="5" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | Embedded OpenType [[Embedded OpenType|(EOT)]]<ref group="spec" name="eot-spec"/>
+| rowspan="5" {{no}}
+| {{no}}<ref group="g" name="moz-eot"/>
+| {{no}}<ref group="w" name="webkit-eot"/>
+| {{no}}
 |-
-! style="text-align: left;" | TrueType [[TrueType|(TTF)]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.2
+! style="text-align: left;" | TrueType [[TrueType|(TTF)]]<ref group="spec" name="ttf-spec"/>
+| {{yes}}
+| {{yes}}
+| rowspan="3" {{yes|2.2}}
 |-
-! style="text-align: left;" | OpenType [[OpenType|(OTF)]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|18.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | OpenType [[OpenType|(OTF)]]<ref group="spec" name="otf-spec"/>
+| {{yes|18.0}}
+| {{no}}
 |-
-! style="text-align: left;" | Scalable Vector Graphics [[Scalable Vector Graphics|(SVG)]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|525
+! style="text-align: left;" | Scalable Vector Graphics [[Scalable Vector Graphics|(SVG)]]<ref group="spec" name="svg-spec"/>
+| {{no}}<ref group="g" name="moz-svg"/>
+| {{yes|525}}
 |-
-! style="text-align: left;" | Web Open Font Format [[Web Open Font Format|(WOFF)]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.7.81
+! style="text-align: left;" | Web Open Font Format [[Web Open Font Format|(WOFF)]]<ref group="spec" name="w3c-woff"/><ref group="spec" name="woff-spec"/>
+| {{no}}
+| {{no}}<ref group="w" name="webkit-woff"/>
+| {{yes|2.7.81}}
 |}
 
 ==Smart font features support==
-<table class="metadata plainlinks ambox ambox-content ambox-globalize" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:ambox globe content.svg|50x40px|alt=Globe icon.|link=]]</div></td><td class="mbox-text"><span class="mbox-text-span">The examples and perspective in this section '''deal primarily with Western culture and do not represent a [[Wikipedia:WikiProject Countering systemic bias|worldwide view]] of the subject'''.<span class="hide-when-compact"> Please [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] and discuss the issue on the [[Talk:Comparison of layout engines (Web Typography)#Globalize|talk page]].</span>  <small>''(March 2011)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Globalize/West |date=March 2011 |discuss=Talk:Comparison of layout engines (Web Typography)#Globalize |1= section }}
 
 {| style="text-align: center; width: 95%;" | class="wikitable" 
 ! Format
@@ -262,203 +139,49 @@ This table compares support for font formats applied with the <code>@font-face</
 ! style="width: 15%;" | [[WebKit]]
 ! style="width: 15%;" | [[Presto (layout engine)|Presto]]
 |-
-! style="text-align: left;" | OpenType <code>liga</code> [[typographic ligature|ligatures]]
-| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| rowspan="3" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| rowspan="2" style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | OpenType <code>liga</code> [[typographic ligature|ligatures]]<ref group="spec">{{citation |url=http://www.microsoft.com/typography/otspec/features_ko.htm#liga |title=OpenType Layout tag registry, Tag: 'liga' |publisher=Microsoft}}</ref>
+| rowspan="2" {{no}}
+| rowspan="3" {{yes|2.0}}
+| {{partial}}<ref group="w">On Safari, ligatures may be switched on with the CSS setting [https://developer.mozilla.org/en/CSS/text-rendering text-rendering], but then, they are used indiscriminately even when [[letter-spacing]] is increased (see [http://unifraktur.sourceforge.net/letterspacing.html#letterspacing_support-note2 Fraktur letterspacing]); on Google Chrome, ligatures do not work.</ref>
+| rowspan="2" {{no}}
 |-
-! style="text-align: left;" | OpenType <code>rlig</code> ligatures
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! style="text-align: left;" | OpenType <code>rlig</code> ligatures<ref group="spec">{{citation |url=http://www.microsoft.com/typography/otspec/features_pt.htm#rlig |title=OpenType Layout tag registry, Tag: 'rlig' |publisher=Microsoft}}</ref>
+| {{no}}
 |-
 ! style="text-align: left;" | [[Zero-width non-joiner|ZWNJ]] and [[Zero-width joiner|ZWJ]] (Unicode characters used for ligature control)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{yes}}
+| {{no}}<ref group="p">When letter-spacing is increased, these characters are spacing.</ref>
 |}
 
 ==See also==
 * [[Web typography]]
 
 ==Notes==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"></references></div>
+{{Reflist | group=note}}
 
 ==References==
 
 ;Specifications
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group="spec"></references></div>
+{{Reflist | group=spec |colwidth=30em}}
 
 ;Trident references
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group="t"></references></div>
+{{Reflist | group=t |colwidth=30em}}
 
 ;Gecko references
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group="g"></references></div>
+{{Reflist | group=g |colwidth=30em}}
 
 ;WebKit references
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group="w"></references></div>
+{{Reflist | group=w |colwidth=30em}}
 
 ;Presto references
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group="p"></references></div>
+{{Reflist | group=p |colwidth=30em}}
 
 ;Other references
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist |colwidth=30em}}
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Layout engine]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Blink (layout engine)|Blink]]
-*[[Gecko (software)|Gecko]]
-*[[KHTML]]
-*[[MARTHA (layout engine)|MARTHA]]
-*[[Prince (software)|Prince]]
-*[[Servo (layout engine)|Servo]]
-*[[Trident (layout engine)|Trident]]
-*[[WebKit]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Amaya (web browser)|Amaya]]
-*[[Boxely]]
-*[[Gazelle (web browser)|Gazelle]]
-*[[GtkHTML]]
-*[[HTMLayout]]
-*[[iCab]]
-*[[Mariner (layout engine)|Mariner]]
-*[[Presto (layout engine)|Presto]]
-*[[Tasman (layout engine)|Tasman]]
-*[[Tkhtml]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Comparison of layout engines (HTML)|HTML]]
-**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
-*[[Comparison of layout engines (HTML5)|HTML5]]
-**[[Comparison of layout engines (HTML5 media)|media]]
-**[[Comparison of layout engines (HTML5 canvas)|canvas]]
-*[[Comparison of layout engines (XML)|XML]]
-**[[Comparison of layout engines (XHTML)|XHTML]]
-***[[Comparison of layout engines (XHTML 1.1)|1.1]]
-**[[Comparison of layout engines (MathML)|MathML]]
-**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
-*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
-*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
-*[[Comparison of layout engines (Document Object Model)|DOM]]
-*[[Comparison of layout engines (graphics)|Graphics]]
-*[[Comparison of layout engines (web typography)|Typography]]
-</div></td></tr></table></td></tr></table>
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible collapsed navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Typography terms|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Typography terms|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Typography_terms&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Typography]] terminology</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Page (paper)|Page]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Canons of page construction]]
-*[[Column (typography)|Column]]
-*[[Margin (typography)|Margin]]
-*[[Page numbering]]
-*[[Pagination]]
-*[[Pull quote]]
-*[[Recto and verso]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Paragraph]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Typographic alignment|Alignment]]
-*[[Justification (typesetting)|Justification]]
-*[[Leading]]
-*[[River (typography)|River]]
-*[[Sentence spacing]]
-*[[Widows and orphans]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Glyph|Character (glyph)]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">[[Typeface anatomy|Anatomy]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
-*[[Counter (typography)|Counter]]
-*[[Diacritic]]s
-*[[Dingbat]]
-*[[Glyph]]
-*[[Initial]]
-*[[Kerning]]
-*[[Letter-spacing]]
-*[[Typographic ligature|Ligature]]
-*[[Subscript and superscript]]
-*[[Swash (typography)|Swash]]
-*[[Text figures]]
-*[[Tittle]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">[[Letter case|Case]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em"><div class="hlist " >
-*[[CamelCase]]
-*[[Lower case|Lower]]
-*[[Sentence case|Sentence]]
-*[[Title case|Title]]
-*[[Upper case|Upper]]
-</div><div class="hlist " >
-*[[All caps]]
-*[[Petite caps]]
-*[[Small caps]]
-</div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">Vertical</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
-*[[Ascender (typography)|Ascender]]
-*[[Baseline (typography)|Baseline]]
-*[[Cap height]]
-*[[Descender]]
-*[[Mean line|Median]]
-*[[Overshoot (typography)|Overshoot]]
-*[[x-height]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Typeface|Classifications]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">[[Roman type|Roman]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
-*[[Antiqua (typeface class)|Antiqua (Old Style)]]
-*[[Didone (typography)|Didone (Modern)]]
-*[[Sans-serif#Classification|Sans-serif]]
-*[[Script typeface|Script]]
-*[[Serif]]
-*[[Slab serif]]
-*[[Serif#Transitional|Transitional]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">[[Blackletter]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
-*[[Fraktur]]
-*[[Rotunda (script)|Rotunda]]
-*[[Schwabacher]]
-*[[Blackletter#Textualis|Textualis]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="width:5.0em;font-weight:normal;">[[Gaelic type|Gaelic]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;padding:0px"><div style="padding:0em 0.25em">
-*[[Insular script|Angular]]
-*[[Uncial script|Uncial]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Punctuation]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Dash]]es
-*[[Hanging punctuation]]
-*[[Hyphen]]ation
-*[[Prime (symbol)|Prime mark]]
-*[[Quotation mark]]&nbsp;([[International variation in quotation marks|variation]])
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Typesetting]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Calligraphy]]
-*[[etaoin shrdlu]]
-*[[Font]]&nbsp;([[Computer font|computer]])
-*[[Font catalog]]
-*[[Letterpress printing|Letterpress]]
-*[[Lorem ipsum]]
-*[[Microtypography]]
-*[[Movable type]]
-*[[Pangram]]
-*[[Phototypesetting]]
-*[[Punchcutting]]
-*[[Type color]]
-*[[Type design]]
-*[[Typeface]]&nbsp;([[List of typefaces|list]])
-*[[Monospaced font]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Typographic unit]]s</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Agate (typography)|Agate]]
-*[[Cicero (typography)|Cicero]]
-*[[Em (typography)|Em]]
-*[[En (typography)|En]]
-*[[Figure space]]
-*[[Measure (typography)|Measure]]
-*[[Paren space]]
-*[[Pica (typography)|Pica]]
-*[[Point (typography)|Point]]
-*[[Thin space]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[:Category:Digital typography|Digital typography]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Character encoding]]
-*[[:Category:Font formats|Font formats]]
-*[[Font hinting|Hinting]]
-*[[Font rasterization|Rasterization]]
-*[[:Category:Typesetting software|Typesetting software]]
-*[[List of typographic features]]
-*[[Web typography]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[List of type designers]]
-*[[Style guide]]
-*[[Type foundry]]
-*[[:Category:Typographers|Typographers]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow hlist" colspan="2" style="font-weight:bold;"><div>
-* [[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] [[:Category:Typography|Category]]
-* [[File:Portal-puzzle.svg                       | Portal|16x16px|link=]] [[:Portal:Typography|Portal]]
-</div></td></tr></table></td></tr></table>
+{{Web browser engines}}
+{{Typography terms}}
 
 [[Category:Digital typography]]
 [[Category:Layout engine comparisons]]

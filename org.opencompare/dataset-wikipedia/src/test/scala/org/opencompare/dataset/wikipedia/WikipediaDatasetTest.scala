@@ -127,7 +127,47 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   }
 
-  "Wikipedia IO" should "parse every available PCM in Wikipedia" in {
+  ignore should "download every available Wikipedia PCM" in {
+    val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
+    val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
+    wikipediaPCMsFile.close
+
+    val tasks : Seq[Future[String]] = for(article <- wikipediaPCMs) yield future {
+      var result = new StringBuilder
+      if (article.startsWith("//")) {
+        result ++= "IGNORED : " + article
+      } else {
+        result ++= article
+        var retry = false
+        do {
+          try {
+
+            // Download Wikipedia page code
+            val code = miner.getPageCodeFromWikipedia(article)
+
+            // Save code
+            writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", code)
+
+          } catch {
+            // case e : UnknownHostException => retry = true
+            case e : Throwable =>
+              val sw = new StringWriter();
+              val pw = new PrintWriter(sw);
+              e.printStackTrace(pw);
+              result ++= sw.toString();
+          }
+        } while (retry)
+      }
+      result.toString
+    } (executionContext)
+
+    for (task <- tasks) {
+      val result = Await.result(task, 10.minutes)
+      //      println(result)
+    }
+  }
+
+  it should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -150,9 +190,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   }
 
-
-
-  "Formalizer" should "interpret the cell of all the Wikipedia PCMs" in {
+  it should "interpret the cell of all the Wikipedia PCMs" in {
 
     val interpreter = new CellContentInterpreter
     val loader = new KMFJSONLoader
