@@ -27,9 +27,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.canUndo = false;
     $scope.canRedo = false;
 
-    //Edit mode
-    $scope.edit = false;
-    var pcmRaw = [];
+    //Export
+    $scope.export_content = null;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -75,7 +74,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 else {
                     commandParameters = [rowEntity.$$hashKey, 'name', contentValue, getVisualRepresentation(newValue), rawValue, newValue];
                 }
-                console.log(commandParameters);
+                console.log($scope.pcmData);
                 $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
                 pcmRaw = [];
@@ -118,8 +117,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /*$http.get("/api/visualRepresentation/" + cellValue).success(function(data) {
             window.location.href = "/";
         });*/
-        var newValue = cellValue.slice(2, -2);
-        return newValue;
+       // var newValue = cellValue.slice(2, -2);
+        return cellValue;
     }
 
     /**
@@ -383,18 +382,25 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var productData = {};
             features.map(function(feature) {
                 var cell = findCell(product, feature);
+                console.log(cell);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
             });
             return productData;
         });
-        // Return data rawcontent
+        // Return rawcontent
         var productsRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
             features.map(function(feature) {
                 var cell = findCell(product, feature);
+                console.log(cell.rawContent);
                 productDataRaw.name = product.name; // FIXME : may conflict with feature name
-                productDataRaw[feature.name] = '{{'+cell.content+'}}';// TODO: replace content with rawcontent when implemented
+                if(cell.rawContent && cell.rawContent != "") {
+                    productDataRaw[feature.name] = cell.rawContent;
+                }
+                else {
+                    productDataRaw[feature.name] = cell.content;// TODO: replace content with rawcontent when implemented
+                }
             });
             return productDataRaw;
         });
@@ -451,7 +457,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             });
         $scope.gridOptions.columnDefs = columnDefs;
 
-        /* Setting the grid size */
+        /* Set the grid size */
         if($scope.gridApi) {
             $scope.gridApi.grid.gridHeight = $(window).height()/3*2;
         }
@@ -1111,6 +1117,31 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     $scope.$on('setGridEdit', function(event, args) {
         $scope.setEdit(args);
+    });
+
+    $scope.$on('export', function (event, args) {
+        $scope.export_loading = true;
+        $scope.pcm = convertGridToPCM($scope.pcmData);
+        $scope.export_content = "";
+        $http.post(
+            "/api/export/" + args,
+            {
+                file: serializer.serialize($scope.pcm),
+                title: $scope.pcm.title,
+                productAsLines: true,
+                separator: ',',
+                quote: '"'
+            }, {
+                responseType: "text/plain",
+                transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
+                    return d;
+                }
+            })
+            .success(function(response, status, headers, config) {
+                $scope.export_content = response;
+            }).error(function(data, status, headers, config) {
+                console.log(data)
+            });
     });
 
 })
