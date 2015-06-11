@@ -30,14 +30,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     //Export
     $scope.export_content = null;
 
+    //rawContent
+    pcmRaw = [];
+
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
         enableRowSelection: false,
         enableRowHeaderSelection: false,
-        enableColumnResizing: false,
+        enableColumnResizing: true,
         enableFiltering: true,
         enableCellSelection: false,
+        headerRowHeight: 90,
         rowHeight: 28
     };
 
@@ -46,6 +50,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
+        gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
+            console.log(colDef);
+            console.log(originalPosition);
+            console.log(newPosition);
+           /* $scope.gridOptions.columnDefs.splice(newPosition, 0,  $scope.gridOptions.columnDefs[originalPosition]);
+            if(originalPosition > newPosition) {
+                $scope.gridOptions.columnDefs.splice(originalPosition+1, 1);
+            }
+            else {
+                $scope.gridOptions.columnDefs.splice(originalPosition-1, 1);
+            }*/
+            console.log($scope.pcmData);
+
+
+        });
         gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
             if(pcmRaw[rowEntity.$$hashKey]) {
                 rawValue = pcmRaw[rowEntity.$$hashKey][colDef.name];
@@ -74,13 +93,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 else {
                     commandParameters = [rowEntity.$$hashKey, 'name', contentValue, getVisualRepresentation(newValue), rawValue, newValue];
                 }
-                console.log($scope.pcmData);
                 $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
                 pcmRaw = [];
+                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue);
+            }
+            else {
+                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = contentValue;
             }
             /* Update value based on visual representation and raw */
-            $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue);
+
             $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
         });
     };
@@ -137,10 +159,12 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableSorting: true,
             enableHiding: false,
             enableFiltering: true,
+            enableColumnResizing: true,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
             minWidth: 150,
+            maxWidth: '*',
             filter: {term: ''},
             menuItems: [
                 {
@@ -382,7 +406,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var productData = {};
             features.map(function(feature) {
                 var cell = findCell(product, feature);
-                console.log(cell);
+                //console.log(cell);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
             });
@@ -459,7 +483,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         /* Set the grid size */
         if($scope.gridApi) {
-            $scope.gridApi.grid.gridHeight = $(window).height()/3*2;
+            $scope.gridApi.grid.gridHeight = 0;//$(window).height()/20;
         }
     }
 
@@ -475,7 +499,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             product.name = productData.name;
             pcm.addProducts(product);
 
-            // Create cells
+            /* Create cells
             for (var featureData in productData) { // FIXME : order is not preserved
                 if (productData.hasOwnProperty(featureData)
                     && featureData !== "$$hashKey"
@@ -488,15 +512,36 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         pcm.addFeatures(feature);
                         featuresMap[featureData] = feature;
                     }
-                    var feature = featuresMap[featureData]
+                    var feature = featuresMap[featureData];
 
                     // Create cell
                     var cell = factory.createCell();
                     cell.feature = feature;
                     cell.content = productData[featureData];
+                    //cell.rawContent = productData[featureData];
                     product.addCells(cell);
                 }
-            }
+            }*/
+            $scope.gridOptions.columnDefs.forEach(function (featureData) {
+                if(productData.hasOwnProperty(featureData.name) && featureData.name != "product") {
+
+                    // Create feature if not existing
+                    if (!featuresMap.hasOwnProperty(featureData.name)) {
+                        var feature = factory.createFeature();
+                        feature.name = featureData.name;
+                        pcm.addFeatures(feature);
+                        featuresMap[featureData.name] = feature;
+                    }
+                    var feature = featuresMap[featureData.name];
+
+                    // Create cell
+                    var cell = factory.createCell();
+                    cell.feature = feature;
+                    cell.content = productData[featureData.name];
+                    //cell.rawContent = productData[featureData];
+                    product.addCells(cell);
+                }
+            })
         });
         return pcm;
     }

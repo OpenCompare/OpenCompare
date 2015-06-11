@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <div id="matrix" class="grid" ui-grid="gridOptions" style="height: 500px" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns>
+    <div id="matrix" class="grid" ui-grid="gridOptions"  ng-style="{'height' : pcmData.length * 30 + 90}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns>
         <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
             <div class="msg">
                 <span class="loader"> Loading Data...</span>
