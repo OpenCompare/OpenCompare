@@ -6,13 +6,13 @@ import java.util.Map;
 /**
  * Created by gbecan on 6/10/15.
  */
-public class PCMRepresentation {
+public class PCMMetadata {
 
     protected PCM pcm;
     protected Map<Product, Integer> productPositions;
     protected Map<Feature, Integer> featurePositions;
 
-    public PCMRepresentation(PCM pcm) {
+    public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
         this.productPositions = new HashMap<Product, Integer>();
         this.featurePositions = new HashMap<Feature, Integer>();
