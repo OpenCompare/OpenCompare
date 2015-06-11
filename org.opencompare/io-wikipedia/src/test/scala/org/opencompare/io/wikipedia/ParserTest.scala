@@ -6,7 +6,8 @@ import java.util.concurrent.Executors
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
-import org.opencompare.io.wikipedia.export.{PCMModelExporter, WikiTextExporter}
+import org.opencompare.io.wikipedia.export.PCMModelExporter
+import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -17,7 +18,7 @@ import scala.xml.PrettyPrinter
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  val miner = new WikipediaPageMiner
+  val miner = new WikiTextLoader
   val pcmExporter = new PCMModelExporter
   val csvExporter = new CSVExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
@@ -37,19 +38,17 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
-    val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode, file)
+    miner.mineInternalRepresentation(code, "")
   }
   
   def parseFromTitle(title : String) : Page = {
     val code = miner.getPageCodeFromWikipedia(title)
-    val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode, title)
+    miner.mineInternalRepresentation(code, title)
   }
   
   def parseFromOfflineCode(title : String) : Page = {
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    miner.parse(code, title)
+    miner.mineInternalRepresentation(code, "")
   }
   
   def testArticle(title : String) : Page = {
@@ -116,7 +115,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val serializer = new WikiTextExporter
 
     for ((pcm, index) <- pcms.zipWithIndex) {
-      val wikitext = serializer.toWikiText(pcm)
+      val wikitext = serializer.export(pcm)
       val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
       writer.write(wikitext)
       writer.close()
@@ -140,7 +139,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "The PCM parser v2" should "parse pages from Wikipedia" in {
     val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
-    val miner2 = new WikipediaPageMiner2
+    val miner2 = new WikiTextLoader
     val serializer = new KMFJSONExporter
 
     for(title <- wikipediaPCMs) yield {

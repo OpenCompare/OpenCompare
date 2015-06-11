@@ -1,4 +1,4 @@
-package org.opencompare.io.wikipedia.parser2
+package org.opencompare.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
 import org.sweble.wikitext.parser.nodes._
@@ -7,11 +7,20 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 6/9/15.
  */
-class NodeToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitor[String] {
+class HeadingToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitor[String] {
 
   def extractString(node : WtNode) : String = {
     go(node).toString
   }
+
+  override def visit(wtHeading: WtHeading): String = {
+    wtHeading.map(dispatch(_)).mkString("")
+  }
+
+  override def visit(wtText: WtText): String = {
+    wtText.getContent
+  }
+
 
   override def visit(wtTableImplicitTableBody: WtTableImplicitTableBody): String = {""}
 
@@ -36,10 +45,6 @@ class NodeToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitor[
   override def visit(wtWhitespace: WtWhitespace): String = {""}
 
   override def visit(wtXmlAttributes: WtXmlAttributes): String = {""}
-
-  override def visit(wtText: WtText): String = {
-    wtText.getContent
-  }
 
   override def visit(wtIgnored: WtIgnored): String = {""}
 
@@ -124,10 +129,6 @@ class NodeToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisitor[
   override def visit(wtLinkOptionAltText: WtLinkOptionAltText): String = {""}
 
   override def visit(wtItalics: WtItalics): String = {""}
-
-  override def visit(wtHeading: WtHeading): String = {
-    wtHeading.map(dispatch(_)).mkString("")
-  }
 
   override def visit(wtDefinitionListTerm: WtDefinitionListTerm): String = {""}
 

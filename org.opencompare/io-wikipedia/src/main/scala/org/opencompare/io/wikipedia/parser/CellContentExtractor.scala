@@ -1,13 +1,12 @@
-package org.opencompare.io.wikipedia.parser2
+package org.opencompare.io.wikipedia.parser
 
 import java.util.regex.Pattern
 
 import de.fau.cs.osr.ptk.common.AstVisitor
-import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
-import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 import org.sweble.wikitext.parser.nodes._
+import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 
-import scala.collection.mutable.{ListBuffer, Stack}
+import scala.collection.mutable.Stack
 
 class CellContentExtractor(
                             val preprocessor : WikitextPreprocessor,
@@ -180,7 +179,7 @@ class CellContentExtractor(
       val attribute = it.next().asInstanceOf[WtXmlAttribute]
       val name = attribute.getName().getAsString()
 
-      val nodeToTextVisitor = new org.opencompare.io.wikipedia.parser.NodeToTextVisitor
+      val nodeToTextVisitor = new NodeToTextVisitor
       nodeToTextVisitor.go(attribute.getValue())
       val value = nodeToTextVisitor.getText
 

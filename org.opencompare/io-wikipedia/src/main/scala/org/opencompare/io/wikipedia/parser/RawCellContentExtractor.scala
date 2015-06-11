@@ -1,4 +1,4 @@
-package org.opencompare.io.wikipedia.parser2
+package org.opencompare.io.wikipedia.parser
 
 import java.util.regex.Pattern
 
