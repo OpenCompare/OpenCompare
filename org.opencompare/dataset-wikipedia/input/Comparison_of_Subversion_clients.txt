@@ -1,4 +1,4 @@
-<table class="metadata plainlinks ambox ambox-style ambox-citation_style" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''has an unclear citation style'''.<span class="hide-when-compact"> The references used may be made clearer with a different or consistent style of [[Wikipedia:Citing sources|citation]], [[Help:Footnotes|footnoting]], or [[Wikipedia:External links|external linking]]. <em>Violates Wikipedia:External links: "Wikipedia articles may include links to web pages outside Wikipedia (external links), but they should not normally be used in the body of an article.".</em></span>  <small>''(May 2012)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Citation style|date=May 2012|details=Violates Wikipedia:External links: "Wikipedia articles may include links to web pages outside Wikipedia (external links), but they should not normally be used in the body of an article."}}
 
 A '''comparison of Subversion clients''' includes various aspects of computer software implementations of the [[client (computing)|client]] role using the [[client–server model]] of the [[Apache Subversion|Subversion]] [[revision control system]].
 
@@ -7,13 +7,30 @@ A '''comparison of Subversion clients''' includes various aspects of computer so
 
 [[SmartSVN]] provides a similar Explorer integration, but also can be used as a standalone SVN client for different platforms. SmartSVN is available in three different editions: A free Foundation edition with fewer features and two commercial editions called Professional and Enterprise with the full feature set.
 
-Some programmers prefer to have a client integrated within their development environment. Such environments may provide visual feedback of the state of versioned items and add repository commands to the menus of the development environment. Examples of this approach include [[AnkhSVN]], [[Unified SCC]] and [[VisualSVN]] for use with [[Microsoft Visual Studio]], and [[Subclipse]] or Subversive
+Some programmers prefer to have a client integrated within their development environment. Such environments may provide visual feedback of the state of versioned items and add repository commands to the menus of the development environment. Examples of this approach include [[AnkhSVN]], [[Unified SCC]] and [[VisualSVN]] for use with [[Microsoft Visual Studio]], and [[Subclipse]] or Subversive<ref>
+{{cite book
+| last                  = Cei
+| first                 = Ugo
+| last2                 = Lucidi
+| first2                = Piergiorgio
+| title                 = Alfresco 3 Web Services
+| url                   = http://books.google.com/books?id=aCAHMyCi38EC
+| accessdate            = 2013-03-04
+| year                  = 2010
+| publisher             = [[Packt]] Publishing Ltd
+| isbn                  = 9781849511537
+| page                  = n.p.
+| quote                 = In Eclipse, for instance, you will have to install one of the existing Subversion plugins, such as Subversive [...]
+}}
+</ref><ref>
+http://www.eclipse.org/subversive/
+</ref>
 for use with [[Eclipse (software)|Eclipse]]. [[Embarcadero Delphi|Delphi]] XE Subversion integration is built into the Delphi [[integrated development environment|IDE]].
 
 It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]. In this case, any Webdav client can be used, but the functionality provided this way may be limited. Alternative ways to serve Subversion include [[WANdisco#uberSVN|uberSVN]] and [[VisualSVN#VisualSVN Server|VisualSVN Server]].
 
 == Subversion clients comparison table ==
-
+<!-- Per [[WP:REPEATLINK]]: Wikilink to 1st instance of terms only, remove later repeating links. -->
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: 100%;"
 |-
 ! Name
@@ -28,7 +45,7 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 ! Server functionality
 ! Visualization
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[AnkhSVN]]
+! {{rh}} | [[AnkhSVN]]
 | [[C Sharp (programming language)|C#]], [[SharpSvn]]
 | [[Microsoft Windows]]
 | [[Apache License]]
@@ -36,11 +53,11 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | English
 | http, https, svn, svn+ssh, file
 | 2.5.12478
-| June&nbsp;5, 2014<span class="noprint">&#059;<br/>10 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-06-05</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{start date and age|2014|06|05|br=yes}}
+| {{No}}
 | Diff, blame, history, properties
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CODESYS]] SVN
+!{{rh}} | [[CODESYS]] SVN
 | C#, [[SharpSvn]]
 | [[Microsoft Windows]]
 | proprietary, trials can be negotiated
@@ -48,71 +65,71 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | English, German
 | http, https, svn, svn+ssh, file
 | V4.0.1.2 (based on SVN 1.7.17)
-| June&nbsp;12, 2014<span class="noprint">&#059;<br/>10 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-06-12</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{start date and age|2014|06|12|br=yes}}
+| {{No}}
 | Diff, merge, log
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[eSvn]]
+! {{rh}} | [[eSvn]]
 | C++, [[Qt (framework)|Qt]]
-| Unix-like operating systems (GNU/Linux distributions, FreeBSD, Sun Solaris and others), <span class="nowrap">Mac OS X</span> and Windows
+| Unix-like operating systems (GNU/Linux distributions, FreeBSD, Sun Solaris and others), {{nowrap|Mac OS X}} and Windows
 | [[GNU General Public License|GPL]]
 | GUI, standalone (like [[WinCVS]], [[Cervisia]])
 | English
 | http, svn
 | 0.6.12
-| For *nix OSs: July&nbsp;16, 2007<span class="noprint">&#059;<br/>7 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2007-07-16</span>)</span>. For Windows: July&nbsp;12, 2007<span class="noprint">&#059;<br/>7 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2007-07-12</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| For *nix OSs: {{start date and age|2007|07|16|br=yes}}.<ref>[http://sourceforge.net/projects/esvn/files/eSvn/0.6.12/ eSvn - Browse /eSvn/0.6.12 at SourceForge.net<!-- Bot generated title -->]</ref> For Windows: {{start date and age|2007|07|12|br=yes}}<ref>[http://sourceforge.net/projects/esvn/files/eSvn/0.6.11/ eSvn - Browse /eSvn/0.6.11 at SourceForge.net<!-- Bot generated title -->]</ref>
+| {{No}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[kdesvn]]
+! {{rh}} | [[kdesvn]]
 | C++, Qt
-| Linux, Unix, <span class="nowrap">Mac OS X</span>
+| Linux, Unix, {{nowrap|Mac OS X}}
 | GPL
 | [[Konqueror]], [[Dolphin (software)|Dolphin]], standalone
 | English
 | file, http, https, (k)svn, (k)svn+file, (k)svn+http, (k)svn+https, (k)svn+ssh
 | 1.6.0
-| August&nbsp;5, 2012<span class="noprint">&#059;<br/>2 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2012-08-05</span>)</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2012|08|05|br=yes}}<ref>[http://kdesvn.alwins-world.de/blog/2012-08-05/rel_1_6_0 Released Version 1.6.0 – Kdesvn project<!-- Bot generated title -->]</ref>
+| {{Yes}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[PixelNovel Timeline]]
+! {{rh}} | [[PixelNovel Timeline]]
 | C++
-| <span class="nowrap">Mac OS X</span>, [[Microsoft Windows]]
+| {{nowrap|Mac OS X}}, [[Microsoft Windows]]
 | Free if used with PixelNovel web storage, 30-day trial with commercial upgrade otherwise
 | [[Adobe Photoshop]]
 | English
 | svn
 | 1.0
-| July&nbsp;7, 2009<span class="noprint">&#059;<br/>5 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2009-07-07</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2009|07|07|br=yes}}<ref>[http://pixelnovel.com/press/ Press Room - PixelNovel - innovative tools for Adobe Photoshop users, such as version control for Photoshop and a Photoshop plugin for exporting photos to Flickr<!-- Bot generated title -->]</ref><ref>[http://pixelnovel.com/press/pressrelease-timeline/ PixelNovel Timeline Released - Press Release -PixelNovel - innovative tools for Adobe Photoshop users, such as version control for Photoshop and a Photoshop plugin for exportin...<!-- Bot generated title -->]</ref>
+| {{dunno}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[MagnetSVN]]
-| C#
+! {{rh}} | [[MagnetSVN]]
+| C#, SharpSVN
 | [[Microsoft Windows]] (32/64-bit)
 | proprietary, 30-day trial
 | Microsoft Office (Word, Excel)
 | English
 | http, https, svn, svn+ssh, file
 | 3.0.0
-| April&nbsp;22, 2015<span class="noprint">&#059;<br/>5 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2015-04-22</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Start date and age|2015|04|22|br=yes}}<ref>[http://www.magnetsvn.com/versionhistory.html MagnetSVN | Version History]</ref>
+| {{no}}
 | Diff
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[QSvn]]
+! {{rh}} | [[QSvn]]
 | C++, Qt
-| Linux, Unix, <span class="nowrap">Mac OS X</span>, [[Microsoft Windows]]
+| Linux, Unix, {{nowrap|Mac OS X}}, [[Microsoft Windows]]
 | GPL
 | GUI, standalone (like WinCVS)
 | English
 |
 | 0.8.3
-| July&nbsp;26, 2009<span class="noprint">&#059;<br/>5 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2009-07-26</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2009|07|26|br=yes}}
+| {{No}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[RabbitVCS]]
+! {{rh}} | [[RabbitVCS]]
 | Python, GTK+
 | Linux
 | GPL
@@ -120,35 +137,35 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | ca, cs, de, en, es, fa, fr, he, hr, it, ja, nb, nl, pl, pt, ro, ru, sk, sl, sv, zh_CN
 | http, https, svn, svn+ssh, file
 | 0.16.0
-| March&nbsp;2, 2014<span class="noprint">&#059;<br/>13 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-03-02</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2014|03|02|br=yes}}
+| {{dunno}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[RapidSVN]]
+! {{rh}} | [[RapidSVN]]
 | C++, [[wxWidgets]]
-| Linux, Unix, <span class="nowrap">Mac OS X</span>, [[Microsoft Windows]], Solaris, many more
+| Linux, Unix, {{nowrap|Mac OS X}}, [[Microsoft Windows]], Solaris, many more
 | GPL
 | GUI, standalone
 | Unicode, many
 |
 | 0.12.1
-| June&nbsp;28, 2012<span class="noprint">&#059;<br/>2 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2012-06-28</span>)</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{start date and age|2012|06|28|br=yes}}
+| {{No}}
 | External
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SmartSVN]]
+! {{rh}} | [[SmartSVN]]
 | Java
-| Linux, Unix, <span class="nowrap">Mac OS X</span>, [[Microsoft Windows]] (Any with a 1.5 or higher JRE)
+| Linux, Unix, {{nowrap|Mac OS X}}, [[Microsoft Windows]] (Any with a 1.5 or higher JRE)
 | Trial with commercial upgrade or free 'Foundation' edition
 | GUI, standalone, Finder and Windows Shell (Explorer) integration
 | English
 | http, https, svn, svn+ssh
 | 8.6.2
-| November&nbsp;12, 2014<span class="noprint">&#059;<br/>5 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-12</span>)</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{start date and age|2014|11|12|br=yes}}<ref>[http://www.smartsvn.com/smartsvn/changelog.txt Changelog]</ref>
+| {{Yes}}
 | Diff, merge, revision graph with merge arrows
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SVN Notifier]]
+! {{rh}} | [[SVN Notifier]]
 | C#
 | [[Microsoft Windows]]
 | GPL
@@ -156,11 +173,11 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | English
 | http, https, svn, svn+ssh, file
 | 1.9.3
-| June&nbsp;25, 2012<span class="noprint">&#059;<br/>2 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2012-06-25</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2012|06|25|br=yes}}<ref>http://svnnotifier.tigris.org/source/browse/*checkout*/svnnotifier/trunk/ReleaseNotes.txt</ref>
+| {{dunno}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SVNBreeze]]
+! {{rh}} | [[SVNBreeze]]
 | C#
 | [[Microsoft Windows]]
 | Paid license needed (free trial available)
@@ -168,11 +185,11 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | en
 | http, https, svn, file
 | 1.0.13.1023
-| October&nbsp;23, 2013<span class="noprint">&#059;<br/>17 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2013-10-23</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2013|10|23|br=yes}}
+| {{dunno}}
 | Diff, Merge Files, Log, Branch, Merge Branches, File Properties
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[TortoiseSVN]]
+! {{rh}} | [[TortoiseSVN]]
 | C++, MFC
 | [[Microsoft Windows]] (32/64-bit)
 | GPL
@@ -180,23 +197,23 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | 41 languages (including en)
 | http, https, svn, svn+ssh, file, svn+XXX
 | 1.8.8
-| August&nbsp;11, 2014<span class="noprint">&#059;<br/>8 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-08-11</span>)</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Start date and age|2014|08|11|br=yes}}
+| {{yes}}
 | Diff, merge, Revision Tree
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Trac]]
+! {{rh}} | [[Trac]]
 | Python
-| Linux, Unix, <span class="nowrap">Mac OS X</span>, [[Microsoft Windows]]
+| Linux, Unix, {{nowrap|Mac OS X}}, [[Microsoft Windows]]
 | [[Modified BSD License|Modified BSD]]
 | web-based
 | [31 languages][http://trac.edgewall.org/wiki/TracL10N#Translationcoordination]
 | file
-| 1.01
-| February&nbsp;1, 2013<span class="noprint">&#059;<br/>2 years ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2013-02-01</span>)</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 1.01<ref>[http://trac.edgewall.org/wiki/TracDownload TracDownload – The Trac Project<!-- Bot generated title -->]</ref>
+| {{start date and age|2013|02|01|br=yes}}<ref>[http://trac.edgewall.org/browser/tags/trac-1.0.1/RELEASE RELEASE in tags/trac-1.0.1 – The Trac Project<!-- Bot generated title -->]</ref>
+| {{yes}}
 | Log
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ViewVC]]
+! {{rh}} | [[ViewVC]]
 | Python
 | http, https
 | "two-clause Berkeley-style"
@@ -204,11 +221,11 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | English
 | http, https, svn, svn+ssh, file
 | 1.1.23
-| November&nbsp;4, 2014<span class="noprint">&#059;<br/>5 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-04</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2014|11|04|br=yes}}<ref>[http://viewvc.tigris.org/servlets/ProjectDocumentList?folderID=6004   viewvc Documents & files:]</ref>
+| {{dunno}}
 | Diff, annotation, blame, revision graph
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[VisualSVN]]
+! {{rh}} | [[VisualSVN]]
 |
 | [[Microsoft Windows]] (32/64-bit)
 | proprietary
@@ -216,21 +233,21 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 | English
 | http, https, svn, svn+ssh, file
 | 4.0.10
-| October&nbsp;28, 2014<span class="noprint">&#059;<br/>5 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-28</span>)</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2014|10|28|br=yes}}<ref>[http://www.visualsvn.com/visualsvn/changes/ VisualSVN | Version History<!-- Bot generated title -->]</ref>
+| {{yes}}
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Xcode]]
+! {{rh}} | [[Xcode]]
 | Objective-C, Cocoa
-| <span class="nowrap">Mac OS X</span>
+| {{nowrap|Mac OS X}}
 | Proprietary, free on [[Mac App Store]]
 | [[Xcode]] IDE
 | English
 |
 | 5.0.1 (4H127)
-| October&nbsp;22, 2013<span class="noprint">&#059;<br/>17 months ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2013-10-22</span>)</span>
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{start date and age|2013|10|22|br=yes}}
+| {{dunno}}
+| {{dunno}}
 |}
 
 == Standalone Subversion clients comparison table ==
@@ -243,54 +260,53 @@ It is common to expose Subversion via [[Webdav]] using the [[Apache web server]]
 !Merge
 !Browse remote repository
 |----
-| Cornerstone||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||file, http, https, svn and svn+ssh||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Cornerstone||{{No}}||file, http, https, svn and svn+ssh||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| DiffPlug ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||file, http, https, svn||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| DiffPlug ||{{Yes}}||file, http, https, svn||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| eSvn||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, svn||?||?||?
+| eSvn||{{Yes}}||http, svn||?||?||?
 |-
-| iVersion||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||svn, http, https||?||?||?
+| iVersion||{{No}}||svn, http, https||?||?||?
 |-
-| kdesvn||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||file, http, https, (k)svn, (k)svn+file, (k)svn+http, (k)svn+https, (k)svn+ssh||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| kdesvn||{{Yes}}||file, http, https, (k)svn, (k)svn+file, (k)svn+http, (k)svn+https, (k)svn+ssh||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| QSvn||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||?||?
+| QSvn||{{Yes}}||||{{Yes}}||?||?
 |-
-| RapidSVN||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||internal||internal||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| RapidSVN||{{Yes}}||||internal||internal||{{Yes}}
 |-
-| sdSVN||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https||?||?||?
+| sdSVN||{{Yes}}||http, https||?||?||?
 |-
-| SmartGit ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn, svn+ssh||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| SmartGit ||{{Yes}}||http, https, svn, svn+ssh||{{Yes}}||{{Yes}}||{{No}}
 |-
-| SmartSVN Professional||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, svn+ssh, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SmartSVN Professional||{{No}}||http, https, svn, svn+ssh, file||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| SmartSVN Foundation||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, svn+ssh, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SmartSVN Foundation||{{No}}||http, https, svn, svn+ssh, file||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| Subcommander||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn, file||?||?||?
+| Subcommander||{{Yes}}||http, https, svn, file||?||?||?
 |-
-| SVN-Monitor||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn, svn+ssh, file||?||?||?
+| SVN-Monitor||{{Yes}}||http, https, svn, svn+ssh, file||?||?||?
 |-
-| SVNBreeze||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, svn, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SVNBreeze||{{No}}||http, https, svn, svn, file||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| SVN Repo Browser||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SVN Repo Browser||{{Yes}}||http, https, svn||{{No}}||{{No}}||{{Yes}}
 |-
-| SVN Repo Browser Pro ||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| SVN Repo Browser Pro ||{{No}}||http, https, svn||{{Yes}}||{{No}}||{{Yes}}
 |-
-| Syncro SVN||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, svn+ssh, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Syncro SVN||{{No}}||http, https, svn, svn+ssh, file||{{Yes}}||{{Yes}}||{{Yes}}
 |-
-| svnup||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| svnup||{{Yes}}||http, https, svn||{{No}}||{{No}}||{{No}}
 |-
-| Versions||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, svn+ssh, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Versions||{{No}}||http, https, svn, svn+ssh, file||{{Yes}}||?||{{Yes}}
 |-
-| ZigVersion||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||http, https, svn, file||?||?||?
+| ZigVersion||{{Yes}}||http, https, svn, file||?||?||?
 |-
-| GTalkabout||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||http, https, svn, file||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| GTalkabout||{{No}}||http, https, svn, file||{{Yes}}||{{Yes}}||{{Yes}}
 |}
 
 == See also ==
 * [[Revision control]]
 
 == References ==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
 [[Category:Subversion| ]]

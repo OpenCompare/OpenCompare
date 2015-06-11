@@ -2,7 +2,7 @@ package org.opencompare.io.wikipedia.export
 
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{AbstractFeature, Feature, FeatureGroup, PCM}
-import org.opencompare.io.wikipedia.WikipediaPageMiner
+import org.opencompare.io.wikipedia.io.WikiTextLoader
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
 
 /**
@@ -11,7 +11,6 @@ import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
 class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
-  private val miner = new WikipediaPageMiner
 
   def export(page : Page) : List[PCM] = {
     toPCM(page)
@@ -32,13 +31,13 @@ class PCMModelExporter {
 
 
         // Detect holes in the matrix and add a cell if necessary
-        miner.fillMissingCells(matrix)
+        fillMissingCells(matrix)
 
         // Extract features
         val features = extractFeatures(matrix, pcm, nbFeatureRows)
 
         // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
-        val normalizedMatrix = miner.normalize(matrix)
+        val normalizedMatrix = normalize(matrix)
 
         // Extract products and cells
         extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
@@ -182,6 +181,48 @@ class PCMModelExporter {
         val feature = features(nbFeatureRows - 1, c)
 //        println(feature.getName)
         cell.setFeature(feature.asInstanceOf[Feature])
+      }
+    }
+  }
+
+  /**
+   * Normalize a matrix
+   * @param matrix
+   * @return
+   */
+  def normalize(matrix : Matrix) : Matrix = {
+    // Duplicate cells with rowspan or colspan
+    val normalizedMatrix = new Matrix
+
+    for (cell <- matrix.cells.map(_._2)) {
+      for (
+        rowShift <- 0 until cell.rowspan;
+        columnShift <- 0 until cell.colspan
+      ) {
+
+        val row = cell.row + rowShift
+        val column = cell.column + columnShift
+
+        val duplicate = new Cell(cell.content, cell.rawContent, cell.isHeader, row, 1, column, 1)
+        normalizedMatrix.setCell(duplicate, row, column)
+      }
+    }
+
+    fillMissingCells(normalizedMatrix)
+
+    normalizedMatrix
+  }
+
+  /**
+   * Detect holes in the matrix and add a cell if necessary
+   * @param matrix
+   */
+  def fillMissingCells(matrix : Matrix) {
+
+    for (row <- 0 until matrix.getNumberOfRows(); column <- 0 until matrix.getNumberOfColumns()) {
+      if (!matrix.getCell(row, column).isDefined) {
+        val emptyCell = new Cell("", "", false, row, 1, column, 1)
+        matrix.setCell(emptyCell, row, column)
       }
     }
   }

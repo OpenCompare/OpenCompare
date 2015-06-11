@@ -40,7 +40,7 @@ The following table lists technical information for a number of [[DNSBL|DNS blac
 
 | Automatic: Continuous while reputation statistics remain bad. Warning: Produces false positives, and has no remedy/removal process. IPs are dropped quickly if the statistics improve (within an hour). IPs are dropped within 36 hours (typ) if no more messages are seen (dead zombie).
 
-| Source data is derived from a global network of Message Sniffer filtering nodes in real-time. Truncate data is updated from statistics every 10 minutes.
+| Source data is derived from a global network of Message Sniffer<ref>{{cite web|url=http://www.armresearch.com/ |title=armresearch.com |publisher=armresearch.com |date= |accessdate=2012-05-06}}</ref> filtering nodes in real-time. Truncate data is updated from statistics every 10 minutes.
 
 | no
 
@@ -138,11 +138,11 @@ The following table lists technical information for a number of [[DNSBL|DNS blac
 
 | [http://www.uceprotect.net/en/index.php?m=3&s=3]
 
-| dnsbl-1.uceprotect.net<br />(also free available via rsync )
+| dnsbl-1.uceprotect.net<br />(also free available via rsync <ref name="uceprotect1">{{cite web|author=UCEPROTECT&reg; abc@uceprotect.org |url=http://www.uceprotect.net/en/index.php?m=6&s=10 |title=UCEPROTECT®-Network - Germanys first Spam protection database |publisher=Uceprotect.net |date= |accessdate=2012-05-06}}</ref>)
 
 | Single IP addresses that send mail to [[spamtrap]]s
 
-| Automatic by a cluster of more than 60 trapservers 
+| Automatic by a cluster of more than 60 trapservers <ref name=mailchannels-blog-1>{{cite web|last=Simpson|first=Ken|title=Getting Onto a Blacklist Without Sending Any Spam|url=http://mailchannels.com/blog/2010/11/getting-off-of-blacklists-uceprotect-in-particular/|work=MailChannels Anti-Spam Blog|publisher=MailChannels Corporation|accessdate=16 September 2011}}</ref>
 
 | Automatic expiration 7 days after the last abuse was seen, optionally express delisting for a small fee.
 
@@ -158,7 +158,7 @@ The following table lists technical information for a number of [[DNSBL|DNS blac
 
 | [http://www.uceprotect.net/en/index.php?m=3&s=4]
 
-| dnsbl-2.uceprotect.net<br />(also free available via rsync )
+| dnsbl-2.uceprotect.net<br />(also free available via rsync <ref name="uceprotect1"/>)
 
 | Allocations with exceeded UCEPROTECT Level 1 listings
 
@@ -178,7 +178,7 @@ The following table lists technical information for a number of [[DNSBL|DNS blac
 
 | [http://www.uceprotect.net/en/index.php?m=3&s=5]
 
-| dnsbl-3.uceprotect.net<br />(also free available via rsync )
+| dnsbl-3.uceprotect.net<br />(also free available via rsync <ref name="uceprotect1"/>)
 
 | ASN's with excessive UCEPROTECT Level 1 listings
 
@@ -208,7 +208,7 @@ The following table lists technical information for a number of [[DNSBL|DNS blac
 
 | N/A (See individual zones)
 
-| Aggregate zone (all aggregates and what they include are listed on [[Spam and Open Relay Blocking System|SORBS]])
+| Aggregate zone (all aggregates and what they include are listed on [[Spam and Open Relay Blocking System|SORBS]])<ref>{{cite web|url=http://www.sorbs.net/using.shtml |title=sorbs.net |publisher=sorbs.net |date= |accessdate=2012-05-06}}</ref>
 
 | yes
 
@@ -606,25 +606,25 @@ and [[botnet]]s)
 
 |-
 
-! <s>ORBITrbl Aggressive RBL</s>
+! {{strikethrough|ORBITrbl Aggressive RBL}}
 
-! <s>RBL</s>
+! {{strikethrough|RBL}}
 
-| <s>[http://www.orbitrbl.com]</s>
+| {{strikethrough|[http://www.orbitrbl.com]}}
 
-| <s>rbl.orbitrbl.com</s>
+| {{strikethrough|rbl.orbitrbl.com}}
 
-| <s>Unsolicited bulk/Commercial email senders (/24 IP address block)</s>
+| {{strikethrough|Unsolicited bulk/Commercial email senders (/24 IP address block)}}
 
-| <s>Feeder servers</s>
+| {{strikethrough|Feeder servers}}
 
-| <s>Until delisting requested? (Only When Found to be Non Spam Source)</s>Their web server is down 2014-11-17 - Their RBL server is reporting all queries as SPAM.
+| {{strikethrough|Until delisting requested? (Only When Found to be Non Spam Source)}}Their web server is down<ref>http://www.orbitrbl.com</ref> 2014-11-17 - Their RBL server is reporting all queries as SPAM.
 
-| <s>Aggregate zone</s>
+| {{strikethrough|Aggregate zone}}
 
-| <s>yes</s>
+| {{strikethrough|yes}}
 
-| <s>no</s>
+| {{strikethrough|no}}
 
 |-
 
@@ -634,7 +634,7 @@ and [[botnet]]s)
 
 | [http://cbl.abuseat.org/]
 
-| cbl.abuseat.org<br /> (also free available rsync access, on request see FAQ )
+| cbl.abuseat.org<br /> (also free available rsync access, on request see FAQ <ref>{{cite web|url=http://cbl.abuseat.org/faq.html |title=The Cbl Faq |publisher=Cbl.abuseat.org |date=2006-12-31 |accessdate=2012-05-06}}</ref>)
 
 | Only IP addresses exhibiting characteristics specific to open proxies, spamware, malware downloaders, botnets and the like.
 
@@ -859,56 +859,56 @@ and [[botnet]]s)
 
 |-
 
-! rowspan=3|<s>[[The Abusive Hosts Blocking List]] (AHBL)</s>
+! rowspan=3|{{strikethrough|[[The Abusive Hosts Blocking List]] (AHBL)}}
 
-! <s>dnsbl</s>
+! {{strikethrough|dnsbl}}
 
-| rowspan=3|<s>[http://www.ahbl.org/]</s>
+| rowspan=3|{{strikethrough|[http://www.ahbl.org/]}}
 
-| <s>dnsbl.ahbl.org</s>
+| {{strikethrough|dnsbl.ahbl.org}}
 
-| <s>Aggregate zone, contains UCE/bulk email senders, open proxies, open relays, trojaned/infected machines, comment/trackback spammers</s>
+| {{strikethrough|Aggregate zone, contains UCE/bulk email senders, open proxies, open relays, trojaned/infected machines, comment/trackback spammers}}
 
-| <s>Feeder systems, manual</s>
+| {{strikethrough|Feeder systems, manual}}
 
-| rowspan=3|<s>Until delisting requested</s> As announced, all public zones are no longer functioning (they return positive responses for all queries)
+| rowspan=3|{{strikethrough|Until delisting requested}} As announced,<ref>http://www.ahbl.org/content/changes-ahbl</ref> all public zones are no longer functioning (they return positive responses for all queries)
 
-| <s>Aggregate zone (all aggregates and what they include are listed on [[The Abusive Hosts Blocking List|AHBL]])</s>
+| {{strikethrough|Aggregate zone (all aggregates and what they include are listed on [[The Abusive Hosts Blocking List|AHBL]])<ref>[http://www.ahbl.org/services ahbl.org]</ref>}}
 
-| <s>yes</s>
+| {{strikethrough|yes}}
 
-| <s>no</s>
+| {{strikethrough|no}}
 
 |-
 
-! <s>rhsbl</s>
+! {{strikethrough|rhsbl}}
 
-| <s>rhsbl.ahbl.org</s>
+| {{strikethrough|rhsbl.ahbl.org}}
 
-| <s>Domains sending spam, domains owned by spammers, comment spam domains, spammed URLs</s>
+| {{strikethrough|Domains sending spam, domains owned by spammers, comment spam domains, spammed URLs}}
 
-| <s>Manual</s>
+| {{strikethrough|Manual}}
 
 |
-| <s>yes</s>
+| {{strikethrough|yes}}
 
-| <s>no</s>
+| {{strikethrough|no}}
 
 |-
 
-! <s>ircbl</s>
+! {{strikethrough|ircbl}}
 
-| <s>ircbl.ahbl.org</s>
+| {{strikethrough|ircbl.ahbl.org}}
 
-| <s>Subset of dnsbl, contains only open proxies, compromised machines, comment spammers</s>
+| {{strikethrough|Subset of dnsbl, contains only open proxies, compromised machines, comment spammers}}
 
-| <s>Until delisting requested</s>
+| {{strikethrough|Until delisting requested}}
 
-| <s>Designed for use on [[IRC]] servers</s>
+| {{strikethrough|Designed for use on [[IRC]] servers}}
 
-| <s>yes</s>
+| {{strikethrough|yes}}
 
-| <s>no</s>
+| {{strikethrough|no}}
 
 |-
 
@@ -1116,8 +1116,7 @@ and [[botnet]]s)
 "Notifies upon listing" - Warns the owner of the IP/Domain when they list an IP. (so owners can take action to fix the problem)
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
 == External links ==
 * [http://rblcheck.at/ RBL Check], RBL Check, Multiple & Real-Time

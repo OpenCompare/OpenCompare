@@ -1,116 +1,138 @@
-<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(December 2012)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Refimprove|date=December 2012}}
 This is a comparison of [[disk cloning]] software, computer programs that can copy the contents of one disk into another disk or into a [[disk image]].
 
 ==Table==
-{| class="wikitable sortable"
+{| class="wikitable sortable plainrowheaders" style="text-align:center;"
 |-
-! rowspan=2 | Name
-! rowspan=2 | Operating system
-! rowspan=2 | [[User interface]]
-! rowspan=2 | Sector by sector<ref name="Raw" group="lower-alpha"></ref>
-! colspan=4 | File by file<ref name="File" group="lower-alpha"></ref>
-! rowspan=2 | Hot transfer<ref name="LiveCopy" group="lower-alpha"></ref>
-! rowspan=2 | Mount or extract<ref group="lower-alpha">Extracting is the process of browsing a disk image and retrieving some of the files that it contains, one users choice. Mounting a disk image is the process of make the disk image content available to the user as if he or she is accessing a physical read-only disk.</ref>
-! colspan=4 | Operation model
-! rowspan=2 | [[software license|License]]
+! scope="col" rowspan=2 | Name
+! scope="col" rowspan=2 | Operating system
+! scope="col" rowspan=2 | [[User interface]]
+! scope="col" rowspan=2 | Sector by sector{{efn|name="Raw"}}
+! scope="col" rowspan=2 | File by file{{efn|name="File"}}
+! scope="col" rowspan=2 | Hot transfer{{efn|name="LiveCopy"}}
+! scope="col" rowspan=2 | Mount or extract{{efn|Extracting is the process of browsing a disk image and retrieving some of the files that it contains, one users choice. Mounting a disk image is the process of make the disk image content available to the user as if he or she is accessing a physical read-only disk.}}
+! scope="col" colspan=3 | Operation model
+! scope="col" rowspan=2 | [[software license|License]]
 |-
-! [[Ext2]], [[Ext3]]
-! [[FAT32]]
-! [[NTFS]]
-! [[HFS+]]
-
-! Standalone
-! [[Client–server]]
-! Live USB
-! Live CD
+! scope="col" | Standalone
+! scope="col" | [[Client–server]]
+! scope="col" | Offline<br/><small>(From a [[Live OS]])</small>
 |-
-| [[Acronis True Image]] || [[Windows]]
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="ATIH-Linux" group="lower-alpha"></ref> || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (64 MB) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Shareware]]
+! scope="row" | [[Acronis True Image]]<ref name=ATIH2013 />
+| [[Windows]] || [[Graphical user interface|Graphical]] || {{yes}} || {{Yes|[[FAT32]], [[NTFS]]}}{{Efn|name="ATIH-Linux"}} || {{yes}} || {{yes}} || {{yes}} || {{yes}} || {{yes}} (64 MB) || {{Nonfree|[[Shareware]]}}
 |-
-| [[Apple Software Restore]] || [[OS X]]
-| [[Command line]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Part of [[Mac OS X]]
+! scope="row" | [[Apple Software Restore]]
+| [[OS X]] || [[Command-line]] || {{yes}} || {{yes|[[HFS+]]}} || {{dunno}} || {{dunno}} || {{yes}} || {{yes}} || {{dunno}} || {{Depends|Part of [[Mac OS X]]}}
 |-
-| [[Clonezilla]] || [[Linux]]
-| [[Text-based user interface|Text-based]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Through a [[hack (computer science)|hack]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Clonezilla server edition) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (108.2 MB) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (109.1 MB) || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[Clonezilla]]<ref name="clonezilla" />
+| [[Linux]] || [[Text-based user interface|Text-based]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]], [[HFS+]]}} || {{no}} || {{Partial|Through a [[hack (computer science)|hack]]}}<ref>http://serverfault.com/questions/35639/extracting-files-from-clonezilla-images</ref> || {{yes}} || {{yes}} (Clonezilla server edition) || {{yes}} (109.1 MB) || {{Free|[[GNU General Public License|GPL]]}}
 |-
-| [[dcfldd]] || [[Linux]]
-| [[Command line]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+! scope="row" | [[dcfldd]]
+| [[Linux]] || [[Command-line]] || {{yes}} || {{no}} || {{no}} || {{no}} || {{yes}} || {{no}} || {{dunno}} || {{Free|[[GPL]]}}
 |-
-| [[dd (Unix)]] || [[Linux]]
-| [[Command line]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+! scope="row" | [[dd (Unix)]]
+| [[Unix]] || [[Command-line]] || {{yes}} || {{no}} || {{no}} || {{no}} || {{yes}} || {{no}} || {{yes}}{{efn|name="dd"}} || {{Free|BSD/[[Common Development and Distribution License|CDDL]]/GNU/others}}
 |-
-| [[Disk Utility]] || [[OS X]]
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Part of [[Mac OS X]]
+! scope="row" | [[Disk Utility]]
+| [[OS X]] || [[Graphical user interface|Graphical]] || {{yes}} || {{yes|[[HFS+]]}} || {{yes}} || {{yes}} || {{yes}} || {{no}} || {{yes}} || {{Depends|Part of [[Mac OS X]]}}
 |-
-| [[EASIS Drive Cloning]] || [[Windows]]
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Shareware]]
+! scope="row" | [[EASIS Drive Cloning]]
+| [[Windows]] || [[Graphical user interface|Graphical]] || {{yes}} || {{no}} || {{no}} || {{no}} || {{yes}} || {{no}} || {{yes}} || {{Nonfree|[[Shareware]]}}
 |-
-| [[FSArchiver]] || [[Linux]]
-| [[Text-based user interface|Text-based]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+! scope="row" | [[FSArchiver]]
+| [[Linux]] || [[Text-based user interface|Text-based]] || {{no}} || {{yes|[[FAT32]], [[btrfs]], [[ext2]], [[ext3]], [[ext4]], [[ReiserFS]]-4, [[HPFS]], [[JFS (file system)|JFS]], [[XFS]]}} || {{dunno}} || {{dunno}} || {{yes}} || {{no}} || {{dunno}} || {{Free|[[GPL]]}}
 |-
-| [[Ghost (software)|Ghost]] v15 || [[Windows]]
-| [[Graphical user interface|Graphical]]<br/>[[Command line]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Shareware]]
+! scope="row" | [[Ghost (software)|Ghost]] v15<ref name="Norton Ghost" />
+| [[Windows]] || [[Graphical user interface|Graphical]]<br/>[[Command-line]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]]}} || {{yes}} || {{yes}} || {{yes}} || {{yes}} || {{yes}} || {{Nonfree|[[Shareware]]}}
 |-
-| [[Gparted|Gparted Live Cd]] || [[Linux]]
-| [[Graphical user interface|Graphical]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL]]
+! scope="row" | [[GParted|GParted Live CD]]<ref>{{cite web|title=GParted Live CD|url=http://gparted.sourceforge.net/livecd.php|accessdate=7 April 2013}}</ref>
+| [[Linux]] || [[Graphical user interface|Graphical]] || {{no}} || {{yes|[[ext2]], [[ext3]]}} || {{no}} || {{no}} || {{yes}} || {{no}} || {{yes}} || {{Free|[[GPL]]}}
 |-
-| [[Image for Windows (disk imaging)|Image for Windows]] || [[Windows]]
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Shareware]]
+! scope="row" | [[Image for Windows (disk imaging)|Image for Windows]]
+| [[Windows]] || [[Graphical user interface|Graphical]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]]}} || {{yes}} || {{yes}} || {{yes}} || {{no}} || {{yes}} || {{Nonfree|[[Shareware]]}}
 |-
-| [[Kleo Bare Metal Backup]] || Independent ([[Live OS]])
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (570 MB) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (570 MB) || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Freeware]]
+! scope="row" | [[Kleo Bare Metal Backup]]
+| Independent ([[Live OS]]) || [[Graphical user interface|Graphical]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]], [[HFS+]]}} || {{no}} || {{dunno}} || {{no}} || {{yes}} || {{yes}} (570 MB) || {{Free|[[Freeware]]}}
 |-
-| [[Macrium Reflect]] || [[Windows]]
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (6 MB) || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Freemium]]
+! scope="row" | [[Macrium Reflect]]
+| [[Windows]] || [[Graphical user interface|Graphical]] || {{yes}} ||{{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]]}} || {{yes}} || {{yes}} || {{dunno}} || {{dunno}} || {{yes}} (6 MB) || {{Free|[[Freemium]]}}
 |-
-| [[Mondo Rescue]] || [[Linux]]
-| [[Text-based user interface|Text-based]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes *<ref name="Mindi-Linux" group="lower-alpha"></ref> || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[Mondo Rescue]]<ref name="MondoRescue" />
+| [[Linux]] || [[Text-based user interface|Text-based]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]]}} || {{yes}} || {{dunno}} || {{yes}} || {{dunno}} || {{yes}} *{{efn|name="Mindi-Linux"}} || {{Free|[[GNU General Public License|GPL]]}}
 |-
-| [[ntfsclone]] || [[Linux]]
-| [[Command line]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="compilation" group="lower-alpha"></ref> || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="compilation" group="lower-alpha"></ref> || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[ntfsclone]]<ref name="ntfsclone1" /><ref name="ntfsclone2" />
+| [[Linux]] || [[Command-line]] || {{no}} || {{yes|[[NTFS]]}} || {{dunno}} || {{dunno}} || {{yes}} || {{no}} || {{no}}{{efn|name=compilation}} || {{Free|[[GNU General Public License|GPL]]}}
 |-
-| [[partimage]] || [[Linux]]
-| [[Text-based user interface|Text-based]] || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental || style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="beta table-beta"|[[software release life cycle#Beta|Beta]] || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="compilation" group="lower-alpha"></ref> || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No<ref name="compilation" group="lower-alpha"></ref> || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[partimage]]<ref name="partimage1" /><ref name="partimage2" />
+| [[Linux]] || [[Text-based user interface|Text-based]] || {{no}} || {{yes|[[FAT32]], [[ext2]], [[ext3]], [[ReiserFS]]-3, [[HPFS]], [[JFS (file system)|JFS]], [[XFS]];<br/><small>[[Unix File System|UFS]] (beta), [[Hierarchical File System|HFS]] (beta), [[NTFS]] (experimental)</small>}}<ref name="PI-filesystems" /> || {{dunno}} || {{dunno}} || {{yes}} || {{yes}} || {{no}}{{efn|name=compilation}} || {{Free|[[GNU General Public License|GPL]]}}
 |-
-| [[Partition-Saving]] || [[Linux]] [[Windows]] [[DOS]]
-| [[Text-based user interface|Text-based]] [[Command line]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Freeware]]
+! scope="row" | [[Partition-Saving]]<ref name="partitionsaving1" />
+| [[Windows]], [[Linux]], [[DOS]] || [[Text-based user interface|Text-based]]<br/>[[Command-line]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]]}} || {{no}} || {{yes}} || {{yes}} || {{no}} || {{yes}} || {{Free|[[Freeware]]}}
 |-
-| [[PING (software)|PING]] || [[Linux]]
-| [[Text-based user interface|Text-based]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (31 MB) || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[PING (software)|PING]]<ref name="PING1" /><ref name="PING2" />
+| [[Linux]] || [[Text-based user interface|Text-based]] || {{yes}} || {{yes|[[FAT32]], [[ext2]], [[ext3]], [[ReiserFS]]-3, [[HPFS]], [[JFS (file system)|JFS]], [[XFS]];<br/><small>[[Unix File System|UFS]] (beta), [[Hierarchical File System|HFS]] (beta), [[NTFS]] (experimental)</small>}}<ref name="PI-filesystems" /> || {{no}} || {{dunno}} || {{yes}} || {{yes}} || {{yes}} (31 MB) || {{Free|[[GNU General Public License|GPL]]}}
 |-
-| [[Redo Backup and Recovery]] || Independent ([[Live OS]])
-| [[Graphical user interface|Graphical]] || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Can access networked drives || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (225 MB) || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (225 MB) || style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPL]]
+! scope="row" | [[Redo Backup and Recovery]]
+| Independent ([[Live OS]]) || [[Graphical user interface|Graphical]] || {{yes}} || {{yes|[[FAT32]], [[NTFS]], [[ext2]], [[ext3]]}} || {{no}} || {{no}} || {{no}} || {{Partial|Can access networked drives}} || {{yes}} (225 MB) || {{Free|[[GNU General Public License|GPL]]}}
 |}
 
 ==See also==
-;Software:
+'''Software:'''
+*[[Hiren's BootCD]]
 *[[SystemRescueCD]] — includes [[PartImage]], [[ntfsclone]] and [[FSArchiver]]
 *[[Trinity Rescue Kit]] — includes [[PartImage]] and [[ntfsclone]]
 
-;Lists:
+'''Lists:'''
 *[[List of backup software]]
 *[[List of disk cloning software]]
 *[[Comparison of disc image software]]
 
 == Notes ==
-<ref name="Raw" group="lower-alpha">Sector-by-sector transfer involves accessing the disk directly and copying the contents of each [[disk sector|sector]], thus accurately reproducing the layout of the source disk.</ref>
+{{Notelist|refs=
+{{efn|name="Raw"|Sector-by-sector transfer involves accessing the disk directly and copying the contents of each [[disk sector|sector]], thus accurately reproducing the layout of the source disk.}}
 
-<ref name="LiveCopy" group="lower-alpha">Hot transfer refers to copying the contents of a volume on which there are open files in use. Implies use of [[Shadow Copy]] or such techniques.</ref>
+{{efn|name="LiveCopy"|Hot transfer refers to copying the contents of a volume on which there are open files in use. Implies use of [[Shadow Copy]] or such techniques.}}
 
-<ref name="File" group="lower-alpha">File-based transfer, (as opposed to sector-by-sector transfer,) involves opening all files and copying their contents, one by one. It requires the cloning utility to have a knowledge of the [[file system]]s on the source disk. The target disk's layout may not resemble that of the source disk.</ref>
+{{efn|name="File"|File-based transfer, (as opposed to sector-by-sector transfer,) involves opening all files and copying their contents, one by one. It requires the cloning utility to have a knowledge of the [[file system]]s on the source disk. The target disk's layout may not resemble that of the source disk.}}
 
-<ref name="ATIH-Linux" group="lower-alpha">Acronis True Image can detect and identify Linux partitions and prompt user to switch to sector-by-sector mode.</ref>
+{{Efn|name="ATIH-Linux"|Acronis True Image can detect and identify Linux partitions and prompt user to switch to sector-by-sector mode.}}
 
-<ref name="Mindi-Linux" group="lower-alpha">There is no ready-to-use Live CD with this utility.  It does come bundled with Mindi-Linux which is a small Linux distribution that can be used to create a customized Live CD.</ref>
+{{efn|name="Mindi-Linux"|There is no ready-to-use Live CD with this utility. It does come bundled with Mindi-Linux which is a small Linux distribution that can be used to create a customized Live CD.}}
 
-<ref name="compilation" group="lower-alpha">There is no Live CD dedicated specially to this utility. However, it is present on several rescue CD's together with other software.</ref>
-<div class="reflist columns references-column-width" style="-moz-column-width: There is no Live CD dedicated specially to this utility. However, it is present on several rescue CD's together with other software.; -webkit-column-width: There is no Live CD dedicated specially to this utility. However, it is present on several rescue CD's together with other software.; column-width: There is no Live CD dedicated specially to this utility. However, it is present on several rescue CD's together with other software.; list-style-type: lower-alpha;">
-<references group="lower-alpha"></references></div>
+{{efn|name=compilation|There is no Live CD dedicated specially to this utility. However, it is present on several rescue CD's together with other software.}}
+
+{{efn|name=dd|There is no Live OS dedicated specially to dd. However Live CDs of various flavors of Linux should include dd as a part of [[GNU Coreutils|coreutils]]. In general this applies also to Linux-based rescue CDs (although they may not provide dd explicitly as their primary tool, they still may give access to a [[Unix shell|shell]] which allows dd invocation).}}
+}}
 
 ==References==
-<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist|30em|refs=
+<ref name="clonezilla">[http://www.clonezilla.org/ Clonezilla home page] (includes supported filesystems and other info)</ref>
 
+<ref name="MondoRescue">[http://www.mondorescue.org/docs/mondorescue-howto.html]</ref>
+
+<ref name="PING1">[http://ping.windowsdream.com/ping/howto-2.01.html PING HowTo]</ref>
+
+<ref name="PING2">[http://ping.windowsdream.com/ping/doc-2.01/annex.html PING FAQ]</ref>
+
+<ref name="partimage1">[http://www.partimage.org/Main_Page Partimage home page]</ref>
+
+<ref name="partimage2">[http://www.partimage.org/Supported-Filesystems Partimage supported filesystems]</ref>
+
+<ref name="partitionsaving1">[http://www.partition-saving.com/en/lisezmoi.html Partition-Saving manual]</ref>
+
+<ref name="ntfsclone1">[http://www.linux-ntfs.org/doku.php?id=ntfsclone About ntfsclone]</ref>
+
+<ref name="ntfsclone2">[http://man.linux-ntfs.org/ntfsclone.8.html ntfsclone(8) man page]</ref>
+
+<ref name="PI-filesystems">http://www.partimage.org/Supported-Filesystems</ref>
+
+<ref name=ATIH2013>{{cite web|title=Datasheet – True Image 2013 by Acronis|url=http://www.acronis.eu/download/docs/ti2013/datasheet|publisher=[[Acronis]]|accessdate=15 December 2012|date=7 August 2012}}</ref>
+
+<ref name="Norton Ghost">{{cite web|title=Norton Ghost|url=http://us.norton.com/ghost|publisher=[[Symantec]]|accessdate=15 December 2012}}</ref>
+
+}}
+<!--not used
+<ref name="MirayHDClone">{{cite web|title=Miray HDClone|url=http://www.miray.de/products/sat.hdclone.html|publisher=Miray Software AG|accessdate=6 April 2013}}</ref> -->
 
 [[Category:Software comparisons|Disk cloning software]]
 [[Category:Disk cloning]]

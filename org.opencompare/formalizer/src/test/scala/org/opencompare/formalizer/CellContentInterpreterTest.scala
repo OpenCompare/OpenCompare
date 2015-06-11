@@ -1,14 +1,11 @@
 package org.opencompare.formalizer
 
-import java.io.{FilenameFilter, File, FileWriter}
-import org.opencompare.api.java.exception.MergeConflictException
-import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
+import java.io.{File, FileWriter}
+
 import org.opencompare.api.java.io.HTMLExporter
 import org.opencompare.formalizer.extractor.CellContentInterpreter
-import org.opencompare.io.wikipedia.WikipediaPageMiner
-import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.scalatest.{Matchers, FlatSpec}
+import org.opencompare.io.wikipedia.io.WikiTextLoader
+import org.scalatest.{FlatSpec, Matchers}
 
 import scala.io.Source
 
@@ -23,12 +20,8 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
 
     // Parse
-    val miner = new WikipediaPageMiner
-    val page = miner.parse(Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
-
-    val exporter = new PCMModelExporter
-    val pcms = exporter.export(page)
-
+    val miner = new WikiTextLoader
+    val pcms = miner.mine(Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
 
     val interpreter = new CellContentInterpreter
     val serializer = new HTMLExporter

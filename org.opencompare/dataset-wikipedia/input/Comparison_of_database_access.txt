@@ -1,37 +1,5 @@
-<table class="metadata plainlinks ambox ambox-style ambox-confusing" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''may be [[Wikipedia:Vagueness|confusing or unclear]] to readers'''.<span class="hide-when-compact"> Please help us [[Wikipedia:Please clarify|clarify the article]]; suggestions may be found on the [[|talk page]].</span>  <small>''(February 2008)''</small><span class="hide-when-compact"></span></span></td></tr></table>
-<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of programming languages|General comparison]]
-* [[Comparison of programming languages (syntax)|Basic syntax]]
-* [[Comparison of programming languages (basic instructions)|Basic instructions]]
-* [[Comparison of programming languages (array)|Arrays]]
-* [[Comparison of programming languages (mapping)|Associative arrays]]
-* [[Comparison of programming languages (strings)|String operations]]
-* [[Comparison of programming languages (string functions)|String functions]]
-* [[Comparison of programming languages (list comprehension)|List comprehension]]
-* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
-* [[Constructor (object-oriented programming)|Object-oriented constructors]]
-* [[Comparison of database access|Database access]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Evaluation strategy]]
-* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of web application frameworks|Web application frameworks]]
-* [[Comparison of the Java and .NET platforms]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* Comparison of individual programming languages
-** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
-** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
-** [[Comparison of ALGOL 68 and C++]]
-** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
-** [[Compatibility of C and C++]]
-** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
-** [[Comparison of Object Pascal and C]]
-** [[Comparison of Pascal and C]]
-** [[Comparison of Java and C++]]
-** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
-** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
-** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
-</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+{{Confusing|date=February 2008}}
+{{ProgLangCompare}}
 '''A comprehensive comparison of current:database Management Systems, and corresponding Programming Languages;
                including: Command, Semantic, and Syntax references.''' 
 
@@ -89,9 +57,9 @@
 !show filtered data in all fields
 |-
 | [[MySQL]]
-| <code   ><syntaxhighlight lang="mysql" enclose="none">select * from "tbname";</syntaxhighlight></code>
-| <code   ><syntaxhighlight lang="mysql" enclose="none">select "fields" from "tbname";</syntaxhighlight></code>
-| <code   ><syntaxhighlight lang="mysql" enclose="none">select * from "tbname" where "filter_expr";</syntaxhighlight></code>
+| {{code |lang=mysql|select * from "tbname";}}
+| {{code |lang=mysql|select "fields" from "tbname";}}
+| {{code |lang=mysql|select * from "tbname" where "filter_expr";}}
 |}
 
 === Filtering expressions ===
@@ -107,16 +75,16 @@
 !Delete element
 |-
 | [[MySQL]]
-| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
-add column "column_name";</syntaxhighlight>
-| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
-drop column "column_name";</syntaxhighlight>
-| <syntaxhighlight lang="mysql" enclose="div">alter table "tbname" 
-change "old" "new" "newtype";</syntaxhighlight>
-| <syntaxhighlight lang="mysql" enclose="div">insert into "tbname" ("fields") 
-values ("values");</syntaxhighlight>
-| <syntaxhighlight lang="mysql" enclose="div">delete from "tbname" 
-where "expr";</syntaxhighlight>
+| {{sxhl |lang=mysql|alter table "tbname" 
+add column "column_name";}}
+| {{sxhl |lang=mysql|alter table "tbname" 
+drop column "column_name";}}
+| {{sxhl |lang=mysql|alter table "tbname" 
+change "old" "new" "newtype";}}
+| {{sxhl |lang=mysql|insert into "tbname" ("fields") 
+values ("values");}}
+| {{sxhl |lang=mysql|delete from "tbname" 
+where "expr";}}
 |}
 
 === Managing users and permissions ===
@@ -132,43 +100,43 @@ where "expr";</syntaxhighlight>
 |raw MySQL access
 |
 |<tt>use ''db'';</tt>
-|<code   ><syntaxhighlight lang="mysql" enclose="none">show databases;</syntaxhighlight></code>
-|<code   ><syntaxhighlight lang="mysql" enclose="none">show tables;</syntaxhighlight></code>
+|{{code|lang=mysql|1=show databases;}}
+|{{code|lang=mysql|1=show tables;}}
 |-valign="top"
 |[[PHP]]
-|<code   ><syntaxhighlight lang="php" enclose="none">$link = mysql_connect(host, user, password);</syntaxhighlight></code>
+|{{code|lang=php|1=$link = mysql_connect(host, user, password);}}
 or
 
-<code   ><syntaxhighlight lang="php" enclose="none">$db = new mysqli(host, user, password);</syntaxhighlight></code>
-
-or
-
-<code   ><syntaxhighlight lang="php" enclose="none">$db = new PDO('mysql:host=hostname;dbname=dbname', 'username', 'password');</syntaxhighlight></code>
-|<code   ><syntaxhighlight lang="php" enclose="none">mysql_select_db(''name'', $link);</syntaxhighlight></code>
-or
-
-<code   ><syntaxhighlight lang="php" enclose="none">$db = new mysqli(host, user, password, ''name'');</syntaxhighlight></code>
+{{code|lang=php|1=$db = new mysqli(host, user, password);}}
 
 or
 
-<code   ><syntaxhighlight lang="php" enclose="none">$db->select_db(''name'');</syntaxhighlight></code>
+{{code|lang=php|1=$db = new PDO('mysql:host=hostname;dbname=dbname', 'username', 'password');}}
+|{{code|lang=php|1=mysql_select_db(''name'', $link);}}
+or
+
+{{code|lang=php|1=$db = new mysqli(host, user, password, ''name'');}}
+
+or
+
+{{code|lang=php|1=$db->select_db(''name'');}}
 |
 |
 |-
 |[[Python (programming language)|Python]]
-|<syntaxhighlight lang="python" enclose="div">db = MySQLdb.connect(
+|{{sxhl|lang=python|1=db = MySQLdb.connect(
       host="hostname", 
       user="username", 
       passwd="password", 
       db="dbname", 
-      connect_timeout=5)</syntaxhighlight>
-|<code   ><syntaxhighlight lang="python" enclose="none">import MySQLdb</syntaxhighlight></code>
-|<syntaxhighlight lang="python" enclose="div">c = db.cursor()
+      connect_timeout=5)}}
+|{{code|lang=python|import MySQLdb}}
+|{{sxhl|lang=python|1=c = db.cursor()
 c.execute("show databases")
-c.fetchall()</syntaxhighlight>
-|<syntaxhighlight lang="python" enclose="div">c = db.cursor()
+c.fetchall()}}
+|{{sxhl|lang=python|1=c = db.cursor()
 c.execute("show tables")
-c.fetchall()</syntaxhighlight>
+c.fetchall()}}
 |}
 
 === Reading from tables ===
@@ -190,7 +158,7 @@ c.fetchall()</syntaxhighlight>
 |}
 
 == Databases in Object-Relational mapping systems ==
-<div class="hatnote boilerplate seealso">See also: [[Object-relational mapping]]</div>
+{{see also|Object-relational mapping}}
 There are ORMs to manage a database:
 * [[django (web framework)]]
 * [[SQLObject]]
@@ -222,13 +190,13 @@ class Table(models.Model):
 ! Inserting
 |-valign="top"
 |django 
-| <syntaxhighlight lang="python" enclose="div">table_var."field_name"</syntaxhighlight>
-| <syntaxhighlight lang="python" enclose="div">table_var."field_name" = \
-"value"</syntaxhighlight>
-| <syntaxhighlight lang="python" enclose="div">table_var = \
-Table.objects.filter( "expr" )</syntaxhighlight>
-| <syntaxhighlight lang="python" enclose="div">table_var = Table()
-table_var.save()</syntaxhighlight>
+| {{sxhl|lang=python|1=table_var."field_name"}}
+| {{sxhl|lang=python|1=table_var."field_name" = \
+"value"}}
+| {{sxhl|lang=python|1=table_var = \
+Table.objects.filter( "expr" )}}
+| {{sxhl|lang=python|1=table_var = Table()
+table_var.save()}}
 |}
 
 == See also ==
@@ -243,4 +211,4 @@ table_var.save()</syntaxhighlight>
 [[Category:SQL data access]]
 
 
-<table class="metadata plainlinks stub" role="presentation" style="background:transparent"><tr><td>[[File:Crystal Clear app database.png|32px|alt=Stub icon]]</td><td><i>This [[database]]-related article is a [[Wikipedia:stub|stub]]. You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].</i><div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Database-stub|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Database-stub|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Database-stub&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+{{database-stub}}

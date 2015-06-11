@@ -1,37 +1,5 @@
-<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(October 2009)''</small><span class="hide-when-compact"></span></span></td></tr></table>
-<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%;"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em;">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
-* [[Comparison of programming languages|General comparison]]
-* [[Comparison of programming languages (syntax)|Basic syntax]]
-* [[Comparison of programming languages (basic instructions)|Basic instructions]]
-* [[Comparison of programming languages (array)|Arrays]]
-* [[Comparison of programming languages (mapping)|Associative arrays]]
-* [[Comparison of programming languages (strings)|String operations]]
-* [[Comparison of programming languages (string functions)|String functions]]
-* [[Comparison of programming languages (list comprehension)|List comprehension]]
-* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
-* [[Constructor (object-oriented programming)|Object-oriented constructors]]
-* [[Comparison of database access|Database access]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
-* [[Evaluation strategy]]
-* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
-* [[Comparison of web application frameworks|Web application frameworks]]
-* [[Comparison of the Java and .NET platforms]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left;">
-* Comparison of individual programming languages
-** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
-** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
-** [[Comparison of ALGOL 68 and C++]]
-** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
-** [[Compatibility of C and C++]]
-** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
-** [[Comparison of Object Pascal and C]]
-** [[Comparison of Pascal and C]]
-** [[Comparison of Java and C++]]
-** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
-** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
-** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
-</tr><tr><td style="text-align:right;font-size:115%;"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template" style=";">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template" style=";">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template" style=";">e</span>]</li></ul></div></td></tr></table>
+{{Refimprove|date=October 2009}}
+{{ProgLangCompare}}
 
 This '''comparison of programming languages (syntax)''' compares the features of [[Syntax (programming languages)|language syntax]] (format) for over 50 various computer [[programming language]]s.
 
@@ -64,7 +32,7 @@ A '''statement terminator''' is used to demarcate the end of an individual state
 |-
 ! Language
 ! Statement separator/terminator
-! Secondary separator
+! Secondary separator<ref name="ss1">For multiple statements on one line</ref>
 |-
 | [[ABAP]]
 | period separated
@@ -76,7 +44,11 @@ A '''statement terminator''' is used to demarcate the end of an individual state
 | semicolon separated
 |-
 | [[ALGOL 68]]
-| semicolon and comma separated
+| semicolon and comma separated<ref>Three different kinds of clauses, each separates phrases and the units differently:
+*# serial-clause using ''go-on-token'' (viz. semicolon): '''begin''' a; b; c '''end''' - units are executed in order.
+*# collateral-clause using ''and-also-token'' (viz. “,”): '''begin''' a, b, c '''end''' - order of execution is to be optimised by the compiler.
+*# parallel-clause using ''and-also-token'' (viz. “,”): '''par begin''' a, b, c '''end''' - units must be run in parallel threads.
+</ref>
 |-
 | [[AppleScript]]
 | newline  terminated
@@ -155,7 +127,7 @@ A '''statement terminator''' is used to demarcate the end of an individual state
 |-
 | [[MATLAB]]
 | newline terminated
-| semicolon or comma
+| semicolon or comma<ref>semicolon - result of receding statement hidden, comma - result displayed</ref>
 |-
 | [[Object Pascal|Object Pascal (Delphi)]]
 | semicolon separated
@@ -233,7 +205,7 @@ A '''statement terminator''' is used to demarcate the end of an individual state
 |-class="sortbottom"
 ! Language
 ! Statement separator/terminator
-! Secondary separator
+! Secondary separator<ref name="ss1"/>
 |}
 
 === Line continuation ===
@@ -249,11 +221,11 @@ Line continuation is generally done as part of [[lexical analysis]]: a newline n
 * [[Fortran 90]]/[[Fortran 95]]/[[Fortran 2003]]/[[Fortran 2008]]
 
 '''[[Backslash]] as last character of line'''
-* [[Bash (Unix shell)|bash]] and other Unix shells
+* [[Bash (Unix shell)|bash]]<ref>''[http://www.gnu.org/software/bash/manual/bashref.html Bash Reference Manual],'' [http://www.gnu.org/software/bash/manual/bashref.html#Escape-Character 3.1.2.1 Escape Character]</ref> and other Unix shells
 * [[C (programming language)|C]] and [[C++]] preprocessor
 * [[Falcon (programming language)|Falcon]]
 * [[Mathematica]]
-* [[Python programming language|Python]]
+* [[Python programming language|Python]]<ref>[https://docs.python.org/ Python Documentation], [https://docs.python.org/3/reference/lexical_analysis.html 2. Lexical analysis]: [https://docs.python.org/3/reference/lexical_analysis.html#explicit-line-joining 2.1.5. Explicit line joining]</ref>
 * [[Ruby programming language|Ruby]]
 
 '''[[Backtick]] as last character of line'''
@@ -269,17 +241,20 @@ Line continuation is generally done as part of [[lexical analysis]]: a newline n
 * [[Xojo]]
 
 '''[[Ellipsis]] (as three periods–not one special character)'''
-* [[MATLAB]]: The ellipsis token need not be the last characters on the line, but any following it will be ignored. (In essence, it begins a comment that extends ''through'' (i.e. including) the first subsequent newline character. Contrast this with an inline comment, which extends ''until'' the first subsequent newline.)
+* [[MATLAB]]: The ellipsis token need not be the last characters on the line, but any following it will be ignored.<ref>[http://www.mathworks.com/access/helpdesk/help/techdoc/matlab_env/f0-5789.html Mathworks.com]</ref> (In essence, it begins a comment that extends ''through'' (i.e. including) the first subsequent newline character. Contrast this with an inline comment, which extends ''until'' the first subsequent newline.)
 
 '''[[Delimiter|Comma delimiter]] as last character of line'''
 * Ruby (comment may follow delimiter)
 
-'''[[Delimiter#Bracket_delimiters|Left bracket delimiter]] as last character of line'''
-* [[Batch file]]: starting a parenthetical block can allow line continuation
+'''[[Delimiter#Bracket delimiters|Left bracket delimiter]] as last character of line'''
+* [[Batch file]]: starting a parenthetical block can allow line continuation<ref>http://ss64.com/nt/syntax-brackets.html</ref>
 * Ruby: [[brackets|left parenthesis, left square bracket, or left curly bracket]]
 
 '''[[Operator (computer programming)|Operator]] as last object of line'''
 * Ruby (comment may follow operator)
+
+'''[[Backslash]] as first character of continued line'''
+* [[Vimscript]]
 
 '''Some form of [[#Inline comments|inline comment]] serves as line continuation'''
 * [[Turbo Assembler]]: <code>\</code>
@@ -295,7 +270,7 @@ Line continuation is generally done as part of [[lexical analysis]]: a newline n
 * [[C (programming language)|C]] and [[C++]] preprocessor: The string is ended normally and continues by starting with a quote on the next line.
 
 == Libraries ==
-<table class="metadata plainlinks ambox mbox-small-left ambox-content" role="presentation"><tr><td class="mbox-image">[[File:Wiki letter w cropped.svg|20px|alt=&#91;icon&#93;]]</td><td class="mbox-text"><span class="mbox-text-span">This section requires [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expansion].  <small>''(December 2009)''</small></span></td></tr></table>
+{{Expand section|date=December 2009}}
 To '''import''' a library is a way to read external, possibly compiled, routines, programs or packages. Imports can be classified by level (module, package, class, procedure,...) and by syntax (directive name, attributes,...)
 
 '''File import'''
@@ -305,7 +280,7 @@ To '''import''' a library is a way to read external, possibly compiled, routines
 * [[Falcon (programming language)|Falcon]]: <code>load "''filename''"</code>
 * [[Fortran]]: <code>include 'filename'</code>
 * [[Lua (programming language)|Lua]]: <code>require("''filename''")</code>
-* [[MATLAB]]: <code>addpath(''directory'')</code>
+* [[MATLAB]]: <code>addpath(''directory'')</code><ref>For an M-file (MATLAB source) to be accessible by name, its parent directory must be in the search path (or current directory).</ref>
 * [[Objective-C]]: <code>#import "''filename''"</code>, <code>#import <''filename''></code>
 * [[Perl]]: <code>require "''filename''";</code>
 * [[PHP]]: <code>include "''filename''";</code>, <code>require "''filename''";</code>
@@ -358,15 +333,15 @@ The above statements can also be classified by whether they are a syntactic conv
 * [[Python (programming language)|Python]]: <code>import ''module''</code>
 
 == Blocks ==
-<table class="metadata plainlinks ambox mbox-small-left ambox-content" role="presentation"><tr><td class="mbox-image">[[File:Wiki letter w cropped.svg|20px|alt=&#91;icon&#93;]]</td><td class="mbox-text"><span class="mbox-text-span">This section requires [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expansion].  <small>''(November 2008)''</small></span></td></tr></table>
+{{Expand section|date=November 2008}}
 A '''block''' is a notation for a group of two or more statements, expressions or other units of code that are related in such a way as to comprise a whole.
 
-'''Braces (a.k.a Curly brackets) <code>{</code> ... <code>}</code>''':
+'''Braces (a.k.a. Curly brackets) <code>{</code> ... <code>}</code>''':
 * [[Curly bracket programming language]]s: [[C (programming language)|C]], [[C++]], [[Objective-C]], [[Go (programming language)|Go]], [[Java (programming language)|Java]], [[JavaScript]], [[ECMAScript]], [[C Sharp (programming language)|C#]], [[D (programming language)|D]], [[Perl]], [[PHP]] (<code>for</code> & <code>loop</code> loops, or pass a block as argument), [[Rust (programming language)|Rust]], [[Scala (programming language)|Scala]], [[S-Lang]], [[Swift (Apple programming language)|Swift]], [[Windows PowerShell]], [[Haskell (programming language)|Haskell]] (in do-notation)
 '''Parentheses <code>(</code> ... <code>)</code>'''
 * [[OCaml]], [[Standard ML]]
 '''Brackets <code>[</code> ... <code>]</code>'''
-* [[Smalltalk]] (blocks are first class objects. aka closures)
+* [[Smalltalk]] (blocks are first class objects. a.k.a. closures)
 '''<code>begin</code> ... <code>end</code>''':
 * [[Ada (programming language)|Ada]], [[ALGOL]], [[Pascal (programming language)|Pascal]], [[Ruby (programming language)|Ruby]] (<code>for</code>, <code>do/while</code> & <code>do/until</code> loops), [[OCaml]], [[Simula]], [[Erlang (programming language)|Erlang]].
 '''<code>do</code> ... <code>done</code>''':
@@ -382,7 +357,8 @@ A '''block''' is a notation for a group of two or more statements, expressions o
 '''(<code>do</code> ...)''':
 * [[Clojure]]
 '''Indentation'''
-* [[Off-side rule]] languages: [[Cobra (programming language)|Cobra]], [[Haskell (programming language)|Haskell]] (in do-notation when braces are omitted), [[occam (programming language)|occam]], [[Python (programming language)|Python]], [[F Sharp (programming language)|F#]]
+* [[Off-side rule#Off-side rule languages|Off-side rule languages]]: [[Cobra (programming language)|Cobra]], [[Haskell (programming language)|Haskell]] (in do-notation when braces are omitted), [[occam (programming language)|occam]], [[Python (programming language)|Python]], [[F Sharp (programming language)|F#]]
+* [[Free-form language]]s: most descendants from [[ALGOL]] (including [[C (programming language)|C]], [[Pascal (programming language)|Pascal]], and [[Perl]]); [[Lisp (programming language)|Lisp]] languages
 '''Others'''
 * [[Ada (programming language)|Ada]], [[Visual Basic]], [[Seed7]]: <code>if</code> ... <code>end if</code>
 * [[Bash (Unix shell)|Bash]], [[Bourne shell|sh]], and [[Korn shell|ksh]]: <code>if</code> ... <code>fi</code>, <code>do</code> ... <code>done</code>, <code>case</code> ... <code>esac</code>;
@@ -421,16 +397,16 @@ Examples:
 |[[APL (programming language)|APL]]; the mnemonic is the glyph (jot overstruck with shoe-down) resembles a desk lamp, and hence "illuminates" the foregoing.
 |-
 |<code>#</code>
-|[[Bourne shell]] and other [[UNIX shell]]s, [[Cobra (programming language)|Cobra]], [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Seed7]], [[Windows PowerShell]], [[PHP]], [[R (programming language)|R]], [[Maple (software)|Maple]], [[Nimrod (programming language)|Nimrod]]
+|[[Bourne shell]] and other [[UNIX shell]]s, [[Cobra (programming language)|Cobra]], [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Seed7]], [[Windows PowerShell]], [[PHP]], [[R (programming language)|R]], [[Make_(software)|Make]], [[Maple (software)|Maple]], Nimrod<ref>http://nimrod-lang.org/manual.html#comments</ref>
 |-
 |<code>%</code>
-|[[TeX]], [[Prolog]], [[MATLAB]],  [[Erlang (programming language)|Erlang]], [[S-Lang (programming language)|S-Lang]], [[Visual Prolog]]
+|[[TeX]], [[Prolog]], [[MATLAB]],<ref name=Mathworks.com>{{cite web|title=Mathworks.com|url=http://www.mathworks.de/de/help/matlab/matlab_prog/comments.html|accessdate=25 June 2013}}</ref>  [[Erlang (programming language)|Erlang]], [[S-Lang (programming language)|S-Lang]], [[Visual Prolog]]
 |-
 |<code>//</code>
 |[[ActionScript]], [[C (programming language)|C (C99)]], [[C++]], [[C Sharp (programming language)|C#]], [[D (programming language)|D]], [[Go (programming language)|Go]], [[Java (programming language)|Java]], [[JavaScript]], [[Object Pascal]] (Delphi), [[Objective-C]], [[PHP]], [[Rust (programming language)|Rust]], [[Scala (programming language)|Scala]], [[Sass (stylesheet language)|SASS]], [[Swift (Apple programming language)|Swift]], [[Xojo]]
 |-
 |<code>'</code>
-|[[Visual Basic]], [[VBScript]], [[Xojo]]
+|[[Visual Basic]], [[VBScript]] [[Microsoft Small Basic|Small Basic]],, [[Xojo]]
 |-
 |<code>!</code>
 |[[Fortran]], Basic Plus, Inform
@@ -438,19 +414,19 @@ Examples:
 |<code>;</code>
 |[[AutoHotkey]], [[AutoIt]], [[Lisp (programming language)|Lisp]], [[Common Lisp]], [[Clojure]], [[Rebol]], [[Scheme (programming language)|Scheme]], many assemblers
 |-
-|<code></code>
+|<code><nowiki>--</nowiki></code>
 |[[Euphoria (programming language)|Euphoria]], [[Haskell (programming language)|Haskell]], [[SQL]], [[Ada (programming language)|Ada]], [[AppleScript]], [[Eiffel (programming language)|Eiffel]], [[Lua (programming language)|Lua]], [[VHDL]], [[SGML]]
 |-
 |<code>*</code>
 |[[COBOL]] (if fixed-form and * in column 7), [[Physics Analysis Workstation|PAW]], many assemblers, Fortran (if fixed-form and * in column 1)
 |-
-|<code></code>
+|<code><nowiki>||</nowiki></code>
 |[[Curl (programming language)|Curl]]
 |-
-|<code></code>
+|<code><nowiki>"</nowiki></code>
 |[[Vimscript]]
 |-
-|<code></code>
+|<code><nowiki>\</nowiki></code>
 |[[Forth (programming language)|Forth]]
 |-
 |<code>*></code>
@@ -467,16 +443,16 @@ Examples:
 ! Languages
 |-
 | <code>¢</code> ~ <code>¢</code>,<br><code>#</code> ~ <code>#</code>,<code>co</code> ~ <code>co</code>,<br><code>comment</code> ~ <code>comment</code>
-| [[ALGOL 68]] 
+| [[ALGOL 68]] <ref name=algolcomments>{{cite web|title=Algol68_revised_report-AB.pdf on PDF page 61-62, original document page 121-122|url=http://www.softwarepreservation.org/projects/ALGOL/report/Algol68_revised_report-AB.pdf|accessdate=27 May 2014}}</ref><ref name=algolcomments2>{{cite web|title=HTML Version of the Algol68 Revised Report AB|url=http://jmvdveer.home.xs4all.nl/report.html#941h|accessdate=27 May 2014}}</ref>
 |-
 | <code>/*</code> ~ <code>*/</code>
-| ActionScript, AutoHotkey, C, C++, C#, D, Go, Java, JavaScript, Objective-C, PHP, PL/I, [[Rust (programming language)|Rust]] (can be nested), Scala (can be nested), SASS, SQL, Swift, [[Visual Prolog]], [[CSS]]
+| ActionScript, AutoHotkey, C, C++, C#, D,<ref name=dcomments>{{cite web|title=DLang.org, Lexical|url=http://dlang.org/lex.html#comment|accessdate=27 May 2014}}</ref> Go, Java, JavaScript, Objective-C, PHP, PL/I, [[Rust (programming language)|Rust]] (can be nested), Scala (can be nested), SASS, SQL, Swift, [[Visual Prolog]], [[CSS]]
 |-
 | <code>#cs</code> ~ <code>#ce</code>
-| [[AutoIt]] 
+| [[AutoIt]] <ref name=autoitscriptcomments>{{cite web|title=AutoItScript.com Keyword Reference, #comments-start|url=https://www.autoitscript.com/autoit3/docs/keywords/comments-start.htm|accessdate=27 May 2014}}</ref>
 |-
 | <code>/+</code> ~ <code>+/</code>
-| D (can be nested) 
+| D (can be nested) <ref name=dcomments/>
 |-
 | <code>/#</code> ~ <code>#/</code>
 | [[Cobra (programming language)|Cobra]] (can be nested)
@@ -494,7 +470,7 @@ Examples:
 | Ruby
 |-
 | <code>#<[[Tag (metadata)|TAG]]></code> ~ <code>#</[[Tag (metadata)|TAG]]></code>, <code>#stop</code> ~ <code>[[End-of-file|EOF]]</code>,<br /><code>#iffalse</code> ~ <code>#endif</code>, <code>#ifntrue</code> ~ <code>#endif</code>,<br /> <code>#if false</code> ~ <code>#endif</code>, <code>#if !true</code> ~ <code>#endif</code>
-| [[S-Lang (programming language)|S-Lang]] 
+| [[S-Lang (programming language)|S-Lang]] <ref>{{cite web|title=slang-2.2.4/src/slprepr.c - line 43 to 113|url=ftp://space.mit.edu/pub/davis/slang/v2.2/slang-2.2.4.tar.bz2|accessdate=28 May 2014}}</ref>
 |-
 | <code>{-</code> ~ <code>-}</code>
 | [[Haskell (programming language)|Haskell]] (can be nested)
@@ -505,13 +481,13 @@ Examples:
 | <code>{</code> ~ <code>}</code>
 | Object Pascal (Delphi), Pascal
 |-
-| <code></code> ~ <code></code>
+| <code><nowiki>|#</nowiki></code> ~ <code><nowiki>#|</nowiki></code>
 | Curl
 |-
 | <code>%{</code> ~ <code>%}</code>
-| [[MATLAB]] (the symbols must be in a separate line)
+| [[MATLAB]]<ref name="Mathworks.com"/> (the symbols must be in a separate line)
 |-
-| <code></code> ~ <code></code>
+| <code><nowiki>#|</nowiki></code> ~ <code><nowiki>|#</nowiki></code>
 | [[Lisp (programming language)|Lisp]], [[Scheme (programming language)|Scheme]], [[Racket (programming language)|Racket]] (can be nested in all three).
 |-
 | <code>--[[</code> ~ <code>]]</code>,<br><code>--[=[</code> ~ <code>]=]</code>
@@ -545,7 +521,7 @@ Examples:
 * Block comments in Perl are considered part of the documentation, and are given the name [[Plain Old Documentation]] (POD). Technically, Perl does not have a convention for including block comments in source code, but POD is routinely used as a workaround.
 
 ==== PHP ====
-<div class="hatnote relarticle mainarticle">Main article: [[PHP syntax and semantics]]</div>
+{{main|PHP syntax and semantics}}
 * PHP supports standard C/C++ style comments, but supports Perl style as well.
 
 ==== Python ====
@@ -555,7 +531,7 @@ Examples:
 * As with Python and Perl, Ruby has no specific block-comment syntax. However, like Perl, documentation blocks can be used as block comments as they are ignored by the interpreter.
 
 ==== S-Lang ====
-* The region of lines enclosed by the <code></code> and <code></code> delimiters are ignored by the interpreter. The tag name can be any sequence of alphanumeric characters that may be used to indicate how the enclosed block is to be deciphered. For example, <code></code> could indicate the start of a block of LaTeX formatted documentation.
+* The region of lines enclosed by the <code><nowiki>#&lt;tag&gt;</nowiki></code> and <code><nowiki>#&lt;/tag&gt;</nowiki></code> delimiters are ignored by the interpreter. The tag name can be any sequence of alphanumeric characters that may be used to indicate how the enclosed block is to be deciphered. For example, <code><nowiki>#&lt;latex&gt;</nowiki></code> could indicate the start of a block of LaTeX formatted documentation.
 
 ==== Scheme and Racket ====
 * The next complete syntactic component (s-expression) can be commented out with <code>#;</code> .
@@ -567,7 +543,9 @@ Examples:
 There is a wide variety of syntax styles for declaring comments in source code.
 <code>''BlockComment''</code> in italics is used here to indicate block comment style.
 <code>''InlineComment''</code> in italics is used here to indicate inline comment style.
-
+<!--NOTE: 20061101 ;; dreftymac
+The indications of "block comment" and "inline comment" may not all be correct, if you see a mistake for a language you know, please change it.
+-->
 
 {| class="wikitable"
 |-
@@ -608,7 +586,7 @@ There is a wide variety of syntax styles for declaring comments in source code.
 |<code><# ''BlockComment'' #></code>
 |-
 |[[BASIC programming language|BASIC]] (various dialects):
-|<code>&#39;''InlineComment''</code> (not all dialects)<br>
+|<code>&#39;''InlineComment''</code> (not all dialects)<!-- note that &#39; is ' but doesn't mess up the parser, now or in the future --><br>
 <code>REM ''InlineComment''</code>
 |
 |-
@@ -679,7 +657,7 @@ There is a wide variety of syntax styles for declaring comments in source code.
 |-
 |[[Lua (programming language)|Lua]]
 |<code>-- ''InlineComment''</code>
-|<code>''BlockComment''</code> (variable number of = signs)
+|<code><nowiki> --[==[ </nowiki>''BlockComment''<nowiki>]==]</nowiki></code> (variable number of = signs)
 |-
 |[[Maple (software)|Maple]]
 |<code># ''InlineComment''</code>
@@ -708,7 +686,7 @@ There is a wide variety of syntax styles for declaring comments in source code.
 |[[Perl]] and [[Ruby (programming language)|Ruby]]
 |<code># ''InlineComment'' </code>
 |<code>=begin<br/>''BlockComment''<br/>=cut</code> (<code>=end</code> in Ruby) ([[Plain Old Documentation|POD]] documentation comment)<br>
-<code><br>''Comments after end of code''</code>
+<code><nowiki>__END__</nowiki><br>''Comments after end of code''</code>
 |-
 |[[PHP]]
 |<code># ''InlineComment''</code><br/><code>// ''InlineComment''</code>
@@ -724,7 +702,7 @@ There is a wide variety of syntax styles for declaring comments in source code.
 |-
 |[[Python (programming language)|Python]]
 |<code># ''InlineComment'' </code>
-|<code> ''BlockComment'' <br>""" ''BlockComment'' """</code><br>
+|<code><nowiki>'''</nowiki> ''BlockComment'' <nowiki>'''</nowiki><br>""" ''BlockComment'' """</code><br>
 ([[Docstring|Documentation string]] when first line of module, class, method, or function)
 |-
 |[[Rust (programming language)|Rust]]
@@ -773,12 +751,12 @@ There is a wide variety of syntax styles for declaring comments in source code.
 |
 |-
 |[[Visual Basic]]
-|<code> ''InlineComment''</code><br><code>Rem ''InlineComment''</code>
+|<code><nowiki>'</nowiki> ''InlineComment''</code><br><code>Rem ''InlineComment''</code>
 |
 |-
 |[[Visual Basic .NET]]
-|<code> ''InlineComment''</code><br>
-<code> ''InlineComment''</code> (XML documentation comment)<br>
+|<code><nowiki>'</nowiki> ''InlineComment''</code><br>
+<code><nowiki>'''</nowiki> ''InlineComment''</code> (XML documentation comment)<br>
 <code>Rem ''InlineComment''</code>
 |
 |-
@@ -801,12 +779,9 @@ There is a wide variety of syntax styles for declaring comments in source code.
 * [[Python syntax and semantics]]
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
+{{Use dmy dates|date=January 2011}}
 
-
-
-
-
+{{DEFAULTSORT:Comparison Of Programming Languages (Syntax)}}
 [[Category:Programming language comparisons| ]]

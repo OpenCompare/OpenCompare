@@ -1,4 +1,4 @@
-<table class="metadata plainlinks ambox ambox-content" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Ambox content.png|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs attention from an expert in Computing'''.<span class="hide-when-compact"> Please add a ''reason'' or a ''talk'' parameter to this template to explain the issue with the article.[[Category:Articles needing expert attention with no reason or talk parameter]] [[Wikipedia:WikiProject Computing|WikiProject Computing]] (or its [[Portal:Computing|Portal]]) may be able to help recruit an expert.</span>  <small>''(September 2008)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Expert-subject|Computing|date=September 2008}}
 
 There are many popular computer data '''[[archive format]]s''' for creating and maintaining [[archive file]]s.  The tables below '''compare many popular archive formats'''.
 
@@ -25,7 +25,10 @@ Many archive formats contain redundant data embedded in the files in order to de
 In order to protect the data being stored or transferred from being read if intercepted, many archive formats include the capability to encrypt the data.  There are multiple mathematical algorithms available to encrypt data.
 
 ==Comparison==
-
+<!-- 
+BEFORE ADDING A FORMAT:
+Make sure that it has a page on Wikipedia and something is known about it!
+-->
 {| class="wikitable sortable" style="width: auto; text-align: center; font-size: smaller; table-layout: fixed;"
 ! Format 
 ! Filename<br/> extension 
@@ -43,45 +46,45 @@ In order to protect the data being stored or transferred from being read if inte
 ! [[Ar (Unix)|Archive]] (ar)
 | .a
 | [[CSRG]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
+| {{dunno}} <!-- *portable* ar format first appeared in BSD, and was later adopted by SysV -->
 | Original
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 | 1 s
 |-
 ! [[cpio]]
 | .cpio
 | [[Bell Labs]]
 | 1983 [[UNIX System V|Unix System V]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial, select formats only
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{dunno}} <!-- Probably Original -->
+| {{partial}}, select formats only
+| {{no}}
+| {{no}}
+| {{no}}
 | 1 s
 |-
 ! [[shar|Shell Archive]] (shar and makeself)
 | .shar, .run
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
 | 1994 [[4.4BSD]]
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, commonly MD5
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial 
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial 
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| {{yes}}, commonly MD5
+| {{partial}} <!-- sh scripts can do about anything -->
+| {{partial}} <!-- it is just that it is not always implemented -->
+| {{partial}}
 | arbitrary (typically 1 s)
 |-
 ! [[Tar (file format)|Tape Archive]] (tar)
 | .tar
 | [[Bell Labs]]
 | 1975 [[Version 6 Unix]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial, metadata only. Full integrity providable by filters such as gzip.
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional<sup class="reference plainlinks nourlexpansion" id="ref_1">[[#endnote_1|1]]</sup>
+| {{dunno}} <!-- Probably Original -->
+| {{partial}}, metadata only. Full integrity providable by filters such as gzip.
+| {{no}}
+| {{no}}
+| {{optional}}{{ref|1|1}}
 | 1 s
 |-
 ! Extended TAR format (pax)
@@ -90,9 +93,9 @@ In order to protect the data being stored or transferred from being read if inte
 | 2001
 | Sun proposal + TAR
 | metadata
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+| {{no}}
+| {{yes}}
 | arbitrary (typically 1 ns)
 |-
 ! [[BagIt]]
@@ -100,57 +103,119 @@ In order to protect the data being stored or transferred from being read if inte
 | [[The Library of Congress]]
 | 2007
 | file system
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+<!-- removed, see talk |-
+! colspan="10" style="background-color: #eeeeff" | Compression only
+| ?
+|-
+! [[bzip2]]
+| .bz2
+| [[Julian Seward]]
+| 1996
+| [[Burrows-Wheeler transform]]
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{dunno}}
+|-
+! [[compress]]
+| .Z
+| {{dunno}}
+| ([[1986]]) [[4.3BSD]]
+| [[LZW]]
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{dunno}}
+|-
+! [[Gzip|GNU Zip]] (gzip)
+| .gz
+| Jean-Loup&nbsp;Gailly and Mark&nbsp;Adler
+| 1992
+| [[DEFLATE (algorithm)|DEFLATE]]
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{dunno}}
+|-
+! [[LZMA]]
+| .lzma
+| Igor Pavlov
+| 2001
+| [[LZ77]] and [[LZW]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+|-
+! [[LZO]]
+| ?
+| Markus Oberhumer
+| 1996
+| [[LZW]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+|-
+! [[rzip]]
+| ?
+| [[Andrew Tridgell]]
+| 1999
+| [[bzip2]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| ? -->
 |-
 ! colspan="10" style="background-color: #eeeeff" | Archiving and Compression
 |-
-! [[7z]]
+! [[7z (file format)|7z]]
 | .7z
 | Igor Pavlov
 | 2000
 | [[Lempel-Ziv-Markov algorithm|LZMA]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> CRC32
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> AES-256
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}},<br/> CRC32
+| {{no}}
+| {{yes}},<br/> AES-256
+| {{yes}}
 | 1 ms (maybe better?)
 |-
 ! [[ACE (compression file format)|ACE]]
 | .ace
 | Marcel Lemke
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, Blowfish
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}} <!-- Probably Original -->
+| {{yes}}
+| {{yes}}
+| {{yes}}, Blowfish
+| {{yes}}
+| {{dunno}}
 |-
 ! AFA
 | .afa
 | Vicente Sánchez-Alarcos
 | 2009
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES and CAST
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{yes}}, AES and CAST
+| {{yes}}
+| {{dunno}}
 |-
 ! [[ARC (file format)|ARC]]
 | .arc
 | Thom Henderson (SEA)
 | 1985
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|CRC16
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #faa; color: black; vertical-align: middle; text-align: center; " class="no table-no"| weak XOR only
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{dunno}} <!-- Probably Original -->
+| {{yes|CRC16}}
+| {{no}}
+| {{bad|weak XOR only}}
+| {{no}}
 | 2s
 |-
 ! [[ARJ]]
@@ -158,65 +223,65 @@ In order to protect the data being stored or transferred from being read if inte
 | Robert Jung
 | 1991
 | [[AR001]] and [[AR002]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #faa; color: black; vertical-align: middle; text-align: center; " class="no table-no"| weak XOR with initial constant
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{bad|weak XOR with initial constant}}
+| {{no}}
+| {{dunno}}
 |-
 ! [[B1 (archive format)|B1]]
 | .b1
 | Catalina Group Ltd
 | 2011
 | [[LZMA]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{yes}}
+|{{no}}
+|{{yes}}, AES
+| {{yes}}
+| {{dunno}}
 |-
 ! [[Cabinet (file format)|Cabinet]]
 | .cab
 | [[Microsoft]]
 | 1992 [[Windows 3.1]]
 | [[DEFLATE (algorithm)|DEFLATE]]
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional PKCS7 [[Authenticode]] signature
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (with SDK)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{optional}} PKCS7 [[Authenticode]] signature
+| {{no}}
+| {{optional}} (with SDK)
+| {{yes}}
 | 2 s
 |-
 ! [[CFS (Compact File Set file format)|Compact File Set]]
 | .cfs
 | Joe Lowe (Pismo Technic Inc.)
-| 2008, April 1
+| 2008
 | ZIP/LZMA 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[Compact Pro]]
 | .cpt
 | Bill Goodman
-| 1990, May 5 (as "Compactor")
+| 1990 (as "Compactor")
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[DAR (Disk Archiver)|Disk Archive]] (DAR)
 | .dar
 | Denis Corbin
 | 2002
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="reference plainlinks nourlexpansion" id="ref_2">[[#endnote_2|2]]</sup>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}{{ref|2|2}}
+| {{yes}}
+| {{yes}}
 | 1 s
 |-
 ! [[DGCA (Computing)|DGCA]]
@@ -224,22 +289,22 @@ In order to protect the data being stored or transferred from being read if inte
 | Shin-ichi Tsuruta
 | 2001
 | [[GCA (file format)|GCA]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[FreeArc]]
 | .arc
 | Bulat Ziganshin
 | 2006
 | [[LZMA]], [[PPMD]], [[TTA (codec)|TTA]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES, Blowfish, Twofish and Serpent
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{yes}}, AES, Blowfish, Twofish and Serpent
+| {{yes}}
+| {{dunno}}
 |-
 ! [[LHA (file format)|LHA]] (also LZH)
 | .lzh, .lha
@@ -247,185 +312,185 @@ In order to protect the data being stored or transferred from being read if inte
 | 1988
 | [[Frozen (file format)|Frozen]]
 | Only on recent LHA releases
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{No}}
+| {{no}}
 | 1–2 s
 |-
-! [[LZX (algorithm)#Amiga LZX|LZX]] 
+! [[LZX (algorithm)#Amiga LZX|LZX]] <!-- Watch for anchor name changes -->
 | .lzx
 | [[Jonathan Forbes (programmer)|Jonathan Forbes]] and Tomi&nbsp;Poutanen
 | 1995
 | [[LZ77]]
 | Only on recent LZX releases
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[Sparc]]
 | .arc
 | David Pilling
 | 1989
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[WinMount format]] 
 | .mou
 | ?
 | 2007
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[.dmg|Macintosh Disk Image]]
 | .dmg
 | [[Apple Computer]]
 | 2001 [[Mac OS X]]
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[PartImage|Partition Image]] (PartImage)
 | ?
 | François&nbsp;Dupoux and Franck&nbsp;Ladurelle
-| 2000 
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| 2000 <!-- Date of registration of Sourceforge project -->
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[PAQ]] (Several formats)
 | ?
 | Matt Mahoney
 | 2002&ndash;2006
 | Original
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[PeaZip#Native archive format|PEA]]
 | .pea
 | Giorgio Tani
 | 2006
 | Original, Deflate based compression
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes Adler32, CRC32, CRC64, MD5, SHA1, RIPEMD-160, SHA256, SHA512, Whirlpool
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes Authenticated Encryption, AES128 and AES256 in EAX mode
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes system dependent
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes arbitrary
+| {{yes}} Adler32, CRC32, CRC64, MD5, SHA1, RIPEMD-160, SHA256, SHA512, Whirlpool
+| {{no}}
+| {{yes}} Authenticated Encryption, AES128 and AES256 in EAX mode
+| {{yes}} system dependent
+| {{yes}} arbitrary
 |-
 ! PIM
 | .pim
 | Ilia Muraviev
 | 2004&ndash;2008
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
 |-
 ! [[Quadruple D]]
 | .qda
 | Taku Hayase (aka sandman)
-| 1997 
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| 1997 <!-- According to date on website -->
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[RAR (file format)|RAR]]
 | .rar
 | Eugene Roshal
-| 1993 
+| 1993 <!-- According to copyright info -->
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> [[CRC32]],<br/> [[BLAKE2]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> Reed-Solomon
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> AES-256
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes,<br/> [[UTF-8]]
-| 2 [[Second|s]], 1 [[Second|s]], 6.5536 [[Millisecond|ms]], 25.6 [[Microsecond|µs]] or 100 [[Nanosecond|ns]] <sup class="reference plainlinks nourlexpansion" id="ref_3">[[#endnote_3|3]]</sup>
+| {{yes}},<br/> [[CRC32]],<br/> [[BLAKE2]]
+| {{yes}},<br/> Reed-Solomon
+| {{yes}},<br/> AES-256
+| {{yes}},<br/> [[UTF-8]]
+| 2 [[Second|s]], 1 [[Second|s]], 6.5536 [[Millisecond|ms]], 25.6 [[Microsecond|µs]] or 100 [[Nanosecond|ns]] {{ref|3|3}}
 |-
 ! [[WinRK|RK]]
 | .rk
 | M Software, Ltd.
 | 2004
 | Original
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES, Square, Twofish
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{no}}
+| {{yes}}, AES, Square, Twofish
+| {{yes}}
 | 1 s
 |-
 ! [[StuffIt]] (also SIT)
 | .sit
 | Raymond Lau
 | 1987
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[StuffIt X]] (also SITx)
 | .sitx
 | Aladdin/[[Allume Systems]]
 | 2002
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, RC4,Blowfish,<br>AES,DES
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{optional}}
+| {{yes}}, RC4,Blowfish,<br>AES,DES
+| {{yes}}
+| {{dunno}}
 |-
 ! UltraCompressor II
 | .uc .uc0 .uc2<br/> .ucn .ur2 .ue2
-| Nico de Vries
+| Nico de Vries<!--http://www.nicodevries.com/nico/professional.php -->
 | 1992–1996
 | [[LZ77]] and [[Huffman coding]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, triple DES
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{yes}}
+| {{yes}}, triple DES
+| {{dunno}}
 | ?
 |-
 ! [[Windows Imaging Format|Windows Image]]
 | .wim
 | [[Microsoft]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
 | Original
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Optional}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[ZIP (file format)|ZIP]] (also PKZIP)
 | .zip
 | [[Phil Katz]]
 | 1989
 | [[DEFLATE (algorithm)|DEFLATE]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{no}}
+| {{yes}}, AES
+| {{yes}}
 | 2 s
 |-
 ! [[ZPAQ]]
@@ -433,103 +498,255 @@ In order to protect the data being stored or transferred from being read if inte
 | [[Matt Mahoney]]
 | 2009
 | [[PAQ]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, SHA-1
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, AES-256
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}, SHA-1
+| {{no}}
+| {{Yes}}, AES-256
+| {{yes}}
+| {{dunno}}
 |-
 ! colspan="10" style="background-color: #eeeeff" | Software Packaging and Distribution
 |-
 ! [[Deb (file format)|Debian package]] (deb)
 | .deb
 | [[Debian]]
-| 1994 [[Debian]] 0.91 
+| 1994 [[Debian]] 0.91 <!-- Correct version? -->
 | [[Ar (Unix)|ar]], [[Tar (file format)|tar]], and [[gzip]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
 | 1 s
 |-
 ! [[Installer (Mac OS X)|Macintosh Installer]]
 |.pkg, .mpkg (metapackage)
 | [[NeXT]]
-| 1989 [[NeXTSTEP]] 1.0 
-| [[Pax (Unix)|pax]] and [[gzip]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| 1989 [[NeXTSTEP]] 1.0 <!-- Correct version? -->
+| [[Pax (Unix)|pax]] and [[gzip]] <!-- The payload file in any .pkg is always called Archive.pax.gz -->
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[RPM Package Manager]] (RPM)
 | .rpm
 | [[Red Hat]]
-| 1995 [[Red Hat Linux]] 1.0 
+| 1995 [[Red Hat Linux]] 1.0 <!-- Version of RHL -->
 | [[cpio]] and [[gzip]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 | 1 s
 |-
 ! [[Slackware]] Package
 | .tgz
 | [[Patrick Volkerding]]
-| 1993 [[Slackware]] 1.0 
+| 1993 [[Slackware]] 1.0 <!-- Version of Slackware -->
 | [[Tar (file format)|tar]] and [[gzip]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{dunno}}
+| {{dunno}}
 |-
 ! [[Windows Installer]] (also MSI)
 | .msi
 | [[Microsoft]]
 | 2000 [[Windows 2000]]
 | OLE Structured Storage, [[Cabinet (file format)|Cabinet]] and [[SQL]]
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional PKCS7 [[Authenticode]] Signature
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{optional}} PKCS7 [[Authenticode]] Signature
+| {{no}}
+| {{no}}
+| {{no}}
 | 2 s
 |-
-! [[JAR (file format)|Java Archive]] (JAR<sup class="reference plainlinks nourlexpansion" id="ref_4">[[#endnote_4|4]]</sup>)
+! [[JAR (file format)|Java Archive]] (JAR{{ref|4|4}})
 | .jar
 | [[Sun Microsystems]]
 | 1997 [[JDK]] 1.1
 | [[PKZIP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
 |-
 ! [[Google Chrome]] [[Chrome Web Store|extension]] package
 | .crx
 | [[Google]]
-| 9 September 2009 (Chrome 4.0)
+| 2009 (Chrome 4.0)
 | [[.zip|Zip]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{yes}}<ref>http://support.google.com/chrome/bin/answer.py?hl=en&answer=1181035&topic=1693469&ctx=topic</ref>
+| {{dunno}}
+| {{dunno}}
 |}
 
+<!--
+Future expansion
 
+== Features ==
+
+{| class="wikitable"
+|-
+! Archive format
+! Built-in compression
+! Self-extracting
+! Stores directories
+! Stores [[POSIX attributes]] ([[UID]], [[GID]], permissions)
+! Stores [[Access Control List|ACL]]s
+|-
+! [[cpio]]
+| {{no}}{{ref|1|1}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+|-
+! [[Tar (file format)|tar]]
+| {{no}}{{ref|1|1}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+|-
+! [[DAR (Disk Archiver) | dar]]
+| {{no}}{{ref|3|3}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+|-
+! [[ar (Unix)|ar]]
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+|-
+! [[Pax (program)|pax]]
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+|-
+! [[dump (program)|dump]]
+| {{no}}{{ref|1|1}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+|-
+! [[shar]]
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+|-
+! [[makeself]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+|-
+! [[zip (file format)|zip]]
+| {{yes}}
+| {{yes}}{{ref|2|2}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+|-
+! [[RAR (file format)|rar]]
+| {{yes}}
+| {{yes}}{{ref|2|2}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+|-
+! [[ACE (file format)|ace]]
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+|-
+! [[arj]]
+| {{yes}}
+| {{yes}}{{ref|2|2}}
+| {{yes}}
+| {{no}}
+| {{no}}
+|-
+! [[zoo (file format)|zoo]]
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+|-
+! [[ISO 9660]] (CD-ROM)
+| {{no}}{{ref|1|1}}
+| {{no}}
+| {{yes}}
+| {{yes}} (with Rock Ridge extension)
+| {{no}}
+|-
+! [[cabinet (file format)|cab]]
+| {{yes}}
+| {{yes}}{{ref|2|2}}
+| [[DEFLATE (algorithm)|DEFLATE]]
+| {{dunno}}
+| {{no}}
+| {{dunno}}
+|-
+! [[RPM Package Manager|rpm]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+|-
+! [[Deb (file format)|deb]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+|-
+! [[7z (file format)|7z]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+|-
+! Archive format
+! Built-in compression
+! Self-extracting
+! Stores directories
+! Stores [[POSIX attributes]] ([[UID]], [[GID]], permissions)
+! Stores [[Access Control List|ACL]]s
+|}
 
 === Notes ===
-<span class="citation wikicite" id="endnote_1"><b>[[#ref_1|^1]]</b></span> While the original [[tar (file format)|tar]] format uses the [[ASCII]] character encoding, current implementations use the [[UTF-8]] (Unicode) encoding, which is backwards compatible with ASCII.<br/>
-<span class="citation wikicite" id="endnote_2"><b>[[#ref_2|^2]]</b></span> Supports the external Parchive program (par2).<br />
-<span class="citation wikicite" id="endnote_3"><b>[[#ref_3|^3]]</b></span> From 3.20 release RAR can store modification, creation and last access time with the precision up to 0.0000001 second (= 0.1 µs). [http://www.win-rar.com/index.php?id=24&kb_article_id=85] [http://www.winrar-tr.com/WinRAR/Help/ENG/html/HELPSwTS.htm]<br />
-<span class="citation wikicite" id="endnote_4"><b>[[#ref_4|^4]]</b></span> There is also [[JAR (software)|JAR]] the archiver by Robert K. Jung.
+{{note|1|1}} Compression is not a built-in feature of the formats, however, the resulting archive can be compressed with any algorithm of choice. Several implementations include functionality to do this automatically<br/>
+{{note|2|2}} That is, most implementations can optionally produce a self-extracting executable<br/>
+{{note|3|3}} Per-file compression with [[gzip]] or [[bzip2]] (as opposed to compressing the whole archive). An individual can choose not to compress already compressed filenames based on their suffix as well.
+-->
+
+=== Notes ===
+{{note|1|1}} While the original [[tar (file format)|tar]] format uses the [[ASCII]] character encoding, current implementations use the [[UTF-8]] (Unicode) encoding, which is backwards compatible with ASCII.<br/>
+{{note|2|2}} Supports the external Parchive program (par2).<br />
+{{note|3|3}} From 3.20 release RAR can store modification, creation and last access time with the precision up to 0.0000001 second (= 0.1 µs). [http://www.win-rar.com/index.php?id=24&kb_article_id=85] [http://www.winrar-tr.com/WinRAR/Help/ENG/html/HELPSwTS.htm]<br />
+{{note|4|4}} There is also [[JAR (software)|JAR]] the archiver by Robert K. Jung.
 
 == References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist}}
 
 == See also ==
 *[[List of archive formats]]
@@ -537,71 +754,8 @@ In order to protect the data being stored or transferred from being read if inte
 *[[Comparison of file systems]]
 *[[List of file systems]]
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Archive formats|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Archive formats|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Archive_formats&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Archive format]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Archiving only</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[ar (Unix)|ar]]
-*[[cpio]]
-*[[shar]]
-*[[tar (computing)|tar]]
-*[[LBR (file format)|LBR]]
-*[[BagIt]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Compression only</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[bzip2]]
-*[[gzip]]
-*[[lzip]]
-*[[Lempel–Ziv–Markov chain algorithm|LZMA]]
-*[[lzop]]
-*[[xz]]
-*[[SQ (program)|SQ]]
-*[[compress]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Archiving and compression</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[7z]]
-*[[ACE (compression file format)|ACE]]
-*[[ARC (file format)|ARC]]
-*[[ARJ]]
-*[[B1 (archive format)|B1]]
-*[[Cabinet (file format)|Cabinet]]
-*[[CFS (file format)|cfs]]
-*[[Compact Pro|cpt]]
-*[[DGCA (computing)|DGCA]]
-*[[Apple Disk Image|.dmg]]
-*[[EGG (file format)|.egg]]
-*[[KGB Archiver|kgb]]
-*[[LHA (file format)|LHA]]
-*[[LZX (algorithm)|LZX]]
-*[[MPQ]]
-*[[PeaZip#Native archive format|PEA]]
-*[[Quadruple D|qda]]
-*[[RAR]]
-*[[rzip]]
-*[[StuffIt|sit]]
-*[[SQX]]
-*[[PAQ|UDA]]
-*[[UHARC]]
-*[[Xar (archiver)|Xar]]
-*[[Zoo (file format)|zoo]]
-*[[Zip (file format)|ZIP]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Software packaging and distribution</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Android application package|APK]]
-*[[deb (file format)|deb]]
-*[[Installer (OS X)|pkg (OS X)]]
-*[[RPM Package Manager|RPM]]
-*[[Super OS#Software repository|RUNZ]]
-*[[Windows Installer|MSI]]
-*[[JAR (file format)|JAR]]
-** [[WAR (file format)|WAR]]
-** [[Java EE Connector Architecture|Java RAR]]
-** [[EAR (file format)|EAR]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Document packaging and distribution</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Open eBook|OEB Package Format]]
-*[[EPUB|OEBPS Container Format]]
-*[[Open Packaging Conventions]]
-*[[PAQ]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
-*[[File:Symbol neutral vote.svg                 | Non-article page|16x16px|link=]]'''[[Comparison of archive formats|Comparison]]'''
-*[[File:Symbol list class.svg                   | List-Class article|16x16px|link=]]'''[[List of archive formats|List]]'''
-</div></td></tr></table></td></tr></table>
+{{Archive formats}}
 
-
-
+{{DEFAULTSORT:Comparison Of Archive Formats}}
 [[Category:Archive formats|*]]
 [[Category:Software comparisons|Archive formats]]

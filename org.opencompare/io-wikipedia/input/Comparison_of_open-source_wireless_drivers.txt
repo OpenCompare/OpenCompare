@@ -1,10 +1,10 @@
 [[Wireless network]] cards for computers require control software to make them function ([[Device drivers]]). This is a list of the status of some [[open source|open-source]] drivers for [[802.11]] wireless network cards.
 
 ==Linux drivers for 802.11 "wireless" ==
-[[File:Marvell Libertas (88W8xxx).svg|thumb|Marvell's "Libertas" runs an [[Real-time operating system|RTOS]] on an [[ARM9]] and interfaces over a [[Shim (computing)|shim]] with the actual operating system.]]
-* ''Please see [http://wireless.kernel.org/en/users/Drivers wireless.kernel.org]'' and 
+[[File:Marvell Libertas (88W8xxx).svg|thumb|Marvell's "Libertas" runs an [[Real-time operating system|RTOS]] on an [[ARM9]] and interfaces over a [[Shim (computing)|shim]] with the actual operating system.<ref>{{cite web |url=http://wireless.kernel.org/en/users/Drivers/libertas |title=Marvel Libertas}}</ref><ref>{{cite web |url=http://dev.laptop.org/ticket/46 |title=Ticket #46}}</ref>]]
+* ''Please see [http://wireless.kernel.org/en/users/Drivers wireless.kernel.org Wiki]'' and 
 * [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless Current Stable Linux kernel: Wireless]
-** [http://git.kernel.org/cgit/linux/kernel/git/linville/wireless-testing.git/tree/drivers/net/wireless Linville: Wireless-Testing]<span class="cleanup-needed-content" style="background-color: #fff9f9; color: DarkSlateGray; border: 1px solid #ffdcdc;"></span><sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Please clarify|<span title="The text near this tag may need clarification or removal of jargon. (March 2014)">clarification needed</span>]]</i>&#93;</sup>
+** [http://git.kernel.org/cgit/linux/kernel/git/linville/wireless-testing.git/tree/drivers/net/wireless Linville: Wireless-Testing]{{Clarify|date=March 2014}}
 
 ===Status===
 
@@ -14,22 +14,22 @@
 ! Driver
 ! Chipsets
 ! Integration in mainline
-! Non-free firmware required
+! Non-free firmware required<ref name='non-free firmware'>'N/A' means firmware is stored in device at all times</ref>
 ! License
 ! Development
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/adm8211.c adm8211]
 | adm8211
 | style="text-align: left" | ADMtek ADM8211 (IEEE 802.11b MAC/BBP
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPLv2
 | with support from Infineon/ADMtek
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/at76c50x-usb.c at76c50x-usb] [http://wireless.kernel.org/en/users/Drivers/at76c50x-usb at76c50x-usb]
 | at76c50x-USB
 | style="text-align: left" | Atmel AT76C503/AT76C505 based USB WLAN adapters
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | style="background: yellow;" | Depends on the model
 | GPLv2
 | ?
@@ -37,136 +37,143 @@
 !
 | [http://acx100.sourceforge.net/ acx100]
 | style="text-align: left" | [[Texas Instruments]] ACX100, ACX111, TNETW1450
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}
+| {{No|Yes}}
 | Dual [[BSD]]/[[Mozilla Public License|MPL]]
 | style="background: black; color: white; " | Reverse engineered
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/airo.c airo]
 | [http://airo-linux.sourceforge.net/ airo]
 | style="text-align: left" | [[Cisco Systems]] Aironet 4500/4800 and 340/350
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}
+| {{Yes|No}}
 | Dual GPLv2 and BSD
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
 |-
-! rowspan=7 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/ath ath]
+! rowspan=8 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/ath ath]
 | [http://wireless.kernel.org/en/users/Drivers/ar5523 ar5523]
 | style="text-align: left" | [[Qualcomm Atheros]] AR5523 based USB dongles
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}
+| {{Yes|No}}
 | ISC
 | style="background: black; color: white; " | Reverse engineered
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath5k ath5k]
 | style="text-align: left" | Qualcomm Atheros AR2413, AR2414, AR2417, AR2425, AR5210, AR5211, AR5212, AR5213, AR5413, AR5414, AR5423, AR5424
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.25)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}} (since 2.6.25)
+| {{Yes|No}}<ref name='atheros'>The card doesn't have a host CPU and so it doesn't require a firmware [http://kerneltrap.org/node/4118 source]</ref>
 | Dual [[GPL]]/[[BSD]]
 | style="background: black; color: white; " | Reverse engineered
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath6kl ath6kl]
 | style="text-align: left" | Qualcomm Atheros AR6003, AR6004 (SDIO), AR6004 (USB)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | ISC
 | Written by Qualcomm Atheros
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath9k ath9k]
 | style="text-align: left" | Qualcomm Atheros chips with [[IEEE 802.11n]] support
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.27)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}} (since 2.6.27)
+| {{Yes|No}}<ref name='atheros' />
+| [[ISC license|ISC]]
+| Written by Qualcomm Atheros
+|-
+| [http://wireless.kernel.org/en/users/Drivers/ath9k_htc ath9k_htc]
+| style="text-align: left" | Qualcomm Atheros AR9271, AR7010 (USB-PCIe bridge with AR928x chips)
+| {{Yes}} (since 2.6.35)<ref>{{cite web|url=https://wiki.debian.org/ath9k_htc|title=ath9k_htc|work=debian.org|accessdate=1 May 2015}}</ref><ref>https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=fb9987d0f748c983bb795a86f47522313f701a08 commit of ath10k to kernel 2.6.35</ref>
+| {{Yes|No}}<ref name='ath9k_htc'>{{cite web|url=https://github.com/qca/open-ath9k-htc-firmware|title=qca/open-ath9k-htc-firmware|work=GitHub|accessdate=1 May 2015}}</ref>
 | [[ISC license|ISC]]
 | Written by Qualcomm Atheros
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath10k ath10k]
 | style="text-align: left" | Qualcomm Atheros chips with [[IEEE 802.11ac]] support
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.11)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}} (since 3.11)<ref>http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=5e3dd157d7e70f0e3cea3f2573ed69fb156a19d5 commit of ath10k to Kernel 3.11</ref>
+| {{No|Yes}}<ref name='ath10k'>[http://wireless.kernel.org/en/users/Drivers/ath10k#Firmware The chipsets do require a non-free firmware, as of 12/8/2013, volunteer developers should contact Luis R. Rodriguez, mcgrof at frijolero.org to help with changing this, code clean ups, and release )]{{Citation needed|date=March 2014}}</ref>
 | [[ISC license|ISC]]
 | Written by Qualcomm Atheros
 |-
 | [http://wireless.kernel.org/en/users/Drivers/carl9170 carl9170]
 | style="text-align: left" | Qualcomm Atheros AR9170 (802.11n USB)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.0)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}} (since 3.0)
+| {{Yes|No}}<ref name='carl9170'>{{cite web|url=http://wireless.kernel.org/en/users/Drivers/carl9170#Firmware-1|title=en:users:drivers:carl9170 [Linux Wireless]|work=kernel.org|accessdate=1 May 2015}}</ref>
 | [[GPL]]
 | Qualcomm Atheros supported
 |-
 | [http://wireless.kernel.org/en/users/Drivers/wil6210 wil6210]
 | style="text-align: left" | [[Wilocity]] wil6210, [[IEEE 802.11ad|802.11ad 60GHz]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | [[ISC license|ISC]]
 | Written by Qualcomm Atheros
 |-
 ! [http://git.kernel.org/cgit/linux/kernel/git/linville/wireless-testing.git/tree/drivers/net/wireless/atmel.c atmel]
 | [http://wireless.kernel.org/en/users/Drivers/atmel atmel]
 | style="text-align: left" | Atmel at76c502 at76c504 and at76c506 wireless cards
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}
+| {{Yes|No}}
 | GPLv2+
 | style="background: black; color: white; " | Reverse engineered
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/b43 b43]
 | [http://wireless.kernel.org/en/users/Drivers/b43 b43]
 | style="text-align: left" | Some [[Broadcom]] 43xx
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.24)
-| style="background: yellow;" | Experimental OSS firmware
+| {{Yes}} (since 2.6.24)
+| style="background: yellow;" | Experimental OSS firmware<ref name="openfw">See [http://www.ing.unibs.it/openfwwf/ openfwwf project] for open-source firmware. This firmware lacks support for QoS and hardware cryptography.</ref>
 | [[GPL]]
 | style="background: black; color: white; " | Reverse engineered
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/b43legacy b43legacy]
 | [http://wireless.kernel.org/en/users/Drivers/b43legacy b43legacy]
 | style="text-align: left" | Some [[Broadcom]] 43xx
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.24)
-| style="background: yellow;" | Experimental OSS firmware
+| {{Yes}} (since 2.6.24)
+| style="background: yellow;" | Experimental OSS firmware<ref name="openfw"/>
 | [[GPL]]
 | style="background: black; color: white; " | Reverse engineered
 |-
 ! rowspan=2 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/brcm80211 brcm80211]
 | [http://wireless.kernel.org/en/users/Drivers/brcm80211 brcmfmac]
 | style="text-align: left" | [[Broadcom]] 4329, 4330, 4334, 43235, 43236, 43238 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.2)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}} (since 3.2)
+| {{no|Yes}}
 | ISC
 | Written by Broadcom
 |-
 | [http://wireless.kernel.org/en/users/Drivers/brcm80211 brcmsmac]
 | style="text-align: left" | [[Broadcom]] 4313, 43224, 43225 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.2)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}} (since 3.2)
+| {{no|Yes}}
 | ISC
 | Written by Broadcom
 |-
 ! [http://git.kernel.org/cgit/linux/kernel/git/linville/wireless-testing.git/tree/drivers/net/wireless/cw1200 cw1200]
 | [http://wireless.kernel.org/en/users/Drivers/cw1200 cw1200] 
 | style="text-align: left" | [[ST-Ericsson]] CW1100 & CW1200 WLAN chipsets
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.11)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes 
+| {{yes}} (since 3.11)<ref>http://kernelnewbies.org/Linux_3.11-DriversArch#head-55b108ef9d4cab96ff8a30e9906a6079628c49d3 Kernel Newbies 3.11 network driver documentation.</ref>
+| {{no|Yes}} <ref>https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/tree/LICENCE.cw1200 CW1200 Licence file at linux-firmware.</ref>
 | GPLv2
 | ?
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/hostap hostap]
 | [[HostAP]]
 | style="text-align: left" | [[Intersil]] [[PRISM (chipset)|PRISM]]-II, PRISM-2.5, PRISM 3
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: yellow;" | Depends on the model
+| {{Yes}}
+| style="background: yellow;" | Depends on the model<ref name="hostap firmware">[http://hostap.epitest.fi/gitweb/gitweb.cgi?p=hostap.git;a=blob_plain;f=FAQ "Why does my D-Link DWL-650 rev. P1 or D-Link DWL-520 rev. E1 (or any other card with small flash) card fail?" – Host AP driver – Frequently Asked Questions]{{dead link|date=December 2012}}</ref>
 | GPLv2
 |
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/ipw2x00 ipw2x00]
 | [http://wireless.kernel.org/en/users/Drivers/ipw2x00 ipw2x00]
 | style="text-align: left" | Intel PRO/Wireless 2100 and 2200 Network Connection 802.11b
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}<ref name="ipw2100 binary blob">{{cite web|url=http://ipw2100.sourceforge.net/firmware.php?fid=2|title=Intel® PRO/Wireless 2100 Driver Firmware|work=sourceforge.net|accessdate=1 May 2015}}</ref>
 | GPL
 | Written by Intel
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/iwlegacy iwlegacy]
 | [http://wireless.kernel.org/en/users/Drivers/iwlegacy iwlegacy] 
 | style="text-align: left" |Intel Wireless WiFi 4965AGN
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |
 |
 |
@@ -174,23 +181,23 @@
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/iwlwifi iwlwifi]
 | [http://wireless.kernel.org/en/users/Drivers/iwlwifi iwlwifi] 
 | style="text-align: left" | Intel Wireless WiFi Next Gen AGN - Wireless-N/Advanced-N/Ultimate-N: 6250AGN, 6200AGN, 6300AGN 1000BGN, 5150AGN, 5100AGN, 5300AGN, 5350AGN, 6005, 6030, 6150BGN, 100BGN and 130BGN, 2000
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | Dual [[GPL]]/[[BSD]]
 | Written by Intel
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/libertas libertas]
 | [http://wireless.kernel.org/en/users/Drivers/libertas libertas]
 | style="text-align: left" | [[Marvell Technology Group|Marvell]] 88W8686 SDIO  Libertas 8388 (USB) 802.11b/g, 8385 (CompactFlash) 802.11b/g, 8385/8686/8688 (SDIO) 802.11b/g, 8686 (SPI) 802.11b/g [http://wiki.laptop.org/go/88W8388 88W8388]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}<ref name="libertas firmware">{{cite web|url=http://dev.laptop.org/ticket/46 |title=#46 (Eliminate dependency on licensed code in Marvell firmware.) – One Laptop Per Child – Trac |publisher=Dev.laptop.org |date=2006-12-14 |accessdate=2013-07-12}}</ref>
 | GPL
 | Marvell supported
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/libertas_tf libertas_tf]
 | [http://wireless.kernel.org/en/users/Drivers/libertastf libertastf]
 | style="text-align: left" | Marvell 8388 (USB) WLAN Thinfirm Driver (OLPC)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |
 | GPL
 | cozybit, Marvell supported
@@ -198,39 +205,39 @@
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/mwifiex mwifiex]
 | [http://wireless.kernel.org/en/users/Drivers/mwifiex mwifiex]
 | style="text-align: left" | WiFi-Ex Driver for Marvell SD8786/SD8787/SD8797 (SDIO), 8766/8897 (PCIe) and 88W8797 (USB)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}<ref>{{cite web|url=https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/mwifiex/README|title=kernel/git/stable/linux-stable.git - Linux kernel stable tree|work=kernel.org|accessdate=1 May 2015}}</ref>
 | GPLv2
 | Written by Marvell
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/mwl8k.c mwl8k]
 | [http://wireless.kernel.org/en/users/Drivers/mwl8k mwl8k]
 | style="text-align: left" | Marvell TOPDOG 802.11 Wireless cards: 88W8366, 88W8863, 88W8687, 88W8764
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPLv2
 | Written by Marvell
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/orinoco orinoco]
 | [http://wireless.kernel.org/en/users/Drivers/orinoco orinoco]
 | style="text-align: left" | [[Lucent]] Hermes (WaveLAN/ [[ORiNOCO]]); [[Intersil]] [[PRISM (chipset)|PRISM]]-II, PRISM-2.5; [[Symbol Technologies|Symbol]] Spectrum24 802.11B
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: yellow;" | Required for WPA support
+| {{Yes}}
+| style="background: yellow;" | Required for WPA support<ref name="orinoco_firmware">{{cite web|url=http://wireless.kernel.org/en/users/Drivers/orinoco#devicefirmware |title=orinoco - Linux Wireless |publisher=Wireless.kernel.org |date=|accessdate=2012-12-09}}</ref>
 |
 |
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/p54 p54]
 | [http://wireless.kernel.org/en/users/Drivers/p54 p54]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{no|Yes}}<ref name="freemac">There is a Free software firmware called [http://www.prism54.org/freemac.html FreeMAC], but it's not yet ready for non developers use</ref>
 | 
 |
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/prism54 prism54]
 | [http://wireless.kernel.org/en/users/Drivers/prism54 prism54]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |
 |
 | style="background: black; color: white;"| Reverse engineered; Obsoleted by p54.
@@ -238,129 +245,129 @@
 ! rowspan=7| [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/rt2x00 rt2x00]
 | [http://wireless.kernel.org/en/users/Drivers/rt2400pci rt2400pci]
 | style="text-align: left" | [[MediaTek]] ([[Ralink]]) RT2460
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.24)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No 
+| {{Yes}} (since 2.6.24)
+| {{Yes|No}} <ref name="RT61">see [http://rt2x00.serialmonkey.com/wiki/index.php?title=Firmware_license the license of the firmware] to see which chipsets need a firmware</ref>
 |GPLv2+
 |rt2x00.serialmonkey.com; From partial documentation and GPL drivers by Ralink
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt2500pci rt2500pci]
 | style="text-align: left" | RT2560
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}
+| {{Yes|No}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt61pci rt61pci]
 | style="text-align: left" | RT2561, RT2561S, RT2661
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt2800pci rt2800pci]
 | style="text-align: left" | RT2760, RT2790, RT2860, RT2880, RT2890, RT3052, RT3090, RT3091, RT3092<br />RT3390, RT3060, RT3062, RT3562, RT3592, RT5390, RT3290
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt2500usb rt2500usb]
 | style="text-align: left" | RT2571 & RT2572
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}
+| {{Yes|No}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt73usb rt73usb]
 | style="text-align: left" | RT2571W, RT2573 & RT2671
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rt2800usb rt2800usb]
 | style="text-align: left" | RT2770, RT2870 & RT3070, RT3071 & RT3072<br />RT3370, RT3572, RT5370, RT5572
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 |GPLv2+
 |rt2x00.serialmonkey.com
 |-
 ! rowspan=2 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/rtl818x rtl818x]
-| [http://wireless.kernel.org/en/users/Drivers/rtl8187 rtl8187]
-| style="text-align: left" | Realtek
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-|
+| [http://wireless.kernel.org/en/users/Drivers/rtl8187 rtl8180]
+| style="text-align: left" | RTL8180, RTL8185, RTL8187SE
+| {{Yes}}
+| {{Yes|No}}
+|GPL
 |
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8187 rtl8187]
-| style="text-align: left" | Realtek
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-|
+| style="text-align: left" | RTL8187, RTL8187B
+| {{Yes}}
+| {{Yes|No}}
+|GPL
 |
 |-
 ! rowspan=8 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/rtlwifi rtlwifi] [http://sourceforge.net/projects/rtl-wifi/ rtl-wifi]
 | [http://wireless.kernel.org/en/users/Drivers/rtl8188ee rtl8188ee]
 | style="text-align: left" | Realtek
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.38)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}} (since 2.6.38)<ref>http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/net/wireless/rtlwifi?id=0c8173385e549f95cd80c3fff5aab87b4f881d8d 2010-12-15: add rtl-wifi and support for RTL8192CE</ref>
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al. Forked from rtl8180-sa2400 project.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8192c rtl8192c]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8192ce rtl8192ce]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8192cu rtl8192cu]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8192de rtl8192de]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8192se rtl8192se]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8723ae rtl8723ae]
 | style="text-align: left" |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8188eu rtl8188eu]
 | style="text-align: left" | RTL8188EU e.g. in the TP-Link TL-WN725N
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 3.12)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}} (since 3.12<ref>{{cite web |url=http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b63c05394f3fe9ae547e1fa9df30f1ba0bcdabb4 title=rtl8188eu}}</ref><ref>{{cite web |url=http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=6ddfa35a4a98d28f9506c1bb25c82927dff9eff2 title=rtl8188eu header files}}</ref>)
+| {{No|Yes}}
 | GPL
 | Written by Realtek et al.
 |-
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/rsi rsi9113] 
 | RSI9113
 | style="text-align: left" | Redpine Signals SDIO, USB adapters
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | 
 | GPL
 | Written by Redpine Signals Inc.,
@@ -368,21 +375,21 @@
 ! rowspan=3 | [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/ti ti]
 | [http://wireless.kernel.org/en/users/Drivers/wl1251 wl1251]
 | style="text-align: left" | [[Texas Instruments]] TI wl1251 (SDIO/SPI)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |
 | GPL
 | Written by Nokia
 |-
 | [http://wireless.kernel.org/en/users/Drivers/wl12xx wl12xx]
 | style="text-align: left" | Texas Instruments TI wl1271, wl1273, wl1281 and wl1283
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Only up to 3.2)
+| {{Yes}} (Only up to 3.2<ref>{{cite web|url=http://e2e.ti.com/support/low_power_rf/f/307/p/324365/1130399.aspx#1130399|title=Configuring WL1271 for a 3.13 kernel (devicetree) - WiLink™ WiFi + Bluetooth Forum - Wireless Connectivity - TI E2E Community|work=ti.com|accessdate=1 May 2015}}</ref>)
 | 
 | GPL
 | Written by Nokia and Texas Instruments
 |-
 | [http://wireless.kernel.org/en/users/Drivers/wl18xx wl18xx]
 | style="text-align: left" | Texas Instruments TI WiLink 8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | 
 | GPL
 | Written by Texas Instruments
@@ -390,8 +397,8 @@
 ! [https://git.kernel.org/cgit/linux/kernel/git/stable/linux-stable.git/tree/drivers/net/wireless/zd1211rw zd1211rw]
 | [http://wireless.kernel.org/en/users/Drivers/zd1211rw zd1211rw]
 | style="text-align: left" | ZyDAS ZD1211/ZD1211B (USB)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}
+| {{No|Yes}}<ref>http://sourceforge.net/projects/zd1211/files/zd1211-firmware/ ZD1211 USB WLAN Linux Driver Firmware</ref>
 | GPL
 | various
 |}
@@ -409,315 +416,442 @@ Then we should think about documenting, whether a driver can support multiple mo
 
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: 99%;"
 |-
-! Driver
-! [[802.11]]
-! Bus interface
+!rowspan="2"|Driver
+!colspan="5"|[[802.11]]
+!rowspan="2"|Bus interface
+!colspan="3"|Wireless Security
+!rowspan="2"|[[Monitor mode]]
+!rowspan="2"|Master ([[Wireless access point|AP]]) mode
+!rowspan="2"|[[Wireless ad hoc network|Ad-Hoc mode]]
+|-
+! [[802.11a|a]]<br>
+! [[802.11b|b]]<br>
+! [[802.11g|g]]<br>
+! [[802.11n|n]]<br>
+! [[802.11ac|ac]]<br>
 ! [[Wired Equivalent Privacy|WEP]]
 ! [[Wi-Fi Protected Access|WPA]]
 ! [[Wi-Fi Protected Access|WPA2]]
-! [[Monitor mode]]
-! Master ([[Wireless access point|AP]]) mode
-! [[Wireless ad hoc network|Ad-Hoc mode]]
 |-
 | [http://acx100.sourceforge.net/ acx1xx]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]], [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://aluminum.sourmilk.net/adm8211/ adm8211]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 | [[Peripheral Component Interconnect|PCI]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{No}}
+| {{dunno}}
 |-
 | [http://wireless.kernel.org/en/users/Drivers/carl9170 carl9170]
-| [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 | [[Universal Serial Bus|USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath5k ath5k]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]], [[AMBA High-performance Bus|AHB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 2.6.31)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}} (since 2.6.31)
+| {{yes}}
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath9k ath9k]
-| [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[AMBA High-performance Bus|AHB]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 | [http://wireless.kernel.org/en/users/Drivers/ath10k ath10k]
-| [[IEEE 802.11ac]]
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{Yes}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[AMBA High-performance Bus|AHB]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/b43 b43]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[Secure Digital card#SDIO|SDIO]] ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{yes}}
+| {{Yes}}
 |-
 | [http://bcm43xx.berlios.de/ bcm43xx]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]], [[Cardbus]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{dunno}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/brcm80211 brcmfmac]
-| [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 | [[USB]], [[Secure Digital card#SDIO|SDIO]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/brcm80211 brcmsmac]
-| [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}<ref>http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=492b71e8d468102372969705b65845f5e57038c5 2013-03-27 brcmsmac: activate AP support</ref>
+| {{Yes}}<ref>{{cite web|url=https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/?id=c55b3766054d3db7a9732c6c8a1c81afac2cfaa6|title=kernel/git/next/linux-next.git - The linux-next integration testing tree|work=kernel.org|accessdate=1 May 2015}}</ref>
 |-
 | [http://hostap.epitest.fi/ hostap]
-| [[802.11b]]
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}<ref name="hostap wpa">Requires station firmware 1.7.4 or later.</ref>
+| {{Yes}}<ref name="hostap wpa" />
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://ipw2100.sourceforge.net/ ipw2100]
-| [[802.11b]]
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
+| {{dunno}}
 |-
 | [http://ipw2200.sourceforge.net/ ipw2200]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://ipw2200-ap.sourceforge.net/ ipw2200-ap]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://ipw3945.sourceforge.net/ ipw3945]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.prism54.org islsm]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 | [[Peripheral Component Interconnect|PCI]], [[USB]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{No}}
+| {{No}}
+| {{No}}
+| {{dunno}}
+| {{No}}
+| {{dunno}}
 |-
 | [http://intellinuxwireless.org/?p=iwlwifi iwlwifi]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Experimental
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| Experimental<ref>{{cite web|url=http://wireless.kernel.org/en/users/Drivers/iwlwifi/?p=iwlwifi#Features|title=en:users:drivers:iwlwifi [Linux Wireless]|work=kernel.org|accessdate=1 May 2015}}</ref>
+| {{Yes}}
 |-
 | [http://intellinuxwireless.org/?p=iwlagn iwlagn]
-| [[802.11a]], [[802.11g]], [[802.11n]]
+| {{Yes}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 | [[Mini PCI]], [[PCI Express Mini Card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/libertas libertas]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[USB]], [[CompactFlash|CF]], [[Secure Digital card#SDIO|SDIO]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{No}}
+| {{dunno}}
 |-
 | [http://madwifi-project.org/ MadWifi]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes some issues in HAL, outdoor sensitivity?<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2009)">citation needed</span>]]</i>&#93;</sup>
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}} some issues in HAL, outdoor sensitivity?{{Citation needed|date=September 2009}}
 |-
 | [http://www.nongnu.org/orinoco/ orinoco]
-| [[802.11b]]
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]], [[PC card]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}<ref>WPA+TKIP with Hermes (Lucent/Agere Systems) chipsets only.  Requires 2.6.28-rc1 or later kernel and v9.42 or later firmware from userspace.</ref>
+| {{No}}
+| {{Yes}}
+| {{no}}
+| {{Yes}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/p54 p54]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Mini PCI]], [[Cardbus]], [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.prism54.org prism54]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{No}}
+| {{dunno}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://linuxwireless.org/en/users/Drivers/rndis_wlan rndis_wlan]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://rt2x00.serialmonkey.com rt2x00]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}<ref>except for the rt2400 chipset; only the rt2500 chipset and the rt2570 chipset are supported</ref>
+| {{Yes}}<ref>{{cite web|url=http://my.opera.com/CrazyTerabyte/blog/2009/10/23/wi-fi-with-master-mode-finally |title=one user reported that WPA2 works with rt61pci |publisher=My.opera.com |date=|accessdate=2012-12-09}}</ref>
+| {{Yes}}
+| {{Yes}}<ref>http://linuxwireless.org/en/users/Drivers and also at least two users reported success with master mode [http://rt2x00.serialmonkey.com/phpBB/viewtopic.php?p=33498#p33498] [http://my.opera.com/CrazyTerabyte/blog/2009/10/23/wi-fi-with-master-mode-finally]</ref>
+| {{Yes}}
 |-
 | [http://rtl8180-sa2400.sourceforge.net/ rtl8180]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[Peripheral Component Interconnect|PCI]], [[Mini PCI]], [[PC card]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://wireless.kernel.org/en/users/Drivers/rtl8187/ rtl8187]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
+| {{dunno}}
 |-
 | [http://linux-lc100020.sourceforge.net/ zd1201]
-| [[802.11b]]
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{No}}<ref name="zd1201 wpa">{{cite web|url=http://bugzilla.kernel.org/show_bug.cgi?id=5631 |title=Bug 5631 – zd1201 and wpa support |publisher=Bugzilla.kernel.org |date=|accessdate=2012-12-09}}</ref>
+| {{No}}<ref name="zd1201 wpa" />
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://zd1211.wiki.sourceforge.net/VendorBasedDriver zd1211]
-| [[802.11a]], [[802.11b]], [[802.11g]]
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{dunno}}
 |-
 | [http://zd1211.ath.cx/wiki/DriverRewrite zd1211rw]
-| [[802.11b]], [[802.11g]]
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{yes}}
+| {{Yes}}
+| {{Yes}}<ref>{{cite web|url=http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commitdiff;h=ab419e9bda10efced0db980478c3e40a1ad18ba3 |title=Master mode supported in zd1211rw since 2.6.39 |publisher=Git.kernel.org |date=|accessdate=2012-12-09}}</ref>
+| {{Yes}}
 |}
 
 ==DragonFly BSD==
@@ -726,7 +860,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 ! Driver
 ! Chipset
 ! Integration
-! Non-free firmware required
+! Non-free firmware required<ref name='non-free firmware' />
 ! License
 ! Original/Primary developer
 ! Development
@@ -734,7 +868,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=acx acx]
 | [[Texas Instruments]] ACX100/ACX111
 | Integrated since 1.5
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 |
 | style="background: black; color: white; " | Reverse engineering
@@ -742,7 +876,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=an an]
 | [[Cisco Systems|Aironet]] 4500/4800
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Bill Paul (FreeBSD)
 |
@@ -750,7 +884,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=ath ath]
 | [[Atheros]] AR5210/ AR5211/ AR5212/ AR5416
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
@@ -758,7 +892,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=bwi bwi]
 | [[Broadcom]] BCM430x/4318
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | Sepherosa Ziehau
 | style="background: black; color: white; " | Reverse engineering
@@ -766,7 +900,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=iwi iwi]
 | [[Intel]] PRO/Wireless 2200BG/2915ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | style="background: black; color: white; " | Reverse engineering
@@ -774,7 +908,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=iwl&section=4 iwl]
 | [[Intel]] PRO/Wireless 2100
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | style="background: black; color: white; " | Reverse engineering
@@ -782,7 +916,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=iwn&section=4 iwn]
 | [[Intel]] 4965/1000/5000/5150/5300/6000/6050
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | style="background: black; color: white; " | Reverse engineering
@@ -791,7 +925,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=ral&section=ANY ral]
 | [[Ralink]] RT2500/ RT2501/ RT2600
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] 
 | Ported from FreeBSD
@@ -799,7 +933,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=rtw&section=ANY rtw]
 | [[Realtek]] RTL8180L
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | Ported from NetBSD
@@ -807,7 +941,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=rum&section=ANY rum]
 | [[Ralink]] RT2501USB/ RT2601USB
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] 
 | Ported from FreeBSD
@@ -815,7 +949,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=wi wi]
 | [[Lucent]] Hermes (WaveLAN/ [[ORiNOCO]]); [[Intersil]] [[PRISM (chipset)|PRISM]]-II, PRISM-2.5; [[Symbol Technologies|Symbol]] Spectrum24 802.11B
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Bill Paul (FreeBSD)
 | style="background: green; color: yellow;" | Documentation based
@@ -823,7 +957,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://leaf.dragonflybsd.org/cgi/web-man?command=wpi&section=ANY wpi]
 | [[Intel]] 3945ABG 
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] 
 | Ported from OpenBSD
@@ -835,7 +969,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 ! Driver
 ! Chipset
 ! Integration
-! Non-free firmware required
+! Non-free firmware required<ref name='non-free firmware' />
 ! License
 ! Original/Primary developer
 ! Development
@@ -843,7 +977,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://dev.kewl.org/acx100+111/ acx]
 | [[Texas Instruments]] ACX100/ACX111
 | Separate project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | 
 | style="background: black; color: white; " | Reverse engineering
@@ -851,7 +985,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=an an]
 | [[Cisco Systems|Aironet]] 4500/4800, [[Cisco Systems|Cisco]] Aironet 340/350, Xircom Wireless Ethernet
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Bill Paul (FreeBSD)
 | 
@@ -859,7 +993,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=arl&manpath=FreeBSD+7.2-RELEASE arl]
 | Aironet Arlan 655
 | Integrated / Removed in 8.0
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | 
 | 
@@ -867,7 +1001,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ath ath]
 | [[Atheros]] AR5210/ AR5211/ AR5212/ AR5416 /AR9130 /AR9160 /AR9280 /AR9285 /AR9287 (and derivatives)
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes|No}}
 | [[BSD]]
 | Originally by Atheros via Sam Leffler (FreeBSD); supported by the community
 | style="background: green; color: yellow;" | Documentation based
@@ -875,7 +1009,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=awi&manpath=FreeBSD+7.2-RELEASE awi]
 | [[AMD]] PCnetMobile
 | Integrated / Removed in 8.0
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Bill Sommerfeld (NetBSD) and Atsushi Onoe (NetBSD)
 | 
@@ -883,15 +1017,23 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=bwi bwi]
 | [[Broadcom]] BCM43xx/4318
 | Integrated since 8.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | Sepherosa Ziehau (DragonFly BSD), Andrew Thompson (FreeBSD), Sam Leffler (FreeBSD)
 | Ported from DragonFly BSD
 |-
+| [http://www.freebsd.org/cgi/man.cgi?query=bwn bwn]
+| [[Broadcom]] BCM43xx/4318 v4 firmware
+| Integrated since 8.1
+| {{No|Yes}}
+| [[BSD]]
+| Weongyo Jeong
+| ?
+|-
 | [http://www.freebsd.org/cgi/man.cgi?query=cnw&manpath=FreeBSD+7.2-RELEASE cnw]
 | Netwave AirSurfer
 | Integrated / Removed in 8.0
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Imported from NetBSD
 | 
@@ -899,7 +1041,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ipw ipw]
 | [[Intel]] PRO/Wireless 2100
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD/ FreeBSD)
 | style="background: black; color: white; " | Reverse engineering
@@ -907,15 +1049,16 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=iwi iwi]
 | [[Intel]] PRO/Wireless 2200BG/ 2225BG/ 2915ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD/ FreeBSD)
 | style="background: black; color: white; " | Reverse engineering
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=iwn iwn]
-| [[Intel]] PRO/Wireless 4965 ABGN/ 5100/ 5300/ 5350/ 1000/ 6000/ 6250/ 6205a
+| [[Intel]] PRO/Wireless 4965 ABGN/ 5100/ 5300/ 5350/ 1000
+[[Intel]] [[Centrino]] 6000/ 6150/ 6200/ 6205/ 6230/ 6250/ 6300
 | Integrated since 8.0 / Available for 7.1 and above as separate patch
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]], Benjamin Close, Sam Leffler (OpenBSD/ FreeBSD)
 | style="background: black; color: white; " | Reverse engineering
@@ -923,7 +1066,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=malo malo]
 | [[Marvell Technology Group|Marvell]] 88W8335
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | Weongyo Jeong (FreeBSD), Sam Leffler (FreeBSD)
 | 
@@ -931,7 +1074,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=mwl mwl]
 | [[Marvell Technology Group|Marvell]] 88W8363
 | Integrated since 8.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}<ref>{{cite web|url=http://svn.freebsd.org/viewvc/base/head/sys/contrib/dev/mwl/LICENSE?view=markup&pathrev=193240 |title=[base&#93; Contents of /head/sys/contrib/dev/mwl/LICENSE |publisher=Svn.freebsd.org |date= |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Sam Leffler (FreeBSD)
 | ?
@@ -939,7 +1082,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ral ral]
 | Ralink Technology RT2500/ RT2501/ RT2600
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD/ FreeBSD)
 | style="background: yellow;" | Based on partial documentation
@@ -947,15 +1090,23 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ray&manpath=FreeBSD+7.2-RELEASE ray]
 | Raytheon Raylink/Webgear Aviator
 | Integrated / Removed in 8.0
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Imported from NetBSD
-| 
+|
+|- 
+| [http://www.freebsd.org/cgi/man.cgi?query=rsu rsu]
+| [[Realtek]] RTL8188SU/RTL8192SU
+| Integrated since 10.0
+| {{No|Yes}}
+| [[BSD]]
+| [[Damien Bergamini]] (OpenBSD), Imported from OpenBSD by Rui Paulo
+| ?
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=rum rum]
 | [[Ralink]] RT2501USB/ RT2601USB
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes|No}}<ref name='rum-firmware' />
 | [[BSD]]
 | Niall&nbsp;O'Higgins and [[Damien Bergamini|Damien&nbsp;Bergamini]]
 | style="background: yellow;" | Based on partial documentation
@@ -963,7 +1114,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://svn.freebsd.org/viewvc/base/stable/8/sys/dev/usb/wlan/if_run.c?view=log run]
 | [[Ralink]] RT2700U/ RT2800U/ RT3000U
 | Integrated since 8.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes|No}}<ref name='rum-firmware' />
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD), Imported from OpenBSD by Akinori Furukoshi
 | style="background: yellow;" | Based on partial documentation
@@ -971,7 +1122,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=uath uath]
 | [[Atheros]] AR5005UG/ AR5005UX
 | Integrated since 8.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}<ref>{{cite web|url=http://svn.freebsd.org/viewvc/base/head/sys/contrib/dev/uath/ar5523.bin.uu?view=markup&pathrev=190688 |title=[base&#93; Contents of /head/sys/contrib/dev/uath/ar5523.bin.uu |publisher=Svn.freebsd.org |date= |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Weongyo Jeong (FreeBSD), Sam Leffler (FreeBSD)
 | ?
@@ -979,7 +1130,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=upgt upgt]
 | GW3887 ([[Conexant]]/Intersil PrismGT series)
 | Integrated since 8.0
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | Imported from OpenBSD
 | style="background: black; color: white; " | Reverse engineering
@@ -987,7 +1138,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ural ural]
 | Ralink Technology RT2500USB
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD/ FreeBSD)
 | style="background: yellow;" | Based on partial documentation
@@ -995,15 +1146,23 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=urtw urtw]
 | [[Realtek]] RTL8187L/ RTL8187B
 | Integrated since 8.0
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}<ref>{{cite web|url=http://svn.freebsd.org/viewvc/base/head/sys/dev/usb/wlan/if_urtw.c?view=markup&pathrev=192873 |title=[base&#93; Contents of /head/sys/dev/usb/wlan/if_urtw.c |publisher=Svn.freebsd.org |date= |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Weongyo Jeong (FreeBSD)
 | ?
 |-
+| [http://www.freebsd.org/cgi/man.cgi?query=urtwn urtwn]
+| [[Realtek]] RTL8188CU/RTL8188EU/RTL8192CU
+| Integrated since 10.0
+| {{No|Yes}}
+| [[BSD]]
+| [[Damien Bergamini]] (OpenBSD/FreeBSD)
+| style="background: black; color: white; " | Reverse engineering
+|-
 | [http://www.freebsd.org/cgi/man.cgi?query=wi wi]
 | [[Lucent]] Hermes (WaveLAN/ [[ORiNOCO]]); [[Intersil]] [[PRISM (chipset)|PRISM]]-2, PRISM-2.5, PRISM-3; [[Symbol Technologies|Symbol]] Spectrum24 802.11B (Symbol support removed in 8.0)
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Bill Paul (FreeBSD)
 | style="background: green; color: yellow;" | Documentation based
@@ -1011,7 +1170,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=wpi wpi]
 | [[Intel]] PRO/Wireless 3945ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No|Yes}}
 | [[BSD]]
 | [[Damien Bergamini]], Benjamin Close
 | style="background: black; color: white; " | Reverse engineering
@@ -1019,7 +1178,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=zyd zyd]
 | ZyDAS ZD1211/ZD1211B
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes|No}}
 | [[BSD]]
 | Florian Stoehr, [[Damien Bergamini]] and Jonathan Gray (OpenBSD)
 | style="background: green; color: yellow;" | Documentation based
@@ -1031,191 +1190,191 @@ Then we should think about documenting, whether a driver can support multiple mo
 ! Driver
 ! Chipset
 ! Integration
-! Free firmware
+! Free firmware<ref name="free firmware">'N/A' means firmware is stored in device at all times, 'yes' means firmware is available for totally free redistribution, 'no' means you have to get into non-free-software contract with the manufacturer to get access to the firmware</ref>
 ! License
 ! Original/Primary developer
 ! Development methodologies
-! [[Free software]]
+! [[Free software]]<ref name="'free software'">in terms of no binary-only requirements that are posed by the driver, i.e. you can modify all code that is run on your CPU</ref>
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?an++NetBSD-5.0 an]
 | [[Cisco Systems|Aironet]] 4500/4800, [[Cisco Systems|Cisco]] Aironet 340/350
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | Ported from FreeBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?ath++NetBSD-5.1 ath]
 | [[Atheros]] AR521*/ AR2413/ AR2417/ AR5413/ AR5416/ AR5424/ AR9160
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | [[Binary blob]]s ported from FreeBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?ath++NetBSD-5.1 athn]
 | [[Atheros]] AR5008 up to the AR9287
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?atu++NetBSD-5.0 atu]
 | [[Atmel]] at76c503/ at76c503a/ at76c505/ at76c505a
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?atw++NetBSD-5.0 atw]
 | [[ADMtek]] ADM8211
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?awi++NetBSD-5.0 awi]
 | [[AMD]] PCnetMobile
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?bwi++NetBSD-5.0 bwi]
 | [[Broadcom]] BCM430x/4318
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | Ported from Dragonfly BSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?cnw++NetBSD-5.0 cnw]
 | [[Netwave]] AirSurfer
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?ipw++NetBSD-5.0 ipw]
 | [[Intel]] PRO/Wireless 2100
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?iwi++NetBSD-5.0 iwi]
 | [[Intel]] PRO/Wireless 2200BG/2915ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?iwn++NetBSD-5.0 iwn]
 | [[Intel]] Wireless WiFi Link 4965/ 5000/ 1000/ 6000
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?iwn++NetBSD-5.0 iwn]
 | [[Marvell Technology Group|Marvell]] 88W8335/88W8310
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | [[BSD]]
 | [[Claudio Jeker]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?ral++NetBSD-5.0 ral]
 | [[Ralink]] RT2500/ RT2501/ RT2600/ RT2500USB
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?ray++NetBSD-5.0 ray]
 | [[Raytheon]] Raylink / WebGear Aviator
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?rtw++NetBSD-5.0 rtw]
 | [[Realtek]] RTL8180L
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | David Young
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?rtw++NetBSD-5.0 run]
 | [[Ralink]] RT2700U, RT2800U and RT3000U
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?rtw++NetBSD-5.0 run]
 | [[Ralink]] RT2700U, RT2800U and RT3000U
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?urtwn++NetBSD-6.0 urtwn]
 | [[Realtek]] Realtek RTL8188CU/RTL8188EU/RTL8192CU
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?wpi++NetBSD-5.0 wpi]
 | [[Intel]] PRO/Wireless 3945ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://netbsd.gw.com/cgi-bin/man-cgi?zyd++NetBSD-5.0 zyd]
 | [[ZyDAS]] ZD1211/ ZD1211B 
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | [[Damien Bergamini]] (OpenBSD)
 | Ported from OpenBSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |}
 
 ==OpenBSD==
@@ -1226,254 +1385,263 @@ Then we should think about documenting, whether a driver can support multiple mo
 ! Driver
 ! Chipset
 ! Integration
-! Non-free firmware required
+! Free firmware<ref name="free firmware"/><!-- absolutely no changing of this column unless you know OpenBSD; no Richard Stallman methodology here, he doesn't own wikipedia; DO NOT COMPACT THIS REF OUT NOR MERGE WITH OTHER TABLES -->
 ! License
 ! Original/Primary developer
 ! Development
-! [[Free software]]
+! [[Free software]]<ref name="'free software'" />
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=acx acx]
 | [[Texas Instruments]] ACX100/ACX111
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=acx#FILES |title=Manual Pages: acx |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Ported from DragonFlyBSD
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=an an]
 | [[Cisco Systems|Aironet]] 4500/4800, [[Cisco Systems|Cisco]] Aironet 340/350
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ath ath]
 | [[Atheros]] AR5210/ AR5211/ AR5212
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{n/a}}<ref name='atheros'>The card doesn't have a host cpu and so it doesn't require a firmware [http://kerneltrap.org/node/4118 source]</ref>
 | [[BSD]]
 |
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=athn athn]
 | [[Atheros]] AR5416/AR9160/AR928X
 | Integrated (since 4.7)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini|Damien&nbsp;Bergamini]]
 | Partly based on the ath9k driver for [[Linux]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=atu atu]
 | [[Atmel]] AT76C503/ AT76C503A/ AT76C505/ AT76C505A 
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}<ref>{{cite web|url=http://bxr.su/OpenBSD/sys/dev/microcode/atmel/atu-license |title=atu-license |website=BSD Cross Reference, OpenBSD}}</ref>
 | [[BSD]]
 |
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=atw atw]
 | [[ADMtek]] ADM8211
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 | style="background: green; color: yellow;" | Documentation based
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
-| [http://leaf.dragonflybsd.org/cgi/web-man?command=bwi bwi]
+| [http://mdoc.su/o43/awi.4 awi]
+| [[BayStack]] 650
+| 2.7 to 4.3
+| {{n/a}}
+| [[BSD]]
+|
+| 
+| {{yes}}
+|-
+| [http://www.openbsd.org/cgi-bin/man.cgi?query=bwi bwi]
 | [[Broadcom]] BCM430x/4318
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}
 | [[BSD]]
 | Sepherosa Ziehau
 | Ported from DragonFly BSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=cnw cnw]
 | NetWave AirSurfer
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://damien.bergamini.free.fr/ipw/ ipw]
 | [[Intel]] PRO/Wireless 2100
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=ipw#FILES |title=Manual Pages: ipw |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=iwi iwi]
 | [[Intel]] PRO/Wireless 2200BG/ 2225BG/ 2915ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=iwi#FILES |title=Manual Pages: iwi |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=iwn iwn]
 | [[Intel]] Wireless WiFi Link 4965/ 5000/ 1000/ 6000
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=iwn#FILES |title=Manual Pages: iwn |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=malo malo]
 | [[Marvell Technology Group|Marvell]] 88W8335/ 88W8310
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=malo#FILES |title=Manual Pages: malo |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Marcus Glocker and Claudio Jeker
-| style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: black; color: white; " | Reverse engineering<ref>{{cite web|url=http://undeadly.org/cgi?action=article&sid=20061120180656 |title=Developer Blog – mglocker@: New WLAN drivers on the upswing |publisher=Undeadly.org |date= |accessdate=2012-12-09}}</ref>
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=otus otus]
 | [[Atheros]] AR9170
 | Integrated (since 4.6)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=otus&sektion=4#FILES |title=Manual Pages: otus(4) |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini|Damien&nbsp;Bergamini]]
 | Based on source code released by [[Atheros]] for [[Linux]] under the ISC
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=pgt&sektion=4 pgt]
 | [[Conexant]]/Intersil Prism GT Full-MAC ISL3877, ISL3880, and ISL3890 chips
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=pgt&sektion=4#FILES |title=Manual Pages: pgt(4) |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Ported from FreeBSD
-| style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: black; color: white; " | Reverse engineering<ref name="openbsd-reverse" />
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ral ral]/[http://www.openbsd.org/cgi-bin/man.cgi?query=ural ural]
 | [[Ralink]] RT2500, RT2501, RT2600, RT2700, and RT2800 (ral), RT2500USB (ural)
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}<ref>{{cite web|url=http://bxr.su/OpenBSD/sys/dev/microcode/ral/ral-license |title=ral-license |website=BSD Cross Reference, OpenBSD}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
-| style="background: yellow;" | Based on partial documentation
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: green; color: yellow;" | Documentation based
+| {{yes}}
 |-
-| [http://www.openbsd.org/cgi-bin/man.cgi?query=ray&sektion=4 ray]
+| [http://mdoc.su/o54/ray.4 ray]
 | Raytheon Raylink/WebGear Aviator IEEE 802.11FH
-| Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| 2.7 to 5.4
+| {{n/a}}
 | [[BSD]]
 |
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=rsu rsu]
 | [[Realtek]] RTL8188SU/RTL8191SU/RTL8192SU
 | Integrated (since 4.9)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=rtw rtw]
 | [[Realtek]] RTL8180L
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from NetBSD
 | style="background: green; color: yellow;" | Documentation based
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=rum rum]
 | [[Ralink]] RT2501USB/ RT2601USB
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}<ref name='rum-firmware'>{{cite web|url=http://bxr.su/OpenBSD/sys/dev/microcode/rum/rum-license |title=rum-license (covers rum-rt2573 for rum(4), as well as run-rt2870 and run-rt3071 for run(4)) |website=BSD Cross Reference, OpenBSD}}</ref>
 | [[BSD]]
 | Niall&nbsp;O'Higgins and [[Damien Bergamini|Damien&nbsp;Bergamini]]
-| style="background: yellow;" | Based on partial documentation
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: green; color: yellow;" | Documentation based
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=run run]
 | [[Ralink]] RT2700U/ RT2800U/ RT3000U
 | Integrated
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|No
+| {{Yes}}<ref name='rum-firmware' />
 | [[BSD]]
 | [[Damien Bergamini|Damien&nbsp;Bergamini]]
-| style="background: yellow;" | Based on partial documentation
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: green; color: yellow;" | Documentation based
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=uath uath]
 | [[Atheros]] AR5005UG/ AR5005UX
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=uath#FILES |title=Manual Pages: uath |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
-| style="background: black; color: white;" | Reverse Engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| style="background: black; color: white;" | Reverse Engineering<ref name="openbsd-reverse">{{cite web|url=http://www.undeadly.org/cgi?action=article&sid=20060917020241 |title=OpenBSD reverse engineers more wireless drivers |publisher=Undeadly.org |date=2004-04-02 |accessdate=2012-12-09}}</ref>
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=upgt&sektion=4 upgt]
 | GW3887 ([[Conexant]]/Intersil PrismGT series)
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=upgt&sektion=4#FILES |title=Manual Pages: upgt(4) |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | Marcus Glocker
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=urtw urtw]
 | [[Realtek]] RTL8187L
 | Integrated
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Weongyo Jeong (FreeBSD)
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=urtwn urtwn]
 | [[Realtek]] RTL8188CU/RTL8192CU
 | Integrated (since 4.9)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=wi wi]
 | [[Lucent]] Hermes (WaveLAN/ [[ORiNOCO]]); [[Intersil]] [[PRISM (chipset)|PRISM]]-2, PRISM-2.5, PRISM-3; [[Symbol Technologies|Symbol]] Spectrum24
 | Integrated
-| style="background: yellow;" | Yes for Spectrum24 and N/A for others
+| style="background: lightgreen;" | Yes for Spectrum24<ref>{{cite web|url=http://bxr.su/OpenBSD/sys/dev/microcode/symbol/symbol-license |title=symbol-license |website=BSD Cross Reference, OpenBSD}}</ref> and N/A for others
 | [[BSD]]
 | Bill Paul
 | style="background: green; color: yellow;" | Documentation based
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
-| [http://www.openbsd.org/cgi-bin/man.cgi?query=wpi wpi]
+| [http://www.openbsd.org/cgi-bin/man.cgi?query=wpi wpi]<ref>There is more details about the port at [http://kerneltrap.org/node/6650 kerneltrap]</ref>
 | [[Intel]] PRO/Wireless 3945ABG
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{No}}<ref>{{cite web|url=http://www.openbsd.org/cgi-bin/man.cgi?query=wpi#FILES |title=Manual Pages: wpi |publisher=Openbsd.org |date=2012-09-17 |accessdate=2012-12-09}}</ref>
 | [[BSD]]
 | [[Damien Bergamini]]
 | style="background: black; color: white; " | Reverse engineering
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=zyd zyd]
 | ZyDAS ZD1211/ZD1211B
 | Integrated
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|Yes
+| {{Yes}}<ref>{{cite web|url=http://bxr.su/OpenBSD/sys/dev/microcode/zydas/zd1211-license |title=zd1211-licence |website=BSD Cross Reference, OpenBSD}}</ref>
 | [[BSD]]
 | Florian&nbsp;Stoehr, [[Damien Bergamini|Damien&nbsp;Bergamini]] and Jonathan&nbsp;Gray
 | style="background: green; color: yellow;" | Documentation based
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |}
 
 ==Solaris and OpenSolaris==
@@ -1482,154 +1650,154 @@ Then we should think about documenting, whether a driver can support multiple mo
 ! Driver
 ! Chipset
 ! Integration
-! Free firmware
+! Free firmware<ref name="free firmware" />
 ! License
 ! Development
-! [[Free software]]
+! [[Free software]]<ref name="'free software'" />
 |-
-| [http://www.opensolaris.org/os/community/laptop/wireless/ath/ ath]
+| [http://www.opensolaris.org/os/community/laptop/wireless/ath/ ath]<ref>it's not the same driver that the OpenBSD ath driver it's a port from Madwifi to OpenSolaris</ref><ref>[http://www.opensolaris.org/os/community/laptop/wireless/ath/license.txt source], I don't know if the HAL can be replaced with OpenHAL</ref>
 | [[Atheros]] AR5211/ AR5212/ AR5213/ AR5214
 | Integrated with Solaris Nevada build 29
-| No firmware required
+| No firmware required<ref name="atheros"/>
 | Dual [[GPL]]/[[BSD]] with proprietary HAL
 | Port of Madwifi
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/ipw/ ipw]
 | [[Intel]] PRO/Wireless 2100
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/iwi/ iwi]
 | [[Intel]] PRO/Wireless 2200BG/2225BG/2915ABG
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/pcan/ pcan]
 | [[Cisco]] Aironet 340/350
 | Community project
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from [[FreeBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/pcwl/ pcwl]
 | [[Lucent]]/[[Agere Systems]] Hermes (WaveLAN/[[ORiNOCO]]), [[Intersil]] [[PRISM (chipset)|PRISM]]-2 802.11b 
 | Community project
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from [[FreeBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/ral/ ral]
 | [[Ralink]] RT2500
 | Community project
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/rtw/ rtw]
 | [[Realtek]] RTL8180L
 | Community project
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from [[NetBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/malo/ malo]
 | [[Marvell Technology Group|Marvell]] 88W8335/ 88W8310
 | Community project
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/wpi/ wpi]
 | [[Intel]] PRO/Wireless 3945ABG
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/iwk/ iwk]
 | [[Intel]] Wireless WiFi Link 4965AGN
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/arn/ arn]
 | [[Atheros]] Atheros 9000
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | based on ath9k
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/rwd/ rwd]
 | [[Ralink]] Ralink RT2561/RT2561S/RT2661
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/rwn/ rwn]
 | [[Ralink]] Ralink RT2700/2800
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/urtw/ urtw]
 | [[RealTek]] RealTek RTL8187L/B USB 
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/atu/ atu]
 | [[Atmel]] Atmel AT76C50x
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/mwl/ mwl]
 | [[Marvell Technology Group|Marvell]] Marvell 88W8363
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |- 
 | [http://www.opensolaris.org/os/community/laptop/wireless/ural/ ural]
 | [[Ralink]] Ralink RT2500USB 
 | Community project
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[BSD]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 | [http://www.opensolaris.org/os/community/laptop/wireless/zyd zyd]
 | ZyDAS ZD1211 chipsets
 | Community project
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [[BSD]]
 | Ported from [[OpenBSD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |}
 
 ==Darwin, OpenDarwin and Mac OS X==
@@ -1637,25 +1805,25 @@ Then we should think about documenting, whether a driver can support multiple mo
 |-
 ! Driver
 ! Chipset
-! Free firmware
+! Free firmware<ref name="free firmware" />
 ! License
 ! Development
 |-
 || [https://code.google.com/p/iwidarwin IWIDarwin]
 | [[Intel]] PRO/Wireless 2100/2200BG/2225BG/2915ABG/3945ABG/4965AGN
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [[GPL]]
 | Port from Linux
 |-
-| [http://wirelessdriver.sourceforge.net/ WirelessDriver]
+| [http://wirelessdriver.sourceforge.net/ WirelessDriver]<ref>{{cite web|url=http://www.seattlewireless.net/WirelessDriver |title=Seattle Wireless WirelessDriver Support Wiki |publisher=Seattlewireless.net |date=2010-08-15 |accessdate=2012-12-09}}</ref>
 | [[Lucent]]/[[Agere Systems]] Hermes (WaveLAN/[[ORiNOCO]]), [[Intersil]] [[PRISM (chipset)|PRISM]]-2 802.11b
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[BSD]] 
 |
 |-
 | [http://gtdriver.binaervarianz.de/ GTdriver]
 | [[PRISM (chipset)|PRISM]]-GT 802.11b/g
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 | [[GPL]] 
 |
 |}
@@ -1678,22 +1846,22 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://dev.kewl.org/acx100+111/ acx]
 | [[802.11a]]?, [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | ?
 | ?
 | ?
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=an an]
 | [[802.11b]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]], [[Industry Standard Architecture|ISA]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | ?
 | ?
 | ?
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=arl&manpath=FreeBSD+7.2-RELEASE arl]
 | N/A
@@ -1708,12 +1876,12 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ath ath]
 | [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]], [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=awi&manpath=FreeBSD+7.2-RELEASE awi]
 | N/A
@@ -1722,18 +1890,18 @@ Then we should think about documenting, whether a driver can support multiple mo
 | ?
 | ?
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=bwi bwi]
 | [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=cnw&manpath=FreeBSD+7.2-RELEASE cnw]
 | N/A
@@ -1748,62 +1916,62 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.freebsd.org/cgi/man.cgi?query=ipw ipw]
 | [[802.11b]]
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=iwi iwi]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=iwn iwn]
 | [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=malo malo]
 | [[802.11b]], [[802.11g]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=mwl mwl]
 | [[802.11a]], [[802.11b]], [[802.11g]], [[802.11n]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=ral ral]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]], [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=ray&manpath=FreeBSD+7.2-RELEASE ray]
 | N/A
@@ -1811,99 +1979,99 @@ Then we should think about documenting, whether a driver can support multiple mo
 | ?
 | ?
 | ?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{No}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=rum rum]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://svn.freebsd.org/viewvc/base/stable/8/sys/dev/usb/wlan/if_run.c?view=log run]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=uath uath]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=upgt upgt]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=ural ural]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=urtw urtw]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=wi wi]
 | [[802.11b]]
 | [[PC Card]], [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 8.0)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 8.0)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since 8.0?)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}} (since 8.0)
+| {{Yes}} (since 8.0)
+| {{Yes}} (since 8.0?)
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=wpi wpi]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.freebsd.org/cgi/man.cgi?query=zyd zyd]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |}
 
 ===OpenBSD===
@@ -1922,277 +2090,276 @@ Then we should think about documenting, whether a driver can support multiple mo
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=acx acx]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=an an]
 | [[802.11b]]
 | [[PC Card]], [[Peripheral Component Interconnect|PCI]], [[Industry Standard Architecture|ISA]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ath ath]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=athn athn]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=atu atu]
 | [[802.11b]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=atw atw]
 | [[802.11b]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=bwi bwi]
 | [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=cnw cnw]
 | N/A
 | [[PC Card]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ipw ipw]
 | [[802.11b]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=iwi iwi]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=iwn iwn]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=malo malo]
 | [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[PC Card]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=otus otus]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=pgt pgt]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ral ral]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]], [[Mini PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ray ray]
 | N/A
 | [[PC Card]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=rtw rtw]
 | [[802.11b]]
 | [[Cardbus]], [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=rum rum]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=run run]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=uath uath]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=upgt upgt]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=ural ural]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=urtw urtw]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=urtwn urtwn]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=wi wi]
 | [[802.11b]]
 | [[PC Card]], [[Peripheral Component Interconnect|PCI]], [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
+| {{No}}
+| {{No}}
+| {{No}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=wpi wpi]
 | [[802.11a]], [[802.11b]], [[802.11g]]
 | [[Peripheral Component Interconnect|PCI]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://www.openbsd.org/cgi-bin/man.cgi?query=zyd zyd]
 | [[802.11b]], [[802.11g]]
 | [[USB]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
+| {{No}}
+| {{No}}
 |}
 
 ==Notes==
-<div class="reflist references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist|colwidth=30em}}
 
 ===References===
 *http://support.intel.com/support/notebook/sb/CS-006408.htm
@@ -2210,8 +2377,7 @@ Then we should think about documenting, whether a driver can support multiple mo
 *[http://www.seattlewireless.net/index.cgi/LinuxDrivers Seattle Wireless] Linux drivers
 *[http://www.seattlewireless.net/MacOS Seattle Wireless] Mac OS drivers
 
-
-
+{{DEFAULTSORT:Open-source wireless drivers}}
 [[Category:Free software lists and comparisons]]
 [[Category:Wireless networking]]
 [[Category:Free device drivers|Wireless drivers]]
