@@ -91,11 +91,6 @@ class TableVisitor(
     // Extract raw cell content
     val rawContent = rawContentExtractor.extract(cellNode)
 
-    if (rawContent.toLowerCase.contains("yes")) {
-      println(cellNode)
-      println("rawcontent= " + rawContent)
-    }
-
     // Extract cell content
     val cellCode = "{|\n" +
       "|-\n" +
