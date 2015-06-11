@@ -4,18 +4,15 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
 import org.opencompare.api.java.PCM;
-import org.opencompare.api.java.impl.PCMImpl;
-import org.opencompare.io.wikipedia.WikipediaPageMiner;
-import org.opencompare.io.wikipedia.export.WikiTextExporter;
-import org.opencompare.io.wikipedia.pcm.Page;
-import org.opencompare.io.wikipedia.export.PCMModelExporter;
 import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.PCMFactoryImpl;
+import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
-import play.Logger;
+import org.opencompare.io.wikipedia.io.WikiTextExporter;
+import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -24,13 +21,10 @@ import play.mvc.Http;
 import play.mvc.Result;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Map;
 
-import static scala.collection.JavaConversions.*;
+import static scala.collection.JavaConversions.seqAsJavaList;
 
 /**
  * Created by gbecan on 08/01/15.
@@ -39,22 +33,17 @@ import static scala.collection.JavaConversions.*;
 public class PCMAPI extends Controller {
 
     private static final PCMFactory pcmFactory = new PCMFactoryImpl();
-    private static final PCMModelExporter pcmExporter = new PCMModelExporter();
     private static final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter();
 
     private static PCM loadWikitext(String title){
-        WikipediaPageMiner miner = new WikipediaPageMiner();
+        WikiTextLoader miner = new WikiTextLoader();
 
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
-        String preprocessedCode = miner.preprocess(code);
-        Page page = miner.parse(preprocessedCode, title);
-
-        // PCM model export
-        List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
+        List<PCM> pcms = seqAsJavaList(miner.mine(code, title));
 
         return pcms.get(0); // TODO: manage several matrices case inside the page
     }
@@ -102,7 +91,7 @@ public class PCMAPI extends Controller {
         if (type.equals("csv")) {
             data = csvExporter.export(pcm);
         } else if (type.equals("wikitext")) {
-            data = wikiExporter.toWikiText(pcm);
+            data = wikiExporter.export(pcm);
         } else {
             return badRequest("Type error. Return only 'csv' or 'wikitext' types.");
         }
@@ -179,7 +168,7 @@ public class PCMAPI extends Controller {
 
         if (type.equals("wikitext")) {
 
-            result = wikiExporter.toWikiText(pcm);
+            result = wikiExporter.export(pcm);
 
         } else if (type.equals("csv")) {
 

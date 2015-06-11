@@ -8,8 +8,8 @@ import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
-import org.opencompare.io.wikipedia.WikipediaPageMiner
-import org.opencompare.io.wikipedia.export.{WikiTextExporter, PCMModelExporter}
+import org.opencompare.io.wikipedia.export.PCMModelExporter
+import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -24,7 +24,7 @@ import scala.xml.PrettyPrinter
 class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  val miner = new WikipediaPageMiner
+  val miner = new WikiTextLoader
 
   override def beforeAll() {
 
@@ -40,19 +40,17 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
-    val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode, file)
+    miner.mineInternalRepresentation(code, file)
   }
 
   def parseFromTitle(title : String) : Page = {
     val code = miner.getPageCodeFromWikipedia(title)
-    val preprocessedCode = miner.preprocess(code)
-    miner.parse(preprocessedCode, title)
+    miner.mineInternalRepresentation(code, title)
   }
 
   def parseFromOfflineCode(title : String) : Page = {
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    miner.parse(code, title)
+    miner.mineInternalRepresentation(code, title)
   }
 
   def testArticle(title : String) : Page = {
@@ -122,52 +120,11 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val serializer = new WikiTextExporter
 
     for ((pcm, index) <- pcms.zipWithIndex) {
-      val wikitext = serializer.toWikiText(pcm)
+      val wikitext = serializer.export(pcm)
       val path = "output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt"
       writeToFile(path, wikitext)
     }
 
-  }
-
-  ignore should "preprocess every available Wikipedia PCM" in {
-    val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
-    val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
-    wikipediaPCMsFile.close
-
-    val tasks : Seq[Future[String]] = for(article <- wikipediaPCMs) yield future {
-      var result = new StringBuilder
-      if (article.startsWith("//")) {
-        result ++= "IGNORED : " + article
-      } else {
-        result ++= article
-        var retry = false
-        do {
-          try {
-
-            // Preprocess Wikipedia page
-            val code = miner.getPageCodeFromWikipedia(article)
-            val preprocessedCode = miner.preprocess(code)
-
-            // Save preprocessed page
-            writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", preprocessedCode)
-
-          } catch {
-            // case e : UnknownHostException => retry = true
-            case e : Throwable =>
-              val sw = new StringWriter();
-              val pw = new PrintWriter(sw);
-              e.printStackTrace(pw);
-              result ++= sw.toString();
-          }
-        } while (retry)
-      }
-      result.toString
-    } (executionContext)
-
-    for (task <- tasks) {
-      val result = Await.result(task, 10.minutes)
-      //      println(result)
-    }
   }
 
   "Wikipedia IO" should "parse every available PCM in Wikipedia" in {
