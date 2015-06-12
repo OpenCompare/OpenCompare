@@ -18,8 +18,9 @@ GET         /api/get/:id                              controllers.PCMAPI.get(id 
 POST        /api/save/:id                             controllers.PCMAPI.save(id : String)
 POST        /api/create                               controllers.PCMAPI.create()
 GET         /api/remove/:id                           controllers.PCMAPI.remove(id : String)
-POST        /api/import/:ext                         controllers.PCMAPI.importFromFile(ext : String)
+POST        /api/import/:ext                          controllers.PCMAPI.importFromFile(ext : String)
 POST        /api/export/:ext                          controllers.PCMAPI.exportToFile(ext : String)
+POST        /api/extract-content                      controllers.PCMAPI.extractContent()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)

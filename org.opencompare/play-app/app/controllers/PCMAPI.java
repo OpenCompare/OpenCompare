@@ -13,6 +13,7 @@ import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,6 +24,7 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
 
@@ -37,6 +39,7 @@ public class PCMAPI extends Controller {
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter();
+    private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
 
     private static PCM loadWikitext(String title){
         WikiTextLoader miner = new WikiTextLoader();
@@ -195,5 +198,23 @@ public class PCMAPI extends Controller {
         //}
 
         return ok(result);
+    }
+
+    public static Result extractContent() {
+        DynamicForm dynamicForm = Form.form().bindFromRequest();
+        String type = dynamicForm.get("type");
+        String rawContent = dynamicForm.get("rawContent");
+
+        if (type != null && rawContent != null) {
+            String content = "";
+
+            if ("wikipedia".equals(type)) {
+                content = wikitextTemplateProcessor.expandTemplate(rawContent);
+            }
+
+            return ok(content);
+        } else {
+            return badRequest();
+        }
     }
 }
