@@ -15,6 +15,7 @@ import org.opencompare.api.java.io.CSVLoader;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
+import org.opencompare.io.wikipedia.parser.CellContentExtractor;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -41,10 +42,10 @@ public class PCMAPI extends Controller {
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter();
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
+    private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
+    private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
 
     private static PCM loadWikitext(String title){
-        WikiTextLoader miner = new WikiTextLoader();
-
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
         List<PCM> pcms = seqAsJavaList(miner.mine(code, title));
@@ -210,7 +211,10 @@ public class PCMAPI extends Controller {
             String content = "";
 
             if ("wikipedia".equals(type)) {
-                content = wikitextTemplateProcessor.expandTemplate(rawContent);
+//                content = wikitextTemplateProcessor.expandTemplate(rawContent);
+                content = wikitextContentExtractor.extractCellContent(rawContent);
+            } else {
+                return badRequest("unknown type");
             }
 
             return ok(content);

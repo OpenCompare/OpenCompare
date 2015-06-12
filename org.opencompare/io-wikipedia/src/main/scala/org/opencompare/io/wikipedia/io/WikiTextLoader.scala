@@ -31,8 +31,8 @@ class WikiTextLoader(
   }
 
   private val parserConfig = new SimpleParserConfig()
-  private val preprocessor = new WikitextPreprocessor(parserConfig)
-  private val parser = new WikitextParser(parserConfig)
+  val preprocessor = new WikitextPreprocessor(parserConfig)
+  val parser = new WikitextParser(parserConfig)
 
   private val wikiConfig = DefaultConfigEnWp.generate()
 
@@ -57,7 +57,7 @@ class WikiTextLoader(
    * @param title : title of the article on English version of Wikipedia
    */
   def getPageCodeFromWikipedia(title : String): String = {
-    val editPage = Http("http://en.wikipedia.org/w/index.php")
+    val editPage = Http("https://en.wikipedia.org/w/index.php")
       .params("title" -> title.replaceAll(" ", "_"), "action" -> "edit")
       .option(HttpOptions.connTimeout(10000))
       .option(HttpOptions.readTimeout(30000))

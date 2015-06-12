@@ -21,7 +21,12 @@ class CellContentExtractor(
   private var ignoredXMLStack: Stack[Boolean] = new Stack()
 
 
-  def extractCellContent(code : String): String = {
+  def extractCellContent(rawContent : String): String = {
+    val code = "{|\n" +
+      "|-\n" +
+      "| " + rawContent + "\n" +
+      "|}"
+
     val title = ""
 
     // Expand template with preprocessor
