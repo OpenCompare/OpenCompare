@@ -28,11 +28,11 @@ public class WikipediaMinerTest {
         WikiTextLoader miner = new WikiTextLoader();
 
         // Parse article from Wikipedia
-        String title = "Comparison_of_AMD_processors";
+        String title = "Comparison_of_Nikon_DSLR_cameras";
         String code = miner.getPageCodeFromWikipedia(title);
         Page page = miner.mineInternalRepresentation(code, title);
 
-                // HTML export
+        // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();
         String html = htmlExporter.export(page);
         assertNotNull(html);
