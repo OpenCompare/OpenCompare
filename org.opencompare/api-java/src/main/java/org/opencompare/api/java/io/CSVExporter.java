@@ -1,6 +1,7 @@
 package org.opencompare.api.java.io;
 
 import com.opencsv.CSVWriter;
+import javafx.collections.transformation.SortedList;
 import org.opencompare.api.java.*;
 
 import java.io.IOException;
@@ -12,10 +13,11 @@ import java.util.*;
  */
 public class CSVExporter implements PCMExporter {
 
-    PCMMetadata currentMetada;
+    PCMMetadata currentMetadata = null;
 
     @Override
     public String export(PCMContainer container) {
+        currentMetadata = container.getMetadata();
         return export(container.getPcm());
     }
 
@@ -25,9 +27,12 @@ public class CSVExporter implements PCMExporter {
         CSVWriter csvWriter = new CSVWriter(stringWriter);
 
         // Export features
-        //List<Feature> features = pcm.getConcreteFeatures(); // FIXME : does not support feature groups
-        Set<Feature> features = currentMetada.getSortedFeatures();
-        Set<Product> products = currentMetada.getSortedProducts();
+        if (currentMetadata  == null) {
+            currentMetadata = new PCMMetadata(pcm);
+        }
+
+        List<Feature> features = currentMetadata.getSortedFeatures();
+        List<Product> products = currentMetadata.getSortedProducts();
         List<String> featureLine = new ArrayList<String>();
 
         featureLine.add("Product");

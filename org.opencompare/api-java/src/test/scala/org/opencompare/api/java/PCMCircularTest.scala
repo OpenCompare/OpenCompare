@@ -14,7 +14,7 @@ import scala.reflect.io.{File, Directory}
 /**
  * Created by smangin on 01/06/15.
  */
-abstract class CircularTest(
+abstract class PCMCircularTest(
   val resource : URL,
   val pcmFactory : PCMFactory,
   val initLoader : PCMLoader,

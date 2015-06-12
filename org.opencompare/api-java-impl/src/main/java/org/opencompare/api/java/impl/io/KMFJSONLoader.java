@@ -1,7 +1,6 @@
 package org.opencompare.api.java.impl.io;
 
-import org.opencompare.api.java.PCM;
-import org.opencompare.api.java.PCMContainer;
+import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.io.PCMLoader;
 import org.kevoree.modeling.api.KMFContainer;
@@ -51,7 +50,9 @@ public class KMFJSONLoader implements PCMLoader {
         for (KMFContainer container : containers) {
             PCM pcm = new PCMImpl((pcm.PCM) container);
             PCMContainer containerPCM = new PCMContainer();
+            PCMMetadata metadata = new PCMMetadata(pcm);
             containerPCM.setPcm(pcm);
+            containerPCM.setMetadata(metadata);
             containersPCM.add(containerPCM);
         }
         return containersPCM;
