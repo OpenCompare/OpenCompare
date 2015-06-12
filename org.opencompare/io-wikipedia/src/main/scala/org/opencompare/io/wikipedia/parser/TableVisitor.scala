@@ -94,11 +94,7 @@ class TableVisitor(
     val rawContent = rawContentExtractor.extract(cellNode)
 
     // Extract cell content
-    val cellCode = "{|\n" +
-      "|-\n" +
-      "| " + rawContent + "\n" +
-      "|}"
-    val content = contentExtractor.extractCellContent(cellCode)
+    val content = contentExtractor.extractCellContent(rawContent)
 
     // Create cell
     val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
