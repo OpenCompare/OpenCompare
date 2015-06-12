@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
@@ -201,9 +202,9 @@ public class PCMAPI extends Controller {
     }
 
     public static Result extractContent() {
-        DynamicForm dynamicForm = Form.form().bindFromRequest();
-        String type = dynamicForm.get("type");
-        String rawContent = dynamicForm.get("rawContent");
+        JsonNode json = request().body().asJson();
+        String type = json.get("type").asText();
+        String rawContent = json.get("rawContent").asText();
 
         if (type != null && rawContent != null) {
             String content = "";

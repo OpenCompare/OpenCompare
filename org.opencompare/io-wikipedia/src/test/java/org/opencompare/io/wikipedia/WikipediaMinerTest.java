@@ -10,6 +10,8 @@ import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.pcm.Page;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
@@ -30,8 +32,7 @@ public class WikipediaMinerTest {
         String code = miner.getPageCodeFromWikipedia(title);
         Page page = miner.mineInternalRepresentation(code, title);
 
-
-        // HTML export
+                // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();
         String html = htmlExporter.export(page);
         assertNotNull(html);
