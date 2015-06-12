@@ -414,7 +414,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     function isEmptyCell(name) {
-        if(!name || name == "" || name == "N/A" || name == "?") {
+        if(!name.toLowerCase() || name.toLowerCase() == "" || name.toLowerCase() == "N/A" || name.toLowerCase() == "?" || name.toLowerCase() == "unknown") {
             return true;
         }
         else {
