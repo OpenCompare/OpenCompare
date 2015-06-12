@@ -86,23 +86,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
             if(rawValue != newValue) {
-                var commandParameters = [];
-                if (colDef.name != "Product") {
-                    commandParameters = [rowEntity.$$hashKey, colDef.name, contentValue, getVisualRepresentation(newValue), rawValue, newValue];
-                }
-                else {
-                    commandParameters = [rowEntity.$$hashKey, 'name', contentValue, getVisualRepresentation(newValue), rawValue, newValue];
-                }
-                $scope.newCommand('edit', commandParameters);
                 $rootScope.$broadcast('modified');
                 pcmRaw = [];
-                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue);
+                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
+                                                            colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
             }
             else {
                 $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = contentValue;
             }
             /* Update value based on visual representation and raw */
-
             $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
         });
     };
@@ -135,12 +127,37 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * @param cellValue
      * @returns {Array.<T>|string|Blob|ArrayBuffer|*}
      */
-    function getVisualRepresentation(cellValue) {
-        /*$http.get("/api/visualRepresentation/" + cellValue).success(function(data) {
-            window.location.href = "/";
-        });*/
-       // var newValue = cellValue.slice(2, -2);
-        return cellValue;
+    function getVisualRepresentation(cellValue, index, colName, hashkey, oldValue, oldRawValue, newRawValue) {
+        $http.post("/api/extract-content", {
+            type: 'wikipedia',
+            rawContent: cellValue,
+            responseType: "text/plain",
+            transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
+                return d;
+            }
+        }).
+            success(function(data) {console.log(data.indexOf(":Template"));
+                //if(data.indexOf(":Template") == -1) {
+                    var commandParameters = [];
+                    $scope.pcmData[index][colName] = data;
+                    if (colName != "Product") {
+                        commandParameters = [hashkey, colName, oldValue, data, oldRawValue, newRawValue];
+                    }
+                    else {
+                        commandParameters = [hashkey, 'name', oldValue, data, oldRawValue, newRawValue];
+                    }
+                    $scope.newCommand('edit', commandParameters);
+                console.log(commandParameters);
+                //}
+                /*else {
+                    $scope.pcmData[index][colName] = 'Unknown template';
+                }*/
+        }).
+        error(function(data, status, headers, config) {
+                $scope.pcmData[index][colName] = cellValue;
+        });
+
+        return 'Loading value...';
     }
 
     /**
