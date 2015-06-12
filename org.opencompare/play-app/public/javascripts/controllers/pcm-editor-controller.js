@@ -41,6 +41,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableColumnResizing: true,
         enableFiltering: true,
         enableCellSelection: false,
+        enableCellEdit: $scope.edit,
         headerRowHeight: 90,
         rowHeight: 28
     };
@@ -81,7 +82,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     contentValue = rowEntity[colDef.name];
                     rowEntity[colDef.name] = rawValue;
                 }
-
             }
         });
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
@@ -234,15 +234,23 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             ],
             cellClass: function(grid, row, col) {
-                if(validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)] && $scope.validating) {
+                var rowValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return 'warningCell';
+                }
+                else {
+                    return getCellClass(rowValue[col.name]);
                 }
             },
             cellTooltip: function(row, col) {
-                    if(validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
-                        return "This value doesn't seem to match the feature type.";
-                    }
+                var rowValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
+                    return "This value doesn't seem to match the feature type.";
                 }
+                else if(getCellTooltip(rowValue[col.name])){
+                    return getCellTooltip(rowValue[col.name]);
+                }
+            }
         };
         switch(featureType) {
             case "string":
@@ -295,6 +303,42 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         }
         return columnDef;
+    }
+
+    function getCellClass (value) {
+        if(value.toLowerCase().indexOf('{{yes') != -1) {
+            return 'yesCell';
+        }
+        else if(value.toLowerCase().indexOf('{{no') != -1) {
+            return 'noCell';
+        }
+        else {
+            return false;
+        }
+    }
+
+    function getCellTooltip (value) {
+        if(value.toLowerCase().indexOf('<ref') != -1) {
+            var index = value.toLowerCase().indexOf('<ref');
+            var refPart = value.substring(index+11);
+            var endIndex = refPart.replace(/\s/g, '').indexOf('"/>');
+            return refPart.substring(0, endIndex);
+        }
+        else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
+            var index = value.toLowerCase().indexOf('<ref>{{');
+            var refPart = value.substring(index+11);
+            var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
+            return refPart.substring(0, endIndex);
+        }
+        else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
+            var index = value.toLowerCase().indexOf('<ref>{{');
+            var refPart = value.substring(index+11);
+            var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
+            return refPart.substring(0, endIndex);
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -417,7 +461,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var productDataRaw = {};
             features.map(function(feature) {
                 var cell = findCell(product, feature);
-                console.log(cell.rawContent);
+                //console.log(cell.rawContent);
                 productDataRaw.name = product.name; // FIXME : may conflict with feature name
                 if(cell.rawContent && cell.rawContent != "") {
                     productDataRaw[feature.name] = cell.rawContent;
