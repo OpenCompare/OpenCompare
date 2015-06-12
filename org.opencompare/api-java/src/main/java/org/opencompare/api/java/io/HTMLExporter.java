@@ -20,6 +20,11 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
     private int nextFeaturePosition;
 
     @Override
+    public String export(PCMContainer container) {
+        return toHTML(container);
+    }
+
+    @Override
     public String export(PCM pcm) {
         return toHTML(pcm);
     }
@@ -48,6 +53,10 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 //        transformer.transform(new DOMSource(doc), new StreamResult(writer));
 //        String output = writer.getBuffer().toString().replaceAll("\n|\r", "");
 //        return html;
+    }
+
+    public String toHTML(PCMContainer container) {
+        return toHTML(container.getPcm());
     }
 
     @Override

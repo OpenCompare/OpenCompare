@@ -1,6 +1,7 @@
 package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.PCMTest;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
@@ -10,6 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by gbecan on 09/10/14.
@@ -34,9 +36,11 @@ public class PCMImplTest extends PCMTest {
 
         // Load
         KMFJSONLoader loader = new KMFJSONLoader();
-        PCM loadedPCM = loader.load(json);
+        List<PCMContainer> containers = loader.load(json);
 
-        assertEquals(pcm.getName(), loadedPCM.getName());
+        for (PCMContainer container : containers) {
+            assertEquals(pcm.getName(), container.getPcm().getName());
+        }
 
     }
 }

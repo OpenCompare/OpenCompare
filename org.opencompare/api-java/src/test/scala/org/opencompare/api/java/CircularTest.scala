@@ -36,11 +36,12 @@ abstract class CircularTest(
 
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
-        val pcm1 = initLoader.load(Source.fromURI(file.toURI).mkString)
+        val pcm1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0).getPcm
         pcm1.setName("Original") // TODO : does the name influence the matrix equality test ?
         pcm1.normalize(pcmFactory) // TODO : should it be really mandatory ?
 
-        val pcm2 = importer.load(exporter.export(pcm1))
+        val code = exporter.export(pcm1)
+        val pcm2 = importer.load(code).get(0).getPcm
         pcm2.setName("From PCM1") // TODO : does the name influence the matrix equality test ?
         pcm2.normalize(pcmFactory) // TODO : should it be really mandatory ?
 

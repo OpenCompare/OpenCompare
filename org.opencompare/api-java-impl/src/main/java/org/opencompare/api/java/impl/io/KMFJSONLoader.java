@@ -1,6 +1,7 @@
 package org.opencompare.api.java.impl.io;
 
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.io.PCMLoader;
 import org.kevoree.modeling.api.KMFContainer;
@@ -11,6 +12,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,13 +24,13 @@ public class KMFJSONLoader implements PCMLoader {
     private JSONModelLoader loader = kpcmFactory.createJSONLoader();
 
     @Override
-    public PCM load(String json) {
+    public List<PCMContainer> load(String json) {
         List<KMFContainer> containers = loader.loadModelFromString(json);
         return load(containers);
     }
 
     @Override
-    public PCM load(File file) throws IOException {
+    public List<PCMContainer> load(File file) throws IOException {
         InputStream in = new BufferedInputStream(new FileInputStream(file));
         List<KMFContainer> containers = loader.loadModelFromStream(in);
 
@@ -44,12 +46,15 @@ public class KMFJSONLoader implements PCMLoader {
 //        return load(json);
     }
 
-    private PCM load(List<KMFContainer> containers) {
-        if (containers.size() == 1 && containers.get(0) instanceof pcm.PCM) {
-            return new PCMImpl((pcm.PCM) containers.get(0));
-        } else {
-            // FIXME : what does it mean to have several PCMs in a container?
-            return null;
+    private List<PCMContainer> load(List<KMFContainer> containers) {
+        List<PCMContainer> containersPCM = new ArrayList<>();
+        for (KMFContainer container : containers) {
+            PCM pcm = new PCMImpl((pcm.PCM) container);
+            PCMContainer containerPCM = new PCMContainer();
+            containerPCM.setPcm(pcm);
+            containersPCM.add(containerPCM);
         }
+        return containersPCM;
     }
 }
+
