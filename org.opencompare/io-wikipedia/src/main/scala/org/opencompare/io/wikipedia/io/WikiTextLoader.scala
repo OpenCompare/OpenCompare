@@ -90,8 +90,7 @@ class WikiTextLoader(
   def mineInternalRepresentation(code : String, title : String): Page = {
     val ast = parser.parseArticle(code, title)
     val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, templateProcessor, parser)
-    structuralVisitor.go(ast)
-    val page = structuralVisitor.page
+    val page = structuralVisitor.extractPage(ast, title)
     page
   }
 

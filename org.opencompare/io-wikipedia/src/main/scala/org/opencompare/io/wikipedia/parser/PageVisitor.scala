@@ -25,9 +25,16 @@ class PageVisitor(
 
   private var sectionStack : mutable.Stack[String] = _
 
-  private def init(): Unit = {
-    page = new Page
+
+  def extractPage(ast : WtNode, title : String): Page = {
     sectionStack = new mutable.Stack[String]()
+
+    page = new Page
+    page.title = title
+
+    go(ast)
+
+    page
   }
 
   override def visit(wtTableImplicitTableBody: WtTableImplicitTableBody): Unit = {}
@@ -134,7 +141,7 @@ class PageVisitor(
     val name = if (sectionStack.isEmpty) {
       ""
     } else {
-      sectionStack.top
+      page.title + " - " + sectionStack.top
     }
 
     val tableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
@@ -174,7 +181,6 @@ class PageVisitor(
   override def visit(wtBold: WtBold): Unit = {}
 
   override def visit(wtParsedWikitextPage: WtParsedWikitextPage): Unit = {
-    init()
     iterate(wtParsedWikitextPage)
   }
 
