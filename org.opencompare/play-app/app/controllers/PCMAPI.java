@@ -41,10 +41,9 @@ public class PCMAPI extends Controller {
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter();
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
+    private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
 
     private static PCM loadWikitext(String title){
-        WikiTextLoader miner = new WikiTextLoader();
-
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
         List<PCM> pcms = seqAsJavaList(miner.mine(code, title));
@@ -211,6 +210,8 @@ public class PCMAPI extends Controller {
 
             if ("wikipedia".equals(type)) {
                 content = wikitextTemplateProcessor.expandTemplate(rawContent);
+            } else {
+                return badRequest("unknown type");
             }
 
             return ok(content);
