@@ -146,4 +146,9 @@ public class PCMMetadata {
         result += featurePositions.toString() + ")";
         return result;
     }
+
+    public PCM getPcm() {
+        return pcm;
+    }
+
 }

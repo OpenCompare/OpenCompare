@@ -14,6 +14,11 @@ public class PCMContainer {
 
     public PCMContainer() {}
 
+    public PCMContainer(PCM pcm) {
+        this.pcm = pcm;
+        this.metadata = new PCMMetadata(pcm);
+    }
+
     public PCMContainer(PCMMetadata metadata) {
         this.pcm = metadata.pcm;
         this.metadata = metadata;

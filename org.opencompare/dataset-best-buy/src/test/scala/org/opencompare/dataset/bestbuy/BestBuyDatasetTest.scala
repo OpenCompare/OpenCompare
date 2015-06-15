@@ -3,6 +3,7 @@ package org.opencompare.dataset.bestbuy
 import java.io.{File, FileWriter}
 
 import com.github.tototoshi.csv.CSVWriter
+import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.{CSVExporter, HTMLExporter}
@@ -80,18 +81,19 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       // Merge specifications
       val mergedSpecifications = miner.mergeSpecifications(productInfos)
+      val mergedSpecificationsContainer = new PCMContainer(mergedSpecifications)
 
       // Export to several formats
       val jsonExporter = new KMFJSONExporter
-      val json = jsonExporter.export(mergedSpecifications)
+      val json = jsonExporter.export(mergedSpecificationsContainer)
       writeToFile(outputDirPath +  category + ".pcm", json)
 
       val htmlExporter = new HTMLExporter
-      val html = htmlExporter.export(mergedSpecifications)
+      val html = htmlExporter.export(mergedSpecificationsContainer)
       writeToFile(outputDirPath +  category + ".html", html)
 
       val csvExporter = new CSVExporter
-      val csv = csvExporter.export(mergedSpecifications)
+      val csv = csvExporter.export(mergedSpecificationsContainer)
       writeToFile(outputDirPath +  category + ".csv", csv)
 
     }
@@ -104,11 +106,11 @@ class BestBuyDatasetTest extends FlatSpec with Matchers {
 
       if (pcmFile.exists()) {
         val loader = new KMFJSONLoader
-        val pcm = loader.load(pcmFile)
-
+        val pcmContainer = loader.load(pcmFile)(0)
+        val pcm = pcmContainer.getPcm
 
         val csvExporter = new CSVExporter
-        val csv = csvExporter.export(pcm)
+        val csv = csvExporter.export(pcmContainer)
 
         val csvWriter = new FileWriter(baseOutputDirPath +  category + "/" + category + ".csv")
         csvWriter.write(csv)

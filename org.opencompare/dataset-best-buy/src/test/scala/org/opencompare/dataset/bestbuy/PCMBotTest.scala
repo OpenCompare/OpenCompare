@@ -10,7 +10,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONLoader
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.PCMElementComparator
-import org.opencompare.api.java.{AbstractFeature, Cell, PCM, Product}
+import org.opencompare.api.java._
 import org.opencompare.io.bestbuy._
 import org.opencompare.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
@@ -109,7 +109,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     forAll(bestbuySpecificationPCMs) { (path: String) =>
       if (new File(path).exists()) {
         val loader = new KMFJSONLoader
-        val pcm = loader.load(new File(path))
+        val pcm = loader.load(new File(path))(0).getPcm
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
       }
@@ -121,7 +121,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     forAll(bestbuyOverviewPCMs) { (path: String) =>
       if (new File(path).exists()) {
         val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
-        val pcm = loader.load(new File(path))
+        val pcm = loader.load(new File(path))(0).getPcm
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
 
@@ -211,7 +211,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         println(filteredProducts.map(_.sku))
 
         val pcm = miner.mergeSpecifications(filteredProducts)
-        val csv = csvExporter.export(pcm)
+        val csv = csvExporter.export(new PCMContainer(pcm))
         val testOutputDir = new File(outputDir.getAbsolutePath + File.separator + path)
         testOutputDir.mkdirs()
 
@@ -262,7 +262,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         testOutputDir.mkdirs()
 
         // Export global PCM to CSV
-        val csv = csvExporter.export(pcm)
+        val csv = csvExporter.export(new PCMContainer(pcm))
         writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
 
         // Export clusters
@@ -275,7 +275,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
           val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
-          val clusterCSV = csvExporter.export(clusterPCM)
+          val clusterCSV = csvExporter.export(new PCMContainer(clusterPCM))
           writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
 
           for (product <- cluster) {
@@ -324,7 +324,7 @@ class PCMBotTest extends FlatSpec with Matchers {
           writeToFile(outputDirCluster.getAbsolutePath + "/products.txt", productList)
 
           val clusterPCM = miner.mergeSpecifications(selectedProducts)
-          val clusterCSV = csvExporter.export(clusterPCM)
+          val clusterCSV = csvExporter.export(new PCMContainer(clusterPCM))
           writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
 
           for (product <- selectedProducts) {
@@ -543,8 +543,8 @@ class PCMBotTest extends FlatSpec with Matchers {
 
     // Diff
     if (pcmFile.exists() && specFile.exists()) {
-      val overviewPCM = loader.load(pcmFile)
-      val specPCM = specLoader.load(specFile)
+      val overviewPCM = loader.load(pcmFile)(0).getPcm
+      val specPCM = specLoader.load(specFile)(0).getPcm
 
       val (featuresInCommonOverVSSpec, cellsInCommonOverVSSpec) = analyzer.diff(overviewPCM, specPCM, pcmComparator)
       val (featuresInCommonSpecVSOver, cellsInCommonSpecVSOver) = analyzer.diff(specPCM, overviewPCM, pcmComparator)
@@ -563,7 +563,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   def statsOnPCM(loader : CSVLoader, pcmFile : File) : List[Any] = {
     if (pcmFile.exists()) {
 
-      val pcm = loader.load(pcmFile)
+      val pcm = loader.load(pcmFile)(0).getPcm
 
       val numberOfProducts = pcm.getProducts.size()
       val numberOfFeatures = pcm.getConcreteFeatures.size()
@@ -733,7 +733,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         testOutputDir.mkdirs()
 
         // Export global PCM to CSV
-        val csv = csvExporter.export(pcm)
+        val csv = csvExporter.export(new PCMContainer(pcm))
         writeToFile(testOutputDir.getAbsolutePath + "/pcm.csv", csv)
 
         // Create file for statistics
@@ -753,7 +753,7 @@ class PCMBotTest extends FlatSpec with Matchers {
 
           for ((mutatedPCM, indexMutated) <- mutatedPCMs.zipWithIndex) {
             // Export to CSV
-            val mutatedCSV = csvExporter.export(mutatedPCM)
+            val mutatedCSV = csvExporter.export(new PCMContainer(mutatedPCM))
             writeToFile(testOutputDir.getAbsolutePath + "/cluster_" + index + "_" + indexMutated + ".csv", mutatedCSV)
 
             // Compute statistics
