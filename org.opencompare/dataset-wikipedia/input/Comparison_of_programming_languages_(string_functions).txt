@@ -1,39 +1,18 @@
-<div class="hatnote">"String functions" redirects here. For string functions in formal language theory, see [[String operations]].</div>
-<div class="hatnote boilerplate further">Further information: [[comparison of programming languages]]</div>
+{{redirect|String functions|string functions in formal language theory|String operations}}
+{{Further2|[[comparison of programming languages]]}}
+<!--
+##################################
+NOTE TO CONTRIBUTORS: 
+Thanks to all who have submitted code samples from various programming languages.
+When adding code samples, *please* do not include extraneous characters or symbols
+that are not part of a programming language, such as interactive command prompts.
+This causes unneeded confusion for general readers.
 
-<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of programming languages|General comparison]]
-* [[Comparison of programming languages (syntax)|Basic syntax]]
-* [[Comparison of programming languages (basic instructions)|Basic instructions]]
-* [[Comparison of programming languages (array)|Arrays]]
-* [[Comparison of programming languages (mapping)|Associative arrays]]
-* [[Comparison of programming languages (strings)|String operations]]
-* [[Comparison of programming languages (string functions)|String functions]]
-* [[Comparison of programming languages (list comprehension)|List comprehension]]
-* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
-* [[Constructor (object-oriented programming)|Object-oriented constructors]]
-* [[Comparison of database access|Database access]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Evaluation strategy]]
-* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of web application frameworks|Web application frameworks]]
-* [[Comparison of the Java and .NET platforms]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* Comparison of individual programming languages
-** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
-** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
-** [[Comparison of ALGOL 68 and C++]]
-** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
-** [[Compatibility of C and C++]]
-** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
-** [[Comparison of Object Pascal and C]]
-** [[Comparison of Pascal and C]]
-** [[Comparison of Java and C++]]
-** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
-** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
-** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
-</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+All code samples should at least be able to compile without error, when directly cut
+and pasted into a source code file.
+##################################
+-->
+{{ProgLangCompare}}
 String [[Function (computer science)|functions]] are used in computer [[programming language]]s to manipulate a [[String (computer science)|string]] or query information about a string (some do both).
 
 Most programming languages that have a string [[datatype]] will have some string functions although there may be other low-level ways within each language to handle strings directly. In object-oriented languages, string functions are often implemented as properties and methods of string objects. In functional and list-based languages a string is represented as a list (of character codes), therefore all list-manipulation procedures could be considered string functions. However such languages may implement a subset of explicit string-specific functions as well.
@@ -47,12 +26,12 @@ The most basic example of a string function is the <code>length(string)</code> f
 Other languages may have string functions with similar or exactly the same syntax or parameters or outcomes. For example in many languages the length function is usually represented as ''[[Len (programming)|len]](string)''.  The below list of common functions aims to help limit this confusion.
 
 ==Common string functions (multi language reference)==
-<table class="metadata plainlinks ambox ambox-content ambox-Unreferenced" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This section '''does not [[Wikipedia:Citing sources|cite]] any [[Wikipedia:Verifiability|references or sources]]'''.<span class="hide-when-compact"> Please help improve this section by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and [[Wikipedia:Verifiability#Burden of evidence|removed]].</span>  <small>''(July 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{unreferenced section|date=July 2013}}
 String functions common to many languages are listed below, including the different names used.  The below list of common functions aims to help programmers find the equivalent function in a language. Note, string [[concatenation]] and [[regular expressions]] are handled in separate pages. Statements in [[guillemets]] (« … ») are optional.
-
+<!-- When giving literal examples please say the language you are using as different languages use different syntax. please list in alpha order. -->
 
 ===CharAt===
-
+<!-- startsection -->
 {| class="wikitable"
 |- style="background:#fffeed;"
 ! Definition 
@@ -73,7 +52,7 @@ String functions common to many languages are listed below, including the differ
 |1
 |-
 | <code>''string''[''i'']</code>
-|[[C (programming language)|C]], [[C++]], [[C Sharp (programming language)|C#]], [[Cobra (programming language)|Cobra]], [[D (programming language)|D]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Python (programming language)|Python]], [[PHP]], [[Ruby (programming language)|Ruby]], [[Windows PowerShell]], [[JavaScript]], Ya
+|[[C (programming language)|C]], [[C++]], [[C Sharp (programming language)|C#]], [[Cobra (programming language)|Cobra]], [[D (programming language)|D]], [[FreeBASIC]], [[Go (programming language)|Go]], [[Python (programming language)|Python]],<ref name="at1"/> [[PHP]], [[Ruby (programming language)|Ruby]],<ref name="at1"/> [[Windows PowerShell]], [[JavaScript]], Ya
 |0
 |-
 | <code>''string''{''i''}</code>
@@ -133,7 +112,7 @@ String functions common to many languages are listed below, including the differ
 |0
 |-
 | <code>substr(''string'', ''i'', 1)</code>
-|[[Perl]]
+|[[Perl]]<ref name="at1"/>
 |0
 |-
 | <code>substr(''string'', ''i'', 1)</code>
@@ -153,7 +132,7 @@ String functions common to many languages are listed below, including the differ
 |0
 |-
 | <code>string.sub(''string'', ''i'', ''i'') <br /> (''string''):sub(''i'', ''i'')</code>
-|[[Lua (programming language)|Lua]]
+|[[Lua (programming language)|Lua]]<ref name="at1"/>
 |1
 |-
 | <code>''string'' at: ''i''</code>
@@ -165,7 +144,7 @@ String functions common to many languages are listed below, including the differ
 |0
 |-
 | <code>StringTake[''string'', {''i''}]</code>
-|[[Mathematica]]
+|[[Mathematica]]<ref name="at1"/>
 |1
 |-
 | <code>''string''@''i''</code>
@@ -216,7 +195,7 @@ Mid("Hello, World",2,1)
 " Example in Smalltalk "
 'Hello, World' at: 2.    "$e"
 </source>
-
+<!-- endsection -->
 
 ===Compare (integer result)===
 {| class="wikitable"
@@ -289,10 +268,10 @@ Mid("Hello, World",2,1)
 |[[OCaml]]
 |-
 | <code>String.compare (''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
-|[[Standard ML]] 
+|[[Standard ML]] <ref>returns LESS, EQUAL, or GREATER</ref>
 |-
 | <code>compare ''string<sub>1</sub>'' ''string<sub>2</sub>''</code>
-|[[Haskell (programming language)|Haskell]] 
+|[[Haskell (programming language)|Haskell]] <ref>returns LT, EQ, or GT</ref>
 |-
 | <code>[string]::Compare(''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
 |[[Windows PowerShell]]
@@ -301,7 +280,7 @@ Mid("Hello, World",2,1)
 |[[Objective-C]] (<code>NSString *</code> only)
 |-
 | <code>LLT(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LLE(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LGT(''string<sub>1</sub>'',''string<sub>2</sub>'') <br/> LGE(''string<sub>1</sub>'',''string<sub>2</sub>'') </code>
-|[[Fortran]] 
+|[[Fortran]] <ref>returns <code>.TRUE.</code> or <code>.FALSE.</code>.  These functions are based on the ASCII collating sequence.</ref>
 |-
 | <code>''string<sub>1</sub>''.localeCompare(''string<sub>2</sub>'')</code>
 |[[JavaScript]]
@@ -313,7 +292,7 @@ Mid("Hello, World",2,1)
 |[[Tcl]]
 |-
 | <code>compare(''string<sub>1</sub>'',''string<sub>2</sub>'',''count'')</code>
-|[[PL/I]]
+|[[PL/I]]<ref name="lower1">IBM extension.</ref>
 |} 
 <source lang="python">
 # Example in Python
@@ -331,7 +310,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 ; returns index of mismatch: 0
 (string-compare "hello" "world" values values values)
 </source>
-
+<!-- endsection -->
 
 ===Compare (relational operator-based, Boolean result)===
 {| class="wikitable"
@@ -395,7 +374,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Smalltalk]]
 |-
 | <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code>, where <code>OP</code> can be any of <code>==, /=, <, >, <=</code> and <code>>=; Also: .EQ., .NE., .LT., .LE., .GT.</code> and <code>.GE.</code>
-|[[Fortran]].
+|[[Fortran]].<ref>The operators use the compiler's default collating sequence.</ref>
 |-
 | <code>''string<sub>1</sub>'' OP ''string<sub>2</sub>''</code> where <code>OP</code> can be any of <code>=, <>, <, >, <=, >=</code> as well as worded equivalents
 | [[COBOL]]
@@ -422,10 +401,10 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 (string> "art" "painting")      ; returns nil
 (string< "art" "painting")      ; returns non nil
 </source>
-
+<!-- endsection -->
 
 ===Concatenation===
-<div class="hatnote boilerplate seealso">See also: [[Concatenation]]</div>
+{{see also|Concatenation}}
 
 {| class="wikitable"
 |- style="background:#fffeed;"
@@ -435,7 +414,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 ! Description
 | Concatenates (joins) two strings to each other, returning the combined string. Note that some languages like C have mutable strings, so really the second string is being appended to the first string and the mutated string is returned.
 |}
-
+<!-- table is missing entries for sh -->
 {| class="wikitable sortable"
 |- style="text-align:left;"
 ! Format !! Languages 
@@ -444,7 +423,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Ada (programming language)|Ada]], [[FreeBASIC]], [[Seed7]], [[BASIC]], [[Visual Basic|VB]], [[Visual Basic .NET|VB .NET]], [[COBOL]] (between literals only)
 |-
 | <code> [[strcat]](''string<sub>1</sub>'', ''string<sub>2</sub>'')</code>
-| [[C (programming language)|C]], [[C++]] (<code>[[character (computing)|char]] [[Pointer (computer programming)|*]]</code> only)
+| [[C (programming language)|C]], [[C++]] (<code>[[character (computing)|char]] [[Pointer (computer programming)|*]]</code> only)<ref>modifies ''<code>string<sub>1</sub></code>'', which must have enough space to store the result</ref>
 |-
 | <code>''string<sub>1</sub>'' . ''string<sub>2</sub>''</code>
 |[[Perl]], [[PHP]]
@@ -464,7 +443,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 | <code>(str ''string<sub>1</sub>'' ''string<sub>2</sub>'')</code>
 |[[Clojure]]
 |-
-| <code>''string<sub>1</sub>''  ''string<sub>2</sub>''</code>
+| <code>''string<sub>1</sub>'' <nowiki>||</nowiki> ''string<sub>2</sub>''</code>
 |[[REXX]], [[SQL]], [[PL/I]]
 |-
 | <code>''string<sub>1</sub>'' // ''string<sub>2</sub>''</code>
@@ -522,7 +501,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 ;; Example in common lisp
 (concatenate 'string "abc " "def " "ghi")  ; returns "abc def ghi"
 </source>
-
+<!-- endsection -->
 
 ===Contains===
 
@@ -592,7 +571,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 |[[Mathematica]]
 |-
 | <code>index(''string'', ''substring'', ''startpos'')>0</code>
-|[[Fortran, PL/I]]
+|[[Fortran, PL/I]]<ref name="contain1">''startpos'' is IBM extension.</ref>
 |-
 | <code>strings.Contains(''string'', ''substring'')</code>
 | [[Go (programming language)|Go]]
@@ -630,7 +609,7 @@ compare("hello", "world")  /* returns index of mismatch: 1 */
 </source>
 
 ===Equality===
-
+<!-- startsection -->
 Tests if two strings are equal. See also [[#Compare (relational operator-based, Boolean result)|#Compare]] and [[#Compare (integer result)|#Compare]]. Note that doing equality checks via a generic [[#Compare (integer result)|Compare with integer result]] is not only confusing for the programmer but is often a significantly more expensive operation; this is especially true when using "[[String (computer science)#Representations|C-strings]]".
 
 {| class="wikitable sortable"
@@ -691,7 +670,7 @@ Tests if two strings are equal. See also [[#Compare (relational operator-based, 
 # Example in Windows PowerShell
 "hello" -eq "world"          #  returns false
 </source>
-
+<!-- endsection -->
 
 ===Find===
 
@@ -838,7 +817,7 @@ Tests if two strings are equal. See also [[#Compare (relational operator-based, 
 |returns 0 (positions start at 1)
 |-
 | <code>index(''string'', ''substring'', ''startpos'' )</code>
-|[[PL/I]]
+|[[PL/I]]<ref name="contain1"/>
 |returns 0 (positions start at 1)
 |-
 | <code>''string''.indexOf(''substring''«,''startpos''«, ''charcount''»»)</code>
@@ -885,7 +864,7 @@ I'Hello mate'
     ifAbsent:[ self error ]              "raises an exception"
 </source>
 
-
+<!-- endsection -->
 
 ===Find character===
 
@@ -956,7 +935,7 @@ I'Hello mate'
 |[[OCaml]]
 |raises Not_found
 |-
-| <code>position = SCAN (''string'', ''set'' «, ''back''» «, ''kind''») or <br/> position = VERIFY (''string'', ''set'' «, ''back''» «, ''kind''»)<sup class="reference plainlinks nourlexpansion" id="ref_Fortran find">[[#endnote_Fortran find|[a]]]</sup></code>
+| <code>position = SCAN (''string'', ''set'' «, ''back''» «, ''kind''») or <br/> position = VERIFY (''string'', ''set'' «, ''back''» «, ''kind''»){{ref|Fortran find|[a]}}</code>
 |[[Fortran]]
 |returns zero
 |-
@@ -965,7 +944,7 @@ I'Hello mate'
 |evaluate <code>aBlock</code> which is a <code>BlockClosure</code> (or any object understanding value) <br> returns 0 <br> returns <code>true</code> or <code>false</code>
 |-
 | <code>index(''string'', ''char'', ''startpos'' )</code>
-|[[PL/I]]
+|[[PL/I]]<ref name="fc1">''<code>startpos</code>'' is IBM extension.</ref>
 |returns 0 (positions start at 1)
 |-
 |<code>''string''.index(?''char'')</code>
@@ -992,12 +971,12 @@ I'Hello mate'
 (position #\e "Hello mate")             ;  returns 1
 (position #\z "word")                   ;  returns NIL
 </source>
-
-<span class="citation wikicite" id="endnote_Fortran find"><b>[[#ref_Fortran find|^a]]</b></span> Given a set of characters, SCAN returns the position of the first character found, while VERIFY returns the position of the first character that does not belong to the set.
+<!-- endsection -->
+{{note|Fortran find|a}} Given a set of characters, SCAN returns the position of the first character found,<ref>{{cite web|url=http://fortranwiki.org/fortran/show/scan |title=scan in Fortran Wiki |publisher=Fortranwiki.org |date=2009-04-30 |accessdate=2013-08-18}}</ref> while VERIFY returns the position of the first character that does not belong to the set.<ref>{{cite web|url=http://fortranwiki.org/fortran/show/verify |title=verify in Fortran Wiki |publisher=Fortranwiki.org |date=2012-05-03 |accessdate=2013-08-18}}</ref>
 
 ===Format===
-<div class="hatnote boilerplate seealso">See also: [[printf format string]]</div>
-
+{{See also|printf format string}}
+<!-- startsection -->
 {| class="wikitable"
 |- style="background:#fffeed;"
 ! Definition 
@@ -1054,7 +1033,7 @@ I'Hello mate'
 |Python 3.x
 |.NET
 |-
-| <code>Printf.sprintf ''formatstring''</code><code> ''items''</code>
+| <code>Printf.sprintf ''formatstring''</code><ref>''<code>formatstring</code>'' must be a fixed literal at compile time for it to have the correct type.</ref><code> ''items''</code>
 | [[OCaml]], [[F Sharp (programming language)|F#]]
 |C
 |-
@@ -1146,10 +1125,10 @@ String.format("My %s costs $%2f", "pen", 19.99);    // returns "My pen costs $19
 put string(some_string) edit('My ', 'pen', ' costs', 19.99)(a,a,a,p'$$$V.99')
 /* returns "My pen costs $19.99" */
 </source>
-
+<!-- endsection -->
 
 ===Inequality===
-
+<!-- startsection -->
 Tests if two strings are not equal. See also [[#Equality]].
 {| class="wikitable sortable"
 |- style="text-align:left;"
@@ -1223,7 +1202,7 @@ Tests if two strings are not equal. See also [[#Equality]].
 # Example in Windows PowerShell
 "hello" -ne "world"   #  returns true
 </source>
-
+<!-- endsection -->
 
 ===index===
 ''see'' [[#Find]]
@@ -1311,7 +1290,7 @@ Tests if two strings are not equal. See also [[#Equality]].
 | <code>table.concat(''table_of_strings'', ''separator'')</code>
 |[[Lua (programming language)|Lua]] 
 |-
-| <code> ''collectionOfAnything'' asStringOn: stream delimiter: ''separator''  <br/>
+| <code><nowiki>{|String streamContents: [ :stream |</nowiki> ''collectionOfAnything'' asStringOn: stream delimiter: ''separator'' <nowiki>]</nowiki> <br/>
 ''collectionOfAnything'' joinUsing: ''separator''</code>
 |[[Smalltalk]] (Squeak, Pharo)
 |-
@@ -1349,7 +1328,7 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 (use-modules (srfi srfi-13))
 (string-join '("a" "b" "c") "-")   ;  "a-b-c"
 </source>
-
+<!-- endsection -->
 
 ===lastindexof===
 ''see'' [[#rfind]]
@@ -1392,7 +1371,7 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |[[Clojure]]
 |-
 | <code>''string''[0 .. ''n'']</code>
-|[[D (programming language)|D]]
+|[[D (programming language)|D]]<ref>if n is larger than the length of the string, then in Debug mode ArrayRangeException is thrown, in Release mode, the behaviour is [[unspecified behavior|unspecified]].</ref>
 |-
 | <code>string:substr(''string'', ''start'', ''length'')</code>
 |[[Erlang (programming language)|Erlang]]
@@ -1422,7 +1401,7 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |[[Turbo Pascal]]
 |-
 | <code>''string''.substring(0,''n'')</code>
-|[[Java (programming language)|Java]], [[JavaScript]] 
+|[[Java (programming language)|Java]],<ref>if n is larger than the length of the string, Java will throw an IndexOutOfBoundsException</ref> [[JavaScript]] 
 |-
 | <code>(string-take ''string'' ''n'')</code>
 |[[Scheme (programming language)|Scheme]] (SRFI 13)
@@ -1434,7 +1413,7 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |[[Standard ML]]
 |-
 | <code>String.sub ''string'' 0 ''n''</code>
-|[[OCaml]]
+|[[OCaml]]<ref name="ReferenceA">if n is larger than length of string, raises Invalid_argument</ref>
 |-
 | <code>''string''.[..''n'']</code>
 |[[F Sharp (programming language)|F#]]
@@ -1449,7 +1428,7 @@ join( '-', ('a', 'b', 'c'));       # 'a-b-c'
 |[[Fortran]]
 |-
 | <code>StringTake[''string'', ''n'']</code>
-|[[Mathematica]]
+|[[Mathematica]]<ref name="ReferenceB">if n is larger than length of string, throw the message "StringTake::take:"</ref>
 |-
 |<code>''string'' («FUNCTION» LENGTH(''string'') - ''n'':''n'')</code>
 |[[COBOL]]
@@ -1484,12 +1463,12 @@ Left("sandroguidi", 100) '  returns "sandroguidi"
 "abcde"[0..8] // returns "abcde"
 </source>
 
-
+<!-- endsection -->
 
 ===len===
 ''see'' [[#length]]
 
-
+<!-- endsection -->
 
 ===length===
 {| class="wikitable"
@@ -1533,7 +1512,7 @@ Left("sandroguidi", 100) '  returns "sandroguidi"
 |[[Visual Basic .NET|VB .NET]], [[C Sharp (programming language)|C#]], [[Windows PowerShell]], [[F Sharp (programming language)|F#]]
 |-
 | <code>''string''.size OR ''string''.length</code>
-|Number of bytes
+|Number of bytes<ref>Ruby lacks Unicode support</ref>
 |[[Ruby (programming language)|Ruby]]
 |-
 | <code>[[strlen]](''string'')</code>
@@ -1580,9 +1559,13 @@ Left("sandroguidi", 100) '  returns "sandroguidi"
 | Number of 16-bit [[UTF-16]]-encoded blocks
 |[[Objective-C]] (<code>NSString *</code> only)
 |-
+| <code>''string''.characters.count</code>
+| Number of characters
+|[[Swift (programming language)|Swift]] (2.x)
+|-
 | <code>count(''string'')</code>
 | Number of characters
-|[[Swift (programming language)|Swift]] (1.2+)
+|[[Swift (programming language)|Swift]] (1.2)
 |-
 | <code>countElements(''string'')</code>
 | Number of characters
@@ -1650,16 +1633,16 @@ Len("")              '  returns 0
 ("hello"):len() -- returns 5
 #"" -- returns 0
 </source>
-
+<!-- endsection -->
 
 ===locate===
 
 ''see'' [[#Find]]
 
-
+<!-- endsection -->
 
 ===Lowercase===
-
+<!-- startsection -->
 {| class="wikitable"
 |- style="background:#fffeed;"
 ! Definition 
@@ -1682,13 +1665,13 @@ Len("")              '  returns 0
 |[[Perl]]
 |-
 |<code>tolower(''char'')</code>
-|[[C (programming language)|C]]
+|[[C (programming language)|C]]<ref>operates on one character</ref>
 |-
 | <code>std.string.toLower(''string'') </code>
 |[[D (programming language)|D]]
 |-
-| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), ::tolower)</code>
-| [[C++]]
+| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), ::tolower)</code><ref name="cpptransform">The <code>transform</code> function exists in the <code>std::</code> namespace. You must include the <code><algorithm></code> header file to use it. The <code>tolower</code> and <code>toupper</code> functions are in the global namespace, obtained by the <code><ctype.h></code> header file. The <code>std::tolower</code> and <code>std::toupper</code> names are overloaded and cannot be passed to <code>std::transform</code> without a cast to resolve a function overloading ambiguity, e.g. <code>std::transform(''string''.begin(), ''string''.end(), ''result''.begin(), (int (*)(int))std::tolower);</code></ref>
+| [[C++]]<ref><code>[[std::string]]</code> only, result is stored in string ''<code>result</code>'' which is at least as long as ''<code>string</code>'', and may or may not be ''<code>string</code>'' itself</ref>
 |-
 | <code>lowercase(''string'')</code>
 |[[Object Pascal]] (Delphi)
@@ -1699,14 +1682,14 @@ Len("")              '  returns 0
 | <code>lower(''string'')</code>
 |[[Seed7]]
 |-
-|<code>[[echo (command)|echo]] "string"  [[tr (program)|tr]] 'A-Z' 'a-z'</code>
+|<code>[[echo (command)|echo]] "string" <nowiki>|</nowiki> [[tr (program)|tr]] 'A-Z' 'a-z'</code>
 |[[Unix]]
 |-
 | <code>''string''.lower()</code>
 |[[Python (programming language)|Python]]
 |-
 | <code>''string''.downcase</code>
-|[[Ruby (programming language)|Ruby]]
+|[[Ruby (programming language)|Ruby]]<ref name="ReferenceC">only ASCII characters as Ruby lacks Unicode support</ref>
 |-
 | <code>strings.ToLower(''string'')</code>
 |[[Go (programming language)|Go]]
@@ -1748,7 +1731,7 @@ Len("")              '  returns 0
 |[[SQL]]
 |-
 | <code>lowercase(''string'')</code>
-|[[PL/I]]
+|[[PL/I]]<ref name="lower1">IBM extension.</ref>
 |-
 | <code>ToLowerCase[''string'']</code>
 |[[Mathematica]]
@@ -1786,12 +1769,12 @@ int main(void) {
     return 0;
 }
 </source>
-
+<!-- endsection -->
 
 ===mid===
 ''see'' [[#substring]]
 
-
+<!-- endsection -->
 
 ===partition===
 {| class="wikitable"
@@ -1828,7 +1811,7 @@ split /(spam)/'Spam eggs spam spam and ham',2;   # ('Spam eggs ', 'spam', ' spam
 split /(X)/'Spam eggs spam spam and ham',2;      # ('Spam eggs spam spam and ham');
 </source>
 
-
+<!-- endsection -->
 
 ===replace===
 {| class="wikitable"
@@ -1867,22 +1850,22 @@ split /(X)/'Spam eggs spam spam and ham',2;      # ('Spam eggs spam spam and ham
 | <code>''string''.replace(''find'', ''replace'')</code>
 |[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]], [[Java (programming language)|Java]] (1.5+)
 |-
-| <code>''string''.replaceAll(''find_regex'', ''replace'')</code>
+| <code>''string''.replaceAll(''find_regex'', ''replace'')<ref name="regex" /></code>
 |[[Java (programming language)|Java]]
 |-
 | <code>''string''.gsub(''find'', ''replace'')</code>
 |[[Ruby (programming language)|Ruby]]
 |-
-| <code>''string'' =~ s/''find_regex''/''replace''/g</code>
+| <code>''string'' =~ s/''find_regex''/''replace''/g<ref name="regex">The "find" string in this construct is interpreted as a [[regular expression]]. Certain characters have special meaning in regular expressions. If you want to find a string literally, you need to quote the special characters.</ref></code>
 |[[Perl]]
 |-
-| <code>''string''.replace(''find'', ''replace'', "g")  or<br /> ''string''.replace(/''find_regex''/g, ''replace'')</code>
+| <code>''string''.replace(''find'', ''replace'', "g") <ref>third parameter is non-standard</ref> or<br /> ''string''.replace(/''find_regex''/g, ''replace'')<ref name="regex" /></code>
 |[[JavaScript]]
 |-
-| <code>[[echo (command)|echo]] "''string''"  [[sed]] 's/''find_regex''/''replace''/g'</code>
+| <code>[[echo (command)|echo]] "''string''" <nowiki>|</nowiki> [[sed]] 's/''find_regex''/''replace''/g'<ref name="regex" /></code>
 |[[Unix]]
 |-
-| <code>''string''.replace(''find'', ''replace''), or<br />''string'' -replace ''find_regex'', ''replace''</code>
+| <code>''string''.replace(''find'', ''replace''), or<br />''string'' -replace ''find_regex'', ''replace''<ref name="regex" /></code>
 |[[Windows PowerShell]]
 |-
 | <code>Str.global_replace (Str.regexp_string ''find'') ''replace'' ''string''</code>
@@ -1936,7 +1919,7 @@ Replace("blah", "z", "y")           '  returns "blah"
 "effffff" -replace "f", "jump"      #  returns "ejumpjumpjumpjumpjumpjump"
 "effffff" -replace "f*", "jump"     #  returns "ejump"
 </source>
-
+<!-- endsection -->
 
 ===reverse===
 {| class="wikitable"
@@ -2008,8 +1991,11 @@ Replace("blah", "z", "y")           '  returns "blah"
 |<code>''string''.toCharArray.toList.reversed.join('')</code>
 |[[Cobra (programming language)|Cobra]]
 |-
+| <code>String(''string''.characters.reverse())</code>
+|[[Swift (programming language)|Swift]] (2.x)
+|-
 | <code>String(reverse(''string''))</code>
-|[[Swift (programming language)|Swift]]
+|[[Swift (programming language)|Swift]] (1.2)
 |}
 
 <source lang="smalltalk">
@@ -2032,10 +2018,10 @@ reverse "hello"              # returns "olleh"
 (use-modules (srfi srfi-13))
 (string-reverse "hello")     ; returns "olleh"
 </source>
-
+<!-- endsection -->
 
 ===rfind===
-
+<!-- startsection -->
 {| class="wikitable"
 |- style="background:#fffeed;"
 ! Definition 
@@ -2144,7 +2130,7 @@ InStrRev(5, "Hello mate", "e")           '  returns 2
 InStrRev("word", "z")                    '  returns 0
 </source>
 
-
+<!-- endsection -->
 
 ===right===
 {| class="wikitable"
@@ -2181,7 +2167,7 @@ InStrRev("word", "z")                    '  returns 0
 |[[Java (programming language)|Java]]
 |-
 | <code>''string''.slice(-''n'')</code>
-|[[JavaScript]]
+|[[JavaScript]]<ref>{{cite web|url=http://es5.github.com/#x15.5.4.13 |title=Annotated ES5 |publisher=Es5.github.com |date= |accessdate=2013-08-18}}</ref>
 |-
 | <code>right(''string'',''n'' «,''padchar''»)</code>
 |[[REXX]], [[Erlang (programming language)|Erlang]]
@@ -2199,10 +2185,10 @@ InStrRev("word", "z")                    '  returns 0
 |[[Ruby (programming language)|Ruby]], Ya
 |-
 | <code>''string''[$-''n'' .. $]</code>
-|[[D (programming language)|D]]
+|[[D (programming language)|D]]<ref>if n is larger than length of string, then in Debug mode ArrayRangeException is thrown, and unspecified behaviour in Release mode</ref>
 |-
 | <code>String.sub ''string'' (String.length ''string'' - ''n'') ''n''</code>
-|[[OCaml]]
+|[[OCaml]]<ref name="ReferenceA"/>
 |-
 | <code>string.sub(''string'', -''n'') <br /> (''string''):sub(-''n'')</code>
 |[[Lua (programming language)|Lua]]
@@ -2211,7 +2197,7 @@ InStrRev("word", "z")                    '  returns 0
 |[[Smalltalk]] (Squeak, Pharo)
 |-
 | <code>StringTake[''string'', -''n'']</code>
-|[[Mathematica]]
+|[[Mathematica]]<ref name="ReferenceB"/>
 |-
 | <code>''string'' (1:''n'')</code>
 | [[COBOL]]
@@ -2243,7 +2229,7 @@ String str = "CarDoor";
 str.substring(str.length()-4); // returns 'Door'
 </source>
 
-
+<!-- endsection -->
 
 ===rpartition===
 {| class="wikitable"
@@ -2267,12 +2253,12 @@ str.substring(str.length()-4); // returns 'Door'
 "Spam eggs spam spam and ham".rpartition('spam')  ### ('Spam eggs spam ', 'spam', ' and ham')
 "Spam eggs spam spam and ham".rpartition('X')     ### ("", "", 'Spam eggs spam spam and ham')
 </source>
-
+<!-- endsection -->
 
 ===slice===
 ''see'' [[#substring]]
 
-
+<!-- endsection -->
 
 ===split===
 {| class="wikitable"
@@ -2376,7 +2362,7 @@ end;
 split(/spam/, 'Spam eggs spam spam and ham'); # ('Spam eggs ', ' ', ' and ham')
 split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 </source>
-
+<!-- endsection -->
 
 ===sprintf===
 ''see'' [[#Format]]
@@ -2384,15 +2370,15 @@ split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 ===strip===
 ''see'' [[#trim]]
 
-
+<!-- endsection -->
 
 ===strcmp===
 ''see'' [[#Compare (integer result)]]
 
-
+<!-- endsection -->
 
 ===substring===
-<div class="hatnote">See [[#substring|CharAt]] for base of startpos/endpos.</div>
+{{hatnote|See [[#substring|CharAt]] for base of startpos/endpos.}}
 
 {| class="wikitable"
 |- style="background:#fffeed;"
@@ -2422,22 +2408,22 @@ split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 |[[BASIC]]
 |-
 | <code>substr(''string'', ''startpos'', ''numChars'')</code>
-|[[AWK]] (changes string), [[Perl]], [[PHP]]
+|[[AWK]] (changes string), [[Perl]],<ref name="substr2"/><ref name="substr4"/> [[PHP]]<ref name="substr2"/><ref name="substr4"/>
 |-
 | <code>substr(''string'', ''startpos'' «,''numChars'', ''padChar''»)</code>
 |[[REXX]]
 |-
 | <code>''string''[''startpos'':''endpos'']</code>
-|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]], [[Go (programming language)|Go]]
+|[[Cobra (programming language)|Cobra]], [[Python (programming language)|Python]],<ref name="substr2"/><ref name="substr3"/> [[Go (programming language)|Go]]
 |-
 | <code>''string''[''startpos'', ''numChars''] <br /> ''string''[''startpos'' .. ''endpos''-1] <br /> ''string''[''startpos'' ... ''endpos'']</code>
-|[[Ruby (programming language)|Ruby]]
+|[[Ruby (programming language)|Ruby]]<ref name="substr2"/><ref name="substr3"/>
 |-
 | <code>''string''[''startpos'' .. ''endpos''] <br /> ''string''[''startpos'' len ''numChars'']</code>
 |[[Seed7]]
 |-
 | <code>''string''.slice(''startpos''«, ''endpos''»)</code>
-|[[JavaScript]]
+|[[JavaScript]]<ref name="substr2"/><ref name="substr3"/>
 |-
 | <code>''string''.substr(''startpos''«, ''numChars''»)</code>
 |[[C++]] (STL), [[JavaScript]]
@@ -2485,7 +2471,7 @@ split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 |[[F Sharp (programming language)|F#]]
 |-
 | <code>string.sub(''string'', ''startpos'', ''endpos'') <br /> (''string''):sub(''startpos'', ''endpos'')</code>
-|[[Lua (programming language)|Lua]]
+|[[Lua (programming language)|Lua]]<ref name="substr2"/><ref name="substr3"/>
 |-
 | <code>''string'' copyFrom: ''startpos'' to: ''endpos''</code>
 |[[Smalltalk]]
@@ -2497,7 +2483,7 @@ split(/X/, 'Spam eggs spam spam and ham');    #  ('Spam eggs spam spam and ham')
 |[[SQL]]
 |-
 | <code>StringTake[''string'', {''startpos'', ''endpos''}]</code>
-|[[Mathematica]]
+|[[Mathematica]]<ref name="substr2"/><ref name="substr3"/>
 |-
 | <code>''string''[''startpos'' .. ''endpos'']</code>
 |Ya
@@ -2537,10 +2523,10 @@ substr("abc", 2, 6)         /* returns "bc    " */
 substr("abc", 2, 6, "*")    /* returns "bc****" */
 </source>
 
-
+<!-- endsection -->
 
 ===Uppercase===
-
+<!-- startsection -->
 {| class="wikitable"
 |- style="background:#fffeed;"
 ! Definition 
@@ -2574,8 +2560,8 @@ substr("abc", 2, 6, "*")    /* returns "bc****" */
 | <code>std.string.toUpper(''string'')</code>
 |[[D (programming language)|D]]
 |-
-| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), toupper)</code>
-| [[C++]]
+| <code>transform(''string''.begin(), ''string''.end(), ''result''.begin(), toupper)<ref name="cpptransform" /></code>
+| [[C++]]<ref><code>[[std::string]]</code> only, result is stored in string ''result'' which is at least as long as ''string'', and may or may not be ''string'' itself</ref>
 |-
 | <code>uppercase(''string'')</code>
 |[[Object Pascal]] (Delphi)
@@ -2589,7 +2575,7 @@ substr("abc", 2, 6, "*")    /* returns "bc****" */
 | <code>upper(''string'')</code>
 |[[Seed7]]
 |-
-|<code>[[echo (command)|echo]] "string"  [[tr (program)|tr]] 'a-z' 'A-Z' </code>
+|<code>[[echo (command)|echo]] "string" <nowiki>|</nowiki> [[tr (program)|tr]] 'a-z' 'A-Z' </code>
 |[[Unix]]
 |-
 | <code>translate(''string'')</code>, or<br/>
@@ -2601,7 +2587,7 @@ substr("abc", 2, 6, "*")    /* returns "bc****" */
 |[[Python (programming language)|Python]]
 |-
 | <code>''string''.upcase</code>
-|[[Ruby (programming language)|Ruby]] 
+|[[Ruby (programming language)|Ruby]] <ref name="ReferenceC"/>
 |-
 | <code>strings.ToUpper(''string'')</code>
 |[[Go (programming language)|Go]]
@@ -2677,10 +2663,10 @@ Translate UPPER VAR A Z            /* Z="UPPER USING TRANSLATE FUNCTION." */
 ' Example in Visual Basic
 UCase("Wiki means fast?")          '  "WIKI MEANS FAST?" 
 </source>
-
+<!-- endsection -->
 
 ===trim===
-<div class="hatnote relarticle mainarticle">Main article: [[Trim (programming)]]</div>
+{{main|Trim (programming)}}
 '''<code>trim</code>''' or '''<code>strip</code>''' is used to remove whitespace from the beginning, end, or both beginning and end, of a string.
 {| class="wikitable sortable"
 |- 
@@ -2716,11 +2702,16 @@ UCase("Wiki means fast?")          '  "WIKI MEANS FAST?"
 |}
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist|refs=
+<ref name="at1">the index can be negative, which then indicates the number of places before the end of the string.</ref>
+
+<ref name="substr2">''<code>startpos</code>'' can be negative, which indicates to start that number of places before the end of the string.</ref>
+<ref name="substr3">''<code>endpos</code>'' can be negative, which indicates to end that number of places before the end of the string.</ref>
+<ref name="substr4">''<code>numChars</code>'' can be negative, which indicates to end that number of places before the end of the string.</ref>
+}}
 
 ==External links==
-<table class="metadata plainlinks ambox ambox-style ambox-external_links" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article's '''use of [[Wikipedia:External links|external links]] may not follow Wikipedia's policies or guidelines'''.<span class="hide-when-compact"> Please [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by removing [[Wikipedia:What Wikipedia is not#Wikipedia is not a mirror or a repository of links, images, or media files|excessive]] or [[Wikipedia:External links|inappropriate]] external links, and converting useful links where appropriate into [[Wikipedia:Citing sources|footnote references]].</span>  <small>''(August 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{External links|date=August 2013}}
 *[http://perldoc.perl.org/index-functions-by-cat.html#Functions-for-SCALARs-or-strings Perl String Functions]
 *[https://docs.python.org/2/library/stdtypes.html#string-methods Python 2 String Methods]
 *[https://docs.python.org/3.3/library/stdtypes.html#string-methods Python 3 String Methods]
@@ -2729,7 +2720,7 @@ UCase("Wiki means fast?")          '  "WIKI MEANS FAST?"
 *[http://msdn2.microsoft.com/en-us/library/system.string.aspx .NET String Methods and Properties]
 *[http://www.ruby-doc.org/core-1.8.7/classes/String.html Ruby String Class]
 *[http://www.php.net/manual/en/ref.strings.php PHP String functions]
-*<code>[http://docs.oracle.com/javase/8/docs/api/java/lang/String.html java.lang.String]</code> members
+*{{javadoc:SE|java/lang|String|package=java.lang}} members
 *[http://haskell.org/ghc/docs/latest/html/libraries/ Haskell Hierarchical Libraries]
 *[http://dlang.org/arrays.html Arrays in D (in D strings are regular arrays)]
 *[http://www.digitalmars.com/d/2.0/phobos/std_string.html std.string from Phobos (D standard library)]
@@ -2739,7 +2730,6 @@ UCase("Wiki means fast?")          '  "WIKI MEANS FAST?"
 *[http://www.freebasic.net/wiki/wikka.php?wakka=CatPgString FreeBASIC String Functions]
 *[http://reference.wolfram.com/mathematica/guide/StringManipulation.html Reference.wolfram.com]
 
-
-
+{{DEFAULTSORT:Comparison Of Programming Languages (String Functions)}}
 [[Category:Programming language comparisons]]
 [[Category:String (computer science)]]

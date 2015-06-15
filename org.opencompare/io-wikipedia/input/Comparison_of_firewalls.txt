@@ -1,10 +1,12 @@
-
-The following is a comparison of notable [[Firewall (networking)|firewalls]], starting from simple home firewalls up to the most sophisticated Enterprise firewalls.
+<!-- IF YOU DON'T PAY ATTENTION TO THIS MESSAGE, YOUR EDIT WILL BE ROLLED BACK WITHOUT WARNING.
+Only place entries here that are links to actual Wikipedia articles about notable firewalls. External links, redlinks, non-notable sites or sites will be removed. If you have questions, use the talk page. Please try to keep entries in alphabetical order.  Adding unnecessary links or text to any other section (such as the "References" section) will also be removed. Thanks.
+-->
+The following is a comparison of notable [[Firewall (networking)|firewalls]], starting from simple home firewalls up to the most sophisticated Enterprise-level firewalls.
 
 ==Firewall software==
-<div class="hatnote boilerplate seealso">See also: [[Personal firewall]]</div>
+{{See also|Personal firewall}}
 
-Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[firmware]] (built-in software) on dedicated hardware. Embedded firewalls are simply very limited-capability programs running on a low-power CPU, and this software can be upgraded or replaced if someone has sufficient skill and resources to do so. (See [[OpenWrt]])
+Ultimately, all firewalls are [[software]]-based{{Citation needed|date=January 2015}}, but some firewall solutions are provided as software solutions that run on general purpose operating systems. The following table lists different firewall software that can be installed / configured in different general purpose operating systems.
 
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto;"
 |-
@@ -13,36 +15,156 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 ! Cost / Usage Limits
 ! [[Operating system|OS]]
 |- 
-! [[Nano IT & TI]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| $35 to 1800 / 30 day trial support
-| [[Linux]]-based appliance CentOS
-|- 
-! [[Cisco]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Included on all Cisco<br>switches and routers
-| Proprietary, runs only <br>on Cisco hardware
-|- 
 ! [[Comodo Internet Security|Comodo Internet <br>Security]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| {{Proprietary}}
 | Free
 | [[Microsoft Windows|Windows 7 / Vista / XP SP2/ Windows 8]]
+|-
+! [[FirewallD (based on Netfilter)|FirewallD]]
+| [[GPL]] 
+| Free
+| [[Fedora (operating system)|Fedora]], [[Red Hat Enterprise Linux]], [[CentOS]]
 |- 
 ! [[Glasswire]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| {{Proprietary}}
 | Free
 | [[Microsoft Windows|Windows 7 / Windows 8 / Windows 10]]
 |-
 ! [[Intego|Intego VirusBarrier]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+| {{Proprietary}}
 | ?
 | [[Mac OS X]] [[Mac OS X 10.5|10.5]] or later; on an [[Xserve]]
 |-
 ! [[IPFilter]]
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv2]]
+| {{free|[[GPLv2]]}}
 | Free
 | Package for multiple UNIX-like operating systems
 |-
+! [[ipfirewall]]
+| [[BSD]] 
+| Free
+| [[Berkeley Software Distribution|*BSD]] package
+|-
+! [[Kaspersky Internet Security|Kaspersky <br>Internet Security]]
+| {{Proprietary}}
+| $59,95 Year / 30 day trial
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|-
+! [[Lavasoft Personal Firewall|Lavasoft <br>Personal Firewall]]
+| {{Proprietary}}
+| €36 Year
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|-
+! [[Microsoft Forefront Threat Management Gateway|Microsoft <br>Forefront Threat <br>Management <br>Gateway]]
+| {{Proprietary}}
+| discontinued
+| [[Microsoft Windows|Windows unknown versions]] x64
+|-
+! [[Netfilter/iptables]]
+| [[GPL]] 
+| Free
+| [[Linux]] kernel module
+|-
+! [[Norton 360]]
+| {{Proprietary}}
+| $59.99 Year
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|-
+! [[NPF (firewall)|NPF]]
+| [[BSD]] 
+| Free
+| [[NetBSD]] kernel module
+|-
+! [[Online Armor Personal Firewall|Online Armor <br>Personal Firewall]]
+| {{Proprietary}}
+| €39.95 Year
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|- 
+! [[Outpost Firewall Pro|Outpost <br>Firewall Pro]]
+| {{Proprietary}}
+| Free / Paid
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|-
+! [[PC Tools Firewall Plus|PC Tools <br>Firewall Plus]]
+| {{Proprietary}}
+| Free ?
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|-
+! [[PF (firewall)|PF]]
+| [[BSD]] 
+| Free
+| [[Berkeley Software Distribution|*BSD]] kernel module
+|-
+! [[Sunbelt Personal Firewall|Sunbelt <br>Personal Firewall]]
+| {{Proprietary}}
+| discontinued
+| [[Microsoft Windows|Windows unknown versions]] x32
+|-
+! [[Sygate Personal Firewall|Sygate <br>Personal Firewall]]
+| {{Proprietary}}
+| discontinued
+| [[Microsoft Windows|Windows unknown versions]] x32
+|-
+! [[Windows Firewall]]
+| {{Proprietary}}
+| Included with Windows <br>XP SP2 and later
+| [[Microsoft Windows|ALL Windows Versions]] x32/x64
+|-
+! [[WinGate]]
+| {{Proprietary}}
+| Paid
+| [[Microsoft Windows|Windows unknown versions]] x32/x64
+|- 
+! [[ZoneAlarm]]
+| {{Proprietary}}
+| Freemium 
+| [[Microsoft Windows|Windows unknown versions]] x32/x64 (except XP-64)
+|-
+|}
+
+==Firewall appliances==
+In general, a [[computer appliance]] is a computing device with a specific function and limited configuration ability, and a  [[software appliance]] is a set of [[software|computer programs]] that might be combined with just enough operating system (JeOS) for it to run optimally on industry standard [[computer hardware]] or in a virtual machine.
+
+A firewall appliance is a combination of a [[Firewall (computing)|firewall software]] and an operating system that is purposely built to run a firewall system on a dedicated hardware or virtual machine.<ref>{{Cite book | author=Smith, Bob; Hardin, John A; Phillips, Graham; Pierce, Bill | authorlink= | coauthors= | title=Linux Appliance Design: A Hands-On Guide to Building Linux Appliances | date= | publisher=No Starch Press | location= | isbn=1-59327-140-9 | pages=xvii | url=http://books.google.com/books?id=uVu0ax6C3uIC&pg=PA81&dq=%22network+appliance%22+date:2003-2009&lr=&num=100&as_brr=3&sig=QE5mXmjxjbgmQtw11DsRYlnewnE#PPR17,M1  | accessdate=2008-05-06 }}</ref><ref>''[http://www.networkworld.com/topics/sans.html SAN Data Center]''- Network World</ref><ref>''[http://compnetworking.about.com/cs/routers/g/bldef_router.htm Routers]''- About.com</ref> These include:
+
+* embedded firewalls: very limited-capability programs running on a low-power CPU system, 
+* software-based firewall appliances: a system that can be run in independent hardware or in a virtualised environment as a [[virtual appliance]]
+* hardware-based firewall appliances: a firewall appliance that runs on a hardware specifically built to install as a network device, providing enough network interfaces and CPU to serve a wide range of purposes. From protecting a small network (a few network ports and few megabits per second throughput) to protecting an enterprise-level network (tens of network ports and gigabits per second throughput).
+
+The following table lists different firewall appliances.
+
+{| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto;"
+|-
+! Firewall
+! [[Software license|License]]
+! Cost
+! [[Operating system|OS]]
+|- 
+! [[Check Point]] VPN-1
+| {{Proprietary}}
+| Included on Check Point<br>security gateways
+| Proprietary operating system [[Check Point IPSO]]<br>and Gaia ([[Linux]]-based)
+|-  
+! [[CISCO]] ACLs
+| {{Proprietary}}
+| Included on all CISCO<br>switches and routers
+| Proprietary, runs only <br>on CISCO hardware
+|- 
+! [[Cisco ASA|CISCO ASA]]
+| {{Proprietary}}
+| Included on all CISCO<br>ASA devices
+| Proprietary operating system
+|- 
+! [[Cisco PIX|CISCO PIX]]
+| {{Proprietary}}
+| Included on all CISCO<br>PIX devices
+| Proprietary operating system
+|- 
+! [[Fortinet#FortiGate Firewall Platform|FortiGate]]
+| {{Proprietary}}
+| Included on all Fortigate<br>devices
+| Proprietary, FortiOS 
+|- 
 ! [[IPCop]]
 | various
 | Free
@@ -53,94 +175,54 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 | Free
 | [[Linux]]-based appliance
 |-
-! [[ipfirewall]]
-| [[BSD]] 
-| Free
-| [[Berkeley Software Distribution|*BSD]] package
+! [[Juniper]] SSG
+| {{Proprietary}}
+| Included on Netscreen<br>security gateways
+| Proprietary operating system [[ScreenOS]]
 |-
-! [[Kaspersky Internet Security|Kaspersky <br>Internet Security]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| $59,95 Year / 30 day trial
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|-
-! [[Lavasoft Personal Firewall|Lavasoft <br>Personal Firewall]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| €36 Year
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|-
-! [[Microsoft Forefront Threat Management Gateway|Microsoft <br>Forefront Threat <br>Management <br>Gateway]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| discontinued
-| [[Microsoft Windows|Windows unknown versions]] x64
+! [[Juniper]] SRX
+| {{Proprietary}}
+| Included on SRX<br>security gateways
+| Proprietary operating system [[Junos]]
 |-
 ! [[Monowall]]
 | [[BSD]]
 | Free
-| FreeBSD-based appliance
+| [[FreeBSD]]-based appliance<br/>embedded firewall distribution
 |-
-! [[Netfilter/iptables]]
-| [[GPL]] 
+! [[Opendium]] Iceni
+| [[Proprietary software|Proprietary]]
+| Paid
+| [[Linux]]-based, with optional web filtering / auditing.
+|-
+! [[OPNsense]][http://opnsense.org] 
+| [[BSD]] (2-clause)
 | Free
-| [[Linux]] kernel module
+| [[FreeBSD]]/[[NanoBSD]]-based appliance<ref name=15.1.10>{{cite web|last1=OPNsense team|title=OPNsense 15.1.10 released|url=https://forum.opnsense.org/index.php?topic=365.0|website=forum.opnsense.org|publisher=OPNsense Forum|accessdate=5 May 2015}}</ref><br/>firewall distribution
 |-
-! [[Norton 360]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| $59.99 Year
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|-
-! [[NPF (firewall)|NPF]]
-| [[BSD]] 
-| Free
-| [[NetBSD]] kernel module
-|-
-! [[Online Armor Personal Firewall|Online Armor <br>Personal Firewall]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| €39.95 Year
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|- 
-! [[Outpost Firewall Pro|Outpost <br>Firewall Pro]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Free / Paid
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|-
-! [[PC Tools Firewall Plus|PC Tools <br>Firewall Plus]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Free ?
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|-
-! [[PF (firewall)|PF]]
-| [[BSD]] 
-| Free
-| [[Berkeley Software Distribution|*BSD]] kernel module
+! [[Palo Alto Networks]]
+| {{Proprietary}}
+| Included on Palo Alto<br>Networks firewalls
+| Proprietary operating system PANOS
 |-
 ! [[pfsense]]
 | ESF License Agreement, v1.0 [https://www.pfsense.org/ESF_License_Agreement_v1.0.pdf] 
 | Free
-| FreeBSD/NanoBSD-based appliance
+| [[FreeBSD]]/[[NanoBSD]]-based appliance<br/>firewall distribution
 |-
 ! [[Smoothwall]]
 | [[GPL]]
 | Free 
-| Linux-based appliance
+| [[Linux]]-based appliance
 |-
 ! [[Sophos|Sophos UTM]]
 | [[GPL and Proprietary]]
 | Free / Paid
-| Linux-based appliance
-|-
-! [[Sunbelt Personal Firewall|Sunbelt <br>Personal Firewall]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| discontinued
-| [[Microsoft Windows|Windows unknown versions]] x32
-|-
-! [[Sygate Personal Firewall|Sygate <br>Personal Firewall]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| discontinued
-| [[Microsoft Windows|Windows unknown versions]] x32
+| [[Linux]]-based appliance
 |-
 ! [[Untangle]]
 | [[GPL]] 
-| Free/Paid
+| Free / Paid
 | [[Linux]]-based appliance
 |- 
 ! [[Vyatta]]
@@ -148,26 +230,10 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 | ?
 | [[Linux]]-based appliance
 |- 
-! [[Windows Firewall]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Included with Windows <br>XP SP2 and later
-| [[Microsoft Windows|ALL Windows Versions]] x32/x64
-|-
-! [[WinGate]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Paid
-| [[Microsoft Windows|Windows unknown versions]] x32/x64
-|- 
 ! [[Zeroshell]]
 | [[OSS software|GPL version 2]]
 | Free
-| Linux based appliance
-|- 
-! [[ZoneAlarm]]
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-| Freemium 
-| [[Microsoft Windows|Windows unknown versions]] x32/x64 (except XP-64)
-|-
+| [[Linux]]-based appliance
 |}
 
 ==Firewall rule-set basic filtering features comparison==
@@ -175,38 +241,44 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 |-''''
 !Can Target:!!Changing default policy to accept/reject (by issuing a single rule)!! IP destination address(es)!!IP source address(es)!! TCP/UDP destination port(s)!!TCP/UDP source port(s)!!Ethernet MAC destination address!!Ethernet MAC source address!!Inbound firewall (ingress)!!Outbound firewall (egress)
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[IPFire]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[IPFire]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trend Micro Internet Security]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Trend Micro Internet Security]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Untangle]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Untangle]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Vyatta]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Vyatta]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Windows Firewall#Windows XP|Windows XP Firewall]]
-|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+!{{rh}}|[[OPNsense]]
+|{{no}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Windows Firewall#Windows Vista|Windows Vista Firewall]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Windows Firewall#Windows XP|Windows XP Firewall]]
+|{{no}}||{{no}}||{{yes}}||{{partial}}{{efn|can target only single destination TCP/UDP port per rule, not port ranges.}}||{{no}}||{{no}}||{{no}}||{{yes}}||{{no}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Windows Firewall#Windows 7|Windows 7 /<br />Windows&nbsp;2008&nbsp;R2<br />Firewall]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Windows Firewall#Windows Vista|Windows Vista Firewall]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WinGate]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Windows Firewall#Windows 7|Windows 7 /<br />Windows&nbsp;2008&nbsp;R2<br />Firewall]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Zeroshell]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[WinGate]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Zorp firewall|Zorp]]
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+!{{rh}}|[[Zeroshell]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}||{{yes}}
+|-
+!{{rh}}|[[Zorp firewall|Zorp]]
+|{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
+|-
+!{{rh}}|[[pfSense]]
+|{{no}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |}
-
-* Windows XP Firewall can target only single destination TCP/UDP port per rule, not port ranges, therefore support is partial.
+;Notes
+{{notelist}}
 
 ==Firewall rule-set advanced features comparison==
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto;"
@@ -225,81 +297,104 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 ! Tarpit
 ! Log
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IPFire]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[IPFire]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Secure Computing|Sidewinder]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[OPNsense]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Untangle]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Some modules)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (With Policy manager)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Secure Computing|Sidewinder]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinGate]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Untangle]]
+| {{yes}}
+| {{yes}} (Some modules)
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}} (With Policy manager)
+| {{yes}}
+| {{yes}}
+| {{yes}} 
+| {{yes}}
+| {{yes}} 
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Zeroshell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[WinGate]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+|-
+! {{rh}} | [[Zeroshell]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+|-
+! {{rh}} | [[pfSense]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
 |}
-
-*NOTE: Because Linux Iptables is text-based firewall, you can "Filter according to time of day" by using additional 3rd party tools, like expect automation tool and cron jobs.
-* Windows firewall may be scripted with scheduled tasks.
-* Configured by system policy
-
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto;"
 |-
 ! style="width: 12em" | Features:
@@ -308,40 +403,48 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 ! Change rules without requiring restart?
 ! Ability to centrally manage all firewalls together
 |- 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IPFire]]
+! {{rh}} | [[IPFire]]
 | both
 | Web (HTTPS), SSH, RS232
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Untangle]]
+! {{rh}} | [[OPNsense]]
+| both
+| SSH, Web (HTTP/HTTPS), RS232
+| {{yes}}
+| {{no}}
+|-
+! {{rh}} | [[Untangle]]
 | both
 | SSH (Not enabeld by default), Web GUI, 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinGate]]
+! {{rh}} | [[WinGate]]
 | GUI
 | Proprietary user interface
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{yes}}
+| {{N/A}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ClearOS]]
+! {{rh}} | [[ClearOS]]
 | both
 | RS232, SSH, [[WebConfig]],
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes with ClearDNS
+| {{yes}}
+| {{yes}} with ClearDNS
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Zeroshell]]
+! {{rh}} | [[Zeroshell]]
 | GUI
 | SSH, Web (HTTPS), RS232
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+|-
+! {{rh}} | [[pfSense]]
+| both
+| SSH, Web (HTTP/HTTPS), RS232
+| {{yes}}
+| {{no}}
 |}
-
-*NOTE: Because Linux Iptables and Cisco ACL are text-based firewalls, you can centrally manage them all-at-once by using additional tools, like KDE Konsole or expect automation tool.
-
-*NOTE: Due to the distributed nature of the Checkpoint architecture, no single interface is used exclusively. Security, NAT and VPN configuration is always done using the proprietary GUI, however basic IP networking and routing configuration of individual firewalls could be done using SSH or the Web interface.
 
 ==Firewall's other features comparison==
 {| class="wikitable sortable" style="font-size: 85%; text-align: center; width: auto;"
@@ -354,44 +457,56 @@ Ultimately, all firewalls are [[software]]-based; a hardware firewall runs [[fir
 ! Class: Home / Professional
 ! Operating Systems on which it runs?
 |- 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IPFire]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, with Snort
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (since IPFire 3)
+! {{rh}} | [[IPFire]]
+| {{yes}}
+| {{yes}}, with Snort
+| {{yes}}
+| {{yes}} (since IPFire 3)
 | Both
 | Linux-based appliance distribution.
+|-
+! {{rh}} | [[OPNsense]]
+| {{yes}}
+| {{yes}}, with Snort
+| {{yes}}
+| {{yes}}
+| Professional
+| FreeBSD-based appliance
 |- 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Untangle]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[Untangle]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
 | Both
 | Linux (built on Debian)
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vyatta]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Vyatta]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Professional
 | Vyatta OS (built on Debian)
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinGate]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[WinGate]]
+| {{yes}}{{efn|WinGate 6.x supports 3rd party modules for data scanning only (e.g. antivirus and content filtering).}}
+| {{dunno}}
+| {{no}}
+| {{no}}
 | Professional
 | Windows 2000, Windows XP, Windows 2003, Windows Vista, Windows 2008. 32bit and 64bit.
+|-
+! {{rh}} | [[pfSense]]
+| {{yes}}
+| {{yes}}, with Snort
+| {{yes}}
+| {{yes}}
+| Professional
+| FreeBSD/NanoBSD-based appliance
 |}
-
-* NOTE: Checkpoint support a limited range of third-party modules from certified partners. Modules are integrated with Checkpoint firewalls through a platform named [http://www.opsec.com OPSEC]
-
-* NOTE: WinGate 6.x supports 3rd party modules for data scanning only (e.g. antivirus and content filtering).
-
-* NOTE: Collax Security Gateway kernel and components are Open Source. The only proprietary part is the GUI.
+;Notes
+{{notelist}}
 
 ==Non-Firewall extra features comparison==
 Those features are not strictly firewall features, but are sometimes bundled with firewall software, or exist on the platform.
@@ -414,128 +529,66 @@ Profile selection: The user can switch between sets of firewall settings, e.g. f
 ! Sniffer
 ! Profile selection
 |- 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[IPFire]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with integrated Snort)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (IPsec and OpenVPN)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with clamav)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with tcpdump)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+! {{rh}} | [[IPFire]]
+| {{yes}}
+| {{yes}} (with integrated Snort)
+| {{yes}} (IPsec and OpenVPN)
+| {{yes}} (with clamav)
+| {{yes}} (with tcpdump)
+| {{dunno}}
+|-
+! {{rh}} | [[OPNsense]]
+| {{yes}} 
+| {{yes}} (with Snort)
+| {{yes}} (OpenVPN, IPsec, L2TP, IKEv2, Tinc, PPTP)
+| {{yes}} (with clamav)
+| {{yes}} (tcpdump)
+| {{no}}
 |- 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Untangle]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (IPsec and OpenVPN)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (clamav,commtouch (optional) )
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (tcpdump)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+! {{rh}} | [[Untangle]]
+| {{yes}}
+| {{yes}} 
+| {{yes}} (IPsec and OpenVPN)
+| {{yes}} (clamav,commtouch (optional) )
+| {{yes}} (tcpdump)
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vyatta]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (supports three NAT types)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (integrated Snort)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (IPsec and OpenVPN)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with clamav,Sophos Antivirus (optional) )
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with wireshark or tcpdump)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+! {{rh}} | [[Vyatta]]
+| {{yes}} (supports three NAT types)
+| {{yes}} (integrated Snort)
+| {{yes}} (IPsec and OpenVPN)
+| {{yes}} (with clamav,Sophos Antivirus (optional) )
+| {{yes}} (with wireshark or tcpdump)
+| {{dunno}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[WinGate]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with NetPatrol)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (proprietary)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Kaspersky Labs)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (filtered capturing to pcap format)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[WinGate]]
+| {{yes}} 
+| {{yes}} (with NetPatrol)
+| {{yes}} (proprietary)
+| {{yes}} (Kaspersky Labs)
+| {{yes}} (filtered capturing to pcap format)
+| {{no}}
+|-
+! {{rh}} | [[pfSense]]
+| {{yes}} 
+| {{yes}} (with Snort)
+| {{yes}} (OpenVPN, IPsec, L2TP, IKEv2, Tinc, PPTP)
+| {{yes}} (with clamav)
+| {{yes}} (tcpdump)
+| {{no}}
 |}
 
 ==See also==
 * [[Internet Security]]
 * [[Comparison of antivirus software]]
 
+==References==
+{{Reflist}}
+
 ==External links==
 * [http://www.matousec.com/projects/proactive-security-challenge-64/results.php Windows Software Firewall Test Rankings], Matousec, 2014
-<br style="clear:both;" />
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Firewall software|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Firewall software|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Firewall_software&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Firewall (computing)|Firewall software]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
-*[[Application firewall]]
-*[[Context-based access control]]
-*[[Personal firewall]]
-*[[Stateful firewall]]
-*[[Unified threat management]]
-*[[Virtual firewall]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Linux]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Apps</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[ipchains]]
-* [[Netfilter]]
-** [[L7-filter]]
-** [[NuFW]]
-** [[ipset]]
-** [[iptables]]
-* [[nftables]]
-*[[FireHOL]]
-*[[Firestarter (firewall)|Firestarter]]
-*[[Shorewall]]
-*[[Uncomplicated Firewall]]
-*[[MoBlock]]
-*[[Privoxy]]
-*[[Squid (software)|Squid]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Linux Distribution|Distros]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[SmoothWall]]
-*[[IPCop]]
-*[[IPFire]]
-*[[OpenWrt]]
-*[[Zeroshell]]
-*[[Untangle]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[BSD]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Apps</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[PF (firewall)|PF]]
-*[[NPF_(firewall)|NPF]]
-*[[ipfirewall]]
-*[[IPFilter]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Distros</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[M0n0wall]]
-*[[pfSense]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Mac OS X]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[NetBarrier X4]]
-*[[Intego#VirusBarrier|VirusBarrier X6]]
-*[[PeerGuardian]]
-*[[Little Snitch]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Microsoft Windows|Windows]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">Commercial</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Avira]]
-*[[Check Point Integrity]]
-*[[Comodo Internet Security]]
-*[[Glasswire]]
-*[[Jetico Personal Firewall]]
-*[[Kaspersky Internet Security]]
-*[[McAfee Personal Firewall Plus]]
-*[[Microsoft Forefront Threat Management Gateway]]
-*[[Norton 360]]
-*[[Norton Personal Firewall]]
-*[[Norton Internet Security]]
-*[[Online Armor Personal Firewall]]
-*[[Outpost Firewall Pro]]
-*[[PC Tools (company)#PC Tools Internet Security|PC Tools Internet Security]]
-*[[Sunbelt Personal Firewall]]
-*[[Symantec Endpoint Protection]]
-*[[Windows Firewall]]
-*[[Windows Live OneCare]]
-*[[WinGate]]
-*[[WinRoute]]
-*[[ZoneAlarm]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Freeware</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Comodo Internet Security]]
-*[[Glasswire]]
-*[[Online Armor Personal Firewall]]
-*[[PC Tools (company)#PC Tools Internet Security|PC Tools Internet Security]]
-*[[ZoneAlarm]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Open-source</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[PeerBlock]]
-*[[PeerGuardian]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Computer appliance|Appliances]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Novell BorderManager]]
-*[[Vyatta]]
-*[[ZoneAlarm Z100G]]
-*[[Zorp firewall]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2"><div>
-*[[Comparison of firewalls]]
-*[[List of router or firewall distributions]]
-</div></td></tr></table></td></tr></table>
+{{-}}
+{{Firewall software}}
 
 [[Category:Software comparisons|Firewalls]]
 [[Category:Firewall software|*]]

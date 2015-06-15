@@ -1,130 +1,7 @@
 The following tables compare [[ECMAScript]] (particularly [[JavaScript]]) support for several popular [[Web browser engine|layout engines]]. Please see the individual products' articles for further information. Unless otherwise specified in footnotes, comparisons are based on the stable versions without any add-ons, extensions or external programs.
 
-== Explanation of the tables ==
-=== Engine nomenclature ===
-
-Rather than the names of web browsers, the names of the underlying engines are used. The browsers that use the various engines are listed below.
-
-{| class="wikitable"
-! Layout engine
-! Release version
-! Preview version
-! Used by
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Amaya (web browser)|Amaya]]
-| 11.4.7<ref>''[http://www.w3.org/Amaya/User/BinDist.html Amaya Binary Releases]'', Most recent download link in stable</ref>
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed; [[Amaya (web browser)|Amaya]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Blink (layout engine)|Blink]]
-| 537.36
-| source code<ref group="note">{{cite web |url=https://chromium.googlesource.com/chromium/blink  |website=chromium.googlesource.com|title=chromium / chromium/blink |publisher=[[Google]] |accessdate=2014-05-27}}</ref>
-|[[Chromium (web browser)|Chromium]]/[[Google Chrome|Chrome]] (28+), [[Opera (web browser)|Opera]] (15+) and [[Yandex Browser|Yandex]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Gecko (layout engine)|Gecko]]
-| 
-33.1.1 <small>(November&nbsp;14, 2014<span class="noprint">&#059;&#032;3 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-14</span>)</span><ref>{{cite web
-  | url                    = https://www.mozilla.org/en-US/firefox/33.1.1/releasenotes/
-  | title                  = Firefox — Notes (33.1.1) — Mozilla
-  | publisher              = [[mozilla.org]]
-  | publication-date       = 2014-11-14
-  | accessdate             = 2014-11-14}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
-<br />
-ESR 31.2.0 <small>(October&nbsp;14, 2014<span class="noprint">&#059;&#032;34 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-14</span>)</span><ref>{{cite web
-  | url                    = https://www.mozilla.org/en-US/firefox/31.2.0/releasenotes/
-  | title                  = Firefox — Notes (31.2.0) — Mozilla
-  | publisher              = [[mozilla.org]]
-  | publication-date       = 2014-10-14
-  | accessdate             = 2014-10-14}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_stable_software_release/Firefox&action=edit &#91;±&#93;]</small>
-| 
-;Beta
-34.0 Beta 9 <small>(November&nbsp;15, 2014<span class="noprint">&#059;&#032;2 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-15</span>)</span><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/34.0beta/releasenotes/
- | title = Firefox — Beta Notes (34.0beta) — Mozilla
- | date = 2014-10-16
- | accessdate = 2014-10-21
-}}</ref><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/beta/all/
- | title = Mozilla Firefox Web Browser — Download Firefox Beta in your language — Mozilla
- | accessdate = 2014-11-15
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Firefox&action=edit &#91;±&#93;]</small>
-;Developer Edition
-35.0a2 <small>(November&nbsp;10, 2014<span class="noprint">&#059;&#032;7 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-11-10</span>)</span><ref>{{Cite web
- | url = https://www.mozilla.org/en-US/firefox/35.0a2/auroranotes/
- | title = Firefox — Aurora Notes (35.0a2) — Mozilla
- | date = 2014-11-10
- | accessdate = 2014-11-12
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
-;Nightly
-36.0a1 <small>(October&nbsp;14, 2014<span class="noprint">&#059;&#032;34 days ago</span><span style="display:none">&#160;(<span class="bday dtstart published updated">2014-10-14</span>)</span><ref>{{Cite web
-  | url = https://wiki.mozilla.org/RapidRelease/Calendar
-  | title = RapidRelease/Calendar - MozillaWiki
-  | accessdate = 2014-10-15
-}}</ref>)</small> <small class="plainlinks">[//en.wikipedia.org/w/index.php?title=Template:Latest_preview_software_release/Mozilla_Firefox&action=edit &#91;±&#93;]</small> daily release
-|All [[Mozilla]] software, including [[Firefox]]; [[SeaMonkey]] and [[Galeon]]; [[Camino (web browser)|Camino]]; [[K-Meleon]]; [[Flock (web browser)|Flock]] (up to 2.x); [[Mozilla Corporation software rebranded by the Debian project|Debian IceWeasel]]; [[GNU IceCat]] (formerly GNU IceWeasel); [[Mozilla Corporation software rebranded by the Debian project#Icedove|Icedove]], [[Mozilla Corporation software rebranded by the Debian project#Iceape|Iceape]] and [[Mozilla Corporation software rebranded by the Debian project#Iceowl|Iceowl]]; [[Firefox for mobile|Fennec]]. Also used by the Maple platform in 2010 and 2011 Samsung "SmartTV" devices which are based on the build used in Firefox 3.0.<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2014)">citation needed</span>]]</i>&#93;</sup> Nokia [[Asha platform]] is also using Gecko for web apps rendering.
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[KHTML]]
-| 4.12.3<ref>''[ftp://ftp.kde.org/pub/kde/stable/4.12.3/src/kdelibs-4.12.3.tar.xz Download for kdelibs]'', Most recent download link in stable</ref>
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|[[Konqueror]]<ref group="note" name="switch" />
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Presto (layout engine)|Presto]]
-| 2.12.388
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed; [[Opera (web browser)|Opera]] and [[Opera Mobile]] use Blink now; [[Nintendo DS & DSi Browser]]; [[Internet Channel]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Tasman (layout engine)|Tasman]]
-| (IE 5.2.3 for Mac)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|No longer developed (aborted in 2003); [[Internet Explorer]] 5+  for [[Mac OS X]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Trident (layout engine)|Trident]]
-| 7.0 (IE 11)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-|[[Internet Explorer]] and other [[Internet Explorer shell]]s like [[Maxthon]] ([[Microsoft Windows]] [[operating system]]s only), [[Windows Phone 8]]
-|-
-!style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[WebKit]]
-| 534.20
-| [[nightly build]]<ref group="note">{{cite web|title=WebKit Nightly Builds |url=http://nightly.webkit.org/ |website=webkit.org |accessdate=2014-05-27}}</ref>
-|[[Tizen]] (both OS and browser), [[Safari (web browser)|Safari]] (both desktop and mobile), [[Google Chrome]] (before 28), [[Maxthon|Maxthon 3]], [[Shiira]], [[iCab|iCab 4]], [[OmniWeb|OmniWeb 5.5]]+, [[Web (web browser)|Web]], [[Adobe AIR]], [[Midori (browser)|Midori]], [[Adobe Dreamweaver]] [[CS4]] and [[CS5]], [[Android (software)|Android]] browser, [[Palm, Inc.|Palm]] [[webOS]] browser, [[Symbian S60]] browser, [[Origyn Web Browser|OWB]], [[Steam (software)|Steam]], [[Rekonq]], [[Arora (browser)|Arora]], [[Flock (web browser)|Flock]] (version 3+), [[RockMelt]], [[Dolphin Browser]], [[Sleipnir (web browser)|Sleipnir]], [[Konqueror]]<ref group="note" name="switch" />. Used by the LG Smart TV platform to enable web content on TVs.
-|}
-
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"><ref group="note" name="switch">In Konqueror, the user can switch the used layout engine.</ref></references></div>
-
-===Values===
-Values indicate the level of support in the most recent version of the layout engine, or (if a version number is given) in the specified version. Version numbers without any other value indicate the version at which the layout engine first fully supported the feature.
-
-{| class="wikitable"
-|-
-! Value
-! Meaning
-|-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Indicates that the layout engine fully supports this property/element when valid values are used.
-|-
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| Indicates that the property/element is completely ignored.
-|-
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| Indicates that the property/element is understood, but that not all values are supported. Supported values are implemented correctly.
-|-
-| style="background: #F90; color: black; vertical-align: middle; text-align: center; " class="incorrect"|Incorrect
-| Indicates that the property/element is understood, but that it is not implemented correctly in all cases.
-|-
-| style="background: #DFDFFF; color: black; vertical-align: middle; text-align: center; " class="experimental table-experimental"|Experimental
-| Indicates that the property/element is understood, but supported under an alternate name. May be incomplete or buggy.
-|-
-| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
-| Indicates that the property/element is no longer supported.
-|-
-| style="background: #fdd; color: black; vertical-align: middle; text-align: center; " class="nightly table-nightly"|[[Neutral build|Nightly build]]
-| Indicates that the property/element is supported to some extent in an experimental/nightly build. Future support is expected.
-|-
-| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="depends table-depends"|Depends
-| Indicates that the property/element is supported only on certain platforms, or if certain settings are configured.
-|-
-|}
+{{Layout engine nomenclature}}
+{{Explanation of the tables2}}
 
 ==ECMAScript version support==
 {| class="wikitable" style="width: 95%; text-align: center;"
@@ -140,78 +17,78 @@ Values indicate the level of support in the most recent version of the layout en
 | [[JScript]]/[[Chakra (JScript engine)|Chakra]]
 | [[SpiderMonkey (JavaScript engine)|Spidermonkey/TraceMonkey/JägerMonkey/IonMonkey]]
 | [[WebKit#JavaScriptCore|JavaScriptCore/SquirrelFish Extreme]]
-| [[Presto (layout engine)#JavaScript engines|Linear B/Futhark/Carakan]]
+| [[Presto (layout engine)#ECMAScript engines|Linear B/Futhark/Carakan]]
 | [[V8 (JavaScript_engine)|V8]]
 |-
 ! style="text-align: left;" | ECMAScript Edition 3
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | ECMAScript Edition 5
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.0
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{partial|5.0}}
+| {{yes|2.0}}
+| {{partial}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | JavaScript 1.5 extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | JavaScript 1.6 extensions<br>(excluding E4X)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| {{no}}
+| {{yes|1.8}}
+| {{partial}}
+| {{partial}}
+| {{partial}}
 |-
 ! style="text-align: left;" | JavaScript 1.7 extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8.1
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes|1.8.1}}
+| {{no}}
+| {{partial}}
+| {{no}}
 |-
 ! style="text-align: left;" | JavaScript 1.8 extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| {{no}}
+| {{yes|1.9}}
+| {{partial}}
+| {{no}}
+| {{partial}}
 |-
 ! style="text-align: left;" | JavaScript 1.8.1 extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9.1
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes|1.9.1}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 ! style="text-align: left;" | [[JScript .NET]] extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 ! style="text-align: left;" | [[ActionScript]] extensions
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 ! style="text-align: left;" | [[E4X]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #FED; color: black; vertical-align: middle; text-align: center; " class="dropped table-dropped"|Dropped
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{dropped|Dropped}}<ref>{{citation |url=https://developer.mozilla.org/en-US/docs/E4X |title=E4X |publisher=Mozilla}}</ref>
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 |}
 
@@ -229,224 +106,224 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="6" style="text-align: center;" | Value properties
 |-
 ! style="text-align: left" | <code>NaN</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Infinity</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>undefined</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Function properties
 |-
 ! style="text-align: left;" | <code>eval(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>parseInt(string [, radix])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>parseFloat(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>isNaN(number)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>isFinite(number)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | URI handling functions
 |-
 ! style="text-align: left;" | <code>decodeURI(encodedURI)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>decodeURIComponent(encodedURIComponent)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>encodeURI(uri)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>encodeURIComponent(uriComponent)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|0.6
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|0.6}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Constructor properties
 |-
 ! style="text-align: left;" | <code>Object</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Function</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Array</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>String</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Boolean</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Number</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Date</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>RegExp</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>Error</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>EvalError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>RangeError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>ReferenceError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>SyntaxError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>TypeError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>URIError</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Other properties
 |-
 ! style="text-align: left;" | <code>Math</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Additional properties
 |-
 ! style="text-align: left;" | <code>escape(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>unescape(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 |}
 
@@ -463,80 +340,80 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="6" style="text-align: center;" | Called as function
 |-
 ! style="text-align: left;" | <code>Object([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Object([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toLocaleString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>valueOf()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>hasOwnProperty(V)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes}}
+| {{yes|3}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>isPrototypeOf(V)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes}}
+| {{yes|3}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>propertyIsEnumerable(V)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes}}
+| {{yes|3}}
+| {{yes}}
+| {{yes}}
 |-
 |}
 
@@ -554,88 +431,88 @@ Values indicate the level of support in the most recent version of the layout en
 |-
 ! style="text-align: left;" | <code>Function([[p1 [, p2 [, ...]],] body])</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Function([[p1 [, p2 [, ...]],] body])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>length</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>length</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>apply(thisArg, argArray)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>call(thisArg [, arg1 [, arg2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of instances
 |-
 ! style="text-align: left;" | <code>length</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 |}
 
@@ -652,193 +529,193 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="6" style="text-align: center;" | Called as function
 |-
 ! style="text-align: left;" | <code>Array([item1 [, item2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Array([item1, item2 [, ...]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>new Array(len)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toLocaleString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>concat([item1 [, item2 [,...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>join(separator)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>pop()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>push([item1 [, item2 [,...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>reverse()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>shift()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>slice(start, end)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>sort(comparefn)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>splice(start, deleteCount [, item1 [, item2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>unshift([item1 [, item2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>indexOf(searchElement[, fromIndex])</code>
-| rowspan="9" style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|9.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| rowspan="9" {{yes|9.0}}<ref>{{citation |url=http://ie.microsoft.com/testdrive/HTML5/ECMAScript5Array/ |title=ECMAScript 5 Arrays |publisher=Microsoft}}</ref>
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>lastIndexOf(searchElement[, fromIndex])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>filter(callback[, thisObject])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>forEach(callback[, thisObject])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>every(callback[, thisObject])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>map(callback[, thisObject])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>some(callback[, thisObject])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.8
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|522
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.8}}
+| {{yes|522}}
+| {{yes|2.1}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>reduce(callback[, initialValue])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|528
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5.22
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.9}}
+| {{yes|528}}
+| {{yes|2.5.22}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>reduceRight(callback[, initialValue])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.9
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|528
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2.5.22
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.9}}
+| {{yes|528}}
+| {{yes|2.5.22}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of instances
 |-
 ! style="text-align: left;" | <code>length</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 |}
 
@@ -855,189 +732,189 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="6" style="text-align: center;" | Called as function
 |-
 ! style="text-align: left;" | <code>String([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new String([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>fromCharCode([char0 [, char1 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>valueOf()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>charAt(pos)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>charCodeAt(pos)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>concat([string1 [, string2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>indexOf(searchString, position)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>lastIndexOf(searchString, position)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>localeCompare(that)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>match(regexp)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>replace(searchValue, replaceValue)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>search(regexp)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>slice(start, end)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>split(separator, limit)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>substring(start, end)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toLowerCase()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toLocaleLowerCase(comparefn)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toUpperCase()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toLocaleUpperCase()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Additional properties of prototype
 |-
 ! style="text-align: left;" | <code>substr(start, length)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of instances
 |-
 ! style="text-align: left;" | <code>length</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
+| {{yes}}
 |-
 |}
 
@@ -1054,52 +931,52 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="6" style="text-align: center;" | Called as function
 |-
 ! style="text-align: left;" | <code>Boolean([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Boolean([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|3.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="6" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>valueOf()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|4.0}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 |}
 
@@ -1116,99 +993,99 @@ Values indicate the level of support in the most recent version of the layout en
 |-
 ! style="text-align: left;" | <code>Number([value])</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 | ?
 |-
 ! colspan="5" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Number([value])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>MAX_VALUE</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>MIN_VALUE</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>NaN</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>NEGATIVE_INFINITY</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>POSITIVE_INFINITY</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toString([radix])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toLocaleString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>valueOf()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toFixed(fractionDigits)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toExponential(fractionDigits)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toPrecision(precision)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 |}
 
@@ -1224,162 +1101,162 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="5" style="text-align: center;" | Value properties
 |-
 ! style="text-align: left;" | <code>E</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>LN10</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>LN2</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>LOG2E</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>LOG10E</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>PI</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! style="text-align: left;" | <code>SQRT1_2</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>SQRT2</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 ! colspan="5" style="text-align: center;" | Function properties
 |-
 ! style="text-align: left;" | <code>abs(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>acos(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>asin(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>atan(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>atan2(y, x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>ceil(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>cos(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>exp(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>floor(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>log(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>max([value1 [, value2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>min([value1 [, value2 [, ...]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>pow(x, y)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>random()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>round(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>sin(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>sqrt(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>tan(x)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 |}
 
@@ -1403,310 +1280,310 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="5" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Date (year, month [, date [, hours [, minutes [, seconds [, ms ]]]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>new Date (value)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>new Date ()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>parse(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>UTC (year, month [, date [, hours [, minutes [, seconds [, ms ]]]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toDateString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toTimeString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toLocaleString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toLocaleDateString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toLocaleTimeString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>valueOf()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getTime()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getFullYear()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getMonth()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCMonth()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getDate()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCDate()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getDay()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCDay()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getHours()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCHours()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getMinutes()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCMinutes()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getSeconds()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCSeconds()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getMilliseconds()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getUTCMilliseconds()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>getTimezoneOffset()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setTime(time)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setMilliseconds(ms)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCMilliseconds(ms)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setSeconds(sec [, ms])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCSeconds(sec [, ms])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setMinutes(min [, sec [, ms]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCMinutes(min [, sec [, ms]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setHours(hour [, min [, sec [, ms]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCHours(hour [, min [, sec [, ms]]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setDate(date)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCDate(date)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setMonth(month [, date])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCMonth(month [, date])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setFullYear(year [, month [, date]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setUTCFullYear(year [, month [, date]])</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toUTCString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Additional properties of prototype
 |-
 ! style="text-align: left;" | <code>getYear()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>setYear(year)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|3.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toGMTString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 |}
 
@@ -1730,76 +1607,76 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="5" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new RegExp (pattern, flags)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>exec(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>test(string)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties of instances
 |-
 ! style="text-align: left;" | <code>source</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>global</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>ignoreCase</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>multiline</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>lastIndex</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|4.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|4.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 |}
 
@@ -1823,44 +1700,44 @@ Values indicate the level of support in the most recent version of the layout en
 ! colspan="5" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new Error (message)</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! colspan="5" style="text-align: center;" | Properties of prototype
 |-
 ! style="text-align: left;" | <code>constructor</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>name</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>message</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.5}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 ! style="text-align: left;" | <code>toString()</code>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|5.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|5.0}}
+| {{yes|1.0}}
+| {{yes}}
+| {{yes|1.0}}
 |-
 |}
 
@@ -1877,83 +1754,83 @@ Values indicate the level of support in the most recent version of the layout en
 |-
 ! style="text-align: left;" | <code>EvalError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>RangeError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>ReferenceError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>SyntaxError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>TypeError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>URIError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! colspan="5" style="text-align: center;" | Called as constructor
 |-
 ! style="text-align: left;" | <code>new EvalError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>new RangeError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>new ReferenceError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>new SyntaxError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>new TypeError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>new URIError (message)</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! colspan="5" style="text-align: center;" | Properties
 |-
 ! style="text-align: left;" | <code>prototype</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|1.0}}
 | ?
 | ?
 |-
@@ -1961,31 +1838,29 @@ Values indicate the level of support in the most recent version of the layout en
 |-
 ! style="text-align: left;" | <code>constructor</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
+| {{yes|1.0}}
 | ?
 | ?
 |-
 ! style="text-align: left;" | <code>name</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 ! style="text-align: left;" | <code>message</code>
 | ?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes|1.0}}
+| {{yes}}
 | ?
 |-
 |}
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist}}
 
 ==Notes==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"></references></div>
+{{reflist|group="note"}}
 *[http://www.opera.com/docs/specs/js/ecma/ ECMAScript object support in Opera]
 *[http://www.robertnyman.com/javascript/index.html JavaScript tests & Compatibility tables]
 *[http://kangax.github.io/compat-table/es6/ ECMAScript 6 compatibility table]
@@ -1993,136 +1868,8 @@ Values indicate the level of support in the most recent version of the layout en
 ==External links==
 *[http://www.webdevout.net/browser-support-ecmascript Webdevout] — mostly covers Windows browsers. Extensive bug testing.
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:ECMAScript|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:ECMAScript|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:ECMAScript&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[ECMAScript]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Dialects</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[ActionScript]]
-*[[Caja project|Caja]]
-*[[JavaScript]]
-**[[JavaScript engine|engines]]
-**[[asm.js]]
-*[[JScript]]
-*[[JScript .NET]]
-*[[QtScript]]
-*[[WMLScript]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[list of ECMAScript engines|Engines]]<br />([[comparison of layout engines (ECMAScript)|comparison]])</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Presto (layout engine)#JavaScript engines|Carakan]]
-*[[Presto (layout engine)#JavaScript engines|Futhark]]
-*[[InScript (JavaScript engine)|InScript]]
-*[[JavaScriptCore]]
-**[[WebKit#JavaScriptCore|SquirrelFish]]
-*[[JScript]]
-*[[KJS (KDE)|KJS]]
-*[[Presto (layout engine)#JavaScript engines|Linear B]]
-*[[Narcissus (JavaScript engine)|Narcissus]]
-*[[QtScript]]
-*[[Rhino (JavaScript engine)|Rhino]]
-*[[YAJI]]
-*[[SpiderMonkey_(software)|SpiderMonkey]]
-**[[SpiderMonkey_(software)#TraceMonkey|TraceMonkey]]
-**[[JägerMonkey]]
-*[[Tamarin (software)|Tamarin]]
-*[[V8 (JavaScript engine)|V8]]
-*[[Chakra (JScript engine)|Chakra]]
-*[[Jurassic (software)|Jurassic]]
-*[[JScript .NET]]
-*[[Jint]]
-*[[Nashorn (JavaScript engine)|Nashorn]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Frameworks,<br />libraries</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[list of JavaScript libraries|JavaScript]]<br />([[comparison of JavaScript frameworks|comparison]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group">[[client-side JavaScript|Client-side]]<br />([[list of Ajax frameworks#JavaScript|list, Ajax frameworks]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Ample SDK]]
-*[[Web Atoms|Atoms.js]]
-*[[Chaplin.js]]
-*CougarXML
-*[[Dojo Toolkit|Dojo]]
-*[[Echo (framework)|Echo]]
-*[[Ext JS]]
-*[[Google Web Toolkit]]
-*[[jQuery]]
-*[[Lively Kernel]]
-*[[midori JavaScript Framework|midori]]
-*[[MochiKit]]
-*[[MooTools]]
-*[[Prototype JavaScript Framework|Prototype]]
-*[[Pyjamas (software)|Pyjamas]]
-*[[qooxdoo]]
-*[[Rialto Toolkit|Rialto]]
-*[[Rico (Ajax)|Rico]]
-*[[script.aculo.us]]
-*[[SmartClient]]
-*[[SproutCore]]
-*[[Spry framework|Spry]]
-*[[Wakanda (software)|Wakanda Framework]]
-*[[YUI Library]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Server-side JavaScript|Server-side]]<br />([[comparison of server-side JavaScript solutions|comparison]])</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[AppJet]]
-*[[Jaxer#Aptana_Jaxer|Jaxer]]
-*[[Node.js]]
-*[[Wakanda (software)|WakandaDB]]
-*[[KONA Cloud]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[JavaScript library|Libraries]]<br />([[list of JavaScript libraries|list]])</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Backbone.js|Backbone]]
-*[[SWFObject]]
-*[[SWFAddress]]
-*[[Underscore.js|Underscore]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">ActionScript</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-* [[PureMVC]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Multiple<br />implementations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Cappuccino (application development framework)|Cappuccino]]
-**[[JavaScript]]
-**[[Objective-J]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">People</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Brendan Eich]]
-*[[Douglas Crockford]]
-*[[John Resig]]
-*[[Scott Isaacs]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Other</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Dynamic HTML|DHTML]]
-*[[Ecma International]]
-*[[JSDoc]]
-*[[JSGI]]
-*[[JSHint]]
-*[[JSLint]]
-*[[JSON]]
-*[[JavaScript Style Sheets|JSSS]]
-*[[Sputnik (JavaScript conformance test)|Sputnik]]
-*[[Browser speed test#SunSpider|SunSpider]]
-*[[Asynchronous module definition]]
-*[[CommonJS]]
-</div></td></tr></table></td></tr></table>
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Layout engines|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:Layout engines|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Layout_engines&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Layout engine]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Active</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Blink (layout engine)|Blink]]
-*[[Gecko (software)|Gecko]]
-*[[KHTML]]
-*[[MARTHA (layout engine)|MARTHA]]
-*[[Prince (software)|Prince]]
-*[[Servo (layout engine)|Servo]]
-*[[Trident (layout engine)|Trident]]
-*[[WebKit]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Inactive</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Amaya (web browser)|Amaya]]
-*[[Boxely]]
-*[[Gazelle (web browser)|Gazelle]]
-*[[GtkHTML]]
-*[[HTMLayout]]
-*[[iCab]]
-*[[Mariner (layout engine)|Mariner]]
-*[[Presto (layout engine)|Presto]]
-*[[Tasman (layout engine)|Tasman]]
-*[[Tkhtml]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of layout engines|Comparison of<br/> layout engines]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Comparison of layout engines (HTML)|HTML]]
-**[[Comparison of layout engines (non-standard HTML)|non-standard HTML]]
-*[[Comparison of layout engines (HTML5)|HTML5]]
-**[[Comparison of layout engines (HTML5 media)|media]]
-**[[Comparison of layout engines (HTML5 canvas)|canvas]]
-*[[Comparison of layout engines (XML)|XML]]
-**[[Comparison of layout engines (XHTML)|XHTML]]
-***[[Comparison of layout engines (XHTML 1.1)|1.1]]
-**[[Comparison of layout engines (MathML)|MathML]]
-**[[Comparison of layout engines (Scalable Vector Graphics)|SVG]]
-*[[Comparison of layout engines (Cascading Style Sheets)|CSS]]
-*[[Comparison of layout engines (ECMAScript)|ECMAScript]]
-*[[Comparison of layout engines (Document Object Model)|DOM]]
-*[[Comparison of layout engines (graphics)|Graphics]]
-*[[Comparison of layout engines (web typography)|Typography]]
-</div></td></tr></table></td></tr></table>
+{{ECMAScript}}
+{{Web browser engines}}
+{{JavaScript}}
 
 [[Category:Layout engine comparisons]]

@@ -1,19 +1,23 @@
 package org.opencompare.io.wikipedia;
 
+import org.junit.Test;
 import org.opencompare.api.java.PCM;
-import org.opencompare.io.wikipedia.WikipediaPageMiner;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.io.wikipedia.export.CSVExporter;
 import org.opencompare.io.wikipedia.export.HTMLExporter;
 import org.opencompare.io.wikipedia.export.PCMModelExporter;
-import org.opencompare.io.wikipedia.export.WikiTextExporter;
+import org.opencompare.io.wikipedia.io.WikiTextExporter;
+import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.pcm.Page;
-import static org.junit.Assert.*;
-import org.junit.Test;
-import static scala.collection.JavaConversions.*;
 
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static scala.collection.JavaConversions.seqAsJavaList;
 
 /**
  * Created by gbecan on 19/11/14.
@@ -22,14 +26,12 @@ public class WikipediaMinerTest {
 
     @Test
     public void test() throws IOException {
-        WikipediaPageMiner miner = new WikipediaPageMiner();
+        WikiTextLoader miner = new WikiTextLoader();
 
         // Parse article from Wikipedia
-        String title = "Comparison_of_AMD_processors";
+        String title = "Comparison_of_Nikon_DSLR_cameras";
         String code = miner.getPageCodeFromWikipedia(title);
-        String preprocessedCode = miner.preprocess(code);
-        Page page = miner.parse(preprocessedCode, title);
-
+        Page page = miner.mineInternalRepresentation(code, title);
 
         // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();
@@ -43,13 +45,13 @@ public class WikipediaMinerTest {
 
         // PCM model export
         PCMModelExporter pcmExporter = new PCMModelExporter();
-        List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
-        assertFalse(pcms.isEmpty());
+        List<PCMContainer> containers = pcmExporter.export(page);
+        assertFalse(containers.isEmpty());
 
         // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
         WikiTextExporter wikitextExporter = new WikiTextExporter();
-        for (PCM pcm : pcms) {
-            String wikitext = wikitextExporter.toWikiText(pcm);
+        for (PCMContainer container : containers) {
+            String wikitext = wikitextExporter.export(container);
             assertNotNull(wikitext);
         }
 

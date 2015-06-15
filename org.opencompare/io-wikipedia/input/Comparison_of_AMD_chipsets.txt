@@ -1,1 +1,319 @@
-#REDIRECT [[List of AMD chipsets]]
+[[Image:AMD chipsets logo.jpg|thumb|Amd chipsets logo]]
+This is a comparison of [[chipset]]s sold under the brand [[Advanced Micro Devices|AMD]], manufactured before May 2004 by the company itself, before the adoption of [[AMD mobile platform#Open platform approach|open platform approach]] as well as chipsets manufactured by [[ATI Technologies]] (ATI) after July 2006 as the completion of the ATI acquisition.
+
+== Northbridges ==
+
+=== AMD-xxx ===
+{| class="wikitable" style="text-align: center"
+! Model !! Code name !! Released !! CPU support !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[Front-side bus|FSB]]/[[HyperTransport|HT]] (MHz) !! Southbridge !! Features / Notes
+|-
+! AMD-640 chipset
+| AMD-640 ||  || [[AMD K6|K6]], [[Cyrix 6x86]] ||  || 66 (FSB) || AMD-645 || align="left" | AMD licensed [[VIA Technologies]]' [[VIA chipsets|Apollo VP2/97]]
+|-
+! AMD-750 chipset
+| AMD-751 || 1999 || [[Athlon]], [[Duron]]&nbsp;([[Slot&nbsp;A]], [[Socket&nbsp;A]]), [[Alpha&nbsp;21264]] ||  || 100 (FSB) || AMD-756, VIA-VT82C686A || align="left" | AGP&nbsp;2×, SDRAM<br />''Irongate'' chipset family; early steppings had issues with AGP&nbsp;2×; drivers often limited support to AGP&nbsp;1×; later fixed with "super bypass" memory access adjustment.<ref>[http://www.tomshardware.com/1999/12/29/amd/ AMD's Super Bypass - AMD Improves their 750 Chipset : Introduction - Tom's Hardware]</ref>
+|-
+! AMD-760 chipset
+| AMD-761 || Nov 2000 || Athlon, Athlon&nbsp;XP, Duron&nbsp;([[Socket&nbsp;A]]), [[Alpha&nbsp;21264]] ||  || 133 (FSB) || AMD-766, VIA-VT82C686B || align="left" | AGP&nbsp;4×, DDR SDRAM
+|-
+! AMD-760MP chipset
+| rowspan="2" | AMD-762 || rowspan="2" | May 2001 || rowspan="2" | [[Athlon&nbsp;MP]] || rowspan="2" | || rowspan="2" | 133 (FSB) || AMD-766 || align="left" | AGP&nbsp;4×
+|-
+! AMD-760MPX chipset
+| AMD-768 || align="left" | AGP&nbsp;4×, [[Hardware random number generator|Hardware RNG]]<br />Most initial boards shipped without USB headers due to a fault with the integrated USB controller. Manufacturers included PCI USB cards to cover this shortcoming. A later refresh of the chipset had the USB problem remedied.<ref>[https://web.archive.org/web/20040331011900/http://www.amd.com/us-en/assets/content_type/white_papers_and_tech_docs/24472.pdf AMD-768 Peripheral Bus Controller Revision Guide]</ref>
+|-
+! AMD-8000 series chipset
+| AMD-8111 || Apr 2004 || [[Opteron]] ||  || 800 (HT&nbsp;1.x) || AMD-8131 AMD-8132 || align="left" | Hardware RNG
+|}
+
+=== A-Link Express II ===
+A-Link Express and A-Link Express II are essentially [[PCI Express#PCI Express 1.1|PCIe 1.1]] x4 lanes.
+
+See [[Comparison of ATI Chipsets]] for the comparison of chipsets sold under the [[ATI Technologies|ATI]] brand for AMD processors, before AMD's acquisition of ATI.
+
+{| class="wikitable" style="text-align: center"
+! Model !! Codename !! Released !! CPU support !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[HyperTransport|HT]] (MHz) !! [[Graphics processing unit#Integrated graphics solutions|IGP]] !! [[ATI CrossFire|CrossFire]] !! Southbridge !! Features / Notes
+|-
+! AMD [[AMD 580 chipset series|480X]] chipset<br />(originally CrossFire Xpress 1600)
+| RD480 || Oct 2006 || [[Athlon&nbsp;64]],<br />Sempron || 110 || 1000 (HT&nbsp;2.0) || {{No}} || {{Yes | x8 + x8}} || SB600,<br />[[ULi]]-M1575 || align="left" |
+|-
+! AMD [[AMD 580 chipset series|570X/550X]] chipset<br />(originally CrossFire Xpress 3100)
+| RD570 || Jun 2007 || rowspan="2" | [[AMD Phenom|Phenom]],<ref>[http://products.amd.com/en-us/RecommendedComponentResult.aspx?f1=AMD+Phenom%e2%84%a2+X4+Quad-Core&f2=9850&f3=2500&f4=512&f5=AM2%2b&f6=B3&f7=65nm+SOI&f8=125+W&f9=4000&f10=False&models=338&source=desktopCPU&target=motherboard&socket=AM2+& AMD Phenom Motherboard compatibility matrix]</ref> Athlon&nbsp;64,<br />Sempron || rowspan="2" | || rowspan="2" | 1000 HT&nbsp;2.0) || rowspan="2" {{No}} || {{Yes | x16 + x8}} || rowspan="2" | SB600 || align="left" |
+|-
+! AMD [[AMD 580 chipset series|580X]] chipset<br />(originally CrossFire Xpress 3200)
+| RD580 || Oct 2006 || {{Yes | x16 + x16}} || align="left" |
+|-
+! colspan="10" |
+|-
+! AMD [[AMD 690 chipset series|690V]] chipset
+| RS690C || rowspan="2" | Feb 2007 || Athlon&nbsp;64,<br />Sempron || rowspan="2" | 80 || rowspan="2" | 1000 (HT&nbsp;2.0) || {{Yes | Radeon X1200<br />(350MHz)}} || rowspan="2" {{No}} || rowspan="2" | SB600 || align="left" | [[DirectX]] 9.0, [[AVIVO]], [[HDMI]]/[[HDCP]],<br />no&nbsp;[[LVDS]]
+|-
+! AMD [[AMD 690 chipset series|690G]] chipset
+| RS690 || Phenom, Athlon&nbsp;64,<br />Sempron || {{Yes | Radeon X1250<br />(400MHz)}} || align="left" | DirectX 9.0, AVIVO, HDMI/HDCP
+|-
+! AMD [[AMD 690 chipset series|M690V]] chipset
+| RS690MC || rowspan="2" | Feb 2007 || rowspan="2" | [[Turion&nbsp;64&nbsp;X2]],<br />[[List of AMD Turion microprocessors#"Tyler" (65 nm)|Athlon&nbsp;64&nbsp;X2 mobile]] || rowspan="2" | 80 || rowspan="2" | 800 (HT&nbsp;2.0) || {{Yes | Radeon X1200<br />(350 MHz)}} || rowspan="2" {{No}} || rowspan="2" | SB600 || align="left" | DirectX 9.0, AVIVO, DVI, HDMI/HDCP,<br />no&nbsp;[[LVDS]], Powerplay 7.0
+|-
+! AMD [[AMD 690 chipset series|M690]] chipset
+| RS690M || {{Yes | Radeon X1250<br />(350 MHz)}} || align="left" | DirectX 9.0, AVIVO, DVI/HDCP,<br />no HDMI, Powerplay 7.0
+|-
+! AMD [[AMD 690 chipset series|M690E]] chipset
+| rowspan="2" | RS690T || rowspan="2" | Feb 2007 || Athlon&nbsp;Neo,<br />Mobile&nbsp;Sempron || rowspan="2" | 80 || rowspan="2" | 800 (HT&nbsp;2.0) || {{Yes | Radeon X1250<br />(350Mhz)}} || rowspan="2" {{No}} || rowspan="2" | SB600 || align="left" | DirectX 9.0, AVIVO, 2×&nbsp;[[HDMI]]/[[HDCP]],<br />Powerplay 7.0
+|-
+! AMD [[AMD 690 chipset series|M690T]] chipset
+| [[Turion&nbsp;64&nbsp;X2]],<br />[[List of AMD Turion microprocessors#"Tyler" (65 nm)|Athlon&nbsp;64&nbsp;X2 mobile]] || {{Yes | Radeon X1270<br />(400Mhz)}} || align="left" | DirectX 9.0, AVIVO, [[HDMI]]/[[HDCP]],<br />Powerplay 7.0
+|-
+! colspan="10" |
+|-
+! AMD [[AMD 700 chipset series#740|740]] chipset
+| RX740 || rowspan="2" | 2008 || rowspan="2" | Athlon&nbsp;64,<br />Phenom,<br />Sempron || rowspan="2" | 55 || rowspan="2" | 1000 (HT&nbsp;2.0) || {{No}} || rowspan="2" {{No}} || rowspan="2" | SB600,<br />SB700,<br />SB750 || align="left" | Single PCIe 1.1 x16
+|-
+! AMD [[AMD 700 chipset series#740G|740G]] chipset
+| RS740 || {{Yes | Radeon 2100}} || align="left" | DirectX 9.0, AVIVO, [[HDMI]]/[[HDCP]],<br />OR single PCIe 1.1 x16
+|-
+! AMD [[AMD 700 chipset series#760G|760G]] chipset
+| RS780L || 2009 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 55 || 2600 (HT&nbsp;3.0) || {{Yes | Radeon 3000}} || {{Yes | Hybrid}} || SB710 || align="left" | [[Direct3D#Direct3D 10|DirectX 10]], AVIVO HD, [[HDMI]]/[[HDCP]],<br />OR single PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series#770|770]] chipset
+| RX780 || 2008 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 65 || 2600 (HT&nbsp;3.0) || {{No}} || {{No}} || SB600,<br />SB700,<br />SB710,<br />SB750 || align="left" | Single PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series#780G/780V|780V]] chipset
+| RS780C || rowspan="2" | 2008 || rowspan="2" | Athlon&nbsp;64,<br />Phenom,<br />Sempron || rowspan="2" | 55 || rowspan="2" | 2600 (HT&nbsp;3.0) || {{Yes | Radeon 3100}} || {{No}} || rowspan="2" | SB700,<br />SB710,<br />SB750 || align="left" | [[Direct3D#Direct3D 10|DirectX 10]], AVIVO HD, [[HDMI]]/[[HDCP]],<br />[[DisplayPort]]/DPCP,<br />OR single PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series#780G/780V|780G]] chipset
+| RS780I || {{Yes | Radeon HD 3200}} || {{Yes | Hybrid}} || align="left" | [[Direct3D#Direct3D 10|DirectX 10]], UVD+, [[HDMI]]/[[HDCP]], [[DisplayPort]]/DPCP, Side-port memory,<br />OR single PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series#780G|M780V]] chipset
+| RS780MC || rowspan="2" | 2008 || rowspan="2" | Mobile&nbsp;Turion,<br />Mobile&nbsp;Athlon,<br />Athlon&nbsp;Neo || rowspan="2" | 55 || rowspan="2" | 2600 (HT&nbsp;3.0) || {{Yes | Radeon 3100}} || rowspan="2" {{Yes | [[AMD 700 chipset series#PowerXpress|PowerXpress]]<br />[[Advanced eXpress I/O Module|AXIOM]]/[[Mobile PCI Express Module|MXM<br />module(s)]]}} || rowspan="2" | SB600,<br />SB700,<br />SB710 || rowspan="2" align="left" | [[Direct3D#Direct3D 10|DirectX 10]], UVD+,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]], [[Digital Visual Interface|DVI]], [[Video Graphics Array|VGA]],<br />OR single PCIe 2.0 x16
+[[AMD mobile platform#Puma platform (2008)|Puma Platform]], [[AMD 700 chipset series#PowerXpress|PowerXpress]]
+|-
+! AMD [[AMD 700 chipset series#780G|M780G]] chipset
+| RS780M || {{Yes | Radeon HD 3200}}
+|-
+! AMD [[AMD 700 chipset series#785G|785G]] chipset
+| RS880 || 2009 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 55 || 2600 (HT&nbsp;3.0) || {{Yes | Radeon HD 4200}} || {{Yes | Hybrid,<br />x16 + x4}} || SB710,<br />SB750,<br />SB810,<br />SB850 || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />Side-port memory,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]]/DPCP,<br />OR two PCIe 2.0 x16<br />TDP: 11 W (500&nbsp;MHz), 3 W in PowerPlay
+|-
+! 785E
+| RS785E || || || 55 || 2200 (HT&nbsp;3.0) || {{Yes | Radeon HD 4200}} || {{Yes | Hybrid}} || SB810, SB850, SB820M || 
+|-
+! AMD [[AMD 700 chipset series|790GX]] chipset
+| RS780D || 2008 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 55 || 2600 (HT&nbsp;3.0) || {{Yes | Radeon HD 3300}} || {{Yes | Hybrid,<br />x8 + x8<ref>[http://www.amd.com/us-en/0,,3715_15532_15533,00.html] from the official ATI website</ref>}} || SB750 || align="left" | [[Direct3D#Direct3D 10|DirectX 10]], UVD+,<br />Side-port memory,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]]/DPCP,<br />OR two PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series|790X]] chipset
+| RD780 || 2008 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 65 || 2600 (HT&nbsp;3.0) || {{No}} || {{Yes | x8 + x8}} || SB600,<br />SB700,<br />SB750,<br />SB850 || align="left" | Two PCIe 2.0 x16
+|-
+! AMD [[AMD 700 chipset series|790FX]] chipset
+| RD790 || Nov 2007 || Athlon&nbsp;64,<br />Phenom,<br />Sempron || 65 || 2600 (HT&nbsp;3.0) || {{No}} || {{Yes | CrossFire X<br />(dual x16<br />or quad x8)}} || SB600,<br />SB750,<br />SB850 || align="left" | Up to four PCIe 2.0 x16<br />Support for [[AMD Quad FX platform]] (''FASN8''),<br />Dual socket enthusiast platform with [[Non-Uniform Memory Access|NUMA]],<br />optional single socket variant,<br />720-pin 1.1 [[Volt|V]] [[Ball Grid Array|FC-BGA]]
+|-
+! Model !! Codename !! Released !! CPU support !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[HyperTransport|HT]] (MHz) !! [[Graphics processing unit#Integrated graphics solutions|IGP]] !! [[ATI CrossFire|CrossFire]] !! Southbridge !! Features / Notes
+|}
+
+=== A-Link Express III ===
+A-Link Express III is essentially [[PCI Express#PCI Express 2.0|PCIe 2.0]] x4 lanes.
+
+{| class="wikitable" style="text-align: center"
+! Model !! Code name !! Released !! CPU support !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[HyperTransport|HT]] (MHz) !! [[Graphics processing unit#Integrated graphics solutions|IGP]] !! [[ATI CrossFire|CrossFire]] !! [[Scalable Link Interface|SLI]]<ref name='amd_sli'>[http://blogs.nvidia.com/2011/04/you-asked-for-it-you-got-it-sli-for-amd/ You Asked for It, You Got It: SLI for AMD]</ref> !! [[Thermal design power|TDP]] ([[Watt|W]]) !! Southbridge !! Features / Notes
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#870|870]] chipset
+| RX880 || 2010 || Phenom&nbsp;II,<br />Athlon&nbsp;64,<br />Sempron || 65 || 2600 (HT&nbsp;3.0) || {{No}} || {{Yes|Hybrid, x16 + x4}} || {{No}} ||  || SB850 || align="left" | Single PCIe 2.0 x16
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#880G|880G]] chipset
+| RS880P || Q4 2010 || Phenom&nbsp;II,<br />Athlon&nbsp;II,<br />Sempron || 55 || 2600 (HT&nbsp;3.0) || {{Yes | Radeon HD 4250}} || {{Yes|Hybrid}} || {{No}} ||  || SB710,<br />SB750,<br />SB810,<br />SB850,<br />SB920,<br />SB950 || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]]/DPCP,<br />OR single PCIe 2.0 x16<br />AM3+ socket support
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#880M|880M]] chipset
+| rowspan="3" | RS880M || rowspan="3" | Q2 2010 || Mobile&nbsp;Turion&nbsp;II,<br />Mobile&nbsp;Athlon&nbsp;II,<br />Mobile&nbsp;Sempron || rowspan="3" | 55 || rowspan="3" | 2600 (HT&nbsp;3.0) || {{Yes | Radeon HD 4200}} || rowspan="3" {{Yes | [[AMD 700 chipset series#PowerXpress|PowerXpress]]<br />[[Advanced eXpress I/O Module|AXIOM]]/[[Mobile PCI Express Module|MXM<br />module(s)]]}} || {{No}} ||  || rowspan="3" | SB820 || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]], [[Digital Visual Interface|DVI]], [[Video Graphics Array|VGA]],<br />sideport memory,<br />OR single PCI-E 2.0 x16
+Mobile Chipset, [[AMD mobile platform#Tigris platform (2009)|''Tigris'']] platform
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#880M|880M]] chipset
+| Athlon&nbsp;II&nbsp;Neo,<br />Turion&nbsp;II&nbsp;Neo || {{Yes | Radeon HD 4225}} || {{No}} ||  || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]], [[Digital Visual Interface|DVI]], [[Video Graphics Array|VGA]],<br />OR Single PCI-E 2.0 x16
+Mobile Chipset, [[AMD mobile platform#Nile platform (2010)|''Nile'']] platform
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#880M|880M]] chipset
+| Mobile&nbsp;Phenom&nbsp;II,<br />Mobile&nbsp;Turion&nbsp;II,<br />Mobile&nbsp;Athlon&nbsp;II,<br />Mobile&nbsp;Sempron<br />V-Series || {{Yes | Radeon HD 4250<br />Radeon HD 4270}} || {{No}} ||  || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]], [[Digital Visual Interface|DVI]], [[Video Graphics Array|VGA]],<br />OR single PCI-E 2.0 x16
+Mobile Chipset, [[AMD mobile platform#Danube platform (2010)|''Danube'']] platform
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#890GX|890GX]] chipset
+| RS880D || Q2 2010 || Phenom&nbsp;II,<br />Athlon&nbsp;II,<br />Sempron || 55 || 2600 (HT&nbsp;3.0) || {{Yes | Radeon HD 4290}} || {{Yes | Hybrid,<br />x8 + x8}} || {{No}} || 22&nbsp;W || SB710,<br />SB750,<br />SB810,<br />SB850 || align="left" | [[Direct3D#Direct3D 10|DirectX 10.1]], UVD2,<br />[[HDMI]]/[[HDCP]], [[DisplayPort]]/DPCP,<br />Side-port memory,<br />OR two PCIe 2.0 x16
+|-
+! style="text-align: left" | AMD [[AMD 800 chipset series#890FX|890FX]] chipset
+| RD890 || Q2 2010 || ''Bulldozer'',<ref>http://event.asus.com/2011/mb/AM3_PLUS_Ready/</ref><br />Phenom&nbsp;II,<br />Athlon&nbsp;II,<br />Sempron || 65 || 2600 (HT&nbsp;3.0) || {{No}} || {{Yes | x16 + x16<br />or x8 quad}} || {{No}} || 18&nbsp;W || SB710,<br />SB750,<br />SB810,<br />SB850 || align="left" | Four PCIe 2.0 x16
+|-
+! colspan="11" |
+|-
+! style="text-align: left" | AMD [[AMD 900 chipset series#970|970]] chipset
+| RX980 || rowspan="3" | Q2 2011 || rowspan="3" | ''Bulldozer'', ''Piledriver''<br />Phenom&nbsp;II, Athlon&nbsp;II, Sempron, FX || rowspan="3" | 65 || 2400 (HT&nbsp;3.0) || rowspan="3" {{No}} || {{Yes | x16 + x4}} || {{No}} || 13.6W || rowspan="3" | SB710,<br />SB750,<br />SB810,<br />SB850,<br />SB920,<br />SB950 || align="left" | Single PCIe 2.0 x16, [[IOMMU]]
+AM3+ socket support
+|-
+! style="text-align: left" | AMD [[AMD 900 chipset series#990X|990X]] chipset
+| RD980 || rowspan="2" | 2600 (HT&nbsp;3.0) || {{Yes | x8 + x8}} || {{Yes | x8 + x8}} || 14W || align="left" | Two PCIe 2.0 x16, [[IOMMU]]
+AM3+ socket support
+|-
+! style="text-align: left" | AMD [[AMD 900 chipset series#990FX|990FX]] chipset
+| RD990 || {{Yes | x16 + x16<br />or x8 quad}} || {{Yes | x16 + x16<br />or x16 + x8 + x8<br />or x8 quad}} || 19.6&nbsp;W|| align="left" | Four PCIe 2.0 x16, [[IOMMU]]
+AM3+ socket support
+|-
+! Model !! Code name !! Released !! CPU support !! Fab (nm) !! HT (MHz) !! IGP !! CrossFire !! SLI !! TDP (W) !! Southbridge !! Features / Notes
+|}
+
+== Southbridges ==
+
+=== AMD-xxx ===
+{| class="wikitable" style="text-align: center"
+! Model !! Codename !! Released !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[USB]]<br />2.0 + 1.1 !! Audio !! [[Parallel ATA]]<sup>1</sup> !! Features / Notes
+|-
+! AMD 640 chipset
+| AMD-645 ||  || ||  || || 2 × ATA/33 ||
+|-
+! AMD 750 chipset
+| AMD-756 || 1999 ||  || 0 + 4 ||  || 2 × ATA/66 ||
+|-
+! AMD 760 chipset
+| AMD-766 || rowspan="2" | 2001 ||  || rowspan="2" | 0 + 4 ||  || rowspan="2" | 2 × ATA/100 ||
+|-
+! AMD 760MPX chipset
+| AMD-768 ||  || [[AC'97]] ||
+|-
+! colspan="8" |
+|-
+! Geode GX1
+| Geode CS5530 ||  || ||  || rowspan="2" | AC'97 || rowspan="2" | 2 × ATA/33 || rowspan="2" align="left" | [[Geode (processor)#National Semiconductor Geode|National Semiconductor]] release
+|-
+! Geode GXm<br />Geode GXLV
+| Geode CS5530A ||  ||  ||
+|-
+! Geode GX
+| Geode CS5535 ||  ||  || 0 + 4 || rowspan="2" | AC'97 || 2 × ATA/66 ||
+|-
+! Geode LX
+| Geode CS5536 ||  ||  || 4 + 0 || 2 × ATA/100 ||
+|-
+! colspan="8" |
+|-
+! rowspan="2" | AMD-8111<br />nForce Professional<br />ULi-1563
+| AMD-8131 || rowspan="3" | 2004 || rowspan="3" | || rowspan="3" | 4 + 2 || rowspan="3" | AC'97 || rowspan="3" | 2 × ATA/133 || align="left" | [[PCI-X]]
+|-
+| AMD-8132 || align="left" | [[PCI-X#PCI-X 2.0|PCI-X 2.0]]
+|-
+! AMD-8151
+| AMD-8151 || align="left" | AGP 8X
+|}
+<sup>1</sup> Parallel ATA, also known as Enhanced IDE supports up to 2 devices per channel.
+
+=== A-Link Express ===
+* All models support [[eSATA]] implementations of available SATA channels.
+
+{| class="wikitable" style="text-align: center"
+! Model !! Codename !! Released !! [[Fabrication process|Fab]] ([[Nanometer|nm]]) !! [[SATA]] !! [[USB]]<br />2.0&nbsp;+&nbsp;1.1 !! [[Parallel ATA]]<sup>1</sup> !! [[RAID]] !! [[Network interface controller|NIC]] !! [[Wireless network interface controller|WNIC]] !! [[Integrated circuit packaging|Package]] !! [[Thermal design power|TDP]] ([[Watt|W]]) !! Features / Notes
+|-
+! AMD 480/570/580/690<br />CrossFire Chipset
+| '''SB600''' || 2006 || 130 || 4&nbsp;×&nbsp;3&nbsp;Gbit/s<br />[[AHCI]]&nbsp;1.1 [[SATA Revision 2.0]]|| 10 + 0 || {{Yes | 1 × ATA/133}} || 0,1,10 || {{No}} || rowspan="10" {{no}} || 548-pin<br />[[Ball grid array|FC-BGA]] || 4.0 || align="left" |
+|-
+! AMD 700<br />chipset series
+| '''SB700''' || rowspan="2" | Q1 2008 || rowspan="2" | 130 || rowspan="2" | 6&nbsp;×&nbsp;3&nbsp;Gbit/s<br />AHCI&nbsp;1.1 [[SATA Revision 2.0]]|| rowspan="2" | 12 + 2 || rowspan="2" {{Yes | 1 × ATA/133}} || rowspan="2" | 0,1,10 || rowspan="2" {{No}} || rowspan="2" | 548-pin<br />FC-BGA || rowspan="2" | 4.5 || align="left" | [[Desktop and mobile Architecture for System Hardware|DASH]] 1.0
+|-
+! AMD 700S<br />chipset series
+| '''SB700S''' || align="left" | DASH 1.0<br />Server southbridge
+|-
+! rowspan="2" | [[AMD 700 chipset series]]
+| '''SB710''' || rowspan="2" | Q4 2008 || rowspan="2" | 130 || rowspan="2" | 6&nbsp;×&nbsp;3&nbsp;Gbit/s<br />AHCI&nbsp;1.1 [[SATA Revision 2.0]]|| rowspan="2" | 12 + 2 || rowspan="2" {{Yes | 1 × ATA/133}} || 0,1,10 || rowspan="2" {{No}} || rowspan="2" | 548-pin<br />FC-BGA || rowspan="2" | 4.5 || rowspan="2" align="left" | DASH 1.0
+|-
+| '''SB750''' || 0,1,5,10
+|-
+! rowspan="3" | [[AMD 800 chipset series|AMD 800<br />chipset series]]
+| '''SB810''' || rowspan="2" | Q1 2010 || rowspan="3" | 65 || 6&nbsp;×&nbsp;3&nbsp;Gbit/s<br />AHCI&nbsp;1.2 [[SATA Revision 2.0]]|| rowspan="3" | 14 + 2 || rowspan="3" {{No}} || 0,1,10 || rowspan="3" {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || rowspan="3" | 605-pin<br />FC-BGA || rowspan="2" | 6.0 || rowspan="2" align="left" |
+|-
+| '''SB850''' || rowspan="2" {{Yes| 6&nbsp;×&nbsp;6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 [[SATA Revision 3.0]]}} || 0,1,5,10
+|-
+| '''SB820M''' || || 0,1 || 3.4 - 5.3 || mobile/embedded
+|-
+! rowspan="2" | [[AMD 900 chipset series|AMD 900<br />chipset series]]
+| '''SB920''' || rowspan="2" | May 30, 2011 || rowspan="2" | 65 || rowspan="2" {{Yes| 6&nbsp;×&nbsp;6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 [[SATA Revision 3.0]]}}|| rowspan="2" | 14 + 2 || rowspan="2" {{No}} || 0,1,10 || rowspan="2" {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || rowspan="2" | 605-pin<br />FC-BGA || rowspan="2" | 6.0 || rowspan="2" align="left" |
+|-
+| '''SB950''' || 0,1,5,10
+|-
+! Model !! Codename !! Released !! Fab (nm) !! SATA !! USB<br />2.0&nbsp;+&nbsp;1.1 !! Parallel ATA<sup>1</sup> !! RAID !! [[Network interface controller|NIC]] !! [[Wireless network interface controller|WNIC]] !! Package !! TDP (W) !! Features / Notes
+|}
+<sup>1</sup> Parallel ATA, also known as Enhanced IDE supports up to 2 devices per channel.
+
+== {{anchor|FCH}} Fusion controller hubs (FCH) ==
+{| class="wikitable" style="text-align: center"
+! Model !! Codename !! [[UMI AMD|UMI]] !! [[SATA]] !! [[USB]]<br />3.0+2.0+1.1 !! [[RAID]] !! [[Network interface controller|NIC]] !! [[Conventional PCI|33&nbsp;MHz PCI]] !! [[Secure Digital|SD]]<sup id="fn_1_back">[[#fn 1|1]]</sup> !! [[RAMDAC|VGA DAC]] !! [[Thermal design power|TDP]] ([[Watt|W]]) !! Features / notes !! Part number
+|-
+! A55T
+| Hudson-M2T<ref group="N" name="Mx">'''M''': for notebook platform</ref> || ×2 Gen.&nbsp;1 || 1× 3&nbsp;Gbit/s<br />AHCI 1.1 || 0 + 8 + 0 || rowspan="2" {{No}} || rowspan="2" {{No}} || rowspan="5" {{No}} || SDIO || rowspan="2" {{No}} ||  ||  ||
+|-
+! A50M
+| Hudson-M1<ref group="N" name="Mx">'''M''': for notebook platform</ref> || ×4 Gen.&nbsp;1<ref group="M" name="B1">UMI ×4 Gen. 1 is based on [[PCI Express#PCI Express 1.1|PCIe 1.1]] × 4 lanes, giving 1&nbsp;GB/s bandwidth</ref> || rowspan="2" | 6× 6&nbsp;Gbit/s<br />[[AHCI]]&nbsp;1.2 || rowspan="2" | 0 + 14 + 2 || {{No}} || 5.9<ref name=embed>http://www.amd.com/us/Documents/43838_Embedded_Solutions_Selection_Brief_web.pdf</ref> || align="left" | ~920&nbsp;mW idle || 100-CG2198<ref name=embed />
+|-
+! A60M
+| Hudson-M2<ref group="N" name="Mx"/> || rowspan="3" | ×4 Gen.&nbsp;1 +DP || rowspan="3" {{Yes | 0,1}} || rowspan="3" {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || rowspan="3" {{Yes}} || {{Yes}} || rowspan="3" | 4.7 ||  ||
+|-
+! A68M
+| Hudson-M3L<ref group="N" name="Mx"/> || 2× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 || 2 + 8 + 0 || {{No}} || align="left" | ~750&nbsp;mW idle ||
+|-
+! A70M
+| Hudson-M3<ref group="N" name="Mx"/> || 6× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 || 4 + 10 + 2 || {{Yes}} || align="left" | First native<br />USB 3.0 controller<ref name='usb3chip'>[http://www.pcinpact.com/actu/news/62708-amd-llano-hudson-usb-30-fusion.htm Deux chipsets pour l'APU Llano sont certifiés USB 3.0]</ref> || 100-CG2389<ref name=embed />
+|-
+! A76M
+| Bolton-M3<ref group="N" name="Mx"/> ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  || 
+|-
+! colspan="13" |
+|-
+! A45
+| Hudson-D1<ref group="N" name="Dx">'''D''': for desktop platform</ref> || ×4 Gen.&nbsp;2<ref group="M" name="B2">UMI ×4 Gen. 2 is based on [[PCI Express#PCI Express 2.0|PCIe 2.0]] × 4 lanes, giving 2&nbsp;GB/s bandwidth</ref> || rowspan="2" | 6× 3&nbsp;Gbit/s<br />AHCI&nbsp;1.1 || rowspan="2" | 0 + 14 + 2 || {{No}} || {{No}} || {{Yes |Up to 4 slots}} || {{No}} || {{No}} ||  ||  ||
+|-
+! A55
+| Hudson-D2<ref group="N" name="Dx"/> || ×4 Gen.&nbsp;2 +DP || rowspan="5" {{Yes | 0,1,10}} || {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || rowspan=7 {{Yes | Up to 3 slots}} || rowspan=7 {{Yes}} || rowspan=7 {{Yes}} || 7.6 {{Citation needed|date=May 2013}} ||  || 
+|-
+! A58
+| Bolton-D2<ref group="N" name="Dx"/> || rowspan="2" | ×4 Gen&nbsp;2 || 6× 3&nbsp;Gbit/s<br />AHCI&nbsp;1.3 || 0 + 14 + 2 ||  || 7.6 ||  || 218-0844023
+|-
+! A68H
+| Bolton-D2H<ref group="N" name="Dx"/> || 4× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.3 || 2 + 10 + 2 ||  ||  || xHCI 1.0 || 218-0844029-00
+|-
+! A75
+| Hudson-D3<ref group="N" name="Dx"/> || rowspan="3" | ×4 Gen.&nbsp;2 +DP || 6× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 || rowspan="4" | 4 + 10 + 2 || {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || 7.8<ref name=embed /> || align="left" | First native<br />USB 3.0 controller<ref name='usb3chip'/> || 100-CG2386<ref name=embed />
+|-
+! A78
+| Bolton-D3<ref group="N" name="Dx"/> || 6× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.3 ||  || 7.8 || xHCI 1.0 || 218-0844014
+|-
+! A85X
+| Hudson-D4<ref group="N" name="Dx"/> || 8× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 || rowspan="2" {{Yes | 0,1,5,10}} || {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || 7.8 {{Citation needed|date=May 2013}} || USB 3.0 (xHCI 0.96)  || 
+|-
+! A88X
+| Bolton-D4<ref group="N" name="Dx"/> || ×4 Gen&nbsp;2 || 8× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.3 ||  || 7.8 || USB 3.0 (xHCI 1.0) || 218-0844016
+|-
+! colspan="13" |
+|-
+! A55E
+| Hudson-E1<ref group="N" name="Ex">'''E''': for embedded platform</ref> || ×4 Gen.&nbsp;2 || 6× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.2 || 0 + 14 + 2 || {{Yes | 0,1,5,10}} || {{Yes|[[Gigabit Ethernet|10/100/1000]]}} || {{Yes | Up to 4 slots}} || {{No}} || {{No}} || 5.9<ref name=embed /> ||  || 100-CG2293<ref name=embed />
+|-
+! A77E<ref>http://support.amd.com/TechDocs/53830%20A77E%20Databook.pdf</ref>
+| Bolton-E4<ref group="N" name="Ex">'''E''': for embedded platform</ref> || 1-, 2-, or 4-lane<br />2 or 5&nbsp;GB/s || 6× 6&nbsp;Gbit/s<br />AHCI&nbsp;1.3 || 4 + 10 + 2 ||  ||  || {{Yes | Up to 3 slots}} || {{Yes}} || {{Yes}} ||  || 4-lane PCIe 2.0 || 218-0844020-00
+|-
+! Model !! Codename !! UMI !! SATA !! USB<br />3.0+2.0+1.1 !! RAID !! NIC !! 33&nbsp;MHz PCI !! SD<sup id="fn_1_back">[[#fn 1|1]]</sup> !! VGA DAC !! TDP (W) !! Features / notes !! Part number
+|}
+<cite id="fn_1">[[#fn 1 back|Note 1:]]</cite> Supports [[Secure Digital#SDHC|SDHC]] up to 32&nbsp;GB, 4 pins @ 50&nbsp;MHz.
+
+Codename:
+{{Reflist|group=N}}
+UMI:
+{{Reflist|group=M}}
+
+== See also ==
+* [[List of AMD Accelerated Processing Unit microprocessors]]
+* [[List of AMD graphics processing units]]
+
+== References ==
+{{reflist}}
+
+== External links ==
+* [http://www.amd.com/en-us/products/chipsets AMD Chipsets]
+
+{{AMD CPU sockets}}
+{{AMD processors}}
+{{AMD graphics}}
+
+[[Category:Advanced Micro Devices chipsets|*]]
+[[Category:Lists of microprocessors]]
+[[Category:Computing comparisons|AMD chipsets]]

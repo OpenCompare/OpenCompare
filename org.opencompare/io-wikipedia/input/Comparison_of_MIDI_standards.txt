@@ -63,7 +63,7 @@ This table provides summary of comparison of various [[MIDI]] enhancement standa
 |
 |
 |
-| colspan=3 | #1:&nbsp;melody; #2:&nbsp;melody&nbsp;(duet); #3:&nbsp;bass; #4:&nbsp;pad; #5:&nbsp;riff; #10:&nbsp;drums
+| colspan=3 | #1:&nbsp;melody; #2:&nbsp;melody&nbsp;(duet); #3:&nbsp;bass; #4:&nbsp;pad; #5:&nbsp;riff; #10:&nbsp;drums<ref>[http://www.thewhippinpost.co.uk/midi/xg/xg-midi.htm TheWhippinpost article on MIDI XG STANDARD]</ref>
 |
 |-
 ! colspan=8 | Sounds banks available
@@ -95,30 +95,30 @@ This table provides summary of comparison of various [[MIDI]] enhancement standa
 |-
 ! colspan=8 | Controls available
 |-
-| Special CC
-| 2
-| 6 (MT32+4)
-| 
-| 
-| 
-| 
-| 6 (GM)
+| Special CC<ref>Special CCs are CCs that don't correspond to the parameter of any particular effect. Most usually they represent special one-shot control commands for the device (these ones are usually represented by a button on a console), or used internally for bank selection, RPN or data entry, etc.</ref>
+| 2<ref name="youngmonkey">[http://www.youngmonkey.ca/nose/audio_tech/synth/Roland-MT32.html youngmonkey Roland MT-32 MIDI/SYSEX reference]</ref><!-- MT-32 -->
+| 6 (MT32+4)<!-- GM -->
+| <!-- GS -->
+| <!-- XG1 -->
+| <!-- XG2 -->
+| <!-- XG3 -->
+| 6 (GM)<!-- GM2 -->
 |-
-| Parametric effect CC
-| 4
-| 5 
-| 16 (GM+11) 
-| colspan=3 | 51 (GM+46) 
-| 12 (GM+7) 
+| Parametric effect CC<ref>Parametric CCs (also known as ''continuous controller'') correspond to the parameter of some particular effect (i.e. depth, strength, delay of effect, etc). Such CCs are usually represented by a rotating knob or fader in mixers.</ref>
+| 4<ref name="youngmonkey"/><!-- MT-32 -->
+| 5 <!-- GM -->
+| 16 (GM+11) <!-- GS -->
+| colspan=3 | 51 (GM+46) <!-- XG -->
+| 12 (GM+7) <!-- GM2 -->
 |-
 | RPNs
-| 0
-| 5
-| 
-| 
-| 
-| 
-| 6 (GM+1) 
+| 0<ref name="youngmonkey"/><!-- MT-32 -->
+| 5<ref name="midi-rpn">[http://www.midi.org/about-midi/table3.shtml#Table3aRPNs MMA MIDI Message Tables: Table 3a: Registered Parameter Numbers]</ref>
+| <!-- GS -->
+| <!-- XG1 -->
+| <!-- XG2 -->
+| <!-- XG3 -->
+| 6 (GM+1) <ref name="midi-rpn"/><!-- GM2 -->
 |-
 | SysEx messages
 |
@@ -132,14 +132,31 @@ This table provides summary of comparison of various [[MIDI]] enhancement standa
 
 == References ==
 
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
-<div class="refbegin  " style="">
-* <span class="citation web">Yamaha Corporation (1996). [http://web.archive.org/web/20060926124939/http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf "Yamaha XG format specifications, v1.26"] (PDF). Archived from [http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf the original] on 2006-09-26<span class="reference-accessdate">. Retrieved 2008-04-23</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aulast=Yamaha+Corporation&rft.au=Yamaha+Corporation&rft.btitle=Yamaha+XG+format+specifications%2C+v1.26&rft.date=1996&rft.genre=book&rft_id=http%3A%2F%2Fwww.yamaha.co.uk%2Fxg%2Freading%2Fpdf%2Fxg_spec.pdf&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
-* <span class="citation web">Yamaha Corporation (1999-02-02). [http://web.archive.org/web/20060926122423/http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf "Recommendations for producing XG song data, v2.00"] (PDF). Archived from [http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf the original] on 2006-09-26<span class="reference-accessdate">. Retrieved 2008-04-23</span>.</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.aulast=Yamaha+Corporation&rft.au=Yamaha+Corporation&rft.btitle=Recommendations+for+producing+XG+song+data%2C+v2.00&rft.date=1999-02-02&rft.genre=book&rft_id=http%3A%2F%2Fwww.yamaha.co.uk%2Feurohome%2Flibrary%2Fmidi%2Fxgformat.pdf&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+{{reflist}}
+{{refbegin}}
+* {{cite web
+|url = http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf
+|archiveurl = http://web.archive.org/web/20060926124939/http://www.yamaha.co.uk/xg/reading/pdf/xg_spec.pdf
+|archivedate = 2006-09-26
+|title = Yamaha XG format specifications, v1.26
+|author = Yamaha Corporation
+|year = 1996
+|accessdate = 2008-04-23
+|format = PDF
+}}
+* {{cite web
+|url = http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf
+|archiveurl = http://web.archive.org/web/20060926122423/http://www.yamaha.co.uk/eurohome/library/midi/xgformat.pdf
+|archivedate = 2006-09-26
+|title = Recommendations for producing XG song data, v2.00
+|author = Yamaha Corporation
+|date = 1999-02-02
+|accessdate = 2008-04-23
+|format = PDF
+}}
 * [http://home.roadrunner.com/~jgglatt/tutr/roland.htm Roland Sound Cards], an extensive guide to various models and their capabilities
 * [http://www.emusician.com/news/0766/gm-modules-for-the-masses/144589 GM modules for the masses], a comparison article
-</dl></div>
+{{refend}}
 
 [[Category:MIDI standards|*]]
 [[Category:Computing comparisons|MIDI standards]]

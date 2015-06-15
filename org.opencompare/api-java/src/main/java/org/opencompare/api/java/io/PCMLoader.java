@@ -1,9 +1,12 @@
 package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
+import org.opencompare.api.java.PCMMetadata;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by gbecan on 30/01/15.
@@ -11,17 +14,17 @@ import java.io.IOException;
 public interface PCMLoader {
 
     /**
-     * Load a PCM from its string representation
+     * Return a list of PCM container from a string representation
      * @param pcm : string representation of a PCM
      * @return the PCM represented by pcm
      */
-    PCM load(String pcm);
+    List<PCMContainer> load(String pcm);
 
     /**
-     * Load a PCM from a file
+     * Return a PCM container from a file
      * @param file
      * @return
      * @throws java.io.FileNotFoundException
      */
-    PCM load(File file) throws IOException;
+    List<PCMContainer> load(File file) throws IOException;
 }
