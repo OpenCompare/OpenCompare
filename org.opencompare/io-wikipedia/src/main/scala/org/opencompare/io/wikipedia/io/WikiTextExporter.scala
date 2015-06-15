@@ -42,10 +42,12 @@ class WikiTextExporter  extends PCMExporter {
       builder ++= "\n"
 
       // Cells
-      for (cell <- product.getCells.sortBy(_.getFeature.getName)) {
-        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-        builder ++= cell.getContent
-        builder ++= "\n"
+      for (feature <- container.getMetadata.getSortedFeatures) {
+        for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+          builder ++= cell.getContent
+          builder ++= "\n"
+        }
       }
     }
 
