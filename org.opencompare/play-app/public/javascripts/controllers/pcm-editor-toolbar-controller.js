@@ -69,7 +69,6 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.$on('setPcmName', function(event, args) {
         $scope.isTitleSet = args.length > 0;
-        console.log($scope.isTitleSet);
         $scope.pcmName = args;
     });
 

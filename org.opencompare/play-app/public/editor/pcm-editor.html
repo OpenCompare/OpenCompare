@@ -43,23 +43,6 @@
     </div>
 
 
-    <!-- Table editor -->
-    <div class="row" ng-show="edit">
-        <form class="form-group">
-            <div class="form-group col-lg-5">
-                <label for="pcm-name" class="control-label">Title:</label>
-                <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
-            </div>
-        </form>
-    </div>
-    <div class="row" ng-show="edit">
-        <div class="col-xs-9">
-            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</button>
-            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</button>
-            <button role="button" class="btn btn-default" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></button>
-            <button role="button" class="btn btn-default" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></button>
-        </div>
-    </div>
 
     <div class="modal fade" id="modalNewFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -164,6 +147,26 @@
         </div>
     </div>
 
+    <!-- Table editor -->
+    <h2 ng-show="!edit">{{pcm.name}}
+        <a role="button" class="btn btn-primary" ng-click="setEdit(true)"><i class="fa fa-pencil"></i>Edit</a>
+    </h2>
+    <div class="row" ng-show="edit">
+        <form class="form-group">
+            <div class="form-group col-lg-5">
+                <label for="pcm-name" class="control-label">Title:</label>
+                <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
+            </div>
+        </form>
+    </div>
+    <div class="row" ng-show="edit">
+        <div class="col-xs-9">
+            <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</button>
+            <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</button>
+            <button role="button" class="btn btn-default" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></button>
+            <button role="button" class="btn btn-default" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></button>
+        </div>
+    </div>
     <div id="matrix" class="grid" ui-grid="gridOptions"  ng-style="{'height' : pcmData.length * 28 + 90}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize>
         <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
             <div class="msg">
