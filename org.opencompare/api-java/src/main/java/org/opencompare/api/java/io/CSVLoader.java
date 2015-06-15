@@ -77,7 +77,7 @@ public class CSVLoader implements PCMLoader {
     private PCMContainer loadFeatureFirst(CSVReader reader) throws IOException {
         PCM pcm = factory.createPCM();
         PCMMetadata metadata = new PCMMetadata(pcm);
-        PCMContainer container = new PCMContainer(pcm, metadata);
+        PCMContainer container = new PCMContainer(metadata);
 
         // Features
         String[] featureNames = reader.readNext();
@@ -135,7 +135,7 @@ public class CSVLoader implements PCMLoader {
     private PCMContainer loadProductFirst(CSVReader reader) throws IOException {
         PCM pcm = factory.createPCM();
         PCMMetadata metadata = new PCMMetadata(pcm);
-        PCMContainer container = new PCMContainer(pcm, metadata);
+        PCMContainer container = new PCMContainer(metadata);
 
         // Products
         String[] productNames = reader.readNext();
