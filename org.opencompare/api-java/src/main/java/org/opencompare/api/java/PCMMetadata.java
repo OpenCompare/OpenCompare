@@ -19,7 +19,11 @@ public class PCMMetadata {
         this.featurePositions = new HashMap<Feature, Integer>();
     }
 
-    public Integer getLastIndex() {
+    /**
+     * Return the last product index used
+     * @return a integer as index
+     */
+    public Integer getLastProductIndex() {
         Integer result = 0;
         for (Product product : productPositions.keySet()) {
             Integer index = getProductPosition(product);
@@ -29,15 +33,29 @@ public class PCMMetadata {
         }
         return result;
     }
+    /**
+     * Return the last feature index used
+     * @return a integer as index
+     */
+    public Integer getLastFeatureIndex() {
+        Integer result = 0;
+        for (Feature feature : featurePositions.keySet()) {
+            Integer index = getFeaturePosition(feature);
+            if (result < index) {
+                result = index;
+            }
+        }
+        return result;
+    }
 
     /**
-     * Returns the absolute position of the product
+     * Returns the absolute position of the product or create if not exists
      * @param product
      * @return the absolution position of 'product' or null if it is not specified
      */
     public int getProductPosition(Product product) {
         if (!productPositions.containsKey(product)) {
-            Integer index = getLastIndex() + 1;
+            Integer index = getLastProductIndex() + 1;
             setProductPosition(product, index);
             return index;
         }
@@ -54,13 +72,13 @@ public class PCMMetadata {
     }
 
     /**
-     * Returns the absolute position of the feature
+     * Returns the absolute position of the feature or create if not exists
      * @param feature
      * @return the absolution position of 'feature' or null if it is not specified
      */
     public int getFeaturePosition(Feature feature) {
         if (!featurePositions.containsKey(feature)) {
-            Integer index = getLastIndex() + 1;
+            Integer index = getLastFeatureIndex() + 1;
             setFeaturePosition(feature, index);
             return index;
         }
@@ -76,22 +94,35 @@ public class PCMMetadata {
         featurePositions.put(feature, position);
     }
 
+    /**
+     * Return the sorted products concordingly with metadata
+     * @return an ordered list of products
+     */
     public List<Product> getSortedProducts() {
-        List<Product> result = new ArrayList<>();
+        ArrayList<Product> result = new ArrayList<>();
         for (Product product : pcm.getProducts()) {
             result.add(getProductPosition(product) - 1, product);
         }
         return result;
     }
 
+    /**
+     * Return the sorted features concordingly with metadata
+     * @return an ordered list of features
+     */
     public List<Feature> getSortedFeatures() {
-        List<Feature> result = new ArrayList<>();
+        ArrayList<Feature> result = new ArrayList<>();
         for (Feature feature : pcm.getConcreteFeatures()) {
             result.add(getFeaturePosition(feature) - 1, feature);
         }
         return result;
     }
 
+    /**
+     * Compare with an other metadata instance
+     * @param metadata
+     * @return false if metadata given as parameter not equal to this
+     */
     public Boolean hasDifferences(PCMMetadata metadata) {
         if (!getSortedProducts().retainAll(metadata.getSortedProducts())) {
             return true;
