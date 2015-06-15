@@ -1060,6 +1060,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
     };
 
+    $scope.$watch('pcm.name', function() {
+        $rootScope.$broadcast('setPcmName', $scope.pcm.name);
+    });
+
     /**
      * Save PCM on the server
      */
