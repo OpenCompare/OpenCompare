@@ -18,6 +18,7 @@ import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.parser.CellContentExtractor;
+import play.api.libs.json.JsValue;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -114,13 +115,15 @@ public class PCMAPI extends Controller {
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
 
+        JsValue data = null;
 
         if (type.equals("wikipedia")) {
 
             try {
                 pcm = PCMAPI.loadWikitext(title);
+                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (Exception e) {
-                return internalServerError("This page has not been found or is empty."); // TODO: manage the different kind of exceptions
+                return notFound("The page '" + title + "' has not been found or is empty."); // TODO: manage the different kind of exceptions
             }
 
         } else if (type.equals("csv")) {
@@ -146,8 +149,9 @@ public class PCMAPI extends Controller {
             }
             try {
                 pcm = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (IOException e) {
-                return internalServerError("This CSV file is not well formatted."); // TODO: manage the different kind of exceptions
+                return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
             pcm.setName(title);
 
@@ -163,7 +167,7 @@ public class PCMAPI extends Controller {
 
         // FIXME : bad idea to redirect to a page in this API.
         //return ok(jsonExporter.toJson(pcm));
-        return ok(views.html.edit.render(null, Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))))));
+        return ok(views.html.edit.render(null, data));
     }
 
     public static Result exportToFile(String type) {
