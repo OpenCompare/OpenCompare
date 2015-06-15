@@ -1,3 +1,8 @@
+{{multiple issues|
+{{notability|date=January 2015}}
+{{original research|date=January 2015}}
+{{unreferenced|date=January 2015}}
+}}
 Software '''audio synthesis environment'''s typically consist of an [[audio programming language]] (which may be [[Visual programming language|graphical]]) and a user environment to design/run the language in. Although many of these environments are comparable in their abilities to produce high-quality audio, their differences and specialties are what draw users to a particular platform. This article compares noteworthy audio synthesis environments, and enumerates basic issues associated with their use.
 
 ==Subjective comparisons==
@@ -37,24 +42,13 @@ The interface to an audio system often has a significant influence on the creati
 ! Main user interface type
 ! Development status
 |-
-| [[Audulus]]
-| Taylor Holliday
-| Realtime synthesis, audio processing, mobile music
-| 2011-09
-| 2014-04
-| v2.7.1
-| US$19.99 (iPad), $29.99 (Mac)
-| Proprietary
-| Graphical
-| Stable
-|-
 | [[ChucK]]
 | Ge Wang and Perry Cook
 | Realtime synthesis, [[live coding]], [[pedagogy]], [[acoustics|acoustic research]], [[algorithmic composition]]
 | 2004
-| 2012-09
-| v1.3.1.2
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+| 2014-12
+| v1.3.5.0
+| {{free}}
 | [[GNU General Public License|GPL]]
 | Document
 | Immature
@@ -65,7 +59,7 @@ The interface to an audio system often has a significant influence on the creati
 | 1986
 | 2014-07
 | v6.03
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+| {{free}}
 | [[GNU Lesser General Public License|LGPL]]
 | Document, graphical
 | Mature
@@ -76,7 +70,7 @@ The interface to an audio system often has a significant influence on the creati
 | 2006
 | 2010-10
 | v2.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+| {{free}}
 | Proprietary
 | Document
 | Stable
@@ -85,31 +79,20 @@ The interface to an audio system often has a significant influence on the creati
 | [[Miller Puckette]]
 | Realtime audio + video synthesis, hardware control
 | 1980s (mid)
-| 2014-08-07
-| v6.1.8
-| US$319.00
+| 2014-12
+| v7.0.1
+| {{nonfree}}
 | Proprietary
 | Graphical
-| Mature
-|-
-| [http://nsound.sourceforge.net/ nsound]
-| Nick Hilton
-| Realtime synthesis, offline audio rendering, [[algorithmic composition]], [[acoustics|acoustic research]]
-| 2003
-| 2011-06-26
-| 0.8.2
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
-| [[GNU General Public License|GPL]]
-| Document
 | Mature
 |-
 | [[Pure Data]]
 | [[Miller Puckette]]
 | Realtime synthesis, hardware control, [[acoustics|acoustic research]]
 | 1990s
-| 2011-03-29
-| v0.43
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+| 2015-03
+| v0.46.6
+| {{free}}
 | [[BSD licenses|BSD]]-like
 | Graphical
 | Mature
@@ -120,7 +103,7 @@ The interface to an audio system often has a significant influence on the creati
 | 1996
 | 2014-09
 | 5.9.2
-| US$399
+| {{nonfree}}
 | Proprietary
 | Graphical
 | Mature
@@ -130,60 +113,22 @@ The interface to an audio system often has a significant influence on the creati
 | Realtime synthesis, [[live coding]], [[algorithmic composition]], [[acoustics|acoustic research]], all-purpose programming language
 | 1996-03
 | 2013-04
-| v3.6.5
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
+| v3.6.6
+| {{free}}
 | [[GNU General Public License|GPL]]
 | Document
 | Mature
-|-
-| [http://www.eecs.berkeley.edu/~lazzaro/sa/ sfront]
-| John Lazzaro
-| [[MPEG-4 Structured Audio|MPEG-4/SA]] implementation, Realtime synthesis, [[algorithmic composition]], structured Web audio.
-| 1997
-| 2010-01-12
-| 0.96
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
-| [[BSD licenses|BSD]]-like
-| Document
-| Stable
-|-
-| [[Usine]]
-| Olivier Sens
-| Audio manipulation, [[live coding]], [[algorithmic composition]]
-| 2006
-| 2013-07
-| v1.01.007e
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free/159€
-| Proprietary
-| Graphical
-| Mature
-|-
-| [http://byond.codeplex.com Byond]
-| Ronald Schlenker
-| Realtime synthesis and audio manipulation, algorithmic composition, general purpose programming language, interactive GUI.
-| 2013
-| 2013-11
-| 0.1
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Free
-| [[GNU General Public License|GPL]]
-| Graphical
-| Beta
 |-
 |}
 
 ==Programming language features==
-
+<!-- Note: Because various of these features are not neccessarily "good" or "bad", it is not recommended to use the WKP templates that turn the table cells green for "Yes" and red for "No"! -->
 
 {| class="wikitable sortable" style="text-align: center"
 ! Name
 ! Textual/graphical
 ! [[Object-oriented]]
 ! [[Type system]]
-|-
-| [[Audulus]]
-| Graphical
-| No
-| 
 |-
 | [[ChucK]]
 | Textual
@@ -194,7 +139,6 @@ The interface to an audio system often has a significant influence on the creati
 | Textual/Graphical (FLTK/Qt/HTML5)
 | No
 | In development
-|
 |-
 | [[Impromptu (programming environment)|Impromptu]]
 | Mostly textual
@@ -205,11 +149,6 @@ The interface to an audio system often has a significant influence on the creati
 | Graphical
 | No
 |
-|-
-| [http://nsound.sourceforge.net/ nsound]
-| Textual
-| Yes
-| Dynamic
 |-
 | [[Pure Data]]
 | Graphical
@@ -230,17 +169,6 @@ The interface to an audio system often has a significant influence on the creati
 | Textual
 | No
 | No
-|-
-| [[Usine]]
-| Graphical
-| Yes (scripts)
-| Dynamic
-|-
-|-
-| [http://byond.codeplex.com Byond]
-| Textual
-| Yes
-| Static
 |-
 |}
 
@@ -266,41 +194,28 @@ Interfaces between the language environment and other software or hardware (not 
 ! As host
 ! As unit
 |-
-| [[Audulus]]
-|
-|
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-|
-| 
-| 
-|
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-|-
 | [[ChucK]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
 |
 |
 |
 |-
 | [[Csound]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |
 |  
 | binding from Haskell (hCsound), C, C++, Python, Java, Lua, Lisp, JavaScript
@@ -308,121 +223,68 @@ Interfaces between the language environment and other software or hardware (not 
 | [[Impromptu (programming environment)|Impromptu]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | 
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
 | Bidirectional Scheme to Objective-C bridge
 |-
 | [[Max/MSP]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
 |
-|-
-| [http://nsound.sourceforge.net/ nsound]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| C++ API, Python API
 |-
 | [[Pure Data]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
 | bindings for Python, Lua, Java, GStreamer
 |-
 | [[Reaktor]]
 |
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|  style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-|  style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+|  {{no}}
+|  {{yes}}
 |
 |-
 | [[SuperCollider]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+| {{yes}}
 | LADSPA Host, scsynth can be controlled by OSC messages (Haskell, Scala, Python, Ruby, Scheme etc.)
 |-
-| [http://www.eecs.berkeley.edu/~lazzaro/sa/ sfront]
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| 
-| 
-| 
-| [[MPEG-4 Structured Audio|MPEG-4/SA]] language implementation.
-|-
-| [[Usine]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-|
-| Multi-touch
-|-
-| [http://byond.codeplex.com Byond]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-|
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|
-
-|
-| 
 |}
 
 ==Technical==
@@ -433,23 +295,11 @@ Interfaces between the language environment and other software or hardware (not 
 ! Programming (plugin) API language(s)
 ! Other technical features
 |-
-| [[Audulus]]
-| [[iOS]], [[Mac OS X]]
-| [[C++]], [[Objective-C]], [[Lua (programming language)|Lua]]
-|
-| 
-|-
 | [[ChucK]]
 | [[Mac OS X]], [[Linux]], [[Microsoft Windows|Windows]]
 | [[C++]]
 |
 | Unified timing mechanism (no separation between audio-rate and control-rate), [[command-line]] access
-|-
-| [[Common Music]]
-| [[Mac OS X]], [[Linux]], [[Microsoft Windows|Windows]]
-| [[Scheme (programming language)|Scheme]], [[C++]]
-| [[Scheme (programming language)|Scheme]], [[Source Annotation Language|SAL]]
-| [[command-line]] access
 |-
 | [[Csound]]
 | [[Mac OS X]], [[Linux]], [[Microsoft Windows|Windows]]
@@ -461,19 +311,13 @@ Interfaces between the language environment and other software or hardware (not 
 | [[Mac OS X]]
 | [[Lisp (programming language)|Lisp]],  [[Objective-C]], [[Scheme (programming language)|Scheme]]
 | [[C (programming language)|C]], [[C++]],  [[Objective-C]], [[Scheme (programming language)|Scheme]]
-| Native access to most OS X APIs including [[Core Image]], [[Quartz]], [[QuickTime]] and [[OpenGL]].  Impromptu also includes [http://impromptu.moso.com.au/extras/ICR.html its own] statically typed (inferencing) systems language for heavy numeric processing - OpenGL, RT AudioDSP etc..
+| Native access to most OS X APIs including [[Core Image]], [[Quartz]], [[QuickTime]] and [[OpenGL]].  Impromptu also includes its own statically typed (inferencing) systems language for heavy numeric processing - OpenGL, RT AudioDSP etc..
 |-
 | [[Max/MSP]]
 | [[Mac OS X]], [[Microsoft Windows|Windows]]
 | [[C (programming language)|C]], [[Objective-C]]
 | [[C (programming language)|C]], [[Java (programming language)|Java]], [[JavaScript]], also [[Python (programming language)|Python]] and [[Ruby (programming language)|Ruby]] via externals
 |
-|-
-| [http://nsound.sourceforge.net/ nsound]
-| [[Mac OS X]], [[Linux]], [[Microsoft Windows|Windows]]
-| [[C++]]
-| [[C++]], [[Python (programming language)|Python]]
-| Real-Time Dynamic [[Digital Filters]]
 |-
 | [[Pure Data]]
 | [[Mac OS X]], [[Linux]], [[Microsoft Windows|Windows]], [[iPod]], [[Android (operating system)|Android]]
@@ -493,28 +337,12 @@ Interfaces between the language environment and other software or hardware (not 
 | [[C++]]
 | [[Client-server]] architecture; client and server can be used independently, [[command-line]] access
 |-
-| [http://www.eecs.berkeley.edu/~lazzaro/sa/ sfront]
-| [[Linux]], [[Microsoft Windows|Windows]](via cygwin)
-| [[C++]]
-|
-| Conforming [[MPEG-4 Structured Audio|MPEG-4/SA]] implementation.
-|-
-| [[Usine]]
-| [[Mac OS X]]/[[Microsoft Windows|Windows]]
-| [[Embarcadero Delphi|Delphi]]
-| [[C++]]
-| 
-|-
-| [http://byond.codeplex.com Byond]
-| [[Microsoft Windows|Windows]]
-| [[C Sharp (programming language)|C#]], [[Extensible Application Markup Language|XAML]]
-| [[C Sharp (programming language)|C#]], [[Extensible Application Markup Language|XAML]]
-| 
-|-
 |}
 
+==See also==
+* [[List of music software]]
 
-
+{{DEFAULTSORT:Comparison Of Audio Synthesis Environments}}
 [[Category:Audio programming languages]]
 [[Category:Electronic music software]]
 [[Category:Free audio software| ]]

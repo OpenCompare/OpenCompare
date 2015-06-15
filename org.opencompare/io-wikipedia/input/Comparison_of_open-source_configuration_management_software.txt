@@ -1,10 +1,11 @@
-<table class="metadata plainlinks ambox ambox-style ambox-citation_style" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''has an unclear citation style'''.<span class="hide-when-compact"> The references used may be made clearer with a different or consistent style of [[Wikipedia:Citing sources|citation]], [[Help:Footnotes|footnoting]], or [[Wikipedia:External links|external linking]].</span>  <small>''(November 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{reference-style|date=November 2013}}
 This is a comparison of notable [[Free software|free]] and [[Open-source software|open source]] [[software configuration management|configuration management software]], suitable for tasks typically performed by a [[system administrator]].
-
-
+<!-- IF YOU DON'T PAY ATTENTION TO THIS MESSAGE, YOUR EDIT WILL BE ROLLED BACK WITHOUT WARNING.
+Only place entries here that are links to actual Wikipedia articles about notable open source configuration management software. External links, redlinks, non-notable sites will be removed. If you have questions, use the talk page. Please try to keep entries in alphabetical order.  Adding unnecessary links or text to any other section (such as the "References" section) will also be removed. Thanks.
+-->
 ==Basic properties==
-"Verify mode" refers to having an ability to determine whether a node is conformant with a guarantee of not modifying it, and typically involves the exclusive use of an internal language supporting read-only mode for all potentially system-modifying operations. "[[Mutual authentication|Mutual auth]]" refers to the client verifying the server and vice-versa. "Agent" describes whether additional [[Daemon (computing)|Software Daemons]] are required. Depending on the management software these agents are usually deployed on the target system or on one or many central "controller" servers.
-
+"Verify mode" refers to having an ability to determine whether a node is conformant with a guarantee of not modifying it, and typically involves the exclusive use of an internal language supporting read-only mode for all potentially system-modifying operations. "[[Mutual authentication|Mutual auth]]" refers to the client verifying the server and vice versa. "Agent" describes whether additional [[Daemon (computing)|Software Daemons]] are required. Depending on the management software these agents are usually deployed on the target system or on one or many central "controller" servers.
+<!-- In each table, link 1st instance of terms, remove later WP:REPEATLINK(s). -->
 {| class="wikitable sortable" style="text-align: center; width: 95%"
 |- style="background: #ececec;"
 ! style="width:12em" |
@@ -13,236 +14,284 @@ This is a comparison of notable [[Free software|free]] and [[Open-source softwar
 ! [[mutual authentication|Mutual auth]]
 ! [[encryption|Encrypts]]
 ! Verify mode
-! Agent
+! Agent-less
+! Have a GUI
 ! First release
 ! Latest stable release
 |-	 
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ansible (software)|Ansible]]	 
+! {{rh}} | [[Ansible (software)|Ansible]]	 
 | [[Python (programming language)|Python]]
 | [[GNU General Public License|GPL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}<ref name="Key Pair">Key Pair: Uses public/private key pairs and key fingerprints for mutual authentication, like SSH.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
+| {{yes}}
+| {{yes}}
+| {{yes}}<ref>http://www.ansible.com/tower</ref> (Free 30-day Trial)
 | style="text-align:left;"| 2012-03-08 
-| style="text-align:left;"| 2014-09-24 1.7.2
+| style="text-align:left;"| 2015-04-28 1.9.1<ref>[http://www.ansible.com/blog/ansible-1.9.1-released]</ref>
+|-	 
+! {{rh}} | [[NOC (software)|NOC]]	 
+| [[Python (programming language)|Python]]
+| [[GNU General Public License|BSD]]
+| {{yes}}<ref name="Key Pair">Key Pair: Uses public/private key pairs and key fingerprints for mutual authentication, like SSH.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| style="text-align:left;"| 2012-03-08 
+| style="text-align:left;"| 2013-09-05 0.8<ref>[https://kb.nocproject.org/display/SITE/NOC]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Bcfg2]]
+! {{rh}} | [[Bcfg2]]
 | Python
-| BSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"|2004-08-11
-| style="text-align:left;"|2014-02-25 1.3.4
+| BSD<ref>{{cite web|author=/ |url=https://github.com/Bcfg2/bcfg2/blob/master/LICENSE |title=bcfg2/LICENSE at master · Bcfg2/bcfg2 · GitHub |publisher=Github.com |date= |accessdate=2014-02-10}}</ref>
+| {{yes}}<ref name="Certificate and Passwords">Certificate and Passwords: Uses SSL X.509 certificate and fingerprint for clients to authenticate server, and passwords for server to authenticate clients; clients should only share the same password if they are allowed access to each other's configuration data.</ref>
+| {{yes}}<ref name="SSL">SSL: Uses the Secure Sockets Layer, Transport Layer Security (TLS) for encryption.</ref>
+| {{yes}}<ref name="Verify-Bcfg2">Full support for non-modifying determination of node compliance, including nodes not previously modified by a Bcfg2 configuration pass.</ref>
+| {{no}}
+|
+| style="text-align:left;"|2004-08-11<ref name="autogenerated1">{{cite web|url=http://bcfg2.org/download/ |title=Download – Bcfg2 |publisher=bcfg2.org |date= |accessdate=2014-12-17}}</ref>
+| style="text-align:left;"|2014-09-05 1.3.5<ref name="autogenerated1"/>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[cdist]]
+! {{rh}} | [[cdist]]
 | Python
 | [[GNU General Public License|GPL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref name="Key Pair">Key Pair: Uses public/private key pairs and key fingerprints for mutual authentication, like SSH.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
 | 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+|
 | style="text-align:left;"|2010
-| style="text-align:left;"|2012-06-05 2.0.13
+| style="text-align:left;"|2015-03-19 3.1.12
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Chef (software)|Chef]]
+! {{rh}} | [[Chef (software)|Chef]]
 | [[Ruby (programming language)|Ruby]]
 | [[Apache License|Apache]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref name="RSA Shared Keys">Per request signed headers and [[pre-shared key]]s.</ref>
+| {{yes}}<ref name="SSL">Payload encryption via SSL if HTTPS proxy is configured.</ref>
+| {{yes}}<ref name="Verify-Chef">Chef 10.14.0+ (called why-run mode)</ref><ref>{{cite web|url=http://tickets.opscode.com/browse/CHEF-13 |title=[#CHEF-13&#93; Add -noop support - Opscode Open Source Ticket Tracking |publisher=Tickets.opscode.com |date= |accessdate=2014-02-10}}</ref>
+| {{no}}
+|
 | style="text-align:left;"|2009-01-15 0.5.0
-| style="text-align:left;"|2014-02-20 11.10.4, 2013-02-15 11.0.6 (server)
+| style="text-align:left;"|2014-12-16 12.0.3 (client),<ref>{{cite web|author=|url=https://www.chef.io/blog/2014/12/16/release-chef-client-12-0-3/ |title=Release Chef Client 12.0.3 |publisher=chef.io |date=2014-12-16 |accessdate=2014-12-19}}</ref> 2014-12-17 12.0.1 (server)<ref>{{cite web|author=|url=https://www.chef.io/blog/2014/12/17/security-release-chef-server-12-0-1-and-enterprise-chef-server-11-2-6/ |title=Security Release: Chef Server 12.0.1 and Enterprise Chef Server 11.2.6 |publisher=chef.io |date=2014-12-17 |accessdate=2014-12-19}}</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CFEngine]]
+! {{rh}} | [[CFEngine]]
 | [[C (programming language)|C]]
-| GPL, COSL
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| GPL, COSL<ref>[https://github.com/cfengine/core/blob/master/LICENSE CFEngine license]</ref>
+| {{yes}}<ref name="Key Pair" />
+| {{yes}}<ref name="Custom">Custom: Uses code specific to the software for this function.</ref>
+| {{yes}}<ref name="Dry-run">Called dry-run, used to verify what would happen</ref><ref>{{cite web|url=https://cfengine.com/manuals/cf-quickref3 |title=Quick Reference Guide for CFEngine 3 - CFEngine - Distributed Configuration Management |publisher=CFEngine |date= |accessdate=2014-02-10}}</ref>
+| {{no}}
+|
 | style="text-align:left;"| 1993
-| style="text-align:left;"| 2014-07-28 3.6.1
+| style="text-align:left;"| 2014-12-05 3.6.3<ref>[http://cfengine.com/company/blog-detail/cfengine-3-6-3-now-available-hp-ux-support-ui-performance/ CFEngine 3.6.3 now available: HP-UX support and UI performance]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ISconf]]
+! {{rh}} | [[ISconf]]
 | Python
-| GPL
-|style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| GPL<ref>{{cite web|url=http://trac.t7a.org/isconf/browser/trunk/LICENSE |title=/trunk/LICENSE - ISconf - Trac |publisher=Trac.t7a.org |date=1989-04-01 |accessdate=2014-02-10}}</ref>
+|{{yes}}<ref name="HMAC">HMAC: Uses [[HMAC]] signatures on all network traffic.</ref>
+| {{no}}<ref>Improved security which would include an encrypted, mutually authenticated, peer-to-peer message bus is tracked here [http://trac.t7a.org/isconf/ticket/39].</ref>
+|
 |
 |
 | style="text-align:left;"|1998
 | style="text-align:left;"|2006-08-13 4.2.8.233
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Juju (software)|Juju]]
-| Python, [[Go (programming language)|Go]]
+! {{rh}} | [[Juju (software)|Juju]]
+| Python, [[Go (programming language)|Go]]<ref>{{cite web|url=https://groups.google.com/forum/#!topic/golang-nuts/jLnMsUbYwrQ |title=Juju at Canonical |publisher=groups.google.com |date=2013-02-10 |accessdate=2014-07-09}}</ref>
 | [[Affero General Public License]]
 | 
 |
 |
 |
-| style="text-align:left;"|2010-09-17
-| style="text-align:left;"|2013-04-03 0.7
+|
+| style="text-align:left;"|2010-09-17<ref>{{cite web|url=https://launchpad.net/juju/+series |title=timeline : pyjuju |publisher=Launchpad.net |date= |accessdate=2014-02-10}}</ref>
+| style="text-align:left;"|2013-04-03 0.7<ref>{{cite web|url=https://launchpad.net/juju/+milestones |title=Milestones : pyjuju |publisher=Launchpad.net |date= |accessdate=2014-02-10}}</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Local ConFiGuration system ([[LCFG]])
+! {{rh}} | Local ConFiGuration system ([[LCFG]])
 | Perl
 | GPL
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| {{partial}}<ref>LCFG does not provide its own transport mechanism; it relies on an external program, most often Apache. Using Apache it should be possible to do mutual authentication in several ways; however the documentation at [http://www.lcfg.org/doc/guide.pdf The Complete Guide to LCFG], Section 9.4: Authorization and Security, shows access control based on IP address ranges, implying that the client does not authenticate itself to the server via an SSL certificate; it also does not mention if the LCFG client checks the validity of the server's SSL certificate (such as via a per-site fingerprint distributed with the client, or a chain of trust to an accredited CA). It mentions that there can be a per-client password in the profile, but also states that ''"The contents of the LCFG profile should be considered public"''.</ref>
+| {{partial}}<ref>LCFG supports encrypted communications channels (SSL via Apache); however the documentation at [http://www.lcfg.org/doc/guide.pdf The Complete Guide to LCFG], Section 9.4: Authorization and Security, states that ''"The contents of the LCFG profile should be considered public"''.</ref>
 | 
+|
 |
 | style="text-align:left;"|1994
 | style="text-align:left;"|Weekly Releases
+|-	 
+! {{rh}} | [[NixOS]]	 
+| [[Nix package manager|Nix]]
+| [[MIT License]]
+| {{yes}}<ref name="Key Pair">Key Pair: Uses public/private key pairs and key fingerprints for mutual authentication, like SSH.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
+| {{yes}}
+| {{yes}}
+| {{no}}
+| 2005-08-04 <ref>[http://lists.science.uu.nl/pipermail/nix-dev/2005-August/000107.html NixOS boots and installs]</ref>
+| 2014-12-30 14.12<ref>[http://nixos.org/nixos/manual/sec-release-14.12.html NixOS CHANGELOG]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[OCS Inventory]] NG with GLPI
+! {{rh}} | [[OCS Inventory]] NG with GLPI
 | Perl, PHP, [[C++]]
 | GPL
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}<ref>Server authenticates to client, but client does not authenticate to server. See [http://prdownloads.sourceforge.net/ocsinventory/OCS_Inventory_NG-Installation_and_Administration_Guide_1.9_EN.pdf.zip?download OCS Inventory NG Installation and Administration guide], page 114.</ref>
+| {{yes}}<ref name="SSL" />
 |
+| {{no}}
 |
 | style="text-align:left;"|2003
-| style="text-align:left;"|2011-09-13
+| style="text-align:left;"|2014-07-13<ref>{{cite web|url=http://www.ocsinventory-ng.org/en/home/news/ocs-inventory-ng-2.1.2-stable-publised.html |title=2.1.2 stable published |publisher=OCS Inventory NG |date= |accessdate=2014-12-16}}</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Open pc server integration ([[Opsi]])
+! {{rh}} | Open pc server integration ([[Opsi]])
 | Python, Java
 | GPL
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+| {{yes}}<ref name="SSL" />
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+|
 | style="text-align:left;"|2004
 | style="text-align:left;"|2013-03-01 4.0.3
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[PIKT]]
+! {{rh}} | [[PIKT]]
 | C
-| GPL
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| GPL<ref>{{cite web|author=Robert Osterlund |url=http://pikt.org/pikt/licensing.html |title=PIKT Licensing |publisher=Pikt.org |date=2014-01-04 |accessdate=2014-02-10}}</ref>
+| {{yes}}<ref>PIKT uses shared secret keys for mutual authentication. ''"As an option, you can use secret key authentication to prove the master's identity to the slave. [...] If one managed to crack any system in the PIKT domain, one would have access to all common secrets.  To solve this problem, you may use per-slave uid, gid, and private_key settings."'' - from [http://pikt.org/pikt/ref/ref.6.security_considerations.html Security Considerations].</ref>
+| {{yes}}<ref>''"For file installs, file fetches (to diff against the central configuration), and command executions, you can optionally encrypt all such data traffic between master and slave."'' - from [http://pikt.org/pikt/ref/ref.6.security_considerations.html Security Considerations].</ref>
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"|1998
+| {{no}}
+|
+| style="text-align:left;"|1998<ref>{{cite web|url=http://pikt.org/pikt/dist/?C=M;O=A |title=Index of /pikt/dist |publisher=Pikt.org |date= |accessdate=2014-02-10}}</ref>
 | style="text-align:left;"|2007-09-10 1.19.0
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Puppet (software)|Puppet]]
+! {{rh}} | [[Puppet (software)|Puppet]]
 | Ruby
 | Apache from 2.7.0, GPL before then
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"|2005-08-30
-| style="text-align:left;"|2014-06-10  3.6.2
+| {{yes}}<ref name="Certificates">Certificates: Uses SSL X.509 Certificates for mutual authentication. Can use any SSL Certificate Authority to manage the Public Key Infrastructure.</ref>
+| {{yes}}<ref name="SSL" />
+| {{yes}}<ref name="Verify-Puppet">Using the --noop option</ref><ref>{{cite web|url=http://docs.puppetlabs.com/man/agent.html |title=puppet agent Man Page — Documentation — Puppet Labs |publisher=Docs.puppetlabs.com |date= |accessdate=2014-02-10}}</ref>
+| {{no}}
+| {{yes}}<ref>http://www.olindata.com/blog/2014/01/puppet-management-gui-comparison</ref>
+| style="text-align:left;"|2005-08-30<ref>{{cite web|url=http://puppetlabs.com/downloads/puppet/?C=M;O=A |title=Index of /puppet |publisher=Puppetlabs.com |date= |accessdate=2014-02-10}}</ref>
+| style="text-align:left;"|2015-03-26  3.7.5<ref name="Puppet 3.75 Release notes">{{cite web|author=Puppet 3 Release Notes |url=https://docs.puppetlabs.com/puppet/latest/reference/release_notes.html#puppet-375 |title=Puppet 3.7.5 Release Notes — Documentation — Puppet Labs |publisher=Docs.puppetlabs.com |date= |accessdate=2015-01-19}}</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Quattor]]
+! {{rh}} | [[Quattor]]
 | Perl, Python
-| Apache 2.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| Apache 2.0<ref>{{cite web|url=http://www.opensource.org/licenses/eudatagrid.php |title=EU DataGrid Software License (EUDatagrid) &#124; Open Source Initiative |publisher=Opensource.org |date=1999-02-22 |accessdate=2014-02-10}}</ref><ref>{{cite web|url=http://eu-datagrid.web.cern.ch/eu-datagrid/license.html |title=DataGrid Software License (do not change the page URL) |publisher=Eu-datagrid.web.cern.ch |date=2004-05-26 |accessdate=2014-02-10}}</ref>
+| {{yes}}<ref>"Client to server authentication and vice versa: on one hand, this allows to enforce access policies
+to sensitive data according to the client "name", on the other hand, clients are guaranteed to talk to
+the original server." - from [http://isscvs.cern.ch:8180/cgi-bin/cvsweb.cgi/%7Echeckout%7E/elfms/quattor/documentation/installation-guide/pdf/quattor-install-guide_1_1.pdf?rev=HEAD&content-type=application/pdf&cvsroot=elfms Quattor Installation and User Guide: Version 1.1.x], page 70</ref>
+| {{yes}}<ref>"[...] secure information transfer, since data are encrypted: this prevents eavesdroppers from obtaining information in transit over the network." - from [http://isscvs.cern.ch:8180/cgi-bin/cvsweb.cgi/%7Echeckout%7E/elfms/quattor/documentation/installation-guide/pdf/quattor-install-guide_1_1.pdf?rev=HEAD&content-type=application/pdf&cvsroot=elfms Quattor Installation and User Guide: Version 1.1.x], page 70</ref>
 |
 |
-| style="text-align:left;"|2005-04-01
-| style="text-align:left;"|2014-11-14 14.10.0
+|
+| style="text-align:left;"|2005-04-01<ref>{{cite web|url=http://quattorsw.web.cern.ch/quattorsw/software/quattor/release/ |title=Index of /quattorsw/software/quattor/release |publisher=Quattorsw.web.cern.ch |date= |accessdate=2014-02-10}}</ref>
+| style="text-align:left;"|2015-03-23 15.2.0<ref>[http://www.quattor.org/news/2015/03/23/announcing-quattor-15.2.0.html Quattor 15.2.0 released]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Radmind]]
+! {{rh}} | [[Radmind]]
 | C
-| BSD
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| BSD<ref>{{cite web|url=http://rsug.itd.umich.edu/software/copyright.html |title=Research Systems Unix Group: beepage |publisher=Rsug.itd.umich.edu |date= |accessdate=2014-02-10}}</ref>
+| {{yes}}<ref>''"SSL certificates can also be used to authenticate both the Radmind server and the managed clients, regardless of DNS or IP-address variation."'' - from [http://www.usenix.org/events/lisa03/tech/full_papers/craig/craig_html/index.html Radmind: The Integration of Filesystem Integrity Checking with Filesystem Management]</ref>
+| {{yes}}<ref>''"For network security, Radmind supports SSL-encrypted links. This allows nodes on insecure networks to be updated securely.''" - from [http://www.usenix.org/events/lisa03/tech/full_papers/craig/craig_html/index.html Radmind: The Integration of Filesystem Integrity Checking with Filesystem Management]</ref>
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"|2002-03-26
-| style="text-align:left;"|2008-10-08 1.13.0
+| {{no}}
+|
+| style="text-align:left;"|2002-03-26<ref>{{cite web|url=http://sourceforge.net/project/showfiles.php?group_id=141444&package_id=155276&release_id=392624 |title=Radmind - Browse /radmind/radmind-0-6-0 at |publisher=Sourceforge.net |date=2006-02-10 |accessdate=2014-02-10}}</ref>
+| style="text-align:left;"|2008-10-08 1.13.0<ref>http://sourceforge.net/project/showfiles.php?group_id=141444</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rex (software)|Rex]]	 
+! {{rh}} | [[Rex (software)|Rex]]	 
 | [[Perl (programming language)|Perl]]
 | [[Apache License|Apache]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref name="Key Pair">Key Pair: Uses public/private key pairs and key fingerprints for mutual authentication, like SSH.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
 | 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="text-align:left;"| 2010-11-05 0.9.0
-| style="text-align:left;"| 2014-07-14 0.50.0
+| {{yes}}
+|
+| style="text-align:left;"| 2010-11-05 0.9.0<ref>[https://github.com/krimdomu/Rex/releases/tag/0.9.0 Rex initial release tag]</ref>
+| style="text-align:left;"| 2014-07-14 0.50.0<ref>[https://github.com/RexOps/Rex/blob/master/ChangeLog Github changelog for Rex]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rudder (software)|Rudder]]
+! {{rh}} | [[Rudder (software)|Rudder]]
 | [[C (programming language)|C]] and [[Scala (programming language)|Scala]]
 | GPL and Affero GPL
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref name="Key Pair" />
+| {{yes}}<ref name="SSL" />
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+|
 | style="text-align:left;"| 2011
-| style="text-align:left;"| 2014-08-28 2.10.5
+| style="text-align:left;"| 2014-08-28 2.10.5<ref>[http://www.rudder-project.org/foswiki/bin/view/System/Documentation:ChangeLog210 Change Logs for Rudder 2.10.* versions]</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rundeck (software)|Rundeck]]
-| Java
+! {{rh}} | [[Rundeck (software)|Rundeck]]<ref>[http://rundeck.org/ Rundeck] Rundeck is an open source workflow automation service to manage your operations.</ref>
+| Java<ref>[http://rundeck.org/docs/administration/installation.html#system-requirements system reqs]</ref>
 | Apache 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |
+| {{yes}}
 | style="text-align:left;"|2010-05-01 1.0.0
-| style="text-align:left;"|2014-06-27 2.1.3
+| style="text-align:left;"|2015-02-13 2.4.2<ref>http://rundeck.org/downloads.html</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SmartFrog]]
+! {{rh}} | [[SmartFrog]]
 | Java
 | [[GNU Lesser General Public License|LGPL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref name="Smartfrog Security">See [http://www.hpl.hp.com/research/smartfrog/papers/sfSecurityTutorial.pdf Using the new SmartFrog Security]</ref>
+| {{yes}}<ref name="Smartfrog Security" />
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
+|
 | style="text-align:left;"|2004-02-11
-| style="text-align:left;"|2009-01-26 3.16.004
+| style="text-align:left;"|2009-01-26 3.16.004<ref>http://sourceforge.net/project/shownotes.php?release_id=656342</ref><ref name="Smartfrog Releases">The release the Smartfrog pushes from its [http://wiki.smartfrog.org/wiki/display/sf/Download own site] is 3.17.014 of 2009-09-04</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Salt (software)|Salt]]
-| Python
-| Apache
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Both 
-| style="text-align:left;"|2011-03-17 0.6.0
-| style="text-align:left;"|2014-11-03 2014.7.0
+! {{rh}} | [[Salt (software)|Salt]]<ref>[http://saltstack.org/ Salt] is an open source tool to manage your infrastructure. Easy enough to get running in minutes and fast enough to manage tens of thousands of servers</ref>
+| Python<ref>http://docs.saltstack.com/en/latest/topics/installation/index.html#dependencies</ref>
+| Apache<ref>http://saltstack.org/topics/index.html#open</ref>
+| {{yes}}<ref name="Salt Security">http://saltstack.org/topics/index.html#building-on-proven-technology</ref>
+| {{yes}}<ref name="Salt Security" />
+| {{yes}}
+| Both<ref>http://docs.saltstack.com/en/latest/topics/ssh/</ref><ref>http://www.saltstack.com/enterprise/</ref>
+| {{yes}}<ref>https://github.com/saltstack/halite/</ref><ref>https://github.com/tinyclues/saltpad/</ref>
+| style="text-align:left;"|2011-03-17 0.6.0<ref>http://saltstack.org/topics/releases/0.6.0/</ref>
+| style="text-align:left;"|2014-11-03 2014.7.0<ref>https://github.com/saltstack/salt/releases/tag/v2014.7.0</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Spacewalk (software)|Spacewalk]]
+! {{rh}} | [[Spacewalk (software)|Spacewalk]]
 | Java (C, Perl, Python, [[PL/SQL]])
 | GPLv2
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"| 2008-06
-| style="text-align:left;"| 2013-07-19 2.0
+| {{no}}
+|
+| style="text-align:left;"| 2008-06<ref name="Spacewalk inception date">https://fedorahosted.org/spacewalk/wiki/SpacewalkFaq#HowlonghasSpacewalkbeenaround</ref>
+| style="text-align:left;"| 2015-04 2.3<ref>https://fedorahosted.org/spacewalk/wiki/ReleaseNotes20</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[STAF]]
+! {{rh}} | [[STAF]]
 | [[C++]]
-| [[Common Public License|CPL]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| [[Common Public License|CPL]]<ref>http://staf.sourceforge.net/license.php</ref>
+| {{no}}<ref name="Network Trust">Network Trust: Trusts the network, like rsh.</ref><ref name="User-only Auth">User-only Auth: User authenticates to server via password, but uses Network Trust to authenticate user to server, like telnet.</ref>
+| {{partial}}<ref>There is a [http://sourceforge.net/tracker/index.php?func=detail&aid=940264&group_id=33142&atid=407384 feature request for a Secure TCP/IP Connection Provider], and one of the [http://sourceforge.net/mailarchive/message.php?msg_name=OF7C30AE4D.50AE13E2-ON862572B4.004D3583-862572B4.004E54FC%40us.ibm.com developers stated] on 2007-04-05 that ''"You will need to download the source code for OpenSSL and point the build files at it. Other than that, it should just work."'', so it looks like there may be working encryption if you build from scratch instead of using the prebuilt binaries. It is unclear what if any authentication building against OpenSSL would give STAF.</ref>
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="text-align:left;"|1998-02-16
-| style="text-align:left;"|2012-12-16 3.4.16 
-|-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Synctool]]
-| Python
-| GPLv2
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{no}}
 |
-| style="text-align:left;"|2003
-| style="text-align:left;"|2014-06-15 6.1
+| style="text-align:left;"|1998-02-16<ref>http://staf.sourceforge.net/history.php</ref>
+| style="text-align:left;"|2012-12-16 3.4.16 <ref>http://staf.sourceforge.net/</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vagrant_(software)|Vagrant]]
+! {{rh}} | [[Synctool]]<ref>[http://www.heiho.net/synctool/ Synctool] aims to be easy to understand and use. It's built in Python and uses SSH and Rsync.</ref>
+| Python<ref>http://www.heiho.net/synctool/doc/chapter2.html</ref>
+| GPLv2<ref>https://github.com/walterdejong/synctool/blob/master/LICENSE</ref>
+| {{yes}}<ref name="Synctool Security">Secure Shell: Uses the Secure Shell protocol for authentication.</ref>
+| {{yes}}<ref name="Secure Shell">Secure Shell: Uses the Secure Shell protocol for encryption.</ref>
+| {{yes}}<ref name="Verify-Synctool">Synctool performs a dry-run by default, and only modifies things when invoked with '--fix'.</ref>
+|
+|
+| style="text-align:left;"|2003<ref>http://www.heiho.net/synctool/doc/chapter1.html</ref>
+| style="text-align:left;"|2014-06-15 6.1<ref>https://github.com/saltstack/salt/releases/tag/v2014.7</ref>
+|-
+! {{rh}} | [[Vagrant (software)|Vagrant]]<ref>[http://www.vagrantup.com/ Vagrant] is free and open-source software for creating and configuring virtual development environments.</ref>
 | Ruby
 | MIT License
 | 
 |
 | 
+|
 | 
 | style="text-align:left;"|2010-01-21
 | style="text-align:left;"|2014-05-06 1.6.1
@@ -263,234 +312,234 @@ Note: This means platforms on which a recent version of the tool has actually be
 ! [[Microsoft Windows|Windows]]
 ! Others
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Ansible (software)|Ansible]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Ansible (software)|Ansible]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}<ref>{{Citation | url = http://docs.ansible.com/intro_installation.html#control-machine-requirements | title = Installation : Control Machine Requirements|accessdate=May 12, 2015}} Can manage any machine with Python 2.4 or later and sshd. Control machine can be any non-Windows machine with Python 2.6 or 2.7 installed. This includes Red Hat, Debian, CentOS, OS X, any of the BSDs, and so on.</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Bcfg2]]
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[Bcfg2]]
+| {{partial}}<ref>Encap, RPM, and POSIX File Support Only</ref>
+| {{yes}}<ref name="FreeBSD">FreeBSD</ref>
+| {{no}}
+| {{yes}}<ref>Debian, Ubuntu; Gentoo; RPM-based distributions (CentOS, Mandrake, Red Hat, RHEL, SLES, SuSE)</ref>
+| {{partial}}<ref>POSIX File, Launchd, and MacPorts Support Only</ref>
+| {{yes}}
+| {{no}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[CFEngine]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[CFEngine]]
+| {{yes}}
+| {{yes}}<ref name="FreeBSD" />
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{partial}}
+| {{yes}}<ref name="Unix">Unix</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[cdist]]
+! {{rh}} | [[cdist]]
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 | 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | 
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Chef (software)|Chef]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
+! {{rh}} | [[Chef (software)|Chef]]
+| {{yes}}<ref>{{Citation | url = http://www.opscode.com/blog/2013/04/25/opscode-and-ibm-join-forces-to-bring-open-source-cloud-automation-to-the-enterprise/ | title = Opscode and IBM Join Forces to Bring Open Source Cloud Automation to the Enterprise|date=April 25, 2013}}</ref>
+| {{yes}} 
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}<ref>{{Citation | url = http://docs.opscode.com/install_windows.html | title = Install the chef-client on Microsoft Windows|accessdate=November 21, 2013}}</ref>
+| {{yes}} 
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[ISconf]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[ISconf]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Juju (software)|Juju]]
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Juju (software)|Juju]]
 | 
 | 
 | 
+| {{yes}}
+| 
+| 
+| 
 | 
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Local ConFiGuration system ([[LCFG]])
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | Local ConFiGuration system ([[LCFG]])
+| {{no}}
+| {{no}}
+| {{no}}
+| {{partial}}<ref>''"Recent versions run on Fedora Core (3, 5, 6). Various people have ported some of the LCFG core to other Linux distributions, such as Debian, but these ports have not been incorporated"''</ref>
+| {{partial}}<ref>''"There has been an experimental port to Mac OS X, which does work and includes some Mac-specific components. However, this is not production quality and the lack of uniform packaging system under Mac OS X means that automatic management of installed software is likely to be difficult."''</ref>
+| {{partial}}<ref>''"LCFG core has been ported back to Solaris and we are using this in production, although the software has not been packaged for distribution, and is not so well supported"''</ref>
+| {{no}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |  [[OCS Inventory NG]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} |  [[OCS Inventory NG]] 
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | Open pc server integration ([[Opsi]])
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | Open pc server integration ([[Opsi]])
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[PIKT]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[PIKT]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}<ref>Digital Unix; IRIX</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Puppet (software)|Puppet]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Puppet (software)|Puppet]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{partial}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Quattor]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[Quattor]]
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{partial}}<ref>[http://sourceforge.net/p/quattor/mac-quattor/ Some effort has been made to port some functionality to OSX]</ref>
+| {{yes}}
+| {{no}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Radmind]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[Radmind]]
+| {{yes}}
+| {{yes}}<ref name="FreeBSD" /><ref name="NetBSD">NetBSD</ref><ref name="OpenBSD">OpenBSD</ref>
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rex (software)|Rex]]
+! {{rh}} | [[Rex (software)|Rex]]
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{yes}}<ref name=rexget>{{cite web|url=http://www.rexify.org/get|title=Rex installation instructions|accessdate=2014-07-19}}</ref>
+| {{yes}}
+| {{yes}}<ref name=rexget/>
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Rudder (software)|Rudder]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Rudder (software)|Rudder]]
+| {{yes}}
+| {{partial}}<ref name="ReferenceA">Multiple users have successfully built and run the agent on FreeBSD, but no official package is available currently</ref>
+| {{no}}
+| {{yes}}
+| {{partial}}<ref name="ReferenceA"/>
+| {{partial}}<ref>[https://github.com/cfengineers-net/rudder-packages/tree/master/rudder-agent/other Solaris package sources are available on]</ref>
+| {{yes}}
+| {{yes}}<ref>Android</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" |  [[Rundeck (software)|Rundeck]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} |  [[Rundeck (software)|Rundeck]] 
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SmartFrog]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[SmartFrog]]
+| {{no}}<ref name="JavaUntested">Written in Java, so should in theory work on this platform if there is the appropriate JVM version available for it; however it has not been tested on the platform, which should be considered unsupported.</ref>
+| {{no}}<ref name="JavaUntested" />
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}<ref name="JavaUntested" />
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Salt (Software)|Salt]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+! {{rh}} | [[Salt (Software)|Salt]]
+| {{yes}}
+| {{yes}}
+| {{partial}}<ref name="Python Untested">Will run anywhere Python runs, but handlers for different platforms are untested.</ref>
+| {{yes}}<ref>[http://saltstack.org/topics/tutorial.html#installing-salt See]</ref>
+| {{yes}}
+| {{yes}}<ref>[http://docs.saltstack.org/en/latest/topics/installation/solaris.html Salt was added to the OpenCSW package repository in September of 2012 in version 0.10.2 of Salt]</ref>
+| {{yes}}
+| {{partial}}<ref name="Python Untested"/>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Spacewalk (software)|Spacewalk]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+! {{rh}} | [[Spacewalk (software)|Spacewalk]]
+| {{no}}<ref>[https://fedorahosted.org/spacewalk/wiki/BrainBox Support for NIMOL feature request]</ref>
+| {{no}}
+| {{no}}
+| {{yes}}<ref>[https://fedorahosted.org/spacewalk/wiki/WikiStart#Introduction "Spacewalk works with RHEL, Fedora, and other RHEL derivative distributions like CentOS, Scientific Linux, etc"]</ref>
+| {{no}}
+| {{yes}}<ref>[https://fedorahosted.org/spacewalk/wiki/ManagingSolarisSystems Managing Solaris Systems]</ref>
+| {{no}}
+| {{no}}
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[STAF]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[STAF]]
+| {{yes}}<ref>4.3.3+ (Power 32); 5.1+ (Power 32/64)</ref>
+| {{yes}}<ref>FreeBSD 4.10 (x86-32); FreeBSD 6.1+ (x86-32)</ref>
+| {{yes}}<ref>11.00+ (PA-RISC 32, IA-64)</ref>
+| {{yes}}<ref>(x86-32, x86-64, IA-64, PPC 64, zSeries 32/64)</ref>
+| {{yes}}<ref>[http://sourceforge.net/tracker/index.php?func=detail&aid=1458480&group_id=33142&atid=407383][http://sourceforge.net/tracker/index.php?func=detail&aid=1338199&group_id=33142&atid=407383 10.2+ (?)]</ref>
+| {{yes}}<ref>2.6+ (Sparc 32); 10+ (x86-32, x86-64)</ref>
+| {{yes}}<ref>95, 98, Me, NT4, 2000, XP, 2003, Vista (x86-32), 7 (x86-32), 7 (x86-64); 2003, Vista (x86-64); 2004 (IA-64)</ref>
+| {{yes}}<ref>OS/400 5.2+ (iSeries 32); z/OS Unix 1.4+</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Synctool]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+! {{rh}} | [[Synctool]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}<ref>Synctool runs on any platform that supports SSH, Rsync and Python.</ref>
 |-
-! style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Vagrant_(software)|Vagrant]]
+! {{rh}} | [[Vagrant (software)|Vagrant]]
 | 
 | 
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{yes}}
 | 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | 
 |}
 
@@ -498,19 +547,19 @@ Note: This means platforms on which a recent version of the tool has actually be
 Not all tools have the same goal and the same feature set. To help distinguish between all of these software packages, here is a short description of each one.
 
 ;[[Ansible (software)|Ansible]]
-:Combines multi-node deployment, ad-hoc task execution, and configuration management in one package. Manages nodes over SSH and requires python (2.4 or later) to be installed on them. Modules work over JSON and standard output and can be written in any language. Uses YAML to express reusable descriptions of systems.
+:Combines multi-node deployment, ad-hoc task execution, and configuration management in one package. Manages nodes over SSH and requires python (2.4 or later) to be installed on them.<ref>{{cite web|url=http://www.ansibleworks.com/docs/gettingstarted.htm|title=Getting Started &#124; AnsibleWorks|date=2013-09-25}}</ref> Modules work over JSON and standard output and can be written in any language. Uses YAML to express reusable descriptions of systems.
 
 ;[[Bcfg2]]
 :Software to manage the configuration of a large number of computers using a central configuration model and the [[client–server model|client–server paradigm]]. The system enables reconciliation between clients' state and the central configuration specification. Detailed reports provide a way to identify unmanaged configuration on hosts. Generators enable code or template based generation of configuration files from a central data repository.
 
 ;[[CFEngine]]
-:Lightweight agent system. Manages configuration of a large number of computers using the client–server paradigm or stand-alone. Any client state which is different from the policy description is reverted to the desired state. Configuration state is specified via a declarative language. CFEngine's paradigm is convergent "computer immunology".
+:Lightweight agent system. Manages configuration of a large number of computers using the client–server paradigm or stand-alone. Any client state which is different from the policy description is reverted to the desired state. Configuration state is specified via a declarative language.<ref name = "Puppet vs CFEngine">https://www.scriptrock.com/blog/puppet-cfengine/</ref> CFEngine's paradigm is convergent "computer immunology".<ref>http://www.usenix.org/event/lisa98/full_papers/burgess/burgess.pdf</ref>
 
 ;[[cdist]]
 :cdist is a zero dependency configuration management system: It requires only ssh on the target host, which is usually enabled on all Unix-like machines. Only the administration host needs to have Python 3.2 installed.
 
 ;[[Chef (software)|Chef]]
-:Chef is a configuration management tool written in Ruby, and uses a pure Ruby [[Domain-specific language|DSL]] for writing configuration "recipes". These recipes contain resources that should be put into the declared state. Chef can be used as a client–server tool, or used in "solo" mode.
+:Chef is a configuration management tool written in Ruby, and uses a pure Ruby [[Domain-specific language|DSL]] for writing configuration "recipes". These recipes contain resources that should be put into the declared state. Chef can be used as a client–server tool, or used in "solo" mode.<ref name = "Chef vs Puppet">https://www.scriptrock.com/articles/puppet-vs-chef-battle-wages/</ref>
 
 ;[[ISconf]]
 :Tool to execute commands and replicate files on all nodes. The nodes do not need to be up; the commands will be executed when they boot. The system has no central server so commands can be launched from any node and they will replicate to all nodes.
@@ -521,14 +570,17 @@ Not all tools have the same goal and the same feature set. To help distinguish b
 ;Local ConFiGuration system ([[LCFG]])
 :LCFG manages the configuration with a central description language in XML, specifying resources, aspects and profiles. Configuration is deployed using the client–server paradigm. Appropriate scripts on clients (called ''components'') transcribe the resources into configuration files and restart services as needed.
 
+;NixOS Declarative Linux ([[NixOS]])
+:NixOS is a declarative Linux distribution with configuration management built-in. Typical file editing it not possible at all, as [[Nix package manager|Nix]] the package manager does not allow it.
+
 ;Open pc server integration ([[Opsi]])
-:Open pc server integration (Opsi) is [[desktop management]] software for [[Microsoft Windows|Windows]] clients based on [[Linux]] servers. It provides automatic [[software deployment]] (distribution), [[installation (computer programs)#Types|unattended installation]] of OS, [[patch (computing)|patch]] management, hard- and software inventory, license management and [[software asset management]], and administrative tasks for the [[configuration management]].
+:Open pc server integration (Opsi) is [[desktop management]] software for [[Microsoft Windows|Windows]] clients based on [[Linux]] servers. It provides automatic [[software deployment]] (distribution), [[installation (computer programs)#Types|unattended installation]] of OS, [[patch (computing)|patch]] management, hard- and software inventory, license management and [[software asset management]], and administrative tasks for the [[configuration management]].<ref>http://www.opsi.org/features/</ref>
 
 ;[[PIKT]]
 :PIKT is foremost a monitoring system that also does configuration management. "''PIKT consists of a sophisticated, [[feature-rich]] file preprocessor; an innovative scripting language with unique labor-saving features; a flexible, centrally directed process scheduler; a customizing file installer; a collection of powerful command-line extensions; and other useful tools.''"
 
 ;[[Puppet (software)|Puppet]]
-:Puppet consists of a custom declarative language to describe system configuration, distributed using the client–server paradigm (using [[XML-RPC]] protocol in older versions, with a recent switch to [[Representational State Transfer|REST]]), and a library to realize the configuration. The resource abstraction layer enables administrators to describe the configuration in high-level terms, such as users, services and packages. Puppet will then ensure the server's state matches the description. There was brief support in Puppet for using a pure Ruby DSL as an alternative configuration language starting at version 2.6.0. This feature was deprecated, however, beginning with version 3.1.
+:Puppet consists of a custom declarative language to describe system configuration, distributed using the client–server paradigm (using [[XML-RPC]] protocol in older versions, with a recent switch to [[Representational State Transfer|REST]]), and a library to realize the configuration. The resource abstraction layer enables administrators to describe the configuration in high-level terms, such as users, services and packages. Puppet will then ensure the server's state matches the description. There was brief support in Puppet for using a pure Ruby DSL as an alternative configuration language starting at version 2.6.0. This feature was deprecated, however, beginning with version 3.1.<ref name = "Puppet vs CFEngine">https://www.scriptrock.com/blog/puppet-cfengine/</ref><ref name = "Chef vs Puppet">https://www.scriptrock.com/articles/puppet-vs-chef-battle-wages/</ref><ref name = "Ruby DSL">https://puppetlabs.com/blog/ruby-dsl/</ref><ref name = "Ruby DSL is Deprecated">http://docs.puppetlabs.com/puppet/3/reference/whats_new.html#ruby-dsl-is-deprecated</ref>
 
 ;[[Quattor]]
 :The quattor information model is based on the distinction between the desired state and the actual state. The desired state is registered in a fabric-wide configuration database, using a specially designed configuration language called [[Pan (programming language)|Pan]] for expressing and validating configurations, composed out of reusable hierarchical building blocks called templates. Configurations are propagated to and cached on the managed nodes.
@@ -560,15 +612,13 @@ Not all tools have the same goal and the same feature set. To help distinguish b
 ;[[Synctool]]
 :Synctool aims to be easy to understand, learn and use. It is written in Python and makes use of SSH (passwordless, with host based or key based authentication) and rsync. No specific language is needed to configure Synctool. Synctool has dry run capabilities that enable surgical precision.
 
-;[[Vagrant_(software)|Vagrant]]
+;[[Vagrant (software)|Vagrant]]
 :Vagrant is free and open-source software for creating and configuring virtual development environments.[1] It can be considered a wrapper around virtualization software such as VirtualBox and configuration management software such as Chef, Salt and Puppet.
 
 ==References==
-<div class="reflist columns references-column-width" style="-moz-column-width: 30em; -webkit-column-width: 30em; column-width: 30em; list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist|30em}}
 
-
-
+{{DEFAULTSORT:Comparison Of Open Source Configuration Management Software}}
 [[Category:Configuration management| ]]
 [[Category:Software comparisons|Open source configuration management software]]
 [[Category:Free software lists and comparisons|Configuration management software]]

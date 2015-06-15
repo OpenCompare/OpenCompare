@@ -1,15 +1,15 @@
 This is a '''comparison of mail servers''': [[mail transfer agent]]s, [[mail delivery agent]]s, and other [[computer software]] which provide [[e-mail]] services.
 
-Linux-based mail servers are built using a number of components because a Linux environment is, by default, a multi-user operating system.  A stock Linux server already has internal mail.  To allow the server to send external emails, a [[message transfer agent|Mail Transfer Agent]] such as [[sendmail]], [[postfix (software)|postfix]] or [[exim]] is required. Mail is read either through direct access ([[Shell (computing)|shell]] login) or mailbox protocols like [[post office protocol|POP]] and [[IMAP]].
+Linux-based mail servers are built using a number of components because a Linux environment is, by default, a [[Unix philosophy|toolbox]]<ref>{{cite web |first=Michael S. |last=Mahoney |url=http://www.princeton.edu/~hos/Mahoney/expotape.htm |title=The Unix Oral History Project: Release.0, The Beginning |quote=Mahoney: To me one of the lovely features of pipes is the way it reinforces the notion of toolbox ...}}</ref> operating system.  A stock Linux server already has internal mail.  To allow the server to send external emails, a [[message transfer agent|Mail Transfer Agent]] such as [[sendmail]], [[postfix (software)|postfix]] or [[exim]] is required. Mail is read either through direct access ([[Shell (computing)|shell]] login) or mailbox protocols like [[post office protocol|POP]] and [[IMAP]].
 
 == Feature comparison ==
 {| style="font-size: 85%; text-align: center;" class="wikitable sortable"
 |-
-! colspan=1 | <span style="display:none;" class="sortkey">00000&#32;!</span><span class="sorttext"></span>
-! colspan=3 | <span style="display:none;" class="sortkey">00000&#32;!</span><span class="sorttext">Server OS support</span>
-! colspan=11 | <span style="display:none;" class="sortkey">00000&#32;!</span><span class="sorttext">Features</span>
-! colspan=3 | <span style="display:none;" class="sortkey">00000&#32;!</span><span class="sorttext">Storage</span>
-! colspan=1 | <span style="display:none;" class="sortkey">00000&#32;!</span><span class="sorttext">Users</span>
+! colspan=1 | {{sort|00000|}}
+! colspan=3 | {{sort|00000|Server OS support}}
+! colspan=11 | {{sort|00000|Features}}
+! colspan=3 | {{sort|00000|Storage}}
+! colspan=1 | {{sort|00000|Users}}
 |-
 ! Mail server
 ! [[Linux]]/[[Unix]]
@@ -31,649 +31,305 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! Other
 ! License
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[agorum core]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU Public License|GPLv2]]
+|{{rh}}| [[agorum core]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{free|[[GNU Public License|GPLv2]]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Apache James]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Apache Software License|ASLv2]]
+|{{rh}}| [[Apache James]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{free|[[Apache Software License|ASLv2]]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Atmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]] (100 user/30 day demo)
+|{{rh}}| [[Atmail]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}} (100 user/30 day demo)
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Axigen]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |Ajax & Basic
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]] (free version: email 100 users / calendar 5 users)
+|{{rh}}| [[Axigen]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes2|Ajax & Basic}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{Proprietary}} (free version: email 100 users / calendar 5 users)
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Citadel/UX|Citadel]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPLv3]]
+|{{rh}}| [[Citadel/UX|Citadel]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{free|[[GNU General Public License|GPLv3]]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[CommuniGate Pro]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]] (Free for up to 5 users)
+|{{rh}}| [[CommuniGate Pro]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}} 
+| {{Proprietary}} (Free for up to 5 users)
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Courier Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[maildir]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPLv3]]
+|{{rh}}| [[Courier Mail Server]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes|[[maildir]]}}
+| {{no}}
+| {{free|[[GPLv3]]}}<ref>See COPYING file in the distribution</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Cyrus IMAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (indexes)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[BSD licenses#4-clause|4-clause BSD]]
+|{{rh}}| [[Cyrus IMAP]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}} (indexes)
+| {{yes}}
+| {{yes}}
+| {{free|[[BSD licenses#4-clause|4-clause BSD]]}}<ref>https://cyrusimap.org/mediawiki/index.php/Downloads#Licensing</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Dovecot (software)|Dovecot]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|[[maildir]], [[mbox]], dbox
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|Mixed: [[MIT License|MIT]] and [[GNU Lesser General Public License|LGPL 2.1]]
+|{{rh}}| [[Dovecot (software)|Dovecot]]
+| {{yes}}<ref name=DovecotOSCompatibility>[http://wiki.dovecot.org/OSCompatibility Dovecot Operating System Compatibility]. Retrieved on 2008-09-03.</ref>
+| {{no}}<ref name=DovecotOSCompatibility/>
+| {{yes}}<ref name=DovecotOSCompatibility/>
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes|[[maildir]], [[mbox]], dbox}}
+| {{no}}
+| {{free|Mixed: [[MIT License|MIT]] and [[GNU Lesser General Public License|LGPL 2.1]]}}<ref name=DovecotLicense>{{cite web|url=http://www.dovecot.org/doc/COPYING|title=Dovecot licensing information: COPYING|accessdate=2008-09-03}}</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Eudora Internet Mail Server]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[Eudora Internet Mail Server]]
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{Dunno}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Exim]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via Cygwin)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GPL|GPLv2+]]
+|{{rh}}| [[Exim]]
+| {{yes}}
+| {{yes}} (via Cygwin)
+| {{yes}}
+| {{yes}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{free|[[GPL|GPLv2+]]}}<ref>See NOTICE file in the distribution</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[FirstClass]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[FirstClass]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Gordano Messaging Suite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[Gordano Messaging Suite]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[GroupWise]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[GroupWise]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Haraka (software)|Haraka]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[MIT License|MIT]]
-|-
-! Mail server
-! [[Linux]]/[[Unix]]
-! [[Microsoft Windows|Windows]]
-! [[Mac OS]]
-! [[SMTP]]
-! [[POP3]]
-! [[IMAP]]
-! [[IMAP IDLE]]
-! [[SMTP]] over [[Transport Layer Security|TLS]]
-! [[Post Office Protocol|POP]] over [[Transport Layer Security|TLS]]
-! [[IPv6]]
-! [[Network News Transfer Protocol|NNTP]]
-! [[Secure Sockets Layer|SSL]]
-! [[Webmail]]
-! [[ActiveSync]]
-! [[Database]]
-! [[Filesystem]]
-! Other
-! License
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[hMailServer]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|[[GNU AGPL]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[IBM]] [[Lotus Domino]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[IceWarp Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Ipswitch IMail Server]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kerio Connect]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kolab]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU General Public License|GPLv3]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MagicMail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailsite]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailtraq]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MDaemon|MDaemon Mail Server]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mercury Mail Transport System]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|Proprietary donationware
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Microsoft Exchange Server]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2007 sp1 onwards)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | [[Extensible Storage Engine|ESE only]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (up to 2003 only)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Message Systems|Momentum]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-
-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[NetMail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[OpenSMTPD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|possible through custom backends
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[ISC license|ISC]]
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Open-Xchange]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|Proprietary/[[SaaS]], with open-source parts
+|{{rh}}| [[Haraka (software)|Haraka]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{free|[[MIT License|MIT]]}}
 |-
 ! Mail server
 ! [[Linux]]/[[Unix]]
@@ -695,245 +351,589 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! Other
 ! License
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Oracle Communications Messaging Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}|[[hMailServer]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno|[[GNU AGPL]]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Postfix (software)|Postfix]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[IBM Public License]]
+|{{rh}}| [[IBM]] [[Lotus Domino]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[qmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
+|{{rh}}| [[IceWarp Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Ipswitch IMail Server]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Kerio Connect]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Kolab]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{free|[[GNU General Public License|GPLv3]]}}
+|-
+|{{rh}}| [[MagicMail]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Mailsite]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Mailtraq]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[MDaemon|MDaemon Mail Server]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Mercury Mail Transport System]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{Proprietary|Proprietary donationware}}
+|-
+|{{rh}}| [[Microsoft Exchange Server]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}<ref>http://technet.microsoft.com/en-us/library/cc540463(EXCHG.80).aspx</ref><ref>http://technet.microsoft.com/en-us/library/ff848256.aspx</ref>
+| {{yes}}
+| {{yes}}
+| {{yes}} (2007 sp1 onwards)<ref>http://technet.microsoft.com/en-us/library/bb629624(EXCHG.80).aspx</ref>
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes2}} [[Extensible Storage Engine|ESE only]]
+| {{yes}} (up to 2003 only)<ref>[http://msdn.microsoft.com/en-us/library/ms876378(EXCHG.65).aspx Exchange Installable File System (ExIFS)]</ref>
+| {{yes}}
+| {{Proprietary}}
+|-
+
+|-
+|{{rh}}| [[Message Systems|Momentum]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+
+
+|{{rh}}| [[NetMail]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[OpenSMTPD]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{dunno|possible through custom backends}}
+| {{yes}}
+| {{no}}
+| {{free|[[ISC license|ISC]]}}
+|-
+|{{rh}}| [[Open-Xchange]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{Proprietary|Proprietary/[[SaaS]], with open-source parts}}<ref>http://www.open-xchange.com/misc/licenses/</ref>
+|-
+! Mail server
+! [[Linux]]/[[Unix]]
+! [[Microsoft Windows|Windows]]
+! [[Mac OS]]
+! [[SMTP]]
+! [[POP3]]
+! [[IMAP]]
+! [[IMAP IDLE]]
+! [[SMTP]] over [[Transport Layer Security|TLS]]
+! [[Post Office Protocol|POP]] over [[Transport Layer Security|TLS]]
+! [[IPv6]]
+! [[Network News Transfer Protocol|NNTP]]
+! [[Secure Sockets Layer|SSL]]
+! [[Webmail]]
+! [[ActiveSync]]
+! [[Database]]
+! [[Filesystem]]
+! Other
+! License
+|-
+|{{rh}}| [[Oracle Communications Messaging Server]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
+|-
+|{{rh}}| [[Postfix (software)|Postfix]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{yes}}
+| {{no}}
+| {{Yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{free|[[IBM Public License]]}}
+|-
+|{{rh}}| [[qmail]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
 | via Qsmtp
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|(cdb)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Public domain]]
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes|(cdb)}}
+| {{yes}}
+| {{no}}
+| {{free|[[Public domain]]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Qpopper]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Qpopper]]
+| {{yes}}
 | via Cygwin
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://www.eudora.com/products/unsupported/qpopper/license.html BSD-style], GPL-incompatible
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{free|[http://www.eudora.com/products/unsupported/qpopper/license.html BSD-style], GPL-incompatible}}<ref>Contains jurisdiction selection and [[IBM Public License]]-style indemnification clause.</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Sendmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|[[Dovecot (software)|Dovecot]], [[UW IMAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[http://ftp.sunet.se/pub/unix/mail/sendmail/LICENSE Sendmail License]
+|{{rh}}| [[Sendmail]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{no|[[Dovecot (software)|Dovecot]], [[UW IMAP]]}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{Dunno}}
+| {{yes}}
+| {{dunno}}
+| {{free|[http://ftp.sunet.se/pub/unix/mail/sendmail/LICENSE Sendmail License]}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[SparkEngine]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[SparkEngine]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Synovel Collabsuite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]] with OSS parts, [[Freeware]] and paid editions
+|{{rh}}| [[Synovel Collabsuite]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{Dunno}}
+| {{Proprietary}} with OSS parts, [[Freeware]] and paid editions<ref>http://www.synovel.com/collab/editions</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[UW IMAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[UW IMAP]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{Dunno}}
+| {{no}}
+| {{yes}}
 | [[Pine (e-mail client)|WebPine]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (Indexes)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[Apache license|Apache License 2.0]]
+| {{no}}
+| {{yes}} (Indexes)
+| {{yes}}
+| {{no}}
+| {{free|[[Apache license|Apache License 2.0]]}}<ref>[http://www.washington.edu/imap/documentation/SSLBUILD.html UW IMAP Server Documentation]</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[WinGate (computing)|WinGate]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddf; vertical-align: middle; text-align: center; " class="table-proprietary"|[[Proprietary software|Proprietary]]
+|{{rh}}| [[WinGate (computing)|WinGate]]
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{Proprietary}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zarafa (software)|Zarafa]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |External
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" |External
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|[[Affero General Public License|AGPLv3]], free and paid editions
+|{{rh}}| [[Zarafa (software)|Zarafa]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes2|External<ref name="ZarafaSMTP">[http://doc.zarafa.com/trunk/Administrator_Manual/en-US/html/_architecture.html Zarafa Collaboration Platform architecture diagram]. Retrieved on 2011-12-10.</ref>}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes2|External<ref name="ZarafaSMTP"/>}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno|[[Affero General Public License|AGPLv3]], free and paid editions}}<ref>http://www.zarafa.com/content/scope-and-benefits</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zimbra]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|[http://www.zimbra.com/license/zimbra-public-license-1-3.html ZPL] and proprietary editions
+|{{rh}}| [[Zimbra]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno|[http://www.zimbra.com/license/zimbra-public-license-1-3.html ZPL] and proprietary editions}}<ref>[http://www.zimbra.com/license/]</ref>
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailenable]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|[https://www.mailenable.com/licensing/ Proprietary]
+|{{rh}}| [[Mailenable]]
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{Yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{Yes}}
+| {{No}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{No}}
+| {{dunno|[https://www.mailenable.com/licensing/ Proprietary]}}
 |-
 ! Mail server
 ! [[Linux]]/[[Unix]]
@@ -955,11 +955,11 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! Other
 ! License
 |-
-! colspan=1 | <span style="display:none;" class="sortkey">zzzzz&#32;!</span><span class="sorttext"></span>
-! colspan=3 | <span style="display:none;" class="sortkey">zzzzz&#32;!</span><span class="sorttext">Server OS support</span>
-! colspan=11 | <span style="display:none;" class="sortkey">zzzzz&#32;!</span><span class="sorttext">Features</span>
-! colspan=3 | <span style="display:none;" class="sortkey">zzzzz&#32;!</span><span class="sorttext">Storage</span>
-! colspan=1 | <span style="display:none;" class="sortkey">zzzzz&#32;!</span><span class="sorttext">Users</span>
+! colspan=1 | {{sort|zzzzz|}}
+! colspan=3 | {{sort|zzzzz|Server OS support}}
+! colspan=11 | {{sort|zzzzz|Features}}
+! colspan=3 | {{sort|zzzzz|Storage}}
+! colspan=1 | {{sort|zzzzz|Users}}
 |-class="sortbottom"
 |}
 
@@ -975,324 +975,324 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! [[Lightweight Directory Access Protocol|LDAP]]
 ! Other
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[agorum core]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[agorum core]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN, CRAM-MD5, NTLM
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Apache James]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Apache James]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Atmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Atmail]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN, CRAM-MD5, DIGEST-MD5, Active Directory, any LDAP-compatible source 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Axigen]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Axigen]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
 | GSSAPI, CRAM-MD5, DIGEST-MD5, APOP, CLRTXT, LOGIN, PLAIN, LDAP, Internal
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[CommuniGate Pro]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[CommuniGate Pro]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Active Directory (LDAP), CLRTXT, CRAM-MD5, DIGEST-MD5, APOP, GSSAPI, NTLM, MSN, SESSIONID, External Authentication Plug-in. Also supports X.509 PKI auth via STARTTLS/SSL
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Courier Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Courier Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Managed by [http://www.courier-mta.org/authlib/ Courier authentication library] which can use [[Pluggable Authentication Modules|PAM]], Userdb, [[PostgreSQL]](beta), [[MySQL]], [[LDAP]], and EXTERNAL.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Cyrus IMAP]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Cyrus IMAP]]
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Supports [[X.509]] PKI auth via [[STARTTLS]] and EXTERNAL. Uses ''Cyrus SASL'' authentication library for support for other mechanisms: [[Berkeley DB]], GDBM, or NDBM (sasldb), [[Pluggable Authentication Modules|PAM]], [[MySQL]], [[PostgreSQL]], [[SQLite]], [[LDAP]], [[Active Directory]](LDAP), [[Distributed Computing Environment|DCE]], [[Kerberos (protocol)|Kerberos]] 4 and 5, proxied IMAP auth, getpwent, shadow, SIA, Courier Authdaemon, httpform, APOP and SASL mechanisms: ANONYMOUS, [[CRAM-MD5]], DIGEST-MD5, EXTERNAL, GSSAPI, LOGIN, NTLM, [[One-time password|OTP]], PASSDSS, PLAIN, SRP
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Dovecot (software)|Dovecot]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Dovecot (software)|Dovecot]]
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Not an SMTP server, but offers SASL to MTAs. http://wiki.dovecot.org/DovecotFeatures http://wiki.dovecot.org/Authentication. POP-before-SMTP via DRAC plugin. [[Pluggable Authentication Modules|PAM]], [[MySQL]], [[PostgreSQL]], [[SQLite]], [[LDAP]], [[Active Directory]](LDAP), [[Kerberos (protocol)|Kerberos]] 5, proxied IMAP auth, getpwent, shadow, SIA, BSDauth, [[Vpopmail]]. APOP and SASL mechanisms: ANONYMOUS, PLAIN, LOGIN, [[CRAM-MD5]], DIGEST-MD5, SCRAM-SHA1, EXTERNAL, GSSAPI, NTLM, [[One-time password|OTP]], SKEY, RPA.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Eudora Internet Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|{{rh}}| [[Eudora Internet Mail Server]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
 | CRAM-MD5, DIGEST-MD5, PLAIN, LOGIN
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Exim]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Exim]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Cyrus SASL, Dovecot SASL, GNU SASL, CRAM-MD5, Heimdal GSSAPI, PLAIN, LOGIN, SPA
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[FirstClass]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[FirstClass]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Gordano Messaging Suite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Gordano Messaging Suite]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN, CRAM-MD5, DIGEST-MD5, APOP, ODBC, Active Directory, NT Domain 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[GroupWise]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[GroupWise]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | [[eDirectory]], Any LDAPv3-compliant source
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Haraka (software)|Haraka]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Haraka (software)|Haraka]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Proxy to other server, any other mechanism via AUTH plugins.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[IceWarp Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[IceWarp Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN, CRAM-MD5, NTLM
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Ipswitch IMail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Ipswitch IMail Server]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Active Directory, Windows authentication, CRAM-MD5, PLAIN, LOGIN
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kolab]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Kolab]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Kolab employs Cyrus and Postfix and thus supports all Cyrus SASL authentication methods and [[X.509]] PKI auth via [[STARTTLS]] and EXTERNAL.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kerio Connect]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Kerio Connect]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
 | Active Directory, [[Apple Open Directory]], [[ActiveSync]], [[Pluggable Authentication Modules]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MagicMail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[MagicMail]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailsite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Mailsite]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | NT Domain, Active Directory, PLAIN, LOGIN, NTLM, SCRAM-MD5, CRAM-MD5
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailtraq]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Mailtraq]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | NT Domain, Active Directory, Local Directory
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MDaemon|MDaemon Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[MDaemon|MDaemon Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
 | Active Directory, PLAIN, CRAM-MD5, LOGIN
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mercury Mail Transport System]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Mercury Mail Transport System]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
 | Internal, LOGIN, PLAIN, CRAM-MD5, Netware, LDAP?, partial NT Domain
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Microsoft Exchange Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| Active Directory, LOGIN, NTLM
+|{{rh}}| [[Microsoft Exchange Server]]
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| Active Directory, LOGIN,<ref>http://support2.gwava.com/kb/?View=entry&EntryID=1605</ref> NTLM
 |-
 
 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Message Systems|Momentum]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Message Systems|Momentum]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | PLAIN, LOGIN, CRAM-MD5, LDAP
 |-
 
 
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[NetMail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[NetMail]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | eDirectory, LDAP
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Oracle Communications Messaging Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Oracle Communications Messaging Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Plain, Login, CRAM-MD5, Digest-MD5, Certificate
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[OpenSMTPD]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[OpenSMTPD]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | By default PLAIN and LOGIN over SSL only, Certificates, bsd_auth and PAM. Supports adding new authentication mechanisms through custom backends.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Postfix (software)|Postfix]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Postfix (software)|Postfix]]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Supports all Cyrus SASL authentication methods except for APOP.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Qpopper]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Qpopper]]
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |  [[Pluggable Authentication Modules]],GSSAPI, CRAM-MD5, DIGEST-MD5, APOP, PLAIN, LDAP, [http://asg.web.cmu.edu/sasl/ CMU SASL library], Kerberos
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[qmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|with patch
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|with vpopmail
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[qmail]]
+| {{yes|with patch}}
+| {{yes|with vpopmail}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Works with any checkpassword utility. The original supports only LOGIN and PLAIN. Alternate checkpassword utilities support authentication against PAM, LDAP, and databases.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Sendmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Sendmail]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Supports all Cyrus SASL authentication methods except for APOP. Also supports [[X.509]] PKI auth via [[STARTTLS]] and EXTERNAL.
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[WinGate (computing)|WinGate]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|{{rh}}| [[WinGate (computing)|WinGate]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
 | NT Domain, Active Directory, CRAM-MD5, SASL PLAIN, SASL LOGIN
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zarafa (software)|Zarafa]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Zarafa (software)|Zarafa]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Internal, Active Directory, any LDAP-compatible source, Unix
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zimbra]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Zimbra]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 | Internal, LDAP, Open LDAP, Active Directory
 |-
 ! Mail server
@@ -1303,10 +1303,9 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! [[Database]]
 ! [[Lightweight Directory Access Protocol|LDAP]]
 ! Other
-|-
 |}
 
-== Antispam Features ==
+== Antispam features ==
 
 {| style="font-size: 85%; text-align: center;" class="sortable wikitable"
 |-
@@ -1324,557 +1323,554 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! [[Antivirus|Embedded Antivirus]]
 ! [[Antispam|Embedded Antispam]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[agorum core]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|{{rh}}| [[agorum core]]
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Apache James]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clam AntiVirus|ClamAV]]
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional ([[Apache]] [[SpamAssassin]])
+|{{rh}}| [[Apache James]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
+| {{yes}} [[Clam AntiVirus|ClamAV]]<ref>[http://james.apache.org/server/3/dev-provided-mailets.html#ClamAVScan http://james.apache.org/server/3/dev-provided-mailets.html#ClamAVScan], Documentation for build-in ClamAV-Mailet, visited on 2013-03-19.</ref>
+| {{optional}} ([[Apache]] [[SpamAssassin]])
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[Atmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clam AntiVirus|ClamAV]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[SpamAssassin]] and Exim ACLs
+|{{rh}}|[[Atmail]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}} [[Clam AntiVirus|ClamAV]]
+| {{yes}} [[SpamAssassin]] and Exim ACLs
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Axigen]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, in [[SpamAssassin]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Commtouch]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Spam Assassin|SpamAssassin]]
+|{{rh}}| [[Axigen]]
+| {{yes}}
+| {{yes}}<ref name=Kaspersky-anti-spam>[http://www.kaspersky.com/anti-spam via Kaspersky anti-spam add-on]</ref>
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{yes}}, in [[SpamAssassin]] 
+| {{yes}}
+| {{yes}} [[Commtouch]]
+| {{yes}} [[Spam Assassin|SpamAssassin]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Citadel/UX|Citadel]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [[SpamAssassin]])
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [[SpamAssassin]])
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional ([[Clam AntiVirus|ClamAV]])
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional ([[SpamAssassin]])
+|{{rh}}| [[Citadel/UX|Citadel]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{optional}} (via [[SpamAssassin]])
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{optional}} (via [[SpamAssassin]])
+| {{no}}
+| {{optional}} ([[Clam AntiVirus|ClamAV]])
+| {{optional}} ([[SpamAssassin]])
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[CommuniGate Pro]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional ([[Clam AntiVirus|ClamAV]])
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [[SpamAssassin]])
+|{{rh}}| [[CommuniGate Pro]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{optional}}
+| {{yes}}
+| {{optional}} ([[Clam AntiVirus|ClamAV]])
+| {{optional}} (via [[SpamAssassin]])
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Courier Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clamav]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Courier Mail Server]]
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}<ref name="courier-pythonfilter">[http://phantom.dragonsdawn.net/~gordon/courier-pythonfilter/ with Courier-pythonfilter filtering framework]</ref>
+| {{yes}}
+| {{yes}}<ref>Two DKIM filters can be found in Courier-MTA's [http://www.courier-mta.org/links.html links] page</ref>
+| {{dunno}}
+| {{yes}}
+| {{yes}}<ref name="courier-pythonfilter" />
+| {{yes}}<ref name="courier-pythonfilter" />
+| {{yes}} [[Clamav]]
+| {{yes}}<ref name="courier-pythonfilter" />
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Dovecot (software)|Dovecot]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Dovecot (software)|Dovecot]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Eudora Internet Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Eudora Internet Mail Server]]
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Exim]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional at build time
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional at build time
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional any
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional any
+|{{rh}}| [[Exim]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{optional}} at build time
+| {{yes}}
+| {{optional}} at build time
+| {{yes}}
+| {{optional}} with spamassassin etc.
+| {{yes}}
+| {{optional}} any
+| {{optional}} any
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[FirstClass]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Symantec]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[FirstClass]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}} [[Symantec]]
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Gordano Messaging Suite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Commtouch]], [[Authentium]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Commtouch]]
+|{{rh}}| [[Gordano Messaging Suite]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}} [[Commtouch]], [[Authentium]]
+| {{yes}} [[Commtouch]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[GroupWise]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[GroupWise]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Haraka (software)|Haraka]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional [[Clam AntiVirus|ClamAV]], [[AVG (software)|AVG]], any via plugins
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional [[SpamAssassin]], [[MessageSniffer]]
+|{{rh}}| [[Haraka (software)|Haraka]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{optional}} with spamassassin etc.
+| {{yes}}
+| {{optional}} [[Clam AntiVirus|ClamAV]], [[AVG (software)|AVG]], any via plugins
+| {{optional}} [[SpamAssassin]], [[MessageSniffer]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"|[[hMailServer]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clam AntiVirus|ClamAV]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Spam Assassin|SpamAssassin]] 
+|{{rh}}| [[hMailServer]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{yes}} [[Clam AntiVirus|ClamAV]]
+| {{yes}} [[Spam Assassin|SpamAssassin]] 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[IBM]] [[Lotus Domino]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[IBM]] [[Lotus Domino]]
+| {{yes}}<ref>http://www-01.ibm.com/support/docview.wss?uid=swg21102611</ref>
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}<ref>http://www-01.ibm.com/support/docview.wss?rs=463&context=SSKTMJ&dc=DB520&uid=swg21227751&loc=en_US&cs=UTF-8&lang=en&rss=ct463lotus</ref>
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[IceWarp Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[IceWarp Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Ipswitch IMail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Symantec]], [[BitDefender]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Commtouch]]
+|{{rh}}| [[Ipswitch IMail Server]]
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}} [[Symantec]], [[BitDefender]]
+| {{yes}} [[Commtouch]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kolab]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [http://www.postfix.org/FILTER_README.html content filter] interface)
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [http://www.postfix.org/FILTER_README.html content filter] interface)
+|{{rh}}| [[Kolab]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{optional}} with spamassassin etc.
+| {{yes}}
+| {{optional}} (via [http://www.postfix.org/FILTER_README.html content filter] interface)
+| {{optional}} (via [http://www.postfix.org/FILTER_README.html content filter] interface)
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Kerio Connect]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional [[Sophos]] + optional secondary (dual)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Kerio Connect]]
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{optional}} [[Sophos]] + optional secondary (dual)
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MagicMail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[MagicMail]]
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailsite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Mailsite]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mailtraq]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Mailtraq]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[MDaemon|MDaemon Mail Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional [[Kaspersky Lab]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[MDaemon|MDaemon Mail Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{optional}} [[Kaspersky Lab]]
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Mercury Mail Transport System]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (GreyWall extension)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (SpamHalter extension)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (ClamWall extension)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Mercury Mail Transport System]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}} (GreyWall extension)
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}} (SpamHalter extension)
+| {{dunno}}
+| {{yes}} (ClamWall extension)
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Microsoft Exchange Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2003 & later)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (2003 & later)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-|-
-
-
-|-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Message Systems|Momentum]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|{{rh}}| [[Microsoft Exchange Server]]
+| {{yes}} (2003 & later)
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}} (2003 & later)
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
 
 
-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[NetMail]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[OpenSMTPD]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [http://www.opensmtpd.org/presentations/asiabsdcon2013-smtpd/#slide-16]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Message Systems|Momentum]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Oracle Communications Messaging Server]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional any
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional any
+|{{rh}}| [[NetMail]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Postfix (software)|Postfix]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional 
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional 
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [http://www.postfix.org/FILTER_README.html content filter] interface)
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional (via [http://www.postfix.org/FILTER_README.html content filter] interface)
+|{{rh}}| [[OpenSMTPD]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}} [http://www.opensmtpd.org/presentations/asiabsdcon2013-smtpd/#slide-16]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[qmail]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|{{rh}}| [[Oracle Communications Messaging Server]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{optional}} with spamassassin etc.
+| {{yes}}
+| {{optional}} any
+| {{optional}} any
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Sendmail]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (via milter/SA)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional 
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional 
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|Optional with spamassassin etc.
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clam AntiVirus|ClamAV]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Spam Assassin|SpamAssassin]]
+|{{rh}}| [[Postfix (software)|Postfix]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{optional}} <ref name=opendkim>[http://www.opendkim.org/ via opendkim milter]</ref>
+| {{optional}} <ref name=opendmarc>[http://www.trusteddomain.org/opendmarc.html via opendmarc milter]</ref>
+| {{dunno}}
+| {{optional}} with spamassassin etc.
+| {{yes}}
+| {{optional}} (via [http://www.postfix.org/FILTER_README.html content filter] interface)
+| {{optional}} (via [http://www.postfix.org/FILTER_README.html content filter] interface)
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[SparkEngine]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[qmail]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{dunno}}
+| {{no}}
+| {{no}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Synovel Collabsuite]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes[[Clam AntiVirus|ClamAV]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Spam Assassin|SpamAssassin]] 
+|{{rh}}| [[Sendmail]]
+| {{yes}}
+| {{yes}} (via milter/SA)
+| {{dunno}}
+| {{yes}}
+| {{optional}}
+| {{optional}} <ref name="opendkim"/>
+| {{optional}} <ref name="opendmarc"/>
+| {{dunno}}
+| {{optional}} with spamassassin etc.
+| {{dunno}}
+| {{yes}} [[Clam AntiVirus|ClamAV]]
+| {{yes}} [[Spam Assassin|SpamAssassin]]
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[UW IMAP]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[SparkEngine]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[WinGate (computing)|WinGate]]
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|{{rh}}| [[Synovel Collabsuite]]
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes}}[[Clam AntiVirus|ClamAV]]
+| {{yes}} [[Spam Assassin|SpamAssassin]] 
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zarafa (software)|Zarafa]]
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
-| style="background: #ddffdd; color: black; vertical-align: middle; text-align: center; "|External
+|{{rh}}| [[UW IMAP]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh"| [[Zimbra]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Clam AntiVirus|ClamAV]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes [[Spam Assassin|SpamAssassin]] 
+|{{rh}}| [[WinGate (computing)|WinGate]]
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+|-
+|{{rh}}| [[Zarafa (software)|Zarafa]]
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+| {{optional|External<ref name="ZarafaSMTP"/>}}
+|-
+|{{rh}}| [[Zimbra]]
+| {{yes}}
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{dunno}}
+| {{yes}} [[Clam AntiVirus|ClamAV]]
+| {{yes}} [[Spam Assassin|SpamAssassin]] 
 |- class="sortbottom"
 ! Mail Server
 ! [[DNSBL]]
@@ -1889,18 +1885,16 @@ Linux-based mail servers are built using a number of components because a Linux 
 ! [[Regular expression]]s
 ! [[Antivirus|Embedded Antivirus]]
 ! [[Antispam|Embedded Antispam]]
-|-
 |}
 
 == See also ==
-* [[List of mail servers]]
-* [[List of mail archiving]]
 * [[Comparison of email clients]]
+* [[List of mail archiving]]
+* [[List of mail servers]]
 
-== Notes and references ==
-<references />
+== References ==
+{{Reflist|30em}}
 
 [[Category:Email]]
-[[Category:Software comparisons|Mail servers]]
-
 [[Category:Message transfer agents]]
+[[Category:Software comparisons|Mail servers]]

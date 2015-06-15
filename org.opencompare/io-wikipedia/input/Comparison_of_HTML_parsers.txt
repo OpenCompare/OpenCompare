@@ -1,3 +1,5 @@
+{{Refimprove|date=May 2015}}{{Original research|date=May 2015}}
+
 [[Parsing]] HTML is an automated task, performed by (so called) '''HTML parsers'''. They have two main purposes: 
 * HTML traversal: offer an interface for programmers to easily access and modify of the "HTML string code".  Canonical example: [[Document Object Model#Libraries|DOM parsers]].
 * HTML clean:  to fix invalid HTML and to improve the layout and indent style of the resulting markup. Canonical example: [[HTML Tidy]].
@@ -8,47 +10,55 @@
 ! [[software license|License]]
 ! Implementation language(s)
 ! Latest date*
-! HTML Parsing
+! HTML Parsing<ref>[http://www.whatwg.org/specs/web-apps/current-work/multipage/parsing.html 12.2 Parsing HTML documents — HTML Standard]</ref>
 ! Clean HTML**
 ! Update HTML***
+|-
+| [https://docs.python.org/3/library/html.parser.html html.parser]
+| [[Python Software Foundation License|Python S. F. L.]]
+| [[Python (programming language)|Python]]
+| 2015-02-25<ref>[https://www.python.org/downloads/release/python-343/ Python 3.4.3]</ref>
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | [http://htmlagilitypack.codeplex.com/ Html Agility Pack]
 | [[Microsoft Public License]]
 | [[C Sharp (programming language)|C#]]
-| 2012-08-07
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2014-09-16<ref>[http://www.nuget.org/packages/HtmlAgilityPack Nuget Html AgilityPack]</ref>
+| {{Yes}}
+| {{No}}
 | ?
 |-
-| [[Beautiful Soup]] (base on lxml and html5lib)
+| [[Beautiful Soup]] (base on lxml and html5lib)<ref >http://www.crummy.com/software/BeautifulSoup/</ref>
 | [[Python Software Foundation License|Python S. F. L.]]
 | [[Python (programming language)|Python]]
-| 2013-05-31
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| ?
-| ?
+| 2013-10-02
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [https://github.com/google/gumbo-parser Gumbo]
 | [[Apache License 2.0]]
 | [[C (programming language)|C]]
 | 2013-08-13
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | ?
 | ?
 |-
 | [https://github.com/html5lib/ html5lib]
 | [[MIT License]]
 | [[Python (programming language)|Python]] (and [[PHP]], six years ago)
-| 2013-12-23
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2013-12-23<ref>[https://github.com/html5lib/html5lib-python/releases Releases · html5lib/html5lib-python]</ref>
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 |-
 | [https://metacpan.org/module/HTML::Parser HTML::Parser]
 | [[Perl license]]
 | [[Perl]]
 | 2013-03-28
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}<ref>[https://rt.cpan.org/Public/Bug/Display.html?id=53300 Bug #53300 for HTML-Parser: HTML 5]</ref>
 | ?
 | ?
 
@@ -56,34 +66,34 @@
 | [http://htmlpurifier.org/ htmlPurifier]
 | [[GNU Lesser General Public License|GNU Lesser GPL]]
 | [[PHP]]
-| 2009-03-25
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2009-03-25<ref>[http://www.paehl.com/open_source/?HTML_Tidy_for_Windows HTML Tidy for Windows]</ref>
+| {{No}}
+| {{Yes}}
+| {{Yes}}
 
 |-
 | [[HTML Tidy]]
 | [[W3C license]]
 | [[ANSI C]]
-| 2009-03-25
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| ?
+| 2015-05-24<ref>[https://github.com/htacg/tidy-html5/releases/tag/4.9.30 HTML Tidy release 4.9.30]</ref>
+| {{No}}<ref>[http://www.html-tidy.org/#what_is_tidy What is Tidy?]</ref>
+| {{Yes}}<ref>[http://www.html-tidy.org/#what_is_tidy What is Tidy?]</ref>
+| {{Yes}}<ref>[http://www.html-tidy.org/#what_is_tidy What is Tidy?]</ref>
 
 |-
 | [http://htmlcleaner.sourceforge.net/ HtmlCleaner]
-| [[BSD License]]
+| [[BSD License]]<ref>[http://htmlcleaner.sourceforge.net/license.php HtmlCleaner is distributed under BSD License]</ref>
 | [[Java (programming language)|Java]]
-| 2013-09-05
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2014-10-31
+| {{No}}
+| {{Yes}}
 | ?
 |-
 | [http://www.netsurf-browser.org/projects/hubbub/ Hubbub]
 | [[MIT License]]
 | [[C (programming language)|C]]
 | 2013-04-19
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | ?
 | ?
 |-
@@ -91,15 +101,15 @@
 | [[Jaunt Beta License]]
 | [[Java (programming language)|Java]]
 | 2013-08-01
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{Yes}}
+| {{No}}
 |-
 | [http://jerichohtml.sourceforge.net/ Jericho HTML Parser]
 | [[Eclipse Public License]]
 | [[Java (programming language)|Java]]
-| 2012-10-30
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No??
+| 2012-10-30<ref>[http://sourceforge.net/projects/jerichohtml/files/jericho-html/3.3/ Jericho HTML Parser -  Browse /jericho-html/3.3 at SourceForge.net]</ref>
+| {{No}}??
 | ?
 | ?
 |-
@@ -107,39 +117,39 @@
 | [[MIT license]]
 | [[JavaScript]]
 | 2013-07-21
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | ?
 | ?
 |-
 | [http://jsoup.org/ jsoup]
 | [[MIT license]]
 | [[Java (programming language)|Java]]
-| 2014-09-27
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2015-04-13<ref>[http://jsoup.org/news/release-1.8.2 jsoup release 1.8.2]</ref>
+| {{Yes}}
+| {{Yes}}
+| {{Yes}}
 |-
 | [http://jtidy.sourceforge.net/ JTidy]
 | [http://jtidy.sourceforge.net/license.html JTidy License]
 | [[Java (programming language)|Java]]
-| 2012-10-09
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2012-10-09<ref>[http://sourceforge.net/projects/jtidy/files/JTidy/ JTidy -  Browse /JTidy at SourceForge.net]</ref>
+| {{Yes}}
+| {{Yes}}
 | ?
 |-
 | [[libxml2]] [http://www.xmlsoft.org/html/libxml-HTMLparser.html HTMLparser]
 | [[MIT License]]
 | [[C (programming language)|C]]
-| 2012-09-11
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| 2012-09-11<ref>[http://xmlsoft.org/news.html libxml2 Releases]</ref>
+| {{Yes}}
 | ?
 | ?
 |-
 | [http://nekohtml.sourceforge.net/ NekoHTML]
 | [[Apache License 2.0]]
 | [[Java (programming language)|Java]]
-| 2013-02-27
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| 2014-06-02<ref>[http://nekohtml.sourceforge.net/changes.html NekoHTML | Change History]</ref>
+| {{No}}
 | ?
 | ?
 |-
@@ -147,7 +157,7 @@
 | [[Apache License 2.0]]
 | [[Java (programming language)|Java]]
 | 2011-07-07
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{No}}
 | ?
 | ?
 |-
@@ -155,7 +165,7 @@
 | [[MIT License]]
 | [[Java (programming language)|Java]]
 | 2012-06-05
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{Yes}}
 | ?
 | ?
 |-
@@ -163,17 +173,25 @@
 | [[MIT License]]
 | [[PHP]]
 | 2014-08-28
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{No}}
+| {{No}}
 |-
 | The [[PHP]] [http://php.net/manual/en/class.domdocument.php DOMDocument]-[[Class (computer programming)|class]]
 | [[PHP License]]
 | [[PHP]]
 | 2014-10-04
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{Yes}}
+| {{No}}
+| {{No}}
+|-
+| [http://www.nokogiri.org/ Nokogiri]
+| [[MIT License]]
+| [[Ruby (programming language)|Ruby]]
+| 2015-01-23<ref>[https://github.com/sparklemotion/nokogiri/releases/tag/v1.6.6.2 Nokogiri release 1.6.6.2]</ref>
+| {{Yes}}
+| {{No}}
+| {{No}}
 |- class="sortbottom"
 ! Parser
 ! [[software license|License]]
@@ -188,8 +206,7 @@
 : *** Updates HTML4.X to XHTML or to HTML5, converting deprecated tags (ex. CENTER) to valid ones (ex. DIV with <tt>style="text-align:center;"</tt>). 
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
 [[Category:HTML]]
-[[Category:Comparisons]]
+[[Category:Software comparisons]]

@@ -1,6 +1,6 @@
-<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(December 2012)''</small><span class="hide-when-compact"></span></span></td></tr></table>
-<table class="plainlinks ombox ombox-content ambox-Update" role="presentation"><tr><td class="mbox-image">[[File:Ambox current red.svg|42px]]</td><td class="mbox-text">This special is '''outdated'''. Please update this special to reflect recent events or newly available information. <small>''(June 2014)''</small></td></tr></table>
-<table class="metadata plainlinks ambox ambox-style ambox-lead_too_long" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article's '''[[WP:LEAD|introduction]] may be too long for the overall article length'''.<span class="hide-when-compact"> Please help by moving some material from it into the body of the article. For more information please read the [[Wikipedia:Layout guide|layout guide]] and Wikipedia's [[Wikipedia:LEADLENGTH|lead section guidelines]].</span>  <small>''(December 2013)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{refimprove|date=December 2012}}
+{{Outdated|date=June 2014}}
+{{longintro|date=December 2013}}
 [[Application server]]s are system software upon which [[web application]]s or desktop applications run. Application Servers consist of web server connectors, computer [[programming language]]s, [[runtime library|runtime libraries]], database connectors, and the administration code needed to deploy, configure, manage, and connect these components on a web host. An application server runs behind a [[web Server]] (e.g. [[Apache HTTP Server|Apache]] or [[Internet Information Services|Microsoft IIS]]) and (almost always) in front of an [[SQL|SQL database]] (e.g. [[PostgreSQL]], [[MySQL]] or [[Oracle Database|Oracle]]). Web applications are computer code which run on top of application servers and are written in the language(s) the application server supports and call the runtime libraries and components the application server offers.
 
 There are many application servers and the choice impacts the cost, performance, reliability, scalability, and maintainability of a web application.
@@ -28,10 +28,10 @@ This article compares the features and functionality of application servers, gro
 * [[Wt (web toolkit)|Wt]] - A web toolkit similar to [[Qt (framework)|Qt]] permitting GUI-application-like web development with built-in [[Ajax (programming)|Ajax]] abilities.
 * [[POCO C++ Libraries]] - A collection of open source class libraries including Poco.Net.HTTPServer.html
 * [[CppCMS]]
-* uWSGI
+* uWSGI<ref name="uWSGI doc">{{cite web |title=The uWSGI project — uWSGI documentation |url=http://uwsgi-docs.readthedocs.org/}}</ref>
 
 == Erlang ==
-* [[CloudI]] - Provides C/C++, Elixir/Erlang, Java, Javascript, Perl, PHP, Python, Ruby integration. 
+* [[CloudI]] - Provides C/C++, Elixir/Erlang, Java, Javascript, Perl, PHP, Python, Ruby integration. <ref>http://cloudi.org</ref>
 
 == Haskell ==
 * [[Happstack]]
@@ -40,7 +40,7 @@ This article compares the features and functionality of application servers, gro
 * [[Warp (Web_Server)]]
 
 == Java ==
-<div class="hatnote relarticle mainarticle">Main article: [[Web container]]</div>
+{{main|Web container}}
 
 {| class="sortable wikitable" style="font-size: 85%; text-align: center; width: auto;"
 |-
@@ -48,7 +48,7 @@ This article compares the features and functionality of application servers, gro
 ! Vendor
 ! Edition
 ! Last release date
-! [[Java EE]]<br>compatibility 
+! [[Java EE]]<br>compatibility <ref>http://www.oracle.com/technetwork/java/javaee/overview/compatibility-jsp-136984.html</ref>
 ! [[Servlet]]<br>spec
 ! [[JavaServer Pages|JSP]]<br>spec
 ! License
@@ -75,7 +75,7 @@ This article compares the features and functionality of application servers, gro
 | [[Lutris]]
 | 5.1.9
 | 2005-03-23
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 |
 |
 | [[GNU General Public License|GPL]]
@@ -111,7 +111,7 @@ This article compares the features and functionality of application servers, gro
 | [[Oracle Corporation]]
 | 7.0.21
 | 2015-04
-| Yes
+| Yes<ref>http://java.sun.com/j2ee/tested_config/hitachi14.html</ref>
 | 2.5
 | 2.1
 | [[Proprietary software|Proprietary]]
@@ -129,7 +129,7 @@ This article compares the features and functionality of application servers, gro
 | [[Eclipse Foundation]]
 | 9.2.6
 | 2014-12-05
-| 7 (partial)
+| 7 (partial<ref>http://www.eclipse.org/jetty/documentation/current/jetty-javaee.html#webprofile-7</ref>)
 | 3.1
 | 2.3
 | [[Apache License|Apache 2.0]], [[Eclipse Public License|EPL]]
@@ -163,9 +163,9 @@ This article compares the features and functionality of application servers, gro
 |-
 | [[SAP NetWeaver Application Server|NetWeaver Application Server]]
 | [[SAP AG]]
-| 7.3
-| 2011-05-31
-| 5
+| 7.4
+| 2013-01-11
+| 6
 | 2.5
 | 2.1
 | Proprietary
@@ -192,7 +192,7 @@ This article compares the features and functionality of application servers, gro
 | [[Caucho Technology]]
 | 4.0.36
 | 2013-04-25
-| 6 Web Profile 
+| 6 Web Profile <ref>http://www.infoq.com/news/2011/06/resin-web-profile</ref>
 | 3.0
 | 2.2
 | [[GNU General Public License|GPL]]
@@ -206,11 +206,11 @@ This article compares the features and functionality of application servers, gro
 | 2.2
 | proprietary
 |-
-| [[Ruby]]
-| [[Ruby]]
+| [[Ruby programming language|Ruby]]
+| [[Ruby programming language|Ruby]]
 | 1.2
 | 2015-01-01
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 |
 |
 | [[GNU Lesser General Public License|LGPL]]
@@ -219,7 +219,7 @@ This article compares the features and functionality of application servers, gro
 | [[MechSoft]]
 | 2.0.0
 | 2011-07-29
-| yes
+| yes<ref>http://siwpas.mechsoft.com.tr/index.php?option=com_content&view=article&id=68&Itemid=117</ref>
 | 3.0
 | 2.2
 | Proprietary
@@ -246,7 +246,7 @@ This article compares the features and functionality of application servers, gro
 | [[Apple Inc.]]
 | 5.4.3
 | 2008-09-15
-| partial
+| partial<ref>http://developer.apple.com/documentation/WebObjects/JSP_and_Servlets/About/chapter_1_section_1.html</ref>
 |
 |
 | Proprietary<br>
@@ -291,7 +291,7 @@ This article compares the features and functionality of application servers, gro
 
 == JavaScript ==
 * [[Broadvision]] - Server-side [[JavaScript]] AS. One of the early entrants in the market during the [[eCommerce]] [[dot-com bubble]], they have vertical solution packages catering to the eCommerce industry.
-* [[Wakanda (software)|Wakanda Server]] - Server-side [[JavaScript]] Application Server integrating a NoSQL database engine (WakandaDB), a dedicated HTTP Server, User and Group management and an optional client-side JavaScript framework.
+* [[Wakanda (software)|Wakanda Server]] - Server-side [[JavaScript]] Application Server integrating a NoSQL database engine (WakandaDB<ref>http://wakandadb.org</ref>), a dedicated HTTP Server, User and Group management and an optional client-side JavaScript framework.
 * [[Node.js]] - implements Google's V8 engine as a standalone (outside the browser) asynchronous Javascript interpreter. A vigorous open-source developer community on GitHub has implemented numerous supporting products, notably npm for package management and Connect and Express app server layers.
 * [[Phusion Passenger]]
 
@@ -329,10 +329,10 @@ Microsoft positions their middle-tier applications and services infrastructure i
 * [[Python Paste|Paste]]
 * [[Tornado (web server)|Tornado]]
 * [[Twisted (software)|Twisted]]
-* [[Web.py]]
+* Web.py<ref>{{cite web |title=web.py |url=http://webpy.org/}}</ref>
 * [[Web2py]]
-* uWSGI
-* WSGId
+* uWSGI<ref name="uWSGI doc"/>
+* WSGId<ref>{{github|daltonmatos/wsgid|WSGId}}</ref>
 * [[Zope]] - By Zope, Inc.
 
 == Perl ==
@@ -341,7 +341,7 @@ Microsoft positions their middle-tier applications and services infrastructure i
 * [[Mojolicious]]
 * [[Plack (software)|Plack]]
 * [[mod_perl]]
-* uWSGI
+* uWSGI<ref name="uWSGI doc"/>
 
 == PHP ==
 * [[PHP-FPM]]
@@ -356,7 +356,7 @@ Microsoft positions their middle-tier applications and services infrastructure i
 * [[Rainbows (web server)|Rainbows]]
 * [[Torquebox]]
 * [[Unicorn (web server)|Unicorn]]
-* uWSGI
+* uWSGI<ref name="uWSGI doc"/>
 
 == Smalltalk ==
 * [[Seaside (software)|Seaside]] - A continuations based web application server based on Smalltalk
@@ -371,86 +371,10 @@ Microsoft positions their middle-tier applications and services infrastructure i
 * [[Comparison of server-side JavaScript solutions]]
 
 == References ==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Web interfaces|<span title="View this template" style=";;background:none transparent;border:none;">v</span>]]</li><li class="nv-talk">[[Template talk:Web interfaces|<span title="Discuss this template" style=";;background:none transparent;border:none;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Web_interfaces&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;">e</span>]</li></ul></div><div style="font-size:110%">[[Web API|Web interface]]s</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Server-side]]</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Communications protocol|Protocol]]s</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Common Gateway Interface|CGI]]
-*[[Simple Common Gateway Interface|SCGI]]
-*[[FastCGI|FCGI]]
-*[[Apache JServ Protocol|AJP]]
-*[[Web Services for Remote Portlets|WSRP]]
-*[[WebSocket]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Server Application Programming Interface|Server API]]s</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Netscape Server Application Programming Interface|C NSAPI]]
-*[[Apache HTTP Server#Features|C ASAPI]]
-*[[Internet Server Application Programming Interface|C ISAPI]]
-*[[Active Server Pages|COM ASP]]
-*[[Java servlet]]
-**[[Web container|container]]
-*[[Portlet]]
-**[[Portlet container|container]]
-*[[HTTP handler|CIL System.Web.IHttpHandler]]
-*[[Web Server Gateway Interface|Python WSGI]]
-*[[Rack (web server interface)|Ruby Rack]]
-*[[JSGI|JavaScript JSGI]]
-*[[PSGI|Perl PSGI]]
-*[[Kepler (software)#Frameworks|Lua WSAPI]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[:Category:Apache httpd modules|Apache modules]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[mod_jk]]
-*[[mod_lisp]]
-*[[mod_mono]]
-*[[mod_parrot]]
-*[[mod_perl]]
-*[[PHP|mod_php]]
-*[[mod_proxy]]
-*[[mod_python]]
-*[[mod_wsgi]]
-*[[mod_ruby]]
-*[[Phusion Passenger]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Topics</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Web resource]] vs. [[Web service]]
-*[[Open API]]
-*[[Webhook]]
-*[[Application server]]
-**[[Comparison of application servers|comparison]]
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Client-side]]</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Browser extension|Browser API]]s</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[NPAPI|C NPAPI]]
-**[[NPAPI#LiveConnect|LiveConnect]]
-**[[NPAPI#XPConnect|XPConnect]]
-*[[NPAPI#NPRuntime|C NPRuntime]]
-*[[Google Native Client#Pepper|C PPAPI]]
-**[[Google Native Client|NaCl]]
-*[[ActiveX|COM ActiveX]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Web application framework|Framework API]]s</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em"></div><table class="nowraplinks navbox-subgroup" style="border-spacing:0"><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[World Wide Web Consortium|W3C]]</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[HTML5 Audio|Audio]]
-*[[Canvas element|Canvas]]
-*[[Cross-origin resource sharing|CORS]]
-*[[HTML5 File API|File]]
-*[[W3C Geolocation API|Geolocation]]
-*[[Indexed Database API|IndexedDB]]
-*[[Microdata (HTML)|Microdata]]
-*[[Server-sent events|SSE]]
-*[[Scalable Vector Graphics|SVG]]
-*[[HTML5 video|Video]]
-*[[WebRTC]]
-*[[WebSocket]]
-*[[Web Messaging|Web messaging]]
-*[[Web storage]]
-*[[Web worker]]
-*[[XMLHttpRequest]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">[[Khronos Group|Khronos]]</div></th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[WebCL]]
-*[[WebGL]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Others</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Gears (software)|Gears]]
-*[[Web SQL Database]] (formerly W3C)
-</div></td></tr></table><div></div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group" style="padding-left:0;padding-right:0;"><div style="padding:0em 0.75em;">Topics</div></th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Mashup (web application hybrid)|Mashup]]
-*[[Web IDL]]
-</div></td></tr></table><div></div></td></tr></table></td></tr></table>
+{{Web interfaces}}
 
-
-
+{{DEFAULTSORT:Comparison of application servers}}
 [[Category:Java enterprise platform]]
 [[Category:Software comparisons|Application servers]]

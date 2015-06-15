@@ -93,37 +93,34 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   def writeToPCM(title : String, page : Page) {
     val exporter = new PCMModelExporter
-    val containers = exporter.export(page)
+    val pcms = exporter.export(page)
 //    val serializer = new PCMtoHTML
 //    writer.write(serializer.toHTML(pcm))
     val serializer = new KMFJSONExporter
     val loader = new KMFJSONLoader
-    var i = 0
-    for (container : PCMContainer <- containers) {
-      val path = "output/model/" + title.replaceAll(" ", "_") + "_" + i + ".pcm"
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
-      writer.write(serializer.toJson(container.getPcm))
+      writer.write(serializer.toJson(pcm.getPcm))
       writer.close()
 
       loader.load(new File(path))
-      i += 1
+
     }
 
   }
 
   def writeToWikiText(title : String, page : Page) {
     val exporter = new PCMModelExporter
-    val containers = exporter.export(page)
+    val pcms = exporter.export(page)
 
     val serializer = new WikiTextExporter
 
-    var i = 0
-    for (container : PCMContainer <- containers) {
-      val wikitext = serializer.export(container)
-      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + i + ".txt")
+    for ((pcm, index) <- pcms.zipWithIndex) {
+      val wikitext = serializer.export(pcm)
+      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
       writer.write(wikitext)
       writer.close()
-      i += 1
     }
 
   }
@@ -150,15 +147,13 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     for(title <- wikipediaPCMs) yield {
       println(title)
       val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-      val containers = miner2.mine(code, title)
+      val pcms = miner2.mine(code, title)
 
-      var i = 0
-      for (container : PCMContainer <- containers) {
-        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + i + ".pcm"
+      for ((pcm, index) <- pcms.zipWithIndex) {
+        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
         val writer = new FileWriter(path)
-        writer.write(serializer.toJson(container.getPcm))
+        writer.write(serializer.toJson(pcm.getPcm))
         writer.close()
-        i += 1
       }
     }
   }

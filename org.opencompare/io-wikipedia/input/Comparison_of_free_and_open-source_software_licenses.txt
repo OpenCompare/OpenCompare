@@ -1,441 +1,239 @@
-<table class="metadata plainlinks ambox ambox-style ambox-lead_too_short" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Edit-clear.svg|40x40px|link=|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article's '''[[Wikipedia:Manual of Style/Lead section|lead section]] may not adequately [[Wikipedia:summary style|summarize]] key points of its contents'''.<span class="hide-when-compact"> Please consider expanding the lead to [[Wikipedia:Manual of Style/Lead section#Provide an accessible overview|provide an accessible overview]] of all important aspects of the article.</span>  <small>''(June 2014)''</small><span class="hide-when-compact"></span></span></td></tr></table>
-This is a '''comparison of published [[free software license]]s'''.
+This is a '''comparison of published [[free software license]]s and [[open source license]]s'''. The comparison only covers [[software license]]s with a linked article for details, approved by at least one expert group at the [[Free Software Foundation|FSF]], the [[Open Source Initiative|OSI]], the [[Debian Project|Debian]] project, or the [[Fedora Project|Fedora]] project.
+
+==Free software / open-source licenses==
+The terms "[[free software license]]s" and "[[open-source license]]s" are not interchangeable. The [[Open Source Initiative]] is one such organization keeping a list of "open source" licenses.<ref>[http://opensource.org/licenses/alphabetical Open source licenses - Licenses by Name] on opensource.org</ref> The [[Free Software Foundation]] maintains a list of what it considers free.<ref>{{cite web |title=Various Licenses and Comments about Them| url=https://www.gnu.org/licenses/license-list.html | accessdate=August 8, 2011}}</ref>
+
+[[Free Software]] provides the user's 4 essentials freedoms to use the ''program'', to study and modify it, to copy it, and redistribute it for any purpose.,<ref>[https://www.gnu.org/philosophy/free-software-for-freedom.html "Relationship between the Free Software movement and Open Source movement"],  Free Software Foundation, Inc</ref> while [[open-source]] criteria focuses only on the availability of the ''source code''.<ref>[http://www.gnu.org/philosophy/free-sw.html "What is Free Software"],  Free Software Foundation, Inc</ref><ref>[http://www.gnu.org/licenses/gpl-faq.html#NonfreeDriverKernelLinux "How the open source project Linux has violated the GNU GPLv2 terms of free software"],  Free Software Foundation, Inc</ref><ref>[http://www.fsfla.org/ikiwiki/selibre/linux-libre/index.en.html "Linux-libre a free software(kernel) alternative to the open nonfree Linux kernel"],  Free Software Foundation Latin America</ref>
 
 ==General comparison==
 The following table compares various features of each license and is a general guide to the terms and conditions of each license.
 
-Note that a "yes" in either of the last two columns (''Link with code using a different license'' and ''Release changes under a different license'') is not an absolute answer, there may still be restrictions in the license related to this action. You should review the specific license terms and refer to the reference table for more details regarding a "yes" in these columns. Also note that "no" in ''Link with code using a different license''-column is not absolute, e.g. for GPL, see: [[GPL compatibility]].
-
-{| class="wikitable sortable" width="auto" style="text-align: center"
+{| class="wikitable" style="text-align: center; width:99%"
 |-
 !License
 !Author
 !Latest version
 !Publication date
-!Link with code using a different license
-!Release changes under a different license
+!Linking
+!Distribution
+!Modification
+!Patent grant
+!Private use
+!Sublicensing
+!Grants <abbr title="trademark">TM</abbr>
 |-
-|[[Academic Free License]]|| [[Lawrence E. Rosen]] || 3 || 2002 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Academic Free License]]|| [[Lawrence E. Rosen]] || 3 || 2002 || {{yes|[[Permissive free software license|Permissive]]}}  || {{dunno}} ||  {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Affero GPL]]|| [[Free Software Foundation]] || 3 || 2007 || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|only AGPLv3 + GPLv3 || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Apache License]]||[[Apache Software Foundation]]||2.0||2004||{{yes|Permissive}}<ref name="apachev2s4">{{cite web|url=https://www.apache.org/licenses/LICENSE-2.0.html|title=the section 4 of the apache license version 2}}</ref>||{{yes|Permissive}}<ref name="apachev2s4"/>||{{yes|Permissive}}<ref name="apachev2s4"/>||{{yes}}<ref name="apachev2s4"/>||{{yes}}<ref name="apachev2s4"/>||{{yes|Permissive}}<ref name="apachev2s4"/>||{{no}}<ref name="apachev2s4"/>
 |-
-|[[Apache License]]||[[Apache Software Foundation]]||2.0||2004||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Apple Public Source License]]||[[Apple Computer]]||2.0||<span style="display:none">2003</span>August 6, 2003||{{yes|Permissive}} || {{dunno}} || {{partial|Limited}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Apple Public Source License]]||[[Apple Computer]]||2.0||<span style="display:none">2003</span>August 6, 2003||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Artistic License]]|| [[Larry Wall]] ||2.0|| 2000 ||{{partial|With restrictions}} || {{dunno}} || {{partial|With restrictions}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Artistic License]]|| [[Larry Wall]] ||2.0|| 2000 ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|With restrictions
+|[[Beerware]] || Poul-Henning Kamp || 42 || 1987 || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Berkeley Database License]]|| [[Oracle Corporation]] || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || <span style="display:none">2008</span>February 7, 2008 || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Berkeley Database License]]|| [[Oracle Corporation]] || {{dunno}} || <span style="display:none">2008</span>February 7, 2008 || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[BSD license]]|| [[Regents of the University of California]] || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[BSD License]]||[[Regents of the University of California]]||3.0||{{dunno}}||{{yes|Permissive}}<ref name="bsdlicense">{{cite web|url=http://opensource.org/licenses/BSD-3-Clause|title=BSD license}}</ref>||{{yes|Permissive}}<ref name="bsdlicense"/>||{{yes|Permissive}}<ref name="bsdlicense"/>||{{no|Manually}}<ref name="bsdlicense"/>||{{yes}}<ref name="bsdlicense"/>||{{yes|Permissive}}<ref name="bsdlicense"/>||{{No|Manually}}<ref name="bsdlicense"/>
 |-
-|[[Boost Software License]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || 1.0 || <span style="display:none">2003</span>August 17, 2003 ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Boost Software License]]|| {{dunno}} || 1.0 || <span style="display:none">2003</span>August 17, 2003 ||{{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[CeCILL]]|| [[Commissariat à l'énergie atomique et aux énergies alternatives|CEA]] / [[CNRS]] / [[INRIA]] || 2.0 || <span style="display:none">2005</span>May 21, 2005 || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[CeCILL]]|| [[Commissariat à l'énergie atomique et aux énergies alternatives|CEA]] / [[CNRS]] / [[INRIA]] || 2.0 || <span style="display:none">2005</span>May 21, 2005 || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Common Development and Distribution License]]|| [[Sun Microsystems]] || 1.0 || <span style="display:none">2004-12</span>December 1, 2004 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Common Development and Distribution License]]|| [[Sun Microsystems]] || 1.0 || <span style="display:none">2004-12</span>December 1, 2004 || {{yes|Permissive}}  || {{dunno}} ||  {{partial|Limited}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Code Project Open License]]|| [[The Code Project]] || 1.0 || 2007 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Common Public License]]|| [[IBM]] || 1.0 || <span style="display:none">2001</span>May 2001 || {{partial|[[Copyleft]]ed}}  || {{dunno}} || {{partial|Copylefted}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Common Public License]]|| [[IBM]] || 1.0 || <span style="display:none">2001</span>May 2001 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes ||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Cryptix General License]]|| Cryptix Foundation || {{dunno}} || 1995 || {{yes|Permissive}}||{{yes|Permissive}}||{{yes|Permissive}}||{{no|Manually}}||{{yes}}||{{dunno}}||{{No|Manually}}
 |-
-|[[Cryptix General License]]|| Cryptix Foundation || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || 1995 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Eclipse Public License]]||[[Eclipse Foundation]]||1.0|| <span style="display:none">2004-02</span>February 2004 || {{partial|Limited}}<ref name="epl">{{cite web|url=http://www.eclipse.org/legal/epl-v10.html|title=the eclipse public license version 1}}</ref>||{{partial|Limited}}<ref name="epl"/>||{{partial|Limited}}<ref name="epl"/>||{{yes}}<ref name="epl"/>||{{yes}}<ref name="epl"/>||{{partial|Limited}}<ref name="epl"/>||{{No|Manually}}<ref name="epl"/>
 |-
-|[[Eclipse Public License]]||[[Eclipse Foundation]]||1.0|| <span style="display:none">2004-02</span>February 2004 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Educational Community License]]||{{dunno}}||1.0||{{dunno}}||{{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Educational Community License]]||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||1.0||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Eiffel Forum License]]||NICE||2||2002||{{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Eiffel Forum License]]||NICE||2||2002||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[European Union Public Licence|EUPL]]|| [[European Commission]] ||1.1|| <span style="display:none">2009</span>January 2009 ||{{partial|Limited}} || {{dunno}} || {{partial|With an explicit compatibility list}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[European Union Public Licence|EUPL]]|| [[European Commission]] ||1.1|| <span style="display:none">2009</span>January 2009 ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|With an explicit compatibility list
+|[[GNU Affero General Public License]]||[[Free Software Foundation]]||3.0||2007||{{partial|GNU GPLv3 only}}<ref name="agplsection13">[https://www.gnu.org/licenses/agpl.html]: section 13 of the GNU AGPLv3 license</ref>||{{partial|[[Copyleft]]ed}}<ref name="gnucopyleft">[https://www.gnu.org/copyleft/gpl-howto.html]: GNU licenses copyleft</ref>||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="agplv3">{{cite web|url=https://www.gnu.org/licenses/agpl-3.0.html|title=the GNU Affero General Public License version 3}}</ref>||{{partial|Copylefted}}<ref name="agplv3"/>||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="agplv3"/>
 |-
-|[[Fair Licence]]||James W. Pye||style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>||2004||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU General Public License]]||[[Free Software Foundation]]||3.0||<span style="display:none">2007</span>June 2007||{{partial|GPLv3 compatible only}}<ref name="iflibraryisgpl3">[https://www.gnu.org/licenses/gpl-faq.html#IfLibraryIsGPL]: If library is under GPLv3</ref><ref name="gpl3linking">[https://www.gnu.org/licenses/gpl-faq.html#LinkingWithGPL]: Linking with the GNU GPLv3</ref> ||{{partial|[[Copyleft]]ed}}<ref name="gnucopyleft"/>||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="gplv3">{{cite web|url=https://www.gnu.org/licenses/gpl.html|title=the GNU General Public License version 3}}</ref>||{{yes}}<ref name="gplv3"/>||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="gplv3"/>
 |-
-|[[GNU General Public License]]||[[Free Software Foundation]]||3.0||<span style="display:none">2007</span>June 2007||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[GNU Lesser General Public License]]||[[Free Software Foundation]]||3.0||<span style="display:none">2007</span>June 2007||{{partial|With restrictions}}<ref name="lgpl3">[https://www.gnu.org/licenses/lgpl.html]: the section 4 of the GNU Lesser General Public License version 3</ref>||{{partial|[[Copyleft]]ed}}<ref name="gnucopyleft"/>||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="lgplv3">{{cite web|url=https://www.gnu.org/licenses/lgpl.html|title=the GNU Lesser General Public License version 3}}</ref>||{{yes}}||{{partial|Copylefted}}<ref name="gnucopyleft"/>||{{yes}}<ref name="lgplv3"/>
 |-
-|[[GNU Lesser General Public License]]||[[Free Software Foundation]]||3.0||<span style="display:none">2007</span>June 2007||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[IBM Public License]]||[[IBM]]||1.0||<span style="display:none">1999</span>August 1999|| {{partial|[[Copyleft]]ed}}  || {{dunno}} ||  {{partial|Copylefted}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Hacktivismo Enhanced-Source Software License Agreement]]||[[Hacktivismo]]/[[Cult of the Dead Cow]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || <span style="display:none">2002</span>November 26, 2002 || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|[[Intel Open Source License]]||[[Intel Corporation]]|| {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[IBM Public License]]||[[IBM]]||1.0||<span style="display:none">1999</span>August 1999|| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[ISC license]]||[[Internet Systems Consortium]]|| {{dunno}} || <span style="display:none">2003</span>June 2003 || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Intel Open Source License]]||[[Intel Corporation]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[LaTeX Project Public License]]||LaTeX project||1.3c|| {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[ISC license]]||[[Internet Systems Consortium]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || <span style="display:none">2003</span>June 2003 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[MIT License|MIT license / X11 license]] || [[Massachusetts Institute of Technology|MIT]] || {{n/a}} || 1988 ||{{yes|Permissive}}<ref name="mit">{{cite web|url=http://opensource.org/licenses/MIT|title=MIT License}}</ref>||{{yes|Permissive}}<ref name="mit"/>||{{yes|Permissive}}<ref name="mit"/>||{{no|Manually}}<ref name="mit"/>||{{yes}}<ref name="mit"/>||{{yes|Permissive}}<ref name="mit"/>||{{no|Manually}}<ref name="mit"/>
 |-
-|[[LaTeX Project Public License]]||LaTeX project||1.3c|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Mozilla Public License]]||[[Mozilla Foundation]]||2.0|| <span style="display:none">2012</span>January 3, 2012 ||{{yes|Permissive}}<ref name="mpl2">{{cite web|url=https://www.mozilla.org/MPL/2.0|title=MPL version 2}}</ref>||{{partial|[[Copyleft]]ed}}<ref name="mpl2"/>||{{partial|Copylefted}}<ref name="mpl2"/>||{{yes}}<ref name="mpl2"/>||{{yes}}<ref name="mpl2"/>||{{partial|Copylefted}}<ref name="mpl2"/>||{{no}}<ref name="mpl2"/>
 |-
-|[[MIT License|MIT license / X11 license]] || [[Massachusetts Institute of Technology|MIT]] || style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small> || 1988 ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Netscape Public License]]||[[Netscape]]||1.1|| {{dunno}} || {{partial|Limited}} || {{dunno}} || {{partial|Limited}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Mozilla Public License]]||[[Mozilla Foundation]]||2.0|| <span style="display:none">2012</span>January 3, 2012 ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes|| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Limited
+|[[Open Software License]]|| Lawrence Rosen ||3.0|| 2005 || {{yes|Permissive}} || {{dunno}} || {{partial|[[Copyleft]]ed}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Netscape Public License]]||[[Netscape]]||1.1|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Limited
+|[[OpenSSL license]]||OpenSSL Project|| {{dunno}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[OPaC Free Public License]]|| OPaC bright ideas || ? || 1998 || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[PHP License]]||PHP Group||3.01|| {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Open Software License]]|| Lawrence Rosen ||3.0|| 2005 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Python Software Foundation License]]||Python Software Foundation||2|| {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[OpenSSL license]]||OpenSSL Project|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|[[Q Public License]]||[[Trolltech]]|| {{dunno}} || {{dunno}} ||{{partial|Limited}} || {{dunno}} || {{partial|Limited}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[PHP License]]||PHP Group||3.01|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[RealNetworks Public Source License]]||[[RealNetworks]]|| {{dunno}} || {{dunno}} ||{{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Public Domain]]||style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>||style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>|| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small> || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Reciprocal Public License]]|| Scott Shattuck || 1.5 || 2007 ||{{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Python Software Foundation License]]||Python Software Foundation||2|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Sun Industry Standards Source License]]||[[Sun Microsystems]]|| {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Q Public License]]||[[Trolltech]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? ||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Sun Public License]]||[[Sun Microsystems]]|| {{dunno}} || {{dunno}} ||{{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Sun Industry Standards Source License]]||[[Sun Microsystems]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Sybase Open Watcom Public License]]|| [[Watcom C/C++ compiler#Open source|Open Watcom]] || {{n/a}} || 2003-01-28 || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Sun Public License]]||[[Sun Microsystems]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? ||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[W3C Software Notice and License]]|| [[World Wide Web Consortium|W3C]] || 20021231 || December 31, 2002 || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[Sybase Open Watcom Public License]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[WTFPL|Do What The Fuck You Want To Public License]] (WTFPL)|| [[Sam Hocevar]] || 2 || December 2004 || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[W3C Software Notice and License]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[XCore Open Source License]]<br>also separate "Hardware License Agreement"|| [[XMOS]] || {{dunno}} || <span style="display:none">2011</span>February 2011 || {{yes|Permissive}}||{{yes|Permissive}}||{{yes|Permissive}}||{{no|Manually}}||{{yes}}||{{yes|Permissive}}||{{dunno}}
+|-	
+|[[XFree86|XFree86 1.1 License]]|| The XFree86 Project, Inc || {{dunno}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|[[XCore Open Source License]]|| [[XMOS]] || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || <span style="display:none">2011</span>February 2011 || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[zlib/libpng license]]|| Jean-Loup Gailly and Mark Adler || {{dunno}} || {{dunno}} || {{yes|Permissive}} || {{dunno}} || {{partial|Limited}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
-|XFree86 1.1 License|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-|[[zlib/libpng license]]|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-|[[Zope Public License]]||[[Zope Foundation]]||2.1|| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|? || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes || style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Zope Public License]]||[[Zope Foundation]]||2.1|| {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}} || {{dunno}}
 |-
 |}
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"></references></div>
 
 ==Approvals==
-This table lists for each license what organizations from the [[free software community]] have approved it&nbsp;&ndash;&#32;be it as a "free software" or as an "open source" license&nbsp;&ndash;&#32;and how those organizations categorize it. Organizations usually approve specific versions of software licenses. FSF approval means that the [[Free Software Foundation]] (FSF) considers the license [[free software]] as they don't approve of [[proprietary software]], however they also recommend that licenses be at least "[[GPL compatibility|Compatible with GPL]]" and preferably [[copyleft]] (usually).
+This table lists for each license what organizations from the [[free software community]] have approved it{{spaced ndash}}be it as a "free software" or as an "open source" license{{spaced ndash}}and how those organizations categorize it. Organizations usually approve specific versions of software licenses. FSF approval means that the [[Free Software Foundation]] (FSF) considers a license to be [[free software license]] as it grants the four essentials freedoms, however they also recommend that licenses should be at least "[[GPL compatibility|Compatible with GPL]]" and preferably [[copyleft]] (usually).
 
-{| class="wikitable sortable" width="auto" style="text-align: center"
+{| class="wikitable" style="text-align: center; width:99%"
 |-
-!License and specific version
-!FSF "approval"
-!Compatible with GPL
-![[Open Source Initiative|OSI]] approval
-![[Copyfree|Copyfree Initiative]] approval
-![[Debian]] approval
-![[Fedora Project]] approval
+!License and version
+![[Free Software Foundation|FSF]] approval<br><ref name="ref_FSF">{{cite web|url=https://www.gnu.org/licenses/license-list.html|title=Various Licenses and Comments about Them|author=Free Software Foundation|work=Licenses|publisher=[[Free Software Foundation]]}}</ref>
+![[GPL compatibility|GPL (v3) compatibility]]<br><ref name="ref_HasToBeCompatibleWithGPLv3&GPLv2">{{cite web|url=https://www.gnu.org/licenses/license-list.html#Introduction|title=To be GPL-Compatible has to be compatible with Licenses GNU GPLv3 and GNU GPLv2{{spaced ndash}}Free Software Foundation|author=Free Software Foundation|work=Software Licenses|publisher=[[Free Software Foundation]]}}</ref><ref name="ref_GPL-compatible_List">{{cite web|url=https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses|title=GPL-Compatible Free Software Licenses{{spaced ndash}}Free Software Foundation|author=Free Software Foundation|work=Software Licenses|publisher=[[Free Software Foundation]]}}</ref><ref name="ref_GPL-Incompatible_List">{{cite web|url=https://www.gnu.org/licenses/license-list.html#GPLIncompatibleLicenses|title=GPL-Incompatible Free Software Licenses{{spaced ndash}}Free Software Foundation|author=Free Software Foundation|work=Software Licenses|publisher=[[Free Software Foundation]]}}</ref><ref name="ref_GPL-compatible">{{cite web|url=http://gplv3.fsf.org/wiki/index.php/FAQ_Update#What_does_it_mean_to_say_a_license_is_.22compatible_with_the_GPL.22.3F|title=GPL-compatible Definition by FSF{{spaced ndash}}Free Software Foundation|author=Free Software Foundation|work=GPL-compatible Definition|publisher=[[Free Software Foundation]]}}</ref><ref name="ref_GPL-compatible_previous_version_definition">{{cite web|url=https://www.gnu.org/licenses/gpl-faq.html#WhatDoesCompatMean|title=GPL-compatible Definition previous version by FSF{{spaced ndash}}Free Software Foundation|author=Free Software Foundation|work=GPL-compatible Definition|publisher=[[Free Software Foundation]]}}</ref>
+![[Open Source Initiative|OSI]] approval<br><ref name="ref_OSI">{{cite web|url=http://www.opensource.org/licenses/|title=The Approved Licenses|author=Open Source Initiative|work=License Information|publisher=[[Open Source Initiative]]}}</ref>
+![[Copyfree]] approval<br><ref>{{cite web|url=http://copyfree.org/licenses|title=Copyfree Licenses|author=Copyfree Initiative|publisher=[[Copyfree|Copyfree Initiative]]}}</ref><ref name="copyfree-rejected">{{cite web|title=Rejected Licenses|url=http://copyfree.org/rejected/|publisher=CopyFree Initiative|accessdate=June 16, 2013}}</ref>
+![[Debian Project|Debian]] approval<br><ref>{{cite web|url=http://www.debian.org/legal/licenses/|title=Debian{{spaced ndash}}License information|author=Debian|work=Licenses|publisher=[[Debian]]}}</ref><ref>{{cite web|url=http://wiki.debian.org/DFSGLicenses|title=The DFSG and Software Licenses|publisher=[[Debian]] wiki}}</ref>
+![[Fedora Project|Fedora]] approval<br><ref>{{cite web|url=http://fedoraproject.org/wiki/Licensing|title=Licensing{{spaced ndash}}FedoraProject|author=Fedora|work=Licenses|publisher=Fedora Project}}</ref>
 |-
-|[[Academic Free License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Academic Free License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Affero GPL]] version 3||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Apache License]] 1.x||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Apache License]] version 1.1 and 1.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Apache License]] 2.0||{{yes}}||{{yes}}<ref name="apache2">{{cite web|url=https://www.gnu.org/philosophy/license-list.html#apache2|title=Apache License, Version 2.0|author=Free Software Foundation|work=Licenses|publisher=[[Free Software Foundation]]}}</ref>||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Apache License]] version 2||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Apple Public Source License]] 1.x||{{No}}<ref>{{cite web |url=https://www.gnu.org/licenses/license-list.html#apsl1 |title=Apple Public Source License (APSL), version 1.x |deadurl=no |accessdate=2013-08-07}}</ref>||{{no}}||{{yes}}||{{no}}||{{no}}||{{no}}
 |-
-|[[Apple Public Source License]] version 1.x||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Apple Public Source License]] 2.0||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Apple Public Source License]] version 2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Artistic License]] 1.0||{{No}}<ref group="note">The original version of the Artistic License is defined as non-free because it is overly vague, not because of the substance of the license. The FSF encourages projects to use the [https://www.gnu.org/licenses/license-list.html#ArtisticLicense Clarified Artistic License] instead.</ref>||{{no}}||{{yes}}||{{no}}||{{yes}}||{{no}}
 |-
-|[[Artistic License]] 1.0||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Artistic License]] 2.0||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Artistic License]] 2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Beerware]] 42 || {{no}} || {{no}} || {{no}} || {{yes}} || {{no}} || {{yes}}<ref>{{cite web|url=https://fedoraproject.org/wiki/Licensing/Beerware|title=Licensing/Beerware|publisher=[[Fedora Project]]|accessdate=2015-03-10}}</ref>
 |-
-|[[Berkeley Database License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Berkeley Database License]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[BSD licenses#4-clause license (original "BSD License")|Original BSD license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[BSD licenses#4-clause license (original "BSD License")|Original BSD license]]||{{yes}}||{{no}}||{{no}}<ref name="bsdlic">{{cite web|url=http://opensource.org/licenses/BSD-3-Clause|title=3-clause BSD License at OSI}}</ref>||{{no}}||{{yes}}||{{yes}}
 |-
-|[[BSD licenses#3-clause license ("Revised BSD License", "New BSD License", or "Modified BSD License")|Modified BSD license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[BSD licenses#3-clause license ("Revised BSD License", "New BSD License", or "Modified BSD License")|Modified BSD license]]||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[Boost Software License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Boost Software License]]||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[CeCILL]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[CeCILL]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Common Development and Distribution License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Common Development and Distribution License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Common Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Common Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Creative Commons licenses]] (Tags: by & sa)||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||≥ v3.0 only||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Cryptix General License]]||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[Creative Commons licenses]] (Tags: nc & nd)||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||by-nd only
+|[[Eclipse Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Cryptix General License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Educational Community License]]||{{yes}}
+|{{yes}}<ref name="ecl2">{{cite web|url=https://www.gnu.org/philosophy/license-list.html#ECL2.0|title=Educational Community License 2.0|author=Free Software Foundation|work=Licenses|publisher=[[Free Software Foundation]]}}</ref>
+|{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Do What The Fuck You Want To Public License]] (WTFPL)||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Eiffel Forum License]] 2||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Eclipse Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU Affero General Public License]]||{{yes}}||{{yes}}<ref name="agplsection13"/><ref name="gplfsf">[https://www.gnu.org/licenses/]: "We use only licenses that are compatible with the GNU GPL for GNU software."</ref>||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Educational Community License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU General Public License]] v2||{{yes}}||{{no}}<ref group="note">But can be made compatible by upgrading to GPLv3 via the optional "or later" clause added in most GPLv2 license texts.</ref><ref name="gpl2gpl3comp"/>||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Eiffel Forum License]] version 2||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU General Public License]] v3||{{yes}}||{{yes}}<ref group="note">But not with GPLv2 without "or later" clause.</ref><ref name="gpl2gpl3comp">{{cite web| url=https://www.gnu.org/licenses/gpl-faq.html#v2v3Compatibility| title=Frequently Asked Questions about the GNU Licenses – Is GPLv3 compatible with GPLv2?| publisher=gnu.org| accessdate=3 June 2014 |quote=''No. Some of the requirements in GPLv3, such as the requirement to provide Installation Information, do not exist in GPLv2. As a result, the licenses are not compatible: if you tried to combine code released under both these licenses, you would violate section 6 of GPLv2. However, if code is released under GPL "version 2 or later," that is compatible with GPLv3 because GPLv3 is one of the options it permits.''}}</ref>||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Fair License]]||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[GNU Lesser General Public License]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[GNU General Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[IBM Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}<ref name="copyfree-rejected" />||{{yes}}||{{yes}}
 |-
-|[[GNU Lesser General Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Intel Open Source License]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{no}}
 |-
-|[[Hacktivismo Enhanced-Source Software License Agreement]]||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[ISC license]]||{{yes}}<ref>{{cite web|url=http://www.fsf.org/licensing/licenses/quick-guide-gplv3.html#new-compatible-licenses|title=A Quick Guide to GPLv3|author=Free Software Foundation|work=Licenses|publisher=[[Free Software Foundation]]}}</ref>||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[IBM Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[LaTeX Project Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}<ref name="copyfree-rejected" />||{{yes}}||{{yes}}
 |-
-|[[Intel Open Source License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[Microsoft Public License]]||{{yes}}||{{no}}||{{yes}}||{{yes}}||{{no}}||{{yes}}
 |-
-|[[ISC license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Microsoft Reciprocal License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[LaTeX Project Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[MIT License|MIT license / X11 license]]||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[Microsoft Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Mozilla Public License]] 1.1||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Microsoft Reciprocal License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Mozilla Public License]] 2.0||{{yes}}||{{yes}}<ref group="note">MPL 2.0 is [[GPL compatibility|GPL compatible]] unless marked "Incompatible with Secondary Licenses".</ref><ref>{{cite web|url=http://www.mozilla.org/MPL/2.0/FAQ.html|title=MPL 2.0 FAQ|author=Mozilla Foundation|work=Licenses|publisher=[[Mozilla Foundation]]}}</ref>||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[MIT license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Netscape Public License]]||{{yes}}||{{no}}||{{no}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Mozilla Public License]] version 1.1||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Open Software License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Mozilla Public License]] version 2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes, unless marked "Incompatible with Secondary Licenses".||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[OpenSSL license]]||{{yes}}||{{no}}||{{no}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Netscape Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[PHP License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{yes}}||{{partial}}
 |-
-|[[Open Software License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Python Software Foundation License]] 2.0.1; 2.1.1 and newer||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[OpenSSL license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Q Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[PHP License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||v3.0/3.01 only, others are unknown
+|[[Reciprocal Public License]] 1.5||{{no}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{no}}
 |-
-|[[POV-Ray]]-License||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+|[[Sun Industry Standards Source License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Python Software Foundation License]] 2.0.1; 2.1.1 and newer||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Sun Public License]]||{{yes}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
-|[[Q Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Sybase Open Watcom Public License]]||{{no}}||{{no}}||{{yes}}||{{no}}||{{no}}||{{no}}
 |-
-|[[Reciprocal Public License]] 1.5||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[W3C Software Notice and License]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[Sun Industry Standards Source License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[WTFPL|Do What The Fuck You Want To Public License]] (WTFPL)||{{yes}}<ref group="note">Listed as WTFPL.</ref>||{{yes}}||{{no}}<ref>{{cite web|url=http://www.opensource.org/minutes20090304|title=OSI Board Meeting Minutes, Wednesday, March 4, 2009}}</ref>||{{yes}}||{{yes}}||{{yes}}
 |-
-|[[Sun Public License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[XFree86|XFree86 1.1 License]]||{{yes}}||{{yes}}<ref name="x">{{cite web|url=https://www.gnu.org/philosophy/license-list.html#XFree861.1License|title=XFree86 1.1 License|author=Free Software Foundation|work=Licenses|publisher=[[Free Software Foundation]]}}</ref>||{{no}}||{{no}}||{{no}}||{{no}}
 |-
-|[[Sybase Open Watcom Public License]]||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+|[[zlib/libpng license]]||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{yes}}||{{yes}}
 |-
-|[[W3C Software Notice and License]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Zope Public License]] 1.0||{{yes}}||{{no}}||{{no}}||{{no}}||{{no}}||{{yes}}
 |-
-|XFree86 1.1 License||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-|-
-|[[zlib/libpng license]]||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-|[[Zope Public License]] version 1.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-|[[Zope Public License]] version 2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|[[Zope Public License]] 2.0||{{yes}}||{{yes}}||{{yes}}||{{no}}||{{no}}||{{yes}}
 |-
 |}
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"></references></div>
-
-==Article comparison==
-{| class="wikitable sortable" width="auto" style="text-align: center"
-! License
-! Version
-! Include license
-! Include source
-! Linking
-! State changes
-! Commercial use
-! Distribution
-! Modification
-! Patent grant
-! Private use
-! Sublicensing
-! No liability
-! No trademark
-|-
-| [[Apache License]]||2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-| [[BSD licenses#3-clause license ("Revised BSD License", "New BSD License", or "Modified BSD License")|BSD 3-Clause License]]||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-| [[BSD licenses#2-clause license ("Simplified BSD License" or "FreeBSD License")|BSD 2-Clause License]]||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[GNU General Public License]]||2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[GNU General Public License]]||3.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[GNU Lesser General Public License]]||2.1||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[GNU Lesser General Public License]]||3.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[MIT License]]||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[Mozilla Public License]]||2.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-|-
-| [[Eclipse Public License]]||1.0||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| [[Affero General Public License]]||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||
-|-
-| Generic [[copyright]] ||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||||||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||||style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes||style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No||||
-|-
-|}
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="note"></references></div>
+{{reflist|group="note"}}
 
 ==See also==
-<div class="noprint tright portal" style="border:solid #aaa 1px;margin:0.5em 0 0.5em 1em;">
-<table style="background:#f9f9f9;font-size:85%;line-height:110%;max-width:175px;">
-<tr style="vertical-align:middle;"><td style="text-align:center;">[[File:Free Software Portal Logo.svg|32x28px|alt=Portal icon]]</td><td style="padding:0 0.2em;vertical-align:middle;font-style:italic;font-weight:bold;">[[Portal:Free software|Free software portal]]</td></tr></table></div>
+* [[Free software]]
+* [[Free software license]]
 * [[List of software licenses]]
+* [[Open source software]]
 
 ==References==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist}}
 
-<table class="navbox" style="border-spacing:0"><tr><td style="padding:2px"><table class="nowraplinks hlist collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:FOSS|<span title="View this template" style=";;background:none transparent;border:none;;">v</span>]]</li><li class="nv-talk">[[Template talk:FOSS|<span title="Discuss this template" style=";;background:none transparent;border:none;;">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:FOSS&action=edit <span title="Edit this template" style=";;background:none transparent;border:none;;">e</span>]</li></ul></div><div style="font-size:110%">[[Free and open-source software]]</div></th></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">General</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Alternative terms for free software]]
-*[[Comparison of open source and closed source]]
-*[[Comparison of open-source software hosting facilities]]
-*[[List of formerly proprietary software|Formerly proprietary software]]
-*[[List of free and open-source Android applications|Free and open-source Android applications]] 
-*[[List of free and open-source software packages|Free and open-source software packages]]
-*[[Free software]]
-*[[List of free-software events|Free software events]]
-*[[Free software movement]]
-*[[List of free software project directories|Free software project directories]]
-*[[List of free software web applications|Free software web applications]] 
-*[[Gratis versus libre]] 
-*[[Long-term support]]
-*[[Open-source software]]
-*[[Outline of free software|Outline]]
-*[[Software Package Data Exchange|SPDX]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Comparison of open-source operating systems|Operating system<br/> families]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[AROS Research Operating System|AROS]] 
-*[[Berkeley Software Distribution|BSD]] 
-*[[Contiki]]
-*[[Darwin (operating system)|Darwin]] 
-*[[eCos]] 
-*[[FreeDOS]] 
-*[[GNU]] 
-*[[Haiku (operating system)|Haiku]] 
-*[[Inferno (operating system)|Inferno]] 
-*[[Linux]] 
-*[[Mach (kernel)|Mach]] 
-*[[MINIX]] 
-*[[OpenSolaris]] 
-*[[Plan 9 from Bell Labs|Plan 9]] 
-*[[ReactOS]]
-*[[TUD:OS]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Open-source software development|Development]]</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Basic For Qt]] 
-*[[Eclipse (software)|Eclipse]] 
-*[[Free Pascal]]
-*[[FreeBASIC]]
-*[[Gambas]]
-*[[GNU Compiler Collection|GCC]]
-*[[Java (programming language)|Java]]
-*[[Julia (programming language)|Julia]]
-*[[LLVM]] 
-*[[Lua (programming language)|Lua]] 
-*[[NetBeans]] 
-*[[Open64]] 
-*[[Perl]] 
-*[[PHP]] 
-*[[Python (programming language)|Python]] 
-*[[ROSE (compiler framework)|ROSE]] 
-*[[Ruby (programming language)|Ruby]] 
-*[[Tcl]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[History of free and open-source software|History]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[GNU#History|GNU]] 
-*[[History of Haiku (operating system)|Haiku]] 
-*[[History of Linux|Linux]] 
-*[[Mozilla]] 
-**[[History of Mozilla Application Suite|Application Suite]] 
-**[[History of Firefox|Firefox]] 
-**[[History of Mozilla Thunderbird|Thunderbird]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Organizations</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Android (operating system)|Android Open Source Project]] 
-*[[Apache Software Foundation]] 
-*[[Blender Foundation]]
-*[[The Document Foundation]]
-*[[Eclipse Foundation]] 
-*[[Free Software Foundation]]
-**[[Free Software Foundation Europe|Europe]] 
-**[[Free Software Foundation of India|India]] 
-**[[Free Software Foundation Latin America|Latin America]]
-*[[FreeBSD Foundation]] 
-*[[freedesktop.org]] 
-*[[Free Software Movement of India|FSMI]] 
-*[[GNOME Foundation]] 
-*[[GNU Project]] 
-*[[Google Code]] 
-*[[KDE e.V.]] 
-*[[Linux Foundation]] 
-*[[Mozilla Foundation]] 
-*[[Open Knowledge Foundation]]
-*[[Open Source Geospatial Foundation]] 
-*[[Open Source Initiative]] 
-*[[Software Freedom Conservancy]] 
-*[[SourceForge]] 
-*[[Symbian Foundation]] 
-*[[Ubuntu Foundation]]
-*[[VideoLAN|VideoLAN Organization]] 
-*[[Wikimedia Foundation]] 
-*[[X.Org Foundation]]
-*[[Xiph.Org Foundation]] 
-*[[XMPP Standards Foundation]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">[[Free software license|Licenses]]</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Apache License|Apache]] 
-*[[Artistic License|Artistic]] 
-*[[Beerware]]
-*[[Boost Software License|Boost]]
-*[[BSD licenses|BSD]]
-*[[CC0]] 
-*[[GNU General Public License|GNU GPL]] 
-*[[GNU Lesser General Public License|GNU LGPL]] 
-*[[ISC license|ISC]] 
-*[[MIT License|MIT]] 
-*[[Mozilla Public License|MPL]] 
-*[[Shared source#Open Source licenses|Ms-PL/RL]] 
-*[[WTFPL]]
-*[[zlib License|zlib]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">License types<br/> and standards</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Comparison of free and open-source software licenses]]
-*[[Contributor License Agreement]] 
-*[[Copyfree]]
-*[[Copyleft]]
-*[[Debian Free Software Guidelines]] 
-*[[Definition of Free Cultural Works]]
-*[[Free license]]
-*[[The Free Software Definition]]
-*[[The Open Source Definition]]
-*[[Open-source license]]
-*[[Permissive free software licence]]
-*[[Public domain]]
-*[[Viral license]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Challenges</th><td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*[[Binary blob]] 
-*[[Digital rights management]]
-*[[Free and open-source graphics device driver]]
-*[[Comparison of open-source wireless drivers]]
-*[[Hardware restriction]]s 
-*[[License proliferation]] 
-*[[Mozilla Corporation software rebranded by the Debian project|Mozilla software rebranding]] 
-*[[Proprietary software]] 
-*[[SCO–Linux controversies]]
-*[[UEFI_Secure_Boot#Secure_boot|Secure boot]] 
-*[[Software patents and free software|Software patents]]
-*[[Open-source software security|Software security]]
-*[[Trusted Computing]]
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><th scope="row" class="navbox-group">Related topics</th><td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
-*''[[The Cathedral and the Bazaar]]''
-*[[Fork (software development)|Forking]] 
-*[[Linux distribution]] 
-*[[Microsoft Open Specification Promise]] 
-*''[[Revolution OS]]''
-</div></td></tr><tr style="height:2px"><td colspan="2"></td></tr><tr><td class="navbox-abovebelow" colspan="2" style="font-weight:bold"><div>
-*[[File:Symbol book class2.svg                  | Wikipedia book|16x16px|link=]] [[Book:Free and Open Source Software|Book]]
-*[[File:Folder Hexagonal Icon.svg               | Category|16x16px|link=]] [[:Category:Free software|Category]]
-*[[File:Commons-logo.svg                        | Commons page|16x16px|link=]] [[:commons:Category:Free software|Commons]]
-*[[File:Portal-puzzle.svg                       | Portal|16x16px|link=]] [[Portal:Free software|Portal]]
-</div></td></tr></table></td></tr></table>
-
-
-
+{{DEFAULTSORT:Comparison Of Free And Open Source Software Licenses}}
 [[Category:Debian]]
 [[Category:Free and open-source software licenses|*]]
 [[Category:Free Software Foundation]]
 [[Category:Software comparisons|Licenses]]
 [[Category:Free software lists and comparisons]]
-
-<table class="metadata plainlinks stub" style="background: transparent;"  role="presentation"><tr>
-<td>[[File:Nuvola apps emacs vector.svg|40x30px|alt=Stub icon]]</td>
-<td>''This [[free software]]–related article  is a [[Wikipedia:stub|stub]].  You can help Wikipedia by [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit expanding it].''<div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view">[[Template:Free-software-stub|<span title="View this template" style="">v</span>]]</li><li class="nv-talk">[[Template talk:Free-software-stub|<span title="Discuss this template" style="">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Free-software-stub&action=edit <span title="Edit this template" style="">e</span>]</li></ul></div></td>
-</tr></table>

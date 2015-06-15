@@ -1,4 +1,4 @@
-[[Category:Wikipedia pages with incorrect protection templates|ExpandTemplates]]
+{{pp-move-indef}}
 This article provides introductory information about the RGB, HSV, and HSL color models from a computer graphics (Web page, image) perspective. An introduction to colors is also provided to support the main discussion.
 
 ==Color Basics==
@@ -7,7 +7,7 @@ This article provides introductory information about the RGB, HSV, and HSL color
 ===Primary Colors and Hue===
 (See [[Color perception|Color vision]], [[Additive colors|Additive color]], [[Hue#cite_note-2|Hue]] for more information.)
 
-First, "color" refers to the human brain's subjective interpretation of combinations of a narrow band of wavelengths of light. For this reason, the definition of "color" is not based on a strict set of physical phenomena. Therefore, even basic concepts like "primary colors" are not clearly defined. For example, traditional "Painter's Colors" use red, blue, and yellow as the primary colors, "Printer's Colors" use cyan, yellow, and magenta, and "Light Colors" use red, green, and blue. "Light colors", more formally known as additive colors, are formed by combining red, green, and blue light. This article refers to additive colors and refers to red, green, and blue as the primary colors. 
+First, "color" refers to the human brain's subjective interpretation of combinations of a narrow band of wavelengths of light. For this reason, the definition of "color" is not based on a strict set of physical phenomena. Therefore, even basic concepts like "primary colors" are not clearly defined. For example, traditional "Painter's Colors" use red, blue, and yellow as the primary colors, "Printer's Colors" use cyan, yellow, and magenta, and "Light Colors" use red, green, and blue.<ref name=ArtDesignVisualThinking>{{cite web|last=Jirousek|first=Charlotte|title=Color, Value, and Hue|url=http://char.txa.cornell.edu/language/element/color/color.htm|work=Art, Design, and Visual Thinking|accessdate=23 October 2011}}</ref> "Light colors", more formally known as additive colors, are formed by combining red, green, and blue light. This article refers to additive colors and refers to red, green, and blue as the primary colors. 
 
 Hue is a term describing a pure color, that is, a color not modified by tinting or shading (see below). In additive colors, hues are formed by combining two primary colors. When two primary colors are combined in equal intensities, the result is a "secondary color".
 
@@ -39,7 +39,7 @@ Note an attribute of the total intensity in the additive model. If full intensit
 ===Tones===
 (See [[Colorfulness]] for more information.)
 
-''Tone'' is a general term, typically used by painters, to refer to the effects of reducing the "colorfulness" of a hue.; painters refer to it as "adding gray". Note that gray is not a color or even a single concept but refers to all the range of values between black and white where all three primary colors are equally represented. The general term is provided as more specific terms have conflicting definitions in different color models. Thus, shading takes a hue toward black, tinting takes a hue towards white, and tones cover the range between.
+''Tone'' is a general term, typically used by painters, to refer to the effects of reducing the "colorfulness" of a hue.;<ref name=ArtDesignVisualThinking /><ref>{{cite web|last=Boddy-Evans|first=Marion|title=Painting Color Class: Tones or Values|url=http://painting.about.com/od/colourtheory/ss/ColorClassTones.htm|work=About.Com Guide|accessdate=24 October 2011}}</ref> painters refer to it as "adding gray". Note that gray is not a color or even a single concept but refers to all the range of values between black and white where all three primary colors are equally represented. The general term is provided as more specific terms have conflicting definitions in different color models. Thus, shading takes a hue toward black, tinting takes a hue towards white, and tones cover the range between.
 
 ==Choosing a Color Model==
 No one color model is necessarily "better" than another. Typically, the choice of a color model is dictated by external factors, such as a graphics tool or the need to specify colors according to the CSS2 or CSS3 standard. The following discussion only describes how the models function, centered on the concepts of hue, shade, tint, and tone.
@@ -48,9 +48,9 @@ No one color model is necessarily "better" than another. Typically, the choice o
 (See [[RGB|RGB Color Model]] for more information.)
 
 The RGB model's approach to colors is important because:
-* It directly reflects the physical properties of "Truecolor" displays
+* It directly reflects the physical properties of "Truecolor" displays<ref name=Truecolor>{{cite web|last=Wikipedia|title=Truecolor|url=http://en.wikipedia.org/wiki/Color_depth#Truecolor|work=Color depth|accessdate=12 October 2011}}</ref>
 * As of 2011, most graphics tools support it, even if they prefer another color model
-* It is the only means of specifying a specific color in the CSS2 standard  for Web pages
+* It is the only means of specifying a specific color in the CSS2 standard<ref name="CSS2 Color">{{cite web|last=W3C|title=14 Colors and backgrounds|url=http://www.w3.org/TR/CSS2/colors.html|work=W3C CSS2 Specification|accessdate=12 October 2011}}</ref>  for Web pages
 In the model, a color is described by specifying the intensity levels of the colors red, green, and blue. The typical range of intensity values for each color, 0–255,  is based on taking a binary number with 32 bits and breaking it up into four bytes of 8 bits each. 8 bits can hold a value from 0 to 255. The fourth byte is used to specify the "[[Alpha compositing|alpha]]", or the opacity, of the color. Opacity comes into play when layers with different colors are stacked. If the color in the top layer is less than fully opaque (alpha < 255), the color from underlying layers "shows through". 
 
 In the RGB model, hues are represented by specifying one color as full intensity (255), a second color with a variable intensity, and the third color with no intensity (0).
@@ -159,7 +159,7 @@ Value corresponds directly to the concept of intensity in the Color Basics secti
 *White is produced by specifying zero saturation and full value, regardless of hue
 *Black is produced by specifying zero value, regardless of hue or saturation
 *Shades of gray are produced by specifying zero saturation and between zero and full value
-The advantage of HSV is that each of its attributes corresponds directly to the basic color concepts, which makes it conceptually simple. The perceived disadvantage of HSV is that the saturation attribute corresponds to tinting, so desaturated colors have increasing total intensity. For this reason, the CSS3 standard plans to support RGB and HSL but not HSV.
+The advantage of HSV is that each of its attributes corresponds directly to the basic color concepts, which makes it conceptually simple. The perceived disadvantage of HSV is that the saturation attribute corresponds to tinting, so desaturated colors have increasing total intensity. For this reason, the CSS3 standard plans to support RGB and HSL but not HSV.<ref name="CSS3 HSL">{{cite web|last=W3C|title=4.2.4. HSL color values|url=http://www.w3.org/TR/css3-color/#foreground|work=CSS Color Module Level 3|accessdate=12 October 2011}}</ref>
 
 ===HSL===
 (See [[HSL and HSV]] for more information.)
@@ -167,7 +167,7 @@ The advantage of HSV is that each of its attributes corresponds directly to the 
 The HSL model describes colors in terms of hue, saturation, and lightness (also called luminance). (Note: the definition of saturation in HSL is substantially different from HSV, and lightness is not intensity.) The model has two prominent properties:
 *The transition from black to a hue to white is symmetric and is controlled solely by increasing lightness
 *Decreasing saturation transitions to a shade of gray dependent on the lightness, thus keeping the overall intensity relatively constant
-The properties mentioned above have led to the wide use of HSL, in particular, in the CSS3 color model.
+The properties mentioned above have led to the wide use of HSL, in particular, in the CSS3 color model.<ref name="CSS3 HSL">{{cite web}}</ref>
 
 As in HSV, hue corresponds directly to the concept of hue in the Color Basics section. The advantages of using hue are
 *The angular relationship between tones around the color circle is easily identified

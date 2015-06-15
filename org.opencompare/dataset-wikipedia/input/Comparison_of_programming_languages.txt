@@ -1,51 +1,19 @@
-<table class="vertical-navbox nowraplinks" style="float:right;clear:right;width:22.0em;margin:0 0 1.0em 1.0em;background:#f9f9f9;border:1px solid #aaa;padding:0.2em;border-spacing:0.4em 0;text-align:center;line-height:1.4em;font-size:88%"><tr><th style="padding:0.2em 0.4em 0.2em;font-size:145%;line-height:1.2em">[[Comparison of programming languages|Programming language comparisons]]</th></tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of programming languages|General comparison]]
-* [[Comparison of programming languages (syntax)|Basic syntax]]
-* [[Comparison of programming languages (basic instructions)|Basic instructions]]
-* [[Comparison of programming languages (array)|Arrays]]
-* [[Comparison of programming languages (mapping)|Associative arrays]]
-* [[Comparison of programming languages (strings)|String operations]]
-* [[Comparison of programming languages (string functions)|String functions]]
-* [[Comparison of programming languages (list comprehension)|List comprehension]]
-* [[Comparison of programming languages (object-oriented programming)|Object-oriented programming]]
-* [[Constructor (object-oriented programming)|Object-oriented constructors]]
-* [[Comparison of database access|Database access]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Evaluation strategy]]
-* [[b:Computer Programming/Hello world|List of "Hello World" programs]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* [[Comparison of web application frameworks|Web application frameworks]]
-* [[Comparison of the Java and .NET platforms]]</td>
-</tr><tr><td style="padding:0 0.1em 0.4em;text-align: left">
-* Comparison of individual programming languages
-** [[ALGOL 58#ALGOL 58's influence on ALGOL 60|ALGOL 58's influence on ALGOL 60]]
-** [[ALGOL 60#Comparisons with other languages|ALGOL 60: Comparisons with other languages]]
-** [[Comparison of ALGOL 68 and C++]]
-** [[ALGOL 68#Comparisons with other languages|ALGOL 68: Comparisons with other languages]]
-** [[Compatibility of C and C++]]
-** [[Comparison of Pascal and Delphi|Comparison of Pascal and Borland Delphi]]
-** [[Comparison of Object Pascal and C]]
-** [[Comparison of Pascal and C]]
-** [[Comparison of Java and C++]]
-** [[Comparison of C Sharp and Java|Comparison of C# and Java]]
-** [[Comparison of C Sharp and Visual Basic .NET|Comparison of C# and Visual Basic .NET]]
-** [[Comparison of Visual Basic and Visual Basic .NET]]</td>
-</tr><tr><td style="text-align:right;font-size:115%"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view">[[Template:Programming language comparisons|<span title="View this template">v</span>]]</li><li class="nv-talk">[[Template talk:Programming language comparisons|<span title="Discuss this template">t</span>]]</li><li class="nv-edit">[//en.wikipedia.org/w/index.php?title=Template:Programming_language_comparisons&action=edit <span title="Edit this template">e</span>]</li></ul></div></td></tr></table>
+{{ProgLangCompare}}
 [[Programming language]]s are used for controlling the behavior of a machine (often a [[computer]]). Like [[natural language]]s, programming languages conform to rules for [[syntax]] and [[semantics]].
 
-There are [[list of programming languages|thousands of programming languages]] and new ones are created every year. Few languages ever become sufficiently popular that they are used by more than a few people, but professional [[programmer]]s may use dozens of languages in a career.
+There are [[list of programming languages|thousands of programming languages]]<ref>As of May 2006 Diarmuid Pigott's [http://hopl.murdoch.edu.au/ Encyclopedia of Computer Languages] hosted at [[Murdoch University]], [[Australia]] lists 8512 computer languages.</ref> and new ones are created every year. Few languages ever become sufficiently popular that they are used by more than a few people, but professional [[programmer]]s may use dozens of languages in a career.
 
 __TOC__
-<br style="clear:both;" />
+{{-}}
 
 ==General comparison==
 The following table compares general and technical information for a selection of commonly used [[programming language]]s. See the individual languages' articles for further information. Please note that the following table may be missing some information.
-
+<!-- Per [[WP:REPEATLINK]]: Wikilink terms on 1st instance only, remove later repeat links. -->
 {|class="wikitable sortable" style="text-align:center;
 
 |- align="center"
 ! Language
-! Intended use 
+! Intended use <!--What this was to be used for originally. Not what it is used for now, which is hard to verify.-->
 ! [[imperative programming|Imperative]]
 ! [[object-oriented programming|Object-oriented]]
 ! [[functional programming|Functional]]
@@ -57,1839 +25,1870 @@ The following table compares general and technical information for a selection o
 ! [[standardization|Standardized]]?
 
 |- align="center"
-! [[ActionScript]] 3.0 
-| Application, client-side, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1996, ECMA 
-
-|- align="center"
-! [[Ada (programming language)|Ada]] 
-| Application, embedded, realtime, [[System programming language|system]] 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| 
-| 
-
-| [[concurrent programming language|concurrent]], [[distributed programming|distributed]], imperative object-oriented 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1983, 2005, 2012, ANSI, ISO, [[GOST]] 27831-88 
+! [[ActionScript]] 3.0 <!-- Language -->
+| Application, client-side, Web <!-- Intended use -->
+<!-- Sparse matrix for ActionScript 3.0 -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1996}}, ECMA <!-- Standardized? -->
 
 |- align="center"
-! [[Aldor]] 
-| Highly domain-specific, symbolic computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[ALGOL 58]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Ada (programming language)|Ada]] <!-- Language -->
+| Application, embedded, realtime, [[System programming language|system]] <!-- Intended use -->
+<!-- Sparse matrix for Ada -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<ref>[http://www.adaic.org/standards/05rm/html/RM-TTL.html Ada Reference Manual, ISO/IEC 8652:2005(E) Ed. 3], [http://www.adaic.org/standards/05rm/html/RM-6.html Section 6: Subprograms]</ref> <!-- Procedural -->
+| {{Yes}}<ref>[http://www.adaic.org/standards/05rm/html/RM-TTL.html Ada Reference Manual, ISO/IEC 8652:2005(E) Ed. 3], [http://www.adaic.org/standards/05rm/html/RM-12.html Section 12: Generic Units]</ref> <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[concurrent programming language|concurrent]],<ref>[http://www.adaic.org/standards/05rm/html/RM-TTL.html Ada Reference Manual, ISO/IEC 8652:2005(E) Ed. 3], [http://www.adaic.org/standards/05rm/html/RM-9.html Section 9: Tasks and Synchronization]</ref> [[distributed programming|distributed]],<ref>[http://www.adaic.org/standards/05rm/html/RM-TTL.html Ada Reference Manual, ISO/IEC 8652:2005(E) Ed. 3] [http://www.adaic.org/standards/05rm/html/RM-E.html Annex E: Distributed Systems]</ref> imperative object-oriented<ref>[http://www.adaic.org/standards/05rm/html/RM-TTL.html Ada Reference Manual, ISO/IEC 8652:2005(E) Ed. 3], [http://www.adaic.org/standards/05rm/html/RM-3-9.html 3.9 Tagged Types and Type Extensions]</ref> <!-- Other paradigms -->
+| {{yes|1983}}, 2005, 2012, ANSI, ISO, [[GOST]] 27831-88<ref>[http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27831-88.pdf Vak.ru]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[ALGOL 60]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1960, [[IFIP WG 2.1]], ISO 
-
-|- align="center"
-! [[ALGOL 68]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| 
-
-| concurrent 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1968, [[IFIP WG 2.1]], [[GOST 27974-88]], 
+! [[Aldor]] <!-- Language -->
+| Highly domain-specific, symbolic computing <!-- Intended use -->
+<!-- Sparse matrix for Aldor -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Ateji PX]] 
-| Parallel application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| [[pi calculus]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[APL (programming language)|APL]] 
-| Application, data processing 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| [[array programming|array-oriented]], [[tacit programming|tacit]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1989, ISO 
+! [[ALGOL 58]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for ALGOL 58 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Assembly language]] 
-| [[General purpose programming language|General]] 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| 
-
-| any, syntax is usually highly specific, related to the target processor 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[AutoHotkey]] 
-| GUI automation (macros), highly domain-specific 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[ALGOL 60]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for ALGOL 60 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1960}}, [[IFIP WG 2.1]], ISO<ref>[http://www.open-std.org/jtc1/sc22/docs/oldwgs/wg6.html ISO 1538:1984]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[AutoIt]] 
-| GUI automation (macros), highly domain-specific 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[BASIC]] 
-| Application, education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1983, [http://portal.acm.org/citation.cfm?id=988221 ANSI], ISO 
+! [[ALGOL 68]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for ALGOL 68 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{yes|1968}}, [[IFIP WG 2.1]], [[GOST 27974-88]],<ref>[http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27974-88.pdf Vak.ru]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[BBj]] 
-| Application, business, Web 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[BeanShell]] 
-| Application, scripting 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|In progress, [[Java Community Process|JCP]] 
+! [[Ateji PX]] <!-- Language -->
+| Parallel application <!-- Intended use -->
+<!-- Sparse matrix for Ateji PX -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[pi calculus]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[BitC]] 
-| System 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[BLISS]] 
-| System 
-
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[APL (programming language)|APL]] <!-- Language -->
+| Application, data processing <!-- Intended use -->
+<!-- Sparse matrix for APL -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[array programming|array-oriented]], [[tacit programming|tacit]] <!-- Other paradigms -->
+| {{yes|1989}}, ISO <!-- Standardized? -->
 
 |- align="center"
-! [[BlitzMax]] 
-| Application, game 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Boo (programming language)|Boo]] 
-| Application 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Assembly language]] <!-- Language -->
+| [[General purpose programming language|General]] <!-- Intended use -->
+<!-- Sparse matrix for Assembly language -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| any, syntax is usually highly specific, related to the target processor <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Bro (software)|Bro]] 
-| domain-specific, application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[C (programming language)|C]] 
-| Application, system, general purpose, low-level operations 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1989, [[ANSI C|ANSI C89, ISO C90, ISO C99, ISO C11]] 
+! [[AutoHotkey]] <!-- Language -->
+| GUI automation (macros), highly domain-specific <!-- Intended use -->
+<!-- Sparse matrix for AutoHotkey -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[C++]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1998, ISO/IEC 1998, ISO/IEC 2003, ISO/IEC 2011 
-
-|- align="center"
-! [[C Sharp (programming language)|C#]] 
-| Application, RAD, business, client-side, general, server-side, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| structured, concurrent 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2000, ECMA, ISO 
+! [[AutoIt]] <!-- Language -->
+| GUI automation (macros), highly domain-specific <!-- Intended use -->
+<!-- Sparse matrix for AutoIt -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Clarion (programming language)|Clarion]] 
-| General, business, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| 
-| 
-| 
-| 
-
-| 
-|style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
-
-|- align="center"
-! [[Clean (programming language)|Clean]] 
-| General 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Bash (Unix shell)|Bash]] <!-- Language -->
+| Shell, scripting <!-- Intended use -->
+<!-- Sparse matrix for BASIC -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| <!-- Standardized? -->
 
 |- align="center"
-! [[Clojure]] 
-| General 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[CLU (programming language)|CLU]] 
-| General 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[BASIC]] <!-- Language -->
+| Application, education <!-- Intended use -->
+<!-- Sparse matrix for BASIC -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1983}}, [http://portal.acm.org/citation.cfm?id=988221 ANSI], ISO <!-- Standardized? -->
 
 |- align="center"
-! [[COBOL]] 
-| Application, business 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|ANSI X3.23 1968, 1974, 1985; ISO/IEC 1989:1985, 2002, 2014 
-
-|- align="center"
-! [[Cobra (programming language)|Cobra]] 
-| Application, business, general, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[BBj]] <!-- Language -->
+| Application, business, Web <!-- Intended use -->
+<!-- Sparse matrix for BBj -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[ColdFusion Markup Language|ColdFusion]] (CFML) 
-| Web 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Common Lisp]] 
-| General 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| extensible syntax, [[Macro (computer science)#Syntactic macros|syntatic macros]], [[multiple dispatch]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1994, ANSI 
+! [[BeanShell]] <!-- Language -->
+| Application, scripting <!-- Intended use -->
+<!-- Sparse matrix for BeanShell -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no|In progress}}, [[Java Community Process|JCP]]<ref>[http://jcp.org/en/jsr/detail?id=274 JSR 274]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[COMAL]] 80 
-| Education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! Crystal 1.0.0 
-| Education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[BitC]] <!-- Language -->
+| System <!-- Intended use -->
+<!-- Sparse matrix for BitC -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Cython]] 
-| Application, general, numerical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| [[aspect-oriented programming|aspect-oriented]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[D (programming language)|D]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| generative, concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[BLISS]] <!-- Language -->
+| System <!-- Intended use -->
+<!-- Sparse matrix for BLISS -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Dart (programming language)|Dart]] 
-| Application, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| structured 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Ecma-408 standard 
-
-|- align="center"
-! [[Dylan (programming language)|Dylan]] 
-| Application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[BlitzMax]] <!-- Language -->
+| Application, game <!-- Intended use -->
+<!-- Sparse matrix for BlitzMax -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Eiffel (programming language)|Eiffel]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2005, ECMA, ISO 
-
-|- align="center"
-! [[Elixir (programming language)|Elixir]] 
-| Application, distributed 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| concurrent, [[distributed programming|distributed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Boo (programming language)|Boo]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Boo -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Erlang (programming language)|Erlang]] 
-| Application, distributed, telecom 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| concurrent, [[distributed programming|distributed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Euphoria (programming language)|Euphoria]] 
-| Application
-
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Bro (software)|Bro]] <!-- Language -->
+| domain-specific, application <!-- Intended use -->
+<!-- Sparse matrix for Bro -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
-! [[Factor (programming language)|Factor]] 
-| 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| [[stack-oriented programming language|stack-oriented]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Falcon (programming language)|Falcon]] 
-| General, Application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| prototype OOP, message oriented, tabular programming 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[C (programming language)|C]] <!-- Language -->
+| Application, system,<ref>[http://cm.bell-labs.com/cm/cs/who/dmr/chist.html CM.bell-labs.com]</ref> general purpose, low-level operations <!-- Intended use -->
+<!-- Sparse matrix for C -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1989}}, [[ANSI C|ANSI C89, ISO C90, ISO C99, ISO C11]]<ref>[http://www.open-std.org/JTC1/SC22/WG14/ ANSI C89, ISO/IEC 9899:1990, 1999, 2011]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[FP (programming language)|FP]] 
-| 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[F Sharp (programming language)|F#]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[C++]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for C++ -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1998}}, ISO/IEC 1998, ISO/IEC 2003, ISO/IEC 2011<ref>[http://www.open-std.org/JTC1/SC22/WG21/ ISO/IEC 14882:1998, 2003, 2011]</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[Forth (programming language)|Forth]] 
-| General 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| can be viewed as
-| 
-| 
-| 
-| 
-
-| stack-oriented 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1994, ANSI 
-
-|- align="center"
-! [[Fortran]] 
-| Application, numerical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1966, ANSI 66, ANSI 77, MIL-STD-1753, ISO 90, ISO 95, ISO 2003, ISO/IEC 1539-1:2010 (2008) 
+! [[C Sharp (programming language)|C#]] <!-- Language -->
+| Application, RAD, business, client-side, general, server-side, Web <!-- Intended use -->
+<!-- Sparse matrix for C# -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<ref>[http://www.codeproject.com/KB/cs/intro_functional_csharp.aspx Codeproject.com: Functional Programming in C# 3.0 using Lambda Expression]</ref> <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| structured, concurrent <!-- Other paradigms -->
+| {{yes|2000}}, ECMA, ISO<ref>ECMA-334; ISO/IEC 23270:2006</ref> <!-- Standardized? -->
 
 |- align="center"
-! [[FreeBASIC]] 
-| Application, numerical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! G2 
-| Application, inference, expert system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| common graphical development and runtime environment 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+! [[Clarion (programming language)|Clarion]] <!-- Language -->
+| General, business, Web <!-- Intended use -->
+<!-- Sparse matrix for Clarion -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<ref>[http://www.softvelocity.com Softvelocity.com]</ref> <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+|{{unknown}}<!-- Standardized? -->
 
 |- align="center"
-! [[Gambas]] 
-| Application 
+! [[Clean (programming language)|Clean]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Clean -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+|- align="center"
+! [[Clojure]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Clojure -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
+|- align="center"
+! [[CLU (programming language)|CLU]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for CLU -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[COBOL]] <!-- Language -->
+| Application, business <!-- Intended use -->
+<!-- Sparse matrix for COBOL -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|ANSI X3.23 1968, 1974, 1985; ISO/IEC 1989:1985, 2002, 2014}} <!-- Standardized? -->
+
+|- align="center"
+! [[Cobra (programming language)|Cobra]] <!-- Language -->
+| Application, business, general, Web <!-- Intended use -->
+<!-- Sparse matrix for Cobra -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[ColdFusion Markup Language|ColdFusion]] (CFML) <!-- Language -->
+| Web <!-- Intended use -->
+<!-- Sparse matrix for ColdFusion(CFML) -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Common Lisp]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Common Lisp -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| extensible syntax, [[Macro (computer science)#Syntactic macros|syntactic macros]], [[multiple dispatch]]<!-- Other paradigms -->
+| {{yes|1994}}, ANSI <!-- Standardized? -->
+
+|- align="center"
+! [[COMAL]] 80 <!-- Language -->
+| Education <!-- Intended use -->
+<!-- Sparse matrix for COMAL 80 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! Crystal 1.0.0 <!-- Language -->
+| Education <!-- Intended use -->
+<!-- Sparse matrix for Crystal 1.0.0 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Cython]] <!-- Language -->
+| Application, general, numerical computing <!-- Intended use -->
+<!-- Sparse matrix for Cython -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[aspect-oriented programming|aspect-oriented]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[D (programming language)|D]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for D -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| generative, concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Dart (programming language)|Dart]] <!-- Language -->
+| Application, Web <!-- Intended use -->
+<!-- Sparse matrix for Dart -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| structured <!-- Other paradigms -->
+| {{yes|Ecma-408 standard}} <!-- Standardized? -->
+
+|- align="center"
+! [[Dylan (programming language)|Dylan]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Dylan -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Eiffel (programming language)|Eiffel]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Eiffel -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|2005}}, ECMA, ISO<ref>ECMA-367; ISO/IEC 25436:2006</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Elixir (programming language)|Elixir]] <!-- Language -->
+| Application, distributed <!-- Intended use -->
+<!-- Sparse matrix for Elixir -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent, [[distributed programming|distributed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Erlang (programming language)|Erlang]] <!-- Language -->
+| Application, distributed, telecom <!-- Intended use -->
+<!-- Sparse matrix for Erlang -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent, [[distributed programming|distributed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Euphoria (programming language)|Euphoria]] <!-- Language -->
+| Application<!-- Intended use -->
+<!-- Sparse matrix for Euphoria -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Factor (programming language)|Factor]] <!-- Language -->
+| <!-- Intended use -->
+<!-- Sparse matrix for Factor -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[stack-oriented programming language|stack-oriented]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Falcon (programming language)|Falcon]] <!-- Language -->
+| General, Application <!-- Intended use -->
+<!-- Sparse matrix for Falcon -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| prototype OOP, message oriented, tabular programming <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[FP (programming language)|FP]] <!-- Language -->
+| <!-- Intended use -->
+<!-- Sparse matrix for FP -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[F Sharp (programming language)|F#]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for F# -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Forth (programming language)|Forth]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Forth -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| can be viewed as<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| stack-oriented <!-- Other paradigms -->
+| {{yes|1994}}, ANSI <!-- Standardized? -->
+
+|- align="center"
+! [[Fortran]] <!-- Language -->
+| Application, numerical computing <!-- Intended use -->
+<!-- Sparse matrix for Fortran -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1966}}, ANSI 66, ANSI 77, MIL-STD-1753, ISO 90, ISO 95, ISO 2003, ISO/IEC 1539-1:2010 (2008) <!-- Standardized? -->
+
+|- align="center"
+! [[FreeBASIC]] <!-- Language -->
+| Application, numerical computing <!-- Intended use -->
+<!-- Sparse matrix for FreeBASIC -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! G2 <!-- Language -->
+| Application, inference, expert system <!-- Intended use -->
+<!-- Sparse matrix for G2 -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| common graphical development and runtime environment <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Gambas]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Gambas -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
 
 |- align="center"
 ! [[Game Maker Language]]
 | Application, games
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-
-|- align="center"
-! [[GLBasic]] 
-| Application, games 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| simple object-oriented 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Go (programming language)|Go]] 
-| Application, Web, server-side
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Gosu (programming language)|Gosu]] 
-| Application, general, scripting, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[GraphTalk]] 
-| Application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| logic 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Groovy (programming language)|Groovy]] 
-| Application, general, scripting, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| aspect-oriented 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|In progress, [[Java Community Process|JCP]] 
-
-|- align="center"
-! [[Harbour (programming language)|Harbour]] 
-| Application, business, data processing, general, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| [[declarative programming|declarative]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Haskell (programming language)|Haskell]] 
-| Application 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| [[lazy evaluation]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2010, Haskell 2010 
-
-|- align="center"
-! [[Haxe]] 
-| Application, general, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[HyperNext]] 
-| Application, education 
-
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[weak typing|weakly typed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[HyperTalk]] 
-| Application, RAD, General 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[weak typing|weakly typed]] 
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
-
-|- align="center"
-! [[Io (programming language)|Io]] 
-| Application, host-driven scripting 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[ISLISP]] 
-| General 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1997, [[International Organization for Standardization|ISO]] 
-
-|- align="center"
-! [[J (programming language)|J]] 
-| Data processing 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| array-oriented, [[function-level programming|function-level]], tacit 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[JADE (programming language)|JADE]] 
-| Application, distributed 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Java (programming language)|Java]] 
-| Application, business, client-side, general, server-side, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| concurrent 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|''De facto'' standard via [http://docs.oracle.com/javase/specs/jls/se8/html/index.html Java Language Specification] 
-
-|- align="center"
-! [[Julia (programming language)|Julia]] 
-| General and made for technical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| [[multiple dispatch]], meta, scalar and [[Array programming|array-oriented]], parallel, concurrent, distributed ("cloud") 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-
-|- align="center"
-! [[JavaScript]] 
-| Client-side, Server-side, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| [[prototype-based]] 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1997, ECMA 
-
-|- align="center"
-! [[Joy (programming language)|Joy]] 
-| Research 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| stack-oriented 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[K (programming language)|K]] 
-| Data processing, business 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| array-oriented, tacit 
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
-
-|- align="center"
-! [[Kotlin (programming language)|Kotlin]] 
-| Application, mobile development, server-sider, client-side, Web
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-|style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[LabVIEW]] (G) 
-| Application, industrial instrumentation-automation 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| [[dataflow programming|dataflow]], [[visual programming language|visual]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Lisp (programming language)|Lisp]] 
-| General 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
-
-|- align="center"
-! [[LiveCode|Livecode]] 
-| Application, RAD, General 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[weak typing|weakly typed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Logtalk]] 
-| Artificial intelligence, application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| logic 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Lua (programming language)|Lua]] 
-| Application, embedded scripting 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| aspect-oriented 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Maple (software)|Maple]] 
-| Symbolic computation, numerical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| [[distributed programming|distributed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Mathematica]] 
-| Symbolic language 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| logic, distributed 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[MATLAB]] 
-| Highly domain-specific, numerical computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Modula-2]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1996, ISO 
-
-|- align="center"
-! [[Modula-3]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[MUMPS|MUMPS (M)]] 
-| Application, databases 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| [[Concurrent computing|concurrent]], [[multi-user]], [[NoSQL]], [[transaction processing]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1977, ANSI 
-
-|- align="center"
-! [[Oberon (programming language)|Oberon]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Object Pascal]] ([[Embarcadero Delphi|Delphi]]) 
-| Application, general, mobile App, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| structured 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Objective-C]] 
-| Application, general 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[OCaml]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Occam (programming language)|Occam]] 
-| General 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| concurrent, [[process-oriented programming|process-oriented]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Opa (programming language)|Opa]] 
-| Web applications 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| [[distributed programming|distributed]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Oxygene (programming language)|Oxygene]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Oz (programming language)|Oz]] 
-| Application, distribution, education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| concurrent, logic 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Pascal (programming language)|Pascal]] 
-| Application, education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1983, ISO 
-
-|- align="center"
-! [[Perl]] 
-| Application, scripting, text processing, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[PHP]] 
-| Server-side, Web Application, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[PL/I]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1969 
-
-|- align="center"
-! [[Plus (programming language)|Plus]] 
-| Application, system development 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Prolog]] 
-| Application, artificial intelligence 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| logic 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1995, ISO 
-
-|- align="center"
-! [[PureBasic]] 
-| Application 
-
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Python (programming language)|Python]] 
-| Application, general, Web, scripting, artificial intelligence, scientific computing 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| aspect-oriented 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Racket (programming language)|Racket]] 
-| Education, general, scripting 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| modular, logic, meta 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[REALbasic]] 
-| Application 
-
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
-
-|- align="center"
-! [[REBOL]] 
-| Distributed 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| [[dialecting|dialected]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[IBM RPG|RPG]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Ruby (programming language)|Ruby]] 
-| Application, scripting, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| aspect-oriented 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|2011(JIS X 3017), 2012(ISO/IEC 30170) 
-
-|- align="center"
-! [[Rust (programming language)|Rust]] 
-| Application, system 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[S (programming language)|S]] 
-| Application, statistics 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[S-Lang (programming library)|S-Lang]] 
-| Application, numerical, scripting 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Scala (programming language)|Scala]] 
-| Application, distributed, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|''De facto'' standard via [http://www.scala-lang.org/sites/default/files/linuxsoft_archives/docu/files/ScalaReference.pdf Scala Language Specification (SLS)] 
-
-|- align="center"
-! [[Scheme (programming language)|Scheme]] 
-| Education, general 
-
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1998, R<sup>6</sup>RS 
-
-|- align="center"
-! [[Seed7]] 
-| Application, general, scripting, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| multi-paradigm, extensible, structured 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Simula]] 
-| Education, general 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[discrete event simulation]], [[multi-threaded]] (quasi-parallel) program execution 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1968 
-
-|- align="center"
-! [[Microsoft Small Basic|Small Basic]] 
-| Application, education, games 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[component-oriented programming|component-oriented]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Smalltalk]] 
-| Application, General, Business, Web, Artificial Intelligence, Education 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| concurrent, declarative 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1998, [http://www.techstreet.com/cgi-bin/detail?product_id=56122 ANSI] 
-
-|- align="center"
-! [[SNOBOL]] 
-| Text processing 
-
-| 
-| 
-| 
-| 
-| 
-| 
-| 
-
-| 
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown 
-
-|- align="center"
-! [[Standard ML]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|1997, SML '97 
-
-|- align="center"
-! [[Swift (Apple programming language)|Swift]] 
-| Application, general 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| concurrent 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Tcl]] 
-| Application, scripting, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Visual Basic]] 
-| Application, RAD, education, business, general, (Includes VBA), office automation 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| [[component-oriented programming|component-oriented]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! <span class="nowrap">[[Visual Basic .NET]]</span> 
-| Application, RAD, education, Web, business, general 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Visual FoxPro]] 
-| Application 
-
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| data-centric, logic 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Visual Prolog]] 
-| Application 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| declarative, logic 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Windows PowerShell]] 
-| Administration 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-
-| [[pipeline programming|pipeline]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[XL (programming language)|XL]] 
-| 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| 
-| 
-| 
-| 
-
-| [[concept programming]] 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-|- align="center"
-! [[Xojo]] 
-| Application, RAD, General, Web 
-
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| 
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-
-| 
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No 
-
-
+<!-- Sparse matrix for Game Maker Language -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- Other paradigms -->
+| <!-- Other paradigms for Game Maker Language -->
+| {{no}}
+
+|- align="center"
+! [[GLBasic]] <!-- Language -->
+| Application, games <!-- Intended use -->
+<!-- Sparse matrix for GLBasic -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| simple object-oriented <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Go (programming language)|Go]] <!-- Language -->
+| Application, Web, server-side<!-- Intended use -->
+<!-- Sparse matrix for Go -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven (channels are built-in) -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Gosu (programming language)|Gosu]] <!-- Language -->
+| Application, general, scripting, Web <!-- Intended use -->
+<!-- Sparse matrix for Gosu -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[GraphTalk]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for GraphTalk -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| logic <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Groovy (programming language)|Groovy]] <!-- Language -->
+| Application, general, scripting, Web <!-- Intended use -->
+<!-- Sparse matrix for Groovy -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| aspect-oriented <!-- Other paradigms -->
+| {{no|In progress}}, [[Java Community Process|JCP]]<ref>[http://jcp.org/en/jsr/detail?id=241 JSR 241]</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Harbour (programming language)|Harbour]] <!-- Language -->
+| Application, business, data processing, general, Web <!-- Intended use -->
+<!-- Sparse matrix for Harbour -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[declarative programming|declarative]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Haskell (programming language)|Haskell]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Haskell -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[lazy evaluation]] <!-- Other paradigms -->
+| {{yes|2010}}, Haskell 2010<ref>{{cite web|url=http://www.haskell.org/onlinereport/haskell2010/ |title=The Haskell 2010 Language Report |accessdate=2011-12-07}} Most Haskell implementations extend the Haskell 2010 standard.</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Haxe]] <!-- Language -->
+| Application, general, Web <!-- Intended use -->
+<!-- Sparse matrix for Haxe -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[HyperNext]] <!-- Language -->
+| Application, education <!-- Intended use -->
+<!-- Sparse matrix for HyperNext -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[weak typing|weakly typed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[HyperTalk]] <!-- Language -->
+| Application, RAD, General <!-- Intended use -->
+<!-- Sparse matrix for HyperTalk -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[weak typing|weakly typed]] <!-- Other paradigms -->
+| {{unk}} <!-- Standardized? -->
+
+|- align="center"
+! [[Io (programming language)|Io]] <!-- Language -->
+| Application, host-driven scripting <!-- Intended use -->
+<!-- Sparse matrix for Io -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[ISLISP]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for ISLISP -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1997}}, [[International Organization for Standardization|ISO]] <!-- Standardized? -->
+
+|- align="center"
+! [[J (programming language)|J]] <!-- Language -->
+| Data processing <!-- Intended use -->
+<!-- Sparse matrix for J -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| array-oriented, [[function-level programming|function-level]], tacit <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[JADE (programming language)|JADE]] <!-- Language -->
+| Application, distributed <!-- Intended use -->
+<!-- Sparse matrix for JADE -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Java (programming language)|Java]] <!-- Language -->
+| Application, business, client-side, general, server-side, Web <!-- Intended use -->
+<!-- Sparse matrix for Java -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{yes|''De facto'' standard}} via [http://docs.oracle.com/javase/specs/jls/se8/html/index.html Java Language Specification] <!-- Standardized? -->
+
+|- align="center"
+! [[Julia (programming language)|Julia]] <!-- Language -->
+| General and made for technical computing <!-- Intended use -->
+<!-- Sparse matrix for Java -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[multiple dispatch]], meta, scalar and [[Array programming|array-oriented]], parallel, concurrent, distributed ("cloud") <!-- Other paradigms -->
+| {{No}}<!-- Standardized? -->
+
+|- align="center"
+! [[JavaScript]] <!-- Language -->
+| Client-side, Server-side, Web <!-- Intended use -->
+<!-- Sparse matrix for JavaScript -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[prototype-based]] <!-- Other paradigms -->
+| {{yes|1997}}, ECMA <!-- Standardized? -->
+
+|- align="center"
+! [[Joy (programming language)|Joy]] <!-- Language -->
+| Research <!-- Intended use -->
+<!-- Sparse matrix for Joy -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| stack-oriented <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[K (programming language)|K]] <!-- Language -->
+| Data processing, business <!-- Intended use -->
+<!-- Sparse matrix for K -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| array-oriented, tacit <!-- Other paradigms -->
+| {{unk}} <!-- Standardized? -->
+
+|- align="center"
+! [[Kotlin (programming language)|Kotlin]] <!-- Language -->
+| Application, mobile development, server-sider, client-side, Web<!-- Intended use -->
+<!-- Sparse matrix for Kotlin -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<ref>{{cite web|url=http://blog.jetbrains.com/kotlin/2014/07/m8-is-out/|title=M8 is out!|quote=As a first peek into the future reflective capabilities of Kotlin, you can now access properties as first-class objects in Kotlin}}</ref><!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+|{{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[LabVIEW]] (G) <!-- Language -->
+| Application, industrial instrumentation-automation <!-- Intended use -->
+<!-- Sparse matrix for LabVIEW (G) -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[dataflow programming|dataflow]], [[visual programming language|visual]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Lisp (programming language)|Lisp]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Lisp -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{unk}} <!-- Standardized? -->
+
+|- align="center"
+! [[LiveCode|Livecode]] <!-- Language -->
+| Application, RAD, General <!-- Intended use -->
+<!-- Sparse matrix for Livecode -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[weak typing|weakly typed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Logtalk]] <!-- Language -->
+| Artificial intelligence, application <!-- Intended use -->
+<!-- Sparse matrix for Logtalk -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| logic <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Lua (programming language)|Lua]] <!-- Language -->
+| Application, embedded scripting <!-- Intended use -->
+<!-- Sparse matrix for Lua -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<ref>Lua doesn't have explicit "object" type (more general type of "table" is used for object definition), but does have explicit syntax for object method calling</ref> <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| aspect-oriented <!-- Other paradigms -->
+| {{no}}<ref>Version releases are accompanied with a definitive Lua Reference Manual showing full syntax and semantics; a reference implementation, and a test suite. These are used to generate other Lua [[virtual machine|VM]] implementations and compilers such as [[Kahlua (software)|Kahlua]] and [[LLVM-Lua]].</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Maple (software)|Maple]] <!-- Language -->
+| Symbolic computation, numerical computing <!-- Intended use -->
+<!-- Sparse matrix for Maple -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[distributed programming|distributed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Mathematica]] <!-- Language -->
+| Symbolic language <!-- Intended use -->
+<!-- Sparse matrix for Mathematica -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| logic, distributed <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[MATLAB]] <!-- Language -->
+| Highly domain-specific, numerical computing <!-- Intended use -->
+<!-- Sparse matrix for MATLAB -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Modula-2]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for Modula-2 -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1996}}, ISO<ref>ISO/IEC 10514-1:1996</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Modula-3]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Modula-3 -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[MUMPS|MUMPS (M)]] <!-- Language -->
+| Application, databases <!-- Intended use -->
+<!-- Sparse matrix for MUMPS -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[Concurrent computing|concurrent]], [[multi-user]], [[NoSQL]], [[transaction processing]]<!-- Other paradigms -->
+| {{yes|1977}}, ANSI <!-- Standardized? -->
+
+|- align="center"
+! [[Nim (programming language)|Nim]] <!-- Language -->
+| Application, general, Web, scripting, system <!-- Intended use -->
+<!-- Sparse matrix for Nim -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[Multiple dispatch|multiple dispatch]], Concurrent, [[Metaprogramming|meta]]<!-- Other paradigms -->
+| {{no}}<!-- Standardized? -->
+
+
+|- align="center"
+! [[Oberon (programming language)|Oberon]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for Oberon -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}}<!-- Standardized? -->
+
+|- align="center"
+! [[Object Pascal]] ([[Embarcadero Delphi|Delphi]]) <!-- Language -->
+| Application, general, mobile App, Web <!-- Intended use -->
+<!-- Sparse matrix for Dart -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| structured <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Objective-C]] <!-- Language -->
+| Application, general <!-- Intended use -->
+<!-- Sparse matrix for Objective-C -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[OCaml]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for OCaml -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Occam (programming language)|Occam]] <!-- Language -->
+| General <!-- Intended use -->
+<!-- Sparse matrix for Occam -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent, [[process-oriented programming|process-oriented]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Opa (programming language)|Opa]] <!-- Language -->
+| Web applications <!-- Intended use -->
+<!-- Sparse matrix for Opa -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[distributed programming|distributed]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Oxygene (programming language)|Oxygene]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Oxygene -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Oz (programming language)|Oz]] <!-- Language -->
+| Application, distribution, education <!-- Intended use -->
+<!-- Sparse matrix for Oz -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent, logic <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Pascal (programming language)|Pascal]] <!-- Language -->
+| Application, education <!-- Intended use -->
+<!-- Sparse matrix for Pascal -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1983}}, ISO<ref>ISO 7185</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Perl]] <!-- Language -->
+| Application, scripting, text processing, Web <!-- Intended use -->
+<!-- Sparse matrix for Perl -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[PHP]] <!-- Language -->
+| Server-side, Web Application, Web <!-- Intended use -->
+<!-- Sparse matrix for PHP -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<ref>[http://php.net/manual/en/index.php PHP Manual], [http://php.net/manual/en/language.oop5.php Chapter 19. Classes and Objects (PHP 5)],</ref> <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<ref>[http://php.net/manual/en/index.php PHP Manual], [http://php.net/manual/en/language.functions.php Chapter 17. Functions]</ref> <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[PL/I]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for PL/I -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1969}} <!-- Standardized? -->
+
+|- align="center"
+! [[Plus (programming language)|Plus]] <!-- Language -->
+| Application, system development <!-- Intended use -->
+<!-- Sparse matrix for Plus -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Prolog]] <!-- Language -->
+| Application, artificial intelligence <!-- Intended use -->
+<!-- Sparse matrix for Prolog -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| logic <!-- Other paradigms -->
+| {{yes|1995}}, ISO <!-- Standardized? -->
+
+|- align="center"
+! [[PureBasic]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for PureBasic -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Python (programming language)|Python]] <!-- Language -->
+| Application, general, Web, scripting, artificial intelligence, scientific computing <!-- Intended use -->
+<!-- Sparse matrix for Python -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| aspect-oriented <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Racket (programming language)|Racket]] <!-- Language -->
+| Education, general, scripting <!-- Intended use -->
+<!-- Sparse matrix for Racket -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| modular, logic, meta <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[REALbasic]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for REALbasic -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{unk}} <!-- Standardized? -->
+
+|- align="center"
+! [[REBOL]] <!-- Language -->
+| Distributed <!-- Intended use -->
+<!-- Sparse matrix for REBOL -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[dialecting|dialected]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[IBM RPG|RPG]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for IBM RPG -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Ruby (programming language)|Ruby]] <!-- Language -->
+| Application, scripting, Web <!-- Intended use -->
+<!-- Sparse matrix for Ruby -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| aspect-oriented <!-- Other paradigms -->
+| {{yes|2011(JIS X 3017), 2012(ISO/IEC 30170)}} <!-- Standardized? -->
+
+|- align="center"
+! [[Rust (programming language)|Rust]] <!-- Language -->
+| Application, system <!-- Intended use -->
+<!-- Sparse matrix for Rust -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[S (programming language)|S]] <!-- Language -->
+| Application, statistics <!-- Intended use -->
+<!-- Sparse matrix for S -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[S-Lang (programming library)|S-Lang]] <!-- Language -->
+| Application, numerical, scripting <!-- Intended use -->
+<!-- Sparse matrix for S-Lang -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Scala (programming language)|Scala]] <!-- Language -->
+| Application, distributed, Web <!-- Intended use -->
+<!-- Sparse matrix for Scala -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|''De facto'' standard}} via [http://www.scala-lang.org/sites/default/files/linuxsoft_archives/docu/files/ScalaReference.pdf Scala Language Specification (SLS)] <!-- Standardized? -->
+
+|- align="center"
+! [[Scheme (programming language)|Scheme]] <!-- Language -->
+| Education, general <!-- Intended use -->
+<!-- Sparse matrix for Scheme -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1998}}, R<sup>6</sup>RS <!-- Standardized? -->
+
+|- align="center"
+! [[Seed7]] <!-- Language -->
+| Application, general, scripting, Web <!-- Intended use -->
+<!-- Sparse matrix for Seed7 -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| multi-paradigm, extensible, structured <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Simula]] <!-- Language -->
+| Education, general <!-- Intended use -->
+<!-- Sparse matrix for Simula -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[discrete event simulation]], [[multi-threaded]] (quasi-parallel) program execution <!-- Other paradigms -->
+| {{yes|1968}} <!-- Standardized? -->
+
+|- align="center"
+! [[Microsoft Small Basic|Small Basic]] <!-- Language -->
+| Application, education, games <!-- Intended use -->
+<!-- Sparse matrix for Small Basic -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[component-oriented programming|component-oriented]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Smalltalk]] <!-- Language -->
+| Application, General, Business, Web, Artificial Intelligence, Education <!-- Intended use -->
+<!-- Sparse matrix for Smalltalk -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent, declarative <!-- Other paradigms -->
+| {{yes|1998}}, [http://www.techstreet.com/cgi-bin/detail?product_id=56122 ANSI] <!-- Standardized? -->
+
+|- align="center"
+! [[SNOBOL]] <!-- Language -->
+| Text processing <!-- Intended use -->
+<!-- Sparse matrix for SNOBOL -->
+| <!-- Imperative -->
+| <!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{unk}} <!-- Standardized? -->
+
+|- align="center"
+! [[Standard ML]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Standard ML -->
+| {{Yes}}<!-- Imperative -->
+| <!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{yes|1997}}, SML '97<ref>[http://www.smlnj.org/sml97.html SMLNJ.org]</ref> <!-- Standardized? -->
+
+|- align="center"
+! [[Swift (Apple programming language)|Swift]] <!-- Language -->
+| Application, general <!-- Intended use -->
+<!-- Sparse matrix for Swift -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| concurrent <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Tcl]] <!-- Language -->
+| Application, scripting, Web <!-- Intended use -->
+<!-- Sparse matrix for Tcl -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Visual Basic]] <!-- Language -->
+| Application, RAD, education, business, general, (Includes VBA), office automation <!-- Intended use -->
+<!-- Sparse matrix for Visual Basic -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| [[component-oriented programming|component-oriented]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! {{nowrap|[[Visual Basic .NET]]}} <!-- Language -->
+| Application, RAD, education, Web, business, general <!-- Intended use -->
+<!-- Sparse matrix for Visual Basic .NET -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| {{Yes}}<!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Visual FoxPro]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Visual FoxPro -->
+| <!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| data-centric, logic <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Visual Prolog]] <!-- Language -->
+| Application <!-- Intended use -->
+<!-- Sparse matrix for Visual Prolog -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| declarative, logic <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Windows PowerShell]] <!-- Language -->
+| Administration <!-- Intended use -->
+<!-- Sparse matrix for Windows PowerShell -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| {{Yes}}<!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[pipeline programming|pipeline]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[XL (programming language)|XL]] <!-- Language -->
+| <!-- Intended use -->
+<!-- Sparse matrix for XL -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| <!-- Procedural -->
+| <!-- Generic -->
+| <!-- Reflective -->
+| <!-- Event-driven -->
+<!-- -------------------- -->
+| [[concept programming]] <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+|- align="center"
+! [[Xojo]] <!-- Language -->
+| Application, RAD, General, Web <!-- Intended use -->
+<!-- Sparse matrix for Xojo -->
+| {{Yes}}<!-- Imperative -->
+| {{Yes}}<!-- Object-oriented -->
+| <!-- Functional -->
+| {{Yes}}<!-- Procedural -->
+| <!-- Generic -->
+| {{Yes}}<!-- Reflective -->
+| {{Yes}}<!-- Event-driven -->
+<!-- -------------------- -->
+| <!-- Other paradigms -->
+| {{no}} <!-- Standardized? -->
+
+<!-- -------------------- -->
 |- align="center"class="sortbottom"
 ! Language
-! Intended use 
+! Intended use <!--What this was to be used for originally. Not what it is used for now, which is hard to verify.-->
 ! Imperative
 ! Object-oriented
 ! Functional
@@ -1911,47 +1910,47 @@ Brief definitions
 ! Language
 ! [[Type safety]]
 ! [[Type system#Explicit or implicit declaration and inference|Type expression]]
-! [[Type equivalence|Type compatibility and equivalence]] 
+! [[Type equivalence|Type compatibility and equivalence]] <!-- dynamic typing doesn't automatically mean it has structural compatibility -->
 ! [[Type checking]]
 |-
 ! [[ActionScript]] 3.0
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | static
 |-
 ! [[Ada (programming language)|Ada]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}<ref group=TS>Unsafe operations are well isolated by a "Unchecked_" prefix.</ref>
 | explicit
 | nominal
 | static
 |-
 ! [[Aldor]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}
 | implicit
 |
 | static
 |-
 ! [[ALGOL 58]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 |
 | static
 |-
 ! [[ALGOL 60]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 |
 | static
 |-
 ! [[ALGOL 68]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | structural
 | static & [[tagged union]]s
 |-
 ! [[APL (programming language)|APL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
@@ -1963,13 +1962,19 @@ Brief definitions
 | n/a
 |-
 ! [[Ateji PX]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
 |-
+! [[Bash (Unix shell)|Bash]]
+| {{?}}
+| {{?}}
+| {{?}}
+| {{?}}
+|-
 ! [[BASIC]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
@@ -1981,121 +1986,121 @@ Brief definitions
 | n/a
 |-
 ! [[BeanShell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 | nominal
 | dynamic
 |-
 ! [[Boo (programming language)|Boo]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | static with optional dynamic typing
 |-
 ! [[Bro (software)|Bro]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | nominal
 | static
 |-
 ! [[C (programming language)|C]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}
 | explicit
 | nominal
 | static
 |-
 ! [[C++]] ([[ISO/IEC 14882]])
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}
 | explicit
 | nominal
-| static
+| static<ref group=TS>with optional dynamic type casting (see [[dynamic cast]])</ref>
 |-
 ! [[C Sharp (programming language)|C#]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}<ref group=TS name=r2 />
 | implicit with optional explicit typing
 | nominal
-| static
+| static<ref group=TS>with optional dynamic type (see [[C Sharp syntax#Dynamic|dynamic member lookup]])</ref>
 |-
 ! [[Clean (programming language)|Clean]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | static
 |-
 ! [[Clojure]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | dynamic
 |-
 ! [[COBOL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
 |-
 ! [[ColdFusion Markup Language|ColdFusion]] (CFML)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[Common Lisp]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | dynamic
 |-
 ! [[Curl (programming language)|Curl]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 | nominal
 |
 |-
 ! [[Cython]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | nominal (extension types) and structural (Python)
 | dynamic with optional static typing
 |-
 ! [[D (programming language)|D]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}<ref group=TS name=r2>It is almost safe, unsafe features are not commonly used.</ref>
 | explicit
 | nominal
 | static
 |-
 ! [[Dylan (programming language)|Dylan]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[Eiffel (programming language)|Eiffel]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 | nominal
 | static
 |-
 ! [[Erlang (programming language)|Erlang]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[Euphoria (programming language)|Euphoria]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit, implicit with objects
 | nominal
 | static, dynamic with objects
 |-
 ! [[F Sharp (programming language)|F#]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | nominal
 | static
 |-
 ! [[Falcon (programming language)|Falcon]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | structural
 | dynamic
@@ -2107,145 +2112,145 @@ Brief definitions
 | n/a
 |-
 ! [[Fortran]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
-| explicit
+| {{Yes|safe}}
+| explicit<ref group=TS>Optionally, typing can be ''explicitly implied'' by the first letter of the identifier (known as implicit typing within the Fortran community).</ref>
 | nominal
 | static
 |-
 ! [[Gambas]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 |
 |-
 ! [[GLBasic]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit. Non-explicit declarations available through project options
 | nominal
 | static
 |-
-! [[Go (programming language)|Go]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+! [[Go (programming language)|Go]]<ref>[http://golang.org/doc/go_spec.html The Go Programming Language Specification]</ref>
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | structural
 | static
 |-
 ! [[Gosu (programming language)|Gosu]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | partially implicit (local type inference)
 | nominal (subclassing) and structural (structural)
 | static
 |-
 ! [[Groovy (programming language)|Groovy]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | dynamic with optional static typing
 |-
 ! [[Harbour (programming language)|Harbour]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | dynamic
 |-
 ! [[Haskell (programming language)|Haskell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | structural
 | static
 |-
 ! [[Haxe]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | nominal (subclassing) and structural (structural)
 | static with optional dynamic typing
 |-
 ! [[Io (programming language)|Io]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[ISLISP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[J (programming language)|J]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[Java (programming language)|Java]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}<ref>Sheng Liang, Gilad Bracha. [http://doi.acm.org/10.1145/286942.286945 Dynamic class loading in the Java virtual machine]. Volume 33, Issue 10 of ACM SIGPLAN Notices, October 1998.</ref>
 | explicit
 | nominal
 | static
 |-
 ! [[JavaScript]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | structural
 | dynamic
 |-
 ! [[Julia (programming language)|Julia]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
-| implicit with optional explicit typing
+| {{Yes|safe}}
+| implicit with optional explicit typing<ref>http://julia.readthedocs.org/en/latest/manual/types/</ref>
 |
 |
 |-
 ! [[Joy (programming language)|Joy]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[Kotlin (programming language)|Kotlin]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | partially implicit (local type inference)
 | nominal
 | static
 |-
 ! [[LabVIEW]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 |
 |-
 ! [[Lua (programming language)|Lua]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[Maple (programming language)|Maple]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[Mathematica]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[MATLAB]] M-code
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
 | dynamic
 |-
 ! [[Modula-2]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}<ref group=TS name=r2 />
 | explicit
 | nominal
 | static
 |-
 ! [[Modula-3]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}<ref group=TS name=r2 />
 | explicit
 | structural
 | static
@@ -2257,49 +2262,49 @@ Brief definitions
 | n/a
 |-
 ! [[Oberon (programming language)|Oberon]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
-| static and partially dynamic
+| static and partially dynamic<ref group=TS>dynamic checking of type extensions i.e. inherited types</ref>
 |-
 ! [[Objective-C]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
-| dynamic with optional static typing
+| dynamic with optional static typing<ref>[http://developer.apple.com/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocStaticBehavior.html Developer.apple.com]</ref>
 |-
 ! [[OCaml]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
-| structural
+| structural (records are nominal)
 | static
 |-
 ! [[Object Pascal]] ([[Embarcadero Delphi|Delphi]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
 |-
 ! [[Opa (programming language)|Opa]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | structural
 | static
 |-
 ! [[Oxygene (programming language)|Oxygene]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}
 | implicit
 |
 | static
 |-
 ! [[Oz (programming language)|Oz]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | structural
 | dynamic
 |-
 ! [[Pascal (programming language)|Pascal]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}<ref group=TS name=r2 />
 | explicit
 | nominal
 | static
@@ -2312,7 +2317,7 @@ Brief definitions
 |-
 ! [[Perl 6]]
 |
-| partially implicit
+| partially implicit<ref group=TS>explicit for static types</ref>
 |
 | dynamic with optional static typing
 |-
@@ -2323,7 +2328,7 @@ Brief definitions
 | dynamic
 |-
 ! [[Plus (programming language)|Plus]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | structural
 | static, dynamic (optional)
@@ -2341,13 +2346,13 @@ Brief definitions
 | dynamic
 |-
 ! [[Python (programming language)|Python]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | structural
 | dynamic
 |-
 ! [[REBOL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
@@ -2359,19 +2364,19 @@ Brief definitions
 | static+dynamic wrt numbers
 |-
 ! [[IBM RPG|RPG]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+| {{No|unsafe}}
 |
 |
 | static
 |-
 ! [[Ruby (programming language)|Ruby]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 | structural
 | dynamic
 |-
 ! [[Rust (programming language)|Rust]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 |
 | static with optional dynamic typing
@@ -2383,49 +2388,49 @@ Brief definitions
 | dynamic
 |-
 ! [[S-Lang (programming library)|S-Lang]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[Scala (programming language)|Scala]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | partially implicit (local type inference)
 | nominal (subclassing) and structural (structural)
 | static
 |-
 ! [[Scheme (programming language)|Scheme]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic ([[Latent_typing|latent]])
 |-
 ! [[Seed7]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
 |-
 ! [[Simula]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 |
-| static
+| static<ref group=TS>optional for formal and virtual procedures</ref>
 |-
 ! [[Smalltalk]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[Swift (programming language)|Swift]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | partially implicit (local type inference)
 | nominal (subclassing) and structural (structural)
 | static
 |-
 ! [[Standard ML]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | structural
 | static
@@ -2437,37 +2442,37 @@ Brief definitions
 | dynamic
 |-
 ! [[Visual Basic]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit with optional explicit typing
 | nominal
 | static
 |-
-! <span class="nowrap">[[Visual Basic .NET]]</span>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|unsafe
+! {{nowrap|[[Visual Basic .NET]]}}
+| {{No|unsafe}}<ref group=TS name=r2 />
 | explicit
 |
 | static
 |-
 ! [[Visual Prolog]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | partially implicit
 | nominal
 | static
 |-
 ! [[Windows PowerShell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | implicit
 |
 | dynamic
 |-
 ! [[XL (programming language)|XL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 |
 | nominal
 | static
 |-
 ! [[Xojo]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|safe
+| {{Yes|safe}}
 | explicit
 | nominal
 | static
@@ -2479,8 +2484,7 @@ Brief definitions
 ! Type checking
 |}
 
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="TS"></references></div>
+{{Reflist|group=TS}}
 
 ==Failsafe I/O and system calls==
 Most programming languages will print an [[error message]] and/or throw an [[exception handling|exception]] if an [[input/output]] operation or other [[system call]] (e.g., [[chmod]], [[kill (Unix)|kill]]) fails, unless the programmer has explicitly arranged for different handling of these events. Thus, these languages [[failsafe|fail safely]] in this regard.
@@ -2493,155 +2497,157 @@ Some (mostly older) languages require that the programmer explicitly add checks 
 ! Failsafe I/O
 |-
 ! [[Ada (programming language)|Ada]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (exceptions)
+| {{yes}} (exceptions)
 |-
 ! [[ALGOL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (exceptions or return value depending on function)
+| {{yes}} (exceptions or return value depending on function)
 |-
 ! [[AutoHotkey]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (global ErrorLevel must be explicitly checked)
+| {{no}} (global ErrorLevel must be explicitly checked)
+|-
+! [[Bash (Unix shell)|Bash]]
+| {{?}}
 |-
 ! [[Bro (software)|Bro]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[C (programming language)|C]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}<ref group="FSIO">[[GNU compiler collection|gcc]] can warn on unchecked error status. Newer versions of [[Visual Studio]] usually throw exceptions on failed I/O when using stdio.</ref>
 |-
 ! [[C++]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}<ref name="VS" group="FSIO">[[GNU compiler collection|g++]] can warn on unchecked error status. Newer versions of [[Visual Studio]] usually throw exceptions on failed I/O when using stdio.</ref>
 |-
 ! [[C Sharp (programming language)|C#]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[COBOL]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 |-
 ! [[Common Lisp]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[D (programming language)|D]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2011)">citation needed</span>]]</i>&#93;</sup>
+| {{yes}}{{citation needed|date=February 2011}}
 |-
 ! [[Eiffel (programming language)|Eiffel]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No – It actually depends on the library and it is not defined by the language
+| {{no}} – It actually depends on the library and it is not defined by the language
 |-
 ! [[Erlang (programming language)|Erlang]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Falcon (programming language)|Falcon]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Fortran]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[GLBasic]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No – Will generally cause program to crash
+| {{no}} – Will generally cause program to crash
 |-
 ! [[Go (programming language)|Go]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (unless result explicitly ignored)
+| {{yes}} (unless result explicitly ignored)
 |-
 ! [[Gosu (programming language)|Gosu]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Harbour (programming language)|Harbour]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Haskell (programming language)|Haskell]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[ISLISP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Java (programming language)|Java]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Julia (programming language)|Julia]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Kotlin (programming language)|Kotlin]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[LabVIEW]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Lua (programming language)|Lua]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No (some functions do not warn or throw exceptions)
+| {{no}} (some functions do not warn or throw exceptions)
 |-
 ! [[Mathematica]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Object Pascal]] ([[Embarcadero Delphi|Delphi]])
-| style="background: #FFD; color: black; vertical-align: middle; text-align: center; " class="partial table-partial"|Some
+| {{some}}
 |-
 ! [[Objective-C]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (exceptions)
+| {{yes}} (exceptions)
 |-
 ! [[OCaml]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (exceptions)
+| {{yes}} (exceptions)
 |-
 ! [[Perl]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}<ref group="FSIO">Considerable error checking can be enabled optionally, but by default Perl is not failsafe.</ref>
 |-
 ! [[Perl 6]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[PHP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Python (programming language)|Python]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[REBOL]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Rexx]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (with optional '''signal on'''&hellip; trap handling)
+| {{yes}} (with optional '''signal on'''&hellip; trap handling)
 |-
 ! [[IBM RPG|RPG]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 |-
 ! [[Ruby (programming language)|Ruby]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Rust (programming language)|Rust]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (unless result explicitly ignored)
+| {{yes}} (unless result explicitly ignored)
 |-
 ! [[S (programming language)|S]]
-| style="background: #E4E4E4; color: black; vertical-align: middle; text-align: center; " class="unknown table-unknown"|Unknown
+| {{unknown}}
 |-
 ! [[Smalltalk (programming language)|Smalltalk]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Scala (programming language)|Scala]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}<ref>Scala runs on the Java Virtual Machine from which it inherits the runtime exception handling.</ref>
 |-
 ! [[Standard ML]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (February 2011)">citation needed</span>]]</i>&#93;</sup>
+| {{yes}}{{citation needed|date=February 2011}}
 |-
 ! [[Tcl]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Visual Basic]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Visual Prolog]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |-
 ! [[Xojo]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 |- class="sortbottom"
 ! Language
 ! Failsafe I/O
 |}
 
-<div class="reflist " style=" list-style-type: decimal;">
-<references group="FSIO"></references></div>
+{{Reflist|group=FSIO}}
 
 ==Expressiveness==
 {| id="Expressiveness" class="wikitable" style="float:right;"
 |-
-! Language !! Statements ratio
-! Lines ratio
+! Language !! Statements ratio<ref>Data from [http://books.google.at/books?id=3JfE7TGUwvgC&pg=PT100 Code Complete, p. 100]. The ''Statements ratio'' column "shows typical ratios of source statements in several high-level languages to the equivalent code in C. A higher ratio means that each line of code in the language listed accomplishes more than does each line of code in C.</ref>
+! Lines ratio<ref>The ratio of line count tests won by each language to the number won by C when using the ''Compare to'' feature at [http://benchmarksgame.alioth.debian.org/debian/c.php benchmarksgame.alioth.debian.org]. Last updated May, 2006. C gcc was used for C, C++ g++ was used for C++, FORTRAN G95 was used for FORTRAN, Java JDK Server was used for Java, and Smalltalk GST was used for Smalltalk.</ref>
 |-
 | C || 1 || 1
 |-
@@ -2658,16 +2664,16 @@ Some (mostly older) languages require that the programmer explicitly add checks 
 | Python || 6 || 6.5
 |}
 
-The literature on programming languages contains an abundance of informal claims about their relative [[expressive power]], but there is no framework for formalizing such statements nor for deriving interesting consequences. This table provides two measures of expressiveness from two different sources. An additional measure of expressiveness, in [http://benchmarksgame.alioth.debian.org/play.html#gzbytes GZip bytes], can be found on the Computer Language Benchmarks Game.
-<br style="clear:both;" />
+The literature on programming languages contains an abundance of informal claims about their relative [[expressive power]], but there is no framework for formalizing such statements nor for deriving interesting consequences.<ref>{{cite conference | id = {{citeseerx|10.1.1.51.4656}} | title = On the Expressive Power of Programming Languages | first = Matthias | last = Felleisen | conference = ESOP '90 3rd European Symposium on Programming }}</ref> This table provides two measures of expressiveness from two different sources. An additional measure of expressiveness, in [http://benchmarksgame.alioth.debian.org/play.html#gzbytes GZip bytes], can be found on the Computer Language Benchmarks Game.
+{{-}}
 
 ==Benchmarks==
 [[benchmark (computing)|Benchmarks]] are designed to mimic a particular type of workload on a component or system. The computer programs used for compiling some of the benchmark data in this section may not have been fully optimized, and the relevance of the data is disputed. The most accurate benchmarks are those that are customized to your particular situation. Other people's benchmark data may have some value to others, but proper interpretation brings many [[benchmark (computing)#Challenges|challenges]]. [http://benchmarksgame.alioth.debian.org/ The Computer Language Benchmarks Game] site warns against [http://benchmarksgame.alioth.debian.org/dont-jump-to-conclusions.php over-generalizing from benchmark data], but contains a large number of micro-benchmarks of reader-contributed code snippets, with an interface that generates various charts and tables comparing specific programming languages and types of tests.
 
 ==Timeline of specific language comparisons==
 * 1973 – [http://comjnl.oxfordjournals.org/cgi/content/abstract/17/4/325 Comparative Notes on Algol 68 and PL/I] – S. H. Valentine – February 1973
-* 1976 – Evaluation of [[ALGOL 68]], [[JOVIAL]] J3B, [[Pascal (programming language)|Pascal]], [[Simula]] 67, and [[TACPOL]] Versus TINMAN – Requirements for a Common High Order Programming Language. 
-* 1977 – [http://comjnl.oxfordjournals.org/cgi/content/abstract/21/4/316 A comparison of PASCAL and ALGOL 68] – [[Andrew S. Tanenbaum]] – June 1977.
+* 1976 – Evaluation of [[ALGOL 68]], [[JOVIAL]] J3B, [[Pascal (programming language)|Pascal]], [[Simula]] 67, and [[TACPOL]] Versus TINMAN – Requirements for a Common High Order Programming Language. <!-- [http://www.dtic.mil/srch/doc?collection=t2&id=ADA037637 Report Number: 1021-14] -->
+* 1977 – [http://comjnl.oxfordjournals.org/cgi/content/abstract/21/4/316 A comparison of PASCAL and ALGOL 68]<ref>http://dare.ubvu.vu.nl/bitstream/1871/2609/1/11054.pdf</ref> – [[Andrew S. Tanenbaum]] – June 1977.
 * 1993 – [http://cm.bell-labs.com/cm/cs/who/dmr/hopl.html Five Little Languages and How They Grew] – [[BLISS]], [[Pascal (programming language)|Pascal]], [[ALGOL 68]], [[BCPL]] & [[C (programming language)|C]] – [[Dennis M. Ritchie]] – April 1993.
 * 2009 – [http://www.cowlark.com/2009-11-15-go On Go – oh, go on] – How well will Google's [[Go (programming language)|Go]] stand up against Brand X programming language? – David Given – November 2009
 
@@ -2691,11 +2697,10 @@ The literature on programming languages contains an abundance of informal claims
 * [[TIOBE index]]
 
 ==References==
-<div class="reflist columns references-column-count references-column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2; list-style-type: decimal;">
-<references group=""></references></div>
+{{Reflist|2}}
 
 ==Further reading==
-* <span class="citation book">Cezzar, Ruknet. ''A Guide to Programming Languages: Overview and Comparison''. [[International Standard Book Number|ISBN]]&nbsp;[[Special:BookSources/978-0-89006-812-0|978-0-89006-812-0]].</span><span title="ctx_ver=Z39.88-2004&rfr_id=info%3Asid%2Fen.wikipedia.org%3ASpecial%3AExpandTemplates&rft.au=Cezzar%2C+Ruknet&rft.aufirst=Ruknet&rft.aulast=Cezzar&rft.btitle=A+Guide+to+Programming+Languages%3A+Overview+and+Comparison&rft.genre=book&rft.isbn=978-0-89006-812-0&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&nbsp;</span></span>
+* {{cite book|title=A Guide to Programming Languages: Overview and Comparison|first=Ruknet|last=Cezzar|isbn=978-0-89006-812-0}}
 
 ==External links==
 * [http://99-bottles-of-beer.net/ 99-bottles-of-beer.net] — one program in over a thousand variations and multiple languages.
@@ -2709,6 +2714,5 @@ The literature on programming languages contains an abundance of informal claims
 * [http://hhh.gavilan.edu/dvantassel/history/history.html History of Programming Language Statements] — history and comparison of programming languages.
 * [http://rosettacode.org/ Rosetta Code] — a programming language comparison wiki
 
-
-
+{{DEFAULTSORT:Comparison of programming languages}}
 [[Category:Programming language comparisons]]

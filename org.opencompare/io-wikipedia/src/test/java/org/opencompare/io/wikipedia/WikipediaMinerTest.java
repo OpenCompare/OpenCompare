@@ -11,6 +11,8 @@ import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.pcm.Page;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
@@ -27,10 +29,9 @@ public class WikipediaMinerTest {
         WikiTextLoader miner = new WikiTextLoader();
 
         // Parse article from Wikipedia
-        String title = "Comparison_of_AMD_processors";
+        String title = "Comparison_of_Nikon_DSLR_cameras";
         String code = miner.getPageCodeFromWikipedia(title);
         Page page = miner.mineInternalRepresentation(code, title);
-
 
         // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();

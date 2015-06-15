@@ -1,138 +1,147 @@
-<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px;">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(May 2010)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Refimprove|date=May 2010}}
 This is an incomplete list of [[software]] that reads [[S.M.A.R.T.]] (Self-Monitoring, Analysis, and Reporting Technology) data from [[hard drives]].
 
-{| class="wikitable sortable" style="font-size: 90%; text-align: center;"
+{| class="wikitable sortable <!--plainrowheaders-->" style="font-size: 90%; text-align: center;"
 |-
-! Name
-! Operating system
-! License
-! User interface
-! Fixed drives
-! [[USB]], [[eSATA]] and<br />removable drives
-! [[RAID]] support<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2012)">citation needed</span>]]</i>&#93;</sup><ref name="RAID" group="lower-alpha"></ref>
-! Shows S.M.A.R.T. attributes
-! Hard drive<br />self-testing
-! Notification
-! Notes
+! scope="col" | Name
+! scope="col" | Operating system
+! scope="col" | License
+! scope="col" | User interface
+! scope="col" | Fixed drives
+! scope="col" | [[USB]], [[eSATA]] and<br />removable drives
+! scope="col" | [[RAID]] support{{efn|name=RAID|Disks that are members of a [[RAID array]] may in some cases have their SMART attributes (data) largely inaccessible to the operating system, or to monitoring tools and software. This depends case-by-case on the [[RAID controller]], operating system, and tools. As of 2012 inroads have been made into this, as RAID becomes wider used, but is still far from assured and not supported by all controllers, systems, or tools.{{citation needed|date=September 2012}}}}
+! scope="col" | Shows S.M.A.R.T. attributes
+! scope="col" | Hard drive<br />self-testing
+! scope="col" | Notification
+! scope="col" | Notes
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[AIDA64]]
+! scope="row" | [[AIDA64]]
 | [[Windows]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Trialware]]
+| {{Nonfree|[[Trialware]]}}<ref>{{cite web|title=Downloads|url=http://www.aida64.com/downloads|website=aida64.com|accessdate=6 September 2014}}</ref>
 | GUI
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|(S)ATA
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|most USB
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Some RAID controllers
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | Monitoring only available in the Business Edition
-| <br style="clear:both;" />
+| {{partial|(S)ATA}}
+| {{yes|most USB}}
+| {{partial|Some RAID controllers}}
+| {{yes}}
+| {{no}}
+| {{yes2}} Monitoring only available in the Business Edition<ref>[http://www.aida64.com/product/aida64-business-edition/features Features | AIDA64 Business Edition | Network Audit | Remote Control]. Aida64.com. Retrieved on 2013-09-27.</ref>
+| {{-}}
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Argus Monitor]]
+! scope="row" | [[Argus Monitor]]
 | [[Windows]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Trialware]]
+| {{Nonfree|[[Trialware]]}}<ref>{{cite web|title=Download|url=http://argusmonitor.com/|website=argusmonitor.com|accessdate=18 January 2015}}</ref>
 | GUI
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|eSATA, USB
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Some RAID controllers
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | By window, sound, email, program execution at choosable parameter changes, threshold
+| {{yes|IDE(PATA), SATA}}
+| {{yes|eSATA, USB}}
+| {{partial|Some RAID controllers}}
+| {{yes}}
+| {{dunno}}
+| {{yes2}} By window, sound, email, program execution at choosable parameter changes, threshold
 | Also shows temperature of CPU, GPU, CPU core speed, Intel Turbo Boost status, CPU power consumption, system load and system fan speeds. Can control speed of GPU and system fans.
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Disk Utility]]
-| [[OS X]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]
+! scope="row" | [[Defraggler]]
+| [[Windows]]
+| {{Nonfree|[[Freeware]]}}
 | GUI
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| Summary information includes one line for S.M.A.R.T.
+| {{yes|IDE(PATA), SATA}}
+| {{yes|eSATA, USB}}
+| {{No}}
+| {{Yes}}
+| {{No}}
+| {{No}}
+| Primarily a [[defragmenter]]; support basic S.M.A.R.T. stat display, includes the one-word summary of drive-health.
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[GNOME Disks]]
-| [[Linux]]
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[LGPL]] v2+
+! scope="row" | [[Disk Utility]]
+| [[OS X]]
+| {{Nonfree|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]}}
 | GUI
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|IDE(PATA), SATA
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|[[USB]] (when used with Live CD)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | GNOME pop-up notification
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{no}}
+| {{no}}
+| {{no}}
+| Summary information includes one line for S.M.A.R.T.<ref>[http://support.apple.com/kb/PH5817 Disk Utility 12.x: See detailed information about a disk]. support.apple.com. Retrieved on 2014--02-09.</ref>
+|-
+! scope="row" | [[GNOME Disks]]
+| [[Linux]]
+| {{Free|[[LGPL]] v2+}}
+| GUI
+| {{yes|IDE(PATA), SATA}}
+| {{partial|[[USB]] (when used with Live CD)}}
+| {{dunno}}
+| {{yes}}
+| {{yes}}
+| {{yes2}} GNOME pop-up notification
 | [[LiveCD]]s are available for download, allowing the user to use GNOME Disks without any changes to the computer.
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[smartmontools]]
+! scope="row" | [[smartmontools]]<ref>{{cite web|url=http://www.linuxjournal.com/article/6983 |title=Monitoring Hard Disks with SMART  |publisher=[[Linux Journal]] |date=2004-01-01 |accessdate=2010-07-06}}</ref>
 | [[Windows]], [[Unix-like]] ([[Linux]], [[OS X]], [[BSD]], etc.)
-| style="background: #9FF; color: black; vertical-align: middle; text-align: center; " class="free table-free"|[[GNU GPL]] v2
-| CLI and GUI (via [[Smartmontools#User interface|GSmartControl]])
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|All for Linux, some for other Unix-like
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|See list of supported devices; SAT driver required on OS X only
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Several RAID controllers
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | window, sound, email, program execution at choosable parameter changes, threshold
+| {{Free|[[GNU GPL]] v2}}
+| CLI and GUI (via [[Smartmontools#User interface|GSmartControl and HDD Guardian]])
+| {{partial|All for Linux, some for other Unix-like}}
+| {{Yes|See list of supported devices;<ref>[http://www.smartmontools.org/wiki/Supported_USB-Devices Supported_USB-Devices – smartmontools]. smartmontools.org. Retrieved on 2014-06-20.</ref> SAT driver required on OS X only<ref>[https://github.com/RJVB/OS-X-SAT-SMART-Driver RJVB/OS-X-SAT-SMART-Driver 路 GitHub]. Github.com. Retrieved on 2013-09-27.</ref>}}
+| {{partial|Several RAID controllers}}<ref>[[SourceForge:apps/trac/smartmontools/wiki/Supported RAID-Controllers|Supported_RAID-Controllers â€“ smartmontools]]. Sourceforge.net (2011-04-20). Retrieved on 2013-09-27.</ref>
+| {{yes}}
+| {{yes}}
+| {{yes2}} window, sound, email, program execution at choosable parameter changes, threshold
 | [[LiveCD]]s are available for download, allowing the user to use smartmontools without any changes to the computer.
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[Speccy]]
+! scope="row" | [[Speccy]]
 | [[Windows]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Freeware]]
+| {{Nonfree|[[Freeware]]}}
 | GUI
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| <br style="clear:both;" />
+| {{yes|IDE(PATA), SATA}}
+| {{yes|eSATA, USB}}
+| {{dunno}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{-}}
 |-
-| style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SpeedFan]]
+! scope="row" | [[SpeedFan]]
 | [[Windows]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Freeware]]
+| {{Nonfree|[[Freeware]]}}
 | GUI
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|(S)ATA, SCSI, SAT; Areca, 3ware
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Some RAID controllers
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#bfd; color:black; vertical-align:middle; text-align:center; " class="table-yes2" | Window, sound, e-mail, running a command; at parameter changes, threshold, temperature
+| {{partial|(S)ATA, SCSI, SAT; Areca, 3ware}}
+| {{dunno}}
+| {{Partial|Some RAID controllers}}
+| {{yes}}
+| {{yes}}
+| {{yes2}} Window, sound, e-mail, running a command; at parameter changes, threshold, temperature
 | Estimate health and performance by percentage, and offers online drive analysis (and compares from other users).
 |-
-|style="background: #ececec; color: black; font-weight: bold; vertical-align: middle; text-align: left; " class="table-rh" | [[SpinRite]]
+! scope="row" | [[SpinRite]]
 | [[DOS]], [[FreeDOS]]
-| style="background: #F9D; color: black; vertical-align: middle; text-align: center; " class="nonfree table-nonfree"|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]
+| {{Nonfree|[[Commercial software|Commercial]] [[Proprietary software|proprietary]]}}
 | GUI
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| <br style="clear:both;" />
+| {{dunno}}
+| {{dunno}}
+| {{dunno}}
+| {{yes}}<ref>[[Spinrite#Issue with Serial ATA drives|"SATA Operation with SpinRite"]], ''Gibson Research Corporation'', accessed March 4, 2011.</ref>
+| {{yes}}
+| {{no}}
+| {{-}}
 |-
-! Name
-! Operating system
-! License, price
-! User interface
-! Fixed drives
-! [[USB]], [[eSATA]] and<br />removable drives
-! [[RAID]] support<ref name="RAID" group="lower-alpha"></ref>
-! Shows S.M.A.R.T. attributes
-! Hard drive<br />self-testing
-! Notification
-! Notes
+! scope="col" | Name
+! scope="col" | Operating system
+! scope="col" | License, price
+! scope="col" | User interface
+! scope="col" | Fixed drives
+! scope="col" | [[USB]], [[eSATA]] and<br />removable drives
+! scope="col" | [[RAID]] support{{efn|name=RAID}}
+! scope="col" | Shows S.M.A.R.T. attributes
+! scope="col" | Hard drive<br />self-testing
+! scope="col" | Notification
+! scope="col" | Notes
 |}
 
 == Notes ==
-<div class="reflist " style=" list-style-type: lower-alpha;">
-<references group="lower-alpha"></references></div>
+{{Notelist}}
 
 == References ==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist}}
 
-
-
+{{DEFAULTSORT:Comparison Of S.M.A.R.T. Tools}}
 [[Category:Software comparisons|S.M.A.R.T. Tools]]
 [[Category:Hard disk computer storage]]

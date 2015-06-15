@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.opencompare.io.wikipedia.pcm.Page
 import org.sweble.wikitext.engine.config.WikiConfig
 import org.sweble.wikitext.parser.{WikitextPreprocessor, WikitextParser}
@@ -14,6 +15,7 @@ import scala.collection.mutable
 class PageVisitor(
                    val wikiConfig : WikiConfig,
                    val preprocessor : WikitextPreprocessor,
+                   val templateProcessor : WikiTextTemplateProcessor,
                    val parser : WikitextParser
                    ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
@@ -23,9 +25,16 @@ class PageVisitor(
 
   private var sectionStack : mutable.Stack[String] = _
 
-  private def init(): Unit = {
-    page = new Page
+
+  def extractPage(ast : WtNode, title : String): Page = {
     sectionStack = new mutable.Stack[String]()
+
+    page = new Page
+    page.title = title
+
+    go(ast)
+
+    page
   }
 
   override def visit(wtTableImplicitTableBody: WtTableImplicitTableBody): Unit = {}
@@ -132,10 +141,10 @@ class PageVisitor(
     val name = if (sectionStack.isEmpty) {
       ""
     } else {
-      sectionStack.top
+      page.title + " - " + sectionStack.top
     }
 
-    val tableVisitor = new TableVisitor(wikiConfig, preprocessor, parser)
+    val tableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
     val matrices = tableVisitor.extract(wtTable, name)
     matrices.foreach(matrix => page.addMatrix(matrix))
   }
@@ -172,7 +181,6 @@ class PageVisitor(
   override def visit(wtBold: WtBold): Unit = {}
 
   override def visit(wtParsedWikitextPage: WtParsedWikitextPage): Unit = {
-    init()
     iterate(wtParsedWikitextPage)
   }
 
