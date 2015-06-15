@@ -24,40 +24,24 @@ public class PCMMetadata {
      * @return a integer as index
      */
     public Integer getLastProductIndex() {
-        Integer result = 0;
-        for (Product product : productPositions.keySet()) {
-            Integer index = getProductPosition(product);
-            if (result < index) {
-                result = index;
-            }
-        }
-        return result;
+        return Collections.max(productPositions.values());
     }
     /**
      * Return the last feature index used
      * @return a integer as index
      */
     public Integer getLastFeatureIndex() {
-        Integer result = 0;
-        for (Feature feature : featurePositions.keySet()) {
-            Integer index = getFeaturePosition(feature);
-            if (result < index) {
-                result = index;
-            }
-        }
-        return result;
+        return Collections.max(featurePositions.values());
     }
 
     /**
      * Returns the absolute position of the product or create if not exists
      * @param product
-     * @return the absolution position of 'product' or null if it is not specified
+     * @return the absolution position of 'product' or -1 if it is not specified
      */
     public int getProductPosition(Product product) {
         if (!productPositions.containsKey(product)) {
-            Integer index = getLastProductIndex() + 1;
-            setProductPosition(product, index);
-            return index;
+            return -1;
         }
         return productPositions.get(product);
     }
@@ -74,13 +58,11 @@ public class PCMMetadata {
     /**
      * Returns the absolute position of the feature or create if not exists
      * @param feature
-     * @return the absolution position of 'feature' or null if it is not specified
+     * @return the absolution position of 'feature' or -1 if it is not specified
      */
     public int getFeaturePosition(Feature feature) {
         if (!featurePositions.containsKey(feature)) {
-            Integer index = getLastFeatureIndex() + 1;
-            setFeaturePosition(feature, index);
-            return index;
+            return -1;
         }
         return featurePositions.get(feature);
     }
@@ -99,10 +81,15 @@ public class PCMMetadata {
      * @return an ordered list of products
      */
     public List<Product> getSortedProducts() {
-        ArrayList<Product> result = new ArrayList<>();
-        for (Product product : pcm.getProducts()) {
-            result.add(getProductPosition(product) - 1, product);
-        }
+        ArrayList<Product> result = new ArrayList<>(pcm.getProducts());
+        Collections.sort(result, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                Integer op1 = getProductPosition(o1);
+                Integer op2 = getProductPosition(o2);
+                return op1.compareTo(op2);
+            }
+        });
         return result;
     }
 
@@ -111,41 +98,42 @@ public class PCMMetadata {
      * @return an ordered list of features
      */
     public List<Feature> getSortedFeatures() {
-        ArrayList<Feature> result = new ArrayList<>();
-        for (Feature feature : pcm.getConcreteFeatures()) {
-            result.add(getFeaturePosition(feature) - 1, feature);
-        }
+        ArrayList<Feature> result = new ArrayList<>(pcm.getConcreteFeatures());
+        Collections.sort(result, new Comparator<Feature>() {
+            @Override
+            public int compare(Feature f1, Feature f2) {
+                Integer fp1 = getFeaturePosition(f1);
+                Integer fp2 = getFeaturePosition(f2);
+                return fp1.compareTo(fp2);
+            }
+        });
         return result;
     }
 
-    /**
-     * Compare with an other metadata instance
-     * @param metadata
-     * @return false if metadata given as parameter not equal to this
-     */
-    public Boolean hasDifferences(PCMMetadata metadata) {
-        if (!getSortedProducts().retainAll(metadata.getSortedProducts())) {
-            return true;
-        }
-        if (!getSortedFeatures().retainAll(metadata.getSortedFeatures())) {
-            return true;
-        }
-        for (Product product : productPositions.keySet()){
-            for (Product metaProd : metadata.getSortedProducts()) {
-                if (product.getName().equals(metaProd.getName())) {
-                    if (productPositions.get(product) != metadata.getProductPosition(metaProd)) {
-                        return true;
-                    }
-                }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){ return true;}
+        if (obj instanceof PCMMetadata) {
+            PCMMetadata metadata = (PCMMetadata) obj;
+            if (metadata.pcm == null || this.pcm == null) {
+                return false;
             }
-        }
-        for (Feature feature : featurePositions.keySet()){
-            for (Feature metaFeat : metadata.getSortedFeatures()) {
-                if (feature.getName().equals(metaFeat.getName())) {
-                    if (featurePositions.get(feature) != metadata.getFeaturePosition(metaFeat)) {
-                        return true;
+            if (metadata.pcm.equals(this.pcm)) {
+                for (Product product : this.pcm.getProducts()) {
+                    if (getProductPosition(product) != metadata.getProductPosition(product)) {
+                        System.out.println(product.toString());
+                        System.out.println(getProductPosition(product));
+                        System.out.println(metadata.getProductPosition(product));
+                        System.out.println(metadata.toString());
+                        return false;
                     }
                 }
+                for (Feature feature : this.pcm.getConcreteFeatures()) {
+                    if (getFeaturePosition(feature) != metadata.getFeaturePosition(feature)) {
+                        return false;
+                    }
+                }
+                return true;
             }
         }
         return false;

@@ -45,10 +45,7 @@ abstract class PCMMetadataCircularTest(
         container2.getPcm.setName("From PCM1")
         container2.getPcm.normalize(pcmFactory)
 
-        println(container1.getMetadata.toString)
-        println(container2.getMetadata.toString)
-
-        container1.getMetadata.hasDifferences(container2.getMetadata) shouldBe false
+        container1.getMetadata.equals(container2.getMetadata) shouldBe true
       }
     }
   }

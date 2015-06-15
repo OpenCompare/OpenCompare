@@ -21,8 +21,7 @@ public class CSVExporter implements PCMExporter {
         return export(container.getPcm());
     }
 
-    @Override
-    public String export(PCM pcm) {
+    private String export(PCM pcm) {
         StringWriter stringWriter = new StringWriter();
         CSVWriter csvWriter = new CSVWriter(stringWriter);
 

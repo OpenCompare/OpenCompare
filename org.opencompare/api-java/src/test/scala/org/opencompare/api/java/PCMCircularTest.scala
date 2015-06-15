@@ -36,15 +36,20 @@ abstract class PCMCircularTest(
 
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
-        val pcm1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0).getPcm
-        pcm1.setName("Original") // TODO : does the name influence the matrix equality test ?
-        pcm1.normalize(pcmFactory) // TODO : should it be really mandatory ?
+        val container1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0)
+        val pcm1 = container1.getPcm
+        pcm1.setName("Original")
+        pcm1.normalize(pcmFactory)
 
-        val code = exporter.export(pcm1)
-        val pcm2 = importer.load(code).get(0).getPcm
-        pcm2.setName("From PCM1") // TODO : does the name influence the matrix equality test ?
-        pcm2.normalize(pcmFactory) // TODO : should it be really mandatory ?
+        val code = exporter.export(container1)
+        println(code)
+        val container2 = importer.load(code).get(0)
+        val pcm2 = container2.getPcm
+        pcm2.setName("From PCM1")
+        pcm2.normalize(pcmFactory)
 
+        println(new CSVExporter().export(container1))
+        println(new CSVExporter().export(container2))
         var diff = pcm1.diff(pcm2, new ComplexePCMElementComparator)
         withClue(diff.toString) {
           diff.hasDifferences shouldBe false

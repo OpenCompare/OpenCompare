@@ -24,11 +24,6 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
         return toHTML(container);
     }
 
-    @Override
-    public String export(PCM pcm) {
-        return toHTML(pcm);
-    }
-
     public String toHTML(PCM pcm) {
         builder = new StringBuilder();
         pcm.accept(this);

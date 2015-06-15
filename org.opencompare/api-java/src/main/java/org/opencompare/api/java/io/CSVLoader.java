@@ -44,7 +44,7 @@ public class CSVLoader implements PCMLoader {
     public List<PCMContainer> load(String pcm) {
         List<PCMContainer> containers = new ArrayList<>();
         try {
-            return load(new StringReader(pcm));
+            containers = load(new StringReader(pcm));
         } catch (IOException e) {
 
         }
@@ -55,7 +55,7 @@ public class CSVLoader implements PCMLoader {
     public List<PCMContainer> load(File file) throws IOException {
         List<PCMContainer> containers = new ArrayList<>();
         try {
-            return load(new FileReader(file));
+            containers = load(new FileReader(file));
         } catch (IOException e) {
 
         }
@@ -116,6 +116,7 @@ public class CSVLoader implements PCMLoader {
                         newFeature.setName("Feature");
                         pcm.addFeature(newFeature);
                         features.add(newFeature);
+                        metadata.setFeaturePosition(newFeature, i);
                     }
 
                     cell.setFeature(features.get(i - 1));
@@ -174,6 +175,7 @@ public class CSVLoader implements PCMLoader {
                         newProduct.setName("Product");
                         pcm.addProduct(newProduct);
                         products.add(newProduct);
+                        metadata.setProductPosition(newProduct, i);
                     }
 
                     products.get(i - 1).addCell(cell);

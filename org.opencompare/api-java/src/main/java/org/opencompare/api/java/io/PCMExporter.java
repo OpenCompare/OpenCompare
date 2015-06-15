@@ -16,11 +16,4 @@ public interface PCMExporter {
      */
     String export(PCMContainer container);
 
-    /**
-     * Export a single PCM
-     * @param pcm
-     * @return
-     */
-    String export(PCM pcm);
-
 }

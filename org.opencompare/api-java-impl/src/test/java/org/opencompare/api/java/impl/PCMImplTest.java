@@ -2,6 +2,7 @@ package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
+import org.opencompare.api.java.PCMMetadata;
 import org.opencompare.api.java.PCMTest;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
@@ -28,18 +29,22 @@ public class PCMImplTest extends PCMTest {
 
         // Create a PCM
         PCM pcm = factory.createPCM();
+        PCMMetadata metadata = new PCMMetadata(pcm);
+        PCMContainer container = new PCMContainer();
+        container.setPcm(pcm);
+        container.setMetadata(metadata);
         pcm.setName("test");
 
         // Serialize
         KMFJSONExporter serializer = new KMFJSONExporter();
-        String json = serializer.export(pcm);
+        String json = serializer.export(container);
 
         // Load
         KMFJSONLoader loader = new KMFJSONLoader();
         List<PCMContainer> containers = loader.load(json);
 
-        for (PCMContainer container : containers) {
-            assertEquals(pcm.getName(), container.getPcm().getName());
+        for (PCMContainer cont : containers) {
+            assertEquals(pcm.getName(), cont.getPcm().getName());
         }
 
     }

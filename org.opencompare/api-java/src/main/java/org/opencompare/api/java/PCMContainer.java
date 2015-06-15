@@ -1,5 +1,9 @@
 package org.opencompare.api.java;
 
+import org.opencompare.api.java.util.ComplexePCMElementComparator;
+import org.opencompare.api.java.util.DiffResult;
+import org.opencompare.api.java.util.PCMElementComparator;
+
 /**
  * Created by gbecan on 12/12/14.
  */

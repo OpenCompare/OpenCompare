@@ -17,12 +17,7 @@ public class KMFJSONExporter implements PCMExporter {
 
     @Override
     public String export(PCMContainer container) {
-        return export(container.getPcm());
-    }
-
-    @Override
-    public String export(PCM pcm) {
-        return toJson(pcm);
+        return toJson(container.getPcm());
     }
 
     public String toJson(PCM pcm) {

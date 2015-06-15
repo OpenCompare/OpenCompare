@@ -12,10 +12,9 @@ import scala.collection.JavaConversions._
  */
 class WikiTextExporter  extends PCMExporter {
 
-  var currentMetadata : PCMMetadata = _
-
-  override def export(pcm: PCM): String = {
+  override def export(container: PCMContainer): String = {
     val builder = new StringBuilder
+    val pcm = container.getPcm
 
     builder ++= "{| class=\"wikitable\"\n" // new table
     val title = pcm.getName
@@ -26,7 +25,7 @@ class WikiTextExporter  extends PCMExporter {
     builder ++= "|\n" // empty top left cell
 
 //    for (feature <- pcm.getConcreteFeatures.sortBy(_.getName)) {
-    for ((feature, index) <- currentMetadata.getFeatures.toSeq.sortBy(_._2)) {
+    for (feature <- container.getMetadata.getSortedFeatures) {
       builder ++= "! " // new header
       builder ++= feature.getName
       builder ++= "\n"
@@ -34,7 +33,7 @@ class WikiTextExporter  extends PCMExporter {
 
     // Lines (products)
 //    for (product <- pcm.getProducts.sortBy(_.getName)) {
-    for ((product, index) <- currentMetadata.getProducts.toSeq.sortBy(_._2)) {
+    for (product <- container.getMetadata.getSortedProducts) {
 
       // Product name header
       builder ++= "|-\n"
@@ -55,8 +54,4 @@ class WikiTextExporter  extends PCMExporter {
     builder.toString()
   }
 
-  override def export(container: PCMContainer): String = {
-    currentMetadata = container.getMetadata
-    return export(container.getPcm)
-  }
 }
