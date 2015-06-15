@@ -22,11 +22,18 @@ import scalaj.http.{Http, HttpOptions}
 /**
  * Created by  on 26/11/14.
  */
-class WikiTextLoader  extends PCMLoader {
+class WikiTextLoader(
+                    val templateProcessor: WikiTextTemplateProcessor = new WikiTextTemplateProcessor()
+                      )  extends PCMLoader {
+
+  // Constructor for Java compatibility with default parameters
+  def this() {
+    this(new WikiTextTemplateProcessor())
+  }
 
   private val parserConfig = new SimpleParserConfig()
-  private val preprocessor = new WikitextPreprocessor(parserConfig)
-  private val parser = new WikitextParser(parserConfig)
+  val preprocessor = new WikitextPreprocessor(parserConfig)
+  val parser = new WikitextParser(parserConfig)
 
   private val wikiConfig = DefaultConfigEnWp.generate()
 
@@ -45,7 +52,7 @@ class WikiTextLoader  extends PCMLoader {
    * @param title : title of the article on English version of Wikipedia
    */
   def getPageCodeFromWikipedia(title : String): String = {
-    val editPage = Http("http://en.wikipedia.org/w/index.php")
+    val editPage = Http("https://en.wikipedia.org/w/index.php")
       .params("title" -> title.replaceAll(" ", "_"), "action" -> "edit")
       .option(HttpOptions.connTimeout(10000))
       .option(HttpOptions.readTimeout(30000))
@@ -77,9 +84,8 @@ class WikiTextLoader  extends PCMLoader {
 
   def mineInternalRepresentation(code : String, title : String): Page = {
     val ast = parser.parseArticle(code, title)
-    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, parser)
-    structuralVisitor.go(ast)
-    val page = structuralVisitor.page
+    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, templateProcessor, parser)
+    val page = structuralVisitor.extractPage(ast, title)
     page
   }
 

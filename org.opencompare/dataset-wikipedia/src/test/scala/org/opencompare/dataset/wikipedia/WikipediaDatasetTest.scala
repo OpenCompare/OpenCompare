@@ -4,12 +4,13 @@ import java.io._
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 
+import com.github.tototoshi.csv.{CSVWriter, CSVReader}
 import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -24,9 +25,13 @@ import scala.xml.PrettyPrinter
 class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  val miner = new WikiTextLoader
+  var templateProcessor : WikiTextTemplateProcessor = _
+  var miner : WikiTextLoader = _
+
+  val templateCacheFile = new File("resources/template-cache.csv")
 
   override def beforeAll() {
+    super.beforeAll()
 
     new File("input/").mkdirs()
     new File("output/csv/").mkdirs()
@@ -34,6 +39,38 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     new File("output/dump/").mkdirs()
     new File("output/model/").mkdirs()
     new File("output/wikitext/").mkdirs()
+
+    // Load cache for templates
+    if (templateCacheFile.exists()) {
+      val csvLoader = CSVReader.open(templateCacheFile)
+
+      val initialCache = (for (line : Seq[String] <- csvLoader.iterator if line.size == 2) yield {
+          val template = line(0)
+          val expandedTemplate = line(1)
+          template -> expandedTemplate
+      }).toMap
+
+      csvLoader.close()
+
+      templateProcessor = new WikiTextTemplateProcessor(initialCache)
+
+    } else {
+      templateProcessor = new WikiTextTemplateProcessor()
+    }
+
+    miner = new WikiTextLoader(templateProcessor)
+  }
+
+
+  override protected def afterAll(): Unit = {
+    super.afterAll()
+
+    val csvWriter = CSVWriter.open(templateCacheFile)
+    for (line <- templateProcessor.templateCache) {
+      csvWriter.writeRow(Seq(line._1, line._2))
+    }
+
+    csvWriter.close()
   }
 
   def parsePCMFromFile(file : String) : Page= {
@@ -127,7 +164,47 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   }
 
-  "Wikipedia IO" should "parse every available PCM in Wikipedia" in {
+  ignore should "download every available Wikipedia PCM" in {
+    val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
+    val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
+    wikipediaPCMsFile.close
+
+    val tasks : Seq[Future[String]] = for(article <- wikipediaPCMs) yield future {
+      var result = new StringBuilder
+      if (article.startsWith("//")) {
+        result ++= "IGNORED : " + article
+      } else {
+        result ++= article
+        var retry = false
+        do {
+          try {
+
+            // Download Wikipedia page code
+            val code = miner.getPageCodeFromWikipedia(article)
+
+            // Save code
+            writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", code)
+
+          } catch {
+            // case e : UnknownHostException => retry = true
+            case e : Throwable =>
+              val sw = new StringWriter();
+              val pw = new PrintWriter(sw);
+              e.printStackTrace(pw);
+              result ++= sw.toString();
+          }
+        } while (retry)
+      }
+      result.toString
+    } (executionContext)
+
+    for (task <- tasks) {
+      val result = Await.result(task, 10.minutes)
+      //      println(result)
+    }
+  }
+
+  it should "parse every available PCM in Wikipedia" in {
     val wikipediaPCMsFile = Source.fromFile("resources/list_of_PCMs.txt")
     val wikipediaPCMs = wikipediaPCMsFile.getLines.toList
     wikipediaPCMsFile.close
@@ -150,9 +227,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   }
 
-
-
-  "Formalizer" should "interpret the cell of all the Wikipedia PCMs" in {
+  it should "interpret the cell of all the Wikipedia PCMs" in {
 
     val interpreter = new CellContentInterpreter
     val loader = new KMFJSONLoader

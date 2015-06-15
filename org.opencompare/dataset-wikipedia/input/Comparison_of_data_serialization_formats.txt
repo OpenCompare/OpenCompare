@@ -1,4 +1,4 @@
-<table class="metadata plainlinks ambox ambox-content ambox-Refimprove" role="presentation"><tr><td class="mbox-image"><div style="width:52px">[[File:Question book-new.svg|50x40px|alt=]]</div></td><td class="mbox-text"><span class="mbox-text-span">This article '''needs additional citations for [[Wikipedia:Verifiability|verification]]'''.<span class="hide-when-compact"> Please help [//en.wikipedia.org/w/index.php?title=Special:ExpandTemplates&action=edit improve this article] by [[Help:Introduction to referencing/1|adding citations to reliable sources]]. Unsourced material may be challenged and removed.</span>  <small>''(August 2009)''</small><span class="hide-when-compact"></span></span></td></tr></table>
+{{Refimprove|date=August 2009}}
 
 This is a '''comparison of [[data serialization]] [[file format|format]]s''', various ways to convert complex [[object (computer science)|object]]s to sequences of [[bit]]s. It does not include [[markup language]]s used exclusively as [[document file format]]s.
 
@@ -12,324 +12,335 @@ This is a '''comparison of [[data serialization]] [[file format|format]]s''', va
 ! [[Specification]]
 ! [[Binary format|Binary]]?
 ! [[Human-readable]]?
-! Supports [[Reference (computer science)|reference]]s?<sup class="reference plainlinks nourlexpansion" id="ref_stdrefs">[[#endnote_stdrefs|e]]</sup>
+! Supports [[Reference (computer science)|reference]]s?{{ref|stdrefs|e}}
 ! Schema/[[Interface description language|IDL]]?
 ! Standard [[API]]s
 |-
 | [[Apache Avro]]
 | [[Apache Software Foundation]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | [http://avro.apache.org/docs/current/spec.html Apache Avro™ 1.7.5 Specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (built-in)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{yes}}
+| {{no}}
+| {{n/a}}
+| {{yes}} (built-in)
+| {{n/a}}
 |-
 | [[ASN.1]]
 | [[International Organization for Standardization|ISO]], [[International Electrotechnical Commission|IEC]], [[ITU-T]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | ISO/IEC 8824; X.680 series of ITU-T Recommendations
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[Basic Encoding Rules|BER]], [[Distinguished Encoding Rules|DER]], [[Packed Encoding Rules|PER]], [[Octet Encoding Rules|OER]], or custom via [[Encoding Control Notation|ECN]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XML Encoding Rules|XER]], [[Generic String Encoding Rules|GSER]], or custom via [[Encoding Control Notation|ECN]])
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<sup class="reference plainlinks nourlexpansion" id="ref_asn1refs">[[#endnote_asn1refs|f]]</sup>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (built-in)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{yes}}<br>([[Basic Encoding Rules|BER]], [[Distinguished Encoding Rules|DER]], [[Packed Encoding Rules|PER]], [[Octet Encoding Rules|OER]], or custom via [[Encoding Control Notation|ECN]])
+| {{yes}}<br>([[XML Encoding Rules|XER]], [[Generic String Encoding Rules|GSER]], or custom via [[Encoding Control Notation|ECN]])
+| {{partial}}{{ref|asn1refs|f}}
+| {{yes}} (built-in)
+| {{n/a}}
 |-
 | [[Bencode]]
 | [[Bram Cohen]] (creator)<br>[[BitTorrent, Inc.]] (maintainer)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | Part of [http://bittorrent.org/beps/bep_0003.html BitTorrent protocol specification]
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partially<br>(numbers and delimiters are ASCII)
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partially
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{partial|Partially}}<br>(numbers and delimiters are ASCII)
+| {{partial|Partially}}
+| {{no}}
+| {{no}}
+| {{no}}
+|-
+| [[Binn (Serialization format)|Binn]]
+| Bernardo Ramos
+| {{n/a}}
+| {{yes}}
+| [https://github.com/liteserver/binn/blob/master/spec.md Binn Specification]
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[BSON]]
 | [[MongoDB]]
 | [[JSON]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [http://bsonspec.org BSON Specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[Candle (programming language)|Candle]] Markup
 | Henry Luo
 | [[XML]], [[JSON]], [[JavaFX]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [http://www.candlescript.org/doc/candle-markup-reference.htm Candle Markup Reference]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XPointer]], [[XPath]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://www.candlescript.org/doc/candle-pattern-reference.htm Candle Pattern Reference])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XQuery]], [[XPath]])
+| {{no}}
+| {{yes}}
+| {{yes}}<br>([[XPointer]], [[XPath]])
+| {{yes}}<br>([http://www.candlescript.org/doc/candle-pattern-reference.htm Candle Pattern Reference])
+| {{yes}}<br>([[XQuery]], [[XPath]])
 |-
 | [[Comma-separated values]] (CSV)
 | RFC author:<br>Yakov Shafranovich
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br>(myriad informal variants used)
+| {{n/a}}
+| {{partial}}<br>(myriad informal variants used)
 | RFC 4180<br>(among others)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[D-Bus]] Message Protocol
 | [[freedesktop.org]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | [http://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol D-Bus Specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-signatures Type Signatures])
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(see [[D-Bus]])
+| {{yes}}
+| {{yes}}<br>([http://dbus.freedesktop.org/doc/dbus-specification.html#message-protocol-signatures Type Signatures])
+| {{no}}
+| {{no}}
+| {{yes}}<br>(see [[D-Bus]])
 |-
 | [[Fast Infoset]]
 | [[International Organization for Standardization|ISO]], [[International Electrotechnical Commission|IEC]], [[ITU-T]]
 | [[XML]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | ITU-T X.891 and ISO/IEC 24824-1:2007
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XML]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XPointer]], [[XPath]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XML schema]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[Document Object Model|DOM]], [[Simple API for XML|SAX]], [[XQuery]], [[XPath]])
+| {{yes}}
+| {{yes}}<br>([[XML]])
+| {{yes}}<br>([[XPointer]], [[XPath]])
+| {{yes}}<br>([[XML schema]])
+| {{yes}}<br>([[Document Object Model|DOM]], [[Simple API for XML|SAX]], [[XQuery]], [[XPath]])
 |-
 | [[JSON]]
 | [[Douglas Crockford]]
 | [[JavaScript syntax]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | RFC 4627<br>(ancillary:<br>RFC 6901,<br>RFC 6902)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No, but see [[UBJSON]], [[BSON]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://tools.ietf.org/html/rfc6901 JSON Pointer (RFC 6901)];<br>alternately:<br>[http://goessner.net/articles/JsonPath/ JSONPath], [http://bluelinecity.com/software/jpath/ JPath], [http://www.jspon.org/ JSPON], [http://jsonselect.org/ json:select()])
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br>([http://json-schema.org/ JSON Schema Proposal], [http://www.kuwata-lab.com/kwalify/ Kwalify], [http://rjbs.manxome.org/rx/ Rx], [http://itemscript.org/ItemscriptSchema.html Itemscript Schema])
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br>([https://github.com/dscape/clarinet Clarinet], [http://www.sitepen.com/blog/2008/07/16/jsonquery-data-querying-beyond-jsonpath/ JSONQuery], [http://goessner.net/articles/JsonPath/ JSONPath])
+| {{no}}, but see [[UBJSON]], [[BSON]]
+| {{yes}}
+| {{yes}}<br>([http://tools.ietf.org/html/rfc6901 JSON Pointer (RFC 6901)];<br>alternately:<br>[http://goessner.net/articles/JsonPath/ JSONPath], [http://bluelinecity.com/software/jpath/ JPath], [http://www.jspon.org/ JSPON], [http://jsonselect.org/ json:select()])
+| {{partial}}<br>([http://json-schema.org/ JSON Schema Proposal], [http://www.kuwata-lab.com/kwalify/ Kwalify], [http://rjbs.manxome.org/rx/ Rx], [http://itemscript.org/ItemscriptSchema.html Itemscript Schema])
+| {{partial}}<br>([https://github.com/dscape/clarinet Clarinet], [http://www.sitepen.com/blog/2008/07/16/jsonquery-data-querying-beyond-jsonpath/ JSONQuery], [http://goessner.net/articles/JsonPath/ JSONPath])
 |-
 | [[MessagePack]]
 | Sadayuki Furuhashi
 | [[JSON]] (loosely)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [https://github.com/msgpack/msgpack/blob/master/spec.md MessagePack format specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[Netstring]]s
 | [[Dan Bernstein]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | [http://cr.yp.to/proto/netstrings.txt netstrings.txt]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[OGDL]]
 | Rolf Veen
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{dunno}}
+| {{yes}}
 | [http://ogdl.org/spec/ Specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://ogdl.org/spec/binary.html Binary Specification])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://ogdl.org/spec/path.html Path Specification])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://ogdl.org/spec/schema.html Schema WD])
+| {{yes}}<br>([http://ogdl.org/spec/binary.html Binary Specification])
+| {{yes}}
+| {{yes}}<br>([http://ogdl.org/spec/path.html Path Specification])
+| {{yes}}<br>([http://ogdl.org/spec/schema.html Schema WD])
 | 
 |-
 | [[OpenDDL]]
 | [[Eric Lengyel]]
 | [[C (programming language)|C]], [[PHP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [http://openddl.org/ OpenDDL.org]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([http://openddl.org/ OpenDDL Library])
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}<br>([http://openddl.org/ OpenDDL Library])
 |-
 | [[PHP]]'s <code>[http://php.net/serialize serialize()]</code> & <code>[http://php.net/manual/en/function.unserialize.php unserialize()]</code>
 | [[PHP Group]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
+| {{no}}
+| {{yes}}
 |-
 | [http://perldoc.perl.org/Data/Dumper.html Data::Dumper format] (Core Perl Module)
 | [[Gurusamy Sarathy (ActiveState developer)]]
 | [http://perldoc.perl.org/perldata.html Perl data types]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{no}}
+| {{dunno}}
+| {{yes}}
+| {{no}}
+| {{dunno}}
+| {{yes}}
 |-
 | [[Property list]]
 | [[NeXT]] (creator)<br>[[Apple Inc.|Apple]] (maintainer)
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial
+| {{dunno}}
+| {{partial}}
 | [http://www.apple.com/DTDs/PropertyList-1.0.dtd Public DTD for XML format]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="reference plainlinks nourlexpansion" id="ref_plbin">[[#endnote_plbin|a]]</sup>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<sup class="reference plainlinks nourlexpansion" id="ref_pltxt">[[#endnote_pltxt|b]]</sup>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style=" vertical-align: middle; text-align: center; " class="unknown table-unknown"|?
+| {{yes}}{{ref|plbin|a}}
+| {{yes}}{{ref|pltxt|b}}
+| {{no}}
+| {{dunno}}
 | [http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/PropertyLists/Introduction/Introduction.html Cocoa], [http://developer.apple.com/mac/library/documentation/CoreFoundation/Conceptual/CFPropertyLists/CFPropertyLists.html CoreFoundation], [http://docs.sun.com/app/docs/doc/802-2112/6i63mn65o?a=view OpenStep], [http://www.gnustep.org/resources/documentation/Developer/Base/Reference/NSPropertyList.html GnuStep]
 |-
 | [[Protocol Buffers]] (protobuf)
 | [[Google]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<sup class="noprint Inline-Template Template-Fact" style="white-space:nowrap;">&#91;<i>[[Wikipedia:Citation needed|<span title="This claim needs references to reliable sources. (September 2014)">citation needed</span>]]</i>&#93;</sup>
+| {{n/a}}
+| {{partial}}{{citation needed|date=September 2014}}
 | [https://developers.google.com/protocol-buffers/docs/encoding Developer Guide: Encoding]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<sup class="reference plainlinks nourlexpansion" id="ref_pbtextformat">[[#endnote_pbtextformat|d]]</sup>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (built-in)
+| {{yes}}
+| {{partial}}{{ref|pbtextformat|d}}
+| {{no}}
+| {{yes}} (built-in)
 | 
 |-
 | [[ROOT]]
 | [http://cern.ch CERN] & [http://fnal.gov FNAL]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(optional XML output for debugging)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(C++ object persistency framework)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(Native C++ API, bindings for Python, Ruby, and others)
+| {{n/a}}
+| {{no}}
+| {{n/a}}
+| {{yes}}
+| {{yes}}<br>(optional XML output for debugging)
+| {{yes}}
+| {{yes}}<br>(C++ object persistency framework)
+| {{yes}}<br>(Native C++ API, bindings for Python, Ruby, and others)
 |-
-| <span class="nowrap">[[S-expression]]s</span>
+| {{nobr|[[S-expression]]s}}
 | Internet Draft author:<br>[[Ron Rivest]]
 | [[Lisp (programming language)|Lisp]], [[Netstring]]s
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br>(largely ''de facto'')
+| {{partial}}<br>(largely ''de facto'')
 | [http://people.csail.mit.edu/rivest/Sexp.txt "S-Expressions"] [[Internet Draft]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>("Canonical representation")
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>("Advanced transport representation")
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}<br>("Canonical representation")
+| {{yes}}<br>("Advanced transport representation")
+| {{no}}
+| {{no}}
 | 
 |-
 | [[SCaViS]]
 | [http://jwork.org/scavis jWork.ORG]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(XML, Java Serialization, ProtocolBuffers)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(Java object persistency, XML, ProtocolBuffers)
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>(Native Java API, bindings for Jython, JRuby, Groovy and others)
+| {{n/a}}
+| {{yes}}
+| {{n/a}}
+| {{yes}}
+| {{yes}}<br>(XML, Java Serialization, ProtocolBuffers)
+| {{yes}}
+| {{yes}}<br>(Java object persistency, XML, ProtocolBuffers)
+| {{yes}}<br>(Native Java API, bindings for Jython, JRuby, Groovy and others)
 |-
 | [[Smile (Data Interchange Format)|Smile]]
 | Tatu Saloranta
 | [[JSON]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
 | [http://wiki.fasterxml.com/SmileFormatSpec Smile Format Specification]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
-| <span class="nowrap">[[SDXF|Structured Data eXchange Format]]s</span>
+| {{nobr|[[SDXF|Structured Data eXchange Format]]s}}
 | [[Max Wildgrube]]
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | RFC 3072
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
 | 
 |-
 | [[Thrift (protocol)|Thrift]]
 | [[Facebook]] (creator)<br>[[Apache Software Foundation|Apache]] (maintainer)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{n/a}}
+| {{no}}
 | [http://thrift.apache.org/static/files/thrift-20070401.pdf Original whitepaper]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<sup class="reference plainlinks nourlexpansion" id="ref_thrifttxt">[[#endnote_thrifttxt|c]]</sup>
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes (built-in) 
+| {{yes}}
+| {{partial}}{{ref|thrifttxt|c}}
+| {{no}}
+| {{yes}} (built-in) 
 |
 |-
 | [[UBJSON]]
 | The Buzz Media, LLC
 | [[JSON]], [[BSON]]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
 | [http://ubjson.org/]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[External Data Representation|eXternal Data Representation]] (XDR)
 | [[Sun Microsystems]] (creator)<br>[[IETF]] (maintainer)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{n/a}}
+| {{yes}}
 | RFC 4506
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| {{yes}}
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{yes}}
 |-
 | [[XML]]
 | [[W3C]]
 | [[SGML]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| <span class="nowrap">[[W3C Recommendation]]s:</span><br>[http://www.w3.org/TR/2008/REC-xml-20081126/ 1.0 (Fifth Edition)]<br>[http://www.w3.org/TR/2006/REC-xml11-20060816/ 1.1 (Second Edition)]
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br><span class="nowrap">([[Binary XML]])</span>
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XPointer]], [[XPath]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[XML schema]], [[RELAX_NG]])
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes<br>([[Document Object Model|DOM]], [[Simple API for XML|SAX]], [[XQuery]], [[XPath]])
+| {{yes}}
+| {{nobr|[[W3C Recommendation]]s:}}<br>[http://www.w3.org/TR/2008/REC-xml-20081126/ 1.0 (Fifth Edition)]<br>[http://www.w3.org/TR/2006/REC-xml11-20060816/ 1.1 (Second Edition)]
+| {{partial}}<br>{{nobr|([[Binary XML]])}}
+| {{yes}}
+| {{yes}}<br>([[XPointer]], [[XPath]])
+| {{yes}}<br>([[XML schema]], [[RELAX_NG]])
+| {{yes}}<br>([[Document Object Model|DOM]], [[Simple API for XML|SAX]], [[XQuery]], [[XPath]])
 |-
 | [[XML-RPC]]
-| [[Dave Winer]]
-| [[XML]], [[SOAP]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[Dave Winer]]<ref name="xmlrpc-hist">http://www.xml.com/pub/a/ws/2001/04/04/soap.html</ref>
+| [[XML]], [[SOAP]]<ref name="xmlrpc-hist"/>
+| {{yes}}
 | [http://xmlrpc.scripting.com/spec XML-RPC Specification]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes}}
+| {{no}}
+| {{no}}
+| {{no}}
 |-
 | [[YAML]]
 | Clark Evans,<br>Ingy döt Net,<br>and Oren Ben-Kiki
-| [[C (programming language)|C]], [[Java (programming language)|Java]], [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Email]], [[HTML]], [[MIME]], [[URI]], [[XML]], [[Simple API for XML|SAX]], [[SOAP]], [[JSON]]
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
+| [[C (programming language)|C]], [[Java (programming language)|Java]], [[Perl]], [[Python (programming language)|Python]], [[Ruby (programming language)|Ruby]], [[Email]], [[HTML]], [[MIME]], [[URI]], [[XML]], [[Simple API for XML|SAX]], [[SOAP]], [[JSON]]<ref>{{cite web|url=http://yaml.org/spec/1.2/spec.html#id2708710|title=YAML Ain’t Markup Language (YAML) Version 1.2|first1=Oren |last1=Ben-Kiki |first2=Clark |last2=Evans |first3=Ingy döt |last3=Net|date=2009-10-01|work=The Official YAML Web Site|accessdate=2012-02-10}}</ref>
+| {{yes}}
 | [http://www.yaml.org/spec/1.2/spec.html Version 1.2]
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#9F9;vertical-align:middle;text-align:center;" class="table-yes"|Yes
-| style="background:#FFB;vertical-align:middle;text-align:center; " class="table-partial"|Partial<br>([http://www.kuwata-lab.com/kwalify/ Kwalify], [http://rjbs.manxome.org/rx/ Rx], built-in language type-defs)
-| style="background:#F99;vertical-align:middle;text-align:center;" class="table-no"|No
+| {{no}}
+| {{yes}}
+| {{yes}}
+| {{partial}}<br>([http://www.kuwata-lab.com/kwalify/ Kwalify], [http://rjbs.manxome.org/rx/ Rx], built-in language type-defs)
+| {{no}}
 |}
-*a. <span class="citation wikicite" id="endnote_plbin"><b>[[#ref_plbin|^]]</b></span>The current default format is binary.
-*b. <span class="citation wikicite" id="endnote_pltxt"><b>[[#ref_pltxt|^]]</b></span>The "classic" format is plain text, and an XML format is also supported.
-*c. <span class="citation wikicite" id="endnote_thrifttxt"><b>[[#ref_thrifttxt|^]]</b></span>Theoretically possible due to abstraction, but no implementation is included.
-*d. <span class="citation wikicite" id="endnote_pbtextformat"><b>[[#ref_pbtextformat|^]]</b></span>The primary format is binary, but a text format is available.
-*e. <span class="citation wikicite" id="endnote_stdrefs"><b>[[#ref_stdrefs|^]]</b></span>Means that generic tools/libraries know how to encode, decode, and dereference a reference to another piece of data in the same document. A tool may require the [[Interface description language|IDL]] file, but no more. Excludes custom, non-standardized referencing techniques.
-*f. <span class="citation wikicite" id="endnote_asn1refs"><b>[[#ref_asn1refs|^]]</b></span>ASN.1 does offer [[Object identifier|OIDs]], a standard format for globally unique identifiers, as well as  a standard notation ("absolute reference") for referencing a component of a value. Thus it would be possible to reference a component of an encoded value present in a document by combining an OID (assigned to the document) and an "absolute reference" to the component of the value. However, there is no standard way to indicate that a field contains such an absolute reference. Therefore, a generic ASN.1 tool/library cannot automatically encode/decode/resolve references within a document without help from custom-written program code.
+*a. {{note|plbin}}The current default format is binary.
+*b. {{note|pltxt}}The "classic" format is plain text, and an XML format is also supported.
+*c. {{note|thrifttxt}}Theoretically possible due to abstraction, but no implementation is included.
+*d. {{note|pbtextformat}}The primary format is binary, but a text format is available.<ref>https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.text_format</ref>
+*e. {{note|stdrefs}}Means that generic tools/libraries know how to encode, decode, and dereference a reference to another piece of data in the same document. A tool may require the [[Interface description language|IDL]] file, but no more. Excludes custom, non-standardized referencing techniques.
+*f. {{note|asn1refs}}ASN.1 does offer [[Object identifier|OIDs]], a standard format for globally unique identifiers, as well as  a standard notation ("absolute reference") for referencing a component of a value. Thus it would be possible to reference a component of an encoded value present in a document by combining an OID (assigned to the document) and an "absolute reference" to the component of the value. However, there is no standard way to indicate that a field contains such an absolute reference. Therefore, a generic ASN.1 tool/library cannot automatically encode/decode/resolve references within a document without help from custom-written program code.
 
 ==Syntax comparison of human-readable formats==
 {| class="wikitable"
@@ -345,12 +356,12 @@ This is a '''comparison of [[data serialization]] [[file format|format]]s''', va
 ! [[Associative array]]/[[Object (computer science)|Object]]
 |-
 | [[XML Encoding Rules|ASN.1]]<br>(XML Encoding Rules)
-| <span class="nowrap"><code><foo /></code></span>
+| {{nobr|<code><foo /></code>}}
 | <code><foo>true</foo></code>
 | <code><foo>false</foo></code>
 | <code><foo>685230</foo></code>
 | <code><foo>6.8523015e+5</foo></code>
-| <span class="nowrap"><code><foo>A to Z</foo></code></span>
+| {{nobr|<code><foo>A to Z</foo></code>}}
 | <source lang="xml"><SeqOfUnrelatedDatatypes>
     <isMarried>true</isMarried>
     <hobby />
@@ -377,7 +388,7 @@ A data mapping (the key is a data value):
         <height>2.718</height>
     </measurement>
 </competition></source>
-<sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
+{{ref|guess|a}}
 |-
 | [[Candle (programming language)|Candle]] Markup
 | <code>(), ""</code>
@@ -387,28 +398,32 @@ A data mapping (the key is a data value):
 | <code>6.8523015e+5</code>
 | <code>"A to Z"</code><br><code>"""<br>A <br>to <br>Z<br>"""</code>
 | <code>(true, (), -42.1e7, "A to Z")</code>
-|  or 
-
+| <pre>_{%342=true A%20to%20Z=(1, 2, 3)}</pre> or 
+<pre>_{
+  _{key=42 value=true}
+  _{key="A to Z" value=(1, 2, 3)}
+}</pre>
 |-
-| [[Comma-separated values|CSV]]<sup class="reference plainlinks nourlexpansion" id="ref_csvguess">[[#endnote_csvguess|b]]</sup>
-| <code>null</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br>(or an empty element in the row)<sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>1</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br><code>true</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>0</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br><code>false</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>685230</code><br><code>-685230</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>6.8523015e+5</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <span class="nowrap"><code>A to Z</code></span><br><code><span class="nowrap">"We said, ""no""."</span></code>
+| [[Comma-separated values|CSV]]{{ref|csvguess|b}}
+| <code>null</code>{{ref|guess|a}}<br>(or an empty element in the row){{ref|guess|a}}
+| <code>1</code>{{ref|guess|a}}<br><code>true</code>{{ref|guess|a}}
+| <code>0</code>{{ref|guess|a}}<br><code>false</code>{{ref|guess|a}}
+| <code>685230</code><br><code>-685230</code>{{ref|guess|a}}
+| <code>6.8523015e+5</code>{{ref|guess|a}}
+| {{nobr|<code>A to Z</code>}}<br><code>{{nobr|"We said, ""no""."}}</code>
 | <code>true,,-42.1e7,"A to Z"</code>
-| 
+| <pre>42,1
+A to Z,1,2,3</pre>
 |-
-| [[Netstring]]s<sup class="reference plainlinks nourlexpansion" id="ref_netguess">[[#endnote_netguess|c]]</sup>
-| <code>0:,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br><code>4:null,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>1:1,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br><code>4:true,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>1:0,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><br><code>5:false,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>6:685230,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>9:6.8523e+5,</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <span class="nowrap"><code>6:A to Z,</code></span>
+| [[Netstring]]s{{ref|netguess|c}}
+| <code>0:,</code>{{ref|guess|a}}<br><code>4:null,</code>{{ref|guess|a}}
+| <code>1:1,</code>{{ref|guess|a}}<br><code>4:true,</code>{{ref|guess|a}}
+| <code>1:0,</code>{{ref|guess|a}}<br><code>5:false,</code>{{ref|guess|a}}
+| <code>6:685230,</code>{{ref|guess|a}}
+| <code>9:6.8523e+5,</code>{{ref|guess|a}}
+| {{nobr|<code>6:A to Z,</code>}}
 | <code>29:4:true,0:,7:-42.1e7,6:A to Z,,</code>
-| <span class="nowrap"><code>41:9:2:42,1:1,,25:6:A to Z,12:1:1,1:2,1:3,,,,</code></span><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
+| {{nobr|<code>41:9:2:42,1:1,,25:6:A to Z,12:1:1,1:2,1:3,,,,</code>}}{{ref|guess|a}}
 |-
 | [[JSON]]
 | <code>null</code>
@@ -416,21 +431,31 @@ A data mapping (the key is a data value):
 | <code>false</code>
 | <code>685230</code><br><code>-685230</code>
 | <code>6.8523015e+5</code>
-| <span class="nowrap"><code>"A to Z"</code></span>
+| {{nobr|<code>"A to Z"</code>}}
 | <code>[true, null, -42.1e7, "A to Z"]</code>
 | <code>{"42": true, "A to Z": [1, 2, 3]}</code>
 |-
-| [[OGDL]]<sup class="noprint Inline-Template " style="white-space:nowrap;">&#91;<i>[[Wikipedia:Verifiability|<span title="The material near this tag needs to be fact-checked with the cited source(s). (September 2009)">verification needed</span>]]</i>&#93;</sup>
-| <code>null</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>true</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>false</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>685230</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code>6.8523015e+5</code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
+| [[OGDL]]{{Verify source|date=September 2009}}
+| <code>null</code>{{ref|guess|a}}
+| <code>true</code>{{ref|guess|a}}
+| <code>false</code>{{ref|guess|a}}
+| <code>685230</code>{{ref|guess|a}}
+| <code>6.8523015e+5</code>{{ref|guess|a}}
 | <code>"A to Z"</code><br><code>'A to Z'</code><br><code>NoSpaces</code>
-| 
+| <pre>true
+null
+-42.1e7
+"A to Z"</pre>
 <code>(true, null, -42.1e7, "A to Z")</code>
-|
-
+|<pre>42
+  true
+"A to Z"
+  1
+  2
+  3</pre>
+<pre>42
+  true
+"A to Z", (1, 2, 3)</pre>
 |-
 | [[OpenDDL]]
 | <code>ref {null}</code>
@@ -441,12 +466,22 @@ A data mapping (the key is a data value):
 | <code>string {"A to Z"}</code>
 | Homogeneous array:
 
-
+<pre>int32 {1, 2, 3, 4, 5}</pre>
 
 Heterogeneous array:
 
-
-| 
+<pre>array
+{
+    bool {true}
+    ref {null}
+    float {-42.1e7}
+    string {"A to Z"}
+}</pre>
+| <pre>dict
+{
+    value (key = "42") {bool {true}}
+    value (key = "A to Z") {int32 {1, 2, 3}}
+}</pre>
 |-
 |[[PHP]]'s <code>[http://php.net/serialize serialize()]</code> & <code>[http://php.net/manual/en/function.unserialize.php unserialize()]</code>
 |<code>N;</code>
@@ -458,23 +493,26 @@ Heterogeneous array:
 |<code>a:4:{i:0;b:1;i:1;N;i:2;d:-421000000;i:3;s:6:"A to Z";}</code>
 |Associative array:<br><code>a:2:{i:42;b:1;s:6:"A to Z";a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}}</code><br>Object:<br><code>O:8:"stdClass":2:{s:4:"John";d:3.140000000000000124344978758017532527446746826171875;s:4:"Jane";d:2.717999999999999971578290569595992565155029296875;}</code>
 |-
-| [[Property list]]<br>(plain text format)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| [[Property list]]<br>(plain text format)<ref name="gnustep">http://www.gnustep.org/resources/documentation/Developer/Base/Reference/NSPropertyList.html</ref>
+| {{n/a}}
 | <code><*BY></code>
 | <code><*BN></code>
 | <code><*I685230></code>
 | <code><*R6.8523015e+5></code>
 | <code>"A to Z"</code>
 | <code>( <*BY>, <*R-42.1e7>, "A to Z" )</code>
-| 
+| <pre>{
+    "42" = <*BY>;
+    "A to Z" = ( <*I1>, <*I2>, <*I3> );
+}</pre>
 |-
-| [[Property list]]<br>(XML format)
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| [[Property list]]<br>(XML format)<ref>http://developer.apple.com/mac/library/documentation/Darwin/Reference/ManPages/man5/plist.5.html</ref><ref>http://developer.apple.com/mac/library/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/XMLTags.html#//apple_ref/doc/uid/20001172-CJBEJBHH</ref>
+| {{n/a}}
 | <code><true /></code>
 | <code><false /></code>
 | <code><integer>685230</integer></code>
 | <code><real>6.8523015e+5</real></code>
-| <span class="nowrap"><code><string>A to Z</string></code></span>
+| {{nobr|<code><string>A to Z</string></code>}}
 | <source lang="xml"><array>
     <true />
     <real>-42.1e7</real>
@@ -493,42 +531,47 @@ Heterogeneous array:
 |-
 | [[S-expression]]s
 | <code>NIL</code><br><code>nil</code>
-| <code>T</code><br><code>#t</code><sup class="reference plainlinks nourlexpansion" id="ref_lispstd">[[#endnote_lispstd|e]]</sup><br><code>true</code>
-| <code>NIL</code><br><code>#f</code><sup class="reference plainlinks nourlexpansion" id="ref_lispstd">[[#endnote_lispstd|e]]</sup><br><code>false</code>
+| <code>T</code><br><code>#t</code>{{ref|lispstd|e}}<br><code>true</code>
+| <code>NIL</code><br><code>#f</code>{{ref|lispstd|e}}<br><code>false</code>
 | <code>685230</code>
 | <code>6.8523015e+5</code>
-| <code>abc</code><br><code>"abc"</code><br><code>#616263#</code><br><code>3:abc</code><br><code>{MzphYmM=}</code><br><code></code>
+| <code>abc</code><br><code>"abc"</code><br><code>#616263#</code><br><code>3:abc</code><br><code>{MzphYmM=}</code><br><code><nowiki>|YWJj|</nowiki></code>
 | <code>(T NIL -42.1e7 "A to Z")</code>
 | <code>((42 T) ("A to Z" (1 2 3)))</code>
 |-
 | [[YAML]]
-| <code>~</code><br><code>null</code><br><code>Null</code><br><code>NULL</code>
-| <code>y</code><br><code>Y</code><br><code>yes</code><br><code>Yes</code><br><code>YES</code><br><code>on</code><br><code>On</code><br><code>ON</code><br><code>true</code><br><code>True</code><br><code>TRUE</code>
-| <code>n</code><br><code>N</code><br><code>no</code><br><code>No</code><br><code>NO</code><br><code>off</code><br><code>Off</code><br><code>OFF</code><br><code>false</code><br><code>False</code><br><code>FALSE</code>
-| <code>685230</code><br><code>+685_230</code><br><code>-685230</code><br><code>02472256</code><br><code>0x_0A_74_AE</code><br><code>0b1010_0111_0100_1010_1110</code><br><code>190:20:30</code>
-|<code>6.8523015e+5</code><br><code>685.230_15e+03</code><br><code>685_230.15</code><br><code>190:20:30.15</code><br><code>.inf</code><br><code>-.inf</code><br><code>.Inf</code><br><code>.INF</code><br><code>.NaN</code><br><code>.nan</code><br><code>.NAN</code>
+| <code>~</code><br><code>null</code><br><code>Null</code><br><code>NULL</code><ref>{{cite web|url=http://yaml.org/type/null.html |title=Null Language-Independent Type for YAML Version 1.1 |publisher= |work=YAML.org
+ |date=2005-01-18 |author1=Oren Ben-Kiki|author2=Clark Evans|author3=Brian Ingerson |accessdate=2009-09-12}}</ref>
+| <code>y</code><br><code>Y</code><br><code>yes</code><br><code>Yes</code><br><code>YES</code><br><code>on</code><br><code>On</code><br><code>ON</code><br><code>true</code><br><code>True</code><br><code>TRUE</code><ref name="yamlbool">{{cite web|url=http://yaml.org/type/bool.html |title=Boolean Language-Independent Type for YAML Version 1.1 |publisher=Clark C. Evans |author1=Oren Ben-Kiki|author2=Clark Evans|author3=Brian Ingerson |work=YAML.org |date=2005-01-18 |accessdate=2009-09-12}}</ref>
+| <code>n</code><br><code>N</code><br><code>no</code><br><code>No</code><br><code>NO</code><br><code>off</code><br><code>Off</code><br><code>OFF</code><br><code>false</code><br><code>False</code><br><code>FALSE</code><ref name="yamlbool"/>
+| <code>685230</code><br><code>+685_230</code><br><code>-685230</code><br><code>02472256</code><br><code>0x_0A_74_AE</code><br><code>0b1010_0111_0100_1010_1110</code><br><code>190:20:30</code><ref>{{cite web|url=http://yaml.org/type/int.html |title=Integer Language-Independent Type for YAML Version 1.1 |publisher=Clark C. Evans |author1=Oren Ben-Kiki|author2=Clark Evans|author3=Brian Ingerson |work=YAML.org |date=2005-02-11 |accessdate=2009-09-12}}</ref>
+|<code>6.8523015e+5</code><br><code>685.230_15e+03</code><br><code>685_230.15</code><br><code>190:20:30.15</code><br><code>.inf</code><br><code>-.inf</code><br><code>.Inf</code><br><code>.INF</code><br><code>.NaN</code><br><code>.nan</code><br><code>.NAN</code><ref>{{cite web|url=http://yaml.org/type/float.html |title=Floating-Point Language-Independent Type for YAML Version 1.1 |publisher=Clark C. Evans |author1=Oren Ben-Kiki|author2=Clark Evans|author3=Brian Ingerson |work=YAML.org |date=2005-01-18 |accessdate=2009-09-12}}</ref>
 | <code>A to Z</code><br><code>"A to Z"</code><br><code>'A to Z'</code>
 | <code>[y, ~, -42.1e7, "A to Z"]</code>
-
+<pre>- y
+-
+- -42.1e7
+- A to Z</pre>
 | <code>{"John":3.14, "Jane":2.718}</code>
-
+<pre>42: y
+A to Z: [1, 2, 3]</pre>
 |-
-| [[XML]]<sup class="reference plainlinks nourlexpansion" id="ref_xmlguess">[[#endnote_xmlguess|d]]</sup>
-| <sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><span class="nowrap">a</span>
-| <code><boolean val="true"/></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-<code><true /></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code><boolean val="false"/></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-<code><false /></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code><integer>685230</integer></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <code><float>6.8523015e+5</float></code><sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup>
-| <span class="nowrap"><code>A to Z</code></span>
-|<sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><source lang="xml"><array>
+| [[XML]]{{ref|xmlguess|d}}
+| {{nobr|<code><null /></code>{{ref|guess|a}}}}
+| <code><boolean val="true"/></code>{{ref|guess|a}}
+<code><true /></code>{{ref|guess|a}}
+| <code><boolean val="false"/></code>{{ref|guess|a}}
+<code><false /></code>{{ref|guess|a}}
+| <code><integer>685230</integer></code>{{ref|guess|a}}
+| <code><float>6.8523015e+5</float></code>{{ref|guess|a}}
+| {{nobr|<code>A to Z</code>}}
+|{{ref|guess|a}}<source lang="xml"><array>
   <element type="boolean">true</element>
   <element type="null"/>
   <element type="float">-42.1e7</element>
   <element type="string">A to Z</element>
 </array></source>
-|<sup class="reference plainlinks nourlexpansion" id="ref_guess">[[#endnote_guess|a]]</sup><source lang="xml"><associative-array>
+|{{ref|guess|a}}<source lang="xml"><associative-array>
   <entry>
     <key type="integer">42</key>
     <value type="boolean">true</value>
@@ -579,14 +622,14 @@ Heterogeneous array:
 </struct></source>
 |}
 
-*a. <span class="citation wikicite" id="endnote_guess"><b>[[#ref_guess|^]]</b></span>One possible encoding; the specification document does not specifically give an encoding for this datatype.
-*b. <span class="citation wikicite" id="endnote_csvguess"><b>[[#ref_csvguess|^]]</b></span>The RFC CSV specification only deals with delimiters, newlines, and quote characters; it does not directly deal with serializing programming [[data structure]]s.
-*c. <span class="citation wikicite" id="endnote_netguess"><b>[[#ref_netguess|^]]</b></span>The [[netstring]]s specification only deals with nested [[byte string]]s; anything else is outside the scope of the specification.
-*d. <span class="citation wikicite" id="endnote_xmlguess"><b>[[#ref_xmlguess|^]]</b></span>[[XML]] in and of itself is not a data serialization language, but many data serialization formats have been derived from it; as such, there are many different ways, in addition to those shown, to serialize programming [[data structure]]s into XML.
-*e. <span class="citation wikicite" id="endnote_lispstd"><b>[[#ref_lispstd|^]]</b></span>This syntax is not compatible with the Internet-Draft, but is used by some dialects of [[Lisp (programming language)|Lisp]].
+*a. {{note|guess}}One possible encoding; the specification document does not specifically give an encoding for this datatype.
+*b. {{note|csvguess}}The RFC CSV specification only deals with delimiters, newlines, and quote characters; it does not directly deal with serializing programming [[data structure]]s.
+*c. {{note|netguess}}The [[netstring]]s specification only deals with nested [[byte string]]s; anything else is outside the scope of the specification.
+*d. {{note|xmlguess}}[[XML]] in and of itself is not a data serialization language, but many data serialization formats have been derived from it; as such, there are many different ways, in addition to those shown, to serialize programming [[data structure]]s into XML.
+*e. {{note|lispstd}}This syntax is not compatible with the Internet-Draft, but is used by some dialects of [[Lisp (programming language)|Lisp]].
 
 ==Comparison of binary formats==
-
+<!--This table is meant to describe how the various datatypes are encoded in binary in the various formats-->
 {| class="wikitable"
 |-
 ! Format
@@ -607,7 +650,16 @@ Heterogeneous array:
 | data specifications SET OF (unordered) and SEQUENCE OF (guaranteed order)
 | user definable type
 |-
-| [[BSON]]
+| [[Binn (Serialization format)|Binn]]<ref>https://github.com/liteserver/binn/blob/master/spec.md</ref>
+| <code>\x00</code>
+| True: <code>\x01</code><br/>False: <code>\x02</code>
+| [[big-endian]] [[2's complement]] signed and unsigned 8/16/32/64 bits
+| [[Single precision floating-point format|single]]:  [[big-endian]] [[binary32]]<br/>[[Double precision floating-point format|double]]: [[big-endian]] [[binary64]]
+| [[UTF-8]] encoded, null terminated, preceded by int8 or int32 string length in bytes
+| Typecode (one byte) + 1-4 bytes size + 1-4 bytes items count + list items
+| Typecode (one byte) + 1-4 bytes size + 1-4 bytes items count + key/value pairs
+|-
+| [[BSON]]<ref>http://bsonspec.org</ref>
 | Null type - 0 bytes for value
 | True: one byte <code>\x01</code><br>False: <code>\x00</code>
 | int32: 32-bit [[little-endian]] [[2's complement]] or int64: 64-bit [[little-endian]] [[2's complement]]
@@ -616,7 +668,7 @@ Heterogeneous array:
 | [[BSON]] embedded document with numeric keys
 | [[BSON]] embedded document 
 |-
-| [[Concise Binary Object Representation]] (CBOR)
+| [[Concise Binary Object Representation]] (CBOR)<ref>RFC 7049</ref>
 | <code>\xf6</code>
 | True: <code>\xf5</code><br>False: <code>\xf4</code>
 | Small positive number <code>\x00-\x17</code>, small negative number <code>\x20-\x37</code> (abs(N) <= 23) <br>
@@ -639,7 +691,7 @@ Bytestring and UTF-8 have different typecode
 or
 typecode (one byte) + big-endian (u)int8/16/32/64
 | Typecode (one byte) + IEEE single/double
-| Typecode + up to 15 bytes<br />or<br />typecode + length as uint8/16/32 + bytes;<br />encoding is unspecified
+| Typecode + up to 15 bytes<br />or<br />typecode + length as uint8/16/32 + bytes;<br />encoding is unspecified<ref>https://github.com/msgpack/msgpack/blob/master/spec.md#formats-str</ref>
 | As "fixarray" (single-byte prefix + up to 15 array items) 
 or
 typecode (one byte) + 2-4 bytes length + array items
@@ -650,7 +702,7 @@ typecode (one byte) + 2-4 bytes length + key-value pairs
 | [[Netstring]]s
 | <code>0:,</code>
 | True: <code>1:1,</code>
-<span class="nowrap">False: <code>1:0,</code></span>
+{{nobr|False: <code>1:0,</code>}}
 |
 |
 |
@@ -675,7 +727,7 @@ typecode (one byte) + 2-4 bytes length + key-value pairs
 |
 |
 |-
-| [[Protocol Buffers]]
+| [[Protocol Buffers]]<ref>https://developers.google.com/protocol-buffers/docs/encoding</ref>
 |
 |
 | Variable encoding length signed 32-bit: varint encoding of "ZigZag"-encoded value <code>(n << 1) [[XOR]] (n >> 31)</code>
@@ -686,7 +738,7 @@ Constant encoding length 64-bit: 64 bits in [[little-endian]] [[2's complement]]
 [[Double precision floating-point format|doubles]]: [[little-endian]] [[binary64]]
 | [[UTF-8]] encoded, preceded by varint-encoded integer length of string in bytes
 | Repeated value with the same tag
-| style="background: #ececec; color: grey; vertical-align: middle; text-align: center; " class="table-na" | <small>N/A</small>
+| {{n/a}}
 |-
 | [[Sereal (protocol)|Sereal]]
 | <code>0x25</code>
@@ -755,8 +807,7 @@ It should be noted that any XML based representation can be compressed, or gener
 *[[Comparison of document markup languages]]
 
 == References ==
-<div class="reflist " style=" list-style-type: decimal;">
-<references group=""></references></div>
+{{reflist}}
 
 ==External links==
 *[http://www.w3.org/TR/NOTE-xml-ql/ XML-QL Proposal discussing XML benefits]
@@ -764,7 +815,6 @@ It should be noted that any XML based representation can be compressed, or gener
 *[[c2:XmlSucks|XmlSucks]] at the Portland Pattern Repository
 *[http://www.xml.com/pub/a/2001/05/02/champion.html Daring to Do Less with XML]
 
-
-
+{{DEFAULTSORT:Comparison Of Data Serialization Formats}}
 [[Category:Data serialization formats]]
 [[Category:Persistence]]

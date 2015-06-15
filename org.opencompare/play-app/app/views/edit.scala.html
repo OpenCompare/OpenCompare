@@ -27,13 +27,14 @@
     <nav class="navbar"  role="navigation" >
         <div class="container-fluid">
 
-            <div class="editor-toolbar" ng-controller="PCMEditorToolbarController" >
-
-                <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
-                <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
-                <div class="btn-group" ng-class='{open: open}'>
+            <div class="editor-toolbar" ng-controller="PCMEditorToolbarController">
+                <h2 ng-show="!edit" id="pcm-name">{{pcmName}}&nbsp;<a role="button" class="btn btn-primary" ng-click="setEdit(true)"><i class="fa fa-pencil"></i> @Messages("view.button.edit")</a></h2>
+                <button ng-show="edit && !saved" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
+                <button ng-show="edit && saved" role="button" class="btn btn-default" ng-click="setEdit(false)"><i class="fa fa-undo"></i> Cancel</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved}' ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved}'></i> Save</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
+                <button ng-show="edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+                <div class="btn-group" ng-show="edit" ng-class='{open: open}'>
                     <button class="btn dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'><i class="fa fa-download"></i> @Messages("navbar.export") <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.csv")</a></li>

@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
@@ -13,6 +14,8 @@ import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
+import org.opencompare.io.wikipedia.parser.CellContentExtractor;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,6 +26,7 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
 
@@ -37,10 +41,11 @@ public class PCMAPI extends Controller {
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter();
+    private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
+    private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
+    private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
 
     private static PCM loadWikitext(String title){
-        WikiTextLoader miner = new WikiTextLoader();
-
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
         List<PCM> pcms = seqAsJavaList(miner.mine(code, title));
@@ -195,5 +200,26 @@ public class PCMAPI extends Controller {
         //}
 
         return ok(result);
+    }
+
+    public static Result extractContent() {
+        JsonNode json = request().body().asJson();
+        String type = json.get("type").asText();
+        String rawContent = json.get("rawContent").asText();
+
+        if (type != null && rawContent != null) {
+            String content = "";
+
+            if ("wikipedia".equals(type)) {
+//                content = wikitextTemplateProcessor.expandTemplate(rawContent);
+                content = wikitextContentExtractor.extractCellContent(rawContent);
+            } else {
+                return badRequest("unknown type");
+            }
+
+            return ok(content);
+        } else {
+            return badRequest();
+        }
     }
 }

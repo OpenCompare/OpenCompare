@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix}
 import org.sweble.wikitext.engine.config.WikiConfig
 import org.sweble.wikitext.parser.nodes._
@@ -16,6 +17,7 @@ import scala.collection.mutable
 class TableVisitor(
                     val wikiConfig: WikiConfig,
                     val preprocessor : WikitextPreprocessor,
+                    val templateProcessor : WikiTextTemplateProcessor,
                     val parser : WikitextParser
                     ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
@@ -27,6 +29,9 @@ class TableVisitor(
   private var rowspan : Int = 1
   private var colspan : Int = 1
 
+  private val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
+  private val contentExtractor = new CellContentExtractor(preprocessor, templateProcessor, parser)
+
   def extract(wtTable: WtTable, name : String) : List[Matrix] = {
     matrices = mutable.ListBuffer.empty[Matrix]
 
@@ -34,13 +39,13 @@ class TableVisitor(
     matrix.name = name
     matrices += matrix
 
-    go(wtTable.getBody) // FIXME : implement other methods to make it working
+    go(wtTable.getBody)
 
     matrices.toList
   }
 
   override def visit(wtTable: WtTable): Unit = {
-    val recursiveTableVisitor = new TableVisitor(wikiConfig, preprocessor, parser)
+    val recursiveTableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
     val recursiveMatrices = recursiveTableVisitor.extract(wtTable, "") // TODO : name of the matrix
     matrices ++= recursiveMatrices
   }
@@ -86,16 +91,10 @@ class TableVisitor(
     }
 
     // Extract raw cell content
-    val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
     val rawContent = rawContentExtractor.extract(cellNode)
 
     // Extract cell content
-    val contentExtractor = new CellContentExtractor(preprocessor, parser)
-    val cellCode = "{|\n" +
-      "|-\n" +
-      "| " + rawContent + "\n" +
-      "|}"
-    val content = contentExtractor.extractCellContent(cellCode)
+    val content = contentExtractor.extractCellContent(rawContent)
 
     // Create cell
     val cell = new Cell(content, rawContent, isHeader, row, rowspan, column, colspan)
@@ -203,7 +202,7 @@ class TableVisitor(
   override def visit(wtPageSwitch: WtPageSwitch): Unit = {}
 
   override def visit(wtTableCaption: WtTableCaption): Unit = {
-    // TODO
+
   }
 
 

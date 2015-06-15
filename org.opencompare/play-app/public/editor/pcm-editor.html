@@ -35,7 +35,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="cancel()">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false)">Yes</button>
                 </div>
             </div>
         </div>
@@ -44,16 +44,15 @@
 
 
     <!-- Table editor -->
-    <div class="row">
-        <form class="form-inline">
+    <div class="row" ng-show="edit">
+        <form class="form-group">
             <div class="form-group col-lg-5">
-                <label for="pcm-name" class="control-label">Edit title </label>
+                <label for="pcm-name" class="control-label">Title:</label>
                 <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
             </div>
         </form>
     </div>
-    <br />
-    <div class="row">
+    <div class="row" ng-show="edit">
         <div class="col-xs-9">
             <button role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</button>
             <button role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</button>
@@ -63,7 +62,7 @@
     </div>
 
     <div class="modal fade" id="modalNewFeature" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -146,7 +145,7 @@
         </div>
     </div>
 
-    <div id="matrix" class="grid" ui-grid="gridOptions" ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns>
+    <div id="matrix" class="grid" ui-grid="gridOptions"  ng-style="{'height' : pcmData.length * 30 + 60}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns>
         <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
             <div class="msg">
                 <span class="loader"> Loading Data...</span>

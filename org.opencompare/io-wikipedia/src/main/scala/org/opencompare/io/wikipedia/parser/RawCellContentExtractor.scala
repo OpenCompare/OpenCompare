@@ -17,9 +17,14 @@ class RawCellContentExtractor(val wikiConfig : WikiConfig) {
   private val trimPattern : Pattern = Pattern.compile("[\\s|!]*([\\s\\S]*?)\\s*")
 
   def extract(cell : WtNode) : String = {
-    val pageTitle = PageTitle.make(wikiConfig, "title")
-    val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
-    val code = Wom3Toolbox.womToWmXPath(wom3Doc)
+
+    val code = try {
+      val pageTitle = PageTitle.make(wikiConfig, "title")
+      val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
+      Wom3Toolbox.womToWmXPath(wom3Doc)
+    } catch {
+      case e : IllegalArgumentException => ""
+    }
 
     trim(code)
   }
