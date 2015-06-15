@@ -42,14 +42,11 @@ abstract class PCMCircularTest(
         pcm1.normalize(pcmFactory)
 
         val code = exporter.export(container1)
-        println(code)
         val container2 = importer.load(code).get(0)
         val pcm2 = container2.getPcm
         pcm2.setName("From PCM1")
         pcm2.normalize(pcmFactory)
 
-        println(new CSVExporter().export(container1))
-        println(new CSVExporter().export(container2))
         var diff = pcm1.diff(pcm2, new ComplexePCMElementComparator)
         withClue(diff.toString) {
           diff.hasDifferences shouldBe false
