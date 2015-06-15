@@ -498,6 +498,6 @@ public class PCMImpl implements PCM {
 
     @Override
     public int hashCode() {
-        return kpcm != null ? kpcm.hashCode() : 0;
+        return Objects.hash(this.getName(), this.getFeatures(), this.getProducts());
     }
 }

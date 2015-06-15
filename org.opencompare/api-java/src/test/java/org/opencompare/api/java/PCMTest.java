@@ -341,4 +341,35 @@ public abstract class PCMTest {
 
     }
 
+    @Test
+    public void testEqualsAndHashCode() {
+        PCM pcm1 = factory.createPCM();
+        PCM pcm2 = factory.createPCM();
+
+        Feature f1 = createFeature(pcm1, "feature");
+        Feature f2 = createFeature(pcm2, "feature");
+
+        // TODO : feature groups
+
+        Product p1 = createProduct(pcm1, "product");
+        Product p2 = createProduct(pcm2, "product");
+
+        Cell c1 = createCell(p1, f1, "cell" , null);
+        Cell c2 = createCell(p2, f2, "cell" , null);
+
+        // TODO : interpretation
+
+        assertEquals("equals - cell", c1, c2);
+        assertEquals("equals - feature", f1, f2);
+        assertEquals("equals - product", p1, p2);
+        assertEquals("equals - pcm", pcm1, pcm2);
+
+        assertEquals("hash code - cell", c1.hashCode(), c2.hashCode());
+        assertEquals("hash code - feature", f1.hashCode(), f2.hashCode());
+        assertEquals("hash code - product", p1.hashCode(), p2.hashCode());
+        assertEquals("hash code - pcm", pcm1.hashCode(), pcm2.hashCode());
+
+
+    }
+
 }
