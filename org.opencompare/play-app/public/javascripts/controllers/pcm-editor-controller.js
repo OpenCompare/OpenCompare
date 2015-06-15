@@ -3,7 +3,7 @@
  */
 
 pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile) {
-
+    $scope.mintest = 50;
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
     var factory = new pcmMM.factory.DefaultPcmFactory();
@@ -33,6 +33,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     //rawContent
     pcmRaw = [];
 
+    // Slider filter
+    $scope.slider = {
+        options: {
+            range: true,
+            step: 1.0,
+            min: 0,
+            max: 100
+        }
+    };
+    $scope.filterSlider = 0;
+
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
@@ -42,7 +53,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableFiltering: true,
         enableCellSelection: false,
         enableCellEdit: $scope.edit,
-        headerRowHeight: 90,
+        headerRowHeight: 60,
+        enableVerticalScrollbar: 'ALWAYS',
         rowHeight: 28
     };
 
@@ -52,17 +64,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-            console.log(colDef);
+            /* console.log(colDef);
             console.log(originalPosition);
             console.log(newPosition);
-           /* $scope.gridOptions.columnDefs.splice(newPosition, 0,  $scope.gridOptions.columnDefs[originalPosition]);
+           $scope.gridOptions.columnDefs.splice(newPosition, 0,  $scope.gridOptions.columnDefs[originalPosition]);
             if(originalPosition > newPosition) {
                 $scope.gridOptions.columnDefs.splice(originalPosition+1, 1);
             }
             else {
                 $scope.gridOptions.columnDefs.splice(originalPosition-1, 1);
-            }*/
-            console.log($scope.pcmData);
+            }
+            console.log($scope.pcmData);*/
 
 
         });
@@ -137,7 +149,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             }
         }).
             success(function(data) {console.log(data.indexOf(":Template"));
-                //if(data.indexOf(":Template") == -1) {
                     var commandParameters = [];
                     $scope.pcmData[index][colName] = data;
                     if (colName != "Product") {
@@ -147,14 +158,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         commandParameters = [hashkey, 'name', oldValue, data, oldRawValue, newRawValue];
                     }
                     $scope.newCommand('edit', commandParameters);
-                console.log(commandParameters);
-                //}
-                /*else {
-                    $scope.pcmData[index][colName] = 'Unknown template';
-                }*/
-        }).
-        error(function(data, status, headers, config) {
-                $scope.pcmData[index][colName] = cellValue;
         });
 
         return 'Loading value...';
@@ -292,11 +295,24 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 break;
             case "number":
                 var filterLess = [];
-                filterLess.condition = uiGridConstants.filter.LESS_THAN;
-                filterLess.placeholder= '<';
+                filterLess.condition  = function (searchTerm, cellValue) {
+                    if(columnsFilters[featureName]) {
+                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term);
+                    }
+                    else {
+                        return true;
+                    }
+                };
+                columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'><i class='fa fa-sliders'></i></button><button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
                 var filterGreater = [];
-                filterGreater.condition = uiGridConstants.filter.GREATER_THAN;
-                filterGreater.placeholder= '> or =';
+                filterGreater.condition  = function (searchTerm, cellValue) {
+                    if(columnsFilters[featureName]) {
+                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term);
+                    }
+                    else {
+                        return true;
+                    }
+                };
                 columnDef.filters = [];
                 columnDef.filters.push(filterGreater);
                 columnDef.filters.push(filterLess);
@@ -541,11 +557,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 colIndex++;
             });
         $scope.gridOptions.columnDefs = columnDefs;
-
-        /* Set the grid size */
-        if($scope.gridApi) {
-            $scope.gridApi.grid.gridHeight = 0;//$(window).height()/20;
-        }
     }
 
     function convertGridToPCM(pcmData) {
@@ -1109,77 +1120,135 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
-        $scope.pcmData.forEach( function ( productData ) {
-            if ($scope.ListToFilter.indexOf(productData[feature.name] ) === -1 ) {
-                $scope.ListToFilter.push(productData[feature.name]);
-            }
-        });
-        $scope.ListToFilter.sort();
-        $scope.gridOptions2 = {
-            data: [],
-            enableColumnMenus: false,
-            onRegisterApi: function( gridApi) {
-                $scope.gridApi2 = gridApi;
-                if (columnsFilters[feature.name]){
-                    $timeout(function() {
-                        columnsFilters[feature.name].forEach( function( product ) {
-                            var entities = $scope.gridOptions2.data.filter( function( row ) {
-                                return row.product === product;
-                            });
-                            if( entities.length > 0 ) {
-                                $scope.gridApi2.selection.selectRow(entities[0]);
-                            }
-                        });
-                    });
-                }
-            }
-        };
-        $timeout(function() {
-            $scope.ListToFilter.forEach(function (product) {
-                $scope.gridOptions2.data.push({product: product});
-            });
-        }, 100);
+        var type = columnsType[feature.name];
+        switch(type) {
 
-        var html = '' +
-            '<div class="modal" id="modalCustomFilter" ng-style="{display: \'block\'}">' +
-                '<div class="modal-dialog">' +
+            case 'string':
+
+                $scope.pcmData.forEach( function ( productData ) {
+                    if ($scope.ListToFilter.indexOf(productData[feature.name] ) === -1 ) {
+                        $scope.ListToFilter.push(productData[feature.name]);
+                    }
+                });
+                $scope.ListToFilter.sort();
+                $scope.gridOptions2 = {
+                    data: [],
+                    enableColumnMenus: false,
+                    onRegisterApi: function( gridApi) {
+                        $scope.gridApi2 = gridApi;
+                        if (columnsFilters[feature.name]){
+                            $timeout(function() {
+                                columnsFilters[feature.name].forEach( function( product ) {
+                                    var entities = $scope.gridOptions2.data.filter( function( row ) {
+                                        return row.product === product;
+                                    });
+                                    if( entities.length > 0 ) {
+                                        $scope.gridApi2.selection.selectRow(entities[0]);
+                                    }
+                                });
+                            });
+                        }
+                    }
+                };
+                $timeout(function() {
+                    $scope.ListToFilter.forEach(function (product) {
+                        $scope.gridOptions2.data.push({product: product});
+                    });
+                }, 100);
+
+                var html = '' +
+                    '<div class="modal" id="modalCustomFilter" ng-style="{display: \'block\'}">' +
+                    '<div class="modal-dialog">' +
                     '<div class="modal-content">' +
-                        '<div class="modal-header">' +
-            'Filter' +
-            '</div>' +
-                        '<div class="modal-body">' +
-                            '<div id="grid2" ui-grid="gridOptions2" ui-grid-selection class="modalGrid"></div>' +
-                        '</div>' +
-                    '<div class="modal-footer">' +
-                        '<button type="button" class="btn btn-primary" ng-click="closeFilter()">Filter</button>' +
+                    '<div class="modal-header">' +
+                    'Filter' +
                     '</div>' +
-                '</div>' +
-            '   </div>' +
-            '</div>';
+                    '<div class="modal-body">' +
+                    '<div id="grid2" ui-grid="gridOptions2" ui-grid-selection class="modalGrid"></div>' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                    '<button type="button" class="btn btn-primary" ng-click="closeFilter()">Filter</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '   </div>' +
+                    '</div>';
+                break;
+
+            case 'number':
+
+                var minAndMax = findMinAndMax($scope.featureToFilter);
+                $scope.slider.options.min = minAndMax[0];
+                $scope.slider.options.max = minAndMax[1];
+                $scope.filterSlider[0] = minAndMax[0];
+                $scope.filterSlider[1] = minAndMax[1];
+                if(minAndMax[1] < 10) {
+                    $scope.slider.options.step = 0.1;
+                }
+                else if(minAndMax[1] > 1000) {
+                    $scope.slider.options.step = 10;
+                }
+                else {
+                    $scope.slider.options.step = 1;
+                }
+                break;
+
+        }
+
         $elm = angular.element(html);
         angular.element(document.body).prepend($elm);
 
         $compile($elm)($scope);
     };
 
+    function findMinAndMax(featureName) {
+        var min = 0;
+        var max = 0;
+        $scope.pcmData.forEach(function (product) {
+            if(parseInt(product[featureName]) > max) {
+                max = parseFloat(product[featureName].replace(/\s/g, "").replace(",", "."));
+            }
+            if(parseInt(product[featureName]) < min) {
+                min = parseFloat(product[featureName].replace(/\s/g, "").replace(",", "."));
+            }
+        });
+        return [min, max];
+    }
+
     $scope.closeFilter = function() {
 
         var featureName = $scope.featureToFilter;
-        var selec = $scope.gridApi2.selection.getSelectedRows();
-        if(selec.length == 0) {
-            $scope.gridOptions2.data.forEach(function (productData){
-                selec.push(productData);
-            });
-        }
-        $scope.colFilter = [];
-        $scope.colFilter.listTerm = [];
 
-        selec.forEach( function( product ) {
-            $scope.colFilter.listTerm.push( product.product );
-        });
-        columnsFilters[featureName] = [];
-        columnsFilters[featureName] = $scope.colFilter.listTerm;
-        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+        var type = columnsType[featureName];
+        switch(type) {
+
+            case 'string':
+                var selec = $scope.gridApi2.selection.getSelectedRows();
+                if (selec.length == 0) {
+                    $scope.gridOptions2.data.forEach(function (productData) {
+                        selec.push(productData);
+                    });
+                }
+                $scope.colFilter = [];
+                $scope.colFilter.listTerm = [];
+
+                selec.forEach(function (product) {
+                    $scope.colFilter.listTerm.push(product.product);
+                });
+                columnsFilters[featureName] = [];
+                columnsFilters[featureName] = $scope.colFilter.listTerm;
+                $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+                break;
+
+            case 'number':
+                $scope.gridOptions.columnDefs.forEach(function (feature) {
+                    if(feature.name == featureName) {
+                        feature.filters[0].term = $scope.filterSlider[0];
+                        feature.filters[1].term = $scope.filterSlider[1]+1;
+                    }
+                });
+                columnsFilters[featureName] = [];
+                break;
+        }
         if ($elm) {
             $elm.remove();
         }
@@ -1188,7 +1257,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.removeFilter = function(col) {
 
         var featureName = col.name;
-        delete columnsFilters[featureName];
+        var type = columnsType[featureName];
+        switch(type) {
+            case 'string':
+                delete columnsFilters[featureName];
+                break;
+            case 'number':
+                $scope.gridOptions.columnDefs.forEach(function (feature) {
+                    if(feature.name == featureName) {
+                        delete feature.filters[0].term;
+                        delete feature.filters[1].term;
+                    }
+                });
+                delete columnsFilters[featureName];
+                break;
+        }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
