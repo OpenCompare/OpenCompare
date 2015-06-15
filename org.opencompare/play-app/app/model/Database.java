@@ -3,7 +3,6 @@ package model;
 import com.mongodb.*;
 import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
-import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
@@ -49,16 +48,16 @@ public class Database {
     }
 
 
-    public List<PCMVariable> search(String request) {
+    public List<DatabasePCM> search(String request) {
 
-        List<PCMVariable> results = new ArrayList<PCMVariable>();
+        List<DatabasePCM> results = new ArrayList<DatabasePCM>();
 
         // $search operator requires mongo >= 2.6
         DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
         DBCursor cursor = pcms.find(query);
 
         for (DBObject result : cursor) {
-            results.add(createPCMVariable(result));
+            results.add(createDatabasePCMInstance(result));
         }
 
         // Code snippet for text search with mongo < 2.6
@@ -96,20 +95,20 @@ public class Database {
     public void save(PCMContainer pcm) {
         String json = serializer.export(pcm);
         pcms.insert((DBObject) JSON.parse(json));
-
+        // TODO : save PCM metadata
     }
 
 
-    public PCMVariable get(String id) {
+    public DatabasePCM get(String id) {
         if (ObjectId.isValid(id)) {
             DBObject searchById = new BasicDBObject("_id", new ObjectId(id));
             DBObject result = pcms.findOne(searchById);
 
-            PCMVariable var = createPCMVariable(result);
+            DatabasePCM var = createDatabasePCMInstance(result);
 
             return var;
         } else {
-            return new PCMVariable(null, null);
+            return new DatabasePCM(null, null);
         }
     }
 
@@ -118,21 +117,29 @@ public class Database {
     }
 
     public String create(String json) {
+        // TODO : create metadata
         DBObject newPCM = (DBObject) JSON.parse(json);
         WriteResult result = pcms.insert(newPCM);
         String id = newPCM.get("_id").toString();
         return id;
     }
 
-    private PCMVariable createPCMVariable(DBObject object) {
-        PCMVariable var;
+    private DatabasePCM createDatabasePCMInstance(DBObject object) {
+        DatabasePCM var;
         if (object == null) {
-            var = new PCMVariable(null,null);
+            var = new DatabasePCM(null,null);
         } else {
             String id = object.removeField("_id").toString();
             String json = JSON.serialize(object);
-            List<PCMContainer> pcm = loader.load(json);
-            var = new PCMVariable(id, pcm.get(0).getPcm()); // FIXME : hack
+            List<PCMContainer> pcmContainers = loader.load(json);
+            if (pcmContainers.size() == 1) {
+                PCMContainer pcmContainer = pcmContainers.get(0);
+                // TODO : load metadata
+                var = new DatabasePCM(id, pcmContainer);
+            } else {
+                var = new DatabasePCM(null,null);
+            }
+
         }
         return var;
     }
