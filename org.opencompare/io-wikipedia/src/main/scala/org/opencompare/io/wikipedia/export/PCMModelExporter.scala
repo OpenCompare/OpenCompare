@@ -1,9 +1,11 @@
 package org.opencompare.io.wikipedia.export
 
+import java.util
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java._
 import org.opencompare.io.wikipedia.io.WikiTextLoader
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 19/11/14.
@@ -12,10 +14,9 @@ class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
 
-  def export(page : Page) : List[PCMContainer] = {
-    toPCM(page)
+  def export(page : Page) : util.List[PCMContainer] = {
+    seqAsJavaList(toPCM(page).toSeq)
   }
-
 
   private def toPCM(page : Page) : List[PCMContainer] = {
 
