@@ -47,12 +47,12 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       "Wikitext syntax for " + name should "match this csv representation" in {
         val csvCode = Source.fromFile(csv).mkString
         val wikiCode = Source.fromFile(wiki).mkString
-        val wikiPcm = miner.mine(wikiCode, name).head
-        val csvPcm = csvLoader.load(csvCode)
+        val wikiContainer = miner.mine(wikiCode, name).get(0)
+        val csvPcm = csvLoader.load(csvCode).get(0).getPcm
         csvPcm.setName(name + " from Csv")
-        val diff = wikiPcm.diff(csvPcm, new SimplePCMElementComparator)
+        val diff = wikiContainer.getPcm.diff(csvPcm, new SimplePCMElementComparator)
 
-        withClue(kmfJSONExporter.export(wikiPcm)) {
+        withClue(kmfJSONExporter.export(wikiContainer)) {
           diff.hasDifferences shouldBe false
         }
 

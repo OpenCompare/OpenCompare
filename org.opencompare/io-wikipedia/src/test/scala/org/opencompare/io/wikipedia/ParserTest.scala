@@ -3,6 +3,7 @@ package org.opencompare.io.wikipedia
 import java.io.{File, FileWriter}
 import java.util.concurrent.Executors
 
+import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
@@ -14,6 +15,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scala.concurrent.ExecutionContext
 import scala.io.Source
 import scala.xml.PrettyPrinter
+import scala.collection.JavaConversions._
 
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
@@ -91,34 +93,37 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   def writeToPCM(title : String, page : Page) {
     val exporter = new PCMModelExporter
-    val pcms = exporter.export(page)
+    val containers = exporter.export(page)
 //    val serializer = new PCMtoHTML
 //    writer.write(serializer.toHTML(pcm))
     val serializer = new KMFJSONExporter
     val loader = new KMFJSONLoader
-    for ((pcm, index) <- pcms.zipWithIndex) {
-      val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+    var i = 0
+    for (container : PCMContainer <- containers) {
+      val path = "output/model/" + title.replaceAll(" ", "_") + "_" + i + ".pcm"
       val writer = new FileWriter(path)
-      writer.write(serializer.toJson(pcm))
+      writer.write(serializer.toJson(container.getPcm))
       writer.close()
 
       loader.load(new File(path))
-
+      i += 1
     }
 
   }
 
   def writeToWikiText(title : String, page : Page) {
     val exporter = new PCMModelExporter
-    val pcms = exporter.export(page)
+    val containers = exporter.export(page)
 
     val serializer = new WikiTextExporter
 
-    for ((pcm, index) <- pcms.zipWithIndex) {
-      val wikitext = serializer.export(pcm)
-      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + index + ".txt")
+    var i = 0
+    for (container : PCMContainer <- containers) {
+      val wikitext = serializer.export(container)
+      val writer = new FileWriter("output/wikitext/" + title.replaceAll(" ", "_") +  "_" + i + ".txt")
       writer.write(wikitext)
       writer.close()
+      i += 1
     }
 
   }
@@ -145,13 +150,15 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     for(title <- wikipediaPCMs) yield {
       println(title)
       val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-      val pcms = miner2.mine(code, title)
+      val containers = miner2.mine(code, title)
 
-      for ((pcm, index) <- pcms.zipWithIndex) {
-        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+      var i = 0
+      for (container : PCMContainer <- containers) {
+        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + i + ".pcm"
         val writer = new FileWriter(path)
-        writer.write(serializer.toJson(pcm))
+        writer.write(serializer.toJson(container.getPcm))
         writer.close()
+        i += 1
       }
     }
   }
