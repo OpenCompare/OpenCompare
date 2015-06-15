@@ -1,7 +1,6 @@
 package org.opencompare.api.java.io;
 
 import com.opencsv.CSVWriter;
-import javafx.collections.transformation.SortedList;
 import org.opencompare.api.java.*;
 
 import java.io.IOException;
@@ -26,13 +25,11 @@ public class CSVExporter implements PCMExporter {
         CSVWriter csvWriter = new CSVWriter(stringWriter);
 
         // Export features
-        if (currentMetadata  == null) {
-            currentMetadata = new PCMMetadata(pcm);
-        }
+        if (currentMetadata  == null) currentMetadata = new PCMMetadata(pcm);
 
         List<Feature> features = currentMetadata.getSortedFeatures();
         List<Product> products = currentMetadata.getSortedProducts();
-        List<String> featureLine = new ArrayList<String>();
+        List<String> featureLine = new ArrayList<>();
 
         featureLine.add("Product");
 
@@ -44,7 +41,7 @@ public class CSVExporter implements PCMExporter {
 
         // Export products
         for (Product product : products) {
-            List<String> productLine = new ArrayList<String>();
+            List<String> productLine = new ArrayList<>();
 
             productLine.add(product.getName());
             for (Feature feature : features) {
