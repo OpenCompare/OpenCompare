@@ -1294,7 +1294,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.$on('import', function(event, args) {
         console.log(args);
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args)).get(0);
-        initializeEditor(pcm);
+        initializeEditor($scope.pcm);
         $scope.ImportModal.close();
     });
 
