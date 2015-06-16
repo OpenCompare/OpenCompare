@@ -11,7 +11,7 @@ pcmApp.controller("PCMImporterController", function($rootScope, $scope) {
         title: "",
         productAsLines: true,
         separator: ',',
-        quote: '"',
+        quote: '"'
     };
 });
 	

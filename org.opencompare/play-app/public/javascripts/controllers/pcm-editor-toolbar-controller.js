@@ -7,6 +7,7 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     $scope.saved = true;
     $scope.validating = false;
     $scope.edit = false;
+    $scope.isTitleSet = false;
 
     /**
      * Save PCM on the server
@@ -67,6 +68,7 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
     });
 
     $scope.$on('setPcmName', function(event, args) {
+        $scope.isTitleSet = args.length > 0;
         $scope.pcmName = args;
     });
 
