@@ -79,27 +79,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         });
         gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
-            if(pcmRaw[rowEntity.$$hashKey]) {
-                rawValue = pcmRaw[rowEntity.$$hashKey][colDef.name];
-                contentValue = rowEntity[colDef.name];
-                rowEntity[colDef.name] = rawValue;
-            }
-            else {
-                pcmRaw = [];
-                for(var i = 0; i < $scope.pcmData.length; i++) {
-                    pcmRaw[$scope.pcmData[i].$$hashKey] = $scope.pcmDataRaw[i];
-                }
-                if(pcmRaw[rowEntity.$$hashKey]) {
-                    rawValue = pcmRaw[rowEntity.$$hashKey][colDef.name];
-                    contentValue = rowEntity[colDef.name];
-                    rowEntity[colDef.name] = rawValue;
-                }
-            }
+            rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
+            contentValue = rowEntity[colDef.name];
+            rowEntity[colDef.name] = rawValue;
         });
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+
             if(rawValue != newValue) {
                 $rootScope.$broadcast('modified');
-                pcmRaw = [];
                 $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
                                                             colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
             }
@@ -111,9 +98,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
     };
 
+    $scope.setEdit = function(bool) {
+
+        $scope.gridOptions.columnDefs = [];
+        $scope.edit = bool;
+        $timeout(function(){ initializeEditor($scope.pcm)}, 100);
+        $rootScope.$broadcast('setToolbarEdit', bool);
+    };
+
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
+        $scope.setEdit(true);
         initializeEditor($scope.pcm)
 
     } else if (typeof data != 'undefined')  {
@@ -147,8 +143,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
                 return d;
             }
-        }).
-            success(function(data) {console.log(data.indexOf(":Template"));
+        }).success(function(data) {
                     var commandParameters = [];
                     $scope.pcmData[index][colName] = data;
                     if (colName != "Product") {
@@ -267,7 +262,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return "This value doesn't seem to match the feature type.";
                 }
-                else if(getCellTooltip(rowValue[col.name])){
+                else if(rowValue && getCellTooltip(rowValue[col.name])){
                     return getCellTooltip(rowValue[col.name]);
                 }
             }
@@ -281,7 +276,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         var inFilter = false;
                         var index = 0;
                         while(!inFilter && index < columnsFilters[featureName].length) {
-                            if(cellValue == columnsFilters[featureName][index]) {
+                            if(cellValue == columnsFilters[featureName][index] || isEmptyCell(cellValue)) {
                                 inFilter = true;
                             }
                             index++;
@@ -297,7 +292,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 var filterLess = [];
                 filterLess.condition  = function (searchTerm, cellValue) {
                     if(columnsFilters[featureName]) {
-                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term);
+                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term || isEmptyCell(cellValue));
                     }
                     else {
                         return true;
@@ -307,7 +302,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 var filterGreater = [];
                 filterGreater.condition  = function (searchTerm, cellValue) {
                     if(columnsFilters[featureName]) {
-                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term);
+                        return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term || isEmptyCell(cellValue));
                     }
                     else {
                         return true;
@@ -323,10 +318,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm, cellValue) {
                     if(columnsFilters[featureName] == 1) {
-                        return getBooleanValue(cellValue) == "yes";
+                        return getBooleanValue(cellValue) == "yes" || isEmptyCell(cellValue);
                     }
                     else if(columnsFilters[featureName] == 2) {
-                        return getBooleanValue(cellValue) == "no";
+                        return getBooleanValue(cellValue) == "no" || isEmptyCell(cellValue);
                     }
                     else {
                         return true;
@@ -339,11 +334,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     function getCellClass (value) {
-        if(value.toLowerCase().indexOf('{{yes') != -1) {
-            return 'yesCell';
-        }
-        else if(value.toLowerCase().indexOf('{{no') != -1) {
-            return 'noCell';
+        if(value) {
+            if(value.toLowerCase().indexOf('{{yes') != -1) {
+                return 'yesCell';
+            }
+            else if(value.toLowerCase().indexOf('{{no') != -1) {
+                return 'noCell';
+            }
+            else {
+                return false;
+            }
         }
         else {
             return false;
@@ -351,27 +351,33 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
 
     function getCellTooltip (value) {
-        if(value.toLowerCase().indexOf('<ref') != -1) {
-            var index = value.toLowerCase().indexOf('<ref');
-            var refPart = value.substring(index+11);
-            var endIndex = refPart.replace(/\s/g, '').indexOf('"/>');
-            return refPart.substring(0, endIndex);
-        }
-        else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
-            var index = value.toLowerCase().indexOf('<ref>{{');
-            var refPart = value.substring(index+11);
-            var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
-            return refPart.substring(0, endIndex);
-        }
-        else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
-            var index = value.toLowerCase().indexOf('<ref>{{');
-            var refPart = value.substring(index+11);
-            var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
-            return refPart.substring(0, endIndex);
+        if(value) {
+            if(value.toLowerCase().indexOf('<ref') != -1) {
+                var index = value.toLowerCase().indexOf('<ref');
+                var refPart = value.substring(index+11);
+                var endIndex = refPart.replace(/\s/g, '').indexOf('"/>');
+                return refPart.substring(0, endIndex);
+            }
+            else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
+                var index = value.toLowerCase().indexOf('<ref>{{');
+                var refPart = value.substring(index+11);
+                var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
+                return refPart.substring(0, endIndex);
+            }
+            else if(value.toLowerCase().indexOf('<ref>{{') != -1) {
+                var index = value.toLowerCase().indexOf('<ref>{{');
+                var refPart = value.substring(index+11);
+                var endIndex = refPart.replace(/\s/g, '').indexOf('}}</ref>');
+                return refPart.substring(0, endIndex);
+            }
+            else {
+                return false;
+            }
         }
         else {
             return false;
         }
+
     }
 
     /**
@@ -483,7 +489,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var productData = {};
             features.map(function(feature) {
                 var cell = findCell(product, feature);
-                //console.log(cell);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[feature.name] = cell.content;
             });
@@ -564,39 +569,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         pcm.name = $scope.pcm.name;
 
         var featuresMap = {};
-
+        var index = 0;
         pcmData.forEach(function(productData) {
             // Create product
             var product = factory.createProduct();
             product.name = productData.name;
             pcm.addProducts(product);
-
-            /* Create cells
-            for (var featureData in productData) { // FIXME : order is not preserved
-                if (productData.hasOwnProperty(featureData)
-                    && featureData !== "$$hashKey"
-                    && featureData !== "name") { // FIXME : not really good for now... it can conflict with feature names
-
-                    // Create feature if not existing
-                    if (!featuresMap.hasOwnProperty(featureData)) {
-                        var feature = factory.createFeature();
-                        feature.name = featureData;
-                        pcm.addFeatures(feature);
-                        featuresMap[featureData] = feature;
-                    }
-                    var feature = featuresMap[featureData];
-
-                    // Create cell
-                    var cell = factory.createCell();
-                    cell.feature = feature;
-                    cell.content = productData[featureData];
-                    //cell.rawContent = productData[featureData];
-                    product.addCells(cell);
-                }
-            }*/
             $scope.gridOptions.columnDefs.forEach(function (featureData) {
-                if(productData.hasOwnProperty(featureData.name) && featureData.name != "product") {
-
+                if(productData.hasOwnProperty(featureData.name)  && featureData.name !== "$$hashKey"
+                    && featureData.name !== "Product") {
                     // Create feature if not existing
                     if (!featuresMap.hasOwnProperty(featureData.name)) {
                         var feature = factory.createFeature();
@@ -610,11 +591,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     var cell = factory.createCell();
                     cell.feature = feature;
                     cell.content = productData[featureData.name];
-                    //cell.rawContent = productData[featureData];
+                    cell.rawContent = $scope.pcmDataRaw[index][featureData.name];
                     product.addCells(cell);
                 }
-            })
+            });
+            index++;
         });
+        console.log(pcm);
         return pcm;
     }
 
@@ -800,18 +783,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.addProduct = function() {
 
         var productData = {};
+        var rawProduct = [];
         productData.name = "";
 
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
-            if(featureData.name == " " || featureData.name == "Product") { // There must be a better way but working for now
-                delete productData[featureData.name];
-            }
-            else{
+            if(featureData.name != " " && featureData.name != "Product") { // There must be a better way but working for now
                 productData[featureData.name] = "";
+                rawProduct[featureData.name] = "";
             }
         });
+        $scope.pcmDataRaw.push(rawProduct);
         $scope.pcmData.push(productData);
-        $scope.pcmDataRaw.push(productData);
+
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
         console.log("Product added");
@@ -831,7 +814,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var parameters = [row.entity.$$hashKey, row.entity, rawData, index];
         $scope.newCommand('removeProduct', parameters);
     };
-
 
     $scope.scrollToFocus = function( rowIndex, colIndex ) {
 
@@ -940,16 +922,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     break;
                 case 'addFeature':
-                    $scope.gridOptions.columnDefs.splice(parameters[2], 1);
-                    /* Initialize data */
-                    var featureName = $scope.checkIfNameExists($scope.featureName);
-                    $scope.pcmData.forEach(function (productData) {
-                        delete productData[parameters[0]];
-                    });
                     $scope.pcmDataRaw.forEach(function (productData) {
                         delete productData[parameters[0]];
                     });
-
+                    $scope.pcmData.forEach(function (productData) {
+                        delete productData[parameters[0]];
+                    });
+                    $scope.gridOptions.columnDefs.splice(parameters[2], 1);
                     break;
             }
             if($scope.commandsIndex <= 0){
@@ -1071,7 +1050,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      */
     $scope.save = function() {
 
-        $scope.pcm = convertGridToPCM($scope.pcmData)
+        $scope.pcm = convertGridToPCM($scope.pcmData);
         var jsonModel = serializer.serialize($scope.pcm);
 
         if (typeof id === 'undefined') {
@@ -1101,13 +1080,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
     };
 
-    $scope.setEdit = function(bool) {
 
-        $scope.gridOptions.columnDefs = [];
-        $scope.edit = bool;
-        $timeout(function(){ initializeEditor($scope.pcm)}, 100);
-        $rootScope.$broadcast('setToolbarEdit', bool);
-    };
 
     /**
      * Cancel edition
