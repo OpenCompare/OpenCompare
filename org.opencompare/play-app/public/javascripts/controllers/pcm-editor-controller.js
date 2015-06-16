@@ -63,10 +63,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
-        var cellTemplate = '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
-            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
-            '</div>';   // you could use your own template here
-        $scope.gridApi.core.addRowHeaderColumn( { name: '', displayName: '', width: 30, cellTemplate: cellTemplate} );
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
             /* console.log(colDef);
             console.log(originalPosition);
@@ -536,8 +532,35 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Define columns */
         var columnDefs = [];
 
+        /* Column for each feature */
+        var colIndex = 0;
+            pcm.features.array.forEach(function (feature) {
+                var colDef = newColumnDef(feature.name, getType(feature.name));
+                columnDefs.push(colDef);
+                colIndex++;
+            });
+        $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+        columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
+        $scope.gridOptions.columnDefs = columnDefs;
+
+
+        var toolsColumn = {
+                name: ' ',
+                cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
+                '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
+                '</div>',
+                enableCellEdit: false,
+                enableFiltering: false,
+                enableSorting: false,
+                enableHiding: false,
+                width: 30,
+                enableColumnMenu: false,
+                allowCellFocus: false,
+                enableColumnMoving: false
+            };
+
         /* Second column for the products */
-        columnDefs.push({
+        var productsColumn = {
             name: 'Product',
             field: "name",
             cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -550,37 +573,26 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
             minWidth: 150
-        });
+        };
 
         /* Specific filter for products */
-        columnDefs[0].filter = [];
-        columnDefs[0].filter.condition = function(searchTerm, cellValue) {
+        productsColumn.filter = [];
+        productsColumn.filter.condition = function(searchTerm, cellValue) {
             return(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1)
         };
-        columnDefs[0].filter.placeholder = 'Find';
-
-        /* Column for each feature */
-        var colIndex = 0;
-            pcm.features.array.forEach(function (feature) {
-                var colDef = newColumnDef(feature.name, getType(feature.name));
-                columnDefs.push(colDef);
-                colIndex++;
-            });
-
-        $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
-        columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
-        $scope.gridOptions.columnDefs = columnDefs;
-
+        productsColumn.filter.placeholder = 'Find';
+        $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
+        $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
 
     }
 
     function sortProducts(products, position) {
         var sortedProducts = [];
         position.sort(function (a, b) {
-            if(a == -1) {
+            if(a.position == -1) {
                 return 1;
             }
-            else if(b == -1) {
+            else if(b.position == -1) {
                 return -1;
             }
             else {
@@ -600,10 +612,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     function sortFeatures(columns, position){
         var sortedColumns = [];
         position.sort(function (a, b) {
-            if(a == -1) {
+            if(a.position == -1) {
                 return 1;
             }
-            else if(b == -1) {
+            else if(b.position == -1) {
                 return -1;
             }
             else {
@@ -617,7 +629,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             });
         }
-
         return sortedColumns;
     }
 
