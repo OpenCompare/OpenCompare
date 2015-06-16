@@ -132,10 +132,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
     if (typeof modal != 'undefined') {
         // Open the given modal
-        $scope.ImportModal = $modal.open({
+        $modal.open({
             templateUrl: modalTemplatePath,
             controller: modal + "Controller",
-            size: "lg"
         })
     }
 
@@ -1379,7 +1378,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         $scope.metadata = args.metadata;
         initializeEditor($scope.pcm, $scope.metadata);
-        $scope.ImportModal.close();
     });
 
     $scope.$on('setGridEdit', function(event, args) {

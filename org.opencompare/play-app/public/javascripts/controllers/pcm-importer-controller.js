@@ -3,13 +3,11 @@
  */
 
 
-pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
+pcmApp.controller("CsvImportController", function($rootScope, $scope, $http, $modalInstance) {
 
-    // Load PCM
-    var pcmMM = Kotlin.modules['pcm'].pcm;
-    var factory = new pcmMM.factory.DefaultPcmFactory();
-    var loader = factory.createJSONLoader();
-    var serializer = factory.createJSONSerializer();
+    $scope.cancel = function() {
+        $modalInstance.close();
+    };
 
     // Default values
     $scope.file = null;
@@ -35,6 +33,7 @@ pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
             })
             .success(function(response, status, headers, config) {
                 $rootScope.$broadcast('import', response);
+                $modalInstance.close();
             }).error(function(data, status, headers, config) {
                 $scope.message = data
             });
@@ -42,7 +41,11 @@ pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
     }
 });
 
-pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $http) {
+pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $http, $modalInstance) {
+
+    $scope.cancel = function() {
+        $modalInstance.close();
+    };
 
     // Default values
     $scope.title = ""
@@ -54,6 +57,7 @@ pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $htt
             })
             .success(function(response, status, headers, config) {
                 $rootScope.$broadcast('import', response);
+                $modalInstance.close();
             }).error(function(data, status, headers, config) {
                 $scope.message = data
             });
