@@ -1,4 +1,4 @@
-@(request : String, results : List[model.PCMVariable])
+@(request : String, results : List[model.DatabasePCM])
 
 @header = {}
 @footer = {<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/search-controller.js")'></script>}
@@ -10,7 +10,7 @@
                 <h4>@Messages("search.title") "@request"</h4>
                 <ul>
                     @results.map{ result =>
-                    <li><a href="pcm/@result.getId()">@result.getPcm().getName()</a></li>
+                    <li><a href="pcm/@result.getId()">@result.getPCMContainer.getPcm.getName()</a></li>
                     }
                 </ul>
             </div>
