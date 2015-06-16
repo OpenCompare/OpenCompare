@@ -44,7 +44,7 @@ public class PCMAPI extends Controller {
     private static final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
-    private static final WikiTextExporter wikiExporter = new WikiTextExporter();
+    private static final WikiTextExporter wikiExporter = new WikiTextExporter(true);
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
     private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
