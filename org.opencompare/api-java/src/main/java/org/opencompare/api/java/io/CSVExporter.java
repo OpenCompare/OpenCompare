@@ -13,6 +13,18 @@ import java.util.*;
 public class CSVExporter implements PCMExporter {
 
     PCMMetadata currentMetadata = null;
+    char separator = ',';
+    char quote = '"';
+
+    public CSVExporter setSeparator(char separator) {
+        this.separator = separator;
+        return this;
+    }
+
+    public CSVExporter setQuote(char quote) {
+        this.quote = quote;
+        return this;
+    }
 
     @Override
     public String export(PCMContainer container) {
@@ -22,7 +34,7 @@ public class CSVExporter implements PCMExporter {
 
     private String export(PCM pcm) {
         StringWriter stringWriter = new StringWriter();
-        CSVWriter csvWriter = new CSVWriter(stringWriter);
+        CSVWriter csvWriter = new CSVWriter(stringWriter, separator, quote);
 
         // Export features
         if (currentMetadata  == null) currentMetadata = new PCMMetadata(pcm);

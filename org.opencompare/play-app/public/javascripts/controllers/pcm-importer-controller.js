@@ -3,18 +3,64 @@
  */
 
 
-pcmApp.controller("PCMImporterController", function($rootScope, $scope) {
+pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
+
+    // Load PCM
+    var pcmMM = Kotlin.modules['pcm'].pcm;
+    var factory = new pcmMM.factory.DefaultPcmFactory();
+    var loader = factory.createJSONLoader();
+    var serializer = factory.createJSONSerializer();
 
     // Default values
-    $scope.config = {
-        file: null,
-        title: "",
-        productAsLines: true,
-        separator: ',',
-        quote: '"'
-    };
+    $scope.file = null;
+    $scope.title = "";
+    $scope.productAsLines = true;
+    $scope.separator = ',';
+    $scope.quote = '"';
+
+    $scope.valid = function(){
+        // Request must be a multipart form data !
+        var fd = new FormData();
+        fd.append('file', $scope.file);
+        fd.append('title', $scope.title);
+        fd.append('productAsLines', $scope.productAsLines);
+        fd.append('separator', $scope.separator);
+        fd.append('quote', $scope.quote);
+        $http.post(
+            "/api/import/csv",
+            fd,
+            {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            .success(function(response, status, headers, config) {
+                $rootScope.$broadcast('import', response);
+            }).error(function(data, status, headers, config) {
+                $scope.message = data
+            });
+
+    }
 });
-	
+
+pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $http) {
+
+    // Default values
+    $scope.title = ""
+    $scope.valid = function(){
+        $http.post(
+            "/api/import/wikipedia",
+            {
+                title: $scope.title,
+            })
+            .success(function(response, status, headers, config) {
+                $rootScope.$broadcast('import', response);
+            }).error(function(data, status, headers, config) {
+                $scope.message = data
+            });
+    }
+});
+
+
 
 
 

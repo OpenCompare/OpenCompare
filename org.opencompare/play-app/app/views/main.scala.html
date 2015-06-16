@@ -41,7 +41,7 @@
                     <li ng-class="{ active: isActive('/list')}"><a href="/list">@Messages("navbar.list")</a></li>
                     <li ng-class="{ active: isActive('/create')}"><a href="/create">@Messages("navbar.create")</a></li>
 
-                    <li class="dropdown" ng-class="{ active: isActive('/import')}">
+                    <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.import") <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="/import/csv">@Messages("navbar.import.csv")</a></li>
@@ -75,15 +75,21 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.bootstrap-autohidingnavbar.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
 
     <script>
-        var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.slider']);
+        var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
     </script>
 
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/navbar-controller.js")'></script>
+    <!--
+     Directives
+     -->
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/directives/fileModel.js")'></script>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
