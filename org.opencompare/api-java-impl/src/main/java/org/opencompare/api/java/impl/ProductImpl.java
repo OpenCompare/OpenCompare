@@ -7,6 +7,7 @@ import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -94,12 +95,24 @@ public class ProductImpl implements Product {
 
         ProductImpl product = (ProductImpl) o;
 
-        return !(kProduct != null ? !kProduct.equals(product.kProduct) : product.kProduct != null);
+        if (this.getName() == null) {
+            return product.getName() == null;
+        }
+
+        if (!this.getName().equals(product.getName())) {
+            return false;
+        }
+
+        if (!this.getCells().equals(product.getCells())) {
+            return false;
+        }
+
+        return true;
 
     }
 
     @Override
     public int hashCode() {
-        return kProduct != null ? kProduct.hashCode() : 0;
+        return Objects.hash(this.getName(), this.getCells());
     }
 }
