@@ -139,7 +139,7 @@ class PageVisitor(
 
   override def visit(wtTable: WtTable): Unit = {
     val name = if (sectionStack.isEmpty) {
-      ""
+      page.title
     } else {
       page.title + " - " + sectionStack.top
     }
