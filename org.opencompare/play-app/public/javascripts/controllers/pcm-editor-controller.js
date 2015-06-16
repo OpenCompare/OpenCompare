@@ -135,8 +135,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.ImportModal = $modal.open({
             templateUrl: modalTemplatePath,
             controller: modal + "Controller",
-            size: "lg",
-            scope: $scope
+            size: "lg"
         })
     }
 
