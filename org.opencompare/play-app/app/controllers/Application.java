@@ -46,7 +46,7 @@ public class Application extends Controller {
         if (var.hasIdentifier()) {
             return ok(views.html.view.render(var.getId(), var.getPcm()));
         } else {
-            return ok(views.html.edit.render(null, null));
+            return ok(views.html.edit.render(null, null, null));
         }
 
     }
@@ -54,37 +54,24 @@ public class Application extends Controller {
     public static Result edit(String id) {
         boolean exists = Database.INSTANCE.exists(id);
         if (exists) {
-            return ok(views.html.edit.render(id, null));
+            return ok(views.html.edit.render(id, null, null));
         } else {
-            return ok(views.html.edit.render(null, null));
+            return ok(views.html.edit.render(null, null, null));
         }
 
     }
 
     public static Result create() {
-        return ok(views.html.edit.render(null, null));
+        return ok(views.html.edit.render(null, null, null));
     }
 
     public static Result importer(String ext) {
         if (ext.equals("csv")) {
-            return ok(views.html.importCsv.render());
+            return ok(views.html.edit.render(null, null, "CsvImport"));
         } else if (ext.equals("wikipedia")) {
-            return ok(views.html.importWikitext.render());
+            return ok(views.html.edit.render(null, null, "WikipediaImport"));
         }
         return notFound();
     }
-
-    //public static Result preview() {
-    //    String data = request().body().asFormUrlEncoded().toString();
-    //    if(!data.isEmpty()) {
-    //        try {
-    //            PCM pcm = new KMFJSONLoader().load(data);
-    //            return ok(views.html.edit.render(null, pcm));
-    //        } catch (Exception e) {
-    //            return internalServerError("Invalid data found.");
-    //        }
-    //    }
-    //    return ok(views.html.edit.render(null, null));
-    //}
 
 }

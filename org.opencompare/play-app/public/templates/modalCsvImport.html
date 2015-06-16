@@ -1,0 +1,65 @@
+<div class="row" ng-controller="CsvImportController">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Import a PCM from CSV</h4>
+        </div>
+        <div class="modal-body">
+            <div ng-model="message" style="color:orangered;"></div>
+            <form name="importPcm" id="import_pcm" class="form-horizontal" method="post" enctype="multipart/form-data">
+                <div class="row-fluid">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Csv file</label>
+                            <div class="col-md-8">
+                                <input type="file" id="file" required file-model="file"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Title</label>
+                            <div class="col-md-8">
+                                <input ng-model="title" type="string" id="title" class="full-size" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Product in lines ?</label>
+                            <div class="col-md-8">
+                                <input ng-model="productAsLines" type="checkbox" id="productAsLines" size="3"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Separator</label>
+                                        <div class="col-md-1">
+                                            <input ng-model="separator" type="string" id="separator" size="3" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Quote</label>
+                                        <div class="col-md-1">
+                                            <input ng-model="quote" type="string" id="quote" size="3"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-success center-block" form="import_pcm" ng-click="valid()"><i class="fa fa-valid"></i>Import</button>
+        </div>
+    </div>
+</div>
+

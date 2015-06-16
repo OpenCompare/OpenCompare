@@ -28,6 +28,7 @@ import play.mvc.Result;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -48,23 +49,22 @@ public class PCMAPI extends Controller {
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
     private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
 
-    private static PCM loadWikitext(String title){
+    private static List<PCMContainer> loadWikitext(String title){
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
-        List<PCMContainer> pcms = miner.mine(code, title);
-
-        return pcms.get(0).getPcm(); // TODO: manage several matrices case inside the page
+        List<PCMContainer> pcmContainers = miner.mine(code, title);
+        return pcmContainers; // TODO: manage several matrices case inside the page
     }
 
-    private static PCM loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+    private static List<PCMContainer> loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
-        return pcmContainers.get(0).getPcm(); // FIXME : should test size of list
+        return pcmContainers; // FIXME : should test size of list
     }
-    private static PCM loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+    private static List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
-        return pcmContainers.get(0).getPcm(); // FIXME : should test size of list
+        return pcmContainers; // FIXME : should test size of list
     }
 
     public static Result get(String id) {
@@ -109,7 +109,8 @@ public class PCMAPI extends Controller {
     }
 
     public static Result importFromFile(String type) {
-        PCM pcm = new PCMImpl(null);
+        PCM pcm;
+        List<PCMContainer> pcmContainers;
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
@@ -120,7 +121,8 @@ public class PCMAPI extends Controller {
         if (type.equals("wikipedia")) {
 
             try {
-                pcm = PCMAPI.loadWikitext(title);
+                pcmContainers = PCMAPI.loadWikitext(title);
+                pcm = pcmContainers.get(0).getPcm();
                 data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (Exception e) {
                 return notFound("The page '" + title + "' has not been found or is empty."); // TODO: manage the different kind of exceptions
@@ -148,7 +150,8 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             try {
-                pcm = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                pcmContainers = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                pcm = pcmContainers.get(0).getPcm();
                 data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (IOException e) {
                 return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
@@ -166,23 +169,22 @@ public class PCMAPI extends Controller {
         //}
 
         // FIXME : bad idea to redirect to a page in this API.
-        //return ok(jsonExporter.toJson(pcm));
-        return ok(views.html.edit.render(null, data));
+        return ok(jsonExporter.toJson(pcm));
+        //return ok(views.html.edit.render(null, data));
     }
 
     public static Result exportToFile(String type) {
-        PCM pcm = new PCMImpl(null);
-        String result = "";
+        String code;
+
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
         String fileContent = dynamicForm.field("file").value();
         PCMContainer pcmContainer = jsonLoader.load(fileContent).get(0);
-        pcm = pcmContainer.getPcm();
 
         if (type.equals("wikitext")) {
 
-            result = wikiExporter.export(pcmContainer);
+            code = wikiExporter.export(pcmContainer);
 
         } else if (type.equals("csv")) {
 
@@ -196,19 +198,14 @@ public class PCMAPI extends Controller {
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-            result = csvExporter.export(pcmContainer);
+            CSVExporter csvExporter = new CSVExporter();
+            code = csvExporter.setSeparator(separator).setQuote(quote).export(pcmContainer);
 
         } else {
             return internalServerError("File format not found or invalid.");
         }
 
-        // Normalizing and validating the matrix, just in case
-        pcm.normalize(pcmFactory);
-        //if (!pcm.isValid()) { FIXME: does not work ??
-        //    return internalServerError("This matrix is not valid !");
-        //}
-
-        return ok(result);
+        return ok(code);
     }
 
     public static Result extractContent() {
