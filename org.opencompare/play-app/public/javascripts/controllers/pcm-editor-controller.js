@@ -52,7 +52,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableColumnResizing: true,
         enableFiltering: true,
         enableCellSelection: false,
-        enableCellEdit: $scope.edit,
+        enableCellEdit: false,
         headerRowHeight: 60,
         enableVerticalScrollbar: 'ALWAYS',
         rowHeight: 28
@@ -258,12 +258,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             },
             cellTooltip: function(row, col) {
-                var rowValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                var rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                var contentValue = $scope.pcmData[$scope.pcmData.indexOf(row.entity)];
                 if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return "This value doesn't seem to match the feature type.";
                 }
-                else if(rowValue && getCellTooltip(rowValue[col.name])){
-                    return getCellTooltip(rowValue[col.name]);
+                else if(rawValue && getCellTooltip(rawValue[col.name])){
+                    return getCellTooltip(rawValue[col.name]);
+                }
+                else if(contentValue) {
+                    return contentValue[col.name];
                 }
             }
         };
@@ -806,11 +810,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.removeProduct = function(row) {
 
         var index = $scope.pcmData.indexOf(row.entity);
+        var rawData = $scope.pcmDataRaw[index];
         $scope.pcmData.splice(index, 1);
         $scope.pcmDataRaw.splice(index, 1);
         pcmRaw = [];
         $rootScope.$broadcast('modified');
-        var rawData = $scope.pcmDataRaw[index];
         var parameters = [row.entity.$$hashKey, row.entity, rawData, index];
         $scope.newCommand('removeProduct', parameters);
     };
