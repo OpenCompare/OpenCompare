@@ -109,7 +109,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
-        $scope.metadata = {};
         $scope.setEdit(true);
         initializeEditor($scope.pcm, $scope.metadata);
 
@@ -124,7 +123,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.loading = true;
         $http.get("/api/get/" + id).
             success(function (data) {
-                console.log(data);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -539,8 +537,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDefs.push(colDef);
                 colIndex++;
             });
-        $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
-        columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
+        if(metadata) {
+            $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+            columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
+        }
         $scope.gridOptions.columnDefs = columnDefs;
 
 
