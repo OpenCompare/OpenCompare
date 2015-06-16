@@ -141,8 +141,41 @@ public class Database {
             List<PCMContainer> pcmContainers = kmfLoader.load(json);
             if (pcmContainers.size() == 1) {
                 PCMContainer pcmContainer = pcmContainers.get(0);
+                PCMMetadata metadata = pcmContainer.getMetadata();
 
-                // TODO : load metadatas
+                // Load metadata
+                DBObject dbMetadata = (DBObject) object.get("metadata");
+
+                // Load product positions
+                List<DBObject> dbProductPositions = (List<DBObject>) dbMetadata.get("productPositions");
+                for (DBObject dbProductPosition : dbProductPositions) {
+                    String productName = dbProductPosition.get("product").toString();
+                    Product product = null;
+                    for (Product p : pcmContainer.getPcm().getProducts()) {
+                        if (p.getName().equals(productName)) {
+                            product = p;
+                            break;
+                        }
+                    }
+                    int position = Integer.parseInt(dbProductPosition.get("position").toString());
+                    metadata.setProductPosition(product, position);
+                }
+
+                // Load feature positions
+                List<DBObject> dbFeaturePositions = (List<DBObject>) dbMetadata.get("featurePositions");
+                for (DBObject dbFeaturePosition : dbFeaturePositions) {
+                    String featureName = dbFeaturePosition.get("feature").toString();
+                    Feature feature = null;
+                    for (Feature f : pcmContainer.getPcm().getConcreteFeatures()) {
+                        if (f.getName().equals(featureName)) {
+                            feature = f;
+                            break;
+                        }
+                    }
+                    int position = Integer.parseInt(dbFeaturePosition.get("position").toString());
+                    metadata.setFeaturePosition(feature, position);
+                }
+
                 var = new DatabasePCM(id, pcmContainer);
             } else {
                 var = new DatabasePCM(null,null);
@@ -203,6 +236,11 @@ public class Database {
         dbContainer.put("metadata", dbMetadata);
 
         return dbContainer;
+    }
+
+    public String serializeDatabasePCM(DatabasePCM dbPCM) {
+        DBObject dbContainer = serializePCMContainer(dbPCM.getPCMContainer());
+        return JSON.serialize(dbContainer);
     }
 
 }

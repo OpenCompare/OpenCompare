@@ -70,8 +70,7 @@ public class PCMAPI extends Controller {
 
     public static Result get(String id) {
         DatabasePCM dbPCM = Database.INSTANCE.get(id);
-        PCMContainer pcmContainer = dbPCM.getPCMContainer();
-        String json = jsonExporter.export(pcmContainer);
+        String json = Database.INSTANCE.serializeDatabasePCM(dbPCM);
         return ok(json);
     }
 
