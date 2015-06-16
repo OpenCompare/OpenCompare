@@ -10,7 +10,13 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 26/11/14.
  */
-class WikiTextExporter  extends PCMExporter {
+class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter {
+
+  // Constructor for Java compatibility with default parameters
+  def this() {
+    this(false)
+  }
+
 
   override def export(container: PCMContainer): String = {
     val builder = new StringBuilder
@@ -45,7 +51,12 @@ class WikiTextExporter  extends PCMExporter {
       for (feature <- container.getMetadata.getSortedFeatures) {
         for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
           builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-          builder ++= cell.getContent
+          if (exportRawContent) {
+            builder ++= cell.getRawContent
+          } else {
+            builder ++= cell.getContent
+          }
+
           builder ++= "\n"
         }
       }
