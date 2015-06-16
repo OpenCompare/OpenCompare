@@ -1,9 +1,10 @@
 package org.opencompare.io.wikipedia.io
 
 import java.io.{File, StringReader}
+import java.util
 
 import org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl
-import org.opencompare.api.java.PCM
+import org.opencompare.api.java.{PCMContainer, PCM}
 import org.opencompare.api.java.io.PCMLoader
 import org.opencompare.io.wikipedia.export.PCMModelExporter
 import org.opencompare.io.wikipedia.parser.PageVisitor
@@ -38,19 +39,13 @@ class WikiTextLoader(
 
   private val exporter = new PCMModelExporter
 
-  override def load(code: String): PCM = {
-    val pcms = mine(code, "")
-    if (pcms.isEmpty) {
-      null
-    } else {
-      pcms.head
-    }
+  override def load(code: String): util.List[PCMContainer] = {
+    mine(code, "")
   }
 
-  override def load(file: File): PCM = {
+  override def load(file: File): util.List[PCMContainer] = {
     this.load(Source.fromFile(file).mkString)
   }
-
 
   /**
    * Retrieve Wikitext code of an article on Wikipedia servers
@@ -94,7 +89,7 @@ class WikiTextLoader(
     page
   }
 
-  def mine(code : String, title : String) : List[PCM] = {
+  def mine(code : String, title : String) : util.List[PCMContainer] = {
     val page = mineInternalRepresentation(code, title)
     exporter.export(page)
   }

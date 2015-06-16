@@ -4,10 +4,7 @@ import java.util.*;
 
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.exception.MergeConflictException;
-import org.opencompare.api.java.util.DiffResult;
-import org.opencompare.api.java.util.PCMElementComparator;
-import org.opencompare.api.java.util.PCMVisitor;
-import org.opencompare.api.java.util.Pair;
+import org.opencompare.api.java.util.*;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -488,5 +485,19 @@ public class PCMImpl implements PCM {
             }
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PCMImpl pcm = (PCMImpl) o;
+        return !this.diff(pcm, new ComplexePCMElementComparator()).hasDifferences();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName(), this.getFeatures(), this.getProducts());
     }
 }

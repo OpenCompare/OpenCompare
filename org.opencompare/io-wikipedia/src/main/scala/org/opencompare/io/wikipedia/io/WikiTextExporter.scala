@@ -2,7 +2,7 @@ package org.opencompare.io.wikipedia.io
 
 import java.io.{InputStream, FileInputStream, BufferedInputStream}
 
-import org.opencompare.api.java.PCM
+import org.opencompare.api.java.{PCMMetadata, PCMContainer, PCM}
 import org.opencompare.api.java.io.PCMExporter
 
 import scala.collection.JavaConversions._
@@ -12,11 +12,11 @@ import scala.collection.JavaConversions._
  */
 class WikiTextExporter  extends PCMExporter {
 
-  override def export(pcm: PCM): String = {
+  override def export(container: PCMContainer): String = {
     val builder = new StringBuilder
+    val pcm = container.getPcm
 
     builder ++= "{| class=\"wikitable\"\n" // new table
-
     val title = pcm.getName
     builder ++= "|+ " + title + "\n" // caption
 
@@ -24,14 +24,16 @@ class WikiTextExporter  extends PCMExporter {
     builder ++= "|-\n" // new row
     builder ++= "|\n" // empty top left cell
 
-    for (feature <- pcm.getConcreteFeatures.sortBy(_.getName)) {
+//    for (feature <- pcm.getConcreteFeatures.sortBy(_.getName)) {
+    for (feature <- container.getMetadata.getSortedFeatures) {
       builder ++= "! " // new header
       builder ++= feature.getName
       builder ++= "\n"
     }
 
     // Lines (products)
-    for (product <- pcm.getProducts.sortBy(_.getName)) {
+//    for (product <- pcm.getProducts.sortBy(_.getName)) {
+    for (product <- container.getMetadata.getSortedProducts) {
 
       // Product name header
       builder ++= "|-\n"
@@ -40,10 +42,12 @@ class WikiTextExporter  extends PCMExporter {
       builder ++= "\n"
 
       // Cells
-      for (cell <- product.getCells.sortBy(_.getFeature.getName)) {
-        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-        builder ++= cell.getContent
-        builder ++= "\n"
+      for (feature <- container.getMetadata.getSortedFeatures) {
+        for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+          builder ++= cell.getContent
+          builder ++= "\n"
+        }
       }
     }
 

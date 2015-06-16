@@ -4,7 +4,7 @@ import java.io._
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.Executors
 
-import com.github.tototoshi.csv.{CSVWriter, CSVReader}
+import com.github.tototoshi.csv.{CSVReader, CSVWriter}
 import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
@@ -14,6 +14,7 @@ import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, WikiTextExpor
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
+import scala.collection.JavaConversions._
 import scala.concurrent._
 import scala.concurrent.duration._
 import scala.io.Source
@@ -143,7 +144,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val loader = new KMFJSONLoader
     for ((pcm, index) <- pcms.zipWithIndex) {
       val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
-      val content = serializer.toJson(pcm)
+      val content = serializer.export(pcm)
       writeToFile(path, content)
       loader.load(new File(path))
     }
@@ -245,11 +246,12 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     // Interpret cells for every PCM
     for (file <- files) {
       // Interpret cells
-      val pcm = loader.load(file)
+      val pcmContainer = loader.load(file)(0)
+      val pcm = pcmContainer.getPcm
       if (pcm.isValid) {
         pcm.normalize(factory)
         interpreter.interpretCells(pcm)
-        val json = exporter.export(pcm)
+        val json = exporter.export(pcmContainer)
 
         // Write modified PCM
         writeToFile("output/formalized/model/" + file.getName, json)
@@ -266,7 +268,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
       var error = false
 
       for (file <- group._2) {
-        val pcm = loader.load(file)
+        val pcm = loader.load(file)(0).getPcm
         if (pcm.isValid) {
           interpreter.interpretCells(pcm)
           try {

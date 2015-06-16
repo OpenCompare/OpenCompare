@@ -4,6 +4,7 @@ import com.mongodb.*;
 import com.mongodb.util.JSON;
 import org.bson.types.ObjectId;
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 
@@ -92,7 +93,7 @@ public class Database {
         return results;
     }
 
-    public void save(PCM pcm) {
+    public void save(PCMContainer pcm) {
         String json = serializer.export(pcm);
         pcms.insert((DBObject) JSON.parse(json));
 
@@ -130,8 +131,8 @@ public class Database {
         } else {
             String id = object.removeField("_id").toString();
             String json = JSON.serialize(object);
-            PCM pcm = loader.load(json);
-            var = new PCMVariable(id, pcm);
+            List<PCMContainer> pcm = loader.load(json);
+            var = new PCMVariable(id, pcm.get(0).getPcm()); // FIXME : hack
         }
         return var;
     }

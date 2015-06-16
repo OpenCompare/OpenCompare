@@ -5,6 +5,7 @@ import org.opencompare.api.java.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gbecan on 4/2/15.
@@ -40,35 +41,43 @@ public class CSVLoader implements PCMLoader {
     }
 
     @Override
-    public PCM load(String pcm) {
-        PCM loadedPCM = null;
+    public List<PCMContainer> load(String pcm) {
+        List<PCMContainer> containers = new ArrayList<>();
         try {
-            loadedPCM = load(new StringReader(pcm));
+            containers = load(new StringReader(pcm));
         } catch (IOException e) {
 
         }
-        return loadedPCM;
+        return containers;
     }
 
     @Override
-    public PCM load(File file) throws IOException {
-        return load(new FileReader(file));
+    public List<PCMContainer> load(File file) throws IOException {
+        List<PCMContainer> containers = new ArrayList<>();
+        try {
+            containers = load(new FileReader(file));
+        } catch (IOException e) {
+
+        }
+        return containers;
     }
 
-    public PCM load(Reader reader) throws IOException {
+    public List<PCMContainer> load(Reader reader) throws IOException {
         CSVReader csvReader = new CSVReader(reader, separator, quote);
-        PCM pcm;
+        List<PCMContainer> containers = new ArrayList<>();
         if (productsAsLines) {
-            pcm = loadFeatureFirst(csvReader);
+            containers.add(loadFeatureFirst(csvReader));
         } else {
-            pcm = loadProductFirst(csvReader);
+            containers.add(loadProductFirst(csvReader));
         }
         csvReader.close();
-        return pcm;
+        return containers;
     }
 
-    private PCM loadFeatureFirst(CSVReader reader) throws IOException {
+    private PCMContainer loadFeatureFirst(CSVReader reader) throws IOException {
         PCM pcm = factory.createPCM();
+        PCMMetadata metadata = new PCMMetadata(pcm);
+        PCMContainer container = new PCMContainer(metadata);
 
         // Features
         String[] featureNames = reader.readNext();
@@ -81,15 +90,20 @@ public class CSVLoader implements PCMLoader {
                 feature.setName(featureName);
                 pcm.addFeature(feature);
                 features.add(feature);
+                // And keep the order in metadata
+                metadata.setFeaturePosition(feature, i);
             }
 
 
             String[] line = reader.readNext();
+            int index = 0; // Metadata index
             while (line != null) {
                 // Products
                 Product product = factory.createProduct();
                 product.setName(line[0]);
                 pcm.addProduct(product);
+                // And keep the order in metadata
+                metadata.setProductPosition(product, index);
 
                 // Cells
                 for (int i = 1; i < line.length; i++) {
@@ -102,6 +116,7 @@ public class CSVLoader implements PCMLoader {
                         newFeature.setName("Feature");
                         pcm.addFeature(newFeature);
                         features.add(newFeature);
+                        metadata.setFeaturePosition(newFeature, i);
                     }
 
                     cell.setFeature(features.get(i - 1));
@@ -110,14 +125,17 @@ public class CSVLoader implements PCMLoader {
                 }
 
                 line = reader.readNext();
+                index += 1;
             }
         }
 
-        return pcm;
+        return container;
     }
 
-    private PCM loadProductFirst(CSVReader reader) throws IOException {
+    private PCMContainer loadProductFirst(CSVReader reader) throws IOException {
         PCM pcm = factory.createPCM();
+        PCMMetadata metadata = new PCMMetadata(pcm);
+        PCMContainer container = new PCMContainer(metadata);
 
         // Products
         String[] productNames = reader.readNext();
@@ -130,15 +148,20 @@ public class CSVLoader implements PCMLoader {
                 product.setName(productName);
                 pcm.addProduct(product);
                 products.add(product);
+                // And keep the order in metadata
+                metadata.setProductPosition(product, i);
             }
 
 
             String[] line = reader.readNext();
+            int index = 0; // Metadata index
             while (line != null) {
                 // Features
                 Feature feature = factory.createFeature();
                 feature.setName(line[0]);
                 pcm.addFeature(feature);
+                // And keep the order in metadata
+                metadata.setFeaturePosition(feature, index);
 
                 // Cells
                 for (int i = 1; i < line.length; i++) {
@@ -152,6 +175,7 @@ public class CSVLoader implements PCMLoader {
                         newProduct.setName("Product");
                         pcm.addProduct(newProduct);
                         products.add(newProduct);
+                        metadata.setProductPosition(newProduct, i);
                     }
 
                     products.get(i - 1).addCell(cell);
@@ -163,7 +187,7 @@ public class CSVLoader implements PCMLoader {
 
 
 
-        return pcm;
+        return container;
     }
 }
 

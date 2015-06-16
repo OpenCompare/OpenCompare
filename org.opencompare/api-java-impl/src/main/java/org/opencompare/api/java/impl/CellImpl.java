@@ -5,6 +5,8 @@ import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.Value;
 import org.opencompare.api.java.util.PCMVisitor;
 
+import java.util.Objects;
+
 /**
  * Created by gbecan on 08/10/14.
  */
@@ -73,5 +75,32 @@ public class CellImpl extends PCMElementImpl implements Cell {
     @Override
     public String toString() {
         return "Cell(" + kCell.getContent() + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CellImpl cell = (CellImpl) o;
+
+        if (this.getContent() == null) {
+            return cell.getContent() == null;
+        }
+
+        if (!this.getContent().equals(cell.getContent())) {
+            return false;
+        }
+
+        // TODO : interpretation
+
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+        // TODO : interpretation
+        return Objects.hash(this.getContent());
     }
 }

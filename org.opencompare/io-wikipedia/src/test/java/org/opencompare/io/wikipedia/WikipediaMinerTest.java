@@ -2,6 +2,7 @@ package org.opencompare.io.wikipedia;
 
 import org.junit.Test;
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.io.wikipedia.export.CSVExporter;
 import org.opencompare.io.wikipedia.export.HTMLExporter;
 import org.opencompare.io.wikipedia.export.PCMModelExporter;
@@ -44,13 +45,13 @@ public class WikipediaMinerTest {
 
         // PCM model export
         PCMModelExporter pcmExporter = new PCMModelExporter();
-        List<PCM> pcms = seqAsJavaList(pcmExporter.export(page));
-        assertFalse(pcms.isEmpty());
+        List<PCMContainer> containers = pcmExporter.export(page);
+        assertFalse(containers.isEmpty());
 
         // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)
         WikiTextExporter wikitextExporter = new WikiTextExporter();
-        for (PCM pcm : pcms) {
-            String wikitext = wikitextExporter.export(pcm);
+        for (PCMContainer container : containers) {
+            String wikitext = wikitextExporter.export(container);
             assertNotNull(wikitext);
         }
 

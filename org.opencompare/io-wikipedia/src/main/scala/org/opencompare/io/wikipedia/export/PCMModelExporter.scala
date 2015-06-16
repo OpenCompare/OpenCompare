@@ -1,9 +1,11 @@
 package org.opencompare.io.wikipedia.export
 
+import java.util
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.{AbstractFeature, Feature, FeatureGroup, PCM}
+import org.opencompare.api.java._
 import org.opencompare.io.wikipedia.io.WikiTextLoader
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 19/11/14.
@@ -12,15 +14,18 @@ class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
 
-  def export(page : Page) : List[PCM] = {
-    toPCM(page)
+  def export(page : Page) : util.List[PCMContainer] = {
+    seqAsJavaList(toPCM(page).toSeq)
   }
 
-
-  private def toPCM(page : Page) : List[PCM] = {
+  private def toPCM(page : Page) : List[PCMContainer] = {
 
     for (matrix <- page.getMatrices) yield {
       val pcm = factory.createPCM()
+      val container = new PCMContainer()
+      val metadata = new PCMMetadata(pcm)
+      container.setPcm(pcm)
+      container.setMetadata(metadata)
 
       pcm.setName(matrix.name)
 
@@ -34,16 +39,16 @@ class PCMModelExporter {
         fillMissingCells(matrix)
 
         // Extract features
-        val features = extractFeatures(matrix, pcm, nbFeatureRows)
+        val features = extractFeatures(matrix, container, nbFeatureRows)
 
         // Normalize matrix (remove row/colspan + add empty cell in matrix' hole)
         val normalizedMatrix = normalize(matrix)
 
         // Extract products and cells
-        extractProducts(normalizedMatrix, pcm, nbFeatureRows, nbProductColumns, features)
+        extractProducts(normalizedMatrix, container, nbFeatureRows, nbProductColumns, features)
       }
 
-      pcm
+      container
     }
 
   }
@@ -59,10 +64,10 @@ class PCMModelExporter {
   /**
    * Extract features from a normalized matrix
    * @param matrix
-   * @param pcm
+   * @param container
    * @param nbFeatureRows
    */
-  def extractFeatures(matrix : Matrix, pcm : PCM, nbFeatureRows : Int): Map[(Int, Int), AbstractFeature] = {
+  def extractFeatures(matrix : Matrix, container : PCMContainer, nbFeatureRows : Int): Map[(Int, Int), AbstractFeature] = {
 
     var cellToAFeatures = Map.empty[(Int, Int), AbstractFeature]
 
@@ -78,7 +83,8 @@ class PCMModelExporter {
         // Create new feature
         val feature = factory.createFeature()
         feature.setName(cell.content)
-        pcm.addFeature(feature)
+        container.getPcm.addFeature(feature)
+        container.getMetadata.setFeaturePosition(feature, column)
 
         // Map cells to feature
         for (i <- cell.row until cell.row + cell.rowspan;
@@ -110,7 +116,7 @@ class PCMModelExporter {
             // Create new feature group
             val featureGroup = factory.createFeatureGroup()
             featureGroup.setName(cell.content)
-            pcm.addFeature(featureGroup)
+            container.getPcm.addFeature(featureGroup)
             featureGroup.addFeature(previous)
 
             // Map cells to feature
@@ -151,11 +157,11 @@ class PCMModelExporter {
   /**
    * Extract products and cells from a normalized matrix
    * @param matrix
-   * @param pcm
+   * @param container
    * @param nbFeatureRows
    * @param nbProductColumns
    */
-  def extractProducts(matrix : Matrix, pcm : PCM, nbFeatureRows : Int, nbProductColumns : Int, features : Map[(Int, Int), AbstractFeature]): Unit = {
+  def extractProducts(matrix : Matrix, container : PCMContainer, nbFeatureRows : Int, nbProductColumns : Int, features : Map[(Int, Int), AbstractFeature]): Unit = {
     for (r <- nbFeatureRows until matrix.getNumberOfRows()) {
       // Get product name
       val productName = (for (c <- 0 until nbProductColumns) yield {
@@ -164,8 +170,9 @@ class PCMModelExporter {
 
       // Create product
       val product = factory.createProduct()
-      pcm.addProduct(product)
+      container.getPcm.addProduct(product)
       product.setName(productName)
+      container.getMetadata.setProductPosition(product, r)
 
       // Create cells
       for (c <- nbProductColumns until matrix.getNumberOfColumns())  {

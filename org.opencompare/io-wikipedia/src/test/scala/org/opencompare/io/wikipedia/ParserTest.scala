@@ -3,6 +3,7 @@ package org.opencompare.io.wikipedia
 import java.io.{File, FileWriter}
 import java.util.concurrent.Executors
 
+import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
@@ -14,6 +15,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scala.concurrent.ExecutionContext
 import scala.io.Source
 import scala.xml.PrettyPrinter
+import scala.collection.JavaConversions._
 
 class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   
@@ -30,6 +32,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     new File("output/html/").mkdirs()
     new File("output/dump/").mkdirs()
     new File("output/model/").mkdirs()
+    new File("output/model2/").mkdirs()
     new File("output/wikitext/").mkdirs()
   }
 
@@ -98,7 +101,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     for ((pcm, index) <- pcms.zipWithIndex) {
       val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
-      writer.write(serializer.toJson(pcm))
+      writer.write(serializer.toJson(pcm.getPcm))
       writer.close()
 
       loader.load(new File(path))
@@ -128,7 +131,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
    }
 
 
-   it should "parse these PCMs" in {
+   ignore should "parse these PCMs" in {
 	   val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
 	   for(article <- wikipediaPCMs) yield {
        println(article)
@@ -136,4 +139,22 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
      }
    }
 
+  "The PCM parser v2" should "parse pages from Wikipedia" in {
+    val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
+    val miner2 = new WikiTextLoader
+    val serializer = new KMFJSONExporter
+
+    for(title <- wikipediaPCMs) yield {
+      println(title)
+      val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
+      val pcms = miner2.mine(code, title)
+
+      for ((pcm, index) <- pcms.zipWithIndex) {
+        val path = "output/model2/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
+        val writer = new FileWriter(path)
+        writer.write(serializer.toJson(pcm.getPcm))
+        writer.close()
+      }
+    }
+  }
 }

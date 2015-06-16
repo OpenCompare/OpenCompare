@@ -5,7 +5,9 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.PCMFactory;
+import org.opencompare.api.java.PCMMetadata;
 import org.opencompare.api.java.impl.PCMFactoryImpl;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
@@ -16,6 +18,7 @@ import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.parser.CellContentExtractor;
+import play.api.libs.json.JsValue;
 import play.api.libs.json.Json;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -48,25 +51,26 @@ public class PCMAPI extends Controller {
     private static PCM loadWikitext(String title){
         // Parse article from Wikipedia
         String code = miner.getPageCodeFromWikipedia(title);
-        List<PCM> pcms = seqAsJavaList(miner.mine(code, title));
+        List<PCMContainer> pcms = miner.mine(code, title);
 
-        return pcms.get(0); // TODO: manage several matrices case inside the page
+        return pcms.get(0).getPcm(); // TODO: manage several matrices case inside the page
     }
 
     private static PCM loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
-        PCM pcm = loader.load(fileContent);
-        return pcm;
+        List<PCMContainer> pcmContainers = loader.load(fileContent);
+        return pcmContainers.get(0).getPcm(); // FIXME : should test size of list
     }
     private static PCM loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
-        PCM pcm = loader.load(fileContent);
-        return pcm;
+        List<PCMContainer> pcmContainers = loader.load(fileContent);
+        return pcmContainers.get(0).getPcm(); // FIXME : should test size of list
     }
 
     public static Result get(String id) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm();
-        String json = jsonExporter.export(pcm);
+        PCM pcm = Database.INSTANCE.get(id).getPcm(); // FIXME : the database do not save a PCMContainer but a PCM
+        PCMContainer pcmContainer = new PCMContainer(new PCMMetadata(pcm));
+        String json = jsonExporter.export(pcmContainer);
         return ok(json);
     }
 
@@ -91,12 +95,13 @@ public class PCMAPI extends Controller {
     }
 
     public static Result convertById(String id, String type) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm();
+        PCM pcm = Database.INSTANCE.get(id).getPcm(); // FIXME : the database do not save a PCMContainer but a PCM
+        PCMContainer pcmContainer = new PCMContainer(new PCMMetadata(pcm));
         String data;
         if (type.equals("csv")) {
-            data = csvExporter.export(pcm);
+            data = csvExporter.export(pcmContainer);
         } else if (type.equals("wikitext")) {
-            data = wikiExporter.export(pcm);
+            data = wikiExporter.export(pcmContainer);
         } else {
             return badRequest("Type error. Return only 'csv' or 'wikitext' types.");
         }
@@ -110,13 +115,15 @@ public class PCMAPI extends Controller {
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
 
+        JsValue data = null;
 
         if (type.equals("wikipedia")) {
 
             try {
                 pcm = PCMAPI.loadWikitext(title);
+                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (Exception e) {
-                return internalServerError("This page has not been found or is empty."); // TODO: manage the different kind of exceptions
+                return notFound("The page '" + title + "' has not been found or is empty."); // TODO: manage the different kind of exceptions
             }
 
         } else if (type.equals("csv")) {
@@ -142,8 +149,9 @@ public class PCMAPI extends Controller {
             }
             try {
                 pcm = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
             } catch (IOException e) {
-                return internalServerError("This CSV file is not well formatted."); // TODO: manage the different kind of exceptions
+                return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
             pcm.setName(title);
 
@@ -159,7 +167,7 @@ public class PCMAPI extends Controller {
 
         // FIXME : bad idea to redirect to a page in this API.
         //return ok(jsonExporter.toJson(pcm));
-        return ok(views.html.edit.render(null, Json.parse(jsonExporter.export(pcm))));
+        return ok(views.html.edit.render(null, data));
     }
 
     public static Result exportToFile(String type) {
@@ -169,11 +177,12 @@ public class PCMAPI extends Controller {
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
         String fileContent = dynamicForm.field("file").value();
-        pcm = jsonLoader.load(fileContent);
+        PCMContainer pcmContainer = jsonLoader.load(fileContent).get(0);
+        pcm = pcmContainer.getPcm();
 
         if (type.equals("wikitext")) {
 
-            result = wikiExporter.export(pcm);
+            result = wikiExporter.export(pcmContainer);
 
         } else if (type.equals("csv")) {
 
@@ -187,7 +196,7 @@ public class PCMAPI extends Controller {
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-            result = csvExporter.export(pcm);
+            result = csvExporter.export(pcmContainer);
 
         } else {
             return internalServerError("File format not found or invalid.");

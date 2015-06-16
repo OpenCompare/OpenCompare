@@ -6,6 +6,7 @@ import org.opencompare.api.java.io.HTMLExporter
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.io.WikiTextLoader
 import org.scalatest.{FlatSpec, Matchers}
+import scala.collection.JavaConversions._
 
 import scala.io.Source
 
@@ -26,12 +27,12 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     val interpreter = new CellContentInterpreter
     val serializer = new HTMLExporter
 
-    for ((pcm, index) <- pcms.zipWithIndex) {
+    for ((pcmContainer, index) <- pcms.zipWithIndex) {
       // Interpret cells
-      interpreter.interpretCells(pcm)
+      interpreter.interpretCells(pcmContainer.getPcm)
 
       // Serialize
-      val html = serializer.toHTML(pcm)
+      val html = serializer.export(pcmContainer)
       new File("output/").mkdirs() // Create output directory
       val writer = new FileWriter("output/out_" + index + ".html")
       writer.write(html)

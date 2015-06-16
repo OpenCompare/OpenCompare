@@ -7,6 +7,7 @@ import pcm.AbstractFeature;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -55,14 +56,20 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
 
         FeatureImpl feature = (FeatureImpl) o;
 
-        if (kFeature != null ? !kFeature.equals(feature.kFeature) : feature.kFeature != null) return false;
+        if (this.getName() == null) {
+            return feature.getName() == null;
+        }
+
+        if (!this.getName().equals(feature.getName())) {
+            return false;
+        }
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return kFeature != null ? kFeature.hashCode() : 0;
+        return Objects.hash(this.getName());
     }
 
     @Override

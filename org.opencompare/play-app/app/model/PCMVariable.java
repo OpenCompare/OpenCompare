@@ -1,6 +1,7 @@
 package model;
 
 import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMMetadata;
 
 /**
  * Created by gbecan on 12/12/14.
@@ -9,7 +10,6 @@ public class PCMVariable {
 
     private String id;
     private PCM pcm;
-
 
     public PCMVariable(String id, PCM pcm) {
         this.id = id;
