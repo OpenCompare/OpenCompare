@@ -2,18 +2,11 @@ package controllers;
 
 import model.Database;
 import model.PCMInfo;
-import model.PCMVariable;
-import org.opencompare.api.java.PCM;
-import org.opencompare.api.java.impl.PCMImpl;
-import org.opencompare.api.java.impl.io.KMFJSONExporter;
-import org.opencompare.api.java.impl.io.KMFJSONLoader;
-import play.data.DynamicForm;
-import play.data.Form;
+import model.DatabasePCM;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.List;
-import java.util.Map;
 
 public class Application extends Controller {
 
@@ -34,17 +27,17 @@ public class Application extends Controller {
     public static Result search(String request) {
 
         // TODO : find PCMs named "request" or with a product named "request"
-        List<PCMVariable> results = Database.INSTANCE.search(request);
+        List<DatabasePCM> results = Database.INSTANCE.search(request);
 
         return ok(views.html.search.render(request, results));
     }
 
 
     public static Result view(String id) {
-        PCMVariable var = Database.INSTANCE.get(id);
+        DatabasePCM var = Database.INSTANCE.get(id);
 
         if (var.hasIdentifier()) {
-            return ok(views.html.view.render(var.getId(), var.getPcm()));
+            return ok(views.html.view.render(var.getId(), var.getPCMContainer().getPcm()));
         } else {
             return ok(views.html.edit.render(null, null, null));
         }

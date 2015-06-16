@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
+import model.DatabasePCM;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.PCMFactory;
@@ -68,9 +69,8 @@ public class PCMAPI extends Controller {
     }
 
     public static Result get(String id) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm(); // FIXME : the database do not save a PCMContainer but a PCM
-        PCMContainer pcmContainer = new PCMContainer(new PCMMetadata(pcm));
-        String json = jsonExporter.export(pcmContainer);
+        DatabasePCM dbPCM = Database.INSTANCE.get(id);
+        String json = Database.INSTANCE.serializeDatabasePCM(dbPCM);
         return ok(json);
     }
 
@@ -95,8 +95,8 @@ public class PCMAPI extends Controller {
     }
 
     public static Result convertById(String id, String type) {
-        PCM pcm = Database.INSTANCE.get(id).getPcm(); // FIXME : the database do not save a PCMContainer but a PCM
-        PCMContainer pcmContainer = new PCMContainer(new PCMMetadata(pcm));
+        DatabasePCM dbPCM = Database.INSTANCE.get(id);
+        PCMContainer pcmContainer = dbPCM.getPCMContainer();
         String data;
         if (type.equals("csv")) {
             data = csvExporter.export(pcmContainer);
@@ -109,8 +109,7 @@ public class PCMAPI extends Controller {
     }
 
     public static Result importFromFile(String type) {
-        PCM pcm;
-        List<PCMContainer> pcmContainers;
+        PCMContainer pcmContainer;
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
@@ -121,9 +120,10 @@ public class PCMAPI extends Controller {
         if (type.equals("wikipedia")) {
 
             try {
-                pcmContainers = PCMAPI.loadWikitext(title);
-                pcm = pcmContainers.get(0).getPcm();
-                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
+
+                List<PCMContainer> pcmContainers = PCMAPI.loadWikitext(title);
+                pcmContainer = pcmContainers.get(0);
+                data = Json.parse(jsonExporter.export(pcmContainer));
             } catch (Exception e) {
                 return notFound("The page '" + title + "' has not been found or is empty."); // TODO: manage the different kind of exceptions
             }
@@ -150,26 +150,28 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             try {
-                pcmContainers = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
-                pcm = pcmContainers.get(0).getPcm();
-                data = Json.parse(jsonExporter.export(new PCMContainer(new PCMMetadata(pcm))));
+                List<PCMContainer> pcmContainers = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                pcmContainer = pcmContainers.get(0);
+                data = Json.parse(jsonExporter.export(pcmContainer));
             } catch (IOException e) {
                 return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
-            pcm.setName(title);
+            pcmContainer.getPcm().setName(title);
 
         } else {
             return internalServerError("File format not found or invalid.");
         }
 
         // Normalizing and validating the matrix, just in case
-        pcm.normalize(pcmFactory);
+        pcmContainer.getPcm().normalize(pcmFactory);
         //if (!pcm.isValid()) { FIXME: does not work ??
         //    return internalServerError("This matrix is not valid !");
         //}
 
         // FIXME : bad idea to redirect to a page in this API.
-        return ok(jsonExporter.toJson(pcm));
+        ;
+        String jsonResult = Database.INSTANCE.serializePCMContainerToJSON(pcmContainer);
+        return ok(jsonResult);
         //return ok(views.html.edit.render(null, data));
     }
 

@@ -52,7 +52,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         enableColumnResizing: true,
         enableFiltering: true,
         enableCellSelection: false,
-        enableCellEdit: $scope.edit,
+        enableCellEdit: false,
         headerRowHeight: 60,
         enableVerticalScrollbar: 'ALWAYS',
         rowHeight: 28
@@ -63,6 +63,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
+        var cellTemplate = '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
+            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
+            '</div>';   // you could use your own template here
+        $scope.gridApi.core.addRowHeaderColumn( { name: '', displayName: '', width: 30, cellTemplate: cellTemplate} );
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
             /* console.log(colDef);
             console.log(originalPosition);
@@ -102,28 +106,32 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
-        $timeout(function(){ initializeEditor($scope.pcm)}, 100);
+        $timeout(function(){ initializeEditor($scope.pcm, $scope.metadata)}, 100);
         $rootScope.$broadcast('setToolbarEdit', bool);
     };
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
+        $scope.metadata = {};
         $scope.setEdit(true);
-        initializeEditor($scope.pcm)
+        initializeEditor($scope.pcm, $scope.metadata);
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
-        $scope.pcm = loader.loadModelFromString(data).get(0);
-        initializeEditor($scope.pcm)
+        $scope.pcm = loader.loadModelFromString(data.pcm).get(0);
+        $scope.metadata = loader.loadModelFromString(JSON.stringify(data.metadata)).get(0);
+        initializeEditor($scope.pcm, $scope.metadata);
 
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
             success(function (data) {
-            $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
-            initializeEditor($scope.pcm)
+                console.log(data);
+            $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
+            $scope.metadata = data.metadata;
+            initializeEditor($scope.pcm, $scope.metadata);
             })
             .finally(function () {
                 $scope.loading = false;
@@ -267,12 +275,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             },
             cellTooltip: function(row, col) {
-                var rowValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                var rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(row.entity)];
+                var contentValue = $scope.pcmData[$scope.pcmData.indexOf(row.entity)];
                 if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return "This value doesn't seem to match the feature type.";
                 }
-                else if(rowValue && getCellTooltip(rowValue[col.name])){
-                    return getCellTooltip(rowValue[col.name]);
+                else if(rawValue && getCellTooltip(rawValue[col.name])){
+                    return getCellTooltip(rawValue[col.name]);
+                }
+                else if(contentValue) {
+                    return contentValue[col.name];
                 }
             }
         };
@@ -490,7 +502,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Initialize the editor
      * @param pcm
      */
-    function initializeEditor(pcm) {
+    function initializeEditor(pcm, metadata) {
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
         /* Convert PCM model to editor format */
         var features = getConcreteFeatures(pcm);
@@ -523,22 +535,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcmData = products;
         /* Define columns */
         var columnDefs = [];
-            /* First column is for the remove button */
-            columnDefs.push({
-                name: ' ',
-                cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
-                '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
-                '</div>',
-                enableCellEdit: false,
-                enableFiltering: false,
-                enableSorting: false,
-                enableHiding: false,
-                width: 30,
-                enableColumnMenu: false,
-                allowCellFocus: false,
-                enableColumnMoving: false,
-                EXCESS_ROWS: 10
-            });
 
         /* Second column for the products */
         columnDefs.push({
@@ -557,11 +553,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         /* Specific filter for products */
-        columnDefs[1].filter = [];
-        columnDefs[1].filter.condition = function(searchTerm, cellValue) {
+        columnDefs[0].filter = [];
+        columnDefs[0].filter.condition = function(searchTerm, cellValue) {
             return(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1)
         };
-        columnDefs[1].filter.placeholder = 'Find';
+        columnDefs[0].filter.placeholder = 'Find';
 
         /* Column for each feature */
         var colIndex = 0;
@@ -570,7 +566,59 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDefs.push(colDef);
                 colIndex++;
             });
+
+        $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+        columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         $scope.gridOptions.columnDefs = columnDefs;
+
+
+    }
+
+    function sortProducts(products, position) {
+        var sortedProducts = [];
+        position.sort(function (a, b) {
+            if(a == -1) {
+                return 1;
+            }
+            else if(b == -1) {
+                return -1;
+            }
+            else {
+                return a.position - b.position;
+            }
+        });
+        for(var i = 0; i < position.length; i++) {
+            products.forEach(function (product) {
+                if(position[i].product == product.name) {
+                    sortedProducts.push(product);
+                }
+            });
+        }
+        return sortedProducts;
+    }
+
+    function sortFeatures(columns, position){
+        var sortedColumns = [];
+        position.sort(function (a, b) {
+            if(a == -1) {
+                return 1;
+            }
+            else if(b == -1) {
+                return -1;
+            }
+            else {
+                return a.position - b.position;
+            }
+        });
+        for(var i = 0; i < position.length; i++) {
+            columns.forEach(function (feature) {
+                if(position[i].feature == feature.name) {
+                    sortedColumns.push(feature);
+                }
+            });
+        }
+
+        return sortedColumns;
     }
 
     function convertGridToPCM(pcmData) {
@@ -814,11 +862,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.removeProduct = function(row) {
 
         var index = $scope.pcmData.indexOf(row.entity);
+        var rawData = $scope.pcmDataRaw[index];
         $scope.pcmData.splice(index, 1);
         $scope.pcmDataRaw.splice(index, 1);
         pcmRaw = [];
         $rootScope.$broadcast('modified');
-        var rawData = $scope.pcmDataRaw[index];
         var parameters = [row.entity.$$hashKey, row.entity, rawData, index];
         $scope.newCommand('removeProduct', parameters);
     };
@@ -1059,21 +1107,47 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.save = function() {
 
         $scope.pcm = convertGridToPCM($scope.pcmData);
-        var jsonModel = serializer.serialize($scope.pcm);
+        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
 
+        var pcmObject = {};
+        pcmObject.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
+        pcmObject.pcm = jsonModel;
         if (typeof id === 'undefined') {
-            $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
+            $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
                 $rootScope.$broadcast('saved');
             });
         } else {
-            $http.post("/api/save/" + id, JSON.parse(jsonModel)).success(function(data) {
+            $http.post("/api/save/" + id, pcmObject).success(function(data) {
                 console.log("model saved");
                 $rootScope.$broadcast('saved');
             });
         }
     };
+
+    function generateMetadata(product, columns) {
+        var metadata = {};
+        metadata.featurePositions = [];
+        metadata.productPositions = [];
+        var index = 0;
+        product.forEach(function (product) {
+            var object = {};
+            object.product = product.name;
+            object.position = index;
+            metadata.productPositions.push(object);
+            index++;
+        });
+        index = 0;
+        columns.forEach(function (column) {
+            var object = {};
+            object.feature = column.name;
+            object.position = index;
+            metadata.featurePositions.push(object);
+            index++;
+        });
+        return metadata;
+    }
 
     /**
      * Remove PCM from server
