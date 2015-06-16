@@ -102,28 +102,32 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
-        $timeout(function(){ initializeEditor($scope.pcm)}, 100);
+        $timeout(function(){ initializeEditor($scope.pcm, $scope.metadata)}, 100);
         $rootScope.$broadcast('setToolbarEdit', bool);
     };
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
+        $scope.metadata = {};
         $scope.setEdit(true);
-        initializeEditor($scope.pcm)
+        initializeEditor($scope.pcm, $scope.metadata);
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
-        $scope.pcm = loader.loadModelFromString(data).get(0);
-        initializeEditor($scope.pcm)
+        $scope.pcm = loader.loadModelFromString(data.pcm).get(0);
+        $scope.metadata = loader.loadModelFromString(JSON.stringify(data.metadata)).get(0);
+        initializeEditor($scope.pcm, $scope.metadata);
 
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
             success(function (data) {
-            $scope.pcm = loader.loadModelFromString(JSON.stringify(data)).get(0);
-            initializeEditor($scope.pcm)
+                console.log(data);
+            $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
+            $scope.metadata = data.metadata;
+            initializeEditor($scope.pcm, $scope.metadata);
             })
             .finally(function () {
                 $scope.loading = false;
@@ -481,7 +485,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * Initialize the editor
      * @param pcm
      */
-    function initializeEditor(pcm) {
+    function initializeEditor(pcm, metadata) {
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
         /* Convert PCM model to editor format */
         var features = getConcreteFeatures(pcm);
@@ -561,7 +565,59 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDefs.push(colDef);
                 colIndex++;
             });
+
+        $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+        columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         $scope.gridOptions.columnDefs = columnDefs;
+
+
+    }
+
+    function sortProducts(products, position) {
+        var sortedProducts = [];
+        position.sort(function (a, b) {
+            if(a == -1) {
+                return 1;
+            }
+            else if(b == -1) {
+                return -1;
+            }
+            else {
+                return a.position - b.position;
+            }
+        });
+        for(var i = 0; i < position.length; i++) {
+            products.forEach(function (product) {
+                if(position[i].product == product.name) {
+                    sortedProducts.push(product);
+                }
+            });
+        }
+        return sortedProducts;
+    }
+
+    function sortFeatures(columns, position){
+        var sortedColumns = [];
+        position.sort(function (a, b) {
+            if(a == -1) {
+                return 1;
+            }
+            else if(b == -1) {
+                return -1;
+            }
+            else {
+                return a.position - b.position;
+            }
+        });
+        for(var i = 0; i < position.length; i++) {
+            columns.forEach(function (feature) {
+                if(position[i].feature == feature.name) {
+                    sortedColumns.push(feature);
+                }
+            });
+        }
+
+        return sortedColumns;
     }
 
     function convertGridToPCM(pcmData) {
@@ -597,7 +653,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             });
             index++;
         });
-        console.log(pcm);
         return pcm;
     }
 
@@ -1051,21 +1106,47 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.save = function() {
 
         $scope.pcm = convertGridToPCM($scope.pcmData);
-        var jsonModel = serializer.serialize($scope.pcm);
+        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
 
+        var pcmObject = {};
+        pcmObject.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
+        pcmObject.pcm = jsonModel;
         if (typeof id === 'undefined') {
-            $http.post("/api/create", JSON.parse(jsonModel)).success(function(data) {
+            $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;
                 console.log("model created with id=" + id);
                 $rootScope.$broadcast('saved');
             });
         } else {
-            $http.post("/api/save/" + id, JSON.parse(jsonModel)).success(function(data) {
+            $http.post("/api/save/" + id, pcmObject).success(function(data) {
                 console.log("model saved");
                 $rootScope.$broadcast('saved');
             });
         }
     };
+
+    function generateMetadata(product, columns) {
+        var metadata = {};
+        metadata.featurePositions = [];
+        metadata.productPositions = [];
+        var index = 0;
+        product.forEach(function (product) {
+            var object = {};
+            object.product = product.name;
+            object.position = index;
+            metadata.productPositions.push(object);
+            index++;
+        });
+        index = 0;
+        columns.forEach(function (column) {
+            var object = {};
+            object.feature = column.name;
+            object.position = index;
+            metadata.featurePositions.push(object);
+            index++;
+        });
+        return metadata;
+    }
 
     /**
      * Remove PCM from server
