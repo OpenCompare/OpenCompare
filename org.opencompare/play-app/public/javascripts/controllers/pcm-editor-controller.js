@@ -63,6 +63,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
+        var cellTemplate = '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
+            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
+            '</div>';   // you could use your own template here
+        $scope.gridApi.core.addRowHeaderColumn( { name: '', displayName: '', width: 30, cellTemplate: cellTemplate} );
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
             /* console.log(colDef);
             console.log(originalPosition);
@@ -522,22 +526,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcmData = products;
         /* Define columns */
         var columnDefs = [];
-            /* First column is for the remove button */
-            columnDefs.push({
-                name: ' ',
-                cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
-                '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
-                '</div>',
-                enableCellEdit: false,
-                enableFiltering: false,
-                enableSorting: false,
-                enableHiding: false,
-                width: 30,
-                enableColumnMenu: false,
-                allowCellFocus: false,
-                enableColumnMoving: false,
-                EXCESS_ROWS: 10
-            });
 
         /* Second column for the products */
         columnDefs.push({
@@ -556,11 +544,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
 
         /* Specific filter for products */
-        columnDefs[1].filter = [];
-        columnDefs[1].filter.condition = function(searchTerm, cellValue) {
+        columnDefs[0].filter = [];
+        columnDefs[0].filter.condition = function(searchTerm, cellValue) {
             return(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1)
         };
-        columnDefs[1].filter.placeholder = 'Find';
+        columnDefs[0].filter.placeholder = 'Find';
 
         /* Column for each feature */
         var colIndex = 0;
