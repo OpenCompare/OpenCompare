@@ -114,10 +114,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
-        $scope.pcm = loader.loadModelFromString(data.pcm).get(0);
-        $scope.metadata = loader.loadModelFromString(JSON.stringify(data.metadata)).get(0);
+        $scope.pcm = loader.loadModelFromString(data).get(0);
+        $scope.metadata = data.metadata;
         initializeEditor($scope.pcm, $scope.metadata);
-
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
@@ -1118,10 +1117,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.save = function() {
 
         $scope.pcm = convertGridToPCM($scope.pcmData);
+        $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
         var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
 
         var pcmObject = {};
-        pcmObject.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
+        pcmObject.metadata = $scope.metadata;
         pcmObject.pcm = jsonModel;
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
@@ -1377,9 +1377,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     });
 
     $scope.$on('import', function(event, args) {
-        console.log(args);
-        $scope.pcm = loader.loadModelFromString(JSON.stringify(args)).get(0);
-        initializeEditor($scope.pcm);
+        $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
+        $scope.metadata = args.metadata;
+        initializeEditor($scope.pcm, $scope.metadata);
         $scope.ImportModal.close();
     });
 
