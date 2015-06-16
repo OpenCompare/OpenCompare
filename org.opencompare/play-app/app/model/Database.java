@@ -83,10 +83,16 @@ public class Database {
         List<PCMInfo> results = new ArrayList<PCMInfo>();
 
         for (DBObject result : cursor) {
-            String id = result.get("_id").toString();
-            String name = ((DBObject) result.get("pcm")).get("name").toString();
-            PCMInfo info = new PCMInfo(id, name);
-            results.add(info);
+            DBObject dbPCM = (DBObject) result.get("pcm");
+            Object dbID = result.get("_id");
+
+            if (dbID != null && dbPCM != null) {
+                String id = dbID.toString();
+                String name = dbPCM.get("name").toString();
+                PCMInfo info = new PCMInfo(id, name);
+                results.add(info);
+            }
+
         }
 
         return results;
@@ -110,8 +116,8 @@ public class Database {
     }
 
     public String create(String json) {
-        // TODO : check conformance of JSON with PCM metamodel and metadata format
         DBObject newPCM = (DBObject) JSON.parse(json);
+        // TODO : check conformance of JSON with PCM metamodel and metadata format
         WriteResult result = pcms.insert(newPCM);
         String id = newPCM.get("_id").toString();
         return id;
@@ -135,6 +141,7 @@ public class Database {
             List<PCMContainer> pcmContainers = kmfLoader.load(json);
             if (pcmContainers.size() == 1) {
                 PCMContainer pcmContainer = pcmContainers.get(0);
+
                 // TODO : load metadatas
                 var = new DatabasePCM(id, pcmContainer);
             } else {
