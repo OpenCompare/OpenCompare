@@ -243,4 +243,9 @@ public class Database {
         return JSON.serialize(dbContainer);
     }
 
+    public String serializePCMContainerToJSON(PCMContainer pcmContainer) {
+        DBObject dbContainer = serializePCMContainer(pcmContainer);
+        return JSON.serialize(dbContainer);
+    }
+
 }

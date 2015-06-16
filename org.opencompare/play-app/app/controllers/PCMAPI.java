@@ -169,7 +169,9 @@ public class PCMAPI extends Controller {
         //}
 
         // FIXME : bad idea to redirect to a page in this API.
-        return ok(jsonExporter.export(pcmContainer));
+        ;
+        String jsonResult = Database.INSTANCE.serializePCMContainerToJSON(pcmContainer);
+        return ok(jsonResult);
         //return ok(views.html.edit.render(null, data));
     }
 
