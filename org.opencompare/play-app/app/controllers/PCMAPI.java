@@ -5,9 +5,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
 import model.DatabasePCM;
-import org.opencompare.api.java.PCMContainer;
-import org.opencompare.api.java.PCMFactory;
-import org.opencompare.api.java.PCMMetadata;
+import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.PCMFactoryImpl;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
@@ -17,10 +15,7 @@ import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.parser.CellContentExtractor;
-import play.api.libs.json.JsArray;
-import play.api.libs.json.JsObject;
-import play.api.libs.json.JsValue;
-import play.api.libs.json.Json;
+import play.api.libs.json.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -30,6 +25,9 @@ import play.mvc.Result;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import static scala.collection.JavaConversions.seqAsJavaList;
+
 
 /**
  * Created by gbecan on 08/01/15.
@@ -188,15 +186,37 @@ public class PCMAPI extends Controller {
 
         // Convert json to metadata
         // TODO : put this code in a function somewhere
+        // FIXME : ugly ugly ugly !
         PCMMetadata metadata = new PCMMetadata(pcmContainer.getPcm());
         pcmContainer.setMetadata(metadata);
         JsArray jsonProductPositions = (JsArray) jsonMetadata.value().apply("productPositions");
-//        for (JsValue jsonProductPosition : jsonProductPositions.value()) {
-//
-//        }
+        for (JsValue jsonProductPosition : seqAsJavaList(jsonProductPositions.value())) {
+            String productName = ((JsString) ((JsObject) jsonProductPosition).value().apply("product")).value();
+            int position = Integer.parseInt(((JsObject) jsonProductPosition).value().apply("position").toString());
+
+            Product product= null;
+            for (Product p : pcmContainer.getPcm().getProducts()) {
+                if (p.getName().equals(productName)) {
+                    product = p;
+                    break;
+                }
+            }
+            metadata.setProductPosition(product, position);
+        }
 
         JsArray jsonFeaturePositions = (JsArray) jsonMetadata.value().apply("featurePositions");
-
+        for (JsValue jsonFeaturePosition : seqAsJavaList(jsonFeaturePositions.value())) {
+            String featureName = ((JsString) ((JsObject) jsonFeaturePosition).value().apply("feature")).value();
+            int position = Integer.parseInt(((JsObject) jsonFeaturePosition).value().apply("position").toString());
+            Feature feature = null;
+            for (Feature f : pcmContainer.getPcm().getConcreteFeatures()) {
+                if (f.getName().equals(featureName)) {
+                    feature = f;
+                    break;
+                }
+            }
+            metadata.setFeaturePosition(feature, position);
+        }
 
 
         if (type.equals("wikitext")) {
