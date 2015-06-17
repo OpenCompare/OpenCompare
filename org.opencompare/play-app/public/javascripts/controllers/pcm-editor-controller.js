@@ -124,7 +124,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
-            success(function (data) {
+            success(function (data) {console.log(data.pcm);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -137,7 +137,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         // Open the given modal
         $modal.open({
             templateUrl: modalTemplatePath,
-            controller: modal + "Controller",
+            controller: modal + "Controller"
         })
     }
 
@@ -504,9 +504,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var products = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }
                 var cell = findCell(product, feature);
                 productData.name = product.name; // FIXME : may conflict with feature name
-                productData[feature.name] = cell.content;
+                productData[featureName] = cell.content;
             });
             return productData;
         });
@@ -514,14 +518,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var productsRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
             features.map(function(feature) {
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }
                 var cell = findCell(product, feature);
-                //console.log(cell.rawContent);
                 productDataRaw.name = product.name; // FIXME : may conflict with feature name
                 if(cell.rawContent && cell.rawContent != "") {
-                    productDataRaw[feature.name] = cell.rawContent;
+                    productDataRaw[featureName] = cell.rawContent;
                 }
                 else {
-                    productDataRaw[feature.name] = cell.content;// TODO: replace content with rawcontent when implemented
+                    productDataRaw[featureName] = cell.content;// TODO: replace content with rawcontent when implemented
                 }
             });
             return productDataRaw;
@@ -534,7 +541,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Column for each feature */
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
-                var colDef = newColumnDef(feature.name, getType(feature.name));
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }console.log(featureName);
+                var colDef = newColumnDef(featureName, getType(featureName));
                 columnDefs.push(colDef);
                 colIndex++;
             });
@@ -543,7 +554,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
         $scope.gridOptions.columnDefs = columnDefs;
-
+        console.log($scope.gridOptions.columnDefs);
 
         var toolsColumn = {
                 name: ' ',
@@ -624,7 +635,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         for(var i = 0; i < position.length; i++) {
             columns.forEach(function (feature) {
-                if(position[i].feature == feature.name) {
+                var featureName = position[i].feature;
+                if(position[i].feature == "") {
+                    featureName = " ";
+                }
+                if(featureName == feature.name) {
                     sortedColumns.push(feature);
                 }
             });
