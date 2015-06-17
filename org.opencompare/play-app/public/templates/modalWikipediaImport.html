@@ -1,28 +1,20 @@
-<div class="row" ng-controller="WikipediaImportController">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Import a PCM from Wikipedia</h4>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Import a PCM from Wikipedia</h4>
+</div>
+<div class="modal-body">
+    <div ng-model="message" style="color:orangered;"></div>
+    <form name="importPcm" id="import_pcm" class="form-horizontal" method="post">
+        <div class="form-group">
+            <label class="col-md-4 control-label">Page title</label>
+            <div class="col-md-8">
+                <input ng-model="title" class="form-control" type="string" name="title"  id="title" required/>
+            </div>
         </div>
-        <div class="modal-body">
-            <div ng-model="message" style="color:orangered;"></div>
-            <form name="importPcm" id="import_pcm" class="form-horizontal" method="post">
-                <div class="row-fluid">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Page title</label>
-                            <div class="col-md-8">
-                                <input ng-model="title" type="string" name="title" class="wide-size" id="title" required/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-success center-block" form="import_pcm" ng-click="valid()"><i class="fa fa-valid"></i>Import</button>
-        </div>
-    </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-success" form="import_pcm" ng-click="valid()"><i class="fa fa-valid"></i>Import</button>
 </div>
 
