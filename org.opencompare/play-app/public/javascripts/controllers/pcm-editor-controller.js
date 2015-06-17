@@ -37,12 +37,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.slider = {
         options: {
             range: true,
-            step: 1.0,
-            min: 0,
-            max: 100
         }
     };
-    $scope.filterSlider = 0;
+    $scope.filterSlider = [];
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -58,25 +55,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         rowHeight: 28
     };
 
+    /* Move object in array */
+    Array.prototype.move = function (old_index, new_index) {
+        if (new_index >= this.length) {
+            var k = new_index - this.length;
+            while ((k--) + 1) {
+                this.push(undefined);
+            }
+        }
+        this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+        return this;
+    };
+
     $scope.gridOptions.onRegisterApi = function(gridApi){
         var contentValue;
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-            /* console.log(colDef);
-            console.log(originalPosition);
-            console.log(newPosition);
-           $scope.gridOptions.columnDefs.splice(newPosition, 0,  $scope.gridOptions.columnDefs[originalPosition]);
-            if(originalPosition > newPosition) {
-                $scope.gridOptions.columnDefs.splice(originalPosition+1, 1);
-            }
-            else {
-                $scope.gridOptions.columnDefs.splice(originalPosition-1, 1);
-            }
-            console.log($scope.pcmData);*/
-
-
+            $scope.gridOptions.columnDefs.move(originalPosition, newPosition);
+            var commandParameters = [originalPosition, newPosition];
+            $scope.newCommand('move', commandParameters);
+            $rootScope.$broadcast('modified');
         });
         gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
             rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
@@ -122,6 +122,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.loading = true;
         $http.get("/api/get/" + id).
             success(function (data) {
+                //console.log(data.pcm);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -132,11 +133,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     }
     if (typeof modal != 'undefined') {
         // Open the given modal
-        $scope.ImportModal = $modal.open({
+        $modal.open({
             templateUrl: modalTemplatePath,
-            controller: modal + "Controller",
-            size: "lg",
-            scope: $scope
+            controller: modal + "Controller"
         })
     }
 
@@ -185,6 +184,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableHiding: false,
             enableFiltering: true,
             enableColumnResizing: true,
+            enableColumnMoving: $scope.edit,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
@@ -502,9 +502,13 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var products = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }
                 var cell = findCell(product, feature);
                 productData.name = product.name; // FIXME : may conflict with feature name
-                productData[feature.name] = cell.content;
+                productData[featureName] = cell.content;
             });
             return productData;
         });
@@ -512,14 +516,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var productsRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
             features.map(function(feature) {
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }
                 var cell = findCell(product, feature);
-                //console.log(cell.rawContent);
                 productDataRaw.name = product.name; // FIXME : may conflict with feature name
                 if(cell.rawContent && cell.rawContent != "") {
-                    productDataRaw[feature.name] = cell.rawContent;
+                    productDataRaw[featureName] = cell.rawContent;
                 }
                 else {
-                    productDataRaw[feature.name] = cell.content;// TODO: replace content with rawcontent when implemented
+                    productDataRaw[featureName] = cell.content;// TODO: replace content with rawcontent when implemented
                 }
             });
             return productDataRaw;
@@ -532,16 +539,21 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Column for each feature */
         var colIndex = 0;
             pcm.features.array.forEach(function (feature) {
-                var colDef = newColumnDef(feature.name, getType(feature.name));
+                var featureName = feature.name;
+                if(!feature.name){
+                    featureName = " ";
+                }
+                var colDef = newColumnDef(featureName, getType(featureName));
                 columnDefs.push(colDef);
                 colIndex++;
             });
         if(metadata) {
-            $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+            //$scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+           // $scope.pcmDataRaw = sortProducts($scope.pcmDataRaw, metadata.productPositions);
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
         $scope.gridOptions.columnDefs = columnDefs;
-
+        //console.log($scope.gridOptions.columnDefs);
 
         var toolsColumn = {
                 name: ' ',
@@ -582,7 +594,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         productsColumn.filter.placeholder = 'Find';
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
-
     }
 
     function sortProducts(products, position) {
@@ -623,7 +634,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         for(var i = 0; i < position.length; i++) {
             columns.forEach(function (feature) {
-                if(position[i].feature == feature.name) {
+                var featureName = position[i].feature;
+                if(position[i].feature == "") {
+                    featureName = " ";
+                }
+                if(featureName == feature.name) {
                     sortedColumns.push(feature);
                 }
             });
@@ -904,6 +919,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var command = $scope.commands[$scope.commandsIndex];
             var parameters = command[1];
             switch(command[0]) {
+                case 'move':
+                    $scope.gridOptions.columnDefs.move(parameters[1], parameters[0]);
+                    break;
                 case 'edit':
                     var index = 0;
                     $scope.pcmData.forEach(function(product){
@@ -1009,6 +1027,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var command = $scope.commands[$scope.commandsIndex];
             var parameters = command[1];
             switch(command[0]) {
+                case 'move':
+                    $scope.gridOptions.columnDefs.move(parameters[0], parameters[1]);
+                    break;
                 case 'edit':
                     var index = 0;
                     $scope.pcmData.forEach(function(product){
@@ -1380,7 +1401,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         $scope.metadata = args.metadata;
         initializeEditor($scope.pcm, $scope.metadata);
-        $scope.ImportModal.close();
     });
 
     $scope.$on('setGridEdit', function(event, args) {
@@ -1390,11 +1410,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.$on('export', function (event, args) {
         $scope.export_loading = true;
         $scope.pcm = convertGridToPCM($scope.pcmData);
+        $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
+        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var pcmObject = {};
+        pcmObject.metadata = $scope.metadata;
+        pcmObject.pcm = jsonModel;
+
         $scope.export_content = "";
         $http.post(
             "/api/export/" + args,
             {
-                file: serializer.serialize($scope.pcm),
+                file: JSON.stringify(pcmObject),
                 title: $scope.pcm.title,
                 productAsLines: true,
                 separator: ',',

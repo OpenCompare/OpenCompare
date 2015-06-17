@@ -3,13 +3,12 @@
  */
 
 
-pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
+pcmApp.controller("CsvImportController", function($rootScope, $scope, $http, $modalInstance) {
 
-    // Load PCM
-    var pcmMM = Kotlin.modules['pcm'].pcm;
-    var factory = new pcmMM.factory.DefaultPcmFactory();
-    var loader = factory.createJSONLoader();
-    var serializer = factory.createJSONSerializer();
+    $scope.loading = false;
+    $scope.cancel = function() {
+        $modalInstance.close();
+    };
 
     // Default values
     $scope.file = null;
@@ -26,6 +25,9 @@ pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
         fd.append('productAsLines', $scope.productAsLines);
         fd.append('separator', $scope.separator);
         fd.append('quote', $scope.quote);
+
+        $scope.loading = true;
+
         $http.post(
             "/api/import/csv",
             fd,
@@ -34,27 +36,40 @@ pcmApp.controller("CsvImportController", function($rootScope, $scope, $http) {
                 headers: {'Content-Type': undefined}
             })
             .success(function(response, status, headers, config) {
+                $scope.loading = false;
                 $rootScope.$broadcast('import', response);
+                $modalInstance.close();
             }).error(function(data, status, headers, config) {
+                $scope.loading = false;
                 $scope.message = data
             });
 
     }
 });
 
-pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $http) {
+pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $http, $modalInstance) {
+    $scope.loading = false;
+    $scope.cancel = function() {
+        $modalInstance.close();
+    };
 
     // Default values
     $scope.title = ""
     $scope.valid = function(){
+
+        $scope.loading = true;
+
         $http.post(
             "/api/import/wikipedia",
             {
                 title: $scope.title,
             })
             .success(function(response, status, headers, config) {
+                $scope.loading = false;
                 $rootScope.$broadcast('import', response);
+                $modalInstance.close();
             }).error(function(data, status, headers, config) {
+                $scope.loading = false;
                 $scope.message = data
             });
     }
