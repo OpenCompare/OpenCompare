@@ -121,8 +121,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
-            success(function (data) {
-                //console.log(data.pcm);
+            success(function (data) {console.log(data);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -548,13 +547,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 colIndex++;
             });
         if(metadata) {
-            //$scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
-           // $scope.pcmDataRaw = sortProducts($scope.pcmDataRaw, metadata.productPositions);
+            $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+            $scope.pcmDataRaw = sortRawProducts($scope.pcmDataRaw, $scope.pcmData);
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
         $scope.gridOptions.columnDefs = columnDefs;
-        //console.log($scope.gridOptions.columnDefs);
-
         var toolsColumn = {
                 name: ' ',
                 cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
@@ -616,6 +613,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 }
             });
         }
+        return sortedProducts;
+    }
+
+    function sortRawProducts(rawProducts, products) {
+        var sortedProducts = [];
+        products.forEach(function (product) {
+            rawProducts.forEach(function (rawProduct) {
+                    if (rawProduct.name == product.name) {
+                        sortedProducts.push(rawProduct);
+                    }
+                });
+        });
         return sortedProducts;
     }
 
