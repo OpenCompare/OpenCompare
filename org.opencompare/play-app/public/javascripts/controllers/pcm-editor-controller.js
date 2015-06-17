@@ -548,7 +548,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 colIndex++;
             });
         if(metadata) {
-            $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+            //$scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
+           // $scope.pcmDataRaw = sortProducts($scope.pcmDataRaw, metadata.productPositions);
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
         $scope.gridOptions.columnDefs = columnDefs;
