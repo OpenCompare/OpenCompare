@@ -58,25 +58,28 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         rowHeight: 28
     };
 
+    /* Move object in array */
+    Array.prototype.move = function (old_index, new_index) {
+        if (new_index >= this.length) {
+            var k = new_index - this.length;
+            while ((k--) + 1) {
+                this.push(undefined);
+            }
+        }
+        this.splice(new_index, 0, this.splice(old_index, 1)[0]);
+        return this;
+    };
+
     $scope.gridOptions.onRegisterApi = function(gridApi){
         var contentValue;
         var rawValue;
         //set gridApi on scope
         $scope.gridApi = gridApi;
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-            /* console.log(colDef);
-            console.log(originalPosition);
-            console.log(newPosition);
-           $scope.gridOptions.columnDefs.splice(newPosition, 0,  $scope.gridOptions.columnDefs[originalPosition]);
-            if(originalPosition > newPosition) {
-                $scope.gridOptions.columnDefs.splice(originalPosition+1, 1);
-            }
-            else {
-                $scope.gridOptions.columnDefs.splice(originalPosition-1, 1);
-            }
-            console.log($scope.pcmData);*/
-
-
+            $scope.gridOptions.columnDefs.move(originalPosition, newPosition);
+            var commandParameters = [originalPosition, newPosition];
+            $scope.newCommand('move', commandParameters);
+            $rootScope.$broadcast('modified');
         });
         gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
             rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
@@ -183,6 +186,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             enableHiding: false,
             enableFiltering: true,
             enableColumnResizing: true,
+            enableColumnMoving: $scope.edit,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
@@ -901,6 +905,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var command = $scope.commands[$scope.commandsIndex];
             var parameters = command[1];
             switch(command[0]) {
+                case 'move':
+                    $scope.gridOptions.columnDefs.move(parameters[1], parameters[0]);
+                    break;
                 case 'edit':
                     var index = 0;
                     $scope.pcmData.forEach(function(product){
@@ -1006,6 +1013,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             var command = $scope.commands[$scope.commandsIndex];
             var parameters = command[1];
             switch(command[0]) {
+                case 'move':
+                    $scope.gridOptions.columnDefs.move(parameters[0], parameters[1]);
+                    break;
                 case 'edit':
                     var index = 0;
                     $scope.pcmData.forEach(function(product){
