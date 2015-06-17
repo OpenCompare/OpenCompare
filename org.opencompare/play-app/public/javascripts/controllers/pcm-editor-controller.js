@@ -121,7 +121,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         /* Load a PCM from database */
         $scope.loading = true;
         $http.get("/api/get/" + id).
-            success(function (data) {console.log(data.pcm);
+            success(function (data) {
+                //console.log(data.pcm);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -541,7 +542,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 var featureName = feature.name;
                 if(!feature.name){
                     featureName = " ";
-                }console.log(featureName);
+                }
                 var colDef = newColumnDef(featureName, getType(featureName));
                 columnDefs.push(colDef);
                 colIndex++;
@@ -551,7 +552,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
         $scope.gridOptions.columnDefs = columnDefs;
-        console.log($scope.gridOptions.columnDefs);
+        //console.log($scope.gridOptions.columnDefs);
 
         var toolsColumn = {
                 name: ' ',
