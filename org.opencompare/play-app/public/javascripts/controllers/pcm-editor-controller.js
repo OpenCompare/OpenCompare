@@ -41,6 +41,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     };
     $scope.filterSlider = [];
 
+    $scope.height = 300;
+
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
@@ -98,18 +100,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
     };
 
-    $scope.setEdit = function(bool) {
+    $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
-        $timeout(function(){ initializeEditor($scope.pcm, $scope.metadata)}, 100);
+        if(reload) {
+            $timeout(function(){ initializeEditor($scope.pcm, $scope.metadata)}, 100);
+        }
         $rootScope.$broadcast('setToolbarEdit', bool);
     };
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
-        $scope.setEdit(true);
+        $scope.setEdit(true, false);
         initializeEditor($scope.pcm, $scope.metadata);
 
     } else if (typeof data != 'undefined')  {
@@ -120,10 +124,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
-        $scope.setEdit(false);
+        $scope.setEdit(false, false);
         $rootScope.$broadcast('saved');
         $http.get("/api/get/" + id).
-            success(function (data) {console.log(data);
+            success(function (data) {
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
             $scope.metadata = data.metadata;
             initializeEditor($scope.pcm, $scope.metadata);
@@ -133,7 +137,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             })
     }
     if (typeof modal != 'undefined') {
-        $scope.setEdit(false);
+        $scope.setEdit(false, false);
         // Open the given modal
         $modal.open({
             templateUrl: modalTemplatePath,
@@ -265,7 +269,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 if($scope.validating && validation[col.name] && !validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return 'warningCell';
                 }
-                else {
+                else if(rowValue) {
                     return getCellClass(rowValue[col.name]);
                 }
             },
@@ -498,7 +502,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
      * @param pcm
      */
     function initializeEditor(pcm, metadata) {
-        $rootScope.$broadcast('setPcmName', $scope.pcm.name);
         /* Convert PCM model to editor format */
         var features = getConcreteFeatures(pcm);
         var products = pcm.products.array.map(function(product) {
@@ -535,6 +538,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         $scope.pcmDataRaw = productsRaw;
         $scope.pcmData = products;
+        $rootScope.$broadcast('setPcmName', $scope.pcm.name);
+
         /* Define columns */
         var columnDefs = [];
 
@@ -594,6 +599,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         productsColumn.filter.placeholder = 'Find';
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
+
+        setGridHeight();
     }
 
     function sortProducts(products, position) {
@@ -894,6 +901,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $rootScope.$broadcast('modified');
         var parameters = $scope.pcmData[$scope.pcmData.length-1];
         $scope.newCommand('addProduct', parameters);
+        setGridHeight();
     };
 
     $scope.removeProduct = function(row) {
@@ -906,6 +914,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         $rootScope.$broadcast('modified');
         var parameters = [row.entity.$$hashKey, row.entity, rawData, index];
         $scope.newCommand('removeProduct', parameters);
+        setGridHeight();
     };
 
     $scope.scrollToFocus = function( rowIndex, colIndex ) {
@@ -950,6 +959,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     $scope.pcmDataRaw.splice(parameters[3], 0, parameters[2]);
                     pcmRaw = [];
                     $timeout(function(){ $scope.scrollToFocus(parameters[2], 1); }, 100);// Not working without a timeout
+                    setGridHeight();
                     break;
                 case 'addProduct':
                     $scope.pcmData.forEach(function(product){
@@ -958,6 +968,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             $scope.pcmData.splice($scope.pcmDataRaw.indexOf(product), 1);
                         }
                     });
+                    setGridHeight();
                     pcmRaw = [];
                     break;
                 case 'removeFeature':
@@ -1059,12 +1070,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                             $scope.pcmData.splice($scope.pcmDataRaw.indexOf(product), 1);
                         }
                     });
+                    setGridHeight();
                     break;
                 case 'addProduct':
                     $scope.pcmData.push(parameters);
                     $scope.pcmDataRaw.push(parameters);
                     $timeout(function(){ $scope.scrollToFocus($scope.pcmData.length-1, 1); }, 100);// Not working without a timeout
                     break;
+                    setGridHeight();
                 case 'removeFeature':
                     var featureName = parameters[0].name;
                     var index2 = 0;
@@ -1143,6 +1156,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             $rootScope.$broadcast('setPcmName', $scope.pcm.name);
         }
     });
+
+    function setGridHeight() {
+        if($scope.pcmData) {
+            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+                $scope.height = $(window).height() * 2 / 3;
+            }
+            else{
+                $scope.height = $scope.pcmData.length * 28 + 90;
+            }
+        }
+    }
 
     /**
      * Save PCM on the server
@@ -1416,7 +1440,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     });
 
     $scope.$on('setGridEdit', function(event, args) {
-        $scope.setEdit(args);
+        $scope.setEdit(args, true);
     });
 
     $scope.$on('export', function (event, args) {
