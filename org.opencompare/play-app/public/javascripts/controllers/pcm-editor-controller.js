@@ -1396,11 +1396,17 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.$on('export', function (event, args) {
         $scope.export_loading = true;
         $scope.pcm = convertGridToPCM($scope.pcmData);
+        $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
+        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var pcmObject = {};
+        pcmObject.metadata = $scope.metadata;
+        pcmObject.pcm = jsonModel;
+
         $scope.export_content = "";
         $http.post(
             "/api/export/" + args,
             {
-                file: serializer.serialize($scope.pcm),
+                file: JSON.stringify(pcmObject),
                 title: $scope.pcm.title,
                 productAsLines: true,
                 separator: ',',
