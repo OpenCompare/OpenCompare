@@ -582,7 +582,6 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         productsColumn.filter.placeholder = 'Find';
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
-
     }
 
     function sortProducts(products, position) {
