@@ -37,12 +37,9 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.slider = {
         options: {
             range: true,
-            step: 1.0,
-            min: 0,
-            max: 100
         }
     };
-    $scope.filterSlider = 0;
+    $scope.filterSlider = [];
 
     $scope.gridOptions = {
         columnDefs: [],
