@@ -1440,10 +1440,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     });
 
     $scope.$on('setGridEdit', function(event, args) {
-        $scope.setEdit(args, true);
+        $scope.setEdit(args[0], args[1]);
     });
 
-    $scope.$on('export', function (event, args) {
+    $scope.export = function (format) {
         $scope.export_loading = true;
         $scope.pcm = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
@@ -1454,7 +1454,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         $scope.export_content = "";
         $http.post(
-            "/api/export/" + args,
+            "/api/export/" + format,
             {
                 file: JSON.stringify(pcmObject),
                 title: $scope.pcm.title,
@@ -1472,6 +1472,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             }).error(function(data, status, headers, config) {
                 console.log(data)
             });
+    };
+
+    $scope.$on('export', function (event, args) {
+        $scope.export(args);
     });
 
 })

@@ -36,7 +36,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false)">Yes</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false, true)">Yes</button>
                 </div>
             </div>
         </div>
@@ -150,7 +150,14 @@
 
     <!-- Table editor -->
     <h2 ng-show="!edit">{{pcm.name}}
-        <a role="button" class="btn btn-primary" ng-click="setEdit(true)"><i class="fa fa-pencil"></i> Edit</a>
+        <a role="button" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
+        <div class="btn-group">
+            <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> Export <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"> Export to CSV</a></li>
+                <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport"> Export to Wikipedia syntax</a></li>
+            </ul>
+        </div>
     </h2>
     <div class="row" ng-show="edit">
         <form class="form-group">

@@ -44,9 +44,9 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
         $rootScope.$broadcast('validate');
     };
 
-    $scope.setEdit = function(bool) {
+    $scope.setEdit = function(bool, reload) {
         $scope.edit = bool;
-        $rootScope.$broadcast('setGridEdit', bool);
+        $rootScope.$broadcast('setGridEdit', [bool, reload]);
     };
 
     $scope.$on('modified', function(event, args) {
