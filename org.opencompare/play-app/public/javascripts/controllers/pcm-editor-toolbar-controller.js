@@ -4,7 +4,8 @@
 
 pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
-    $scope.saved = true;
+    $scope.saved = false;
+    $scope.isInDatabase = false;
     $scope.validating = false;
     $scope.edit = false;
     $scope.isTitleSet = false;
@@ -61,6 +62,7 @@ pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
 
     $scope.$on('saved', function(event, args) {
         $scope.saved = true;
+        $scope.isInDatabase = true;
     });
 
     $scope.$on('setToolbarEdit', function(event, args) {

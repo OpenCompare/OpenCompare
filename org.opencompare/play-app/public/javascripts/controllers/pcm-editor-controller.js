@@ -120,6 +120,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
+        $scope.setEdit(false);
+        $rootScope.$broadcast('saved');
         $http.get("/api/get/" + id).
             success(function (data) {console.log(data);
             $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
@@ -131,6 +133,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             })
     }
     if (typeof modal != 'undefined') {
+        $scope.setEdit(false);
         // Open the given modal
         $modal.open({
             templateUrl: modalTemplatePath,
