@@ -36,7 +36,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     // Slider filter
     $scope.slider = {
         options: {
-            range: true,
+            range: true
         }
     };
     $scope.filterSlider = [];
@@ -48,6 +48,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         data: 'pcmData',
         enableRowSelection: false,
         enableRowHeaderSelection: false,
+        flatEntityAccess: true,
         enableColumnResizing: true,
         enableFiltering: true,
         enableCellSelection: false,
@@ -185,7 +186,8 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         }
         columnsType[featureName] = featureType;
         var columnDef = {
-            name: featureName,
+            name: convertStringToEditorFormat(featureName),
+            displayName: featureName,
             enableSorting: true,
             enableHiding: false,
             enableFiltering: true,
@@ -507,7 +509,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var products = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
-                var featureName = feature.name;
+                var featureName = convertStringToEditorFormat(feature.name);
                 if(!feature.name){
                     featureName = " ";
                 }
@@ -521,7 +523,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var productsRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
             features.map(function(feature) {
-                var featureName = feature.name;
+                var featureName =  convertStringToEditorFormat(feature.name);
                 if(!feature.name){
                     featureName = " ";
                 }
@@ -653,7 +655,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         });
         for(var i = 0; i < position.length; i++) {
             columns.forEach(function (feature) {
-                var featureName = position[i].feature;
+                var featureName = convertStringToEditorFormat(position[i].feature.toString());
                 if(position[i].feature == "") {
                     featureName = " ";
                 }
@@ -677,22 +679,26 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             product.name = productData.name;
             pcm.addProducts(product);
             $scope.gridOptions.columnDefs.forEach(function (featureData) {
-                if(productData.hasOwnProperty(featureData.name)  && featureData.name !== "$$hashKey"
-                    && featureData.name !== "Product") {
+
+                var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                var codedFeatureName = featureData.name;
+
+                if(productData.hasOwnProperty(codedFeatureName)  && codedFeatureName !== "$$hashKey"
+                    && codedFeatureName !== "Product") {
                     // Create feature if not existing
-                    if (!featuresMap.hasOwnProperty(featureData.name)) {
+                    if (!featuresMap.hasOwnProperty(decodedFeatureName)) {
                         var feature = factory.createFeature();
-                        feature.name = featureData.name;
+                        feature.name = decodedFeatureName;
                         pcm.addFeatures(feature);
-                        featuresMap[featureData.name] = feature;
+                        featuresMap[decodedFeatureName] = feature;
                     }
-                    var feature = featuresMap[featureData.name];
+                    var feature = featuresMap[decodedFeatureName];
 
                     // Create cell
                     var cell = factory.createCell();
                     cell.feature = feature;
-                    cell.content = productData[featureData.name];
-                    cell.rawContent = $scope.pcmDataRaw[index][featureData.name];
+                    cell.content = productData[codedFeatureName];
+                    cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
                     product.addCells(cell);
                 }
             });
@@ -709,18 +715,20 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
         /* Initialize data */
         var featureName = $scope.checkIfNameExists($scope.featureName);
+        var codedFeatureName = convertStringToEditorFormat(featureName);
+
         $scope.pcmData.forEach(function (productData) {
-            productData[featureName] = "";
+            productData[codedFeatureName] = "";
         });
         $scope.pcmDataRaw.forEach(function (productData) {
-            productData[featureName] = "";
+            productData[codedFeatureName] = "";
         });
 
         /* Define the new column*/
         var columnDef = newColumnDef(featureName, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
-        columnsType[featureName] = $scope.featureType;
-        validation[featureName] = [];
+        columnsType[codedFeatureName] = $scope.featureType;
+        validation[codedFeatureName] = [];
 
         /* Command for undo/redo */
         var parameters =  [featureName, $scope.featureType, $scope.gridOptions.columnDefs.length-1];
@@ -732,24 +740,27 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
 
     $scope.renameFeature = function() {
 
+        var codedOldFeatureName =  convertStringToEditorFormat($scope.oldFeatureName);
         var featureName = $scope.checkIfNameExists($scope.featureName);
+        var codedFeatureName = convertStringToEditorFormat(featureName);
+
         var index = 0;
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
-            if(featureData.name === $scope.oldFeatureName) {
-                if($scope.oldFeatureName === $scope.featureName){
+            if(featureData.name === codedOldFeatureName) {
+                if(codedOldFeatureName === $scope.featureName){
                     featureName = $scope.oldFeatureName;
                 }
                 var index2 = 0;
                 $scope.pcmData.forEach(function (productData) {
-                    productData[featureName] = productData[$scope.oldFeatureName];
-                    $scope.pcmDataRaw[index2][featureName] = $scope.pcmDataRaw[index2][$scope.oldFeatureName];
+                    productData[codedFeatureName] = productData[codedOldFeatureName];
+                    $scope.pcmDataRaw[index2][codedFeatureName] = $scope.pcmDataRaw[index2][codedOldFeatureName];
                     if($scope.featureName != $scope.oldFeatureName) {
-                        delete productData[$scope.oldFeatureName];
-                        delete $scope.pcmDataRaw[index2][$scope.oldFeatureName]
+                        delete productData[codedOldFeatureName];
+                        delete $scope.pcmDataRaw[index2][codedOldFeatureName]
                     }
                     index2++;
                 });
-                var colDef = newColumnDef(featureName, columnsType[$scope.oldFeatureName]);
+                var colDef = newColumnDef(featureName, columnsType[codedOldFeatureName]);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef);
 
                 /* Command for undo/redo */
@@ -758,11 +769,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             }
             index++;
         });
-        columnsType[featureName] = columnsType[$scope.oldFeatureName];
+        columnsType[featureName] = columnsType[codedOldFeatureName];
         validation[featureName] = [];
         if($scope.featureName != $scope.oldFeatureName) {
-            delete columnsType[$scope.oldFeatureName];
-            delete validation[$scope.oldFeatureName];
+            delete columnsType[codedOldFeatureName];
+            delete validation[codedOldFeatureName];
         }
         /* re-init of scope parameters */
         $scope.featureName = "";
@@ -1209,7 +1220,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         index = 0;
         columns.forEach(function (column) {
             var object = {};
-            object.feature = column.name;
+            object.feature = convertStringToPCMFormat(column.name);
             object.position = index;
             metadata.featurePositions.push(object);
             index++;
@@ -1477,6 +1488,14 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.$on('export', function (event, args) {
         $scope.export(args);
     });
+
+    function convertStringToEditorFormat(name) {
+        return name.replace(/\(/g, '%28').replace(/\)/g, '%29');
+    }
+    function convertStringToPCMFormat(name) {
+        return name.replace(/%28/g, '(').replace(/%29/g, ')');
+    }
+
 
 })
 
