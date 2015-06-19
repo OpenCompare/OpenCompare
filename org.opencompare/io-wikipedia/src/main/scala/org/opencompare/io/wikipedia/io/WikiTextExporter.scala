@@ -17,7 +17,7 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
     this(false)
   }
 
-  def exportWithProductAsLines(builder : StringBuilder, container : PCMContainer): String = {
+  def exportWithProductAsLines(builder : StringBuilder, container : PCMContainer){
 
     // columns (feature)
     for (feature <- container.getMetadata.getSortedFeatures) {
@@ -49,10 +49,9 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         }
       }
     }
-    builder.toString()
   }
 
-  def exportWithFeatureAsLines(builder : StringBuilder, container : PCMContainer): String = {
+  def exportWithFeatureAsLines(builder : StringBuilder, container : PCMContainer) {
 
     // columns (product)
     for (product <- container.getMetadata.getSortedProducts) {
@@ -86,7 +85,6 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         }
       }
     }
-    builder.toString()
   }
 
   override def export(container: PCMContainer): String = {
@@ -102,9 +100,9 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
     builder ++= "|\n" // empty top left cell
 
     if (container.getMetadata.getProductAsLines) {
-      builder ++= exportWithProductAsLines(builder, container)
+      exportWithProductAsLines(builder, container)
     } else {
-      builder ++= exportWithFeatureAsLines(builder, container)
+      exportWithFeatureAsLines(builder, container)
     }
     builder ++= "|}" //  end table
 
