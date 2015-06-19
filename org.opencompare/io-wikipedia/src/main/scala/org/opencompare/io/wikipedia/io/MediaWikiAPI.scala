@@ -46,6 +46,19 @@ class MediaWikiAPI(
     }
   }
 
+  def expandTemplate(language : String, template : String) : String = {
+    val result = Http(apiEndPoint(language)).params(
+      "action" -> "expandtemplates",
+      "format" -> "json",
+      "prop" -> "wikitext",
+      "text" -> template
+    ).asString
+
+    val jsonResult = Json.parse(result)
+    val jsonExpandedTemplate = jsonResult \ "expandtemplates" \ "wikitext"
+    val expandedTemplate = Json.stringify(jsonExpandedTemplate)
+    expandedTemplate
+  }
 
 
 }

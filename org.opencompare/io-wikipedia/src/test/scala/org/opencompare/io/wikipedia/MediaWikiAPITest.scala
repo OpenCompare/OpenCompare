@@ -9,13 +9,21 @@ import org.scalatest.{Matchers, FlatSpec}
 class MediaWikiAPITest extends FlatSpec with Matchers {
 
   val wikipediaURL = "wikipedia.org"
+  val english = "en"
   val mediaWikiAPI = new MediaWikiAPI(wikipediaURL)
 
   it should "retrieve the wikitext of Comparison of Nikon DSLR cameras page" in {
     val title = "Comparison of Nikon DSLR cameras"
-    val wikitext = mediaWikiAPI.getWikitextFromTitle("en", title)
+    val wikitext = mediaWikiAPI.getWikitextFromTitle(english, title)
 
-    wikitext.length shouldNot be (0)
+    wikitext shouldNot be ("")
+  }
+
+  it should "example the template {{yes}}" in {
+    val template = "{{yes}}"
+    val expandedTemplate = mediaWikiAPI.expandTemplate(english, template)
+
+    expandedTemplate shouldNot be ("")
   }
 
 }
