@@ -83,6 +83,18 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-json_2.10</artifactId>
+            <version>${play2.version}</version>
+            <exclusions>
+                <exclusion> <!-- integrates a different version of scala -->
+                    <groupId>org.scala-stm</groupId>
+                    <artifactId>scala-stm_2.10</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
 
     </dependencies>
 
