@@ -2,7 +2,7 @@ package org.opencompare.io.wikipedia.io
 
 import java.util.regex.Matcher
 
-import play.api.libs.json.Json
+import play.api.libs.json.{JsString, Json}
 
 import scalaj.http.Http
 
@@ -58,7 +58,10 @@ class MediaWikiAPI(
 
     val jsonResult = Json.parse(result)
     val jsonExpandedTemplate = jsonResult \ "expandtemplates" \ "wikitext"
-    val expandedTemplate = Json.stringify(jsonExpandedTemplate)
+    val expandedTemplate = jsonExpandedTemplate match {
+      case s : JsString => s.value
+      case _ => ""
+    }
     expandedTemplate
   }
 

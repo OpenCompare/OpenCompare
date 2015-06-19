@@ -7,7 +7,7 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.SimplePCMElementComparator
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.WikiTextLoader
+import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, MediaWikiAPI, WikiTextLoader}
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -18,7 +18,10 @@ import scala.reflect.io.{File, Directory}
 class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
-  val miner = new WikiTextLoader
+  val language = "en"
+  val url = "wikipedia.org"
+  val mediaWikiAPI = new MediaWikiAPI(url)
+  val miner = new WikiTextLoader(new WikiTextTemplateProcessor(mediaWikiAPI))
   val pcmExporter = new PCMModelExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
   val kmfJSONExporter = new KMFJSONExporter
@@ -47,7 +50,7 @@ class SyntaxTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       "Wikitext syntax for " + name should "match this csv representation" in {
         val csvCode = Source.fromFile(csv).mkString
         val wikiCode = Source.fromFile(wiki).mkString
-        val wikiContainer = miner.mine(wikiCode, name).get(0)
+        val wikiContainer = miner.mine(language, wikiCode, name).get(0)
         val csvPcm = csvLoader.load(csvCode).get(0).getPcm
         csvPcm.setName(name + " from Csv")
         val diff = wikiContainer.getPcm.diff(csvPcm, new SimplePCMElementComparator)

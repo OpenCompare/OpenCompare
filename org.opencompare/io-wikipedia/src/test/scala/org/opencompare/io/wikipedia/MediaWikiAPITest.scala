@@ -10,11 +10,19 @@ class MediaWikiAPITest extends FlatSpec with Matchers {
 
   val wikipediaURL = "wikipedia.org"
   val english = "en"
+  val french = "fr"
   val mediaWikiAPI = new MediaWikiAPI(wikipediaURL)
 
   it should "retrieve the wikitext of Comparison of Nikon DSLR cameras page" in {
     val title = "Comparison of Nikon DSLR cameras"
     val wikitext = mediaWikiAPI.getWikitextFromTitle(english, title)
+
+    wikitext shouldNot be ("")
+  }
+
+  it should "retrieve the wikitext of Comparaison_de_lecteurs_multimédia page" in {
+    val title = "Comparaison de lecteurs multimédia"
+    val wikitext = mediaWikiAPI.getWikitextFromTitle(french, title)
 
     wikitext shouldNot be ("")
   }

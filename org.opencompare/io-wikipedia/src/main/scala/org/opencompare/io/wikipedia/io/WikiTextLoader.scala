@@ -18,13 +18,8 @@ import scala.io.Source
  * Created by  on 26/11/14.
  */
 class WikiTextLoader(
-                    val templateProcessor: WikiTextTemplateProcessor = new WikiTextTemplateProcessor()
+                    val templateProcessor: WikiTextTemplateProcessor
                       )  extends PCMLoader {
-
-  // Constructor for Java compatibility with default parameters
-  def this() {
-    this(new WikiTextTemplateProcessor())
-  }
 
   private val parserConfig = new SimpleParserConfig()
   val preprocessor = new WikitextPreprocessor(parserConfig)
@@ -34,8 +29,12 @@ class WikiTextLoader(
 
   private val exporter = new PCMModelExporter
 
+  /**
+   * Load PCM from wikitext code with default parameters (english language and empty page title)
+   * @param code
+   **/
   override def load(code: String): util.List[PCMContainer] = {
-    mine(code, "")
+    mine("en", code, "")
   }
 
   override def load(file: File): util.List[PCMContainer] = {
@@ -43,15 +42,15 @@ class WikiTextLoader(
   }
 
 
-  def mineInternalRepresentation(code : String, title : String): Page = {
+  def mineInternalRepresentation(language : String, code : String, title : String): Page = {
     val ast = parser.parseArticle(code, title)
-    val structuralVisitor = new PageVisitor(wikiConfig, preprocessor, templateProcessor, parser)
+    val structuralVisitor = new PageVisitor(language, wikiConfig, preprocessor, templateProcessor, parser)
     val page = structuralVisitor.extractPage(ast, title)
     page
   }
 
-  def mine(code : String, title : String) : util.List[PCMContainer] = {
-    val page = mineInternalRepresentation(code, title)
+  def mine(language : String, code : String, title : String) : util.List[PCMContainer] = {
+    val page = mineInternalRepresentation(language, code, title)
     exporter.export(page)
   }
 

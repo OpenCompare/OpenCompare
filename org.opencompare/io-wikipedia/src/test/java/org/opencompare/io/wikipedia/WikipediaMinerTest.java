@@ -9,6 +9,7 @@ import org.opencompare.io.wikipedia.export.PCMModelExporter;
 import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.pcm.Page;
 
 import java.io.IOException;
@@ -28,14 +29,15 @@ public class WikipediaMinerTest {
     @Test
     public void test() throws IOException {
         String wikipediaURL = "wikipedia.org";
-        WikiTextLoader miner = new WikiTextLoader();
         MediaWikiAPI api = new MediaWikiAPI(wikipediaURL);
+        WikiTextLoader miner = new WikiTextLoader(new WikiTextTemplateProcessor(api));
+
 
         // Parse article from Wikipedia
         String title = "Comparison_of_Nikon_DSLR_cameras";
         String language = "en";
         String code = api.getWikitextFromTitle(language, title);
-        Page page = miner.mineInternalRepresentation(code, title);
+        Page page = miner.mineInternalRepresentation(language, code, title);
 
         // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();

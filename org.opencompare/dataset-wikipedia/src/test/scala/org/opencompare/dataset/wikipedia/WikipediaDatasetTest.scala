@@ -29,8 +29,9 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
   var templateProcessor : WikiTextTemplateProcessor = _
   var miner : WikiTextLoader = _
   val mediaWikiAPI = new MediaWikiAPI("wikipedia.org")
-
+  val language = "en"
   val templateCacheFile = new File("resources/template-cache.csv")
+
 
   override def beforeAll() {
     super.beforeAll()
@@ -54,10 +55,10 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
       csvLoader.close()
 
-      templateProcessor = new WikiTextTemplateProcessor(initialCache)
+      templateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI, initialCache)
 
     } else {
-      templateProcessor = new WikiTextTemplateProcessor()
+      templateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI)
     }
 
     miner = new WikiTextLoader(templateProcessor)
@@ -79,17 +80,17 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
-    miner.mineInternalRepresentation(code, file)
+    miner.mineInternalRepresentation(language, code, file)
   }
 
   def parseFromTitle(title : String) : Page = {
     val code = mediaWikiAPI.getWikitextFromTitle("en", title)
-    miner.mineInternalRepresentation(code, title)
+    miner.mineInternalRepresentation(language, code, title)
   }
 
   def parseFromOfflineCode(title : String) : Page = {
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    miner.mineInternalRepresentation(code, title)
+    miner.mineInternalRepresentation(language, code, title)
   }
 
   def testArticle(title : String) : Page = {
