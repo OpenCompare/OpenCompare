@@ -21,6 +21,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import scala.collection.Map;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,10 @@ public class PCMAPI extends Controller {
     private static final WikiTextExporter wikiExporter = new WikiTextExporter(true);
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
-    private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
+    private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(
+            miner.preprocessor(),
+            wikitextTemplateProcessor,
+            miner.parser());
 
     private static List<PCMContainer> loadWikitext(String title){
         // Parse article from Wikipedia
@@ -56,6 +60,7 @@ public class PCMAPI extends Controller {
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
     }
+
     private static List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
@@ -88,7 +93,7 @@ public class PCMAPI extends Controller {
         return ok();
     }
 
-    public static Result convertById(String id, String type) {
+    public static Result convert(String id, String type) {
         DatabasePCM dbPCM = Database.INSTANCE.get(id);
         PCMContainer pcmContainer = dbPCM.getPCMContainer();
         String data;
@@ -102,7 +107,7 @@ public class PCMAPI extends Controller {
         return ok(data);
     }
 
-    public static Result importFromFile(String type) {
+    public static Result importer(String type) {
         PCMContainer pcmContainer;
 
         // Getting form values
@@ -114,7 +119,6 @@ public class PCMAPI extends Controller {
         if (type.equals("wikipedia")) {
 
             try {
-
                 List<PCMContainer> pcmContainers = PCMAPI.loadWikitext(title);
                 pcmContainer = pcmContainers.get(0);
                 data = Json.parse(jsonExporter.export(pcmContainer));
@@ -162,41 +166,41 @@ public class PCMAPI extends Controller {
         //    return internalServerError("This matrix is not valid !");
         //}
 
-        // FIXME : bad idea to redirect to a page in this API.
-        ;
         String jsonResult = Database.INSTANCE.serializePCMContainerToJSON(pcmContainer);
         return ok(jsonResult);
-        //return ok(views.html.edit.render(null, data));
     }
 
-    public static Result exportToFile(String type) {
-        String code;
+    /*
+    Parse the json file and generate a container
+     */
+    private static List<PCMContainer> createContainers(JsObject jsonContent) {
+        String jsonPCM = Json.stringify(jsonContent.value().apply("pcm"));
+        List<PCMContainer> containers = jsonLoader.load(jsonPCM);
+        JsObject jsonMetadata = (JsObject) jsonContent.value().apply("metadata");
+        for (PCMContainer container : containers) {
+            saveMetadatas(container, jsonMetadata);
+        }
+        return containers;
+    }
 
-        // Getting form values
-        DynamicForm dynamicForm = Form.form().bindFromRequest();
-        String title = dynamicForm.get("title");
-        String fileContent = dynamicForm.field("file").value();
-        JsObject jsonPCMContainer = (JsObject) Json.parse(fileContent);
+    /*
+    Insert metadatas inside the container based on the json metadatas
+     */
+    private static void saveMetadatas(PCMContainer container, JsObject jsonMetadata) {
+        PCMMetadata metadata = container.getMetadata();
+        PCM pcm = metadata.getPcm();
 
-        JsObject jsonMetadata = (JsObject) jsonPCMContainer.value().apply("metadata");
-        String jsonPCM = Json.stringify(jsonPCMContainer.value().apply("pcm"));
-
-        // Parse PCM model
-        PCMContainer pcmContainer = jsonLoader.load(jsonPCM).get(0);
-
-        // Convert json to metadata
-        // TODO : put this code in a function somewhere
-        // FIXME : ugly ugly ugly !
-        PCMMetadata metadata = new PCMMetadata(pcmContainer.getPcm());
-        pcmContainer.setMetadata(metadata);
         JsArray jsonProductPositions = (JsArray) jsonMetadata.value().apply("productPositions");
+        JsArray jsonFeaturePositions = (JsArray) jsonMetadata.value().apply("featurePositions");
+
         for (JsValue jsonProductPosition : seqAsJavaList(jsonProductPositions.value())) {
-            String productName = ((JsString) ((JsObject) jsonProductPosition).value().apply("product")).value();
-            int position = Integer.parseInt(((JsObject) jsonProductPosition).value().apply("position").toString());
+            Map<String, JsValue> jsonPos = ((JsObject) jsonProductPosition).value();
+            String productName = ((JsString) jsonPos.apply("product")).value();
+            int position = Integer.parseInt(jsonPos.apply("position").toString());
 
             Product product= null;
-            for (Product p : pcmContainer.getPcm().getProducts()) {
-                if (p.getName().equals(productName)) {
+            for (Product p : pcm.getProducts()) {
+                if (p.getName().equals(productName)) { // FIXME : equals based on name breaks same name products
                     product = p;
                     break;
                 }
@@ -204,24 +208,34 @@ public class PCMAPI extends Controller {
             metadata.setProductPosition(product, position);
         }
 
-        JsArray jsonFeaturePositions = (JsArray) jsonMetadata.value().apply("featurePositions");
         for (JsValue jsonFeaturePosition : seqAsJavaList(jsonFeaturePositions.value())) {
-            String featureName = ((JsString) ((JsObject) jsonFeaturePosition).value().apply("feature")).value();
-            int position = Integer.parseInt(((JsObject) jsonFeaturePosition).value().apply("position").toString());
+            Map<String, JsValue> jsonPos = ((JsObject) jsonFeaturePosition).value();
+            String featureName = ((JsString) jsonPos.apply("feature")).value();
+            int position = Integer.parseInt(jsonPos.apply("position").toString());
+
             Feature feature = null;
-            for (Feature f : pcmContainer.getPcm().getConcreteFeatures()) {
-                if (f.getName().equals(featureName)) {
+            for (Feature f : pcm.getConcreteFeatures()) {
+                if (f.getName().equals(featureName)) { // FIXME : equals based on name breaks same name features
                     feature = f;
                     break;
                 }
             }
             metadata.setFeaturePosition(feature, position);
         }
+    }
 
+    public static Result exporter(String type) {
+        String code;
+
+        // Getting form values
+        DynamicForm dynamicForm = Form.form().bindFromRequest();
+        String title = dynamicForm.get("title");
+        JsObject jsonContent = (JsObject) Json.parse(dynamicForm.field("file").value());
+        PCMContainer container = createContainers(jsonContent).get(0);
 
         if (type.equals("wikitext")) {
 
-            code = wikiExporter.export(pcmContainer);
+            code = wikiExporter.export(container);
 
         } else if (type.equals("csv")) {
 
@@ -236,12 +250,11 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             CSVExporter csvExporter = new CSVExporter();
-            code = csvExporter.setSeparator(separator).setQuote(quote).export(pcmContainer);
+            code = csvExporter.setSeparator(separator).setQuote(quote).export(container);
 
         } else {
             return internalServerError("File format not found or invalid.");
         }
-
         return ok(code);
     }
 
@@ -252,17 +265,14 @@ public class PCMAPI extends Controller {
 
         if (type != null && rawContent != null) {
             String content = "";
-
             if ("wikipedia".equals(type)) {
 //                content = wikitextTemplateProcessor.expandTemplate(rawContent);
                 content = wikitextContentExtractor.extractCellContent(rawContent);
             } else {
                 return badRequest("unknown type");
             }
-
             return ok(content);
-        } else {
-            return badRequest();
         }
+        return badRequest();
     }
 }
