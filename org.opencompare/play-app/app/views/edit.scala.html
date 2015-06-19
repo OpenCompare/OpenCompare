@@ -18,14 +18,14 @@
     @if(modal != null) {
         <script>
             var modal = '@{Html(modal)}';
-            var modalTemplatePath = '@routes.Assets.at("templates/modal" + modal + ".html")';
         </script>
     }
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-toolbar-controller.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-importer-controller.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/csvCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/wikitextCtrl.js")'></script>
 }
 
 @toolbar = {

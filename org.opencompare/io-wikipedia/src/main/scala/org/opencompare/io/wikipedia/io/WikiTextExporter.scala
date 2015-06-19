@@ -17,20 +17,9 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
     this(false)
   }
 
+  def exportWithProductAsLines(builder : StringBuilder, container : PCMContainer): String = {
 
-  override def export(container: PCMContainer): String = {
-    val builder = new StringBuilder
-    val pcm = container.getPcm
-
-    builder ++= "{| class=\"wikitable\"\n" // new table
-    val title = pcm.getName
-    builder ++= "|+ " + title + "\n" // caption
-
-    // Headers (features)
-    builder ++= "|-\n" // new row
-    builder ++= "|\n" // empty top left cell
-
-//    for (feature <- pcm.getConcreteFeatures.sortBy(_.getName)) {
+    // columns (feature)
     for (feature <- container.getMetadata.getSortedFeatures) {
       builder ++= "! " // new header
       builder ++= feature.getName
@@ -38,7 +27,6 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
     }
 
     // Lines (products)
-//    for (product <- pcm.getProducts.sortBy(_.getName)) {
     for (product <- container.getMetadata.getSortedProducts) {
 
       // Product name header
@@ -61,7 +49,63 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         }
       }
     }
+    builder.toString()
+  }
 
+  def exportWithFeatureAsLines(builder : StringBuilder, container : PCMContainer): String = {
+
+    // columns (product)
+    for (product <- container.getMetadata.getSortedProducts) {
+      builder ++= "! " // new header
+      builder ++= product.getName
+      builder ++= "\n"
+    }
+
+    // Lines (feature)
+    for (feature <- container.getMetadata.getSortedFeatures) {
+
+      // Feature name header
+      builder ++= "|-\n"
+      builder ++= "! "
+      builder ++= feature.getName
+      builder ++= "\n"
+
+      // Cells
+      for (feature <- container.getMetadata.getSortedFeatures) {
+        for (product <- container.getMetadata.getSortedProducts) {
+          for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
+            builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+            if (exportRawContent) {
+              builder ++= cell.getRawContent
+            } else {
+              builder ++= cell.getContent
+            }
+
+            builder ++= "\n"
+          }
+        }
+      }
+    }
+    builder.toString()
+  }
+
+  override def export(container: PCMContainer): String = {
+    val builder = new StringBuilder
+    val pcm = container.getPcm
+
+    builder ++= "{| class=\"wikitable\"\n" // new table
+    val title = pcm.getName
+    builder ++= "|+ " + title + "\n" // caption
+
+    // Headers
+    builder ++= "|-\n" // new row
+    builder ++= "|\n" // empty top left cell
+
+    if (container.getMetadata.getProductAsLines) {
+      builder ++= exportWithProductAsLines(builder, container)
+    } else {
+      builder ++= exportWithFeatureAsLines(builder, container)
+    }
     builder ++= "|}" //  end table
 
     builder.toString()

@@ -93,9 +93,10 @@ public class PCMAPI extends Controller {
         return ok();
     }
 
-    public static Result convert(String id, String type) {
+    public static Result convert(String id, String type, boolean productAsLines) {
         DatabasePCM dbPCM = Database.INSTANCE.get(id);
         PCMContainer pcmContainer = dbPCM.getPCMContainer();
+        pcmContainer.getMetadata().setProductAsLines(productAsLines);
         String data;
         if (type.equals("csv")) {
             data = csvExporter.export(pcmContainer);
@@ -113,6 +114,10 @@ public class PCMAPI extends Controller {
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
+        Boolean productAsLines = false;
+        if (dynamicForm.get("productAsLines") != null) {
+            productAsLines = true;
+        }
 
         JsValue data = null;
 
@@ -137,10 +142,6 @@ public class PCMAPI extends Controller {
                 fileContent = dynamicForm.field("file").value();
             }
 
-            Boolean productAsLines = false;
-            if (dynamicForm.get("productAsLines") != null) {
-                productAsLines = true;
-            }
             char separator = dynamicForm.get("separator").charAt(0);
             char quote = '"';
             String delimiter = dynamicForm.get("quote");
@@ -230,8 +231,13 @@ public class PCMAPI extends Controller {
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
+        Boolean productAsLines = false;
+        if (dynamicForm.get("productAsLines") != null) {
+            productAsLines = true;
+        }
         JsObject jsonContent = (JsObject) Json.parse(dynamicForm.field("file").value());
         PCMContainer container = createContainers(jsonContent).get(0);
+        container.getMetadata().setProductAsLines(productAsLines);
 
         if (type.equals("wikitext")) {
 
@@ -239,18 +245,13 @@ public class PCMAPI extends Controller {
 
         } else if (type.equals("csv")) {
 
-            Boolean productAsLines = false;
-            if (dynamicForm.get("productAsLines") != null) {
-                productAsLines = true;
-            }
             char separator = dynamicForm.get("separator").charAt(0);
             char quote = '"';
             String delimiter = dynamicForm.get("quote");
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-            CSVExporter csvExporter = new CSVExporter();
-            code = csvExporter.setSeparator(separator).setQuote(quote).export(container);
+            code = csvExporter.setProductAsLines(productAsLines).setSeparator(separator).setQuote(quote).export(container);
 
         } else {
             return internalServerError("File format not found or invalid.");

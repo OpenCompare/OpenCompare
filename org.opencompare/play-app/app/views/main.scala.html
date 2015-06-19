@@ -83,9 +83,12 @@
     <script>
         var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
+        var modalTemplatePath = '@routes.Assets.at("templates/")';
     </script>
 
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/navbar-controller.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/csvCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/wikipediaCtrl.js")'></script>
     <!--
      Directives
      -->

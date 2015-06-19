@@ -32,26 +32,14 @@ public class CSVExporter implements PCMExporter {
         return export(container.getPcm());
     }
 
-    private String export(PCM pcm) {
-        StringWriter stringWriter = new StringWriter();
-        CSVWriter csvWriter = new CSVWriter(stringWriter, separator, quote);
+    private List<String[]> exportProductAsLines(List<Product> products, List<Feature> features) {
+        List<String> headerLine = new ArrayList<>();
+        List<String[]> lines = new ArrayList<>();
 
-        // Export features
-        if (currentMetadata  == null) currentMetadata = new PCMMetadata(pcm);
-
-        List<Feature> features = currentMetadata.getSortedFeatures();
-        List<Product> products = currentMetadata.getSortedProducts();
-        List<String> featureLine = new ArrayList<>();
-
-        featureLine.add("Product");
-
+        headerLine.add("Product");
         for (Feature feature : features) {
-            featureLine.add(feature.getName());
+            headerLine.add(feature.getName());
         }
-
-        csvWriter.writeNext(featureLine.toArray(new String[featureLine.size()]));
-
-        // Export products
         for (Product product : products) {
             List<String> productLine = new ArrayList<>();
 
@@ -66,9 +54,57 @@ public class CSVExporter implements PCMExporter {
 
             }
 
-            csvWriter.writeNext(productLine.toArray(new String[productLine.size()]));
+            lines.add(productLine.toArray(new String[productLine.size()]));
+        }
+        return lines;
+    }
+
+    private List<String[]> exportFeatureAsLines(List<Product> products, List<Feature> features) {
+        List<String> headerLine = new ArrayList<>();
+        List<String[]> lines = new ArrayList<>();
+
+        headerLine.add("Feature");
+        for (Product product : products) {
+            headerLine.add(product.getName());
+        }
+        for (Feature feature : features) {
+
+            List<String> featureLine = new ArrayList<>();
+
+            featureLine.add(feature.getName());
+            for (Product product : products) {
+                Cell cell = product.findCell(feature);
+                if (cell == null) {
+                    featureLine.add("");
+                } else {
+                    featureLine.add(cell.getContent());
+                }
+
+            }
+
+            lines.add(featureLine.toArray(new String[featureLine.size()]));
+        }
+        return lines;
+    }
+
+    private String export(PCM pcm) {
+        StringWriter stringWriter = new StringWriter();
+        CSVWriter csvWriter = new CSVWriter(stringWriter, separator, quote);
+
+        // Export features
+        if (currentMetadata  == null) currentMetadata = new PCMMetadata(pcm);
+
+        List<Feature> features = currentMetadata.getSortedFeatures();
+        List<Product> products = currentMetadata.getSortedProducts();
+        List<String[]> lines =  new ArrayList<>();
+
+        if (currentMetadata.getProductAsLines()) {
+            lines = exportProductAsLines(products, features);
+        } else {
+            lines = exportFeatureAsLines(products, features);
         }
 
+        csvWriter.writeAll(lines);
 
         try {
             csvWriter.close();

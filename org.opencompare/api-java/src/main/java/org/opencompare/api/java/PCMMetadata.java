@@ -10,11 +10,13 @@ import java.util.*;
 public class PCMMetadata {
 
     protected PCM pcm;
+    protected Boolean productAsLines;
     protected Map<Product, Integer> productPositions;
     protected Map<Feature, Integer> featurePositions;
 
     public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
+        this.setProductAsLines(true);
         this.productPositions = new HashMap<Product, Integer>();
         this.featurePositions = new HashMap<Feature, Integer>();
     }
@@ -149,6 +151,14 @@ public class PCMMetadata {
 
     public PCM getPcm() {
         return pcm;
+    }
+
+    public Boolean getProductAsLines() {
+        return productAsLines;
+    }
+
+    public void setProductAsLines(Boolean productAsLines) {
+        this.productAsLines = productAsLines;
     }
 
 }
