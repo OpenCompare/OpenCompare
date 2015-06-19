@@ -8,7 +8,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -24,6 +24,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   val pcmExporter = new PCMModelExporter
   val csvExporter = new CSVExporter
   val csvLoader = new CSVLoader(new PCMFactoryImpl, ',', '"')
+  val mediaWikiAPI = new MediaWikiAPI("wikipedia.org")
 
   override def beforeAll() {
 
@@ -44,7 +45,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   }
   
   def parseFromTitle(title : String) : Page = {
-    val code = miner.getPageCodeFromWikipedia(title)
+    val code = mediaWikiAPI.getWikitextFromTitle("en", title)
     miner.mineInternalRepresentation(code, title)
   }
   

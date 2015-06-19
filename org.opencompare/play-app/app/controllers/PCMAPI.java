@@ -11,6 +11,7 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
+import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
@@ -43,10 +44,11 @@ public class PCMAPI extends Controller {
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
     private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
+    private static final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
 
     private static List<PCMContainer> loadWikitext(String title){
         // Parse article from Wikipedia
-        String code = miner.getPageCodeFromWikipedia(title);
+        String code = mediaWikiAPI.getWikitextFromTitle("en", title);
         List<PCMContainer> pcmContainers = miner.mine(code, title);
         return pcmContainers; // TODO: manage several matrices case inside the page
     }

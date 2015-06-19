@@ -1,5 +1,7 @@
 package org.opencompare.io.wikipedia.io
 
+import java.util.regex.Matcher
+
 import play.api.libs.json.Json
 
 import scalaj.http.Http
@@ -39,7 +41,7 @@ class MediaWikiAPI(
     val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
 
     if (jsonWikitext.nonEmpty) {
-      Json.stringify(jsonWikitext.head)
+      Json.stringify(jsonWikitext.head).replaceAll(Matcher.quoteReplacement("\\n"), "\n")
     } else {
       // TODO: Error
       ""

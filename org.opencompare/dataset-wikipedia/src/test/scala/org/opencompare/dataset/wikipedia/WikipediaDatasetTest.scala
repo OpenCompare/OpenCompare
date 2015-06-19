@@ -10,7 +10,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -28,6 +28,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
   var templateProcessor : WikiTextTemplateProcessor = _
   var miner : WikiTextLoader = _
+  val mediaWikiAPI = new MediaWikiAPI("wikipedia.org")
 
   val templateCacheFile = new File("resources/template-cache.csv")
 
@@ -82,7 +83,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
   }
 
   def parseFromTitle(title : String) : Page = {
-    val code = miner.getPageCodeFromWikipedia(title)
+    val code = mediaWikiAPI.getWikitextFromTitle("en", title)
     miner.mineInternalRepresentation(code, title)
   }
 
@@ -181,7 +182,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
           try {
 
             // Download Wikipedia page code
-            val code = miner.getPageCodeFromWikipedia(article)
+            val code = mediaWikiAPI.getWikitextFromTitle("en", article)
 
             // Save code
             writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", code)
