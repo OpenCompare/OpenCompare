@@ -4,7 +4,7 @@ import java.io.{File, FileWriter}
 
 import org.opencompare.api.java.io.HTMLExporter
 import org.opencompare.formalizer.extractor.CellContentInterpreter
-import org.opencompare.io.wikipedia.io.WikiTextLoader
+import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, MediaWikiAPI, WikiTextLoader}
 import org.scalatest.{FlatSpec, Matchers}
 import scala.collection.JavaConversions._
 
@@ -21,8 +21,11 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
 
     // Parse
-    val miner = new WikiTextLoader
-    val pcms = miner.mine(Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
+    val language = "en"
+    val url = "wikipedia.org"
+    val mediaWikiAPI = new MediaWikiAPI(url)
+    val miner = new WikiTextLoader(new WikiTextTemplateProcessor(mediaWikiAPI))
+    val pcms = miner.mine(language, Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
 
     val interpreter = new CellContentInterpreter
     val serializer = new HTMLExporter

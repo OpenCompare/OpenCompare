@@ -6,8 +6,10 @@ import org.opencompare.api.java.PCMContainer;
 import org.opencompare.io.wikipedia.export.CSVExporter;
 import org.opencompare.io.wikipedia.export.HTMLExporter;
 import org.opencompare.io.wikipedia.export.PCMModelExporter;
+import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
+import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.pcm.Page;
 
 import java.io.IOException;
@@ -26,12 +28,16 @@ public class WikipediaMinerTest {
 
     @Test
     public void test() throws IOException {
-        WikiTextLoader miner = new WikiTextLoader();
+        String wikipediaURL = "wikipedia.org";
+        MediaWikiAPI api = new MediaWikiAPI(wikipediaURL);
+        WikiTextLoader miner = new WikiTextLoader(new WikiTextTemplateProcessor(api));
+
 
         // Parse article from Wikipedia
         String title = "Comparison_of_Nikon_DSLR_cameras";
-        String code = miner.getPageCodeFromWikipedia(title);
-        Page page = miner.mineInternalRepresentation(code, title);
+        String language = "en";
+        String code = api.getWikitextFromTitle(language, title);
+        Page page = miner.mineInternalRepresentation(language, code, title);
 
         // HTML export
         HTMLExporter htmlExporter = new HTMLExporter();
@@ -46,6 +52,7 @@ public class WikipediaMinerTest {
         // PCM model export
         PCMModelExporter pcmExporter = new PCMModelExporter();
         List<PCMContainer> containers = pcmExporter.export(page);
+        System.out.println(page.getMatrices().size());
         assertFalse(containers.isEmpty());
 
         // Transform a list of PCM models into wikitext (markdown language for Wikipedia articles)

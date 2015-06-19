@@ -10,6 +10,7 @@ import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 import scala.collection.mutable.Stack
 
 class CellContentExtractor(
+                            val language : String,
                             val preprocessor : WikitextPreprocessor,
                             val templateProcessor : WikiTextTemplateProcessor,
                             val parser : WikitextParser
@@ -31,7 +32,7 @@ class CellContentExtractor(
 
     // Expand template with preprocessor
     val preprocessorAST = preprocessor.parseArticle(code, title)
-    val templatePreprocessor = new PreprocessVisitor(templateProcessor)
+    val templatePreprocessor = new PreprocessVisitor(language, templateProcessor)
     templatePreprocessor.go(preprocessorAST)
     val preprocessedCode = templatePreprocessor.getPreprocessedCode()
 
@@ -183,19 +184,23 @@ class CellContentExtractor(
     val it = attributes.iterator()
 
     while (it.hasNext() && significant) {
-      val attribute = it.next().asInstanceOf[WtXmlAttribute]
-      val name = attribute.getName().getAsString()
+      val attributeNode = it.next()
+      if (attributeNode.isInstanceOf[WtXmlAttribute]) {
+        val attribute = attributeNode.asInstanceOf[WtXmlAttribute]
+        val name = attribute.getName().getAsString()
 
-      val nodeToTextVisitor = new NodeToTextVisitor
-      nodeToTextVisitor.go(attribute.getValue())
-      val value = nodeToTextVisitor.getText
+        val nodeToTextVisitor = new NodeToTextVisitor
+        nodeToTextVisitor.go(attribute.getValue())
+        val value = nodeToTextVisitor.getText
 
-      significant = name match {
-        case "class" if value.contains("plainlinks") => false
-        case "class" if value.contains("flagicon") => false
-        case "style" if value.contains("display:none") => false
-        case _ => true
+        significant = name match {
+          case "class" if value.contains("plainlinks") => false
+          case "class" if value.contains("flagicon") => false
+          case "style" if value.contains("display:none") => false
+          case _ => true
+        }
       }
+
     }
 
     significant

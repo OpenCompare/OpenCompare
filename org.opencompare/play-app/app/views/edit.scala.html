@@ -22,10 +22,22 @@
     }
     <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-toolbar-controller.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/pcm-editor-controller.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/csvCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/wikitextCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/pcmEditorUtility.js")'></script>
+
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/TypesCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/FiltersCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/ToolbarCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/EditorCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/UndoRedoCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/CommandsCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/InitializerCtrl.js")'></script>
+
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/PcmImporterCtrl.js")'></script>
+
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/directives/embeddedEditor.js")'></script>
+
 }
 
 @toolbar = {
@@ -51,7 +63,7 @@
 
 @main(header, footer, toolbar) {
 <div>
-    <div open-compare-editor ng-controller="PCMEditorController">
+    <div open-compare-editor ng-controller="EditorCtrl">
     </div>
 </div>
 }
