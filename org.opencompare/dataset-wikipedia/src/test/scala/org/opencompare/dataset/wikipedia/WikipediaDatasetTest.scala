@@ -10,7 +10,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -28,8 +28,10 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
   val executionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(20))
   var templateProcessor : WikiTextTemplateProcessor = _
   var miner : WikiTextLoader = _
-
+  val mediaWikiAPI = new MediaWikiAPI("wikipedia.org")
+  val language = "en"
   val templateCacheFile = new File("resources/template-cache.csv")
+
 
   override def beforeAll() {
     super.beforeAll()
@@ -53,10 +55,10 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
       csvLoader.close()
 
-      templateProcessor = new WikiTextTemplateProcessor(initialCache)
+      templateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI, initialCache)
 
     } else {
-      templateProcessor = new WikiTextTemplateProcessor()
+      templateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI)
     }
 
     miner = new WikiTextLoader(templateProcessor)
@@ -78,17 +80,17 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     val reader= Source.fromFile(file)
     val code = reader.mkString
     reader.close
-    miner.mineInternalRepresentation(code, file)
+    miner.mineInternalRepresentation(language, code, file)
   }
 
   def parseFromTitle(title : String) : Page = {
-    val code = miner.getPageCodeFromWikipedia(title)
-    miner.mineInternalRepresentation(code, title)
+    val code = mediaWikiAPI.getWikitextFromTitle("en", title)
+    miner.mineInternalRepresentation(language, code, title)
   }
 
   def parseFromOfflineCode(title : String) : Page = {
     val code = Source.fromFile("input/" + title.replaceAll(" ", "_") + ".txt").getLines.mkString("\n")
-    miner.mineInternalRepresentation(code, title)
+    miner.mineInternalRepresentation(language, code, title)
   }
 
   def testArticle(title : String) : Page = {
@@ -181,7 +183,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
           try {
 
             // Download Wikipedia page code
-            val code = miner.getPageCodeFromWikipedia(article)
+            val code = mediaWikiAPI.getWikitextFromTitle("en", article)
 
             // Save code
             writeToFile("input/" + article.replaceAll(" ", "_") + ".txt", code)

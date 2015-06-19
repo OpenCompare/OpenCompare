@@ -11,6 +11,7 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
+import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
@@ -40,14 +41,16 @@ public class PCMAPI extends Controller {
     private static final CSVExporter csvExporter = new CSVExporter();
     private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private static final WikiTextExporter wikiExporter = new WikiTextExporter(true);
-    private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor();
+    private static final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
+    private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
-    private static final CellContentExtractor wikitextContentExtractor = new CellContentExtractor(miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
+
 
     private static List<PCMContainer> loadWikitext(String title){
+        String language = "en";
         // Parse article from Wikipedia
-        String code = miner.getPageCodeFromWikipedia(title);
-        List<PCMContainer> pcmContainers = miner.mine(code, title);
+        String code = mediaWikiAPI.getWikitextFromTitle(language, title);
+        List<PCMContainer> pcmContainers = miner.mine(language, code, title);
         return pcmContainers; // TODO: manage several matrices case inside the page
     }
 
@@ -254,6 +257,8 @@ public class PCMAPI extends Controller {
             String content = "";
 
             if ("wikipedia".equals(type)) {
+                String language = "en";
+                CellContentExtractor wikitextContentExtractor = new CellContentExtractor(language, miner.preprocessor(), wikitextTemplateProcessor, miner.parser());
 //                content = wikitextTemplateProcessor.expandTemplate(rawContent);
                 content = wikitextContentExtractor.extractCellContent(rawContent);
             } else {
