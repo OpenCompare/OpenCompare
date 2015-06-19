@@ -8,6 +8,13 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     var $elm;
     $scope.columnsFilters = [];
 
+    /* Initialize for filter */
+    $scope.gridOptions2 = {
+        onRegisterApi: function( gridApi) {
+            $scope.gridApi2 = gridApi
+        }
+    };
+
     // Slider filter
     $scope.slider = {
         options: {
@@ -66,6 +73,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 $scope.gridOptions2 = {
                     data: [],
                     enableColumnMenus: false,
+                    minWidth: 150,
                     onRegisterApi: function( gridApi) {
                         $scope.gridApi2 = gridApi;
                         if ($scope.columnsFilters[feature.name]){
@@ -87,23 +95,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                         $scope.gridOptions2.data.push({product: product});
                     });
                 }, 100);
-
-                var html = '' +
-                    '<div class="modal" id="modalCustomFilter" ng-style="{display: \'block\'}">' +
-                    '<div class="modal-dialog">' +
-                    '<div class="modal-content">' +
-                    '<div class="modal-header">' +
-                    'Filter' +
-                    '</div>' +
-                    '<div class="modal-body">' +
-                    '<div id="grid2" ui-grid="gridOptions2" ui-grid-selection class="modalGrid"></div>' +
-                    '</div>' +
-                    '<div class="modal-footer">' +
-                    '<button type="button" class="btn btn-primary" ng-click="closeFilter()">Filter</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '   </div>' +
-                    '</div>';
+                $('#modalStringFilter').modal('show');
                 break;
 
             case 'number':
@@ -125,11 +117,6 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 break;
 
         }
-
-        $elm = angular.element(html);
-        angular.element(document.body).prepend($elm);
-
-        $compile($elm)($scope);
     };
 
     $scope.closeFilter = function() {

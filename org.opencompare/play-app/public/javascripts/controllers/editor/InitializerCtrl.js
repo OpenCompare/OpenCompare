@@ -21,6 +21,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         rowHeight: 28
     };
 
+
     $scope.loading = false;
 
     $scope.gridOptions.onRegisterApi = function(gridApi){

@@ -209,7 +209,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     break;
                 case 'addFeature':
-                    var columnDef = newColumnDef(parameters[0], parameters[1]);
+                    var columnDef = $scope.newColumnDef(parameters[0], parameters[1]);
                     $scope.gridOptions.columnDefs.push(columnDef);
                     /* Initialize data */
                     var featureName = checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
