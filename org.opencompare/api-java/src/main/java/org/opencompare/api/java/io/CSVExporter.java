@@ -40,6 +40,7 @@ public class CSVExporter implements PCMExporter {
         for (Feature feature : features) {
             headerLine.add(feature.getName());
         }
+        lines.add(headerLine.toArray(new String[headerLine.size()]));
         for (Product product : products) {
             List<String> productLine = new ArrayList<>();
 
@@ -67,6 +68,7 @@ public class CSVExporter implements PCMExporter {
         for (Product product : products) {
             headerLine.add(product.getName());
         }
+        lines.add(headerLine.toArray(new String[headerLine.size()]));
         for (Feature feature : features) {
 
             List<String> featureLine = new ArrayList<>();
@@ -96,7 +98,7 @@ public class CSVExporter implements PCMExporter {
 
         List<Feature> features = currentMetadata.getSortedFeatures();
         List<Product> products = currentMetadata.getSortedProducts();
-        List<String[]> lines =  new ArrayList<>();
+        List<String[]> lines;
 
         if (currentMetadata.getProductAsLines()) {
             lines = exportProductAsLines(products, features);
@@ -111,7 +113,6 @@ public class CSVExporter implements PCMExporter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return stringWriter.toString();
     }
 }

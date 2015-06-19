@@ -123,10 +123,6 @@ public class PCMMetadata {
             if (metadata.pcm.equals(this.pcm)) {
                 for (Product product : this.pcm.getProducts()) {
                     if (getProductPosition(product) != metadata.getProductPosition(product)) {
-                        System.out.println(product.toString());
-                        System.out.println(getProductPosition(product));
-                        System.out.println(metadata.getProductPosition(product));
-                        System.out.println(metadata.toString());
                         return false;
                     }
                 }
