@@ -251,7 +251,7 @@ public class PCMAPI extends Controller {
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-            code = csvExporter.setProductAsLines(productAsLines).setSeparator(separator).setQuote(quote).export(container);
+            code = csvExporter.setSeparator(separator).setQuote(quote).export(container);
 
         } else {
             return internalServerError("File format not found or invalid.");
