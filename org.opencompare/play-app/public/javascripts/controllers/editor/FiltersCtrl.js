@@ -10,6 +10,8 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     /* Initialize for filter */
     $scope.gridOptions2 = {
+        minWidth: 150,
+        enableColumnMenus: false,
         onRegisterApi: function( gridApi) {
             $scope.gridApi2 = gridApi
         }
@@ -72,8 +74,8 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 $scope.ListToFilter.sort();
                 $scope.gridOptions2 = {
                     data: [],
-                    enableColumnMenus: false,
                     minWidth: 150,
+                    enableColumnMenus: false,
                     onRegisterApi: function( gridApi) {
                         $scope.gridApi2 = gridApi;
                         if ($scope.columnsFilters[feature.name]){
