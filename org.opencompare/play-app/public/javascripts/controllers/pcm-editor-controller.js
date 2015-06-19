@@ -184,9 +184,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         if(!featureType) {
             featureType = "string";
         }
-        columnsType[featureName] = featureType;
+        var codedFeatureName = convertStringToEditorFormat(featureName);
+        columnsType[codedFeatureName] = featureType;
         var columnDef = {
-            name: convertStringToEditorFormat(featureName),
+            name: codedFeatureName,
             displayName: featureName,
             enableSorting: true,
             enableHiding: false,
@@ -205,16 +206,15 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     icon: 'fa fa-eye',
                     action: function($event) {
                         $scope.gridOptions.columnDefs.forEach(function(featureData) {
-                            if(featureData.name === featureName) {
+                            if(featureData.name === codedFeatureName) {
                                 if(featureData.maxWidth == '20') {
                                     featureData.maxWidth = '*';
                                     featureData.minWidth = '150';
-                                    featureData.displayName = featureData.name;
+                                    featureData.displayName = convertStringToPCMFormat(featureData.name);
                                     featureData.enableFiltering = true;
                                     featureData.cellClass = function() {
                                         return 'showCell';
                                     };
-                                    $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                                 }
                                 else {
                                     featureData.maxWidth = '20';
@@ -224,10 +224,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                                     featureData.cellClass = function() {
                                         return 'hideCell';
                                     };
-                                    $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                                 }
                             }
                         });
+                        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     }
                 },
                 {
@@ -252,7 +252,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         $('#modalChangeType').modal('show');
                         $scope.oldFeatureName = featureName;
                         $scope.featureName = featureName;
-                        $scope.featureType = columnsType[featureName];
+                        $scope.featureType = columnsType[codedFeatureName];
                     }
                 },
                 {
@@ -262,7 +262,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                     },
                     icon: 'fa fa-trash-o',
                     action: function($event) {
-                        $scope.deleteFeature(featureName);
+                        $scope.deleteFeature(codedFeatureName);
                     }
                 }
             ],
@@ -294,11 +294,11 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)'><i class='fa fa-search'></i></button><button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm, cellValue) {
-                    if(columnsFilters[featureName]) {
+                    if(columnsFilters[codedFeatureName]) {
                         var inFilter = false;
                         var index = 0;
-                        while(!inFilter && index < columnsFilters[featureName].length) {
-                            if(cellValue == columnsFilters[featureName][index] || isEmptyCell(cellValue)) {
+                        while(!inFilter && index < columnsFilters[codedFeatureName].length) {
+                            if(cellValue == columnsFilters[codedFeatureName][index] || isEmptyCell(cellValue)) {
                                 inFilter = true;
                             }
                             index++;
@@ -313,7 +313,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
             case "number":
                 var filterLess = [];
                 filterLess.condition  = function (searchTerm, cellValue) {
-                    if(columnsFilters[featureName]) {
+                    if(columnsFilters[codedFeatureName]) {
                         return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term || isEmptyCell(cellValue));
                     }
                     else {
@@ -323,7 +323,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'><i class='fa fa-sliders'></i></button><button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'><i class='fa fa-close'></i></button></div>";
                 var filterGreater = [];
                 filterGreater.condition  = function (searchTerm, cellValue) {
-                    if(columnsFilters[featureName]) {
+                    if(columnsFilters[codedFeatureName]) {
                         return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term || isEmptyCell(cellValue));
                     }
                     else {
@@ -339,10 +339,10 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                 columnDef.filterHeaderTemplate="<div class='ui-grid-filter-container'><span class='filterLabel'>Yes&nbsp;</span><input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='1' ng-false-value='0'>&nbsp; &nbsp; <span class='filterLabel'>No&nbsp;</span><input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='2' ng-false-value='0'></div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm, cellValue) {
-                    if(columnsFilters[featureName] == 1) {
+                    if(columnsFilters[codedFeatureName] == 1) {
                         return getBooleanValue(cellValue) == "yes" || isEmptyCell(cellValue);
                     }
-                    else if(columnsFilters[featureName] == 2) {
+                    else if(columnsFilters[codedFeatureName] == 2) {
                         return getBooleanValue(cellValue) == "no" || isEmptyCell(cellValue);
                     }
                     else {
@@ -412,16 +412,16 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
         var isInt = 0;
         var isBool = 0;
         var isString = 0;
-
+        var codedFeatureName = convertStringToEditorFormat(featureName);
         while($scope.pcmData[rowIndex]) {
-            if($scope.pcmData[rowIndex][featureName]) {
-                if (!angular.equals(parseInt($scope.pcmData[rowIndex][featureName]), NaN)) {
+            if($scope.pcmData[rowIndex][codedFeatureName]) {
+                if (!angular.equals(parseInt($scope.pcmData[rowIndex][codedFeatureName]), NaN)) {
                     isInt++;
                 }
-                else if (isBooleanValue($scope.pcmData[rowIndex][featureName])) {
+                else if (isBooleanValue($scope.pcmData[rowIndex][codedFeatureName])) {
                     isBool++;
                 }
-                else if (!isEmptyCell($scope.pcmData[rowIndex][featureName])) {
+                else if (!isEmptyCell($scope.pcmData[rowIndex][codedFeatureName])) {
                     isString++;
                 }
             }
@@ -786,17 +786,18 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
     $scope.changeType = function () {
 
         var featureName = $scope.featureName;
+        var codedFeatureName = convertStringToEditorFormat(featureName);
         var found = false;
         for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
-            if($scope.gridOptions.columnDefs[i].name == featureName) {
-                var oldType = columnsType[featureName];
+            if($scope.gridOptions.columnDefs[i].name == codedFeatureName) {
+                var oldType = columnsType[codedFeatureName];
                 found = true;
                 $scope.gridOptions.columnDefs.splice(i, 1);
                 var colDef = newColumnDef(featureName, $scope.featureType);
                 $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
                 var parameters = [featureName, oldType, $scope.featureType];
                 $scope.newCommand('changeType', parameters);
-                columnsType[featureName] = $scope.featureType;
+                columnsType[codedFeatureName] = $scope.featureType;
             }
         }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
@@ -1278,7 +1279,7 @@ pcmApp.controller("PCMEditorController", function($rootScope, $scope, $http, $ti
                         $scope.gridApi2 = gridApi;
                         if (columnsFilters[feature.name]){
                             $timeout(function() {
-                                columnsFilters[feature.name].forEach( function( product ) {
+                                columnsFilters[feature.name].forEach( function( product ) {console.log('here');
                                     var entities = $scope.gridOptions2.data.filter( function( row ) {
                                         return row.product === product;
                                     });
