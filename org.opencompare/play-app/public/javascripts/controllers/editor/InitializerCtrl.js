@@ -63,6 +63,18 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         });
     };
 
+    $scope.setGridHeight = function() {
+
+        if($scope.pcmData) {
+            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+                $scope.height = $(window).height() * 2 / 3;
+            }
+            else{
+                $scope.height = $scope.pcmData.length * 28 + 90;
+            }
+        }
+    };
+
     /**
      *  Create a new ColumnDef for the ui-grid
      * @param featureName

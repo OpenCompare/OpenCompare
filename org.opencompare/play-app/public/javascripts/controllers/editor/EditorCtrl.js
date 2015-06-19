@@ -66,6 +66,18 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         })
     }
 
+    $scope.setGridHeight = function() {
+
+        if($scope.pcmData) {
+            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+                $scope.height = $(window).height() * 2 / 3;
+            }
+            else{
+                $scope.height = $scope.pcmData.length * 28 + 90;
+            }
+        }
+    };
+
     function convertGridToPCM(pcmData) {
         var pcm = factory.createPCM();
         pcm.name = $scope.pcm.name;
@@ -109,18 +121,6 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.scrollToFocus = function( rowIndex, colIndex ) {
 
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
-    };
-
-    $scope.setGridHeight = function() {
-
-        if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
-                $scope.height = $(window).height() * 2 / 3;
-            }
-            else{
-                $scope.height = $scope.pcmData.length * 28 + 90;
-            }
-        }
     };
 
     /**
