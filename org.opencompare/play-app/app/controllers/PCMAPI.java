@@ -245,12 +245,12 @@ public class PCMAPI extends Controller {
         } else if (type.equals("csv")) {
 
             char separator = dynamicForm.get("separator").charAt(0);
-            char quote = '"';
+            char quote = '\u0000'; // null char hack
             String delimiter = dynamicForm.get("quote");
             if (delimiter.length() != 0) {
                 quote = delimiter.charAt(0);
             }
-            code = csvExporter.setSeparator(separator).setQuote(quote).export(container);
+            code = csvExporter.export(container, separator, quote);
 
         } else {
             return internalServerError("File format not found or invalid.");
