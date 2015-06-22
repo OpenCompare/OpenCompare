@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.4</version>
+            <version>${scala.version}</version>
         </dependency>
 
         <dependency>
@@ -58,8 +58,8 @@
 
         <dependency>
             <groupId>org.scalaj</groupId>
-            <artifactId>scalaj-http_2.10</artifactId>
-            <version>0.3.16</version>
+            <artifactId>scalaj-http_${scala.version.minor}</artifactId>
+            <version>${scalahttp.version}</version>
         </dependency>
 
         <dependency>
@@ -72,19 +72,19 @@
 
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
-            <version>2.2.2</version>
+            <artifactId>scalatest_${scala.version.minor}</artifactId>
+            <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-json_2.10</artifactId>
+            <artifactId>play-json_${scala.version.minor}</artifactId>
             <version>${play2.version}</version>
             <exclusions>
                 <exclusion> <!-- different version of scala -->
                     <groupId>org.scala-stm</groupId>
-                    <artifactId>scala-stm_2.10</artifactId>
+                    <artifactId>scala-stm_${scala.version.minor}</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
