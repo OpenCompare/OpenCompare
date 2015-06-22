@@ -9,7 +9,7 @@ pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $htt
     };
 
     // Default values
-    $scope.title = ""
+    $scope.url = "";
     $scope.valid = function(){
 
         $scope.loading = true;
@@ -17,7 +17,7 @@ pcmApp.controller("WikipediaImportController", function($rootScope, $scope, $htt
         $http.post(
             "/api/import/wikipedia",
             {
-                title: $scope.title,
+                url: $scope.url
             })
             .success(function(response, status, headers, config) {
                 $scope.loading = false;
