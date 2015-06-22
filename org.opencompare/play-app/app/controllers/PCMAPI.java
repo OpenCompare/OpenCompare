@@ -253,7 +253,7 @@ public class PCMAPI extends Controller {
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
         Boolean productAsLines = false;
-        System.out.println(dynamicForm.get("productAsLines"));
+
         if (dynamicForm.get("productAsLines").equals("true")) {
             productAsLines = true;
         }
