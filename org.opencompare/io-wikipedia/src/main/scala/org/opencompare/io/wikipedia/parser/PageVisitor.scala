@@ -13,6 +13,7 @@ import scala.collection.mutable
  * Created by gbecan on 6/9/15.
  */
 class PageVisitor(
+                  val language : String,
                    val wikiConfig : WikiConfig,
                    val preprocessor : WikitextPreprocessor,
                    val templateProcessor : WikiTextTemplateProcessor,
@@ -144,7 +145,7 @@ class PageVisitor(
       page.title + " - " + sectionStack.top
     }
 
-    val tableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
+    val tableVisitor = new TableVisitor(language, wikiConfig, preprocessor, templateProcessor, parser)
     val matrices = tableVisitor.extract(wtTable, name)
     matrices.foreach(matrix => page.addMatrix(matrix))
   }

@@ -5,7 +5,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.SimplePCMElementComparator
 import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.io.{WikiTextExporter, WikiTextLoader}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
@@ -17,7 +17,10 @@ import scala.reflect.io.{Directory, File}
  */
 class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
-  val miner = new WikiTextLoader
+  val language = "en"
+  val url = "wikipedia.org"
+  val mediaWikiAPI = new MediaWikiAPI(url)
+  val miner = new WikiTextLoader(new WikiTextTemplateProcessor(mediaWikiAPI))
   val pcmFactory = new PCMFactoryImpl
   val pcmExporter = new PCMModelExporter
   val csvExporter = new CSVExporter
@@ -48,7 +51,7 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       val csvCode = Source.fromFile(csv).mkString
       val wikiCode = Source.fromFile(wiki).mkString
       val container1 = try {
-        miner.mine(wikiCode, "From Wikitext").get(0)
+        miner.mine(language, wikiCode, "From Wikitext").get(0)
       } catch {
         case e : Exception => {
           e.printStackTrace()
@@ -69,7 +72,7 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
       it should "be the same as the one created with it's wikitext representation" in {
         val wikiText = wikiTextExporter.export(container1)
-        val container2 = miner.mine(wikiText, "From Wikitext").get(0)
+        val container2 = miner.mine(language, wikiText, "From Wikitext").get(0)
 
         val diff = container1.getPcm.diff(container2.getPcm, new SimplePCMElementComparator)
         diff.hasDifferences shouldBe false

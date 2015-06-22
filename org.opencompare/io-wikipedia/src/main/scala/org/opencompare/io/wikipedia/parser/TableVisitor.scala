@@ -15,6 +15,7 @@ import scala.collection.mutable
  * Created by gbecan on 6/9/15.
  */
 class TableVisitor(
+                    val language : String,
                     val wikiConfig: WikiConfig,
                     val preprocessor : WikitextPreprocessor,
                     val templateProcessor : WikiTextTemplateProcessor,
@@ -30,7 +31,7 @@ class TableVisitor(
   private var colspan : Int = 1
 
   private val rawContentExtractor = new RawCellContentExtractor(wikiConfig)
-  private val contentExtractor = new CellContentExtractor(preprocessor, templateProcessor, parser)
+  private val contentExtractor = new CellContentExtractor(language, preprocessor, templateProcessor, parser)
 
   def extract(wtTable: WtTable, name : String) : List[Matrix] = {
     matrices = mutable.ListBuffer.empty[Matrix]
@@ -45,7 +46,7 @@ class TableVisitor(
   }
 
   override def visit(wtTable: WtTable): Unit = {
-    val recursiveTableVisitor = new TableVisitor(wikiConfig, preprocessor, templateProcessor, parser)
+    val recursiveTableVisitor = new TableVisitor(language, wikiConfig, preprocessor, templateProcessor, parser)
     val recursiveMatrices = recursiveTableVisitor.extract(wtTable, "") // TODO : name of the matrix
     matrices ++= recursiveMatrices
   }
