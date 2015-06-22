@@ -2,7 +2,7 @@
  * Created by gbecan on 3/26/15.
  */
 
-pcmApp.controller("PCMEditorToolbarController", function($rootScope, $scope) {
+pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
 
     $scope.saved = false;
     $scope.isInDatabase = false;

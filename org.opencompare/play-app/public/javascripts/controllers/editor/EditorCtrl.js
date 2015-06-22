@@ -46,12 +46,12 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
-        $rootScope.$broadcast('saved');
         $http.get("/api/get/" + id).
             success(function (data) {
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
                 $scope.metadata = data.metadata;
                 $scope.initializeEditor($scope.pcm, $scope.metadata);
+                $rootScope.$broadcast('saved');
             })
             .finally(function () {
                 $scope.loading = false;
