@@ -26,6 +26,8 @@ import scala.collection.Map;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
@@ -46,8 +48,7 @@ public class PCMAPI extends Controller {
     private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
 
-    private static List<PCMContainer> loadWikitext(String title){
-        String language = "en";
+    private static List<PCMContainer> loadWikitext(String language, String title){
         // Parse article from Wikipedia
         String code = mediaWikiAPI.getWikitextFromTitle(language, title);
         List<PCMContainer> pcmContainers = miner.mine(language, code, title);
@@ -112,7 +113,7 @@ public class PCMAPI extends Controller {
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
-        String title = dynamicForm.get("title");
+
         Boolean productAsLines = false;
         if (dynamicForm.get("productAsLines") != null) {
             productAsLines = true;
@@ -121,17 +122,35 @@ public class PCMAPI extends Controller {
         JsValue data = null;
 
         if (type.equals("wikipedia")) {
-
+            String url = dynamicForm.get("url");
             try {
-                List<PCMContainer> pcmContainers = PCMAPI.loadWikitext(title);
-                pcmContainer = pcmContainers.get(0);
-                data = Json.parse(jsonExporter.export(pcmContainer));
+                URL pageURL = new URL(url);
+
+                String host = pageURL.getHost();
+                String language = host.substring(0, host.indexOf('.'));
+                String file = pageURL.getFile();
+                if (file.endsWith("/")) {
+                    file = file.substring(0, file.length() - 1);
+                }
+                String title = file.substring(file.lastIndexOf('/') + 1);
+
+                List<PCMContainer> pcmContainers = PCMAPI.loadWikitext(language, title);
+                if (pcmContainers.size() > 0) {
+                    pcmContainer = pcmContainers.get(0);
+                    data = Json.parse(jsonExporter.export(pcmContainer));
+                } else {
+                    return notFound("No matrices were found in this Wikipedia page");
+                }
+            } catch(MalformedURLException e) {
+                return notFound("URL is not a valid Wikipedia page");
             } catch (Exception e) {
-                return notFound("The page '" + title + "' has not been found or is empty."); // TODO: manage the different kind of exceptions
+                e.printStackTrace();
+                return notFound("The page has not been found."); // TODO: manage the different kind of exceptions
             }
 
         } else if (type.equals("csv")) {
             // Options
+            String title = dynamicForm.get("title");
             String fileContent = "";
             try {
                 Http.MultipartFormData body = request().body().asMultipartFormData();
