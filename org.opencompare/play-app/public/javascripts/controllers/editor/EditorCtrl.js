@@ -229,39 +229,21 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.setEdit(args[0], args[1]);
     });
 
-    $scope.export = function (format) {
-        $scope.export_loading = true;
+    $scope.$on('export', function (event, args) {
         $scope.pcm = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
         var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
-        var pcmObject = {};
-        pcmObject.metadata = $scope.metadata;
-        pcmObject.pcm = jsonModel;
+        $scope.pcmObject = {};
+        $scope.pcmObject.metadata = $scope.metadata;
+        $scope.pcmObject.pcm = jsonModel;
 
-        $scope.export_content = "";
-        $http.post(
-            "/api/export/" + format,
-            {
-                file: JSON.stringify(pcmObject),
-                title: $scope.pcm.title,
-                productAsLines: true,
-                separator: ',',
-                quote: '"'
-            }, {
-                responseType: "text/plain",
-                transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
-                    return d;
-                }
-            })
-            .success(function(response, status, headers, config) {
-                $scope.export_content = response;
-            }).error(function(data, status, headers, config) {
-                console.log(data)
-            });
-    };
+        var ctrlArg = args.toUpperCase().charAt(0) + args.substring(1);
+        $modal.open({
+            templateUrl: modalTemplatePath + "modal" + ctrlArg + "Export.html",
+            controller: ctrlArg + "ExportController",
+            scope: $scope
+        })
 
-    $scope.$on('export', function (event, args) {
-        $scope.export(args);
     });
 
 });
