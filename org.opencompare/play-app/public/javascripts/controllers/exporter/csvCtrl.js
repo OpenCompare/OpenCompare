@@ -43,7 +43,5 @@ pcmApp.controller("CsvExportController", function($rootScope, $scope, $http, $mo
                 console.log(data)
             });
     }
-    // TODO : force method call to wait for options working
-    $scope.valid()
 });
 
