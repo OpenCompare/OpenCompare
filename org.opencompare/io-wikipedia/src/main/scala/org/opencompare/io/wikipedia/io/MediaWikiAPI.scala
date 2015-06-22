@@ -35,7 +35,7 @@ class MediaWikiAPI(
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
       "rvprop" -> "content"
-    ).asString
+    ).asString.body
 
     val jsonResult = Json.parse(result)
     val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
@@ -54,7 +54,7 @@ class MediaWikiAPI(
       "format" -> "json",
       "prop" -> "wikitext",
       "text" -> template
-    ).asString
+    ).asString.body
 
     val jsonResult = Json.parse(result)
     val jsonExpandedTemplate = jsonResult \ "expandtemplates" \ "wikitext"
