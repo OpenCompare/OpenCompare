@@ -22,7 +22,7 @@ pcmApp.controller("WikitextExportController", function($rootScope, $scope, $http
             "/api/export/wikitext",
             {
                 file: JSON.stringify($scope.pcmObject),
-                productAsLines: true,
+                productAsLines: $scope.productAsLines,
             }, {
                 responseType: "text/plain",
                 transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
@@ -37,8 +37,6 @@ pcmApp.controller("WikitextExportController", function($rootScope, $scope, $http
                 console.log(data)
             });
     }
-    // TODO : force method call to wait for options working
-    $scope.valid()
 });
 
 
