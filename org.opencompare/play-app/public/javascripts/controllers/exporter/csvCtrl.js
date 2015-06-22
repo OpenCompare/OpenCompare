@@ -11,21 +11,12 @@ pcmApp.controller("CsvExportController", function($rootScope, $scope, $http, $mo
     };
 
     // Default values
-    $scope.file = null;
     $scope.title = "";
     $scope.productAsLines = true;
     $scope.separator = ',';
     $scope.quote = '"';
-    $scope.export_content = "";
 
     $scope.valid = function(){
-        // Request must be a multipart form data !
-        var fd = new FormData();
-        fd.append('file', $scope.file);
-        fd.append('title', $scope.title);
-        fd.append('productAsLines', $scope.productAsLines);
-        fd.append('separator', $scope.separator);
-        fd.append('quote', $scope.quote);
 
         $scope.export_content = "";
         $scope.loading = true;
@@ -35,9 +26,9 @@ pcmApp.controller("CsvExportController", function($rootScope, $scope, $http, $mo
             {
                 file: JSON.stringify($scope.pcmObject),
                 title: $scope.pcm.title,
-                productAsLines: true,
-                separator: ',',
-                quote: '"'
+                productAsLines: $scope.productAsLines,
+                separator: $scope.separator,
+                quote: $scope.quote
             }, {
                 responseType: "text/plain",
                 transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
@@ -52,7 +43,5 @@ pcmApp.controller("CsvExportController", function($rootScope, $scope, $http, $mo
                 console.log(data)
             });
     }
-    // TODO : force method call to wait for options working
-    $scope.valid()
 });
 
