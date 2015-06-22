@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
@@ -128,7 +130,8 @@ public class PCMAPI extends Controller {
 
                 String host = pageURL.getHost();
                 String language = host.substring(0, host.indexOf('.'));
-                String file = pageURL.getFile();
+                String file = URLDecoder.decode(pageURL.getFile(), StandardCharsets.UTF_8.name());
+
                 if (file.endsWith("/")) {
                     file = file.substring(0, file.length() - 1);
                 }
