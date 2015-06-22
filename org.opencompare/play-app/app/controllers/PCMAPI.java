@@ -231,7 +231,7 @@ public class PCMAPI extends Controller {
         DynamicForm dynamicForm = Form.form().bindFromRequest();
         String title = dynamicForm.get("title");
         Boolean productAsLines = false;
-        if (dynamicForm.get("productAsLines") != null) {
+        if (dynamicForm.get("productAsLines").equals("true")) {
             productAsLines = true;
         }
         JsObject jsonContent = (JsObject) Json.parse(dynamicForm.field("file").value());
