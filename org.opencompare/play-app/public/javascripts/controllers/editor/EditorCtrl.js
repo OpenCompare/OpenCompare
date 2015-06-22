@@ -61,8 +61,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.setEdit(false, false);
         // Open the given modal
         $modal.open({
-            templateUrl: modalTemplatePath,
-            controller: modal + "Controller"
+            templateUrl: modalTemplatePath + "modal" + modal + ".html",
+            controller: modal + "Controller",
+            scope: $scope
         })
     }
 
@@ -221,7 +222,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.$on('import', function(event, args) {
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         $scope.metadata = args.metadata;
-        initializeEditor($scope.pcm, $scope.metadata);
+        $scope.initializeEditor($scope.pcm, $scope.metadata);
     });
 
     $scope.$on('setGridEdit', function(event, args) {

@@ -10,6 +10,9 @@ GET         /search                                   controllers.Application.se
 GET         /pcm/:id                                  controllers.Application.edit(id : String)
 GET         /create                                   controllers.Application.create()
 GET         /import/:ext                              controllers.Application.importer(ext : String)
+GET         /embedPCM/:id                             controllers.Application.embedPCM(id : String)
+GET         /embed                                    controllers.Application.embed()
+
 #POST    /preview                            controllers.Application.preview()
 
 # API

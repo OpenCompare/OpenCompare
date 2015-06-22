@@ -17,7 +17,6 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         enableCellSelection: false,
         enableCellEdit: false,
         headerRowHeight: 60,
-        enableVerticalScrollbar: 'ALWAYS',
         rowHeight: 28
     };
 
@@ -371,6 +370,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         }).success(function(data) {
             var commandParameters = [];
             $scope.pcmData[index][colName] = data;
+
             if (colName != "Product") {
                 commandParameters = [hashkey, colName, oldValue, data, oldRawValue, newRawValue];
             }

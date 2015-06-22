@@ -67,4 +67,18 @@ public class Application extends Controller {
         return notFound();
     }
 
+    public static Result embedPCM(String id) {
+        boolean exists = Database.INSTANCE.exists(id);
+        if (exists) {
+            return ok(views.html.embed.render(id, null, null));
+        } else {
+            return ok(views.html.embed.render(null, null, null));
+        }
+
+    }
+
+    public static Result embed() {
+        return ok(views.html.embed.render(null, null, null));
+    }
+
 }
