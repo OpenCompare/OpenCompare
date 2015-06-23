@@ -37,7 +37,7 @@ This github repository contains several projects :
     mvn clean install
 
 To compile the project you must define two environment variables:
-* JAVA\_HOME must point to a JDK with a version >= 7
+* JAVA\_HOME must point to a JDK with a version >= 8
 * PLAY2\_HOME must point to your install of Play! Framework. If you want to use the integrated install of the project, you can set the variable as follows: PLAY2\_HOME=/.../org.opencompare/play-app/
 
 The directory _org.opencompare/getting-started_ contains a minimal maven project that shows how to use the PCM API. This project is independent from the other projects and can be easily copied and modified.
