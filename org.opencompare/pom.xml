@@ -7,7 +7,7 @@
     <groupId>org.opencompare</groupId>
     <artifactId>opencompare</artifactId>
     <packaging>pom</packaging>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
 
     <properties>
         <metamodel.ecore>./metamodel/model/pcm.mm</metamodel.ecore>
@@ -18,7 +18,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <play2.version>2.3.4</play2.version>
-        <scala.version>2.10.4</scala.version>
+
+        <scala.version.minor>2.10</scala.version.minor>
+        <scala.version>${scala.version.minor}.4</scala.version>
+        <scalatest.version>2.2.2</scalatest.version>
+        <scalahttp.version>0.3.16</scalahttp.version>
     </properties>
 
 

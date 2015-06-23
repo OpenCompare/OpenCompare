@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.opencompare</groupId>
         <artifactId>opencompare</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,8 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
-            <version>2.2.2</version>
+            <artifactId>scalatest_${scala.version.minor}</artifactId>
+            <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

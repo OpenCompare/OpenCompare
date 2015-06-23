@@ -5,12 +5,12 @@
     <parent>
         <artifactId>opencompare</artifactId>
         <groupId>org.opencompare</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>play-app</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
 
 
     <packaging>play2</packaging>
@@ -38,38 +38,38 @@
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>api-java</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>api-java-impl</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
 
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>formalizer</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.opencompare.io</groupId>
             <artifactId>io-wikipedia</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <!-- Play Framework Dependencies -->
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play_2.10</artifactId>
+            <artifactId>play_${scala.version.minor}</artifactId>
             <version>${play.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-test_2.10</artifactId>
+            <artifactId>play-test_${scala.version.minor}</artifactId>
             <version>${play.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -77,7 +77,7 @@
         <!-- the Java API is in this artifact -->
         <dependency>
             <groupId>com.typesafe.play</groupId>
-            <artifactId>play-java_2.10</artifactId>
+            <artifactId>play-java_${scala.version.minor}</artifactId>
             <version>${play.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -114,7 +114,7 @@
                         <configuration>
                             <sources>
                                 <source>
-                                    ${project.build.directory}/scala-2.10/src_managed/main
+                                    ${project.build.directory}/scala-${scala.version.minor}/src_managed/main
                                 </source>
                             </sources>
                         </configuration>

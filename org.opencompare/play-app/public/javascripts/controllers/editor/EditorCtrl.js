@@ -242,7 +242,8 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $modal.open({
             templateUrl: modalTemplatePath + "modal" + ctrlArg + "Export.html",
             controller: ctrlArg + "ExportController",
-            scope: $scope
+            scope: $scope,
+            size: "lg"
         })
 
     });
