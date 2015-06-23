@@ -56,6 +56,13 @@
                         </div>
                         <button type="submit" class="btn btn-default">@Messages("button.search")</button>
                     </form>
+                    <li class="dropdown" ng-controller="I18nCtrl">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{currentLang}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click='changeLanguage("en")'>EN</a></li>
+                            <li><a ng-click='changeLanguage("fr")'>FR</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -74,6 +81,7 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-translate.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
@@ -81,11 +89,14 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
 
     <script>
-        var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider']);
+        var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
+        'ui.bootstrap', 'ui.slider',
+        'pascalprecht.translate']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
         var modalTemplatePath = '@routes.Assets.at("templates/")';
     </script>
 
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/I18nCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/csvCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/wikipediaCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/NavbarCtrl.js")'></script>

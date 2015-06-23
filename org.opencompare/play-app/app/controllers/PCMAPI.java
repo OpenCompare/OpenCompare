@@ -21,6 +21,7 @@ import org.opencompare.io.wikipedia.parser.CellContentExtractor;
 import play.api.libs.json.*;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -317,10 +318,13 @@ public class PCMAPI extends Controller {
     }
 
     public Result i18n(String language) {
-        Option<scala.collection.immutable.Map<String, String>> messages = jsMessages.allMessages().get(language);
-        if (messages.isDefined()) {
-            java.util.Map<String, String> javaMessages = mapAsJavaMap(messages.get());
-            return ok(play.libs.Json.toJson(javaMessages));
+
+//        if ("default".equals(language)) {
+//            return ok();
+//        } else
+        if (Messages.isDefined(language)) {
+            java.util.Map<String, String> messages = mapAsJavaMap(jsMessages.allMessages().apply(language));
+            return ok(play.libs.Json.toJson(messages));
         } else {
             return notFound("language unknown");
         }
