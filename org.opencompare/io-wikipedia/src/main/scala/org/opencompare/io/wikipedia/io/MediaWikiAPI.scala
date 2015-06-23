@@ -57,11 +57,16 @@ class MediaWikiAPI(
     ).asString.body
 
     val jsonResult = Json.parse(result)
-    val jsonExpandedTemplate = jsonResult \ "expandtemplates" \ "wikitext"
-    val expandedTemplate = jsonExpandedTemplate match {
-      case s : JsString => s.value
-      case _ => ""
+    val jsonExpandedTemplate = (jsonResult \ "expandtemplates" \ "wikitext").toOption
+    val expandedTemplate = if (jsonExpandedTemplate.isDefined) {
+      jsonExpandedTemplate.get match {
+        case s : JsString => s.value
+        case _ => ""
+      }
+    } else {
+      ""
     }
+
     expandedTemplate
   }
 
