@@ -147,7 +147,7 @@
     <div ng-controller="ToolbarCtrl">
         <div class="row">
             <div class="col-xs-9">
-                <h2 ng-show="!edit">{{pcm.name}}
+                <h2 ng-show="!edit && enableTitle">{{pcm.name}}
                     <a role="button" ng-show="enableEdit" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
                 </h2>
                 <form class="form-group" ng-show="edit && enableEdit">

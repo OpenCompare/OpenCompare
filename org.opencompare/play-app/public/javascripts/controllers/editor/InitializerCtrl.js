@@ -7,6 +7,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
     $scope.height = 300;
     $scope.enableEdit = true;
     $scope.enableExport = true;
+    $scope.enableTitle = true;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -67,7 +68,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
             else{
@@ -363,6 +364,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         }
         if(GetUrlValue('enableExport') == 'false'){
             $scope.enableExport = false;
+        }
+        if(GetUrlValue('enableTitle') == 'false'){
+            $scope.enableTitle = false;
         }
     }
 
