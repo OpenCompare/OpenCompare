@@ -1,7 +1,3 @@
-<!-- Jquery and boostrap not included in this file, have to import them for now, need a better solution -->
-<!-- Yep ! For now, we deactive them because it affects the behaviour of other parts of the page (e.g. dropdown menus)
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
 
 <div id="editor">
 
@@ -152,9 +148,9 @@
         <div class="row">
             <div class="col-xs-9">
                 <h2 ng-show="!edit">{{pcm.name}}
-                    <a role="button" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
+                    <a role="button" ng-show="enableEdit" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
                 </h2>
-                <form class="form-group" ng-show="edit">
+                <form class="form-group" ng-show="edit && enableEdit">
                     <div class="form-group col-lg-5">
                         <label for="pcm-name" class="control-label">Title:</label>
                         <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
@@ -162,14 +158,14 @@
                 </form>
             </div>
         </div>
-        <div class="row">
+        <div class="row" ng-show="enableExport || enableEdit">
             <div class="col-xs-9">
                 <button ng-show="!saved && edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
                 <button ng-show="saved && edit" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> Cancel</button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
                 <button ng-show="isInDatabase && edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
-                <div class="btn-group">
+                <div class="btn-group" ng-show="enableExport">
                     <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> Export <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"> Export csv</a></li>

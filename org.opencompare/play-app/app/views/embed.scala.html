@@ -69,31 +69,10 @@
 
         <script type='text/javascript' src='@routes.Assets.at("javascripts/directives/embeddedEditor.js")'></script>
     </head>
-    <body>
+    <body STYLE="background-color:transparent; margin:0; padding:0;">
         <div ng-app="pcmApp">
-
-            <nav class="navbar" ng-show="edit" role="navigation" ng-controller="PCMEditorToolbarController">
-                <div class="container-fluid" >
-                    <div class="editor-toolbar">
-                        <button ng-show="!saved" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                        <button ng-show="saved" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> Cancel</button>
-                        <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
-                        <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
-                        <button ng-show="isInDatabase" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> @Messages("navbar.export") <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.csv")</a></li>
-                                <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.wikipedia")</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
                 <div open-compare-editor ng-controller="EditorCtrl">
                 </div>
-
         </div>
 
     </body>

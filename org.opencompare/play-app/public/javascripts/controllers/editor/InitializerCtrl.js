@@ -2,9 +2,11 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location) {
 
     $scope.height = 300;
+    $scope.enableEdit = true;
+    $scope.enableExport = true;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -288,6 +290,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
 
         createColumns(pcm, metadata);
+        setOptions();
 
         $scope.setGridHeight();
     };
@@ -353,6 +356,17 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
     }
+
+    function setOptions() {
+        if(GetUrlValue('enableEdit') == 'false'){
+            $scope.enableEdit = false;
+        }
+        if(GetUrlValue('enableExport') == 'false'){
+            $scope.enableExport = false;
+        }
+    }
+
+
 
     /**
      * Get the visual representation of a raw data

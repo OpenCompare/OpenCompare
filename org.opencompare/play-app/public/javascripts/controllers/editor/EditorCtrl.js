@@ -1,10 +1,11 @@
 /**
  * Created by gbecan on 17/12/14.
  */
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location) {
 
     var subControllers = {
-        $scope: $scope
+        $scope: $scope,
+        $location: $location
     };
     $controller('UndoRedoCtrl', subControllers);
     $controller('CommandsCtrl', subControllers);
