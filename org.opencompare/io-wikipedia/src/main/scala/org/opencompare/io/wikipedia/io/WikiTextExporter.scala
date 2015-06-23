@@ -2,7 +2,7 @@ package org.opencompare.io.wikipedia.io
 
 import java.io.{InputStream, FileInputStream, BufferedInputStream}
 
-import org.opencompare.api.java.{PCMMetadata, PCMContainer, PCM}
+import org.opencompare.api.java.{Cell, PCMMetadata, PCMContainer, PCM}
 import org.opencompare.api.java.io.PCMExporter
 
 import scala.collection.JavaConversions._
@@ -37,16 +37,14 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
 
       // Cells
       for (feature <- container.getMetadata.getSortedFeatures) {
-        for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
-          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-          if (exportRawContent) {
-            builder ++= cell.getRawContent
-          } else {
-            builder ++= cell.getContent
-          }
-
-          builder ++= "\n"
+        val cell : Cell = product.findCell(feature)
+        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+        if (exportRawContent) {
+          builder ++= cell.getRawContent
+        } else {
+          builder ++= cell.getContent
         }
+        builder ++= "\n"
       }
     }
   }
@@ -70,19 +68,15 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
       builder ++= "\n"
 
       // Cells
-      for (feature <- container.getMetadata.getSortedFeatures) {
-        for (product <- container.getMetadata.getSortedProducts) {
-          for (cell <- product.getCells.find(_.getFeature.equals(feature))) {
-            builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-            if (exportRawContent) {
-              builder ++= cell.getRawContent
-            } else {
-              builder ++= cell.getContent
-            }
-
-            builder ++= "\n"
-          }
+      for (product <- container.getMetadata.getSortedProducts) {
+        val cell : Cell = product.findCell(feature)
+        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+        if (exportRawContent) {
+          builder ++= cell.getRawContent
+        } else {
+          builder ++= cell.getContent
         }
+        builder ++= "\n"
       }
     }
   }

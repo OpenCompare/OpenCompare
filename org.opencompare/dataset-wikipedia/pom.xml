@@ -5,7 +5,7 @@
     <parent>
         <artifactId>dataset</artifactId>
         <groupId>org.opencompare.dataset</groupId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
         <relativePath>../dataset/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -17,49 +17,49 @@
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>api-java</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>api-java-impl</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.opencompare.io</groupId>
             <artifactId>io-wikipedia</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.opencompare</groupId>
             <artifactId>formalizer</artifactId>
-            <version>0.3-SNAPSHOT</version>
+            <version>0.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.4</version>
+            <version>${scala.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.scalaj</groupId>
-            <artifactId>scalaj-http_2.10</artifactId>
-            <version>0.3.16</version>
+            <artifactId>scalaj-http_${scala.version.minor}</artifactId>
+            <version>${scalahttp.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.tototoshi</groupId>
-            <artifactId>scala-csv_2.10</artifactId>
+            <artifactId>scala-csv_${scala.version.minor}</artifactId>
             <version>1.2.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
-            <version>2.2.2</version>
+            <artifactId>scalatest_${scala.version.minor}</artifactId>
+            <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

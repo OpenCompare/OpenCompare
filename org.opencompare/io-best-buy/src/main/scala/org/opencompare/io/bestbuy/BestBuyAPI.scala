@@ -1,6 +1,6 @@
 package org.opencompare.io.bestbuy
 
-import scala.xml.Elem
+import scala.xml.{XML, Elem}
 import scalaj.http.{HttpException, Http, HttpOptions}
 
 class BestBuyAPI {
@@ -30,10 +30,10 @@ class BestBuyAPI {
 
     // Call API
     try {
-      Http(url)
+      XML.loadString(Http(url)
         .option(HttpOptions.connTimeout(10000))
         .option(HttpOptions.readTimeout(20000))
-        .asXml
+        .asString.body)
     } catch {
       case e : HttpException => callAPI(url)
     }

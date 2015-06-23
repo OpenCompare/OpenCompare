@@ -16,20 +16,16 @@ public class CSVExporter implements PCMExporter {
     char separator = ',';
     char quote = '"';
 
-    public CSVExporter setSeparator(char separator) {
-        this.separator = separator;
-        return this;
-    }
-
-    public CSVExporter setQuote(char quote) {
-        this.quote = quote;
-        return this;
-    }
-
     @Override
     public String export(PCMContainer container) {
         currentMetadata = container.getMetadata();
         return export(container.getPcm());
+    }
+
+    public String export(PCMContainer container, char separator, char quote) {
+        this.separator = separator;
+        this.quote = quote;
+        return export(container);
     }
 
     private List<String[]> exportProductAsLines(List<Product> products, List<Feature> features) {
