@@ -8,4 +8,4 @@ env: PLAY2_HOME=$TRAVIS_BUILD_DIR/org.opencompare/play-app/
 jdk:
   - oraclejdk8
 
-script: cd org.opencompare/ && mvn clean install
+script: cd org.opencompare/ && travis_wait mvn clean install
