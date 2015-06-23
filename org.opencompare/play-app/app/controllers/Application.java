@@ -1,20 +1,24 @@
 package controllers;
 
 import model.Database;
-import model.PCMInfo;
 import model.DatabasePCM;
+import model.PCMInfo;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import javax.inject.Singleton;
 import java.util.List;
 
+@Singleton
 public class Application extends Controller {
 
-    public static Result index() {
+
+    public Result index() {
         return ok(views.html.index.render());
     }
 
-    public static Result list(int limit, int page) {
+    public Result list(int limit, int page) {
         List<PCMInfo> pcms = Database.INSTANCE.list(limit, page);
         int count = (int) Database.INSTANCE.count();
         int nbPages = count / limit;
@@ -24,7 +28,7 @@ public class Application extends Controller {
         return ok(views.html.list.render(pcms, limit, page, nbPages));
     }
 
-    public static Result search(String request) {
+    public Result search(String request) {
 
         // TODO : find PCMs named "request" or with a product named "request"
         List<DatabasePCM> results = Database.INSTANCE.search(request);
@@ -33,7 +37,7 @@ public class Application extends Controller {
     }
 
 
-    public static Result view(String id) {
+    public Result view(String id) {
         DatabasePCM var = Database.INSTANCE.get(id);
 
         if (var.hasIdentifier()) {
@@ -44,7 +48,7 @@ public class Application extends Controller {
 
     }
 
-    public static Result edit(String id) {
+    public Result edit(String id) {
         boolean exists = Database.INSTANCE.exists(id);
         if (exists) {
             return ok(views.html.edit.render(id, null, null));
@@ -54,11 +58,11 @@ public class Application extends Controller {
 
     }
 
-    public static Result create() {
+    public Result create() {
         return ok(views.html.edit.render(null, null, null));
     }
 
-    public static Result importer(String ext) {
+    public Result importer(String ext) {
         if (ext.equals("csv")) {
             return ok(views.html.edit.render(null, null, "CsvImport"));
         } else if (ext.equals("wikipedia")) {
@@ -67,7 +71,7 @@ public class Application extends Controller {
         return notFound();
     }
 
-    public static Result embedPCM(String id) {
+    public Result embedPCM(String id) {
         boolean exists = Database.INSTANCE.exists(id);
         if (exists) {
             return ok(views.html.embed.render(id, null, null));
@@ -77,7 +81,7 @@ public class Application extends Controller {
 
     }
 
-    public static Result embed() {
+    public Result embed() {
         return ok(views.html.embed.render(null, null, null));
     }
 

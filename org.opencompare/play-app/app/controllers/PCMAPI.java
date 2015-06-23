@@ -3,6 +3,8 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import jsmessages.JsMessages;
+import jsmessages.JsMessagesFactory;
 import model.Database;
 import model.DatabasePCM;
 import org.opencompare.api.java.*;
@@ -22,8 +24,11 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import scala.Option;
 import scala.collection.Map;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,49 +38,59 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
+import static scala.collection.JavaConversions.mapAsJavaMap;
 
 
 /**
  * Created by gbecan on 08/01/15.
  * Updated by smangin on 21/05/15
  */
+@Singleton
 public class PCMAPI extends Controller {
 
-    private static final PCMFactory pcmFactory = new PCMFactoryImpl();
-    private static final KMFJSONExporter jsonExporter = new KMFJSONExporter();
-    private static final CSVExporter csvExporter = new CSVExporter();
-    private static final KMFJSONLoader jsonLoader = new KMFJSONLoader();
-    private static final WikiTextExporter wikiExporter = new WikiTextExporter(true);
-    private static final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
-    private static final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
-    private static final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
+    private final PCMFactory pcmFactory = new PCMFactoryImpl();
+    private final KMFJSONExporter jsonExporter = new KMFJSONExporter();
+    private final CSVExporter csvExporter = new CSVExporter();
+    private final KMFJSONLoader jsonLoader = new KMFJSONLoader();
+    private final WikiTextExporter wikiExporter = new WikiTextExporter(true);
+    private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
+    private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
+    private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
 
-    private static List<PCMContainer> loadWikitext(String language, String title){
+
+    private final JsMessages jsMessages;
+
+    @Inject
+    public PCMAPI(JsMessagesFactory jsMessagesFactory) {
+        jsMessages = jsMessagesFactory.all();
+    }
+
+    private List<PCMContainer> loadWikitext(String language, String title){
         // Parse article from Wikipedia
         String code = mediaWikiAPI.getWikitextFromTitle(language, title);
         List<PCMContainer> pcmContainers = miner.mine(language, code, title);
         return pcmContainers; // TODO: manage several matrices case inside the page
     }
 
-    private static List<PCMContainer> loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+    private List<PCMContainer> loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
     }
 
-    private static List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
+    private List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
     }
 
-    public static Result get(String id) {
+    public Result get(String id) {
         DatabasePCM dbPCM = Database.INSTANCE.get(id);
         String json = Database.INSTANCE.serializeDatabasePCM(dbPCM);
         return ok(json);
     }
 
-    public static Result save(String id) {
+    public Result save(String id) {
         String json = request().body().asJson().toString();
 
         String ipAddress = request().remoteAddress(); // TODO : For future work !
@@ -84,18 +99,18 @@ public class PCMAPI extends Controller {
         return ok();
     }
 
-    public static Result create() {
+    public Result create() {
         String json = request().body().asJson().toString();
         String id = Database.INSTANCE.create(json);
         return ok(id);
     }
 
-    public static Result remove(String id) {
+    public Result remove(String id) {
         Database.INSTANCE.remove(id);
         return ok();
     }
 
-    public static Result convert(String id, String type, boolean productAsLines) {
+    public Result convert(String id, String type, boolean productAsLines) {
         DatabasePCM dbPCM = Database.INSTANCE.get(id);
         PCMContainer pcmContainer = dbPCM.getPCMContainer();
         pcmContainer.getMetadata().setProductAsLines(productAsLines);
@@ -110,7 +125,7 @@ public class PCMAPI extends Controller {
         return ok(data);
     }
 
-    public static Result importer(String type) {
+    public Result importer(String type) {
         PCMContainer pcmContainer;
 
         // Getting form values
@@ -137,7 +152,7 @@ public class PCMAPI extends Controller {
                 }
                 String title = file.substring(file.lastIndexOf('/') + 1);
 
-                List<PCMContainer> pcmContainers = PCMAPI.loadWikitext(language, title);
+                List<PCMContainer> pcmContainers = loadWikitext(language, title);
                 if (pcmContainers.size() > 0) {
                     pcmContainer = pcmContainers.get(0);
                     data = Json.parse(jsonExporter.export(pcmContainer));
@@ -170,7 +185,7 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             try {
-                List<PCMContainer> pcmContainers = PCMAPI.loadCsv(fileContent, separator, quote, productAsLines);
+                List<PCMContainer> pcmContainers = loadCsv(fileContent, separator, quote, productAsLines);
                 pcmContainer = pcmContainers.get(0);
                 data = Json.parse(jsonExporter.export(pcmContainer));
             } catch (IOException e) {
@@ -195,7 +210,7 @@ public class PCMAPI extends Controller {
     /*
     Parse the json file and generate a container
      */
-    private static List<PCMContainer> createContainers(JsObject jsonContent) {
+    private List<PCMContainer> createContainers(JsObject jsonContent) {
         String jsonPCM = Json.stringify(jsonContent.value().apply("pcm"));
         List<PCMContainer> containers = jsonLoader.load(jsonPCM);
         JsObject jsonMetadata = (JsObject) jsonContent.value().apply("metadata");
@@ -208,7 +223,7 @@ public class PCMAPI extends Controller {
     /*
     Insert metadatas inside the container based on the json metadatas
      */
-    private static void saveMetadatas(PCMContainer container, JsObject jsonMetadata) {
+    private void saveMetadatas(PCMContainer container, JsObject jsonMetadata) {
         PCMMetadata metadata = container.getMetadata();
         PCM pcm = metadata.getPcm();
 
@@ -246,7 +261,7 @@ public class PCMAPI extends Controller {
         }
     }
 
-    public static Result exporter(String type) {
+    public Result exporter(String type) {
         String code;
 
         // Getting form values
@@ -281,7 +296,7 @@ public class PCMAPI extends Controller {
         return ok(code);
     }
 
-    public static Result extractContent() {
+    public Result extractContent() {
         JsonNode json = request().body().asJson();
         String type = json.get("type").asText();
         String rawContent = json.get("rawContent").asText();
@@ -299,5 +314,15 @@ public class PCMAPI extends Controller {
             return ok(content);
         }
         return badRequest();
+    }
+
+    public Result i18n(String language) {
+        Option<scala.collection.immutable.Map<String, String>> messages = jsMessages.allMessages().get(language);
+        if (messages.isDefined()) {
+            java.util.Map<String, String> javaMessages = mapAsJavaMap(messages.get());
+            return ok(play.libs.Json.toJson(javaMessages));
+        } else {
+            return notFound("language unknown");
+        }
     }
 }
