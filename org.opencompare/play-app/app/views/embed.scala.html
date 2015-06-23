@@ -50,7 +50,10 @@
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
 
 
-        <script>var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider'])</script>
+        <script>
+          var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider'])
+          var modalTemplatePath = '@routes.Assets.at("templates/")';
+        </script>
 
         <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
         <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
