@@ -318,15 +318,18 @@ public class PCMAPI extends Controller {
     }
 
     public Result i18n(String language) {
-
-//        if ("default".equals(language)) {
-//            return ok();
-//        } else
-        if (Messages.isDefined(language)) {
-            java.util.Map<String, String> messages = mapAsJavaMap(jsMessages.allMessages().apply(language));
-            return ok(play.libs.Json.toJson(messages));
+        if ("default".equals(language)) {
+            String defaultLanguage = lang().code();
+            return ok(getI18nMessages(defaultLanguage));
+        } else if (Messages.isDefined(language)) {
+            return ok(getI18nMessages(language));
         } else {
             return notFound("language unknown");
         }
+    }
+
+    private JsonNode getI18nMessages(String language) {
+        java.util.Map<String, String> messages = mapAsJavaMap(jsMessages.allMessages().apply(language));
+        return play.libs.Json.toJson(messages);
     }
 }
