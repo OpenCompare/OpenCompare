@@ -80,7 +80,7 @@
         <dependency>
             <groupId>com.typesafe.play</groupId>
             <artifactId>play-json_${scala.version.minor}</artifactId>
-            <version>${play2.version}</version>
+            <version>${play.version}</version>
             <exclusions>
                 <exclusion> <!-- different version of scala -->
                     <groupId>org.scala-stm</groupId>
@@ -99,6 +99,10 @@
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.0</version>
+                <configuration>
+                    <scalaCompatVersion>${scala.version.minor}</scalaCompatVersion>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>

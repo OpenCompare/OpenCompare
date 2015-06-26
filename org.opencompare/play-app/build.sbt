@@ -1,12 +1,15 @@
-import play.Project._
 import scala.xml.XML
 
 name := """OpenCompare"""
 
 version := XML.loadFile("pom.xml").\("version").text
 
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
+
+scalaVersion := XML.loadFile("../pom.xml").\\("scala.version").text
+
 libraryDependencies ++= Seq(
-  "org.webjars" %% "webjars-play" % "2.2.2",
+  "org.webjars" %% "webjars-play" % "2.4.0",
   "org.webjars" % "bootstrap" % "3.2.0",
   "org.webjars" % "angularjs" % "1.3.0",
   "org.webjars" % "angular-ui-bootstrap" % "0.13.0",
@@ -15,6 +18,3 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.11.4",
   "org.webjars" % "jquery-ui-themes" % "1.11.4")
 //  "org.webjars" % "handsontable" % "0.14.1"
-
-
-playJavaSettings

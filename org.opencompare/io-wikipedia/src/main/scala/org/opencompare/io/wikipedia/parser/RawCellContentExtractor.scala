@@ -15,18 +15,24 @@ import org.sweble.wom3.util.Wom3Toolbox
 class RawCellContentExtractor(val wikiConfig : WikiConfig) {
 
   private val trimPattern : Pattern = Pattern.compile("[\\s|!]*([\\s\\S]*?)\\s*")
+  private val nestedTableChecker : NestedTableChecker = new NestedTableChecker
 
   def extract(cell : WtNode) : String = {
 
-    val code = try {
-      val pageTitle = PageTitle.make(wikiConfig, "title")
-      val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
-      Wom3Toolbox.womToWmXPath(wom3Doc)
-    } catch {
-      case e : IllegalArgumentException => ""
+    if (nestedTableChecker.hasNestedTable(cell)) {
+      "" // FIXME : we do not support nested tables for now
+    } else {
+      val code = try {
+        val pageTitle = PageTitle.make(wikiConfig, "title")
+        val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
+        Wom3Toolbox.womToWmXPath(wom3Doc)
+      } catch {
+        case e : IllegalArgumentException => ""
+      }
+
+      trim(code)
     }
 
-    trim(code)
   }
 
   def trim(s: String): String = {
