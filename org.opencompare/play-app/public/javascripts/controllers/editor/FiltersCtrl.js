@@ -10,10 +10,9 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     /* Initialize for filter */
     $scope.gridOptions2 = {
-        minWidth: 400,
         enableColumnMenus: false,
         onRegisterApi: function( gridApi) {
-            $scope.gridApi2 = gridApi
+            $scope.gridApi2 = gridApi;
         }
     };
 
@@ -61,42 +60,24 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
+        $scope.gridOptions2.data = [];
         var type = $scope.columnsType[feature.name];
         switch(type) {
 
             case 'string':
-
+                $scope.gridApi2.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                 $scope.pcmData.forEach( function ( productData ) {
                     if ($scope.ListToFilter.indexOf(productData[feature.name] ) === -1 ) {
                         $scope.ListToFilter.push(productData[feature.name]);
                     }
                 });
                 $scope.ListToFilter.sort();
-                $scope.gridOptions2 = {
-                    data: [],
-                    minWidth: 400,
-                    enableColumnMenus: false,
-                    onRegisterApi: function( gridApi) {
-                        $scope.gridApi2 = gridApi;
-                        if ($scope.columnsFilters[feature.name]){
-                            $timeout(function() {
-                                $scope.columnsFilters[feature.name].forEach( function( product ) {console.log('here');
-                                    var entities = $scope.gridOptions2.data.filter( function( row ) {
-                                        return row.product === product;
-                                    });
-                                    if( entities.length > 0 ) {
-                                        $scope.gridApi2.selection.selectRow(entities[0]);
-                                    }
-                                });
-                            });
-                        }
-                    }
-                };
                 $timeout(function() {
                     $scope.ListToFilter.forEach(function (product) {
                         $scope.gridOptions2.data.push({product: product});
                     });
                 }, 100);
+
                 $('#modalStringFilter').modal('show');
                 break;
 
