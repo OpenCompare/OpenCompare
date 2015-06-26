@@ -52,7 +52,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
 
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
 
-            if(rawValue != newValue) {
+            if(rawValue && rawValue != newValue) {
                 $rootScope.$broadcast('modified');
                 $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
                     colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
@@ -70,6 +70,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         if($scope.pcmData) {
             if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
+            }
+            else if($scope.pcmData.length * 28 + 90 > $(window).height()) {
+                $scope.height = $(window).height();
             }
             else{
                 $scope.height = $scope.pcmData.length * 28 + 90;
