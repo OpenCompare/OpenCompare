@@ -143,14 +143,40 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalShare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Embed</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="options">Options:  </label><br />
+                    <input type="checkbox" name="title" value="enableTitle" ng-model="enableTitleOption"  ng-change="updateEmbedLink()"> Show title<br />
+                    <input type="checkbox" name="edit" value="enableEdit" ng-model="enableEditOption"  ng-change="updateEmbedLink()"> Allow edition<br />
+                    <input type="checkbox" name="export" value="enableExport" ng-model="enableExportOption"  ng-change="updateEmbedLink()"> Allow exportation<br />
+                    <input type="checkbox" name="share" value="enableShare" ng-model="enableShareOption"  ng-change="updateEmbedLink()"> Allow sharing<br />
+                    <br />
+                    <label for="code">Code:  </label>
+                    <textarea id="code" rows="4" cols="60" ng-model="embedLink">
+
+                    </textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Table editor -->
     <div ng-controller="ToolbarCtrl">
         <div class="row">
-            <div class="col-xs-9">
-                <h2 ng-show="!edit && enableTitle">{{pcm.name}}
-                    <a role="button" ng-show="enableEdit" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
+            <div class="col-xs-9" ng-show="enableTitle">
+                <h2 ng-show="!edit">{{pcm.name}}
                 </h2>
-                <form class="form-group" ng-show="edit && enableEdit">
+                <form class="form-group" ng-show="edit">
                     <div class="form-group col-lg-5">
                         <label for="pcm-name" class="control-label">Title:</label>
                         <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
@@ -160,19 +186,36 @@
         </div>
         <div class="row" ng-show="enableExport || enableEdit">
             <div class="col-xs-9">
-                <button ng-show="!saved && edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button ng-show="saved && edit" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> Cancel</button>
-                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
-                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
-                <button ng-show="isInDatabase && edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+
+                <button ng-show="!saved && edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i> Cancel</button>
+                <button ng-show="saved && edit" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i> Cancel</button>
+                <a role="button" ng-show="enableEdit && !edit" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
+
                 <div class="btn-group" ng-show="enableExport">
                     <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> Export <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"> Export csv</a></li>
                         <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport"> Export wikipedia</a></li>
                     </ul>
+
                 </div>
-                &nbsp;&nbsp;
+
+                <div class="btn-group" ng-show="enableShare">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i> Share <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#modalShare" ng-click="updateEmbedLink()"> Embed</a></li>
+                    </ul>
+
+                </div>
+
+                &nbsp;&nbsp;&nbsp;
+
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
+                <button ng-show="isInDatabase && edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+
+                &nbsp;&nbsp;&nbsp;
+
                 <button ng-show="edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></button>

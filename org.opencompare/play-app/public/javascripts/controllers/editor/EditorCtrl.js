@@ -7,11 +7,12 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope: $scope,
         $location: $location
     };
+    $controller('InitializerCtrl', subControllers);
     $controller('UndoRedoCtrl', subControllers);
     $controller('CommandsCtrl', subControllers);
     $controller('FiltersCtrl', subControllers);
     $controller('TypesCtrl', subControllers);
-    $controller('InitializerCtrl', subControllers);
+    $controller('ShareCtrl', subControllers);
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -76,11 +77,17 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             }
             else if($scope.pcmData.length * 28 + 90 > $(window).height() && GetUrlValue('enableEdit')) {
                 var height = 20;
-                if(GetUrlValue('enableExport') == 'true') {
+                if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
                     height += 40;
                 }
                 if(GetUrlValue('enableTitle') == 'true') {
-                    height += 60;
+                    if($scope.pcm.name.length > 30) {
+                        height += 120;
+                    }
+                    else {
+                        height += 60;
+                    }
+
                 }
                 if(GetUrlValue('enableEdit') == 'true') {
                     height += 40;

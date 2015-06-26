@@ -8,6 +8,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
     $scope.enableEdit = true;
     $scope.enableExport = true;
     $scope.enableTitle = true;
+    $scope.enableShare = true;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -330,11 +331,18 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableFiltering: false,
             enableSorting: false,
             enableHiding: false,
-            width: 30,
             enableColumnMenu: false,
             allowCellFocus: false,
             enableColumnMoving: false
         };
+        switch($scope.edit) {
+            case true:
+                toolsColumn.width = 30;
+                break;
+            case false:
+                toolsColumn.width = 0;
+                break;
+        }
 
         /* Second column for the products */
         var productsColumn = {
@@ -371,6 +379,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         }
         if(GetUrlValue('enableTitle') == 'false'){
             $scope.enableTitle = false;
+        }
+        if(GetUrlValue('enableShare') == 'false'){
+            $scope.enableShare = false;
         }
     }
 
