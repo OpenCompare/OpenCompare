@@ -340,7 +340,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 toolsColumn.width = 30;
                 break;
             case false:
-                toolsColumn.width = 0;
+                toolsColumn.width = 1;
                 break;
         }
 
