@@ -3,8 +3,6 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
-import jsmessages.JsMessages;
-import jsmessages.JsMessagesFactory;
 import model.Database;
 import model.DatabasePCM;
 import org.opencompare.api.java.*;
@@ -25,10 +23,8 @@ import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import scala.Option;
 import scala.collection.Map;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +35,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
-import static scala.collection.JavaConversions.mapAsJavaMap;
 
 
 /**
@@ -57,14 +52,8 @@ public class PCMAPI extends Controller {
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
+    private final I18nService i18nService = new I18nService();
 
-
-    private final JsMessages jsMessages;
-
-    @Inject
-    public PCMAPI(JsMessagesFactory jsMessagesFactory) {
-        jsMessages = jsMessagesFactory.all();
-    }
 
     private List<PCMContainer> loadWikitext(String language, String title){
         // Parse article from Wikipedia
@@ -329,7 +318,6 @@ public class PCMAPI extends Controller {
     }
 
     private JsonNode getI18nMessages(String language) {
-        java.util.Map<String, String> messages = mapAsJavaMap(jsMessages.allMessages().apply(language));
-        return play.libs.Json.toJson(messages);
+        return play.libs.Json.toJson(i18nService.getMessages(language));
     }
 }
