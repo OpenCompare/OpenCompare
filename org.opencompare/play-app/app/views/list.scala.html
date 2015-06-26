@@ -1,4 +1,4 @@
-@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)
+@(i18nService : I18nService, pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)
 
 @header = {
 }
@@ -33,7 +33,7 @@
 
 }
 
-@main(header, footer) {
+@main(i18nService)(header, footer) {
 
     @pagination
 

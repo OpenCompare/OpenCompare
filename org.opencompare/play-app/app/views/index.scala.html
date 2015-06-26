@@ -1,3 +1,5 @@
+@(i18nService : I18nService)
+
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/index.css")'>
 }
@@ -6,7 +8,7 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>
 }
 
-@main(header, footer){
+@main(i18nService)(header, footer){
 
 <div>
     <div class="row text-center">

@@ -1,4 +1,7 @@
-@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)
+@import controllers.I18nService
+
+@import javax.inject.Inject
+@(i18nService: I18nService)(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang)
 
 
 <!DOCTYPE html>
@@ -93,6 +96,7 @@
         'ui.bootstrap', 'ui.slider',
         'pascalprecht.translate']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
+        var translations = @{Html(i18nService.getMessagesJson(lang.code).toString())}
         var modalTemplatePath = '@routes.Assets.at("templates/")';
     </script>
 

@@ -1,9 +1,9 @@
-@(request : String, results : List[model.DatabasePCM])
+@(i18nService : I18nService, request : String, results : List[model.DatabasePCM])
 
 @header = {}
 @footer = {<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>}
 
-@main(header, footer) {
+@main(i18nService)(header, footer) {
 
         <div class="row">
             <div class="col-md-4 col-md-offset-4">

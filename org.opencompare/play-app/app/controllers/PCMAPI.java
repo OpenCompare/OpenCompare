@@ -52,7 +52,6 @@ public class PCMAPI extends Controller {
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
-    private final I18nService i18nService = new I18nService();
 
 
     private List<PCMContainer> loadWikitext(String language, String title){
@@ -307,17 +306,12 @@ public class PCMAPI extends Controller {
     }
 
     public Result i18n(String language) {
-        if ("default".equals(language)) {
-            String defaultLanguage = lang().code();
-            return ok(getI18nMessages(defaultLanguage));
-        } else if (Messages.isDefined(language)) {
-            return ok(getI18nMessages(language));
+        if (Messages.isDefined(language)) {
+            Controller.changeLang(language);
+            return ok("");
         } else {
             return notFound("language unknown");
         }
     }
 
-    private JsonNode getI18nMessages(String language) {
-        return play.libs.Json.toJson(i18nService.getMessages(language));
-    }
 }

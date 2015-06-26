@@ -1,4 +1,4 @@
-@(id : String, pcm : org.opencompare.api.java.PCM)
+@(i18nService : I18nService, id : String, pcm : org.opencompare.api.java.PCM)
 @import org.opencompare.api.java.PCM
 
 @header = {
@@ -13,7 +13,7 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/PcmViewerCtrl.js")'></script>
 }
 
-@main(header, footer) {
+@main(i18nService)(header, footer) {
 
     <div ng-controller="PCMViewerController">
         <h1 id="pcm-name">@pcm.getName() <a role="button" class="btn btn-primary" href="/edit/@id"><i class="fa fa-pencil"></i> @Messages("view.button.edit")</a></h1>
