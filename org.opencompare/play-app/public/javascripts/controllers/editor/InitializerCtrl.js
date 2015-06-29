@@ -53,8 +53,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         });
 
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-
-            if(rawValue && rawValue != newValue) {
+            if(newValue && rawValue != newValue) {
                 $rootScope.$broadcast('modified');
                 $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
                     colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
@@ -64,6 +63,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             }
             /* Update value based on visual representation and raw */
             $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
+
         });
     };
 
