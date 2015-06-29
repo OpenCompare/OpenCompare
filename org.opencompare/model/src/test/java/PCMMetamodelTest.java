@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Test;
 import org.kevoree.modeling.api.KMFContainer;
 import org.kevoree.modeling.api.json.JSONModelLoader;

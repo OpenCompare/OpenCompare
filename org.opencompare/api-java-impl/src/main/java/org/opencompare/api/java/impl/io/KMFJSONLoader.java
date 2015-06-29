@@ -30,19 +30,9 @@ public class KMFJSONLoader implements PCMLoader {
 
     @Override
     public List<PCMContainer> load(File file) throws IOException {
-        InputStream in = new BufferedInputStream(new FileInputStream(file));
-        List<KMFContainer> containers = loader.loadModelFromStream(in);
-
-        try {
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return load(containers);
-
-//        byte[] bytes = Files.readAllBytes(file.toPath());
-//        String json = new String(bytes, StandardCharsets.UTF_8);
-//        return load(json);
+        byte[] bytes = Files.readAllBytes(file.toPath());
+        String json = new String(bytes, StandardCharsets.UTF_8);
+        return load(json);
     }
 
     private List<PCMContainer> load(List<KMFContainer> containers) {
