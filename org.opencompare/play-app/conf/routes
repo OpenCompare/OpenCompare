@@ -23,7 +23,8 @@ GET         /api/remove/:id                           @controllers.PCMAPI.remove
 POST        /api/import/:ext                          @controllers.PCMAPI.importer(ext : String)
 POST        /api/export/:ext                          @controllers.PCMAPI.exporter(ext : String)
 POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
-GET         /api/i18n/:language                       @controllers.PCMAPI.i18n(language : String)
+GET         /api/i18n/:language                       @controllers.PCMAPI.setLang(language : String)
+GET         /api/i18n                                 @controllers.PCMAPI.i18n()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)

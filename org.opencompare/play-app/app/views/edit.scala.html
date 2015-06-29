@@ -1,4 +1,4 @@
-@(i18nService: I18nService, id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editor.css")'>
@@ -39,7 +39,7 @@
 
 }
 
-@main(i18nService)(header, footer) {
+@main(header, footer) {
 <div>
     <div open-compare-editor ng-controller="EditorCtrl">
     </div>

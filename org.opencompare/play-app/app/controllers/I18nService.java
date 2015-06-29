@@ -8,9 +8,12 @@ import play.mvc.Controller;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static scala.collection.JavaConversions.mapAsJavaMap;
+import static scala.collection.JavaConversions.setAsJavaSet;
 
 /**
  * Created by gbecan on 6/26/15.
@@ -36,6 +39,11 @@ public class I18nService {
         JsValue messages = allMessages.value().apply(language);
         return messages;
     }
+
+    public boolean isDefined(String language) {
+        return jsMessages.allMessages().contains(language);
+    }
+
 
 
 

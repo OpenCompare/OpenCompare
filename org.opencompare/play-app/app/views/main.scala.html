@@ -1,7 +1,5 @@
-@import controllers.I18nService
-
 @import javax.inject.Inject
-@(i18nService: I18nService)(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang)
+@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang)
 
 
 <!DOCTYPE html>
@@ -60,10 +58,10 @@
                         <button type="submit" class="btn btn-default">@Messages("button.search")</button>
                     </form>
                     <li class="dropdown" ng-controller="I18nCtrl">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{currentLang}} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click='changeLanguage("en")'>EN</a></li>
-                            <li><a ng-click='changeLanguage("fr")'>FR</a></li>
+                            <li><a ng-click='changeLanguage("en")'>en</a></li>
+                            <li><a ng-click='changeLanguage("fr")'>fr</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -96,7 +94,6 @@
         'ui.bootstrap', 'ui.slider',
         'pascalprecht.translate']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
-        var translations = @{Html(i18nService.getMessagesJson(lang.code).toString())}
         var modalTemplatePath = '@routes.Assets.at("templates/")';
     </script>
 

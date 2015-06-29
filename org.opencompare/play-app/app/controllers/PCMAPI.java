@@ -25,6 +25,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import scala.collection.Map;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +54,8 @@ public class PCMAPI extends Controller {
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
 
+    @Inject
+    private I18nService i18nService;
 
     private List<PCMContainer> loadWikitext(String language, String title){
         // Parse article from Wikipedia
@@ -305,12 +308,17 @@ public class PCMAPI extends Controller {
         return badRequest();
     }
 
-    public Result i18n(String language) {
-        if (Messages.isDefined(language)) {
-            Controller.changeLang(language);
+    public Result i18n() {
+        return ok(i18nService.getMessagesJson(lang().code()).toString());
+    }
+
+    public Result setLang(String language) {
+        if (i18nService.isDefined(language)) {
+            changeLang(language.toUpperCase());
             return ok("");
         } else {
-            return notFound("language unknown");
+            clearLang();
+            return ok("language unknown");
         }
     }
 
