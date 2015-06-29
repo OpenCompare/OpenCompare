@@ -72,10 +72,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
+            if($scope.pcmData.length * 28 + 100 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
-            else if($scope.pcmData.length * 28 + 90 > $(window).height() && GetUrlValue('enableEdit')) {
+            else if($scope.pcmData.length * 28 + 100 > $(window).height() && GetUrlValue('enableEdit')) {
                 var height = 20;
                 if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
                     height += 40;
@@ -95,7 +95,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.height = $(window).height()-height;
             }
             else{
-                $scope.height = $scope.pcmData.length * 28 + 90;
+                $scope.height = $scope.pcmData.length * 28 + 100;
             }
         }
     };

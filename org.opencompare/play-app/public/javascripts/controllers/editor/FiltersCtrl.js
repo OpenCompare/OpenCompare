@@ -7,6 +7,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     //Custom filters
     var $elm;
     $scope.columnsFilters = [];
+    $scope.productFilter = "";
 
     /* Initialize for filter */
     $scope.gridOptions2 = {
@@ -46,9 +47,17 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     };
 
     $scope.applyBooleanFilter = function(col, value){
-
-        $scope.columnsFilters[col.name] = value;
+        if($scope.columnsFilters[col.name] == value) {
+            $scope.columnsFilters[col.name] = 0;
+        }
+        else {
+            $scope.columnsFilters[col.name] = value;
+        }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    };
+
+    $scope.applyProductFilter = function() {
+        $scope.gridOptions.columnDefs[1].filter.term = $scope.productFilter;
     };
 
     $scope.isFilterOn = function(col) {

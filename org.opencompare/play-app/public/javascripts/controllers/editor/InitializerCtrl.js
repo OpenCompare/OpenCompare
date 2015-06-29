@@ -201,11 +201,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             case "string":
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container'>" +
-                    "   <button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)'>" +
-                    "       <i class='fa fa-search'></i>" +
+                    "   <button class='btn btn-primary fa fa-search btn-sm' ng-click='grid.appScope.showFilter(col)'>" +
                     "   </button>" +
-                    "   <button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'>" +
-                    "       <i class='fa fa-close'></i>" +
+                    "   <button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close'  ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
                     "</div>";
                 columnDef.filter.noTerm = true;
@@ -220,11 +218,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 };
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container'>" +
-                    "   <button class='btn btn-default btn-sm' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'>" +
-                    "       <i class='fa fa-sliders'></i>" +
+                    "   <button class='btn btn-primary btn-sm fa fa-sliders' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'>" +
                     "   </button>" +
-                    "   <button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-xs' ng-click='grid.appScope.removeFilter(col)'>" +
-                    "       <i class='fa fa-close'></i>" +
+                    "   <button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
                     "</div>";
                 var filterGreater = [];
@@ -237,12 +233,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 break;
             case "boolean":
                 var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
+                var columnFilterValue = $scope.columnsFilters[codedFeatureName];
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container'>" +
-                    "   <span class='filterLabel'>Yes&nbsp;</span>" +
-                    "   <input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='1' ng-false-value='0'>&nbsp; &nbsp; " +
-                    "   <span class='filterLabel'>No&nbsp;</span>" +
-                    "   <input type='checkbox' ng-change='grid.appScope.applyBooleanFilter(col, "+filterName+")' ng-model='"+filterName+"'  ng-true-value='2' ng-false-value='0'>" +
+                    "<button class='btn btn-primary btn-xs' ng-class='{\"btn btn-primary btn-xs \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-xs\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' >Yes</button>" +
+                    "<button class='btn btn-danger btn-flat' ng-class='{\"btn btn-danger btn-xs \" : grid.appScope.isFilterOn(col) == 2, \"btn btn-flat btn-danger btn-xs\": grid.appScope.isFilterOn(col) != 2}' btn-xs' ng-click='grid.appScope.applyBooleanFilter(col, 2)' >No</button>" +
                     "</div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm,  cellValue) {
@@ -325,7 +320,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         var toolsColumn = {
             name: ' ',
             cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
-            '<button role="button" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
+            '<button role="button" class="btn btn-flat btn-default" ng-click="grid.appScope.removeProduct(row)"><i class="fa fa-times"></i></button>'+
             '</div>',
             enableCellEdit: false,
             enableFiltering: false,
@@ -362,10 +357,12 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
 
         /* Specific filter for products */
         productsColumn.filter = [];
-        productsColumn.filter.condition = function(searchTerm, cellValue) {
-            return(cellValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1)
-        };
+        productsColumn.filter.term = '';
         productsColumn.filter.placeholder = 'Find';
+        productsColumn.filterHeaderTemplate="" +
+            "<div class='ui-grid-filter-container'>" +
+            "   <input type='text' class='form-control floating-label' ng-change='grid.appScope.applyProductFilter()' ng-model='grid.appScope.productFilter' placeholder='Find'"+
+            "</div>";
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
     }
