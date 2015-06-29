@@ -152,23 +152,23 @@
         <div class="row">
             <div class="col-xs-9">
                 <h2 ng-show="!edit">{{pcm.name}}
-                    <a role="button" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit' | translate }}</a>
+                    <a role="button" class="btn btn-primary" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'view.button.edit' | translate }}</a>
                 </h2>
                 <form class="form-group" ng-show="edit">
                     <div class="form-group col-lg-5">
-                        <label for="pcm-name" class="control-label">Title:</label>
-                        <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
+                        <label for="pcm-name" class="control-label">{{ 'edit.title' | translate }}:</label>
+                        <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='{{ "edit.title.placeholder" | translate }}'>
                     </div>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-9">
-                <button ng-show="!saved && edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                <button ng-show="saved && edit" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> Cancel</button>
-                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
-                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
-                <button ng-show="isInDatabase && edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
+                <button ng-show="!saved && edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> {{ 'edit.button.cancel' | translate }}</button>
+                <button ng-show="saved && edit" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> {{ 'edit.button.cancel' | translate }}</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> {{ 'edit.button.save' | translate }}</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> {{ 'edit.button.validate' | translate }}</button>
+                <button ng-show="isInDatabase && edit" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> {{ 'edit.button.remove' | translate }}</button>
                 <div class="btn-group">
                     <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> Export <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -177,8 +177,8 @@
                     </ul>
                 </div>
                 &nbsp;&nbsp;
-                <button ng-show="edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</button>
-                <button ng-show="edit" role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</button>
+                <button ng-show="edit" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> {{ 'edit.button.addfeature' | translate }}</button>
+                <button ng-show="edit" role="button" class="btn btn-default" ng-click="addProduct()"><i class="fa fa-plus"></i> {{ 'edit.button.addproduct' | translate }}</button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></button>
                 <button ng-show="edit" role="button" class="btn btn-default" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></button>
             </div>
