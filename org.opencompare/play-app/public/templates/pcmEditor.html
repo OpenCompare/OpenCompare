@@ -111,15 +111,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Filter</h4>
+                    <span class="help-block">Select a range to filter.</span>
                 </div>
                 <div class="modal-body">
                     <div ui-slider="slider.options" ng-model="filterSlider"></div>
-                    <p>{{filterSlider}}</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-raised btn-sm">From :</button>
+                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[0]"/>
+                        <button class="btn btn-primary btn-raised btn-sm">To :</button>
+                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[1]"/>
+                    </div>
+                    <p></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal"  ng-click="closeFilter()">Apply</button>
+                    <button type="button" class="btn btn-primary btn-raised btn-sm" data-dismiss="modal"  ng-click="closeFilter()">Apply</button>
                 </div>
             </div>
         </div>
