@@ -18,7 +18,6 @@ public class KMFJSONExporter implements PCMExporter {
     private DefaultPcmFactory factory = new DefaultPcmFactory();
     private JSONModelSerializer serializer = factory.createJSONSerializer();
     private PCMBase64Encoder encoder = new PCMBase64Encoder();
-    private PCMBase64Decoder decoder = new PCMBase64Decoder();
 
     @Override
     public String export(PCMContainer container) {
@@ -37,7 +36,7 @@ public class KMFJSONExporter implements PCMExporter {
             json = serializer.serialize(kPcm);
 
             // Decode PCM
-            decoder.decode(pcm);
+            encoder.decode(pcm);
         }
 
         return json;

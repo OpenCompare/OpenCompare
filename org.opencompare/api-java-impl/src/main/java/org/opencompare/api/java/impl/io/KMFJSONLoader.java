@@ -21,7 +21,7 @@ public class KMFJSONLoader implements PCMLoader {
 
     private DefaultPcmFactory kpcmFactory = new DefaultPcmFactory();
     private JSONModelLoader loader = kpcmFactory.createJSONLoader();
-    private PCMBase64Decoder decoder = new PCMBase64Decoder();
+    private PCMBase64Encoder encoder = new PCMBase64Encoder();
 
     @Override
     public List<PCMContainer> load(String json) {
@@ -40,7 +40,7 @@ public class KMFJSONLoader implements PCMLoader {
         List<PCMContainer> containersPCM = new ArrayList<>();
         for (KMFContainer container : containers) {
             PCM pcm = new PCMImpl((pcm.PCM) container);
-            decoder.decode(pcm);
+            encoder.decode(pcm);
             PCMContainer containerPCM = new PCMContainer();
             PCMMetadata metadata = new PCMMetadata(pcm);
             containerPCM.setPcm(pcm);
