@@ -1,4 +1,8 @@
-
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@flickr" />
+<meta name="twitter:title" content="Small Island Developing States Photo Submission" />
+<meta name="twitter:description" content="View the album on Flickr." />
+<meta name="twitter:image" content="https://farm6.staticflickr.com/5510/14338202952_93595258ff_z.jpg" />
 <div id="editor">
 
     <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -211,7 +215,8 @@
                     <div class="btn-group" ng-show="enableShare">
                         <a class="btn dropdown-toggle btn-flat btn-sm" data-toggle="dropdown"><i class="fa fa-share-alt"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#modalShare" ng-click="updateEmbedLink()"> {{ 'edit.button.embed' | translate }}</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modalShare" ng-click="updateEmbedLink()"><i class="fa fa-share"></i> {{ 'edit.button.embed' | translate }}</a></li>
+                            <li><a href="{{ twitterLink }}"><i class="fa fa-twitter"></i> {{ 'edit.button.twitter' | translate }}</a></li>
                         </ul>
 
                     </div>
