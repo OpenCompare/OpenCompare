@@ -1,4 +1,5 @@
-@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)
+@import javax.inject.Inject
+@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang)
 
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("images/logo_inverted_transparent.png")' height="25" width="51" > OpenCompare</a>
+                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("images/logo-inverted.svg")' height="25" width="51" > OpenCompare</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,12 +54,18 @@
                             <input name="request" type="text" class="form-control" placeholder='@Messages("button.search.placeholder")'>
                         </div>
                     </form>
+                    <li class="dropdown" ng-controller="I18nCtrl">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click='changeLanguage("en")'>en</a></li>
+                            <li><a ng-click='changeLanguage("fr")'>fr</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
                 </ul>
             </div><!-- /.navbar-collapse -->
-
     </nav>
 
     @toolbar
@@ -73,6 +80,7 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-translate.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
@@ -81,11 +89,15 @@
     <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
 
     <script>
-        var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider']);
+  
+        var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
+        'ui.bootstrap', 'ui.slider',
+        'pascalprecht.translate']);
         $("nav.navbar-fixed-top").autoHidingNavbar();
         var modalTemplatePath = '@routes.Assets.at("templates/")';
     </script>
 
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/I18nCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/csvCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/importer/wikipediaCtrl.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/NavbarCtrl.js")'></script>
