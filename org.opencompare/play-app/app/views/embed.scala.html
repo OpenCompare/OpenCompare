@@ -16,6 +16,7 @@
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))'>
         <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.css"))'>
         <link rel="stylesheet" href='@routes.WebJarAssets.at(WebJarAssets.locate("smoothness/jquery-ui.css"))'>
+        <link rel="stylesheet" href='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.css"))'>
         <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
         @if(id != null) {
             <script>
@@ -45,14 +46,17 @@
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-translate.min.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
         <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
-        <link rel='stylesheet' href='@routes.Assets.at("stylesheets/material.min.css")'>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>
 
 
         <script>
-          var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider'])
+           var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
+        'ui.bootstrap', 'ui.slider',
+        'pascalprecht.translate']);
           var modalTemplatePath = '@routes.Assets.at("templates/")';
         </script>
 
@@ -71,12 +75,11 @@
         <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/InitializerCtrl.js")'></script>
         <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/csvCtrl.js")'></script>
         <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/wikitextCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/material.min.js")'></script>
 
         <script type='text/javascript' src='@routes.Assets.at("javascripts/directives/embeddedEditor.js")'></script>
     </head>
     <body STYLE="background-color:transparent; margin:0; padding:0;">
-        <div ng-app="pcmApp">
+        <div ng-app="openCompare">
                 <div open-compare-editor ng-controller="EditorCtrl">
                 </div>
         </div>
