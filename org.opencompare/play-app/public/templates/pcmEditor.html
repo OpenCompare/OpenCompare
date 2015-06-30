@@ -6,14 +6,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.button.confirm" | translate }}</h4>
                 </div>
                 <div class="modal-body">
-                    Removing the comparison matrix is definitive and cannot be undone. Please, confirm.
+                    {{ "edit.warning.removeIsDefinitive" | translate }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">Remove</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remove()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -25,14 +25,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.confirm" | translate }}</h4>
                 </div>
                 <div class="modal-body">
-                    Cancel edition will lose all unsaved changes
+                    {{ "edit.warning.cancelWillLoseChanges" | translate }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false, true)">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.no" | translate }}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false, true)">{{ "edit.button.yes" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -44,21 +44,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Create a new Feature</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.createNewFeature" | translate }}</h4>
                 </div>
                 <div class="modal-body">
-                    <label for="featureName">Feature name: </label>
+                    <label for="featureName">{{ "edit.title.featureName" | translate }}: </label>
                     <input ng-model="featureName" type="text" id="featureName">
-                    <label for="featureType">Feature type: </label>
+                    <label for="featureType">{{ "edit.title.featureType" | translate }}: </label>
                     <select ng-model="featureType" name="featureType">
-                        <option value="string" selected="selected">String</option>
-                        <option value="number">Number</option>
-                        <option value="boolean">Boolean</option>
+                        <option value="string" selected="selected">{{ "edit.type.string" | translate }}</option>
+                        <option value="number">{{ "edit.type.number" | translate }}</option>
+                        <option value="boolean">{{ "edit.type.boolean" | translate }}</option>
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addFeature()">Create</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addFeature()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -69,15 +69,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Rename feature</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.renameFeature" | translate }}</h4>
                 </div>
                 <div class="modal-body">
                     <label for="featureName">Feature name: </label>
                     <input ng-model="featureName" type="text" id="featureName" value="{featureName}">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">Rename</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -88,19 +88,19 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Change feature type</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.renameFeature" | translate }}</h4>
                 </div>
                 <div class="modal-body">
-                    <label for="featureType">Feature type: </label>
+                    <label for="featureType">{{ "edit.title.featureType" | translate }}: </label>
                     <select ng-model="featureType">
-                        <option value="string">String</option>
-                        <option value="number">Number</option>
-                        <option value="boolean">Boolean</option>
+                        <option value="string">{{ "edit.type.string" | translate }}</option>
+                        <option value="number">{{ "edit.type.number" | translate }}</option>
+                        <option value="boolean">{{ "edit.type.boolean" | translate }}</option>
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="changeType()">Change</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="changeType()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -111,21 +111,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <span class="help-block">Select a range to filter.</span>
+                    <span class="help-block">{{ "edit.title.selectRange" | translate }}</span>
                 </div>
                 <div class="modal-body">
                     <div ui-slider="slider.options" ng-model="filterSlider"></div>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-raised btn-sm">From :</button>
+                        <button class="btn btn-primary btn-raised btn-sm">{{ "edit.title.from" | translate }} :</button>
                         <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[0]"/>
-                        <button class="btn btn-primary btn-raised btn-sm">To :</button>
+                        <button class="btn btn-primary btn-raised btn-sm">{{ "edit.title.to" | translate }} :</button>
                         <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[1]"/>
                     </div>
                     <p></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary btn-raised btn-sm" data-dismiss="modal"  ng-click="closeFilter()">Apply</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-primary btn-raised btn-sm" data-dismiss="modal"  ng-click="closeFilter()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -136,14 +136,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <span class="help-block">Select products to filter.</span>
+                    <span class="help-block">{{ "edit.title.selectProducts" | translate }} :</span>
                 </div>
                 <div class="modal-body">
                     <div id="grid2" ui-grid="gridOptions2" ui-grid-selection ui-grid-resize-columns ui-grid-auto-resize ></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary btn-raised btn-sm" data-dismiss="modal" ng-click="closeFilter()">Apply</button>
+                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-primary btn-raised btn-sm" data-dismiss="modal" ng-click="closeFilter()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -154,14 +154,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Embed</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.embed" | translate }}</h4>
                 </div>
                 <div class="modal-body">
                     <label for="options">Options:  </label><br />
-                    <input type="checkbox" name="title" value="enableTitle" ng-model="enableTitleOption"  ng-change="updateEmbedLink()"> Show title<br />
-                    <input type="checkbox" name="edit" value="enableEdit" ng-model="enableEditOption"  ng-change="updateEmbedLink()"> Allow edition<br />
-                    <input type="checkbox" name="export" value="enableExport" ng-model="enableExportOption"  ng-change="updateEmbedLink()"> Allow exportation<br />
-                    <input type="checkbox" name="share" value="enableShare" ng-model="enableShareOption"  ng-change="updateEmbedLink()"> Allow sharing<br />
+                    <input type="checkbox" name="title" value="enableTitle" ng-model="enableTitleOption"  ng-change="updateEmbedLink()"> {{ "edit.title.showTitle" | translate }}<br />
+                    <input type="checkbox" name="edit" value="enableEdit" ng-model="enableEditOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowEdition" | translate }}<br />
+                    <input type="checkbox" name="export" value="enableExport" ng-model="enableExportOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowExportation" | translate }}<br />
+                    <input type="checkbox" name="share" value="enableShare" ng-model="enableShareOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowSharing" | translate }}<br />
                     <br />
                     <label for="code">Code:  </label>
                     <textarea id="code" rows="4" cols="60" ng-model="embedLink">
@@ -169,7 +169,7 @@
                     </textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -185,8 +185,8 @@
                 <form class="form-horizontal" ng-show="edit">
                     <fieldset>
                     <div class="form-group col-lg-5">
-                        <label for="pcm-name" class="control-label">Edit Title:</label>
-                        <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='Edit title'>
+                        <label for="pcm-name" class="control-label">{{ "edit.title.placeholder" | translate }}:</label>
+                        <input id="pcm-name" class="form-control" type="text" ng-model="pcm.name" placeholder='{{ "edit.title.placeholder" | translate }}'>
                     </div>
                         </fieldset>
                 </form>
@@ -195,23 +195,23 @@
         <div class="row" ng-show="enableExport || enableEdit">
             <div class="col-xs-9" >
 
-                    <a ng-show="!saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i> Cancel</a>
-                    <a ng-show="saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i> Cancel</a>
-                    <a role="button" ng-show="enableEdit && !edit" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> Edit</a>
+                    <a ng-show="!saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
+                    <a ng-show="saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
+                    <a role="button" ng-show="enableEdit && !edit" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
                 <div class="btn-group">
 
                     <div class="btn-group" ng-show="enableExport">
-                        <a class="btn btn-default btn-flat dropdown-toggle btn-sm" data-toggle="dropdown"><i class="fa fa-download"></i> Export <span class="caret"></span></a>
+                        <a class="btn btn-default btn-flat dropdown-toggle btn-sm" data-toggle="dropdown"><i class="fa fa-download"></i> {{ 'edit.button.export' | translate }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"> Export csv</a></li>
-                            <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport"> Export wikipedia</a></li>
+                            <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"> {{ 'edit.button.export' | translate }} csv</a></li>
+                            <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport"> {{ 'edit.button.export' | translate }} wikipedia</a></li>
                         </ul>
                     </div>
 
                     <div class="btn-group" ng-show="enableShare">
-                        <a class="btn dropdown-toggle btn-flat btn-sm" data-toggle="dropdown"><i class="fa fa-share-alt"></i> Share <span class="caret"></span></a>
+                        <a class="btn dropdown-toggle btn-flat btn-sm" data-toggle="dropdown"><i class="fa fa-share-alt"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" data-toggle="modal" data-target="#modalShare" ng-click="updateEmbedLink()"> Embed</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modalShare" ng-click="updateEmbedLink()"> {{ 'edit.button.embed' | translate }}</a></li>
                         </ul>
 
                     </div>
@@ -219,14 +219,14 @@
                 </div>
 
                 <div class="btn-group">
-                    <a ng-show="edit" role="button" class="btn btn-default btn-sm" ng-class='{"btn btn-flat btn-default " : !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</a>
-                    <a ng-show="isInDatabase && edit" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</a>
-                    <a ng-show="edit" role="button" class="btn btn-flat btn-warning btn-sm" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</a>
+                    <a ng-show="edit" role="button" class="btn btn-default btn-sm" ng-class='{"btn btn-flat btn-default " : !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> {{ 'edit.button.save' | translate }}</a>
+                    <a ng-show="isInDatabase && edit" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> {{ 'edit.button.remove' | translate }}</a>
+                    <a ng-show="edit" role="button" class="btn btn-flat btn-warning btn-sm" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> {{ 'edit.button.validate' | translate }}</a>
                 </div>
 
                 <div class="btn-group">
-                    <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> Feature</a>
-                    <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="fa fa-plus"></i> Product</a>
+                    <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> {{ 'edit.button.addfeature' | translate }}</a>
+                    <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="fa fa-plus"></i> {{ 'edit.button.addproduct' | translate }}</a>
                     <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></a>
                     <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></a>
                 </div>
