@@ -8,12 +8,17 @@ import org.opencompare.api.java.io.PCMExporter;
 import org.kevoree.modeling.api.json.JSONModelSerializer;
 import pcm.factory.DefaultPcmFactory;
 
+import java.util.Base64;
+
 /**
  * Created by gbecan on 13/10/14.
  */
 public class KMFJSONExporter implements PCMExporter {
 
     private DefaultPcmFactory factory = new DefaultPcmFactory();
+    private JSONModelSerializer serializer = factory.createJSONSerializer();
+    private PCMBase64Encoder encoder = new PCMBase64Encoder();
+    private PCMBase64Decoder decoder = new PCMBase64Decoder();
 
     @Override
     public String export(PCMContainer container) {
@@ -24,12 +29,18 @@ public class KMFJSONExporter implements PCMExporter {
         String json = "";
 
         if (pcm instanceof PCMImpl) {
-            pcm.PCM kPcm = ((PCMImpl) pcm).getKpcm();
+            // Convert all strings to base64 to avoid encoding problems
+            encoder.encode(pcm);
 
-            JSONModelSerializer serializer = factory.createJSONSerializer();
+            // Serialize PCM
+            pcm.PCM kPcm = ((PCMImpl) pcm).getKpcm();
             json = serializer.serialize(kPcm);
+
+            // Decode PCM
+            decoder.decode(pcm);
         }
 
         return json;
     }
+
 }

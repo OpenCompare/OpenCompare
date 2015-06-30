@@ -6,6 +6,10 @@ import pcm.*;
 import pcm.factory.DefaultPcmFactory;
 import pcm.factory.PcmFactory;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -101,18 +105,5 @@ public class PCMMetamodelTest {
         assertTrue("load(serialize(pcm)) = pcm", pcm.deepModelEquals(loadedPCM));
     }
 
-    @Test
-    public void testUTF8Encoding() {
-
-        // Create PCM with non ASCII characters
-        PCM pcm = factory.createPCM();
-        pcm.setName("こんにちは");
-
-        // Serialize & load
-        String serializedPCM = serializer.serialize(pcm);
-        PCM loadedPCM = (PCM) loader.loadModelFromString(serializedPCM).get(0);
-
-        assertEquals("load(serialize(pcm)).name = pcm.name", pcm.getName(), loadedPCM.getName());
-    }
 
 }
