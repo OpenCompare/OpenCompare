@@ -105,37 +105,18 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
-            minWidth: 150,
-            maxWidth: '*',
             filter: {term: ''},
             menuItems: [
                 {
-                    title: 'Hide/Unhide',
-                    icon: 'fa fa-eye',
+                    title: 'Hide',
+                    icon: 'fa fa-eye-slash',
                     action: function($event) {
                         $scope.gridOptions.columnDefs.forEach(function(featureData) {
                             if(featureData.name === codedFeatureName) {
-                                if(featureData.maxWidth == '20') {
-                                    featureData.maxWidth = '*';
-                                    featureData.minWidth = '150';
-                                    featureData.displayName = convertStringToPCMFormat(featureData.name);
-                                    featureData.enableFiltering = true;
-                                    featureData.cellClass = function() {
-                                        return 'showCell';
-                                    };
-                                }
-                                else {
-                                    featureData.maxWidth = '20';
-                                    featureData.minWidth = '20';
-                                    featureData.displayName = "";
-                                    featureData.enableFiltering = false;
-                                    featureData.cellClass = function() {
-                                        return 'hideCell';
-                                    };
-                                }
+                                columnDef.visible = false;
+                                $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                             }
                         });
-                        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     }
                 },
                 {
@@ -171,6 +152,16 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                     icon: 'fa fa-trash-o',
                     action: function($event) {
                         $scope.deleteFeature(codedFeatureName);
+                    }
+                },
+                {
+                    title: 'Unhide everything',
+                    icon: 'fa fa-eye',
+                    action: function($event) {
+                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                            featureData.visible = true;
+                        });
+                        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                     }
                 }
             ],
@@ -352,7 +343,19 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
-            minWidth: 150
+            minWidth: 150,
+            menuItems: [
+                {
+                    title: 'Unhide everything',
+                    icon: 'fa fa-eye',
+                    action: function($event) {
+                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                            featureData.visible = true;
+                        });
+                        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+                    }
+                }
+            ]
         };
 
         /* Specific filter for products */
