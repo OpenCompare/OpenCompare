@@ -1,7 +1,7 @@
 /**
  * Created by gbecan on 17/12/14.
  */
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location, pcmApi) {
     $.material.init();
 
     var subControllers = {
@@ -43,6 +43,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
         $scope.pcm = loader.loadModelFromString(data).get(0);
+        pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = data.metadata;
         $scope.initializeEditor($scope.pcm, $scope.metadata);
     } else {
@@ -53,6 +54,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $http.get("/api/get/" + id).
             success(function (data) {
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
+                pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
                 $scope.metadata = data.metadata;
                 $scope.initializeEditor($scope.pcm, $scope.metadata);
                 $rootScope.$broadcast('saved');
@@ -139,6 +141,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             });
             index++;
         });
+
+        // Encode PCM in Base64
+        pcmApi.encodePCM(pcm);
+
         return pcm;
     }
 
@@ -245,6 +251,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
     $scope.$on('import', function(event, args) {
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
+        pcmApi.decodePCM($scope.pcm);
         $scope.metadata = args.metadata;
         $scope.initializeEditor($scope.pcm, $scope.metadata);
     });

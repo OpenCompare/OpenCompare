@@ -9,6 +9,7 @@ import org.opencompare.api.java.impl.io.KMFJSONLoader;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Database {
     public static Database INSTANCE = new Database();
     private KMFJSONLoader kmfLoader = new KMFJSONLoader();
     private KMFJSONExporter kmfSerializer = new KMFJSONExporter();
+    private Base64.Decoder base64Decoder = Base64.getDecoder();
 
     private DB db;
     private DBCollection pcms;
@@ -89,6 +91,7 @@ public class Database {
             if (dbID != null && dbPCM != null) {
                 String id = dbID.toString();
                 String name = dbPCM.get("name").toString();
+                name = new String(base64Decoder.decode(name.getBytes())); // Decode Base64 characters
                 PCMInfo info = new PCMInfo(id, name);
                 results.add(info);
             }
@@ -111,16 +114,9 @@ public class Database {
         }
     }
 
-    public void update(String id, String json) {
-        pcms.update(new BasicDBObject("_id", new ObjectId(id)), (DBObject) JSON.parse(json));
-    }
-
-    public String create(String json) {
-        DBObject newPCM = (DBObject) JSON.parse(json);
-        // TODO : check conformance of JSON with PCM metamodel and metadata format
-        WriteResult result = pcms.insert(newPCM);
-        String id = newPCM.get("_id").toString();
-        return id;
+    public void update(DatabasePCM databasePCM) {
+        DBObject dbPCMContainer = serializePCMContainer(databasePCM.getPCMContainer());
+        pcms.update(new BasicDBObject("_id", new ObjectId(databasePCM.getId())), dbPCMContainer);
     }
 
     public String create(PCMContainer pcmContainer) {
@@ -205,6 +201,7 @@ public class Database {
 
         // Serialize PCM
         String pcmInJSON = kmfSerializer.export(pcmContainer);
+
         DBObject dbPCM = (DBObject) JSON.parse(pcmInJSON);
 
         // Serialize metadata

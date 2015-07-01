@@ -25,7 +25,6 @@ public class LoadPCMs {
         File dir = new File(path);
 
         KMFJSONLoader loader = new KMFJSONLoader();
-        CellContentInterpreter interpreter = new CellContentInterpreter();
 
         for (File file : dir.listFiles(new FilenameFilter() {
             @Override
@@ -39,7 +38,6 @@ public class LoadPCMs {
             pcm.setName(pcm.getName().replaceAll("_", " "));
 
             if (pcm.isValid()) {
-                interpreter.interpretCells(pcm);
                 Database.INSTANCE.create(pcmContainer);
             }
         }

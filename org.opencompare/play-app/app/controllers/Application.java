@@ -38,17 +38,6 @@ public class Application extends Controller {
     }
 
 
-    public Result view(String id) {
-        DatabasePCM var = Database.INSTANCE.get(id);
-
-        if (var.hasIdentifier()) {
-            return ok(views.html.view.render(var.getId(), var.getPCMContainer().getPcm()));
-        } else {
-            return ok(views.html.edit.render(null, null, null));
-        }
-
-    }
-
     public Result edit(String id) {
         boolean exists = Database.INSTANCE.exists(id);
         if (exists) {

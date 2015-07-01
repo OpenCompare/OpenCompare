@@ -18,5 +18,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "ui-grid" % "3.0.0-rc.22",
   "org.webjars" % "bootstrap-material-design" % "0.3.0",
   "org.webjars" % "jquery-ui" % "1.11.4",
-  "org.webjars" % "jquery-ui-themes" % "1.11.4")
+  "org.webjars" % "jquery-ui-themes" % "1.11.4",
+  "org.webjars.bower" % "angular-utf8-base64" % "0.0.5" exclude("org.webjars.bower", "angular")
+)
 //  "org.webjars" % "handsontable" % "0.14.1"

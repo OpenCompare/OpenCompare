@@ -9,7 +9,7 @@ pcmApp.controller("WikitextExportController", function($rootScope, $scope, $http
     };
 
     // Default values
-    $scope.title = ""
+    $scope.title = "";
     $scope.export_content = "";
     $scope.productAsLines = true;
 
@@ -22,7 +22,7 @@ pcmApp.controller("WikitextExportController", function($rootScope, $scope, $http
             "/api/export/wikitext",
             {
                 file: JSON.stringify($scope.pcmObject),
-                productAsLines: $scope.productAsLines,
+                productAsLines: $scope.productAsLines
             }, {
                 responseType: "text/plain",
                 transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
