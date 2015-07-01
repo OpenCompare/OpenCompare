@@ -89,7 +89,6 @@
             <version>${play.version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -130,7 +129,7 @@
                 </executions>
             </plugin>
 
-           <!--<plugin>
+           <plugin>
                 <groupId>com.samaxes.maven</groupId>
                 <artifactId>minify-maven-plugin</artifactId>
                 <version>1.7.4</version>
@@ -146,23 +145,30 @@
                                 <cssSourceFile>editor.css</cssSourceFile>
                             </cssSourceFiles>
                             <cssFinalFile>openCompareEditor.css</cssFinalFile>
-                            <cssTargetDir>WEB-INF/classes/public/editor</cssTargetDir>
+                            <cssTargetDir>WEB-INF/classes/public/stylesheets</cssTargetDir>
                             <jsSourceDir>public/javascripts/</jsSourceDir>
                             <jsSourceFiles>
+                                <jsSourceFile>controllers/editor/EmbedCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/EditorCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/CommandsCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/FiltersCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/InitializerCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/TypesCtrl.js</jsSourceFile>
                                 <jsSourceFile>controllers/editor/UndoRedoCtrl.js</jsSourceFile>
+                                <jsSourceFile>controllers/editor/ToolbarCtrl.js</jsSourceFile>
+                                <jsSourceFile>controllers/exporter/csvCtrl.js</jsSourceFile>
+                                <jsSourceFile>controllers/exporter/wikitextCtrl.js</jsSourceFile>
+                                <jsSourceFile>controllers/importer/csvCtrl.js</jsSourceFile>
+                                <jsSourceFile>controllers/importer/wikipediaCtrl.js</jsSourceFile>
                                 <jsSourceFile>pcmEditorUtility.js</jsSourceFile>
                                 <jsSourceFile>directives/embeddedEditor.js</jsSourceFile>
+                                <jsSourceFile>directives/fileModel.js</jsSourceFile>
                                 <jsSourceFile>pcm-api.js</jsSourceFile>
                                 <jsSourceFile>kmf/pcm.min.js</jsSourceFile>
                                 <jsSourceFile>slider.js</jsSourceFile>
                             </jsSourceFiles>
-                            <jsFinalFile>openComparEditor.js</jsFinalFile>
-                            <jsTargetDir>WEB-INF/classes/public/editor</jsTargetDir>
+                            <jsFinalFile>openCompareEditor.js</jsFinalFile>
+                            <jsTargetDir>../web/classes/main/META-INF/resourcesWEB-INF/classes/public/javascripts/</jsTargetDir>
                             <jsEngine>CLOSURE</jsEngine>
                             <closureLanguage>ECMASCRIPT5</closureLanguage>
                         </configuration>
@@ -171,7 +177,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
         </plugins>
 

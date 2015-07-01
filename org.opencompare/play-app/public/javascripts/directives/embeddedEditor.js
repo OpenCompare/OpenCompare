@@ -7,3 +7,9 @@
             templateUrl: '/assets/templates/pcmEditor.html'
         };
     });
+
+    pcmApp.directive('embedOpenCompareEditor', function() {
+        return {
+            templateUrl: '../templates/pcmEditor.html'
+        };
+    });

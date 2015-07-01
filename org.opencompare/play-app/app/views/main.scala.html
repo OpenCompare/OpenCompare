@@ -3,7 +3,7 @@
 
 
 <!DOCTYPE html>
-<html ng-app="pcmApp">
+<html ng-app="openCompare">
 <head>
     <title>OpenCompare</title>
 
@@ -15,6 +15,7 @@
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))'>
     <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.css"))'>
     <link rel="stylesheet" href='@routes.WebJarAssets.at(WebJarAssets.locate("smoothness/jquery-ui.css"))'>
+    <link rel="stylesheet" href='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.css"))'>
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
 
     @header
@@ -23,7 +24,7 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarController">
+    <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation" ng-controller="NavbarController">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -49,25 +50,23 @@
                           <li><a target="_self" href="/import/wikipedia">@Messages("navbar.import.wikipedia")</a></li>
                       </ul>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
                         <div class="form-group">
                             <input name="request" type="text" class="form-control" placeholder='@Messages("button.search.placeholder")'>
                         </div>
-                        <button type="submit" class="btn btn-default">@Messages("button.search")</button>
                     </form>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click='changeLanguage("en")'>en</a></li>
-                            <li><a ng-click='changeLanguage("fr")'>fr</a></li>
+                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm">en</button></li>
+                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm">fr</button></li>
                         </ul>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-
+        </div>
     </nav>
 
     @toolbar
@@ -86,11 +85,13 @@
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/jquery.bootstrap-autohidingnavbar.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
 
     <script>
-        var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
+  
+        var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
         'ui.bootstrap', 'ui.slider',
         'pascalprecht.translate']);
         $("nav.navbar-fixed-top").autoHidingNavbar();

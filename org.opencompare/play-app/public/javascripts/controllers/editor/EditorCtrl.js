@@ -1,16 +1,19 @@
 /**
  * Created by gbecan on 17/12/14.
  */
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location) {
+    $.material.init();
 
     var subControllers = {
-        $scope: $scope
+        $scope: $scope,
+        $location: $location
     };
+    $controller('InitializerCtrl', subControllers);
     $controller('UndoRedoCtrl', subControllers);
     $controller('CommandsCtrl', subControllers);
     $controller('FiltersCtrl', subControllers);
     $controller('TypesCtrl', subControllers);
-    $controller('InitializerCtrl', subControllers);
+    $controller('ShareCtrl', subControllers);
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -46,6 +49,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
+        $scope.updateShareLinks();
         $http.get("/api/get/" + id).
             success(function (data) {
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
@@ -70,11 +74,30 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+            if($scope.pcmData.length * 28 + 100 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
+            else if($scope.pcmData.length * 28 + 100 > $(window).height() && GetUrlValue('enableEdit')) {
+                var height = 20;
+                if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
+                    height += 40;
+                }
+                if(GetUrlValue('enableTitle') == 'true') {
+                    if($scope.pcm.name.length > 30) {
+                        height += 120;
+                    }
+                    else {
+                        height += 60;
+                    }
+
+                }
+                if(GetUrlValue('enableEdit') == 'true') {
+                    height += 40;
+                }
+                $scope.height = $(window).height()-height;
+            }
             else{
-                $scope.height = $scope.pcmData.length * 28 + 90;
+                $scope.height = $scope.pcmData.length * 28 + 100;
             }
         }
     };
@@ -139,6 +162,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;
+                $scope.updateShareLinks();
                 console.log("model created with id=" + id);
                 $rootScope.$broadcast('saved');
             });
