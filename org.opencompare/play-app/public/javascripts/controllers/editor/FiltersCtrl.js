@@ -65,6 +65,18 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         return $scope.columnsFilters[col.name];
     };
 
+    $scope.checkFilterSliderMin = function() {
+        if($scope.filterSlider[0] > $scope.filterSlider[1]){
+            $scope.filterSlider[0] = $scope.filterSlider[1];
+        }
+    };
+
+    $scope.checkFilterSliderMax = function() {
+        if($scope.filterSlider[1] < $scope.filterSlider[0]){
+            $scope.filterSlider[1] = $scope.filterSlider[0];
+        }
+    };
+
     $scope.showFilter = function(feature) {
 
         $scope.featureToFilter = feature.name;

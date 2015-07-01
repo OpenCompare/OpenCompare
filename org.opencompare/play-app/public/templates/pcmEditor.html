@@ -121,9 +121,9 @@
                     <div ui-slider="slider.options" ng-model="filterSlider"></div>
                     <div class="btn-group">
                         <button class="btn btn-primary btn-raised btn-sm">{{ "edit.title.from" | translate }} :</button>
-                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[0]"/>
+                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-blur="checkFilterSliderMin()" ng-model="filterSlider[0]"/>
                         <button class="btn btn-primary btn-raised btn-sm">{{ "edit.title.to" | translate }} :</button>
-                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-model="filterSlider[1]"/>
+                        <input type="number" class="btn btn-default btn-raised btn-sm" ng-blur="checkFilterSliderMax()" ng-model="filterSlider[1]"/>
                     </div>
                     <p></p>
                 </div>
