@@ -3,6 +3,7 @@
  */
 pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location) {
     $.material.init();
+
     var subControllers = {
         $scope: $scope,
         $location: $location
@@ -48,6 +49,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
+        $scope.updateShareLinks();
         $http.get("/api/get/" + id).
             success(function (data) {
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
@@ -160,6 +162,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;
+                $scope.updateShareLinks();
                 console.log("model created with id=" + id);
                 $rootScope.$broadcast('saved');
             });

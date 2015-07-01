@@ -213,7 +213,7 @@
                     </div>
 
                     <div class="btn-group" ng-show="enableShare">
-                        <a class="btn dropdown-toggle btn-flat btn-sm" data-toggle="dropdown" ng-click="updateShareLinks()"><i class="fa fa-share-alt"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
+                        <a class="btn dropdown-toggle btn-flat btn-sm" ng-disabled="!activeShareButton" data-toggle="dropdown" ng-click="updateShareLinks()"><i class="fa fa-share-alt"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#" data-toggle="modal" data-target="#modalShare"><i class="fa fa-share"></i> {{ 'edit.button.embed' | translate }}</a></li>
                             <li><a href="{{ emailLink }}"><i class="fa fa-envelope-o"></i> Email</a></li>
