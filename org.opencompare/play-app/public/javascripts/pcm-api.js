@@ -73,13 +73,11 @@ pcmApp.service('pcmApi', function(base64) {
     };
 
     this.encodePCM = function (pcm) {
-        console.log("encoding");
         this.base64PCMVisitor(pcm, true);
         return pcm;
     };
 
     this.decodePCM = function (pcm) {
-        console.log("decoding");
         this.base64PCMVisitor(pcm, false);
         return pcm;
     };

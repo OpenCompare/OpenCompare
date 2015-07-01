@@ -131,7 +131,7 @@ public class PCMAPI extends Controller {
     }
 
     public Result importer(String type) {
-        PCMContainer pcmContainer;
+        List<PCMContainer> pcmContainers;
 
         // Getting form values
         DynamicForm dynamicForm = Form.form().bindFromRequest();
@@ -140,8 +140,6 @@ public class PCMAPI extends Controller {
         if (dynamicForm.get("productAsLines") != null) {
             productAsLines = true;
         }
-
-        JsValue data = null;
 
         if (type.equals("wikipedia")) {
             String url = dynamicForm.get("url");
@@ -157,11 +155,8 @@ public class PCMAPI extends Controller {
                 }
                 String title = file.substring(file.lastIndexOf('/') + 1);
 
-                List<PCMContainer> pcmContainers = loadWikitext(language, title);
-                if (pcmContainers.size() > 0) {
-                    pcmContainer = pcmContainers.get(0);
-                    data = Json.parse(jsonExporter.export(pcmContainer));
-                } else {
+                pcmContainers = loadWikitext(language, title);
+                if (pcmContainers.isEmpty()) {
                     return notFound("No matrices were found in this Wikipedia page");
                 }
             } catch(MalformedURLException e) {
@@ -190,25 +185,25 @@ public class PCMAPI extends Controller {
                 quote = delimiter.charAt(0);
             }
             try {
-                List<PCMContainer> pcmContainers = loadCsv(fileContent, separator, quote, productAsLines);
-                pcmContainer = pcmContainers.get(0);
-                data = Json.parse(jsonExporter.export(pcmContainer));
+                pcmContainers = loadCsv(fileContent, separator, quote, productAsLines);
+                PCMContainer pcmContainer = pcmContainers.get(0);
+                pcmContainer.getPcm().setName(title);
             } catch (IOException e) {
                 return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
-            pcmContainer.getPcm().setName(title);
+
 
         } else {
             return internalServerError("File format not found or invalid.");
         }
 
-        // Normalizing and validating the matrix, just in case
-        pcmContainer.getPcm().normalize(pcmFactory);
-        //if (!pcm.isValid()) { FIXME: does not work ??
-        //    return internalServerError("This matrix is not valid !");
-        //}
+        // Normalize the matrices
+        for (PCMContainer pcmContainer : pcmContainers) {
+            pcmContainer.getPcm().normalize(pcmFactory);
+        }
 
-        String jsonResult = Database.INSTANCE.serializePCMContainerToJSON(pcmContainer);
+        // Serialize result
+        String jsonResult = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers);
         return ok(jsonResult);
     }
 

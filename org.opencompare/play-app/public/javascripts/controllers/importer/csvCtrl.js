@@ -37,7 +37,8 @@ pcmApp.controller("CsvImportController", function($rootScope, $scope, $http, $mo
             })
             .success(function(response, status, headers, config) {
                 $scope.loading = false;
-                $rootScope.$broadcast('import', response);
+                var pcmContainer = response[0];
+                $rootScope.$broadcast('import', pcmContainer);
                 $modalInstance.close();
             }).error(function(data, status, headers, config) {
                 $scope.loading = false;

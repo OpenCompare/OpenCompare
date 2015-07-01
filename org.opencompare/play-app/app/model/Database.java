@@ -240,9 +240,15 @@ public class Database {
         return JSON.serialize(dbContainer);
     }
 
-    public String serializePCMContainerToJSON(PCMContainer pcmContainer) {
-        DBObject dbContainer = serializePCMContainer(pcmContainer);
-        return JSON.serialize(dbContainer);
+    public String serializePCMContainersToJSON(List<PCMContainer> pcmContainers) {
+        List<DBObject> dbContainers = new ArrayList<>();
+
+        for (PCMContainer pcmContainer : pcmContainers) {
+            DBObject dbContainer = serializePCMContainer(pcmContainer);
+            dbContainers.add(dbContainer);
+        }
+
+        return JSON.serialize(dbContainers);
     }
 
 }
