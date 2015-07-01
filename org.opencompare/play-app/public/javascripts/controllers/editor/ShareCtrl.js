@@ -23,6 +23,12 @@ pcmApp.controller("ShareCtrl", function($rootScope, $scope, $http, $timeout, uiG
         $scope.googleLink = 'https://plus.google.com/share?url=http://opencompare.org/pcm/'+id;
         $scope.redditLink = 'http://www.reddit.com/submit?url=http://opencompare.org/pcm/'+id;
     };
+
+    $scope.updateEmbedLink = function() {
+        $scope.embedLink = '<iframe src="http://'+window.location.hostname+':'+window.location.port+'/embedPCM/'+id
+            +'?enableEdit='+$scope.enableEditOption+'&enableExport='+$scope.enableExportOption+'&enableTitle='+$scope.enableTitleOption+'&enableShare='+$scope.enableShareOption
+            +'" scrolling="no"  width="100%" height="700px" style="border:none;"></iframe>';
+    }
 });
 
 

@@ -106,6 +106,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
             filter: {term: ''},
+            minWidth: 80,
             menuItems: [
                 {
                     title: 'Hide',
@@ -343,7 +344,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: $scope.edit,
-            minWidth: 150,
+            minWidth: 100,
             menuItems: [
                 {
                     title: 'Unhide everything',

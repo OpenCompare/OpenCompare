@@ -79,8 +79,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             }
             else if($scope.pcmData.length * 28 + 100 > $(window).height() && GetUrlValue('enableEdit')) {
                 var height = 20;
+
                 if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
-                    height += 40;
+                        height += 40;
+
                 }
                 if(GetUrlValue('enableTitle') == 'true') {
                     if($scope.pcm.name.length > 30) {
@@ -92,7 +94,12 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
                 }
                 if(GetUrlValue('enableEdit') == 'true') {
-                    height += 40;
+                    if($scope.edit) {
+                        height += 80;
+                    }
+                    else {
+                        height += 40;
+                    }
                 }
                 $scope.height = $(window).height()-height;
             }
