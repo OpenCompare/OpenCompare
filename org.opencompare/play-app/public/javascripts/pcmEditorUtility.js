@@ -5,10 +5,10 @@
 
     function getCellClass (value) {
         if(value) {
-            if(value.toLowerCase().indexOf('{{yes') != -1) {
+            if(value.toLowerCase().indexOf('yes') != -1 || value.toLowerCase().indexOf('oui') != -1) {
                 return 'yesCell';
             }
-            else if(value.toLowerCase().indexOf('{{no') != -1) {
+            else if(value.toLowerCase().indexOf('no') != -1 || value.toLowerCase().indexOf('non') != -1) {
                 return 'noCell';
             }
             else {
