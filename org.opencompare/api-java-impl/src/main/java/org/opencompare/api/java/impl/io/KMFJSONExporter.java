@@ -15,6 +15,16 @@ import java.util.Base64;
  */
 public class KMFJSONExporter implements PCMExporter {
 
+    private boolean base64Encoding;
+
+    public KMFJSONExporter() {
+        this(true);
+    }
+
+    public KMFJSONExporter(boolean base64Encoding) {
+        this.base64Encoding = base64Encoding;
+    }
+
     private DefaultPcmFactory factory = new DefaultPcmFactory();
     private JSONModelSerializer serializer = factory.createJSONSerializer();
     private PCMBase64Encoder encoder = new PCMBase64Encoder();
@@ -28,15 +38,20 @@ public class KMFJSONExporter implements PCMExporter {
         String json = "";
 
         if (pcm instanceof PCMImpl) {
+
             // Convert all strings to base64 to avoid encoding problems
-            encoder.encode(pcm);
+            if (base64Encoding) {
+                encoder.encode(pcm);
+            }
 
             // Serialize PCM
             pcm.PCM kPcm = ((PCMImpl) pcm).getKpcm();
             json = serializer.serialize(kPcm);
 
             // Decode PCM
-            encoder.decode(pcm);
+            if (base64Encoding) {
+                encoder.decode(pcm);
+            }
         }
 
         return json;

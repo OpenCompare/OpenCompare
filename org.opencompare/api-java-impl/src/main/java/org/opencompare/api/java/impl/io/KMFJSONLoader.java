@@ -23,6 +23,16 @@ public class KMFJSONLoader implements PCMLoader {
     private JSONModelLoader loader = kpcmFactory.createJSONLoader();
     private PCMBase64Encoder encoder = new PCMBase64Encoder();
 
+    private boolean base64Decoding;
+
+    public KMFJSONLoader() {
+        this(true);
+    }
+
+    public KMFJSONLoader(boolean base64Decoding) {
+        this.base64Decoding = base64Decoding;
+    }
+
     @Override
     public List<PCMContainer> load(String json) {
         List<KMFContainer> containers = loader.loadModelFromString(json);
