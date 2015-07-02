@@ -32,16 +32,17 @@ public class Database {
             this.db = mongoClient.getDB("opencompare");
             mongoVersion = db.command("buildInfo").getString("version");
 
+            // Create index if necessary
             pcms = db.getCollection("pcms");
             boolean indexInitialized = false;
             for (DBObject indexInfo : pcms.getIndexInfo()) {
-                if (indexInfo.get("name").equals("name_text")) {
+                if (indexInfo.get("name").equals("pcm.name_text")) {
                     indexInitialized = true;
                 }
             }
 
             if (!indexInitialized) {
-                pcms.createIndex(new BasicDBObject("name", "text"));
+                pcms.createIndex(new BasicDBObject("pcm.name", "text"));
             }
 
         } catch (UnknownHostException e) {
@@ -50,16 +51,22 @@ public class Database {
     }
 
 
-    public List<DatabasePCM> search(String request) {
+    public List<PCMInfo> search(String request) {
 
-        List<DatabasePCM> results = new ArrayList<DatabasePCM>();
+        List<PCMInfo> results = new ArrayList<>();
 
         // $search operator requires mongo >= 2.6
-        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
-        DBCursor cursor = pcms.find(query);
+//        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("pcm.name", "1"));
 
         for (DBObject result : cursor) {
-            results.add(createDatabasePCMInstance(result));
+            String id = result.get("_id").toString();
+            DBObject pcm = (DBObject) result.get("pcm");
+            String encodedName = pcm.get("name").toString();
+            String name = new String(base64Decoder.decode(encodedName.getBytes()));
+            if (name.toLowerCase().contains(request.toLowerCase())) {
+                results.add(new PCMInfo(id, name));
+            }
         }
 
         // Code snippet for text search with mongo < 2.6
@@ -77,7 +84,7 @@ public class Database {
 
     public List<PCMInfo> list(int limit, int page) {
         int skipped = (page - 1) * limit;
-        DBCursor cursor = pcms.find(new BasicDBObject()) // new BasicDBObject("name", "1") // TODO : optimize request
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("pcm.name", "1"))
                 .sort(new BasicDBObject("_id", 1))
                 .skip(skipped)
                 .limit(limit);

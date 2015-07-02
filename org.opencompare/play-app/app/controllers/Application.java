@@ -32,7 +32,7 @@ public class Application extends Controller {
     public Result search(String request) {
 
         // TODO : find PCMs named "request" or with a product named "request"
-        List<DatabasePCM> results = Database.INSTANCE.search(request);
+        List<PCMInfo> results = Database.INSTANCE.search(request);
 
         return ok(views.html.search.render(request, results));
     }
