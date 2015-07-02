@@ -268,9 +268,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     });
 
     $scope.$on('export', function (event, args) {
-        $scope.pcm = convertGridToPCM($scope.pcmData);
+        var pcmToExport = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
-        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var jsonModel = JSON.parse(serializer.serialize(pcmToExport));
         $scope.pcmObject = {};
         $scope.pcmObject.metadata = $scope.metadata;
         $scope.pcmObject.pcm = jsonModel;
