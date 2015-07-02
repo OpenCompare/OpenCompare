@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi) {
 
     $scope.height = 300;
     $scope.enableEdit = true;
@@ -246,8 +246,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
      * @param pcm
      */
     $scope.initializeEditor = function(pcm, metadata) {
+
         /* Convert PCM model to editor format */
-        var features = getConcreteFeatures(pcm);
+        var features = pcmApi.getConcreteFeatures(pcm);
         $scope.pcmData = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
@@ -255,7 +256,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 if(!feature.name){
                     featureName = " ";
                 }
-                var cell = findCell(product, feature);
+                var cell = pcmApi.findCell(product, feature);
                 productData.name = product.name; // FIXME : may conflict with feature name
                 productData[featureName] = cell.content;
             });
@@ -269,7 +270,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 if(!feature.name){
                     featureName = " ";
                 }
-                var cell = findCell(product, feature);
+                var cell = pcmApi.findCell(product, feature);
                 productDataRaw.name = product.name; // FIXME : may conflict with feature name
                 if(cell.rawContent && cell.rawContent != "") {
                     productDataRaw[featureName] = cell.rawContent;

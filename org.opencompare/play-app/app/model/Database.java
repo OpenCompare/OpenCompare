@@ -9,6 +9,7 @@ import org.opencompare.api.java.impl.io.KMFJSONLoader;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class Database {
     public static Database INSTANCE = new Database();
     private KMFJSONLoader kmfLoader = new KMFJSONLoader();
     private KMFJSONExporter kmfSerializer = new KMFJSONExporter();
+    private Base64.Decoder base64Decoder = Base64.getDecoder();
 
     private DB db;
     private DBCollection pcms;
@@ -30,16 +32,17 @@ public class Database {
             this.db = mongoClient.getDB("opencompare");
             mongoVersion = db.command("buildInfo").getString("version");
 
+            // Create index if necessary
             pcms = db.getCollection("pcms");
             boolean indexInitialized = false;
             for (DBObject indexInfo : pcms.getIndexInfo()) {
-                if (indexInfo.get("name").equals("name_text")) {
+                if (indexInfo.get("name").equals("pcm.name_text")) {
                     indexInitialized = true;
                 }
             }
 
             if (!indexInitialized) {
-                pcms.createIndex(new BasicDBObject("name", "text"));
+                pcms.createIndex(new BasicDBObject("pcm.name", "text"));
             }
 
         } catch (UnknownHostException e) {
@@ -48,16 +51,22 @@ public class Database {
     }
 
 
-    public List<DatabasePCM> search(String request) {
+    public List<PCMInfo> search(String request) {
 
-        List<DatabasePCM> results = new ArrayList<DatabasePCM>();
+        List<PCMInfo> results = new ArrayList<>();
 
         // $search operator requires mongo >= 2.6
-        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
-        DBCursor cursor = pcms.find(query);
+//        DBObject query = new BasicDBObject("$text", new BasicDBObject("$search", "\"" + request + "\""));
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("pcm.name", "1"));
 
         for (DBObject result : cursor) {
-            results.add(createDatabasePCMInstance(result));
+            String id = result.get("_id").toString();
+            DBObject pcm = (DBObject) result.get("pcm");
+            String encodedName = pcm.get("name").toString();
+            String name = new String(base64Decoder.decode(encodedName.getBytes()));
+            if (name.toLowerCase().contains(request.toLowerCase())) {
+                results.add(new PCMInfo(id, name));
+            }
         }
 
         // Code snippet for text search with mongo < 2.6
@@ -75,7 +84,7 @@ public class Database {
 
     public List<PCMInfo> list(int limit, int page) {
         int skipped = (page - 1) * limit;
-        DBCursor cursor = pcms.find(new BasicDBObject()) // new BasicDBObject("name", "1") // TODO : optimize request
+        DBCursor cursor = pcms.find(new BasicDBObject(), new BasicDBObject("pcm.name", "1"))
                 .sort(new BasicDBObject("_id", 1))
                 .skip(skipped)
                 .limit(limit);
@@ -89,6 +98,7 @@ public class Database {
             if (dbID != null && dbPCM != null) {
                 String id = dbID.toString();
                 String name = dbPCM.get("name").toString();
+                name = new String(base64Decoder.decode(name.getBytes())); // Decode Base64 characters
                 PCMInfo info = new PCMInfo(id, name);
                 results.add(info);
             }
@@ -111,16 +121,9 @@ public class Database {
         }
     }
 
-    public void update(String id, String json) {
-        pcms.update(new BasicDBObject("_id", new ObjectId(id)), (DBObject) JSON.parse(json));
-    }
-
-    public String create(String json) {
-        DBObject newPCM = (DBObject) JSON.parse(json);
-        // TODO : check conformance of JSON with PCM metamodel and metadata format
-        WriteResult result = pcms.insert(newPCM);
-        String id = newPCM.get("_id").toString();
-        return id;
+    public void update(DatabasePCM databasePCM) {
+        DBObject dbPCMContainer = serializePCMContainer(databasePCM.getPCMContainer());
+        pcms.update(new BasicDBObject("_id", new ObjectId(databasePCM.getId())), dbPCMContainer);
     }
 
     public String create(PCMContainer pcmContainer) {
@@ -205,6 +208,7 @@ public class Database {
 
         // Serialize PCM
         String pcmInJSON = kmfSerializer.export(pcmContainer);
+
         DBObject dbPCM = (DBObject) JSON.parse(pcmInJSON);
 
         // Serialize metadata
@@ -243,9 +247,15 @@ public class Database {
         return JSON.serialize(dbContainer);
     }
 
-    public String serializePCMContainerToJSON(PCMContainer pcmContainer) {
-        DBObject dbContainer = serializePCMContainer(pcmContainer);
-        return JSON.serialize(dbContainer);
+    public String serializePCMContainersToJSON(List<PCMContainer> pcmContainers) {
+        List<DBObject> dbContainers = new ArrayList<>();
+
+        for (PCMContainer pcmContainer : pcmContainers) {
+            DBObject dbContainer = serializePCMContainer(pcmContainer);
+            dbContainers.add(dbContainer);
+        }
+
+        return JSON.serialize(dbContainers);
     }
 
 }

@@ -48,4 +48,22 @@ public class PCMImplTest extends PCMTest {
         }
 
     }
+
+    @Test
+    public void testUTF8Encoding() throws IOException {
+
+        // Create PCM with non ASCII characters
+        PCM pcm = factory.createPCM();
+        pcm.setName("こんにちは");
+        PCMContainer pcmContainer = new PCMContainer(pcm);
+
+        // Serialize & load
+        KMFJSONExporter serializer = new KMFJSONExporter();
+        String serializedPCM = serializer.export(pcmContainer);
+
+        KMFJSONLoader loader = new KMFJSONLoader();
+        PCM loadedPCM = loader.load(serializedPCM).get(0).getPcm();
+
+        assertEquals("load(serialize(pcm)).name = pcm.name", pcm.getName(), loadedPCM.getName());
+    }
 }

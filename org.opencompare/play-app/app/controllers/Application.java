@@ -32,22 +32,11 @@ public class Application extends Controller {
     public Result search(String request) {
 
         // TODO : find PCMs named "request" or with a product named "request"
-        List<DatabasePCM> results = Database.INSTANCE.search(request);
+        List<PCMInfo> results = Database.INSTANCE.search(request);
 
         return ok(views.html.search.render(request, results));
     }
 
-
-    public Result view(String id) {
-        DatabasePCM var = Database.INSTANCE.get(id);
-
-        if (var.hasIdentifier()) {
-            return ok(views.html.view.render(var.getId(), var.getPCMContainer().getPcm()));
-        } else {
-            return ok(views.html.edit.render(null, null, null));
-        }
-
-    }
 
     public Result edit(String id) {
         boolean exists = Database.INSTANCE.exists(id);

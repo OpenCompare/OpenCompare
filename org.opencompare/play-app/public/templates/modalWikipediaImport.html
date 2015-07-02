@@ -12,6 +12,22 @@
             </div>
         </div>
     </form>
+
+    <div ng-if="pcmContainers.length > 0">
+        <form class="form">
+            <div class="form-group">
+                <label class="control-label">Please select a matrix to edit</label>
+                <ul class="list-group">
+                   <button ng-repeat="pcmContainerName in pcmContainerNames"
+                           type="button"
+                           class="btn btn-primary btn-flat btn-xs list-group-item"
+                           ng-click="selectPCM(pcmContainerName.index)">
+                       {{pcmContainerName.name}}
+                   </button>
+                </ul>
+            </div>
+        </form>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
