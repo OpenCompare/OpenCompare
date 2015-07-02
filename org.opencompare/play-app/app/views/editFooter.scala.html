@@ -1,0 +1,34 @@
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
+
+@if(id != null) {
+    <script>
+            var id = "@{Html(id)}";
+        </script>
+}
+@if(data != null) {
+    <script>
+            var data = '@{Html(data.toString().replace("'","\\\'"))}';
+        </script>
+}
+@if(modal != null) {
+    <script>
+            var modal = '@{Html(modal)}';
+        </script>
+}
+<script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/pcmEditorUtility.js")'></script>
+
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/TypesCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/FiltersCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/ToolbarCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/EditorCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/UndoRedoCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/CommandsCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/InitializerCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/ShareCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/csvCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/wikitextCtrl.js")'></script>
+
+
+<script type='text/javascript' src='@routes.Assets.at("javascripts/directives/embeddedEditor.js")'></script>
