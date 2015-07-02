@@ -28,6 +28,8 @@ pcmApp.controller("ShareCtrl", function($rootScope, $scope, $http, $timeout, uiG
         $scope.embedLink = '<iframe src="http://'+window.location.hostname+':'+window.location.port+'/embedPCM/'+id
             +'?enableEdit='+$scope.enableEditOption+'&enableExport='+$scope.enableExportOption+'&enableTitle='+$scope.enableTitleOption+'&enableShare='+$scope.enableShareOption
             +'" scrolling="no"  width="100%" height="700px" style="border:none;"></iframe>';
+        //$scope.gridApi.selection.selectAllVisibleRows();
+        //console.log($scope.gridApi.selection.getSelectedRows());
     }
 });
 
