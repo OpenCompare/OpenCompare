@@ -2,7 +2,9 @@
  * Created by gbecan on 17/12/14.
  */
 pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location, pcmApi) {
-    $.material.init();
+    if($.material) {
+        $.material.init();
+    }
 
     var subControllers = {
         $scope: $scope,
@@ -72,6 +74,12 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             scope: $scope
         })
     }
+    $scope.$on('initializeFromExternalSource', function(event, args) {
+        $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
+        pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
+        $scope.metadata = args.metadata;
+        $scope.initializeEditor($scope.pcm, $scope.metadata);
+    });
 
     $scope.setGridHeight = function() {
 
