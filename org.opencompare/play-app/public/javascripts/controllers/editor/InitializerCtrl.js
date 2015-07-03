@@ -23,11 +23,48 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         headerRowHeight: 60,
         rowHeight: 28
     };
-
-
+    $scope.columnMovedFunctions = [];
+    $scope.beginCellEditFunctions = [];
+    $scope.afterCellEditFunctions = [];
+    $scope.onNavigateFunctions = [];
 
     $scope.loading = false;
 
+    /* Grid event functions */
+    $scope.setRawValue = function(rowEntity, colDef, rawValue, contentValue) {
+
+        rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
+        contentValue = rowEntity[colDef.name];
+        rowEntity[colDef.name] = rawValue;
+    };
+
+    $scope.setVisualRepresentation = function(rowEntity, colDef, newValue, oldValue, rawValue, contentValue) {
+
+        if(newValue && rawValue != newValue) {
+            $rootScope.$broadcast('modified');
+            $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
+                colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
+        }
+        else {
+            $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = contentValue;
+        }
+        /* Update value based on visual representation and raw */
+        $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
+    };
+
+    $scope.moveColumnData = function(colDef, originalPosition, newPosition) {
+
+        $scope.gridOptions.columnDefs.move(originalPosition, newPosition);
+        var commandParameters = [originalPosition, newPosition];
+
+        $scope.newCommand('move', commandParameters);
+        $rootScope.$broadcast('modified');
+    };
+    $scope.columnMovedFunctions.push($scope.moveColumnData);
+    $scope.beginCellEditFunctions.push($scope.setRawValue);
+    $scope.afterCellEditFunctions.push($scope.setVisualRepresentation);
+
+    /* Register grid functions */
     $scope.gridOptions.onRegisterApi = function(gridApi){
 
         var contentValue;
@@ -37,35 +74,79 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
 
         /* Called when columns arem oved */
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-            $scope.gridOptions.columnDefs.move(originalPosition, newPosition);
-            var commandParameters = [originalPosition, newPosition];
-
-            $scope.newCommand('move', commandParameters);
-            $rootScope.$broadcast('modified');
+            for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
+                $scope.columnMovedFunctions[i]();
+            }
         });
 
         gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
-
-            rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
-            contentValue = rowEntity[colDef.name];
-            rowEntity[colDef.name] = rawValue;
-
+            for(var i = 0; i <   $scope.beginCellEditFunctions.length; i++) {
+                $scope.beginCellEditFunctions[i](rowEntity, colDef, contentValue, rawValue);
+            }
         });
 
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-            if(newValue && rawValue != newValue) {
-                $rootScope.$broadcast('modified');
-                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
-                    colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
+            for(var i = 0; i <   $scope.afterCellEditFunctions.length; i++) {
+                $scope.afterCellEditFunctions[i](rowEntity, colDef, newValue, oldValue, rawValue, contentValue);
             }
-            else {
-                $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = contentValue;
-            }
-            /* Update value based on visual representation and raw */
-            $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
+        });
 
+        gridApi.cellNav.on.navigate($scope,function(rowEntity, colDef){
+            for(var i = 0; i <   $scope.onNavigateFunctions.length; i++) {
+                $scope.onNavigateFunctions[i](rowEntity, colDef);
+            }
         });
     };
+
+    $scope.$on('extendEditorFeatures', function(event, args) {console.log(args);
+        switch(args.type) {
+            case 'afterCellEdit':
+                $scope.afterCellEditFunctions.push(args.function);
+                break;
+            case 'beginCellEdit':
+                $scope.beginCellEditFunctions.push(args.function);
+                break;
+            case 'columnMoved':
+                $scope.columnMovedFunctions.push(args.function);
+                break;
+            case 'onNavigate':
+                $scope.onNavigateFunctions.push(args.function);
+                break;
+        }
+
+        $scope.gridOptions.onRegisterApi = function(gridApi){
+
+            var contentValue;
+            var rawValue;
+            //set gridApi on scope
+            $scope.gridApi = gridApi;
+
+            /* Called when columns arem oved */
+            gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
+                for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
+                    $scope.columnsMovedFunctions[i]();
+                }
+            });
+
+            gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
+                for(var i = 0; i <   $scope.beginCellEditFunctions.length; i++) {
+                    $scope.beginCellEditFunctions[i](rowEntity, colDef, contentValue, rawValue);
+                }
+            });
+
+            gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+                for(var i = 0; i <   $scope.afterCellEditFunctions.length; i++) {
+                    $scope.afterCellEditFunctions[i](rowEntity, colDef, newValue, oldValue, rawValue, contentValue);
+                }
+            });
+
+            gridApi.cellNav.on.navigate($scope,function(rowEntity, colDef){
+                for(var i = 0; i <   $scope.onNavigateFunctions.length; i++) {
+                    $scope.onNavigateFunctions[i]();
+                }
+            });
+        };
+    });
 
     $scope.setGridHeight = function() {
 
@@ -104,7 +185,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableColumnMoving: $scope.edit,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
-            allowCellFocus: $scope.edit,
+            allowCellFocus: true,
             filter: {term: ''},
             minWidth: 80,
             menuItems: [
@@ -344,7 +425,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableColumnMoving: false,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
-            allowCellFocus: $scope.edit,
+            allowCellFocus: true,
             minWidth: 100,
             menuItems: [
                 {

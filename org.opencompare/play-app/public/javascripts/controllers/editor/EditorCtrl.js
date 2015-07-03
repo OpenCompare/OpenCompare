@@ -1,7 +1,7 @@
 /**
  * Created by gbecan on 17/12/14.
  */
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, $location, pcmApi) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi) {
     if($.material) {
         $.material.init();
     }
