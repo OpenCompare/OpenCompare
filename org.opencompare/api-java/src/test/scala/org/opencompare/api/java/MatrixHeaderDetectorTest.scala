@@ -3,6 +3,7 @@ package org.opencompare.api.java
 import java.io.{Writer, FileReader}
 
 import com.opencsv.{CSVWriter, CSVReader}
+import org.opencompare.api.java.io.{IOCell, IOMatrix}
 import org.opencompare.api.java.util.MatrixHeaderDetector
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.prop.TableFor1
@@ -24,7 +25,6 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
   var quote = '"'
   var refHeight = 0
   var refWidth = 0
-  var matrix : mutable.Buffer[Array[String]] = null
 
   var inputs : TableFor1[File] = _
 
@@ -38,12 +38,23 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
     // reference file
     val file = new java.io.File(input.getPath)
     val refCsvReader = new CSVReader(new FileReader(file), separator, quote)
-    matrix = refCsvReader.readAll().asScala
-    refHeight = matrix.size
-    refWidth = matrix.head.size
+    val refCsvMatrix : mutable.Buffer[Array[String]] = refCsvReader.readAll().asScala
+    refHeight = refCsvMatrix.size
+    refWidth = refCsvMatrix.head.size
 
     val csvReader = new CSVReader(new FileReader(file), separator, quote)
-    detector = new MatrixHeaderDetector(csvReader.readAll())
+    val matrix = new IOMatrix()
+    var i = 0;
+    var j = 0;
+    for (line <- csvReader.readNext()) {
+      for (column <- line.toArray) {
+        val cell = new IOCell(column.toString, column.toString)
+        matrix.setCell(cell, i, j)
+        j += 1
+      }
+      i += 1
+    }
+    detector = new MatrixHeaderDetector(matrix);
   }
 
   "Parsed matrix width" should "be equal to reference matrix width" in {
@@ -59,7 +70,19 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
       var header : Integer = file.name.charAt(file.name.indexOf('_') + 1).toString.toInt
       file.name + " matrix" should "return " + header + " for header size" in {
         val csvReader = new CSVReader(file.bufferedReader(), separator, quote)
-        detector = new MatrixHeaderDetector(csvReader.readAll())
+        val csvMatrix = csvReader.readAll().asScala;
+        val matrix = new IOMatrix()
+        var i = 0;
+        var j = 0;
+        for (line <- csvMatrix) {
+          for (column <- line) {
+            val cell = new IOCell(column, column)
+            matrix.setCell(cell, i, j)
+            j += 1
+          }
+          i += 1
+        }
+        detector = new MatrixHeaderDetector(matrix)
         var size = detector.getHeaderHeight
         size.equals(header) shouldBe true
       }
