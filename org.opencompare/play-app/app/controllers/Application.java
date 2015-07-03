@@ -19,6 +19,15 @@ public class Application extends Controller {
         return ok(views.html.index.render());
     }
 
+    public Result aboutProject() {
+        return ok(views.html.aboutProject.render());
+    }
+
+    public Result aboutPrivacyPolicy() {
+        return ok(views.html.aboutPrivacyPolicy.render());
+    }
+
+
     public Result list(int limit, int page) {
         List<PCMInfo> pcms = Database.INSTANCE.list(limit, page);
         int count = (int) Database.INSTANCE.count();

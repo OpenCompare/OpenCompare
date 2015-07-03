@@ -12,6 +12,8 @@ GET         /create                                   @controllers.Application.c
 GET         /import/:ext                              @controllers.Application.importer(ext : String)
 GET         /embedPCM/:id                             @controllers.Application.embedPCM(id : String)
 GET         /embed                                    @controllers.Application.embed()
+GET         /about/project                            @controllers.Application.aboutProject()
+GET         /about/privacy                            @controllers.Application.aboutPrivacyPolicy()
 
 #POST    /preview                            controllers.Application.preview()
 

@@ -33,6 +33,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oc-navbar">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.about") <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a target="_self" href="/about/project">@Messages("navbar.about.project")</a></li>
+                            <li><a target="_self" href="/about/privacy">@Messages("navbar.about.privacy")</a></li>
+                        </ul>
+                    </li>
+
                     <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/list">@Messages("navbar.list")</a></li>
                     <li ng-class="{ active: isActive('/create')}"><a target="_self" href="/create">@Messages("navbar.create")</a></li>
 
@@ -53,8 +61,8 @@
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">en</button></li>
-                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">fr</button></li>
+                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">English</button></li>
+                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">français</button></li>
                         </ul>
                     </li>
                 </ul>
