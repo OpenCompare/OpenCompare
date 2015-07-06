@@ -3,6 +3,7 @@ package org.opencompare.api.java.io
 import java.io.FileReader
 
 import com.opencsv.CSVReader
+import org.opencompare.api.java.util.PrettyPrinter
 import org.scalatest.{BeforeAndAfterAll, Matchers, FlatSpec, FunSuite}
 
 import scala.collection.immutable.HashMap
@@ -21,10 +22,10 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   var title = "Blah, Blah : Blah"
   var csvMatrix : IOMatrix = _
 
-  val row = 549
-  val column = 12984
-  val rowspan = 5
-  val colspan = 12
+  val row = 3
+  val column = 5
+  val rowspan = 2
+  val colspan = 3
   val content = "fdgqe÷ýt:!u4i19:u8yus:81ts"
   val rawContent = "{{dfkhf|sdhikfs <ref fdgqe÷ýt:!u4i19:u8yus:81ts>"
   var cell : IOCell = _
@@ -38,63 +39,45 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     refWidth = refCsvMatrix.head.size
 
     val csvReader = new CSVReader(new FileReader(file), ',', '"')
-    csvMatrix = new IOMatrix()
+    csvMatrix = new IOMatrix().loadFromCsv(csvReader)
     csvMatrix.setName(title)
-    var i = 0;
-    var j = 0;
-    for (line <- csvReader.readNext()) {
-      for (column <- line.toArray) {
-        val cell = new IOCell(column.toString, column.toString, 0, 0)
-        csvMatrix.setCell(cell, i, j)
-        j += 1
-      }
-      i += 1
-    }
     // From custom values
-    cell = new IOCell(content, rawContent, rowspan, colspan)
+    cell = new IOCell(content, rawContent)
+    cell.setRowspan(rowspan)
+    cell.setColspan(colspan)
     matrix = new IOMatrix()
     matrix.setCell(cell, row, column)
   }
 
-  //"A matrix" should "be equals to the reference matrix" in {
-  //  val csvReader = new CSVReader(new FileReader(file), ',', '"')
-  //  val newCsvMatrix = new IOMatrix()
-  //  var i = 0;
-  //  var j = 0;
-  //  for (line <- csvReader.readNext()) {
-  //    for (column <- line.toArray) {
-  //      val cell = new IOCell(column.toString, column.toString, 0, 0)
-  //      newCsvMatrix.setCell(cell, i, j)
-  //      j += 1
-  //    }
-  //    i += 1
-  //  }
-  //  csvMatrix.equals(newCsvMatrix) shouldBe true
-  //}
+  "A matrix" should "be equal to the reference matrix" in {
+    val newCsvReader = new CSVReader(new FileReader(file), ',', '"')
+    val newCsvMatrix = new IOMatrix().loadFromCsv(newCsvReader)
+    newCsvMatrix.setName(title)
+    csvMatrix.isEqual(newCsvMatrix) shouldBe true
+  }
 
-  //it should "have equal name with the reference matrix" in {
-  //  title.equals(csvMatrix.getName) shouldBe true
-  //}
+  it should "have equal name with the reference matrix" in {
+    title.equals(csvMatrix.getName) shouldBe true
+  }
 
-  //it should "have equals cells with reference matrix" in {
-  //  matrix.getCell(row, column).equals(cell) shouldBe true
-  //}
+  it should "have equals cells with reference matrix" in {
+    matrix.getCell(row, column).equals(cell) shouldBe true
+  }
 
-  //it should "proper replace a cell with a new cell at same position" in {
-  //  val cell = new IOCell("Glibebluk", "Humf", 1, 5)
-  //  matrix.setCell(cell, row, column)
-  //  matrix.getCell(row, column).equals(cell) shouldBe true
-  //}
+  it should "proper replace a cell with a new cell at same position" in {
+    val cell = new IOCell("Glibebluk", "Humf")
+    matrix.setCell(cell, 1, 1)
+    matrix.getCell(1, 1).equals(cell) shouldBe true
+  }
 
-  "A matrix" should "have equal number of rows/columns with the reference matrix" in {
+  it should "have equal number of rows/columns with the reference matrix" in {
     matrix.getNumberOfRows.equals(row)
     matrix.getNumberOfColumns.equals(column)
   }
 
   "A cell" should "have the same position in both matrix" in {
-    val position = matrix.getPosition(cell)
+    val position = new Pair(cell.getRow, cell.getColumn)
     val newPosition = new Pair(row, column)
-    position._1 shouldBe newPosition._1
-    position._2 shouldBe newPosition._2
+    newPosition.equals(position) shouldBe true
   }
 }

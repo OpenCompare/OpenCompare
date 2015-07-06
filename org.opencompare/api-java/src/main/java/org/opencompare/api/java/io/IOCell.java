@@ -3,27 +3,18 @@ package org.opencompare.api.java.io;
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOCell {
+public class IOCell implements Cloneable {
 
     private String content;
     private String rawContent;
-    private int rowspan;
-    private int colspan;
+    private int row = -1;
+    private int column = -1;
+    private int rowspan = 1;
+    private int colspan = 1;
 
-    public IOCell() {
-        new IOCell("", "", 0, 0);
-    }
-    public IOCell(String content) {
-        new IOCell(content, content, 0, 0);
-    }
     public IOCell(String content, String rawContent) {
-        new IOCell(content, rawContent, 0, 0);
-    }
-    public IOCell(String content, String rawContent, int rowspan, int colspan) {
         setContent(content);
         setRawContent(rawContent);
-        this.rowspan = rowspan;
-        this.colspan = colspan;
     }
 
     public String getContent() {
@@ -31,6 +22,9 @@ public class IOCell {
     }
 
     public void setContent(String content) {
+        if (content == null) {
+            content = "";
+        }
         this.content = content;
     }
 
@@ -39,32 +33,62 @@ public class IOCell {
     }
 
     public void setRawContent(String rawContent) {
+        if (rawContent == null) {
+            rawContent = "";
+        }
         this.rawContent = rawContent;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
     }
 
     public int getRowspan() {
         return rowspan;
     }
 
+    public void setRowspan(int rowspan) {
+        assert rowspan >= 1;
+        this.rowspan = rowspan;
+    }
+
     public int getColspan() {
         return colspan;
     }
 
-    @Override
-    public String toString() {
-        return content;
+    public void setColspan(int colspan) {
+        assert colspan >= 1;
+        this.colspan = colspan;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    public boolean isEqual(Object obj) {
         if (obj == this) {
             return true;
         }
-        if (obj instanceof IOCell) {
-            IOCell IOCell = (IOCell) obj;
-            return getContent().equals(IOCell.getContent()) && getRawContent().equals(IOCell.getRawContent()) &&
-                    getColspan() == IOCell.getColspan() && getRowspan() == IOCell.getRowspan();
+        if (obj != null) {
+            if (obj instanceof IOCell) {
+                IOCell cell = (IOCell) obj;
+                return getContent().equals(cell.getContent()) && getRawContent().equals(cell.getRawContent()) &&
+                        getColspan() == cell.getColspan() && getRowspan() == cell.getRowspan() &&
+                        getColumn() == cell.getColumn() && getRow() == cell.getRow();
+            }
         }
         return false;
+    }
+
+    public IOCell clone() throws CloneNotSupportedException {
+        return (IOCell) super.clone();
     }
 }

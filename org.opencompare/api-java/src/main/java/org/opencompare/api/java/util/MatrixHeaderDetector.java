@@ -10,6 +10,10 @@ import static java.lang.String.format;
  */
 public class MatrixHeaderDetector {
 
+    public IOMatrix getMatrix() {
+        return matrix;
+    }
+
     private IOMatrix matrix;
     private int height = 0;
     private int width = 0;
@@ -20,10 +24,10 @@ public class MatrixHeaderDetector {
     private int headerOffset = 0;
     private boolean stop = false;
 
-    public MatrixHeaderDetector(IOMatrix matrix) {
-        this.matrix = matrix;
-        height = matrix.getNumberOfRows();
-        width = matrix.getNumberOfColumns();
+    public MatrixHeaderDetector(IOMatrix matrix) throws CloneNotSupportedException{
+        this.matrix = matrix.clone();
+        height = this.matrix.getNumberOfRows();
+        width = this.matrix.getNumberOfColumns();
         while (validPosition()) {
             if (isUniqueLine()) continue;
             if (isUniqueColumn()) continue;
@@ -39,7 +43,15 @@ public class MatrixHeaderDetector {
     }
 
     private boolean isEqual(int line, int column, int relativeLine, int relativeColumn) {
-       return get(line, column).equals(get(relativeLine, relativeColumn));
+        String content1 = get(line, column).getContent();
+        String content2 = get(relativeLine, relativeColumn).getContent();
+        if (content1 == null && content2 == null) {
+            return true;
+        }
+        if (content1.equals(content2)) {
+            return true;
+        }
+        return false;
     }
 
     private boolean isDifferent(int line, int column, int relativeLine, int relativeColumn) {
@@ -52,7 +64,9 @@ public class MatrixHeaderDetector {
                 return false;
             }
         }
-        System.out.println("isUniqueLine" + currentLine);
+        // Save information in the matrix
+        matrix.getCell(currentLine, 0).setColspan(width-1);
+        //System.out.println("\t" + "isUniqueLine(" + currentLine + ")");
         if (currentLine > 0) {
             previousLine();
             stop();
@@ -69,7 +83,9 @@ public class MatrixHeaderDetector {
                 return false;
             }
         }
-        System.out.println("isUniqueColumn" + currentColumn);
+        // Save information in the matrix
+        matrix.getCell(0, currentColumn).setRowspan(height + 1);
+        //System.out.println("\t" + "isUniqueColumn(" + currentColumn + ")");
         nextColumn();
         return true;
     }
@@ -82,10 +98,12 @@ public class MatrixHeaderDetector {
                 break;
             }
             relativeLine++;
+            // Save information in the matrix
+            matrix.getCell(currentLine, currentColumn).setRowspan(relativeLine - currentLine + 1);
         }
         if (result) {
             currentLine = relativeLine - 1;
-            System.out.println("Rowspan on column " + currentColumn + " For line " + currentLine + " and line " + relativeLine);
+            //System.out.println("\t" + "Rowspan");
         }
         return result;
     }
@@ -98,44 +116,47 @@ public class MatrixHeaderDetector {
                 break;
             }
             relativeColumn++;
+            // Save information in the matrix
+            matrix.getCell(currentLine, currentColumn).setColspan(relativeColumn - currentColumn + 1);
         }
         if (result) {
             if (currentColumn != 0) {
                 nextLine();
                 firstColumn();
             }
-            System.out.println("Colspan on line " + currentLine + " For col " + currentColumn + " and col " + relativeColumn);
+            //System.out.println("\t" + "Colspan");
         }
         return result;
     }
 
     private boolean validPosition() {
-        System.out.println("New loop " + relativeLine + " > " + relativeColumn);
+        //System.out.println("Loop [" + currentLine + "][" + currentColumn + "]([" + relativeLine + "][" + relativeColumn + "])" + " stop->" + stop);
         return relativeLine < height - 1 && relativeColumn < width - 1 && !stop;
     }
 
     private void previousLine() {
         currentLine--;
         relativeLine = currentLine + 1;
-        System.out.println("Previous line" + currentLine);
+        //System.out.println("\t" + "Previous line");
     }
 
     private void nextLine() {
         currentLine++;
         relativeLine = currentLine + 1;
-        System.out.println("Next line" + currentLine);
+        //System.out.println("\t" + "Next line");
     }
 
     private void firstColumn() {
         currentColumn = 0;
         relativeColumn = 1;
-        System.out.println("First column");
+        //System.out.println("\t" + "First column");
     }
 
     private void nextColumn() {
         currentColumn++;
         relativeColumn = currentColumn + 1;
-        System.out.println("Next column" + currentColumn);
+
+        //System.out.println("\t" + "Next column");
     }
 
     private void nextPosition() {
