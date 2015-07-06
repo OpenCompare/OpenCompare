@@ -10,6 +10,6 @@
 
     pcmApp.directive('embedOpenCompareEditor', function() {
         return {
-            templateUrl: '../templates/pcmEditor.html'
+            templateUrl: 'pcmEditor.html'
         };
     });

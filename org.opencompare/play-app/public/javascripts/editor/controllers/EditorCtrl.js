@@ -39,7 +39,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
-        $scope.setEdit(true, false);
+        $scope.setEdit(false, false);
         $scope.initializeEditor($scope.pcm, $scope.metadata);
 
     } else if (typeof data != 'undefined')  {
@@ -173,9 +173,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
      */
     $scope.save = function() {
 
-        $scope.pcm = convertGridToPCM($scope.pcmData);
+        var pcmToSave = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
-        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var jsonModel = JSON.parse(serializer.serialize(pcmToSave));
 
         var pcmObject = {};
         pcmObject.metadata = $scope.metadata;
@@ -276,9 +276,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     });
 
     $scope.$on('export', function (event, args) {
-        $scope.pcm = convertGridToPCM($scope.pcmData);
+        var pcmToExport = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
-        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var jsonModel = JSON.parse(serializer.serialize(pcmToExport));
         $scope.pcmObject = {};
         $scope.pcmObject.metadata = $scope.metadata;
         $scope.pcmObject.pcm = jsonModel;

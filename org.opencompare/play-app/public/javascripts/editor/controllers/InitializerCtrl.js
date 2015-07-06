@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor) {
 
     $scope.height = 300;
     $scope.enableEdit = true;
@@ -83,6 +83,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             for(var i = 0; i <   $scope.beginCellEditFunctions.length; i++) {
                 $scope.beginCellEditFunctions[i](rowEntity, colDef, contentValue, rawValue);
             }
+
         });
 
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
@@ -95,58 +96,12 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             for(var i = 0; i <   $scope.onNavigateFunctions.length; i++) {
                 $scope.onNavigateFunctions[i](rowEntity, colDef);
             }
+            var expandedFunctions = expandeditor.expandNavigateFunctions().navigateFunctions;
+            for(var i = 0; i <   expandedFunctions.length; i++) {
+                expandedFunctions[i](rowEntity, colDef);
+            }
         });
     };
-
-    $scope.$on('extendEditorFeatures', function(event, args) {console.log(args);
-        switch(args.type) {
-            case 'afterCellEdit':
-                $scope.afterCellEditFunctions.push(args.function);
-                break;
-            case 'beginCellEdit':
-                $scope.beginCellEditFunctions.push(args.function);
-                break;
-            case 'columnMoved':
-                $scope.columnMovedFunctions.push(args.function);
-                break;
-            case 'onNavigate':
-                $scope.onNavigateFunctions.push(args.function);
-                break;
-        }
-
-        $scope.gridOptions.onRegisterApi = function(gridApi){
-
-            var contentValue;
-            var rawValue;
-            //set gridApi on scope
-            $scope.gridApi = gridApi;
-
-            /* Called when columns arem oved */
-            gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-                for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
-                    $scope.columnsMovedFunctions[i]();
-                }
-            });
-
-            gridApi.edit.on.beginCellEdit($scope, function(rowEntity, colDef) {
-                for(var i = 0; i <   $scope.beginCellEditFunctions.length; i++) {
-                    $scope.beginCellEditFunctions[i](rowEntity, colDef, contentValue, rawValue);
-                }
-            });
-
-            gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-                for(var i = 0; i <   $scope.afterCellEditFunctions.length; i++) {
-                    $scope.afterCellEditFunctions[i](rowEntity, colDef, newValue, oldValue, rawValue, contentValue);
-                }
-            });
-
-            gridApi.cellNav.on.navigate($scope,function(rowEntity, colDef){
-                for(var i = 0; i <   $scope.onNavigateFunctions.length; i++) {
-                    $scope.onNavigateFunctions[i]();
-                }
-            });
-        };
-    });
 
     $scope.setGridHeight = function() {
 

@@ -9,13 +9,14 @@
 @main(header, footer){
 
 <div>
+    <br/>
     <div class="row text-center">
-        <img src='@routes.Assets.at("images/logo.svg")' height="83" width="169" > @* 124 x 254 *@
+        <img src='@routes.Assets.at("images/logo.svg")' width="150" >
         <h1>OpenCompare</h1>
     </div>
 
     <div class="row">
-        <div class="col-lg-6 col-lg-offset-3 description">
+        <div class="col-lg-8 col-lg-offset-2 description">
             @Html(Messages("index.description"))
         </div>
     </div>
@@ -28,54 +29,90 @@
 
     @*</div>*@
 
-    <div class="row text-center">
-        <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
-            <input name="request" class="form-control input-lg" placeholder='@Messages("button.search.placeholder")' ng-model="request">
-            <button type="submit" class="btn btn-default btn-lg">@Messages("button.search")</button>
-        </form>
-    </div>
-
     <div class="row">
-        <div class="col-lg-3 col-lg-offset-3">
-        <h4 class="text-center">@Messages("index.pcm.title")</h4>
-        <p class="text-justify">
-            @Messages("index.pcm.text")
-        </p>
+        <div class="col-lg-2 col-lg-offset-2">
+            <i class="fa fa-cloud-upload fa-5x card-icon"></i>
+            <h2 class="card-title">@Messages("index.import.title")</h2>
+            <p class="card-description">
+                @Messages("index.import.description")
+            </p>
+            @*<img src='@routes.Assets.at("images/wikipedia.svg")' height="80">*@
         </div>
 
-        <div class="col-lg-3">
-        <h4 class="text-center">@Messages("index.edition.title")</h4>
-        <p class="text-justify">
-            @Messages("index.edition.text")
-        </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-3 col-lg-offset-3">
-            <h4 class="text-center">@Html(Messages("index.opendata.title"))</h4>
-            <p class="text-justify">
-                @Messages("index.opendata.text")
+        <div class="col-lg-2">
+            <i class="fa fa-edit fa-5x card-icon"></i>
+            <h2 class="card-title">@Messages("index.edit.title")</h2>
+            <p class="card-description">
+            @Messages("index.edit.description")
             </p>
         </div>
 
-        <div class="col-lg-3">
-            <h4 class="text-center">@Messages("index.io.title")</h4>
-            <p class="text-justify">
-                @Html(Messages("index.io.text"))
+        <div class="col-lg-2">
+            <i class="fa fa-check fa-5x card-icon"></i>
+            <h2 class="card-title">@Messages("index.compare.title")</h2>
+            <p class="card-description">
+                @Messages("index.compare.description")
+            </p>
+        </div>
+
+        <div class="col-lg-2">
+            <i class="fa fa-share fa-5x card-icon"></i>
+            <h2 class="card-title">@Messages("index.share.title")</h2>
+            <p class="card-description">
+                @Messages("index.share.description")
+            </p>
         </div>
     </div>
 
-    <div class="row col-lg-6 col-lg-offset-3">
-        <h4 class="text-center">@Messages("index.opensource.title")</h4>
-        <p class="text-justify">
-            @Html(Messages("index.opensource.text"))
-        </p>
+    <div class="row text-center">
+        <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
+            <input name="request" class="form-control input-lg" placeholder='@Messages("button.search.placeholder")' ng-model="request">
+            <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
 
+    @*<div class="row">*@
+        @*<div class="col-lg-4 col-lg-offset-2 well">*@
+            @*<h4 class="card-title">@Messages("index.pcm.title")</h4>*@
+            @*<p class="card-description">@Messages("index.pcm.text")</p>*@
+        @*</div>*@
+
+        @*<div class="col-lg-4 well">*@
+            @*<h4 class="card-title">@Messages("index.edition.title")</h4>*@
+            @*<p class="card-description">*@
+                @*@Messages("index.edition.text")*@
+            @*</p>*@
+        @*</div>*@
+    @*</div>*@
+
+    @*<div class="row">*@
+        @*<div class="col-lg-4 col-lg-offset-2 well">*@
+            @*<h4 class="card-title">@Html(Messages("index.opendata.title"))</h4>*@
+            @*<p class="card-description">*@
+                @*@Messages("index.opendata.text")*@
+            @*</p>*@
+        @*</div>*@
+
+        @*<div class="col-lg-4 well">*@
+            @*<h4 class="card-title">@Messages("index.io.title")</h4>*@
+            @*<p class="card-description">*@
+                @*@Html(Messages("index.io.text"))*@
+        @*</div>*@
+    @*</div>*@
+
+    @*<div class="row col-lg-6 col-lg-offset-3 well">*@
+        @*<h4 class="card-title">@Messages("index.freesoftware.title")</h4>*@
+        @*<p class="card-description">*@
+            @*@Html(Messages("index.freesoftware.text"))*@
+        @*</p>*@
+    @*</div>*@
+
+    <div class="row col-lg-6 col-lg-offset-3">
         <div class="text-center">
-        <a type="button" class="btn btn-success " href="https://github.com/gbecan/PCM">
-            <img src="assets/images/github.png" height="25" width="25"> @Messages("index.github")
-        </a>
+            <a type="button" class="btn btn-info btn-lowercase" href="https://github.com/gbecan/PCM">
+                <i class="fa fa-github"></i> @Messages("index.github")
+            </a>
+            <a class="btn btn-info btn-lowercase" href="https://twitter.com/open_compare"><i class="fa fa-twitter"></i> @Messages("index.twitter")</a>
         </div>
     </div>
 </div>
