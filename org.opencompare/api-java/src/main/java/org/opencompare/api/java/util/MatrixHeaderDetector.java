@@ -1,5 +1,6 @@
 package org.opencompare.api.java.util;
 
+import org.opencompare.api.java.io.IOCell;
 import org.opencompare.api.java.io.IOMatrix;
 
 import static java.lang.String.format;
@@ -9,7 +10,7 @@ import static java.lang.String.format;
  */
 public class MatrixHeaderDetector {
 
-    private IOMatrix IOMatrix;
+    private IOMatrix matrix;
     private int height = 0;
     private int width = 0;
     private int currentLine = 0;
@@ -17,43 +18,44 @@ public class MatrixHeaderDetector {
     private int relativeLine = 1;
     private int relativeColumn = 1;
     private int headerOffset = 0;
+    private boolean stop = false;
 
-    public MatrixHeaderDetector(IOMatrix IOMatrix) {
-        this.IOMatrix = IOMatrix;
-        getMatrixSize();
-        process();
-    }
-
-    private void getMatrixSize() {
-        height = IOMatrix.getNumberOfRows();
-        width = IOMatrix.getNumberOfColumns();
-    }
-
-    private String get(int i, int j) {
-        return IOMatrix.getCell(i, j).getContent();
-    }
-
-    private void process() {
+    public MatrixHeaderDetector(IOMatrix matrix) {
+        this.matrix = matrix;
+        height = matrix.getNumberOfRows();
+        width = matrix.getNumberOfColumns();
         while (validPosition()) {
-            if (oneLineDetect()) continue;
-            if (oneColDetect()) continue;
-            if (rowspanDetect()) continue;
-            if (colspanDetect()) continue;
+            if (isUniqueLine()) continue;
+            if (isUniqueColumn()) continue;
+            if (isRowspan()) continue;
+            if (isColspan()) continue;
             nextColumn();
             nextPosition();
         }
     }
-    private boolean oneLineDetect() {
-        int col = 1;
-        while (col < width) {
-            if (!get(currentLine, 0).equals(get(currentLine, col))) {
+
+    private IOCell get(int i, int j) {
+        return matrix.getCell(i, j);
+    }
+
+    private boolean isEqual(int line, int column, int relativeLine, int relativeColumn) {
+       return get(line, column).equals(get(relativeLine, relativeColumn));
+    }
+
+    private boolean isDifferent(int line, int column, int relativeLine, int relativeColumn) {
+        return !isEqual(line, column, relativeLine, relativeColumn);
+    }
+
+    private boolean isUniqueLine() {
+        for (int col = 0; col < width; col++) {
+            if (isDifferent(currentLine, 0, currentLine, col)) {
                 return false;
             }
-            col++;
         }
-        //System.out.println("oneLineDetect" + currentLine);
+        System.out.println("isUniqueLine" + currentLine);
         if (currentLine > 0) {
             previousLine();
+            stop();
         } else if (currentLine == 0) {
             nextLine();
             headerOffset++;
@@ -61,22 +63,20 @@ public class MatrixHeaderDetector {
         return true;
     }
 
-    private boolean oneColDetect() {
-        int line = 1;
-        while (line < height) {
-            if (!get(0, currentColumn).equals(get(line, currentColumn))) {
+    private boolean isUniqueColumn() {
+        for (int line = 0; line < height; line++) {
+            if (isDifferent(0, currentColumn, line, currentColumn)) {
                 return false;
             }
-            line++;
         }
-        //System.out.println("oneColDetect" + currentColumn);
+        System.out.println("isUniqueColumn" + currentColumn);
         nextColumn();
         return true;
     }
 
-    private boolean rowspanDetect() {
+    private boolean isRowspan() {
         boolean result = false;
-        while (get(currentLine, currentColumn).equals(get(relativeLine, currentColumn))) {
+        while (isEqual(currentLine, currentColumn, relativeLine, currentColumn)) {
             result = true;
             if (relativeLine == height - 1) {
                 break;
@@ -85,14 +85,14 @@ public class MatrixHeaderDetector {
         }
         if (result) {
             currentLine = relativeLine - 1;
-            //System.out.println("Rowspan on column " + currentColumn + " For line " + currentLine + " and line " + relativeLine);
+            System.out.println("Rowspan on column " + currentColumn + " For line " + currentLine + " and line " + relativeLine);
         }
         return result;
     }
 
-    private boolean colspanDetect() {
+    private boolean isColspan() {
         boolean result = false;
-        while (get(currentLine, currentColumn).equals(get(currentLine, relativeColumn))) {
+        while (isEqual(currentLine, currentColumn, currentLine, relativeColumn)) {
             result = true;
             if (relativeColumn == width - 1) {
                 break;
@@ -104,43 +104,47 @@ public class MatrixHeaderDetector {
                 nextLine();
                 firstColumn();
             }
-            //System.out.println("Colspan on line " + currentLine + " For col " + currentColumn + " and col " + relativeColumn);
+            System.out.println("Colspan on line " + currentLine + " For col " + currentColumn + " and col " + relativeColumn);
         }
         return result;
     }
 
     private boolean validPosition() {
-        //System.out.println("New loop " + relativeLine + " > " + relativeColumn);
-        return relativeLine < height - 1 && relativeColumn < width - 1;
+        System.out.println("New loop " + relativeLine + " > " + relativeColumn);
+        return relativeLine < height - 1 && relativeColumn < width - 1 && !stop;
     }
 
     private void previousLine() {
         currentLine--;
         relativeLine = currentLine + 1;
-        //System.out.println("Previous line" + currentLine);
+        System.out.println("Previous line" + currentLine);
     }
 
     private void nextLine() {
         currentLine++;
         relativeLine = currentLine + 1;
-        //System.out.println("Next line" + currentLine);
+        System.out.println("Next line" + currentLine);
     }
 
     private void firstColumn() {
         currentColumn = 0;
         relativeColumn = 1;
-        //System.out.println("First column");
+        System.out.println("First column");
     }
 
     private void nextColumn() {
         currentColumn++;
         relativeColumn = currentColumn + 1;
-        //System.out.println("Next column" + currentColumn);
+        System.out.println("Next column" + currentColumn);
     }
 
     private void nextPosition() {
         relativeLine = currentLine + 1;
         relativeColumn = currentColumn + 1;
+    }
+
+    private void stop() {
+        stop = true;
     }
 
     public Integer getHeaderOffset() {
