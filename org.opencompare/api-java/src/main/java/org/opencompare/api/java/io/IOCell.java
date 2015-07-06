@@ -1,9 +1,11 @@
 package org.opencompare.api.java.io;
 
+import java.util.Observable;
+
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOCell implements Cloneable {
+public class IOCell extends Observable implements Cloneable {
 
     private String content;
     private String rawContent;
@@ -26,6 +28,8 @@ public class IOCell implements Cloneable {
             content = "";
         }
         this.content = content;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public String getRawContent() {
@@ -37,6 +41,8 @@ public class IOCell implements Cloneable {
             rawContent = "";
         }
         this.rawContent = rawContent;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getRow() {
@@ -45,6 +51,8 @@ public class IOCell implements Cloneable {
 
     public void setRow(int row) {
         this.row = row;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getColumn() {
@@ -53,6 +61,8 @@ public class IOCell implements Cloneable {
 
     public void setColumn(int column) {
         this.column = column;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getRowspan() {
@@ -62,6 +72,8 @@ public class IOCell implements Cloneable {
     public void setRowspan(int rowspan) {
         assert rowspan >= 1;
         this.rowspan = rowspan;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getColspan() {
@@ -71,6 +83,8 @@ public class IOCell implements Cloneable {
     public void setColspan(int colspan) {
         assert colspan >= 1;
         this.colspan = colspan;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public boolean isEqual(Object obj) {

@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOMatrix implements Cloneable {
+public class IOMatrix implements Cloneable, Observer {
 
     private String name = "";
     private int maxRow = 0;
@@ -28,15 +28,16 @@ public class IOMatrix implements Cloneable {
     public void setCell(IOCell cell, int row, int column) {
         int cellMaxRow = row + (cell.getRowspan() - 1);
         int cellMaxColumn = column + (cell.getColspan() - 1);
-        if (maxRow < cellMaxRow && cellMaxRow  >= 0) {
+        if (maxRow < cellMaxRow) {
             maxRow = cellMaxRow + 1;
         }
-        if (maxColumn < cellMaxColumn && cellMaxColumn >= 0) {
-            maxColumn = column + 1;
+        if (maxColumn < cellMaxColumn) {
+            maxColumn = cellMaxColumn + 1;
         }
         cell.setRow(row);
         cell.setColumn(column);
         cells.put(new Pair<>(row, column), cell);
+        cell.addObserver(this);
     }
 
     public IOCell getCell(int row, int column) {
@@ -86,6 +87,10 @@ public class IOMatrix implements Cloneable {
     }
 
     public boolean isEqual(IOMatrix matrix) {
+        System.out.println(matrix.getNumberOfRows());
+        System.out.println(matrix.getNumberOfColumns());
+        System.out.println(getNumberOfRows());
+        System.out.println(getNumberOfColumns());
         if (matrix == this) {
             return true;
         }
@@ -136,5 +141,15 @@ public class IOMatrix implements Cloneable {
             }
         }
         return matrix;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (o instanceof IOCell) {
+            IOCell cell = (IOCell) o;
+            if (cell.hasChanged()) {
+                setCell(cell, cell.getRow(), cell.getColumn());
+            }
+        }
     }
 }

@@ -10,10 +10,6 @@ import static java.lang.String.format;
  */
 public class MatrixHeaderDetector {
 
-    public IOMatrix getMatrix() {
-        return matrix;
-    }
-
     private IOMatrix matrix;
     private int height = 0;
     private int width = 0;
@@ -24,10 +20,10 @@ public class MatrixHeaderDetector {
     private int headerOffset = 0;
     private boolean stop = false;
 
-    public MatrixHeaderDetector(IOMatrix matrix) throws CloneNotSupportedException{
-        this.matrix = matrix.clone();
-        height = this.matrix.getNumberOfRows();
-        width = this.matrix.getNumberOfColumns();
+    public MatrixHeaderDetector(IOMatrix matrix) {
+        this.matrix = matrix;
+        height = this.matrix.getNumberOfRows() - 1;
+        width = this.matrix.getNumberOfColumns() - 1;
         while (validPosition()) {
             if (isUniqueLine()) continue;
             if (isUniqueColumn()) continue;
@@ -36,6 +32,10 @@ public class MatrixHeaderDetector {
             nextColumn();
             nextPosition();
         }
+    }
+
+    public IOMatrix getMatrix() {
+        return matrix;
     }
 
     private IOCell get(int i, int j) {
@@ -59,13 +59,13 @@ public class MatrixHeaderDetector {
     }
 
     private boolean isUniqueLine() {
-        for (int col = 0; col < width; col++) {
+        for (int col = 0; col <= width; col++) {
             if (isDifferent(currentLine, 0, currentLine, col)) {
                 return false;
             }
         }
         // Save information in the matrix
-        matrix.getCell(currentLine, 0).setColspan(width-1);
+        matrix.getCell(currentLine, 0).setColspan(width);
         //System.out.println("\t" + "isUniqueLine(" + currentLine + ")");
         if (currentLine > 0) {
             previousLine();
@@ -84,7 +84,7 @@ public class MatrixHeaderDetector {
             }
         }
         // Save information in the matrix
-        matrix.getCell(0, currentColumn).setRowspan(height + 1);
+        matrix.getCell(0, currentColumn).setRowspan(height);
         //System.out.println("\t" + "isUniqueColumn(" + currentColumn + ")");
         nextColumn();
         return true;
@@ -94,7 +94,7 @@ public class MatrixHeaderDetector {
         boolean result = false;
         while (isEqual(currentLine, currentColumn, relativeLine, currentColumn)) {
             result = true;
-            if (relativeLine == height - 1) {
+            if (relativeLine == height) {
                 break;
             }
             relativeLine++;
@@ -112,7 +112,7 @@ public class MatrixHeaderDetector {
         boolean result = false;
         while (isEqual(currentLine, currentColumn, currentLine, relativeColumn)) {
             result = true;
-            if (relativeColumn == width - 1) {
+            if (relativeColumn == width) {
                 break;
             }
             relativeColumn++;
@@ -131,7 +131,7 @@ public class MatrixHeaderDetector {
 
     private boolean validPosition() {
         //System.out.println("Loop [" + currentLine + "][" + currentColumn + "]([" + relativeLine + "][" + relativeColumn + "])" + " stop->" + stop);
-        return relativeLine < height - 1 && relativeColumn < width - 1 && !stop;
+        return relativeLine < height && relativeColumn < width && !stop;
     }
 
     private void previousLine() {
@@ -155,7 +155,6 @@ public class MatrixHeaderDetector {
     private void nextColumn() {
         currentColumn++;
         relativeColumn = currentColumn + 1;
-
         //System.out.println("\t" + "Next column");
     }
 
@@ -177,10 +176,10 @@ public class MatrixHeaderDetector {
     }
 
     public int getWidth() {
-        return width;
+        return width + 1;
     }
 
     public int getHeight() {
-        return height;
+        return height + 1;
     }
 }

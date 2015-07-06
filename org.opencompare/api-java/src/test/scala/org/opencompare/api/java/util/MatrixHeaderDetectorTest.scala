@@ -1,17 +1,16 @@
-package org.opencompare.api.java
+package org.opencompare.api.java.util
 
-import java.io.{Writer, FileReader}
+import java.io.FileReader
 
-import com.opencsv.{CSVWriter, CSVReader}
-import org.opencompare.api.java.io.{IOCell, IOMatrix}
-import org.opencompare.api.java.util.{PrettyPrinter, MatrixHeaderDetector}
+import com.opencsv.CSVReader
+import org.opencompare.api.java.io.IOMatrix
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.prop.TableFor1
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
-import scala.collection.{mutable, JavaConverters}
-import scala.reflect.io.{Directory, File}
 import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.reflect.io.{Directory, File}
 
 /**
  * Created by smangin on 7/1/15.
