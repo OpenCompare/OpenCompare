@@ -3,8 +3,8 @@
  */
 
 
-    function getCellClass (value) {
-        if(value) {
+    function getCellClass (value, featureType) {
+        if(value && featureType == 'boolean') {
             if(value.toLowerCase().indexOf('yes') != -1 || value.toLowerCase().indexOf('oui') != -1) {
                 return 'yesCell';
             }

@@ -1,7 +1,7 @@
 /**
  * Created by hvallee on 6/19/15.
  */
-pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, typeService) {
 
     // Validate pcm type
     $scope.columnsType = [];
@@ -33,7 +33,7 @@ pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiG
                 for(var i = 0; i < initValid.length; i++) {
                     var featureName = initValid[i];
                     if(featureName != " ") {
-                        $scope.validation[featureName][index] =  validateType(productData[featureName], $scope.columnsType[featureName]);
+                        $scope.validation[featureName][index] =  typeService.validateType(productData[featureName], $scope.columnsType[featureName]);
                     }
                 }
                 index++;
@@ -44,81 +44,7 @@ pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiG
     };
 
 
-    /**
-     * Return the type of a column
-     * @param featureName
-     * @returns {string}
-     */
-    $scope.getType = function(featureName, data) {
-        var rowIndex = 0;
-        var isInt = 0;
-        var isBool = 0;
-        var isString = 0;
-        var codedFeatureName = convertStringToEditorFormat(featureName);
-        while(data[rowIndex]) {
-            if(data[rowIndex][codedFeatureName]) {
-                if (!angular.equals(parseInt(data[rowIndex][codedFeatureName]), NaN)) {
-                    isInt++;
-                }
-                else if (isBooleanValue(data[rowIndex][codedFeatureName])) {
-                    isBool++;
-                }
-                else if (!isEmptyCell(data[rowIndex][codedFeatureName])) {
-                    isString++;
-                }
-            }
-            rowIndex++;
-        }
-        var type = "";
-        if(isInt > isBool) {
-            if(isInt > isString) {
-                type = "number";
-            }
-            else {
-                type = "string";
-            }
-        }
-        else if(isBool > isString) {
-            type = "boolean";
-        }
-        else {
-            type = "string";
-        }
-        return type;
-    };
 
-    function validateType (productName, featureType) {
-
-        var type = "";
-        if(!angular.equals(parseInt(productName), NaN)) {
-            type = "number";
-        }
-        else if(isBooleanValue(productName)) {
-            type = "boolean";
-        }
-        else if(!isEmptyCell(productName)){
-            type = "string";
-        }
-        else {
-            type = "none"
-        }
-        if(type == "none") {
-            return true;
-        }
-        else if (featureType == "string") {
-            return true;
-        }
-        else {
-            return type === featureType;
-        }
-    }
-
-
-
-    function isBooleanValue (productName) {
-
-        return((productName.toLowerCase() === "yes") ||  (productName.toLowerCase() === "true") ||  (productName.toLowerCase() === "no") ||  (productName.toLowerCase() === "false"));
-    }
 });
 
 

@@ -2,13 +2,13 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService) {
 
     $scope.height = 300;
-    $scope.enableEdit = true;
-    $scope.enableExport = true;
+    $scope.enableEdit = embedService.enableEdit().get;
+    $scope.enableExport = embedService.enableExport().get;
     $scope.enableTitle = true;
-    $scope.enableShare = true;
+    $scope.enableShare = embedService.enableShare().get;
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -208,7 +208,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                     return 'warningCell';
                 }
                 else if(rowValue) {
-                    return getCellClass(rowValue[col.name]);
+                    return getCellClass(rowValue[col.name], featureType);
                 }
             },
             cellTooltip: function(row, col) {
@@ -264,8 +264,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
                 var columnFilterValue = $scope.columnsFilters[codedFeatureName];
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container'>" +
-                    "<button class='btn btn-primary btn-xs' ng-class='{\"btn btn-primary btn-xs \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-xs\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' >Yes</button>" +
-                    "<button class='btn btn-danger btn-flat' ng-class='{\"btn btn-danger btn-xs \" : grid.appScope.isFilterOn(col) == 2, \"btn btn-flat btn-danger btn-xs\": grid.appScope.isFilterOn(col) != 2}' btn-xs' ng-click='grid.appScope.applyBooleanFilter(col, 2)' >No</button>" +
+                    "<button class='btn btn-primary btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' ><i class='fa fa-check-circle'></i></button>" +
+                    "<button class='btn btn-danger btn-flat' ng-class='{\"btn btn-danger btn-sm \" : grid.appScope.isFilterOn(col) == 2, \"btn btn-flat btn-danger btn-sm\": grid.appScope.isFilterOn(col) != 2}' btn-xs' ng-click='grid.appScope.applyBooleanFilter(col, 2)' ><i class='fa fa-times-circle'></i></button>" +
                     "</div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm,  cellValue) {
@@ -281,7 +281,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
      * Initialize the editor
      * @param pcm
      */
-    $scope.initializeEditor = function(pcm, metadata) {
+    $scope.initializeEditor = function(pcm, metadata, decode) {
+
+        if(decode) {
+            pcm = pcmApi.decodePCM(pcm); // Decode PCM from Base64
+        }
 
         /* Convert PCM model to editor format */
         var features = pcmApi.getConcreteFeatures(pcm);
@@ -336,7 +340,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             if(!feature.name){
                 featureName = " ";
             }
-            var colDef = $scope.newColumnDef(featureName, $scope.getType(featureName, $scope.pcmData));
+            var colDef = $scope.newColumnDef(featureName, typeService.getType(featureName, $scope.pcmData));
             columnDefs.push(colDef);
             colIndex++;
         });
