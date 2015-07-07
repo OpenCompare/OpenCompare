@@ -33,6 +33,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oc-navbar">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.about") <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a target="_self" href="/about/project">@Messages("navbar.about.project")</a></li>
+                            <li><a target="_self" href="/about/privacy">@Messages("navbar.about.privacy")</a></li>
+                        </ul>
+                    </li>
+
                     <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/list">@Messages("navbar.list")</a></li>
                     <li ng-class="{ active: isActive('/create')}"><a target="_self" href="/create">@Messages("navbar.create")</a></li>
 
@@ -53,8 +61,8 @@
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">en</button></li>
-                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">fr</button></li>
+                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">English</button></li>
+                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">français</button></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,16 +85,21 @@
         $("nav.navbar-fixed-top").autoHidingNavbar();
     </script>
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-58997269-1', 'auto');
-        ga('send', 'pageview');
-
+    <!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//piwik-opencompare.rhcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
     </script>
+    <noscript><p><img src="//piwik-opencompare.rhcloud.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Piwik Code -->
 
     @footer
 </body>
