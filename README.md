@@ -1,8 +1,11 @@
 OpenCompare
 ===========
+
 This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the diverse (DIVERsity-centric Software Engineering) research team (http://diverse.irisa.fr/).
 
 This project is released under Apache v2 License.
+
+[![Join the chat at https://gitter.im/gbecan/OpenCompare](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gbecan/OpenCompare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Development tools :
  * [Play](https://www.playframework.com/)
