@@ -1,63 +1,33 @@
-/**
- * Created by Pratiti .
- */
-
-pcmApp.directive('categoryHeader', function($window) {
-    function link(scope) {
-
-
-        scope.$watch('gridOptions.columnDefs', function(newValue, oldValue) {
-
-
-            console.log(scope.gridOptions.columnDefs);
-            scope.headerRowHeight = 30;
-            scope.catHeaderRowHeight = scope.headerRowHeight + 'px';
-            scope.categories = [];
-            var lastDisplayName = "";
-            var totalWidth = 0;
-            var left = 0;
-            cols = scope.gridOptions.columnDefs;
-            for (var i = 0; i < cols.length; i++) {
-
-                totalWidth += Number(cols[i].width);
-
-                var displayName = (typeof(cols[i].categoryDisplayName) === "undefined") ?
-                    "\u00A0" : cols[i].categoryDisplayName;
-
-                if (displayName !== lastDisplayName) {
-
-                    scope.categories.push({
-                        displayName: lastDisplayName,
-                        width: totalWidth - Number(cols[i].width),
-                        widthPx: (totalWidth - Number(cols[i].width)) + 'px',
-                        left: left,
-                        leftPx: left + 'px'
-                    });
-
-                    left += (totalWidth - Number(cols[i].width));
-                    totalWidth = Number(cols[i].width);
-                    lastDisplayName = displayName;
-                }
-            }
-
-            if (totalWidth > 0) {
-
-                scope.categories.push({
-                    displayName: lastDisplayName,
-                    width: totalWidth,
-                    widthPx: totalWidth + 'px',
-                    left: left,
-                    leftPx: left + 'px'
+pcmApp.directive('superColWidthUpdate', ['$timeout', function ($timeout) {
+        return {
+            'restrict': 'A',
+            'link': function (scope, element) {
+                var _colId = scope.col.colDef.superCol,
+                    _el = jQuery(element);
+                _el.on('resize', function () {
+                    _updateSuperColWidth();
                 });
+                var _updateSuperColWidth = function () {
+                    $timeout(function () {
+                        var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
+                        var _parentWidth = _parentCol.outerWidth(),
+                            _width = _el.outerWidth();
+
+                        if (_parentWidth + 1 >= _width) {
+                            _parentWidth = _parentWidth + _width;
+                        } else {
+                            _parentWidth = _width;
+                        }
+
+                        _parentCol.css({
+                            'min-width': _parentWidth + 'px',
+                            'max-width': _parentWidth + 'px',
+                            'text-align': "center"
+                        });
+                        }, 0);
+                };
+                _updateSuperColWidth();
             }
-        });
-    }
+        };
+    }]);
 
-    return {
-
-
-        templateUrl: '/assets/templates/featureGroupHeader.html',
-        link: link
-    };
-
-});

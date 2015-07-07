@@ -10,11 +10,6 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.enableTitle = true;
     $scope.enableShare = embedService.enableShare().get;
 
-    angular.element($("#div1")).bind("scroll", function() {
-        console.log("dsdsd");
-        scope.$apply();
-    });
-
     $scope.gridOptions = {
         columnDefs: [],
         data: 'pcmData',
@@ -106,6 +101,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 expandedFunctions[i](rowEntity, colDef);
             }
         });
+
     };
 
     $scope.setGridHeight = function() {
@@ -138,8 +134,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         var columnDef = {
             name: codedFeatureName,
             displayName: featureName,
-            categoryDisplayName: "Feature group",
-            width: 200,
+            width: '*',
             enableSorting: true,
             enableHiding: false,
             enableFiltering: true,
@@ -149,7 +144,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
             filter: {term: ''},
-            minWidth: 80,
+            minWidth: 130,
             menuItems: [
                 {
                     title: 'Hide',
@@ -394,8 +389,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEditOnFocus: $scope.edit,
             pinnedLeft:true,
             allowCellFocus: true,
-            minWidth: 100,
-            width: 100,
+            minWidth: 150,
+            width: 150,
             menuItems: [
                 {
                     title: 'Unhide everything',
