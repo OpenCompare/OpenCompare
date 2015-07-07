@@ -11,6 +11,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.enableShare = embedService.enableShare().get;
 
     $scope.gridOptions = {
+        headerTemplate: '/assets/templates/featureGroupHeader.html',
+        superColDefs: [{
+            name: 'group1',
+            displayName: 'Group 1'
+        }],
         columnDefs: [],
         data: 'pcmData',
         enableRowSelection: false,
@@ -143,6 +148,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
+            superCol: 'group1',
             filter: {term: ''},
             minWidth: 130,
             menuItems: [
@@ -390,7 +396,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             pinnedLeft:true,
             allowCellFocus: true,
             minWidth: 150,
-            width: 150,
+            width: 100,
             menuItems: [
                 {
                     title: 'Unhide everything',
