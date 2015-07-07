@@ -29,10 +29,10 @@ public class IOMatrix implements Cloneable, Observer {
         int cellMaxRow = row + (cell.getRowspan() - 1);
         int cellMaxColumn = column + (cell.getColspan() - 1);
         if (maxRow < cellMaxRow) {
-            maxRow = cellMaxRow + 1;
+            maxRow = cellMaxRow;
         }
         if (maxColumn < cellMaxColumn) {
-            maxColumn = cellMaxColumn + 1;
+            maxColumn = cellMaxColumn;
         }
         cell.setRow(row);
         cell.setColumn(column);
@@ -41,14 +41,7 @@ public class IOMatrix implements Cloneable, Observer {
     }
 
     public IOCell getCell(int row, int column) {
-        if (row >= maxRow | column >= maxColumn) {
-            System.out.println(getName());
-            System.out.println("asked size");
-            System.out.println(row);
-            System.out.println(column);
-            System.out.println("current size");
-            System.out.println(maxRow);
-            System.out.println(maxColumn);
+        if (row > maxRow | column > maxColumn) {
             throw new ArrayIndexOutOfBoundsException();
         }
         IOCell cell = cells.get(new Pair<>(row, column));
@@ -60,11 +53,11 @@ public class IOMatrix implements Cloneable, Observer {
     }
 
     public int getNumberOfRows() {
-        return maxRow;
+        return maxRow + 1;
     }
 
     public int getNumberOfColumns() {
-        return maxColumn;
+        return maxColumn + 1;
     }
 
     @Override
@@ -87,10 +80,6 @@ public class IOMatrix implements Cloneable, Observer {
     }
 
     public boolean isEqual(IOMatrix matrix) {
-        System.out.println(matrix.getNumberOfRows());
-        System.out.println(matrix.getNumberOfColumns());
-        System.out.println(getNumberOfRows());
-        System.out.println(getNumberOfColumns());
         if (matrix == this) {
             return true;
         }

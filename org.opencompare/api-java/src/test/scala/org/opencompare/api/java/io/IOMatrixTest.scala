@@ -15,7 +15,7 @@ import scala.collection.JavaConverters._
  */
 class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
-  val input = getClass.getClassLoader.getResource("csv/Comparison_of_AMD_processors.csv")
+  val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
   val file = new java.io.File(input.getPath)
   var refHeight = 0
   var refWidth = 0

@@ -18,7 +18,7 @@ import scala.reflect.io.{Directory, File}
 class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   var detector : MatrixHeaderDetector = _
-  val input = getClass.getClassLoader.getResource("csv/Comparison_of_AMD_processors.csv")
+  val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
   val fileList = getClass.getClassLoader.getResource("header_detection/")
   var separator = ','
   var quote = '"'
@@ -58,11 +58,10 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
     (file: File) => {
       var header : Integer = file.name.charAt(file.name.indexOf('_') + 1).toString.toInt
       file.name + " matrix" should "return " + header + " for header size" in {
-        println(file.name + "################################################")
         val csvReader = new CSVReader(file.bufferedReader(), separator, quote)
         val matrix = new IOMatrix().loadFromCsv(csvReader)
         val detector = new MatrixHeaderDetector(matrix)
-        var size = detector.getHeaderHeight
+        var size = detector.getHeaderHeight - detector.getHeaderOffset
         size.equals(header) shouldBe true
       }
     }
