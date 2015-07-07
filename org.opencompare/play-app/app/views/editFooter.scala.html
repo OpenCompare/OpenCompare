@@ -15,7 +15,12 @@
             var modal = '@{Html(modal)}';
         </script>
 }
+<script>
+ $('#div1').on('scroll', function () {alert("sqzaz");
+    $('#div1').scrollLeft($(this).scrollLeft());
+});
 
+</script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/pcmEditorUtility.js")'></script>
@@ -34,6 +39,7 @@
 
 
 <script type='text/javascript' src='@routes.Assets.at("javascripts/editor/directives/embeddedEditor.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/editor/directives/featureGroup.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/editor/services/EmbedService.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/editor/services/ExpandEditorService.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/editor/services/TypeService.js")'></script>

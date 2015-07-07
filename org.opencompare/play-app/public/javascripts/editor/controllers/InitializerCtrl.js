@@ -2,13 +2,18 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService) {
 
     $scope.height = 300;
     $scope.enableEdit = embedService.enableEdit().get;
     $scope.enableExport = embedService.enableExport().get;
     $scope.enableTitle = true;
     $scope.enableShare = embedService.enableShare().get;
+
+    angular.element($("#div1")).bind("scroll", function() {
+        console.log("dsdsd");
+        scope.$apply();
+    });
 
     $scope.gridOptions = {
         columnDefs: [],
@@ -133,6 +138,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
         var columnDef = {
             name: codedFeatureName,
             displayName: featureName,
+            categoryDisplayName: "Feature group",
+            width: 200,
             enableSorting: true,
             enableHiding: false,
             enableFiltering: true,
@@ -357,6 +364,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             '</div>',
             enableCellEdit: false,
             enableFiltering: false,
+            pinnedLeft:true,
             enableSorting: false,
             enableHiding: false,
             enableColumnMenu: false,
@@ -384,8 +392,10 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $http, $timeou
             enableColumnMoving: false,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
+            pinnedLeft:true,
             allowCellFocus: true,
             minWidth: 100,
+            width: 100,
             menuItems: [
                 {
                     title: 'Unhide everything',

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<div class="ui-grid-top-panel-background categoryStyle">
+    <div class="ui-grid-header-cell" ng-style="{'height':catHeaderRowHeight}">
+
+
+        <div class="headerCell" ng-repeat="cat in categories" ng-style="{'left':cat.leftPx, 'width':cat.widthPx}" >
+            <div class="ui-grid-vertical-bar" style="height:100%" >&nbsp;</div>
+            <div  style="text-align:center"><b>{{cat.displayName}}</b></div>
+
+        </div>
+    </div>
+</div>
