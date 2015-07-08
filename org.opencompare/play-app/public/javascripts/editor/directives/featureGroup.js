@@ -21,7 +21,7 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                                 _parentCol.css({
                                     'min-width': _parentWidth + 'px',
                                     'max-width': _parentWidth + 'px',
-                                    'text-align': "center"
+                                    'text-align': "center",
                                 });
                             }
                         }
@@ -35,8 +35,7 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
                                 _parentCol.css({
                                     'min-width': 0 + 'px',
-                                    'max-width': 0 + 'px',
-                                    'text-align': "center"
+                                    'max-width': 0 + 'px'
                                 });
                                 _updateSuperColWidth();
                             }

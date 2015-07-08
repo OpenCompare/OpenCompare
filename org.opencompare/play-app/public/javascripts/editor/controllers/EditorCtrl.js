@@ -33,7 +33,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
         if(reload) {
-            $timeout(function(){ $scope.initializeEditor($scope.pcm, $scope.metadata)}, 100);
+            $timeout(function(){
+                $scope.initializeEditor($scope.pcm, $scope.metadata);
+            }, 20);
+            $rootScope.$broadcast('reloadFeatureGroup');
         }
         $rootScope.$broadcast('setToolbarEdit', bool);
     };

@@ -239,6 +239,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                             }
                         });
+                        $rootScope.$broadcast('reloadFeatureGroup');
                     }
                 },
                 {

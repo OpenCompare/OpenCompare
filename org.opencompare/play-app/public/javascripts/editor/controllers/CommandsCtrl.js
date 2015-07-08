@@ -46,6 +46,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
 
         /* Modified for save */
         $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
     };
 
     /**
@@ -133,6 +134,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         });
         console.log("Feature is deleted");
         $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
     };
 
     /**
@@ -155,6 +157,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.columnsType[codedFeatureName] = $scope.featureType;
             }
         }
+        $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 

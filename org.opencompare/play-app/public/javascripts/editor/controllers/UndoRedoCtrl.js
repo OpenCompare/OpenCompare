@@ -33,15 +33,18 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     break;
                 case 'removeFeature':
                     undoRemoveFeature(parameters[0], parameters[1], parameters[2], parameters[3]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
                     break;
                 case 'renameFeature':
                     undoRenameFeature(parameters[0], parameters[1], parameters[2]);
                     break;
                 case 'changeType':
                     undoChangeType(parameters[0], parameters[1]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
                     break;
                 case 'addFeature':
                     undoAddFeature(parameters[0], parameters[2]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
                     break;
             }
             if($scope.commandsIndex <= 0){
@@ -70,15 +73,18 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     break;
                 case 'removeFeature':
                     undoAddFeature(parameters[0].name, parameters[3]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
                     break;
                 case 'renameFeature':
                     undoRenameFeature(parameters[1], parameters[0], parameters[2]);
                     break;
                 case 'changeType':
                     undoChangeType(parameters[0], parameters[2]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
                     break;
                 case 'addFeature':
                     redoAddFeature(parameters[0], parameters[1]);
+                    $rootScope.$broadcast('reloadFeatureGroup');
             }
             $scope.commandsIndex++;
             $scope.canUndo = true;
