@@ -23,68 +23,74 @@ public class IOCell extends Observable implements Cloneable {
         return content;
     }
 
-    public void setContent(String content) {
+    public IOCell setContent(String content) {
         if (content == null) {
             content = "";
         }
         this.content = content;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     public String getRawContent() {
         return rawContent;
     }
 
-    public void setRawContent(String rawContent) {
+    public IOCell setRawContent(String rawContent) {
         if (rawContent == null) {
             rawContent = "";
         }
         this.rawContent = rawContent;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     public int getRow() {
         return row;
     }
 
-    public void setRow(int row) {
+    public IOCell setRow(int row) {
         this.row = row;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     public int getColumn() {
         return column;
     }
 
-    public void setColumn(int column) {
+    public IOCell setColumn(int column) {
         this.column = column;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     public int getRowspan() {
         return rowspan;
     }
 
-    public void setRowspan(int rowspan) {
+    public IOCell setRowspan(int rowspan) {
         assert rowspan >= 1;
         this.rowspan = rowspan;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     public int getColspan() {
         return colspan;
     }
 
-    public void setColspan(int colspan) {
+    public IOCell setColspan(int colspan) {
         assert colspan >= 1;
         this.colspan = colspan;
         this.setChanged();
         this.notifyObservers();
+        return this;
     }
 
     @Override
@@ -92,7 +98,7 @@ public class IOCell extends Observable implements Cloneable {
         if (obj == this) {
             return true;
         }
-        if (obj != null && obj instanceof IOCell) {
+        if (obj != null &&obj instanceof IOCell) {
             IOCell cell = (IOCell) obj;
             return getContent().equals(cell.getContent()) && getRawContent().equals(cell.getRawContent()) &&
                     getColspan() == cell.getColspan() && getRowspan() == cell.getRowspan() &&

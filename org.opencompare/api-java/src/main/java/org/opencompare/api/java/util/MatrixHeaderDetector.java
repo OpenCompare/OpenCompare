@@ -11,37 +11,87 @@ import static java.lang.String.format;
 public class MatrixHeaderDetector {
 
     private IOMatrix matrix;
-    private int height = 0;
-    private int width = 0;
-    private int currentLine = 0;
-    private int currentColumn = 0;
-    private int relativeLine = 1;
-    private int relativeColumn = 1;
-    private int headerOffset = 0;
-    private boolean stop = false;
+    private int height;
+    private int width;
+    private int currentLine;
+    private int currentColumn;
+    private int relativeLine;
+    private int relativeColumn;
+    private int headerOffset;
+    private boolean stop;
+    private boolean transposed;
 
     public MatrixHeaderDetector(IOMatrix matrix) {
         this.matrix = matrix;
-        height = this.matrix.getNumberOfRows() - 1;
-        width = this.matrix.getNumberOfColumns() - 1;
-        while (validPosition()) {
-            if (isUniqueLine()) continue;
-            if (isUniqueColumn()) continue;
-            if (isRowspan()) continue;
-            if (isColspan()) continue;
-            nextColumn();
-            nextPosition();
+        reset();
+    }
+    public void reset() {
+        this.height = this.matrix.getNumberOfRows() - 1;
+        this.width = this.matrix.getNumberOfColumns() - 1;
+        this.currentLine = 0;
+        this.currentColumn = 0;
+        this.relativeLine = 1;
+        this.relativeColumn = 1;
+        this.headerOffset = 0;
+        this.stop = false;
+    }
+
+    /*
+    Method that allow transposition
+     */
+    public IOCell get(int i, int j) {
+        return transposed ? matrix.getCell(j, i) : matrix.getCell(i, j);
+    }
+    private int getInternalHeight() {
+        return transposed ? width : height;
+    }
+    private int getInternalWidth() {
+        return transposed ? height : width;
+    }
+    private int getCurrentLine() {
+        return transposed ? currentColumn : currentLine;
+    }
+    private int getCurrentColumn() {
+        return transposed ? currentLine : currentColumn;
+    }
+    private int getRelativeLine() {
+        return transposed ? relativeColumn : relativeLine;
+    }
+    private int getRelativeColumn() {
+        return transposed ? relativeLine : relativeColumn;
+    }
+    private void setCurrentLine(int value) {
+        if (transposed) {
+            currentColumn = value;
+        } else {
+            currentLine = value;
+        }
+    }
+    private void setCurrentColumn(int value) {
+        if (transposed) {
+            currentLine = value;
+        } else {
+            currentColumn = value;
+        }
+    }
+    private void setRelativeLine(int value) {
+        if (transposed) {
+            relativeColumn = value;
+        } else {
+            relativeLine = value;
+        }
+    }
+    private void setRelativeColumn(int value) {
+        if (transposed) {
+            relativeLine = value;
+        } else {
+            relativeColumn = value;
         }
     }
 
-    public IOMatrix getMatrix() {
-        return matrix;
-    }
-
-    private IOCell get(int i, int j) {
-        return matrix.getCell(i, j);
-    }
-
+    /*
+    Functional methods
+     */
     private boolean isEqual(int line, int column, int relativeLine, int relativeColumn) {
         String content1 = get(line, column).getContent();
         String content2 = get(relativeLine, relativeColumn).getContent();
@@ -59,18 +109,18 @@ public class MatrixHeaderDetector {
     }
 
     private boolean isUniqueLine() {
-        for (int col = 0; col <= width; col++) {
-            if (isDifferent(currentLine, 0, currentLine, col)) {
+        for (int col = 0; col <= getInternalWidth(); col++) {
+            if (isDifferent(getCurrentLine(), 0, getCurrentLine(), col)) {
                 return false;
             }
         }
         // Save information in the matrix
-        matrix.getCell(currentLine, 0).setColspan(width);
-        //System.out.println("\t" + "isUniqueLine(" + currentLine + ")");
-        if (currentLine > 0) {
+        get(getCurrentLine(), 0).setColspan(getWidth());
+        //System.out.println("\t" + "isUniqueLine(" + getCurrentLine() + ")");
+        if (getCurrentLine() > 0) {
             previousLine();
             stop();
-        } else if (currentLine == 0) {
+        } else if (getCurrentLine() == 0) {
             nextLine();
             headerOffset++;
         }
@@ -78,108 +128,139 @@ public class MatrixHeaderDetector {
     }
 
     private boolean isUniqueColumn() {
-        for (int line = 0; line < height; line++) {
-            if (isDifferent(0, currentColumn, line, currentColumn)) {
+        for (int line = 0; line < getInternalHeight(); line++) {
+            if (isDifferent(0, getCurrentColumn(), line, getCurrentColumn())) {
                 return false;
             }
         }
         // Save information in the matrix
-        matrix.getCell(0, currentColumn).setRowspan(height);
-        //System.out.println("\t" + "isUniqueColumn(" + currentColumn + ")");
+        get(0, getCurrentColumn()).setRowspan(getHeight());
         nextColumn();
         return true;
     }
 
     private boolean isRowspan() {
         boolean result = false;
-        while (isEqual(currentLine, currentColumn, relativeLine, currentColumn)) {
+        while (isEqual(getCurrentLine(), getCurrentColumn(), getRelativeLine(), getCurrentColumn())) {
             result = true;
-            if (relativeLine == height) {
+            if (getRelativeLine() == getInternalHeight()) {
                 break;
             }
-            relativeLine++;
+            setRelativeLine(getRelativeLine() + 1);
             // Save information in the matrix
-            matrix.getCell(currentLine, currentColumn).setRowspan(relativeLine - currentLine + 1);
+            get(getCurrentLine(), getCurrentColumn()).setRowspan(getRelativeLine() - getCurrentLine() + 1);
         }
         if (result) {
-            currentLine = relativeLine - 1;
-            //System.out.println("\t" + "Rowspan");
+            setCurrentLine(getRelativeLine() - 1);
         }
         return result;
     }
 
     private boolean isColspan() {
         boolean result = false;
-        while (isEqual(currentLine, currentColumn, currentLine, relativeColumn)) {
+        while (isEqual(getCurrentLine(), getCurrentColumn(), getCurrentLine(), getRelativeColumn())) {
             result = true;
-            if (relativeColumn == width) {
+            if (getRelativeColumn() == getInternalWidth()) {
                 break;
             }
-            relativeColumn++;
+            setRelativeColumn(getRelativeColumn() + 1);
             // Save information in the matrix
-            matrix.getCell(currentLine, currentColumn).setColspan(relativeColumn - currentColumn + 1);
+            get(getCurrentLine(), getCurrentColumn()).setColspan(getRelativeColumn() - getCurrentColumn() + 1);
         }
         if (result) {
-            if (currentColumn != 0) {
+            if (getCurrentColumn() != 0) {
                 nextLine();
                 firstColumn();
             }
-            //System.out.println("\t" + "Colspan");
         }
         return result;
     }
 
+    /*
+    Positionning methods
+     */
+    private void nextPosition() {
+        setRelativeLine(getCurrentLine() + 1);
+        setRelativeColumn(getCurrentColumn() + 1);
+    }
+
     private boolean validPosition() {
-        //System.out.println("Loop [" + currentLine + "][" + currentColumn + "]([" + relativeLine + "][" + relativeColumn + "])" + " stop->" + stop);
-        return relativeLine < height && relativeColumn < width && !stop;
+        return getRelativeLine() < getInternalHeight() && getRelativeColumn() < getInternalWidth() && !stop;
     }
 
     private void previousLine() {
-        currentLine--;
-        relativeLine = currentLine + 1;
-        //System.out.println("\t" + "Previous line");
+        setCurrentLine(getCurrentLine() - 1);
+        setRelativeLine(getCurrentLine() + 1);
     }
-
+    private void previousColumn() {
+        setCurrentColumn(getCurrentColumn() - 1);
+        setRelativeColumn(getCurrentColumn() + 1);
+    }
     private void nextLine() {
-        currentLine++;
-        relativeLine = currentLine + 1;
-        //System.out.println("\t" + "Next line");
+        setCurrentLine(getCurrentLine() + 1);
+        setRelativeLine(getCurrentLine() + 1);
     }
-
-    private void firstColumn() {
-        currentColumn = 0;
-        relativeColumn = 1;
-        //System.out.println("\t" + "First column");
-    }
-
     private void nextColumn() {
-        currentColumn++;
-        relativeColumn = currentColumn + 1;
-        //System.out.println("\t" + "Next column");
+        setCurrentColumn(getCurrentColumn() + 1);
+        setRelativeColumn(getCurrentColumn() + 1);
+    }
+    private void firstColumn() {
+        setCurrentColumn(0);
+        setRelativeColumn(1);
     }
 
-    private void nextPosition() {
-        relativeLine = currentLine + 1;
-        relativeColumn = currentColumn + 1;
-    }
-
+    /*
+    Called when the algorithm must stop processing after the end of a loop
+     */
     private void stop() {
         stop = true;
     }
 
+    /*
+    transpose the matrix process (fluid API)
+     */
+    public MatrixHeaderDetector setTransposition(boolean value) {
+        this.transposed = value;
+        reset();
+        return this;
+    }
+
+    /*
+    launches the algorithm (fluid API)
+     */
+    public MatrixHeaderDetector process() {
+        while (validPosition()) {
+            if (isUniqueLine()) continue;
+            if (isUniqueColumn()) continue;
+            if (isRowspan()) continue;
+            if (isColspan()) continue;
+            nextColumn();
+            nextPosition();
+        }
+        return this;
+    }
+
+    /*
+    Results
+     */
     public Integer getHeaderOffset() {
         return headerOffset;
     }
 
     public Integer getHeaderHeight() {
-        return currentLine + 1;
+        return getCurrentLine() + 1;
     }
 
     public int getWidth() {
-        return width + 1;
+        return getInternalWidth() + 1;
     }
 
     public int getHeight() {
-        return height + 1;
+        return getInternalHeight() + 1;
     }
+
+    public IOMatrix getMatrix() {
+        return matrix;
+    }
+
 }

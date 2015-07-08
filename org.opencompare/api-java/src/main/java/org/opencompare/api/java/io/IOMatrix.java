@@ -22,11 +22,12 @@ public class IOMatrix implements Cloneable, Observer {
         return name;
     }
 
-    public void setName(String name) {
+    public IOMatrix setName(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setCell(IOCell cell, int row, int column) {
+    public IOMatrix setCell(IOCell cell, int row, int column) {
         int cellMaxRow = row + (cell.getRowspan() - 1);
         int cellMaxColumn = column + (cell.getColspan() - 1);
         if (maxRow < cellMaxRow) {
@@ -39,6 +40,7 @@ public class IOMatrix implements Cloneable, Observer {
         cell.setColumn(column);
         cells.put(new Pair<>(row, column), cell);
         cell.addObserver(this);
+        return this;
     }
 
     public IOCell getCell(int row, int column) {
@@ -113,7 +115,7 @@ public class IOMatrix implements Cloneable, Observer {
     public IOMatrix clone() throws CloneNotSupportedException {
         IOMatrix matrix = (IOMatrix) super.clone();
         matrix.cells = (HashMap) matrix.cells.clone();
-        for (IOCell cell: matrix.cells.values()) {
+        for (IOCell cell : matrix.cells.values()) {
             matrix.setCell(cell.clone(), cell.getRow(), cell.getColumn());
         }
         return matrix;
