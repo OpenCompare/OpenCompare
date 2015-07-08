@@ -1,6 +1,7 @@
 package org.opencompare.api.java.io;
 
 import com.opencsv.CSVReader;
+import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.util.Pair;
 import org.opencompare.api.java.util.PrettyPrinter;
 
@@ -15,7 +16,7 @@ public class IOMatrix implements Cloneable, Observer {
     private String name = "";
     private int maxRow = 0;
     private int maxColumn = 0;
-    private Hashtable<Pair<Integer, Integer>, IOCell> cells = new Hashtable<>();
+    private HashMap<Pair<Integer, Integer>, IOCell> cells = new HashMap<>();
 
     public String getName() {
         return name;
@@ -41,15 +42,13 @@ public class IOMatrix implements Cloneable, Observer {
     }
 
     public IOCell getCell(int row, int column) {
-        if (row > maxRow | column > maxColumn) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        IOCell cell = cells.get(new Pair<>(row, column));
-        if (cell == null) { // dynamic normalisation
-            cell = new IOCell("", "");
-            setCell(cell, row, column);
-        }
-        return cell;
+        return cells.get(new Pair<>(row, column));
+    }
+
+    public IOCell getOrCreateCell(int row, int column) {
+        IOCell cell = new IOCell("", "");
+        setCell(cell, row, column);
+        return cells.getOrDefault(new Pair<>(row, column), cell);
     }
 
     public int getNumberOfRows() {
@@ -79,36 +78,26 @@ public class IOMatrix implements Cloneable, Observer {
         return result.toString();
     }
 
-    public boolean isEqual(IOMatrix matrix) {
-        if (matrix == this) {
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
             return true;
         }
-        if (matrix != null) {
+        if (obj != null && obj instanceof IOMatrix) {
+            IOMatrix matrix = (IOMatrix) obj;
             if (!name.equals(matrix.getName())) {
                 return false;
             }
             for (Pair<Integer, Integer> pos : cells.keySet()) {
                 IOCell cell1 = getCell(pos._1, pos._2);
                 IOCell cell2 = matrix.getCell(pos._1, pos._2);
-                if (!cell1.isEqual(cell2)) {
+                if (!cell1.equals(cell2)) {
                     return false;
                 }
             }
             return true;
         }
         return false;
-    }
-
-    public IOMatrix loadFromCsv(CSVReader reader) throws IOException {
-        List<String[]> matrix = reader.readAll();
-        for (int i = 0; i < matrix.size();i++) {
-            for (int j = 0; j < matrix.get(i).length;j++) {
-                String content = matrix.get(i)[j];
-                IOCell cell = new IOCell(content, content);
-                setCell(cell, i, j);
-            }
-        }
-        return this;
     }
 
     public String[][] toStringArray() {
@@ -123,11 +112,9 @@ public class IOMatrix implements Cloneable, Observer {
 
     public IOMatrix clone() throws CloneNotSupportedException {
         IOMatrix matrix = (IOMatrix) super.clone();
-        for (int i = 0; i < getNumberOfRows();i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                IOCell cell = getCell(i, j);
-                matrix.setCell(cell.clone(), i, j);
-            }
+        matrix.cells = (HashMap) matrix.cells.clone();
+        for (IOCell cell: matrix.cells.values()) {
+            matrix.setCell(cell.clone(), cell.getRow(), cell.getColumn());
         }
         return matrix;
     }
@@ -141,4 +128,5 @@ public class IOMatrix implements Cloneable, Observer {
             }
         }
     }
+
 }

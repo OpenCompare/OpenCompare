@@ -1,25 +1,20 @@
 package org.opencompare.api.java.io
 
-import java.io.FileReader
-
-import com.opencsv.CSVReader
-import org.scalatest.{BeforeAndAfterAll, Matchers, FlatSpec, FunSuite}
-
-import scala.collection.immutable.HashMap
-import scala.collection.{mutable, JavaConverters}
-import scala.collection.JavaConverters._
+import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 /**
  * Created by smangin on 7/3/15.
  */
 class IOCellTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
-  var cell : IOCell = _
+  behavior of "IOCell"
+
   val content = "sdqkjpohsojgv"
-  var rawContent = "!il13256ih4i861u:1o6846h6ZDfzdz<>"
   val row = 16
-  var column = 18
   val rowspan = 12
+  var cell : IOCell = _
+  var rawContent = "!il13256ih4i861u:1o6846h6ZDfzdz<>"
+  var column = 18
   var colspan = 5
 
   override def beforeAll() = {
@@ -53,7 +48,7 @@ class IOCellTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     newCell.setColumn(column)
     newCell.setRowspan(rowspan)
     newCell.setColspan(colspan)
-    cell.isEqual(newCell) shouldBe true
+    cell.equals(newCell) shouldBe true
   }
 
 }

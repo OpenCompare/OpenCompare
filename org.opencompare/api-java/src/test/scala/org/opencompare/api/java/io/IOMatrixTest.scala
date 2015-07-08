@@ -15,6 +15,8 @@ import scala.collection.JavaConverters._
  */
 class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
+  behavior of "IOMatrix"
+
   val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
   val file = new java.io.File(input.getPath)
   var refHeight = 0
@@ -31,6 +33,22 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   var cell : IOCell = _
   var matrix : IOMatrix = _
 
+  def createMatrix(reader : CSVReader): IOMatrix = {
+    val csvMatrix = reader.readAll().asScala
+    var i = 0
+    var j = 0
+    val matrix = new IOMatrix()
+    for (line <- csvMatrix.iterator) {
+      for (column <- line.iterator) {
+        val cell = new IOCell(column, column)
+        matrix.setCell(cell, i, j)
+        j+=1
+      }
+      i+=1
+    }
+    matrix
+  }
+
   override def beforeAll() = {
     // From Csv
     val refCsvReader = new CSVReader(new FileReader(file), ',', '"')
@@ -39,7 +57,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     refWidth = refCsvMatrix.head.size
 
     val csvReader = new CSVReader(new FileReader(file), ',', '"')
-    csvMatrix = new IOMatrix().loadFromCsv(csvReader)
+    csvMatrix = createMatrix(csvReader)
     csvMatrix.setName(title)
     // From custom values
     cell = new IOCell(content, rawContent)
@@ -51,9 +69,9 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
   "A matrix" should "be equal to the reference matrix" in {
     val newCsvReader = new CSVReader(new FileReader(file), ',', '"')
-    val newCsvMatrix = new IOMatrix().loadFromCsv(newCsvReader)
+    val newCsvMatrix = createMatrix(newCsvReader)
     newCsvMatrix.setName(title)
-    csvMatrix.isEqual(newCsvMatrix) shouldBe true
+    csvMatrix.equals(newCsvMatrix) shouldBe true
   }
 
   it should "have equal name with the reference matrix" in {
@@ -68,6 +86,18 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     val cell = new IOCell("Glibebluk", "Humf")
     matrix.setCell(cell, 1, 1)
     matrix.getCell(1, 1).equals(cell) shouldBe true
+  }
+
+  it should "proper give null if a cell does not exist" in {
+    matrix.getCell(5, 9) shouldBe null
+  }
+
+  it should "proper create a new empty cell if it does not exist" in {
+    val cell = new IOCell("", "")
+    cell.setRow(5)
+    cell.setColumn(9)
+    matrix.getOrCreateCell(5, 9).equals(cell) shouldBe true
+    matrix.getCell(5, 9).equals(cell) shouldBe true
   }
 
   it should "have equal number of rows/columns with the reference matrix" in {

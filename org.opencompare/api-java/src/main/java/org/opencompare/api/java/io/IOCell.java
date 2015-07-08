@@ -87,17 +87,16 @@ public class IOCell extends Observable implements Cloneable {
         this.notifyObservers();
     }
 
-    public boolean isEqual(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
-        if (obj != null) {
-            if (obj instanceof IOCell) {
-                IOCell cell = (IOCell) obj;
-                return getContent().equals(cell.getContent()) && getRawContent().equals(cell.getRawContent()) &&
-                        getColspan() == cell.getColspan() && getRowspan() == cell.getRowspan() &&
-                        getColumn() == cell.getColumn() && getRow() == cell.getRow();
-            }
+        if (obj != null && obj instanceof IOCell) {
+            IOCell cell = (IOCell) obj;
+            return getContent().equals(cell.getContent()) && getRawContent().equals(cell.getRawContent()) &&
+                    getColspan() == cell.getColspan() && getRowspan() == cell.getRowspan() &&
+                    getColumn() == cell.getColumn() && getRow() == cell.getRow();
         }
         return false;
     }
