@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService, sortFeaturesService) {
 
     $scope.height = 300;
     $scope.enableEdit = embedService.enableEdit().get;
@@ -10,12 +10,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.enableTitle = true;
     $scope.enableShare = embedService.enableShare().get;
 
+    $scope.FeaturGroupIndex = 1;
+
     $scope.gridOptions = {
         headerTemplate: '/assets/templates/featureGroupHeader.html',
-        superColDefs: [{
-            name: 'group1',
-            displayName: 'Group 1'
-        }],
+        superColDefs: [],
         columnDefs: [],
         data: 'pcmData',
         enableRowSelection: false,
@@ -107,6 +106,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             }
         });
 
+        gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
+               $rootScope.$broadcast('reloadFeatureGroup');
+        })
+
+
     };
 
     $scope.setGridHeight = function() {
@@ -123,6 +127,21 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             }
         }
     };
+    function randomFeatureGroup (featureType) {
+        var feature = '';
+        switch(featureType) {
+            case "string":
+                feature = 'Feature Group 1';
+                break;
+            case "number":
+                feature = 'Feature Group 2';
+                break;
+            case "boolean":
+                feature = 'Feature Group 3';
+                break;
+        }
+        return feature;
+    }
 
     /**
      *  Create a new ColumnDef for the ui-grid
@@ -134,6 +153,64 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         if(!featureType) {
             featureType = "string";
         }
+        /* For testing purpose */
+        var featureGroup = randomFeatureGroup(featureType);
+        var found = false;
+        $scope.gridOptions.superColDefs.forEach(function (ColDefFeatureGroup) {
+                if(ColDefFeatureGroup.name == featureGroup ) {
+                    found = true;
+                }
+        });
+        if(!found) {
+            var newFeatureGroup = {
+                name: featureGroup,
+                displayName: featureGroup
+            };
+            switch(featureGroup) {
+                case 'Feature Group 1':
+                    $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
+                    break;
+                case 'Feature Group 2':
+                    var found = false;
+                    $scope.gridOptions.superColDefs.forEach(function (ColDefFeatureGroup) {
+                        if(ColDefFeatureGroup.name == 'Feature Group 1' ) {
+                            found = true;
+                        }
+                    });
+                    if(found) {
+                        $scope.gridOptions.superColDefs.splice(1, 0, newFeatureGroup);
+                    }
+                    else {
+                        $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
+                    }
+                    break;
+                case 'Feature Group 3':
+                    var found1 = false;
+                    var found2 = false;
+                    $scope.gridOptions.superColDefs.forEach(function (ColDefFeatureGroup) {
+                        if(ColDefFeatureGroup.name == 'Feature Group 1' ) {
+                            found1 = true;
+                        }
+                        if(ColDefFeatureGroup.name == 'Feature Group 2' ) {
+                            found2 = true;
+                        }
+                    });
+                    var index = 0;
+                    if(found1) {
+                        index++;
+                    }
+                    if(found2) {
+                        index++;
+                    }
+                       $scope.gridOptions.superColDefs.splice(index, 0, newFeatureGroup);
+
+                    break;
+            }
+
+
+        }
+    /* End of testing purpose */
+
         var codedFeatureName = convertStringToEditorFormat(featureName);
         $scope.columnsType[codedFeatureName] = featureType;
         var columnDef = {
@@ -148,7 +225,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
-            superCol: 'group1',
+            superCol: featureGroup,
             filter: {term: ''},
             minWidth: 130,
             menuItems: [
@@ -357,7 +434,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             $scope.pcmDataRaw = sortRawProducts($scope.pcmDataRaw, $scope.pcmData);
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
-        $scope.gridOptions.columnDefs = columnDefs;
+
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByType(columnDefs, $scope.columnsType);
+
+
+
         var toolsColumn = {
             name: ' ',
             cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
@@ -396,7 +477,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             pinnedLeft:true,
             allowCellFocus: true,
             minWidth: 150,
-            width: 100,
+            width: 150,
             menuItems: [
                 {
                     title: 'Unhide everything',
@@ -419,8 +500,12 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             "<div class='ui-grid-filter-container'>" +
             "   <input type='text' class='form-control floating-label' ng-change='grid.appScope.applyProductFilter()' ng-model='grid.appScope.productFilter' placeholder='Find'"+
             "</div>";
+
+
         $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
         $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
+
+
     }
 
     function setOptions() {
