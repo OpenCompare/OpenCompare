@@ -1,17 +1,15 @@
 package org.opencompare.api.java.io;
 
-import com.opencsv.CSVReader;
-import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.util.Pair;
-import org.opencompare.api.java.util.PrettyPrinter;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOMatrix implements Cloneable, Observer {
+public class IOMatrix implements Cloneable {
 
     private String name = "";
     private int maxRow = 0;
@@ -27,19 +25,14 @@ public class IOMatrix implements Cloneable, Observer {
         return this;
     }
 
-    public IOMatrix setCell(IOCell cell, int row, int column) {
-        int cellMaxRow = row + (cell.getRowspan() - 1);
-        int cellMaxColumn = column + (cell.getColspan() - 1);
-        if (maxRow < cellMaxRow) {
-            maxRow = cellMaxRow;
+    public IOMatrix setCell(IOCell cell, int row, int column, int rowspan, int colspan) {
+        maxRow = (maxRow < (row + rowspan - 1)) ? (row + rowspan - 1) : maxRow;
+        maxColumn = (maxColumn < (column + colspan - 1)) ? (column + colspan - 1) : maxColumn;
+        for (int i = 0; i < rowspan;i++) {
+            for (int j = 0; j < colspan;j++) {
+                cells.put(new Pair<>(row + i, column + j), cell);
+            }
         }
-        if (maxColumn < cellMaxColumn) {
-            maxColumn = cellMaxColumn;
-        }
-        cell.setRow(row);
-        cell.setColumn(column);
-        cells.put(new Pair<>(row, column), cell);
-        cell.addObserver(this);
         return this;
     }
 
@@ -48,8 +41,8 @@ public class IOMatrix implements Cloneable, Observer {
     }
 
     public IOCell getOrCreateCell(int row, int column) {
-        IOCell cell = new IOCell("", "");
-        setCell(cell, row, column);
+        IOCell cell = new IOCell("");
+        setCell(cell, row, column, 1, 1);
         return cells.getOrDefault(new Pair<>(row, column), cell);
     }
 
@@ -112,23 +105,26 @@ public class IOMatrix implements Cloneable, Observer {
         return matrix;
     }
 
-    public IOMatrix clone() throws CloneNotSupportedException {
-        IOMatrix matrix = (IOMatrix) super.clone();
-        matrix.cells = (HashMap) matrix.cells.clone();
-        for (IOCell cell : matrix.cells.values()) {
-            matrix.setCell(cell.clone(), cell.getRow(), cell.getColumn());
+    public List<String[]> toList() {
+        List<String[]> matrix = new ArrayList<>(getNumberOfRows());
+        for (int i = 0; i < getNumberOfRows();i++) {
+            String[] line = new String[getNumberOfColumns()];
+            for (int j = 0; j < getNumberOfColumns();j++) {
+                 line[j] = getCell(i, j).getContent();
+            }
+            matrix.set(i, line);
         }
         return matrix;
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-        if (o instanceof IOCell) {
-            IOCell cell = (IOCell) o;
-            if (cell.hasChanged()) {
-                setCell(cell, cell.getRow(), cell.getColumn());
-            }
+    public IOMatrix clone() throws CloneNotSupportedException {
+        IOMatrix matrix = (IOMatrix) super.clone();
+        matrix.cells = (HashMap) matrix.cells.clone();
+        for (Pair<Integer, Integer> pair : matrix.cells.keySet()) {
+            IOCell cell = matrix.cells.get(pair).clone();
+            matrix.setCell(cell, pair._1, pair._2, 1, 1);
         }
+        return matrix;
     }
 
 }

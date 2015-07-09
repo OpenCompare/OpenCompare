@@ -15,8 +15,6 @@ import scala.collection.JavaConverters._
  */
 class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
-  behavior of "IOMatrix"
-
   val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
   val file = new java.io.File(input.getPath)
   var refHeight = 0
@@ -29,7 +27,6 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   val rowspan = 2
   val colspan = 3
   val content = "fdgqe÷ýt:!u4i19:u8yus:81ts"
-  val rawContent = "{{dfkhf|sdhikfs <ref fdgqe÷ýt:!u4i19:u8yus:81ts>"
   var cell : IOCell = _
   var matrix : IOMatrix = _
 
@@ -40,8 +37,8 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     val matrix = new IOMatrix()
     for (line <- csvMatrix.iterator) {
       for (column <- line.iterator) {
-        val cell = new IOCell(column, column)
-        matrix.setCell(cell, i, j)
+        val cell = new IOCell(column)
+        matrix.setCell(cell, i, j, 1, 1)
         j+=1
       }
       i+=1
@@ -60,11 +57,9 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     csvMatrix = createMatrix(csvReader)
     csvMatrix.setName(title)
     // From custom values
-    cell = new IOCell(content, rawContent)
-    cell.setRowspan(rowspan)
-    cell.setColspan(colspan)
+    cell = new IOCell(content)
     matrix = new IOMatrix()
-    matrix.setCell(cell, row, column)
+    matrix.setCell(cell, row, column, 1, 1)
   }
 
   "A matrix" should "be equal to the reference matrix" in {
@@ -83,9 +78,19 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   }
 
   it should "proper replace a cell with a new cell at same position" in {
-    val cell = new IOCell("Glibebluk", "Humf")
-    matrix.setCell(cell, 1, 1)
+    val cell = new IOCell("Glibebluk")
+    matrix.setCell(cell, 1, 1, 1, 1)
     matrix.getCell(1, 1).equals(cell) shouldBe true
+  }
+
+  it should "proper expand a cell with colspan/rowspan" in {
+    val cell = new IOCell("Glibeblok")
+    matrix.setCell(cell, 1, 1, 3, 2)
+    for (i <- 1 to 3) {
+      for (j <- 1 to 2){
+        matrix.getCell(i, j).equals(cell) shouldBe true
+      }
+    }
   }
 
   it should "proper give null if a cell does not exist" in {
@@ -93,9 +98,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   }
 
   it should "proper create a new empty cell if it does not exist" in {
-    val cell = new IOCell("", "")
-    cell.setRow(5)
-    cell.setColumn(9)
+    val cell = new IOCell("")
     matrix.getOrCreateCell(5, 9).equals(cell) shouldBe true
     matrix.getCell(5, 9).equals(cell) shouldBe true
   }
@@ -103,11 +106,5 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   it should "have equal number of rows/columns with the reference matrix" in {
     matrix.getNumberOfRows.equals(row)
     matrix.getNumberOfColumns.equals(column)
-  }
-
-  "A cell" should "have the same position in both matrix" in {
-    val position = new Pair(cell.getRow, cell.getColumn)
-    val newPosition = new Pair(row, column)
-    newPosition.equals(position) shouldBe true
   }
 }

@@ -15,7 +15,7 @@ import scala.reflect.io.{Directory, File}
 /**
  * Created by smangin on 7/8/15.
  */
-class MatrixHeaderDetectorApiTest  extends FlatSpec with Matchers with BeforeAndAfterAll{
+class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterAll{
 
   var matrix : IOMatrix = _
   val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
@@ -33,8 +33,8 @@ class MatrixHeaderDetectorApiTest  extends FlatSpec with Matchers with BeforeAnd
     for (line <- csvMatrix.iterator) {
       var j = 0
       for (column <- line.iterator) {
-        val cell = new IOCell(column, column)
-        matrix.setCell(cell, i, j)
+        val cell = new IOCell(column)
+        matrix.setCell(cell, i, j, 1, 1)
         j+=1
       }
       i+=1
@@ -55,32 +55,32 @@ class MatrixHeaderDetectorApiTest  extends FlatSpec with Matchers with BeforeAnd
   }
 
   "A matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
     detector.getWidth.equals(refWidth) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
     detector.getHeight.equals(refHeight) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
     detector.getMatrix.equals(matrix) shouldBe true
   }
 
   "A transposed matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
     detector.getWidth.equals(refHeight) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
     detector.getHeight.equals(refWidth) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixHeaderDetector(matrix).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
     detector.getMatrix.equals(matrix) shouldBe true
   }
 }

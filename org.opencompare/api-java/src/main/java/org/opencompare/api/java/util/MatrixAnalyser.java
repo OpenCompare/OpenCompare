@@ -8,9 +8,10 @@ import static java.lang.String.format;
 /**
  * Created by smangin on 7/1/15.
  */
-public class MatrixHeaderDetector {
+public class MatrixAnalyser {
 
     private IOMatrix matrix;
+    private MatrixComparator comparator;
     private int height;
     private int width;
     private int currentLine;
@@ -21,11 +22,12 @@ public class MatrixHeaderDetector {
     private boolean stop;
     private boolean transposed;
 
-    public MatrixHeaderDetector(IOMatrix matrix) {
+    public MatrixAnalyser(IOMatrix matrix, MatrixComparator comparator) {
         this.matrix = matrix;
+        this.comparator = comparator;
         reset();
     }
-    public void reset() {
+    public MatrixAnalyser reset() {
         this.height = this.matrix.getNumberOfRows() - 1;
         this.width = this.matrix.getNumberOfColumns() - 1;
         this.currentLine = 0;
@@ -34,11 +36,21 @@ public class MatrixHeaderDetector {
         this.relativeColumn = 1;
         this.headerOffset = 0;
         this.stop = false;
+        this.transposed = false;
+        return this;
     }
 
     /*
     Method that allow transposition
      */
+    public MatrixAnalyser set(IOCell cell, int i, int j, int rowspan, int colspan) {
+        if (transposed) {
+            matrix.setCell(cell, j, i, colspan, rowspan);
+        } else {
+            matrix.setCell(cell, i, j, rowspan, colspan);
+        }
+        return this;
+    }
     public IOCell get(int i, int j) {
         return transposed ? matrix.getCell(j, i) : matrix.getCell(i, j);
     }
@@ -93,15 +105,9 @@ public class MatrixHeaderDetector {
     Functional methods
      */
     private boolean isEqual(int line, int column, int relativeLine, int relativeColumn) {
-        String content1 = get(line, column).getContent();
-        String content2 = get(relativeLine, relativeColumn).getContent();
-        if (content1 == null && content2 == null) {
-            return true;
-        }
-        if (content1.equals(content2)) {
-            return true;
-        }
-        return false;
+        IOCell cell1 = get(line, column);
+        IOCell cell2 = get(relativeLine, relativeColumn);
+        return comparator.compareCells(cell1, cell2);
     }
 
     private boolean isDifferent(int line, int column, int relativeLine, int relativeColumn) {
@@ -115,8 +121,13 @@ public class MatrixHeaderDetector {
             }
         }
         // Save information in the matrix
-        get(getCurrentLine(), 0).setColspan(getWidth());
-        //System.out.println("\t" + "isUniqueLine(" + getCurrentLine() + ")");
+        set(
+                get(getCurrentLine(), 0),
+                getCurrentLine(),
+                getCurrentColumn(),
+                1,
+                getWidth()
+        );
         if (getCurrentLine() > 0) {
             previousLine();
             stop();
@@ -134,7 +145,13 @@ public class MatrixHeaderDetector {
             }
         }
         // Save information in the matrix
-        get(0, getCurrentColumn()).setRowspan(getHeight());
+        set(
+                get(0, getCurrentColumn()),
+                getCurrentLine(),
+                getCurrentColumn(),
+                getHeight(),
+                1
+        );
         nextColumn();
         return true;
     }
@@ -147,10 +164,16 @@ public class MatrixHeaderDetector {
                 break;
             }
             setRelativeLine(getRelativeLine() + 1);
-            // Save information in the matrix
-            get(getCurrentLine(), getCurrentColumn()).setRowspan(getRelativeLine() - getCurrentLine() + 1);
         }
         if (result) {
+            // Save information in the matrix
+            set(
+                    get(getCurrentLine(), getCurrentColumn()),
+                    getCurrentLine(),
+                    getCurrentColumn(),
+                    getRelativeLine() - getCurrentLine() + 1,
+                    1
+            );
             setCurrentLine(getRelativeLine() - 1);
         }
         return result;
@@ -164,10 +187,16 @@ public class MatrixHeaderDetector {
                 break;
             }
             setRelativeColumn(getRelativeColumn() + 1);
-            // Save information in the matrix
-            get(getCurrentLine(), getCurrentColumn()).setColspan(getRelativeColumn() - getCurrentColumn() + 1);
         }
         if (result) {
+            // Save information in the matrix
+            set(
+                    get(getCurrentLine(), getCurrentColumn()),
+                    getCurrentLine(),
+                    getCurrentColumn(),
+                    1,
+                    getRelativeColumn() - getCurrentColumn() + 1
+            );
             if (getCurrentColumn() != 0) {
                 nextLine();
                 firstColumn();
@@ -219,16 +248,16 @@ public class MatrixHeaderDetector {
     /*
     transpose the matrix process (fluid API)
      */
-    public MatrixHeaderDetector setTransposition(boolean value) {
-        this.transposed = value;
+    public MatrixAnalyser setTransposition(boolean value) {
         reset();
+        this.transposed = value;
         return this;
     }
 
     /*
     launches the algorithm (fluid API)
      */
-    public MatrixHeaderDetector process() {
+    public MatrixAnalyser process() {
         while (validPosition()) {
             if (isUniqueLine()) continue;
             if (isUniqueColumn()) continue;
@@ -243,11 +272,11 @@ public class MatrixHeaderDetector {
     /*
     Results
      */
-    public Integer getHeaderOffset() {
+    public int getHeaderOffset() {
         return headerOffset;
     }
 
-    public Integer getHeaderHeight() {
+    public int getHeaderHeight() {
         return getCurrentLine() + 1;
     }
 
@@ -261,6 +290,21 @@ public class MatrixHeaderDetector {
 
     public IOMatrix getMatrix() {
         return matrix;
+    }
+
+    public void print() {
+        System.out.println(
+            "Transposed -> " + transposed + "\n" +
+            "Width -> " + getWidth() + "\n" +
+            "Heigth -> " + getHeight() + "\n" +
+            "Internal width -> " + getInternalWidth() + "\n" +
+            "Internal height -> " + getInternalHeight() + "\n" +
+            "Current line -> " + getCurrentLine() + "\n" +
+            "Current column -> " + getCurrentColumn() + "\n" +
+            "Relative line -> " + getRelativeLine() + "\n" +
+            "Relative column -> " + getRelativeColumn() + "\n" +
+            "Header height -> " + getHeaderHeight() + "\n" +
+            "Header offset -> " + getHeaderOffset());
     }
 
 }

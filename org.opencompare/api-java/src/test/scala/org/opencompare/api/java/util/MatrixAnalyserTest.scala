@@ -16,7 +16,7 @@ import scala.reflect.io.{Directory, File}
 /**
  * Created by smangin on 7/1/15.
  */
-class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfterAll {
+class MatrixAnalyserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val featureList = getClass.getClassLoader.getResource("header_detection/")
   val productList = getClass.getClassLoader.getResource("product_detection/")
@@ -36,8 +36,8 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
     for (line <- csvMatrix.iterator) {
       var j = 0;
       for (column <- line.iterator) {
-        val cell = new IOCell(column, column)
-        matrix.setCell(cell, i, j)
+        val cell = new IOCell(column)
+        matrix.setCell(cell, i, j, 1, 1)
         j+=1
       }
       i+=1
@@ -50,7 +50,7 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
       var header : Integer = file.name.charAt(file.name.indexOf('_') + 1).toString.toInt
       val csvReader = new CSVReader(file.bufferedReader(), separator, quote)
       val matrix = createMatrix(csvReader)
-      val detector = new MatrixHeaderDetector(matrix)
+      val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
       detector.process();
       var size = detector.getHeaderHeight - detector.getHeaderOffset
       file.name + " matrix" should "return " + header + " for header size" in {
@@ -66,7 +66,7 @@ class MatrixHeaderDetectorTest extends FlatSpec with Matchers with BeforeAndAfte
       var header : Integer = file.name.charAt(file.name.indexOf('_') + 1).toString.toInt
       val csvReader = new CSVReader(file.bufferedReader(), separator, quote)
       val matrix = createMatrix(csvReader)
-      val detector = new MatrixHeaderDetector(matrix).setTransposition(true)
+      val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
       detector.process();
       var size = detector.getHeaderHeight - detector.getHeaderOffset
       file.name + " transposed matrix" should "return " + header + " for product size instead of " + size in {
