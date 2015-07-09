@@ -18,7 +18,7 @@ import scala.reflect.io.{Directory, File}
 class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterAll{
 
   var matrix : IOMatrix = _
-  val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
+  val input = getClass.getClassLoader.getResource("csv/Comparison_of_audio_player_software-Audio_format_ability.csv")
   var separator = ','
   var quote = '"'
   var refHeight = 0

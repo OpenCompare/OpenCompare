@@ -15,7 +15,7 @@ import scala.collection.JavaConverters._
  */
 class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
-  val input = getClass.getClassLoader.getResource("csv/Comparison_of_digital_audio_editors.csv")
+  val input = getClass.getClassLoader.getResource("csv/Comparison_of_audio_player_software-Audio_format_ability.csv")
   val file = new java.io.File(input.getPath)
   var refHeight = 0
   var refWidth = 0
@@ -62,14 +62,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     matrix.setCell(cell, row, column, 1, 1)
   }
 
-  "A matrix" should "be equal to the reference matrix" in {
-    val newCsvReader = new CSVReader(new FileReader(file), ',', '"')
-    val newCsvMatrix = createMatrix(newCsvReader)
-    newCsvMatrix.setName(title)
-    csvMatrix.equals(newCsvMatrix) shouldBe true
-  }
-
-  it should "have equal name with the reference matrix" in {
+  "A matrix" should "have equal name with the reference matrix" in {
     title.equals(csvMatrix.getName) shouldBe true
   }
 
