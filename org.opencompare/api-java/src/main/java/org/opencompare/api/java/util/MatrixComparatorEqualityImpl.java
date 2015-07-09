@@ -13,6 +13,9 @@ public class MatrixComparatorEqualityImpl implements MatrixComparator {
         if (c1 == null && c2 == null) {
             return true;
         }
+        if (c1 == null) {
+            return false;
+        }
         return c1.equals(c2);
     }
 }

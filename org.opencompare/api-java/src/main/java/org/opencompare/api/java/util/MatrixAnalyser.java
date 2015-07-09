@@ -171,7 +171,7 @@ public class MatrixAnalyser {
                     get(getCurrentLine(), getCurrentColumn()),
                     getCurrentLine(),
                     getCurrentColumn(),
-                    getRelativeLine() - getCurrentLine() + 1,
+                    getRelativeLine() - getCurrentLine(),
                     1
             );
             setCurrentLine(getRelativeLine() - 1);
@@ -195,7 +195,7 @@ public class MatrixAnalyser {
                     getCurrentLine(),
                     getCurrentColumn(),
                     1,
-                    getRelativeColumn() - getCurrentColumn() + 1
+                    getRelativeColumn() - getCurrentColumn()
             );
             if (getCurrentColumn() != 0) {
                 nextLine();
@@ -290,21 +290,6 @@ public class MatrixAnalyser {
 
     public IOMatrix getMatrix() {
         return matrix;
-    }
-
-    public void print() {
-        System.out.println(
-            "Transposed -> " + transposed + "\n" +
-            "Width -> " + getWidth() + "\n" +
-            "Heigth -> " + getHeight() + "\n" +
-            "Internal width -> " + getInternalWidth() + "\n" +
-            "Internal height -> " + getInternalHeight() + "\n" +
-            "Current line -> " + getCurrentLine() + "\n" +
-            "Current column -> " + getCurrentColumn() + "\n" +
-            "Relative line -> " + getRelativeLine() + "\n" +
-            "Relative column -> " + getRelativeColumn() + "\n" +
-            "Header height -> " + getHeaderHeight() + "\n" +
-            "Header offset -> " + getHeaderOffset());
     }
 
 }

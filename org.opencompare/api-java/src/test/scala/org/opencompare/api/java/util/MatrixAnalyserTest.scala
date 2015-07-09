@@ -53,7 +53,7 @@ class MatrixAnalyserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
       detector.process();
       var size = detector.getHeaderHeight - detector.getHeaderOffset
-      file.name + " matrix" should "return " + header + " for header size" in {
+      file.name + " matrix" should "return " + header + " for header size instead of " + size in {
         size.equals(header) shouldBe true
       }
       it should "be equal to reference matrix" in {
