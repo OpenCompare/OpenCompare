@@ -2,10 +2,14 @@ package org.opencompare.api.java.io;
 
 import com.opencsv.CSVReader;
 import org.opencompare.api.java.*;
+import org.opencompare.api.java.util.MatrixAnalyser;
+import org.opencompare.api.java.util.MatrixComparatorEqualityImpl;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gbecan on 4/2/15.
@@ -16,6 +20,7 @@ public class CSVLoader implements PCMLoader {
     private char separator;
     private char quote;
     private boolean productsAsLines;
+    private Map<Integer, Feature> features;
 
     public CSVLoader(PCMFactory factory) {
         this(factory, ',', '"', true);
@@ -40,6 +45,19 @@ public class CSVLoader implements PCMLoader {
         this.productsAsLines = productsAsLines;
     }
 
+    public static IOMatrix createMatrix(CSVReader reader) throws IOException {
+        List<String[]> csvMatrix = reader.readAll();
+        IOMatrix matrix = new IOMatrix();
+        for (int i = 0; i < csvMatrix.size();i++) {
+            for (int j = 0; j < csvMatrix.get(i).length;j++) {
+                String content = csvMatrix.get(i)[j];
+                IOCell cell = new IOCell(content);
+                matrix.setCell(cell, i, j, 1, 1);
+            }
+        }
+        return matrix;
+    }
+
     @Override
     public List<PCMContainer> load(String pcm) {
         List<PCMContainer> containers = new ArrayList<>();
@@ -62,134 +80,74 @@ public class CSVLoader implements PCMLoader {
         return containers;
     }
 
-    public List<PCMContainer> load(Reader reader) throws IOException {
-        CSVReader csvReader = new CSVReader(reader, separator, quote);
+    public List<PCMContainer> load(IOMatrix matrix) {
         List<PCMContainer> containers = new ArrayList<>();
-        if (productsAsLines) {
-            containers.add(loadFeatureFirst(csvReader));
-        } else {
-            containers.add(loadProductFirst(csvReader));
-        }
-        csvReader.close();
+        MatrixAnalyser detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl());
+        containers.add(load(detector));
         return containers;
     }
 
-    private PCMContainer loadFeatureFirst(CSVReader reader) throws IOException {
+    public List<PCMContainer> load(Reader reader) throws IOException {
+        CSVReader csvReader = new CSVReader(reader, separator, quote);
+        IOMatrix matrix = createMatrix(csvReader);
+        return load(matrix);
+    }
+
+    private PCMContainer load(MatrixAnalyser detector) {
         PCM pcm = factory.createPCM();
         PCMMetadata metadata = new PCMMetadata(pcm);
         metadata.setProductAsLines(this.productsAsLines);
         PCMContainer container = new PCMContainer(metadata);
+        int headerLength = detector.getHeaderHeight();
+        int matrixHeight = detector.getHeight();
+        int matrixWidth = detector.getWidth();
+        int headerColumnStart = detector.getHeaderColumnOffset();
 
-        // Features
-        String[] featureNames = reader.readNext();
+        createFeatures(detector);
 
-        if (featureNames != null) {
-            ArrayList<Feature> features = new ArrayList<Feature>();
-            for (int i = 1; i < featureNames.length; i++) {
-                String featureName = featureNames[i];
-                Feature feature = factory.createFeature();
-                feature.setName(featureName);
-                pcm.addFeature(feature);
-                features.add(feature);
-                // And keep the order in metadata
-                metadata.setFeaturePosition(feature, i);
-            }
+        for (int i = headerLength; i < matrixHeight; i++) {
+            // Products
+            Product product = factory.createProduct();
+            product.setName(detector.get(i, 0).getContent());
+            pcm.addProduct(product);
+            // And keep the order in metadata
+            metadata.setProductPosition(product, i);
 
-
-            String[] line = reader.readNext();
-            int index = 0; // Metadata index
-            while (line != null) {
-                // Products
-                Product product = factory.createProduct();
-                product.setName(line[0]);
-                pcm.addProduct(product);
-                // And keep the order in metadata
-                metadata.setProductPosition(product, index);
-
-                // Cells
-                for (int i = 1; i < line.length; i++) {
-                    Cell cell = factory.createCell();
-                    cell.setContent(line[i]);
-
-                    // Create an arbitrary feature if the number of cells is greater than the number of features
-                    if (i > features.size()) {
-                        Feature newFeature = factory.createFeature();
-                        newFeature.setName("Feature");
-                        pcm.addFeature(newFeature);
-                        features.add(newFeature);
-                        metadata.setFeaturePosition(newFeature, i);
-                    }
-
-                    cell.setFeature(features.get(i - 1));
-
-                    product.addCell(cell);
-                }
-
-                line = reader.readNext();
-                index += 1;
+            // Cells
+            for (int j = headerColumnStart; j < matrixWidth; j++) {
+                Cell cell = factory.createCell();
+                IOCell ioCell = detector.get(i, j);
+                cell.setContent(ioCell.getContent());
+                cell.setFeature(features.get(j));
+                product.addCell(cell);
             }
         }
-
         return container;
     }
 
-    private PCMContainer loadProductFirst(CSVReader reader) throws IOException {
-        PCM pcm = factory.createPCM();
-        PCMMetadata metadata = new PCMMetadata(pcm);
-        metadata.setProductAsLines(this.productsAsLines);
-        PCMContainer container = new PCMContainer(metadata);
-
-        // Products
-        String[] productNames = reader.readNext();
-
-        if (productNames != null) {
-            ArrayList<Product> products = new ArrayList<Product>();
-            for (int i = 1; i < productNames.length; i++) {
-                String productName = productNames[i];
-                Product product = factory.createProduct();
-                product.setName(productName);
-                pcm.addProduct(product);
-                products.add(product);
-                // And keep the order in metadata
-                metadata.setProductPosition(product, i);
-            }
-
-
-            String[] line = reader.readNext();
-            int index = 0; // Metadata index
-            while (line != null) {
-                // Features
+    private void parseNodes(FeatureGroup parent, List<IONode> nodes, String tabulation) {
+        for (IONode node: nodes) {
+            if (node.isLeaf()) {
                 Feature feature = factory.createFeature();
-                feature.setName(line[0]);
-                pcm.addFeature(feature);
-                // And keep the order in metadata
-                metadata.setFeaturePosition(feature, index);
-
-                // Cells
-                for (int i = 1; i < line.length; i++) {
-                    Cell cell = factory.createCell();
-                    cell.setContent(line[i]);
-                    cell.setFeature(feature);
-
-                    // Create an arbitrary product if the number of cells is greater than the number of products
-                    if (i > products.size()) {
-                        Product newProduct = factory.createProduct();
-                        newProduct.setName("Product");
-                        pcm.addProduct(newProduct);
-                        products.add(newProduct);
-                        metadata.setProductPosition(newProduct, i);
-                    }
-
-                    products.get(i - 1).addCell(cell);
+                feature.setName(node.getName());
+                if (parent != null) {
+                    parent.addFeature(feature);
                 }
-
-                line = reader.readNext();
+                features.put(node.getPosition(), feature);
+            } else {
+                FeatureGroup featureGroup = factory.createFeatureGroup();
+                featureGroup.setName(node.getName());
+                if (parent != null) {
+                    parent.addFeature(featureGroup);
+                }
+                parseNodes(featureGroup, node.iterable(), tabulation + "\t");
             }
         }
+    }
 
-
-
-        return container;
+    public void createFeatures(MatrixAnalyser detector) {
+        this.features = new HashMap<>();
+        parseNodes(null, detector.getHeaderNode().iterable(), "");
     }
 }
 

@@ -37,12 +37,14 @@ abstract class PCMCircularTest(
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
         val container1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0)
+        System.out.println(new CSVExporter().export(container1));
         val pcm1 = container1.getPcm
         pcm1.setName("Original")
         pcm1.normalize(pcmFactory)
 
         val code = exporter.export(container1)
         val container2 = importer.load(code).get(0)
+        System.out.println(new CSVExporter().export(container2));
         val pcm2 = container2.getPcm
         pcm2.setName("From PCM1")
         pcm2.normalize(pcmFactory)

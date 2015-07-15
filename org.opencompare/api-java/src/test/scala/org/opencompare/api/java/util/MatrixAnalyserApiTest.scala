@@ -1,17 +1,14 @@
 package org.opencompare.api.java.util
 
 import java.io.FileReader
-import java.net.URL
 
 import com.opencsv.CSVReader
-import org.opencompare.api.java.io.{IOCell, IOMatrix}
-import org.scalatest.prop.TableDrivenPropertyChecks._
+import org.opencompare.api.java.io.{IONode, IOCell, IOMatrix}
 import org.scalatest.prop.TableFor1
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.collection.JavaConverters._
-import scala.collection.mutable
-import scala.reflect.io.{Directory, File}
+import scala.reflect.io.File
 /**
  * Created by smangin on 7/8/15.
  */
@@ -25,6 +22,48 @@ class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterA
   var refWidth = 0
 
   var inputs : TableFor1[File] = _
+
+  def createNodeTree(): IONode = {
+
+    val MP3 = new IONode("MP3", false, 1)
+    val WMA = new IONode("WMA", false, 2)
+    val RealAudio = new IONode("RealAudio", false, 3)
+    val Vorbis = new IONode("Vorbis", false, 4)
+    val Musepack = new IONode("Musepack", false, 5)
+    val AAC = new IONode("AAC", false, 6)
+    val Dolby = new IONode("Dolby", false, 7)
+    val VQF = new IONode("VQF", false, 8)
+    val Opus = new IONode("Opus", false, 9)
+    val lossy = new IONode("Lossy compression", true, 1)
+    lossy.add(MP3)
+    lossy.add(WMA)
+    lossy.add(RealAudio)
+    lossy.add(Vorbis)
+    lossy.add(Musepack)
+    lossy.add(AAC)
+    lossy.add(Dolby)
+    lossy.add(VQF)
+    lossy.add(Opus)
+
+    val APE = new IONode("APE", false, 10)
+    val FLAC = new IONode("FLAC", false, 11)
+    val ALAC = new IONode("ALAC", false, 12)
+    val SHN = new IONode("SHN", false, 13)
+    val WV = new IONode("WV", false, 14)
+    val WMA_L = new IONode("WMA_L", false, 15)
+    val lossless = new IONode("Lossless compression", true, 10)
+    lossless.add(APE)
+    lossless.add(FLAC)
+    lossless.add(ALAC)
+    lossless.add(SHN)
+    lossless.add(WV)
+    lossless.add(WMA_L)
+
+    val root = new IONode("root", true)
+    root.add(lossy)
+    root.add(lossless)
+    root
+  }
 
   def createMatrix(reader : CSVReader): IOMatrix = {
     val csvMatrix = reader.readAll().asScala
@@ -55,32 +94,38 @@ class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterA
   }
 
   "A matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getWidth.equals(refWidth) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getHeight.equals(refHeight) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getMatrix.equals(matrix) shouldBe true
   }
 
   "A transposed matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
     detector.getWidth.equals(refHeight) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
     detector.getHeight.equals(refWidth) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true);
+    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
     detector.getMatrix.equals(matrix) shouldBe true
+  }
+
+  it should "create a node tree properly" in {
+    val node = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).getHeaderNode
+    val refNode = createNodeTree()
+    node.equals(refNode) shouldBe true
   }
 }

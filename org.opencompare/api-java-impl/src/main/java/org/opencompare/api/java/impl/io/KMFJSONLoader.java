@@ -2,6 +2,7 @@ package org.opencompare.api.java.impl.io;
 
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.PCMImpl;
+import org.opencompare.api.java.io.IOMatrix;
 import org.opencompare.api.java.io.PCMLoader;
 import org.kevoree.modeling.api.KMFContainer;
 import org.kevoree.modeling.api.json.JSONModelLoader;

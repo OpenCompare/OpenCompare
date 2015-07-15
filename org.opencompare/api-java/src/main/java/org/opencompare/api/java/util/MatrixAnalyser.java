@@ -1,9 +1,15 @@
 package org.opencompare.api.java.util;
 
+import org.opencompare.api.java.FeatureGroup;
 import org.opencompare.api.java.io.IOCell;
 import org.opencompare.api.java.io.IOMatrix;
+import org.opencompare.api.java.io.IONode;
 
-import static java.lang.String.format;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Created by smangin on 7/1/15.
@@ -273,10 +279,19 @@ public class MatrixAnalyser {
     Results
      */
     public int getHeaderOffset() {
+        process();
         return headerOffset;
     }
 
+    public int getHeaderColumnOffset() {
+        setTransposition(!this.transposed).process();
+        int result = getCurrentLine() + 1;
+        setTransposition(!this.transposed).process();
+        return result;
+    }
+
     public int getHeaderHeight() {
+        process();
         return getCurrentLine() + 1;
     }
 
@@ -292,4 +307,29 @@ public class MatrixAnalyser {
         return matrix;
     }
 
+    public IONode getHeaderNode() {
+        IONode root = new IONode("root", true);
+        for (int j = getHeaderColumnOffset(); j < getWidth(); j++) {
+            String name = get(getHeaderOffset(), j).getContent();
+            IONode parentNode = new IONode(name, getHeaderHeight() > 1);
+            for (IONode node: root.iterable()) {
+                if (node.getName().equals(name)) {
+                    parentNode = node;
+                }
+            }
+            if (!root.iterable().contains(parentNode)) {
+                root.add(parentNode);
+            }
+
+            if (getHeaderHeight() > 1) {
+                for (int i = getHeaderOffset() + 1; i < getHeaderHeight() - 1; i++) {
+                    IONode node = new IONode(get(i, j).getContent(), true);
+                    parentNode.add(node);
+                }
+                IONode node = new IONode(get(getHeaderHeight() - 1, j).getContent(), false, j);
+                parentNode.add(node);
+            }
+        }
+        return root;
+    }
 }
