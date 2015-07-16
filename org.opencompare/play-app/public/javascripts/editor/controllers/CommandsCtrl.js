@@ -50,6 +50,37 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     };
 
     /**
+     * Add a feature group
+     */
+    $scope.addFeatureGroup = function () {
+        var selectedCols = $scope.cols;
+        if(!$scope.gridOptions.superColDef) {
+            var emptyFeatureGroup = {
+                name: "emptyFeatureGroup",
+                displayName: " "
+            };
+            $scope.gridOptions.superColDefs.push(emptyFeatureGroup);
+            $scope.gridOptions.columnDefs.forEach(function (col) {
+                col.superCol = "emptyFeatureGroup";
+            });
+        }
+
+        var newFeatureGroup = {
+            name: $scope.featureName,
+            displayName: $scope.featureName
+        };
+        $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
+        var index = 0;
+        for(var col in selectedCols) {
+            if(selectedCols[index].isChecked == true) {
+                $scope.gridOptions.columnDefs[index].superCol = $scope.featureName;
+            }
+            index++;
+        }
+        $rootScope.$broadcast('reloadFeatureGroup');
+    };
+
+    /**
      * Rename a feature
      */
     $scope.renameFeature = function() {

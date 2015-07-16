@@ -33,7 +33,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.no" | translate }}</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="setEdit(false, true)">{{ "edit.button.yes" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="setEdit(false, true)">{{ "edit.button.yes" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="addFeature()">{{ "edit.button.apply" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addFeature()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -78,7 +78,33 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="renameFeature()">{{ "edit.button.apply" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="renameFeature()">{{ "edit.button.apply" | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalNewFeatureGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.createNewFeatureGroup" | translate }}</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="featureName">{{ "edit.title.featureName" | translate }}: </label>
+                    <input ng-model="featureName" type="text" id="featureName">
+                    <br />
+                    <label for="featuresSelection">{{ "edit.title.featureSelection" | translate }}: </label>
+                    <div class="checkbox checkbox-primary"  name="featuresSelection" ng-repeat="col in cols | filter:isAFeature">
+                        <label>
+                            <input type="checkbox" ng-model="col.isChecked"> {{ col.name }}
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addFeatureGroup(cols)">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -101,7 +127,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="changeType()">{{ "edit.button.apply" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="changeType()">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>
@@ -232,6 +258,7 @@
 
                 <div class="btn-group">
                     <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> {{ 'edit.button.addfeature' | translate }}</a>
+                    <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeatureGroup" ng-click="setCols()"><i class="fa fa-plus"></i> {{ 'edit.button.addfeature' | translate }} Group</a>
                     <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="fa fa-plus"></i> {{ 'edit.button.addproduct' | translate }}</a>
                     <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></a>
                     <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></a>

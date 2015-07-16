@@ -8,11 +8,13 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                     _updateSuperColWidth();
                 });
                 var _updateSuperColWidth = function () {
+                    var _colId = scope.col.colDef.superCol,
+                        _el = jQuery(element);
                     $timeout(function () {
                             if(_colId) {
                                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
                                 var _parentWidth = _parentCol.outerWidth(),
-                                    _width = _el.outerWidth();console.log(_colId+' '+_parentWidth);
+                                    _width = _el.outerWidth();
                                 if (_parentWidth + 1 >= _width) {
                                     _parentWidth = _parentWidth + _width;
                                 } else {
@@ -21,7 +23,7 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                                 _parentCol.css({
                                     'min-width': _parentWidth + 'px',
                                     'max-width': _parentWidth + 'px',
-                                    'text-align': "center",
+                                    'text-align': "center"
                                 });
                             }
                         }
@@ -30,6 +32,8 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                 _updateSuperColWidth();
 
                 var reloadFeatureGroup  = function () {
+                    var _colId = scope.col.colDef.superCol,
+                        _el = jQuery(element);
                     $timeout(function () {
                             if(_colId) {
                                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');

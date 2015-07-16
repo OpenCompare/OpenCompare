@@ -154,7 +154,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             featureType = "string";
         }
         /* For testing purpose */
-        var featureGroup = randomFeatureGroup(featureType);
+       /* var featureGroup = randomFeatureGroup(featureType);
         var found = false;
         $scope.gridOptions.superColDefs.forEach(function (ColDefFeatureGroup) {
                 if(ColDefFeatureGroup.name == featureGroup ) {
@@ -225,7 +225,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
-            superCol: featureGroup,
+           // superCol: featureGroup,
             filter: {term: ''},
             minWidth: 130,
             menuItems: [
