@@ -447,6 +447,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             '</div>',
             enableCellEdit: false,
             enableFiltering: false,
+            enableColumnResizing: false,
             pinnedLeft:true,
             enableSorting: false,
             enableHiding: false,

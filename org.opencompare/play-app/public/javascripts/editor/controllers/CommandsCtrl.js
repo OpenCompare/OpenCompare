@@ -73,11 +73,12 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         var index = 0;
         for(var col in selectedCols) {
             if(selectedCols[index].isChecked == true) {
-                $scope.gridOptions.columnDefs[index].superCol = $scope.featureName;
+                $scope.gridOptions.columnDefs[index+2].superCol = $scope.featureName;
             }
             index++;
         }
         $rootScope.$broadcast('reloadFeatureGroup');
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
     /**

@@ -3,10 +3,17 @@
         <div class="ui-grid-header-viewport">
             <div class="ui-grid-header-canvas">
                 <div class="ui-grid-header-cell-wrapper"  style="display: block;" ng-style="colContainer.headerCellWrapperStyle()">
-                    <div class="ui-grid-header-cell-row"  style="display: block; border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;">
-                        <div  class="ui-grid-header-cell" ng-repeat="superCol in grid.options.superColDefs track by $index" col-name="{{superCol.name}}">
-                            <div class="ui-grid-cell-contents" ng-if="colContainer.name === 'body'" data-ng-bind="superCol.displayName">
+                    <div class="ui-grid-header-cell-row" ng-if="colContainer.name === 'body'" style="display: block; border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;">
+                        <div  class="ui-grid-header-cell"  ng-repeat="superCol in grid.options.superColDefs track by $index" col-name="{{superCol.name}}">
+                            <div class="ui-grid-cell-contents"  data-ng-bind="superCol.displayName">
                                 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name !== 'body'" style="display: block; border-bottom: 1px solid;border-bottom-color: #d4d4d4;">
+                        <div  class="ui-grid-header-cell ui-grid-clearfix" style="border: none;">
+                            <div class="ui-grid-cell-contents">
+                                <br />
                             </div>
                         </div>
                     </div>
