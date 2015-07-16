@@ -167,6 +167,7 @@ class CellContentExtractor(
         case "noinclude" => false
         case "onlyinclude" => false
         case "includeonly" => true
+        case "code" => false
         case _ => true
       }
 
