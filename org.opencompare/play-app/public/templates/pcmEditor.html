@@ -1,6 +1,6 @@
 
 
-<div id="editor">
+<div id="editor" ng-controller="EditorCtrl">
 
     <div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -110,25 +110,20 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalManageFeatureGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="modalRenameFeatureGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.createNewFeatureGroup" | translate }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ "edit.title.renameFeature" | translate }}</h4>
                 </div>
                 <div class="modal-body">
-                    <label for="featureName">{{ "edit.title.featureName" | translate }}: </label>
-                    <input ng-model="featureName" type="text" id="featureName">
-                    <br />
-                    <label for="featuresSelection">{{ "edit.title.featureSelection" | translate }}: </label>
-                    <select class="form-control" id="select">
-                        <option ng-repeat="superCol in gridOptions.superColDefs | filter:isAFeatureGroup">{{ superCol.displayName }}</option>
-                    </select>
+                    <label for="featureName">Feature name: </label>
+                    <input ng-model="newFeatureName" type="text" id="featureName" value="{{featureName}}">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addFeatureGroup(cols)">{{ "edit.button.apply" | translate }}</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="renameFeatureGroup(featureName, newFeatureName)">{{ "edit.button.apply" | translate }}</button>
                 </div>
             </div>
         </div>

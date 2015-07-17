@@ -52,9 +52,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     /**
      * Add a feature group
      */
-    $scope.addFeatureGroup = function () {
+    $scope.addFeatureGroup = function () {//fixme: check if emptyfeature is setted
         var selectedCols = $scope.cols;
-        if(!$scope.gridOptions.superColDef) {
             var emptyFeatureGroup = {
                 name: "emptyFeatureGroup",
                 displayName: " "
@@ -63,7 +62,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             $scope.gridOptions.columnDefs.forEach(function (col) {
                 col.superCol = "emptyFeatureGroup";
             });
-        }
+
 
         var newFeatureGroup = {
             name: $scope.featureName,
@@ -76,7 +75,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.gridOptions.columnDefs[index+2].superCol = $scope.featureName;
             }
             index++;
-        }
+        }console.log($scope.gridOptions);
         $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
@@ -130,6 +129,71 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
 
         /* Modified for save */
         $rootScope.$broadcast('modified');
+    };
+
+    /**
+     * Rename a feature group
+     */
+    $scope.renameFeatureGroup = function(oldFeatureName, newFeatureName) {
+
+        var codedOldFeatureName =  convertStringToEditorFormat(oldFeatureName);
+        var featureName = checkIfNameExists(newFeatureName, $scope.gridOptions.columnDefs);
+        var codedFeatureName = convertStringToEditorFormat(featureName);
+
+        /* Find the feature in column defs */
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            if($scope.gridOptions.superColDefs[i].name == codedOldFeatureName) {
+                $scope.gridOptions.superColDefs[i].name = codedFeatureName;
+                $scope.gridOptions.superColDefs[i].displayName = codedFeatureName;
+                break;
+            }
+        }
+        for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
+            if($scope.gridOptions.columnDefs[i].superCol === codedOldFeatureName) {
+                $scope.gridOptions.columnDefs[i].superCol = codedFeatureName;
+                break;
+            }
+        }
+
+        /* re-init of scope parameters */
+        $scope.featureName = "";
+        $scope.oldFeatureName = "";
+
+        /* Modified for save */
+        $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
+    };
+
+    /**
+     * Delete a feature sgroup
+     * @param featureName
+     */
+    $scope.deleteFeatureGroup = function(featureName) {
+
+        var index = 0;
+        var indexToDelete = 0;
+        for(var col in $scope.gridOptions.superColDefs) {
+            if(col.hasOwnProperty('name')) {
+                if(col.name == featureName) {
+                    indexToDelete = index;
+                }
+                index++;
+            }
+        }
+        if(index <= 1) {
+            delete $scope.gridOptions.superColDefs;
+        }
+        else {
+            delete $scope.gridOptions.superColDefs[indexToDelete];
+        }
+        for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
+            if($scope.gridOptions.columnDefs[i].superCol === featureName) {
+                $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';console.log( $scope.gridOptions.columnDefs[i].superCol);
+                break;
+            }
+        }
+        $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
     };
 
     /**

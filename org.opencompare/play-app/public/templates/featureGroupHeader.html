@@ -3,7 +3,7 @@
         <div class="ui-grid-header-viewport">
             <div class="ui-grid-header-canvas">
                 <div class="ui-grid-header-cell-wrapper"  style="display: block;" ng-style="colContainer.headerCellWrapperStyle()">
-                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name === 'body'" style="display:block;border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;background-image:linear-gradient(#FAFAFA, #EEEEEE);">
+                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name === 'body'" style="display:block;border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;background-image:linear-gradient(#FAFAFA, #EEEEEE);height:30px">
                         <div  class="ui-grid-header-cell"  ng-repeat="superCol in grid.options.superColDefs track by $index" col-name="{{superCol.name}}">
                             <div class="ui-grid-cell-contents" ng-bind="superCol.displayName">
 
@@ -13,8 +13,8 @@
                                     <i class="ui-grid-icon-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#" data-toggle="modal" data-target="#modalRenameFeatureGroup"><i class="fa fa-pencil"></i> Rename</a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#modalRemoveFeatureGroup"><i class="fa fa-trash"></i> Remove</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#modalRenameFeatureGroup" ng-click="setRenameFeatureGroupModal(superCol.name)"><i class="fa fa-pencil"></i> Rename</a></li>
+                                    <li><a href="#" ng-click="grid.appScope.deleteFeatureGroup(superCol.name)"><i class="fa fa-trash"></i> Remove</a></li>
                                 </ul>
                             </div>
                         </div>

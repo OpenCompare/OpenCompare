@@ -29,6 +29,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     //Export
     $scope.export_content = null;
 
+    $scope.oldFeatureName = "";
+    $scope.featureName = "";
+
     $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];

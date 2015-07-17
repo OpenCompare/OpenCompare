@@ -13,14 +13,15 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         return col.name != 'emptyFeatureGroup';
     };
 
-
-
-
     $scope.setCols = function() {
         var cols = $scope.gridOptions.columnDefs;
         for(var i = 2; i < cols.length; i ++) {
             $scope.cols[i-2] = {name: cols[i].name, isChecked: false};
         }
+    };
+
+    $scope.setRenameFeatureGroupModal = function(featureName) {
+        $scope.featureName = featureName;
     };
 
     $scope.$watch(function(){
