@@ -144,14 +144,99 @@ public class PCMImpl implements PCM {
 
     @Override
     public void merge(PCM pcm, PCMFactory factory) throws MergeConflictException {
-        // Add new features
-        addNewFeatures(pcm, factory);
+        mergeFeatures(this.getFeatures(), pcm.getFeatures(), null, factory);
+        mergeProducts(pcm, factory);
+        mergeCells(pcm, factory);
+    }
+
+    private void addNewFeatures(PCM pcm, PCMFactory factory) {
+        for (AbstractFeature aFeature : pcm.getFeatures()) { // TODO : check usage of getFeatures()
+
+            // Check if the feature already exists in this PCM
+            boolean existInThis = false;
+            for (AbstractFeature aFeatureInThis : this.getFeatures()) { // TODO : check usage of getFeatures()
+                if (aFeature.equals(aFeatureInThis)) {
+                    existInThis = true;
+                    break;
+                }
+            }
+
+            // Copy feature from merged PCM if the feature is new
+            if (!existInThis) {
+                AbstractFeature newFeature;
+                if (aFeature instanceof Feature) {
+                    newFeature = factory.createFeature();
+                } else {
+                    newFeature = factory.createFeatureGroup();
+                    // TODO : handle sub features
+                }
+                newFeature.setName(aFeature.getName());
+
+                this.addFeature(newFeature);
+            }
+        }
+    }
+
+    private void mergeFeatures(List<AbstractFeature> featuresPCM1, List<AbstractFeature> featuresPCM2, FeatureGroup parent, PCMFactory factory) {
+
+        for (AbstractFeature feature2 : featuresPCM2) {
+
+            AbstractFeature equivalentFeature = null;
+
+            for (AbstractFeature feature1 : featuresPCM1) {
+                boolean sameFeatures = feature1.equals(feature2);
+                boolean sameTypes = (feature1 instanceof Feature && feature2 instanceof Feature) ||
+                        (feature1 instanceof FeatureGroup && feature2 instanceof FeatureGroup);
+                if (sameFeatures && sameTypes) {
+                    equivalentFeature = feature1;
+                }
+            }
+
+            if (equivalentFeature != null) {
+                if (equivalentFeature instanceof FeatureGroup && feature2 instanceof FeatureGroup) {
+                    FeatureGroup featureGroup1 = (FeatureGroup) equivalentFeature;
+                    FeatureGroup featureGroup2 = (FeatureGroup) feature2;
+                    mergeFeatures(featureGroup1.getFeatures(), featureGroup2.getFeatures(), featureGroup1, factory);
+                }
+            } else {
+                AbstractFeature feature2Copy = (AbstractFeature) feature2.clone(factory);
+                if (parent == null) {
+                    this.addFeature(feature2Copy);
+                } else {
+                    parent.addFeature(feature2Copy);
+                }
+            }
 
 
-        // Add new products
-        addNewProducts(pcm, factory);
+        }
+    }
 
-        // Merge cells
+    private void mergeProducts(PCM pcm, PCMFactory factory) {
+
+
+        for (Product product : pcm.getProducts()) {
+
+            // Check if the product already exists in this PCM
+            boolean existInThis = false;
+            for (Product productInThis : this.getProducts()) {
+                if (product.getName().equals(productInThis.getName())) {
+                    existInThis = true;
+                    break;
+                }
+            }
+
+            // Copy product from merged PCM if the product is new
+            if (!existInThis) {
+                Product newProduct = factory.createProduct();
+                newProduct.setName(product.getName());
+                this.addProduct(newProduct);
+            }
+
+        }
+
+    }
+
+    private void mergeCells(PCM pcm, PCMFactory factory) throws MergeConflictException {
         for (Product product : this.getProducts()) {
             for (Feature feature : this.getConcreteFeatures()) {
 
@@ -183,60 +268,6 @@ public class PCMImpl implements PCM {
 
             }
         }
-
-    }
-
-    private void addNewFeatures(PCM pcm, PCMFactory factory) {
-        for (AbstractFeature aFeature : pcm.getFeatures()) { // TODO : check usage of getFeatures()
-
-            // Check if the feature already exists in this PCM
-            boolean existInThis = false;
-            for (AbstractFeature aFeatureInThis : this.getFeatures()) { // TODO : check usage of getFeatures()
-                if (aFeature.getName().equals(aFeatureInThis.getName())) {
-                    existInThis = true;
-                    break;
-                }
-            }
-
-            // Copy feature from merged PCM if the feature is new
-            if (!existInThis) {
-                AbstractFeature newFeature;
-                if (aFeature instanceof Feature) {
-                    newFeature = factory.createFeature();
-                } else {
-                    newFeature = factory.createFeatureGroup();
-                    // TODO : handle sub features
-                }
-                newFeature.setName(aFeature.getName());
-
-                this.addFeature(newFeature);
-            }
-        }
-    }
-
-    private void addNewProducts(PCM pcm, PCMFactory factory) {
-
-
-        for (Product product : pcm.getProducts()) {
-
-            // Check if the product already exists in this PCM
-            boolean existInThis = false;
-            for (Product productInThis : this.getProducts()) {
-                if (product.getName().equals(productInThis.getName())) {
-                    existInThis = true;
-                    break;
-                }
-            }
-
-            // Copy product from merged PCM if the product is new
-            if (!existInThis) {
-                Product newProduct = factory.createProduct();
-                newProduct.setName(product.getName());
-                this.addProduct(newProduct);
-            }
-
-        }
-
     }
 
     private Cell findCorrespondingCell(PCM pcm, Product product, Feature feature) {
