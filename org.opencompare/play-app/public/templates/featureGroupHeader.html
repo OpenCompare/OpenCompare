@@ -1,21 +1,26 @@
-<div class="ui-grid-header custom-ui-grid-header" >
+<div class="ui-grid-header custom-ui-grid-header">
     <div class="ui-grid-top-panel" >
         <div class="ui-grid-header-viewport">
             <div class="ui-grid-header-canvas">
                 <div class="ui-grid-header-cell-wrapper"  style="display: block;" ng-style="colContainer.headerCellWrapperStyle()">
-                    <div class="ui-grid-header-cell-row" ng-if="colContainer.name === 'body'" style="display: block; border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;">
+                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name === 'body'" style="display:block;border-left:  1px solid #d4d4d4;border-bottom: 1px solid;border-bottom-color: #d4d4d4;background-image:linear-gradient(#FAFAFA, #EEEEEE);">
                         <div  class="ui-grid-header-cell"  ng-repeat="superCol in grid.options.superColDefs track by $index" col-name="{{superCol.name}}">
-                            <div class="ui-grid-cell-contents"  data-ng-bind="superCol.displayName">
-                                
+                            <div class="ui-grid-cell-contents" ng-bind="superCol.displayName">
+
+                            </div>
+                            <div class="ui-grid-column-menu-button ">
+                                <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" style="cursor:pointer;color:#515151;">
+                                    <i class="ui-grid-icon-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-toggle="modal" data-target="#modalRenameFeatureGroup"><i class="fa fa-pencil"></i> Rename</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#modalRemoveFeatureGroup"><i class="fa fa-trash"></i> Remove</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name !== 'body'" style="display: block; border-bottom: 1px solid;border-bottom-color: #d4d4d4;">
-                        <div  class="ui-grid-header-cell ui-grid-clearfix" style="border: none;">
-                            <div class="ui-grid-cell-contents">
-                                <br />
-                            </div>
-                        </div>
+                    <div class="ui-grid-header-cell-row" ng-show="grid.options.superColDefs.length != 0" ng-if="colContainer.name !== 'body'" style="display: block; border-bottom: 1px solid;border-bottom-color: #d4d4d4;height:30px">
+                        <br />
                     </div>
                     <div class="ui-grid-header-cell-row">
                         <div class="ui-grid-header-cell ui-grid-clearfix" style="border-left:  1px solid #d4d4d4;border-bottom-color: #d4d4d4;"

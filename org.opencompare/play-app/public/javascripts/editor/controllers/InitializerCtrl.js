@@ -285,6 +285,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                             featureData.visible = true;
                         });
                         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+                        $rootScope.$broadcast('reloadFeatureGroup');
                     }
                 }
             ],
