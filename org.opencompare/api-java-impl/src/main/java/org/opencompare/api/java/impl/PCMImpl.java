@@ -153,37 +153,34 @@ public class PCMImpl implements PCM {
 
         // Merge cells
         for (Product product : this.getProducts()) {
-            for (AbstractFeature aFeature : this.getFeatures()) { // TODO : check usage of getFeatures()
-                if (aFeature instanceof Feature) {
-                    Feature feature = (Feature) aFeature;
+            for (Feature feature : this.getConcreteFeatures()) {
 
-                    Cell cellInThis = product.findCell(feature);
-                    Cell cellInPCM = findCorrespondingCell(pcm, product, feature);
+                Cell cellInThis = product.findCell(feature);
+                Cell cellInPCM = findCorrespondingCell(pcm, product, feature);
 
-                    if (cellInThis == null && cellInPCM == null) {
-                        // Create empty cell
-                        Cell newCell = factory.createCell();
-                        newCell.setContent("N/A");
-                        newCell.setFeature(feature);
-                        newCell.setInterpretation(factory.createNotAvailable());
-                        product.addCell(newCell);
-                    } else if (cellInThis == null) {
-                        // Copy cell from 'pcm'
-                        Cell newCell = factory.createCell();
-                        newCell.setContent(cellInPCM.getContent());
-                        newCell.setFeature(feature);
-                        // TODO : copy interpretation
-                        product.addCell(newCell);
-                    } else if (cellInPCM == null) {
-                        // Nothing to do
-                    } else if (cellInThis.getContent().equals(cellInPCM.getContent())) {
-                        // Nothing to do
-                    } else {
-                        // Conflict
-                        throw new MergeConflictException();
-                    }
-
+                if (cellInThis == null && cellInPCM == null) {
+                    // Create empty cell
+                    Cell newCell = factory.createCell();
+                    newCell.setContent("N/A");
+                    newCell.setFeature(feature);
+                    newCell.setInterpretation(factory.createNotAvailable());
+                    product.addCell(newCell);
+                } else if (cellInThis == null) {
+                    // Copy cell from 'pcm'
+                    Cell newCell = factory.createCell();
+                    newCell.setContent(cellInPCM.getContent());
+                    newCell.setFeature(feature);
+                    // TODO : copy interpretation
+                    product.addCell(newCell);
+                } else if (cellInPCM == null) {
+                    // Nothing to do
+                } else if (cellInThis.getContent().equals(cellInPCM.getContent())) {
+                    // Nothing to do
+                } else {
+                    // Conflict
+                    throw new MergeConflictException();
                 }
+
             }
         }
 
@@ -500,4 +497,21 @@ public class PCMImpl implements PCM {
     public int hashCode() {
         return Objects.hash(this.getName(), this.getFeatures(), this.getProducts());
     }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        PCM copy = factory.createPCM();
+        copy.setName(this.getName());
+
+        for (AbstractFeature feature : this.getFeatures()) {
+            copy.addFeature((AbstractFeature) feature.clone(factory));
+        }
+
+        for (Product product : this.getProducts()) {
+            Product productCopy = (Product) product.clone(factory);
+            copy.addProduct(productCopy);
+        }
+
+        return copy;
+     }
 }

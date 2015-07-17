@@ -1,8 +1,6 @@
 package org.opencompare.api.java.impl;
 
-import org.opencompare.api.java.Cell;
-import org.opencompare.api.java.Feature;
-import org.opencompare.api.java.Value;
+import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.Objects;
@@ -102,5 +100,15 @@ public class CellImpl extends PCMElementImpl implements Cell {
     public int hashCode() {
         // TODO : interpretation
         return Objects.hash(this.getContent());
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Cell copy = factory.createCell();
+        copy.setContent(this.getContent());
+        copy.setRawContent(this.getRawContent());
+        copy.setInterpretation((Value) this.getInterpretation().clone(factory));
+        copy.setFeature((Feature) this.getFeature().clone(factory)); // I don't know if this is a good idea
+        return copy;
     }
 }

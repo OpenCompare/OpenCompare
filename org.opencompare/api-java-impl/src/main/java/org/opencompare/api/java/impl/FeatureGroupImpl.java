@@ -2,6 +2,8 @@ package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.AbstractFeature;
 import org.opencompare.api.java.FeatureGroup;
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
@@ -59,5 +61,15 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        FeatureGroup copy = factory.createFeatureGroup();
+        for (AbstractFeature feature : this.getFeatures()) {
+            copy.addFeature((AbstractFeature) feature.clone(factory));
+        }
+        copy.setName(this.getName());
+        return copy;
     }
 }

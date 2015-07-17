@@ -1,5 +1,7 @@
 package org.opencompare.api.java.impl.value;
 
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.Value;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
@@ -46,5 +48,14 @@ public class MultipleImpl extends ValueImpl implements Multiple {
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Multiple copy = factory.createMultiple();
+        for (Value subValue : this.getSubValues()) {
+            copy.addSubValue((Value) subValue.clone(factory));
+        }
+        return copy;
     }
 }

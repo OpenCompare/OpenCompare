@@ -1,5 +1,7 @@
 package org.opencompare.api.java.impl.value;
 
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.Value;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
@@ -44,5 +46,13 @@ public class ConditionalImpl extends ValueImpl implements Conditional {
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Conditional copy = factory.createConditional();
+        copy.setValue((Value) this.getValue().clone(factory));
+        copy.setCondition((Value) this.getCondition().clone(factory));
+        return copy;
     }
 }
