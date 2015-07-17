@@ -67,5 +67,6 @@ public interface PCM extends PCMElement {
      * Invert the matrix (products become features and vice versa)
      */
     void invert(PCMFactory factory);
-	
+
+    int getFeaturesDepth();
 }

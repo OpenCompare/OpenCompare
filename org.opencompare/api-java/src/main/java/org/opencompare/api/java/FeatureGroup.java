@@ -7,5 +7,5 @@ public interface FeatureGroup extends AbstractFeature {
 	List<AbstractFeature> getFeatures();
 	void addFeature(AbstractFeature feature);
 	void removeFeature(AbstractFeature feature);
-	
+	int getDepth();
 }

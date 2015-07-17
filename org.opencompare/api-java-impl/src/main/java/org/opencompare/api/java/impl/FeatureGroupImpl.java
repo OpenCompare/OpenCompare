@@ -1,6 +1,7 @@
 package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.AbstractFeature;
+import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.FeatureGroup;
 import org.opencompare.api.java.util.PCMVisitor;
 
@@ -44,6 +45,29 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     @Override
     public void removeFeature(AbstractFeature feature) {
         kFeatureGroup.removeSubFeatures(((AbstractFeatureImpl) feature).getkAbstractFeature());
+    }
+
+    @Override
+    public int getDepth() {
+        try {
+            return getRecursiveDepth(1);
+        } catch (Exception e) {
+            return 1;
+        }
+    }
+
+    private int getRecursiveDepth(int depth) throws Exception{
+        for (AbstractFeature abstractFeature: getFeatures()) {
+            if (abstractFeature instanceof FeatureGroup) {
+                FeatureGroupImpl featureGroup = (FeatureGroupImpl) abstractFeature;
+                featureGroup.getRecursiveDepth(depth + 1);
+            } else if (abstractFeature instanceof Feature) {
+                return depth + 1;
+            } else {
+                throw new Exception();
+            }
+        }
+        return depth;
     }
 
     @Override
