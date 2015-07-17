@@ -1,5 +1,8 @@
 package org.opencompare.api.java.io;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.*;
@@ -11,7 +14,21 @@ import java.util.*;
  */
 public class HTMLExporter implements PCMVisitor, PCMExporter {
 
-    private StringBuilder builder;
+    private Document doc;
+    private Element tr; // Current column
+    Document.OutputSettings settings = new Document.OutputSettings();
+    private String template = "" +
+                "<html>\n" +
+                "\t<head>\n" +
+                "\t\t<meta charset=\"utf-8\"/>\n" +
+                "\t\t<title></title>\n" +
+                "\t</head>\n" +
+                "\t<body>\n" +
+                "\t\t<h1 id=\"title\"></h1>\n" +
+                "\t\t<table id=\"matrix\" border=\"1\">\n" +
+                "\t\t</table>\n" +
+                "\t</body>\n" +
+                "</html>";
 
     private LinkedList<AbstractFeature> nextFeaturesToVisit;
     private boolean computeFeatureDepth;
@@ -25,29 +42,11 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
     }
 
     public String toHTML(PCM pcm) {
-        builder = new StringBuilder();
+        settings.prettyPrint();
+        doc = Jsoup.parse(template);
         pcm.accept(this);
-        return builder.toString();
+        return doc.outputSettings(settings).outerHtml();
 
-//        String html = "";
-//
-//        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//        try {
-//            DocumentBuilder builder = factory.newDocumentBuilder();
-//            Document document = builder.newDocument();
-//            document.createElement("html");
-//
-//        } catch (ParserConfigurationException e) {
-//            e.printStackTrace();
-//        }
-//
-//        TransformerFactory tf = TransformerFactory.newInstance();
-//        Transformer transformer = tf.newTransformer();
-//        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-//        StringWriter writer = new StringWriter();
-//        transformer.transform(new DOMSource(doc), new StreamResult(writer));
-//        String output = writer.getBuffer().toString().replaceAll("\n|\r", "");
-//        return html;
     }
 
     public String toHTML(PCMContainer container) {
@@ -56,27 +55,15 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     @Override
     public void visit(PCM pcm) {
-        builder.append("<html>");
-        builder.append(" <head>\n" +
-                "    \t\t<meta charset=\"utf-8\"/>\n" +
-                "    </head>");
-        builder.append("<body>");
-
-        builder.append("<h1>");
-        builder.append(pcm.getName());
-        builder.append("</h1>");
-
-        builder.append("<table border=\"1\">");
+        doc.head().select("title").first().text(pcm.getName());
+        doc.body().select("h1").first().text(pcm.getName());
+        Element matrix = doc.body().select("table").first();
 
         // Compute depth
         computeFeatureDepth = true;
         featureDepth = 1;
         nextFeaturePosition = 0;
         featurePosition = new HashMap<Feature, Integer>();
-
-        for (AbstractFeature feature : pcm.getFeatures()) {
-            feature.accept(this);
-        }
 
         // Generate HTML code for features
         computeFeatureDepth = false;
@@ -86,27 +73,21 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
         featuresToVisit.addAll(pcm.getFeatures());
 
         while(!featuresToVisit.isEmpty()) {
-            builder.append("<tr>");
-            builder.append("<th></th>");
+            tr = matrix.appendElement("tr");
             for (AbstractFeature feature : featuresToVisit) {
                 feature.accept(this);
             }
 
             featuresToVisit = nextFeaturesToVisit;
             nextFeaturesToVisit = new LinkedList<AbstractFeature>();
-            builder.append("</tr>\n");
             featureDepth--;
         }
 
         // Generate HTML code for products
         for (Product product : pcm.getProducts()) {
+            tr = matrix.appendElement("tr");
             product.accept(this);
         }
-
-        builder.append("<table>");
-
-        builder.append("</body>");
-        builder.append("</html>");
     }
 
     @Override
@@ -115,72 +96,50 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
             featurePosition.put(feature, nextFeaturePosition);
             nextFeaturePosition++;
         } else {
-            builder.append("<th");
+            Element th = tr.appendElement("th");
             if (featureDepth > 1) {
-                builder.append(" rowspan=" + featureDepth + " ");
+                th.attr("rowspan", Integer.toString(featureDepth));
             }
-            builder.append(">" + feature.getName() + "</th>");
+            th.text(feature.getName());
         }
-
     }
 
     @Override
     public void visit(FeatureGroup featureGroup) {
         if (computeFeatureDepth) {
-
             featureDepth++;
             for (AbstractFeature subFeature : featureGroup.getFeatures()) {
                 subFeature.accept(this);
             }
-
         } else {
-
-            builder.append("<th");
+            Element th = tr.appendElement("th");
             if (!featureGroup.getFeatures().isEmpty()) {
-                builder.append(" colspan=" + featureGroup.getFeatures().size() + " ");
+                th.attr("colspan", Integer.toString(featureGroup.getFeatures().size()));
             }
-            builder.append(">");
-            builder.append(featureGroup.getName());
-            builder.append("</th>");
-
+            th.text(featureGroup.getName());
             nextFeaturesToVisit.addAll(featureGroup.getFeatures());
         }
-
     }
 
     @Override
     public void visit(Product product) {
-        builder.append("<tr>");
-
-        builder.append("<th>");
-        builder.append(product.getName());
-        builder.append("</th>");
+        tr.appendElement("th").text(product.getName());
 
         List<Cell> cells = product.getCells();
 
-        Collections.sort(cells, new Comparator<Cell>() {
-            @Override
-            public int compare(Cell cell1, Cell cell2) {
-                return featurePosition.get(cell1.getFeature()) - featurePosition.get(cell2.getFeature());
-            }
-        });
+        //Collections.sort(cells, new Comparator<Cell>() {
+        //    @Override
+        //    public int compare(Cell cell1, Cell cell2) {
+        //        return featurePosition.get(cell1.getFeature()) - featurePosition.get(cell2.getFeature());
+        //    }
+        //});
 
         for (Cell cell : cells) {
-            builder.append("<td>");
-
+            Element td = tr.appendElement("td");
             // Convert interpretation
-            builder.append("<span title=\"");
-            builder.append(cell.getInterpretation());
-            builder.append("\">");
-
-            // Convert content
-            builder.append(cell.getContent());
-
-            builder.append("</span>");
-            builder.append("</td>");
+            td.appendElement("span").text(cell.getContent());
         }
 
-        builder.append("</tr>\n");
     }
 
     @Override

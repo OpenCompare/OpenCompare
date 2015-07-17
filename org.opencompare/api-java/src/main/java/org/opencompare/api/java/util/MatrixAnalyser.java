@@ -311,7 +311,7 @@ public class MatrixAnalyser {
         IONode root = new IONode("root", true);
         for (int j = getHeaderColumnOffset(); j < getWidth(); j++) {
             String name = get(getHeaderOffset(), j).getContent();
-            IONode parentNode = new IONode(name, getHeaderHeight() > 1);
+            IONode parentNode = new IONode(name, getHeaderHeight() > 1, j);
             for (IONode node: root.iterable()) {
                 if (node.getName().equals(name)) {
                     parentNode = node;
@@ -322,9 +322,21 @@ public class MatrixAnalyser {
             }
 
             if (getHeaderHeight() > 1) {
+                IONode subparentNode = null;
                 for (int i = getHeaderOffset() + 1; i < getHeaderHeight() - 1; i++) {
-                    IONode node = new IONode(get(i, j).getContent(), true);
-                    parentNode.add(node);
+                    String subname = get(i, j).getContent();
+                    subparentNode = new IONode(name, true, j);
+                    for (IONode subnode: root.iterable()) {
+                        if (subnode.getName().equals(subname)) {
+                            subparentNode = subnode;
+                        }
+                    }
+                    if (!parentNode.iterable().contains(subparentNode)) {
+                        parentNode.add(subparentNode);
+                    }
+                }
+                if (subparentNode != null) {
+                    parentNode = subparentNode;
                 }
                 IONode node = new IONode(get(getHeaderHeight() - 1, j).getContent(), false, j);
                 parentNode.add(node);

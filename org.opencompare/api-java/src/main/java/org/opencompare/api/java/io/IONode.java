@@ -1,8 +1,6 @@
 package org.opencompare.api.java.io;
 
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeNode;
 import java.util.*;
 import java.util.function.Consumer;
 

@@ -122,6 +122,7 @@ public class CSVLoader implements PCMLoader {
                 product.addCell(cell);
             }
         }
+        container.getPcm().setName(detector.getMatrix().getName());
         return container;
     }
 
