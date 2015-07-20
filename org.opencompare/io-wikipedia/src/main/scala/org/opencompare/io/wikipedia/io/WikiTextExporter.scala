@@ -39,10 +39,12 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
       for (feature <- container.getMetadata.getSortedFeatures) {
         val cell : Cell = product.findCell(feature)
         builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-        if (exportRawContent) {
-          builder ++= cell.getRawContent
-        } else {
-          builder ++= cell.getContent
+        if (Option(cell).isDefined) {
+          if (exportRawContent) {
+            builder ++= cell.getRawContent
+          } else {
+            builder ++= cell.getContent
+          }
         }
         builder ++= "\n"
       }

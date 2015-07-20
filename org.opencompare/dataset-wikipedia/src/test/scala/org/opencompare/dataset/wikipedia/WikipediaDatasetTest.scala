@@ -247,6 +247,9 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
     // Interpret cells for every PCM
     for (file <- files) {
+
+      println(file.getName)
+
       // Interpret cells
       val pcmContainer = loader.load(file)(0)
       val pcm = pcmContainer.getPcm
@@ -262,36 +265,36 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
     }
 
     // Interpret and merge PCMs
-    val groupedFiles = files.groupBy(f => f.getName.substring(0, f.getName.size - 6))
-    for (group <- groupedFiles) {
-      val mergedPCM = factory.createPCM();
-      mergedPCM.setName(group._1)
+//    val groupedFiles = files.groupBy(f => f.getName.substring(0, f.getName.size - 6))
+//    for (group <- groupedFiles) {
+//      val mergedPCM = factory.createPCM();
+//      mergedPCM.setName(group._1)
+//
+//      var error = false
+//
+//      for (file <- group._2) {
+//        val pcm = loader.load(file)(0).getPcm
+//        if (pcm.isValid) {
+//          interpreter.interpretCells(pcm)
+//          try {
+//            mergedPCM.merge(pcm, factory)
+//          } catch {
+//            case e : MergeConflictException => error = true
+//          }
+//
+//        } else {
+//          error = true
+//        }
+//      }
 
-      var error = false
+//      if (!error) {
+//        val json = exporter.export(mergedPCM)
+//        val writer = new FileWriter("output/model/" + mergedPCM.getName)
+//        writer.write(json)
+//        writer.close()
+//      }
 
-      for (file <- group._2) {
-        val pcm = loader.load(file)(0).getPcm
-        if (pcm.isValid) {
-          interpreter.interpretCells(pcm)
-          try {
-            mergedPCM.merge(pcm, factory)
-          } catch {
-            case e : MergeConflictException => error = true
-          }
-
-        } else {
-          error = true
-        }
-      }
-
-      //      if (!error) {
-      //        val json = exporter.export(mergedPCM)
-      //        val writer = new FileWriter("output/model/" + mergedPCM.getName)
-      //        writer.write(json)
-      //        writer.close()
-      //      }
-
-    }
+//    }
   }
 
 }
