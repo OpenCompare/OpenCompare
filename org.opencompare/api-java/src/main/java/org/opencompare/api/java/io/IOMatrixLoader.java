@@ -91,7 +91,6 @@ public class IOMatrixLoader {
                 } else {
                     // Save features in PCM to allow featureGroups depth calculus
                     container.getPcm().addFeature(featureGroup);
-                    container.getMetadata().setFeaturePosition(featureGroup, node.getPosition());
                 }
                 parseNodes(featureGroup, node.iterable(), container);
             }

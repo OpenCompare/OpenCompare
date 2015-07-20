@@ -19,8 +19,8 @@ import scala.reflect.internal.util.Collections
  */
 class HTMLExporterTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
-  val input = getClass.getClassLoader.getResource("exporter/html/Comparison_of_audio_player_software-Audio_format_ability.csv")
-  val output = getClass.getClassLoader.getResource("exporter/html/Comparison_of_audio_player_software-Audio_format_ability.html")
+  val input = getClass.getClassLoader.getResource("csv/Comparison_of_audio_player_software-Audio_format_ability.csv")
+  val output = getClass.getClassLoader.getResource("html/Comparison_of_audio_player_software-Audio_format_ability.html")
   val title = "Comparison_of_digital_audio_editors"
   var separator = ','
   var quote = '"'

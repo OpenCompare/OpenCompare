@@ -64,7 +64,17 @@ public class PCMMetadata {
      */
     public int getFeaturePosition(AbstractFeature feature) {
         if (!featurePositions.containsKey(feature)) {
-            return -1;
+            if (feature instanceof FeatureGroup) {
+                FeatureGroup featureGroup = (FeatureGroup) feature;
+                List<Feature> features = featureGroup.getConcreteFeatures();
+                Collections.sort(features, new Comparator<Feature>() {
+                    @Override
+                    public int compare(Feature feat1, Feature feat2) {
+                        return getFeaturePosition(feat1) - getFeaturePosition(feat2);
+                    }
+                });
+                feature = features.get(0);
+            }
         }
         return featurePositions.get(feature);
     }
@@ -90,23 +100,6 @@ public class PCMMetadata {
                 Integer op1 = getProductPosition(o1);
                 Integer op2 = getProductPosition(o2);
                 return op1.compareTo(op2);
-            }
-        });
-        return result;
-    }
-
-    /**
-     * Return the sorted features concordingly with metadata
-     * @return an ordered list of features
-     */
-    public List<AbstractFeature> getFeatures() {
-        List<AbstractFeature> result = pcm.getFeatures();
-        Collections.sort(result, new Comparator<AbstractFeature>() {
-            @Override
-            public int compare(AbstractFeature f1, AbstractFeature f2) {
-                Integer fp1 = getFeaturePosition(f1);
-                Integer fp2 = getFeaturePosition(f2);
-                return fp1.compareTo(fp2);
             }
         });
         return result;

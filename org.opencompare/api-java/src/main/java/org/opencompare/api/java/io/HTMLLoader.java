@@ -44,7 +44,15 @@ public class HTMLLoader implements PCMLoader {
 
                 for (Element column: line.getAllElements()) {
                     if (column.tag().getName().equals("th") || column.tag().getName().equals("td")){
-                        matrix.setCell(new IOCell(column.text()), i, j, 1, 1);
+                        int rowspan = 1;
+                        int colspan = 1;
+                        if (column.attributes().get("rowspan") != "") {
+                            rowspan = Integer.valueOf(column.attributes().get("rowspan"));
+                        }
+                        if (column.attributes().get("colspan") != "") {
+                            colspan = Integer.valueOf(column.attributes().get("colspan"));
+                        }
+                        matrix.setCell(new IOCell(column.text()), i, j, rowspan, colspan);
                         j++;
                     }
                 }
