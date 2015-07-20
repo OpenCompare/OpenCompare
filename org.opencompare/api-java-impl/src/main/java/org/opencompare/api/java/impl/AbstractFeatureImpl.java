@@ -20,6 +20,12 @@ public abstract class AbstractFeatureImpl implements AbstractFeature {
 
     @Override
     public FeatureGroup getParentGroup() {
-        return new FeatureGroupImpl(kAbstractFeature.getParentGroup());
+        pcm.FeatureGroup kParentGroup = kAbstractFeature.getParentGroup();
+        if (kParentGroup != null) {
+            return new FeatureGroupImpl(kParentGroup);
+        } else {
+            return null;
+        }
+
     }
 }

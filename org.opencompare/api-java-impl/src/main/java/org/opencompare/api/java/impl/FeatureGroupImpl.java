@@ -81,11 +81,19 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
 
         FeatureGroupImpl featureGroup = (FeatureGroupImpl) o;
 
-        if (this.getName() == null) {
-            return featureGroup.getName() == null;
+        if (this.getName() == null && featureGroup.getName() != null) {
+            return false;
         }
 
-        if (!this.getName().equals(featureGroup.getName())) {
+        if (this.getName() != null && !this.getName().equals(featureGroup.getName())) {
+            return false;
+        }
+
+        if (this.getParentGroup() == null && featureGroup.getParentGroup() != null) {
+            return false;
+        }
+
+        if (this.getParentGroup() != null && !this.getParentGroup().equals(featureGroup.getParentGroup())) {
             return false;
         }
 
@@ -94,6 +102,7 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName());
+        return Objects.hash(this.getName(), this.getParentGroup());
     }
+
 }
