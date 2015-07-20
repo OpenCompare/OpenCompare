@@ -111,4 +111,9 @@ public class CellImpl extends PCMElementImpl implements Cell {
         copy.setFeature((Feature) this.getFeature().clone(factory)); // I don't know if this is a good idea
         return copy;
     }
+
+    @Override
+    public Product getProduct() {
+        return new ProductImpl(kCell.getProduct());
+    }
 }

@@ -10,10 +10,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractFeature" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parentGroup" eType="#//FeatureGroup"
+        eOpposite="#//FeatureGroup/subFeatures"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Product">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
-        eType="#//Cell" containment="true"/>
+        eType="#//Cell" containment="true" eOpposite="#//Cell/product"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature">
@@ -22,7 +24,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureGroup" eSuperTypes="#//AbstractFeature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subFeatures" upperBound="-1"
-        eType="#//AbstractFeature" containment="true"/>
+        eType="#//AbstractFeature" containment="true" eOpposite="#//AbstractFeature/parentGroup"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Cell">
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
@@ -31,6 +33,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rawContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product" eType="#//Product"
+        eOpposite="#//Product/cells"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Value">
