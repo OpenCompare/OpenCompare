@@ -41,6 +41,19 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     }
 
     @Override
+    public List<Feature> getConcreteFeatures() {
+        List<Feature> features = new ArrayList<>();
+        for (AbstractFeature feature : getFeatures()) {
+            if (feature instanceof Feature) {
+                features.add((Feature) feature);
+            } else if (feature instanceof FeatureGroup) {
+                features.addAll(((FeatureGroup) feature).getConcreteFeatures());
+            }
+        }
+        return features;
+    }
+
+    @Override
     public void addFeature(AbstractFeature feature) {
         kFeatureGroup.addSubFeatures(((AbstractFeatureImpl) feature).getkAbstractFeature());
     }

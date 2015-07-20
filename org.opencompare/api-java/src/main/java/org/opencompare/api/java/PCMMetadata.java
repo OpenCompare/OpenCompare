@@ -68,13 +68,15 @@ public class PCMMetadata {
             if (feature instanceof FeatureGroup) {
                 FeatureGroup featureGroup = (FeatureGroup) feature;
                 List<Feature> features = featureGroup.getConcreteFeatures();
-                Collections.sort(features, new Comparator<Feature>() {
-                    @Override
-                    public int compare(Feature feat1, Feature feat2) {
-                        return getFeaturePosition(feat1) - getFeaturePosition(feat2);
-                    }
-                });
-                result = features.get(0);
+                if (!features.isEmpty()) {
+                    Collections.sort(features, new Comparator<Feature>() {
+                        @Override
+                        public int compare(Feature feat1, Feature feat2) {
+                            return getFeaturePosition(feat1) - getFeaturePosition(feat2);
+                        }
+                    });
+                    result = features.get(0);
+                }
             }
         }
         return featurePositions.get(result);
