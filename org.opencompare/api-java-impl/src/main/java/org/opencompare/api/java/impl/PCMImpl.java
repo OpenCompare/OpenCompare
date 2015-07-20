@@ -60,7 +60,6 @@ public class PCMImpl implements PCM {
                 features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
             }
         }
-        System.out.println(features);
         return features;
     }
 
@@ -500,7 +499,6 @@ public class PCMImpl implements PCM {
                 }
             }
         }
-        System.out.println("Depth : " + depth);
         return depth;
     }
 
