@@ -15,26 +15,27 @@ import java.util.*;
 public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     private Document doc;
+    private Element matrix;
+    private PCMMetadata metadata;
     private Element tr; // Current column
     Document.OutputSettings settings = new Document.OutputSettings();
-    private String template = "" +
-                "<html>\n" +
-                "\t<head>\n" +
-                "\t\t<meta charset=\"utf-8\"/>\n" +
-                "\t\t<title></title>\n" +
-                "\t</head>\n" +
-                "\t<body>\n" +
-                "\t\t<h1 id=\"title\"></h1>\n" +
-                "\t\t<table id=\"matrix\" border=\"1\">\n" +
-                "\t\t</table>\n" +
-                "\t</body>\n" +
-                "</html>";
+    private String templateMinimal = "<table id=\"matrix\" border=\"1\">\n" +
+            "</table>";
+    private String templateFull = "<html>\n" +
+            "\t<head>\n" +
+            "\t\t<meta charset=\"utf-8\"/>\n" +
+            "\t\t<title></title>\n" +
+            "\t</head>\n" +
+            "\t<body>\n" +
+            "\t\t<h1 id=\"title\"></h1>\n" +
+            "\t\t<table id=\"matrix\" border=\"1\">\n" +
+            "\t\t</table>\n" +
+            "\t</body>\n" +
+            "</html>";
 
     private LinkedList<AbstractFeature> nextFeaturesToVisit;
     private boolean computeFeatureDepth;
     private int featureDepth;
-    private Map<Feature, Integer> featurePosition;
-    private int nextFeaturePosition;
 
     @Override
     public String export(PCMContainer container) {
@@ -43,13 +44,17 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     public String toHTML(PCM pcm) {
         settings.prettyPrint();
-        doc = Jsoup.parse(template);
+        doc = Jsoup.parse(templateFull);
+        if (metadata == null) {
+            metadata = new PCMMetadata(pcm);
+        }
         pcm.accept(this);
         return doc.outputSettings(settings).outerHtml();
 
     }
 
     public String toHTML(PCMContainer container) {
+        metadata = container.getMetadata();
         return toHTML(container.getPcm());
     }
 
@@ -57,29 +62,31 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
     public void visit(PCM pcm) {
         doc.head().select("title").first().text(pcm.getName());
         doc.body().select("h1").first().text(pcm.getName());
-        Element matrix = doc.body().select("table").first();
+        matrix = doc.body().select("table").first();
 
         // Compute depth
-        computeFeatureDepth = true;
-        featureDepth = 1;
-        nextFeaturePosition = 0;
-        featurePosition = new HashMap<Feature, Integer>();
+        featureDepth = pcm.getFeaturesDepth();
 
         // Generate HTML code for features
-        computeFeatureDepth = false;
         LinkedList<AbstractFeature> featuresToVisit;
-        featuresToVisit = new LinkedList<AbstractFeature>();
-        nextFeaturesToVisit = new LinkedList<AbstractFeature>();
+        featuresToVisit = new LinkedList<>();
+        nextFeaturesToVisit = new LinkedList<>();
         featuresToVisit.addAll(pcm.getFeatures());
+
+        Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
+            @Override
+            public int compare(AbstractFeature feat1, AbstractFeature feat2) {
+                return metadata.getFeaturePosition(feat1) - metadata.getFeaturePosition(feat2);
+            }
+        });
 
         while(!featuresToVisit.isEmpty()) {
             tr = matrix.appendElement("tr");
             for (AbstractFeature feature : featuresToVisit) {
                 feature.accept(this);
             }
-
             featuresToVisit = nextFeaturesToVisit;
-            nextFeaturesToVisit = new LinkedList<AbstractFeature>();
+            nextFeaturesToVisit = new LinkedList<>();
             featureDepth--;
         }
 
@@ -92,33 +99,21 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     @Override
     public void visit(Feature feature) {
-        if (computeFeatureDepth) {
-            featurePosition.put(feature, nextFeaturePosition);
-            nextFeaturePosition++;
-        } else {
-            Element th = tr.appendElement("th");
-            if (featureDepth > 1) {
-                th.attr("rowspan", Integer.toString(featureDepth));
-            }
-            th.text(feature.getName());
+        Element th = tr.appendElement("th");
+        if (featureDepth > 1) {
+            th.attr("rowspan", Integer.toString(featureDepth));
         }
+        th.text(feature.getName());
     }
 
     @Override
     public void visit(FeatureGroup featureGroup) {
-        if (computeFeatureDepth) {
-            featureDepth++;
-            for (AbstractFeature subFeature : featureGroup.getFeatures()) {
-                subFeature.accept(this);
-            }
-        } else {
-            Element th = tr.appendElement("th");
-            if (!featureGroup.getFeatures().isEmpty()) {
-                th.attr("colspan", Integer.toString(featureGroup.getFeatures().size()));
-            }
-            th.text(featureGroup.getName());
-            nextFeaturesToVisit.addAll(featureGroup.getFeatures());
+        Element th = tr.appendElement("th");
+        if (!featureGroup.getFeatures().isEmpty()) {
+            th.attr("colspan", Integer.toString(featureGroup.getFeatures().size()));
         }
+        th.text(featureGroup.getName());
+        nextFeaturesToVisit.addAll(featureGroup.getFeatures());
     }
 
     @Override
@@ -127,16 +122,15 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
         List<Cell> cells = product.getCells();
 
-        //Collections.sort(cells, new Comparator<Cell>() {
-        //    @Override
-        //    public int compare(Cell cell1, Cell cell2) {
-        //        return featurePosition.get(cell1.getFeature()) - featurePosition.get(cell2.getFeature());
-        //    }
-        //});
+        Collections.sort(cells, new Comparator<Cell>() {
+            @Override
+            public int compare(Cell cell1, Cell cell2) {
+                return metadata.getSortedFeatures().indexOf(cell1.getFeature()) - metadata.getSortedFeatures().indexOf(cell2.getFeature());
+            }
+        });
 
         for (Cell cell : cells) {
             Element td = tr.appendElement("td");
-            // Convert interpretation
             td.appendElement("span").text(cell.getContent());
         }
 

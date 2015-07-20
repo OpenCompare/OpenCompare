@@ -7,6 +7,7 @@ import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -83,5 +84,14 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public String toString() {
+        return "FeatureGroup(" + getName() + ")";
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName() + "Group");
     }
 }
