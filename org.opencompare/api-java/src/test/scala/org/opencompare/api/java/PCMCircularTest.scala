@@ -2,7 +2,7 @@ package org.opencompare.api.java
 
 import java.net.URL
 
-import org.opencompare.api.java.io.{PCMExporter, PCMLoader, CSVExporter, CSVLoader}
+import org.opencompare.api.java.io._
 import org.opencompare.api.java.util.{ComplexePCMElementComparator, SimplePCMElementComparator}
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.prop.TableFor1
@@ -36,7 +36,9 @@ abstract class PCMCircularTest(
 
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
+        println(Source.fromURI(file.toURI).mkString)
         val container1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0)
+        System.out.println(new HTMLExporter().export(container1));
         System.out.println(new CSVExporter().export(container1));
         val pcm1 = container1.getPcm
         pcm1.setName("Original")
@@ -44,7 +46,6 @@ abstract class PCMCircularTest(
 
         val code = exporter.export(container1)
         val container2 = importer.load(code).get(0)
-        System.out.println(new CSVExporter().export(container2));
         val pcm2 = container2.getPcm
         pcm2.setName("From PCM1")
         pcm2.normalize(pcmFactory)
