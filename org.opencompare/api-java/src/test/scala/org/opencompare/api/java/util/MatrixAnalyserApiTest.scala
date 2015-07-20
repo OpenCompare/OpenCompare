@@ -14,6 +14,7 @@ import scala.reflect.io.File
  */
 class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterAll{
 
+  var detector : MatrixAnalyser = _
   var matrix : IOMatrix = _
   val input = getClass.getClassLoader.getResource("csv/Comparison_of_audio_player_software-Audio_format_ability.csv")
   var separator = ','
@@ -23,7 +24,7 @@ class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterA
 
   var inputs : TableFor1[File] = _
 
-  def createNodeTree(): IONode = {
+  def createRefNodeTree(): IONode = {
 
     val MP3 = new IONode("MP3", false, 1)
     val WMA = new IONode("WMA", false, 2)
@@ -65,7 +66,7 @@ class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterA
     root
   }
 
-  def createMatrix(reader : CSVReader): IOMatrix = {
+  def createRefMatrix(reader : CSVReader): IOMatrix = {
     val csvMatrix = reader.readAll().asScala
     var i = 0
     val matrix = new IOMatrix()
@@ -90,42 +91,40 @@ class MatrixAnalyserApiTest  extends FlatSpec with Matchers with BeforeAndAfterA
     refWidth = refCsvMatrix.head.size
 
     val csvReader = new CSVReader(new FileReader(file), separator, quote)
-    matrix = createMatrix(csvReader)
+    matrix = createRefMatrix(csvReader)
+    detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
   }
 
   "A matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getWidth.equals(refWidth) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getHeight.equals(refHeight) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl)
     detector.getMatrix.equals(matrix) shouldBe true
   }
 
   "A transposed matrix" should "have equal width with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
+    detector.setTransposition(true)
     detector.getWidth.equals(refHeight) shouldBe true
   }
 
   it should "have equal height with the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
+    detector.setTransposition(true)
     detector.getHeight.equals(refWidth) shouldBe true
   }
 
   it should "be equal to the reference matrix" in {
-    val detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).setTransposition(true)
+    detector.setTransposition(true)
     detector.getMatrix.equals(matrix) shouldBe true
   }
 
   it should "create a node tree properly" in {
-    val node = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl).getHeaderNode
-    val refNode = createNodeTree()
+    val node = detector.setTransposition(false).getHeaderNode
+    val refNode = createRefNodeTree()
     node.equals(refNode) shouldBe true
   }
 }
