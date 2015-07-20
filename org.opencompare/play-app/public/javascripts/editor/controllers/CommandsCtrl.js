@@ -180,28 +180,17 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
      */
     $scope.deleteFeatureGroup = function(featureName) {
 
-        var index = 0;
-        var indexToDelete = 0;
-        for(var col in $scope.gridOptions.superColDefs) {
-            if(col.hasOwnProperty('name')) {
-                if(col.name == featureName) {
-                    indexToDelete = index;
-                }
-                index++;
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            if($scope.gridOptions.superColDefs[i].name == featureName) {
+                $scope.gridOptions.superColDefs.splice(i, 1);
+                break;
             }
-        }
-        if(index <= 1) {
-            delete $scope.gridOptions.superColDefs;
-        }
-        else {
-            delete $scope.gridOptions.superColDefs[indexToDelete];
         }
         for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
             if($scope.gridOptions.columnDefs[i].superCol === featureName) {
                 $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';
-                break;
             }
-        }
+        }console.log($scope.gridOptions.superColDefs);
         $rootScope.$broadcast('modified');
         $rootScope.$broadcast('reloadFeatureGroup');
     };
