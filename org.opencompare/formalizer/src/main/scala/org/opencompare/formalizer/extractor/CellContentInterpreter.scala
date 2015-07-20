@@ -1,7 +1,7 @@
 package org.opencompare.formalizer.extractor
 
 import org.opencompare.api.java.{Feature, PCM, Product, Value}
-import org.opencompare.formalizer.interpreters.{BooleanPatternInterpreter, DoublePatternInterpreter, EmptyPatternInterpreter, IntegerPatternInterpreter, MultiplePatternInterpreter, PartialPatternInterpreter, PatternInterpreter, UnknownPatternInterpreter, VariabilityConceptRefPatternInterpreter}
+import org.opencompare.formalizer.interpreters._
 
 import scala.collection.JavaConversions._
 
@@ -69,45 +69,32 @@ object CellContentInterpreter {
     	new PartialPatternInterpreter(Nil,"(partial)",Nil, true)
 		
     )
-  val defaultGreedyInterpreters : List[PatternInterpreter] = List(
+  val defaultGreedyInterpreters : List[PatternInterpreter] =  List(
       // int
       new IntegerPatternInterpreter(Nil,"\\d+",Nil, true),
       // double
       new DoublePatternInterpreter(Nil,"\\d+(\\.\\d+)?",Nil, true),
       // dimensions
-      new MultiplePatternInterpreter(Nil, "(\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?)", List("and"), true),
+      new MultipleRegexPatternInterpreter(Nil, "(\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?)", List("and"), true),
       // date XX/XX/XXXX
       new VariabilityConceptRefPatternInterpreter(Nil, "\\d{2}/\\d{2}/\\d{4}", Nil, true),
       // foo (bar)
       new PartialPatternInterpreter(Nil,"([^,/]+?)\\s*\\((.+)\\)",Nil,false),
       // yes, with some condition
-      new PartialPatternInterpreter(Nil,"(yes),?\\s*(.*)",Nil, false)
-    ) ::: 
-    // values separated by comas
-    (for (n <- 1 to 50) yield {
-    	  new MultiplePatternInterpreter(Nil,
-    	      (for (i <- 1 to n+1) yield {"([^,]+?)"}).mkString("\\s*,\\s+"),
-    	      List("and"), true)
-    }).toList ::: 
-    // values separated by semi colons
-    (for (n <- 1 to 50) yield {
-    	  new MultiplePatternInterpreter(Nil,
-    	      (for (i <- 1 to n+1) yield {"([^;]+?)"}).mkString("\\s*;\\s+"),
-    	      List("and"), true)
-    }).toList ::: 
-    // values separated by slashes 
-    (for (n <- 1 to 10) yield {
-    	  new MultiplePatternInterpreter(Nil,
-    	      (for (i <- 1 to n+1) yield {"([^/]+?)"}).mkString("\\s*/\\s*"),
-    	      List("and"), true)
-    }).toList ::: List(
-        // foo OR bar
-        new MultiplePatternInterpreter(Nil,"(.+)\\sor\\s(.+)", List("or"), false),
-        // foo AND bar
-        new MultiplePatternInterpreter(Nil,"(.+)\\sand\\s(.+)", List("and"), false),
-        // everything
-        new VariabilityConceptRefPatternInterpreter(Nil, ".*", Nil, false)
-    ) 
+      new PartialPatternInterpreter(Nil,"(yes),?\\s*(.*)",Nil, false),
+      // values separated by comas
+      new MultipleSeparatorPatternInterpreter(Nil, ",", List("and"), true),
+      // values separated by semi colons
+      new MultipleSeparatorPatternInterpreter(Nil, ";", List("and"), true),
+      // values separated by slashes
+      new MultipleSeparatorPatternInterpreter(Nil, "/", List("and"), true),
+      // foo OR bar
+      new MultipleRegexPatternInterpreter(Nil,"(.+)\\sor\\s(.+)", List("or"), false),
+      // foo AND bar
+      new MultipleRegexPatternInterpreter(Nil,"(.+)\\sand\\s(.+)", List("and"), false),
+      // everything
+      new VariabilityConceptRefPatternInterpreter(Nil, ".*", Nil, false)
+    )
     
     
 }
