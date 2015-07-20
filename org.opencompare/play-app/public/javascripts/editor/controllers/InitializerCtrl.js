@@ -389,6 +389,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             });
             return productData;
         });
+
         // Return rawcontent
         $scope.pcmDataRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};

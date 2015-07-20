@@ -32,29 +32,39 @@ pcmApp.service('sortFeaturesService', function() {
 
     this.sortByFeatureGroup = function(features, featureGroups) {
         var sortedFeatures = [];
-        var startIndexes = [];
-        var featureGroupsNames = [];
+        var featureGroupsPos = [];
+        var currentIndex =0;
+
         for(var i = 0; i < featureGroups.length; i++) {
             if(featureGroups[i].hasOwnProperty('name')) {
-                var featureName = featureGroups[i].name;
-                startIndexes[featureName] = i+2;
-                featureGroupsNames[i] = featureName;
+                var featureGroup = [];
+                featureGroup.push(featureGroups[i].name);
+                featureGroup.push(currentIndex+2);
+                featureGroupsPos[currentIndex] = featureGroup;
+                currentIndex++;
             }
         }
         sortedFeatures.splice(0, 0, features[0]);
         sortedFeatures.splice(1, 0, features[1]);
+
         for(var i = 2; i < features.length; i++) {
             var currentfeature = features[i];
-            var position = startIndexes[currentfeature.superCol];
-            var index = featureGroupsNames.indexOf(currentfeature.superCol);
-            for(var j = index; j < startIndexes.length; j++) {
-                startIndexes[j] = startIndexes[j]++;
+            var index = 0;
+            for(var j = 0; j < featureGroupsPos.length; j++) {
+                if(featureGroupsPos[j][0] == currentfeature.superCol) {
+                    index = j;
+                    break;
+                }
+            }
+            var position = featureGroupsPos[index][1];
+
+            for(var k = index; k < featureGroupsPos.length; k++) {
+                featureGroupsPos[k][1] = featureGroupsPos[k][1]+1;
             }
             sortedFeatures.splice(position, 0, currentfeature);
         }
         return sortedFeatures;
-    }
-
+    };
 
 });
 

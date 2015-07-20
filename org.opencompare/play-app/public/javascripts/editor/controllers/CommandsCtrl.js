@@ -85,6 +85,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             index++;
         }
         $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+        $scope.deleteUnusedFeatureGroups();
         $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };

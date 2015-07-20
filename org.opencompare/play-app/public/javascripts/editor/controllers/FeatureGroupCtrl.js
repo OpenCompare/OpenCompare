@@ -24,6 +24,24 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         $scope.featureName = featureName;
     };
 
+    $scope.deleteUnusedFeatureGroups = function(){
+        var featureGroups = [];
+        var j = 0;
+        for(var i = 0; i < $scope.gridOptions.columnDefs.length; i++) {
+            if(featureGroups.indexOf($scope.gridOptions.columnDefs[i].superCol) == -1) {
+                featureGroups[j] = $scope.gridOptions.columnDefs[i].superCol;
+                j++;
+            }
+        }
+        if(featureGroups.length < $scope.gridOptions.superColDefs.length) {
+            for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+                if(featureGroups.indexOf($scope.gridOptions.superColDefs[i].name) == -1) {
+                   $scope.gridOptions.superColDefs.splice(i, 1);
+                }
+            }
+        }
+    };
+
     $scope.$watch(function(){
         return $window.innerWidth;
     }, function(value) {
