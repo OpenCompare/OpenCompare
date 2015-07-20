@@ -12,13 +12,13 @@ public class PCMMetadata {
     protected PCM pcm;
     protected Boolean productAsLines;
     protected Map<Product, Integer> productPositions;
-    protected Map<Feature, Integer> featurePositions;
+    protected Map<AbstractFeature, Integer> featurePositions;
 
     public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
         this.setProductAsLines(true);
-        this.productPositions = new HashMap<Product, Integer>();
-        this.featurePositions = new HashMap<Feature, Integer>();
+        this.productPositions = new HashMap<>();
+        this.featurePositions = new HashMap<>();
     }
 
     /**
@@ -62,7 +62,7 @@ public class PCMMetadata {
      * @param feature
      * @return the absolution position of 'feature' or -1 if it is not specified
      */
-    public int getFeaturePosition(Feature feature) {
+    public int getFeaturePosition(AbstractFeature feature) {
         if (!featurePositions.containsKey(feature)) {
             return -1;
         }
@@ -74,7 +74,7 @@ public class PCMMetadata {
      * @param feature
      * @param position
      */
-    public void setFeaturePosition(Feature feature, int position) {
+    public void setFeaturePosition(AbstractFeature feature, int position) {
         featurePositions.put(feature, position);
     }
 
@@ -90,6 +90,23 @@ public class PCMMetadata {
                 Integer op1 = getProductPosition(o1);
                 Integer op2 = getProductPosition(o2);
                 return op1.compareTo(op2);
+            }
+        });
+        return result;
+    }
+
+    /**
+     * Return the sorted features concordingly with metadata
+     * @return an ordered list of features
+     */
+    public List<AbstractFeature> getFeatures() {
+        List<AbstractFeature> result = pcm.getFeatures();
+        Collections.sort(result, new Comparator<AbstractFeature>() {
+            @Override
+            public int compare(AbstractFeature f1, AbstractFeature f2) {
+                Integer fp1 = getFeaturePosition(f1);
+                Integer fp2 = getFeaturePosition(f2);
+                return fp1.compareTo(fp2);
             }
         });
         return result;
