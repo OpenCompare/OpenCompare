@@ -1,5 +1,6 @@
 package org.opencompare.api.java.impl;
 
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.Value;
 import org.opencompare.api.java.impl.value.*;
 

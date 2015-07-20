@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.parser
 
 import de.fau.cs.osr.ptk.common.AstVisitor
+import org.sweble.wikitext.parser.nodes.WtLctFlags.WtNoLctFlags
 import org.sweble.wikitext.parser.nodes._
 
 /**
@@ -149,4 +150,8 @@ class NestedTableChecker extends AstVisitor[WtNode] with CompleteWikitextVisitor
   override def visit(wt: WtXmlAttributeGarbage): Unit = iterate(wt)
 
   override def visit(wt: WtTagExtensionBody): Unit = iterate(wt)
+
+  def visit(wt: WtLctVarConv): Unit = iterate(wt)
+
+  def visit(wt: WtNoLctFlags): Unit = iterate(wt)
 }

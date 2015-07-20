@@ -2,6 +2,8 @@ package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.Cell;
 import org.opencompare.api.java.Feature;
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.util.PCMVisitor;
 import pcm.AbstractFeature;
 
@@ -75,5 +77,13 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
     @Override
     public String toString() {
         return "Feature(" + getName() + ")";
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Feature copy = factory.createFeature();
+        copy.setName(this.getName());
+        // FIXME : how to handle the cells?
+        return copy;
     }
 }

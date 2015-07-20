@@ -2,10 +2,13 @@ package org.opencompare.api.java.impl;
 
 import org.opencompare.api.java.AbstractFeature;
 import org.opencompare.api.java.FeatureGroup;
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -59,5 +62,38 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        FeatureGroup copy = factory.createFeatureGroup();
+        for (AbstractFeature feature : this.getFeatures()) {
+            copy.addFeature((AbstractFeature) feature.clone(factory));
+        }
+        copy.setName(this.getName());
+        return copy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FeatureGroupImpl featureGroup = (FeatureGroupImpl) o;
+
+        if (this.getName() == null) {
+            return featureGroup.getName() == null;
+        }
+
+        if (!this.getName().equals(featureGroup.getName())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.getName());
     }
 }

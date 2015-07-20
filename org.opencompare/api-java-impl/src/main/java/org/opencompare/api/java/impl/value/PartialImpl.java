@@ -1,5 +1,7 @@
 package org.opencompare.api.java.impl.value;
 
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.Value;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
@@ -34,5 +36,12 @@ public class PartialImpl extends ValueImpl implements Partial {
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Partial copy = factory.createPartial();
+        copy.setValue((Value) this.getValue().clone(factory));
+        return copy;
     }
 }

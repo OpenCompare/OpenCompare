@@ -1,5 +1,7 @@
 package org.opencompare.api.java.impl.value;
 
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.NotAvailable;
@@ -23,5 +25,11 @@ public class NotAvailableImpl extends ValueImpl implements NotAvailable {
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        NotAvailable copy = factory.createNotAvailable();
+        return copy;
     }
 }

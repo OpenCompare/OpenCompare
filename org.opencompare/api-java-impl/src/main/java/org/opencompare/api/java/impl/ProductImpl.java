@@ -1,8 +1,6 @@
 package org.opencompare.api.java.impl;
 
-import org.opencompare.api.java.Cell;
-import org.opencompare.api.java.Feature;
-import org.opencompare.api.java.Product;
+import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;
 
 import java.util.ArrayList;
@@ -114,5 +112,15 @@ public class ProductImpl implements Product {
     @Override
     public int hashCode() {
         return Objects.hash(this.getName(), this.getCells());
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        Product copy = factory.createProduct();
+        copy.setName(this.getName());
+        for (Cell cell : this.getCells()) {
+            copy.addCell((Cell) cell.clone(factory));
+        }
+        return copy;
     }
 }
