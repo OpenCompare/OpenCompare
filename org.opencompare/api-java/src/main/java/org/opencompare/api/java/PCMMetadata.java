@@ -63,6 +63,7 @@ public class PCMMetadata {
      * @return the absolution position of 'feature' or -1 if it is not specified
      */
     public int getFeaturePosition(AbstractFeature feature) {
+        AbstractFeature result = feature;
         if (!featurePositions.containsKey(feature)) {
             if (feature instanceof FeatureGroup) {
                 FeatureGroup featureGroup = (FeatureGroup) feature;
@@ -73,10 +74,10 @@ public class PCMMetadata {
                         return getFeaturePosition(feat1) - getFeaturePosition(feat2);
                     }
                 });
-                feature = features.get(0);
+                result = features.get(0);
             }
         }
-        return featurePositions.get(feature);
+        return featurePositions.get(result);
     }
 
     /**
