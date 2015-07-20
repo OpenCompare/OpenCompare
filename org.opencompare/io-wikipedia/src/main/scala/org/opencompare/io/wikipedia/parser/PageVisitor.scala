@@ -228,4 +228,6 @@ class PageVisitor(
   override def visit(wtXmlAttributeGarbage: WtXmlAttributeGarbage): Unit = {}
 
   override def visit(wtTagExtensionBody: WtTagExtensionBody): Unit = {}
+
+  def visit(wtLctVarConv: WtLctVarConv): Unit = {}
 }
