@@ -30,6 +30,31 @@ pcmApp.service('sortFeaturesService', function() {
         return sortedFeatures;
     };
 
+    this.sortByFeatureGroup = function(features, featureGroups) {
+        var sortedFeatures = [];
+        var startIndexes = [];
+        var featureGroupsNames = [];
+        for(var i = 0; i < featureGroups.length; i++) {
+            if(featureGroups[i].hasOwnProperty('name')) {
+                var featureName = featureGroups[i].name;
+                startIndexes[featureName] = i+2;
+                featureGroupsNames[i] = featureName;
+            }
+        }
+        sortedFeatures.splice(0, 0, features[0]);
+        sortedFeatures.splice(1, 0, features[1]);
+        for(var i = 2; i < features.length; i++) {
+            var currentfeature = features[i];
+            var position = startIndexes[currentfeature.superCol];
+            var index = featureGroupsNames.indexOf(currentfeature.superCol);
+            for(var j = index; j < startIndexes.length; j++) {
+                startIndexes[j] = startIndexes[j]++;
+            }
+            sortedFeatures.splice(position, 0, currentfeature);
+        }
+        return sortedFeatures;
+    }
+
 
 });
 

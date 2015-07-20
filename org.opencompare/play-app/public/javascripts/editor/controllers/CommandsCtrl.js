@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, sortFeaturesService, $compile, $modal) {
 
 
     /**
@@ -54,6 +54,14 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
      */
     $scope.addFeatureGroup = function () {//fixme: check if emptyfeature is setted
         var selectedCols = $scope.cols;
+        var found = false;
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            var currentCol = $scope.gridOptions.superColDefs[i];
+            if(currentCol.hasOwnProperty('name') && currentCol.name == "emptyFeatureGroup") {
+                found = true;
+            }
+        }
+        if(!found) {
             var emptyFeatureGroup = {
                 name: "emptyFeatureGroup",
                 displayName: " "
@@ -62,7 +70,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             $scope.gridOptions.columnDefs.forEach(function (col) {
                 col.superCol = "emptyFeatureGroup";
             });
-
+        }
 
         var newFeatureGroup = {
             name: $scope.featureName,
@@ -75,7 +83,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.gridOptions.columnDefs[index+2].superCol = $scope.featureName;
             }
             index++;
-        }console.log($scope.gridOptions);
+        }
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
         $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
@@ -188,7 +197,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         }
         for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
             if($scope.gridOptions.columnDefs[i].superCol === featureName) {
-                $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';console.log( $scope.gridOptions.columnDefs[i].superCol);
+                $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';
                 break;
             }
         }

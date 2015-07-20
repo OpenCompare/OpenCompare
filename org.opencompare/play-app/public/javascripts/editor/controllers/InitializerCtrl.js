@@ -437,7 +437,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
 
-        $scope.gridOptions.columnDefs = sortFeaturesService.sortByType(columnDefs, $scope.columnsType);
+        if($scope.gridOptions.superColDefs.length > 0) {
+            $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup(columnDefs, $scope.gridOptions.superColDefs);
+        }
+        else {
+            $scope.gridOptions.columnDefs = columnDefs;
+        }
+
 
 
 
