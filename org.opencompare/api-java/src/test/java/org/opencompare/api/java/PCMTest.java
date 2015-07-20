@@ -225,21 +225,21 @@ public abstract class PCMTest {
         assertTrue(pcm.isValid());
 
         Feature f3 = createFeature(pcm, "F2");
-        assertFalse(pcm.isValid()); // Duplicated feature
+        assertFalse("duplicated feature", pcm.isValid());
 
         pcm.removeFeature(f3);
         assertTrue(pcm.isValid());
 
         Product p1 = createProduct(pcm, "P1");
         createCell(p1, f1, "C11", null);
-        assertFalse(pcm.isValid()); // Missing cell
+        assertFalse("missing cell", pcm.isValid());
 
         createCell(p1, f2, "C12", null);
         assertTrue(pcm.isValid());
 
         Product p2 = createProduct(pcm, "P2");
         createCell(p2, f1, "C21", null);
-        assertFalse(pcm.isValid()); // Missing cell
+        assertFalse("missing cell", pcm.isValid());
 
         createCell(p2, f2, "C22", null);
         assertTrue(pcm.isValid());
@@ -247,7 +247,7 @@ public abstract class PCMTest {
         Product p3 = createProduct(pcm, "P2");
         createCell(p3, f1, "C21", null);
         createCell(p3, f2, "C22", null);
-        assertFalse(pcm.isValid()); // Duplicated product
+        assertFalse("duplicated product", pcm.isValid());
 
         pcm.removeProduct(p3);
         assertTrue(pcm.isValid());

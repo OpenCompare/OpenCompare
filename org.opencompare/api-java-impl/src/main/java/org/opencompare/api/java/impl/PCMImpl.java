@@ -299,19 +299,19 @@ public class PCMImpl implements PCM {
         // List features
         List<Feature> features = getConcreteFeatures();
 
-        // Check uniqueness of feature names
-        Set<String> featureNames = new HashSet<String>();
+        // Check uniqueness of feature
+        Set<Feature> featureNames = new HashSet<>();
         for (Feature feature : features) {
-            featureNames.add(feature.getName());
+            featureNames.add(feature);
         }
         if (featureNames.size() != features.size()) {
             return false;
         }
 
-        // Check uniqueness of product names
-        Set<String> productNames = new HashSet<String>();
+        // Check uniqueness of product
+        Set<Product> productNames = new HashSet<>();
         for (Product product : this.getProducts()) {
-            productNames.add(product.getName());
+            productNames.add(product);
         }
         if (productNames.size() != this.getProducts().size()) {
             return false;
