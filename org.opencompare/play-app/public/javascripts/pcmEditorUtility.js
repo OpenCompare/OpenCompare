@@ -3,12 +3,12 @@
  */
 
 
-    function getCellClass (value) {
-        if(value) {
-            if(value.toLowerCase().indexOf('{{yes') != -1) {
+    function getCellClass (value, featureType) {
+        if(value && featureType == 'boolean') {
+            if(value.toLowerCase().indexOf('yes') != -1 || value.toLowerCase().indexOf('oui') != -1) {
                 return 'yesCell';
             }
-            else if(value.toLowerCase().indexOf('{{no') != -1) {
+            else if(value.toLowerCase().indexOf('no') != -1 || value.toLowerCase().indexOf('non') != -1) {
                 return 'noCell';
             }
             else {
@@ -180,6 +180,17 @@
             newName = newName + index;
         }
         return newName;
-    };
+    }
+
+    function GetUrlValue(VarSearch){
+        var SearchString = document.location.search.substring(1);
+        var VariableArray = SearchString.split('&');
+        for(var i = 0; i < VariableArray.length; i++){
+            var KeyValuePair = VariableArray[i].split('=');
+            if(KeyValuePair[0] == VarSearch){
+                return KeyValuePair[1];
+            }
+        }
+    }
 
 

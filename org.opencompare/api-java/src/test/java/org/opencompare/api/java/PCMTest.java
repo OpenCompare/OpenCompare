@@ -152,14 +152,27 @@ public abstract class PCMTest {
         Feature commonFeature1 = createFeature(pcm1, "Common feature");
         Feature feature1 = createFeature(pcm1, "Feature from PCM 1");
 
+        FeatureGroup commonFeatureGroup1 = createFeatureGroup(pcm1, "Common feature group");
+        Feature commonFeatureFG1 = factory.createFeature();
+        commonFeatureFG1.setName("Common feature group - common feature");
+        commonFeatureGroup1.addFeature(commonFeatureFG1);
+
+        FeatureGroup featureGroup1 = createFeatureGroup(pcm1, "Feature group from PCM 1");
+        Feature featureFG1 = factory.createFeature();
+        featureFG1.setName("Feature group from PCM 1 - feature");
+        featureGroup1.addFeature(featureFG1);
+
         Product commonProduct1 = createProduct(pcm1, "Common product");
         createCell(commonProduct1, commonFeature1, "", null);
         createCell(commonProduct1, feature1, "", null);
+        createCell(commonProduct1, commonFeatureFG1, "", null);
+        createCell(commonProduct1, featureFG1, "", null);
 
         Product product1 = createProduct(pcm1, "Product from PCM 1");
         createCell(product1, commonFeature1, "", null);
         createCell(product1, feature1, "", null);
-
+        createCell(product1, commonFeatureFG1, "", null);
+        createCell(product1, featureFG1, "", null);
 
 
         // Create PCM 2
@@ -168,22 +181,37 @@ public abstract class PCMTest {
         Feature commonFeature2 = createFeature(pcm2, "Common feature");
         Feature feature2 = createFeature(pcm2, "Feature from PCM 2");
 
+        FeatureGroup commonFeatureGroup2 = createFeatureGroup(pcm2, "Common feature group");
+        Feature commonFeatureFG2 = factory.createFeature();
+        commonFeatureFG2.setName("Common feature group - common feature");
+        commonFeatureGroup2.addFeature(commonFeatureFG2);
+
+        FeatureGroup featureGroup2 = createFeatureGroup(pcm2, "Feature group from PCM 2");
+        Feature featureFG2 = factory.createFeature();
+        featureFG2.setName("Feature group from PCM 2 - feature");
+        featureGroup2.addFeature(featureFG2);
+
         Product commonProduct2 = createProduct(pcm2, "Common product");
         createCell(commonProduct2, commonFeature2, "", null);
         createCell(commonProduct2, feature2, "", null);
+        createCell(commonProduct2, commonFeatureFG2, "", null);
+        createCell(commonProduct2, featureFG2, "", null);
 
         Product product2 = createProduct(pcm2, "Product from PCM 2");
         createCell(product2, commonFeature2, "", null);
         createCell(product2, feature2, "", null);
+        createCell(product2, commonFeatureFG2, "", null);
+        createCell(product2, featureFG2, "", null);
 
         // Merge PCM 1 and 2
         pcm1.merge(pcm2, factory);
 
         // Check resulting PCM
-        assertEquals("number of features", 3, pcm1.getFeatures().size());
+        assertEquals("number of features", 6, pcm1.getFeatures().size());
+        assertEquals("number of concrete features", 6, pcm1.getFeatures().size());
         assertEquals("number of products", 3, pcm1.getProducts().size());
         for (Product product : pcm1.getProducts()) {
-            assertEquals("number of cells", 3, product.getCells().size());
+            assertEquals("number of cells", 6, product.getCells().size());
         }
 
     }

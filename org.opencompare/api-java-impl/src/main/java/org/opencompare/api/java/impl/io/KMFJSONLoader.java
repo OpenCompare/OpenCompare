@@ -22,6 +22,17 @@ public class KMFJSONLoader implements PCMLoader {
 
     private DefaultPcmFactory kpcmFactory = new DefaultPcmFactory();
     private JSONModelLoader loader = kpcmFactory.createJSONLoader();
+    private PCMBase64Encoder encoder = new PCMBase64Encoder();
+
+    private boolean base64Decoding;
+
+    public KMFJSONLoader() {
+        this(true);
+    }
+
+    public KMFJSONLoader(boolean base64Decoding) {
+        this.base64Decoding = base64Decoding;
+    }
 
     @Override
     public List<PCMContainer> load(String json) {
@@ -31,25 +42,16 @@ public class KMFJSONLoader implements PCMLoader {
 
     @Override
     public List<PCMContainer> load(File file) throws IOException {
-        InputStream in = new BufferedInputStream(new FileInputStream(file));
-        List<KMFContainer> containers = loader.loadModelFromStream(in);
-
-        try {
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return load(containers);
-
-//        byte[] bytes = Files.readAllBytes(file.toPath());
-//        String json = new String(bytes, StandardCharsets.UTF_8);
-//        return load(json);
+        byte[] bytes = Files.readAllBytes(file.toPath());
+        String json = new String(bytes, StandardCharsets.UTF_8);
+        return load(json);
     }
 
     private List<PCMContainer> load(List<KMFContainer> containers) {
         List<PCMContainer> containersPCM = new ArrayList<>();
         for (KMFContainer container : containers) {
             PCM pcm = new PCMImpl((pcm.PCM) container);
+            encoder.decode(pcm);
             PCMContainer containerPCM = new PCMContainer();
             PCMMetadata metadata = new PCMMetadata(pcm);
             containerPCM.setPcm(pcm);

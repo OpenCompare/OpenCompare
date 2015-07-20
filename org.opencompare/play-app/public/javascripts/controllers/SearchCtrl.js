@@ -3,7 +3,7 @@
  */
 
 pcmApp.controller("SearchController", function($scope, $http) {
-    $scope.request = ''
+    $scope.request = '';
 
     // TODO : recommend existing product or PCM from the request
 });

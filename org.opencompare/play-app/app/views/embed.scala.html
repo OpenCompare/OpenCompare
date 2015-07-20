@@ -1,99 +1,20 @@
 @(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
 
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
 
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
-        <meta charset="UTF-8">
-        <link rel='stylesheet' href='@routes.Assets.at("stylesheets/editor.css")'>
+        @mainHeader()
+        @editHeader()
 
-        <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))'>
-        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.min.css"))'>
-        <link rel="stylesheet" href='@routes.WebJarAssets.at(WebJarAssets.locate("smoothness/jquery-ui.css"))'>
-        <link rel='stylesheet' href='@routes.Assets.at("stylesheets/main.css")'>
-        @if(id != null) {
-            <script>
-            var id = "@{
-                Html(id)
-            }";
-        </script>
-        }
-        @if(data != null) {
-            <script>
-            var data = '@{
-                Html(data.toString().replace("'", "\\\'"))
-            }';
-        </script>
-        }
-        @if(modal != null) {
-            <script>
-            var modal = '@{
-                Html(modal)
-            }';
-        </script>
-        }
+        @mainFooter()
+        @editFooter(id, data, modal)
 
-
-
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
-        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
-
-
-        <script>var pcmApp = angular.module("pcmApp", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize', 'ui.bootstrap', 'ui.slider'])</script>
-
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/kmf/pcm.min.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/pcm-api.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/pcmEditorUtility.js")'></script>
-
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/TypesCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/FiltersCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/ToolbarCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/EditorCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/UndoRedoCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/CommandsCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/editor/InitializerCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/csvCtrl.js")'></script>
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/exporter/wikitextCtrl.js")'></script>
-
-        <script type='text/javascript' src='@routes.Assets.at("javascripts/directives/embeddedEditor.js")'></script>
     </head>
-    <body>
-        <div ng-app="pcmApp">
-
-            <nav class="navbar" ng-show="edit" role="navigation" ng-controller="PCMEditorToolbarController">
-                <div class="container-fluid" >
-                    <div class="editor-toolbar">
-                        <button ng-show="!saved" role="button" class="btn btn-default" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-undo"></i> Cancel</button>
-                        <button ng-show="saved" role="button" class="btn btn-default" ng-click="setEdit(false, true)"><i class="fa fa-undo"></i> Cancel</button>
-                        <button role="button" class="btn btn-default" ng-class='{"btn btn-default": !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> Save</button>
-                        <button role="button" class="btn btn-default" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> Validate</button>
-                        <button ng-show="isInDatabase" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> Remove</button>
-                        <div class="btn-group">
-                            <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-download"></i> @Messages("navbar.export") <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.csv")</a></li>
-                                <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport">@Messages("navbar.export.wikipedia")</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
+    <body STYLE="background-color:transparent; margin:0; padding:0;">
+        <div ng-app="openCompare">
                 <div open-compare-editor ng-controller="EditorCtrl">
                 </div>
-
         </div>
 
     </body>

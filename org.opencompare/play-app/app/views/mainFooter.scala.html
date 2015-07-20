@@ -1,0 +1,30 @@
+<!-- Scripts -->
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery-ui.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-translate.min.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/arrive.min.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-utf8-base64.min.js"))'></script>
+
+<script>
+        var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
+        'ui.bootstrap', 'ui.slider', 'ui.grid.pinning',
+        'pascalprecht.translate',
+        'ab-base64']);
+        var modalTemplatePath = '@routes.Assets.at("templates/")';
+</script>
+
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/I18nCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/importexport/controllers/importer/csvCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/importexport/controllers/importer/wikipediaCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/NavbarCtrl.js")'></script>
+<!--
+     Directives
+     -->
+<script type='text/javascript' src='@routes.Assets.at("javascripts/importexport/directives/fileModel.js")'></script>

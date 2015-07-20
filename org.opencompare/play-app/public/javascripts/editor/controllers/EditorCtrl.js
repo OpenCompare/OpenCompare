@@ -1,16 +1,23 @@
 /**
  * Created by gbecan on 17/12/14.
  */
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+
+
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi) {
+    if($.material) {
+        $.material.init();
+    }
 
     var subControllers = {
-        $scope: $scope
+        $scope: $scope,
+        $location: $location
     };
+    $controller('InitializerCtrl', subControllers);
     $controller('UndoRedoCtrl', subControllers);
     $controller('CommandsCtrl', subControllers);
     $controller('FiltersCtrl', subControllers);
     $controller('TypesCtrl', subControllers);
-    $controller('InitializerCtrl', subControllers);
+    $controller('ShareCtrl', subControllers);
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -34,21 +41,24 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
-        $scope.setEdit(true, false);
+        $scope.setEdit(false, false);
         $scope.initializeEditor($scope.pcm, $scope.metadata);
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
         $scope.pcm = loader.loadModelFromString(data).get(0);
+        pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = data.metadata;
         $scope.initializeEditor($scope.pcm, $scope.metadata);
     } else {
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
+        $scope.updateShareLinks();
         $http.get("/api/get/" + id).
             success(function (data) {
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
+                pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
                 $scope.metadata = data.metadata;
                 $scope.initializeEditor($scope.pcm, $scope.metadata);
                 $rootScope.$broadcast('saved');
@@ -66,15 +76,47 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             scope: $scope
         })
     }
+    $scope.$on('initializeFromExternalSource', function(event, args) {
+        $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
+        pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
+        $scope.metadata = args.metadata;
+        $scope.initializeEditor($scope.pcm, $scope.metadata);
+    });
 
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3) {
+            if($scope.pcmData.length * 28 + 100 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
+            else if($scope.pcmData.length * 28 + 100 > $(window).height() && GetUrlValue('enableEdit')) {
+                var height = 20;
+
+                if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
+                        height += 40;
+
+                }
+                if(GetUrlValue('enableTitle') == 'true') {
+                    if($scope.pcm.name.length > 30) {
+                        height += 120;
+                    }
+                    else {
+                        height += 60;
+                    }
+
+                }
+                if(GetUrlValue('enableEdit') == 'true') {
+                    if($scope.edit) {
+                        height += 80;
+                    }
+                    else {
+                        height += 40;
+                    }
+                }
+                $scope.height = $(window).height()-height;
+            }
             else{
-                $scope.height = $scope.pcmData.length * 28 + 90;
+                $scope.height = $scope.pcmData.length * 28 + 100;
             }
         }
     };
@@ -116,6 +158,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             });
             index++;
         });
+
+        // Encode PCM in Base64
+        pcmApi.encodePCM(pcm);
+
         return pcm;
     }
 
@@ -129,9 +175,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
      */
     $scope.save = function() {
 
-        $scope.pcm = convertGridToPCM($scope.pcmData);
+        var pcmToSave = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
-        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var jsonModel = JSON.parse(serializer.serialize(pcmToSave));
 
         var pcmObject = {};
         pcmObject.metadata = $scope.metadata;
@@ -139,6 +185,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;
+                $scope.updateShareLinks();
                 console.log("model created with id=" + id);
                 $rootScope.$broadcast('saved');
             });
@@ -221,6 +268,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
     $scope.$on('import', function(event, args) {
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
+        pcmApi.decodePCM($scope.pcm);
         $scope.metadata = args.metadata;
         $scope.initializeEditor($scope.pcm, $scope.metadata);
     });
@@ -230,9 +278,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     });
 
     $scope.$on('export', function (event, args) {
-        $scope.pcm = convertGridToPCM($scope.pcmData);
+        var pcmToExport = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
-        var jsonModel = JSON.parse(serializer.serialize($scope.pcm));
+        var jsonModel = JSON.parse(serializer.serialize(pcmToExport));
         $scope.pcmObject = {};
         $scope.pcmObject.metadata = $scope.metadata;
         $scope.pcmObject.pcm = jsonModel;

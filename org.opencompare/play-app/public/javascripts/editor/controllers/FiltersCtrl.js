@@ -7,13 +7,13 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     //Custom filters
     var $elm;
     $scope.columnsFilters = [];
+    $scope.productFilter = "";
 
     /* Initialize for filter */
     $scope.gridOptions2 = {
-        minWidth: 400,
         enableColumnMenus: false,
         onRegisterApi: function( gridApi) {
-            $scope.gridApi2 = gridApi
+            $scope.gridApi2 = gridApi;
         }
     };
 
@@ -47,9 +47,17 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     };
 
     $scope.applyBooleanFilter = function(col, value){
-
-        $scope.columnsFilters[col.name] = value;
+        if($scope.columnsFilters[col.name] == value) {
+            $scope.columnsFilters[col.name] = 0;
+        }
+        else {
+            $scope.columnsFilters[col.name] = value;
+        }
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    };
+
+    $scope.applyProductFilter = function() {
+        $scope.gridOptions.columnDefs[1].filter.term = $scope.productFilter;
     };
 
     $scope.isFilterOn = function(col) {
@@ -57,46 +65,40 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         return $scope.columnsFilters[col.name];
     };
 
+    $scope.checkFilterSliderMin = function() {
+        if($scope.filterSlider[0] > $scope.filterSlider[1]){
+            $scope.filterSlider[0] = $scope.filterSlider[1];
+        }
+    };
+
+    $scope.checkFilterSliderMax = function() {
+        if($scope.filterSlider[1] < $scope.filterSlider[0]){
+            $scope.filterSlider[1] = $scope.filterSlider[0];
+        }
+    };
+
     $scope.showFilter = function(feature) {
 
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
+        $scope.gridOptions2.data = [];
         var type = $scope.columnsType[feature.name];
         switch(type) {
 
             case 'string':
-
+                $scope.gridApi2.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                 $scope.pcmData.forEach( function ( productData ) {
                     if ($scope.ListToFilter.indexOf(productData[feature.name] ) === -1 ) {
                         $scope.ListToFilter.push(productData[feature.name]);
                     }
                 });
                 $scope.ListToFilter.sort();
-                $scope.gridOptions2 = {
-                    data: [],
-                    minWidth: 400,
-                    enableColumnMenus: false,
-                    onRegisterApi: function( gridApi) {
-                        $scope.gridApi2 = gridApi;
-                        if ($scope.columnsFilters[feature.name]){
-                            $timeout(function() {
-                                $scope.columnsFilters[feature.name].forEach( function( product ) {console.log('here');
-                                    var entities = $scope.gridOptions2.data.filter( function( row ) {
-                                        return row.product === product;
-                                    });
-                                    if( entities.length > 0 ) {
-                                        $scope.gridApi2.selection.selectRow(entities[0]);
-                                    }
-                                });
-                            });
-                        }
-                    }
-                };
                 $timeout(function() {
                     $scope.ListToFilter.forEach(function (product) {
                         $scope.gridOptions2.data.push({product: product});
                     });
                 }, 100);
+
                 $('#modalStringFilter').modal('show');
                 break;
 

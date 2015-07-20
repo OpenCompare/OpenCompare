@@ -8,5 +8,6 @@ import org.opencompare.api.java.util.PCMVisitor;
 public interface PCMElement {
 
     void accept(PCMVisitor visitor);
+    PCMElement clone(PCMFactory factory);
 
 }

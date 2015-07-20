@@ -6,7 +6,7 @@
 }
 
 #matrix {
-    margin: 10px 0 50px 0;
+    margin: 0 0 50px 0;
 }
 
 .grid {
@@ -15,6 +15,16 @@
 
 .buttonsCell {
     visibility: visible;
+    margin: 0;
+    padding: 0;
+    height: 28px;
+}
+
+.buttonsCell button{
+    margin: 0;
+    padding: 0;
+    width: 29px;
+    height: 28px;
 }
 
 .hideCell {
@@ -36,12 +46,12 @@
 
 .noCell {
     color: rgba(10, 0, 0, 1);
-    background-color : rgb(255, 110, 100) !important;
+    background-color : #FF5722 !important;
 }
 
 .yesCell {
     color: rgba(10, 0, 0, 1);
-    background-color : rgb(190, 255, 100) !important;
+    background-color : #B2FF59 !important;
 }
 
 .linkCell {
@@ -93,4 +103,20 @@
 .wide-size {
     width: 80%; /* either % (e.g. 60%) or px (400px) */
     height: 80%; /* either % (e.g. 60%) or px (400px) */
+}
+
+.ui-slider-range {
+    background: #009688;
+}
+.categoryStyle {
+    overflow: auto;
+    width: 100%;
+    border: 1px solid rgb(212,212,212);
+}
+.headerCell{
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: inherit;
 }

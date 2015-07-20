@@ -1,6 +1,8 @@
-button.search=Comparer
-button.search.placeholder=Produit
+button.search.placeholder=Rechercher
 
+navbar.about=À propos
+navbar.about.project=Projet
+navbar.about.privacy=Politique de confidentialité
 navbar.list=Liste
 navbar.create=Créer
 navbar.export=Exporter
@@ -14,7 +16,19 @@ index.warning=<strong>Attention!</strong> OpenCompare est encore en développeme
   Ces fonctionnalités sont limitées et peuvent ne pas fonctionner correctement. \
   Si vous le souhaitez, vous pouvez nous aider à améliorer le site web en contribuant sur <a href="https://github.com/gbecan/PCM">Github</a>.
 
-index.description=Open source initiative for extracting, editing and manipulating product comparison matrices.
+index.description=Comparer n''a jamais été aussi facile.
+
+index.import.title=Importer
+index.import.description=Importez en un clic des matrices de comparaison depuis Wikipédia ou un fichier.
+
+index.edit.title=Éditer
+index.edit.description=OpenCompare propose un éditeur dédié aux matrices de comparaison. Le filtrage, le tri et la validation des cellules sont directement inclus.
+
+index.compare.title=Comparer
+index.compare.description=Filtrez, triez et sélectionnez l''information qui vous intéresse pour comparer.
+
+index.share.title=Partager
+index.share.description=Partagez une matrice de comparaison via email, twitter, facebook, reddit, etc. En une ligne, vous pouvez aussi l''intégrer dans un site web.
 
 index.pcm.title=Matrices de comparaison de produits
 index.pcm.text=Comparing product can be a tedious and time-consuming task. It requires to review numerous sources of information that are often ambiguous and unstructured. \
@@ -35,16 +49,13 @@ index.opendata.text=One objective of OpenCompare is to give free and unlimited a
 index.io.title=Import/Export
 index.io.text=OpenCompare aim at providing a central platform for using and editing product comparison matrices. \
   This is made possible through the import and export of various formats such as: \
-  </p>\
     <ul>\
-        <li>Wikipedia markup language</li>\
-        <li>JSON</li>\
         <li>CSV</li>\
-        <li>HTML</li>\
+        <li>Wikipedia markup language</li>\
     </ul>
 
-index.opensource.title=Open source
-index.opensource.text=OpenCompare is developed by a small team at <a href="http://www.irisa.fr/en">IRISA</a>, a French research center. \
+index.freesoftware.title=Free Software
+index.freesoftware.text=OpenCompare is developed by a small team at <a href="http://www.irisa.fr/en">IRISA</a>, a French research center. \
   We use it as a main platform for testing our different research projects around product comparison matrices. \
   Such matrices are very common but the lack of efficient tools makes them underexploited. \
   We believe that opening our source code can help the community of contributors and users of product comparison matrices. \
@@ -52,6 +63,7 @@ index.opensource.text=OpenCompare is developed by a small team at <a href="http:
   As such, we welcome any contribution (e.g. translation, bug fix, new feature).
 
 index.github=Découvrez en plus sur Github
+index.twitter=Suivez nous sur Twitter
 
 search.title=Matrices de comparaison correspondant à
 
@@ -59,13 +71,45 @@ view.button.edit=Éditer
 
 edit.title=Titre
 edit.title.placeholder=Titre
+edit.title.createNewFeature=Créer une nouvelle caratéristique
+edit.title.featureName=Nom
+edit.title.featureType=Type
+edit.title.renameFeature=Renommer
+edit.title.changeType=Changer le type
+edit.title.selectRange=Selectionner une fourchette de valeurs
+edit.title.from=De
+edit.title.to=à
+edit.title.selectProducts=Selectionner les produits à filtrer
+edit.title.embed=Intégrer
+edit.title.showTitle=Afficher le titre
+edit.title.allowEdition=Autoriser l'édition
+edit.title.allowExportation=Autoriser l'exportation
+edit.title.allowSharing=Autoriser le partage
+edit.title.confirm=Confirmez
 
+edit.button.edit=Éditer
+edit.button.export=Exporter
 edit.button.save=Enregistrer
 edit.button.validate=Valider
+edit.button.embed=Intégrer
 edit.button.remove=Supprimer
 edit.button.addfeature=Caractéristique
 edit.button.addproduct=Produit
 edit.button.cancel=Annuler
+edit.button.apply=Appliquer
+edit.button.confirm=Êtes-vous sûr ?
+edit.button.no=Non
+edit.button.yes=Oui
+edit.button.share=Partager
+
+edit.type.string=Caractères
+edit.type.boolean=Booléens
+edit.type.number=Nombres
+
+edit.warning.removeIsDefinitive=Supprimer la matrice est définitif, merci de confirmer
+edit.warning.cancelWillLoseChanges=Quitter vous fera perdre tous les changements non sauvegardés, êtes-vous sûr?
+
+
 
 edit.validation.warning=Cette valeur ne semble pas respecter le type de la caractéristique, validez si vous souhaitez la conserver.
 
@@ -82,3 +126,10 @@ importer.button.cancel=Annuler
 importer.button.confirm=Confirmer
 importer.button.confirm.message=Êtes-vous sûr ?
 importer.button.confirm.desc=Merci de donner un titre à cette nouvelle PCM et confirmer son importation.
+
+about.project.title=OpenCompare
+
+about.privacy.title=Politique de confidentialité
+
+inconstruction.message=Simon est toujours en train de travailler sur cette partie d''OpenCompare...
+inconstruction.github=OpenCompare est un logiciel libre. Aidez-nous sur Github

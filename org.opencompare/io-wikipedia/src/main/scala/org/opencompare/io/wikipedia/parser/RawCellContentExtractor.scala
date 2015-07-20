@@ -16,6 +16,7 @@ class RawCellContentExtractor(val wikiConfig : WikiConfig) {
 
   private val trimPattern : Pattern = Pattern.compile("[\\s|!]*([\\s\\S]*?)\\s*")
   private val nestedTableChecker : NestedTableChecker = new NestedTableChecker
+  private val wtToStringConverter : WtToStringConverter = new WtToStringConverter(wikiConfig)
 
   def extract(cell : WtNode) : String = {
 
@@ -23,9 +24,7 @@ class RawCellContentExtractor(val wikiConfig : WikiConfig) {
       "" // FIXME : we do not support nested tables for now
     } else {
       val code = try {
-        val pageTitle = PageTitle.make(wikiConfig, "title")
-        val wom3Doc = AstToWomConverter.convert(wikiConfig, pageTitle, "author", DateTime.now(), cell)
-        Wom3Toolbox.womToWmXPath(wom3Doc)
+        wtToStringConverter.convert(cell)
       } catch {
         case e : IllegalArgumentException => ""
       }

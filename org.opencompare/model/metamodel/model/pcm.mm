@@ -9,12 +9,13 @@ class pcm.PCM  {
 
 class pcm.AbstractFeature  {
     name : String[0,1]
+    parentGroup : pcm.FeatureGroup[0,1] oppositeOf subFeatures
 }
 
 class pcm.Product  {
     name : String[0,1]
     @contained
-    cells : pcm.Cell[0,*]
+    cells : pcm.Cell[0,*] oppositeOf product
 }
 
 class pcm.Feature : pcm.AbstractFeature {
@@ -23,7 +24,7 @@ class pcm.Feature : pcm.AbstractFeature {
 
 class pcm.FeatureGroup : pcm.AbstractFeature {
     @contained
-    subFeatures : pcm.AbstractFeature[0,*]
+    subFeatures : pcm.AbstractFeature[0,*] oppositeOf parentGroup
 }
 
 class pcm.Cell  {
@@ -32,6 +33,7 @@ class pcm.Cell  {
     feature : pcm.Feature oppositeOf cells
     @contained
     interpretation : pcm.Value[0,1]
+    product : pcm.Product[0,1] oppositeOf cells
 }
 
 class pcm.Value  {

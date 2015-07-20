@@ -1,18 +1,25 @@
-@(request : String, results : List[model.DatabasePCM])
+@(request : String, results : List[model.PCMInfo])
 
-@header = {}
-@footer = {<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>}
+@header = {
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/search.css")'>
+}
+@footer = {
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>
+}
 
 @main(header, footer) {
 
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <h4>@Messages("search.title") "@request"</h4>
-                <ul>
+                @*<ul class="list-group">*@
                     @results.map{ result =>
-                    <li><a href="pcm/@result.getId()">@result.getPCMContainer.getPcm.getName()</a></li>
+                        <a class="btn btn-primary btn-flat btn-xs oc-list" href="pcm/@result.getId()">
+                            @result.getName()
+                        </a>
+                        <br/>
                     }
-                </ul>
+                @*</ul>*@
             </div>
         </div>
 }

@@ -4,12 +4,12 @@ import java.util.regex.Matcher
 
 import org.opencompare.api.java.{Feature, Product, Value}
 
-class MultiplePatternInterpreter (
+class MultipleRegexPatternInterpreter (
     validHeaders : List[String],
     regex : String,
     parameters : List[String],
     confident : Boolean)
-    extends PatternInterpreter(validHeaders, regex, parameters, confident) {
+    extends RegexPatternInterpreter(validHeaders, regex, parameters, confident) {
 
   override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
 		  val value = parameters match { // TODO : support cardinality
@@ -31,7 +31,7 @@ class MultiplePatternInterpreter (
 				    fullyInterpreted = false
 				  }
 			  }
-			  
+
 		  }
 		  if (fullyInterpreted) {
 			  Some(value)

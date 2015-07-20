@@ -1,5 +1,7 @@
 package org.opencompare.api.java.impl.value;
 
+import org.opencompare.api.java.PCMElement;
+import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.BooleanValue;
@@ -33,5 +35,12 @@ public class BooleanValueImpl extends ValueImpl implements BooleanValue {
     @Override
     public void accept(PCMVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public PCMElement clone(PCMFactory factory) {
+        BooleanValue copy = factory.createBooleanValue();
+        copy.setValue(this.getValue());
+        return copy;
     }
 }
