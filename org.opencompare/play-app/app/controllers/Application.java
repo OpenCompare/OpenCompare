@@ -64,6 +64,8 @@ public class Application extends Controller {
     public Result importer(String ext) {
         if (ext.equals("csv")) {
             return ok(views.html.edit.render(null, null, "CsvImport"));
+        } else if (ext.equals("html")) {
+            return ok(views.html.edit.render(null, null, "HtmlImport"));
         } else if (ext.equals("wikipedia")) {
             return ok(views.html.edit.render(null, null, "WikipediaImport"));
         }

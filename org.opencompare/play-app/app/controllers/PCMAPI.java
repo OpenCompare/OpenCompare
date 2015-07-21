@@ -48,6 +48,7 @@ public class PCMAPI extends Controller {
     private final PCMFactory pcmFactory = new PCMFactoryImpl();
     private final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private final CSVExporter csvExporter = new CSVExporter();
+    private final HTMLExporter htmlExporter = new HTMLExporter();
     private final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private final WikiTextExporter wikiExporter = new WikiTextExporter(true);
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
@@ -72,6 +73,12 @@ public class PCMAPI extends Controller {
 
     private List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
         CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
+        List<PCMContainer> pcmContainers = loader.load(fileContent);
+        return pcmContainers; // FIXME : should test size of list
+    }
+
+    private List<PCMContainer> loadHtml(String fileContent, boolean productAsLines) throws IOException {
+        HTMLLoader loader = new HTMLLoader(pcmFactory, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
     }
@@ -191,6 +198,25 @@ public class PCMAPI extends Controller {
             } catch (IOException e) {
                 return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
+        } else if (type.equals("html")) {
+            // Options
+            String title = dynamicForm.get("title");
+            String fileContent = "";
+            try {
+                Http.MultipartFormData body = request().body().asMultipartFormData();
+                Http.MultipartFormData.FilePart file = body.getFile("file");
+                fileContent = Files.toString(file.getFile(), Charsets.UTF_8);
+            } catch (Exception e) {
+                fileContent = dynamicForm.field("file").value();
+            }
+
+            try {
+                pcmContainers = loadHtml(fileContent, productAsLines);
+                PCMContainer pcmContainer = pcmContainers.get(0);
+                pcmContainer.getPcm().setName(title);
+            } catch (IOException e) {
+                return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
+            }
 
 
         } else {
@@ -280,6 +306,10 @@ public class PCMAPI extends Controller {
         if (type.equals("wikitext")) {
 
             code = wikiExporter.export(container);
+
+        } else if (type.equals("html")) {
+
+            code = htmlExporter.export(container);
 
         } else if (type.equals("csv")) {
 
