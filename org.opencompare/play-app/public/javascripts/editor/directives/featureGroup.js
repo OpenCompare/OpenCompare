@@ -15,11 +15,7 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
                                 var _parentWidth = _parentCol.outerWidth(),
                                     _width = _el.outerWidth();
-                                if (_parentWidth + 1 >= _width) {
-                                    _parentWidth = _parentWidth + _width;
-                                } else {
-                                    _parentWidth = _width;
-                                }
+                                _parentWidth = ((_parentWidth === 1) ? 0 : _parentWidth) + _width;
                                 _parentCol.css({
                                     'min-width': _parentWidth + 'px',
                                     'max-width': _parentWidth + 'px',

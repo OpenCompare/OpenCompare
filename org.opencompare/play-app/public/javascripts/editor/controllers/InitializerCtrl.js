@@ -107,7 +107,21 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         });
 
         gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
-               $rootScope.$broadcast('reloadFeatureGroup');
+
+            var _colId = colDef.superCol;
+            var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
+            var _parentWidth = _parentCol.outerWidth() + deltaChange;
+            if(deltaChange < 0) {
+                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup($scope.gridOptions.columnDefs, colDef.superCol);
+                if(_parentWidth < (numberOfColumnAffected * colDef.minWidth)) {
+                    _parentWidth = numberOfColumnAffected * colDef.minWidth;
+                }
+            }
+            _parentCol.css({
+                'min-width': _parentWidth + 'px',
+                'max-width': _parentWidth + 'px',
+                'text-align': "center"
+            });
         })
 
 
@@ -364,10 +378,6 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         setOptions();
 
         $scope.setGridHeight();
-        $timeout(function(){
-            $rootScope.$broadcast('reloadFeatureGroup');
-        }, 1000);
-
     };
 
     function createColumns(pcm, metadata, features) {
@@ -500,7 +510,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             $scope.gridOptions.columnDefs = columnDefs;
         }
 
-
+        $timeout(function() {$rootScope.$broadcast('reloadFeatureGroup');}, 500);
     }
 
     function setOptions() {

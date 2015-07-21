@@ -41,6 +41,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.initializeEditor($scope.pcm, $scope.metadata);
             }, 20);
         }
+        $rootScope.$broadcast('reloadFeatureGroup');
         $rootScope.$broadcast('setToolbarEdit', bool);
 
     };
