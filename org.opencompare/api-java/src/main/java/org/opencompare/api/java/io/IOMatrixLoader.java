@@ -59,6 +59,7 @@ public class IOMatrixLoader {
             // Cells
             for (int j = headerColumnStart; j < matrixWidth; j++) {
                 Cell cell = factory.createCell();
+                // Create the cell if not exists
                 IOCell ioCell = detector.get(i, j);
                 cell.setContent(ioCell.getContent());
                 cell.setFeature((Feature) features.get(j));

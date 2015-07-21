@@ -58,7 +58,7 @@ public class MatrixAnalyser {
         return this;
     }
     public IOCell get(int i, int j) {
-        return transposed ? matrix.getCell(j, i) : matrix.getCell(i, j);
+        return transposed ? matrix.getOrCreateCell(j, i) : matrix.getOrCreateCell(i, j);
     }
     private int getInternalHeight() {
         return transposed ? width : height;
