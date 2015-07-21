@@ -9,6 +9,13 @@
     <packaging>pom</packaging>
     <version>0.4-SNAPSHOT</version>
 
+    <name>OpenCompare</name>
+    <description>
+        Initiative for extracting, editing and exploiting product comparison matrices
+    </description>
+    <url>http://opencompare.org</url>
+
+
     <properties>
         <metamodel.ecore>./metamodel/model/pcm.mm</metamodel.ecore>
         <kmf.version>3.5.12</kmf.version>
@@ -25,9 +32,6 @@
         <scalahttp.version>1.1.4</scalahttp.version>
     </properties>
 
-
-
-
     <modules>
         <module>model</module>
         <module>api-js</module>
@@ -39,18 +43,7 @@
         <module>play-app</module>
         <module>dataset</module>
         <module>getting-started</module>
-
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
 
     <repositories>
         <repository>
@@ -69,6 +62,25 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -82,8 +94,114 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
+    <scm>
+        <connection>scm:git:git@github.com:gbecan/opencompare.git</connection>
+        <developerConnection>scm:git:git@github.com:gbecan/opencompare.git</developerConnection>
+        <url>git@github.com:gbecan/opencompare.git</url>
+    </scm>
+
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+
+    <developers>
+        <developer>
+            <name>Mathieu Acher</name>
+            <email>mathieu.acher@irisa.fr</email>
+            <organization>IRISA</organization>
+        </developer>
+
+        <developer>
+            <name>Guillaume Bécan</name>
+            <email>guillaume.becan@irisa.fr</email>
+            <organization>IRISA</organization>
+        </developer>
+
+        <developer>
+            <name>Stéphane Mangin</name>
+            <email>stephane.mangin@inria.fr</email>
+            <organization>Inria</organization>
+        </developer>
+
+        <developer>
+            <name>Hugo Vallée</name>
+            <email>hugo.vallee@inria.fr</email>
+            <organization>Inria</organization>
+        </developer>
+    </developers>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
 
 </project>
