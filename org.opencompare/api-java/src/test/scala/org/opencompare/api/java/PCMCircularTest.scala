@@ -10,6 +10,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.io.Source
 import scala.reflect.io.{File, Directory}
+import scala.collection.JavaConverters._
 
 /**
  * Created by smangin on 01/06/15.
@@ -36,20 +37,22 @@ abstract class PCMCircularTest(
 
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
-        val container1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0)
-        val pcm1 = container1.getPcm
-        pcm1.setName("Original")
-        pcm1.normalize(pcmFactory)
+        val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
+        for (container: PCMContainer <- containers.asScala) {
+          val pcm1 = container.getPcm
+          pcm1.setName("Original")
+          pcm1.normalize(pcmFactory)
 
-        val code = exporter.export(container1)
-        val container2 = importer.load(code).get(0)
-        val pcm2 = container2.getPcm
-        pcm2.setName("From PCM1")
-        pcm2.normalize(pcmFactory)
+          val code = exporter.export(container)
+          val container2 = importer.load(code).get(0)
+          val pcm2 = container2.getPcm
+          pcm2.setName("From PCM1")
+          pcm2.normalize(pcmFactory)
 
-        var diff = pcm1.diff(pcm2, new ComplexePCMElementComparator)
-        withClue(diff.toString) {
-          diff.hasDifferences shouldBe false
+          var diff = pcm1.diff(pcm2, new ComplexePCMElementComparator)
+          withClue(diff.toString) {
+            diff.hasDifferences shouldBe false
+          }
         }
       }
     }
