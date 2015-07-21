@@ -39,7 +39,6 @@ class HTMLExporterTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   "HTML exporter" should "export to HTML from Container" in {
     val content = Source.fromURI(new File(output.getPath).toURI).mkString
-    println(exporter.toHTML(container))
     exporter.toHTML(container).equals(content) shouldBe true
   }
 

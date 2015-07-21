@@ -44,6 +44,9 @@ public class HTMLLoader implements PCMLoader {
 
                 for (Element column: line.getAllElements()) {
                     if (column.tag().getName().equals("th") || column.tag().getName().equals("td")){
+                        if (matrix.getCell(i, j) != null) {
+                            j++;
+                        }
                         int rowspan = 1;
                         int colspan = 1;
                         if (column.attributes().get("rowspan") != "") {
@@ -53,7 +56,7 @@ public class HTMLLoader implements PCMLoader {
                             colspan = Integer.valueOf(column.attributes().get("colspan"));
                         }
                         matrix.setCell(new IOCell(column.text()), i, j, rowspan, colspan);
-                        j++;
+                        j += colspan;
                     }
                 }
                 i++;
@@ -68,7 +71,9 @@ public class HTMLLoader implements PCMLoader {
     @Override
     public List<PCMContainer> load(String pcm) {
         List<PCMContainer> containers = new ArrayList<>();
-        containers = load(createMatrices(Jsoup.parse(pcm)).get(0));
+        Document doc = Jsoup.parse(pcm);
+        List<IOMatrix> matrices = createMatrices(doc);
+        containers = load(matrices.get(0));
         return containers;
     }
 

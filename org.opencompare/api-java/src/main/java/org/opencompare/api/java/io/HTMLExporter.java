@@ -15,26 +15,20 @@ import java.util.*;
 public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     private Document doc;
-    private Element matrix;
+    private Element body;
     private PCMMetadata metadata;
     private Element tr; // Current column
     Document.OutputSettings settings = new Document.OutputSettings();
-    private String templateMinimal = "<table id=\"matrix\" border=\"1\">\n" +
-            "</table>";
     private String templateFull = "<html>\n" +
             "\t<head>\n" +
             "\t\t<meta charset=\"utf-8\"/>\n" +
             "\t\t<title></title>\n" +
             "\t</head>\n" +
             "\t<body>\n" +
-            "\t\t<h1 id=\"title\"></h1>\n" +
-            "\t\t<table id=\"matrix\" border=\"1\">\n" +
-            "\t\t</table>\n" +
             "\t</body>\n" +
             "</html>";
 
     private LinkedList<AbstractFeature> nextFeaturesToVisit;
-    private boolean computeFeatureDepth;
     private int featureDepth;
 
     @Override
@@ -45,6 +39,8 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
     public String toHTML(PCM pcm) {
         settings.prettyPrint();
         doc = Jsoup.parse(templateFull);
+        body = doc.body();
+        doc.head().select("title").first().text(pcm.getName());
         if (metadata == null) {
             metadata = new PCMMetadata(pcm);
         }
@@ -60,9 +56,11 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     @Override
     public void visit(PCM pcm) {
-        doc.head().select("title").first().text(pcm.getName());
-        doc.body().select("h1").first().text(pcm.getName());
-        matrix = doc.body().select("table").first();
+        body.appendElement("h1").text(pcm.getName());
+        Element title = body.appendElement("h1");
+        title.attr("id", "title").text(pcm.getName());
+        Element table = body.appendElement("table");
+        table.attr("id", "matrix_" + pcm.getName().hashCode()).attr("border", "1");
 
         // Compute depth
         featureDepth = pcm.getFeaturesDepth();
@@ -73,26 +71,31 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
         nextFeaturesToVisit = new LinkedList<>();
         featuresToVisit.addAll(pcm.getFeatures());
 
-        Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
-            @Override
-            public int compare(AbstractFeature feat1, AbstractFeature feat2) {
-                return metadata.getFeaturePosition(feat1) - metadata.getFeaturePosition(feat2);
-            }
-        });
-
+        tr = table.appendElement("tr");
+        if (featureDepth > 1) {
+            tr.appendElement("th").attr("rowspan", Integer.toString(featureDepth)).text("Product");
+        }
         while(!featuresToVisit.isEmpty()) {
-            tr = matrix.appendElement("tr");
+            Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
+                @Override
+                public int compare(AbstractFeature feat1, AbstractFeature feat2) {
+                    return metadata.getFeaturePosition(feat1) - metadata.getFeaturePosition(feat2);
+                }
+            });
             for (AbstractFeature feature : featuresToVisit) {
                 feature.accept(this);
             }
             featuresToVisit = nextFeaturesToVisit;
             nextFeaturesToVisit = new LinkedList<>();
             featureDepth--;
+            if (featureDepth >= 1) {
+                tr = table.appendElement("tr");
+            }
         }
 
         // Generate HTML code for products
         for (Product product : pcm.getProducts()) {
-            tr = matrix.appendElement("tr");
+            tr = table.appendElement("tr");
             product.accept(this);
         }
     }
