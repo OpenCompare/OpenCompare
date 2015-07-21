@@ -5,6 +5,7 @@
 pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService, sortFeaturesService) {
 
     $scope.height = 300;
+    $scope.minWidth = 130;
     $scope.enableEdit = embedService.enableEdit().get;
     $scope.enableExport = embedService.enableExport().get;
     $scope.enableTitle = true;
@@ -76,7 +77,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         //set gridApi on scope
         $scope.gridApi = gridApi;
 
-        /* Called when columns arem oved */
+
+        /* Called when columns are moved */
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
             for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
                 $scope.columnMovedFunctions[i]();
@@ -108,24 +110,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
         gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
 
-            var _colId = colDef.superCol;
-            var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
-            var _parentWidth = _parentCol.outerWidth() + deltaChange;
-            if(deltaChange < 0) {
-                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup($scope.gridOptions.columnDefs, colDef.superCol);
-                if(_parentWidth < (numberOfColumnAffected * colDef.minWidth)) {
-                    _parentWidth = numberOfColumnAffected * colDef.minWidth;
-                }
-            }
-            _parentCol.css({
-                'min-width': _parentWidth + 'px',
-                'max-width': _parentWidth + 'px',
-                'text-align': "center"
-            });
+            $scope.resizeFeatureGroup($scope.gridOptions.columnDefs, colDef, deltaChange);
         })
 
-
     };
+
 
     $scope.setGridHeight = function() {
 
@@ -141,6 +130,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             }
         }
     };
+
     function randomFeatureGroup (featureType) {
         var feature = '';
         switch(featureType) {
@@ -189,7 +179,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             allowCellFocus: true,
             superCol: featureGroupName,
             filter: {term: ''},
-            minWidth: 130,
+            minWidth: $scope.minWidth,
             menuItems: [
                 {
                     title: 'Hide',
@@ -330,7 +320,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
      * Initialize the editor
      * @param pcm
      */
-    $scope.initializeEditor = function(pcm, metadata, decode) {
+    $scope.initializeEditor = function(pcm, metadata, decode, loadFeatureGroups) {
 
         if(decode) {
             pcm = pcmApi.decodePCM(pcm); // Decode PCM from Base64
@@ -374,13 +364,17 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         });
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
 
-        createColumns(pcm, metadata, features);
+        createColumns(pcm, metadata, features, loadFeatureGroups);
         setOptions();
 
         $scope.setGridHeight();
+        if(loadFeatureGroups) {
+            $timeout(function() {$scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);}, 0);
+        }
+
     };
 
-    function createColumns(pcm, metadata, features) {
+    function createColumns(pcm, metadata, features, loadFeatureGroups) {
         /* Define columns */
         var columnDefs = [];
 
@@ -403,7 +397,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             colIndex++;
         });
 
-        if(hasFeatureGroups) {
+        if(hasFeatureGroups && loadFeatureGroups) {
+            $scope.gridOptions.superColDefs = [];
             var emptyfeatureGroup = {
                 name: 'emptyFeatureGroup',
                 displayName: ' '
@@ -510,7 +505,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             $scope.gridOptions.columnDefs = columnDefs;
         }
 
-        $timeout(function() {$rootScope.$broadcast('reloadFeatureGroup');}, 500);
+
+
     }
 
     function setOptions() {

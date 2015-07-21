@@ -42,6 +42,67 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         }
     };
 
+    $scope.loadFeatureGroups = function(cols, superCols) {
+        var columnWidth = $scope.minWidth;
+        var availableWidth = $(document).width() - 150 - 30 - 3;//Todo: not optimal for now, using minus product column and minus padding minus grid property
+        if(availableWidth > ((cols.length-2) * $scope.minWidth)) {
+            $timeout(function(){$rootScope.$broadcast('reloadFeatureGroup');}, 100);
+        }
+        else {
+            for(var i = 0; i < superCols.length; i++) {
+                var _colId = superCols[i].name;
+                var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
+                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup(cols, superCols[i].name);
+                var _parentWidth = numberOfColumnAffected * columnWidth;
+                _parentCol.css({
+                    'min-width': _parentWidth + 'px',
+                    'max-width': _parentWidth + 'px',
+                    'text-align': "center"
+                });
+            }
+        }
+    };
+
+    $scope.resizeFeatureGroup = function(cols, resizedCol, deltaChange) {
+
+        var availableWidth = $(document).width() - 150 - 30 - 3;//Todo: not optimal for now, using minus product column and minus padding minus grid property
+        if(availableWidth > ((cols.length-2) * $scope.minWidth)) {
+            $timeout(function(){$rootScope.$broadcast('reloadFeatureGroup');}, 100);
+        }
+        else {
+            var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + resizedCol.superCol + '"]');
+            var _parentWidth = _parentCol.outerWidth() + deltaChange;
+            if (deltaChange < 0) {
+                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup(cols, resizedCol.superCol);
+                if (_parentWidth < (numberOfColumnAffected * resizedCol.minWidth)) {
+                    _parentWidth = numberOfColumnAffected * resizedCol.minWidth;
+                }
+            }
+            _parentCol.css({
+                'min-width': _parentWidth + 'px',
+                'max-width': _parentWidth + 'px',
+                'text-align': "center"
+            });
+        }
+    };
+
+    $scope.adaptFeatureGroupsWidthsToHeaderRow = function(superCols) {
+        var widthToSubstract = 30 / superCols.length;console.log(widthToSubstract);
+        for(var i = 0; i < superCols.length; i++) {
+            var _colId = superCols[i].name;
+            if(_colId != 'emptyFeatureGroup') {
+                var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
+                console.log(_parentCol.outerWidth());
+                var _parentWidth = _parentCol.outerWidth() - widthToSubstract;
+                _parentCol.css({
+                    'min-width': _parentWidth + 'px',
+                    'max-width': _parentWidth + 'px',
+                    'text-align': "center"
+                });
+            }
+        }
+    };
+
     $scope.$watch(function(){
         return $window.innerWidth;
     }, function(value) {

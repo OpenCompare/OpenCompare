@@ -32,33 +32,39 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.oldFeatureName = "";
     $scope.featureName = "";
 
+    $scope.loaded = false;
+
     $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
         if(reload) {
             $timeout(function(){
-                $scope.initializeEditor($scope.pcm, $scope.metadata);
+                $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
             }, 20);
         }
-        $rootScope.$broadcast('reloadFeatureGroup');
         $rootScope.$broadcast('setToolbarEdit', bool);
 
     };
+
+    if(!$scope.loaded) {
+        $scope.loaded = true;
+        console.log($scope.loaded );
+    }
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
         $scope.setEdit(false, false);
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
         $scope.pcm = loader.loadModelFromString(data).get(0);
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = data.metadata;
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
-    } else {
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
+    } else{
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
@@ -68,7 +74,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
                 pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
                 $scope.metadata = data.metadata;
-                $scope.initializeEditor($scope.pcm, $scope.metadata);
+                $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
                 $rootScope.$broadcast('saved');
             })
             .finally(function () {
@@ -88,7 +94,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = args.metadata;
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
     });
 
     $scope.setGridHeight = function() {

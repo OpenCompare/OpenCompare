@@ -4,9 +4,7 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
             'link': function (scope, element) {
                 var _colId = scope.col.colDef.superCol,
                     _el = jQuery(element);
-                _el.on('resize', function () {
-                    _updateSuperColWidth();
-                });
+
                 var _updateSuperColWidth = function () {
                     var _colId = scope.col.colDef.superCol,
                         _el = jQuery(element);
@@ -25,7 +23,6 @@ pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($ti
                         }
                        , 0);
                 };
-                _updateSuperColWidth();
 
                 var reloadFeatureGroup  = function () {
                     var _colId = scope.col.colDef.superCol,
