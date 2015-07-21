@@ -62,7 +62,6 @@ public class HTMLLoader implements PCMLoader {
                 i++;
             }
             matrices.add(matrix);
-            System.out.println(matrix.toString());
             indice++;
         }
         return matrices;
