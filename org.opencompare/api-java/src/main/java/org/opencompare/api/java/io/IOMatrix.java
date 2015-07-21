@@ -42,8 +42,10 @@ public class IOMatrix implements Cloneable {
 
     public IOCell getOrCreateCell(int row, int column) {
         IOCell cell = new IOCell("");
-        setCell(cell, row, column, 1, 1);
-        return cells.getOrDefault(new Pair<>(row, column), cell);
+        if (!cells.containsKey(new Pair<>(row, column))) {
+            setCell(cell, row, column, 1, 1);
+        }
+        return cells.get(new Pair<>(row, column));
     }
 
     public int getNumberOfRows() {
