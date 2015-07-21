@@ -224,10 +224,10 @@ public abstract class PCMTest {
         Feature f2 = createFeature(pcm, "F2");
         assertTrue(pcm.isValid());
 
-        Feature f3 = createFeature(pcm, "F2");
+        Feature f2Duplicate = createFeature(pcm, "F2");
         assertFalse("duplicated feature", pcm.isValid());
 
-        pcm.removeFeature(f3);
+        pcm.removeFeature(f2Duplicate);
         assertTrue(pcm.isValid());
 
         Product p1 = createProduct(pcm, "P1");
@@ -244,12 +244,12 @@ public abstract class PCMTest {
         createCell(p2, f2, "C22", null);
         assertTrue(pcm.isValid());
 
-        Product p3 = createProduct(pcm, "P2");
-        createCell(p3, f1, "C21", null);
-        createCell(p3, f2, "C22", null);
+        Product p2Duplicate = createProduct(pcm, "P2");
+        createCell(p2Duplicate, f1, "C21", null);
+        createCell(p2Duplicate, f2, "C22", null);
         assertFalse("duplicated product", pcm.isValid());
 
-        pcm.removeProduct(p3);
+        pcm.removeProduct(p2Duplicate);
         assertTrue(pcm.isValid());
     }
 

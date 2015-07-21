@@ -37,12 +37,12 @@ abstract class PCMMetadataCircularTest(
       "A " + name + " PCM" should "be the same as the one created with it's representation" in {
 
         val container1 = initLoader.load(Source.fromURI(file.toURI).mkString).get(0) // TODO check for multiple container
-        container1.getPcm.setName("Original")
+//        container1.getPcm.setName("Original")
         container1.getPcm.normalize(pcmFactory)
 
         val code = exporter.export(container1)
         val container2 = importer.load(code).get(0) // TODO check for multiple container
-        container2.getPcm.setName("From PCM1")
+//        container2.getPcm.setName("From PCM1")
         container2.getPcm.normalize(pcmFactory)
 
         container1.getMetadata.equals(container2.getMetadata) shouldBe true
