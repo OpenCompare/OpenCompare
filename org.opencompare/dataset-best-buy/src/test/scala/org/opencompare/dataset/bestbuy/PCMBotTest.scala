@@ -15,7 +15,7 @@ import org.opencompare.io.bestbuy._
 import org.opencompare.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
-import uk.ac.shef.wit.simmetrics.similaritymetrics.Levenshtein
+import org.simmetrics.metrics.Levenshtein
 
 import scala.collection.JavaConversions._
 import scala.io.Source
