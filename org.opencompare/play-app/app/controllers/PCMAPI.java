@@ -11,6 +11,8 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
+import org.opencompare.api.java.io.HTMLExporter;
+import org.opencompare.api.java.io.HTMLLoader;
 import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
@@ -212,12 +214,12 @@ public class PCMAPI extends Controller {
 
             try {
                 pcmContainers = loadHtml(fileContent, productAsLines);
-                PCMContainer pcmContainer = pcmContainers.get(0);
-                pcmContainer.getPcm().setName(title);
+                if (pcmContainers.isEmpty()) {
+                    return notFound("No matrices were found in this html page");
+                }
             } catch (IOException e) {
                 return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
             }
-
 
         } else {
             return internalServerError("File format not found or invalid.");

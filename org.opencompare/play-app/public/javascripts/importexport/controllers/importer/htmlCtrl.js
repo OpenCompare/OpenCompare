@@ -33,14 +33,29 @@ pcmApp.controller("HtmlImportController", function($rootScope, $scope, $http, $m
             })
             .success(function(response, status, headers, config) {
                 $scope.loading = false;
-                var pcmContainer = response[0];
-                $rootScope.$broadcast('import', pcmContainer);
-                $modalInstance.close();
+                $scope.pcmContainers = response;
+
+                if (response.length === 1) {
+                    $scope.selectPCM(0);
+                } else {
+                    $scope.pcmContainers.forEach(function (pcmContainer, containerIndex){
+                        $scope.pcmContainerNames.push({
+                            name: base64.decode(pcmContainer.pcm.name),
+                            index: containerIndex
+                        });
+                    });
+                }
+                
             }).error(function(data, status, headers, config) {
                 $scope.loading = false;
                 $scope.message = data
             });
-
     }
+
+    $scope.selectPCM = function(index) {
+        var selectedPCMContainer = $scope.pcmContainers[index];
+        $rootScope.$broadcast('import', selectedPCMContainer);
+        $modalInstance.close();
+    };
 });
 
