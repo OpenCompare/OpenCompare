@@ -1,8 +1,8 @@
 package org.opencompare.formalizer.clustering
 
-import ch.usi.inf.sape.hac.HierarchicalAgglomerativeClusterer
-import ch.usi.inf.sape.hac.agglomeration.{AgglomerationMethod, CompleteLinkage}
-import ch.usi.inf.sape.hac.dendrogram.{Dendrogram, DendrogramBuilder, DendrogramNode, MergeNode, ObservationNode}
+import org.opencompare.hac.HierarchicalAgglomerativeClusterer
+import org.opencompare.hac.agglomeration.{AgglomerationMethod, CompleteLinkage}
+import org.opencompare.hac.dendrogram.{Dendrogram, DendrogramBuilder, DendrogramNode, MergeNode, ObservationNode}
 
 class HierarchicalClusterer[T](
 		val dissimilarityMetric : (T,T) => Double,

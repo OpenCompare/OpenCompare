@@ -4,7 +4,7 @@ import java.io.{File, FileWriter, FilenameFilter}
 import java.nio.file.Files
 import java.util
 
-import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
+import org.opencompare.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONLoader

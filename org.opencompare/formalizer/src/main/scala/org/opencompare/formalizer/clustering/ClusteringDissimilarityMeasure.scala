@@ -1,7 +1,7 @@
 package org.opencompare.formalizer.clustering
 
-import ch.usi.inf.sape.hac.experiment.Experiment
-import ch.usi.inf.sape.hac.experiment.DissimilarityMeasure
+import org.opencompare.hac.experiment.Experiment
+import org.opencompare.hac.experiment.DissimilarityMeasure
 
 class ClusteringDissimilarityMeasure[T]
 (val dissimilarityMetric : (T,T) => Double)
