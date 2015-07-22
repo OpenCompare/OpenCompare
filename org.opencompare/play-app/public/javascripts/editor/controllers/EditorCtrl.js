@@ -47,11 +47,6 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
     };
 
-    if(!$scope.loaded) {
-        $scope.loaded = true;
-        console.log($scope.loaded );
-    }
-
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
@@ -140,36 +135,108 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         pcm.name = $scope.pcm.name;
 
         var featuresMap = {};
+        var featureGroupsMap = {};
+
         var index = 0;
         pcmData.forEach(function(productData) {
             // Create product
             var product = factory.createProduct();
             product.name = productData.name;
             pcm.addProducts(product);
-            $scope.gridOptions.columnDefs.forEach(function (featureData) {
+            var featureGroups = $scope.gridOptions.superColDefs;
+            var features = $scope.gridOptions.columnDefs;
 
-                var decodedFeatureName = convertStringToPCMFormat(featureData.name);
-                var codedFeatureName = featureData.name;
+            if(featureGroups.length > 0) {
+                for(var i = 0; i < featureGroups.length; i++) {
 
-                if(productData.hasOwnProperty(codedFeatureName)  && codedFeatureName !== "$$hashKey"
-                    && codedFeatureName !== "Product") {
-                    // Create feature if not existing
-                    if (!featuresMap.hasOwnProperty(decodedFeatureName)) {
-                        var feature = factory.createFeature();
-                        feature.name = decodedFeatureName;
-                        pcm.addFeatures(feature);
-                        featuresMap[decodedFeatureName] = feature;
+                    var decodedFeatureGroupName = convertStringToPCMFormat(featureGroups[i].name);
+                    var codedFeatureGroupName = featureGroups[i].name;
+
+                    if (!featureGroupsMap.hasOwnProperty(codedFeatureGroupName)) {
+                        if (codedFeatureGroupName != 'emptyFeatureGroup') {
+                            var featureGroup = factory.createFeatureGroup();
+                            featureGroup.name = decodedFeatureGroupName;
+                            featureGroupsMap[decodedFeatureGroupName] = featureGroup;
+
+                            var featuresWithThisFeatureGroup = $scope.getFeaturesWithThisFeatureGroup(codedFeatureGroupName, features);
+
+                            for (var j = 0; j < featuresWithThisFeatureGroup.length; j++) {
+                                if (!featuresMap.hasOwnProperty(convertStringToPCMFormat(featuresWithThisFeatureGroup[j]))
+                                    && featuresWithThisFeatureGroup[j] !== " "
+                                    && featuresWithThisFeatureGroup[j] !== "Product") {
+                                    var featureToAdd = factory.createFeature();
+                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[j]);
+                                    featureGroup.addSubFeatures(featureToAdd);
+                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[j])] = featureToAdd;
+                                }
+                            }
+                            pcm.addFeatures(featureGroup);
+                        }
+                        else {
+                            var featuresWithThisFeatureGroup = $scope.getFeaturesWithThisFeatureGroup(featureGroups[i].name, features);
+                            for (var k = 0; k < featuresWithThisFeatureGroup.length; k++) {
+                                if (!featuresMap.hasOwnProperty(featuresWithThisFeatureGroup[k])
+                                && featuresWithThisFeatureGroup[k] !== " "
+                                 && featuresWithThisFeatureGroup[k] !== "Product")  {
+                                    featureGroupsMap[convertStringToPCMFormat(featureGroups[i].name)] = 'empty';
+                                    var featureToAdd = factory.createFeature();
+                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[k]);
+                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[k])] = featureToAdd;
+                                    pcm.addFeatures(featureToAdd);
+                            }
+
+                            }
+
+                        }
                     }
-                    var feature = featuresMap[decodedFeatureName];
-
-                    // Create cell
-                    var cell = factory.createCell();
-                    cell.feature = feature;
-                    cell.content = productData[codedFeatureName];
-                    cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
-                    product.addCells(cell);
                 }
-            });
+                $scope.gridOptions.columnDefs.forEach(function (featureData) {
+
+                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var codedFeatureName = featureData.name;
+                    if(productData.hasOwnProperty(decodedFeatureName)  && decodedFeatureName !== " "
+                        && decodedFeatureName !== "Product") {
+                        var feature = featuresMap[decodedFeatureName];
+
+                        // Create cell
+                        var cell = factory.createCell();
+
+                        cell.feature = feature;
+                        cell.content = productData[codedFeatureName];
+                        cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
+                        product.addCells(cell);
+                    }
+                });
+              //  console.log(featuresMap);
+               // console.log(featureGroupsMap);
+            }
+            else {
+                $scope.gridOptions.columnDefs.forEach(function (featureData) {
+
+                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var codedFeatureName = featureData.name;
+
+                    if(productData.hasOwnProperty(decodedFeatureName)  && codedFeatureName !== " "
+                        && codedFeatureName !== "Product") {
+                        // Create feature if not existing
+                        if (!featuresMap.hasOwnProperty(decodedFeatureName)) {
+                            var feature = factory.createFeature();
+                            feature.name = decodedFeatureName;
+                            pcm.addFeatures(feature);
+                            featuresMap[decodedFeatureName] = feature;
+                        }
+                        var feature = featuresMap[decodedFeatureName];
+
+                        // Create cell
+                        var cell = factory.createCell();
+                        cell.feature = feature;
+                        cell.content = productData[codedFeatureName];
+                        cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
+                        product.addCells(cell);
+                    }
+                });
+            }
+
             index++;
         });
 
@@ -196,6 +263,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         var pcmObject = {};
         pcmObject.metadata = $scope.metadata;
         pcmObject.pcm = jsonModel;
+
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;

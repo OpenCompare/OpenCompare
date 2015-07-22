@@ -190,7 +190,10 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             if($scope.gridOptions.columnDefs[i].superCol === featureName) {
                 $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';
             }
-        }console.log($scope.gridOptions.superColDefs);
+        }
+
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+
         $rootScope.$broadcast('modified');
         $rootScope.$broadcast('reloadFeatureGroup');
     };

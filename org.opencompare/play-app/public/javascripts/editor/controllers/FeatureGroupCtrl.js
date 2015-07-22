@@ -103,6 +103,17 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         }
     };
 
+    $scope.getFeaturesWithThisFeatureGroup = function(featureGroup, features) {
+        var featuresWithThisFeatureGroup = [];
+        for(var i = 0; i < features.length; i++) {
+            var currentFeature = features[i];
+            if(currentFeature.superCol == featureGroup) {
+                featuresWithThisFeatureGroup.push(currentFeature.name);
+            }
+        }
+        return featuresWithThisFeatureGroup;
+    };
+
     $scope.$watch(function(){
         return $window.innerWidth;
     }, function(value) {

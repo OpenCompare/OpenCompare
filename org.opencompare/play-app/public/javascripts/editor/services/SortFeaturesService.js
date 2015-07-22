@@ -39,7 +39,7 @@ pcmApp.service('sortFeaturesService', function() {
             if(featureGroups[i].hasOwnProperty('name')) {
                 var featureGroup = [];
                 featureGroup.push(featureGroups[i].name);
-                featureGroup.push(currentIndex+2);
+                featureGroup.push(currentIndex);
                 featureGroupsPos[currentIndex] = featureGroup;
                 currentIndex++;
             }
@@ -57,11 +57,13 @@ pcmApp.service('sortFeaturesService', function() {
                 }
             }
             var position = featureGroupsPos[index][1];
+            console.log(currentfeature.name);
 
             for(var k = index; k < featureGroupsPos.length; k++) {
                 featureGroupsPos[k][1] = featureGroupsPos[k][1]+1;
             }
             sortedFeatures.splice(position, 0, currentfeature);
+            console.log(sortedFeatures);
         }
         return sortedFeatures;
     };
