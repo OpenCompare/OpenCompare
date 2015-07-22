@@ -215,6 +215,7 @@ public class Database {
         DBObject dbMetadata = new BasicDBObject();
 
         // Serialize product positions
+        // FIXME : do not support multiple products with the same name
         List<DBObject> dbProductPositions = new ArrayList<DBObject>();
         for (Product product : pcm.getProducts()) {
             DBObject dbProductPosition = new BasicDBObject();
@@ -225,6 +226,7 @@ public class Database {
         dbMetadata.put("productPositions", dbProductPositions);
 
         // Serialize feature positions
+        // FIXME : do not support multiple features with the same name
         List<DBObject> dbFeaturePositions = new ArrayList<DBObject>();
         for (Feature feature : pcm.getConcreteFeatures()) {
             DBObject dbFeaturePosition = new BasicDBObject();

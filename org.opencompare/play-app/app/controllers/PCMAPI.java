@@ -13,15 +13,17 @@ import org.opencompare.api.java.io.CSVExporter;
 import org.opencompare.api.java.io.CSVLoader;
 import org.opencompare.api.java.io.HTMLExporter;
 import org.opencompare.api.java.io.HTMLLoader;
+import org.opencompare.formalizer.extractor.CellContentInterpreter;
+import org.opencompare.io.wikipedia.export.PCMModelExporter;
 import org.opencompare.io.wikipedia.io.MediaWikiAPI;
 import org.opencompare.io.wikipedia.io.WikiTextExporter;
 import org.opencompare.io.wikipedia.io.WikiTextLoader;
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor;
 import org.opencompare.io.wikipedia.parser.CellContentExtractor;
+import org.opencompare.io.wikipedia.pcm.Page;
 import play.api.libs.json.*;
 import play.data.DynamicForm;
 import play.data.Form;
-import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -30,11 +32,13 @@ import scala.collection.Map;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 import static scala.collection.JavaConversions.seqAsJavaList;
@@ -56,6 +60,7 @@ public class PCMAPI extends Controller {
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
+    private final CellContentInterpreter cellContentInterpreter = new CellContentInterpreter();
 
     @Inject
     private I18nService i18nService;
@@ -63,8 +68,14 @@ public class PCMAPI extends Controller {
     private List<PCMContainer> loadWikitext(String language, String title){
         // Parse article from Wikipedia
         String code = mediaWikiAPI.getWikitextFromTitle(language, title);
+
         List<PCMContainer> pcmContainers = miner.mine(language, code, title);
-        return pcmContainers; // TODO: manage several matrices case inside the page
+        for (PCMContainer pcmContainer : pcmContainers) {
+            PCM pcm = pcmContainer.getPcm();
+            pcm.normalize(pcmFactory);
+            cellContentInterpreter.interpretCells(pcm);
+        }
+        return pcmContainers;
     }
 
     private List<PCMContainer> loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
