@@ -58,11 +58,19 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
 
         FeatureImpl feature = (FeatureImpl) o;
 
-        if (this.getName() == null) {
-            return feature.getName() == null;
+        if (this.getName() == null && feature.getName() != null) {
+            return false;
         }
 
-        if (!this.getName().equals(feature.getName())) {
+        if (this.getName() != null && !this.getName().equals(feature.getName())) {
+            return false;
+        }
+
+        if (this.getParentGroup() == null && feature.getParentGroup() != null) {
+            return false;
+        }
+
+        if (this.getParentGroup() != null && !this.getParentGroup().equals(feature.getParentGroup())) {
             return false;
         }
 
@@ -71,7 +79,7 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName());
+        return Objects.hash(this.getName(), this.getParentGroup());
     }
 
     @Override

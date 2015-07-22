@@ -224,32 +224,32 @@ public abstract class PCMTest {
         Feature f2 = createFeature(pcm, "F2");
         assertTrue(pcm.isValid());
 
-        Feature f3 = createFeature(pcm, "F2");
-        assertFalse(pcm.isValid()); // Duplicated feature
+        Feature f2Duplicate = createFeature(pcm, "F2");
+        assertFalse("duplicated feature", pcm.isValid());
 
-        pcm.removeFeature(f3);
+        pcm.removeFeature(f2Duplicate);
         assertTrue(pcm.isValid());
 
         Product p1 = createProduct(pcm, "P1");
         createCell(p1, f1, "C11", null);
-        assertFalse(pcm.isValid()); // Missing cell
+        assertFalse("missing cell", pcm.isValid());
 
         createCell(p1, f2, "C12", null);
         assertTrue(pcm.isValid());
 
         Product p2 = createProduct(pcm, "P2");
         createCell(p2, f1, "C21", null);
-        assertFalse(pcm.isValid()); // Missing cell
+        assertFalse("missing cell", pcm.isValid());
 
         createCell(p2, f2, "C22", null);
         assertTrue(pcm.isValid());
 
-        Product p3 = createProduct(pcm, "P2");
-        createCell(p3, f1, "C21", null);
-        createCell(p3, f2, "C22", null);
-        assertFalse(pcm.isValid()); // Duplicated product
+        Product p2Duplicate = createProduct(pcm, "P2");
+        createCell(p2Duplicate, f1, "C21", null);
+        createCell(p2Duplicate, f2, "C22", null);
+        assertFalse("duplicated product", pcm.isValid());
 
-        pcm.removeProduct(p3);
+        pcm.removeProduct(p2Duplicate);
         assertTrue(pcm.isValid());
     }
 
@@ -377,7 +377,8 @@ public abstract class PCMTest {
         Feature f1 = createFeature(pcm1, "feature");
         Feature f2 = createFeature(pcm2, "feature");
 
-        // TODO : feature groups
+        FeatureGroup fg1 = createFeatureGroup(pcm1, "feature group");
+        FeatureGroup fg2 = createFeatureGroup(pcm2, "feature group");
 
         Product p1 = createProduct(pcm1, "product");
         Product p2 = createProduct(pcm2, "product");
@@ -389,11 +390,13 @@ public abstract class PCMTest {
 
         assertEquals("equals - cell", c1, c2);
         assertEquals("equals - feature", f1, f2);
+        assertEquals("equals - feature group", fg1, fg2);
         assertEquals("equals - product", p1, p2);
         assertEquals("equals - pcm", pcm1, pcm2);
 
         assertEquals("hash code - cell", c1.hashCode(), c2.hashCode());
         assertEquals("hash code - feature", f1.hashCode(), f2.hashCode());
+        assertEquals("hash code - feature group", fg1.hashCode(), fg2.hashCode());
         assertEquals("hash code - product", p1.hashCode(), p2.hashCode());
         assertEquals("hash code - pcm", pcm1.hashCode(), pcm2.hashCode());
 

@@ -4,7 +4,7 @@ import java.io.{File, FileWriter, FilenameFilter}
 import java.nio.file.Files
 import java.util
 
-import ch.usi.inf.sape.hac.agglomeration.SingleLinkage
+import org.opencompare.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONLoader
@@ -15,7 +15,7 @@ import org.opencompare.io.bestbuy._
 import org.opencompare.io.bestbuy.filters._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FlatSpec, Matchers}
-import uk.ac.shef.wit.simmetrics.similaritymetrics.Levenshtein
+import org.simmetrics.metrics.Levenshtein
 
 import scala.collection.JavaConversions._
 import scala.io.Source

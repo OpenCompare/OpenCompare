@@ -299,21 +299,16 @@ public class PCMImpl implements PCM {
         // List features
         List<Feature> features = getConcreteFeatures();
 
-        // Check uniqueness of feature names
-        Set<String> featureNames = new HashSet<String>();
-        for (Feature feature : features) {
-            featureNames.add(feature.getName());
-        }
-        if (featureNames.size() != features.size()) {
+
+        // Check uniqueness of features
+        Set<Feature> uniqueFeatures = new HashSet<Feature>(features);
+        if (uniqueFeatures.size() != features.size()) {
             return false;
         }
 
-        // Check uniqueness of product names
-        Set<String> productNames = new HashSet<String>();
-        for (Product product : this.getProducts()) {
-            productNames.add(product.getName());
-        }
-        if (productNames.size() != this.getProducts().size()) {
+        // Check uniqueness of products
+        Set<Product> uniqueProducts = new HashSet<>(this.getProducts());
+        if (uniqueProducts.size() != this.getProducts().size()) {
             return false;
         }
 
@@ -521,12 +516,36 @@ public class PCMImpl implements PCM {
         if (o == null || getClass() != o.getClass()) return false;
 
         PCMImpl pcm = (PCMImpl) o;
-        return !this.diff(pcm, new ComplexePCMElementComparator()).hasDifferences();
+
+        if (this.getName() == null && pcm.getName() != null) {
+            return false;
+        }
+
+        if (this.getName() != null && !this.getName().equals(pcm.getName())) {
+            return false;
+        }
+
+        Set<Feature> thisConcreteFeaturesSet = new HashSet<>(this.getConcreteFeatures());
+        Set<Feature> pcmConcreteFeaturesSet = new HashSet<>(pcm.getConcreteFeatures());
+
+        if (!thisConcreteFeaturesSet.equals(pcmConcreteFeaturesSet)) {
+            return false;
+        }
+
+        Set<Product> thisProductSet = new HashSet<>(this.getProducts());
+        Set<Product> pcmProductSet = new HashSet<>(pcm.getProducts());
+
+        if (!thisProductSet.equals(pcmProductSet)) {
+            return false;
+        }
+
+//        return !this.diff(pcm, new ComplexePCMElementComparator()).hasDifferences();
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getFeatures(), this.getProducts());
+        return Objects.hash(this.getName(), new HashSet<Feature>(this.getConcreteFeatures()), new HashSet<Product>(this.getProducts()));
     }
 
     @Override
