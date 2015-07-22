@@ -309,10 +309,6 @@ public class PCMAPI extends Controller {
 
             code = wikiExporter.export(container);
 
-        } else if (type.equals("html")) {
-
-            code = htmlExporter.export(container);
-
         } else if (type.equals("csv")) {
 
             char separator = dynamicForm.get("separator").charAt(0);
