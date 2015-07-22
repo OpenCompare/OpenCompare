@@ -331,9 +331,10 @@ public class MatrixAnalyser {
                             subparentNode = subnode;
                         }
                     }
-                    if (!parentNode.iterable().contains(subparentNode)) {
-                        parentNode.add(subparentNode);
+                    if (parentNode.isNodeAncestor(subparentNode) || parentNode.isNodeDescendant(subparentNode)) {
+                        continue;
                     }
+                    parentNode.add(subparentNode);
                 }
                 if (subparentNode != null) {
                     parentNode = subparentNode;
