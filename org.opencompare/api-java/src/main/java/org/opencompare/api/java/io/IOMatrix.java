@@ -126,7 +126,7 @@ public class IOMatrix implements Cloneable {
             for (int j = 0; j < getNumberOfColumns();j++) {
                  line[j] = getCell(i, j).getContent();
             }
-            matrix.set(i, line);
+            matrix.add(line);
         }
         return matrix;
     }
@@ -145,8 +145,7 @@ public class IOMatrix implements Cloneable {
         IOMatrix matrix = new IOMatrix();
         matrix.setName(name);
         for(int i = 0; i < getNumberOfRows(); i++) {
-            int c = getNumberOfColumns();
-            for (int j = 0; j < c; j++) {
+            for (int j = 0; j < getNumberOfColumns(); j++) {
                 matrix.getOrCreateCell(j, i).setContent(getOrCreateCell(i, j).getContent());
             }
         }
