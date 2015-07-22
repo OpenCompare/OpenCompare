@@ -42,10 +42,7 @@ public class PCMMetadata {
      * @return the absolution position of 'product' or -1 if it is not specified
      */
     public int getProductPosition(Product product) {
-        if (!productPositions.containsKey(product)) {
-            return -1;
-        }
-        return productPositions.get(product);
+        return productPositions.getOrDefault(product, 0);
     }
 
     /**
@@ -79,7 +76,7 @@ public class PCMMetadata {
                 }
             }
         }
-        return featurePositions.get(result);
+        return featurePositions.getOrDefault(result, 0);
     }
 
     /**
