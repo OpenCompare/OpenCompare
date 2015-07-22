@@ -72,9 +72,7 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
         featuresToVisit.addAll(pcm.getFeatures());
 
         tr = table.appendElement("tr");
-        if (featureDepth > 1) {
-            tr.appendElement("th").attr("rowspan", Integer.toString(featureDepth)).text("Product");
-        }
+        tr.appendElement("th").attr("rowspan", Integer.toString(featureDepth)).text("Product");
         while(!featuresToVisit.isEmpty()) {
             Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
                 @Override
