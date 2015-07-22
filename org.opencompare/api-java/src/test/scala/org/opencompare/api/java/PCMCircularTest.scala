@@ -49,10 +49,7 @@ abstract class PCMCircularTest(
           pcm2.setName("From PCM1")
           pcm2.normalize(pcmFactory)
 
-          var diff = pcm1.diff(pcm2, new ComplexePCMElementComparator)
-          withClue(diff.toString) {
-            diff.hasDifferences shouldBe false
-          }
+          container.equals(container2) shouldBe true
         }
       }
     }

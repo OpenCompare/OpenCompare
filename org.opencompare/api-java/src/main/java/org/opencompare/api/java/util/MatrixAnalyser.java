@@ -284,10 +284,12 @@ public class MatrixAnalyser {
     }
 
     public int getHeaderColumnOffset() {
-        setTransposition(!this.transposed).process();
-        int result = getCurrentLine() + 1;
-        setTransposition(!this.transposed).process();
-        return result;
+        //TODO check for same named product detection as rowspan (invalid case)
+        //setTransposition(!this.transposed).process();
+        //int result = getCurrentLine() + 1;
+        //setTransposition(!this.transposed).process();
+        //return result;
+        return 1;
     }
 
     public int getHeaderHeight() {
