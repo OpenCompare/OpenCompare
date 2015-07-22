@@ -14,26 +14,49 @@ import java.util.*;
  */
 public class CSVExporter implements PCMExporter, PCMVisitor {
 
-    private PCMMetadata currentMetadata = null;
+    private PCMMetadata metadata = null;
     private StringWriter stringWriter;
     private CSVWriter csvWriter;
     private List<String> headerLine;
     private List<String> productLine;
-    char separator = ',';
-    char quote = '"';
+    private char separator = ',';
+    private char quote = '"';
+    private List<String[]> lines;
     private LinkedList<AbstractFeature> nextFeaturesToVisit;
     private int featureDepth;
 
     @Override
     public String export(PCMContainer container) {
-        currentMetadata = container.getMetadata();
+        metadata = container.getMetadata();
         return export(container.getPcm());
     }
 
     private String export(PCM pcm) {
+        // Compute depth
+        featureDepth = pcm.getFeaturesDepth();
+        // Export features
+        if (metadata == null) {
+            metadata = new PCMMetadata(pcm);
+        }
+
+        lines = new ArrayList<>();
         stringWriter = new StringWriter();
         csvWriter = new CSVWriter(stringWriter, separator, quote);
         pcm.accept(this);
+
+        if (!metadata.getProductAsLines()) {
+            IOMatrix matrix = new IOMatrix(lines);
+            matrix.transpose();
+            lines = matrix.toList();
+        }
+
+        csvWriter.writeAll(lines);
+
+        try {
+            csvWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return stringWriter.toString();
     }
 
@@ -43,8 +66,8 @@ public class CSVExporter implements PCMExporter, PCMVisitor {
         return export(container);
     }
 
-    private List<String[]> exportProductAsLines(PCM pcm) {
-        List<String[]> lines = new ArrayList<>();
+    @Override
+    public void visit(PCM pcm) {
 
         // Generate HTML code for features
         LinkedList<AbstractFeature> featuresToVisit;
@@ -58,7 +81,7 @@ public class CSVExporter implements PCMExporter, PCMVisitor {
             Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
                 @Override
                 public int compare(AbstractFeature feat1, AbstractFeature feat2) {
-                    return currentMetadata.getFeaturePosition(feat1) - currentMetadata.getFeaturePosition(feat2);
+                    return metadata.getFeaturePosition(feat1) - metadata.getFeaturePosition(feat2);
                 }
             });
             for (AbstractFeature feature : featuresToVisit) {
@@ -70,66 +93,10 @@ public class CSVExporter implements PCMExporter, PCMVisitor {
             featureDepth--;
         }
 
-        for (Product product : currentMetadata.getSortedProducts()) {
+        for (Product product : metadata.getSortedProducts()) {
             productLine = new ArrayList<>();
             product.accept(this);
             lines.add(productLine.toArray(new String[productLine.size()]));
-        }
-        return lines;
-    }
-
-    private List<String[]> exportFeatureAsLines(PCM pcm) {
-        List<String> headerLine = new ArrayList<>();
-        List<String[]> lines = new ArrayList<>();
-
-        headerLine.add("Feature");
-        for (Product product : currentMetadata.getSortedProducts()) {
-            headerLine.add(product.getName());
-        }
-        lines.add(headerLine.toArray(new String[headerLine.size()]));
-        for (AbstractFeature feature : currentMetadata.getSortedFeatures()) {
-
-            List<String> featureLine = new ArrayList<>();
-
-            featureLine.add(feature.getName());
-            for (Product product : pcm.getProducts()) {
-                Cell cell = product.findCell((Feature) feature);
-                if (cell == null) {
-                    featureLine.add("");
-                } else {
-                    featureLine.add(cell.getContent());
-                }
-
-            }
-
-            lines.add(featureLine.toArray(new String[featureLine.size()]));
-        }
-        return lines;
-    }
-
-    @Override
-    public void visit(PCM pcm) {
-
-        // Compute depth
-        featureDepth = pcm.getFeaturesDepth();
-        // Export features
-        if (currentMetadata  == null) {
-            currentMetadata = new PCMMetadata(pcm);
-        }
-
-        List<String[]> lines;
-        if (currentMetadata.getProductAsLines()) {
-            lines = exportProductAsLines(pcm);
-        } else {
-            lines = exportFeatureAsLines(pcm);
-        }
-
-        csvWriter.writeAll(lines);
-
-        try {
-            csvWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -152,7 +119,7 @@ public class CSVExporter implements PCMExporter, PCMVisitor {
     @Override
     public void visit(Product product) {
         productLine.add(product.getName());
-        for (Feature feature : currentMetadata.getSortedFeatures()) {
+        for (Feature feature : metadata.getSortedFeatures()) {
             Cell cell = product.findCell(feature);
             if (cell == null) {
                 productLine.add("");

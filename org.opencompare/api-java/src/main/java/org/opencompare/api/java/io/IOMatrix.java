@@ -16,6 +16,18 @@ public class IOMatrix implements Cloneable {
     private int maxColumn = 0;
     private HashMap<Pair<Integer, Integer>, IOCell> cells = new HashMap<>();
 
+    public IOMatrix() {
+    }
+
+    public IOMatrix(List<String[]> lines) {
+        for(int i = 0; i < lines.size(); i++){
+            int c = lines.get(i).length;
+            for(int j = 0; j < c; j++){
+                getOrCreateCell(i, j).setContent(lines.get(i)[j]);
+            }
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -23,6 +35,10 @@ public class IOMatrix implements Cloneable {
     public IOMatrix setName(String name) {
         this.name = name;
         return this;
+    }
+
+    public IOCell getCell(int row, int column) {
+        return cells.get(new Pair<>(row, column));
     }
 
     public IOMatrix setCell(IOCell cell, int row, int column, int rowspan, int colspan) {
@@ -34,10 +50,6 @@ public class IOMatrix implements Cloneable {
             }
         }
         return this;
-    }
-
-    public IOCell getCell(int row, int column) {
-        return cells.get(new Pair<>(row, column));
     }
 
     public IOCell getOrCreateCell(int row, int column) {
@@ -127,6 +139,20 @@ public class IOMatrix implements Cloneable {
             matrix.setCell(cell, pair._1, pair._2, 1, 1);
         }
         return matrix;
+    }
+
+    public void transpose() {
+        IOMatrix matrix = new IOMatrix();
+        matrix.setName(name);
+        for(int i = 0; i < getNumberOfRows(); i++) {
+            int c = getNumberOfColumns();
+            for (int j = 0; j < c; j++) {
+                matrix.getOrCreateCell(j, i).setContent(getOrCreateCell(i, j).getContent());
+            }
+        }
+        this.cells = matrix.cells;
+        this.maxRow = matrix.maxRow;
+        this.maxColumn = matrix.maxColumn;
     }
 
 }
