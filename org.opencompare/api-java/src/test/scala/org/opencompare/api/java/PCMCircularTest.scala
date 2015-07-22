@@ -35,19 +35,12 @@ abstract class PCMCircularTest(
     (file: File) => {
       val name = file.stripExtension
 
-      "A " + name + " PCM" should "be the same as the one created with it's representation" in {
+      "A " + name + " container" should "be the same as the one created with it's representation" in {
 
         val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
         for (container: PCMContainer <- containers.asScala) {
-          val pcm1 = container.getPcm
-          pcm1.setName("Original")
-          pcm1.normalize(pcmFactory)
-
           val code = exporter.export(container)
           val container2 = importer.load(code).get(0)
-          val pcm2 = container2.getPcm
-          pcm2.setName("From PCM1")
-          pcm2.normalize(pcmFactory)
 
           container.equals(container2) shouldBe true
         }
