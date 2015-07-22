@@ -138,9 +138,10 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 	   val wikipediaPCMs = Source.fromFile("resources/pcms_to_test.txt").getLines.toList
 	   for(article <- wikipediaPCMs) yield {
        println(article)
-	     testArticle(article)
+	     val page = testArticle(article)
      }
    }
 
 
 }
+

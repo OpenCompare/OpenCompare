@@ -48,7 +48,7 @@ class Page {
 
   def toCSV() : String = {
     val matricesInCSV = matrices.map(_.toCSV) 
-    matricesInCSV.mkString("", "\n", "")
+    matricesInCSV.mkString("", "\n\n", "")
   }
 
   def toPCM() : PCM = {
