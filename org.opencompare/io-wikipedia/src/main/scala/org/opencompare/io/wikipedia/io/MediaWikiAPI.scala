@@ -41,9 +41,10 @@ class MediaWikiAPI(
     val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
 
     if (jsonWikitext.nonEmpty) {
-      Json.stringify(jsonWikitext.head)
-        .replaceAll(Matcher.quoteReplacement("\\n"), "\n")
-        .replaceAll(Matcher.quoteReplacement("\\\""), "\"")
+      jsonWikitext.head.as[JsString].value
+//      Json.stringify(jsonWikitext.head)
+//        .replaceAll(Matcher.quoteReplacement("\\n"), "\n")
+//        .replaceAll(Matcher.quoteReplacement("\\\""), "\"")
     } else {
       // TODO: Error
       ""
