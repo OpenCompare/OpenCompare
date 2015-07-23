@@ -7,7 +7,7 @@ pcmApp.service('featureGroupService', function() {
     var currentFeatureGroup = '';
 
     this.setCurrentFeatureGroup = function(featureGroup) {
-        currentFeatureGroup = featureGroup; console.log(currentFeatureGroup);
+        currentFeatureGroup = featureGroup;
     };
 
     this.getCurrentFeatureGroup = function() {

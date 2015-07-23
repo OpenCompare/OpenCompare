@@ -14,7 +14,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     };
 
     $scope.setCols = function() {
-        var cols = $scope.gridOptions.columnDefs; console.log(cols);
+        var cols = $scope.gridOptions.columnDefs;
         for(var i = 2; i < cols.length; i ++) {
             $scope.cols[i-2] = {name: cols[i].name, isChecked: false};
         } //console.log($scope.cols);

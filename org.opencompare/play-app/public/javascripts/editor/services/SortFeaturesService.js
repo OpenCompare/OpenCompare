@@ -31,6 +31,10 @@ pcmApp.service('sortFeaturesService', function() {
     };
 
     function compareByFeatureGroup(a,b) {
+        if(!a.superCol)
+            return -1;
+        if(!b.superCol)
+            return -1;
         if(a.superCol == 'emptyFeatureGroup')
             return 1;
         if(b.superCol == 'emptyFeatureGroup')
@@ -43,8 +47,11 @@ pcmApp.service('sortFeaturesService', function() {
     }
 
     this.sortByFeatureGroup = function(features) {
-        features.sort(compareByFeatureGroup);
-        return features;
+        var featuresToSort = features.slice(2, features.length);
+        featuresToSort.sort(compareByFeatureGroup);
+        featuresToSort.unshift(features[1]);
+        featuresToSort.unshift(features[0]);
+        return featuresToSort;
     };
 
     function compareByName(a,b) {
