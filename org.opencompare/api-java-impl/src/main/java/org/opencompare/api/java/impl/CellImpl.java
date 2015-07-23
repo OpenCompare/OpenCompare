@@ -108,7 +108,7 @@ public class CellImpl extends PCMElementImpl implements Cell {
         copy.setContent(this.getContent());
         copy.setRawContent(this.getRawContent());
         copy.setInterpretation((Value) this.getInterpretation().clone(factory));
-        copy.setFeature((Feature) this.getFeature().clone(factory)); // I don't know if this is a good idea
+        copy.setFeature((Feature) this.getFeature().clone(factory)); // I don't know if this is a good idea. I am almost sure it is not a good idea.
         return copy;
     }
 

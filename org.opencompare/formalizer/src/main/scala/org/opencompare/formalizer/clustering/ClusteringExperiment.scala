@@ -1,6 +1,6 @@
 package org.opencompare.formalizer.clustering
 
-import ch.usi.inf.sape.hac.experiment.Experiment
+import org.opencompare.hac.experiment.Experiment
 
 class ClusteringExperiment[T](values : IndexedSeq[T]) extends Experiment {
 

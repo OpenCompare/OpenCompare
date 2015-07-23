@@ -3,9 +3,7 @@ package org.opencompare.api.java.impl;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by gbecan on 08/10/14.
@@ -93,15 +91,18 @@ public class ProductImpl implements Product {
 
         ProductImpl product = (ProductImpl) o;
 
-        if (this.getName() == null) {
-            return product.getName() == null;
-        }
-
-        if (!this.getName().equals(product.getName())) {
+        if (this.getName() == null && product.getName() != null) {
             return false;
         }
 
-        if (!this.getCells().equals(product.getCells())) {
+        if (this.getName() != null && !this.getName().equals(product.getName())) {
+            return false;
+        }
+
+        Set<Cell> thisCellsSet = new HashSet<>(this.getCells());
+        Set<Cell> productCellsSet = new HashSet<>(product.getCells());
+
+        if (!thisCellsSet.equals(productCellsSet)) {
             return false;
         }
 
@@ -111,7 +112,7 @@ public class ProductImpl implements Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), this.getCells());
+        return Objects.hash(this.getName(), new HashSet<Cell>(this.getCells()));
     }
 
     @Override

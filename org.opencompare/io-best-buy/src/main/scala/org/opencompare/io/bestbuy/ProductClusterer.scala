@@ -1,6 +1,6 @@
 package org.opencompare.io.bestbuy
 
-import ch.usi.inf.sape.hac.agglomeration.{CompleteLinkage, AgglomerationMethod}
+import org.opencompare.hac.agglomeration.{CompleteLinkage, AgglomerationMethod}
 import org.opencompare.api.java.Product
 import org.opencompare.formalizer.clustering.HierarchicalClusterer
 
