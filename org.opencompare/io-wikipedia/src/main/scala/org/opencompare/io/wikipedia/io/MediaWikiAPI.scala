@@ -1,8 +1,6 @@
 package org.opencompare.io.wikipedia.io
 
-import java.util.regex.Matcher
-
-import play.api.libs.json.{JsString, Json}
+import play.api.libs.json.{JsString, JsValue, Json}
 
 import scalaj.http.Http
 
@@ -73,5 +71,20 @@ class MediaWikiAPI(
     expandedTemplate
   }
 
+  def getRevisionFromTitle(language : String, title : String): Seq[JsValue] = {
+    //Example: https://en.wikipedia.org/w/api.php?action=query&prop=revisions&format=json&rvprop=ids%7Ctimestamp%7Cuser%7Ccontent&rvdir=older&titles=Comparison_of_AMD_processor
+    val result = Http(apiEndPoint(language)).params(
+      "action" -> "query",
+      "format" -> "json",
+      "prop" -> "revisions",
+      "titles" -> escapeTitle(title),
+      "rvprop" -> "ids|timestamp|user|content"
+    ).asString.body
+
+    val jsonResult = Json.parse(result)
+    val pages = jsonResult \ "query" \ "pages"
+    val revs = pages \\ "revisions"
+    revs
+  }
 
 }
