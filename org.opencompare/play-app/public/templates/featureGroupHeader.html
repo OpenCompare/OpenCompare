@@ -12,7 +12,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" style="cursor:pointer;color:#515151;">
                                     <i class="ui-grid-icon-angle-down"></i>
                                 </a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" ng-controller="FeatureGroupCtrl">
                                     <li><a href="#" data-toggle="modal" data-target="#modalRenameFeatureGroup" ng-click="setRenameFeatureGroupModal(superCol.name)"><i class="fa fa-pencil"></i> Rename</a></li>
                                     <li><a href="#" ng-click="grid.appScope.deleteFeatureGroup(superCol.name)"><i class="fa fa-trash"></i> Remove</a></li>
                                     <li><a href="#" ng-click="grid.appScope.assignFeatureGroup(superCol.name)"><i class="fa fa-link"></i> Assign to features</a></li>

@@ -31,7 +31,7 @@ pcmApp.service('sortFeaturesService', function() {
     };
 
     function compareByFeatureGroup(a,b) {
-        if(a.superCol == 'emptyfeatureGroup')
+        if(a.superCol == 'emptyFeatureGroup')
             return 1;
         if(b.superCol == 'emptyFeatureGroup')
             return -1;
@@ -44,12 +44,11 @@ pcmApp.service('sortFeaturesService', function() {
 
     this.sortByFeatureGroup = function(features) {
         features.sort(compareByFeatureGroup);
-
         return features;
     };
 
     function compareByName(a,b) {
-        if(a.name == 'emptyfeatureGroup')
+        if(a.name == 'emptyFeatureGroup')
             return 1;
         if(b.name == 'emptyFeatureGroup')
             return -1;
