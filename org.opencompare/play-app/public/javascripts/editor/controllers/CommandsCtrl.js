@@ -94,8 +94,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         var parameters = [$scope.featureName, colsToAssign];
         $scope.newCommand('addFeatureGroup', parameters);
 
-        $rootScope.$broadcast('reloadFeatureGroup');
-        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+        $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+
     };
 
     /**
