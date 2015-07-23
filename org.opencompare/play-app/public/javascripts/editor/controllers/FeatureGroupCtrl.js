@@ -2,13 +2,14 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, uiGridConstants, $compile, $modal) {
 
     $scope.cols = {};
 
     $scope.isAFeature = function(col) {
         return col.name != ' ' && col.name != 'Product';
     };
+
     $scope.isAFeatureGroup = function(col) {console.log(col.name);
         return col.name != 'emptyFeatureGroup';
     };
@@ -21,11 +22,13 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     };
 
     $scope.setRenameFeatureGroupModal = function(featureName) {
-        $scope.featureName = featureName;
+
+        featureGroupService.setCurrentFeatureGroup(featureName);
     };
 
     $scope.deleteUnusedFeatureGroups = function(){
         var featureGroups = [];
+
         var j = 0;
         for(var i = 0; i < $scope.gridOptions.columnDefs.length; i++) {
             if(featureGroups.indexOf($scope.gridOptions.columnDefs[i].superCol) == -1) {

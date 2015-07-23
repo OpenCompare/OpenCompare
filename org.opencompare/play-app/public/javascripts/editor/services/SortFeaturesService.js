@@ -34,16 +34,16 @@ pcmApp.service('sortFeaturesService', function() {
         var sortedFeatures = [];
         var featureGroupsPos = [];
         var currentIndex =0;
+console.log(featureGroups.length);
+        for(var col in featureGroups) {
 
-        for(var i = 0; i < featureGroups.length; i++) {
-            if(featureGroups[i].hasOwnProperty('name')) {
                 var featureGroup = [];
-                featureGroup.push(featureGroups[i].name);
+                featureGroup.push(featureGroups[currentIndex].name);
                 featureGroup.push(currentIndex);
-                featureGroupsPos[currentIndex] = featureGroup;
+                featureGroupsPos[currentIndex] = featureGroup; console.log(featureGroupsPos);
                 currentIndex++;
-            }
         }
+
         sortedFeatures.splice(0, 0, features[0]);
         sortedFeatures.splice(1, 0, features[1]);
 
@@ -57,13 +57,12 @@ pcmApp.service('sortFeaturesService', function() {
                 }
             }
             var position = featureGroupsPos[index][1];
-            console.log(currentfeature.name);
 
             for(var k = index; k < featureGroupsPos.length; k++) {
                 featureGroupsPos[k][1] = featureGroupsPos[k][1]+1;
             }
             sortedFeatures.splice(position, 0, currentfeature);
-            console.log(sortedFeatures);
+
         }
         return sortedFeatures;
     };

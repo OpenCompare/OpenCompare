@@ -111,7 +111,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
 
             $scope.resizeFeatureGroup($scope.gridOptions.columnDefs, colDef, deltaChange);
-        })
+        });
 
     };
 
