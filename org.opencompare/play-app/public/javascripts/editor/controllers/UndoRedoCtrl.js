@@ -62,6 +62,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.canUndo = false;
             }
         }
+        $rootScope.$broadcast('modified');
     };
 
     $scope.redo = function() {
@@ -116,6 +117,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.canRedo = false;
             }
         }
+        $rootScope.$broadcast('modified');
     };
 
     function undoEdit(productHashKey, featureName, oldValue,  oldRawValue) {

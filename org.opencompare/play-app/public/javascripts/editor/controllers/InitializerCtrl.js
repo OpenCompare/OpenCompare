@@ -35,6 +35,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
     $scope.loading = false;
 
+    var contentValue;
+    var rawValue;
+
     /* Grid event functions */
     $scope.setRawValue = function(rowEntity, colDef, rawValue, contentValue) {
 
@@ -72,8 +75,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     /* Register grid functions */
     $scope.gridOptions.onRegisterApi = function(gridApi){
 
-        var contentValue;
-        var rawValue;
+
         //set gridApi on scope
         $scope.gridApi = gridApi;
 
@@ -544,13 +546,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             var commandParameters = [];
             $scope.pcmData[index][colName] = data;
 
-            if (colName != "Product") {
+           /* if (colName != "Product") {
                 commandParameters = [hashkey, colName, oldValue, data, oldRawValue, newRawValue];
             }
             else {
                 commandParameters = [hashkey, 'name', oldValue, data, oldRawValue, newRawValue];
             }
-            $scope.newCommand('edit', commandParameters);
+            $scope.newCommand('edit', commandParameters);*/
             $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         });
 

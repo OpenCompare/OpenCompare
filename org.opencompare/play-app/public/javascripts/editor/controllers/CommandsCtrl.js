@@ -93,7 +93,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         /* Command for undo/redo */
         var parameters = [$scope.featureName, colsToAssign];
         $scope.newCommand('addFeatureGroup', parameters);
-
+        $rootScope.$broadcast('modified');
         $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
 
     };
