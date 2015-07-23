@@ -10,7 +10,7 @@ This project is released under Apache v2 License.
 ### Development tools :
  * [Play](https://www.playframework.com/)
  * Maven
- * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI: [![Build Status](https://travis-ci.org/gbecan/OpenCompare.svg?branch=master)](https://travis-ci.org/gbecan/OpenCompare)
+ * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI: [![Build Status](https://travis-ci.org/gbecan/OpenCompare.svg?branch=master)](https://travis-ci.org/OpenCompare/OpenCompare)
  * We use intellij with the KMF plugin for the development
 
 ### Framework(s) :
@@ -36,7 +36,7 @@ This github repository contains several projects :
 ### Getting started :
 
 #### Install
-    git clone https://github.com/gbecan/PCM.git
+    git clone https://github.com/OpenCompare/OpenCompare.git
     mvn clean install
 
 To compile the project you must define two environment variables:
