@@ -14,10 +14,10 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     };
 
     $scope.setCols = function() {
-        var cols = $scope.gridOptions.columnDefs;
+        var cols = $scope.gridOptions.columnDefs; console.log(cols);
         for(var i = 2; i < cols.length; i ++) {
             $scope.cols[i-2] = {name: cols[i].name, isChecked: false};
-        }
+        } //console.log($scope.cols);
     };
 
     $scope.setRenameFeatureGroupModal = function(featureName) {

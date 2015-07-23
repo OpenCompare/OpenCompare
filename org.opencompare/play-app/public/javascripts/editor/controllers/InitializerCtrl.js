@@ -369,6 +369,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
         $scope.setGridHeight();
         if(loadFeatureGroups) {
+            $scope.gridOptions.superColDefs = sortFeaturesService.sortFeatureGroupByName($scope.gridOptions.superColDefs);
             $timeout(function() {$scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);}, 0);
         }
 

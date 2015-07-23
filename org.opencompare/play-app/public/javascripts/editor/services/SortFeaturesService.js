@@ -30,43 +30,41 @@ pcmApp.service('sortFeaturesService', function() {
         return sortedFeatures;
     };
 
-    this.sortByFeatureGroup = function(features, featureGroups) {
-        var sortedFeatures = [];
-        var featureGroupsPos = [];
-        var currentIndex =0;
+    function compareByFeatureGroup(a,b) {
+        if(a.superCol == 'emptyfeatureGroup')
+            return 1;
+        if(b.superCol == 'emptyFeatureGroup')
+            return -1;
+        if (a.superCol < b.superCol)
+            return -1;
+        if (a.superCol > b.superCol)
+            return 1;
+        return 0;
+    }
 
-        for(var i = 0; i < featureGroups.length; i++) {
-            if(featureGroups[i].hasOwnProperty('name')) {
-                var featureGroup = [];
-                featureGroup.push(featureGroups[i].name);
-                featureGroup.push(currentIndex);
-                featureGroupsPos[currentIndex] = featureGroup;
-                currentIndex++;
-            }
-        }
-        sortedFeatures.splice(0, 0, features[0]);
-        sortedFeatures.splice(1, 0, features[1]);
+    this.sortByFeatureGroup = function(features) {
+        features.sort(compareByFeatureGroup);
 
-        for(var i = 2; i < features.length; i++) {
-            var currentfeature = features[i];
-            var index = 0;
-            for(var j = 0; j < featureGroupsPos.length; j++) {
-                if(featureGroupsPos[j][0] == currentfeature.superCol) {
-                    index = j;
-                    break;
-                }
-            }
-            var position = featureGroupsPos[index][1];
-            console.log(currentfeature.name);
-
-            for(var k = index; k < featureGroupsPos.length; k++) {
-                featureGroupsPos[k][1] = featureGroupsPos[k][1]+1;
-            }
-            sortedFeatures.splice(position, 0, currentfeature);
-            console.log(sortedFeatures);
-        }
-        return sortedFeatures;
+        return features;
     };
+
+    function compareByName(a,b) {
+        if(a.name == 'emptyfeatureGroup')
+            return 1;
+        if(b.name == 'emptyFeatureGroup')
+            return -1;
+        if (a.name < b.name)
+            return -1;
+        if (a.name > b.name)
+            return 1;
+        return 0;
+    }
+
+    this.sortFeatureGroupByName = function(featureGroups) {
+        featureGroups.sort(compareByName);
+
+        return featureGroups;
+    }
 
 });
 
