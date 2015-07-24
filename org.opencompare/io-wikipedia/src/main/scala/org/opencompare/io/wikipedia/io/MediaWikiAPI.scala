@@ -71,19 +71,28 @@ class MediaWikiAPI(
     expandedTemplate
   }
 
-  def getRevisionFromTitle(language : String, title : String): Seq[JsValue] = {
-    //Example: https://en.wikipedia.org/w/api.php?action=query&prop=revisions&format=json&rvprop=ids%7Ctimestamp%7Cuser%7Ccontent&rvdir=older&titles=Comparison_of_AMD_processor
-    val result = Http(apiEndPoint(language)).params(
-      "action" -> "query",
-      "format" -> "json",
-      "prop" -> "revisions",
-      "titles" -> escapeTitle(title),
-      "rvprop" -> "ids|timestamp|user|content"
-    ).asString.body
+  def getRevisionFromTitle(language : String, title : String, limit : Integer = 10000): List[JsValue] = {
+    //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&rawcontinue=&titles=Comparison_(grammar)
+    var revs: List[JsValue] = List[JsValue]() // final result
+    var currentRevs = List.empty[JsValue] // transitionnal result
+    var rvcontinue = ""; // Mandatory to paginate
+    do {
+      val result = Http(apiEndPoint(language)).params(
+        "action" -> "query",
+        "format" -> "json",
+        "limit" -> "50",
+        "rvcontinue" -> rvcontinue,
+        "prop" -> "revisions",
+        "titles" -> escapeTitle(title),
+        "rvprop" -> "ids|timestamp|user|contentmodel|content"
+      ).asString.body
 
-    val jsonResult = Json.parse(result)
-    val pages = jsonResult \ "query" \ "pages"
-    val revs = pages \\ "revisions"
+      val jsonResult = Json.parse(result)
+      val pages = jsonResult \ "query" \ "pages"
+      currentRevs = (pages \\ "revisions").toList
+      revs = revs ::: currentRevs
+      rvcontinue = (jsonResult \ "continue" \ "rvcontinue").toString
+    } while (currentRevs.nonEmpty)
     revs
   }
 
