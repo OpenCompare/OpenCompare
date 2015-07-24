@@ -64,7 +64,7 @@ public class CSVLoader implements PCMLoader {
         try {
             containers = load(new StringReader(pcm));
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
         return containers;
     }
@@ -75,7 +75,7 @@ public class CSVLoader implements PCMLoader {
         try {
             containers = load(new FileReader(file));
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
         return containers;
     }

@@ -537,6 +537,10 @@ public class PCMImpl implements PCM {
         }
 
         if (this.getName() != null && !this.getName().equals(pcm.getName())) {
+            System.out.println("name");
+            System.out.println(this.getName());
+            System.out.println(pcm.getName());
+            System.out.println();
             return false;
         }
 
@@ -544,6 +548,10 @@ public class PCMImpl implements PCM {
         Set<Feature> pcmConcreteFeaturesSet = new HashSet<>(pcm.getConcreteFeatures());
 
         if (!thisConcreteFeaturesSet.equals(pcmConcreteFeaturesSet)) {
+            System.out.println("features");
+            System.out.println(thisConcreteFeaturesSet);
+            System.out.println(pcmConcreteFeaturesSet);
+            System.out.println();
             return false;
         }
 
@@ -551,6 +559,10 @@ public class PCMImpl implements PCM {
         Set<Product> pcmProductSet = new HashSet<>(pcm.getProducts());
 
         if (!thisProductSet.equals(pcmProductSet)) {
+            System.out.println("products");
+            System.out.println(thisProductSet);
+            System.out.println(pcmProductSet);
+            System.out.println();
             return false;
         }
 

@@ -93,6 +93,7 @@ public class PCMMetadata {
      * @return an ordered list of products
      */
     public List<Product> getSortedProducts() {
+
         ArrayList<Product> result = new ArrayList<>(pcm.getProducts());
         Collections.sort(result, new Comparator<Product>() {
             @Override
