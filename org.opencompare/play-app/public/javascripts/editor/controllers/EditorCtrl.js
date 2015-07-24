@@ -18,6 +18,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $controller('FiltersCtrl', subControllers);
     $controller('TypesCtrl', subControllers);
     $controller('ShareCtrl', subControllers);
+    $controller('FeatureGroupCtrl', subControllers);
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;
@@ -28,29 +29,37 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     //Export
     $scope.export_content = null;
 
+    $scope.oldFeatureName = "";
+    $scope.featureName = "";
+
+    $scope.loaded = false;
+
     $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];
         $scope.edit = bool;
         if(reload) {
-            $timeout(function(){ $scope.initializeEditor($scope.pcm, $scope.metadata)}, 100);
+            $timeout(function(){
+                $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
+            }, 20);
         }
         $rootScope.$broadcast('setToolbarEdit', bool);
+
     };
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
         $scope.setEdit(false, false);
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
 
     } else if (typeof data != 'undefined')  {
         /* Load PCM from import */
         $scope.pcm = loader.loadModelFromString(data).get(0);
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = data.metadata;
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
-    } else {
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
+    } else{
         /* Load a PCM from database */
         $scope.loading = true;
         $scope.setEdit(false, false);
@@ -60,7 +69,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.pcm = loader.loadModelFromString(JSON.stringify(data.pcm)).get(0);
                 pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
                 $scope.metadata = data.metadata;
-                $scope.initializeEditor($scope.pcm, $scope.metadata);
+                $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
                 $rootScope.$broadcast('saved');
             })
             .finally(function () {
@@ -80,7 +89,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = args.metadata;
-        $scope.initializeEditor($scope.pcm, $scope.metadata);
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
     });
 
     $scope.setGridHeight = function() {
@@ -126,36 +135,108 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         pcm.name = $scope.pcm.name;
 
         var featuresMap = {};
+        var featureGroupsMap = {};
+
         var index = 0;
         pcmData.forEach(function(productData) {
             // Create product
             var product = factory.createProduct();
             product.name = productData.name;
             pcm.addProducts(product);
-            $scope.gridOptions.columnDefs.forEach(function (featureData) {
+            var featureGroups = $scope.gridOptions.superColDefs;
+            var features = $scope.gridOptions.columnDefs;
 
-                var decodedFeatureName = convertStringToPCMFormat(featureData.name);
-                var codedFeatureName = featureData.name;
+            if(featureGroups.length > 0) {
+                for(var i = 0; i < featureGroups.length; i++) {
 
-                if(productData.hasOwnProperty(codedFeatureName)  && codedFeatureName !== "$$hashKey"
-                    && codedFeatureName !== "Product") {
-                    // Create feature if not existing
-                    if (!featuresMap.hasOwnProperty(decodedFeatureName)) {
-                        var feature = factory.createFeature();
-                        feature.name = decodedFeatureName;
-                        pcm.addFeatures(feature);
-                        featuresMap[decodedFeatureName] = feature;
+                    var decodedFeatureGroupName = convertStringToPCMFormat(featureGroups[i].name);
+                    var codedFeatureGroupName = featureGroups[i].name;
+
+                    if (!featureGroupsMap.hasOwnProperty(codedFeatureGroupName)) {
+                        if (codedFeatureGroupName != 'emptyFeatureGroup') {
+                            var featureGroup = factory.createFeatureGroup();
+                            featureGroup.name = decodedFeatureGroupName;
+                            featureGroupsMap[decodedFeatureGroupName] = featureGroup;
+
+                            var featuresWithThisFeatureGroup = $scope.getFeaturesWithThisFeatureGroup(codedFeatureGroupName, features);
+
+                            for (var j = 0; j < featuresWithThisFeatureGroup.length; j++) {
+                                if (!featuresMap.hasOwnProperty(convertStringToPCMFormat(featuresWithThisFeatureGroup[j]))
+                                    && featuresWithThisFeatureGroup[j] !== " "
+                                    && featuresWithThisFeatureGroup[j] !== "Product") {
+                                    var featureToAdd = factory.createFeature();
+                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[j]);
+                                    featureGroup.addSubFeatures(featureToAdd);
+                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[j])] = featureToAdd;
+                                }
+                            }
+                            pcm.addFeatures(featureGroup);
+                        }
+                        else {
+                            var featuresWithThisFeatureGroup = $scope.getFeaturesWithThisFeatureGroup(featureGroups[i].name, features);
+                            for (var k = 0; k < featuresWithThisFeatureGroup.length; k++) {
+                                if (!featuresMap.hasOwnProperty(featuresWithThisFeatureGroup[k])
+                                && featuresWithThisFeatureGroup[k] !== " "
+                                 && featuresWithThisFeatureGroup[k] !== "Product")  {
+                                    featureGroupsMap[convertStringToPCMFormat(featureGroups[i].name)] = 'empty';
+                                    var featureToAdd = factory.createFeature();
+                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[k]);
+                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[k])] = featureToAdd;
+                                    pcm.addFeatures(featureToAdd);
+                            }
+
+                            }
+
+                        }
                     }
-                    var feature = featuresMap[decodedFeatureName];
-
-                    // Create cell
-                    var cell = factory.createCell();
-                    cell.feature = feature;
-                    cell.content = productData[codedFeatureName];
-                    cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
-                    product.addCells(cell);
                 }
-            });
+                $scope.gridOptions.columnDefs.forEach(function (featureData) {
+
+                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var codedFeatureName = featureData.name;
+                    if(productData.hasOwnProperty(decodedFeatureName)  && decodedFeatureName !== " "
+                        && decodedFeatureName !== "Product") {
+                        var feature = featuresMap[decodedFeatureName];
+
+                        // Create cell
+                        var cell = factory.createCell();
+
+                        cell.feature = feature;
+                        cell.content = productData[codedFeatureName];
+                        cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
+                        product.addCells(cell);
+                    }
+                });
+              //  console.log(featuresMap);
+               // console.log(featureGroupsMap);
+            }
+            else {
+                $scope.gridOptions.columnDefs.forEach(function (featureData) {
+
+                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var codedFeatureName = featureData.name;
+
+                    if(productData.hasOwnProperty(decodedFeatureName)  && codedFeatureName !== " "
+                        && codedFeatureName !== "Product") {
+                        // Create feature if not existing
+                        if (!featuresMap.hasOwnProperty(decodedFeatureName)) {
+                            var feature = factory.createFeature();
+                            feature.name = decodedFeatureName;
+                            pcm.addFeatures(feature);
+                            featuresMap[decodedFeatureName] = feature;
+                        }
+                        var feature = featuresMap[decodedFeatureName];
+
+                        // Create cell
+                        var cell = factory.createCell();
+                        cell.feature = feature;
+                        cell.content = productData[codedFeatureName];
+                        cell.rawContent = $scope.pcmDataRaw[index][codedFeatureName];
+                        product.addCells(cell);
+                    }
+                });
+            }
+
             index++;
         });
 
@@ -182,6 +263,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         var pcmObject = {};
         pcmObject.metadata = $scope.metadata;
         pcmObject.pcm = jsonModel;
+
         if (typeof id === 'undefined') {
             $http.post("/api/create", pcmObject).success(function(data) {
                 id = data;

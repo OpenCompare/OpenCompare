@@ -2,15 +2,20 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService, sortFeaturesService) {
 
     $scope.height = 300;
+    $scope.minWidth = 130;
     $scope.enableEdit = embedService.enableEdit().get;
     $scope.enableExport = embedService.enableExport().get;
     $scope.enableTitle = true;
     $scope.enableShare = embedService.enableShare().get;
 
+    $scope.FeaturGroupIndex = 1;
+
     $scope.gridOptions = {
+        headerTemplate: '/assets/templates/featureGroupHeader.html',
+        superColDefs: [],
         columnDefs: [],
         data: 'pcmData',
         enableRowSelection: false,
@@ -29,6 +34,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.onNavigateFunctions = [];
 
     $scope.loading = false;
+
+    var contentValue;
+    var rawValue;
 
     /* Grid event functions */
     $scope.setRawValue = function(rowEntity, colDef, rawValue, contentValue) {
@@ -67,12 +75,12 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     /* Register grid functions */
     $scope.gridOptions.onRegisterApi = function(gridApi){
 
-        var contentValue;
-        var rawValue;
+
         //set gridApi on scope
         $scope.gridApi = gridApi;
 
-        /* Called when columns arem oved */
+
+        /* Called when columns are moved */
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
             for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
                 $scope.columnMovedFunctions[i]();
@@ -102,7 +110,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             }
         });
 
+        gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
+
+            $scope.resizeFeatureGroup($scope.gridOptions.columnDefs, colDef, deltaChange);
+        })
+
     };
+
 
     $scope.setGridHeight = function() {
 
@@ -119,15 +133,37 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         }
     };
 
+    function randomFeatureGroup (featureType) {
+        var feature = '';
+        switch(featureType) {
+            case "string":
+                feature = 'Feature Group 1';
+                break;
+            case "number":
+                feature = 'Feature Group 2';
+                break;
+            case "boolean":
+                feature = 'Feature Group 3';
+                break;
+        }
+        return feature;
+    }
+
     /**
      *  Create a new ColumnDef for the ui-grid
      * @param featureName
      * @param featureType
      * @returns colDef
      */
-    $scope.newColumnDef = function(featureName, featureType) {
+    $scope.newColumnDef = function(featureName, featureGroup, featureType) {
         if(!featureType) {
             featureType = "string";
+        }
+        if(featureGroup) {
+            var featureGroupName = featureGroup
+        }
+        else {
+            featureGroupName = 'empltyFeatureGroup';
         }
         var codedFeatureName = convertStringToEditorFormat(featureName);
         $scope.columnsType[codedFeatureName] = featureType;
@@ -143,8 +179,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
+            superCol: featureGroupName,
             filter: {term: ''},
-            minWidth: 130,
+            minWidth: $scope.minWidth,
             menuItems: [
                 {
                     title: 'Hide',
@@ -156,6 +193,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                             }
                         });
+                        $rootScope.$broadcast('reloadFeatureGroup');
                     }
                 },
                 {
@@ -201,6 +239,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                             featureData.visible = true;
                         });
                         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+                        $rootScope.$broadcast('reloadFeatureGroup');
                     }
                 }
             ],
@@ -283,7 +322,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
      * Initialize the editor
      * @param pcm
      */
-    $scope.initializeEditor = function(pcm, metadata, decode) {
+    $scope.initializeEditor = function(pcm, metadata, decode, loadFeatureGroups) {
 
         if(decode) {
             pcm = pcmApi.decodePCM(pcm); // Decode PCM from Base64
@@ -291,6 +330,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
         /* Convert PCM model to editor format */
         var features = pcmApi.getConcreteFeatures(pcm);
+
         $scope.pcmData = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
@@ -304,6 +344,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             });
             return productData;
         });
+
         // Return rawcontent
         $scope.pcmDataRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
@@ -325,33 +366,73 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         });
         $rootScope.$broadcast('setPcmName', $scope.pcm.name);
 
-        createColumns(pcm, metadata);
+        createColumns(pcm, metadata, features, loadFeatureGroups);
         setOptions();
 
         $scope.setGridHeight();
+        if(loadFeatureGroups) {
+            $scope.gridOptions.superColDefs = sortFeaturesService.sortFeatureGroupByName($scope.gridOptions.superColDefs);
+            $timeout(function() {$scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);}, 0);
+        }
+
     };
 
-    function createColumns(pcm, metadata) {
+    function createColumns(pcm, metadata, features, loadFeatureGroups) {
         /* Define columns */
         var columnDefs = [];
 
-        /* Column for each feature */
         var colIndex = 0;
-        pcm.features.array.forEach(function (feature) {
+        var hasFeatureGroups = false;
+
+        features.map(function(feature) {
+
             var featureName = feature.name;
             if(!feature.name){
                 featureName = " ";
             }
-            var colDef = $scope.newColumnDef(featureName, typeService.getType(featureName, $scope.pcmData));
+            var featureGroupName = "emptyFeatureGroup";
+            if(feature.parentGroup) {
+                featureGroupName = feature.parentGroup.name;
+                hasFeatureGroups = true;
+            }
+            var colDef = $scope.newColumnDef(featureName, featureGroupName, typeService.getType(featureName, $scope.pcmData));
             columnDefs.push(colDef);
             colIndex++;
         });
+
+        if(hasFeatureGroups && loadFeatureGroups) {
+            $scope.gridOptions.superColDefs = [];
+            var emptyfeatureGroup = {
+                name: 'emptyFeatureGroup',
+                displayName: ' '
+            };
+            $scope.gridOptions.superColDefs.push(emptyfeatureGroup);
+            pcm.features.array.forEach(function (featureGroup) {
+                var isAFeatureNotAFeatureGroup = false;
+                features.map(function(feature) {
+                    if(featureGroup.name == feature.name) {
+                        isAFeatureNotAFeatureGroup = true;
+                    }
+                });
+                if(!isAFeatureNotAFeatureGroup) {
+                    var featureName = featureGroup.name;
+
+                    var newFeatureGroup = {
+                        name: featureName,
+                        displayName: featureName
+                    };
+                    $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
+                }
+            });
+        }
+
+
         if(metadata) {
             $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
             $scope.pcmDataRaw = sortRawProducts($scope.pcmDataRaw, $scope.pcmData);
             columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
         }
-        $scope.gridOptions.columnDefs = columnDefs;
+
         var toolsColumn = {
             name: ' ',
             cellTemplate: '<div class="buttonsCell" ng-show="grid.appScope.edit">' +
@@ -359,6 +440,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             '</div>',
             enableCellEdit: false,
             enableFiltering: false,
+            enableColumnResizing: false,
             pinnedLeft:true,
             enableSorting: false,
             enableHiding: false,
@@ -413,8 +495,21 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             "<div class='ui-grid-filter-container'>" +
             "   <input type='text' class='form-control floating-label' ng-change='grid.appScope.applyProductFilter()' ng-model='grid.appScope.productFilter' placeholder='Find'"+
             "</div>";
-        $scope.gridOptions.columnDefs.splice(0, 0, toolsColumn);
-        $scope.gridOptions.columnDefs.splice(1, 0, productsColumn);
+
+
+        columnDefs.splice(0, 0, toolsColumn);
+        columnDefs.splice(1, 0, productsColumn);
+
+
+        if($scope.gridOptions.superColDefs.length > 0) {
+            $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup(columnDefs, $scope.gridOptions.superColDefs);
+        }
+        else {
+            $scope.gridOptions.columnDefs = columnDefs;
+        }
+
+
+
     }
 
     function setOptions() {
@@ -451,13 +546,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             var commandParameters = [];
             $scope.pcmData[index][colName] = data;
 
-            if (colName != "Product") {
+           /* if (colName != "Product") {
                 commandParameters = [hashkey, colName, oldValue, data, oldRawValue, newRawValue];
             }
             else {
                 commandParameters = [hashkey, 'name', oldValue, data, oldRawValue, newRawValue];
             }
-            $scope.newCommand('edit', commandParameters);
+            $scope.newCommand('edit', commandParameters);*/
             $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         });
 

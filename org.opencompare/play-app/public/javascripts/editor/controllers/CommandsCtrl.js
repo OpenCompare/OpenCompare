@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, featureGroupService, sortFeaturesService, $compile, $modal) {
 
 
     /**
@@ -46,6 +46,56 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
 
         /* Modified for save */
         $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
+    };
+
+    /**
+     * Add a feature group
+     */
+    $scope.addFeatureGroup = function () {
+        var selectedCols = $scope.cols;
+        var found = false;
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            var currentCol = $scope.gridOptions.superColDefs[i];
+            if(currentCol.hasOwnProperty('name') && currentCol.name == "emptyFeatureGroup") {
+                found = true;
+            }
+        }
+        if(!found) {
+            var emptyFeatureGroup = {
+                name: "emptyFeatureGroup",
+                displayName: " "
+            };
+            $scope.gridOptions.superColDefs.push(emptyFeatureGroup);
+            $scope.gridOptions.columnDefs.forEach(function (col) {
+                col.superCol = "emptyFeatureGroup";
+            });
+        }
+
+        var newFeatureGroup = {
+            name: $scope.featureName,
+            displayName: $scope.featureName
+        };
+        $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
+        $scope.gridOptions.superColDefs = sortFeaturesService.sortFeatureGroupByName($scope.gridOptions.superColDefs);
+        var index = 0;
+        var colsToAssign = [];
+        for(var col in selectedCols) {
+            if(selectedCols[index].isChecked == true) {
+                colsToAssign.push($scope.gridOptions.columnDefs[index+2].name);
+                $scope.gridOptions.columnDefs[index+2].superCol = $scope.featureName;
+            }
+            index++;
+        }
+        $scope.deleteUnusedFeatureGroups();
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs);
+
+        /* Command for undo/redo */
+        var parameters = [$scope.featureName, colsToAssign];
+        $scope.newCommand('addFeatureGroup', parameters);
+        $rootScope.$broadcast('modified');
+        $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+
     };
 
     /**
@@ -100,6 +150,68 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     };
 
     /**
+     * Rename a feature group
+     */
+    $scope.renameFeatureGroup = function(oldFeatureName, newFeatureName) {
+
+        var codedOldFeatureName =  convertStringToEditorFormat(featureGroupService.getCurrentFeatureGroup());
+        var featureName = checkIfNameExists(newFeatureName, $scope.gridOptions.columnDefs);
+        var codedFeatureName = convertStringToEditorFormat(featureName);
+
+        /* Find the feature in column defs */
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            if($scope.gridOptions.superColDefs[i].name == codedOldFeatureName) {
+                $scope.gridOptions.superColDefs[i].name = codedFeatureName;
+                $scope.gridOptions.superColDefs[i].displayName = codedFeatureName;
+                break;
+            }
+        }
+        for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
+            if($scope.gridOptions.columnDefs[i].superCol === codedOldFeatureName) {
+                $scope.gridOptions.columnDefs[i].superCol = codedFeatureName;
+            }
+        }
+        /* Command for undo/redo */
+        var parameters = [codedOldFeatureName, codedFeatureName];
+        $scope.newCommand('renameFeatureGroup', parameters);
+        /* re-init of scope parameters */
+        $scope.featureName = "";
+
+        /* Modified for save */
+        $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
+    };
+
+    /**
+     * Delete a feature sgroup
+     * @param featureName
+     */
+    $scope.deleteFeatureGroup = function(featureName) {
+
+        for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
+            if($scope.gridOptions.superColDefs[i].name == featureName) {
+                $scope.gridOptions.superColDefs.splice(i, 1);
+                break;
+            }
+        }
+        var colsToAssign = [];
+        for(var i = 0; i <  $scope.gridOptions.columnDefs.length; i++) {
+            if($scope.gridOptions.columnDefs[i].superCol === featureName) {
+                colsToAssign.push($scope.gridOptions.columnDefs[i].name);
+                $scope.gridOptions.columnDefs[i].superCol = 'emptyFeatureGroup';
+            }
+        }
+        /* Command for undo/redo */
+        var parameters = [featureName, colsToAssign];
+        $scope.newCommand('deleteFeatureGroup', parameters);
+
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+
+        $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
+    };
+
+    /**
      * Delete a feature
      * @param featureName
      */
@@ -133,6 +245,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         });
         console.log("Feature is deleted");
         $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
     };
 
     /**
@@ -155,6 +268,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 $scope.columnsType[codedFeatureName] = $scope.featureType;
             }
         }
+        $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
@@ -171,6 +285,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name != " " && featureData.name != "Product") { // There must be a better way but working for now
                 productData[featureData.name] = "";
+                productData.name=
                 rawProduct[featureData.name] = "";
             }
         });

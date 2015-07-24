@@ -193,4 +193,14 @@
         }
     }
 
+    function getNumberOfFeaturesWithThisFeatureGroup(cols, featureGroup) {
+        var count = 0;
+        for(var i = 0; i < cols.length; i++) {
+            if(cols[i].superCol == featureGroup) {
+                count ++;
+            }
+        }
+        return count;
+    }
+
 

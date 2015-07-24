@@ -12,13 +12,13 @@ public class PCMMetadata {
     protected PCM pcm;
     protected Boolean productAsLines;
     protected Map<Product, Integer> productPositions;
-    protected Map<Feature, Integer> featurePositions;
+    protected Map<AbstractFeature, Integer> featurePositions;
 
     public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
         this.setProductAsLines(true);
-        this.productPositions = new HashMap<Product, Integer>();
-        this.featurePositions = new HashMap<Feature, Integer>();
+        this.productPositions = new HashMap<>();
+        this.featurePositions = new HashMap<>();
     }
 
     /**
@@ -42,10 +42,7 @@ public class PCMMetadata {
      * @return the absolution position of 'product' or -1 if it is not specified
      */
     public int getProductPosition(Product product) {
-        if (!productPositions.containsKey(product)) {
-            return -1;
-        }
-        return productPositions.get(product);
+        return productPositions.getOrDefault(product, 0);
     }
 
     /**
@@ -62,11 +59,24 @@ public class PCMMetadata {
      * @param feature
      * @return the absolution position of 'feature' or -1 if it is not specified
      */
-    public int getFeaturePosition(Feature feature) {
+    public int getFeaturePosition(AbstractFeature feature) {
+        AbstractFeature result = feature;
         if (!featurePositions.containsKey(feature)) {
-            return -1;
+            if (feature instanceof FeatureGroup) {
+                FeatureGroup featureGroup = (FeatureGroup) feature;
+                List<Feature> features = featureGroup.getConcreteFeatures();
+                if (!features.isEmpty()) {
+                    Collections.sort(features, new Comparator<Feature>() {
+                        @Override
+                        public int compare(Feature feat1, Feature feat2) {
+                            return getFeaturePosition(feat1) - getFeaturePosition(feat2);
+                        }
+                    });
+                    result = features.get(0);
+                }
+            }
         }
-        return featurePositions.get(feature);
+        return featurePositions.getOrDefault(result, 0);
     }
 
     /**
@@ -74,7 +84,7 @@ public class PCMMetadata {
      * @param feature
      * @param position
      */
-    public void setFeaturePosition(Feature feature, int position) {
+    public void setFeaturePosition(AbstractFeature feature, int position) {
         featurePositions.put(feature, position);
     }
 
@@ -83,6 +93,7 @@ public class PCMMetadata {
      * @return an ordered list of products
      */
     public List<Product> getSortedProducts() {
+
         ArrayList<Product> result = new ArrayList<>(pcm.getProducts());
         Collections.sort(result, new Comparator<Product>() {
             @Override

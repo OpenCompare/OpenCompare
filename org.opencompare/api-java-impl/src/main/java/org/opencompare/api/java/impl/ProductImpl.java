@@ -81,7 +81,14 @@ public class ProductImpl implements Product {
 
     @Override
     public String toString() {
-        return "Product(" + getName() + ")";
+        StringBuilder result = new StringBuilder();
+        result.append("Product(" + getName() + ")");
+        result.append("(");
+        for (Cell cell : this.getCells()) {
+            result.append(cell.toString());
+        }
+        result.append(")");
+        return result.toString();
     }
 
     @Override

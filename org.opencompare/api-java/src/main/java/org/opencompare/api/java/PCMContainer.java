@@ -40,4 +40,15 @@ public class PCMContainer {
         this.metadata = metadata;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj != null && obj instanceof PCMContainer) {
+            PCMContainer container = (PCMContainer) obj;
+            return pcm.equals(container.getPcm()) && metadata.equals(container.getMetadata());
+        }
+        return false;
+    }
 }

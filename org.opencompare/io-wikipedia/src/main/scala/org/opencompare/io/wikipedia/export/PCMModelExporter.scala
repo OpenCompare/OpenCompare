@@ -172,7 +172,6 @@ class PCMModelExporter {
       val product = factory.createProduct()
       container.getPcm.addProduct(product)
       product.setName(productName)
-      container.getMetadata.setProductPosition(product, r)
 
       // Create cells
       for (c <- nbProductColumns until matrix.getNumberOfColumns())  {
@@ -189,6 +188,8 @@ class PCMModelExporter {
 //        println(feature.getName)
         cell.setFeature(feature.asInstanceOf[Feature])
       }
+
+      container.getMetadata.setProductPosition(product, r)
     }
   }
 

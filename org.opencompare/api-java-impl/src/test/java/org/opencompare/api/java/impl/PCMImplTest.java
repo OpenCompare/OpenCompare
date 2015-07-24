@@ -44,7 +44,7 @@ public class PCMImplTest extends PCMTest {
         List<PCMContainer> containers = loader.load(json);
 
         for (PCMContainer cont : containers) {
-            assertEquals(pcm.getName(), cont.getPcm().getName());
+            assertEquals(pcm, cont.getPcm());
         }
 
     }
