@@ -1,7 +1,8 @@
 package org.opencompare.io.wikipedia.io
 
-import play.api.libs.json.{JsString, JsValue, Json}
+import play.api.libs.json._
 
+import scala.collection.mutable.ListBuffer
 import scalaj.http.Http
 
 /**
@@ -71,29 +72,53 @@ class MediaWikiAPI(
     expandedTemplate
   }
 
-  def getRevisionFromTitle(language : String, title : String, limit : Integer = 10000): List[JsValue] = {
+  def getRevisionFromTitle(language : String, title : String, limit : Integer = 50): List[JsObject] = {
     //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&rawcontinue=&titles=Comparison_(grammar)
-    var revs: List[JsValue] = List[JsValue]() // final result
-    var currentRevs = List.empty[JsValue] // transitionnal result
+    val revs = ListBuffer.empty[JsObject] // final result
     var rvcontinue = ""; // Mandatory to paginate
+    val query = Http(apiEndPoint(language))
+    val baseParams = Map(
+      "action" -> "query",
+      "format" -> "json",
+      "rvlimit" -> "50",
+      "rvdir" -> "older",
+      "rawcontinue" -> "",
+      "prop" -> "revisions",
+      "titles" -> escapeTitle(title),
+      "rvprop" -> "ids|timestamp|user|contentmodel|content"
+    )
     do {
-      val result = Http(apiEndPoint(language)).params(
-        "action" -> "query",
-        "format" -> "json",
-        "limit" -> "50",
-        "rvcontinue" -> rvcontinue,
-        "prop" -> "revisions",
-        "titles" -> escapeTitle(title),
-        "rvprop" -> "ids|timestamp|user|contentmodel|content"
-      ).asString.body
+      val params = if (rvcontinue.nonEmpty) {
+        baseParams + ("rvcontinue" -> rvcontinue)
+      } else {
+        baseParams
+      }
+      val paramedQuery = query.params(params)
+      val result = paramedQuery.asString.body
 
       val jsonResult = Json.parse(result)
-      val pages = jsonResult \ "query" \ "pages"
-      currentRevs = (pages \\ "revisions").toList
-      revs = revs ::: currentRevs
-      rvcontinue = (jsonResult \ "continue" \ "rvcontinue").toString
-    } while (currentRevs.nonEmpty)
-    revs
+      val page = jsonResult \ "query" \ "pages"
+
+      (page \\ "revisions").foreach { revisions =>
+        revisions match {
+          case JsArray(revisionsSeq) => {
+            revisionsSeq.foreach(rev => {
+              revs += rev.asInstanceOf[JsObject]
+            })
+          }
+          case _ => println("failed")
+        }
+      }
+
+      val queryContinue = jsonResult \ "query-continue"
+      if (queryContinue.isInstanceOf[JsUndefined]) {
+        rvcontinue = ""
+      } else {
+        rvcontinue = (queryContinue \ "revisions" \ "rvcontinue").get.toString()
+      }
+    } while (rvcontinue.nonEmpty)
+    revs.toList
   }
+
 
 }
