@@ -75,21 +75,21 @@ class MediaWikiAPI(
   def getRevisionFromTitle(language : String, title : String, limit : Integer = 50): List[JsObject] = {
     //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&rawcontinue=&titles=Comparison_(grammar)
     val revs = ListBuffer.empty[JsObject] // final result
-    var rvcontinue : Option[String] = Option[String]("") // Mandatory to paginate
+    var rvcontinue = "" // Mandatory to paginate
     val query = Http(apiEndPoint(language))
-    val baseParams = Map[String, String](
+    val baseParams = Map(
       "action" -> "query",
       "format" -> "json",
-      "rvlimit" -> limit.toString,
+      "rvlimit" -> "50",
       "rvdir" -> "older",
       "rawcontinue" -> "",
       "prop" -> "revisions",
-      "titles" -> escapeTitle(title).toString,
+      "titles" -> escapeTitle(title),
       "rvprop" -> "ids|timestamp|user|contentmodel|content"
     )
     do {
-      val params = if (rvcontinue.isDefined) {
-        baseParams + ("rvcontinue" -> rvcontinue.get)
+      val params = if (rvcontinue != "") {
+        baseParams + ("rvcontinue" -> rvcontinue)
       } else {
         baseParams
       }
@@ -99,7 +99,7 @@ class MediaWikiAPI(
       val jsonResult = Json.parse(result)
       val page = jsonResult \ "query" \ "pages"
 
-      (page \\ "revisions").foreach { revisions : JsValue =>
+      (page \\ "revisions").foreach { revisions =>
         revisions match {
           case JsArray(revisionsSeq) => {
             revisionsSeq.foreach(rev => {
@@ -111,11 +111,12 @@ class MediaWikiAPI(
       }
 
       val queryContinue = jsonResult \ "query-continue"
-      queryContinue match {
-        case _ : JsUndefined => rvcontinue = Option[String]("")
-        case _ => rvcontinue = Option[String]((queryContinue \ "revisions" \ "rvcontinue").get.toString())
+      if (queryContinue.isInstanceOf[JsUndefined]) {
+        rvcontinue = ""
+      } else {
+        rvcontinue = (queryContinue \ "revisions" \ "rvcontinue").get.toString()
       }
-    } while (rvcontinue.isDefined)
+    } while (rvcontinue != "")
     revs.toList
   }
 
