@@ -1,9 +1,11 @@
 package org.opencompare.io.wikipedia.io
 
+import java.net.SocketTimeoutException
+
 import play.api.libs.json._
 
 import scala.collection.mutable.ListBuffer
-import scalaj.http.Http
+import scalaj.http.{HttpRequest, Http}
 
 /**
  * Created by gbecan on 6/19/15.
@@ -72,6 +74,20 @@ class MediaWikiAPI(
     expandedTemplate
   }
 
+  def call(request: HttpRequest, params: Map[String, String]): String = {
+    var result = ""
+    try {
+      val paramedQuery = request.params(params)
+      result = paramedQuery.asString.body
+    } catch {
+      case _ : SocketTimeoutException => {
+        this.wait(1000)
+        result = call(request, params)
+      }
+    }
+    result
+  }
+
   def getRevisionFromTitle(language : String, title : String, direction : String = "older"): List[JsObject] = {
     //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&titles=Comparison_(grammar)
     getCompleteRevisionHistory(language, title, direction, "").toList
@@ -94,8 +110,7 @@ class MediaWikiAPI(
     } else {
       baseParams
     }
-    val paramedQuery = Http(apiEndPoint(language)).params(params)
-    val result = paramedQuery.asString.body
+    val result = call(Http(apiEndPoint(language)), params)
 
     val jsonResult = Json.parse(result)
     val page = jsonResult \ "query" \ "pages"
