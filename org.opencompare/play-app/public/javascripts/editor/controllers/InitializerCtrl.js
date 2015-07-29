@@ -525,6 +525,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         if(GetUrlValue('enableShare') == 'false'){
             $scope.enableShare = false;
         }
+        if(GetUrlValue('deleteAfterLoaded') == 'true'){
+            if (typeof id !== 'undefined') {
+                $http.get("/api/remove/" + id);
+            }
+        }
     }
 
 
