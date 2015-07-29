@@ -72,15 +72,19 @@ class MediaWikiAPI(
     expandedTemplate
   }
 
-  def getRevisionFromTitle(language : String, title : String, direction : String = "older", rvcontinue : String = ""): List[JsObject] = {
-    //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&rawcontinue=&titles=Comparison_(grammar)
+  def getRevisionFromTitle(language : String, title : String, direction : String = "older"): List[JsObject] = {
+    //Example: https://en.wikipedia.org/w/w/api.php?action=query&prop=revisions&format=json&rvprop=timestamp%7Cuser%7Ccontentmodel%7Ccontent&rvlimit=50&rvdir=older&titles=Comparison_(grammar)
+    getCompleteRevisionHistory(language, title, direction, "").toList
+  }
+
+  private def getCompleteRevisionHistory(language : String, title : String, direction : String = "older", rvcontinue : String = ""): ListBuffer[JsObject] = {
     val revs = ListBuffer.empty[JsObject] // final result
     val baseParams = Map(
       "action" -> "query",
       "format" -> "json",
       "rvlimit" -> "50",
       "rvdir" -> direction,
-      "continue" -> "||",
+      "rawcontinue" -> "",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
       "rvprop" -> "ids|timestamp|user|contentmodel|content"
@@ -95,24 +99,26 @@ class MediaWikiAPI(
 
     val jsonResult = Json.parse(result)
     val page = jsonResult \ "query" \ "pages"
-
     (page \\ "revisions").foreach { revisions =>
       revisions match {
         case JsArray(revisionsSeq) => {
           revisionsSeq.foreach(rev => {
-            revs += rev.asInstanceOf[JsObject]
+            revs.append(rev.asInstanceOf[JsObject])
           })
         }
         case _ => println("failed")
       }
     }
 
-    if ((jsonResult \ "batchcomplete").isInstanceOf[JsUndefined]) {
-      //FIXME : when uncommented, rvcontinue stay at the same value ???
-      //revs.prependToList(getRevisionFromTitle(language, title, direction, (jsonResult \ "continue" \ "rvcontinue").get.toString()))
+    // Recursive call only if not completed
+    if (!(jsonResult \ "query-continue").isInstanceOf[JsUndefined]) {
+      val rvcontinue = (jsonResult \ "query-continue" \ "revisions" \ "rvcontinue").get.toString().replaceAllLiterally("\"", "")
+      val result = getCompleteRevisionHistory(language, title, direction, rvcontinue)
+      result.foreach(rev => {
+        revs.append(rev)
+      })
     }
-    revs.toList
+    revs
   }
-
 
 }
