@@ -2,10 +2,11 @@ package org.opencompare.io.wikipedia.io
 
 import java.net.SocketTimeoutException
 
+import com.fasterxml.jackson.databind.JsonMappingException
 import play.api.libs.json._
 
 import scala.collection.mutable.ListBuffer
-import scalaj.http.{HttpRequest, Http}
+import scalaj.http.Http
 
 /**
  * Created by gbecan on 6/19/15.
@@ -28,64 +29,78 @@ class MediaWikiAPI(
     title.replaceAll("\\s", "_")
   }
 
+  def call(language: String, params: Map[String, String]): Option[String] = {
+    var result = ""
+    try {
+      val paramedQuery = Http(apiEndPoint(language)).params(params)
+      result = paramedQuery.asString.body
+    } catch {
+      case _ : SocketTimeoutException => {
+        try {
+          this.wait(1000)
+        } catch {
+          case _ : Throwable => Nil
+        }
+        result = call(language, params).get
+
+      }
+      case _ : OutOfMemoryError => {
+        println("Out of memory. Skipping !")
+      }
+    }
+    Option[String](result)
+  }
+
   def getWikitextFromTitle(language : String, title : String): String = {
     //Example: https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles=Comparison_of_AMD_processors&rvprop=content
-    val result = Http(apiEndPoint(language)).params(
+    val params = Map(
       "action" -> "query",
       "format" -> "json",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
       "rvprop" -> "content"
-    ).asString.body
+    )
+    val result = call(language, params)
+    if (result.isDefined) {
+      val jsonResult = Json.parse(result.get)
+      val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
 
-    val jsonResult = Json.parse(result)
-    val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
-
-    if (jsonWikitext.nonEmpty) {
-      jsonWikitext.head.as[JsString].value
-//      Json.stringify(jsonWikitext.head)
-//        .replaceAll(Matcher.quoteReplacement("\\n"), "\n")
-//        .replaceAll(Matcher.quoteReplacement("\\\""), "\"")
-    } else {
-      // TODO: Error
-      ""
+      if (jsonWikitext.nonEmpty) {
+        jsonWikitext.head.as[JsString].value
+        //      Json.stringify(jsonWikitext.head)
+        //        .replaceAll(Matcher.quoteReplacement("\\n"), "\n")
+        //        .replaceAll(Matcher.quoteReplacement("\\\""), "\"")
+      } else {
+        // TODO: Error
+        ""
+      }
     }
+    ""
   }
 
   def expandTemplate(language : String, template : String) : String = {
-    val result = Http(apiEndPoint(language)).params(
+    val params = Map(
       "action" -> "expandtemplates",
       "format" -> "json",
       "prop" -> "wikitext",
       "text" -> template
-    ).asString.body
+    )
 
-    val jsonResult = Json.parse(result)
-    val jsonExpandedTemplate = (jsonResult \ "expandtemplates" \ "wikitext").toOption
-    val expandedTemplate = if (jsonExpandedTemplate.isDefined) {
-      jsonExpandedTemplate.get match {
-        case s : JsString => s.value
-        case _ => ""
+    val result = call(language, params)
+    val expandedTemplate = if (result.isDefined) {
+      val jsonResult = Json.parse(result.get)
+      val jsonExpandedTemplate = (jsonResult \ "expandtemplates" \ "wikitext").toOption
+      if (jsonExpandedTemplate.isDefined) {
+        jsonExpandedTemplate.get match {
+          case s: JsString => s.value
+          case _ => ""
+        }
+      } else {
+        ""
       }
-    } else {
       ""
     }
-
-    expandedTemplate
-  }
-
-  def call(request: HttpRequest, params: Map[String, String]): String = {
-    var result = ""
-    try {
-      val paramedQuery = request.params(params)
-      result = paramedQuery.asString.body
-    } catch {
-      case _ : SocketTimeoutException => {
-        this.wait(1000)
-        result = call(request, params)
-      }
-    }
-    result
+    expandedTemplate.toString
   }
 
   def getRevisionFromTitle(language : String, title : String, direction : String = "older"): List[JsObject] = {
@@ -110,28 +125,33 @@ class MediaWikiAPI(
     } else {
       baseParams
     }
-    val result = call(Http(apiEndPoint(language)), params)
+    val result = call(language, params)
+    try {
+      if (result.isDefined) {
+        val jsonResult = Json.parse(result.get)
+        val page = jsonResult \ "query" \ "pages"
+        (page \\ "revisions").foreach { revisions =>
+          revisions match {
+            case JsArray(revisionsSeq) => {
+              revisionsSeq.foreach(rev => {
+                revs.append(rev.asInstanceOf[JsObject])
+              })
+            }
+            case _ => println("failed")
+          }
+        }
 
-    val jsonResult = Json.parse(result)
-    val page = jsonResult \ "query" \ "pages"
-    (page \\ "revisions").foreach { revisions =>
-      revisions match {
-        case JsArray(revisionsSeq) => {
-          revisionsSeq.foreach(rev => {
-            revs.append(rev.asInstanceOf[JsObject])
+        // Recursive call only if not completed
+        if (!(jsonResult \ "query-continue").isInstanceOf[JsUndefined]) {
+          val rvcontinue = (jsonResult \ "query-continue" \ "revisions" \ "rvcontinue").get.toString().replaceAllLiterally("\"", "")
+          val result = getCompleteRevisionHistory(language, title, direction, rvcontinue)
+          result.foreach(rev => {
+            revs.append(rev)
           })
         }
-        case _ => println("failed")
       }
-    }
-
-    // Recursive call only if not completed
-    if (!(jsonResult \ "query-continue").isInstanceOf[JsUndefined]) {
-      val rvcontinue = (jsonResult \ "query-continue" \ "revisions" \ "rvcontinue").get.toString().replaceAllLiterally("\"", "")
-      val result = getCompleteRevisionHistory(language, title, direction, rvcontinue)
-      result.foreach(rev => {
-        revs.append(rev)
-      })
+    } catch {
+      case _ : JsonMappingException => println("No result...")
     }
     revs
   }
