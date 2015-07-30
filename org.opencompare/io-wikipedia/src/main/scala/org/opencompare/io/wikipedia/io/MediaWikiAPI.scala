@@ -32,7 +32,7 @@ class MediaWikiAPI(
   def call(language: String, params: Map[String, String]): Option[String] = {
     var result = ""
     try {
-      val paramedQuery = Http(apiEndPoint(language)).params(params)
+      var paramedQuery = Http(apiEndPoint(language)).params(params)
       result = paramedQuery.asString.body
     } catch {
       case _ : SocketTimeoutException => {
@@ -42,10 +42,6 @@ class MediaWikiAPI(
           case _ : Throwable => Nil
         }
         result = call(language, params).get
-
-      }
-      case _ : OutOfMemoryError => {
-        println("Out of memory. Skipping !")
       }
     }
     Option[String](result)
@@ -61,7 +57,7 @@ class MediaWikiAPI(
       "rvprop" -> "content"
     )
     val result = call(language, params)
-    if (result.isDefined) {
+    val wikitext = if (result.isDefined) {
       val jsonResult = Json.parse(result.get)
       val jsonWikitext = jsonResult \ "query" \ "pages" \\ "*"
 
@@ -74,8 +70,10 @@ class MediaWikiAPI(
         // TODO: Error
         ""
       }
+    } else {
+      ""
     }
-    ""
+    wikitext
   }
 
   def expandTemplate(language : String, template : String) : String = {
@@ -98,9 +96,10 @@ class MediaWikiAPI(
       } else {
         ""
       }
+    } else {
       ""
     }
-    expandedTemplate.toString
+    expandedTemplate
   }
 
   def getRevisionFromTitle(language : String, title : String, direction : String = "older"): List[JsObject] = {
