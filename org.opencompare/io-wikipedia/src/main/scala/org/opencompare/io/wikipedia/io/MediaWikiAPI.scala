@@ -117,7 +117,7 @@ class MediaWikiAPI(
       "rawcontinue" -> "",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
-      "rvprop" -> "ids|timestamp|user|contentmodel|content"
+      "rvprop" -> "ids|timestamp|user|contentmodel|content|comment|tags|flags"
     )
     val params = if (rvcontinue != "") {
       baseParams + ("rvcontinue" -> rvcontinue)
