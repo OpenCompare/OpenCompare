@@ -19,7 +19,6 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $controller('TypesCtrl', subControllers);
     $controller('ShareCtrl', subControllers);
     $controller('FeatureGroupCtrl', subControllers);
-    $controller('ChartsCtrl', subControllers);
 
     // Load PCM
     var pcmMM = Kotlin.modules['pcm'].pcm;

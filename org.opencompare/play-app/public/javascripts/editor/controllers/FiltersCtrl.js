@@ -104,7 +104,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
             case 'number':
 
-                var minAndMax = findMinAndMax($scope.featureToFilter, $scope.pcmData);
+                var minAndMax = editorUtil.findMinAndMax($scope.featureToFilter, $scope.pcmData);
                 $scope.slider.options.min = minAndMax[0];
                 $scope.slider.options.max = minAndMax[1];
                 $scope.filterSlider[0] = minAndMax[0];

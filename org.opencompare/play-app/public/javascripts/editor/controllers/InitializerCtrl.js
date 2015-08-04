@@ -19,6 +19,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         columnDefs: [],
         data: 'pcmData',
         enableRowSelection: false,
+        showColumnFooter: true,
         enableRowHeaderSelection: false,
         flatEntityAccess: true,
         enableColumnResizing: true,
@@ -299,6 +300,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 columnDef.filters = [];
                 columnDef.filters.push(filterGreater);
                 columnDef.filters.push(filterLess);
+                columnDef.footerCellTemplate = "<div class='ui-grid-cell-contents'><button class='btn btn-primary fa fa-bar-chart btn-sm' ng-click='grid.appScope.lineChart(col)' style='margin: 0;padding-top:2px;padding-bottom: 2px'></button></div>";
                 break;
             case "boolean":
                 var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
@@ -316,6 +318,10 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
         }
         return columnDef;
+    };
+
+    $scope.lineChart = function(col) {
+        $rootScope.$broadcast("lineChart", {col: col, pcmData: $scope.pcmData});
     };
 
     /**
