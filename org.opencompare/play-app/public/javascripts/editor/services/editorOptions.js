@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.service('embedService', function($rootScope) {
+pcmApp.service('editorOptions', function($rootScope) {
 
     this.initialize = function(data) {
         $rootScope.$broadcast('initializeFromExternalSource', data);

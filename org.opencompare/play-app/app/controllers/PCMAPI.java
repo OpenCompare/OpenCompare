@@ -91,6 +91,7 @@ public class PCMAPI extends Controller {
     }
 
     private List<PCMContainer> loadHtml(String fileContent, boolean productAsLines) throws IOException {
+
         HTMLLoader loader = new HTMLLoader(pcmFactory, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
@@ -269,7 +270,7 @@ public class PCMAPI extends Controller {
         } catch (Exception e) {
             fileContent = dynamicForm.field("file").value();
         }
-
+        System.out.print("test"+fileContent);
         try {
             pcmContainers = loadHtml(fileContent, productAsLines);
             if (pcmContainers.isEmpty()) {

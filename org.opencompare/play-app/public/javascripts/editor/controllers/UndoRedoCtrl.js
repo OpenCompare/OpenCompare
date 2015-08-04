@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, sortFeaturesService) {
+pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, sortFeaturesService, editorUtil) {
 
     //Undo-redo
     $scope.commands = [];
@@ -202,8 +202,8 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
 
     function undoRenameFeature(oldFeatureName, featureName, index) {
 
-        var codedFeatureName = convertStringToEditorFormat(featureName);
-        var codedOldFeatureName = convertStringToEditorFormat(oldFeatureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
+        var codedOldFeatureName = editorUtil.convertStringToEditorFormat(oldFeatureName);
         var found = false;
         for(var i = 0; !found && i < $scope.gridOptions.columnDefs.length; i++) {
             if($scope.gridOptions.columnDefs[i].name === codedFeatureName) {

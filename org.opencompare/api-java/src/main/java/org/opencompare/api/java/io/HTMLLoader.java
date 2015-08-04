@@ -68,7 +68,7 @@ public class HTMLLoader implements PCMLoader {
     }
 
     @Override
-    public List<PCMContainer> load(String pcm) { System.out.print(pcm);
+    public List<PCMContainer> load(String pcm) {
         List<PCMContainer> containers = new ArrayList<>();
         Document doc = Jsoup.parse(pcm);
         List<IOMatrix> matrices = createMatrices(doc);

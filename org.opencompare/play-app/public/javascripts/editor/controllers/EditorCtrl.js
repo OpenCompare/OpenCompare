@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil) {
     if($.material) {
         $.material.init();
     }
@@ -95,17 +95,17 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 100 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
+            if($scope.pcmData.length * 28 + 100 > $(window).height()* 2 / 3 && !editorUtil.GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
-            else if($scope.pcmData.length * 28 + 100 > $(window).height() && GetUrlValue('enableEdit')) {
+            else if($scope.pcmData.length * 28 + 100 > $(window).height() && editorUtil.GetUrlValue('enableEdit')) {
                 var height = 20;
 
-                if(GetUrlValue('enableExport') == 'true' || GetUrlValue('enableShare') == 'true') {
+                if(editorUtil.GetUrlValue('enableExport') == 'true' || editorUtil.GetUrlValue('enableShare') == 'true') {
                         height += 40;
 
                 }
-                if(GetUrlValue('enableTitle') == 'true') {
+                if(editorUtil.GetUrlValue('enableTitle') == 'true') {
                     if($scope.pcm.name.length > 30) {
                         height += 120;
                     }
@@ -114,7 +114,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                     }
 
                 }
-                if(GetUrlValue('enableEdit') == 'true') {
+                if(editorUtil.GetUrlValue('enableEdit') == 'true') {
                     if($scope.edit) {
                         height += 80;
                     }
@@ -149,7 +149,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
             if(featureGroups.length > 0) {
                 for(var i = 0; i < featureGroups.length; i++) {
 
-                    var decodedFeatureGroupName = convertStringToPCMFormat(featureGroups[i].name);
+                    var decodedFeatureGroupName = editorUtil.convertStringToPCMFormat(featureGroups[i].name);
                     var codedFeatureGroupName = featureGroups[i].name;
 
                     if (!featureGroupsMap.hasOwnProperty(codedFeatureGroupName)) {
@@ -161,13 +161,13 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                             var featuresWithThisFeatureGroup = $scope.getFeaturesWithThisFeatureGroup(codedFeatureGroupName, features);
 
                             for (var j = 0; j < featuresWithThisFeatureGroup.length; j++) {
-                                if (!featuresMap.hasOwnProperty(convertStringToPCMFormat(featuresWithThisFeatureGroup[j]))
+                                if (!featuresMap.hasOwnProperty(editorUtil.convertStringToPCMFormat(featuresWithThisFeatureGroup[j]))
                                     && featuresWithThisFeatureGroup[j] !== " "
                                     && featuresWithThisFeatureGroup[j] !== "Product") {
                                     var featureToAdd = factory.createFeature();
-                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[j]);
+                                    featureToAdd.name = editorUtil.convertStringToPCMFormat(featuresWithThisFeatureGroup[j]);
                                     featureGroup.addSubFeatures(featureToAdd);
-                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[j])] = featureToAdd;
+                                    featuresMap[editorUtil.convertStringToPCMFormat(featuresWithThisFeatureGroup[j])] = featureToAdd;
                                 }
                             }
                             pcm.addFeatures(featureGroup);
@@ -178,10 +178,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                                 if (!featuresMap.hasOwnProperty(featuresWithThisFeatureGroup[k])
                                 && featuresWithThisFeatureGroup[k] !== " "
                                  && featuresWithThisFeatureGroup[k] !== "Product")  {
-                                    featureGroupsMap[convertStringToPCMFormat(featureGroups[i].name)] = 'empty';
+                                    featureGroupsMap[editorUtil.convertStringToPCMFormat(featureGroups[i].name)] = 'empty';
                                     var featureToAdd = factory.createFeature();
-                                    featureToAdd.name = convertStringToPCMFormat(featuresWithThisFeatureGroup[k]);
-                                    featuresMap[convertStringToPCMFormat(featuresWithThisFeatureGroup[k])] = featureToAdd;
+                                    featureToAdd.name = editorUtil.convertStringToPCMFormat(featuresWithThisFeatureGroup[k]);
+                                    featuresMap[editorUtil.convertStringToPCMFormat(featuresWithThisFeatureGroup[k])] = featureToAdd;
                                     pcm.addFeatures(featureToAdd);
                             }
 
@@ -192,7 +192,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 }
                 $scope.gridOptions.columnDefs.forEach(function (featureData) {
 
-                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var decodedFeatureName = editorUtil.convertStringToPCMFormat(featureData.name);
                     var codedFeatureName = featureData.name;
                     if(productData.hasOwnProperty(decodedFeatureName)  && decodedFeatureName !== " "
                         && decodedFeatureName !== "Product") {
@@ -207,13 +207,11 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                         product.addCells(cell);
                     }
                 });
-              //  console.log(featuresMap);
-               // console.log(featureGroupsMap);
             }
             else {
                 $scope.gridOptions.columnDefs.forEach(function (featureData) {
 
-                    var decodedFeatureName = convertStringToPCMFormat(featureData.name);
+                    var decodedFeatureName = editorUtil.convertStringToPCMFormat(featureData.name);
                     var codedFeatureName = featureData.name;
 
                     if(productData.hasOwnProperty(decodedFeatureName)  && codedFeatureName !== " "
@@ -315,7 +313,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         index = 0;
         columns.forEach(function (column) {
             var object = {};
-            object.feature = convertStringToPCMFormat(column.name);
+            object.feature = editorUtil.convertStringToPCMFormat(column.name);
             object.position = index;
             metadata.featurePositions.push(object);
             index++;
@@ -360,7 +358,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     });
 
     $scope.$on('export', function (event, args) {
-        var pcmToExport = convertGridToPCM($scope.pcmData);
+        var pcmToExport = editorUtil.convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
         var jsonModel = JSON.parse(serializer.serialize(pcmToExport));
         $scope.pcmObject = {};

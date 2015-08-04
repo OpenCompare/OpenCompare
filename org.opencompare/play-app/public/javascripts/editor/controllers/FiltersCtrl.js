@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
+pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, editorUtil) {
 
     //Custom filters
     var $elm;
@@ -125,7 +125,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     $scope.closeFilter = function() {
         var featureName = $scope.featureToFilter;
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         var type =  $scope.columnsType[codedFeatureName];
         switch(type) {
@@ -168,7 +168,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
             var inFilter = false;
             var index = 0;
             while(!inFilter && index < $scope.columnsFilters[codedFeatureName].length) {
-                if(cellValue == $scope.columnsFilters[codedFeatureName][index] || isEmptyCell(cellValue)) {
+                if(cellValue == $scope.columnsFilters[codedFeatureName][index] || editorUtil.isEmptyCell(cellValue)) {
                     inFilter = true;
                 }
                 index++;
@@ -182,7 +182,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     $scope.filterLessNumberColumns = function(cellValue, columnDef, codedFeatureName) {
         if($scope.columnsFilters[codedFeatureName]) {
-            return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term || isEmptyCell(cellValue));
+            return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) >= columnDef.filters[0].term || editorUtil.isEmptyCell(cellValue));
         }
         else {
             return true;
@@ -191,7 +191,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     $scope.filterGreaterNumberColumns = function(cellValue, columnDef, codedFeatureName) {
         if($scope.columnsFilters[codedFeatureName]) {
-            return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term || isEmptyCell(cellValue));
+            return (parseFloat(cellValue.replace(/\s/g, "").replace(",", ".")) <= columnDef.filters[1].term || editorUtil.isEmptyCell(cellValue));
         }
         else {
             return true;
@@ -200,10 +200,10 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     $scope.filterBooleanColumns = function(cellValue, codedFeatureName) {
         if($scope.columnsFilters[codedFeatureName] == 1) {
-            return getBooleanValue(cellValue) == "yes" || isEmptyCell(cellValue);
+            return getBooleanValue(cellValue) == "yes"; //|| isEmptyCell(cellValue);
         }
         else if($scope.columnsFilters[codedFeatureName] == 2) {
-            return getBooleanValue(cellValue) == "no" || isEmptyCell(cellValue);
+            return getBooleanValue(cellValue) == "no"|| editorUtil.isEmptyCell(cellValue);
         }
         else {
             return true;

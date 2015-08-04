@@ -2,14 +2,14 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, embedService, sortFeaturesService) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, editorOptions, editorUtil, sortFeaturesService) {
 
     $scope.height = 300;
     $scope.minWidth = 130;
-    $scope.enableEdit = embedService.enableEdit().get;
-    $scope.enableExport = embedService.enableExport().get;
+    $scope.enableEdit = editorOptions.enableEdit;
+    $scope.enableExport = editorOptions.enableExport;
     $scope.enableTitle = true;
-    $scope.enableShare = embedService.enableShare().get;
+    $scope.enableShare = editorOptions.enableShare;
 
     $scope.FeaturGroupIndex = 1;
 
@@ -121,7 +121,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.setGridHeight = function() {
 
         if($scope.pcmData) {
-            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3 && !GetUrlValue('enableEdit')) {
+            if($scope.pcmData.length * 28 + 90 > $(window).height()* 2 / 3 && !editorUtil.GetUrlValue('enableEdit')) {
                 $scope.height = $(window).height() * 2 / 3;
             }
             else if($scope.pcmData.length * 28 + 90 > $(window).height()) {
@@ -165,7 +165,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         else {
             featureGroupName = 'empltyFeatureGroup';
         }
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
         $scope.columnsType[codedFeatureName] = featureType;
         var columnDef = {
             name: codedFeatureName,
@@ -249,7 +249,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     return 'warningCell';
                 }
                 else if(rowValue) {
-                    return getCellClass(rowValue[col.name], featureType);
+                    return editorUtil.getCellClass(rowValue[col.name], featureType);
                 }
             },
             cellTooltip: function(row, col) {
@@ -258,8 +258,8 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 if($scope.validating && $scope.validation[col.name] && !$scope.validation[col.name][$scope.pcmData.indexOf(row.entity)]) {
                     return "This value doesn't seem to match the feature type.";
                 }
-                else if(rawValue && getCellTooltip(rawValue[col.name])){
-                    return getCellTooltip(rawValue[col.name]);
+                else if(rawValue && editorUtil.getCellTooltip(rawValue[col.name])){
+                    return editorUtil.getCellTooltip(rawValue[col.name]);
                 }
                 else if(contentValue) {
                     return contentValue[col.name];
@@ -334,7 +334,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         $scope.pcmData = pcm.products.array.map(function(product) {
             var productData = {};
             features.map(function(feature) {
-                var featureName = convertStringToEditorFormat(feature.name);
+                var featureName = editorUtil.convertStringToEditorFormat(feature.name);
                 if(!feature.name){
                     featureName = " ";
                 }
@@ -349,7 +349,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         $scope.pcmDataRaw = pcm.products.array.map(function(product) {
             var productDataRaw = {};
             features.map(function(feature) {
-                var featureName =  convertStringToEditorFormat(feature.name);
+                var featureName =  editorUtil.convertStringToEditorFormat(feature.name);
                 if(!feature.name){
                     featureName = " ";
                 }
@@ -428,9 +428,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
 
         if(metadata) {
-            $scope.pcmData = sortProducts($scope.pcmData, metadata.productPositions);
-            $scope.pcmDataRaw = sortRawProducts($scope.pcmDataRaw, $scope.pcmData);
-            columnDefs = sortFeatures(columnDefs, metadata.featurePositions);
+            $scope.pcmData = editorUtil.sortProducts($scope.pcmData, metadata.productPositions);
+            $scope.pcmDataRaw = editorUtil.sortRawProducts($scope.pcmDataRaw, $scope.pcmData);
+            columnDefs = editorUtil.sortFeatures(columnDefs, metadata.featurePositions);
         }
 
         var toolsColumn = {
@@ -495,8 +495,6 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             "<div class='ui-grid-filter-container'>" +
             "   <input type='text' class='form-control floating-label' ng-change='grid.appScope.applyProductFilter()' ng-model='grid.appScope.productFilter' placeholder='Find'"+
             "</div>";
-
-
         columnDefs.splice(0, 0, toolsColumn);
         columnDefs.splice(1, 0, productsColumn);
 
@@ -513,19 +511,19 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     }
 
     function setOptions() {
-        if(GetUrlValue('enableEdit') == 'false'){
+        if(editorUtil.GetUrlValue('enableEdit') == 'false'){
             $scope.enableEdit = false;
         }
-        if(GetUrlValue('enableExport') == 'false'){
+        if(editorUtil.GetUrlValue('enableExport') == 'false'){
             $scope.enableExport = false;
         }
-        if(GetUrlValue('enableTitle') == 'false'){
+        if(editorUtil.GetUrlValue('enableTitle') == 'false'){
             $scope.enableTitle = false;
         }
-        if(GetUrlValue('enableShare') == 'false'){
+        if(editorUtil.GetUrlValue('enableShare') == 'false'){
             $scope.enableShare = false;
         }
-        if(GetUrlValue('deleteAfterLoaded') == 'true'){
+        if(editorUtil.GetUrlValue('deleteAfterLoaded') == 'true'){
             if (typeof id !== 'undefined') {
                 $http.get("/api/remove/" + id);
             }

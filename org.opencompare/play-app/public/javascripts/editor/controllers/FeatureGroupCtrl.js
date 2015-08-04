@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService) {
+pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, editorUtil) {
 
     $scope.cols = {};
 
@@ -17,7 +17,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         var cols = $scope.gridOptions.columnDefs;
         for(var i = 2; i < cols.length; i ++) {
             $scope.cols[i-2] = {name: cols[i].name, isChecked: false};
-        } //console.log($scope.cols);
+        }
     };
 
     $scope.setRenameFeatureGroupModal = function(featureName) {
@@ -28,7 +28,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         var index = 0;
         for(var col in $scope.gridOptions.superColDefs) {
             if($scope.gridOptions.superColDefs[index]) {
-                if(getNumberOfFeaturesWithThisFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs[index].name ) == 0) {
+                if(editorUtil.getNumberOfFeaturesWithThisFeatureGroup($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs[index].name ) == 0) {
 
                     $scope.gridOptions.superColDefs.splice(index, 1);
                 }
@@ -48,7 +48,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
             for(var i = 0; i < superCols.length; i++) {
                 var _colId = superCols[i].name;
                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
-                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup(cols, superCols[i].name);
+                var numberOfColumnAffected = editorUtil.getNumberOfFeaturesWithThisFeatureGroup(cols, superCols[i].name);
                 var _parentWidth = numberOfColumnAffected * columnWidth;
                 _parentCol.css({
                     'min-width': _parentWidth + 'px',
@@ -69,7 +69,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
             var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + resizedCol.superCol + '"]');
             var _parentWidth = _parentCol.outerWidth() + deltaChange;
             if (deltaChange < 0) {
-                var numberOfColumnAffected = getNumberOfFeaturesWithThisFeatureGroup(cols, resizedCol.superCol);
+                var numberOfColumnAffected = editorUtil.getNumberOfFeaturesWithThisFeatureGroup(cols, resizedCol.superCol);
                 if (_parentWidth < (numberOfColumnAffected * resizedCol.minWidth)) {
                     _parentWidth = numberOfColumnAffected * resizedCol.minWidth;
                 }

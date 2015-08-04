@@ -3,14 +3,14 @@
  */
 
 
-pcmApp.service('typeService', function() {
+pcmApp.service('typeService', function(editorUtil) {
 
     this.getType = function(featureName, data) {
         var rowIndex = 0;
         var isInt = 0;
         var isBool = 0;
         var isString = 0;
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
         while(data[rowIndex]) {
             if(data[rowIndex][codedFeatureName]) {
                 if (!angular.equals(parseInt(data[rowIndex][codedFeatureName]), NaN)) {
@@ -19,7 +19,7 @@ pcmApp.service('typeService', function() {
                 else if (this.isBooleanValue(data[rowIndex][codedFeatureName])) {
                     isBool++;
                 }
-                else if (!isEmptyCell(data[rowIndex][codedFeatureName])) {
+                else if (!editorUtil.isEmptyCell(data[rowIndex][codedFeatureName])) {
                     isString++;
                 }
             }
@@ -52,7 +52,7 @@ pcmApp.service('typeService', function() {
         else if(this.isBooleanValue(productName)) {
             type = "boolean";
         }
-        else if(!isEmptyCell(productName)){
+        else if(!editorUtil.isEmptyCell(productName)){
             type = "string";
         }
         else {

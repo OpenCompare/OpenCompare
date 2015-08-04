@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, featureGroupService, sortFeaturesService, $compile, $modal) {
+pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, featureGroupService, sortFeaturesService, editorUtil) {
 
 
     /**
@@ -24,8 +24,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     $scope.addFeature = function() {
 
         /* Initialize data */
-        var featureName = checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var featureName = editorUtil.checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         $scope.pcmData.forEach(function (productData) {
             productData[codedFeatureName] = "";
@@ -103,9 +103,9 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
      */
     $scope.renameFeature = function() {
 
-        var codedOldFeatureName =  convertStringToEditorFormat($scope.oldFeatureName);
+        var codedOldFeatureName =  editorUtil.convertStringToEditorFormat($scope.oldFeatureName);
         var featureName = checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         /* Find the feature in column defs */
         var index = 0;
@@ -154,9 +154,9 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
      */
     $scope.renameFeatureGroup = function(oldFeatureName, newFeatureName) {
 
-        var codedOldFeatureName =  convertStringToEditorFormat(featureGroupService.getCurrentFeatureGroup());
-        var featureName = checkIfNameExists(newFeatureName, $scope.gridOptions.columnDefs);
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedOldFeatureName =  editorUtil.convertStringToEditorFormat(featureGroupService.getCurrentFeatureGroup());
+        var featureName = editorUtil.checkIfNameExists(newFeatureName, $scope.gridOptions.columnDefs);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         /* Find the feature in column defs */
         for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
@@ -254,7 +254,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     $scope.changeType = function () {
 
         var featureName = $scope.featureName;
-        var codedFeatureName = convertStringToEditorFormat(featureName);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
         var found = false;
         for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
             if($scope.gridOptions.columnDefs[i].name == codedFeatureName) {
