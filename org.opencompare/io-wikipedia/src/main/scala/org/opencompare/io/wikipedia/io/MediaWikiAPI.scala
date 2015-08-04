@@ -117,7 +117,7 @@ class MediaWikiAPI(
       "rawcontinue" -> "",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
-      "rvprop" -> "ids|timestamp|user|contentmodel|content|comment|tags|flags"
+      "rvprop" -> "ids|timestamp|user|comment|tags|flags"
     )
     val params = if (rvcontinue != "") {
       baseParams + ("rvcontinue" -> rvcontinue)
@@ -153,6 +153,24 @@ class MediaWikiAPI(
       case _ : JsonMappingException => println("No result...")
     }
     revs
+  }
+
+  def getContentFromRevision(language : String, id : Int): String = {
+    val params = Map[String, String](
+      "action" -> "query",
+      "format" -> "json",
+      "prop" -> "revisions",
+      "revids" -> id.toString,
+      "rvprop" -> "contentmodel|content"
+    )
+    val result = call(language, params)
+    if (result.isDefined) {
+      val jsonResult = Json.parse(result.get)
+      val revisions = jsonResult \ "query" \ "pages" \\ "revisions"
+      val revision = revisions.apply(0).apply(0)
+      (revision \ "*").as[JsString].value
+    }
+    ""
   }
 
 }
