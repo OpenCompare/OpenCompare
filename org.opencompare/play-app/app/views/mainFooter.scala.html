@@ -11,10 +11,12 @@
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-utf8-base64.min.js"))'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/Chart.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-chart.js"))'></script>
 
 <script>
         var pcmApp = angular.module("openCompare", ['ui.grid', 'ui.grid.edit', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.autoResize',
-        'ui.bootstrap', 'ui.slider','ui.grid.pinning',
+        'ui.bootstrap', 'ui.slider','ui.grid.pinning', 'chart.js',
         'pascalprecht.translate',
         'ab-base64']);
         var modalTemplatePath = '@routes.Assets.at("templates/")';

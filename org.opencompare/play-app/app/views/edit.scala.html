@@ -12,5 +12,23 @@
 <div>
     <div open-compare-editor ng-controller="EditorCtrl">
     </div>
+    <div ng-controller="ChartsCtrl" style="width:75%">
+        <canvas id="line" class="chart chart-line" data="data"
+        labels="labels" legend="true" series="series"
+        click="onClick">
+        </canvas>
+
+        <canvas id="bar" class="chart chart-bar" data="data"
+        labels="labels"></canvas>
+
+        <canvas id="radar" class="chart chart-radar" data="data"
+        labels="labels"></canvas>
+
+        <canvas id="radar" class="chart chart-radar" data="data"
+        labels="labels"></canvas>
+
+        <canvas id="polar-area" class="chart chart-polar-area" data="data"
+        labels="labels"></canvas>
+    </div>
 </div>
 }
