@@ -2,7 +2,8 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi, expandeditor, typeService, editorOptions, editorUtil, sortFeaturesService) {
+pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi,
+                                              expandeditor, typeService, editorOptions, editorUtil, sortFeaturesService, chartService) {
 
     $scope.height = 300;
     $scope.minWidth = 130;
@@ -300,7 +301,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 columnDef.filters = [];
                 columnDef.filters.push(filterGreater);
                 columnDef.filters.push(filterLess);
-                columnDef.footerCellTemplate = "<div class='ui-grid-cell-contents'><button class='btn btn-primary fa fa-bar-chart btn-sm' ng-click='grid.appScope.lineChart(col)' style='margin: 0;padding-top:2px;padding-bottom: 2px'></button></div>";
+                columnDef.footerCellTemplate = "" +
+                    "<div class='ui-grid-cell-contents'>" +
+                    "<button class='btn btn-primary fa fa-line-chart btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInLineChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInLineChart(col) != 1}' ng-click='grid.appScope.lineChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "<button class='btn btn-primary fa fa-bar-chart btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInBarChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInBarChart(col) != 1}' ng-click='grid.appScope.barChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "</div>";
                 break;
             case "boolean":
                 var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
@@ -323,6 +330,18 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.lineChart = function(col) {
         $rootScope.$broadcast("lineChart", {col: col, pcmData: $scope.pcmData});
     };
+
+    $scope.barChart = function(col) {
+        $rootScope.$broadcast("barChart", {col: col, pcmData: $scope.pcmData});
+    };
+
+    $scope.isInLineChart = function(col) {
+        return chartService.isInLineChart(col.name);
+    };
+    $scope.isInBarChart = function(col) {
+        return chartService.isInBarChart(col.name);
+    };
+
 
     /**
      * Initialize the editor
