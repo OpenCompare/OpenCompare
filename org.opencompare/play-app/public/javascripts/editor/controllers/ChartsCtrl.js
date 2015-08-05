@@ -11,10 +11,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.showStringPieChart = false;
     $scope.showStringRadarChart = false;
 
-
-    $scope.onClick = function (points, evt) {
-        console.log(points, evt);
-    };
+    $( "#panel" ).draggable();
 
     /* Line Chart */
 
@@ -23,6 +20,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.lineData = [];
 
     $scope.$on('lineChart', function(event, args) {
+
+        $("#lineTab").tab('show');
         var colName = args.col.name;
         var pcmData = args.pcmData;
 
@@ -32,8 +31,6 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                     $scope.lineSeries.splice(index, 1);
                     chartService.removeFromLineChart(colName);
                     $scope.lineData.splice(index, 1);
-
-
                 if($scope.lineSeries.length == 0) { // If there is no more columns, we hide it
                     $scope.showLineChart = false;
                 }
@@ -77,6 +74,9 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.barData = [];
 
     $scope.$on('barChart', function(event, args) {
+
+        $("#barTab").tab('show');
+
         var colName = args.col.name;
         var pcmData = args.pcmData;
 
@@ -130,6 +130,9 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.pieData = [];
 
     $scope.$on('pieChart', function(event, args) {
+
+        $("#pieTab").tab('show');
+
         var colName = args.col.name;
         var pcmData = args.pcmData;
         $scope.colors = ['#B2FF59','#FF5722','#DCDCDC'];
@@ -198,9 +201,11 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.radarData = [];
 
     $scope.$on('radarChart', function(event, args) {
+
+        $("#radarTab").tab('show');
+
         var colName = args.col.name;
         var pcmData = args.pcmData;
-        $scope.colors = ['#B2FF59','#FF5722','#DCDCDC'];
 
         if($scope.showRadarChart) { // If the diagram is already there
             var index = $scope.radarSeries.indexOf(colName);
@@ -270,6 +275,9 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.stringPieData = [];
 
     $scope.$on('stringPieChart', function(event, args) {
+
+        $("#stringPieTab").tab('show');
+
         var colName = args.col.name;
         var pcmData = args.pcmData;
 
@@ -329,6 +337,9 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.stringRadarData = [];
 
     $scope.$on('stringRadarChart', function(event, args) {
+
+        $("#stringRadarTab").tab('show');
+
         var colName = args.col.name;
         var pcmData = args.pcmData;
 
