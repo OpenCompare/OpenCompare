@@ -2,7 +2,6 @@ package org.opencompare.io.wikipedia.io
 
 import java.net.SocketTimeoutException
 
-import com.fasterxml.jackson.databind.JsonMappingException
 import play.api.libs.json._
 
 import scala.collection.mutable.ListBuffer
@@ -125,37 +124,34 @@ class MediaWikiAPI(
       baseParams
     }
     val result = call(language, params)
-    try {
-      if (result.isDefined) {
-        val jsonResult = Json.parse(result.get)
-        val page = jsonResult \ "query" \ "pages"
-        (page \\ "revisions").foreach { revisions =>
-          revisions match {
-            case JsArray(revisionsSeq) => {
-              revisionsSeq.foreach(rev => {
-                revs.append(rev.asInstanceOf[JsObject])
-              })
-            }
-            case _ => println("failed")
+    if (result.isDefined) {
+      val jsonResult = Json.parse(result.get)
+      val page = jsonResult \ "query" \ "pages"
+      (page \\ "revisions").foreach { revisions =>
+        revisions match {
+          case JsArray(revisionsSeq) => {
+            revisionsSeq.foreach(rev => {
+              revs.append(rev.asInstanceOf[JsObject])
+            })
           }
-        }
-
-        // Recursive call only if not completed
-        if (!(jsonResult \ "query-continue").isInstanceOf[JsUndefined]) {
-          val rvcontinue = (jsonResult \ "query-continue" \ "revisions" \ "rvcontinue").get.toString().replaceAllLiterally("\"", "")
-          val result = getCompleteRevisionHistory(language, title, direction, rvcontinue)
-          result.foreach(rev => {
-            revs.append(rev)
-          })
+          case _ => println("failed")
         }
       }
-    } catch {
-      case _ : JsonMappingException => println("No result...")
+
+      // Recursive call only if not completed
+      if (!(jsonResult \ "query-continue").isInstanceOf[JsUndefined]) {
+        val rvcontinue = (jsonResult \ "query-continue" \ "revisions" \ "rvcontinue").get.toString().replaceAllLiterally("\"", "")
+        val result = getCompleteRevisionHistory(language, title, direction, rvcontinue)
+        result.foreach(rev => {
+          revs.append(rev)
+        })
+      }
     }
     revs
   }
 
   def getContentFromRevision(language : String, id : Int): String = {
+    var content = ""
     val params = Map[String, String](
       "action" -> "query",
       "format" -> "json",
@@ -168,9 +164,9 @@ class MediaWikiAPI(
       val jsonResult = Json.parse(result.get)
       val revisions = jsonResult \ "query" \ "pages" \\ "revisions"
       val revision = revisions.apply(0).apply(0)
-      (revision \ "*").as[JsString].value
+      content = (revision \ "*").as[JsString].value
     }
-    ""
+    content
   }
 
 }
