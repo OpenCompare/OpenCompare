@@ -281,6 +281,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 columnDef.filter.condition = function (searchTerm,  cellValue) {
                     return $scope.filterStringColumns(cellValue, codedFeatureName);
                 };
+                columnDef.footerCellTemplate = "" +
+                    "<div class='ui-grid-cell-contents'>" +
+                    "<button class='btn btn-primary fa fa-pie-chart btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInStringPieChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInStringPieChart(col) != 1}' ng-click='grid.appScope.stringPieChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "<button class='btn btn-primary fa fa-connectdevelop btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInStringRadarChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInStringRadarChart(col) != 1}' ng-click='grid.appScope.stringRadarChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "</div>";
                 break;
             case "number":
                 var filterLess = [];
@@ -321,6 +328,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 columnDef.filter.condition = function (searchTerm,  cellValue) {
                     return $scope.filterBooleanColumns(cellValue, codedFeatureName);
                 };
+                columnDef.footerCellTemplate = "" +
+                    "<div class='ui-grid-cell-contents'>" +
+                    "<button class='btn btn-primary fa fa-pie-chart btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInPieChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInPieChart(col) != 1}' ng-click='grid.appScope.pieChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "<button class='btn btn-primary fa fa-connectdevelop btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isInRadarChart(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isInRadarChart(col) != 1}' ng-click='grid.appScope.radarChart(col)' style='margin: 0 1px 0 1px;padding:2px 5px 2px 5px;'>" +
+                    "</button>" +
+                    "</div>";
                 break;
 
         }
@@ -335,12 +349,46 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         $rootScope.$broadcast("barChart", {col: col, pcmData: $scope.pcmData});
     };
 
+    $scope.pieChart = function(col) {
+        $rootScope.$broadcast("pieChart", {col: col, pcmData: $scope.pcmData});
+    };
+
+    $scope.radarChart = function(col) {
+        $rootScope.$broadcast("radarChart", {col: col, pcmData: $scope.pcmData});
+    };
+
+    $scope.stringPieChart = function(col) {
+        $rootScope.$broadcast("stringPieChart", {col: col, pcmData: $scope.pcmData});
+    };
+
+    $scope.stringRadarChart = function(col) {
+        $rootScope.$broadcast("stringRadarChart", {col: col, pcmData: $scope.pcmData});
+    };
+
     $scope.isInLineChart = function(col) {
         return chartService.isInLineChart(col.name);
     };
+
     $scope.isInBarChart = function(col) {
         return chartService.isInBarChart(col.name);
     };
+
+    $scope.isInPieChart = function(col) {
+        return chartService.isInPieChart(col.name);
+    };
+
+    $scope.isInRadarChart = function(col) {
+        return chartService.isInRadarChart(col.name);
+    };
+
+    $scope.isInStringPieChart = function(col) {
+        return chartService.isInStringPieChart(col.name);
+    };
+
+    $scope.isInStringRadarChart = function(col) {
+        return chartService.isInStringRadarChart(col.name);
+    };
+
 
 
     /**

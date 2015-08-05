@@ -10,7 +10,7 @@ pcmApp.service('editorUtil', function() {
             if(value.toLowerCase().indexOf('yes') != -1 || value.toLowerCase().indexOf('oui') != -1) {
                 return 'yesCell';
             }
-            else if(value.toLowerCase().indexOf('no') != -1 || value.toLowerCase().indexOf('non') != -1) {
+            else if(value.toLowerCase().indexOf('dunno') == -1 && (value.toLowerCase().indexOf('no') != -1 || value.toLowerCase().indexOf('non') != -1)) {
                 return 'noCell';
             }
             else {

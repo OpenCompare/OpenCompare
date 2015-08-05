@@ -20,12 +20,18 @@
 
         <canvas ng-if="showBarChart" id="bar" class="chart chart-bar" data="barData"
         labels="barLabels" series="barSeries" legend="true"></canvas>
-<!--
-        <canvas id="pie" class="chart chart-pie" data="data"
-        labels="labels"></canvas>
 
-        <canvas id="radar" class="chart chart-radar" data="data"
-        labels="labels"></canvas> -->
+        <canvas ng-if="showPieChart" id="pie" class="chart chart-pie" data="pieData"
+        labels="pieLabels" legend="true" colours="colors"></canvas>
+
+        <canvas ng-if="showRadarChart" id="radar" class="chart chart-radar" data="radarData"
+        labels="radarLabels"></canvas>
+
+        <canvas ng-if="showStringPieChart" id="pie" class="chart chart-pie" data="stringPieData"
+        labels="stringPieLabels" legend="true"></canvas>
+
+        <canvas ng-if="showStringRadarChart" id="radar" class="chart chart-radar" data="stringRadarData"
+        labels="stringRadarLabels"></canvas>
 
     </div>
 </div>

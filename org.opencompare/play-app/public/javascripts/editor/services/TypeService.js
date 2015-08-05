@@ -73,5 +73,18 @@ pcmApp.service('typeService', function(editorUtil) {
 
         return((productName.toLowerCase() === "yes") ||  (productName.toLowerCase() === "true") ||  (productName.toLowerCase() === "no") ||  (productName.toLowerCase() === "false"));
     };
+
+    this.getBooleanValue = function(name){
+
+        if(name.toLowerCase() === "yes" || name.toLowerCase() === "true") {
+            return "yes";
+        }
+        else  if(name.toLowerCase() === "no" || name.toLowerCase() === "false") {
+            return "no";
+        }
+        else {
+            return "unknown";
+        }
+    }
 });
 

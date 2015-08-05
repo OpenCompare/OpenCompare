@@ -2,17 +2,25 @@
  * Created by hvallee on 8/4/15.
  */
 
-pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService) {
+pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService) {
+
     $scope.showLineChart = false;
     $scope.showBarChart = false;
+    $scope.showPieChart = false;
+    $scope.showRadarChart = false;
+    $scope.showStringPieChart = false;
+    $scope.showStringRadarChart = false;
 
-    $scope.lineLabels = [];
-    $scope.lineSeries = [];
-    $scope.lineData = [];
 
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+
+    /* Line Chart */
+
+    $scope.lineLabels = [];
+    $scope.lineSeries = [];
+    $scope.lineData = [];
 
     $scope.$on('lineChart', function(event, args) {
         var colName = args.col.name;
@@ -55,6 +63,19 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService) {
         }
     });
 
+    $scope.isInLineChart = function(col) {
+        var colName = col.name;
+        var index = $scope.lineSeries.indexOf(colName);
+        return index != -1;
+    };
+
+
+    /* Bar Chart */
+
+    $scope.barLabels = [];
+    $scope.barSeries = [];
+    $scope.barData = [];
+
     $scope.$on('barChart', function(event, args) {
         var colName = args.col.name;
         var pcmData = args.pcmData;
@@ -96,10 +117,275 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService) {
         }
     });
 
-    $scope.isInLineChart = function(col) {
+    $scope.isInBarChart = function(col) {
         var colName = col.name;
-        var index = $scope.lineSeries.indexOf(colName);
+        var index = $scope.barSeries.indexOf(colName);
         return index != -1;
-    }
+    };
+
+    /* Pie Chart */
+
+    $scope.pieLabels = [];
+    $scope.pieSeries = [];
+    $scope.pieData = [];
+
+    $scope.$on('pieChart', function(event, args) {
+        var colName = args.col.name;
+        var pcmData = args.pcmData;
+        $scope.colors = ['#B2FF59','#FF5722','#DCDCDC'];
+
+        if($scope.showPieChart) { // If the diagram is already there
+            var index = $scope.pieSeries.indexOf(colName);
+            if(index != -1) { // If already present, we delete it
+                $scope.showPieChart = false;
+                $scope.pieSeries = [];
+                chartService.removeFromPieChart(colName);
+            }
+            else {// If not present we add it
+                var data = [0, 0, 0];
+                pcmData.forEach(function (product) {
+                    switch (typeService.getBooleanValue(product[colName])) {
+                        case 'yes':
+                            data[0]++;
+                            break;
+                        case 'no':
+                            data[1]++;
+                            break;
+                        case 'unknown':
+                            data[2]++;
+                            break;
+                    }
+                });
+                $scope.pieData = data;
+                $scope.pieSeries = [colName];
+                chartService.addInPieChart(colName);
+            }
+        }
+        else {
+            $scope.showPieChart = true;
+            $scope.pieSeries = [colName];
+            chartService.addInPieChart(colName);
+            var data = [0, 0, 0];
+            var labels = ["Yes", "No", "Unknown"];
+            pcmData.forEach(function (product) {
+                switch(typeService.getBooleanValue(product[colName])) {
+                    case 'yes':
+                        data[0]++;
+                        break;
+                    case 'no':
+                        data[1]++;
+                        break;
+                    case 'unknown':
+                        data[2]++;
+                        break;
+                }
+            });
+            $scope.pieData = data;
+            $scope.pieLabels = labels;
+        }
+    });
+
+    $scope.isInPieChart = function(col) {
+        var colName = col.name;
+        var index = $scope.pieSeries.indexOf(colName);
+        return index != -1;
+    };
+
+    /* Radar Chart */
+
+    $scope.radarLabels = [];
+    $scope.radarSeries = [];
+    $scope.radarData = [];
+
+    $scope.$on('radarChart', function(event, args) {
+        var colName = args.col.name;
+        var pcmData = args.pcmData;
+        $scope.colors = ['#B2FF59','#FF5722','#DCDCDC'];
+
+        if($scope.showRadarChart) { // If the diagram is already there
+            var index = $scope.radarSeries.indexOf(colName);
+            if(index != -1) { // If already present, we delete it
+                $scope.radarSeries.splice(index, 1);
+                chartService.removeFromRadarChart(colName);
+                $scope.radarData.splice(index, 1);
+
+                if($scope.radarSeries.length == 0) { // If there is no more columns, we hide it
+                    $scope.showRadarChart = false;
+                }
+            }
+            else {// If not present we add it
+                var data = [0, 0, 0];
+                pcmData.forEach(function (product) {
+                    switch (typeService.getBooleanValue(product[colName])) {
+                        case 'yes':
+                            data[0]++;
+                            break;
+                        case 'no':
+                            data[1]++;
+                            break;
+                        case 'unknown':
+                            data[2]++;
+                            break;
+                    }
+                });
+                $scope.radarData.push(data);
+                $scope.radarSeries.push(colName);
+                chartService.addInRadarChart(colName);
+            }
+        }
+        else {
+            $scope.showRadarChart = true;
+            $scope.radarSeries = [colName];
+            chartService.addInRadarChart(colName);
+            var data = [0, 0, 0];
+            var labels = ["Yes", "No", "Unknown"];
+            pcmData.forEach(function (product) {
+                switch(typeService.getBooleanValue(product[colName])) {
+                    case 'yes':
+                        data[0]++;
+                        break;
+                    case 'no':
+                        data[1]++;
+                        break;
+                    case 'unknown':
+                        data[2]++;
+                        break;
+                }
+            });
+            $scope.radarData = [data];
+            $scope.radarLabels = labels;
+        }
+    });
+
+    $scope.isInRadarChart = function(col) {
+        var colName = col.name;
+        var index = $scope.radarSeries.indexOf(colName);
+        return index != -1;
+    };
+
+    /* String Pie Chart */
+
+    $scope.stringPieLabels = [];
+    $scope.stringPieSeries = [];
+    $scope.stringPieData = [];
+
+    $scope.$on('stringPieChart', function(event, args) {
+        var colName = args.col.name;
+        var pcmData = args.pcmData;
+
+        if($scope.showStringPieChart) { // If the diagram is already there
+            var index = $scope.stringPieSeries.indexOf(colName);
+            if(index != -1) { // If already present, we delete it
+                $scope.showStringPieChart = false;
+                $scope.stringPieSeries = [];
+                chartService.removeFromStringPieChart(colName);
+            }
+            else {
+                var data = [];
+                var labels = [];
+                pcmData.forEach(function (product) {
+                    var productValue = product[colName];
+                    var index = labels.indexOf(productValue);
+                    if(index == -1) {
+                        labels.push(productValue);
+                        data.push(1);
+                    }
+                    else {
+                        data[index]++;
+                    }
+                });
+                $scope.stringPieData = data;
+                $scope.stringPieLabels = labels;
+                $scope.stringPieSeries = [colName];
+                chartService.addInStringPieChart(colName);
+            }
+        }
+        else {
+            $scope.showStringPieChart = true;
+            $scope.stringPieSeries = [colName];
+            chartService.addInStringPieChart(colName);
+            var data = [];
+            var labels = [];
+            pcmData.forEach(function (product) {
+                var productValue = product[colName];
+                var index = labels.indexOf(productValue);
+                if(index == -1) {
+                    labels.push(productValue);
+                    data.push(1);
+                }
+                else {
+                    data[index]++;
+                }
+            });
+            $scope.stringPieData = data;
+            $scope.stringPieLabels = labels;
+        }
+    });
+
+    /* String Radar Chart */
+
+    $scope.stringRadarLabels = [];
+    $scope.stringRadarSeries = [];
+    $scope.stringRadarData = [];
+
+    $scope.$on('stringRadarChart', function(event, args) {
+        var colName = args.col.name;
+        var pcmData = args.pcmData;
+
+        if($scope.showStringRadarChart) { // If the diagram is already there
+            var index = $scope.stringRadarSeries.indexOf(colName);
+            if(index != -1) { // If already present, we delete it
+                $scope.showStringRadarChart = false;
+                $scope.stringRadarSeries = [];
+                chartService.removeFromStringRadarChart(colName);
+            }
+            else {
+                var data = [];
+                var labels = [];
+                pcmData.forEach(function (product) {
+                    var productValue = product[colName];
+                    var index = labels.indexOf(productValue);
+                    if(index == -1) {
+                        labels.push(productValue);
+                        data.push(1);
+                    }
+                    else {
+                        data[index]++;
+                    }
+                });
+                $scope.stringRadarData = [data];
+                $scope.stringRadarLabels = labels;
+                $scope.stringRadarSeries = [colName];
+                chartService.addInStringRadarChart(colName);
+            }
+        }
+        else {
+            $scope.showStringRadarChart = true;
+            $scope.stringRadarSeries = [colName];
+            chartService.addInStringRadarChart(colName);
+            var data = [];
+            var labels = [];
+            pcmData.forEach(function (product) {
+                var productValue = product[colName];
+                var index = labels.indexOf(productValue);
+                if(index == -1) {
+                    labels.push(productValue);
+                    data.push(1);
+                }
+                else {
+                    data[index]++;
+                }
+            });
+            $scope.stringRadarData = [data];
+            $scope.stringRadarLabels = labels;
+        }
+    });
+
+    $scope.isInStringRadarChart = function(col) {
+        var colName = col.name;
+        var index = $scope.stringRadarSeries.indexOf(colName);
+        return index != -1;
+    };
+
 
 });
