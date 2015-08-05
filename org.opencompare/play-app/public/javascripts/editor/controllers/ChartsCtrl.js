@@ -4,6 +4,8 @@
 
 pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService) {
 
+    $scope.showChartPanel = true;
+
     $scope.showLineChart = false;
     $scope.showBarChart = false;
     $scope.showPieChart = false;
@@ -11,7 +13,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.showStringPieChart = false;
     $scope.showStringRadarChart = false;
 
-    $( "#panel" ).draggable();
+    $( "#chartPanel" ).draggable();
+
 
     /* Line Chart */
 
@@ -20,6 +23,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.lineData = [];
 
     $scope.$on('lineChart', function(event, args) {
+        $scope.showChartPanel = true;
 
         $("#lineTab").tab('show');
         var colName = args.col.name;
@@ -74,7 +78,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.barData = [];
 
     $scope.$on('barChart', function(event, args) {
-
+        $scope.showChartPanel = true;
         $("#barTab").tab('show');
 
         var colName = args.col.name;
@@ -130,7 +134,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.pieData = [];
 
     $scope.$on('pieChart', function(event, args) {
-
+        $scope.showChartPanel = true;
         $("#pieTab").tab('show');
 
         var colName = args.col.name;
@@ -201,7 +205,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.radarData = [];
 
     $scope.$on('radarChart', function(event, args) {
-
+        $scope.showChartPanel = true;
         $("#radarTab").tab('show');
 
         var colName = args.col.name;
@@ -275,7 +279,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.stringPieData = [];
 
     $scope.$on('stringPieChart', function(event, args) {
-
+        $scope.showChartPanel = true;
         $("#stringPieTab").tab('show');
 
         var colName = args.col.name;
@@ -337,7 +341,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.stringRadarData = [];
 
     $scope.$on('stringRadarChart', function(event, args) {
-
+        $scope.showChartPanel = true;
         $("#stringRadarTab").tab('show');
 
         var colName = args.col.name;
