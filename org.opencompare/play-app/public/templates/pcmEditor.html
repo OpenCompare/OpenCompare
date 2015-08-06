@@ -285,10 +285,16 @@
             </div>
         </div>
     </div>
-
-    <div class="container-fluid">
+    <div ng-show="edit" id="matrix"  class="grid" ng-class="{'col-md-8': !edit, 'col-md-12': edit}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
+        <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
+            <div class="msg">
+                <span class="loader"> Loading Data...</span>
+            </div>
+        </div>
+    </div>
+    <div ng-show="!edit" class="container-fluid" ng-controller="ConfiguratorCtrl">
         <div class="row">
-            <div ng-if="!edit" class="col-md-3" ng-controller="ConfiguratorCtrl">
+            <div ng-if="!edit" class="col-md-3">
                 <div class="list-group">
                     <div class="list-group-item">
                         <div class="row-action-primary">
@@ -314,7 +320,7 @@
                             <div class="least-content">String</div>
                             <p class="list-group-item-heading">{{feature.displayName}}</p>
                             <p class="list-group-item-text">
-                                <div class="checkbox checkbox-primary"  ng-repeat="value in getUniqueValues(feature.name)">
+                                <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name)">
                                     <label>
                                         <input type="checkbox"> {{value}}
                                     </label>
@@ -336,7 +342,7 @@
                             <p class="list-group-item-text" >
                             <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures">
                                 <label>
-                                    <input type="checkbox"> {{feature.displayName}}
+                                    <input type="checkbox" ng-model='booleanFilter' ng-change="changeFilterWithThisFeature(feature.name)"/> {{feature.displayName}}
                                 </label>
                             </div>
                             </p>
@@ -354,6 +360,14 @@
                             <p class="list-group-item-heading">{{feature.displayName}}</p>
                             <p class="list-group-item-text">
                             <div ui-slider="slider[feature.name].options" ng-model="slider[feature.name].values"></div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span >{{slider[feature.name].values[0]}}</span>
+                                </div>
+                                <div class="col-md-3 col-md-offset-6" style="text-align: right;">
+                                    <span>{{slider[feature.name].values[1]}}</span>
+                                </div>
+                            </div>
                             </p>
                         </div>
 
@@ -364,14 +378,39 @@
 
                 </div>
             </div>
-            <div id="matrix"  class="grid" ng-class="{'col-md-8': !edit, 'col-md-12': edit}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
-                <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
-                    <div class="msg">
-                        <span class="loader"> Loading Data...</span>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="list-group">
+                        <div class="list-group-item panel panel-default"  style="margin:5px" ng-repeat="product in data | filter:isInBooleanFilter">
+                            <div class="row-action-primary">
+                               
+                            </div>
+                            <div class="row-content panel-body">
+                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
+                                <h4 class="list-group-item-heading">{{product.name}}</h4>
+                                <p class="list-group-item-text">
+
+                                    <div class="row" ng-repeat="feature in stringFeatures" ng-if="product[feature.name] != ''">
+                                        <div class="col-md-6"><h5>{{feature.displayName}}</h5></div>
+                                        <div class="col-md-6"><p>{{product[feature.name]}}</p></div>
+                                        <div class="list-group-separator"></div>
+                                    </div>
+
+                                    <div class="row" ng-if="booleanFeatures.length > 0">
+                                        <div class="col-md-12">
+                                            <div class="col-md-6"><h5>Features</h5></div>
+                                            <div class="col-md-6">
+                                                <span ng-repeat="feature in booleanFeatures" ng-if="product[feature.name] != '' && hasThisFeature(product[feature.name])">{{feature.displayName}}, </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div class="list-group-separator" ng-if="numberFeatures.length > 0"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

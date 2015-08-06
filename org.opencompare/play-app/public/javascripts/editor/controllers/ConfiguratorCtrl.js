@@ -2,13 +2,15 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil) {
+pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService) {
 
     $scope.data = {};
     $scope.slider = [];
     $scope.booleanFeatures = [];
     $scope.stringFeatures  = [];
     $scope.numberFeatures = [];
+
+    $scope.filteredFeatures = [];
 
     $scope.$on('initConfigurator', function(event, args) {
         var features = args.features;
@@ -47,7 +49,34 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil) {
             }
         });
         return uniqueValues;
-    }
+    };
+
+    $scope.hasThisFeature = function(value) {
+        return typeService.getBooleanValue(value) == 'yes';
+    };
+
+    $scope.changeFilterWithThisFeature = function(feature) {
+        if(!$scope.filteredFeatures[feature]) {
+            $scope.filteredFeatures[feature] = true;
+        }
+        else {
+            delete $scope.filteredFeatures[feature];
+        }
+    };
+
+    $scope.isInBooleanFilter = function(product) {
+        for(var filteredFeature in $scope.filteredFeatures) {
+            if(filteredFeature != "move") {
+                if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    };
+
+
 
 });
 
