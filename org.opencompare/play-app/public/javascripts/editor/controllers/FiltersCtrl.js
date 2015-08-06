@@ -53,7 +53,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         else {
             $scope.columnsFilters[col.name] = value;
         }
-        // We empety tables, because data to represent has changed, and we can't just update because of tab system
+        // We empty tables, because data to represent has changed, and we can't just update because of tab system
         $rootScope.$broadcast("closeCharts");
         chartService.initArrays();
 
@@ -166,6 +166,8 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         if ($elm) {
             $elm.remove();
         }
+        // We empty tables, because data to represent has changed, and we can't just update because of tab system
+        $rootScope.$broadcast("closeCharts");
         chartService.initArrays();
     };
 

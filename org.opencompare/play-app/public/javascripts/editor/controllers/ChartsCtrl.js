@@ -41,7 +41,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
 
         $("#lineTab").tab('show');
         var colName = args.col.name;
-        var pcmData = args.pcmData;
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
 
         if($scope.showLineChart) { // If the diagram is already there
             var index = $scope.lineSeries.indexOf(colName);
@@ -96,7 +99,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $("#barTab").tab('show');
 
         var colName = args.col.name;
-        var pcmData = args.pcmData;
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
 
         if($scope.showBarChart) { // If the diagram is already there
             var index = $scope.barSeries.indexOf(colName);
@@ -226,7 +232,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $("#radarTab").tab('show');
 
         var colName = args.col.name;
-        var pcmData = args.pcmData;
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
 
         if($scope.showRadarChart) { // If the diagram is already there
             var index = $scope.radarSeries.indexOf(colName);
@@ -300,8 +309,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $("#stringPieTab").tab('show');
 
         var colName = args.col.name;
-        var pcmData = args.pcmData;
-
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
         if($scope.showStringPieChart) { // If the diagram is already there
             var index = $scope.stringPieSeries.indexOf(colName);
             if(index != -1) { // If already present, we delete it
@@ -362,7 +373,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $("#stringRadarTab").tab('show');
 
         var colName = args.col.name;
-        var pcmData = args.pcmData;
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
 
         if($scope.showStringRadarChart) { // If the diagram is already there
             var index = $scope.stringRadarSeries.indexOf(colName);
