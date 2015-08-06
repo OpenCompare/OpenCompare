@@ -38,18 +38,22 @@
                             labels="barLabels" series="barSeries" legend="true"></canvas>
                         </div>
                         <div class="tab-pane" id="pie">
+                            <h3>{{pieSeries[0]}}</h3>
                             <canvas ng-if="showPieChart" id="pie" class="chart chart-pie" data="pieData"
                             labels="pieLabels" legend="true" colours="colors"></canvas>
                         </div>
                         <div class="tab-pane" id="radar">
+                            <h3>{{radarSeries[0]}}</h3>
                             <canvas ng-if="showRadarChart" id="radar" class="chart chart-radar" data="radarData"
                             labels="radarLabels"></canvas>
                         </div>
                         <div class="tab-pane" id="stringPie">
+                            <h3>{{stringPieSeries[0]}}</h3>
                             <canvas ng-if="showStringPieChart" id="pie" class="chart chart-pie" data="stringPieData"
                             labels="stringPieLabels" legend="true"></canvas>
                         </div>
                         <div class="tab-pane" id="stringRadar">
+                            <h3>{{stringRadarSeries[0]}}</h3>
                             <canvas ng-if="showStringRadarChart" id="radar" class="chart chart-radar" data="stringRadarData"
                             labels="stringRadarLabels"></canvas>
                         </div>

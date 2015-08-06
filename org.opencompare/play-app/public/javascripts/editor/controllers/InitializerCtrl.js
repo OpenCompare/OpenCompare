@@ -342,27 +342,33 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     };
 
     $scope.lineChart = function(col) {
-        $rootScope.$broadcast("lineChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("lineChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.barChart = function(col) {
-        $rootScope.$broadcast("barChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("barChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.pieChart = function(col) {
-        $rootScope.$broadcast("pieChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("pieChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.radarChart = function(col) {
-        $rootScope.$broadcast("radarChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("radarChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.stringPieChart = function(col) {
-        $rootScope.$broadcast("stringPieChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("stringPieChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.stringRadarChart = function(col) {
-        $rootScope.$broadcast("stringRadarChart", {col: col, pcmData: $scope.pcmData});
+        var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
+        $rootScope.$broadcast("stringRadarChart", {col: col, pcmData: visibleRows});
     };
 
     $scope.isInLineChart = function(col) {

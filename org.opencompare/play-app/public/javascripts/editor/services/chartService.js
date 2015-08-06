@@ -8,6 +8,15 @@
  */
 pcmApp.service('chartService', function() {
 
+    this.initArrays = function() {
+        columnsInLineChart = [];
+        columnsInBarChart = [];
+        columnInPieChart = [];
+        columnsInRadarChart = [];
+        columnInStringPieChart = [];
+        columnInStringRadarChart = [];
+    };
+
     /* Line chart */
     var columnsInLineChart = [];
 

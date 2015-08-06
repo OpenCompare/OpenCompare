@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, editorUtil) {
+pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, editorUtil, chartService) {
 
     //Custom filters
     var $elm;
@@ -53,6 +53,11 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         else {
             $scope.columnsFilters[col.name] = value;
         }
+        // We empety tables, because data to represent has changed, and we can't just update because of tab system
+        $rootScope.$broadcast("closeCharts");
+        chartService.initArrays();
+
+
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 
@@ -161,6 +166,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         if ($elm) {
             $elm.remove();
         }
+        chartService.initArrays();
     };
 
     $scope.filterStringColumns = function(cellValue, codedFeatureName) {

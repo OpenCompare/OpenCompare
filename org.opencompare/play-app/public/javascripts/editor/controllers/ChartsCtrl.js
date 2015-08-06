@@ -16,6 +16,20 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $( "#chartPanel" ).draggable();
 
 
+    $scope.$on('closeCharts', function(event, args) {
+        $scope.showLineChart = false;
+        $scope.showBarChart = false;
+        $scope.showPieChart = false;
+        $scope.showRadarChart = false;
+        $scope.showStringPieChart = false;
+        $scope.showStringRadarChart = false;
+
+        $scope.pieSeries = [];
+        $scope.radarSeries = [];
+        $scope.stringPieSeries = [];
+        $scope.stringRadarSeries = [];
+    });
+
     /* Line Chart */
 
     $scope.lineLabels = [];
@@ -138,7 +152,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $("#pieTab").tab('show');
 
         var colName = args.col.name;
-        var pcmData = args.pcmData;
+        var pcmData = [];
+        args.pcmData.forEach(function (productRow) {
+            pcmData.push(productRow.entity);
+        });
         $scope.colors = ['#B2FF59','#FF5722','#DCDCDC'];
 
         if($scope.showPieChart) { // If the diagram is already there
