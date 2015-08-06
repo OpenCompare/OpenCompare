@@ -286,11 +286,90 @@
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-if="!edit" class="col-md-3" ng-controller="ConfiguratorCtrl">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="row-action-primary">
 
-    <div id="matrix"  class="grid" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
-        <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
-            <div class="msg">
-                <span class="loader"> Loading Data...</span>
+                        </div>
+                        <div class="row-content">
+                            <div class="least-content">Search</div>
+                            <p class="list-group-item-heading">Product</p>
+                            <p class="list-group-item-text">
+                                <input class="form-control floating-label"
+                                       type="text" placeholder="Find">
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-separator"></div>
+
+                    <div class="list-group-item" ng-if="stringFeatures.length > 0" ng-repeat="feature in stringFeatures">
+                        <div class="row-action-primary">
+
+                        </div>
+                        <div class="row-content">
+                            <div class="least-content">String</div>
+                            <p class="list-group-item-heading">{{feature.displayName}}</p>
+                            <p class="list-group-item-text">
+                                <div class="checkbox checkbox-primary"  ng-repeat="value in getUniqueValues(feature.name)">
+                                    <label>
+                                        <input type="checkbox"> {{value}}
+                                    </label>
+                                </div>
+                            </p>
+                        </div>
+
+                        <div class="list-group-separator"></div>
+
+                    </div>
+
+                    <div class="list-group-item" ng-if="booleanFeatures.length > 0">
+                        <div class="row-action-primary">
+
+                        </div>
+                        <div class="row-content">
+                            <div class="least-content">Boolean</div>
+                            <p class="list-group-item-heading">Features</p>
+                            <p class="list-group-item-text" >
+                            <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures">
+                                <label>
+                                    <input type="checkbox"> {{feature.displayName}}
+                                </label>
+                            </div>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-separator" ng-if="booleanFeatures.length > 0"></div>
+
+                    <div class="list-group-item" ng-if="numberFeatures.length > 0" ng-repeat="feature in numberFeatures">
+                        <div class="row-action-primary">
+
+                        </div>
+                        <div class="row-content">
+                            <div class="least-content">Number</div>
+                            <p class="list-group-item-heading">{{feature.displayName}}</p>
+                            <p class="list-group-item-text">
+                            <div ui-slider="slider[feature.name].options" ng-model="slider[feature.name].values"></div>
+                            </p>
+                        </div>
+
+                        <div class="list-group-separator"></div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="matrix"  class="grid" ng-class="{'col-md-8': !edit, 'col-md-12': edit}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
+                <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
+                    <div class="msg">
+                        <span class="loader"> Loading Data...</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

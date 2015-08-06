@@ -270,6 +270,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         };
         switch(featureType) {
             case "string":
+                columnDef.type = 'string';
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container'>" +
                     "   <button class='btn btn-primary fa fa-search btn-sm' ng-click='grid.appScope.showFilter(col)'>" +
@@ -290,6 +291,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</div>";
                 break;
             case "number":
+                columnDef.type = 'number';
                 var filterLess = [];
                 filterLess.condition  = function (searchTerm,  cellValue) {
                     return $scope.filterLessNumberColumns(cellValue, columnDef, codedFeatureName);
@@ -317,6 +319,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</div>";
                 break;
             case "boolean":
+                columnDef.type = 'boolean';
                 var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
                 var columnFilterValue = $scope.columnsFilters[codedFeatureName];
                 columnDef.filterHeaderTemplate="" +
@@ -606,6 +609,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             if (typeof id !== 'undefined') {
                 $http.get("/api/remove/" + id);
             }
+        }
+        if(!$scope.edit) {//Todo: replace by configuratorMode == true
+            $rootScope.$broadcast("initConfigurator", {features: $scope.gridOptions.columnDefs, pcmData: $scope.pcmData});
         }
     }
 

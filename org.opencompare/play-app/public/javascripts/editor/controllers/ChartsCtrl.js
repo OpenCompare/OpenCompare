@@ -17,6 +17,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
 
 
     $scope.$on('closeCharts', function(event, args) {
+        $scope.showChartPanel = false;
+
         $scope.showLineChart = false;
         $scope.showBarChart = false;
         $scope.showPieChart = false;
