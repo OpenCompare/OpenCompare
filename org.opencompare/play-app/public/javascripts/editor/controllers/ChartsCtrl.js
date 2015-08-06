@@ -4,7 +4,7 @@
 
 pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService) {
 
-    $scope.showChartPanel = true;
+    $scope.showChartPanel = false;
 
     $scope.showLineChart = false;
     $scope.showBarChart = false;
@@ -54,6 +54,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                     $scope.lineData.splice(index, 1);
                 if($scope.lineSeries.length == 0) { // If there is no more columns, we hide it
                     $scope.showLineChart = false;
+                    $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                        $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
                 }
             }
             else {// If not present we add it
@@ -110,10 +112,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                 $scope.barSeries.splice(index, 1);
                 chartService.removeFromBarChart(colName);
                 $scope.barData.splice(index, 1);
-
-
                 if($scope.barSeries.length == 0) { // If there is no more columns, we hide it
                     $scope.showBarChart = false;
+                    $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                        $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
                 }
             }
             else {// If not present we add it
@@ -170,6 +172,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                 $scope.showPieChart = false;
                 $scope.pieSeries = [];
                 chartService.removeFromPieChart(colName);
+                $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                    $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
             }
             else {// If not present we add it
                 var data = [0, 0, 0];
@@ -246,6 +250,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
 
                 if($scope.radarSeries.length == 0) { // If there is no more columns, we hide it
                     $scope.showRadarChart = false;
+                    $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                        $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
                 }
             }
             else {// If not present we add it
@@ -319,6 +325,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                 $scope.showStringPieChart = false;
                 $scope.stringPieSeries = [];
                 chartService.removeFromStringPieChart(colName);
+                $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                    $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
             }
             else {
                 var data = [];
@@ -384,6 +392,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
                 $scope.showStringRadarChart = false;
                 $scope.stringRadarSeries = [];
                 chartService.removeFromStringRadarChart(colName);
+                $scope.showChartPanel = $scope.showLineChart || $scope.showBarChart||
+                    $scope.showPieChart || $scope.showRadarChart || $scope.showStringPieChart || $scope.showStringRadarChart;
             }
             else {
                 var data = [];

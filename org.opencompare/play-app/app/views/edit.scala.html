@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div ng-controller="ChartsCtrl" class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default" id="chartPanel" ng-show="showChartPanel">
+            <div class="panel panel-default" id="chartPanel" ng-class='{"hideBlock" : !showChartPanel, "showBlock" : showChartPanel}'>
                 <div class="panel-heading">
                     <h3 class="panel-title">Charts</h3>
                 </div>
