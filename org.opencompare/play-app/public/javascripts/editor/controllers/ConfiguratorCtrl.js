@@ -64,14 +64,28 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         }
     };
 
-    $scope.isInBooleanFilter = function(product) {
+    $scope.isInFilter = function(product) {
+        /* Check for boolean filters */
+        for(var filteredFeature in $scope.boleanfilteredFeatures) {
+            if(filteredFeature != "move") {
+                if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
+                    return false;
+                }
+            }
+        }
         for(var filteredFeature in $scope.filteredFeatures) {
             if(filteredFeature != "move") {
                 if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
                     return false;
                 }
             }
-
+        }
+        for(var filteredFeature in $scope.filteredFeatures) {
+            if(filteredFeature != "move") {
+                if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
+                    return false;
+                }
+            }
         }
         return true;
     };
