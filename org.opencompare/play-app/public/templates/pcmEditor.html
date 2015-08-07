@@ -285,6 +285,8 @@
             </div>
         </div>
     </div>
+
+
     <div ng-show="edit" id="matrix"  class="grid" ng-class="{'col-md-8': !edit, 'col-md-12': edit}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
         <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
             <div class="msg">
@@ -292,7 +294,9 @@
             </div>
         </div>
     </div>
-    <div ng-show="!edit" class="container-fluid" ng-controller="ConfiguratorCtrl">
+
+
+    <div ng-if="!edit" class="container-fluid" ng-controller="ConfiguratorCtrl">
         <div class="row">
             <div ng-if="!edit" class="col-md-3">
                 <div class="list-group">
@@ -305,48 +309,63 @@
                             <p class="list-group-item-heading">Product</p>
                             <p class="list-group-item-text">
                                 <input class="form-control floating-label"
-                                       type="text" placeholder="Find">
+                                       type="text" placeholder="Find" ng-model="productFilter">
                             </p>
                         </div>
                     </div>
 
                     <div class="list-group-separator"></div>
 
-                    <div class="list-group-item" ng-if="stringFeatures.length > 0" ng-repeat="feature in stringFeatures">
-                        <div class="row-action-primary">
-
-                        </div>
-                        <div class="row-content">
-                            <div class="least-content">String</div>
-                            <p class="list-group-item-heading">{{feature.displayName}}</p>
-                            <p class="list-group-item-text">
-                                <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name)">
-                                    <label>
-                                        <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
-                                    </label>
-                                </div>
-                            </p>
-                        </div>
-
-                        <div class="list-group-separator"></div>
-
-                    </div>
 
                     <div class="list-group-item" ng-if="booleanFeatures.length > 0">
                         <div class="row-action-primary">
 
                         </div>
-                        <div class="row-content">
-                            <div class="least-content">Boolean</div>
+                        <div class="row-content" ng-init="limit.boolean=5" >
+                            <div class="least-content">
+                                <button ng-show="limit.boolean == 0" ng-click="limit.boolean = 5" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                                <button ng-show="limit.boolean != 0" ng-click="limit.boolean = 0" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                            </div>
                             <p class="list-group-item-heading">Features</p>
                             <p class="list-group-item-text" >
-                            <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures">
+                            <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures | limitTo:limit.boolean">
                                 <label>
                                     <input type="checkbox" ng-model='booleanFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type)"/> {{feature.displayName}}
                                 </label>
                             </div>
+
+                            <button ng-show="booleanFeatures.length > 5 && limit.boolean != booleanFeatures.length && limit.boolean != 0" ng-click="limit.boolean = booleanFeatures.length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
+                            <button ng-show="booleanFeatures.length > 5 && limit.boolean == booleanFeatures.length" ng-click="limit.boolean = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
+
                             </p>
                         </div>
+                    </div>
+
+                    <div class="list-group-item" ng-if="stringFeatures.length > 0" ng-repeat="feature in stringFeatures">
+                        <div class="row-action-primary">
+
+                        </div>
+                        <div class="row-content">
+                            <div class="least-content">
+                                <button ng-show="limit[feature.displayName] == 0" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                                <button ng-show="limit[feature.displayName] != 0" ng-click="limit[feature.displayName] = 0" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                            </div>
+                            <p class="list-group-item-heading">{{feature.displayName}}</p>
+                            <p class="list-group-item-text" ng-init="limit[feature.displayName]=5">
+                                <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name) | limitTo:limit[feature.displayName]">
+                                    <label>
+                                        <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
+                                    </label>
+                                </div>
+
+                                <button ng-if="limit[feature.displayName] != 0 && getUniqueValues(feature.name).length > 5 && limit[feature.displayName] != getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = getUniqueValues(feature.name).length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
+                                <button ng-if="getUniqueValues(feature.name).length > 5 &&limit[feature.displayName] == getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
+
+                            </p>
+                        </div>
+
+                        <div class="list-group-separator"></div>
+
                     </div>
 
                     <div class="list-group-separator" ng-if="booleanFeatures.length > 0"></div>

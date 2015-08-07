@@ -8,6 +8,9 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
     $scope.currentPage = 0;
     $scope.pageSize = 5;
 
+    $scope.limit = {};//Allow limit of displaying items in configurator features
+
+    $scope.productFilter = "";
     $scope.booleanFeatures = [];
     $scope.stringFeatures  = [];
     $scope.numberFeatures = [];
@@ -103,6 +106,12 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
 
 
     $scope.isInFilter = function(product) {
+        /* Check for product filter */
+      //  console.log("product"+product.name);
+    //    console.log($scope.productFilter);
+        if($scope.productFilter && product.name.indexOf($scope.productFilter) == -1) {
+            return false;
+        }
         /* Check for boolean filters */
         for(var filteredFeature in $scope.booleanFilteredFeatures) {
             if(filteredFeature != "move") {
@@ -111,6 +120,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                 }
             }
         }
+        /* Check for string filters */
         for(var filteredFeature in $scope.stringFilteredFeatures) {
             if(filteredFeature != "move") {
                 if ($scope.stringFilteredFeatures[filteredFeature].length > 0 && $scope.stringFilteredFeatures[filteredFeature].indexOf(product[filteredFeature]) == -1) {
@@ -118,6 +128,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                 }
             }
         }
+        /* Check for number filters */
         for(var filteredFeature in $scope.slider) {
             if($scope.slider[filteredFeature].values && ((parseFloat(product[filteredFeature].replace(/\s/g, "").replace(",", ".")) < $scope.slider[filteredFeature].values[0]) || (parseFloat(product[filteredFeature].replace(/\s/g, "").replace(",", ".")) > $scope.slider[filteredFeature].values[1]))) {
 
