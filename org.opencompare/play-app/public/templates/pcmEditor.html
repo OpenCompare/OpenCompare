@@ -322,7 +322,7 @@
                             <p class="list-group-item-text">
                                 <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name)">
                                     <label>
-                                        <input type="checkbox"> {{value}}
+                                        <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
                                     </label>
                                 </div>
                             </p>
@@ -342,7 +342,7 @@
                             <p class="list-group-item-text" >
                             <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures">
                                 <label>
-                                    <input type="checkbox" ng-model='booleanFilter' ng-change="changeFilterWithThisFeature(feature.name)"/> {{feature.displayName}}
+                                    <input type="checkbox" ng-model='booleanFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type)"/> {{feature.displayName}}
                                 </label>
                             </div>
                             </p>

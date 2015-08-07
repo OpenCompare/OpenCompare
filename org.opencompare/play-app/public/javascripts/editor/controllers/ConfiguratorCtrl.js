@@ -10,7 +10,9 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
     $scope.stringFeatures  = [];
     $scope.numberFeatures = [];
 
-    $scope.filteredFeatures = [];
+    $scope.booleanFilteredFeatures = [];
+    $scope.stringFilteredFeatures = [];
+    $scope.numberFilteredFeatures = [];
 
     $scope.$on('initConfigurator', function(event, args) {
         var features = args.features;
@@ -55,41 +57,62 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         return typeService.getBooleanValue(value) == 'yes';
     };
 
-    $scope.changeFilterWithThisFeature = function(feature) {
-        if(!$scope.filteredFeatures[feature]) {
-            $scope.filteredFeatures[feature] = true;
+    $scope.updateFilterWithThisFeature = function(feature, type, value) {
+        switch(type) {
+            case 'boolean':
+                if(!$scope.booleanFilteredFeatures[feature]) {
+
+                    $scope.booleanFilteredFeatures[feature] = true;
+                }
+                else {
+                    delete $scope.booleanFilteredFeatures[feature];
+                }
+                break;
+            case 'string':
+                if(!$scope.stringFilteredFeatures[feature]) {
+
+                    $scope.stringFilteredFeatures[feature] = [];
+                    $scope.stringFilteredFeatures[feature].push(value);
+                }
+                else {
+                    var index = $scope.stringFilteredFeatures[feature].indexOf(value);
+                    if(index == -1) {
+                        $scope.stringFilteredFeatures[feature].push(value);
+                    }
+                    else {
+                        $scope.stringFilteredFeatures[feature].splice(index, 1);
+                    }
+                }
+
         }
-        else {
-            delete $scope.filteredFeatures[feature];
-        }
+
     };
 
     $scope.isInFilter = function(product) {
         /* Check for boolean filters */
-        for(var filteredFeature in $scope.boleanfilteredFeatures) {
+        for(var filteredFeature in $scope.booleanFilteredFeatures) {
             if(filteredFeature != "move") {
                 if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
                     return false;
                 }
             }
         }
-        for(var filteredFeature in $scope.filteredFeatures) {
+        for(var filteredFeature in $scope.stringFilteredFeatures) {
+            if(filteredFeature != "move") { console.log($scope.stringFilteredFeatures[filteredFeature]);
+                if($scope.stringFilteredFeatures[filteredFeature].length > 0 && $scope.stringFilteredFeatures[filteredFeature].indexOf(product[filteredFeature]) == -1) {
+                    return false;
+                }
+            }
+        }
+        /*for(var filteredFeature in $scope.numberFilteredFeatures) {
             if(filteredFeature != "move") {
                 if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
                     return false;
                 }
             }
-        }
-        for(var filteredFeature in $scope.filteredFeatures) {
-            if(filteredFeature != "move") {
-                if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
-                    return false;
-                }
-            }
-        }
+        }*/
         return true;
     };
-
 
 
 });
