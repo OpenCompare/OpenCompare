@@ -381,7 +381,7 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="list-group">
-                        <div class="list-group-item panel panel-default"  style="margin:5px" ng-repeat="product in data | filter:isInFilter">
+                        <div class="list-group-item panel panel-default"  style="margin:5px" ng-repeat="product in data | filter:isInFilter | startFrom:currentPage*pageSize | limitTo:pageSize">
                             <div class="row-action-primary">
                                
                             </div>
@@ -414,6 +414,26 @@
                             </div>
                             <div class="list-group-separator" ng-if="numberFeatures.length > 0"></div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-2">
+                        <select ng-model="pageSize" class="form-control"  id="select" name="pageSize">
+                            <option value="5">5 per page</option>
+                            <option value="10">10 per page</option>
+                            <option value="25">25 per page</option>
+                            <option value="50">50 per page</option>
+                            <option value="100">100 per page</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                            Previous
+                        </button>
+                        {{currentPage+1}}/{{numberOfPages()}}
+                        <button  class="btn btn-primary" ng-disabled="currentPage >= length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                            Next
+                        </button>
                     </div>
                 </div>
             </div>

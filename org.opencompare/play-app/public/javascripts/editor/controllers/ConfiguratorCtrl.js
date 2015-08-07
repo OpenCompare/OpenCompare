@@ -5,14 +5,26 @@
 pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService) {
 
     $scope.data = {};
-    $scope.slider = [];
+    $scope.currentPage = 0;
+    $scope.pageSize = 5;
+
     $scope.booleanFeatures = [];
     $scope.stringFeatures  = [];
     $scope.numberFeatures = [];
 
     $scope.booleanFilteredFeatures = [];
     $scope.stringFilteredFeatures = [];
-    $scope.numberFilteredFeatures = [];
+    $scope.slider = [];
+
+    $scope.numberOfPages=function(){
+        $scope.length = 0;
+        $scope.data.forEach(function (product) {
+            if($scope.isInFilter(product)) {
+                $scope.length++;
+            }
+        });
+        return Math.ceil($scope.length/$scope.pageSize);
+    };
 
     $scope.$on('initConfigurator', function(event, args) {
         var features = args.features;
@@ -83,10 +95,12 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                         $scope.stringFilteredFeatures[feature].splice(index, 1);
                     }
                 }
-
+                break;
         }
-
+        $scope.currentPage = 0;
     };
+
+
 
     $scope.isInFilter = function(product) {
         /* Check for boolean filters */
@@ -98,25 +112,30 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
             }
         }
         for(var filteredFeature in $scope.stringFilteredFeatures) {
-            if(filteredFeature != "move") { console.log($scope.stringFilteredFeatures[filteredFeature]);
-                if($scope.stringFilteredFeatures[filteredFeature].length > 0 && $scope.stringFilteredFeatures[filteredFeature].indexOf(product[filteredFeature]) == -1) {
+            if(filteredFeature != "move") {
+                if ($scope.stringFilteredFeatures[filteredFeature].length > 0 && $scope.stringFilteredFeatures[filteredFeature].indexOf(product[filteredFeature]) == -1) {
                     return false;
                 }
             }
         }
-        /*for(var filteredFeature in $scope.numberFilteredFeatures) {
-            if(filteredFeature != "move") {
-                if(! (typeService.getBooleanValue(product[filteredFeature]) == 'yes')) {
-                    return false;
-                }
+        for(var filteredFeature in $scope.slider) {
+            if($scope.slider[filteredFeature].values && ((parseFloat(product[filteredFeature].replace(/\s/g, "").replace(",", ".")) < $scope.slider[filteredFeature].values[0]) || (parseFloat(product[filteredFeature].replace(/\s/g, "").replace(",", ".")) > $scope.slider[filteredFeature].values[1]))) {
+
+                return false;
             }
-        }*/
+        }
         return true;
     };
 
 
 });
 
+pcmApp.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+});
 
 
 
