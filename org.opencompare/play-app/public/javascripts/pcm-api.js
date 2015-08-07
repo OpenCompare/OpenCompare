@@ -52,7 +52,6 @@ pcmApp.service('pcmApi', function(base64) {
         }
 
         var aFeatures = pcm.features.array;
-
         var features = [];
         for (var i = 0; i < aFeatures.length; i++) {
             var aFeature = aFeatures[i];

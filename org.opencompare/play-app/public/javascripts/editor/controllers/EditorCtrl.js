@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil, typeService) {
     if($.material) {
         $.material.init();
     }
@@ -33,6 +33,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.featureName = "";
 
     $scope.loaded = false;
+    $scope.lineView = true;
 
     $scope.setEdit = function(bool, reload) {
 
@@ -90,6 +91,14 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
         $scope.metadata = args.metadata;
         $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
+    });
+
+    $scope.$on('setConfiguratorMode', function(event, arg) {
+        $scope.configurator = arg;
+    });
+
+    $scope.$on('setLineView', function(event, arg) {
+        $scope.lineView = arg;
     });
 
     $scope.setGridHeight = function() {

@@ -235,6 +235,42 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         }
     }
 
+    /* Updates from configurator */
+    $scope.$on('updateFilterFromConfigurator', function (event, args) {
+        switch(args.type) {
+            case 'string':
+                if(args.values.length > 0) {
+
+                    $scope.columnsFilters[args.feature] = args.values;
+                }
+                else {
+                    delete $scope.columnsFilters[args.feature];
+                }
+                break;
+            case 'boolean':
+                if(args.values == true) {
+                    $scope.columnsFilters[args.feature] = 1;
+                }
+                else {
+                    delete $scope.columnsFilters[args.feature];
+                }
+                break;
+            case 'number':
+                $scope.columnsFilters[args.feature] = [];
+                $scope.gridOptions.columnDefs.forEach(function (col) {
+                    if(col.name == args.feature) {
+                        col.filters[0].term = args.values[0];
+                        col.filters[1].term = args.values[1];
+                    }
+                });
+
+                break;
+        }
+
+        $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
+    });
+
+
 });
 
 

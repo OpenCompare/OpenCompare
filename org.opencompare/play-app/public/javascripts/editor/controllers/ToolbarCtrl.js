@@ -8,6 +8,8 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.isInDatabase = false;
     $scope.validating = false;
     $scope.edit = false;
+    $scope.configurator = false;
+    $scope.lineView = true;
     $scope.isTitleSet = false;
 
     /**
@@ -30,6 +32,17 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.cancel = function() {
         $rootScope.$broadcast('cancel');
     };
+
+    $scope.setConfigurator = function(bool) {
+        $scope.configurator = bool;
+        $rootScope.$broadcast('setConfiguratorMode', bool);
+    };
+
+    $scope.setLineView = function(bool) {
+        $scope.lineView = bool;
+        $rootScope.$broadcast('setLineView', bool);
+    };
+
 
     /**
      * Export

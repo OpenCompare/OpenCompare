@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService) {
+pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService, editorOptions) {
 
     $scope.data = {};
     $scope.currentPage = 0;
@@ -19,6 +19,9 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
     $scope.stringFilteredFeatures = [];
     $scope.slider = [];
 
+    $scope.conf = false;
+    $scope.lineView = true;
+
     $scope.numberOfPages=function(){
         $scope.length = 0;
         $scope.data.forEach(function (product) {
@@ -28,6 +31,14 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         });
         return Math.ceil($scope.length/$scope.pageSize);
     };
+
+    $scope.$on('setConfiguratorMode', function(event, arg) {
+        $scope.conf = arg;
+    });
+
+    $scope.$on('setLineView', function(event, arg) {
+        $scope.lineView = arg;
+    });
 
     $scope.$on('initConfigurator', function(event, args) {
         var features = args.features;
@@ -45,12 +56,21 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                     $scope.numberFeatures.push(feature);
                     var minAndMax =  editorUtil.findMinAndMax(feature.name, $scope.data);
                     $scope.slider[feature.name] = {};
+                    $scope.slider[feature.name].values = minAndMax;
+
                     $scope.slider[feature.name].options = {
                         range: true,
                         min: minAndMax[0],
-                        max: minAndMax[1]
+                        max: minAndMax[1],
+                        change: function (ev, ui) {
+                            $scope.$emit('updateFilterFromConfigurator', {
+                                "feature": feature.name,
+                                "type": "number",
+                                "values": $scope.slider[feature.name].values
+                            });
+
+                        }
                     };
-                    $scope.slider[feature.name].values = minAndMax;
                     break;
             }
         });
@@ -82,6 +102,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                 else {
                     delete $scope.booleanFilteredFeatures[feature];
                 }
+                $scope.$emit('updateFilterFromConfigurator', {"feature": feature, "type": "boolean", "values": $scope.booleanFilteredFeatures[feature]});
                 break;
             case 'string':
                 if(!$scope.stringFilteredFeatures[feature]) {
@@ -98,6 +119,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                         $scope.stringFilteredFeatures[feature].splice(index, 1);
                     }
                 }
+                $scope.$emit('updateFilterFromConfigurator', {"feature": feature, "type": "string", "values": $scope.stringFilteredFeatures[feature]});
                 break;
         }
         $scope.currentPage = 0;

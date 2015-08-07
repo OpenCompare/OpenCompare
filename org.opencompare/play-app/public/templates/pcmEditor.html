@@ -244,6 +244,8 @@
                     <a ng-show="!saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
                     <a ng-show="saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
                     <a role="button" ng-show="enableEdit && !edit" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
+                    <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="fa fa-pencil"></i> Configurator</a>
+                    <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="fa fa-pencil"></i> Classic</a>
                 <div class="btn-group">
 
                     <div class="btn-group" ng-show="enableExport">
@@ -267,6 +269,9 @@
 
                     </div>
 
+                    <a role="button" ng-show="configurator && !lineView" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setLineView(true)"><i class="fa fa-pencil"></i> Line view</a>
+                    <a role="button" ng-show="configurator && lineView" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setLineView(false)"><i class="fa fa-pencil"></i> Grid View</a>
+
                 </div>
 
                 <div class="btn-group">
@@ -287,18 +292,10 @@
     </div>
 
 
-    <div ng-show="edit" id="matrix"  class="grid" ng-class="{'col-md-8': !edit, 'col-md-12': edit}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
-        <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
-            <div class="msg">
-                <span class="loader"> Loading Data...</span>
-            </div>
-        </div>
-    </div>
-
-
-    <div ng-if="!edit" class="container-fluid" ng-controller="ConfiguratorCtrl">
-        <div class="row">
-            <div ng-if="!edit" class="col-md-3">
+<div class="container-fluid">
+    <div class="row">
+        <div ng-controller="ConfiguratorCtrl"  ng-show="conf">
+            <div class="col-md-3">
                 <div class="list-group">
                     <div class="list-group-item">
                         <div class="row-action-primary">
@@ -352,14 +349,14 @@
                             </div>
                             <p class="list-group-item-heading">{{feature.displayName}}</p>
                             <p class="list-group-item-text" ng-init="limit[feature.displayName]=5">
-                                <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name) | limitTo:limit[feature.displayName]">
-                                    <label>
-                                        <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
-                                    </label>
-                                </div>
+                            <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name) | limitTo:limit[feature.displayName]">
+                                <label>
+                                    <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
+                                </label>
+                            </div>
 
-                                <button ng-if="limit[feature.displayName] != 0 && getUniqueValues(feature.name).length > 5 && limit[feature.displayName] != getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = getUniqueValues(feature.name).length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
-                                <button ng-if="getUniqueValues(feature.name).length > 5 &&limit[feature.displayName] == getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
+                            <button ng-if="limit[feature.displayName] != 0 && getUniqueValues(feature.name).length > 5 && limit[feature.displayName] != getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = getUniqueValues(feature.name).length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
+                            <button ng-if="getUniqueValues(feature.name).length > 5 &&limit[feature.displayName] == getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
 
                             </p>
                         </div>
@@ -378,10 +375,10 @@
                             <div class="least-content">Number</div>
                             <p class="list-group-item-heading">{{feature.displayName}}</p>
                             <p class="list-group-item-text">
-                            <div ui-slider="slider[feature.name].options" ng-model="slider[feature.name].values"></div>
+                            <div ui-slider="slider[feature.name].options" name="{{feature.name}}" ng-model="slider[feature.name].values"></div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span >{{slider[feature.name].values[0]}}</span>
+                                    <span>{{slider[feature.name].values[0]}}</span>
                                 </div>
                                 <div class="col-md-3 col-md-offset-6" style="text-align: right;">
                                     <span>{{slider[feature.name].values[1]}}</span>
@@ -397,17 +394,23 @@
 
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" ng-show="lineView">
                 <div class="row">
-                    <div class="list-group">
-                        <div class="list-group-item panel panel-default"  style="margin:5px" ng-repeat="product in data | filter:isInFilter | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <div class="list-group" ng-init="showProduct = []">
+                        <div class="list-group-item"  style="margin:5px" ng-repeat="product in (filteredData = (data | filter:isInFilter | startFrom:currentPage*pageSize | limitTo:pageSize))">
                             <div class="row-action-primary">
-                               
+
                             </div>
-                            <div class="row-content panel-body">
-                                <div class="action-secondary"><i class="mdi-material-info"></i></div>
-                                <h4 class="list-group-item-heading">{{product.name}}</h4>
-                                <p class="list-group-item-text">
+                            <div class="row-content  panel panel-default" ng-init="showProduct[product.name] = true">
+                                <div class="panel-heading">
+                                    <div class="least-content">
+                                        <button ng-show="!showProduct[product.name]" ng-click="showProduct[product.name] = true" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                                        <button ng-show="showProduct[product.name]" ng-click="showProduct[product.name] = false" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                                    </div>
+                                    <h4 class="list-group-item-heading">{{product.name}}</h4>
+                                </div>
+                                <div class="panel-body" ng-show="showProduct[product.name]">
+                                    <p class="list-group-item-text">
 
                                     <div class="row" ng-repeat="feature in stringFeatures" ng-if="product[feature.name] != ''">
                                         <div class="col-md-6"><h5>{{feature.displayName}}</h5></div>
@@ -429,12 +432,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                             <div class="list-group-separator" ng-if="numberFeatures.length > 0"></div>
                         </div>
                     </div>
                 </div>
+                <button ng-click="visualizeInEditor(filteredData)">Visualize</button>
                 <div class="row">
                     <div class="col-md-2 col-md-offset-2">
                         <select ng-model="pageSize" class="form-control"  id="select" name="pageSize">
@@ -457,5 +462,19 @@
                 </div>
             </div>
         </div>
+        <div ng-show="!configurator || (configurator && !lineView)" id="matrix"  class="grid" ng-class="{'col-md-8': configurator, 'col-md-12': !configurator}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
+            <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
+                <div class="msg">
+                    <span class="loader"> Loading Data...</span>
+                </div>
+            </div>
+        </div>
     </div>
+
+    </div>
+</div>
+
+
+
+
 </div>

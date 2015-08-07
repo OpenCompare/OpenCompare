@@ -22,6 +22,18 @@ pcmApp.service('editorUtil', function() {
         }
     };
 
+    this.getFeaturesFromArray = function(data) {
+        var features = [];
+        data.forEach(function (product) {
+            for(var feature in product) {
+                if(features.indexOf(feature) == -1 && feature != '$$hashKey') {
+                    features.push(feature);
+                }
+            }
+        });
+        return features;
+    };
+
     this.getCellTooltip  = function(value) {
 
         if(value) {

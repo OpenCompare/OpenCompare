@@ -9,6 +9,10 @@ pcmApp.service('editorOptions', function($rootScope) {
         $rootScope.$broadcast('initializeFromExternalSource', data);
     };
 
+    this.initializeFromArray = function(data) {
+        $rootScope.$broadcast('initializeFromArray', data);
+    };
+
     var enableEdit = true;
     this.enableEdit = function(bool) {
         return{
