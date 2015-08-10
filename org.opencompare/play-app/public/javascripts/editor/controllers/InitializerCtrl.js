@@ -275,7 +275,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "<div class='ui-grid-filter-container'>" +
                     "   <button class='btn btn-primary fa fa-search btn-sm' ng-click='grid.appScope.showFilter(col)'>" +
                     "   </button>" +
-                    "   <button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close'  ng-click='grid.appScope.removeFilter(col)'>" +
+                    "   <button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' style='padding:5px' ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
                     "</div>";
                 columnDef.filter.noTerm = true;
@@ -300,7 +300,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "<div class='ui-grid-filter-container'>" +
                     "   <button class='btn btn-primary btn-sm fa fa-sliders' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'>" +
                     "   </button>" +
-                    "   <button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' ng-click='grid.appScope.removeFilter(col)'>" +
+                    "   <button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' style='padding:5px' ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
                     "</div>";
                 var filterGreater = [];
