@@ -24,11 +24,13 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
 
     $scope.numberOfPages=function(){
         $scope.length = 0;
-        $scope.data.forEach(function (product) {
-            if($scope.isInFilter(product)) {
-                $scope.length++;
-            }
-        });
+        if($scope.data.length > 0) {
+            $scope.data.forEach(function (product) {
+                if($scope.isInFilter(product)) {
+                    $scope.length++;
+                }
+            });
+        }
         return Math.ceil($scope.length/$scope.pageSize);
     };
 
@@ -166,7 +168,12 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
 pcmApp.filter('startFrom', function() {
     return function(input, start) {
         start = +start; //parse to int
-        return input.slice(start);
+        if(input.length > 0) {
+            return input.slice(start);
+        }
+        else {
+            return {};
+        }
     }
 });
 
