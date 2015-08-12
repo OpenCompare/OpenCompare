@@ -48,15 +48,25 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         rowEntity[colDef.name] = rawValue;
     };
 
-    $scope.setVisualRepresentation = function(rowEntity, colDef, newValue, oldValue, rawValue, contentValue) {
-
+    $scope.setVisualRepresentation = function(rowEntity, colDef, newValue, oldValue, rawValue) {
+        console.log(oldValue);
+        console.log(newValue);
+        console.log(rawValue);
         if(newValue && rawValue != newValue) {
             $rootScope.$broadcast('modified');
             $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
                 colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
+
+             if (colDef.name != "Product") {
+                var commandParameters = [rowEntity.$$hashKey,  colDef.name, oldValue, newValue];
+             }
+             else {
+                var commandParameters = [rowEntity.$$hashKey, 'name', oldValue, newValue];
+             }
+             $scope.newCommand('edit', commandParameters);
         }
         else {
-            $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = contentValue;
+            $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = oldValue;
         }
         /* Update value based on visual representation and raw */
         $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name] = newValue;
@@ -97,8 +107,13 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         });
 
         gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
+            for(var i = 0; i < $scope.pcmData.length; i++) {
+                if($scope.pcmData[i].$$hashKey == rowEntity.$$hashKey) {
+                    var rawValue = $scope.pcmDataRaw[i][colDef.name];
+                }
+            }
             for(var i = 0; i <   $scope.afterCellEditFunctions.length; i++) {
-                $scope.afterCellEditFunctions[i](rowEntity, colDef, newValue, oldValue, rawValue, contentValue);
+                $scope.afterCellEditFunctions[i](rowEntity, colDef, newValue, oldValue, rawValue);
             }
         });
 
@@ -622,7 +637,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
      * @param cellValue
      * @returns {Array.<T>|string|Blob|ArrayBuffer|*}
      */
-    function getVisualRepresentation(cellValue, index, colName, hashkey, oldValue, oldRawValue, newRawValue) {
+    function getVisualRepresentation(cellValue, index, colName) {
         $http.post("/api/extract-content", {
             type: 'wikipedia',
             rawContent: cellValue,
@@ -634,13 +649,6 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             var commandParameters = [];
             $scope.pcmData[index][colName] = data;
 
-           /* if (colName != "Product") {
-                commandParameters = [hashkey, colName, oldValue, data, oldRawValue, newRawValue];
-            }
-            else {
-                commandParameters = [hashkey, 'name', oldValue, data, oldRawValue, newRawValue];
-            }
-            $scope.newCommand('edit', commandParameters);*/
             $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
         });
 

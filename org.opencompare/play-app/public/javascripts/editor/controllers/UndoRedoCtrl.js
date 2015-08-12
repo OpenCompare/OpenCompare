@@ -74,8 +74,8 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                 case 'move':
                     $scope.gridOptions.columnDefs.move(parameters[0], parameters[1]);
                     break;
-                case 'edit':
-                    redoEdit(parameters[0], parameters[1], parameters[3], parameters[5]);
+                case 'edit': console.log(parameters);
+                    redoEdit(parameters[0], parameters[1], parameters[3]);
                     break;
                 case 'removeProduct':
                     undoAddProduct(parameters[0]);
@@ -120,24 +120,45 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
         $rootScope.$broadcast('modified');
     };
 
-    function undoEdit(productHashKey, featureName, oldValue,  oldRawValue) {
-        var found = false;
-        for(var i = 0; i < $scope.pcmData.length && !found; i++) {
+    function undoEdit(productHashKey, featureName, oldValue) {
+
+        for(var i = 0; i < $scope.pcmData.length; i++) {
             if ($scope.pcmData[i].$$hashKey == productHashKey) {
-                $scope.pcmData[i][featureName] = oldValue;
-                $scope.pcmDataRaw[i][featureName] = oldRawValue;
+                console.log($scope.pcmDataRaw[i]);
+                $http.post("/api/extract-content", {
+                    type: 'wikipedia',
+                    rawContent: oldValue,
+                    responseType: "text/plain",
+                    transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
+                        return d;
+                    }
+                }).success(function(data) {
+                    $scope.pcmData[i][featureName] = data;
+                });
+                $scope.pcmDataRaw[i][featureName] = oldValue;
                 found = true;
+                break;
             }
         }
     }
 
-    function redoEdit(productHashKey, featureName, newValue,  newRawValue) {
-        var found = false;
-        for(var i = 0; i < $scope.pcmData.length && !found; i++) {
+    function redoEdit(productHashKey, featureName, newValue) {
+
+        for(var i = 0; i < $scope.pcmData.length; i++) {
             if ($scope.pcmData[i].$$hashKey == productHashKey) {
-                $scope.pcmData[i][featureName] = newValue;
-                $scope.pcmDataRaw[i][featureName] = newRawValue;
-                found = true;
+                console.log($scope.pcmDataRaw[i]);
+                $http.post("/api/extract-content", {
+                    type: 'wikipedia',
+                    rawContent: newValue,
+                    responseType: "text/plain",
+                    transformResponse: function(d, e) { // Needed to not interpret matrix as json (begin with '{|')
+                        return d;
+                    }
+                }).success(function(data) {
+                    $scope.pcmData[i][featureName] = data;
+                });
+                $scope.pcmDataRaw[i][featureName] = newValue;
+                break;
             }
         }
     }
