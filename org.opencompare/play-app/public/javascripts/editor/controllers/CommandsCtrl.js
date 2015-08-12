@@ -21,10 +21,11 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     /**
      * Add a new feature
      */
-    $scope.addFeature = function() {
-
-        /* Initialize data */
-        var featureName = editorUtil.checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
+    $scope.addFeature = function(featureName) {
+        if(!featureName) {
+            /* Initialize data */
+            featureName = editorUtil.checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
+        }
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         $scope.pcmData.forEach(function (productData) {
@@ -276,11 +277,16 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
      * Add a new product and focus on this new
      * @param row
      */
-    $scope.addProduct = function() {
+    $scope.addProduct = function(productName) {
 
         var productData = {};
         var rawProduct = [];
-        productData.name = "";
+        if(productName) {
+            productData.name = productName;
+        }
+        else {
+            productData.name = "";
+        }
 
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name != " " && featureData.name != "Product") { // There must be a better way but working for now

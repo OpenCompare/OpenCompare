@@ -42,6 +42,11 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         $scope.lineView = arg;
     });
 
+    $scope.setLineView = function(bool) {
+        $scope.lineView = bool;
+        $rootScope.$broadcast('setLineView', bool);
+    };
+
     $scope.$on('initConfigurator', function(event, args) {
         var features = args.features;
         $scope.data = args.pcmData;
@@ -131,8 +136,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
 
     $scope.isInFilter = function(product) {
         /* Check for product filter */
-      //  console.log("product"+product.name);
-    //    console.log($scope.productFilter);
+
         if($scope.productFilter && product.name.indexOf($scope.productFilter) == -1) {
             return false;
         }

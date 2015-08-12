@@ -74,7 +74,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                 case 'move':
                     $scope.gridOptions.columnDefs.move(parameters[0], parameters[1]);
                     break;
-                case 'edit': console.log(parameters);
+                case 'edit':
                     redoEdit(parameters[0], parameters[1], parameters[3]);
                     break;
                 case 'removeProduct':
@@ -124,7 +124,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
 
         for(var i = 0; i < $scope.pcmData.length; i++) {
             if ($scope.pcmData[i].$$hashKey == productHashKey) {
-                console.log($scope.pcmDataRaw[i]);
+
                 $http.post("/api/extract-content", {
                     type: 'wikipedia',
                     rawContent: oldValue,
@@ -136,7 +136,6 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     $scope.pcmData[i][featureName] = data;
                 });
                 $scope.pcmDataRaw[i][featureName] = oldValue;
-                found = true;
                 break;
             }
         }
@@ -146,7 +145,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
 
         for(var i = 0; i < $scope.pcmData.length; i++) {
             if ($scope.pcmData[i].$$hashKey == productHashKey) {
-                console.log($scope.pcmDataRaw[i]);
+
                 $http.post("/api/extract-content", {
                     type: 'wikipedia',
                     rawContent: newValue,

@@ -17,9 +17,9 @@
 
         <a ng-show="!saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
         <a ng-show="saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
-        <a role="button" ng-show="enableEdit && !edit" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
-        <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="fa fa-pencil"></i> Configurator</a>
-        <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="fa fa-pencil"></i> Classic</a>
+        <a role="button" ng-show="enableEdit && !edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
+        <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="fa fa-exchange"></i> Configurator</a>
+        <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="fa fa-exchange"></i> Classic</a>
         <div class="btn-group">
 
             <div class="btn-group" ng-show="enableExport">
@@ -42,10 +42,6 @@
                 </ul>
 
             </div>
-
-            <a role="button" ng-show="configurator && !lineView" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setLineView(true)"><i class="fa fa-pencil"></i> Line view</a>
-            <a role="button" ng-show="configurator && lineView" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setLineView(false)"><i class="fa fa-pencil"></i> Grid View</a>
-
         </div>
 
         <div class="btn-group">

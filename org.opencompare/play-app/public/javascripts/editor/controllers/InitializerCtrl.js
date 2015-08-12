@@ -41,21 +41,14 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     var rawValue;
 
     /* Grid event functions */
-    $scope.setRawValue = function(rowEntity, colDef, rawValue, contentValue) {
 
-        rawValue = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
-        contentValue = rowEntity[colDef.name];
-        rowEntity[colDef.name] = rawValue;
-    };
 
     $scope.setVisualRepresentation = function(rowEntity, colDef, newValue, oldValue, rawValue) {
-        console.log(oldValue);
-        console.log(newValue);
-        console.log(rawValue);
+
         if(newValue && rawValue != newValue) {
             $rootScope.$broadcast('modified');
             $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = getVisualRepresentation(newValue, $scope.pcmData.indexOf(rowEntity),
-                colDef.name, rowEntity.$$hashKey, contentValue, rawValue, newValue);
+                colDef.name);
 
              if (colDef.name != "Product") {
                 var commandParameters = [rowEntity.$$hashKey,  colDef.name, oldValue, newValue];
@@ -81,7 +74,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         $rootScope.$broadcast('modified');
     };
     $scope.columnMovedFunctions.push($scope.moveColumnData);
-    $scope.beginCellEditFunctions.push($scope.setRawValue);
+
     $scope.afterCellEditFunctions.push($scope.setVisualRepresentation);
 
     /* Register grid functions */

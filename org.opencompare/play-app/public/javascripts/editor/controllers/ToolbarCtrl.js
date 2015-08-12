@@ -38,10 +38,10 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
         $rootScope.$broadcast('setConfiguratorMode', bool);
     };
 
-    $scope.setLineView = function(bool) {
-        $scope.lineView = bool;
-        $rootScope.$broadcast('setLineView', bool);
-    };
+
+    $scope.$on('setLineView', function(event, arg) {
+        $scope.lineView = arg;
+    });
 
 
     /**
@@ -65,6 +65,7 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.$on('modified', function(event, args) {
         $scope.saved = false;
     });
+
     $scope.$on('validating', function(event, args) {
         $scope.validating = !$scope.validating;
     });
@@ -80,6 +81,13 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
 
     $scope.$on('setToolbarEdit', function(event, args) {
         $scope.edit = args;
+    });
+
+    $scope.$on('launchCreation', function(event, args) {
+        $scope.edit = true;
+        $scope.isTitleSet = true;
+        $scope.pcmName = args.title;
+
     });
 
     $scope.$on('setPcmName', function(event, args) {

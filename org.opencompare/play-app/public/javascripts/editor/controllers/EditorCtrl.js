@@ -46,15 +46,14 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         }
         $rootScope.$broadcast('setToolbarEdit', bool);
 
+
     };
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
         $scope.pcm = factory.createPCM();
-        $scope.setEdit(false, false);
-        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
-
-    } else if (typeof data != 'undefined')  {
+    }
+    else if (typeof data != 'undefined')  {
         /* Load PCM from import */
         $scope.pcm = loader.loadModelFromString(data).get(0);
         pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
@@ -134,7 +133,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.height = $(window).height()-height;
             }
             else{
-                $scope.height = $scope.pcmData.length * 28 + 100;
+                $scope.height = $scope.pcmData.length * 28 + 130;
             }
         }
     };
@@ -334,6 +333,24 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
         if($scope.edit) {
             $rootScope.$broadcast('setPcmName', $scope.pcm.name);
+        }
+    });
+
+    $scope.$on('launchCreation', function(event, args) {
+
+        $scope.pcm = factory.createPCM();
+        $scope.setEdit(true, false);
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
+        $scope.pcm.name = args.title;
+
+        for(var i = 0; i < args.rows; i++) {
+            var productName = "Product " + (i + 1);
+            $scope.addProduct(productName);
+        }
+
+        for(var j = 0; j < args.columns; j++) {
+            var featureName = "Feature " + (j + 1);
+            $scope.addFeature(featureName);
         }
     });
 
