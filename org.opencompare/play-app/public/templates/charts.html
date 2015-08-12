@@ -1,0 +1,46 @@
+<div class="panel panel-default" id="chartPanel" ng-class='{"hideBlock" : !showChartPanel, "showBlock" : showChartPanel}'>
+    <div class="panel-heading">
+        <h3 class="panel-title">Charts</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="nav nav-pills" role="tablist">
+            <li class="active"><a class="btn-primary" ng-show="showLineChart" id="lineTab" href="#line" role="tab" data-toggle="tab">Line chart (<i class="fa fa-500px"></i>)</a></li>
+            <li><a ng-show="showBarChart" id="barTab" href="#bar" role="tab" data-toggle="tab">Bar chart (<i class="fa fa-500px"></i>)</a></li>
+            <li><a ng-show="showPieChart" id="pieTab" href="#pie" role="tab" data-toggle="tab">Pie chart (<i class="fa fa-check"></i>/<i class="fa fa-times"></i>)</a></li>
+            <li><a ng-show="showRadarChart" id="radarTab" href="#radar" role="tab" data-toggle="tab">Radar chart (<i class="fa fa-check"></i>/<i class="fa fa-times"></i>)</a></li>
+            <li><a ng-show="showStringPieChart" id="stringPieTab" href="#stringPie" role="tab" data-toggle="tab">Pie chart (<i class="fa fa-header"></i>)</a></li>
+            <li><a ng-show="showStringRadarChart" id="stringRadarTab" href="#stringRadar" role="tab" data-toggle="tab">Radar chart (<i class="fa fa-header"></i>)</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="line">
+                <canvas ng-if="showLineChart" id="line" class="chart chart-line" data="lineData"
+                        labels="lineLabels" legend="true" series="lineSeries" responsive="true"></canvas>
+            </div>
+            <div class="tab-pane" id="bar">
+                <canvas ng-if="showBarChart" id="bar" class="chart chart-bar" data="barData"
+                        labels="barLabels" series="barSeries" legend="true"></canvas>
+            </div>
+            <div class="tab-pane" id="pie">
+                <h3 ng-repeat="serie in pieSeries">{{serie}}</h3>
+                <canvas ng-if="showPieChart" id="pie" class="chart chart-pie" data="pieData"
+                        labels="pieLabels" legend="true" colours="colors"></canvas>
+            </div>
+            <div class="tab-pane" id="radar">
+                <h3 ng-repeat="serie in radarSeries">{{serie}}</h3>
+                <canvas ng-if="showRadarChart" id="radar" class="chart chart-radar" data="radarData"
+                        labels="radarLabels"></canvas>
+            </div>
+            <div class="tab-pane" id="stringPie">
+                <h3>{{stringPieSeries[0]}}</h3>
+                <canvas ng-if="showStringPieChart" id="pie" class="chart chart-pie" data="stringPieData"
+                        labels="stringPieLabels" legend="true"></canvas>
+            </div>
+            <div class="tab-pane" id="stringRadar">
+                <h3>{{stringRadarSeries[0]}}</h3>
+                <canvas ng-if="showStringRadarChart" id="radar" class="chart chart-radar" data="stringRadarData"
+                        labels="stringRadarLabels"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
