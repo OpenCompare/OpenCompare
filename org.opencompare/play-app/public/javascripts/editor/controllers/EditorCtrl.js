@@ -3,7 +3,7 @@
  */
 
 
-pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil, typeService) {
+pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil) {
     if($.material) {
         $.material.init();
     }
@@ -275,7 +275,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 id = data;
                 $scope.updateShareLinks();
                 console.log("model created with id=" + id);
-                $rootScope.$broadcast('saved');
+                $rootScope.$broadcast('savedFromCreator', id);
             });
         } else {
             $http.post("/api/save/" + id, pcmObject).success(function(data) {
@@ -338,6 +338,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
     $scope.$on('launchCreation', function(event, args) {
 
+        $rootScope.$broadcast('launchFromCreator');
         $scope.pcm = factory.createPCM();
         $scope.setEdit(true, false);
         $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
@@ -384,7 +385,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     });
 
     $scope.$on('export', function (event, args) {
-        var pcmToExport = editorUtil.convertGridToPCM($scope.pcmData);
+        var pcmToExport = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);
         var jsonModel = JSON.parse(serializer.serialize(pcmToExport));
         $scope.pcmObject = {};

@@ -15,8 +15,9 @@
 <div class="row" ng-show="enableExport || enableEdit">
     <div class="col-xs-12" >
 
-        <a ng-show="!saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
-        <a ng-show="saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a ng-show="!launchFromCreator && !saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a ng-show="!launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(false, true)"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a ng-show="launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" href="/pcm/{{id}}"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
         <a role="button" ng-show="enableEdit && !edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
         <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="fa fa-exchange"></i> Configurator</a>
         <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="fa fa-exchange"></i> Classic</a>

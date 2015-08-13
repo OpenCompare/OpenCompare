@@ -11,6 +11,7 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.configurator = false;
     $scope.lineView = true;
     $scope.isTitleSet = false;
+    $scope.launchFromCreator = false;
 
     /**
      * Save PCM on the server
@@ -43,6 +44,9 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
         $scope.lineView = arg;
     });
 
+    $scope.$on('launchFromCreator', function(event, args) {
+        $scope.launchFromCreator = true;
+    });
 
     /**
      * Export
@@ -77,6 +81,12 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.$on('saved', function(event, args) {
         $scope.saved = true;
         $scope.isInDatabase = true;
+    });
+
+    $scope.$on('savedFromCreator', function(event, args) {
+        $scope.saved = true;
+        $scope.isInDatabase = true;
+        $scope.id = args;
     });
 
     $scope.$on('setToolbarEdit', function(event, args) {
