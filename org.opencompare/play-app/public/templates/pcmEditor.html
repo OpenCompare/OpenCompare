@@ -208,6 +208,8 @@
                     <input type="checkbox" name="edit" value="enableEdit" ng-model="enableEditOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowEdition" | translate }}<br />
                     <input type="checkbox" name="export" value="enableExport" ng-model="enableExportOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowExportation" | translate }}<br />
                     <input type="checkbox" name="share" value="enableShare" ng-model="enableShareOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowSharing" | translate }}<br />
+                    <input type="checkbox" name="share" value="enableConfigurator" ng-model="enableConfiguratorOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowConfigurator" | translate }}<br />
+                    <input type="checkbox" name="share" value="enableCharts" ng-model="enableChartsOption"  ng-change="updateEmbedLink()"> {{ "edit.title.allowCharts" | translate }}<br />
                     <br />
                     <label for="code">Code:  </label>
                     <textarea id="code" rows="4" cols="60" ng-model="embedLink">

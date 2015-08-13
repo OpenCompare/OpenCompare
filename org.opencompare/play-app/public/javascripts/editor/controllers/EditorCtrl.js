@@ -42,7 +42,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         if(reload) {
             $timeout(function(){
                 $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
-            }, 20);
+            }, 100);
         }
         $rootScope.$broadcast('setToolbarEdit', bool);
 

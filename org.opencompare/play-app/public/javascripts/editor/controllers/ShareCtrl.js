@@ -10,12 +10,15 @@ pcmApp.controller("ShareCtrl", function($rootScope, $scope, $http, $timeout, uiG
     $scope.enableExportOption = false;
     $scope.enableTitleOption = false;
     $scope.enableShareOption = false;
+    $scope.enableConfiguratorOption = false;
+    $scope.enableChartsOption = false;
 
 
     $scope.updateShareLinks = function() {
         $scope.activeShareButton = true;
         $scope.embedLink = '<iframe src="http://'+window.location.hostname+':'+window.location.port+'/embedPCM/'+id
             +'?enableEdit='+$scope.enableEditOption+'&enableExport='+$scope.enableExportOption+'&enableTitle='+$scope.enableTitleOption+'&enableShare='+$scope.enableShareOption
+            +'&enableShare='+$scope.enableConfiguratorOption +'&enableShare='+$scope.enableChartsOption
             +'" scrolling="no"  width="100%" height="700px" style="border:none;"></iframe>';
         $scope.twitterLink = 'https://twitter.com/intent/tweet?text=%23opencompare&url=http://opencompare.org/pcm/'+id;
         $scope.facebookLink = 'https://www.facebook.com/sharer/sharer.php?u=http://opencompare.org/pcm/'+id;
@@ -27,9 +30,8 @@ pcmApp.controller("ShareCtrl", function($rootScope, $scope, $http, $timeout, uiG
     $scope.updateEmbedLink = function() {
         $scope.embedLink = '<iframe src="http://'+window.location.hostname+':'+window.location.port+'/embedPCM/'+id
             +'?enableEdit='+$scope.enableEditOption+'&enableExport='+$scope.enableExportOption+'&enableTitle='+$scope.enableTitleOption+'&enableShare='+$scope.enableShareOption
+            +'&enableShare='+$scope.enableConfiguratorOption +'&enableShare='+$scope.enableChartsOption
             +'" scrolling="no"  width="100%" height="700px" style="border:none;"></iframe>';
-        //$scope.gridApi.selection.selectAllVisibleRows();
-        //console.log($scope.gridApi.selection.getSelectedRows());
     }
 });
 
