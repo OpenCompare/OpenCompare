@@ -4,6 +4,6 @@
 
     pcmApp.directive('openCompareCharts', function() {
         return {
-            templateUrl: '/assets/templates/charts.html'
+            templateUrl: '/assets/editor/templates/charts.html'
         };
     });

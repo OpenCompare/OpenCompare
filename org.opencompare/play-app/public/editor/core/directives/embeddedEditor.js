@@ -4,7 +4,7 @@
 
     pcmApp.directive('openCompareEditor', function() {
         return {
-            templateUrl: '/assets/templates/pcmEditor.html'
+            templateUrl: '/assets/editor/templates/pcmEditor.html'
         };
     });
 

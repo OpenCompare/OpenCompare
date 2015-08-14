@@ -4,6 +4,6 @@
 
     pcmApp.directive('openCompareConfigurator', function() {
         return {
-            templateUrl: '/assets/templates/configurator.html'
+            templateUrl: '/assets/editor/templates/configurator.html'
         };
     });

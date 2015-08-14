@@ -4,6 +4,6 @@
 
     pcmApp.directive('openCompareToolbar', function() {
         return {
-            templateUrl: '/assets/templates/toolbar.html'
+            templateUrl: '/assets/editor/templates/toolbar.html'
         };
     });

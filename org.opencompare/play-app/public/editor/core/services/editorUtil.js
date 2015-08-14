@@ -6,7 +6,7 @@
 pcmApp.service('editorUtil', function() {
 
     this.getCellClass = function (value, featureType) {
-        if(value && featureType == 'boolean') {
+        if(value && featureType == 'bool') {
             if(value.toLowerCase().indexOf('yes') != -1 || value.toLowerCase().indexOf('oui') != -1) {
                 return 'yesCell';
             }

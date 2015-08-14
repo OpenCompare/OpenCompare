@@ -51,15 +51,15 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         var features = args.features;
         $scope.data = args.pcmData;
 
-        features.forEach(function (feature) {
+        features.forEach(function (feature) {;
             switch(feature.type) {
                 case 'string':
                     $scope.stringFeatures.push(feature);
                     break;
-                case 'boolean':
+                case 'bool':
                     $scope.booleanFeatures.push(feature);
                     break;
-                case 'number':
+                case 'num':
                     $scope.numberFeatures.push(feature);
                     var minAndMax =  editorUtil.findMinAndMax(feature.name, $scope.data);
                     $scope.slider[feature.name] = {};
@@ -72,7 +72,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                         change: function (ev, ui) {
                             $scope.$emit('updateFilterFromConfigurator', {
                                 "feature": feature.name,
-                                "type": "number",
+                                "type": "num",
                                 "values": $scope.slider[feature.name].values
                             });
 
@@ -101,7 +101,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
 
     $scope.updateFilterWithThisFeature = function(feature, type, value) {
         switch(type) {
-            case 'boolean':
+            case 'bool':
                 if(!$scope.booleanFilteredFeatures[feature]) {
 
                     $scope.booleanFilteredFeatures[feature] = true;
@@ -109,7 +109,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                 else {
                     delete $scope.booleanFilteredFeatures[feature];
                 }
-                $scope.$emit('updateFilterFromConfigurator', {"feature": feature, "type": "boolean", "values": $scope.booleanFilteredFeatures[feature]});
+                $scope.$emit('updateFilterFromConfigurator', {"feature": feature, "type": "bool", "values": $scope.booleanFilteredFeatures[feature]});
                 break;
             case 'string':
                 if(!$scope.stringFilteredFeatures[feature]) {
@@ -167,7 +167,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
     };
 
     $scope.collapseAll = function() {
-        console.log($scope.limit);
+
         $scope.collapseAll = true;
         $scope.limit.boolean = 0;
         $scope.limit.forEach(function(feature) {

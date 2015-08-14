@@ -4,6 +4,6 @@
 
     pcmApp.directive('openCompareCreator', function() {
         return {
-            templateUrl: '/assets/templates/creator.html'
+            templateUrl: '/assets/editor/templates/creator.html'
         };
     });

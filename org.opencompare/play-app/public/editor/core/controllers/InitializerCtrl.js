@@ -15,7 +15,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.FeaturGroupIndex = 1;
 
     $scope.gridOptions = {
-        headerTemplate: '/assets/templates/featureGroupHeader.html',
+        headerTemplate: '/assets/editor/templates/featureGroupHeader.html',
         superColDefs: [],
         columnDefs: [],
         data: 'pcmData',
@@ -87,7 +87,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
 
         /* Called when columns are moved */
         gridApi.colMovable.on.columnPositionChanged($scope,function(colDef, originalPosition, newPosition){
-            for(var i = 0; i <   $scope.columnsMovedFunctions.length; i++) {
+            for(var i = 0; i <   $scope.columnMovedFunctions.length; i++) {
                 $scope.columnMovedFunctions[i]();
             }
         });
@@ -302,7 +302,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</button>" +
                     "</div>";
                 break;
-            case "number":
+            case "num":
                 columnDef.type = 'num'; /* Can't put number, it's interpreted by ui-grid as it, and we can't put unit because they're string */
                 columnDef.sortingAlgorithm = function(a, b) {
                     var parsedA = parseFloat(a.replace(/\s/g, "").replace(",", "."));
@@ -335,7 +335,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</button>" +
                     "</div>";
                 break;
-            case "boolean":
+            case "bool":
                 columnDef.type = 'bool';
                 columnDef.sortingAlgorithm = function(a, b) {
                     if(typeService.getBooleanValue(a) == 'yes') {

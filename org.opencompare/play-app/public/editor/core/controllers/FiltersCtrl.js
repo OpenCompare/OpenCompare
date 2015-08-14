@@ -33,7 +33,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
             case 'string':
                 delete  $scope.columnsFilters[featureName];
                 break;
-            case 'number':
+            case 'num':
                 $scope.gridOptions.columnDefs.forEach(function (feature) {
                     if(feature.name == featureName) {
                         delete feature.filters[0].term;
@@ -90,7 +90,8 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
         $scope.gridOptions2.data = [];
-        var type = feature.type;
+        var type = feature.colDef.type;
+        console.log(feature);
         switch(type) {
 
             case 'string':
@@ -110,7 +111,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 $('#modalStringFilter').modal('show');
                 break;
 
-            case 'number':
+            case 'num':
 
                 var minAndMax = editorUtil.findMinAndMax($scope.featureToFilter, $scope.pcmData);
                 $scope.slider.options.min = minAndMax[0];
@@ -160,7 +161,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                 break;
 
-            case 'number':
+            case 'num':
                 $scope.gridOptions.columnDefs.forEach(function (feature) {
                     if(feature.name == codedFeatureName) {
                         feature.filters[0].term = $scope.filterSlider[0];
@@ -251,7 +252,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                     delete $scope.columnsFilters[args.feature];
                 }
                 break;
-            case 'boolean':
+            case 'bool':
                 if(args.values == true) {
                     $scope.columnsFilters[args.feature] = 1;
                 }
@@ -259,7 +260,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                     delete $scope.columnsFilters[args.feature];
                 }
                 break;
-            case 'number':
+            case 'num':
                 $scope.columnsFilters[args.feature] = [];
                 $scope.gridOptions.columnDefs.forEach(function (col) {
                     if(col.name == args.feature) {

@@ -104,7 +104,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     $scope.renameFeature = function() {
 
         var codedOldFeatureName =  editorUtil.convertStringToEditorFormat($scope.oldFeatureName);
-        var featureName = checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
+        var featureName = editorUtil.checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
 
         /* Find the feature in column defs */
@@ -126,7 +126,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                     index2++;
                 });
                 /* Add the new column to column defs */
-                var colDef = $scope.newColumnDef(featureName, featureData.type);
+                var colDef = $scope.newColumnDef(featureName, featureData.superCol, featureData.type);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef);
 
                 /* Command for undo/redo */
@@ -259,13 +259,12 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 var oldType =$scope.gridOptions.columnDefs[i].type;
                 found = true;
                 $scope.gridOptions.columnDefs.splice(i, 1);
-                var colDef = $scope.newColumnDef(featureName, null, $scope.featureType);
+                var colDef = $scope.newColumnDef(featureName, $scope.gridOptions.columnDefs[i].superCol, $scope.featureType);
                 $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
                 var parameters = [featureName, oldType, $scope.featureType];
                 $scope.newCommand('changeType', parameters);
             }
         }
-        $rootScope.$broadcast('reloadFeatureGroup');
         $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
     };
 

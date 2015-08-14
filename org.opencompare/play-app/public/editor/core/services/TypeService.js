@@ -28,14 +28,14 @@ pcmApp.service('typeService', function(editorUtil) {
         var type = "";
         if(isInt > isBool) {
             if(isInt > isString) {
-                type = "number";
+                type = "num";
             }
             else {
                 type = "string";
             }
         }
         else if(isBool > isString) {
-            type = "boolean";
+            type = "bool";
         }
         else {
             type = "string";
