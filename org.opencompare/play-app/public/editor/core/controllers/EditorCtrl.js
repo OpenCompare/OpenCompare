@@ -38,6 +38,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];
+        $scope.gridOptions.rowHeight = 28;
         $scope.edit = bool;
         if(reload) {
             $timeout(function(){
@@ -98,6 +99,24 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
     $scope.$on('setLineView', function(event, arg) {
         $scope.lineView = arg;
+    });
+
+    $scope.$on('increaseHeight', function(event, arg) {
+        switch(arg){
+            case 1:
+                $scope.gridOptions.rowHeight = 28;
+                break;
+            case 2:
+                $scope.gridOptions.rowHeight = 60;
+                break;
+            case 4:
+                $scope.gridOptions.rowHeight = 120;
+                break;
+            case 8:
+                $scope.gridOptions.rowHeight = 240;
+                break;
+        }
+        $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
     });
 
     $scope.setGridHeight = function() {

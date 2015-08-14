@@ -41,7 +41,15 @@
                     <li><a href="{{ googleLink }}" target="_blank"><i class="fa fa-google-plus"></i> Google+</a></li>
                     <li><a href="{{ redditLink }}" target="_blank"><i class="fa fa-reddit"></i> Reddit</a></li>
                 </ul>
-
+            </div>
+            <div class="btn-group" ng-show="!edit">
+                <a class="btn dropdown-toggle btn-flat btn-sm"  data-toggle="dropdown"><i class="fa fa-expand"></i>  {{ 'edit.button.height' | translate }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a role="button" class="btn btn-flat btn-sm" ng-click="increaseHeight(1)">x 1</a></li>
+                    <li><a role="button" class="btn btn-flat btn-sm" ng-click="increaseHeight(2)">x 2</a></li>
+                    <li><a role="button" class="btn btn-flat btn-sm"  ng-click="increaseHeight(4)">x 4</a></li>
+                    <li><a role="button" class="btn btn-flat btn-sm"  ng-click="increaseHeight(8)">x 8</a></li>
+                </ul>
             </div>
         </div>
 

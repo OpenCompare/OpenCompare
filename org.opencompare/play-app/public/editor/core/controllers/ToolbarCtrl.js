@@ -66,6 +66,10 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
         $rootScope.$broadcast('setGridEdit', [bool, reload]);
     };
 
+    $scope.increaseHeight = function(height) {
+        $rootScope.$broadcast('increaseHeight', height);
+    };
+
     $scope.$on('modified', function(event, args) {
         $scope.saved = false;
     });
