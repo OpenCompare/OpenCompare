@@ -373,7 +373,9 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</button>" +
                     "</div>";
                 break;
-
+            case 'image':
+                columnDef.cellTemplate = '<img width=\"50px\" ng-src=\"{{grid.getCellValue(row, col)}}\" lazy-src>';
+                break;
         }
         return columnDef;
     };

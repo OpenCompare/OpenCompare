@@ -7,12 +7,16 @@ pcmApp.service('typeService', function(editorUtil) {
 
     this.getType = function(featureName, data) {
         var rowIndex = 0;
+        var isImg = 0;
         var isInt = 0;
         var isBool = 0;
         var isString = 0;
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
         while(data[rowIndex]) {
             if(data[rowIndex][codedFeatureName]) {
+                if(this.isABase64Image(data[rowIndex][codedFeatureName])) {
+                    isImg++;
+                }
                 if (!angular.equals(parseInt(data[rowIndex][codedFeatureName]), NaN)) {
                     isInt++;
                 }
@@ -26,15 +30,14 @@ pcmApp.service('typeService', function(editorUtil) {
             rowIndex++;
         }
         var type = "";
-        if(isInt > isBool) {
-            if(isInt > isString) {
-                type = "num";
-            }
-            else {
-                type = "string";
-            }
+        var max = Math.max(isImg, isInt, isBool, isString);
+        if(isImg == max) {
+            type = "image";
         }
-        else if(isBool > isString) {
+        else if(isInt == max) {
+            type = "num";
+        }
+        else if(isBool == max) {
             type = "bool";
         }
         else {
@@ -85,6 +88,10 @@ pcmApp.service('typeService', function(editorUtil) {
         else {
             return "unknown";
         }
+    };
+
+    this.isABase64Image = function(value) {
+        return(value.indexOf("data:image/png;base64,") != -1);
     }
 });
 
