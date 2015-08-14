@@ -185,13 +185,16 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             enableHiding: false,
             enableFiltering: true,
             enableColumnResizing: true,
-            enableColumnMoving: $scope.edit,
+            enableColumnMoving: false,
+            enablePinning: false,
             enableCellEdit: $scope.edit,
             enableCellEditOnFocus: $scope.edit,
             allowCellFocus: true,
             superCol: featureGroupName,
             filter: {term: ''},
             minWidth: $scope.minWidth,
+            cellTemplate: '<div ng-if="grid.appScope.gridOptions.rowHeight < 30" class="ngCellText" ng-class="col.colIndex()" style="overflow:hidden; text-overflow: ellipsis;white-space: nowrap;"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>' +
+            '<div ng-if="grid.appScope.gridOptions.rowHeight > 30" class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>',
             menuItems: [
                 {
                     title: 'Hide',
