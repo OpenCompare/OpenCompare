@@ -337,8 +337,22 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 break;
             case "boolean":
                 columnDef.type = 'bool';
-                var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
-                var columnFilterValue = $scope.columnsFilters[codedFeatureName];
+                columnDef.sortingAlgorithm = function(a, b) {
+                    if(typeService.getBooleanValue(a) == 'yes') {
+                        return 1;
+                    }
+                    else  if(typeService.getBooleanValue(a) == 'no') {
+                        if(typeService.getBooleanValue(b) == 'unknown') {
+                            return 1;
+                        }
+                        else {
+                            return -1;
+                        }
+                    }
+                    else {
+                        return b - a;
+                    }
+                };
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container' ng-show='!grid.appScope.configurator'>" +
                     "<button class='btn btn-primary btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' ><i class='fa fa-check-circle'></i></button>" +
