@@ -53,7 +53,8 @@ class MediaWikiAPI(
       "format" -> "json",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
-      "rvprop" -> "content"
+      "rvprop" -> "content",
+      "redirects" -> ""
     )
     val result = call(language, params)
     val wikitext = if (result.isDefined) {
@@ -116,7 +117,8 @@ class MediaWikiAPI(
       "rawcontinue" -> "",
       "prop" -> "revisions",
       "titles" -> escapeTitle(title),
-      "rvprop" -> "ids|timestamp|user|comment|tags|flags"
+      "rvprop" -> "ids|timestamp|user|comment|tags|flags",
+      "redirects" -> ""
     )
     val params = if (rvcontinue != "") {
       baseParams + ("rvcontinue" -> rvcontinue)
@@ -157,7 +159,8 @@ class MediaWikiAPI(
       "format" -> "json",
       "prop" -> "revisions",
       "revids" -> id.toString,
-      "rvprop" -> "contentmodel|content"
+      "rvprop" -> "contentmodel|content",
+      "redirects" -> ""
     )
     val result = call(language, params)
     if (result.isDefined) {
