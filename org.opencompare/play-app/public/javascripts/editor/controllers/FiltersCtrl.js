@@ -28,7 +28,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     $scope.removeFilter = function(col) {
 
         var featureName = col.name;
-        var type =  $scope.columnsType[featureName];
+        var type =  col.type;
         switch(type) {
             case 'string':
                 delete  $scope.columnsFilters[featureName];
@@ -90,7 +90,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
         $scope.featureToFilter = feature.name;
         $scope.ListToFilter = [];
         $scope.gridOptions2.data = [];
-        var type = $scope.columnsType[feature.name];
+        var type = feature.type;
         switch(type) {
 
             case 'string':
@@ -134,8 +134,12 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
     $scope.closeFilter = function() {
         var featureName = $scope.featureToFilter;
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
-
-        var type =  $scope.columnsType[codedFeatureName];
+        var type = '';
+        $scope.gridOptions.columnDefs.forEach(function (feature) {
+            if(feature.name = featureName) {
+                type = feature.type;
+            }
+        });
         switch(type) {
 
             case 'string':

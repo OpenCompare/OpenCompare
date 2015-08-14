@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService, editorOptions) {
+pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, typeService) {
 
     $scope.data = {};
     $scope.currentPage = 0;
@@ -165,6 +165,16 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         }
         return true;
     };
+
+    $scope.collapseAll = function() {
+        console.log($scope.limit);
+        $scope.collapseAll = true;
+        $scope.limit.boolean = 0;
+        $scope.limit.forEach(function(feature) {
+           $scope.limit[feature] = 0;
+        });
+
+    }
 
 
 });

@@ -1,5 +1,6 @@
-<div class="col-md-3">
-    <div class="list-group">
+<div class="col-md-3 panel panel-default" style="margin-right: 10px">
+
+    <div class="list-group panel-body">
         <div class="list-group-item">
             <div class="row-action-primary">
 
@@ -28,7 +29,7 @@
                 </div>
                 <p class="list-group-item-heading">Features</p>
                 <p class="list-group-item-text" >
-                <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures | limitTo:limit.boolean">
+                <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures | limitTo: limit.boolean">
                     <label>
                         <input type="checkbox" ng-model='booleanFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type)"/> {{feature.displayName}}
                     </label>

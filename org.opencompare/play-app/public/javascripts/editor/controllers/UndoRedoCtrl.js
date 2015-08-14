@@ -215,7 +215,6 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
         $scope.pcmDataRaw.forEach(function (productData) {
             productData[featureName] = "";
         });
-        $scope.columnsType[featureName] = featureType;
         $scope.validation[featureName] = [];
         $rootScope.$broadcast('modified');
     }
@@ -225,8 +224,10 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
         var codedOldFeatureName = editorUtil.convertStringToEditorFormat(oldFeatureName);
         var found = false;
+        var type = '';
         for(var i = 0; !found && i < $scope.gridOptions.columnDefs.length; i++) {
             if($scope.gridOptions.columnDefs[i].name === codedFeatureName) {
+                type = $scope.gridOptions.columnDefs[i].type;
                 found = true;
                 var index2 = 0;
                 $scope.pcmData.forEach(function (productData) {
@@ -238,14 +239,12 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     }
                     index2++;
                 });
-                var colDef = $scope.newColumnDef(oldFeatureName, $scope.columnsType[codedFeatureName]);
+                var colDef = $scope.newColumnDef(oldFeatureName, type);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef);
             }
         }
-        $scope.columnsType[codedOldFeatureName] = $scope.columnsType[codedFeatureName];
         $scope.validation[codedFeatureName] = [];
         if(codedOldFeatureName != codedOldFeatureName) {
-            delete $scope.columnsType[codedFeatureName];
             delete $scope.validation[codedFeatureName];
         }
     }

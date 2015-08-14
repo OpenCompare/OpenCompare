@@ -36,9 +36,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         });
 
         /* Define the new column*/
-        var columnDef = $scope.newColumnDef(featureName, $scope.featureType);
+        var columnDef = $scope.newColumnDef(featureName, null, $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
-        $scope.columnsType[codedFeatureName] = $scope.featureType;
         $scope.validation[codedFeatureName] = [];
 
         /* Command for undo/redo */
@@ -127,7 +126,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                     index2++;
                 });
                 /* Add the new column to column defs */
-                var colDef = $scope.newColumnDef(featureName, $scope.columnsType[codedOldFeatureName]);
+                var colDef = $scope.newColumnDef(featureName, featureData.type);
                 $scope.gridOptions.columnDefs.splice(index, 1, colDef);
 
                 /* Command for undo/redo */
@@ -136,10 +135,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             }
             index++;
         });
-        $scope.columnsType[featureName] = $scope.columnsType[codedOldFeatureName];
         $scope.validation[featureName] = [];
         if($scope.featureName != $scope.oldFeatureName) {
-            delete $scope.columnsType[codedOldFeatureName];
             delete $scope.validation[codedOldFeatureName];
         }
         /* re-init of scope parameters */
@@ -259,14 +256,13 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         var found = false;
         for(var i = 0; i < $scope.gridOptions.columnDefs.length && !found; i++) {
             if($scope.gridOptions.columnDefs[i].name == codedFeatureName) {
-                var oldType = $scope.columnsType[codedFeatureName];
+                var oldType =$scope.gridOptions.columnDefs[i].type;
                 found = true;
                 $scope.gridOptions.columnDefs.splice(i, 1);
-                var colDef = $scope.newColumnDef(featureName, $scope.featureType);
+                var colDef = $scope.newColumnDef(featureName, null, $scope.featureType);
                 $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
                 var parameters = [featureName, oldType, $scope.featureType];
                 $scope.newCommand('changeType', parameters);
-                $scope.columnsType[codedFeatureName] = $scope.featureType;
             }
         }
         $rootScope.$broadcast('reloadFeatureGroup');
@@ -291,7 +287,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         $scope.gridOptions.columnDefs.forEach(function(featureData) {
             if(featureData.name != " " && featureData.name != "Product") { // There must be a better way but working for now
                 productData[featureData.name] = "";
-                productData.name=
+                productData.name= "";
                 rawProduct[featureData.name] = "";
             }
         });

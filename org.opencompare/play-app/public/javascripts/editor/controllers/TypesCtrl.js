@@ -4,7 +4,6 @@
 pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, typeService) {
 
     // Validate pcm type
-    $scope.columnsType = [];
     $scope.featureType = 'string';
     $scope.validation = [];
     $scope.validating = false;
@@ -33,7 +32,13 @@ pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiG
                 for(var i = 0; i < initValid.length; i++) {
                     var featureName = initValid[i];
                     if(featureName != " ") {
-                        $scope.validation[featureName][index] =  typeService.validateType(productData[featureName], $scope.columnsType[featureName]);
+                        var type = '';
+                        $scope.gridOptions.columnDefs.forEach(function (featureData){
+                            if(featureData.name == featureName) {
+                                type = featureData.type;
+                            }
+                        });
+                        $scope.validation[featureName][index] =  typeService.validateType(productData[featureName], type);
                     }
                 }
                 index++;

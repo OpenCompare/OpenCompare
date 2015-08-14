@@ -176,7 +176,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
             featureGroupName = 'empltyFeatureGroup';
         }
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
-        $scope.columnsType[codedFeatureName] = featureType;
+
         var columnDef = {
             name: codedFeatureName,
             displayName: featureName,
@@ -228,7 +228,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                         $('#modalChangeType').modal('show');
                         $scope.oldFeatureName = featureName;
                         $scope.featureName = featureName;
-                        $scope.featureType = $scope.columnsType[codedFeatureName];
+                        $scope.gridOptions.columnDefs.forEach(function(featureData) {
+                            if(featureData.name === codedFeatureName) {
+                                $scope.featureType = featureData.type;
+                            }
+                        });
                     }
                 },
                 {
@@ -300,6 +304,11 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 break;
             case "number":
                 columnDef.type = 'num'; /* Can't put number, it's interpreted by ui-grid as it, and we can't put unit because they're string */
+                columnDef.sortingAlgorithm = function(a, b) {
+                    var parsedA = parseFloat(a.replace(/\s/g, "").replace(",", "."));
+                    var parsedB = parseFloat(b.replace(/\s/g, "").replace(",", "."));
+                    return parsedA - parsedB;
+                };
                 var filterLess = [];
                 filterLess.condition  = function (searchTerm,  cellValue) {
                     return $scope.filterLessNumberColumns(cellValue, columnDef, codedFeatureName);
@@ -327,7 +336,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</div>";
                 break;
             case "boolean":
-                columnDef.type = 'boolean';
+                columnDef.type = 'bool';
                 var filterName = 'filter'+featureName.replace(/[&-/\s]/gi, '');
                 var columnFilterValue = $scope.columnsFilters[codedFeatureName];
                 columnDef.filterHeaderTemplate="" +
