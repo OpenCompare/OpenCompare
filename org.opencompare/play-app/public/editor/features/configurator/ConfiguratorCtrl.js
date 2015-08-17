@@ -51,7 +51,7 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
         var features = args.features;
         $scope.data = args.pcmData;
 
-        features.forEach(function (feature) {;
+        features.forEach(function (feature) {
             switch(feature.type) {
                 case 'string':
                     $scope.stringFeatures.push(feature);
