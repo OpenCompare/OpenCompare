@@ -1,7 +1,7 @@
 OpenCompare
 ===========
 
-[![Join the chat at https://gitter.im/gbecan/OpenCompare](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/gbecan/OpenCompare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/gbecan/OpenCompare](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OpenCompare/OpenCompare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/OpenCompare/OpenCompare.svg?branch=master)](https://travis-ci.org/OpenCompare/OpenCompare)
 
 This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the diverse (DIVERsity-centric Software Engineering) research team (http://diverse.irisa.fr/).
