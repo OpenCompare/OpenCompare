@@ -1,0 +1,40 @@
+<div class="modal fade in" id="modalCreator" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Welcome to your table creator</h4>
+                <br />
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group" style="margin-bottom: 20px">
+                        <p>Start by giving a title to your table:</p>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" id="title" placeholder="Title" ng-model="title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <p >Now choose a size:</p>
+                            <label for="rows" class="col-lg-4 control-label">Number of rows:</label>
+                        <div class="col-lg-8">
+                            <input type="number" class="form-control" id="rows" placeholder="Rows" ng-model="rows">
+                        </div>
+                            <br />
+                            <label for="columns" class="col-lg-4 control-label">Number of columns:</label>
+                        <div class="col-lg-8">
+                            <input type="number" class="form-control" id="columns" placeholder="Columns" ng-model="columns">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-default" href="/">{{ "edit.button.cancel" | translate }}</a>
+                <button data-dismiss="modal" aria-hidden="true" type="button" class="btn btn-primary" ng-click="launchCreation()">
+                    Launch creation
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

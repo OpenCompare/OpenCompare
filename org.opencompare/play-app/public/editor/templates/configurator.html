@@ -1,0 +1,172 @@
+<div class="col-md-3 panel panel-default" style="margin-right: 10px">
+
+    <div class="list-group panel-body">
+        <div class="list-group-item">
+            <div class="row-action-primary">
+
+            </div>
+            <div class="row-content">
+                <div class="least-content">Search</div>
+                <p class="list-group-item-heading">Product</p>
+                <p class="list-group-item-text">
+                    <input class="form-control floating-label" ng-change='applyProductFilter()'
+                           type="text" placeholder="Find" ng-model="productFilter">
+                </p>
+            </div>
+        </div>
+
+        <div class="list-group-separator"></div>
+
+
+        <div class="list-group-item" ng-if="booleanFeatures.length > 0">
+            <div class="row-action-primary">
+
+            </div>
+            <div class="row-content" ng-init="limit.boolean=5" >
+                <div class="least-content">
+                    <button ng-show="limit.boolean == 0" ng-click="limit.boolean = 5" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                    <button ng-show="limit.boolean != 0" ng-click="limit.boolean = 0" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                </div>
+                <p class="list-group-item-heading">Features</p>
+                <p class="list-group-item-text" >
+                <div class="checkbox checkbox-primary" ng-repeat="feature in booleanFeatures | limitTo: limit.boolean">
+                    <label>
+                        <input type="checkbox" ng-model='booleanFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type)"/> {{feature.displayName}}
+                    </label>
+                </div>
+
+                <button ng-show="booleanFeatures.length > 5 && limit.boolean != booleanFeatures.length && limit.boolean != 0" ng-click="limit.boolean = booleanFeatures.length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
+                <button ng-show="booleanFeatures.length > 5 && limit.boolean == booleanFeatures.length" ng-click="limit.boolean = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="list-group-item" ng-if="stringFeatures.length > 0" ng-repeat="feature in stringFeatures">
+            <div class="row-action-primary">
+
+            </div>
+            <div class="row-content">
+                <div class="least-content">
+                    <button ng-show="limit[feature.displayName] == 0" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                    <button ng-show="limit[feature.displayName] != 0" ng-click="limit[feature.displayName] = 0" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                </div>
+                <p class="list-group-item-heading">{{feature.displayName}}</p>
+                <p class="list-group-item-text" ng-init="limit[feature.displayName]=5">
+                <div class="checkbox checkbox-primary" ng-repeat="value in getUniqueValues(feature.name) | limitTo:limit[feature.displayName]">
+                    <label>
+                        <input type="checkbox" ng-model='stringFilter' ng-change="updateFilterWithThisFeature(feature.name, feature.type, value)"> {{value}}
+                    </label>
+                </div>
+
+                <button ng-if="limit[feature.displayName] != 0 && getUniqueValues(feature.name).length > 5 && limit[feature.displayName] != getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = getUniqueValues(feature.name).length" class="btn btn-flat btn-primary btn-xs">Show more <i class="mdi-navigation-expand-more"></i></button>
+                <button ng-if="getUniqueValues(feature.name).length > 5 &&limit[feature.displayName] == getUniqueValues(feature.name).length" ng-click="limit[feature.displayName] = 5" class="btn btn-flat btn-primary btn-xs">Show less <i class="mdi-navigation-expand-less"></i></button>
+
+                </p>
+            </div>
+
+            <div class="list-group-separator"></div>
+
+        </div>
+
+        <div class="list-group-separator" ng-if="booleanFeatures.length > 0"></div>
+
+        <div class="list-group-item" ng-if="numberFeatures.length > 0" ng-repeat="feature in numberFeatures">
+            <div class="row-action-primary">
+
+            </div>
+            <div class="row-content">
+                <div class="least-content">Number</div>
+                <p class="list-group-item-heading">{{feature.displayName}}</p>
+                <p class="list-group-item-text">
+                <div ui-slider="slider[feature.name].options" name="{{feature.name}}" ng-model="slider[feature.name].values"></div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <span>{{slider[feature.name].values[0]}}</span>
+                    </div>
+                    <div class="col-md-3 col-md-offset-6" style="text-align: right;">
+                        <span>{{slider[feature.name].values[1]}}</span>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+            <div class="list-group-separator"></div>
+
+        </div>
+
+
+    </div>
+</div>
+<div class="col-md-8">
+    <div class="col-md-1">
+        <button type="button" ng-show="configurator && !lineView" style="padding: 5px" class="btn btn-flat btn-primary btn-sm" ng-click="setLineView(true)"><i class="mdi-action-view-headline"></i></button>
+        <button type="button" ng-show="configurator && lineView" style="padding: 5px" class="btn btn-flat btn-primary btn-sm" ng-click="setLineView(false)"><i class="mdi-image-grid-on"></i></button>
+    </div>
+</div>
+<div class="col-md-8" ng-show="lineView">
+    <div class="row">
+        <div class="list-group" ng-init="showProduct = []">
+            <div class="list-group-item"  style="margin:5px" ng-repeat="product in (filteredData = (data | filter:isInFilter | startFrom:currentPage*pageSize | limitTo:pageSize))">
+                <div class="row-action-primary">
+
+                </div>
+                <div class="row-content  panel panel-default" ng-init="showProduct[product.name] = true">
+                    <div class="panel-heading">
+                        <div class="least-content">
+                            <button ng-show="!showProduct[product.name]" ng-click="showProduct[product.name] = true" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-less"></i></button>
+                            <button ng-show="showProduct[product.name]" ng-click="showProduct[product.name] = false" class="btn btn-flat btn-primary btn-xs"><i class="mdi-navigation-expand-more"></i></button>
+                        </div>
+                        <h4 class="list-group-item-heading">{{product.name}}</h4>
+                    </div>
+                    <div class="panel-body" ng-show="showProduct[product.name]">
+                        <p class="list-group-item-text">
+
+                        <div class="row" ng-repeat="feature in stringFeatures" ng-if="product[feature.name] != ''">
+                            <div class="col-md-6"><h5>{{feature.displayName}}</h5></div>
+                            <div class="col-md-6"><p>{{product[feature.name]}}</p></div>
+                            <div class="list-group-separator"></div>
+                        </div>
+
+                        <div class="row" ng-repeat="feature in numberFeatures" ng-if="product[feature.name] != ''">
+                            <div class="col-md-6"><h5>{{feature.displayName}}</h5></div>
+                            <div class="col-md-6"><p>{{product[feature.name]}}</p></div>
+                            <div class="list-group-separator"></div>
+                        </div>
+
+                        <div class="row" ng-if="booleanFeatures.length > 0">
+                            <div class="col-md-12">
+                                <div class="col-md-6"><h5>Features</h5></div>
+                                <div class="col-md-6">
+                                    <span ng-repeat="feature in booleanFeatures" ng-if="product[feature.name] != '' && hasThisFeature(product[feature.name])">{{feature.displayName}}, </span>
+                                </div>
+                            </div>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <div class="list-group-separator" ng-if="numberFeatures.length > 0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <select ng-model="pageSize" class="form-control"  id="select" name="pageSize">
+                <option value="5">5 per page</option>
+                <option value="10">10 per page</option>
+                <option value="25">25 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                Previous
+            </button>
+            {{currentPage+1}}/{{numberOfPages()}}
+            <button  class="btn btn-primary" ng-disabled="currentPage >= length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                Next
+            </button>
+        </div>
+    </div>
+</div>

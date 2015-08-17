@@ -91,6 +91,7 @@ public class PCMAPI extends Controller {
     }
 
     private List<PCMContainer> loadHtml(String fileContent, boolean productAsLines) throws IOException {
+
         HTMLLoader loader = new HTMLLoader(pcmFactory, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
@@ -225,6 +226,8 @@ public class PCMAPI extends Controller {
 
             try {
                 pcmContainers = loadHtml(fileContent, productAsLines);
+                PCMContainer pcmContainer = pcmContainers.get(0);
+                pcmContainer.getPcm().setName(title);
                 if (pcmContainers.isEmpty()) {
                     return notFound("No matrices were found in this html page");
                 }
@@ -241,10 +244,50 @@ public class PCMAPI extends Controller {
         for (PCMContainer pcmContainer : pcmContainers) {
             pcmContainer.getPcm().normalize(pcmFactory);
         }
-
+        String id = Database.INSTANCE.create(pcmContainers.get(0));
+        System.out.print(id);
         // Serialize result
         String jsonResult = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers);
         return ok(jsonResult);
+    }
+
+    public Result embedFromHTML() {
+        List<PCMContainer> pcmContainers;
+
+        // Getting form values
+        DynamicForm dynamicForm = Form.form().bindFromRequest();
+
+        Boolean productAsLines = false;
+        if (dynamicForm.get("productAsLines") != null) {
+            productAsLines = true;
+        }
+
+        // Options
+        String title = dynamicForm.get("title");
+        String fileContent = "";
+        try {
+            Http.MultipartFormData body = request().body().asMultipartFormData();
+            Http.MultipartFormData.FilePart file = body.getFile("file");
+            fileContent = Files.toString(file.getFile(), Charsets.UTF_8);
+        } catch (Exception e) {
+            fileContent = dynamicForm.field("file").value();
+        }
+        
+        try {
+            pcmContainers = loadHtml(fileContent, productAsLines);
+            if (pcmContainers.isEmpty()) {
+                return notFound("No matrices were found in this html page");
+            }
+        } catch (IOException e) {
+            return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
+        }
+        // Normalize the matrices
+        for (PCMContainer pcmContainer : pcmContainers) {
+            pcmContainer.getPcm().normalize(pcmFactory);
+        }
+        String id = Database.INSTANCE.create(pcmContainers.get(0));
+
+        return ok(id);
     }
 
     /*
@@ -320,6 +363,10 @@ public class PCMAPI extends Controller {
         if (type.equals("wikitext")) {
 
             code = wikiExporter.export(container);
+
+} else if (type.equals("html")) {
+
+            code = htmlExporter.export(container);
 
         } else if (type.equals("csv")) {
 

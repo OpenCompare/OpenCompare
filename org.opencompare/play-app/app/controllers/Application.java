@@ -58,7 +58,7 @@ public class Application extends Controller {
     }
 
     public Result create() {
-        return ok(views.html.edit.render(null, null, null));
+        return ok(views.html.create.render(null, null, null));
     }
 
     public Result importer(String ext) {

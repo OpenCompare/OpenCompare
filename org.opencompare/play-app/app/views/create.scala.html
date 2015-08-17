@@ -1,0 +1,29 @@
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
+
+@header = {
+    @editHeader()
+}
+
+@footer = {
+  @editFooter(id, data, modal)
+}
+
+@main(header, footer) {
+
+
+
+    <div open-compare-creator ng-controller="CreatorCtrl">
+
+    </div>
+
+
+    <div open-compare-editor ng-controller="EditorCtrl">
+    </div>
+
+
+
+    <div class="row">
+        <div open-compare-charts ng-controller="ChartsCtrl" class="col-md-10 col-md-offset-1">
+        </div>
+    </div>
+}

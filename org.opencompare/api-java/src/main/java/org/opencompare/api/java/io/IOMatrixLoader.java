@@ -53,8 +53,6 @@ public class IOMatrixLoader {
             Product product = factory.createProduct();
             product.setName(detector.get(i, 0).getContent());
             pcm.addProduct(product);
-            // And keep the order in metadata
-            metadata.setProductPosition(product, i);
 
             // Cells
             for (int j = headerColumnStart; j < matrixWidth; j++) {
@@ -65,6 +63,9 @@ public class IOMatrixLoader {
                 cell.setFeature((Feature) features.get(j));
                 product.addCell(cell);
             }
+
+            // And keep the order in metadata
+            metadata.setProductPosition(product, i);
         }
         container.getPcm().setName(detector.getMatrix().getName());
         return container;

@@ -84,7 +84,7 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
 
     @Override
     public String toString() {
-        return "Feature(" + getName() + ")";
+        return "Feature(" + getName() + ")." + this.getParentGroup();
     }
 
     @Override

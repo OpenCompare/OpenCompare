@@ -554,7 +554,6 @@ public class PCMImpl implements PCM {
             return false;
         }
 
-//        return !this.diff(pcm, new ComplexePCMElementComparator()).hasDifferences();
         return true;
     }
 

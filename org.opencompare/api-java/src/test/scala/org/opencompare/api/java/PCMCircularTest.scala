@@ -38,6 +38,7 @@ abstract class PCMCircularTest(
 
         val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
         for (container: PCMContainer <- containers.asScala) {
+
           val code = exporter.export(container)
           val container2 = importer.load(code).get(0)
 
@@ -47,7 +48,9 @@ abstract class PCMCircularTest(
       it should "have equal METADATA" in {
 
         val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
+
         for (container: PCMContainer <- containers.asScala) {
+
           val code = exporter.export(container)
           val container2 = importer.load(code).get(0)
 
@@ -58,6 +61,7 @@ abstract class PCMCircularTest(
 
         val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
         for (container: PCMContainer <- containers.asScala) {
+
           val code = exporter.export(container)
           val container2 = importer.load(code).get(0)
 

@@ -138,7 +138,7 @@ public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGrou
     }
 
     public String toString() {
-        return "FeatureGroup(" + getName() + ")";
+        return "FeatureGroup(" + getName() + ")." + this.getParentGroup();
     }
 
     @Override
