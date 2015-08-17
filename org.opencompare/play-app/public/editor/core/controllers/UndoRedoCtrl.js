@@ -214,7 +214,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
         var columnDef = $scope.newColumnDef(featureName, featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         /* Initialize data */
-        var featureName = checkIfNameExists(featureName, $scope.gridOptions.columnDefs);
+        var featureName = editorUtil.checkIfNameExists(featureName, $scope.gridOptions.columnDefs);
         $scope.pcmData.forEach(function (productData) {
             productData[featureName] = "";
         });
