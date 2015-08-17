@@ -69,10 +69,10 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                 colDef.name);
 
              if (colDef.name != "Product") {
-                var commandParameters = [rowEntity.$$hashKey,  colDef.name, oldValue, newValue];
+                var commandParameters = [rowEntity.$$hashKey,  colDef.name, rawValue, newValue];
              }
              else {
-                var commandParameters = [rowEntity.$$hashKey, 'name', oldValue, newValue];
+                var commandParameters = [rowEntity.$$hashKey, 'name', rawValue, newValue];
              }
              $scope.newCommand('edit', commandParameters);
         }

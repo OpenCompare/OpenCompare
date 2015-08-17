@@ -136,6 +136,7 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     $scope.pcmData[i][featureName] = data;
                 });
                 $scope.pcmDataRaw[i][featureName] = oldValue;
+                console.log(oldValue);
                 break;
             }
         }
