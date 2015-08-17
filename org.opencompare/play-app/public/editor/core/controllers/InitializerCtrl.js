@@ -11,6 +11,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     $scope.enableExport = editorOptions.enableExport;
     $scope.enableTitle = true;
     $scope.enableShare = editorOptions.enableShare;
+    $scope.file = [];
 
     $scope.FeaturGroupIndex = 1;
 
@@ -41,7 +42,24 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
     var rawValue;
 
     /* Grid event functions */
+    function readImage(input) {
+        if ( input.files && input.files[0] ) {
+            var FR= new FileReader();
+            FR.onload = function(e) {                     console.log(e.target.result);
+                // $('#img').attr( "src", e.target.result );
+                // $('#base').text( e.target.result );
+            };
+            FR.readAsDataURL( input.files[0] );
+        }
+    }
 
+    $("#img").change(function(){
+        readImage( this );
+    });
+
+    $scope.putRawDataInCell = function(rowEntity, colDef) {
+        $scope.pcmData[$scope.pcmData.indexOf(rowEntity)][colDef.name] = $scope.pcmDataRaw[$scope.pcmData.indexOf(rowEntity)][colDef.name];
+    };
 
     $scope.setVisualRepresentation = function(rowEntity, colDef, newValue, oldValue, rawValue) {
 
@@ -74,7 +92,7 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
         $rootScope.$broadcast('modified');
     };
     $scope.columnMovedFunctions.push($scope.moveColumnData);
-
+    $scope.beginCellEditFunctions.push($scope.putRawDataInCell);
     $scope.afterCellEditFunctions.push($scope.setVisualRepresentation);
 
     /* Register grid functions */
@@ -374,12 +392,28 @@ pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http
                     "</div>";
                 break;
             case 'image':
-                columnDef.cellTemplate = '<img width=\"50px\" ng-src=\"{{grid.getCellValue(row, col)}}\" lazy-src>';
+                columnDef.type = 'image';
+                columnDef.enableCellEdit = 'false;'
+                columnDef.cellTemplate = '<form>'+
+                    '<input ng-show="grid.appScope.edit" type="file" ng-model="grid.appScope.file" ng-change="grid.appScope.uploadFile(col, row)" base-sixty-four-input>'+
+                    '</form>'+
+                    '<img height="{{grid.appScope.gridOptions.rowHeight}}px"  ng-src=\"{{grid.getCellValue(row, col)}}\" lazy-src>';
+
+                columnDef.enableFiltering = false;
                 break;
         }
         return columnDef;
     };
 
+    $scope.uploadFile = function(col, row) {
+        if($scope.file) {
+            $scope.pcmData.forEach(function(product) {
+                if(product.$$hashKey == row.entity.$$hashKey) {
+                    product[col.name] = "data:image/png;base64,"+$scope.file.base64;
+                }
+            });
+        }
+    };
     $scope.lineChart = function(col) {
         var visibleRows = $scope.gridApi.core.getVisibleRows($scope.gridApi.grid);
         $rootScope.$broadcast("lineChart", {col: col, pcmData: visibleRows});

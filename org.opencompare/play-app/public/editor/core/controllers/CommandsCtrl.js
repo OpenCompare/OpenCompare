@@ -27,16 +27,9 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
             featureName = editorUtil.checkIfNameExists($scope.featureName, $scope.gridOptions.columnDefs);
         }
         var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
-        if($scope.featureType == "image") {
-            $scope.pcmData.forEach(function (productData) {
-                productData[codedFeatureName] = "data:image/png;base64,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";
-            });
-        }
-        else {
-            $scope.pcmData.forEach(function (productData) {
-                productData[codedFeatureName] = "";
-            });
-        }
+        $scope.pcmData.forEach(function (productData) {
+            productData[codedFeatureName] = "";
+        });
 
         $scope.pcmDataRaw.forEach(function (productData) {
             productData[codedFeatureName] = "";

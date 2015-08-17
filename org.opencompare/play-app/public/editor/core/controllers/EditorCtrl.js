@@ -71,7 +71,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 pcmApi.decodePCM($scope.pcm); // Decode PCM from Base64
                 $scope.metadata = data.metadata;
                 $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
-                $rootScope.$broadcast('saved');
+                $rootScope.$broadcast('saved', id);
             })
             .finally(function () {
                 $scope.loading = false;

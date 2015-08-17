@@ -31,7 +31,10 @@ pcmApp.service('typeService', function(editorUtil) {
         }
         var type = "";
         var max = Math.max(isImg, isInt, isBool, isString);
-        if(isImg == max) {
+        if(max == 0) {
+            type = "string";
+        }
+        else if(isImg == max) {
             type = "image";
         }
         else if(isInt == max) {

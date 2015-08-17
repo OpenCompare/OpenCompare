@@ -85,6 +85,9 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.$on('saved', function(event, args) {
         $scope.saved = true;
         $scope.isInDatabase = true;
+        if(args) {
+            $scope.id = args;
+        }
     });
 
     $scope.$on('savedFromCreator', function(event, args) {
