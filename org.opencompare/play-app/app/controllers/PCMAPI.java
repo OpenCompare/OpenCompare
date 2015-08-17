@@ -272,7 +272,7 @@ public class PCMAPI extends Controller {
         } catch (Exception e) {
             fileContent = dynamicForm.field("file").value();
         }
-        System.out.print("test"+fileContent);
+        
         try {
             pcmContainers = loadHtml(fileContent, productAsLines);
             if (pcmContainers.isEmpty()) {
