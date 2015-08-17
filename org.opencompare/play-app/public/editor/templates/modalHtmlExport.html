@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Export a PCM to HTML</h4>
+</div>
+<div class="modal-body">
+    <form name="importPcm" id="import_pcm" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-md-4 control-label">Product in lines ?</label>
+            <div class="col-md-8">
+                <input ng-model="productAsLines" type="checkbox" id="productAsLines" size="3"/>
+            </div>
+        </div>
+    </form>
+    <div ng-hide="!export_content">
+        <hr />
+        <textarea ng-model="export_content" rows="25" style="min-width: 100%"></textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-success" form="import_pcm" ng-click="valid()">
+        <i ng-show="loading" class="fa fa-spinner fa-pulse"></i>
+        <div ng-hide="loading">
+            <span ng-hide="export_message">Export</span>
+            <span ng-show="export_message">Reload</span>
+        </div>
+    </button>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Import a PCM from HTML</h4>
+</div>
+<div class="modal-body">
+    <div ng-model="message" style="color:orangered;"></div>
+    <form name="importPcm" id="import_pcm" class="form-horizontal" method="post">
+        <div class="form-group">
+            <label class="col-md-4 control-label">Title</label>
+            <div class="col-md-8">
+                <input ng-model="title" class="form-control" type="string" id="title" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Product in lines ?</label>
+            <div class="col-md-8">
+                <input ng-model="productAsLines" type="checkbox" id="productAsLines" size="3"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label">Copy paste your code</label>
+                <div>
+                    <textarea ng-model="content" rows="25" id="content" style="min-width: 100%"></textarea>
+                </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-success" form="import_pcm" ng-click="valid()">
+        <i ng-show="loading" class="fa fa-spinner fa-pulse"></i>
+        <span ng-show="!loading">Import</span>
+    </button>
+</div>
+

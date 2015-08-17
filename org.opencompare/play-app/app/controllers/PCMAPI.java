@@ -226,6 +226,8 @@ public class PCMAPI extends Controller {
 
             try {
                 pcmContainers = loadHtml(fileContent, productAsLines);
+                PCMContainer pcmContainer = pcmContainers.get(0);
+                pcmContainer.getPcm().setName(title);
                 if (pcmContainers.isEmpty()) {
                     return notFound("No matrices were found in this html page");
                 }
@@ -361,6 +363,10 @@ public class PCMAPI extends Controller {
         if (type.equals("wikitext")) {
 
             code = wikiExporter.export(container);
+
+} else if (type.equals("html")) {
+
+            code = htmlExporter.export(container);
 
         } else if (type.equals("csv")) {
 

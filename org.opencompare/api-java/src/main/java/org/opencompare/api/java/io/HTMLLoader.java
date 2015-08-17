@@ -32,7 +32,7 @@ public class HTMLLoader implements PCMLoader {
         this.productsAsLines = productsAsLines;
     }
 
-    public static List<IOMatrix> createMatrices(Document doc) { System.out.print("qsdqsdqs");
+    public static List<IOMatrix> createMatrices(Document doc) {
         List<IOMatrix> matrices = new ArrayList<>();
         String pageName = doc.head().getElementsByTag("title").text();
         int indice = 0;
@@ -63,7 +63,7 @@ public class HTMLLoader implements PCMLoader {
             }
             matrices.add(matrix);
             indice++;
-        } System.out.print(matrices);
+        }
         return matrices;
     }
 
