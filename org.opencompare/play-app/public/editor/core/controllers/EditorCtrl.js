@@ -1,18 +1,28 @@
 /**
- * Created by gbecan on 17/12/14.
+ * Created by gbecan on 12/17/14.
+ * Updated by hvalle on 8/17/15
  */
 
 
+/**
+* EditorCtrl.js
+* Main controller for OpenCompare Editor
+*/
 pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, expandeditor,  $location, pcmApi, editorUtil) {
+
+    /* Load material design */
     if($.material) {
         $.material.init();
     }
 
+
+    /* Define subControllers, because we're in the grid, we can't create new controller on sub div */
     var subControllers = {
         $scope: $scope,
         $location: $location
     };
-    $controller('InitializerCtrl', subControllers);
+
+    $controller('GridCtrl', subControllers);
     $controller('UndoRedoCtrl', subControllers);
     $controller('CommandsCtrl', subControllers);
     $controller('FiltersCtrl', subControllers);
@@ -29,12 +39,14 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
     //Export
     $scope.export_content = null;
 
+    //Use for modals
     $scope.oldFeatureName = "";
     $scope.featureName = "";
 
     $scope.loaded = false;
     $scope.lineView = true;
 
+    // Set grid in edit/view mode
     $scope.setEdit = function(bool, reload) {
 
         $scope.gridOptions.columnDefs = [];
@@ -49,6 +61,8 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
 
 
     };
+
+    // Main entry of the editor
 
     if (typeof id === 'undefined' && typeof data === 'undefined') {
         /* Create an empty PCM */
@@ -77,6 +91,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
                 $scope.loading = false;
             })
     }
+    /* Load modal for import */
     if (typeof modal != 'undefined') {
         $scope.setEdit(false, false);
         // Open the given modal
@@ -101,6 +116,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.lineView = arg;
     });
 
+    /* Button to increase row height */
     $scope.$on('increaseHeight', function(event, arg) {
         switch(arg){
             case 1:
@@ -119,6 +135,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.initializeEditor($scope.pcm, $scope.metadata, false, true);
         $scope.setGridHeight();
     });
+
 
     $scope.setGridHeight = function() {
 
@@ -158,6 +175,7 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         }
     };
 
+    /* Convert grid to pcm for mongoDB */
     function convertGridToPCM(pcmData) {
         var pcm = factory.createPCM();
         pcm.name = $scope.pcm.name;
@@ -272,6 +290,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         return pcm;
     }
 
+    /**
+     *  Use after adding a product
+     */
     $scope.scrollToFocus = function( rowIndex, colIndex ) {
 
         $scope.gridApi.cellNav.scrollToFocus( $scope.pcmData[rowIndex], $scope.gridOptions.columnDefs[colIndex]);
@@ -326,6 +347,12 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         window.location = "/view/" + id;
     };
 
+    /**
+     * Generate metadata like products and features positions
+     * @param product
+     * @param columns
+     * @returns {{}}
+     */
     function generateMetadata(product, columns) {
         var metadata = {};
         metadata.featurePositions = [];
@@ -349,6 +376,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         return metadata;
     }
 
+    /**
+     * Check for name modification, if so, update the toolbar
+     */
     $scope.$watch('pcm.name', function() {
 
         if($scope.edit) {
@@ -356,6 +386,9 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         }
     });
 
+    /**
+     * Launch creation when in creator mode
+     */
     $scope.$on('launchCreation', function(event, args) {
 
         $rootScope.$broadcast('launchFromCreator');
@@ -375,7 +408,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         }
     });
 
-    // Bind events from toolbar to functions of the editor
+
+    /**
+     * Bind events from toolbar to functions of the editor
+      */
 
     $scope.$on('save', function(event, args) {
         $scope.save();
@@ -393,6 +429,13 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.validate();
     });
 
+    $scope.$on('setGridEdit', function(event, args) {
+        $scope.setEdit(args[0], args[1]);
+    });
+
+    /**
+     * Launch initialization when importing
+     */
     $scope.$on('import', function(event, args) {
         $scope.pcm = loader.loadModelFromString(JSON.stringify(args.pcm)).get(0);
         pcmApi.decodePCM($scope.pcm);
@@ -400,10 +443,10 @@ pcmApp.controller("EditorCtrl", function($controller, $rootScope, $scope, $http,
         $scope.initializeEditor($scope.pcm, $scope.metadata);
     });
 
-    $scope.$on('setGridEdit', function(event, args) {
-        $scope.setEdit(args[0], args[1]);
-    });
 
+    /**
+     * Launch Exportation
+     */
     $scope.$on('export', function (event, args) {
         var pcmToExport = convertGridToPCM($scope.pcmData);
         $scope.metadata = generateMetadata($scope.pcmData, $scope.gridOptions.columnDefs);

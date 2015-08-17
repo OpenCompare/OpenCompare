@@ -1,8 +1,13 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15
  */
 
-pcmApp.controller("InitializerCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi,
+/**
+ * GridCtrl.js
+ * Manage grid configuration
+ */
+pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $timeout, uiGridConstants, $location, pcmApi,
                                               expandeditor, typeService, editorOptions, editorUtil, sortFeaturesService, chartService) {
 
     $scope.height = 300;

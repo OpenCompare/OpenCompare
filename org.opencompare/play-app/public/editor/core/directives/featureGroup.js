@@ -1,3 +1,8 @@
+/**
+ * Created by hvallee on 6/19/15: Found here https://github.com/angular-ui/ui-grid/issues/3694
+ * Updated by hvallee on 8/17/15
+ */
+
 pcmApp.directive('superColWidthUpdate', ['$timeout', '$rootScope', function ($timeout, $rootScope) {
         return {
             'restrict': 'A',

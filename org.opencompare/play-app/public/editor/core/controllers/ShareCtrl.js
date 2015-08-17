@@ -1,7 +1,12 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15
  */
 
+/**
+ * ShareCtrl.js
+ * Manage share options
+ */
 pcmApp.controller("ShareCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal) {
 
     $scope.activeShareButton = false;

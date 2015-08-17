@@ -1,14 +1,22 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15
  */
 
+
+/**
+ * FeatureGroupCtrl.js
+ * Managed feature groups
+ */
 pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, editorUtil) {
 
     $scope.cols = {};
 
+
     $scope.isAFeature = function(col) {
         return col.name != ' ' && col.name != 'Product';
     };
+
     $scope.isAFeatureGroup = function(col) {console.log(col.name);
         return col.name != 'emptyFeatureGroup';
     };

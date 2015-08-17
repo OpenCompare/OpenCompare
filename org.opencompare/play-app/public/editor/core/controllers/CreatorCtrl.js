@@ -1,7 +1,12 @@
 /**
  * Created by hvallee on 8/4/15.
+ * Updated by hvallee on 17/8/15
  */
 
+/**
+ * CreatorCtrl.js
+ * Use to create a pcm based on a number of rows and columns
+ */
 pcmApp.controller("CreatorCtrl", function($rootScope, $scope) {
 
     $scope.title = "";

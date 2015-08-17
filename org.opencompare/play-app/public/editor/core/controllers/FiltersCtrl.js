@@ -1,7 +1,12 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15
  */
 
+/**
+ * FiltersCtrl.js
+ * Manage all grid filters
+ */
 pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, editorUtil, chartService) {
 
     //Custom filters
@@ -159,7 +164,6 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
                 });
                 $scope.columnsFilters[codedFeatureName] = [];
                 $scope.columnsFilters[codedFeatureName] = $scope.colFilter.listTerm;
-                console.log($scope.columnsFilters);
                 $scope.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN);
                 break;
 

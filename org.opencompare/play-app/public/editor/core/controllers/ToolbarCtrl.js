@@ -1,7 +1,12 @@
 /**
  * Created by gbecan on 3/26/15.
+ * Updated by hvallee on 8/17/15
  */
 
+/**
+ * ToolbarCtrl.js
+ * Manage editor toolbar
+ */
 pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
 
     $scope.saved = false;
@@ -40,10 +45,12 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     };
 
 
+    /** Set the line view in configurator mode */
     $scope.$on('setLineView', function(event, arg) {
         $scope.lineView = arg;
     });
 
+    /** Launch grid creation in creator mode */
     $scope.$on('launchFromCreator', function(event, args) {
         $scope.launchFromCreator = true;
     });

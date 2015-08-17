@@ -139,40 +139,42 @@
                         <configuration>
                             <charset>UTF-8</charset>
                             <webappSourceDir>${basedir}</webappSourceDir>
-                            <cssSourceDir>public/stylesheets</cssSourceDir>
+                            <cssSourceDir>public/editor/core/stylesheets/</cssSourceDir>
                             <cssSourceFiles>
                                 <cssSourceFile>editor.css</cssSourceFile>
                             </cssSourceFiles>
                             <cssFinalFile>openCompareEditor.css</cssFinalFile>
-                            <cssTargetDir>WEB-INF/classes/public/stylesheets</cssTargetDir>
-                            <jsSourceDir>public/javascripts/</jsSourceDir>
+                            <cssTargetDir>web/public/editor/</cssTargetDir>
+                            <jsSourceDir>public/</jsSourceDir>
                             <jsSourceFiles>
-                                <jsSourceFile>editor/controllers/EmbedCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/EditorCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/CommandsCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/FiltersCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/InitializerCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/TypesCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/UndoRedoCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/ShareCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/controllers/ToolbarCtrl.js</jsSourceFile>
-                                <jsSourceFile>importexport/controllers/exporter/csvCtrl.js</jsSourceFile>
-                                <jsSourceFile>importexport/controllers/exporter/wikitextCtrl.js</jsSourceFile>
-                                <jsSourceFile>importexport/controllers/importer/csvCtrl.js</jsSourceFile>
-                                <jsSourceFile>importexport/controllers/importer/wikipediaCtrl.js</jsSourceFile>
-                                <jsSourceFile>controllers/I18nCtrl.js</jsSourceFile>
-                                <jsSourceFile>editor/services/editorOptions.js</jsSourceFile>
-                                <jsSourceFile>editor/services/ExpandEditorService.js</jsSourceFile>
-                                <jsSourceFile>editor/services/TypeService.js</jsSourceFile>
-                                <jsSourceFile>pcmEditorUtility.js</jsSourceFile>
-                                <jsSourceFile>editor/directives/embeddedEditor.js</jsSourceFile>
-                                <jsSourceFile>importexport/directives/fileModel.js</jsSourceFile>
-                                <jsSourceFile>pcm-api.js</jsSourceFile>
-                                <jsSourceFile>kmf/pcm.min.js</jsSourceFile>
-                                <jsSourceFile>slider.js</jsSourceFile>
+                                <jsSourceFile>editor/features/embed/embed.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/EditorCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/CommandsCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/FiltersCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/GridCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/TypesCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/UndoRedoCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/ShareCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/controllers/ToolbarCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/features/importexport/controllers/exporter/csvCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/features/importexport/controllers/exporter/wikitextCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/features/importexport/controllers/importer/csvCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/features/importexport/controllers/importer/wikipediaCtrl.js</jsSourceFile>
+                                <jsSourceFile>main/I18nCtrl.js</jsSourceFile>
+                                <jsSourceFile>editor/core/services/editorOptions.js</jsSourceFile>
+                                <jsSourceFile>editor/core/services/ExpandEditorService.js</jsSourceFile>
+                                <jsSourceFile>editor/core/services/TypeService.js</jsSourceFile>
+                                <jsSourceFile>javascripts/pcmEditorUtility.js</jsSourceFile>
+                                <jsSourceFile>editor/core/directives/embeddedEditor.js</jsSourceFile>
+                                <jsSourceFile>editor/features/importexport/directives/fileModel.js</jsSourceFile>
+                                <jsSourceFile>javascripts/pcm-api.js</jsSourceFile>
+                                <jsSourceFile>javascripts/slider.js</jsSourceFile>
+                                <jsSourceFile>javascripts/angular-base64-upload.js</jsSourceFile>
+                                <jsSourceFile>javascripts/arrive.min.js</jsSourceFile>
+                                <jsSourceFile>javascripts/Chart.js</jsSourceFile>
                             </jsSourceFiles>
                             <jsFinalFile>openCompareEditor.js</jsFinalFile>
-                            <jsTargetDir>../web/classes/main/META-INF/resourcesWEB-INF/classes/public/javascripts/</jsTargetDir>
+                            <jsTargetDir>editor/</jsTargetDir>
                             <jsEngine>CLOSURE</jsEngine>
                             <closureLanguage>ECMASCRIPT5</closureLanguage>
                         </configuration>

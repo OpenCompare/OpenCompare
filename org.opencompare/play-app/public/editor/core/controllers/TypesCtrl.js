@@ -1,5 +1,11 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15
+ */
+
+/**
+ * TypesCtrl.js
+ * Manage types in editor
  */
 pcmApp.controller("TypesCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, $compile, $modal, typeService) {
 

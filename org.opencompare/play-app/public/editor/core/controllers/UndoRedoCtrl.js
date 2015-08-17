@@ -1,7 +1,12 @@
 /**
  * Created by hvallee on 6/19/15.
+ * Updated by hvallee on 8/17/15.
  */
 
+/**
+ * UndoRedoCtrl.js
+ * Manage undo/redo
+ */
 pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, sortFeaturesService, editorUtil) {
 
     //Undo-redo
