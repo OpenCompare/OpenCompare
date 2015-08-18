@@ -16,32 +16,6 @@ import play.api.mvc.{Action, Controller}
 
 import collection.JavaConversions._
 
-//import com.fasterxml.jackson.databind.JsonNode;
-//import com.google.common.base.Charsets;
-//import com.google.common.io.Files;
-//import model.Database;
-//import model.DatabasePCM;
-//import play.api.libs.json.*;
-//import play.data.DynamicForm;
-//import play.data.Form;
-//import play.mvc.Controller;
-//import play.mvc.Http;
-//import play.mvc.Result;
-//import scala.collection.Map;
-//
-//import java.io.File;
-//import java.io.FileWriter;
-//import java.io.IOException;
-//import java.net.MalformedURLException;
-//import java.net.URL;
-//import java.net.URLDecoder;
-//import java.nio.charset.StandardCharsets;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static scala.collection.JavaConversions.seqAsJavaList;
-
-
 /**
  * Created by gbecan on 08/01/15.
  * Updated by smangin on 21/05/15
@@ -49,16 +23,16 @@ import collection.JavaConversions._
 @Singleton
 class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nService) extends Controller with I18nSupport {
 
-//    private val pcmFactory : PCMFactory = new PCMFactoryImpl()
-//    private val jsonExporter : KMFJSONExporter= new KMFJSONExporter()
-//    private val csvExporter : CSVExporter= new CSVExporter()
-//    private val htmlExporter : HTMLExporter = new HTMLExporter()
+    private val pcmFactory : PCMFactory = new PCMFactoryImpl()
+    private val jsonExporter : KMFJSONExporter= new KMFJSONExporter()
+    private val csvExporter : CSVExporter= new CSVExporter()
+    private val htmlExporter : HTMLExporter = new HTMLExporter()
     private val jsonLoader : KMFJSONLoader= new KMFJSONLoader()
-//    private val wikiExporter : WikiTextExporter = new WikiTextExporter(true)
+    private val wikiExporter : WikiTextExporter = new WikiTextExporter(true)
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
     private val wikitextTemplateProcessor : WikiTextTemplateProcessor= new WikiTextTemplateProcessor(mediaWikiAPI)
     private val miner : WikiTextLoader= new WikiTextLoader(wikitextTemplateProcessor)
-//    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter()
+    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter()
 
 
     def get(id : String) = Action {
