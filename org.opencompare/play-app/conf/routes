@@ -15,19 +15,17 @@ GET         /embed                                    @controllers.Application.e
 GET         /about/project                            @controllers.Application.aboutProject()
 GET         /about/privacy                            @controllers.Application.aboutPrivacyPolicy()
 
-#POST    /preview                            controllers.Application.preview()
-
 # API
-GET         /api/get/:id                              @controllers.PCMAPI.get(id : String)
-POST        /api/save/:id                             @controllers.PCMAPI.save(id : String)
-POST        /api/create                               @controllers.PCMAPI.create()
-GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
-POST        /api/import/:ext                          @controllers.PCMAPI.importer(ext : String)
-POST        /api/export/:ext                          @controllers.PCMAPI.exporter(ext : String)
-POST        /api/embedFromHtml                        @controllers.PCMAPI.embedFromHTML()
-POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
-GET         /api/i18n/:language                       @controllers.PCMAPI.setLang(language : String)
-GET         /api/i18n                                 @controllers.PCMAPI.i18n()
+#GET         /api/get/:id                              @controllers.PCMAPI.get(id : String)
+#POST        /api/save/:id                             @controllers.PCMAPI.save(id : String)
+#POST        /api/create                               @controllers.PCMAPI.create()
+#GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
+#POST        /api/import/:ext                          @controllers.PCMAPI.importer(ext : String)
+#POST        /api/export/:ext                          @controllers.PCMAPI.exporter(ext : String)
+#POST        /api/embedFromHtml                        @controllers.PCMAPI.embedFromHTML()
+#POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
+#GET         /api/i18n/:language                       @controllers.PCMAPI.setLang(language : String)
+#GET         /api/i18n                                 @controllers.PCMAPI.i18n()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)

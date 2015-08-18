@@ -1,4 +1,4 @@
-@(request : String, results : List[model.PCMInfo])
+@(request : String, results : List[model.PCMInfo])(implicit messages: Messages)
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/search.css")'>

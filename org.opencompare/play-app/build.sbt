@@ -4,7 +4,7 @@ name := """OpenCompare"""
 
 version := XML.loadFile("pom.xml").\("version").text
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 scalaVersion := XML.loadFile("../pom.xml").\\("scala.version").text
 
