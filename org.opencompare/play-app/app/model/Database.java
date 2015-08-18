@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
+import play.libs.Scala;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -117,13 +118,13 @@ public class Database {
 
             return var;
         } else {
-            return new DatabasePCM(null, null);
+            return new DatabasePCM(Scala.Option((String) null), Scala.Option((PCMContainer) null));
         }
     }
 
     public void update(DatabasePCM databasePCM) {
-        DBObject dbPCMContainer = serializePCMContainer(databasePCM.getPCMContainer());
-        pcms.update(new BasicDBObject("_id", new ObjectId(databasePCM.getId())), dbPCMContainer);
+        DBObject dbPCMContainer = serializePCMContainer(databasePCM.pcmContainer().get());
+        pcms.update(new BasicDBObject("_id", new ObjectId(databasePCM.id().get())), dbPCMContainer);
     }
 
     public String create(PCMContainer pcmContainer) {
@@ -179,7 +180,7 @@ public class Database {
                     metadata.setFeaturePosition(feature, position);
                 }
 
-                var = new DatabasePCM(id, pcmContainer);
+                var = new DatabasePCM(Scala.Option(id), Scala.Option(pcmContainer));
             } else {
                 var = new DatabasePCM(null,null);
             }
@@ -245,7 +246,7 @@ public class Database {
     }
 
     public String serializeDatabasePCM(DatabasePCM dbPCM) {
-        DBObject dbContainer = serializePCMContainer(dbPCM.getPCMContainer());
+        DBObject dbContainer = serializePCMContainer(dbPCM.pcmContainer().get());
         return JSON.serialize(dbContainer);
     }
 

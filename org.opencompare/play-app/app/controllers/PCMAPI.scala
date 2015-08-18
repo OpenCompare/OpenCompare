@@ -25,9 +25,6 @@ import collection.JavaConversions._
 class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nService) extends Controller with I18nSupport {
 
     private val pcmFactory : PCMFactory = new PCMFactoryImpl()
-    private val csvExporter : CSVExporter= new CSVExporter()
-    private val htmlExporter : HTMLExporter = new HTMLExporter()
-    private val wikiExporter : WikiTextExporter = new WikiTextExporter(true)
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
     private val wikitextTemplateProcessor : WikiTextTemplateProcessor= new WikiTextTemplateProcessor(mediaWikiAPI)
     private val miner : WikiTextLoader= new WikiTextLoader(wikitextTemplateProcessor)
@@ -48,7 +45,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
         val pcmContainers = PCMAPIUtils.createContainers(json)
 
         if (pcmContainers.size == 1) {
-            val databasePCM = new DatabasePCM(id, pcmContainers.get(0))
+            val databasePCM = new DatabasePCM(Some(id), Some(pcmContainers.head))
             Database.INSTANCE.update(databasePCM)
             Ok("")
         } else {

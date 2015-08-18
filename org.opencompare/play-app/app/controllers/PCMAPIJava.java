@@ -43,9 +43,7 @@ import static scala.collection.JavaConversions.seqAsJavaList;
 public class PCMAPIJava extends Controller {
 
     private final PCMFactory pcmFactory = new PCMFactoryImpl();
-    private final CSVExporter csvExporter = new CSVExporter();
     private final HTMLExporter htmlExporter = new HTMLExporter();
-    private final KMFJSONLoader jsonLoader = new KMFJSONLoader();
     private final WikiTextExporter wikiExporter = new WikiTextExporter(true);
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
