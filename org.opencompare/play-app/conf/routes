@@ -20,6 +20,7 @@ GET         /api/get/:id                              @controllers.PCMAPI.get(id
 POST        /api/save/:id                             @controllers.PCMAPI.save(id : String)
 POST        /api/create                               @controllers.PCMAPI.create()
 GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
+POST        /api/import/csv                           @controllers.IOCsv.importPCMs()
 POST        /api/import/:ext                          @controllers.PCMAPIJava.importer(ext : String)
 POST        /api/export/:ext                          @controllers.PCMAPIJava.exporter(ext : String)
 POST        /api/embedFromHtml                        @controllers.PCMAPIJava.embedFromHTML()

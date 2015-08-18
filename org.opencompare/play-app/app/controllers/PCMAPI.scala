@@ -10,6 +10,7 @@ import org.opencompare.api.java.io.{HTMLExporter, CSVExporter}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.io.{WikiTextLoader, WikiTextTemplateProcessor, MediaWikiAPI, WikiTextExporter}
 import org.opencompare.io.wikipedia.parser.CellContentExtractor
+import play.api.data.Form
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}

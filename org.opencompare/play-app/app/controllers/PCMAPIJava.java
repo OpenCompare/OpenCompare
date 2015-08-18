@@ -77,19 +77,6 @@ public class PCMAPIJava extends Controller {
         return pcmContainers;
     }
 
-    private List<PCMContainer> loadCsv(File fileContent, char separator, char quote, boolean productAsLines) throws IOException {
-        CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
-        List<PCMContainer> pcmContainers = loader.load(fileContent);
-        return pcmContainers; // FIXME : should test size of list
-    }
-
-    private List<PCMContainer> loadCsv(String fileContent, char separator, char quote, boolean productAsLines) throws IOException {
-        CSVLoader loader = new CSVLoader(pcmFactory, separator, quote, productAsLines);
-        List<PCMContainer> pcmContainers = loader.load(fileContent);
-        return pcmContainers; // FIXME : should test size of list
-    }
-
-
     public Result importer(String type) {
         List<PCMContainer> pcmContainers;
 
@@ -126,31 +113,6 @@ public class PCMAPIJava extends Controller {
                 return notFound("The page has not been found."); // TODO: manage the different kind of exceptions
             }
 
-        } else if (type.equals("csv")) {
-            // Options
-            String title = dynamicForm.get("title");
-            String fileContent = "";
-            try {
-                Http.MultipartFormData body = request().body().asMultipartFormData();
-                Http.MultipartFormData.FilePart file = body.getFile("file");
-                fileContent = Files.toString(file.getFile(), Charsets.UTF_8);
-            } catch (Exception e) {
-                fileContent = dynamicForm.field("file").value();
-            }
-
-            char separator = dynamicForm.get("separator").charAt(0);
-            char quote = '"';
-            String delimiter = dynamicForm.get("quote");
-            if (delimiter.length() != 0) {
-                quote = delimiter.charAt(0);
-            }
-            try {
-                pcmContainers = loadCsv(fileContent, separator, quote, productAsLines);
-                PCMContainer pcmContainer = pcmContainers.get(0);
-                pcmContainer.getPcm().setName(title);
-            } catch (IOException e) {
-                return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
-            }
         } else if (type.equals("html")) {
             // Options
             String title = dynamicForm.get("title");
