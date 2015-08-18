@@ -2,7 +2,7 @@ package controllers
 
 import javax.inject.{Singleton, Inject}
 
-import model.{DatabasePCM, Database}
+import model.{PCMAPIUtils, DatabasePCM, Database}
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
@@ -24,10 +24,8 @@ import collection.JavaConversions._
 class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nService) extends Controller with I18nSupport {
 
     private val pcmFactory : PCMFactory = new PCMFactoryImpl()
-    private val jsonExporter : KMFJSONExporter= new KMFJSONExporter()
     private val csvExporter : CSVExporter= new CSVExporter()
     private val htmlExporter : HTMLExporter = new HTMLExporter()
-    private val jsonLoader : KMFJSONLoader= new KMFJSONLoader()
     private val wikiExporter : WikiTextExporter = new WikiTextExporter(true)
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
     private val wikitextTemplateProcessor : WikiTextTemplateProcessor= new WikiTextTemplateProcessor(mediaWikiAPI)
@@ -46,7 +44,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
 
         val ipAddress = request.remoteAddress; // TODO : For future work !
 
-        val pcmContainers = createContainers(json)
+        val pcmContainers = PCMAPIUtils.createContainers(json)
 
         if (pcmContainers.size == 1) {
             val databasePCM = new DatabasePCM(id, pcmContainers.get(0))
@@ -59,7 +57,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
 
     def create() = Action { request =>
         val json = request.body.asJson.get
-        val pcmContainers = createContainers(json)
+        val pcmContainers = PCMAPIUtils.createContainers(json)
         if (pcmContainers.size == 1) {
             val id = Database.INSTANCE.create(pcmContainers.get(0))
             Ok(id)
@@ -74,55 +72,6 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
         Ok("")
     }
 
-
-    /*
-      Parse the json file and generate a container
-     */
-    def createContainers(jsonContent : JsValue) : List[PCMContainer] = {
-        val jsonObject = jsonContent.as[JsObject]
-        val jsonPCM = Json.stringify(jsonObject.value("pcm"))
-        val containers = jsonLoader.load(jsonPCM).toList
-        val jsonMetadata = jsonObject.value("metadata").as[JsObject]
-        for (container <- containers) {
-            saveMetadatas(container, jsonMetadata)
-        }
-        containers
-    }
-
-    /*
-      Insert metadatas inside the container based on the json metadatas
-     */
-    def saveMetadatas(container : PCMContainer, jsonMetadata : JsObject) {
-        val metadata = container.getMetadata()
-        val pcm = metadata.getPcm()
-
-        val jsonProductPositions = jsonMetadata.value("productPositions").as[JsArray]
-        val jsonFeaturePositions = jsonMetadata.value("featurePositions").as[JsArray]
-
-        for (jsonProductPosition <- jsonProductPositions.value) {
-            val jsonPos = jsonProductPosition.as[JsObject].value
-            val productName = jsonPos("product").as[JsString].value
-            val position = jsonPos("position").as[JsNumber].value.toIntExact
-
-            val product = pcm.getProducts.find(_.getName == productName)  // FIXME : equals based on name breaks same name products
-            if (product.isDefined) {
-              metadata.setProductPosition(product.get, position)
-            }
-
-        }
-
-        for (jsonFeaturePosition <- jsonFeaturePositions.value) {
-            val jsonPos = jsonFeaturePosition.as[JsObject].value
-            val featureName = jsonPos("feature").as[JsString].value
-            val position = jsonPos("position").as[JsNumber].value.toIntExact
-
-            val feature = pcm.getConcreteFeatures.find(_.getName == featureName) // FIXME : equals based on name breaks same name features
-            if (feature.isDefined) {
-              metadata.setFeaturePosition(feature.get, position)
-            }
-
-        }
-    }
 
     def extractContent = Action { request =>
         val json = request.body.asJson.get.as[JsObject]
@@ -146,6 +95,5 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
           BadRequest("type and content must be defined")
         }
     }
-
 
 }

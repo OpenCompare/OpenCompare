@@ -3,6 +3,7 @@ package controllers;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import model.Database;
+import model.PCMAPIUtils;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.PCMFactoryImpl;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
@@ -42,7 +43,6 @@ import static scala.collection.JavaConversions.seqAsJavaList;
 public class PCMAPIJava extends Controller {
 
     private final PCMFactory pcmFactory = new PCMFactoryImpl();
-//    private final KMFJSONExporter jsonExporter = new KMFJSONExporter();
     private final CSVExporter csvExporter = new CSVExporter();
     private final HTMLExporter htmlExporter = new HTMLExporter();
     private final KMFJSONLoader jsonLoader = new KMFJSONLoader();
@@ -202,7 +202,7 @@ public class PCMAPIJava extends Controller {
             productAsLines = true;
         }
         JsValue jsonContent = Json.parse(dynamicForm.field("file").value());
-        PCMContainer container = createContainers(jsonContent).get(0);
+        PCMContainer container = PCMAPIUtils.createContainers(jsonContent).apply(0);
         container.getMetadata().setProductAsLines(productAsLines);
 
         if (type.equals("wikitext")) {
@@ -284,61 +284,5 @@ public class PCMAPIJava extends Controller {
     }
 
 
-    // ------------------ FOLLOWING IS DUPLICATED FROM PCMAPI ------------------------------ //
-    // ------------------- MUST BE REMOVED AFTER CONVERTION -------------------------------- //
 
-    /*
-     Parse the json file and generate a container
-      */
-    private List<PCMContainer> createContainers(JsValue jsonContent) {
-        JsObject jsonObject = (JsObject) jsonContent;
-        String jsonPCM = Json.stringify(jsonObject.value().apply("pcm"));
-        List<PCMContainer> containers = jsonLoader.load(jsonPCM);
-        JsObject jsonMetadata = (JsObject) jsonObject.value().apply("metadata");
-        for (PCMContainer container : containers) {
-            saveMetadatas(container, jsonMetadata);
-        }
-        return containers;
-    }
-
-    /*
-    Insert metadatas inside the container based on the json metadatas
-     */
-    private void saveMetadatas(PCMContainer container, JsObject jsonMetadata) {
-        PCMMetadata metadata = container.getMetadata();
-        PCM pcm = metadata.getPcm();
-
-        JsArray jsonProductPositions = (JsArray) jsonMetadata.value().apply("productPositions");
-        JsArray jsonFeaturePositions = (JsArray) jsonMetadata.value().apply("featurePositions");
-
-        for (JsValue jsonProductPosition : seqAsJavaList(jsonProductPositions.value())) {
-            Map<String, JsValue> jsonPos = ((JsObject) jsonProductPosition).value();
-            String productName = ((JsString) jsonPos.apply("product")).value();
-            int position = Integer.parseInt(jsonPos.apply("position").toString());
-
-            Product product= null;
-            for (Product p : pcm.getProducts()) {
-                if (p.getName().equals(productName)) { // FIXME : equals based on name breaks same name products
-                    product = p;
-                    break;
-                }
-            }
-            metadata.setProductPosition(product, position);
-        }
-
-        for (JsValue jsonFeaturePosition : seqAsJavaList(jsonFeaturePositions.value())) {
-            Map<String, JsValue> jsonPos = ((JsObject) jsonFeaturePosition).value();
-            String featureName = ((JsString) jsonPos.apply("feature")).value();
-            int position = Integer.parseInt(jsonPos.apply("position").toString());
-
-            Feature feature = null;
-            for (Feature f : pcm.getConcreteFeatures()) {
-                if (f.getName().equals(featureName)) { // FIXME : equals based on name breaks same name features
-                    feature = f;
-                    break;
-                }
-            }
-            metadata.setFeaturePosition(feature, position);
-        }
-    }
 }
