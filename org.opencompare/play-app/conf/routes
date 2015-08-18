@@ -20,13 +20,18 @@ GET         /api/get/:id                              @controllers.PCMAPI.get(id
 POST        /api/save/:id                             @controllers.PCMAPI.save(id : String)
 POST        /api/create                               @controllers.PCMAPI.create()
 GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
-POST        /api/import/csv                           @controllers.IOCsv.importPCMs()
-POST        /api/import/:ext                          @controllers.PCMAPIJava.importer(ext : String)
-POST        /api/export/:ext                          @controllers.PCMAPIJava.exporter(ext : String)
 POST        /api/embedFromHtml                        @controllers.PCMAPIJava.embedFromHTML()
 POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
 GET         /api/i18n/:language                       @controllers.PCMAPIJava.setLang(language : String)
 GET         /api/i18n                                 @controllers.PCMAPIJava.i18n()
+
+# CSV import/export
+POST        /api/import/csv                           @controllers.IOCsv.importPCMs()
+POST        /api/export/csv                           @controllers.IOCsv.exportPCM()
+
+# General import/export
+POST        /api/import/:ext                          @controllers.PCMAPIJava.importer(ext : String)
+POST        /api/export/:ext                          @controllers.PCMAPIJava.exporter(ext : String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)

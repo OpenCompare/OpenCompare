@@ -175,16 +175,6 @@ public class PCMAPIJava extends Controller {
 
             code = htmlExporter.export(container);
 
-        } else if (type.equals("csv")) {
-
-            char separator = dynamicForm.get("separator").charAt(0);
-            char quote = '\u0000'; // null char hack
-            String delimiter = dynamicForm.get("quote");
-            if (delimiter.length() != 0) {
-                quote = delimiter.charAt(0);
-            }
-            code = csvExporter.export(container, separator, quote);
-
         } else {
             return internalServerError("File format not found or invalid.");
         }
