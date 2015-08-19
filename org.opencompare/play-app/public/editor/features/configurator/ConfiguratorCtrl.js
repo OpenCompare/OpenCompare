@@ -70,12 +70,13 @@ pcmApp.controller("ConfiguratorCtrl", function($rootScope, $scope, editorUtil, t
                         min: minAndMax[0],
                         max: minAndMax[1],
                         change: function (ev, ui) {
-                            $scope.$emit('updateFilterFromConfigurator', {
-                                "feature": feature.name,
-                                "type": "num",
-                                "values": $scope.slider[feature.name].values
-                            });
-
+                            if($scope.conf) {
+                                $scope.$emit('updateFilterFromConfigurator', {
+                                    "feature": feature.name,
+                                    "type": "num",
+                                    "values": $scope.slider[feature.name].values
+                                });
+                            }
                         }
                     };
                     break;
