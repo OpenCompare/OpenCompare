@@ -10,7 +10,7 @@ import javax.inject.Singleton;
  * Created by gbecan on 8/18/15.
  */
 @Singleton
-public class PCMAPIJava extends Controller {
+public class I18nCtrl extends Controller {
 
 
     @Inject

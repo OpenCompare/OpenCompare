@@ -21,8 +21,10 @@ POST        /api/save/:id                             @controllers.PCMAPI.save(i
 POST        /api/create                               @controllers.PCMAPI.create()
 GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
 POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
-GET         /api/i18n/:language                       @controllers.PCMAPIJava.setLang(language : String)
-GET         /api/i18n                                 @controllers.PCMAPIJava.i18n()
+
+# I18n
+GET         /api/i18n/:language                       @controllers.I18nCtrl.setLang(language : String)
+GET         /api/i18n                                 @controllers.I18nCtrl.i18n()
 
 # CSV import/export
 POST        /api/import/csv                           @controllers.CSVCtrl.importPCMsAction()
