@@ -1,24 +1,23 @@
 package controllers
 
-import java.net.{MalformedURLException, URLDecoder, URL}
+import java.net.{MalformedURLException, URL, URLDecoder}
 import java.nio.charset.StandardCharsets
 
-import model.{PCMAPIUtils, Database}
+import model.PCMAPIUtils
+import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.{PCMFactory, PCMContainer, PCM}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
-import org.opencompare.io.wikipedia.io.{WikiTextExporter, MediaWikiAPI, WikiTextLoader, WikiTextTemplateProcessor}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextExporter, WikiTextLoader, WikiTextTemplateProcessor}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
-import play.api.mvc.{Action, Controller}
+import play.api.mvc._
 
 import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 8/18/15.
  */
-class WikipediaCtrl extends Controller {
+class WikipediaCtrl extends IOCtrl {
 
   val inputParametersForm = Form(
     mapping(
@@ -36,11 +35,10 @@ class WikipediaCtrl extends Controller {
   private val mediaWikiAPI: MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
   private val wikitextTemplateProcessor: WikiTextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI)
   private val miner: WikiTextLoader = new WikiTextLoader(wikitextTemplateProcessor)
-  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter
-  
+
   private val wikiExporter: WikiTextExporter = new WikiTextExporter(true)
 
-  def importPCMs() = Action { implicit request =>
+  override def importPCMs(implicit request : Request[AnyContent]) : Result = {
 
     val parameters = inputParametersForm.bindFromRequest.get
     val url = parameters.url
@@ -65,17 +63,7 @@ class WikipediaCtrl extends Controller {
         NotFound("No matrices were found in this Wikipedia page")
       } else {
 
-        // Normalize the matrices
-        for (pcmContainer <- pcmContainers) {
-          val pcm = pcmContainer.getPcm
-          pcm.normalize(pcmFactory)
-          cellContentInterpreter.interpretCells(pcm)
-        }
-
-        val id: String = Database.INSTANCE.create(pcmContainers.get(0))
-
-        // Serialize result
-        val jsonResult: String = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers)
+        val jsonResult = postprocessContainers(pcmContainers)
 
         Ok(jsonResult)
       }
@@ -87,7 +75,7 @@ class WikipediaCtrl extends Controller {
 
   }
 
-  def exportPCM() = Action { implicit request =>
+  override def exportPCM(implicit request : Request[AnyContent]) : Result = {
     val parameters = outputParametersForm.bindFromRequest.get
     val pcmJSON = Json.parse(parameters.pcm)
 

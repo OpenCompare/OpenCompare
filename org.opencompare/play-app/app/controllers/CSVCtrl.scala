@@ -2,14 +2,14 @@ package controllers
 
 import java.io.IOException
 
-import model.{PCMAPIUtils, Database}
+import model.PCMAPIUtils
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import play.api.data.Forms._
 import play.api.data._
 import play.api.libs.json.Json
-import play.api.mvc.{Action, Controller}
+import play.api.mvc._
 
 import scala.collection.JavaConversions._
 import scala.io.Source
@@ -17,7 +17,7 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class CSVCtrl extends Controller {
+class CSVCtrl extends IOCtrl {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()
@@ -40,7 +40,7 @@ class CSVCtrl extends Controller {
     )(CSVExportParameters.apply)(CSVExportParameters.unapply)
   )
 
-  def importPCMs() = Action { implicit request =>
+  override def importPCMs(implicit request : Request[AnyContent]) : Result = {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
     val separator = parameters.separator.head
@@ -57,16 +57,8 @@ class CSVCtrl extends Controller {
       val pcmContainer = pcmContainers.head
       pcmContainer.getPcm.setName(parameters.title)
 
-      // Normalize the matrices
-      for (pcmContainer <- pcmContainers) {
-        pcmContainer.getPcm.normalize(pcmFactory)
-      }
-
-      // Create PCM in database
-      val id = Database.INSTANCE.create(pcmContainers.head)
-
       // Serialize result
-      val jsonResult = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers)
+      val jsonResult = postprocessContainers(pcmContainers)
       Ok(jsonResult)
 
     } catch {
@@ -75,7 +67,7 @@ class CSVCtrl extends Controller {
 
   }
 
-  def exportPCM() = Action { implicit request =>
+  override def exportPCM(implicit request : Request[AnyContent]) : Result = {
     val parameters = outputParametersForm.bindFromRequest().get
 
     val separator = parameters.separator.head

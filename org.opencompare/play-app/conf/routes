@@ -26,16 +26,16 @@ GET         /api/i18n/:language                       @controllers.PCMAPIJava.se
 GET         /api/i18n                                 @controllers.PCMAPIJava.i18n()
 
 # CSV import/export
-POST        /api/import/csv                           @controllers.CSVCtrl.importPCMs()
-POST        /api/export/csv                           @controllers.CSVCtrl.exportPCM()
+POST        /api/import/csv                           @controllers.CSVCtrl.importPCMsAction()
+POST        /api/export/csv                           @controllers.CSVCtrl.exportPCMAction()
 
 # Wikipedia import/export
-POST        /api/import/wikipedia                     @controllers.WikipediaCtrl.importPCMs()
-POST        /api/export/wikitext                      @controllers.WikipediaCtrl.exportPCM()
+POST        /api/import/wikipedia                     @controllers.WikipediaCtrl.importPCMsAction()
+POST        /api/export/wikitext                      @controllers.WikipediaCtrl.exportPCMAction()
 
-# General import/export
-POST        /api/import/:ext                          @controllers.PCMAPIJava.importer(ext : String)
-POST        /api/export/:ext                          @controllers.PCMAPIJava.exporter(ext : String)
+# HTML import/export
+POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction()
+POST        /api/export/html                          @controllers.HTMLCtrl.exportPCMAction()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)

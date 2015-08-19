@@ -43,8 +43,6 @@ import static scala.collection.JavaConversions.seqAsJavaList;
 public class PCMAPIJava extends Controller {
 
     private final PCMFactory pcmFactory = new PCMFactoryImpl();
-    private final HTMLExporter htmlExporter = new HTMLExporter();
-    private final WikiTextExporter wikiExporter = new WikiTextExporter(true);
     private final MediaWikiAPI mediaWikiAPI = new MediaWikiAPI("wikipedia.org");
     private final WikiTextTemplateProcessor wikitextTemplateProcessor = new WikiTextTemplateProcessor(mediaWikiAPI);
     private final WikiTextLoader miner = new WikiTextLoader(wikitextTemplateProcessor);
@@ -53,101 +51,11 @@ public class PCMAPIJava extends Controller {
     @Inject
     private I18nService i18nService;
 
-
-
     private List<PCMContainer> loadHtml(String fileContent, boolean productAsLines) throws IOException {
 
         HTMLLoader loader = new HTMLLoader(pcmFactory, productAsLines);
         List<PCMContainer> pcmContainers = loader.load(fileContent);
         return pcmContainers; // FIXME : should test size of list
-    }
-
-    private List<PCMContainer> loadWikitext(String language, String title){
-        // Parse article from Wikipedia
-        String code = mediaWikiAPI.getWikitextFromTitle(language, title);
-
-        List<PCMContainer> pcmContainers = miner.mine(language, code, title);
-        for (PCMContainer pcmContainer : pcmContainers) {
-            PCM pcm = pcmContainer.getPcm();
-            pcm.normalize(pcmFactory);
-            cellContentInterpreter.interpretCells(pcm);
-        }
-        return pcmContainers;
-    }
-
-    public Result importer(String type) {
-        List<PCMContainer> pcmContainers;
-
-        // Getting form values
-        DynamicForm dynamicForm = Form.form().bindFromRequest();
-
-        Boolean productAsLines = false;
-        if (dynamicForm.get("productAsLines") != null) {
-            productAsLines = true;
-        }
-
-         if (type.equals("html")) {
-            // Options
-            String title = dynamicForm.get("title");
-            String fileContent = "";
-            try {
-                Http.MultipartFormData body = request().body().asMultipartFormData();
-                Http.MultipartFormData.FilePart file = body.getFile("file");
-                fileContent = Files.toString(file.getFile(), Charsets.UTF_8);
-            } catch (Exception e) {
-                fileContent = dynamicForm.field("file").value();
-            }
-
-            try {
-                pcmContainers = loadHtml(fileContent, productAsLines);
-                PCMContainer pcmContainer = pcmContainers.get(0);
-                pcmContainer.getPcm().setName(title);
-                if (pcmContainers.isEmpty()) {
-                    return notFound("No matrices were found in this html page");
-                }
-            } catch (IOException e) {
-                return badRequest("This file is invalid."); // TODO: manage the different kind of exceptions
-            }
-
-
-        } else {
-            return internalServerError("File format not found or invalid.");
-        }
-
-        // Normalize the matrices
-        for (PCMContainer pcmContainer : pcmContainers) {
-            pcmContainer.getPcm().normalize(pcmFactory);
-        }
-        String id = Database.INSTANCE.create(pcmContainers.get(0));
-        System.out.print(id);
-        // Serialize result
-        String jsonResult = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers);
-        return ok(jsonResult);
-    }
-
-    public Result exporter(String type) {
-        String code;
-
-        // Getting form values
-        DynamicForm dynamicForm = Form.form().bindFromRequest();
-        String title = dynamicForm.get("title");
-        Boolean productAsLines = false;
-
-        if (dynamicForm.get("productAsLines").equals("true")) {
-            productAsLines = true;
-        }
-        JsValue jsonContent = Json.parse(dynamicForm.field("file").value());
-        PCMContainer container = PCMAPIUtils.createContainers(jsonContent).apply(0);
-        container.getMetadata().setProductAsLines(productAsLines);
-
-        if (type.equals("html")) {
-
-            code = htmlExporter.export(container);
-
-        } else {
-            return internalServerError("File format not found or invalid.");
-        }
-        return ok(code);
     }
 
     public Result embedFromHTML() {
