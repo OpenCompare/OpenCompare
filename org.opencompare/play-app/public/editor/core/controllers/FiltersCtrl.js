@@ -60,7 +60,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
             $scope.columnsFilters[col.name] = value;
         }
         // We empty tables, because data to represent has changed, and we can't just update because of tab system
-        $rootScope.$broadcast("closeCharts");
+        $rootScope.$broadcast("closeCharts", false);
         chartService.initArrays();
 
 
@@ -69,7 +69,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
 
     $scope.applyProductFilter = function() {
         // We empty tables, because data to represent has changed, and we can't just update because of tab system
-        $rootScope.$broadcast("closeCharts");
+        $rootScope.$broadcast("closeCharts", false);
         chartService.initArrays();
         $scope.gridOptions.columnDefs[1].filter.term = $scope.productFilter;
     };
@@ -181,7 +181,7 @@ pcmApp.controller("FiltersCtrl", function($rootScope, $scope, $http, $timeout, u
             $elm.remove();
         }
         // We empty tables, because data to represent has changed, and we can't just update because of tab system
-        $rootScope.$broadcast("closeCharts");
+        $rootScope.$broadcast("closeCharts", false);
         chartService.initArrays();
     };
 

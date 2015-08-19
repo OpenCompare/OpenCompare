@@ -2,7 +2,7 @@
  * Created by hvallee on 8/4/15.
  */
 
-pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService) {
+pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService, $timeout) {
 
     $scope.showChartPanel = false;
 
@@ -14,10 +14,20 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     $scope.showStringRadarChart = false;
 
     $( "#chartPanel" ).draggable();
+    $( "#chartPanel" ).resizable({
+        aspectRatio: 4 / 3,
+        minHeight: 600
+
+    });
+    $( "#chartPanel" ).on( "resize", function( event, ui ) {
+        $rootScope.$broadcast('closeCharts');
+    } );
 
 
-    $scope.$on('closeCharts', function(event, args) {
-        $scope.showChartPanel = false;
+    $scope.$on('closeCharts', function(event, close) {
+        if(close) {
+            $scope.showChartPanel = false;
+        }
 
         $scope.showLineChart = false;
         $scope.showBarChart = false;
@@ -26,6 +36,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showStringPieChart = false;
         $scope.showStringRadarChart = false;
 
+        chartService.initArrays();
         $scope.pieSeries = [];
         $scope.radarSeries = [];
         $scope.stringPieSeries = [];
