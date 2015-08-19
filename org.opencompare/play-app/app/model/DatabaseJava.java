@@ -16,9 +16,9 @@ import java.util.List;
 /**
  * Created by gbecan on 11/12/14.
  */
-public class Database {
+public class DatabaseJava {
 
-    public static Database INSTANCE = new Database();
+    public static DatabaseJava INSTANCE = new DatabaseJava();
     private KMFJSONLoader kmfLoader = new KMFJSONLoader();
     private KMFJSONExporter kmfSerializer = new KMFJSONExporter();
     private Base64.Decoder base64Decoder = Base64.getDecoder();
@@ -27,7 +27,7 @@ public class Database {
     private DBCollection pcms;
     private String mongoVersion;
 
-    private Database() {
+    private DatabaseJava() {
         try {
             MongoClient mongoClient = new MongoClient("localhost", 27017);
             this.db = mongoClient.getDB("opencompare");

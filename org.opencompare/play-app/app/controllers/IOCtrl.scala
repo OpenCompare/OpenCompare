@@ -38,7 +38,7 @@ trait IOCtrl extends Controller {
     normalizeContainers(pcmContainers)
 
     // Serialize result
-    val jsonResult: String = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers)
+    val jsonResult: String = Database.serializePCMContainersToJSON(pcmContainers)
 
     jsonResult
   }

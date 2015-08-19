@@ -32,8 +32,8 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
 
 
     def get(id : String) = Action {
-        val dbPCM = Database.INSTANCE.get(id)
-        val json = Database.INSTANCE.serializeDatabasePCM(dbPCM)
+        val dbPCM = Database.get(id)
+        val json = Database.serializeDatabasePCM(dbPCM)
         Ok(json)
     }
 
@@ -46,7 +46,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
 
         if (pcmContainers.size == 1) {
             val databasePCM = new DatabasePCM(Some(id), Some(pcmContainers.head))
-            Database.INSTANCE.update(databasePCM)
+            Database.update(databasePCM)
             Ok("")
         } else {
             BadRequest("multiple pcms not supported")
@@ -57,7 +57,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
         val json = request.body.asJson.get
         val pcmContainers = PCMAPIUtils.createContainers(json)
         if (pcmContainers.size == 1) {
-            val id = Database.INSTANCE.create(pcmContainers.get(0))
+            val id = Database.create(pcmContainers.get(0))
             Ok(id)
         } else {
             BadRequest("multiple pcms not supported")
@@ -66,7 +66,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nServ
     }
 
     def remove(id : String) = Action {
-        Database.INSTANCE.remove(id)
+        Database.remove(id)
         Ok("")
     }
 
