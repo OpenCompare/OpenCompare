@@ -86,32 +86,7 @@ public class PCMAPIJava extends Controller {
             productAsLines = true;
         }
 
-        if (type.equals("wikipedia")) {
-            String url = dynamicForm.get("url");
-            try {
-                URL pageURL = new URL(url);
-
-                String host = pageURL.getHost();
-                String language = host.substring(0, host.indexOf('.'));
-                String file = URLDecoder.decode(pageURL.getFile(), StandardCharsets.UTF_8.name());
-
-                if (file.endsWith("/")) {
-                    file = file.substring(0, file.length() - 1);
-                }
-                String title = file.substring(file.lastIndexOf('/') + 1);
-
-                pcmContainers = loadWikitext(language, title);
-                if (pcmContainers.isEmpty()) {
-                    return notFound("No matrices were found in this Wikipedia page");
-                }
-            } catch(MalformedURLException e) {
-                return notFound("URL is not a valid Wikipedia page");
-            } catch (Exception e) {
-                e.printStackTrace();
-                return notFound("The page has not been found."); // TODO: manage the different kind of exceptions
-            }
-
-        } else if (type.equals("html")) {
+         if (type.equals("html")) {
             // Options
             String title = dynamicForm.get("title");
             String fileContent = "";
@@ -165,11 +140,7 @@ public class PCMAPIJava extends Controller {
         PCMContainer container = PCMAPIUtils.createContainers(jsonContent).apply(0);
         container.getMetadata().setProductAsLines(productAsLines);
 
-        if (type.equals("wikitext")) {
-
-            code = wikiExporter.export(container);
-
-        } else if (type.equals("html")) {
+        if (type.equals("html")) {
 
             code = htmlExporter.export(container);
 

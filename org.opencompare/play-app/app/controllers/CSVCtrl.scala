@@ -17,7 +17,7 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class IOCsv extends Controller {
+class CSVCtrl extends Controller {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()

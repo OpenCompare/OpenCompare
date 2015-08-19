@@ -26,8 +26,12 @@ GET         /api/i18n/:language                       @controllers.PCMAPIJava.se
 GET         /api/i18n                                 @controllers.PCMAPIJava.i18n()
 
 # CSV import/export
-POST        /api/import/csv                           @controllers.IOCsv.importPCMs()
-POST        /api/export/csv                           @controllers.IOCsv.exportPCM()
+POST        /api/import/csv                           @controllers.CSVCtrl.importPCMs()
+POST        /api/export/csv                           @controllers.CSVCtrl.exportPCM()
+
+# Wikipedia import/export
+POST        /api/import/wikipedia                     @controllers.WikipediaCtrl.importPCMs()
+POST        /api/export/wikitext                      @controllers.WikipediaCtrl.exportPCM()
 
 # General import/export
 POST        /api/import/:ext                          @controllers.PCMAPIJava.importer(ext : String)
