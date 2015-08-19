@@ -2,14 +2,14 @@ package controllers
 
 import java.io.IOException
 
-import model.PCMAPIUtils
+import model.{Database, PCMAPIUtils}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{HTMLLoader, CSVLoader, HTMLExporter}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
-import play.api.mvc.{Result, AnyContent, Request, Controller}
+import play.api.mvc._
 
 import scala.io.Source
 
@@ -35,6 +35,13 @@ class HTMLCtrl extends IOCtrl {
       "productAsLines" -> boolean,
       "file" -> text
     )(HTMLExportParameters.apply)(HTMLExportParameters.unapply)
+  )
+
+  val embedParametersForm = Form(
+    mapping(
+      "title" -> nonEmptyText,
+      "productAsLines" -> boolean
+    )(EmbedHTMLParameters.apply)(EmbedHTMLParameters.unapply)
   )
 
   override def importPCMs(implicit request: Request[AnyContent]): Result = {
@@ -72,6 +79,37 @@ class HTMLCtrl extends IOCtrl {
 
     Ok(html)
   }
+
+  def embedFromHTML() = Action { implicit request =>
+    // Parse parameters
+    val parameters = embedParametersForm.bindFromRequest.get
+
+    // Read input file
+    val file = request.body.asMultipartFormData.get.file("file").get
+    val htmlData = Source.fromFile(file.ref.file).getLines().mkString("\n")
+
+    val loader: HTMLLoader = new HTMLLoader(pcmFactory, parameters.productAsLines)
+    val pcmContainers = loader.load(htmlData).toList
+
+    try {
+      val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
+      val pcmContainers = loader.load(htmlData).toList
+      normalizeContainers(pcmContainers)
+
+      if (pcmContainers.isEmpty) {
+        NotFound("No matrices were found in this html page")
+      } else {
+        val pcmContainer = pcmContainers.head
+        pcmContainer.getPcm.setName(parameters.title)
+
+        val id: String = Database.INSTANCE.create(pcmContainer)
+
+        Ok(id)
+      }
+    } catch {
+      case e : IOException => BadRequest("This file is invalid")
+    }
+  }
 }
 
 case class HTMLImportParameters(
@@ -83,3 +121,7 @@ case class HTMLExportParameters(
                                       productAsLines : Boolean,
                                       pcm : String
                                       )
+case class EmbedHTMLParameters(
+                                title : String,
+                                productAsLines : Boolean
+                                )

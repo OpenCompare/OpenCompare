@@ -35,17 +35,20 @@ trait IOCtrl extends Controller {
    */
   def postprocessContainers(pcmContainers : List[PCMContainer]) : String = {
 
-    // Normalize the matrices
-    for (pcmContainer <- pcmContainers) {
-      val pcm = pcmContainer.getPcm
-      pcm.normalize(pcmFactory)
-      cellContentInterpreter.interpretCells(pcm)
-    }
+    normalizeContainers(pcmContainers)
 
     // Serialize result
     val jsonResult: String = Database.INSTANCE.serializePCMContainersToJSON(pcmContainers)
 
     jsonResult
+  }
+
+  def normalizeContainers(pcmContainers : List[PCMContainer]) {
+    for (pcmContainer <- pcmContainers) {
+      val pcm = pcmContainer.getPcm
+      pcm.normalize(pcmFactory)
+      cellContentInterpreter.interpretCells(pcm)
+    }
   }
 
 }
