@@ -246,9 +246,6 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
                 },
                 {
                     title: 'Change Type',
-                    shown: function () {
-                        return $scope.edit;
-                    },
                     icon: 'fa fa-exchange',
                     action: function($event) {
                         $('#modalChangeType').modal('show');
