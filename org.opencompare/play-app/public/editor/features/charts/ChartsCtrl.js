@@ -2,7 +2,7 @@
  * Created by hvallee on 8/4/15.
  */
 
-pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService, $timeout) {
+pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeService, editorUtil) {
 
     $scope.showChartPanel = false;
 
@@ -53,7 +53,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
 
         $("#lineTab").tab('show');
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -97,7 +97,8 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     });
 
     $scope.isInLineChart = function(col) {
-        var colName = col.name;
+        var colName = editorUtil.convertStringToPCMFormat(col.name);
+
         var index = $scope.lineSeries.indexOf(colName);
         return index != -1;
     };
@@ -113,7 +114,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
         $("#barTab").tab('show');
 
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -157,7 +158,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     });
 
     $scope.isInBarChart = function(col) {
-        var colName = col.name;
+        var colName = editorUtil.convertStringToPCMFormat(col.name);
         var index = $scope.barSeries.indexOf(colName);
         return index != -1;
     };
@@ -172,7 +173,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
         $("#pieTab").tab('show');
 
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -233,7 +234,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     });
 
     $scope.isInPieChart = function(col) {
-        var colName = col.name;
+        var colName = editorUtil.convertStringToPCMFormat(col.name);
         var index = $scope.pieSeries.indexOf(colName);
         return index != -1;
     };
@@ -248,7 +249,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
         $("#radarTab").tab('show');
 
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -312,7 +313,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     });
 
     $scope.isInRadarChart = function(col) {
-        var colName = col.name;
+        var colName = editorUtil.convertStringToPCMFormat(col.name);
         var index = $scope.radarSeries.indexOf(colName);
         return index != -1;
     };
@@ -327,7 +328,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
         $("#stringPieTab").tab('show');
 
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -393,7 +394,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.showChartPanel = true;
         $("#stringRadarTab").tab('show');
 
-        var colName = args.col.name;
+        var colName = editorUtil.convertStringToPCMFormat(args.col.name);
         var pcmData = [];
         args.pcmData.forEach(function (productRow) {
             pcmData.push(productRow.entity);
@@ -451,7 +452,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
     });
 
     $scope.isInStringRadarChart = function(col) {
-        var colName = col.name;
+        var colName = editorUtil.convertStringToPCMFormat(col.name);
         var index = $scope.stringRadarSeries.indexOf(colName);
         return index != -1;
     };
