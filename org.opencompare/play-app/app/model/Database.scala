@@ -2,8 +2,9 @@ package model
 
 import java.util.Base64
 
-import com.mongodb.casbah.MongoClient
 import com.mongodb.casbah.Imports._
+import com.mongodb.casbah.MongoClient
+import com.mongodb.util.JSON
 import org.bson.types.ObjectId
 import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
@@ -99,8 +100,13 @@ object Database {
       val searchById = MongoDBObject("_id" -> new ObjectId(id))
       val result = pcms.findOne(searchById)
 
-      // TODO : DatabasePCM var = createDatabasePCMInstance(result);
-      new DatabasePCM(None, None) // FIXME : remove when done
+      if (result.isDefined) {
+        val databasePCM = createDatabasePCMInstance(result.get)
+        databasePCM
+      } else {
+        new DatabasePCM(None, None)
+      }
+
     } else {
       new DatabasePCM(None, None)
     }
@@ -108,22 +114,73 @@ object Database {
 
 
   def update(databasePCM: DatabasePCM) {
-    // TODO
+    val dbPCMContainer = serializePCMContainer(databasePCM.pcmContainer.get)
+    pcms.update(MongoDBObject("_id" -> new ObjectId(databasePCM.id.get)), dbPCMContainer)
   }
 
   def create(pcmContainer: PCMContainer) : String = {
-    // TODO
-    ""
+    val newPCM = serializePCMContainer(pcmContainer)
+    val result = pcms.insert(newPCM)
+    val id = newPCM("_id").toString
+    id
   }
 
   private def createDatabasePCMInstance(dbObject : DBObject) : DatabasePCM = {
-    // TODO
-    new DatabasePCM(None, None) // FIXME : remove when done
+
+    if (Option(dbObject).isDefined) {
+
+      val id = dbObject("_id").toString
+      val json = JSON.serialize(dbObject("pcm"))
+
+      val pcmContainers = kmfLoader.load(json)
+
+      if (pcmContainers.size == 1) {
+        val pcmContainer = pcmContainers.head
+        val metadata = pcmContainer.getMetadata
+
+        // Load metadata
+        val dbMetadata = dbObject("metadata").asInstanceOf[DBObject]
+
+        // Load product positions
+        val dbProductPositions = dbMetadata("productPositions").asInstanceOf[BasicDBList]
+        for (dbProductPosition <- dbProductPositions) {
+          val dbProductPositionCast = dbProductPosition.asInstanceOf[DBObject]
+          val productName = dbProductPositionCast("product").toString
+          val product = pcmContainer.getPcm.getProducts.find(_.getName == productName).get
+          val position = dbProductPositionCast("position").toString.toInt
+          metadata.setProductPosition(product, position)
+        }
+
+        // Load feature positions
+        val dbFeaturePositions = dbMetadata("featurePositions").asInstanceOf[BasicDBList]
+        for (dbFeaturePosition <- dbFeaturePositions) {
+          val dbFeaturePositionCast = dbFeaturePosition.asInstanceOf[DBObject]
+          val featureName = dbFeaturePositionCast("feature").toString
+          val feature = pcmContainer.getPcm.getConcreteFeatures.find(_.getName == featureName).get
+          val position = dbFeaturePositionCast("position").toString.toInt
+          metadata.setFeaturePosition(feature, position)
+        }
+
+        new DatabasePCM(Some(id), Some(pcmContainer))
+
+      } else {
+        new DatabasePCM(None, None)
+      }
+    } else {
+      new DatabasePCM(None, None)
+    }
+
+
   }
 
   def exists(id : String) : Boolean = {
-    // TODO
-    false
+    if (ObjectId.isValid(id)) {
+      val searchById = MongoDBObject("_id" -> new ObjectId(id))
+      val result = pcms.findOne(searchById)
+      result.isDefined
+    } else {
+      false
+    }
   }
 
   def remove(id : String) {
@@ -131,18 +188,55 @@ object Database {
   }
 
   def serializePCMContainer(pcmContainer: PCMContainer) : DBObject = {
-    // TODO
-    MongoDBObject()
+    val pcm = pcmContainer.getPcm
+    val metadata = pcmContainer.getMetadata
+
+    // Serialize PCM
+    val pcmInJSON = kmfSerializer.export(pcmContainer)
+    val dbPCM = JSON.parse(pcmInJSON).asInstanceOf[DBObject]
+
+    // Serialize product positions
+    val dbProductPositions = for (product <- pcm.getProducts) yield {
+      val productName = product.getName
+      val position = metadata.getProductPosition(product)
+      MongoDBObject(
+        "product" -> productName,
+        "position" -> position
+      )
+    }
+
+    // Serialize feature positions
+    val dbFeaturePositions = for (feature <- pcm.getConcreteFeatures) yield {
+      val featureName = feature.getName
+      val position = metadata.getFeaturePosition(feature)
+      MongoDBObject(
+        "feature" -> featureName,
+        "position" -> position
+      )
+    }
+
+    val dbMetadata = MongoDBObject(
+      "productPositions" -> dbProductPositions,
+      "featurePositions" -> dbFeaturePositions
+    )
+
+    // Encapsulate the PCM and its metadata in a object
+    val dbContainer = MongoDBObject(
+      "pcm" -> dbPCM,
+      "metadata" -> dbMetadata
+    )
+
+    dbContainer
   }
 
   def serializeDatabasePCM(dbPCM : DatabasePCM) : String = {
-    // TODO
-    ""
+    val dbContainer = serializePCMContainer(dbPCM.pcmContainer.get)
+    JSON.serialize(dbContainer)
   }
 
   def serializePCMContainersToJSON(pcmContainers : List[PCMContainer]) : String = {
-    // TODO
-    ""
+    val dbContainers = pcmContainers.map(serializePCMContainer(_))
+    JSON.serialize(dbContainers)
   }
 
 }
