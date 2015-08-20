@@ -34,7 +34,7 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
         enableCellSelection: false,
         enableCellEdit: false,
         headerRowHeight: 60,
-        rowHeight: 28
+        rowHeight: 35
     };
     $scope.columnMovedFunctions = [];
     $scope.beginCellEditFunctions = [];
@@ -216,8 +216,8 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
             superCol: featureGroupName,
             filter: {term: ''},
             minWidth: $scope.minWidth,
-            cellTemplate: '<div ng-if="grid.appScope.gridOptions.rowHeight < 30" class="ngCellText" ng-class="col.colIndex()" style="overflow:hidden; text-overflow: ellipsis;white-space: nowrap;"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>' +
-            '<div ng-if="grid.appScope.gridOptions.rowHeight > 30" class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>',
+            cellTemplate: '<div ng-if="grid.appScope.gridOptions.rowHeight < 40" class="ngCellText" ng-class="col.colIndex()" style="overflow:hidden; text-overflow: ellipsis;white-space: nowrap;"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>' +
+            '<div ng-if="grid.appScope.gridOptions.rowHeight > 40" class="ngCellText" ng-class="col.colIndex()"><span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}"></span></div>',
             menuItems: [
                 {
                     title: 'Hide',
@@ -308,7 +308,7 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
                 columnDef.type = 'string';
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container' ng-show='!grid.appScope.configurator'>" +
-                    "   <button class='btn btn-primary fa fa-search btn-sm' ng-click='grid.appScope.showFilter(col)'>" +
+                    "   <button class='btn btn-primary mdi-action-search btn-flat btn-sm' style='padding: 4px 6px;' ng-click='grid.appScope.showFilter(col)'>" +
                     "   </button>" +
                     "   <button ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' style='padding:5px' ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
@@ -338,7 +338,7 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
                 };
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container' ng-show='!grid.appScope.configurator'>" +
-                    "   <button class='btn btn-primary btn-sm fa fa-sliders' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'>" +
+                    "   <button class='btn btn-primary btn-sm btn-flat mdi-image-tune'  style='padding: 4px 6px;' ng-click='grid.appScope.showFilter(col)' data-toggle='modal' data-target='#modalSlider'>" +
                     "   </button>" +
                     "   <button  ng-show='grid.appScope.isFilterOn(col)' class='btn btn-default btn-sm fa fa-close' style='padding:5px' ng-click='grid.appScope.removeFilter(col)'>" +
                     "   </button>" +
@@ -378,8 +378,8 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
                 };
                 columnDef.filterHeaderTemplate="" +
                     "<div class='ui-grid-filter-container' ng-show='!grid.appScope.configurator'>" +
-                    "<button class='btn btn-primary btn-sm' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' ><i class='fa fa-check-circle'></i></button>" +
-                    "<button class='btn btn-danger btn-flat' ng-class='{\"btn btn-danger btn-sm \" : grid.appScope.isFilterOn(col) == 2, \"btn btn-flat btn-danger btn-sm\": grid.appScope.isFilterOn(col) != 2}' btn-xs' ng-click='grid.appScope.applyBooleanFilter(col, 2)' ><i class='fa fa-times-circle'></i></button>" +
+                    "<button class='btn btn-primary btn-sm' style='padding: 4px 6px;' ng-class='{\"btn btn-primary btn-sm \" : grid.appScope.isFilterOn(col) == 1, \"btn btn-flat btn-primary btn-sm\": grid.appScope.isFilterOn(col) != 1}' ng-click='grid.appScope.applyBooleanFilter(col, 1)' ><i class='mdi-navigation-check'></i></button>" +
+                    "<button class='btn btn-danger btn-flat' style='padding: 4px 6px;' ng-class='{\"btn btn-danger btn-sm \" : grid.appScope.isFilterOn(col) == 2, \"btn btn-flat btn-danger btn-sm\": grid.appScope.isFilterOn(col) != 2}' btn-xs' ng-click='grid.appScope.applyBooleanFilter(col, 2)' ><i class='mdi-navigation-close'></i></button>" +
                     "</div>";
                 columnDef.filter.noTerm = true;
                 columnDef.filter.condition = function (searchTerm,  cellValue) {

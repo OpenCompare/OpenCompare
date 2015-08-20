@@ -46,13 +46,13 @@
 }
 
 .noCell {
-    color: rgba(10, 0, 0, 1);
-    background-color : #FF5722 !important;
+    color:  #F44336;
+    font-weight: 100;
 }
 
 .yesCell {
-    color: rgba(10, 0, 0, 1);
-    background-color : #B2FF59 !important;
+    color: #4CAF50;
+    font-weight: 500;
 }
 
 .linkCell {
@@ -114,6 +114,17 @@
     width: 100%;
     border: 1px solid rgb(212,212,212);
 }
+
+
+.hideBlock {
+    visibility: hidden;
+}
+
+.showBlock {
+    visibility: visible;
+}
+
+/* Ui-grid override */
 .headerCell{
 
     position: absolute;
@@ -122,10 +133,46 @@
     background-color: inherit;
 }
 
-.hideBlock {
-    visibility: hidden;
+.ui-grid-render-container-body .ui-grid-cell {
+    padding: 5px;
+
 }
 
-.showBlock {
-    visibility: visible;
+
+.ui-grid-header-cell-row {
+    background-color: white;
+}
+
+.ui-grid-footer-cell-row {
+    background-color: white;
+}
+
+.ui-grid-footer-cell{
+    background-color: white;
+}
+
+.ui-grid-footer-cell:hover {
+    background-color: #b3e5fc !important;
+}
+
+.ui-grid-header-cell {
+    border-top: 1px solid;
+    border-color: #d4d4d4;
+}
+
+.ui-grid-header-cell:hover {
+    background-color: #b3e5fc !important;
+}
+
+.ui-grid-filter-container {
+    padding: 0 0 0 5px;
+}
+
+.ui-grid-cell:hover {
+    background-color: #b3e5fc !important;
+}
+
+.form-control-wrapper {
+    margin-top: 20px;
+    height: 35px
 }

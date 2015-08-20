@@ -15,16 +15,16 @@
 <div class="row" ng-show="enableExport || enableEdit">
     <div class="col-xs-12" >
 
-        <a ng-show="!launchFromCreator && !saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
-        <a ng-show="!launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm"  onClick="window.location.href=window.location.href"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
-        <a ng-show="launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" href="/pcm/{{id}}"><i class="fa fa-arrow-left"></i>  {{ 'edit.button.cancel' | translate }}</a>
-        <a role="button" ng-show="enableEdit && !edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="fa fa-pencil"></i> {{ 'edit.button.edit' | translate }}</a>
-        <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="fa fa-exchange"></i> Configurator</a>
-        <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="fa fa-exchange"></i> Classic</a>
+        <a ng-show="!launchFromCreator && !saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a ng-show="!launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm"  onClick="window.location.href=window.location.href"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a ng-show="launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" href="/pcm/{{id}}"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
+        <a role="button" ng-show="enableEdit && !edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="mdi-editor-mode-edit"></i> {{ 'edit.button.edit' | translate }}</a>
+        <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="mdi-action-swap-horiz"></i> Configurator</a>
+        <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="mdi-action-swap-horiz"></i> Classic</a>
         <div class="btn-group">
 
             <div class="btn-group" ng-show="enableExport">
-                <a class="btn btn-default btn-flat dropdown-toggle btn-sm" data-toggle="dropdown"><i class="fa fa-download"></i> {{ 'edit.button.export' | translate }} <span class="caret"></span></a>
+                <a class="btn btn-default btn-flat dropdown-toggle btn-sm" data-toggle="dropdown"><i class="mdi-action-get-app"></i> {{ 'edit.button.export' | translate }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" ng-click="export('csv')" data-toggle="modal" data-target="#modalExport"><i class="fa fa-file-excel-o"></i> CSV</a></li>
                     <li><a href="#" ng-click="export('wikitext')" data-toggle="modal" data-target="#modalExport"><i class="fa fa-file-code-o"></i></i> Wikipedia</a></li>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="btn-group" ng-show="enableShare">
-                <a class="btn dropdown-toggle btn-flat btn-sm" ng-disabled="!activeShareButton" data-toggle="dropdown" ng-click="updateShareLinks()"><i class="fa fa-share-alt"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
+                <a class="btn dropdown-toggle btn-flat btn-sm" ng-disabled="!activeShareButton" data-toggle="dropdown" ng-click="updateShareLinks()"><i class="mdi-social-share"></i> {{ 'edit.button.share' | translate }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" data-toggle="modal" data-target="#modalShare"><i class="fa fa-share"></i> {{ 'edit.button.embed' | translate }}</a></li>
                     <li><a href="{{ emailLink }}"><i class="fa fa-envelope-o"></i> Email</a></li>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
             <div class="btn-group" ng-show="!edit && !(configurator && lineView)">
-                <a class="btn dropdown-toggle btn-flat btn-sm"  data-toggle="dropdown"><i class="fa fa-expand"></i>  {{ 'edit.button.height' | translate }} <span class="caret"></span></a>
+                <a class="btn dropdown-toggle btn-flat btn-sm"  data-toggle="dropdown"><i class="mdi-navigation-unfold-more"></i>  {{ 'edit.button.height' | translate }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a role="button" class="btn btn-flat btn-sm" ng-click="increaseHeight(1)">x 1</a></li>
                     <li><a role="button" class="btn btn-flat btn-sm" ng-click="increaseHeight(2)">x 2</a></li>
@@ -55,17 +55,17 @@
         </div>
 
         <div class="btn-group">
-            <a ng-show="edit" role="button" class="btn btn-default btn-sm" ng-class='{"btn btn-flat btn-default " : !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"fa-save": !saved, "fa-check": saved && isTitleSet}'></i> {{ 'edit.button.save' | translate }}</a>
-            <a ng-show="isInDatabase && edit" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemove"><i class="fa fa-trash"></i> {{ 'edit.button.remove' | translate }}</a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-warning btn-sm" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"fa-search": !validating, "fa-times": validating}'></i> {{ 'edit.button.validate' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-default btn-sm" ng-class='{"btn btn-flat btn-default " : !saved, "btn btn-success": saved && isTitleSet}' ng-disabled="!isTitleSet" ng-click="save()"><i class="fa" ng-class='{"mdi-content-save": !saved, "mdi-navigation-check": saved && isTitleSet}'></i> {{ 'edit.button.save' | translate }}</a>
+            <a ng-show="isInDatabase && edit" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modalRemove"><i class="mdi-action-delete"></i> {{ 'edit.button.remove' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-warning btn-sm" ng-class='{"btn btn-warning": validating, "btn btn-default": !validating}' ng-click="validate()"><i class="fa" ng-class='{"mdi-action-search": !validating, "mdi-content-clear": validating}'></i> {{ 'edit.button.validate' | translate }}</a>
         </div>
 
         <div class="btn-group">
-            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="fa fa-plus"></i> {{ 'edit.button.addfeature' | translate }}</a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeatureGroup" ng-click="setCols()"><i class="fa fa-plus"></i> {{ 'edit.button.addfeaturegroup' | translate }}</a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="fa fa-plus"></i> {{ 'edit.button.addproduct' | translate }}</a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="undo()" ng-disabled="!canUndo"><i class="fa fa-undo"></i></a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="redo()" ng-disabled="!canRedo"><i class="fa fa-repeat"></i></a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="mdi-content-add"></i> {{ 'edit.button.addfeature' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeatureGroup" ng-click="setCols()"><i class="mdi-content-add-box"></i> {{ 'edit.button.addfeaturegroup' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="mdi-content-add"></i> {{ 'edit.button.addproduct' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="undo()" ng-disabled="!canUndo"><i class="mdi-content-undo"></i></a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="redo()" ng-disabled="!canRedo"><i class="mdi-content-redo"></i></a>
         </div>
     </div>
 </div>
