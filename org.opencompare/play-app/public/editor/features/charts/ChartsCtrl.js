@@ -23,8 +23,7 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $rootScope.$broadcast('closeCharts');
     } );
 
-
-    $scope.$on('closeCharts', function(event, close) {
+    $scope.closeCharts = function(close) {
         if(close) {
             $scope.showChartPanel = false;
         }
@@ -41,6 +40,10 @@ pcmApp.controller("ChartsCtrl", function($rootScope, $scope, chartService, typeS
         $scope.radarSeries = [];
         $scope.stringPieSeries = [];
         $scope.stringRadarSeries = [];
+    };
+
+    $scope.$on('closeCharts', function(event, close) {
+        $scope.closeCharts(close);
     });
 
     /* Line Chart */
