@@ -209,6 +209,28 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         $rootScope.$broadcast('reloadFeatureGroup');
     };
 
+    $rootScope.$on('assignFeatureGroup', function(event, args) {
+        var colsToAssign = [];
+        for(var col in args.features) {
+            if(args.features[col] == true) {
+                colsToAssign.push(col);
+            }
+        }
+        $scope.gridOptions.columnDefs.forEach(function (col) {
+            if(colsToAssign.indexOf(col.name) != -1) {
+                col.superCol = args.featureGroup;
+            }
+            else if(col.superCol == args.featureGroup){
+                col.superCol = "emptyFeatureGroup";
+            }
+        });
+        $scope.deleteUnusedFeatureGroups();
+        $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs);
+        $rootScope.$broadcast('modified');
+        $rootScope.$broadcast('reloadFeatureGroup');
+    });
+
+
     /**
      * Delete a feature
      * @param featureName

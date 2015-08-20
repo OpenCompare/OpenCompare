@@ -8,28 +8,38 @@
  * FeatureGroupCtrl.js
  * Managed feature groups
  */
-pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, editorUtil) {
+pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, editorUtil, $modal) {
 
-    $scope.cols = {};
 
 
     $scope.isAFeature = function(col) {
         return col.name != ' ' && col.name != 'Product';
     };
 
-    $scope.isAFeatureGroup = function(col) {console.log(col.name);
+    $scope.isAFeatureGroup = function(col) {
         return col.name != 'emptyFeatureGroup';
     };
 
-    $scope.setCols = function() {
+    $scope.setCols = function() { console.log($scope.gridOptions);
         var cols = $scope.gridOptions.columnDefs;
         for(var i = 2; i < cols.length; i ++) {
             $scope.cols[i-2] = {name: cols[i].name, isChecked: false};
         }
     };
 
-    $scope.setRenameFeatureGroupModal = function(featureName) {
-        featureGroupService.setCurrentFeatureGroup(featureName);
+    $scope.setFeatureGroupModal = function(featureName) { console.log(featureName);
+        $scope.currentFeatureGroup = featureName;console.log(  $scope.currentFeatureGroup);
+    };
+
+    $scope.openAssignFeatureGroupModal = function(featureGroup, features) {
+        $scope.cols = features;
+
+        $scope.currentFeatureGroup = featureGroup;
+        var modalInstance = $modal.open({
+            templateUrl: '/assets/editor/templates/modalAssignFeatureGroup.html',
+            scope: $scope,
+            controller: 'FeatureGroupCtrl'
+        });
     };
 
     $scope.deleteUnusedFeatureGroups = function(){
@@ -96,7 +106,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
             var _colId = superCols[i].name;
             if(_colId != 'emptyFeatureGroup') {
                 var _parentCol = jQuery('.ui-grid-header-cell[col-name="' + _colId + '"]');
-                console.log(_parentCol.outerWidth());
+
                 var _parentWidth = _parentCol.outerWidth() - widthToSubstract;
                 _parentCol.css({
                     'min-width': _parentWidth + 'px',
@@ -116,6 +126,15 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
             }
         }
         return featuresWithThisFeatureGroup;
+    };
+
+    $scope.isAFeatureWithThisFeatureGroup = function(feature, featureGroup) {
+
+        return feature.superCol == featureGroup;
+    };
+
+    $scope.assignFeatureGroup = function(featureGroup, checkboxes) {
+        $rootScope.$broadcast('assignFeatureGroup', {'featureGroup': featureGroup, 'features': checkboxes});
     };
 
     $scope.$watch(function(){
