@@ -395,7 +395,7 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
                 break;
             case 'image':
                 columnDef.type = 'image';
-                columnDef.enableCellEdit = 'false;'
+                columnDef.enableCellEdit = 'false;';
                 columnDef.cellTemplate = '<form>'+
                     '<input ng-show="grid.appScope.edit" type="file" ng-model="grid.appScope.file" ng-change="grid.appScope.uploadFile(col, row)" base-sixty-four-input>'+
                     '</form>'+
@@ -648,6 +648,10 @@ pcmApp.controller("GridCtrl", function($rootScope, $scope, $window, $http, $time
         productsColumn.filterHeaderTemplate="" +
             "<div class='ui-grid-filter-container'>" +
             "   <input type='text' class='form-control floating-label' ng-change='grid.appScope.applyProductFilter()' ng-model='grid.appScope.productFilter' placeholder='Find'"+
+            "</div>";
+        productsColumn.footerCellTemplate="" +
+            "<div class='ui-grid-cell-contents'>" +
+            "<span>{{grid.appScope.gridApi.core.getVisibleRows($scope.gridApi.grid).length}} / {{grid.appScope.pcmData.length}}</span>"+
             "</div>";
         columnDefs.splice(0, 0, toolsColumn);
         columnDefs.splice(1, 0, productsColumn);

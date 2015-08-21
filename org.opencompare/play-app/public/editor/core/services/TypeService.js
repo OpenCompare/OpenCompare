@@ -53,10 +53,10 @@ pcmApp.service('typeService', function(editorUtil) {
 
         var type = "";
         if(!angular.equals(parseInt(productName), NaN)) {
-            type = "number";
+            type = "num";
         }
         else if(this.isBooleanValue(productName)) {
-            type = "boolean";
+            type = "bool";
         }
         else if(!editorUtil.isEmptyCell(productName)){
             type = "string";
