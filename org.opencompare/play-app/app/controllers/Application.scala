@@ -26,8 +26,8 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
 
     def list(limit : Int, page : Int) = Action {
-        val pcms = Database.INSTANCE.list(limit, page).toList
-        val count = Database.INSTANCE.count().toInt
+        val pcms = Database.list(limit, page).toList
+        val count = Database.count().toInt
         var nbPages = count / limit
         if (count % limit != 0) {
             nbPages = nbPages + 1
@@ -38,14 +38,14 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
     def search(request : String) = Action {
 
         // TODO : find PCMs named "request" or with a product named "request"
-        val results = Database.INSTANCE.search(request).toList
+        val results = Database.search(request).toList
 
         Ok(views.html.search(request, results))
     }
 
 
     def edit(id : String) = Action {
-        val exists = Database.INSTANCE.exists(id)
+        val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.edit(id, null, null))
         } else {
@@ -68,7 +68,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
     }
 
     def embedPCM(id : String) = Action {
-        val exists = Database.INSTANCE.exists(id)
+        val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.embed(id, null, null))
         } else {

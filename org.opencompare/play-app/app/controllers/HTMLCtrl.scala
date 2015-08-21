@@ -102,7 +102,7 @@ class HTMLCtrl extends IOCtrl {
         val pcmContainer = pcmContainers.head
         pcmContainer.getPcm.setName(parameters.title)
 
-        val id: String = Database.INSTANCE.create(pcmContainer)
+        val id: String = Database.create(pcmContainer)
 
         Ok(id)
       }
