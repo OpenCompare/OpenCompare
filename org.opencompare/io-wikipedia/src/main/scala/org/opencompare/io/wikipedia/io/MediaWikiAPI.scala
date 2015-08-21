@@ -29,21 +29,20 @@ class MediaWikiAPI(
   }
 
   def call(language: String, params: Map[String, String]): Option[String] = {
-    var result = ""
-    try {
+    val result = try {
       var paramedQuery = Http(apiEndPoint(language)).params(params)
-      result = paramedQuery.asString.body
+      paramedQuery.asString.body
     } catch {
       case _ : SocketTimeoutException => {
         try {
-          this.wait(1000)
+          this.wait(800)
         } catch {
-          case _ : Throwable => Nil
+          case _ : Throwable =>
         }
-        result = call(language, params).get
+        call(language, params).get
       }
     }
-    Option[String](result)
+    Some(result)
   }
 
   def getWikitextFromTitle(language : String, title : String): String = {
@@ -63,9 +62,6 @@ class MediaWikiAPI(
 
       if (jsonWikitext.nonEmpty) {
         jsonWikitext.head.as[JsString].value
-        //      Json.stringify(jsonWikitext.head)
-        //        .replaceAll(Matcher.quoteReplacement("\\n"), "\n")
-        //        .replaceAll(Matcher.quoteReplacement("\\\""), "\"")
       } else {
         // TODO: Error
         ""
@@ -129,15 +125,12 @@ class MediaWikiAPI(
     if (result.isDefined) {
       val jsonResult = Json.parse(result.get)
       val page = jsonResult \ "query" \ "pages"
-      (page \\ "revisions").foreach { revisions =>
-        revisions match {
-          case JsArray(revisionsSeq) => {
-            revisionsSeq.foreach(rev => {
-              revs.append(rev.asInstanceOf[JsObject])
-            })
-          }
-          case _ => println("failed")
-        }
+      (page \\ "revisions").foreach {
+        case JsArray(revisionsSeq) =>
+          revisionsSeq.foreach(rev => {
+            revs.append(rev.asInstanceOf[JsObject])
+          })
+        case _ => println("failed")
       }
 
       // Recursive call only if not completed
@@ -153,7 +146,7 @@ class MediaWikiAPI(
   }
 
   def getContentFromRevision(language : String, id : Int): String = {
-    var content = ""
+
     val params = Map[String, String](
       "action" -> "query",
       "format" -> "json",
@@ -162,13 +155,18 @@ class MediaWikiAPI(
       "rvprop" -> "contentmodel|content",
       "redirects" -> ""
     )
+
     val result = call(language, params)
-    if (result.isDefined) {
+
+    val content = if (result.isDefined) {
       val jsonResult = Json.parse(result.get)
       val revisions = jsonResult \ "query" \ "pages" \\ "revisions"
-      val revision = revisions.apply(0).apply(0)
-      content = (revision \ "*").as[JsString].value
+      val revision = revisions.head(0)
+      (revision \ "*").as[JsString].value
+    } else {
+      ""
     }
+
     content
   }
 
