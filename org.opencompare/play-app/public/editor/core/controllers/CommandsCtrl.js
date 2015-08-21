@@ -154,11 +154,13 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     /**
      * Rename a feature group
      */
-    $scope.renameFeatureGroup = function(oldFeatureName, newFeatureName) {
+    $rootScope.$on('renameFeatureGroup', function(event, args) {
+        var oldFeatureGroup = args.oldFeatureGroup;
+        var newFeatureGroup = args.newFeatureGroup;
 
-        var codedOldFeatureName =  editorUtil.convertStringToEditorFormat(featureGroupService.getCurrentFeatureGroup());
-        var featureName = editorUtil.checkIfNameExists(newFeatureName, $scope.gridOptions.columnDefs);
-        var codedFeatureName = editorUtil.convertStringToEditorFormat(featureName);
+        var codedOldFeatureName =  editorUtil.convertStringToEditorFormat(oldFeatureGroup);
+        var featureName = editorUtil.checkIfNameExists(newFeatureGroup, $scope.gridOptions.columnDefs);
+        var codedFeatureName = editorUtil.convertStringToEditorFormat(newFeatureGroup);
 
         /* Find the feature in column defs */
         for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
@@ -182,7 +184,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         /* Modified for save */
         $rootScope.$broadcast('modified');
         $rootScope.$broadcast('reloadFeatureGroup');
-    };
+    });
 
     /**
      * Delete a feature sgroup

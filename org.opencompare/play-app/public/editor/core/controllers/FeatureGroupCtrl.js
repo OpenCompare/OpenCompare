@@ -27,7 +27,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         }
     };
 
-    $scope.setFeatureGroupModal = function(featureName) { console.log(featureName);
+    $scope.setFeatureGroupModal = function(featureName) {
         $scope.currentFeatureGroup = featureName;console.log(  $scope.currentFeatureGroup);
     };
 
@@ -37,6 +37,17 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         $scope.currentFeatureGroup = featureGroup;
         $scope.$modalInstance = $modal.open({
             templateUrl: '/assets/editor/templates/modalAssignFeatureGroup.html',
+            scope: $scope,
+            controller: 'FeatureGroupCtrl'
+        });
+    };
+
+    $scope.openRenameFeatureGroupModal = function(featureGroup) {
+
+        $scope.newFeatureGroup = featureGroup;
+        $scope.currentFeatureGroup = featureGroup;
+        $scope.$modalInstance = $modal.open({
+            templateUrl: '/assets/editor/templates/modalRenameFeatureGroup.html',
             scope: $scope,
             controller: 'FeatureGroupCtrl'
         });
@@ -137,6 +148,11 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     $scope.assignFeatureGroup = function(featureGroup, checkboxes) {
         $scope.$modalInstance.close();
         $rootScope.$broadcast('assignFeatureGroup', {'featureGroup': featureGroup, 'features': checkboxes});
+    };
+
+    $scope.renameFeatureGroup = function(oldFeatureGroup, newFeatureGroup) {
+        $scope.$modalInstance.close();
+        $rootScope.$broadcast('renameFeatureGroup', {'oldFeatureGroup': oldFeatureGroup, 'newFeatureGroup': newFeatureGroup});
     };
 
     $scope.cancelModal = function() {
