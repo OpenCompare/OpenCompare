@@ -1,6 +1,6 @@
 
 <div class="modal-header" id="createFeatureGroupModal">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelModal()"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="myModalLabel">{{ "edit.title.createNewFeatureGroup" | translate }}</h4>
 </div>
 <div class="modal-body" ng-init="checkbox = []">
@@ -15,6 +15,6 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">{{ "edit.button.cancel" | translate }}</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelModal()">{{ "edit.button.cancel" | translate }}</button>
     <button type="button" class="btn btn-success" ng-click="addFeatureGroup(featureName, checkbox);">{{ "edit.button.apply" | translate }}</button>
 </div>

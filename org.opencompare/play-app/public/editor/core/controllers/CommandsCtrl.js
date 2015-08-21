@@ -36,7 +36,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         });
 
         /* Define the new column*/
-        var columnDef = $scope.newColumnDef(featureName, null, $scope.featureType);
+        var columnDef = $scope.newColumnDef(featureName, 'emptyFeatureName', $scope.featureType);
         $scope.gridOptions.columnDefs.push(columnDef);
         $scope.validation[codedFeatureName] = [];
 
@@ -287,6 +287,9 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
                 var oldType =$scope.gridOptions.columnDefs[i].type;
                 found = true;
                 $scope.gridOptions.columnDefs.splice(i, 1);
+                if(! $scope.gridOptions.columnDefs[i].superCol) {
+                    $scope.gridOptions.columnDefs[i].superCol = "emptyFeatureGroup";
+                }
                 var colDef = $scope.newColumnDef(featureName, $scope.gridOptions.columnDefs[i].superCol, $scope.featureType);
                 $timeout(function(){ $scope.gridOptions.columnDefs.splice(i-1, 0, colDef); }, 100);// Not working without a timeout
                 var parameters = [featureName, oldType, $scope.featureType];

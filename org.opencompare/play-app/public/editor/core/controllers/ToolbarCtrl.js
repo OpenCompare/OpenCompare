@@ -58,6 +58,10 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope, $modal) {
         $scope.$modalInstance.close();
     };
 
+    $scope.cancelModal = function() {
+        $scope.$modalInstance.close();
+    };
+
     /** Set the line view in configurator mode */
     $scope.$on('setLineView', function(event, arg) {
         $scope.lineView = arg;

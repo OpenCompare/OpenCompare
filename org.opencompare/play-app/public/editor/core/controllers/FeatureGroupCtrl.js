@@ -10,7 +10,7 @@
  */
 pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $http, $timeout, featureGroupService, editorUtil, $modal) {
 
-
+    $scope.edit = false;
 
     $scope.isAFeature = function(col) {
         return col.name != ' ' && col.name != 'Product';
@@ -139,10 +139,19 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         $rootScope.$broadcast('assignFeatureGroup', {'featureGroup': featureGroup, 'features': checkboxes});
     };
 
+    $scope.cancelModal = function() {
+        $scope.$modalInstance.close();
+    };
+
     $scope.$watch(function(){
         return $window.innerWidth;
     }, function(value) {
         $rootScope.$broadcast('reloadFeatureGroup');
+    });
+
+    $scope.$on('setGridEdit', function(event, args) {
+        $scope.edit = args[0];
+
     });
 
 });
