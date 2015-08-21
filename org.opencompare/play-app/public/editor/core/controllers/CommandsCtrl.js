@@ -2,7 +2,7 @@
  * Created by hvallee on 6/19/15.
  */
 
-pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, featureGroupService, sortFeaturesService, editorUtil) {
+pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, uiGridConstants, featureGroupService, sortFeaturesService, editorUtil, $modal) {
 
 
     /**
@@ -52,8 +52,9 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     /**
      * Add a feature group
      */
-    $scope.addFeatureGroup = function (featureGroup, features) {
-        var selectedCols = $scope.cols;
+    $rootScope.$on('addFeatureGroup', function(event, args) {
+        var featureGroup = args.featureGroup;
+        var features = args.features;
         var found = false;
         for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
             var currentCol = $scope.gridOptions.superColDefs[i];
@@ -94,12 +95,12 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs);
 
         /* Command for undo/redo */
-        var parameters = [$scope.featureName, colsToAssign];
+        var parameters = [featureGroup, colsToAssign];
         $scope.newCommand('addFeatureGroup', parameters);
         $rootScope.$broadcast('modified');
         $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
 
-    };
+    });
 
     /**
      * Rename a feature
@@ -231,6 +232,8 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs);
         $rootScope.$broadcast('modified');
         $rootScope.$broadcast('reloadFeatureGroup');
+
+
     });
 
 

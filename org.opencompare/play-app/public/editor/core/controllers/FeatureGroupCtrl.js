@@ -35,7 +35,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
         $scope.cols = features;
 
         $scope.currentFeatureGroup = featureGroup;
-        var modalInstance = $modal.open({
+        $scope.$modalInstance = $modal.open({
             templateUrl: '/assets/editor/templates/modalAssignFeatureGroup.html',
             scope: $scope,
             controller: 'FeatureGroupCtrl'
@@ -135,6 +135,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     };
 
     $scope.assignFeatureGroup = function(featureGroup, checkboxes) {
+        $scope.$modalInstance.close();
         $rootScope.$broadcast('assignFeatureGroup', {'featureGroup': featureGroup, 'features': checkboxes});
     };
 

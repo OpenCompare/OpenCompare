@@ -46,13 +46,17 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope, $modal) {
 
     $scope.openCreateFeatureGroupModal = function() {
 
-        var modalInstance = $modal.open({
+        $scope.$modalInstance = $modal.open({
             templateUrl: '/assets/editor/templates/modalCreateFeatureGroup.html',
             scope: $scope,
             controller: 'ToolbarCtrl'
         });
     };
 
+    $scope.addFeatureGroup = function(featureGroup, features) {
+        $rootScope.$broadcast('addFeatureGroup', {"featureGroup": featureGroup, "features": features});
+        $scope.$modalInstance.close();
+    };
 
     /** Set the line view in configurator mode */
     $scope.$on('setLineView', function(event, arg) {

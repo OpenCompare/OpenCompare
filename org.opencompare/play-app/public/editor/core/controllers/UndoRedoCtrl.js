@@ -38,29 +38,33 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     break;
                 case 'removeFeature':
                     undoRemoveFeature(parameters[0], parameters[1], parameters[2], parameters[3]);
-                    $rootScope.$broadcast('reloadFeatureGroup');
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
                 case 'renameFeature':
                     undoRenameFeature(parameters[0], parameters[1], parameters[2]);
                     break;
                 case 'changeType':
                     undoChangeType(parameters[0], parameters[1]);
-                    $rootScope.$broadcast('reloadFeatureGroup');
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
                 case 'addFeature':
                     undoAddFeature(parameters[0], parameters[2]);
-                    $rootScope.$broadcast('reloadFeatureGroup');
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
                 case 'addFeatureGroup':
                     undoAddFeatureGroup(parameters[0]);
-                    $rootScope.$broadcast('reloadFeatureGroup');
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
                 case 'deleteFeatureGroup':
                     undoDeleteFeatureGroup(parameters[0], parameters[1]);
-                    $rootScope.$broadcast('reloadFeatureGroup');
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
                 case 'renameFeatureGroup':
                     undoRenameFeatureGroup(parameters[0], parameters[1]);
+                    break;
+                case 'assignFeatureGroup':
+                    undoAssignFeatureGroup(parameters[0], parameters[1]);
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);;
                     break;
             }
             if($scope.commandsIndex <= 0){
@@ -113,6 +117,10 @@ pcmApp.controller("UndoRedoCtrl", function($rootScope, $scope, $http, $timeout, 
                     break;
                 case 'renameFeatureGroup':
                     undoRenameFeatureGroup(parameters[1], parameters[0]);
+                    $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
+                    break;
+                case 'assignFeatureGroup':
+                    redoAssignFeatureGroup(parameters[0], parameters[1]);
                     $scope.loadFeatureGroups($scope.gridOptions.columnDefs, $scope.gridOptions.superColDefs);
                     break;
             }
