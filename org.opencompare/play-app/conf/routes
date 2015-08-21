@@ -31,8 +31,8 @@ POST        /api/import/csv                           @controllers.CSVCtrl.impor
 POST        /api/export/csv                           @controllers.CSVCtrl.exportPCMAction()
 
 # Wikipedia import/export
-POST        /api/import/wikipedia                     @controllers.WikipediaCtrl.importPCMsAction()
-POST        /api/export/wikitext                      @controllers.WikipediaCtrl.exportPCMAction()
+POST        /api/import/wikipedia                     @controllers.MediaWikiCtrl.importPCMsAction()
+POST        /api/export/wikitext                      @controllers.MediaWikiCtrl.exportPCMAction()
 
 # HTML import/export
 POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction()

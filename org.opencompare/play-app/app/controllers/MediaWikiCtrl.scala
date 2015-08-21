@@ -17,19 +17,19 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 8/18/15.
  */
-class WikipediaCtrl extends IOCtrl {
+class MediaWikiCtrl extends IOCtrl {
 
   val inputParametersForm = Form(
     mapping(
       "url" -> nonEmptyText
-    )(WikipediaImportParameters.apply)(WikipediaImportParameters.unapply)
+    )(MediaWikiImportParameters.apply)(MediaWikiImportParameters.unapply)
   )
 
   val outputParametersForm = Form(
     mapping(
       "productAsLines" -> boolean,
       "file" -> text
-    )(WikipediaExportParameters.apply)(WikipediaExportParameters.unapply)
+    )(MediaWikiExportParameters.apply)(MediaWikiExportParameters.unapply)
   )
   private val pcmFactory: PCMFactory = new PCMFactoryImpl
   private val mediaWikiAPI: MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
@@ -90,11 +90,11 @@ class WikipediaCtrl extends IOCtrl {
 }
 
 
-case class WikipediaImportParameters(
+case class MediaWikiImportParameters(
                                 url : String
                                 )
 
-case class WikipediaExportParameters(
+case class MediaWikiExportParameters(
                                 productAsLines : Boolean,
                                 pcm : String
                                 )
