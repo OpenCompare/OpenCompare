@@ -52,7 +52,7 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
     /**
      * Add a feature group
      */
-    $scope.addFeatureGroup = function () {
+    $scope.addFeatureGroup = function (featureGroup, features) {
         var selectedCols = $scope.cols;
         var found = false;
         for(var i = 0; i < $scope.gridOptions.superColDefs.length; i++) {
@@ -73,20 +73,23 @@ pcmApp.controller("CommandsCtrl", function($rootScope, $scope, $http, $timeout, 
         }
 
         var newFeatureGroup = {
-            name: $scope.featureName,
-            displayName: $scope.featureName
+            name: featureGroup,
+            displayName: featureGroup
         };
         $scope.gridOptions.superColDefs.splice(0, 0, newFeatureGroup);
         $scope.gridOptions.superColDefs = sortFeaturesService.sortFeatureGroupByName($scope.gridOptions.superColDefs);
-        var index = 0;
+
         var colsToAssign = [];
-        for(var col in selectedCols) {
-            if(selectedCols[index].isChecked == true) {
-                colsToAssign.push($scope.gridOptions.columnDefs[index+2].name);
-                $scope.gridOptions.columnDefs[index+2].superCol = $scope.featureName;
+        for(var col in features) {
+            if(features[col] == true) {
+                colsToAssign.push(col);
             }
-            index++;
         }
+        $scope.gridOptions.columnDefs.forEach(function (col) {
+            if(colsToAssign.indexOf(col.name) != -1) {
+                col.superCol = featureGroup;
+            }
+        });
         $scope.deleteUnusedFeatureGroups();
         $scope.gridOptions.columnDefs = sortFeaturesService.sortByFeatureGroup($scope.gridOptions.columnDefs);
 

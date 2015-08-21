@@ -8,7 +8,7 @@
     <label for="featureName">Features :</label>
     <div class="checkbox checkbox-primary"  name="featuresSelection" ng-repeat="col in cols | filter:isAFeature" ng-init="checkbox[col.name] = isAFeatureWithThisFeatureGroup(col, currentFeatureGroup)">
         <label>
-            <input type="checkbox" ng-model="checkbox[col.name]""> {{ col.name }}
+            <input type="checkbox" ng-model="checkbox[col.name]"> {{ col.name }}
         </label>
     </div>
 </div>

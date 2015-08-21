@@ -57,6 +57,7 @@ pcmApp.controller("FeatureGroupCtrl", function($rootScope, $scope, $window, $htt
     };
 
     $scope.loadFeatureGroups = function(cols, superCols) {
+
         var columnWidth = $scope.minWidth;
         var availableWidth = $(document).width() - 150 - 30 - 3;//Todo: not optimal for now, using minus product column and minus padding minus grid property
         if(availableWidth > ((cols.length-2) * $scope.minWidth)) {

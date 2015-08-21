@@ -7,7 +7,7 @@
  * ToolbarCtrl.js
  * Manage editor toolbar
  */
-pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
+pcmApp.controller("ToolbarCtrl", function($rootScope, $scope, $modal) {
 
     $scope.saved = false;
     $scope.isInDatabase = false;
@@ -42,6 +42,15 @@ pcmApp.controller("ToolbarCtrl", function($rootScope, $scope) {
     $scope.setConfigurator = function(bool) {
         $scope.configurator = bool;
         $rootScope.$broadcast('setConfiguratorMode', bool);
+    };
+
+    $scope.openCreateFeatureGroupModal = function() {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/assets/editor/templates/modalCreateFeatureGroup.html',
+            scope: $scope,
+            controller: 'ToolbarCtrl'
+        });
     };
 
 

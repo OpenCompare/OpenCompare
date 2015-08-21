@@ -62,7 +62,7 @@
 
         <div class="btn-group">
             <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeature"><i class="mdi-content-add"></i> {{ 'edit.button.addfeature' | translate }}</a>
-            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" data-toggle="modal" data-target="#modalNewFeatureGroup" ng-click="setCols()"><i class="mdi-content-add-box"></i> {{ 'edit.button.addfeaturegroup' | translate }}</a>
+            <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="openCreateFeatureGroupModal()"><i class="mdi-content-add-box"></i> {{ 'edit.button.addfeaturegroup' | translate }}</a>
             <a ng-show="edit" role="button" class="btn btn-flat btn-primary btn-sm" ng-click="addProduct()"><i class="mdi-content-add"></i> {{ 'edit.button.addproduct' | translate }}</a>
             <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="undo()" ng-disabled="!canUndo"><i class="mdi-content-undo"></i></a>
             <a ng-show="edit" role="button" class="btn btn-flat btn-default btn-sm" ng-click="redo()" ng-disabled="!canRedo"><i class="mdi-content-redo"></i></a>
