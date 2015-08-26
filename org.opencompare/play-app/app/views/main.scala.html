@@ -1,6 +1,6 @@
 @import javax.inject.Inject
+@import play.api.Play.current
 @(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang, messages: Messages)
-
 
 <!DOCTYPE html>
 <html ng-app="openCompare">
@@ -60,7 +60,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" ng-controller="I18nCtrl">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@lang.code <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@messages.lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">English</button></li>
                             <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">Français</button></li>

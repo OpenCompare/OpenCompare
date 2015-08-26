@@ -154,4 +154,6 @@ class NestedTableChecker extends AstVisitor[WtNode] with CompleteWikitextVisitor
   def visit(wt: WtLctVarConv): Unit = iterate(wt)
 
   def visit(wt: WtNoLctFlags): Unit = iterate(wt)
+
+  def visit(wt : WtLinkTarget.WtNoLink) = {}
 }

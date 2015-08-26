@@ -22,7 +22,7 @@ import collection.JavaConversions._
  * Updated by smangin on 21/05/15
  */
 @Singleton
-class PCMAPI @Inject() (val messagesApi: MessagesApi, val i18nService : I18nService) extends Controller with I18nSupport {
+class PCMAPI @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
     private val pcmFactory : PCMFactory = new PCMFactoryImpl()
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")

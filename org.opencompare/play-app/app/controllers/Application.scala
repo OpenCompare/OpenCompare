@@ -1,7 +1,7 @@
 package controllers
 
 import model.{Database, PCMInfo}
-import play.api.i18n.{MessagesApi, I18nSupport}
+import play.api.i18n.{Messages, Lang, MessagesApi, I18nSupport}
 import play.api.mvc.{Controller, Action}
 
 import collection.JavaConversions._
@@ -12,20 +12,20 @@ import javax.inject._
 class Application @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
 
-    def index = Action {
-        Ok(views.html.index())
+    def index = Action { implicit request =>
+      Ok(views.html.index())
     }
 
-    def aboutProject = Action {
+    def aboutProject = Action { implicit request =>
         Ok(views.html.aboutProject())
     }
 
-    def aboutPrivacyPolicy = Action {
+    def aboutPrivacyPolicy = Action { implicit request =>
         Ok(views.html.aboutPrivacyPolicy())
     }
 
 
-    def list(limit : Int, page : Int) = Action {
+    def list(limit : Int, page : Int) = Action { implicit request =>
         val pcms = Database.list(limit, page).toList
         val count = Database.count().toInt
         var nbPages = count / limit
@@ -35,16 +35,16 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         Ok(views.html.list(pcms, limit, page, nbPages))
     }
 
-    def search(request : String) = Action {
+    def search(searchedString : String) = Action { implicit request =>
 
         // TODO : find PCMs named "request" or with a product named "request"
-        val results = Database.search(request).toList
+        val results = Database.search(searchedString).toList
 
-        Ok(views.html.search(request, results))
+        Ok(views.html.search(searchedString, results))
     }
 
 
-    def edit(id : String) = Action {
+    def edit(id : String) = Action { implicit request =>
         val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.edit(id, null, null))
@@ -54,11 +54,11 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
     }
 
-    def create = Action {
+    def create = Action { implicit request =>
         Ok(views.html.create(null, null, null))
     }
 
-    def importer(ext : String) = Action {
+    def importer(ext : String) = Action { implicit request =>
         ext match {
             case "csv" => Ok(views.html.edit(null, null, "CsvImport"))
             case "html" => Ok(views.html.edit(null, null, "HtmlImport"))
@@ -67,7 +67,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         }
     }
 
-    def embedPCM(id : String) = Action {
+    def embedPCM(id : String) = Action { implicit request =>
         val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.embed(id, null, null))
@@ -77,7 +77,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
     }
 
-    def embed = Action {
+    def embed = Action { implicit request =>
         Ok(views.html.embed(null, null, null))
     }
 
