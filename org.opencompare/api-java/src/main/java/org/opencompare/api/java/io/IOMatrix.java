@@ -20,10 +20,10 @@ public class IOMatrix implements Cloneable {
     }
 
     public IOMatrix(List<String[]> lines) {
-        for(int i = 0; i < lines.size(); i++){
-            int c = lines.get(i).length;
-            for(int j = 0; j < c; j++){
-                getOrCreateCell(i, j).setContent(lines.get(i)[j]);
+        for(int lineIndex = 0; lineIndex < lines.size(); lineIndex++){
+            int lineLength = lines.get(lineIndex).length;
+            for(int colIndex = 0; colIndex < lineLength; colIndex++){
+                getOrCreateCell(lineIndex, colIndex).setContent(lines.get(lineIndex)[colIndex]);
             }
         }
     }
@@ -53,11 +53,13 @@ public class IOMatrix implements Cloneable {
     }
 
     public IOCell getOrCreateCell(int row, int column) {
-        IOCell cell = new IOCell("");
-        if (!cells.containsKey(new Pair<>(row, column))) {
+        if (cells.containsKey(new Pair<>(row, column))) {
+            return cells.get(new Pair<>(row, column));
+        } else {
+            IOCell cell = new IOCell("");
             setCell(cell, row, column, 1, 1);
+            return cell;
         }
-        return cells.get(new Pair<>(row, column));
     }
 
     public int getNumberOfRows() {
@@ -146,7 +148,7 @@ public class IOMatrix implements Cloneable {
         matrix.setName(name);
         for(int i = 0; i < getNumberOfRows(); i++) {
             for (int j = 0; j < getNumberOfColumns(); j++) {
-                matrix.getOrCreateCell(j, i).setContent(getOrCreateCell(i, j).getContent());
+                matrix.getOrCreateCell(j, i).setContent(this.getOrCreateCell(i, j).getContent());
             }
         }
         this.cells = matrix.cells;

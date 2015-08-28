@@ -32,6 +32,7 @@ public class IOMatrixLoader {
     public List<PCMContainer> load(IOMatrix matrix) {
         List<PCMContainer> containers = new ArrayList<>();
         MatrixAnalyser detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl());
+        detector.setTransposition(!this.productsAsLines);
         containers.add(load(detector));
         return containers;
     }
