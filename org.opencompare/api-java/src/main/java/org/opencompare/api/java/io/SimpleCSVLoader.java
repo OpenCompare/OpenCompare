@@ -110,6 +110,7 @@ public class SimpleCSVLoader implements PCMLoader {
                 for (int i = 1; i < line.length; i++) {
                     Cell cell = factory.createCell();
                     cell.setContent(line[i]);
+                    cell.setRawContent(line[i]);
 
                     // Create an arbitrary feature if the number of cells is greater than the number of features
                     if (i > features.size()) {
@@ -169,6 +170,7 @@ public class SimpleCSVLoader implements PCMLoader {
                 for (int i = 1; i < line.length; i++) {
                     Cell cell = factory.createCell();
                     cell.setContent(line[i]);
+                    cell.setRawContent(line[i]);
                     cell.setFeature(feature);
 
                     // Create an arbitrary product if the number of cells is greater than the number of products
