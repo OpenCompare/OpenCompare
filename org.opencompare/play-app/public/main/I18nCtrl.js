@@ -38,6 +38,7 @@ pcmApp.config(function ($translateProvider) {
         'edit.button.no':'No',
         'edit.button.yes':'Yes',
         'edit.button.share':'Share',
+        'edit.button.height':'Row height',
 
         'edit.type.string':'String',
         'edit.type.boolean':'Boolean',
