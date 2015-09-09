@@ -9,26 +9,18 @@
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
 <script type='text/javascript' src='@routes.Assets.at("javascripts/arrive.min.js")'></script>
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/slider.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("src/slider.js"))'></script>
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-utf8-base64.min.js"))'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/Chart.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("Chart.js"))'></script>
 <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-chart.js"))'></script>
-<script type='text/javascript' src='@routes.Assets.at("javascripts/angular-base64-upload.js")'></script>
+<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("dist/angular-base64-upload.min.js"))'></script>
 
 
-<script type='text/javascript' src='@routes.Assets.at("scripts.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("opencompare-editor.js")'></script>
 
 <script>
-        var pcmApp = angular.module("openCompare", ['openCompareEditor']);
-        var modalTemplatePath = '@routes.Assets.at("editor/templates/")';
+        angular.module("openCompare", ['openCompareEditor']);
 </script>
 
 <script type='text/javascript' src='@routes.Assets.at("main/I18nCtrl.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("editor/features/importexport/controllers/importer/csvCtrl.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("editor/features/importexport/controllers/importer/wikipediaCtrl.js")'></script>
-<script type='text/javascript' src='@routes.Assets.at("editor/features/importexport/controllers/importer/htmlCtrl.js")'></script>
 <script type='text/javascript' src='@routes.Assets.at("main/NavbarCtrl.js")'></script>
-<!--
-     Directives
-     -->
-<script type='text/javascript' src='@routes.Assets.at("editor/features/importexport/directives/fileModel.js")'></script>

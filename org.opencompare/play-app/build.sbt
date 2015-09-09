@@ -20,6 +20,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "jquery-ui" % "1.11.4",
   "org.webjars" % "jquery-ui-themes" % "1.11.4",
   "org.webjars" % "angular-chart.js" % "0.7.1",
-  "org.webjars.bower" % "angular-utf8-base64" % "0.0.5" exclude("org.webjars.bower", "angular")
+  "org.webjars.bower" % "angular-utf8-base64" % "0.0.5" exclude("org.webjars.bower", "angular"),
+  "org.webjars.bower" % "angular-base64-upload" % "0.1.8" exclude("org.webjars.bower", "angular"),
+  "org.webjars.bower" % "angular-ui-slider" % "0.1.1" exclude("org.webjars.bower", "angular") exclude("org.webjars.bower", "jquery"),
+  "org.webjars.bower" % "bootstrap-autohidingnavbar" % "1.0.2" exclude("org.webjars.bower", "bootstrap") exclude("org.webjars.bower", "jquery")
 )
-//  "org.webjars" % "handsontable" % "0.14.1"

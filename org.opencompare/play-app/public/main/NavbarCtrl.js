@@ -3,7 +3,8 @@
  */
 
 
-pcmApp.controller("NavbarController", function($scope, $location) {
+angular.module("openCompare")
+    .controller("NavbarController", function($scope, $location) {
 
     $scope.isActive = function (viewLocation) {
         return $location.absUrl().indexOf(viewLocation) > -1 ;
