@@ -81,4 +81,6 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         Ok(views.html.embed(null, null, null))
     }
 
+    def template(file : String) = Assets.at("/public/editor/templates", file)
+
 }

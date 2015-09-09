@@ -1,11 +1,11 @@
 @()(implicit messages: Messages)
 
 @header = {
-    <link rel='stylesheet' href='@routes.Assets.at("/public", "main/stylesheets/index.css")'>
+    <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/index.css")'>
 }
 
 @footer = {
-<script type='text/javascript' src='@routes.Assets.at("/public", "main/SearchCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("main/SearchCtrl.js")'></script>
 }
 
 @main(header, footer){
@@ -13,7 +13,7 @@
 <div>
     <br/>
     <div class="row text-center">
-        <img src='@routes.Assets.at("/public", "main/images/logo.svg")' width="150" >
+        <img src='@routes.Assets.at("main/images/logo.svg")' width="150" >
         <h1>OpenCompare</h1>
     </div>
 
