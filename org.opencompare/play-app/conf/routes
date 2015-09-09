@@ -40,5 +40,7 @@ POST        /api/export/html                          @controllers.HTMLCtrl.expo
 POST        /api/embedFromHtml                        @controllers.HTMLCtrl.embedFromHTML()
 
 # Map static resources from the /public folder to the /assets URL path
+GET         /templates/*file                          controllers.Assets.at(path="/public/editor/templates", file)
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
 GET         /webjars/*file                            controllers.WebJarAssets.at(file)
+

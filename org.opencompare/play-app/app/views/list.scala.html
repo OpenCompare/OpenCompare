@@ -1,7 +1,7 @@
 @(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)(implicit messages: Messages)
 
 @header = {
-    <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/list.css")'>
+    <link rel='stylesheet' href='@routes.Assets.at("/public", "main/stylesheets/list.css")'>
 }
 
 @footer = {
