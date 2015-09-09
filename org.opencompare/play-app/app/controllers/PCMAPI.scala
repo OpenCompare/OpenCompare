@@ -32,9 +32,12 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi) extends Controller with I1
 
 
     def get(id : String) = Action {
+
         val dbPCM = Database.get(id)
         val json = Database.serializeDatabasePCM(dbPCM)
-        Ok(json)
+        Ok(json).withHeaders(
+            "Access-Control-Allow-Origin" -> "*"
+        )
     }
 
     def save(id : String) = Action { request =>
