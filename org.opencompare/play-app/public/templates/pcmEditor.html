@@ -179,16 +179,16 @@
         </div>
     </div>
 
+  <btn class="btn btn-warning" ng-click="debug()">DEBUG</btn>
+
 
     <!-- Table editor -->
-    <div open-compare-toolbar ng-controller="ToolbarCtrl">
-    </div>
+    <open-compare-toolbar  ng-controller="ToolbarCtrl"></open-compare-toolbar>
 
     <div class="container-fluid">
         <div class="row">
 
-            <div style="margin-top:20px" open-compare-configurator ng-controller="ConfiguratorCtrl"  ng-show="conf">
-            </div>
+            <open-compare-configurator style="margin-top:20px"  ng-controller="ConfiguratorCtrl"  ng-show="conf"></open-compare-configurator>
             <div ng-show="!configurator || (configurator && !lineView)" id="matrix"  class="grid" ng-class="{'col-md-8': configurator, 'col-md-12': !configurator}" ui-grid="gridOptions"  ng-style="{'height' : height}"  ui-grid-selection ui-grid-edit ui-grid-cellNav ui-grid-resize-columns ui-grid-move-columns ui-grid-auto-resize ui-grid-pinning>
                 <div class="grid-overlay-msg" ng-hide="gridOptions.data.length && !loading">
                     <div class="msg">
