@@ -140,6 +140,8 @@ object Database {
 
         // Load metadata
         val dbMetadata = dbObject("metadata").asInstanceOf[DBObject]
+        metadata.setSource(dbMetadata("source").toString)
+        metadata.setLicense(dbMetadata("license").toString)
 
         // Load product positions
         val dbProductPositions = dbMetadata("productPositions").asInstanceOf[BasicDBList]
@@ -217,7 +219,9 @@ object Database {
 
     val dbMetadata = MongoDBObject(
       "productPositions" -> dbProductPositions,
-      "featurePositions" -> dbFeaturePositions
+      "featurePositions" -> dbFeaturePositions,
+      "source" -> metadata.getSource,
+      "license" -> metadata.getLicense
     )
 
     // Encapsulate the PCM and its metadata in a object

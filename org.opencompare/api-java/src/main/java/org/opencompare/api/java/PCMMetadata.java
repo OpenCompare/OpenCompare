@@ -13,12 +13,16 @@ public class PCMMetadata {
     protected Boolean productAsLines;
     protected Map<Product, Integer> productPositions;
     protected Map<AbstractFeature, Integer> featurePositions;
+    protected String source;
+    protected String license;
 
     public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
         this.setProductAsLines(true);
         this.productPositions = new HashMap<>();
         this.featurePositions = new HashMap<>();
+        this.source = "";
+        this.license = "";
     }
 
     /**
@@ -121,6 +125,22 @@ public class PCMMetadata {
             }
         });
         return result;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
     }
 
     @Override

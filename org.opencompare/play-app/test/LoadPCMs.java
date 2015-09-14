@@ -38,7 +38,7 @@ public class LoadPCMs {
             pcm.setName(pcm.getName().replaceAll("_", " "));
 
             if (pcm.isValid()) {
-                Database.INSTANCE.create(pcmContainer);
+                Database.create(pcmContainer);
             }
         }
 

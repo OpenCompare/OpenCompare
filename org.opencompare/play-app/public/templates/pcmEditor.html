@@ -179,8 +179,6 @@
         </div>
     </div>
 
-  <btn class="btn btn-warning" ng-click="debug()">DEBUG</btn>
-
 
     <!-- Table editor -->
     <open-compare-toolbar  ng-controller="ToolbarCtrl"></open-compare-toolbar>
@@ -197,6 +195,24 @@
                 </div>
             </div>
 
+          <div>
+            <div ng-show="!edit">
+              <p ng-if="source"><strong>Source:</strong> {{source}}</p>
+              <p ng-if="license"><strong>License:</strong> {{license}}</p>
+            </div>
+            <form class="form-horizontal" ng-show="edit">
+              <fieldset>
+                <div class="form-group col-lg-5">
+                  <label for="pcm-source" class="control-label">{{ "edit.source.placeholder" | translate }}:</label>
+                  <input id="pcm-source" class="form-control" type="text" ng-model="source" placeholder='{{ "edit.source.placeholder" | translate }}'>
+                </div>
+                <div class="form-group col-lg-5">
+                  <label for="pcm-license" class="control-label">{{ "edit.license.placeholder" | translate }}:</label>
+                  <input id="pcm-license" class="form-control" type="text" ng-model="license" placeholder='{{ "edit.license.placeholder" | translate }}'>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
     </div>
 </div>

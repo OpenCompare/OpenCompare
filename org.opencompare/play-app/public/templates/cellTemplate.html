@@ -1,19 +1,15 @@
+<div
+  class="ui-grid-cell-contents"
+  title="TOOLTIP">
 <div ng-if="grid.appScope.gridOptions.rowHeight <= 40" class="ngCellText" ng-class="col.colIndex()" style="overflow:hidden; text-overflow: ellipsis;white-space: nowrap;">
   <span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}">
-    <div
-      class="ui-grid-cell-contents"
-      title="TOOLTIP">
       {{COL_FIELD CUSTOM_FILTERS}}
-    </div>
   </span>
 </div>
 <div ng-if="grid.appScope.gridOptions.rowHeight > 40" class="ngCellText" ng-class="col.colIndex()">
   <span ng-cell-text  translate="{{COL_FIELD}}" translate-values="{param_1: row.entity.param_1, param_2: row.entity.param_2, param_3: row.entity.param_3, param_4: row.entity.param_4}">
-    <div
-      class="ui-grid-cell-contents"
-      title="TOOLTIP">
       {{COL_FIELD CUSTOM_FILTERS}}
-    </div>
   </span>
 </div>
 
+</div>
