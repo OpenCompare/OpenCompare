@@ -34,6 +34,12 @@ object PCMAPIUtils {
     val metadata = container.getMetadata()
     val pcm = metadata.getPcm()
 
+    val source = jsonMetadata.value("source").as[JsString].value
+    metadata.setSource(source)
+
+    val license = jsonMetadata.value("license").as[JsString].value
+    metadata.setLicense(license)
+
     val jsonProductPositions = jsonMetadata.value("productPositions").as[JsArray]
     val jsonFeaturePositions = jsonMetadata.value("featurePositions").as[JsArray]
 
