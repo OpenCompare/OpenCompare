@@ -18,6 +18,7 @@
         <a ng-show="!launchFromCreator && !saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" data-toggle="modal" data-target="#modalCancel"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
         <a ng-show="!launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm"  onClick="window.location.href=window.location.href"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
         <a ng-show="launchFromCreator && saved && edit" role="button" class="btn btn-default btn-flat btn-raised btn-sm" href="/pcm/{{id}}"><i class="mdi-navigation-arrow-back"></i>  {{ 'edit.button.cancel' | translate }}</a>
+
         <a role="button" ng-show="enableEdit && !edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setEdit(true, true)"><i class="mdi-editor-mode-edit"></i> {{ 'edit.button.edit' | translate }}</a>
         <a role="button" ng-show="!edit && !configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(true)"><i class="mdi-action-swap-horiz"></i> Configurator</a>
         <a role="button" ng-show="!edit && configurator" class="btn btn-default btn-flat btn-raised btn-sm" ng-click="setConfigurator(false)"><i class="mdi-action-swap-horiz"></i> Classic</a>
