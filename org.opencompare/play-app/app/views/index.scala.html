@@ -73,14 +73,51 @@
         </form>
     </div>
 
-    <div class="row col-lg-6 col-lg-offset-3">
-        <div class="text-center">
-            <a type="button" class="btn btn-info btn-lowercase" href="https://github.com/OpenCompare/OpenCompare">
-                <i class="fa fa-github"></i> @Messages("index.github")
-            </a>
-            <a class="btn btn-info btn-lowercase" href="https://twitter.com/open_compare"><i class="fa fa-twitter"></i> @Messages("index.twitter")</a>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">@Messages("index.extensions.title")</h1>
+                </div>
+                <div class="panel-body">
+                    <p>@Messages("index.extensions.text")</p>
+                    <div class="text-center">
+                        <iframe width="420" height="315" src="https://www.youtube.com/embed/PJNi1uYhV5w" frameborder="0" allowfullscreen></iframe>
+                        <div>
+                            <a class="btn btn-info btn-lowercase" href=""><i class="fa fa-chrome"></i> @Messages("index.chrome")</a>
+                            <a class="btn btn-info btn-lowercase" href=""><i class="fa fa-firefox"></i> @Messages("index.firefox")</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">@Messages("index.social.title")</h1>
+                </div>
+                <div class="panel-body">
+                    <p>@Messages("index.social.text")</p>
+                    <div class="text-center">
+                        <a class="btn btn-info btn-lowercase" href="https://twitter.com/open_compare"><i class="fa fa-twitter"></i> @Messages("index.twitter")</a>
+                        <a type="button" class="btn btn-info btn-lowercase" href="https://github.com/OpenCompare/OpenCompare">
+                            <i class="fa fa-github"></i> @Messages("index.github")
+                        </a>
+                    </div>
+
+
+                    <a class="twitter-timeline" href="https://twitter.com/open_compare" data-widget-id="644903593737363456">Tweets de @@open_compare</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                </div>
+            </div>
         </div>
     </div>
+
+
 </div>
 
 }

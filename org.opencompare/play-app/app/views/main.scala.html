@@ -33,6 +33,27 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="oc-navbar">
                 <ul class="nav navbar-nav">
+
+                    <li class="dropdown"  ng-class="{ active: isActive('/create')}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.start") <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a target="_self" href="/create">@Messages("navbar.create")</a></li>
+                            <li><a target="_self" href="/import/csv">@Messages("navbar.import.csv")</a></li>
+                            <li><a target="_self" href="/import/wikipedia">@Messages("navbar.import.wikipedia")</a></li>
+                            <li><a target="_self" href="/import/html">@Messages("navbar.import.html")</a></li>
+                        </ul>
+                    </li>
+
+                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/list">@Messages("navbar.list")</a></li>
+
+                    <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
+                        <div class="form-group">
+                            <input name="request" type="text" class="form-control" placeholder='@Messages("button.search.placeholder")'>
+                        </div>
+                    </form>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.about") <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -41,24 +62,6 @@
                         </ul>
                     </li>
 
-                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/list">@Messages("navbar.list")</a></li>
-                    <li ng-class="{ active: isActive('/create')}"><a target="_self" href="/create">@Messages("navbar.create")</a></li>
-
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.import") <span class="caret"></span></a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a target="_self" href="/import/csv">@Messages("navbar.import.csv")</a></li>
-                          <li><a target="_self" href="/import/wikipedia">@Messages("navbar.import.wikipedia")</a></li>
-                          <li><a target="_self" href="/import/html">@Messages("navbar.import.html")</a></li>
-                      </ul>
-                    </li>
-                    <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
-                        <div class="form-group">
-                            <input name="request" type="text" class="form-control" placeholder='@Messages("button.search.placeholder")'>
-                        </div>
-                    </form>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@messages.lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
