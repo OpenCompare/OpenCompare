@@ -140,8 +140,8 @@ object Database {
 
         // Load metadata
         val dbMetadata = dbObject("metadata").asInstanceOf[DBObject]
-        metadata.setSource(dbMetadata("source").toString)
-        metadata.setLicense(dbMetadata("license").toString)
+        metadata.setSource(dbMetadata.getOrElse("source", "").toString)
+        metadata.setLicense(dbMetadata.getOrElse("license", "").toString)
 
         // Load product positions
         val dbProductPositions = dbMetadata("productPositions").asInstanceOf[BasicDBList]
