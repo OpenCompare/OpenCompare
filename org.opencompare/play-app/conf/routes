@@ -39,6 +39,9 @@ POST        /api/import/html                          @controllers.HTMLCtrl.impo
 POST        /api/export/html                          @controllers.HTMLCtrl.exportPCMAction()
 POST        /api/embedFromHtml                        @controllers.HTMLCtrl.embedFromHTML()
 
+# JSON import/export
+POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /templates/*file                          @controllers.Application.template(file)
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
