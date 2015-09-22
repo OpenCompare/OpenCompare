@@ -7,20 +7,22 @@
         @mainHeader()
         @editHeader()
 
+    </head>
+    <body ng-app="openCompare">
+
+
+        <div class="row">
+            <open-compare-editor pcm-container="pcmContainer" toolbar="false" server-mode="local" ng-controller="OCEditorCtrl"></open-compare-editor>
+        </div>
+
+
+        <div class="row">
+            <open-compare-charts></open-compare-charts>
+        </div>
+
+
         @mainFooter()
         @editFooter(id, data, modal)
-
-    </head>
-    <body STYLE="background-color:transparent; margin:0; padding:0;" ng-app="openCompare">
-
-
-        <div open-compare-editor server-mode="local" ng-controller="EditorCtrl" style="margin-bottom: 0">
-        </div>
-        <div class="row">
-            <div open-compare-charts ng-controller="ChartsCtrl" class="col-md-8 col-md-offset-2">
-            </div>
-        </div>
-
     </body>
 
 </html>

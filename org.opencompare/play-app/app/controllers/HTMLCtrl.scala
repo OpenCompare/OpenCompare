@@ -5,15 +5,14 @@ import java.io.IOException
 import model.{Database, PCMAPIUtils}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.io.{HTMLLoader, CSVLoader, HTMLExporter}
+import org.opencompare.api.java.io.{HTMLExporter, HTMLLoader}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.libs.json.Json
 import play.api.mvc._
 
-import scala.io.Source
-
 import scala.collection.JavaConversions._
+import scala.io.Source
 
 /**
  * Created by gbecan on 8/18/15.
@@ -27,7 +26,7 @@ class HTMLCtrl extends IOCtrl {
     mapping(
       "title" -> nonEmptyText,
       "productAsLines" -> boolean,
-      "content" -> text
+      "content" -> nonEmptyText
     )(HTMLImportParameters.apply)(HTMLImportParameters.unapply)
   )
 
@@ -41,7 +40,8 @@ class HTMLCtrl extends IOCtrl {
   val embedParametersForm = Form(
     mapping(
       "title" -> nonEmptyText,
-      "productAsLines" -> boolean
+      "productAsLines" -> boolean,
+      "content" -> nonEmptyText
     )(EmbedHTMLParameters.apply)(EmbedHTMLParameters.unapply)
   )
 
@@ -77,20 +77,44 @@ class HTMLCtrl extends IOCtrl {
     Ok(html)
   }
 
-  def embedFromHTML() = Action { implicit request =>
+//  def embedFromHTML() = Action { implicit request =>
+//    // Parse parameters
+//    val parameters = embedParametersForm.bindFromRequest.get
+//
+//    // Read input file
+//    val file = request.body.asMultipartFormData.get.file("file").get
+//    val htmlData = Source.fromFile(file.ref.file).getLines().mkString("\n")
+//
+//    val loader: HTMLLoader = new HTMLLoader(pcmFactory, parameters.productAsLines)
+//    val pcmContainers = loader.load(htmlData).toList
+//
+//    try {
+//      val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
+//      val pcmContainers = loader.load(htmlData).toList
+//      normalizeContainers(pcmContainers)
+//
+//      if (pcmContainers.isEmpty) {
+//        NotFound("No matrices were found in this html page")
+//      } else {
+//        val pcmContainer = pcmContainers.head
+//        pcmContainer.getPcm.setName(parameters.title)
+//
+//        val id: String = Database.create(pcmContainer)
+//
+//        Ok(id)
+//      }
+//    } catch {
+//      case e : IOException => BadRequest("This file is invalid")
+//    }
+//  }
+
+  def embed() = Action { implicit request =>
     // Parse parameters
     val parameters = embedParametersForm.bindFromRequest.get
 
-    // Read input file
-    val file = request.body.asMultipartFormData.get.file("file").get
-    val htmlData = Source.fromFile(file.ref.file).getLines().mkString("\n")
-
-    val loader: HTMLLoader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-    val pcmContainers = loader.load(htmlData).toList
-
     try {
       val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-      val pcmContainers = loader.load(htmlData).toList
+      val pcmContainers = loader.load(parameters.content).toList
       normalizeContainers(pcmContainers)
 
       if (pcmContainers.isEmpty) {
@@ -101,11 +125,15 @@ class HTMLCtrl extends IOCtrl {
 
         val id: String = Database.create(pcmContainer)
 
-        Ok(id)
+        val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
+
+        Ok(views.html.embed(null, jsonResult, null))
       }
     } catch {
-      case e : IOException => BadRequest("This file is invalid")
+      case e : IOException => BadRequest("Invalid request for embedding PCM from HTML")
     }
+
+
   }
 }
 
@@ -121,5 +149,6 @@ case class HTMLExportParameters(
                                       )
 case class EmbedHTMLParameters(
                                 title : String,
-                                productAsLines : Boolean
+                                productAsLines : Boolean,
+                              content : String
                                 )

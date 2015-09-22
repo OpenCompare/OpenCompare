@@ -10,6 +10,7 @@ angular.module("openCompare")
 
         if (typeof data !== 'undefined') {
             $scope.data = data;
+            $scope.pcmContainer = JSON.stringify(JSON.parse($scope.data).pcm); // FIXME : mmhh ugly...
         }
 
         /* Load modal for import */

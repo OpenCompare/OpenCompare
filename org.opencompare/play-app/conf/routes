@@ -10,8 +10,8 @@ GET         /search                                   @controllers.Application.s
 GET         /pcm/:id                                  @controllers.Application.edit(id : String)
 GET         /create                                   @controllers.Application.create()
 GET         /import/:ext                              @controllers.Application.importer(ext : String)
-GET         /embedPCM/:id                             @controllers.Application.embedPCM(id : String)
-GET         /embed                                    @controllers.Application.embed()
+#GET         /embedPCM/:id                             @controllers.Application.embedPCM(id : String)
+#GET         /embed                                    @controllers.Application.embed()
 GET         /about/project                            @controllers.Application.aboutProject()
 GET         /about/privacy                            @controllers.Application.aboutPrivacyPolicy()
 
@@ -37,7 +37,8 @@ POST        /api/export/wikitext                      @controllers.MediaWikiCtrl
 # HTML import/export
 POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction()
 POST        /api/export/html                          @controllers.HTMLCtrl.exportPCMAction()
-POST        /api/embedFromHtml                        @controllers.HTMLCtrl.embedFromHTML()
+#POST        /api/embedFromHtml                        @controllers.HTMLCtrl.embedFromHTML()
+POST        /embed/html                               @controllers.HTMLCtrl.embed()
 
 # JSON import/export
 POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()

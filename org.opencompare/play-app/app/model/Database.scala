@@ -243,4 +243,9 @@ object Database {
     JSON.serialize(dbContainers)
   }
 
+  def serializePCMContainerToJSON(pcmContainer : PCMContainer) : String = {
+    val dbContainer = serializePCMContainer(pcmContainer)
+    JSON.serialize(dbContainer)
+  }
+
 }
