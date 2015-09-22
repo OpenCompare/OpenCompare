@@ -26,7 +26,8 @@ class HTMLCtrl extends IOCtrl {
   val inputParametersForm = Form(
     mapping(
       "title" -> nonEmptyText,
-      "productAsLines" -> boolean
+      "productAsLines" -> boolean,
+      "content" -> text
     )(HTMLImportParameters.apply)(HTMLImportParameters.unapply)
   )
 
@@ -48,13 +49,9 @@ class HTMLCtrl extends IOCtrl {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
 
-    // Read input file
-    val file = request.body.asMultipartFormData.get.file("file").get
-    val htmlData = Source.fromFile(file.ref.file).getLines().mkString("\n")
-
     try {
       val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-      val pcmContainers = loader.load(htmlData).toList
+      val pcmContainers = loader.load(parameters.content).toList
       val pcmContainer = pcmContainers.head
 
       pcmContainer.getPcm.setName(parameters.title)
@@ -113,8 +110,9 @@ class HTMLCtrl extends IOCtrl {
 }
 
 case class HTMLImportParameters(
-                                      title : String,
-                               productAsLines : Boolean
+                               title : String,
+                               productAsLines : Boolean,
+                               content: String
                                       )
 
 case class HTMLExportParameters(
