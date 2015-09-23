@@ -29,7 +29,8 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
     mapping(
       "title" -> nonEmptyText,
       "productAsLines" -> boolean,
-      "content" -> nonEmptyText
+      "content" -> nonEmptyText,
+      "source" -> optional(text)
     )(HTMLImportParameters.apply)(HTMLImportParameters.unapply)
   )
 
@@ -54,6 +55,10 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
       } else {
         val pcmContainer = pcmContainers.head
         pcmContainer.getPcm.setName(parameters.title)
+        if (parameters.source.isDefined) {
+          pcmContainer.getMetadata.setSource(parameters.source.get)
+        }
+
 
         format match {
           case JsonFormat() => Ok(postprocessContainers(pcmContainers))
@@ -90,7 +95,8 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
 case class HTMLImportParameters(
                                title : String,
                                productAsLines : Boolean,
-                               content: String
+                               content: String,
+                               source: Option[String]
                                       )
 
 case class HTMLExportParameters(
