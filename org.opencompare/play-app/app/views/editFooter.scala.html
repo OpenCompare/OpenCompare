@@ -1,17 +1,21 @@
 @(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
 
-@if(id != null) {
-    <script>
-            var id = "@{Html(id)}";
-        </script>
-}
-@if(data != null) {
-    <script>
-            var data = '@{Html(data.toString().replace("'","\\\'"))}';
-        </script>
-}
-@if(modal != null) {
-    <script>
-            var modal = '@{Html(modal)}';
-        </script>
-}
+
+<script>
+    var id, data, modal;
+    @if(id != null) {
+        id = "@{Html(id)}";
+    }
+
+    @if(data != null) {
+        data = '@{Html(data.toString().replace("'","\\\'"))}';
+    }
+
+    @if(modal != null) {
+     modal = '@{Html(modal)}';
+    }
+
+</script>
+
+
+
