@@ -8,10 +8,9 @@ GET         /list                                     @controllers.Application.l
 GET         /list/$limit<[0-9]+>/$page<[0-9]+>        @controllers.Application.list(limit : Int, page : Int)
 GET         /search                                   @controllers.Application.search(request : String)
 GET         /pcm/:id                                  @controllers.Application.edit(id : String)
+GET         /embed/pcm/:id                            @controllers.Application.embed(id : String)
 GET         /create                                   @controllers.Application.create()
 GET         /import/:ext                              @controllers.Application.importer(ext : String)
-#GET         /embedPCM/:id                             @controllers.Application.embedPCM(id : String)
-#GET         /embed                                    @controllers.Application.embed()
 GET         /about/project                            @controllers.Application.aboutProject()
 GET         /about/privacy                            @controllers.Application.aboutPrivacyPolicy()
 
@@ -27,18 +26,18 @@ GET         /api/i18n/:language                       @controllers.I18nCtrl.setL
 GET         /api/i18n                                 @controllers.I18nCtrl.i18n()
 
 # CSV import/export
-POST        /api/import/csv                           @controllers.CSVCtrl.importPCMsAction()
+POST        /api/import/csv                           @controllers.CSVCtrl.importPCMsAction(format ?= "json")
 POST        /api/export/csv                           @controllers.CSVCtrl.exportPCMAction()
 
 # Wikipedia import/export
-POST        /api/import/wikipedia                     @controllers.MediaWikiCtrl.importPCMsAction()
+POST        /api/import/wikipedia                     @controllers.MediaWikiCtrl.importPCMsAction(format ?= "json")
 POST        /api/export/wikitext                      @controllers.MediaWikiCtrl.exportPCMAction()
 
 # HTML import/export
-POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction()
+POST        /import/html                              @controllers.HTMLCtrl.importPCMsAction(format ?= "page")
+POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction(format ?= "json")
 POST        /api/export/html                          @controllers.HTMLCtrl.exportPCMAction()
-#POST        /api/embedFromHtml                        @controllers.HTMLCtrl.embedFromHTML()
-POST        /embed/html                               @controllers.HTMLCtrl.embed()
+
 
 # JSON import/export
 POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()

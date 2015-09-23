@@ -1,6 +1,7 @@
 package controllers
 
 import java.io.IOException
+import javax.inject.Inject
 
 import model.PCMAPIUtils
 import org.opencompare.api.java.PCMFactory
@@ -8,6 +9,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 import play.api.data.Forms._
 import play.api.data._
+import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -17,7 +19,7 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class CSVCtrl extends IOCtrl {
+class CSVCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()
@@ -40,7 +42,7 @@ class CSVCtrl extends IOCtrl {
     )(CSVExportParameters.apply)(CSVExportParameters.unapply)
   )
 
-  override def importPCMs(implicit request : Request[AnyContent]) : Result = {
+  override def importPCMs(implicit request : Request[AnyContent], format : ResultFormat) : Result = {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
     val separator = parameters.separator.head

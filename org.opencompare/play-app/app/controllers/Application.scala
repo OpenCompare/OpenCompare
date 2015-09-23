@@ -67,7 +67,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         }
     }
 
-    def embedPCM(id : String) = Action { implicit request =>
+    def embed(id : String) = Action { implicit request =>
         val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.embed(id, null, null))
@@ -77,9 +77,6 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
     }
 
-    def embed = Action { implicit request =>
-        Ok(views.html.embed(null, null, null))
-    }
 
     def template(file : String) = Assets.at("/public/templates", file)
 

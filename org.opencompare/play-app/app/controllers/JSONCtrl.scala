@@ -1,9 +1,12 @@
 package controllers
 
+import javax.inject.Inject
+
 import model.PCMAPIUtils
 import org.opencompare.api.java.impl.io.KMFJSONExporter
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
 import play.api.mvc.{Result, AnyContent, Request}
 
@@ -11,7 +14,7 @@ import play.api.mvc.{Result, AnyContent, Request}
 /**
  * Created by gbecan on 9/21/15.
  */
-class JSONCtrl extends IOCtrl {
+class JSONCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
 
   val jsonExporter = new KMFJSONExporter()
 
@@ -21,7 +24,7 @@ class JSONCtrl extends IOCtrl {
     )(JSONExportParameters.apply)(JSONExportParameters.unapply)
   )
 
-  override def importPCMs(implicit request: Request[AnyContent]): Result = {
+  override def importPCMs(implicit request: Request[AnyContent], format : ResultFormat): Result = {
     NotFound("JSON import is not implemented yet")
   }
 

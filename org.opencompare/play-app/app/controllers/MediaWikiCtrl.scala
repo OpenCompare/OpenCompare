@@ -2,6 +2,7 @@ package controllers
 
 import java.net.{MalformedURLException, URL, URLDecoder}
 import java.nio.charset.StandardCharsets
+import javax.inject.Inject
 
 import model.PCMAPIUtils
 import org.opencompare.api.java.PCMFactory
@@ -9,6 +10,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextExporter, WikiTextLoader, WikiTextTemplateProcessor}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -17,7 +19,7 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 8/18/15.
  */
-class MediaWikiCtrl extends IOCtrl {
+class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
 
   val inputParametersForm = Form(
     mapping(
@@ -38,7 +40,7 @@ class MediaWikiCtrl extends IOCtrl {
 
   private val wikiExporter: WikiTextExporter = new WikiTextExporter(true)
 
-  override def importPCMs(implicit request : Request[AnyContent]) : Result = {
+  override def importPCMs(implicit request : Request[AnyContent], format : ResultFormat) : Result = {
 
     val parameters = inputParametersForm.bindFromRequest.get
     val url = parameters.url

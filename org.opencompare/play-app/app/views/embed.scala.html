@@ -6,18 +6,20 @@
 
         @mainHeader()
         @editHeader()
+        <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/embed.css")'>
 
     </head>
     <body ng-app="openCompare">
 
+        <div class="container-fluid">
+            <div class="row">
+                <open-compare-editor pcm-container="pcmContainer" toolbar="false" server-mode="local" ng-controller="OCEditorCtrl"></open-compare-editor>
+            </div>
 
-        <div class="row">
-            <open-compare-editor pcm-container="pcmContainer" toolbar="false" server-mode="local" ng-controller="OCEditorCtrl"></open-compare-editor>
-        </div>
 
-
-        <div class="row">
-            <open-compare-charts></open-compare-charts>
+            <div class="row">
+                <open-compare-charts></open-compare-charts>
+            </div>
         </div>
 
 

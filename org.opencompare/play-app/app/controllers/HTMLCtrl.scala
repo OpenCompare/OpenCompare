@@ -1,6 +1,7 @@
 package controllers
 
 import java.io.IOException
+import javax.inject.{Inject, Singleton}
 
 import model.{Database, PCMAPIUtils}
 import org.opencompare.api.java.PCMFactory
@@ -8,6 +9,7 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{HTMLExporter, HTMLLoader}
 import play.api.data.Form
 import play.api.data.Forms._
+import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -17,7 +19,8 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class HTMLCtrl extends IOCtrl {
+@Singleton
+class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
 
   private val pcmFactory: PCMFactory = new PCMFactoryImpl
   private val htmlExporter: HTMLExporter = new HTMLExporter
@@ -37,32 +40,37 @@ class HTMLCtrl extends IOCtrl {
     )(HTMLExportParameters.apply)(HTMLExportParameters.unapply)
   )
 
-  val embedParametersForm = Form(
-    mapping(
-      "title" -> nonEmptyText,
-      "productAsLines" -> boolean,
-      "content" -> nonEmptyText
-    )(EmbedHTMLParameters.apply)(EmbedHTMLParameters.unapply)
-  )
-
-  override def importPCMs(implicit request: Request[AnyContent]): Result = {
+  override def importPCMs(implicit request: Request[AnyContent], format: ResultFormat): Result = {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
 
     try {
       val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
       val pcmContainers = loader.load(parameters.content).toList
-      val pcmContainer = pcmContainers.head
+      normalizeContainers(pcmContainers)
 
-      pcmContainer.getPcm.setName(parameters.title)
+      if (pcmContainers.isEmpty) {
+        NotFound("No matrices were found in this html page")
+      } else {
+        val pcmContainer = pcmContainers.head
+        pcmContainer.getPcm.setName(parameters.title)
 
-      // Serialize result
-      val jsonResult = postprocessContainers(pcmContainers)
-      Ok(jsonResult)
+        format match {
+          case JsonFormat() => Ok(postprocessContainers(pcmContainers))
+          case EmbedFormat() =>
+            val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
+            Ok(views.html.embed(null, jsonResult, null))
+          case PageFormat() =>
+            val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
+            Ok(views.html.edit(null, jsonResult, null))
+        }
 
+
+      }
     } catch {
-      case e : IOException => BadRequest("This file is invalid")
+      case e: IOException => BadRequest("Invalid request for embedding PCM from HTML")
     }
+
   }
 
   override def exportPCM(implicit request: Request[AnyContent]): Result = {
@@ -77,64 +85,6 @@ class HTMLCtrl extends IOCtrl {
     Ok(html)
   }
 
-//  def embedFromHTML() = Action { implicit request =>
-//    // Parse parameters
-//    val parameters = embedParametersForm.bindFromRequest.get
-//
-//    // Read input file
-//    val file = request.body.asMultipartFormData.get.file("file").get
-//    val htmlData = Source.fromFile(file.ref.file).getLines().mkString("\n")
-//
-//    val loader: HTMLLoader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-//    val pcmContainers = loader.load(htmlData).toList
-//
-//    try {
-//      val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-//      val pcmContainers = loader.load(htmlData).toList
-//      normalizeContainers(pcmContainers)
-//
-//      if (pcmContainers.isEmpty) {
-//        NotFound("No matrices were found in this html page")
-//      } else {
-//        val pcmContainer = pcmContainers.head
-//        pcmContainer.getPcm.setName(parameters.title)
-//
-//        val id: String = Database.create(pcmContainer)
-//
-//        Ok(id)
-//      }
-//    } catch {
-//      case e : IOException => BadRequest("This file is invalid")
-//    }
-//  }
-
-  def embed() = Action { implicit request =>
-    // Parse parameters
-    val parameters = embedParametersForm.bindFromRequest.get
-
-    try {
-      val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
-      val pcmContainers = loader.load(parameters.content).toList
-      normalizeContainers(pcmContainers)
-
-      if (pcmContainers.isEmpty) {
-        NotFound("No matrices were found in this html page")
-      } else {
-        val pcmContainer = pcmContainers.head
-        pcmContainer.getPcm.setName(parameters.title)
-
-        val id: String = Database.create(pcmContainer)
-
-        val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
-
-        Ok(views.html.embed(null, jsonResult, null))
-      }
-    } catch {
-      case e : IOException => BadRequest("Invalid request for embedding PCM from HTML")
-    }
-
-
-  }
 }
 
 case class HTMLImportParameters(
@@ -147,8 +97,3 @@ case class HTMLExportParameters(
                                       productAsLines : Boolean,
                                       pcm : String
                                       )
-case class EmbedHTMLParameters(
-                                title : String,
-                                productAsLines : Boolean,
-                              content : String
-                                )
