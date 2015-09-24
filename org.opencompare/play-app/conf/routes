@@ -43,6 +43,7 @@ POST        /api/export/html                          @controllers.HTMLCtrl.expo
 POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()
 
 # Auth
+GET         /home                            @controllers.ApplicationController.index
 GET         /signIn                          @controllers.ApplicationController.signIn
 GET         /signUp                          @controllers.ApplicationController.signUp
 GET         /signOut                         @controllers.ApplicationController.signOut
