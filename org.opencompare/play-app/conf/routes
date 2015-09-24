@@ -43,7 +43,6 @@ POST        /api/export/html                          @controllers.HTMLCtrl.expo
 POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /templates/*file                          @controllers.Application.template(file)
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
 GET         /webjars/*file                            controllers.WebJarAssets.at(file)
 

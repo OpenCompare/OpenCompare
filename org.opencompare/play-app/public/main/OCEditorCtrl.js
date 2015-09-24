@@ -17,7 +17,7 @@ angular.module("openCompare")
         if (typeof modal != 'undefined') {
             // Open the given modal
             $modal.open({
-                templateUrl: "/templates/modal/modal" + modal + ".html",
+                templateUrl: "templates/modal/modal" + modal + ".html",
                 controller: modal + "Controller",
                 scope: $scope
             })

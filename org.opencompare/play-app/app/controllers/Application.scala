@@ -77,7 +77,4 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
     }
 
-
-    def template(file : String) = Assets.at("/public/templates", file)
-
 }
