@@ -1,12 +1,10 @@
 package controllers
 
-import model.{Database, PCMInfo}
-import play.api.i18n.{Messages, Lang, MessagesApi, I18nSupport}
-import play.api.mvc.{Controller, Action}
-
-import collection.JavaConversions._
-
 import javax.inject._
+
+import model.Database
+import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.mvc.{Action, Controller}
 
 @Singleton
 class Application @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {

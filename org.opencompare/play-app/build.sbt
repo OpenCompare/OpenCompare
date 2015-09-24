@@ -1,3 +1,6 @@
+import play.sbt.PlayImport._
+import play.sbt.routes.RoutesKeys._
+
 import scala.xml.XML
 
 name := """OpenCompare"""
@@ -9,7 +12,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := XML.loadFile("../pom.xml").\\("scala.version").text
 
 libraryDependencies ++= Seq(
-  "org.webjars" %% "webjars-play" % "2.4.0",
+  "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.2.0",
   "org.webjars" % "angularjs" % "1.3.0",
   "org.webjars" % "angular-ui-bootstrap" % "0.13.0",
@@ -23,5 +26,9 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "angular-utf8-base64" % "0.0.5" exclude("org.webjars.bower", "angular"),
   "org.webjars.bower" % "angular-base64-upload" % "0.1.8" exclude("org.webjars.bower", "angular"),
   "org.webjars.bower" % "angular-ui-slider" % "0.1.1" exclude("org.webjars.bower", "angular") exclude("org.webjars.bower", "jquery"),
-  "org.webjars.bower" % "bootstrap-autohidingnavbar" % "1.0.2" exclude("org.webjars.bower", "bootstrap") exclude("org.webjars.bower", "jquery")
+  "org.webjars.bower" % "bootstrap-autohidingnavbar" % "1.0.2" exclude("org.webjars.bower", "bootstrap") exclude("org.webjars.bower", "jquery"),
+  cache,
+  filters
 )
+
+routesGenerator := InjectedRoutesGenerator
