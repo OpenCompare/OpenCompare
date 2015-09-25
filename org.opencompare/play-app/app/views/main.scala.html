@@ -62,6 +62,10 @@
                         </ul>
                     </li>
 
+                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signIn">@Messages("navbar.signIn")</a></li>
+                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signUp">@Messages("navbar.signUp")</a></li>
+                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signOut">@Messages("navbar.signOut")</a></li>
+
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@messages.lang.code <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">

@@ -3,55 +3,55 @@
 # ~~~~
 
 # Pages
-GET         /                                         @controllers.Application.index()
-GET         /list                                     @controllers.Application.list(limit : Int = 50, page : Int = 1)
-GET         /list/$limit<[0-9]+>/$page<[0-9]+>        @controllers.Application.list(limit : Int, page : Int)
-GET         /search                                   @controllers.Application.search(request : String)
-GET         /pcm/:id                                  @controllers.Application.edit(id : String)
-GET         /embed/pcm/:id                            @controllers.Application.embed(id : String)
-GET         /create                                   @controllers.Application.create()
-GET         /import/:ext                              @controllers.Application.importer(ext : String)
-GET         /about/project                            @controllers.Application.aboutProject()
-GET         /about/privacy                            @controllers.Application.aboutPrivacyPolicy()
+GET         /                                           @controllers.Application.index()
+GET         /list                                       @controllers.Application.list(limit : Int = 50, page : Int = 1)
+GET         /list/$limit<[0-9]+>/$page<[0-9]+>          @controllers.Application.list(limit : Int, page : Int)
+GET         /search                                     @controllers.Application.search(request : String)
+GET         /pcm/:id                                    @controllers.Application.edit(id : String)
+GET         /embed/pcm/:id                              @controllers.Application.embed(id : String)
+GET         /create                                     @controllers.Application.create()
+GET         /import/:ext                                @controllers.Application.importer(ext : String)
+GET         /about/project                              @controllers.Application.aboutProject()
+GET         /about/privacy                              @controllers.Application.aboutPrivacyPolicy()
 
 # API
-GET         /api/get/:id                              @controllers.PCMAPI.get(id : String)
-POST        /api/save/:id                             @controllers.PCMAPI.save(id : String)
-POST        /api/create                               @controllers.PCMAPI.create()
-GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
-POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
+GET         /api/get/:id                                @controllers.PCMAPI.get(id : String)
+POST        /api/save/:id                               @controllers.PCMAPI.save(id : String)
+POST        /api/create                                 @controllers.PCMAPI.create()
+GET         /api/remove/:id                             @controllers.PCMAPI.remove(id : String)
+POST        /api/extract-content                        @controllers.PCMAPI.extractContent()
 
 # I18n
-GET         /api/i18n/:language                       @controllers.I18nCtrl.setLang(language : String)
-GET         /api/i18n                                 @controllers.I18nCtrl.i18n()
+GET         /api/i18n/:language                         @controllers.I18nCtrl.setLang(language : String)
+GET         /api/i18n                                   @controllers.I18nCtrl.i18n()
 
 # CSV import/export
-POST        /api/import/csv                           @controllers.CSVCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/csv                           @controllers.CSVCtrl.exportPCMAction()
+POST        /api/import/csv                             @controllers.CSVCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/csv                             @controllers.CSVCtrl.exportPCMAction()
 
 # Wikipedia import/export
-POST        /api/import/wikipedia                     @controllers.MediaWikiCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/wikitext                      @controllers.MediaWikiCtrl.exportPCMAction()
+POST        /api/import/wikipedia                       @controllers.MediaWikiCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/wikitext                        @controllers.MediaWikiCtrl.exportPCMAction()
 
 # HTML import/export
-POST        /import/html                              @controllers.HTMLCtrl.importPCMsAction(format ?= "page")
-POST        /api/import/html                          @controllers.HTMLCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/html                          @controllers.HTMLCtrl.exportPCMAction()
+POST        /import/html                                @controllers.HTMLCtrl.importPCMsAction(format ?= "page")
+POST        /api/import/html                            @controllers.HTMLCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/html                            @controllers.HTMLCtrl.exportPCMAction()
 
 
 # JSON import/export
-POST        /api/export/json                          @controllers.JSONCtrl.exportPCMAction()
+POST        /api/export/json                            @controllers.JSONCtrl.exportPCMAction()
 
 # Auth
-GET         /home                            @controllers.ApplicationController.index
-GET         /signIn                          @controllers.ApplicationController.signIn
-GET         /signUp                          @controllers.ApplicationController.signUp
-GET         /signOut                         @controllers.ApplicationController.signOut
-GET         /authenticate/:provider          @controllers.SocialAuthController.authenticate(provider)
-POST        /authenticate/credentials        @controllers.CredentialsAuthController.authenticate
-POST        /signUp                          @controllers.SignUpController.signUp
+GET         /home                                       @controllers.AuthenticationController.index
+GET         /signIn                                     @controllers.AuthenticationController.signIn
+GET         /signUp                                     @controllers.AuthenticationController.signUp
+GET         /signOut                                    @controllers.AuthenticationController.signOut
+GET         /authenticate/:provider                     @controllers.SocialAuthController.authenticate(provider)
+POST        /authenticate/credentials                   @controllers.CredentialsAuthController.authenticate
+POST        /signUp                                     @controllers.SignUpController.signUp
 
-# Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                             controllers.Assets.at(path="/public", file)
-GET         /webjars/*file                            controllers.WebJarAssets.at(file)
+# Static resources
+GET         /assets/*file                               controllers.Assets.at(path="/public", file)
+GET         /webjars/*file                              controllers.WebJarAssets.at(file)
 
