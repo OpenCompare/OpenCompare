@@ -2,28 +2,30 @@ package controllers
 
 import javax.inject._
 
+import com.mohiva.play.silhouette.api.{Environment, Silhouette}
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import model.Database
+import models.User
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
 
 @Singleton
-class Application @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
 
-
-    def index = Action { implicit request =>
+    def index = UserAwareAction { implicit request =>
       Ok(views.html.index())
     }
 
-    def aboutProject = Action { implicit request =>
+    def aboutProject = UserAwareAction { implicit request =>
         Ok(views.html.aboutProject())
     }
 
-    def aboutPrivacyPolicy = Action { implicit request =>
+    def aboutPrivacyPolicy = UserAwareAction { implicit request =>
         Ok(views.html.aboutPrivacyPolicy())
     }
 
 
-    def list(limit : Int, page : Int) = Action { implicit request =>
+    def list(limit : Int, page : Int) = UserAwareAction { implicit request =>
         val pcms = Database.list(limit, page).toList
         val count = Database.count().toInt
         var nbPages = count / limit
@@ -33,7 +35,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         Ok(views.html.list(pcms, limit, page, nbPages))
     }
 
-    def search(searchedString : String) = Action { implicit request =>
+    def search(searchedString : String) = UserAwareAction { implicit request =>
 
         // TODO : find PCMs named "request" or with a product named "request"
         val results = Database.search(searchedString).toList
@@ -42,7 +44,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
     }
 
 
-    def edit(id : String) = Action { implicit request =>
+    def edit(id : String) = UserAwareAction { implicit request =>
         val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.edit(id, null, null))
@@ -52,11 +54,11 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
 
     }
 
-    def create = Action { implicit request =>
+    def create = UserAwareAction { implicit request =>
         Ok(views.html.create(null, null, null))
     }
 
-    def importer(ext : String) = Action { implicit request =>
+    def importer(ext : String) = UserAwareAction { implicit request =>
         ext match {
             case "csv" => Ok(views.html.edit(null, null, "CsvImport"))
             case "html" => Ok(views.html.edit(null, null, "HtmlImport"))
@@ -65,7 +67,7 @@ class Application @Inject() (val messagesApi: MessagesApi) extends Controller wi
         }
     }
 
-    def embed(id : String) = Action { implicit request =>
+    def embed(id : String) = UserAwareAction { implicit request =>
         val exists = Database.exists(id)
         if (exists) {
             Ok(views.html.embed(id, null, null))

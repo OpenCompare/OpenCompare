@@ -1,23 +1,26 @@
 package controllers
 
+import javax.inject.Inject
+
+import com.mohiva.play.silhouette.api.Environment
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import model.Database
+import models.User
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
-import play.api.i18n.I18nSupport
+import play.api.i18n.MessagesApi
 import play.api.mvc._
-
-import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 8/19/15.
  */
-trait IOCtrl extends Controller with I18nSupport {
+abstract class IOCtrl extends BaseController {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter
 
-  def importPCMsAction(format: String) = Action { request =>
+  def importPCMsAction(format: String) = UserAwareAction { implicit request =>
 
     val resultFormat = format.replaceAll("'", "").replaceAll("\"", "") match {
       case "json" => JsonFormat()
@@ -28,14 +31,14 @@ trait IOCtrl extends Controller with I18nSupport {
         JsonFormat()
     }
 
-    importPCMs(request, resultFormat)
+    importPCMs(resultFormat)
   }
 
   def exportPCMAction = Action { request =>
     exportPCM(request)
   }
 
-  def importPCMs(implicit request : Request[AnyContent], format : ResultFormat) : Result
+  def importPCMs(format : ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext) : Result
 
   def exportPCM(implicit request : Request[AnyContent]) : Result
 

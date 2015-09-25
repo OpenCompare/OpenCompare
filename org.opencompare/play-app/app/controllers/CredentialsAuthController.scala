@@ -44,7 +44,7 @@ class CredentialsAuthController @Inject() (
   socialProviderRegistry: SocialProviderRegistry,
   configuration: Configuration,
   clock: Clock)
-  extends Silhouette[User, CookieAuthenticator] {
+  extends BaseController {
 
   /**
    * Authenticates a user against the credentials provider.
@@ -52,6 +52,8 @@ class CredentialsAuthController @Inject() (
    * @return The result to display.
    */
   def authenticate = Action.async { implicit request =>
+    implicit val viewContext = ViewContext(None, request)
+
     SignInForm.form.bindFromRequest.fold(
       form => Future.successful(BadRequest(views.html.signIn(form, socialProviderRegistry))),
       data => {

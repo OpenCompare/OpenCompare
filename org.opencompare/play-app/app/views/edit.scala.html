@@ -1,4 +1,4 @@
-@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)(implicit messages: Messages)
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
     @editHeader()

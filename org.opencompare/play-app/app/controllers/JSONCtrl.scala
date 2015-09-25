@@ -2,7 +2,10 @@ package controllers
 
 import javax.inject.Inject
 
+import com.mohiva.play.silhouette.api.Environment
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import model.PCMAPIUtils
+import models.User
 import org.opencompare.api.java.impl.io.KMFJSONExporter
 import play.api.data.Form
 import play.api.data.Forms._
@@ -14,7 +17,7 @@ import play.api.mvc.{Result, AnyContent, Request}
 /**
  * Created by gbecan on 9/21/15.
  */
-class JSONCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
+class JSONCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
 
   val jsonExporter = new KMFJSONExporter()
 
@@ -24,7 +27,7 @@ class JSONCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
     )(JSONExportParameters.apply)(JSONExportParameters.unapply)
   )
 
-  override def importPCMs(implicit request: Request[AnyContent], format : ResultFormat): Result = {
+  override def importPCMs(format: ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext): Result = {
     NotFound("JSON import is not implemented yet")
   }
 

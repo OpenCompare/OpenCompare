@@ -3,7 +3,10 @@ package controllers
 import java.io.IOException
 import javax.inject.{Inject, Singleton}
 
+import com.mohiva.play.silhouette.api.Environment
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import model.{Database, PCMAPIUtils}
+import models.User
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{HTMLExporter, HTMLLoader}
@@ -20,7 +23,7 @@ import scala.io.Source
  * Created by gbecan on 8/18/15.
  */
 @Singleton
-class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
+class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
 
   private val pcmFactory: PCMFactory = new PCMFactoryImpl
   private val htmlExporter: HTMLExporter = new HTMLExporter
@@ -41,7 +44,7 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
     )(HTMLExportParameters.apply)(HTMLExportParameters.unapply)
   )
 
-  override def importPCMs(implicit request: Request[AnyContent], format: ResultFormat): Result = {
+  override def importPCMs(format: ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext): Result = {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
 

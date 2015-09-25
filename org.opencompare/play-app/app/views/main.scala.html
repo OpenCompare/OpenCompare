@@ -1,6 +1,6 @@
 @import javax.inject.Inject
 @import play.api.Play.current
-@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang, messages: Messages)
+@(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""))(content: Html)(implicit lang: Lang, messages: Messages, context: controllers.ViewContext)
 
 <!DOCTYPE html>
 <html ng-app="openCompare">
@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("main/images/logo-inverted.svg")' height="25" width="51" > OpenCompare</a>
+                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("main/images/logo-inverted.svg")' height="25" width="51" ></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,9 +62,12 @@
                         </ul>
                     </li>
 
-                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signIn">@Messages("navbar.signIn")</a></li>
-                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signUp">@Messages("navbar.signUp")</a></li>
-                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/signOut">@Messages("navbar.signOut")</a></li>
+                    @if(context.user.isDefined) {
+                        <li ng-class="{ active: isActive('/signOut')}"><a target="_self" href="/signOut">@Messages("navbar.signOut")</a></li>
+                    } else {
+                        <li ng-class="{ active: isActive('/signIn')}"><a target="_self" href="/signIn">@Messages("navbar.signIn")</a></li>
+                        <li ng-class="{ active: isActive('/signUp')}"><a target="_self" href="/signUp">@Messages("navbar.signUp")</a></li>
+                    }
 
                     <li class="dropdown" ng-controller="I18nCtrl">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@messages.lang.code <span class="caret"></span></a>

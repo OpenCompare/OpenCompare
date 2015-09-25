@@ -22,7 +22,7 @@ class AuthenticationController @Inject() (
   val messagesApi: MessagesApi,
   val env: Environment[User, CookieAuthenticator],
   socialProviderRegistry: SocialProviderRegistry)
-  extends Silhouette[User, CookieAuthenticator] {
+  extends BaseController {
 
   /**
    * Handles the index action.
@@ -30,7 +30,8 @@ class AuthenticationController @Inject() (
    * @return The result to display.
    */
   def index = SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.home(request.identity)))
+    implicit val viewContext = ViewContext(Some(request.identity), request)
+    Future.successful(Ok(views.html.index()))
   }
 
   /**

@@ -1,4 +1,4 @@
-@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)(implicit messages: Messages)
+@(pcms : List[model.PCMInfo], limit : Int, page : Int, nbPages : Int)(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/list.css")'>

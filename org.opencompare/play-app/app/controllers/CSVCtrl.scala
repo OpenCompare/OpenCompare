@@ -3,7 +3,10 @@ package controllers
 import java.io.IOException
 import javax.inject.Inject
 
+import com.mohiva.play.silhouette.api.Environment
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import model.PCMAPIUtils
+import models.User
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
@@ -19,7 +22,7 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class CSVCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
+class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()
@@ -42,7 +45,7 @@ class CSVCtrl @Inject() (val messagesApi: MessagesApi) extends IOCtrl {
     )(CSVExportParameters.apply)(CSVExportParameters.unapply)
   )
 
-  override def importPCMs(implicit request : Request[AnyContent], format : ResultFormat) : Result = {
+  override def importPCMs(format : ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext) : Result = {
     // Parse parameters
     val parameters = inputParametersForm.bindFromRequest.get
     val separator = parameters.separator.head

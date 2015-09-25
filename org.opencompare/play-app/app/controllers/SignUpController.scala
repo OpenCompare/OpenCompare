@@ -43,6 +43,8 @@ class SignUpController @Inject() (
    * @return The result to display.
    */
   def signUp = Action.async { implicit request =>
+    implicit val viewContext = ViewContext(None, request)
+
     SignUpForm.form.bindFromRequest.fold(
       form => Future.successful(BadRequest(views.html.signUp(form))),
       data => {
