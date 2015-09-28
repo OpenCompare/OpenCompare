@@ -1,7 +1,9 @@
 package controllers
 
 import javax.inject.{Singleton, Inject}
-import models.{Database, DatabasePCM, PCMAPIUtils}
+import com.mohiva.play.silhouette.api.Environment
+import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
+import models._
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
@@ -21,7 +23,7 @@ import collection.JavaConversions._
  * Updated by smangin on 21/05/15
  */
 @Singleton
-class PCMAPI @Inject() (val messagesApi: MessagesApi) extends Controller with I18nSupport {
+class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
 
     private val pcmFactory : PCMFactory = new PCMFactoryImpl()
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
@@ -67,7 +69,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi) extends Controller with I1
 
     }
 
-    def remove(id : String) = Action {
+    def remove(id : String) = SecuredAction(AdminAuthorization()) {
         Database.remove(id)
         Ok("")
     }
