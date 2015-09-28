@@ -1,8 +1,7 @@
 package controllers
 
 import javax.inject.{Singleton, Inject}
-
-import model.{PCMAPIUtils, DatabasePCM, Database}
+import models.{Database, DatabasePCM, PCMAPIUtils}
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}

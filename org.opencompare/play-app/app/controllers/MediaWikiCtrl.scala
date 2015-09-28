@@ -6,8 +6,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import model.PCMAPIUtils
-import models.User
+import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextExporter, WikiTextLoader, WikiTextTemplateProcessor}

@@ -5,8 +5,7 @@ import javax.inject.{Inject, Singleton}
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import model.{Database, PCMAPIUtils}
-import models.User
+import models.{Database, PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{HTMLExporter, HTMLLoader}

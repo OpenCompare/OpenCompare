@@ -1,10 +1,10 @@
-package model
+package models
 
 import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.io.KMFJSONLoader
 import play.api.libs.json._
 
-import collection.JavaConversions._
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 8/18/15.

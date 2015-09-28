@@ -1,4 +1,4 @@
-package model
+package models
 
 /**
  * Created by gbecan on 18/12/14.

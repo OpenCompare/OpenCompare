@@ -4,8 +4,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import model.Database
-import models.User
+import models.{Database, User}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
