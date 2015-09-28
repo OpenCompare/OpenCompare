@@ -1,4 +1,4 @@
-package controllers
+package controllers.auth
 
 import javax.inject.Inject
 
@@ -49,7 +49,7 @@ class SocialAuthController @Inject() (
             authInfo <- authInfoRepository.save(profile.loginInfo, authInfo)
             authenticator <- env.authenticatorService.create(profile.loginInfo)
             value <- env.authenticatorService.init(authenticator)
-            result <- env.authenticatorService.embed(value, Redirect(routes.Application.index()))
+            result <- env.authenticatorService.embed(value, Redirect("/"))
           } yield {
             env.eventBus.publish(LoginEvent(user, request, request2Messages))
             result

@@ -1,14 +1,10 @@
-package controllers
+package controllers.io
 
-import javax.inject.Inject
-
-import com.mohiva.play.silhouette.api.Environment
-import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import models.{Database, User}
+import controllers._
+import models.Database
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
-import play.api.i18n.MessagesApi
 import play.api.mvc._
 
 /**

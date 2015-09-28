@@ -26,30 +26,30 @@ GET         /api/i18n/:language                         @controllers.I18nCtrl.se
 GET         /api/i18n                                   @controllers.I18nCtrl.i18n()
 
 # CSV import/export
-POST        /api/import/csv                             @controllers.CSVCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/csv                             @controllers.CSVCtrl.exportPCMAction()
+POST        /api/import/csv                             @controllers.io.CSVCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/csv                             @controllers.io.CSVCtrl.exportPCMAction()
 
 # Wikipedia import/export
-POST        /api/import/wikipedia                       @controllers.MediaWikiCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/wikitext                        @controllers.MediaWikiCtrl.exportPCMAction()
+POST        /api/import/wikipedia                       @controllers.io.MediaWikiCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/wikitext                        @controllers.io.MediaWikiCtrl.exportPCMAction()
 
 # HTML import/export
-POST        /import/html                                @controllers.HTMLCtrl.importPCMsAction(format ?= "page")
-POST        /api/import/html                            @controllers.HTMLCtrl.importPCMsAction(format ?= "json")
-POST        /api/export/html                            @controllers.HTMLCtrl.exportPCMAction()
+POST        /import/html                                @controllers.io.HTMLCtrl.importPCMsAction(format ?= "page")
+POST        /api/import/html                            @controllers.io.HTMLCtrl.importPCMsAction(format ?= "json")
+POST        /api/export/html                            @controllers.io.HTMLCtrl.exportPCMAction()
 
 
 # JSON import/export
-POST        /api/export/json                            @controllers.JSONCtrl.exportPCMAction()
+POST        /api/export/json                            @controllers.io.JSONCtrl.exportPCMAction()
 
 # Auth
-GET         /home                                       @controllers.AuthenticationController.index
-GET         /signIn                                     @controllers.AuthenticationController.signIn
-GET         /signUp                                     @controllers.AuthenticationController.signUp
-GET         /signOut                                    @controllers.AuthenticationController.signOut
-#GET         /authenticate/:provider                     @controllers.SocialAuthController.authenticate(provider)
-POST        /authenticate/credentials                   @controllers.CredentialsAuthController.authenticate
-POST        /signUp                                     @controllers.SignUpController.signUp
+GET         /home                                       @controllers.auth.AuthenticationController.index
+GET         /signIn                                     @controllers.auth.AuthenticationController.signIn
+GET         /signUp                                     @controllers.auth.AuthenticationController.signUp
+GET         /signOut                                    @controllers.auth.AuthenticationController.signOut
+#GET         /authenticate/:provider                     @controllers.auth.SocialAuthController.authenticate(provider)
+POST        /authenticate/credentials                   @controllers.auth.CredentialsAuthController.authenticate
+POST        /signUp                                     @controllers.auth.SignUpController.signUp
 
 # Static resources
 GET         /assets/*file                               controllers.Assets.at(path="/public", file)

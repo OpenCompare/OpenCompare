@@ -2,11 +2,10 @@ package controllers
 
 import javax.inject.{Inject, Singleton}
 
-import jsmessages.{JsMessagesFactoryComponents, JsMessagesFactory}
-import play.api.i18n.{MessagesApi, Lang, I18nSupport}
-import play.api.libs.json.{Json, JsObject}
+import jsmessages.JsMessagesFactory
+import play.api.i18n.{I18nSupport, Lang, MessagesApi}
+import play.api.libs.json.{JsObject, Json}
 import play.api.mvc.{Action, Controller}
-import play.api.Play.current
 
 /**
  * Created by gbecan on 8/19/15.

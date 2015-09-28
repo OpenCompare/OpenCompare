@@ -1,16 +1,17 @@
-package controllers
+package controllers.io
 
 import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
+import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.impl.io.KMFJSONExporter
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
-import play.api.mvc.{Result, AnyContent, Request}
+import play.api.mvc.{AnyContent, Request, Result}
 
 
 /**

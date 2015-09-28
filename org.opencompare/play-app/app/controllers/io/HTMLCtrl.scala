@@ -1,10 +1,11 @@
-package controllers
+package controllers.io
 
 import java.io.IOException
 import javax.inject.{Inject, Singleton}
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
+import controllers._
 import models.{Database, PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl
@@ -16,7 +17,6 @@ import play.api.libs.json.Json
 import play.api.mvc._
 
 import scala.collection.JavaConversions._
-import scala.io.Source
 
 /**
  * Created by gbecan on 8/18/15.

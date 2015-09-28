@@ -1,4 +1,4 @@
-package controllers
+package controllers.io
 
 import java.net.{MalformedURLException, URL, URLDecoder}
 import java.nio.charset.StandardCharsets
@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
+import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
 import org.opencompare.api.java.impl.PCMFactoryImpl

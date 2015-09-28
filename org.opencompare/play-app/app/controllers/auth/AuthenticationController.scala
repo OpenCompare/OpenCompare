@@ -1,10 +1,11 @@
-package controllers
+package controllers.auth
 
 import javax.inject.Inject
 
-import com.mohiva.play.silhouette.api.{Environment, LogoutEvent, Silhouette}
+import com.mohiva.play.silhouette.api.{Environment, LogoutEvent}
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import com.mohiva.play.silhouette.impl.providers.SocialProviderRegistry
+import controllers.{BaseController, ViewContext}
 import forms._
 import models.User
 import play.api.i18n.MessagesApi
@@ -41,7 +42,7 @@ class AuthenticationController @Inject() (
    */
   def signIn = UserAwareAction.async { implicit request =>
     request.identity match {
-      case Some(user) => Future.successful(Redirect(routes.Application.index()))
+      case Some(user) => Future.successful(Redirect("/"))
       case None => Future.successful(Ok(views.html.signIn(SignInForm.form, socialProviderRegistry)))
     }
   }
@@ -53,7 +54,7 @@ class AuthenticationController @Inject() (
    */
   def signUp = UserAwareAction.async { implicit request =>
     request.identity match {
-      case Some(user) => Future.successful(Redirect(routes.Application.index()))
+      case Some(user) => Future.successful(Redirect("/"))
       case None => Future.successful(Ok(views.html.signUp(SignUpForm.form)))
     }
   }
@@ -64,7 +65,7 @@ class AuthenticationController @Inject() (
    * @return The result to display.
    */
   def signOut = SecuredAction.async { implicit request =>
-    val result = Redirect(routes.Application.index())
+    val result = Redirect("/")
     env.eventBus.publish(LogoutEvent(request.identity, request, request2Messages))
 
     env.authenticatorService.discard(request.authenticator, result)
