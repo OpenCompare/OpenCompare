@@ -248,4 +248,12 @@ object Database {
     JSON.serialize(dbContainer)
   }
 
+  def loadString(dbObject : DBObject, key : String) : String = {
+    dbObject.get(key).asInstanceOf[String]
+  }
+
+  def loadOptionalString(dbObject : DBObject, key : String) : Option[String] = {
+    Option(dbObject.get(key).asInstanceOf[String])
+  }
+
 }

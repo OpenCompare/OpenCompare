@@ -77,14 +77,14 @@ class UserDAOImpl extends UserDAO {
     )
   }
 
-  private def loadFromDB(dBObject: DBObject) : User = {
-    val userID = UUID.fromString(dBObject.get("userID").asInstanceOf[String])
-    val loginInfo = LoginInfo(dBObject.get("providerID").asInstanceOf[String], dBObject("providerKey").asInstanceOf[String])
-    val firstName = Option(dBObject.get("firstName").asInstanceOf[String])
-    val lastName = Option(dBObject.get("lastName").asInstanceOf[String])
-    val fullName = Option(dBObject.get("fullName").asInstanceOf[String])
-    val email = Option(dBObject.get("email").asInstanceOf[String])
-    val avatarURL = Option(dBObject.get("avatarURL").asInstanceOf[String])
+  private def loadFromDB(dbObject: DBObject) : User = {
+    val userID = UUID.fromString(dbObject.get("userID").asInstanceOf[String])
+    val loginInfo = LoginInfo(dbObject.get("providerID").asInstanceOf[String], dbObject("providerKey").asInstanceOf[String])
+    val firstName = Option(dbObject.get("firstName").asInstanceOf[String])
+    val lastName = Option(dbObject.get("lastName").asInstanceOf[String])
+    val fullName = Option(dbObject.get("fullName").asInstanceOf[String])
+    val email = Option(dbObject.get("email").asInstanceOf[String])
+    val avatarURL = Database.loadOptionalString(dbObject, "avatarURL")
 
     User(userID, loginInfo, firstName, lastName, fullName, email, avatarURL)
   }
