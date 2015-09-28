@@ -47,7 +47,7 @@ GET         /home                                       @controllers.auth.Authen
 GET         /signIn                                     @controllers.auth.AuthenticationController.signIn
 GET         /signUp                                     @controllers.auth.AuthenticationController.signUp
 GET         /signOut                                    @controllers.auth.AuthenticationController.signOut
-#GET         /authenticate/:provider                     @controllers.auth.SocialAuthController.authenticate(provider)
+GET         /authenticate/:provider                     @controllers.auth.SocialAuthController.authenticate(provider)
 POST        /authenticate/credentials                   @controllers.auth.CredentialsAuthController.authenticate
 POST        /signUp                                     @controllers.auth.SignUpController.signUp
 
