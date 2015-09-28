@@ -3,89 +3,32 @@ package models.daos
 import com.mohiva.play.silhouette.api.LoginInfo
 import com.mohiva.play.silhouette.impl.daos.DelegableAuthInfoDAO
 import com.mohiva.play.silhouette.impl.providers.OAuth1Info
-import models.daos.OAuth1InfoDAO._
-import play.api.libs.concurrent.Execution.Implicits._
-
-import scala.collection.mutable
-import scala.concurrent.Future
+import com.mongodb.casbah.Imports
+import com.mongodb.casbah.Imports._
+import models.Database
 
 /**
  * The DAO to store the OAuth1 information.
  *
  * Note: Not thread safe, demo only.
  */
-class OAuth1InfoDAO extends DelegableAuthInfoDAO[OAuth1Info] {
+class OAuth1InfoDAO extends DelegableAuthInfoDAO[OAuth1Info] with AuthInfoDAO[OAuth1Info] {
 
-  /**
-   * Finds the auth info which is linked with the specified login info.
-   *
-   * @param loginInfo The linked login info.
-   * @return The retrieved auth info or None if no auth info could be retrieved for the given login info.
-   */
-  def find(loginInfo: LoginInfo): Future[Option[OAuth1Info]] = {
-    Future.successful(data.get(loginInfo))
+  override def data: Imports.MongoCollection = Database.db("oAuth1Info")
+
+  override def convertToDB(loginInfo: LoginInfo, authInfo: OAuth1Info) : DBObject = {
+    MongoDBObject(
+      "providerID" -> loginInfo.providerID,
+      "providerKey" -> loginInfo.providerKey,
+      "token" -> authInfo.token,
+      "secret" -> authInfo.secret
+    )
   }
 
-  /**
-   * Adds new auth info for the given login info.
-   *
-   * @param loginInfo The login info for which the auth info should be added.
-   * @param authInfo The auth info to add.
-   * @return The added auth info.
-   */
-  def add(loginInfo: LoginInfo, authInfo: OAuth1Info): Future[OAuth1Info] = {
-    data += (loginInfo -> authInfo)
-    Future.successful(authInfo)
+  override def loadFromDB(dbAuthInfo : DBObject) : OAuth1Info = {
+    OAuth1Info(
+      Database.loadString(dbAuthInfo, "token"),
+      Database.loadString(dbAuthInfo, "secret")
+    )
   }
-
-  /**
-   * Updates the auth info for the given login info.
-   *
-   * @param loginInfo The login info for which the auth info should be updated.
-   * @param authInfo The auth info to update.
-   * @return The updated auth info.
-   */
-  def update(loginInfo: LoginInfo, authInfo: OAuth1Info): Future[OAuth1Info] = {
-    data += (loginInfo -> authInfo)
-    Future.successful(authInfo)
-  }
-
-  /**
-   * Saves the auth info for the given login info.
-   *
-   * This method either adds the auth info if it doesn't exists or it updates the auth info
-   * if it already exists.
-   *
-   * @param loginInfo The login info for which the auth info should be saved.
-   * @param authInfo The auth info to save.
-   * @return The saved auth info.
-   */
-  def save(loginInfo: LoginInfo, authInfo: OAuth1Info): Future[OAuth1Info] = {
-    find(loginInfo).flatMap {
-      case Some(_) => update(loginInfo, authInfo)
-      case None => add(loginInfo, authInfo)
-    }
-  }
-
-  /**
-   * Removes the auth info for the given login info.
-   *
-   * @param loginInfo The login info for which the auth info should be removed.
-   * @return A future to wait for the process to be completed.
-   */
-  def remove(loginInfo: LoginInfo): Future[Unit] = {
-    data -= loginInfo
-    Future.successful(())
-  }
-}
-
-/**
- * The companion object.
- */
-object OAuth1InfoDAO {
-
-  /**
-   * The data store for the OAuth1 info.
-   */
-  var data: mutable.HashMap[LoginInfo, OAuth1Info] = mutable.HashMap()
 }
