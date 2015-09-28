@@ -18,6 +18,7 @@ import com.mohiva.play.silhouette.api.{Identity, LoginInfo}
 case class User(
   userID: UUID,
   loginInfo: LoginInfo,
+  role : UserRole,
   firstName: Option[String],
   lastName: Option[String],
   fullName: Option[String],

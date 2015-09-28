@@ -5,7 +5,7 @@ import java.util.UUID
 import com.mohiva.play.silhouette.api.LoginInfo
 import com.mongodb.casbah.Imports._
 import models.daos.UserDAOImpl._
-import models.{Database, User}
+import models.{DefaultRole, AdminRole, Database, User}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 import scala.concurrent.Future
@@ -69,6 +69,7 @@ class UserDAOImpl extends UserDAO {
       "userID" -> user.userID.toString,
       "providerID" -> user.loginInfo.providerID,
       "providerKey" -> user.loginInfo.providerKey,
+      "role" -> user.role.name,
       "firstName" -> user.firstName,
       "lastName" -> user.lastName,
       "fullName" -> user.fullName,
@@ -77,16 +78,20 @@ class UserDAOImpl extends UserDAO {
     )
   }
 
-  private def loadFromDB(dbObject: DBObject) : User = {
-    val userID = UUID.fromString(dbObject.get("userID").asInstanceOf[String])
-    val loginInfo = LoginInfo(dbObject.get("providerID").asInstanceOf[String], dbObject("providerKey").asInstanceOf[String])
-    val firstName = Option(dbObject.get("firstName").asInstanceOf[String])
-    val lastName = Option(dbObject.get("lastName").asInstanceOf[String])
-    val fullName = Option(dbObject.get("fullName").asInstanceOf[String])
-    val email = Option(dbObject.get("email").asInstanceOf[String])
-    val avatarURL = Database.loadOptionalString(dbObject, "avatarURL")
+  private def loadFromDB(dBObject: DBObject) : User = {
+    val userID = UUID.fromString(dBObject.get("userID").asInstanceOf[String])
+    val role = Database.loadString(dBObject, "role") match {
+      case "admin" => AdminRole()
+      case "default" => DefaultRole()
+    }
+    val loginInfo = LoginInfo(dBObject.get("providerID").asInstanceOf[String], dBObject("providerKey").asInstanceOf[String])
+    val firstName = Option(dBObject.get("firstName").asInstanceOf[String])
+    val lastName = Option(dBObject.get("lastName").asInstanceOf[String])
+    val fullName = Option(dBObject.get("fullName").asInstanceOf[String])
+    val email = Option(dBObject.get("email").asInstanceOf[String])
+    val avatarURL = Database.loadOptionalString(dBObject, "avatarURL")
 
-    User(userID, loginInfo, firstName, lastName, fullName, email, avatarURL)
+    User(userID, loginInfo, role, firstName, lastName, fullName, email, avatarURL)
   }
 }
 

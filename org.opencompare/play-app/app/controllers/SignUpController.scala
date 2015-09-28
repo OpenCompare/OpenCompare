@@ -10,7 +10,7 @@ import com.mohiva.play.silhouette.api.util.PasswordHasher
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import com.mohiva.play.silhouette.impl.providers._
 import forms.SignUpForm
-import models.User
+import models.{DefaultRole, User}
 import models.services.UserService
 import play.api.i18n.{Messages, MessagesApi}
 import play.api.libs.concurrent.Execution.Implicits._
@@ -56,6 +56,7 @@ class SignUpController @Inject() (
             val authInfo = passwordHasher.hash(data.password)
             val user = User(
               userID = UUID.randomUUID(),
+              role = DefaultRole(),
               loginInfo = loginInfo,
               firstName = Some(data.firstName),
               lastName = Some(data.lastName),
