@@ -27,6 +27,7 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "angular-base64-upload" % "0.1.8" exclude("org.webjars.bower", "angular"),
   "org.webjars.bower" % "angular-ui-slider" % "0.1.1" exclude("org.webjars.bower", "angular") exclude("org.webjars.bower", "jquery"),
   "org.webjars.bower" % "bootstrap-autohidingnavbar" % "1.0.2" exclude("org.webjars.bower", "bootstrap") exclude("org.webjars.bower", "jquery"),
+  "org.webjars.bower" % "angular-clipboard" % "1.1.0" exclude("org.webjars.bower", "angular"),
   cache,
   filters
 )
