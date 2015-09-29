@@ -13,7 +13,7 @@ import com.mohiva.play.silhouette.impl.providers.oauth1.secrets.{CookieSecretPro
 import com.mohiva.play.silhouette.impl.providers.oauth1.services.PlayOAuth1Service
 import com.mohiva.play.silhouette.impl.providers.oauth2._
 import com.mohiva.play.silhouette.impl.providers.oauth2.state.{CookieStateProvider, CookieStateSettings, DummyStateProvider}
-import com.mohiva.play.silhouette.impl.providers.openid.YahooProvider
+import com.mohiva.play.silhouette.impl.providers.openid.{SteamProvider, YahooProvider}
 import com.mohiva.play.silhouette.impl.providers.openid.services.PlayOpenIDService
 import com.mohiva.play.silhouette.impl.repositories.DelegableAuthInfoRepository
 import com.mohiva.play.silhouette.impl.services._
@@ -103,16 +103,18 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     clefProvider: ClefProvider,
     twitterProvider: TwitterProvider,
     xingProvider: XingProvider,
-    yahooProvider: YahooProvider): SocialProviderRegistry = {
+    yahooProvider: YahooProvider,
+    steamProvider: SteamProvider): SocialProviderRegistry = {
 
     SocialProviderRegistry(Seq(
-      googleProvider,
-      facebookProvider,
+//      googleProvider,
+//      facebookProvider,
       twitterProvider,
-      vkProvider,
-      xingProvider,
-      yahooProvider,
-      clefProvider
+//      vkProvider,
+//      xingProvider,
+//      yahooProvider,
+//      clefProvider,
+      steamProvider
     ))
   }
 
@@ -324,5 +326,17 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
 
     val settings = configuration.underlying.as[OpenIDSettings]("silhouette.yahoo")
     new YahooProvider(httpLayer, new PlayOpenIDService(client, settings), settings)
+  }
+
+
+  @Provides
+  def provideSteamProvider(
+    cacheLayer: CacheLayer,
+    httpLayer: HTTPLayer,
+    client: OpenIdClient,
+    configuration: Configuration): SteamProvider = {
+
+    val settings = configuration.underlying.as[OpenIDSettings]("silhouette.steam")
+    new SteamProvider(httpLayer, new PlayOpenIDService(client, settings), settings)
   }
 }
