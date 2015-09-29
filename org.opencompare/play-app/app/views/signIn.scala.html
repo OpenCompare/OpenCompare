@@ -14,7 +14,7 @@
     <div class="row">
 
         <div class="col-sm-6">
-            <h2>@Messages("signin.account")</h2>
+            <h1>@Messages("signin.account")</h1>
             <form class="form-horizontal" method="post" action="/authenticate/credentials">
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <h2>@Messages("signin.provider")</h2>
+            <h1>@Messages("signin.provider")</h1>
             @for(p <- socialProviders.providers if p.id != "clef") {
                 <div class="col-md-4">
                     <a href="/authenticate/@p.id" class="btn btn-primary btn-block" title="@Messages(p.id)">
