@@ -107,7 +107,7 @@ class SilhouetteModule extends AbstractModule with ScalaModule {
     steamProvider: SteamProvider): SocialProviderRegistry = {
 
     SocialProviderRegistry(Seq(
-//      googleProvider,
+      googleProvider,
 //      facebookProvider,
       twitterProvider,
 //      vkProvider,

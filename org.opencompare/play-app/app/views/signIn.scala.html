@@ -42,16 +42,17 @@
                 </div>
             </form>
 
+            <div class="text-center">
+                <p>Not registered yet? <a href="/signUp">Sign up here</a></p>
+            </div>
         </div>
         <div class="col-sm-6">
             <h2>@Messages("signin.provider")</h2>
-            @if(socialProviders.providers.nonEmpty) {
-                <div>
-                    @for(p <- socialProviders.providers if p.id != "clef") {
-                        <a href="/authenticate/@p.id" class="provider @p.id" title="@Messages(p.id)">
-                            <img src="@routes.Assets.at(s"images/social-providers/${p.id}.png")" alt="@Messages(p.id)">
-                        </a>
-                    }
+            @for(p <- socialProviders.providers if p.id != "clef") {
+                <div class="col-md-4">
+                    <a href="/authenticate/@p.id" class="btn btn-primary btn-block" title="@Messages(p.id)">
+                        <i class="fa fa-@p.id fa-lg"></i> @Messages(p.id)
+                    </a>
                 </div>
             }
         </div>
@@ -60,9 +61,7 @@
 
 
 
-    <div class="text-center">
-        <p>Not registered yet? <a href="/signUp">Sign up here</a></p>
-    </div>
+
 
 
 }
