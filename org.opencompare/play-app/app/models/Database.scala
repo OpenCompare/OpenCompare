@@ -249,11 +249,11 @@ object Database {
   }
 
   def loadString(dbObject : DBObject, key : String) : String = {
-    dbObject.get(key).asInstanceOf[String]
+    dbObject.getAs[String](key).get
   }
 
   def loadOptionalString(dbObject : DBObject, key : String) : Option[String] = {
-    Option(dbObject.get(key).asInstanceOf[String])
+    dbObject.getAs[String](key)
   }
 
 }
