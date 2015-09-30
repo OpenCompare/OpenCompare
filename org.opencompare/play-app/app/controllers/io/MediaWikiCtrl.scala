@@ -63,6 +63,13 @@ class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi, val env: Environmen
       val code = mediaWikiAPI.getWikitextFromTitle(language, title)
 
       val pcmContainers = miner.mine(language, code, title).toList
+      for (pcmContainer <- pcmContainers) {
+        pcmContainer.getMetadata.setSource(url)
+        if (url.contains("wikipedia.org")) {
+          pcmContainer.getMetadata.setLicense("Creative Commons Attribution-ShareAlike 3.0 Unported")
+        }
+      }
+
 
       if (pcmContainers.isEmpty) {
         NotFound("No matrices were found in this Wikipedia page")

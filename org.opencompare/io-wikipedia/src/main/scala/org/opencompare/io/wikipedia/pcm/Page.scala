@@ -10,7 +10,7 @@ import scala.xml.Elem
 import scala.collection.mutable.ListBuffer
 
 
-class Page {
+class Page(val source : String) {
 
   private val matrices : ListBuffer[Matrix] = new ListBuffer
   var title = ""
