@@ -1,7 +1,7 @@
 @()(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
-
+  <link rel='stylesheet' href='@routes.Assets.at("stylesheets/profile.css")'>
 }
 
 @footer = {
@@ -10,9 +10,35 @@
 
 @defining(context.user.get) { user =>
 
-  @main(header, footer) {
+  @main(header, footer, fullSize = false) {
 
-    <h1>Hello @user.fullName !</h1>
+
+    <div class="row">
+
+      <div class="media">
+        <div id="avatar" class="media-left pull-left">
+          @if(user.avatarURL.isDefined) {
+            <img class="media-object circle" src="@user.avatarURL.get" >
+          }
+        </div>
+
+        <div class="media-body">
+          <h1 class="media-heading">@user.fullName</h1>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <p>Email: @user.email</p>
+      <p>First name: @user.firstName</p>
+      <p>Last name: @user.lastName</p>
+      <p>Role: @user.role.name</p>
+    </div>
+
+
+
+
 
   }
 }

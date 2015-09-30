@@ -98,4 +98,17 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User,
         }
     }
 
+    def search(searchedString : String) = Action {
+        val results = Database.search(searchedString).toList
+
+        val jsonResults = JsArray(results.map(result =>
+            JsObject(Seq(
+                "id" -> JsString(result.id),
+                "name" -> JsString(result.name)
+            ))
+        ))
+
+        Ok(jsonResults)
+    }
+
 }

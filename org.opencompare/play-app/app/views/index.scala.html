@@ -1,11 +1,11 @@
 @()(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
-    <link rel='stylesheet' href='@routes.Assets.at("main/stylesheets/index.css")'>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/index.css")'>
 }
 
 @footer = {
-<script type='text/javascript' src='@routes.Assets.at("main/SearchCtrl.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>
 }
 
 @main(header, footer){
@@ -13,7 +13,7 @@
 <div>
     <br/>
     <div class="row text-center">
-        <img src='@routes.Assets.at("main/images/logo.svg")' width="150" >
+        <img src='@routes.Assets.at("images/logo.svg")' width="150" >
         <h1>OpenCompare</h1>
     </div>
 
@@ -68,7 +68,7 @@
 
     <div class="row text-center">
         <form role="form" class="form-inline" ng-controller="SearchController" action="search" method="GET">
-            <input name="request" class="form-control input-lg" placeholder='@Messages("button.search.placeholder")' ng-model="request">
+            <input name="request" class="form-control input-lg" placeholder='@Messages("button.search.placeholder")' ng-model="request" typeahead="suggestion for suggestion in getSuggestions()">
             <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
         </form>
     </div>

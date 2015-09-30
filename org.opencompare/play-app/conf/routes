@@ -20,6 +20,7 @@ POST        /api/save/:id                             @controllers.PCMAPI.save(i
 POST        /api/create                               @controllers.PCMAPI.create()
 GET         /api/remove/:id                           @controllers.PCMAPI.remove(id : String)
 POST        /api/extract-content                      @controllers.PCMAPI.extractContent()
+GET         /api/search                               @controllers.PCMAPI.search(request : String)
 
 # I18n
 GET         /api/i18n/:language                       @controllers.I18nCtrl.setLang(language : String)
