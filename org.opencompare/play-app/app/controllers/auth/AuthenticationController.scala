@@ -31,7 +31,6 @@ class AuthenticationController @Inject() (
    * @return The result to display.
    */
   def index = SecuredAction.async { implicit request =>
-    implicit val viewContext = ViewContext(Some(request.identity), request)
     Future.successful(Ok(views.html.index()))
   }
 

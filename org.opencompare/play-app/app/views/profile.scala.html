@@ -1,0 +1,18 @@
+@()(implicit messages: Messages, context: controllers.ViewContext)
+
+@header = {
+
+}
+
+@footer = {
+
+}
+
+@defining(context.user.get) { user =>
+
+  @main(header, footer) {
+
+    <h1>Hello @user.fullName !</h1>
+
+  }
+}
