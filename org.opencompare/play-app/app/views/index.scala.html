@@ -8,7 +8,7 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/SearchCtrl.js")'></script>
 }
 
-@main(header, footer){
+@main(header, footer, fullSize = false){
 
 <div>
     <br/>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 description">
+        <div class="description">
             @Html(Messages("index.description"))
         </div>
     </div>
@@ -32,7 +32,7 @@
     @*</div>*@
 
     <div class="row">
-        <div class="col-sm-2 col-sm-offset-2">
+        <div class="col-sm-3 ">
             <i class="fa fa-cloud-upload fa-5x card-icon"></i>
             <h2 class="card-title">@Messages("index.import.title")</h2>
             <p class="card-description">
@@ -41,7 +41,7 @@
             @*<img src='@routes.Assets.at("images/wikipedia.svg")' height="80">*@
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <i class="fa fa-edit fa-5x card-icon"></i>
             <h2 class="card-title">@Messages("index.edit.title")</h2>
             <p class="card-description">
@@ -49,7 +49,7 @@
             </p>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <i class="fa fa-check fa-5x card-icon"></i>
             <h2 class="card-title">@Messages("index.compare.title")</h2>
             <p class="card-description">
@@ -57,7 +57,7 @@
             </p>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <i class="fa fa-share fa-5x card-icon"></i>
             <h2 class="card-title">@Messages("index.share.title")</h2>
             <p class="card-description">
@@ -74,7 +74,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4 col-md-offset-2">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">@Messages("index.extensions.title")</h1>
@@ -94,7 +94,7 @@
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">@Messages("index.social.title")</h1>
