@@ -54,14 +54,6 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.about") <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a target="_self" href="/about/project">@Messages("navbar.about.project")</a></li>
-                            <li><a target="_self" href="/about/privacy">@Messages("navbar.about.privacy")</a></li>
-                        </ul>
-                    </li>
-
                     @if(context.user.isDefined) {
 
                         <li class="dropdown">
@@ -70,8 +62,6 @@
                                 <li><a target="_self" href="/signOut">@Messages("navbar.signOut")</a></li>
                             </ul>
                         </li>
-
-
 
                     } else {
                         <li ng-class="{ active: isActive('/signIn')}"><a target="_self" href="/signIn">@Messages("navbar.signIn")</a></li>
@@ -99,7 +89,17 @@
 
     <div class="container-fluid footer">
         <footer>
-            Contact us at <a href="mailto:contact@@opencompare.org">contact@@opencompare.org</a>
+            <div class="col-sm-6">
+                @Messages("footer.contact") <a href="mailto:contact@@opencompare.org">contact@@opencompare.org</a>
+                <br/>
+                <a href="http://www.apache.org/licenses/LICENSE-2.0">@Messages("footer.license")</a>
+            </div>
+
+            <div class="col-sm-6">
+                <a target="_self" href="/about/project">@Messages("navbar.about.project")</a>
+                <br/>
+                <a target="_self" href="/about/privacy">@Messages("navbar.about.privacy")</a>
+            </div>
         </footer>
     </div>
 
