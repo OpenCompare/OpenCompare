@@ -54,6 +54,9 @@ POST        /signUp                                   @controllers.auth.SignUpCo
 # Account
 GET         /profile                                  @controllers.ProfileController.profile
 
+# Admin
+GET         /admin/load                               @controllers.AdminController.load(type : String)
+
 # Static resources
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
 GET         /webjars/*file                            controllers.WebJarAssets.at(file)
