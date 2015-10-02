@@ -67,7 +67,7 @@ class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User
       Ok(jsonResult)
 
     } catch {
-      case e : IOException => BadRequest("This file is invalid")
+      case e : Exception => BadRequest("This file is invalid")
     }
 
   }

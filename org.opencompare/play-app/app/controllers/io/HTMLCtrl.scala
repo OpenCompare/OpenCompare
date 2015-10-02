@@ -44,10 +44,10 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[Use
   )
 
   override def importPCMs(format: ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext): Result = {
-    // Parse parameters
-    val parameters = inputParametersForm.bindFromRequest.get
-
     try {
+      // Parse parameters
+      val parameters = inputParametersForm.bindFromRequest.get
+
       val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
       val pcmContainers = loader.load(parameters.content).toList
       normalizeContainers(pcmContainers)
@@ -75,7 +75,7 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[Use
 
       }
     } catch {
-      case e: IOException => BadRequest("Invalid request for embedding PCM from HTML")
+      case e: Exception => BadRequest("An error occured during the import.")
     }
 
   }
