@@ -66,6 +66,7 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[Use
           case JsonFormat() => Ok(postprocessContainers(pcmContainers))
           case EmbedFormat() =>
             val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
+            Database.addHTMLSource(parameters.source.get)
             Ok(views.html.embed(null, jsonResult, null))
           case PageFormat() =>
             val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!

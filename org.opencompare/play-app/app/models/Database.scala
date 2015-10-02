@@ -283,4 +283,12 @@ object Database {
         ))
     }
   }
+
+  def addHTMLSource(source : String) {
+    val htmlSourceDB = db("htmlSources")
+    val query = MongoDBObject("source" -> source)
+    if (!htmlSourceDB.findOne(query).isDefined) {
+      htmlSourceDB.insert(query)
+    }
+  }
 }
