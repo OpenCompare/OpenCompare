@@ -26,15 +26,6 @@ class AuthenticationController @Inject() (
   extends BaseController {
 
   /**
-   * Handles the index action.
-   *
-   * @return The result to display.
-   */
-  def index = SecuredAction.async { implicit request =>
-    Future.successful(Ok(views.html.index()))
-  }
-
-  /**
    * Handles the Sign In action.
    *
    * @return The result to display.

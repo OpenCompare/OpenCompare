@@ -15,6 +15,7 @@ public class PCMMetadata {
     protected Map<AbstractFeature, Integer> featurePositions;
     protected String source;
     protected String license;
+    protected String creator;
 
     public PCMMetadata(PCM pcm) {
         this.pcm = pcm;
@@ -188,4 +189,11 @@ public class PCMMetadata {
         this.productAsLines = productAsLines;
     }
 
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 }

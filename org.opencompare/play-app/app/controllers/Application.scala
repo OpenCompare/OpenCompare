@@ -12,7 +12,7 @@ import play.api.mvc.{Action, Controller}
 class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
 
     def index = UserAwareAction { implicit request =>
-      Ok(views.html.index())
+      Ok(views.html.index(Database.getLastHTMLSources(5)))
     }
 
     def aboutProject = UserAwareAction { implicit request =>

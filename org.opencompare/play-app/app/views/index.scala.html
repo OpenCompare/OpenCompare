@@ -1,4 +1,4 @@
-@()(implicit messages: Messages, context: controllers.ViewContext)
+@(lastWebsitesFromExtensions : List[String])(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
     <link rel='stylesheet' href='@routes.Assets.at("stylesheets/index.css")'>
@@ -81,6 +81,12 @@
                 </div>
                 <div class="panel-body">
                     <p>@Messages("index.extensions.text")</p>
+                    <p>@Messages("index.extensions.last")</p>
+                    <ul>
+                    @for(url <- lastWebsitesFromExtensions) {
+                        <li><a href="@url">@url</a></li>
+                    }
+                    </ul>
                     <div class="text-center">
                         <iframe width="100%" height="350px" src="https://www.youtube.com/embed/PJNi1uYhV5w" frameborder="0" allowfullscreen></iframe>
                         <div>

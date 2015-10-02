@@ -291,4 +291,20 @@ object Database {
       htmlSourceDB.insert(query)
     }
   }
+
+  def getLastHTMLSources(limit : Int): List[String] = {
+    val htmlSourceDB = db("htmlSources")
+    val cursor = htmlSourceDB
+      .find(MongoDBObject())
+      .sort(MongoDBObject("_id" -> -1))
+      .limit(limit)
+
+    val lastSources = cursor.flatMap { result =>
+      result.getAs[String]("source")
+    }
+
+    println(lastSources)
+
+    lastSources.toList
+  }
 }
