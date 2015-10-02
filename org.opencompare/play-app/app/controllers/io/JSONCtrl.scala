@@ -17,7 +17,7 @@ import play.api.mvc.{AnyContent, Request, Result}
 /**
  * Created by gbecan on 9/21/15.
  */
-class JSONCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
+class JSONCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("json") {
 
   val jsonExporter = new KMFJSONExporter()
 

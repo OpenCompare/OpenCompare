@@ -5,12 +5,13 @@ import models.Database
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.formalizer.extractor.CellContentInterpreter
+import play.api.Logger
 import play.api.mvc._
 
 /**
  * Created by gbecan on 8/19/15.
  */
-abstract class IOCtrl extends BaseController {
+abstract class IOCtrl(val name : String) extends BaseController {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter
@@ -26,7 +27,15 @@ abstract class IOCtrl extends BaseController {
         JsonFormat()
     }
 
-    importPCMs(resultFormat)
+    val result = importPCMs(resultFormat)
+
+    if (result.header.status == 200) {
+      Database.incrementUsage(name)
+    } else {
+      Database.createError(name, request)
+    }
+
+    result
   }
 
   def exportPCMAction = Action { request =>

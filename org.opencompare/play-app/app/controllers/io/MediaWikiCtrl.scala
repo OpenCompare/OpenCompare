@@ -22,7 +22,7 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 8/18/15.
  */
-class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
+class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("mediawiki") {
 
   val inputParametersForm = Form(
     mapping(

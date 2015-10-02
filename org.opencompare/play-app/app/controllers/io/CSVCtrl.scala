@@ -22,7 +22,7 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl {
+class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("csv") {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()

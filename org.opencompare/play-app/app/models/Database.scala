@@ -8,6 +8,7 @@ import com.mongodb.util.JSON
 import org.bson.types.ObjectId
 import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
+import play.api.mvc.{Request, AnyContent}
 
 import scala.collection.JavaConversions._
 
@@ -256,4 +257,30 @@ object Database {
     dbObject.getAs[String](key)
   }
 
+
+  def createError(source : String, request: Request[AnyContent]) {
+    db("errors").insert(MongoDBObject(
+      "source" -> source,
+      "host" -> request.uri,
+      "body" -> request.body.toString
+    ))
+  }
+
+  def incrementUsage(name : String) {
+    val statsDB = db("usageStats")
+
+    val query = MongoDBObject("name" -> name)
+    val existingStats = statsDB.findOne()
+    existingStats match {
+      case Some(stats) =>
+        val value = stats.getAs[Int]("value").get
+        val update = $set("value" -> (value + 1))
+        statsDB.update(query, update)
+      case None =>
+        statsDB.insert(MongoDBObject(
+          "name" -> name,
+          "value" -> 1
+        ))
+    }
+  }
 }
