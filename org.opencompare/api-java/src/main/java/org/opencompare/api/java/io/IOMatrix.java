@@ -5,16 +5,17 @@ import org.opencompare.api.java.util.Pair;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOMatrix implements Cloneable {
+public class IOMatrix {
 
     private String name = "";
     private int maxRow = 0;
     private int maxColumn = 0;
-    private HashMap<Pair<Integer, Integer>, IOCell> cells = new HashMap<>();
+    private Map<Pair<Integer, Integer>, IOCell> cells = new HashMap<>();
 
     public IOMatrix() {
     }
@@ -39,6 +40,10 @@ public class IOMatrix implements Cloneable {
 
     public IOCell getCell(int row, int column) {
         return cells.get(new Pair<>(row, column));
+    }
+
+    public IOMatrix setCell(IOCell cell, int row, int column) {
+        return setCell(cell, row, column, 1, 1);
     }
 
     public IOMatrix setCell(IOCell cell, int row, int column, int rowspan, int colspan) {
@@ -111,16 +116,6 @@ public class IOMatrix implements Cloneable {
         return false;
     }
 
-    public String[][] toStringArray() {
-        String[][] matrix = new String[getNumberOfRows()][getNumberOfColumns()];
-        for (int i = 0; i < getNumberOfRows();i++) {
-            for (int j = 0; j < getNumberOfColumns();j++) {
-                matrix[i][j] = getCell(i, j).getContent();
-            }
-        }
-        return matrix;
-    }
-
     public List<String[]> toList() {
         List<String[]> matrix = new ArrayList<>(getNumberOfRows());
         for (int i = 0; i < getNumberOfRows();i++) {
@@ -133,27 +128,18 @@ public class IOMatrix implements Cloneable {
         return matrix;
     }
 
-    public IOMatrix clone() throws CloneNotSupportedException {
-        IOMatrix matrix = (IOMatrix) super.clone();
-        matrix.cells = (HashMap) matrix.cells.clone();
-        for (Pair<Integer, Integer> pair : matrix.cells.keySet()) {
-            IOCell cell = matrix.cells.get(pair).clone();
-            matrix.setCell(cell, pair._1, pair._2, 1, 1);
-        }
-        return matrix;
-    }
-
     public void transpose() {
-        IOMatrix matrix = new IOMatrix();
-        matrix.setName(name);
-        for(int i = 0; i < getNumberOfRows(); i++) {
-            for (int j = 0; j < getNumberOfColumns(); j++) {
-                matrix.getOrCreateCell(j, i).setContent(this.getOrCreateCell(i, j).getContent());
-            }
+        Map<Pair<Integer, Integer>, IOCell> transposedCells = new HashMap<>();
+
+        for (Map.Entry<Pair<Integer, Integer>, IOCell> entry : cells.entrySet()) {
+            transposedCells.put(new Pair<>(entry.getKey()._2, entry.getKey()._1), entry.getValue());
         }
-        this.cells = matrix.cells;
-        this.maxRow = matrix.maxRow;
-        this.maxColumn = matrix.maxColumn;
+
+        int tempMaxRow = this.maxRow;
+        this.maxRow = maxColumn;
+        this.maxColumn = tempMaxRow;
+
+        this.cells = transposedCells;
     }
 
 }
