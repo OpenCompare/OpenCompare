@@ -303,8 +303,6 @@ object Database {
       result.getAs[String]("source")
     }
 
-    println(lastSources)
-
     lastSources.toList
   }
 }
