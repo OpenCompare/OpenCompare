@@ -11,15 +11,21 @@
 @main(header, footer) {
 
 
-    <div class="row">
-        <open-compare-editor pcm-container="pcmContainer" pcm-id="id" edit="true" server-mode="local" ng-controller="OCEditorCtrl"></open-compare-editor>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <open-compare-charts></open-compare-charts>
+    <div ng-controller="OCEditorCtrl">
+        <div class="row">
+            <open-compare-toolbar data="data"></open-compare-toolbar>
+            <open-compare-editor data="data"></open-compare-editor>
         </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <open-compare-charts></open-compare-charts>
+            </div>
+        </div>
+
     </div>
+
+
 }
