@@ -1,4 +1,4 @@
-@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)(implicit messages: Messages, context: controllers.ViewContext)
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null, create: Boolean = false)(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
     @editHeader()
@@ -14,6 +14,9 @@
     <div ng-controller="OCEditorCtrl">
         <div class="row" class="ocEditor">
             <oc-editor pcm-container="pcmContainer" config="config">
+                @if(create) {
+                    <oc-creator></oc-creator>
+                }
                 <oc-toolbar></oc-toolbar>
                 <oc-grid></oc-grid>
             </oc-editor>

@@ -54,7 +54,7 @@ class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[
     }
 
     def create = UserAwareAction { implicit request =>
-        Ok(views.html.create(null, null, null))
+        Ok(views.html.edit(null, null, null, true))
     }
 
     def importer(ext : String) = UserAwareAction { implicit request =>
