@@ -5,12 +5,10 @@ angular.module("openCompare")
     .controller("OCEditorCtrl", function($rootScope, $scope, $modal, pcmApi, openCompareServer) {
 
         openCompareServer.useLocalServer();
-
-        $scope.data = {
-            configuration: {
-                serverMode: "local"
-            }
+        $scope.config = {
+            serverMode: "local"
         };
+        $scope.pcmContainer = {};
 
         if (typeof id !== 'undefined') {
             /* Load a PCM from database */
@@ -24,12 +22,9 @@ angular.module("openCompare")
                     var pcm = pcmApi.loadPCMModelFromString(JSON.stringify(data.pcm));
                     pcmApi.decodePCM(pcm); // Decode PCM from Base64
 
-                    $scope.data.pcm = pcm;
-                    $scope.data.metadata = data.metadata;
-                    $scope.data.id = id;
-                    $scope.state = {
-                        saved: true
-                    };
+                    $scope.pcmContainer.pcm = pcm;
+                    $scope.pcmContainer.metadata = data.metadata;
+                    $scope.pcmContainer.id = id;
 
                 }, function(error) {
                     console.log(error);
@@ -44,15 +39,15 @@ angular.module("openCompare")
         if (typeof data !== 'undefined') {
             var pcm = pcmApi.loadPCMModelFromString(JSON.stringify(JSON.parse(data).pcm)); // FIXME : mmhh ugly...
             pcmApi.decode(pcm);
-            $scope.data.pcm = pcm;
+            $scope.pcmContainer.pcm = pcm;
         }
 
         /* Load modal for import */
         if (typeof modal != 'undefined') {
             // Open the given modal
             $modal.open({
-                templateUrl: "templates/modal/modal" + modal + ".html",
-                controller: modal + "Controller",
+                templateUrl: "templates/modal/modal" + modal + "Import.html",
+                controller: modal + "ImportCtrl",
                 scope: $scope
             })
         }
