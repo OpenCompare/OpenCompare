@@ -81,6 +81,8 @@ angular.module("openCompare")
             })
         }
 
-
+        if (typeof user !== 'undefined') {
+            $scope.user = user;
+        }
 
     });

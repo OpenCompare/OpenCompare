@@ -1,8 +1,8 @@
-@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)(implicit context: controllers.ViewContext)
 
 
 <script>
-    var id, data, modal;
+    var id, data, modal, user;
     @if(id != null) {
         id = "@{Html(id)}";
     }
@@ -13,6 +13,10 @@
 
     @if(modal != null) {
      modal = '@{Html(modal)}';
+    }
+
+    @if(context.user.isDefined) {
+        user = "@context.user.get.userID";
     }
 
 </script>
