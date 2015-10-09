@@ -8,6 +8,7 @@ angular.module("openCompare")
         $scope.config = {
             serverMode: "local"
         };
+        $scope.state = {};
         $scope.pcmContainer = {};
 
         if (typeof id !== 'undefined') {

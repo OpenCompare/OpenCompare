@@ -12,13 +12,43 @@
 
 
     <div ng-controller="OCEditorCtrl">
+
         <div class="row" class="ocEditor">
-            <oc-editor pcm-container="pcmContainer" config="config">
+            <oc-editor pcm-container="pcmContainer" config="config" state="state">
                 @if(create) {
                     <oc-creator></oc-creator>
                 }
-                <oc-toolbar></oc-toolbar>
-                <oc-grid></oc-grid>
+                <div class="row">
+                    <div class="col-md-8">
+                        <oc-toolbar></oc-toolbar>
+                    </div>
+                    <div class="col-md-4 panel panel-default">
+                        <div class="panel-body" ng-cloak>
+                            <div ng-show="!state.edit">
+                                <p><strong>Source:</strong> {{pcmContainer.metadata.source}}</p>
+                                <p><strong>License:</strong> {{pcmContainer.metadata.license}}</p>
+                            </div>
+                            <div ng-show="state.edit">
+                                <form class="form-horizontal" ng-show="state.edit">
+                                    <div class="form-group">
+                                        <label for="pcm-source" class="control-label">{{ "edit.source.placeholder" | translate }}</label>
+                                        <input id="pcm-source" class="form-control" type="text" ng-model="pcmContainer.metadata.source" placeholder='{{ "edit.source.placeholder" | translate }}'>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pcm-license" class="control-label">{{ "edit.license.placeholder" | translate }}</label>
+                                        <input id="pcm-license" class="form-control" type="text" ng-model="pcmContainer.metadata.license" placeholder='{{ "edit.license.placeholder" | translate }}'>
+                                    </div>
+                                </form>
+                            </div>
+                            <p><strong>Creator:</strong> {{pcmContainer.metadata.creator}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <oc-grid></oc-grid>
+                </div>
+
             </oc-editor>
         </div>
 
