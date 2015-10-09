@@ -11,6 +11,23 @@ angular.module("openCompare")
         $scope.state = {};
         $scope.pcmContainer = {};
 
+        $scope.$watch("pcmContainer.metadata.source", function(newSource) {
+            if (typeof newSource !== "undefined") {
+                var link = document.createElement("a");
+                link.href = newSource;
+
+                if (newSource.indexOf("wikipedia.org") !== -1) {
+                    $scope.sourceType = "wikipedia";
+                    $scope.sourceName = link.pathname;
+                } else if ((newSource.indexOf("http://") !== -1) || (newSource.indexOf("https://") !== -1)) {
+                    $scope.sourceType = "url";
+                    $scope.sourceName = link.hostname + link.pathname;
+                } else {
+                    $scope.sourceType = "text";
+                }
+            }
+        });
+
         if (typeof id !== 'undefined') {
             /* Load a PCM from database */
             $scope.id = id;
@@ -26,6 +43,7 @@ angular.module("openCompare")
                     $scope.pcmContainer.pcm = pcm;
                     $scope.pcmContainer.metadata = data.metadata;
                     $scope.pcmContainer.id = id;
+                    $scope.state.saved = true;
 
                 }, function(error) {
                     console.log(error);
