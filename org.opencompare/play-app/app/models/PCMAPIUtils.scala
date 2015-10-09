@@ -34,11 +34,22 @@ object PCMAPIUtils {
     val metadata = container.getMetadata()
     val pcm = metadata.getPcm()
 
-    val source = jsonMetadata.value("source").as[JsString].value
-    metadata.setSource(source)
+    val source = jsonMetadata.value.get("source")
+    if (source.isDefined) {
+      metadata.setSource(source.get.as[String])
+    }
 
-    val license = jsonMetadata.value("license").as[JsString].value
-    metadata.setLicense(license)
+    val license = jsonMetadata.value.get("license")
+    if (license.isDefined) {
+      metadata.setLicense(license.get.as[String])
+    }
+
+    val creator = jsonMetadata.value.get("creator")
+    println(creator)
+    if (creator.isDefined) {
+      metadata.setCreator(creator.get.as[String])
+    }
+
 
     val jsonProductPositions = jsonMetadata.value("productPositions").as[JsArray]
     val jsonFeaturePositions = jsonMetadata.value("featurePositions").as[JsArray]

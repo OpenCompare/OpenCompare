@@ -143,6 +143,7 @@ object Database {
         val dbMetadata = dbObject("metadata").asInstanceOf[DBObject]
         metadata.setSource(dbMetadata.getOrElse("source", "").toString)
         metadata.setLicense(dbMetadata.getOrElse("license", "").toString)
+        metadata.setCreator(dbMetadata.getOrElse("creator", "").toString)
 
         // Load product positions
         val dbProductPositions = dbMetadata("productPositions").asInstanceOf[BasicDBList]
@@ -222,7 +223,8 @@ object Database {
       "productPositions" -> dbProductPositions,
       "featurePositions" -> dbFeaturePositions,
       "source" -> metadata.getSource,
-      "license" -> metadata.getLicense
+      "license" -> metadata.getLicense,
+      "creator" -> metadata.getCreator
     )
 
     // Encapsulate the PCM and its metadata in a object

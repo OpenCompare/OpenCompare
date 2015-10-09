@@ -9,17 +9,11 @@
 
 @main(header, footer, fullSize = false) {
 
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <h4>@Messages("search.title") "@request"</h4>
-                @*<ul class="list-group">*@
-                    @results.map{ result =>
-                        <a class="btn btn-primary btn-flat btn-xs oc-list" href="pcm/@result.id">
-                            @result.name
-                        </a>
-                        <br/>
-                    }
-                @*</ul>*@
-            </div>
-        </div>
+    <h4>@Messages("search.title") "@request"</h4>
+    @results.map{ result =>
+        <a class="btn btn-primary btn-flat btn-xs oc-list" href="pcm/@result.id">
+            @result.name
+        </a>
+        <br/>
+    }
 }
