@@ -28,6 +28,16 @@ angular.module("openCompare")
             }
         });
 
+        $scope.$watch("pcmContainer.metadata.license", function(newLicense) {
+            if (typeof newLicense !== "undefined") {
+                if (newLicense.toLowerCase().indexOf("creative commons") !== -1) {
+                    $scope.licenseType = "cc";
+                } else {
+                    $scope.licenseType = "unknown";
+                }
+            }
+        });
+
         if (typeof id !== 'undefined') {
             /* Load a PCM from database */
             $scope.id = id;
