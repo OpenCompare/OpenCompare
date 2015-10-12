@@ -135,16 +135,28 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
       "creator" -> JsString(metadata.getCreator)
     ))
 
-    val futureCreatorInfo = userDAO.find(UUID.fromString(metadata.getCreator))
-
-    futureCreatorInfo map { creatorInfo =>
-      if (creatorInfo.isDefined && creatorInfo.get.fullName.isDefined) {
-        val fullName = creatorInfo.get.fullName.get
-        jsonMetadata + ("creatorFullName" -> JsString(fullName))
-      } else {
-        jsonMetadata
-      }
+    val uuid = try {
+      Some(UUID.fromString(metadata.getCreator))
+    } catch {
+      case e : IllegalArgumentException => None
     }
+
+
+    if (uuid.isDefined) {
+      val futureCreatorInfo = userDAO.find(uuid.get)
+
+      futureCreatorInfo map { creatorInfo =>
+        if (creatorInfo.isDefined && creatorInfo.get.fullName.isDefined) {
+          val fullName = creatorInfo.get.fullName.get
+          jsonMetadata + ("creatorFullName" -> JsString(fullName))
+        } else {
+          jsonMetadata
+        }
+      }
+    } else {
+      Future.successful(jsonMetadata)
+    }
+
   }
 
 }
