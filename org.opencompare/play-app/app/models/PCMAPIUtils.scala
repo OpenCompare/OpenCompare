@@ -53,9 +53,9 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
     }
 
     val creator = jsonMetadata.value.get("creator")
-    println(creator)
-    if (creator.isDefined) {
-      metadata.setCreator(creator.get.as[String])
+    creator match {
+      case Some(JsString(value)) => metadata.setCreator(value)
+      case _ =>
     }
 
 
