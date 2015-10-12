@@ -17,7 +17,10 @@ import play.api.mvc.{AnyContent, Request, Result}
 /**
  * Created by gbecan on 9/21/15.
  */
-class JSONCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("json") {
+class JSONCtrl @Inject() (
+                           val messagesApi: MessagesApi,
+                           val env: Environment[User, CookieAuthenticator],
+                           val pcmAPIUtils : PCMAPIUtils) extends IOCtrl("json") {
 
   val jsonExporter = new KMFJSONExporter()
 
@@ -35,7 +38,7 @@ class JSONCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[Use
     val parameters = outputParametersForm.bindFromRequest.get
     val pcmJSON = Json.parse(parameters.pcm)
 
-    val container = PCMAPIUtils.createContainers(pcmJSON).head
+    val container = pcmAPIUtils.parsePCMContainers(pcmJSON).head
 
     val json = jsonExporter.export(container)
 

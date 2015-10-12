@@ -4,6 +4,7 @@ import javax.inject.{Singleton, Inject}
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import models._
+import models.daos.PCMContainerDAO
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
@@ -17,13 +18,21 @@ import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
 
 import collection.JavaConversions._
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
+
+import scala.concurrent.Future
 
 /**
  * Created by gbecan on 08/01/15.
  * Updated by smangin on 21/05/15
  */
 @Singleton
-class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
+class PCMAPI @Inject() (
+                         val messagesApi: MessagesApi,
+                         val env: Environment[User, CookieAuthenticator],
+                         val pcmContainerDAO: PCMContainerDAO,
+                         val pcmAPIUtils : PCMAPIUtils
+                         ) extends BaseController {
 
     private val pcmFactory : PCMFactory = new PCMFactoryImpl()
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
@@ -32,13 +41,20 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User,
     private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter()
 
 
-    def get(id : String) = Action {
-
-        val dbPCM = Database.get(id)
-        val json = Database.serializeDatabasePCM(dbPCM)
-        Ok(json).withHeaders(
-            "Access-Control-Allow-Origin" -> "*"
-        )
+    def get(id : String) = Action.async {
+      val result = pcmContainerDAO.get(id)
+      result flatMap { dbPCM =>
+        if (dbPCM.isDefined) {
+          val futureJson = pcmAPIUtils.serializePCMContainer(dbPCM.get.pcmContainer.get)
+          futureJson map { json =>
+            Ok(json).withHeaders(
+              "Access-Control-Allow-Origin" -> "*"
+            )
+          }
+        } else {
+          Future.successful(NotFound(id))
+        }
+      }
     }
 
     def save(id : String) = Action { request =>
@@ -46,7 +62,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User,
 
         val ipAddress = request.remoteAddress; // TODO : For future work !
 
-        val pcmContainers = PCMAPIUtils.createContainers(json)
+        val pcmContainers = pcmAPIUtils.parsePCMContainers(json)
 
         if (pcmContainers.size == 1) {
             val databasePCM = new DatabasePCM(Some(id), Some(pcmContainers.head))
@@ -59,7 +75,7 @@ class PCMAPI @Inject() (val messagesApi: MessagesApi, val env: Environment[User,
 
     def create() = Action { request =>
         val json = request.body.asJson.get
-        val pcmContainers = PCMAPIUtils.createContainers(json)
+        val pcmContainers = pcmAPIUtils.parsePCMContainers(json)
         if (pcmContainers.size == 1) {
             val id = Database.create(pcmContainers.get(0))
             Ok(id)

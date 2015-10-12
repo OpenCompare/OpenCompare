@@ -22,7 +22,10 @@ import scala.collection.JavaConversions._
  * Created by gbecan on 8/18/15.
  */
 @Singleton
-class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("html") {
+class HTMLCtrl @Inject() (
+                           val messagesApi: MessagesApi,
+                           val env: Environment[User, CookieAuthenticator],
+                           val pcmAPIUtils : PCMAPIUtils) extends IOCtrl("html") {
 
   private val pcmFactory: PCMFactory = new PCMFactoryImpl
   private val htmlExporter: HTMLExporter = new HTMLExporter
@@ -85,7 +88,7 @@ class HTMLCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[Use
     val parameters = outputParametersForm.bindFromRequest.get
     val pcmJSON = Json.parse(parameters.pcm)
 
-    val container = PCMAPIUtils.createContainers(pcmJSON).head
+    val container = pcmAPIUtils.parsePCMContainers(pcmJSON).head
     container.getMetadata.setProductAsLines(parameters.productAsLines)
 
     val html = htmlExporter.export(container)

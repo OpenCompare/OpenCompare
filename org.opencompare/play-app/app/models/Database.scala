@@ -96,24 +96,6 @@ object Database {
     results.toList.flatten
   }
 
-  def get(id : String) : DatabasePCM = {
-    if (ObjectId.isValid(id)) {
-      val searchById = MongoDBObject("_id" -> new ObjectId(id))
-      val result = pcms.findOne(searchById)
-
-      if (result.isDefined) {
-        val databasePCM = createDatabasePCMInstance(result.get)
-        databasePCM
-      } else {
-        new DatabasePCM(None, None)
-      }
-
-    } else {
-      new DatabasePCM(None, None)
-    }
-  }
-
-
   def update(databasePCM: DatabasePCM) {
     val dbPCMContainer = serializePCMContainer(databasePCM.pcmContainer.get)
     pcms.update(MongoDBObject("_id" -> new ObjectId(databasePCM.id.get)), dbPCMContainer)

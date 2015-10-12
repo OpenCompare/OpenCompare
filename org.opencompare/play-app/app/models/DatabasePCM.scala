@@ -7,5 +7,4 @@ import org.opencompare.api.java.PCMContainer
  */
 class DatabasePCM(val id : Option[String], var pcmContainer : Option[PCMContainer]) {
 
-  def hasIdentifier() : Boolean = this.id.isDefined
 }

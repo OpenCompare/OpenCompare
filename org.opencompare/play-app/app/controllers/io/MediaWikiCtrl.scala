@@ -22,7 +22,10 @@ import scala.collection.JavaConversions._
 /**
  * Created by gbecan on 8/18/15.
  */
-class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("mediawiki") {
+class MediaWikiCtrl @Inject() (
+                                val messagesApi: MessagesApi,
+                                val env: Environment[User, CookieAuthenticator],
+                                val pcmAPIUtils : PCMAPIUtils) extends IOCtrl("mediawiki") {
 
   val inputParametersForm = Form(
     mapping(
@@ -91,7 +94,7 @@ class MediaWikiCtrl @Inject() (val messagesApi: MessagesApi, val env: Environmen
     val parameters = outputParametersForm.bindFromRequest.get
     val pcmJSON = Json.parse(parameters.pcm)
 
-    val container = PCMAPIUtils.createContainers(pcmJSON).head
+    val container = pcmAPIUtils.parsePCMContainers(pcmJSON).head
     container.getMetadata.setProductAsLines(parameters.productAsLines)
 
     val wikitext = wikiExporter.export(container)

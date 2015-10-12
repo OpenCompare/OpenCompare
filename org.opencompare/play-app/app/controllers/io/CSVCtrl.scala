@@ -22,7 +22,10 @@ import scala.io.Source
 /**
  * Created by gbecan on 8/18/15.
  */
-class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends IOCtrl("csv") {
+class CSVCtrl @Inject() (
+                          val messagesApi: MessagesApi,
+                          val env: Environment[User, CookieAuthenticator],
+                          val pcmAPIUtils : PCMAPIUtils) extends IOCtrl("csv") {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
   private val csvExporter : CSVExporter= new CSVExporter()
@@ -79,7 +82,7 @@ class CSVCtrl @Inject() (val messagesApi: MessagesApi, val env: Environment[User
     val quote = parameters.quote.head
 
     val jsonPCM = Json.parse(parameters.pcm)
-    val container = PCMAPIUtils.createContainers(jsonPCM).head
+    val container = pcmAPIUtils.parsePCMContainers(jsonPCM).head
     container.getMetadata.setProductAsLines(parameters.productAsLines)
 
     val csvCode = csvExporter.export(container, separator, quote)

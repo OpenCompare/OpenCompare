@@ -21,7 +21,7 @@ class UserDAOImpl extends UserDAO {
    * @param loginInfo The login info of the user to find.
    * @return The found user or None if no user for the given login info could be found.
    */
-  def find(loginInfo: LoginInfo) = Future {
+  override def find(loginInfo: LoginInfo) = Future {
 //    users.find { case (id, user) => user.loginInfo == loginInfo }.map(_._2)
     val request = MongoDBObject(
       "providerID" -> loginInfo.providerID,
@@ -42,7 +42,7 @@ class UserDAOImpl extends UserDAO {
    * @param userID The ID of the user to find.
    * @return The found user or None if no user for the given ID could be found.
    */
-  def find(userID: UUID) = Future {
+  override def find(userID: UUID) = Future {
     val request = MongoDBObject("userID" -> userID.toString)
     val dbUser = users.findOne(request)
     if (dbUser.isDefined) {
@@ -58,7 +58,7 @@ class UserDAOImpl extends UserDAO {
    * @param user The user to save.
    * @return The saved user.
    */
-  def save(user: User) = Future {
+  override def save(user: User) = Future {
       users.insert(convertToDB(user))
       user
   }
