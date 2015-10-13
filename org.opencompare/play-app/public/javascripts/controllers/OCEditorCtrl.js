@@ -71,14 +71,23 @@ angular.module("openCompare")
             $scope.pcmContainer.pcm = pcm;
         }
 
+        $scope.$watch("csvApi", function(api) {
+            if (typeof api !== "undefined" && modal === "Csv") {
+                api.open();
+            }
+        });
+
         /* Load modal for import */
         if (typeof modal != 'undefined') {
-            // Open the given modal
-            $modal.open({
-                templateUrl: "templates/modal/modal" + modal + "Import.html",
-                controller: modal + "ImportCtrl",
-                scope: $scope
-            })
+
+            if (modal !== "Csv") {
+                // Open the given modal
+                $modal.open({
+                    templateUrl: "templates/modal/modal" + modal + "Import.html",
+                    controller: modal + "ImportCtrl",
+                    scope: $scope
+                })
+            }
         }
 
         if (typeof user !== 'undefined') {
