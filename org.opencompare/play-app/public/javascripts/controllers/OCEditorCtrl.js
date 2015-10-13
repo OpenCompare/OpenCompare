@@ -67,7 +67,7 @@ angular.module("openCompare")
 
         if (typeof data !== 'undefined') {
             var pcm = pcmApi.loadPCMModelFromString(JSON.stringify(JSON.parse(data).pcm)); // FIXME : mmhh ugly...
-            pcmApi.decode(pcm);
+            pcmApi.decodePCM(pcm);
             $scope.pcmContainer.pcm = pcm;
         }
 
