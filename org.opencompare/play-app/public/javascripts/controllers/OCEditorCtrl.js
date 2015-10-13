@@ -77,10 +77,16 @@ angular.module("openCompare")
             }
         });
 
+        $scope.$watch("htmlApi", function(api) {
+            if (typeof api !== "undefined" && modal === "Html") {
+                api.open();
+            }
+        });
+
         /* Load modal for import */
         if (typeof modal != 'undefined') {
 
-            if (modal !== "Csv") {
+            if (modal !== "Csv" && modal !== "Html") {
                 // Open the given modal
                 $modal.open({
                     templateUrl: "templates/modal/modal" + modal + "Import.html",
