@@ -83,18 +83,11 @@ angular.module("openCompare")
             }
         });
 
-        /* Load modal for import */
-        if (typeof modal != 'undefined') {
-
-            if (modal !== "Csv" && modal !== "Html") {
-                // Open the given modal
-                $modal.open({
-                    templateUrl: "templates/modal/modal" + modal + "Import.html",
-                    controller: modal + "ImportCtrl",
-                    scope: $scope
-                })
+        $scope.$watch("mediaWikiApi", function(api) {
+            if (typeof api !== "undefined" && modal === "MediaWiki") {
+                api.open();
             }
-        }
+        });
 
         if (typeof user !== 'undefined') {
             $scope.user = user;
