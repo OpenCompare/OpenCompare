@@ -73,6 +73,7 @@ class HTMLCtrl @Inject() (
             Ok(views.html.embed(null, jsonResult, null))
           case PageFormat() =>
             val jsonResult = Json.parse(Database.serializePCMContainerToJSON(pcmContainer)) // FIXME : ugly ugly ugly !!!! BAHHHHHHHHH !!!
+            Database.addHTMLSource(parameters.source.get)
             Ok(views.html.edit(null, jsonResult, null))
         }
 
