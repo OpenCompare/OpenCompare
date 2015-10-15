@@ -14,6 +14,9 @@ public interface PCM extends PCMElement {
 	List<Product> getProducts();
 	void addProduct(Product product);
 	void removeProduct(Product product);
+
+    Feature getProductsKey();
+    void setProductsKey(Feature feature);
 	
 	List<AbstractFeature> getFeatures();
 	void addFeature(AbstractFeature feature);

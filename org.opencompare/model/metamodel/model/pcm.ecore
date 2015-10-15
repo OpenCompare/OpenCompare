@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pcm" nsURI="pcm" nsPrefix="pcm">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org.opencompare.model" nsURI="org.opencompare.model" nsPrefix="org.opencompare.model">
   <eClassifiers xsi:type="ecore:EClass" name="PCM">
     <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
-        eType="#//Product" containment="true"/>
+        eType="#//Product" containment="true" eOpposite="#//Product/pcm"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
         eType="#//AbstractFeature" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -17,6 +17,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Product">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
         eType="#//Cell" containment="true" eOpposite="#//Cell/product"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pcm" eType="#//PCM" eOpposite="#//PCM/products"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//AbstractFeature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"

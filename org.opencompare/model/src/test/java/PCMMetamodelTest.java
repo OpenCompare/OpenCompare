@@ -2,17 +2,14 @@ import org.junit.Test;
 import org.kevoree.modeling.api.KMFContainer;
 import org.kevoree.modeling.api.json.JSONModelLoader;
 import org.kevoree.modeling.api.json.JSONModelSerializer;
-import pcm.*;
-import pcm.factory.DefaultPcmFactory;
-import pcm.factory.PcmFactory;
+import org.opencompare.model.*;
+import org.opencompare.model.pcm.factory.DefaultPcmFactory;
+import org.opencompare.model.pcm.factory.PcmFactory;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by gbecan on 6/29/15.
@@ -42,14 +39,15 @@ public class PCMMetamodelTest {
         feature2.setName("f2");
         featureGroup.addSubFeatures(feature2);
 
-        pcm.setProductsKey(feature1);
-
         // Create products
         Product product1 = factory.createProduct();
         pcm.addProducts(product1);
 
         Product product2 = factory.createProduct();
         pcm.addProducts(product2);
+
+        // Set products key
+        pcm.setProductsKey(feature1);
 
         // Create cells
         Cell c1 = factory.createCell();
