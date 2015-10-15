@@ -3,6 +3,7 @@ class pcm.PCM  {
     name : String[0,1]
     @contained
     products : pcm.Product[0,*]
+    productsKey : pcm.Feature[0,1]
     @contained
     features : pcm.AbstractFeature[0,*]
 }
@@ -13,7 +14,6 @@ class pcm.AbstractFeature  {
 }
 
 class pcm.Product  {
-    name : String[0,1]
     @contained
     cells : pcm.Cell[0,*] oppositeOf product
 }

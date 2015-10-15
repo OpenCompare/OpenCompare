@@ -42,13 +42,13 @@ public class PCMMetamodelTest {
         feature2.setName("f2");
         featureGroup.addSubFeatures(feature2);
 
+        pcm.setProductsKey(feature1);
+
         // Create products
         Product product1 = factory.createProduct();
-        product1.setName("p1");
         pcm.addProducts(product1);
 
         Product product2 = factory.createProduct();
-        product2.setName("p2");
         pcm.addProducts(product2);
 
         // Create cells
