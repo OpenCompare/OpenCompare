@@ -52,7 +52,7 @@ public class IOMatrixLoader {
         for (int i = headerLength; i < matrixHeight; i++) {
             // Products
             Product product = factory.createProduct();
-            product.setName(detector.get(i, 0).getContent());
+//            product.setName(detector.get(i, 0).getContent());
             pcm.addProduct(product);
 
             // Cells
@@ -69,6 +69,7 @@ public class IOMatrixLoader {
             metadata.setProductPosition(product, i);
         }
         container.getPcm().setName(detector.getMatrix().getName());
+        container.getPcm().setProductsKey(container.getPcm().getConcreteFeatures().get(0)); // FIXME : quickfix
         return container;
     }
 
