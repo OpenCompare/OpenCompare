@@ -29,7 +29,7 @@ public class SimplePCMElementComparator implements PCMElementComparator {
         if (p1 == null || p2 == null) {
             return false;
         }
-        return p1.getName().equals(p2.getName());
+        return p1.getKeyContent().equals(p2.getKeyContent());
     }
 
     @Override

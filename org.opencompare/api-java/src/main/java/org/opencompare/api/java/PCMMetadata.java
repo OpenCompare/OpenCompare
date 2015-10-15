@@ -24,20 +24,21 @@ public class PCMMetadata {
         this.featurePositions = new HashMap<>();
         this.source = "";
         this.license = "";
+        this.creator = "";
     }
 
     /**
      * Return the last product index used
      * @return a integer as index
      */
-    public Integer getLastProductIndex() {
+    public int getLastProductIndex() {
         return Collections.max(productPositions.values());
     }
     /**
      * Return the last feature index used
      * @return a integer as index
      */
-    public Integer getLastFeatureIndex() {
+    public int getLastFeatureIndex() {
         return Collections.max(featurePositions.values());
     }
 
@@ -125,6 +126,46 @@ public class PCMMetadata {
                 return fp1.compareTo(fp2);
             }
         });
+        return result;
+    }
+
+    /**
+     * Return the flatten hierarchy of features
+     * The features are sorted with respect to the metadata
+     * Feature groups are referenced multiple times to respect the hierarchy with the subfeatures
+     * e.g. FG(A,B) => FG, FG; A, B
+     * @return
+     */
+    public List<List<AbstractFeature>> getFlattenFeatureHierarchy() {
+        List<List<AbstractFeature>> result = new ArrayList<>();
+
+        List<AbstractFeature> previousLevel = new ArrayList<>(getSortedFeatures());
+        result.add(previousLevel);
+
+        while (!previousLevel.isEmpty()) {
+            List<AbstractFeature> currentLevel = new ArrayList<>();
+            boolean isTopLevel = true;
+
+            for (AbstractFeature feature : previousLevel) {
+                if (feature.getParentGroup() != null) {
+                    isTopLevel = false;
+                    currentLevel.add(feature.getParentGroup());
+                } else {
+                    currentLevel.add(feature);
+                }
+
+            }
+
+            if (!isTopLevel) {
+                result.add(currentLevel);
+                previousLevel = currentLevel;
+            } else {
+                previousLevel = new ArrayList<>();
+            }
+        }
+
+        Collections.reverse(result);
+
         return result;
     }
 

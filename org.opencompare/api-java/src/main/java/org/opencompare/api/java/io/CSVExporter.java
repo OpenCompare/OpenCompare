@@ -12,45 +12,30 @@ import java.util.*;
 /**
  * Created by gbecan on 3/19/15.
  */
-public class CSVExporter implements PCMExporter, PCMVisitor {
-
-    private PCMMetadata metadata = null;
-    private StringWriter stringWriter;
-    private CSVWriter csvWriter;
-    private List<String> headerLine;
-    private List<String> productLine;
-    private char separator = ',';
-    private char quote = '"';
-    private List<String[]> lines;
-    private LinkedList<AbstractFeature> nextFeaturesToVisit;
-    private int featureDepth;
+public class CSVExporter implements PCMExporter {
 
     @Override
     public String export(PCMContainer container) {
-        metadata = container.getMetadata();
-        return export(container.getPcm());
+        return export(container, ',', '"');
+
     }
 
-    private String export(PCM pcm) {
-        // Compute depth
-        featureDepth = pcm.getFeaturesDepth();
-        // Export features
+    public String export(PCMContainer container, char separator, char quote) {
+
+        PCM pcm = container.getPcm();
+        PCMMetadata metadata = container.getMetadata();
         if (metadata == null) {
             metadata = new PCMMetadata(pcm);
         }
 
-        lines = new ArrayList<>();
-        stringWriter = new StringWriter();
-        csvWriter = new CSVWriter(stringWriter, separator, quote);
-        pcm.accept(this);
+        StringWriter stringWriter = new StringWriter();
+        CSVWriter csvWriter = new CSVWriter(stringWriter, separator, quote);
 
-        if (!metadata.getProductAsLines()) {
-            IOMatrix matrix = new IOMatrix(lines);
-            matrix.transpose();
-            lines = matrix.toList();
+        if (metadata.getProductAsLines()) {
+            exportProductsAsLines(pcm, metadata, csvWriter);
+        } else {
+            exportFeaturesAsLines(pcm, metadata, csvWriter);
         }
-
-        csvWriter.writeAll(lines);
 
         try {
             csvWriter.close();
@@ -58,145 +43,68 @@ public class CSVExporter implements PCMExporter, PCMVisitor {
             e.printStackTrace();
         }
         return stringWriter.toString();
+
     }
 
-    public String export(PCMContainer container, char separator, char quote) {
-        this.separator = separator;
-        this.quote = quote;
-        return export(container);
-    }
+    public void exportProductsAsLines(PCM pcm, PCMMetadata metadata, CSVWriter csvWriter) {
+        String[] line = new String[pcm.getConcreteFeatures().size()];
 
-    @Override
-    public void visit(PCM pcm) {
-
-        // Generate HTML code for features
-        LinkedList<AbstractFeature> featuresToVisit;
-        featuresToVisit = new LinkedList<>();
-        nextFeaturesToVisit = new LinkedList<>();
-        featuresToVisit.addAll(pcm.getFeatures());
-
-        while(!featuresToVisit.isEmpty()) {
-            headerLine = new ArrayList<>();
-            headerLine.add("Product");
-            Collections.sort(featuresToVisit, new Comparator<AbstractFeature>() {
-                @Override
-                public int compare(AbstractFeature feat1, AbstractFeature feat2) {
-                    return metadata.getFeaturePosition(feat1) - metadata.getFeaturePosition(feat2);
-                }
-            });
-            for (AbstractFeature feature : featuresToVisit) {
-                feature.accept(this);
+        // Convert features
+        List<List<AbstractFeature>> flattenHierarchy = metadata.getFlattenFeatureHierarchy();
+        for (List<AbstractFeature> level : flattenHierarchy) {
+            int index = 0;
+            for (AbstractFeature feature : level) {
+                line[index] = feature.getName();
+                index++;
             }
-            lines.add(headerLine.toArray(new String[headerLine.size()]));
-            featuresToVisit = nextFeaturesToVisit;
-            nextFeaturesToVisit = new LinkedList<>();
-            featureDepth--;
+            csvWriter.writeNext(line);
         }
 
+        // Convert products
         for (Product product : metadata.getSortedProducts()) {
-            productLine = new ArrayList<>();
-            product.accept(this);
-            lines.add(productLine.toArray(new String[productLine.size()]));
-        }
-    }
-
-    @Override
-    public void visit(Feature feature) {
-        headerLine.add(feature.getName());
-        if (featureDepth > 1) {
-            nextFeaturesToVisit.add(feature);
-        }
-    }
-
-    @Override
-    public void visit(FeatureGroup featureGroup) {
-        for (int i = 0; i < featureGroup.getFeatures().size(); i++) {
-            headerLine.add(featureGroup.getName());
-        }
-        nextFeaturesToVisit.addAll(featureGroup.getFeatures());
-    }
-
-    @Override
-    public void visit(Product product) {
-        productLine.add(product.getName());
-        for (Feature feature : metadata.getSortedFeatures()) {
-            Cell cell = product.findCell(feature);
-            if (cell == null) {
-                productLine.add("");
-            } else {
-                productLine.add(cell.getContent());
+            int index = 0;
+            for (Feature feature : metadata.getSortedFeatures()) {
+                Cell cell = product.findCell(feature);
+                if (cell == null) {
+                    line[index] = "";
+                } else {
+                    line[index] = cell.getContent();
+                }
+                index++;
             }
 
         }
     }
 
-    @Override
-    public void visit(Cell cell) {
+    public void exportFeaturesAsLines(PCM pcm, PCMMetadata metadata, CSVWriter csvWriter) {
+        String[] line = new String[pcm.getProducts().size() + pcm.getFeaturesDepth()];
 
-    }
+        List<List<AbstractFeature>> flattenHierarchy = metadata.getFlattenFeatureHierarchy();
+        List<Feature> sortedFeatures = metadata.getSortedFeatures();
 
-    @Override
-    public void visit(BooleanValue booleanValue) {
+        for (int i = 0; i < pcm.getConcreteFeatures().size(); i++) {
+            int index = 0;
 
-    }
+            // Convert features
+            for (List<AbstractFeature> level : flattenHierarchy) {
+                AbstractFeature feature = level.get(i);
+                line[index] = feature.getName();
+                index++;
+            }
 
-    @Override
-    public void visit(Conditional conditional) {
+            Feature feature = sortedFeatures.get(i);
+            List<Cell> cells = feature.getCells();
+            Collections.sort(cells, (c1, c2) -> Integer.compare(metadata.getProductPosition(c1.getProduct()), metadata.getProductPosition(c2.getProduct())));
 
-    }
+            // Convert products
+            for (Cell cell : cells) {
+                line[index] = cell.getContent();
+                index++;
+            }
 
-    @Override
-    public void visit(DateValue dateValue) {
+            csvWriter.writeNext(line);
+        }
 
-    }
-
-    @Override
-    public void visit(Dimension dimension) {
-
-    }
-
-    @Override
-    public void visit(IntegerValue integerValue) {
-
-    }
-
-    @Override
-    public void visit(Multiple multiple) {
-
-    }
-
-    @Override
-    public void visit(NotApplicable notApplicable) {
-
-    }
-
-    @Override
-    public void visit(NotAvailable notAvailable) {
-
-    }
-
-    @Override
-    public void visit(Partial partial) {
-
-    }
-
-    @Override
-    public void visit(RealValue realValue) {
-
-    }
-
-    @Override
-    public void visit(StringValue stringValue) {
-
-    }
-
-    @Override
-    public void visit(Unit unit) {
-
-    }
-
-    @Override
-    public void visit(Version version) {
 
     }
 }
