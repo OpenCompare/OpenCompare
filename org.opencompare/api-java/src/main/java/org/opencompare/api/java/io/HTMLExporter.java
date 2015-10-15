@@ -119,7 +119,7 @@ public class HTMLExporter implements PCMVisitor, PCMExporter {
 
     @Override
     public void visit(Product product) {
-        tr.appendElement("th").text(product.getName());
+        tr.appendElement("th").text(product.getKeyContent());
 
         List<Cell> cells = product.getCells();
 
