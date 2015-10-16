@@ -31,7 +31,7 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
     val featureNames = output.getPcm.getConcreteFeatures.map(_.getName)
     featureNames.forall(_.startsWith("F")) shouldBe true
 
-    val productNames = output.getPcm.getProducts.map(_.getName)
+    val productNames = output.getPcm.getProducts.map(_.getKeyContent)
     productNames.forall(_.startsWith("P")) shouldBe true
 
   }

@@ -36,9 +36,8 @@ public abstract class PCMTest {
         return featureGroup;
     }
 
-    public Product createProduct(PCM pcm, String name) {
+    public Product createProduct(PCM pcm) {
         Product product = factory.createProduct();
-        product.setName(name);
         pcm.addProduct(product);
         return product;
     }
@@ -111,9 +110,6 @@ public abstract class PCMTest {
         Product product = factory.createProduct();
         assertEquals(product.getCells().size(), 0);
 
-        product.setName("product name");
-        assertEquals(product.getName(), "product name");
-
         Cell cell = factory.createCell();
         product.addCell(cell);
         assertEquals(product.getCells().size(), 1);
@@ -149,6 +145,9 @@ public abstract class PCMTest {
         // Create PCM 1
         PCM pcm1 = factory.createPCM();
 
+        Feature productsFeature1 = createFeature(pcm1, "Products");
+        pcm1.setProductsKey(productsFeature1);
+
         Feature commonFeature1 = createFeature(pcm1, "Common feature");
         Feature feature1 = createFeature(pcm1, "Feature from PCM 1");
 
@@ -162,13 +161,15 @@ public abstract class PCMTest {
         featureFG1.setName("Feature group from PCM 1 - feature");
         featureGroup1.addFeature(featureFG1);
 
-        Product commonProduct1 = createProduct(pcm1, "Common product");
+        Product commonProduct1 = createProduct(pcm1);
+        createCell(commonProduct1, productsFeature1, "Common product", null);
         createCell(commonProduct1, commonFeature1, "", null);
         createCell(commonProduct1, feature1, "", null);
         createCell(commonProduct1, commonFeatureFG1, "", null);
         createCell(commonProduct1, featureFG1, "", null);
 
-        Product product1 = createProduct(pcm1, "Product from PCM 1");
+        Product product1 = createProduct(pcm1);
+        createCell(product1, productsFeature1, "Product from PCM 1", null);
         createCell(product1, commonFeature1, "", null);
         createCell(product1, feature1, "", null);
         createCell(product1, commonFeatureFG1, "", null);
@@ -177,6 +178,9 @@ public abstract class PCMTest {
 
         // Create PCM 2
         PCM pcm2 = factory.createPCM();
+
+        Feature productsFeature2 = createFeature(pcm2, "Products");
+        pcm2.setProductsKey(productsFeature2);
 
         Feature commonFeature2 = createFeature(pcm2, "Common feature");
         Feature feature2 = createFeature(pcm2, "Feature from PCM 2");
@@ -191,13 +195,15 @@ public abstract class PCMTest {
         featureFG2.setName("Feature group from PCM 2 - feature");
         featureGroup2.addFeature(featureFG2);
 
-        Product commonProduct2 = createProduct(pcm2, "Common product");
+        Product commonProduct2 = createProduct(pcm2);
+        createCell(commonProduct2, productsFeature2, "Common product", null);
         createCell(commonProduct2, commonFeature2, "", null);
         createCell(commonProduct2, feature2, "", null);
         createCell(commonProduct2, commonFeatureFG2, "", null);
         createCell(commonProduct2, featureFG2, "", null);
 
-        Product product2 = createProduct(pcm2, "Product from PCM 2");
+        Product product2 = createProduct(pcm2);
+        createCell(product2, productsFeature2, "Product from PCM 2", null);
         createCell(product2, commonFeature2, "", null);
         createCell(product2, feature2, "", null);
         createCell(product2, commonFeatureFG2, "", null);
@@ -220,6 +226,9 @@ public abstract class PCMTest {
     public void testIsValid() {
         PCM pcm = factory.createPCM();
 
+        Feature productsF = createFeature(pcm, "Products");
+        pcm.setProductsKey(productsF);
+
         Feature f1 = createFeature(pcm, "F1");
         Feature f2 = createFeature(pcm, "F2");
         assertTrue(pcm.isValid());
@@ -230,21 +239,24 @@ public abstract class PCMTest {
         pcm.removeFeature(f3);
         assertTrue(pcm.isValid());
 
-        Product p1 = createProduct(pcm, "P1");
+        Product p1 = createProduct(pcm);
+        createCell(p1, productsF, "P1", null);
         createCell(p1, f1, "C11", null);
         assertFalse(pcm.isValid()); // Missing cell
 
         createCell(p1, f2, "C12", null);
         assertTrue(pcm.isValid());
 
-        Product p2 = createProduct(pcm, "P2");
+        Product p2 = createProduct(pcm);
+        createCell(p2, productsF, "P2", null);
         createCell(p2, f1, "C21", null);
         assertFalse(pcm.isValid()); // Missing cell
 
         createCell(p2, f2, "C22", null);
         assertTrue(pcm.isValid());
 
-        Product p3 = createProduct(pcm, "P2");
+        Product p3 = createProduct(pcm);
+        createCell(p3, productsF, "P2", null);
         createCell(p3, f1, "C21", null);
         createCell(p3, f2, "C22", null);
         assertFalse(pcm.isValid()); // Duplicated product
@@ -258,6 +270,7 @@ public abstract class PCMTest {
     @Test
     public void testGetConcreteFeatures() {
         PCM pcm = factory.createPCM();
+
         createFeature(pcm, "Top level feature");
         FeatureGroup group = createFeatureGroup(pcm, "FG");
 
@@ -279,14 +292,19 @@ public abstract class PCMTest {
         // Create PCM 1
         PCM pcm1 = factory.createPCM();
 
+        Feature productsFeature1 = createFeature(pcm1, "Products");
+        pcm1.setProductsKey(productsFeature1);
+
         Feature commonFeature1 = createFeature(pcm1, "Common feature");
         Feature feature1 = createFeature(pcm1, "Feature from PCM 1");
 
-        Product commonProduct1 = createProduct(pcm1, "Common product");
+        Product commonProduct1 = createProduct(pcm1);
+        createCell(commonProduct1, productsFeature1, "Common product", null);
         createCell(commonProduct1, commonFeature1, "common cell 1", null);
         createCell(commonProduct1, feature1, "", null);
 
-        Product product1 = createProduct(pcm1, "Product from PCM 1");
+        Product product1 = createProduct(pcm1);
+        createCell(product1, productsFeature1, "Product from PCM 1", null);
         createCell(product1, commonFeature1, "", null);
         createCell(product1, feature1, "", null);
 
@@ -295,14 +313,19 @@ public abstract class PCMTest {
         // Create PCM 2
         PCM pcm2 = factory.createPCM();
 
+        Feature productsFeature2 = createFeature(pcm2, "Products");
+        pcm2.setProductsKey(productsFeature2);
+
         Feature commonFeature2 = createFeature(pcm2, "Common feature");
         Feature feature2 = createFeature(pcm2, "Feature from PCM 2");
 
-        Product commonProduct2 = createProduct(pcm2, "Common product");
+        Product commonProduct2 = createProduct(pcm2);
+        createCell(commonProduct2, productsFeature2, "Common product", null);
         createCell(commonProduct2, commonFeature2, "common cell 2", null);
         createCell(commonProduct2, feature2, "", null);
 
-        Product product2 = createProduct(pcm2, "Product from PCM 2");
+        Product product2 = createProduct(pcm2);
+        createCell(product2, productsFeature2, "Product from PCM 2", null);
         createCell(product2, commonFeature2, "", null);
         createCell(product2, feature2, "", null);
 
@@ -311,15 +334,15 @@ public abstract class PCMTest {
         DiffResult diffResult = pcm1.diff(pcm2, new SimplePCMElementComparator());
 
 
-        assertEquals("common features", 1, diffResult.getCommonFeatures().size());
+        assertEquals("common features", 2, diffResult.getCommonFeatures().size());
         assertEquals("features only in PCM 1", 1, diffResult.getFeaturesOnlyInPCM1().size());
         assertEquals("features only in PCM 2", 1, diffResult.getFeaturesOnlyInPCM2().size());
 
-        assertEquals("common products", 1, diffResult.getCommonProducts().size());
+        assertEquals("common products", 2, diffResult.getCommonProducts().size());
         assertEquals("products only in PCM 1", 1, diffResult.getProductsOnlyInPCM1().size());
         assertEquals("products only in PCM 2", 1, diffResult.getProductsOnlyInPCM2().size());
 
-        assertEquals("differing cells", 1, diffResult.getDifferingCells().size());
+        assertEquals("differing cells", 2, diffResult.getDifferingCells().size());
     }
 
     @Test
@@ -327,14 +350,20 @@ public abstract class PCMTest {
         // Create PCM
         PCM pcm = factory.createPCM();
 
+        Feature productsFeature = createFeature(pcm, "Products");
         Feature f1 = createFeature(pcm, "F1");
         Feature f2 = createFeature(pcm, "F2");
 
-        Product p1 = createProduct(pcm, "P1");
-        Product p2 = createProduct(pcm, "P2");
+        pcm.setProductsKey(f1);
 
+        Product p1 = createProduct(pcm);
+        Product p2 = createProduct(pcm);
+
+        createCell(p1, productsFeature, "P1", null);
         createCell(p1, f1, "CP1F1", null);
         createCell(p1, f2, "CP1F2", null);
+
+        createCell(p2, productsFeature, "P2", null);
         createCell(p2, f1, "CP2F1", null);
         createCell(p2, f2, "CP2F2", null);
 
@@ -344,11 +373,13 @@ public abstract class PCMTest {
         assertEquals("#features", 2, pcm.getConcreteFeatures().size());
         assertEquals("#products", 2, pcm.getProducts().size());
         for (Product product : pcm.getProducts()) {
-            assertTrue("new product is an original feature", product.getName().startsWith("F"));
+            assertTrue("new product is an original feature", product.getKeyContent().startsWith("F"));
 
             for (Cell cell : product.getCells()) {
-                assertTrue("new feature is an original product", cell.getFeature().getName().startsWith("P"));
-                assertEquals("cell name", "C" + cell.getFeature().getName() + product.getName(), cell.getContent());
+                if (!cell.getContent().startsWith("P") && !cell.getContent().startsWith("F")) {
+                    assertTrue("new feature is an original product", cell.getFeature().getName().startsWith("P"));
+                    assertEquals("cell name", "C" + cell.getFeature().getName() + product.getKeyContent(), cell.getContent());
+                }
             }
         }
     }
@@ -358,8 +389,8 @@ public abstract class PCMTest {
         PCM pcm = factory.createPCM();
         Feature feature = createFeature(pcm, "feature");
 
-        Product p1 = createProduct(pcm, "p1");
-        Product p2 = createProduct(pcm, "p2");
+        Product p1 = createProduct(pcm);
+        Product p2 = createProduct(pcm);
 
         createCell(p1, feature, "C1", null);
         createCell(p2, feature, "C2", null);
@@ -379,8 +410,8 @@ public abstract class PCMTest {
 
         // TODO : feature groups
 
-        Product p1 = createProduct(pcm1, "product");
-        Product p2 = createProduct(pcm2, "product");
+        Product p1 = createProduct(pcm1);
+        Product p2 = createProduct(pcm2);
 
         Cell c1 = createCell(p1, f1, "cell" , null);
         Cell c2 = createCell(p2, f2, "cell" , null);
