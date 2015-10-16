@@ -22,7 +22,8 @@ public class ProductImpl implements Product {
 
     @Override
     public Feature getKey() {
-        return getPCM().getProductsKey();
+        PCM pcm = getPCM();
+        return pcm == null ? null : pcm.getProductsKey();
     }
 
     @Override
@@ -32,12 +33,14 @@ public class ProductImpl implements Product {
 
     @Override
     public String getKeyContent() {
-        return getKeyCell().getContent();
+        Cell keyCell = getKeyCell();
+        return keyCell == null ? null : keyCell.getContent();
     }
 
     @Override
     public PCM getPCM() {
-        return new PCMImpl(kProduct.getPcm());
+        org.opencompare.model.PCM kPCM = kProduct.getPcm();
+        return kPCM == null ? null : new PCMImpl(kPCM);
     }
 
     @Override
@@ -108,14 +111,6 @@ public class ProductImpl implements Product {
 
         ProductImpl product = (ProductImpl) o;
 
-        if (this.getKey() == null && product.getKey() != null) {
-            return false;
-        }
-
-        if (this.getKey() != null && !this.getKey().equals(product.getKey())) {
-            return false;
-        }
-
         Set<Cell> thisCellsSet = new HashSet<>(this.getCells());
         Set<Cell> productCellsSet = new HashSet<>(product.getCells());
 
@@ -129,7 +124,7 @@ public class ProductImpl implements Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getKey(), new HashSet<Cell>(this.getCells()));
+        return Objects.hash(new HashSet<Cell>(this.getCells()));
     }
 
     @Override

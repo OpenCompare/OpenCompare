@@ -42,7 +42,8 @@ public class PCMImpl implements PCM {
 
     @Override
     public Feature getProductsKey() {
-        return new FeatureImpl(kpcm.getProductsKey());
+        org.opencompare.model.Feature key = kpcm.getProductsKey();
+        return key == null ? null : new FeatureImpl(key);
     }
 
     @Override
@@ -475,47 +476,69 @@ public class PCMImpl implements PCM {
 
     @Override
     public void invert(PCMFactory factory) {
-        // FIXME : feature groups ???
-
         // Save original features and products
+        Feature productsKey = this.getProductsKey();
         List<Feature> originalFeatures = this.getConcreteFeatures();
         List<Product> originalProducts = this.getProducts();
 
-        Map<Feature, Product> featureToProduct = new HashMap<Feature, Product>(); // Mapping between original features and new products
+
+        // Clean PCM
+        for (AbstractFeature originalFeature : this.getFeatures()) {
+            this.removeFeature(originalFeature);
+        }
 
         for (Product originalProduct : originalProducts) {
-            // Remove original product
             this.removeProduct(originalProduct);
+        }
 
-            // Create new feature
-            Feature newFeature = factory.createFeature();
-            newFeature.setName(originalProduct.getKeyContent());
-            this.addFeature(newFeature);
+        // Restore products' key
+        this.addFeature(productsKey);
 
-            // Bind cells to this new feature and a new product
-            for (Cell cell : originalProduct.getCells()) {
-                Feature originalFeature = cell.getFeature();
-                Product newProduct = featureToProduct.get(originalFeature);
+        // Create new features
+        Map<Product, Feature> productToFeature = new HashMap<>(); // Mapping between original products and new features
+        for (Cell cell : productsKey.getCells()) {
+            Feature feature = factory.createFeature();
+            feature.setName(cell.getContent());
+            this.addFeature(feature);
 
-                if (newProduct == null) {
-                    // Remove original feature
-                    this.removeFeature(originalFeature);
+            productToFeature.put(cell.getProduct(), feature);
+        }
 
-                    // Create new product
-                    newProduct = factory.createProduct();
-                    this.addProduct(newProduct);
+        // Create new products and their corresponding key cell
+        Map<Feature, Product> featureToProduct = new HashMap<>(); // Mapping between original features and new products
+        for (Feature originalFeature : originalFeatures) {
+            if (!originalFeature.equals(productsKey)) {
+                Cell cell = factory.createCell();
+                cell.setContent(originalFeature.getName());
+                cell.setFeature(productsKey);
 
-                    // Update mapping between original features and new products
-                    featureToProduct.put(originalFeature, newProduct);
-                }
+                Product product = factory.createProduct();
+                product.addCell(cell);
+                this.addProduct(product);
 
-                // Bind cell to its new feature and product
-                newProduct.addCell(cell);
-                cell.setFeature(newFeature);
+                featureToProduct.put(originalFeature, product);
             }
         }
 
-        // TODO : set productsKey
+        // FIXME : feature groups ???
+
+        // Create new cells
+        for (Feature originalFeature : originalFeatures) {
+            if (!originalFeature.equals(productsKey)) {
+                for (Cell cell : originalFeature.getCells()) {
+                    Feature newFeature = productToFeature.get(cell.getProduct());
+                    Product newProduct = featureToProduct.get(cell.getFeature());
+
+                    Cell newCell = factory.createCell();
+                    newCell.setContent(cell.getContent());
+                    newCell.setRawContent(cell.getRawContent());
+                    newCell.setInterpretation(cell.getInterpretation());
+                    newCell.setFeature(newFeature);
+                    newProduct.addCell(newCell);
+                }
+            }
+        }
+
     }
 
     @Override

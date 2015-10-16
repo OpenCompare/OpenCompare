@@ -213,11 +213,11 @@ public abstract class PCMTest {
         pcm1.merge(pcm2, factory);
 
         // Check resulting PCM
-        assertEquals("number of features", 6, pcm1.getFeatures().size());
-        assertEquals("number of concrete features", 6, pcm1.getFeatures().size());
+        assertEquals("number of features", 7, pcm1.getFeatures().size());
+        assertEquals("number of concrete features", 7, pcm1.getFeatures().size());
         assertEquals("number of products", 3, pcm1.getProducts().size());
         for (Product product : pcm1.getProducts()) {
-            assertEquals("number of cells", 6, product.getCells().size());
+            assertEquals("number of cells", 7, product.getCells().size());
         }
 
     }
@@ -338,11 +338,11 @@ public abstract class PCMTest {
         assertEquals("features only in PCM 1", 1, diffResult.getFeaturesOnlyInPCM1().size());
         assertEquals("features only in PCM 2", 1, diffResult.getFeaturesOnlyInPCM2().size());
 
-        assertEquals("common products", 2, diffResult.getCommonProducts().size());
+        assertEquals("common products", 1, diffResult.getCommonProducts().size());
         assertEquals("products only in PCM 1", 1, diffResult.getProductsOnlyInPCM1().size());
         assertEquals("products only in PCM 2", 1, diffResult.getProductsOnlyInPCM2().size());
 
-        assertEquals("differing cells", 2, diffResult.getDifferingCells().size());
+        assertEquals("differing cells", 1, diffResult.getDifferingCells().size());
     }
 
     @Test
@@ -354,7 +354,7 @@ public abstract class PCMTest {
         Feature f1 = createFeature(pcm, "F1");
         Feature f2 = createFeature(pcm, "F2");
 
-        pcm.setProductsKey(f1);
+        pcm.setProductsKey(productsFeature);
 
         Product p1 = createProduct(pcm);
         Product p2 = createProduct(pcm);
@@ -370,13 +370,17 @@ public abstract class PCMTest {
         // Check inverted PCM
         pcm.invert(factory);
 
-        assertEquals("#features", 2, pcm.getConcreteFeatures().size());
+        assertEquals("#features", 3, pcm.getConcreteFeatures().size());
         assertEquals("#products", 2, pcm.getProducts().size());
+
+        assertEquals("product key", pcm.getProductsKey().getName(), "Products");
+
         for (Product product : pcm.getProducts()) {
             assertTrue("new product is an original feature", product.getKeyContent().startsWith("F"));
+            assertEquals("number of cells", 3, product.getCells().size());
 
             for (Cell cell : product.getCells()) {
-                if (!cell.getContent().startsWith("P") && !cell.getContent().startsWith("F")) {
+                if (!cell.getFeature().equals(pcm.getProductsKey())) {
                     assertTrue("new feature is an original product", cell.getFeature().getName().startsWith("P"));
                     assertEquals("cell name", "C" + cell.getFeature().getName() + product.getKeyContent(), cell.getContent());
                 }
