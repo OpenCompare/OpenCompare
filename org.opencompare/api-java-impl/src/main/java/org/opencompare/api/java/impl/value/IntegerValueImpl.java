@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.IntegerValue;
  */
 public class IntegerValueImpl extends ValueImpl implements IntegerValue {
 
-    private pcm.IntegerValue kIntegerValue;
+    private org.opencompare.model.IntegerValue kIntegerValue;
 
-    public IntegerValueImpl(pcm.IntegerValue kIntegerValue) {
+    public IntegerValueImpl(org.opencompare.model.IntegerValue kIntegerValue) {
         super(kIntegerValue);
         this.kIntegerValue = kIntegerValue;
     }
 
-    public pcm.IntegerValue getkIntegerValue() {
+    public org.opencompare.model.IntegerValue getkIntegerValue() {
         return kIntegerValue;
     }
 

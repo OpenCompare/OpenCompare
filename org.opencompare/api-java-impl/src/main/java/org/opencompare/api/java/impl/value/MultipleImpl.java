@@ -15,21 +15,21 @@ import java.util.List;
  */
 public class MultipleImpl extends ValueImpl implements Multiple {
 
-    private pcm.Multiple kMultiple;
+    private org.opencompare.model.Multiple kMultiple;
 
-    public MultipleImpl(pcm.Multiple kMultiple) {
+    public MultipleImpl(org.opencompare.model.Multiple kMultiple) {
         super(kMultiple);
         this.kMultiple = kMultiple;
     }
 
-    public pcm.Multiple getkMultiple() {
+    public org.opencompare.model.Multiple getkMultiple() {
         return kMultiple;
     }
 
     @Override
     public List<Value> getSubValues() {
         List<Value> subValues = new ArrayList<Value>();
-        for (pcm.Value kValue : kMultiple.getSubvalues()) {
+        for (org.opencompare.model.Value kValue : kMultiple.getSubvalues()) {
             subValues.add(ValueImpl.wrapValue(kValue));
         }
         return subValues;

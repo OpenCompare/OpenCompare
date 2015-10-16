@@ -5,21 +5,20 @@ import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.Dimension;
-import pcm.Value;
 
 /**
  * Created by gbecan on 30/01/15.
  */
 public class DimensionImpl extends ValueImpl implements Dimension {
 
-    private pcm.Dimension kDimension;
+    private org.opencompare.model.Dimension kDimension;
 
-    public DimensionImpl(pcm.Dimension kDimension) {
+    public DimensionImpl(org.opencompare.model.Dimension kDimension) {
         super(kDimension);
         this.kDimension = kDimension;
     }
 
-    public pcm.Dimension getkDimension() {
+    public org.opencompare.model.Dimension getkDimension() {
         return kDimension;
     }
 

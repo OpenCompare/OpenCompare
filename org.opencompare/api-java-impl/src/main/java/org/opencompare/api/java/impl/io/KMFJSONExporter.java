@@ -1,14 +1,11 @@
 package org.opencompare.api.java.impl.io;
 
+import org.kevoree.modeling.api.json.JSONModelSerializer;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
-import org.opencompare.api.java.PCMMetadata;
 import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.io.PCMExporter;
-import org.kevoree.modeling.api.json.JSONModelSerializer;
-import pcm.factory.DefaultPcmFactory;
-
-import java.util.Base64;
+import org.opencompare.model.pcm.factory.DefaultPcmFactory;
 
 /**
  * Created by gbecan on 13/10/14.
@@ -45,7 +42,7 @@ public class KMFJSONExporter implements PCMExporter {
             }
 
             // Serialize PCM
-            pcm.PCM kPcm = ((PCMImpl) pcm).getKpcm();
+            org.opencompare.model.PCM kPcm = ((PCMImpl) pcm).getKpcm();
             json = serializer.serialize(kPcm);
 
             // Decode PCM

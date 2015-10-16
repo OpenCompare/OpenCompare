@@ -5,7 +5,7 @@ import org.opencompare.api.java.impl.PCMImpl;
 import org.opencompare.api.java.io.PCMLoader;
 import org.kevoree.modeling.api.KMFContainer;
 import org.kevoree.modeling.api.json.JSONModelLoader;
-import pcm.factory.DefaultPcmFactory;
+import org.opencompare.model.pcm.factory.DefaultPcmFactory;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -49,7 +49,7 @@ public class KMFJSONLoader implements PCMLoader {
     private List<PCMContainer> load(List<KMFContainer> containers) {
         List<PCMContainer> containersPCM = new ArrayList<>();
         for (KMFContainer container : containers) {
-            PCM pcm = new PCMImpl((pcm.PCM) container);
+            PCM pcm = new PCMImpl((org.opencompare.model.PCM) container);
             encoder.decode(pcm);
             PCMContainer containerPCM = new PCMContainer();
             PCMMetadata metadata = new PCMMetadata(pcm);

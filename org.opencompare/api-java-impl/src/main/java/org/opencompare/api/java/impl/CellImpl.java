@@ -10,13 +10,13 @@ import java.util.Objects;
  */
 public class CellImpl extends PCMElementImpl implements Cell {
 
-    private pcm.Cell kCell;
+    private org.opencompare.model.Cell kCell;
 
-    public CellImpl(pcm.Cell kCell) {
+    public CellImpl(org.opencompare.model.Cell kCell) {
         this.kCell = kCell;
     }
 
-    public pcm.Cell getkCell() {
+    public org.opencompare.model.Cell getkCell() {
         return kCell;
     }
 
@@ -42,7 +42,7 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public Value getInterpretation() {
-        pcm.Value kInterpretation = kCell.getInterpretation();
+        org.opencompare.model.Value kInterpretation = kCell.getInterpretation();
 
         return ValueImpl.wrapValue(kInterpretation);
     }

@@ -16,25 +16,25 @@ import java.util.Objects;
  */
 public class FeatureGroupImpl extends AbstractFeatureImpl implements FeatureGroup {
 
-    private pcm.FeatureGroup kFeatureGroup;
+    private org.opencompare.model.FeatureGroup kFeatureGroup;
 
-    public FeatureGroupImpl(pcm.FeatureGroup kFeatureGroup) {
+    public FeatureGroupImpl(org.opencompare.model.FeatureGroup kFeatureGroup) {
         super(kFeatureGroup);
         this.kFeatureGroup = kFeatureGroup;
     }
 
-    public pcm.FeatureGroup getkFeatureGroup() {
+    public org.opencompare.model.FeatureGroup getkFeatureGroup() {
         return kFeatureGroup;
     }
 
     @Override
     public List<AbstractFeature> getFeatures() {
         List<AbstractFeature> features = new ArrayList<AbstractFeature>();
-        for (pcm.AbstractFeature kAbstractFeature : kFeatureGroup.getSubFeatures()) {
-            if (kAbstractFeature instanceof pcm.Feature) {
-                features.add(new FeatureImpl((pcm.Feature) kAbstractFeature));
-            } else if (kAbstractFeature instanceof pcm.FeatureGroup) {
-                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kAbstractFeature));
+        for (org.opencompare.model.AbstractFeature kAbstractFeature : kFeatureGroup.getSubFeatures()) {
+            if (kAbstractFeature instanceof org.opencompare.model.Feature) {
+                features.add(new FeatureImpl((org.opencompare.model.Feature) kAbstractFeature));
+            } else if (kAbstractFeature instanceof org.opencompare.model.FeatureGroup) {
+                features.add(new FeatureGroupImpl((org.opencompare.model.FeatureGroup) kAbstractFeature));
             }
         }
         return features;

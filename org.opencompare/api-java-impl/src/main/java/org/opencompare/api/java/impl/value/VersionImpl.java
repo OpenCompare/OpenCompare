@@ -5,21 +5,20 @@ import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.Version;
-import pcm.Value;
 
 /**
  * Created by gbecan on 30/01/15.
  */
 public class VersionImpl extends ValueImpl implements Version {
 
-    private pcm.Version kVersion;
+    private org.opencompare.model.Version kVersion;
 
-    public VersionImpl(pcm.Version kVersion) {
+    public VersionImpl(org.opencompare.model.Version kVersion) {
         super(kVersion);
         this.kVersion = kVersion;
     }
 
-    public pcm.Version getkVersion() {
+    public org.opencompare.model.Version getkVersion() {
         return kVersion;
     }
 

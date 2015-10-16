@@ -5,21 +5,20 @@ import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.Unit;
-import pcm.Value;
 
 /**
  * Created by gbecan on 30/01/15.
  */
 public class UnitImpl extends ValueImpl implements Unit {
 
-    private pcm.Unit kUnit;
+    private org.opencompare.model.Unit kUnit;
 
-    public UnitImpl(pcm.Unit kUnit) {
+    public UnitImpl(org.opencompare.model.Unit kUnit) {
         super(kUnit);
         this.kUnit = kUnit;
     }
 
-    public pcm.Unit getkUnit() {
+    public org.opencompare.model.Unit getkUnit() {
         return kUnit;
     }
 

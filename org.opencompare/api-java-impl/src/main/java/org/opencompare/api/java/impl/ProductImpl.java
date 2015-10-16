@@ -10,30 +10,40 @@ import java.util.*;
  */
 public class ProductImpl implements Product {
 
-    private pcm.Product kProduct;
+    private org.opencompare.model.Product kProduct;
 
-    public ProductImpl(pcm.Product kProduct) {
+    public ProductImpl(org.opencompare.model.Product kProduct) {
         this.kProduct = kProduct;
     }
 
-    public pcm.Product getkProduct() {
+    public org.opencompare.model.Product getkProduct() {
         return kProduct;
     }
 
     @Override
-    public String getName() {
-        return kProduct.getName();
+    public Feature getKey() {
+        return getPCM().getProductsKey();
     }
 
     @Override
-    public void setName(String s) {
-        kProduct.setName(s);
+    public Cell getKeyCell() {
+        return findCell(getKey());
+    }
+
+    @Override
+    public String getKeyContent() {
+        return getKeyCell().getContent();
+    }
+
+    @Override
+    public PCM getPCM() {
+        return new PCMImpl(kProduct.getPcm());
     }
 
     @Override
     public List<Cell> getCells() {
         List<Cell> cells = new ArrayList<Cell>();
-        for (pcm.Cell kCell : kProduct.getCells()) {
+        for (org.opencompare.model.Cell kCell : kProduct.getCells()) {
             cells.add(new CellImpl(kCell));
         }
         return cells;
@@ -82,7 +92,7 @@ public class ProductImpl implements Product {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("Product(" + getName() + ")");
+        result.append("Product(" + getKeyContent() + ")");
         result.append("(");
         for (Cell cell : this.getCells()) {
             result.append(cell.toString());
@@ -98,11 +108,11 @@ public class ProductImpl implements Product {
 
         ProductImpl product = (ProductImpl) o;
 
-        if (this.getName() == null && product.getName() != null) {
+        if (this.getKey() == null && product.getKey() != null) {
             return false;
         }
 
-        if (this.getName() != null && !this.getName().equals(product.getName())) {
+        if (this.getKey() != null && !this.getKey().equals(product.getKey())) {
             return false;
         }
 
@@ -119,13 +129,12 @@ public class ProductImpl implements Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getName(), new HashSet<Cell>(this.getCells()));
+        return Objects.hash(this.getKey(), new HashSet<Cell>(this.getCells()));
     }
 
     @Override
     public PCMElement clone(PCMFactory factory) {
         Product copy = factory.createProduct();
-        copy.setName(this.getName());
         for (Cell cell : this.getCells()) {
             copy.addCell((Cell) cell.clone(factory));
         }

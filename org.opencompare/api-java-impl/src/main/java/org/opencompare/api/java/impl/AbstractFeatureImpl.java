@@ -8,19 +8,19 @@ import org.opencompare.api.java.FeatureGroup;
  */
 public abstract class AbstractFeatureImpl implements AbstractFeature {
 
-    private pcm.AbstractFeature kAbstractFeature;
+    private org.opencompare.model.AbstractFeature kAbstractFeature;
 
-    protected AbstractFeatureImpl(pcm.AbstractFeature kAbstractFeature) {
+    protected AbstractFeatureImpl(org.opencompare.model.AbstractFeature kAbstractFeature) {
         this.kAbstractFeature = kAbstractFeature;
     }
 
-    public pcm.AbstractFeature getkAbstractFeature() {
+    public org.opencompare.model.AbstractFeature getkAbstractFeature() {
         return kAbstractFeature;
     }
 
     @Override
     public FeatureGroup getParentGroup() {
-        pcm.FeatureGroup kParentGroup = kAbstractFeature.getParentGroup();
+        org.opencompare.model.FeatureGroup kParentGroup = kAbstractFeature.getParentGroup();
         if (kParentGroup != null) {
             return new FeatureGroupImpl(kParentGroup);
         } else {

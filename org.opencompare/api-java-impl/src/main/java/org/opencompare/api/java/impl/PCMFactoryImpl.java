@@ -3,8 +3,8 @@ package org.opencompare.api.java.impl;
 import org.opencompare.api.java.impl.value.*;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.value.*;
-import pcm.factory.DefaultPcmFactory;
-import pcm.factory.PcmFactory;
+import org.opencompare.model.pcm.factory.DefaultPcmFactory;
+import org.opencompare.model.pcm.factory.PcmFactory;
 
 /**
  * Created by gbecan on 09/10/14.

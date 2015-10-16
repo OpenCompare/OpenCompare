@@ -11,13 +11,13 @@ import org.opencompare.api.java.util.*;
  */
 public class PCMImpl implements PCM {
 
-    private pcm.PCM kpcm;
+    private org.opencompare.model.PCM kpcm;
 
-    public PCMImpl(pcm.PCM kpcm) {
+    public PCMImpl(org.opencompare.model.PCM kpcm) {
         this.kpcm = kpcm;
     }
 
-    public pcm.PCM getKpcm() {
+    public org.opencompare.model.PCM getKpcm() {
         return kpcm;
     }
 
@@ -34,10 +34,20 @@ public class PCMImpl implements PCM {
     @Override
     public List<Product> getProducts() {
         List<Product> products = new ArrayList<Product>();
-        for (pcm.Product kProduct : kpcm.getProducts()) {
+        for (org.opencompare.model.Product kProduct : kpcm.getProducts()) {
             products.add(new ProductImpl(kProduct));
         }
         return products;
+    }
+
+    @Override
+    public Feature getProductsKey() {
+        return new FeatureImpl(kpcm.getProductsKey());
+    }
+
+    @Override
+    public void setProductsKey(Feature feature) {
+        kpcm.setProductsKey(((FeatureImpl) feature).getkFeature());
     }
 
     @Override
@@ -53,11 +63,11 @@ public class PCMImpl implements PCM {
     @Override
     public List<AbstractFeature> getFeatures() {
         List<AbstractFeature> features = new ArrayList<AbstractFeature>();
-        for (pcm.AbstractFeature kFeature : kpcm.getFeatures()) {
-            if (kFeature instanceof pcm.Feature) {
-                features.add(new FeatureImpl((pcm.Feature) kFeature));
-            } else if (kFeature instanceof pcm.FeatureGroup) {
-                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
+        for (org.opencompare.model.AbstractFeature kFeature : kpcm.getFeatures()) {
+            if (kFeature instanceof org.opencompare.model.Feature) {
+                features.add(new FeatureImpl((org.opencompare.model.Feature) kFeature));
+            } else if (kFeature instanceof org.opencompare.model.FeatureGroup) {
+                features.add(new FeatureGroupImpl((org.opencompare.model.FeatureGroup) kFeature));
             }
         }
         return features;
@@ -124,14 +134,13 @@ public class PCMImpl implements PCM {
         // Return the product if it exists
         List<Product> products = this.getProducts();
         for (Product product : products) {
-            if (product.getName().equals(name)) {
+            if (product.getKeyContent().equals(name)) {
                 return product;
             }
         }
 
         // The product does not exists, we create a new product
         Product newProduct = factory.createProduct();
-        newProduct.setName(name);
         this.addProduct(newProduct);
 
         return newProduct;
@@ -219,7 +228,7 @@ public class PCMImpl implements PCM {
             // Check if the product already exists in this PCM
             boolean existInThis = false;
             for (Product productInThis : this.getProducts()) {
-                if (product.getName().equals(productInThis.getName())) {
+                if (product.getKeyContent().equals(productInThis.getKeyContent())) {
                     existInThis = true;
                     break;
                 }
@@ -228,7 +237,6 @@ public class PCMImpl implements PCM {
             // Copy product from merged PCM if the product is new
             if (!existInThis) {
                 Product newProduct = factory.createProduct();
-                newProduct.setName(product.getName());
                 this.addProduct(newProduct);
             }
 
@@ -284,7 +292,7 @@ public class PCMImpl implements PCM {
 
         // Find corresponding cell
         for (Product productInPCM : pcm.getProducts()) {
-            if (productInPCM.getName().equals(product.getName())) {
+            if (productInPCM.getKeyContent().equals(product.getKeyCell())) {
                 correspondingCell = productInPCM.findCell(correspondingFeature);
                 break;
             }
@@ -481,7 +489,7 @@ public class PCMImpl implements PCM {
 
             // Create new feature
             Feature newFeature = factory.createFeature();
-            newFeature.setName(originalProduct.getName());
+            newFeature.setName(originalProduct.getKeyContent());
             this.addFeature(newFeature);
 
             // Bind cells to this new feature and a new product
@@ -495,7 +503,6 @@ public class PCMImpl implements PCM {
 
                     // Create new product
                     newProduct = factory.createProduct();
-                    newProduct.setName(originalFeature.getName());
                     this.addProduct(newProduct);
 
                     // Update mapping between original features and new products
@@ -508,6 +515,7 @@ public class PCMImpl implements PCM {
             }
         }
 
+        // TODO : set productsKey
     }
 
     @Override

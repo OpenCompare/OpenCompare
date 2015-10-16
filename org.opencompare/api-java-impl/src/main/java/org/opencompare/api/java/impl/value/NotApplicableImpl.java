@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.NotApplicable;
  */
 public class NotApplicableImpl extends ValueImpl implements NotApplicable {
 
-    private pcm.NotApplicable kNotApplicable;
+    private org.opencompare.model.NotApplicable kNotApplicable;
 
-    public NotApplicableImpl(pcm.NotApplicable kNotApplicable) {
+    public NotApplicableImpl(org.opencompare.model.NotApplicable kNotApplicable) {
         super(kNotApplicable);
         this.kNotApplicable = kNotApplicable;
     }
 
-    public pcm.NotApplicable getkNotApplicable() {
+    public org.opencompare.model.NotApplicable getkNotApplicable() {
         return kNotApplicable;
     }
 

@@ -12,14 +12,14 @@ import org.opencompare.api.java.value.Partial;
  */
 public class PartialImpl extends ValueImpl implements Partial {
 
-    private pcm.Partial kPartial;
+    private org.opencompare.model.Partial kPartial;
 
-    public PartialImpl(pcm.Partial kPartial) {
+    public PartialImpl(org.opencompare.model.Partial kPartial) {
         super(kPartial);
         this.kPartial = kPartial;
     }
 
-    public pcm.Partial getkPartial() {
+    public org.opencompare.model.Partial getkPartial() {
         return kPartial;
     }
 
