@@ -15,7 +15,7 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
   it should "load a PCM with products as columns" in {
 
     val input = new IOMatrix()
-      .setCell(new IOCell(""), 0, 0)
+      .setCell(new IOCell("Products"), 0, 0)
       .setCell(new IOCell("P1"), 0, 1)
       .setCell(new IOCell("P2"), 0, 2)
       .setCell(new IOCell("F1"), 1, 0)
@@ -25,11 +25,11 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
       .setCell(new IOCell("C"), 2, 1)
       .setCell(new IOCell("C"), 2, 2)
 
-    val loader = new IOMatrixLoader(factory, false)
-    val output = loader.load(input).head
+    val loader = new IOMatrixLoader(factory, PCMDirection.PRODUCTS_AS_COLUMNS)
+    val output = loader.load(input)
 
     val featureNames = output.getPcm.getConcreteFeatures.map(_.getName)
-    featureNames.forall(_.startsWith("F")) shouldBe true
+    featureNames.forall(name => name.startsWith("F") || name == "Products") shouldBe true
 
     val productNames = output.getPcm.getProducts.map(_.getKeyContent)
     productNames.forall(_.startsWith("P")) shouldBe true

@@ -1,111 +1,88 @@
 package org.opencompare.api.java.io;
 
-import com.opencsv.CSVReader;
-import org.opencompare.api.java.*;
-import org.opencompare.api.java.util.MatrixAnalyser;
-import org.opencompare.api.java.util.MatrixComparatorEqualityImpl;
+import org.opencompare.api.java.PCM;
+import org.opencompare.api.java.PCMContainer;
+import org.opencompare.api.java.PCMFactory;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by gbecan on 4/2/15.
+ * Created by gbecan on 10/16/15.
  */
 public class IOMatrixLoader {
 
     private PCMFactory factory;
-    private boolean productsAsLines;
-    private Map<Integer, AbstractFeature> features;
+    private PCMDirection direction;
 
-    public IOMatrixLoader(PCMFactory factory) {
-        this(factory, true);
-    }
 
-    public IOMatrixLoader(PCMFactory factory, boolean productsAsLines) {
+    public IOMatrixLoader(PCMFactory factory, PCMDirection direction) {
         this.factory = factory;
-        this.productsAsLines = productsAsLines;
+        this.direction = direction;
     }
 
-    public List<PCMContainer> load(IOMatrix matrix) {
-        List<PCMContainer> containers = new ArrayList<>();
-        MatrixAnalyser detector = new MatrixAnalyser(matrix, new MatrixComparatorEqualityImpl());
-        detector.setTransposition(!this.productsAsLines);
-        containers.add(load(detector));
-        return containers;
-    }
 
-    private PCMContainer load(MatrixAnalyser detector) {
+    public PCMContainer load(IOMatrix matrix) {
+
+        // Detect types and information for each cell
+        detectTypes(matrix);
+
+        // Detect direction of the matrix
+        PCMDirection detectedDirection = direction;
+        if (detectedDirection == PCMDirection.UNKNOWN) {
+            detectedDirection = detectDirection(matrix);
+        }
+
+        // Create PCM
         PCM pcm = factory.createPCM();
-        PCMMetadata metadata = new PCMMetadata(pcm);
-        metadata.setProductAsLines(this.productsAsLines);
-        PCMContainer container = new PCMContainer(metadata);
-        int headerLength = detector.getHeaderHeight();
-        int matrixHeight = detector.getHeight();
-        int matrixWidth = detector.getWidth();
-        int headerColumnStart = detector.getHeaderColumnOffset();
+        PCMContainer pcmContainer = new PCMContainer(pcm);
 
-        createFeatures(detector, container);
+        // Set info
+        pcm.setName(matrix.getName());
 
-        for (int i = headerLength; i < matrixHeight; i++) {
-            // Products
-            Product product = factory.createProduct();
-//            product.setName(detector.get(i, 0).getContent());
-            pcm.addProduct(product);
+        // Create features and products
+        createFeatures(matrix, detectedDirection, pcmContainer);
+        createProducts(matrix, detectedDirection, pcmContainer);
 
-            // Cells
-            for (int j = headerColumnStart; j < matrixWidth; j++) {
-                Cell cell = factory.createCell();
-                // Create the cell if not exists
-                IOCell ioCell = detector.get(i, j);
-                cell.setContent(ioCell.getContent());
-                cell.setFeature((Feature) features.get(j));
-                product.addCell(cell);
-            }
-
-            // And keep the order in metadata
-            metadata.setProductPosition(product, i);
-        }
-        container.getPcm().setName(detector.getMatrix().getName());
-        container.getPcm().setProductsKey(container.getPcm().getConcreteFeatures().get(0)); // FIXME : quickfix
-        return container;
+        return pcmContainer;
     }
 
-    private void parseNodes(FeatureGroup parent, List<IONode> nodes, PCMContainer container) {
-        for (IONode node : nodes) {
-            if (node.isLeaf()) {
-                Feature feature = factory.createFeature();
-                feature.setName(node.getName());
-                if (parent != null) {
-                    parent.addFeature(feature);
-                } else {
-                    // Save feature in PCM only if parent has not been set or null
-                    container.getPcm().addFeature(feature);
-                }
-                // Save features in metadata with position even if FeatureGroup has been set. Mandatory to work
-                container.getMetadata().setFeaturePosition(feature, node.getPosition());
-                // Save feature indice to allow cell to be linked with the desire concrete feature
-                features.put(node.getPosition(), feature);
-            } else {
-                FeatureGroup featureGroup = factory.createFeatureGroup();
-                featureGroup.setName(node.getName());
-                if (parent != null) {
-                    // Parent Feature Group already set, don't have to for this one
-                    parent.addFeature(featureGroup);
-                } else {
-                    // Save features in PCM to allow featureGroups depth calculus (the first FeatureGroup only)
-                    container.getPcm().addFeature(featureGroup);
-                }
-                parseNodes(featureGroup, node.iterable(), container);
-            }
-        }
+    /**
+     * Detect types of each cell of the matrix
+     * @param matrix
+     */
+    protected void detectTypes(IOMatrix matrix) {
+
     }
 
-    public void createFeatures(MatrixAnalyser detector, PCMContainer container) {
-        this.features = new HashMap<>();
-        parseNodes(null, detector.getHeaderNode().iterable(), container);
+    /**
+     * Detect if products are represented by a line or a column
+     * @param matrix
+     * @return
+     */
+    protected PCMDirection detectDirection(IOMatrix matrix) {
+        return PCMDirection.PRODUCTS_AS_LINES;
     }
+
+
+    /**
+     * Detect and create features from the information contained in the matrix and the provided direction
+     * @param matrix
+     * @param detectedDirection
+     * @param pcmContainer
+     */
+    protected void createFeatures(IOMatrix matrix, PCMDirection detectedDirection, PCMContainer pcmContainer) {
+
+    }
+
+    /**
+     * Detect and create products from the information contained in the matrix and the provided direction
+     * @param matrix
+     * @param detectedDirection
+     * @param pcmContainer
+     */
+    protected void createProducts(IOMatrix matrix, PCMDirection detectedDirection, PCMContainer pcmContainer) {
+
+    }
+
 }
-

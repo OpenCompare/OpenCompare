@@ -26,8 +26,8 @@ class CSVLoaderTest extends FlatSpec with Matchers with BeforeAndAfterAll {
   override def beforeAll(): Unit = {
     val file = new java.io.File(input.getPath)
     val csvReader = new CSVReader(new FileReader(file), separator, quote)
-    matrix = CSVLoader.createMatrix(csvReader).setName(title)
     val refCsvLoader = new CSVLoader(new PCMFactoryImpl, separator, quote)
+    matrix = refCsvLoader.createMatrix(csvReader).setName(title)
     container = refCsvLoader.load(matrix).get(0)
 
     val refCsvReader = new CSVReader(new FileReader(file), separator, quote)
@@ -41,7 +41,7 @@ class CSVLoaderTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     var i = 0
     val matrix = new IOMatrix().setName(title)
     for (line <- csvMatrix.iterator) {
-      var j = 0;
+      var j = 0
       for (column <- line.iterator) {
         val cell = new IOCell(column)
         matrix.setCell(cell, i, j, 1, 1)

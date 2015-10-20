@@ -21,6 +21,7 @@ public class CSVLoader implements PCMLoader {
     private char quote;
     private boolean productsAsLines;
     private Map<Integer, AbstractFeature> features;
+    private IOMatrixLoader ioMatrixLoader;
 
     public CSVLoader(PCMFactory factory) {
         this(factory, ',', '"', true);
@@ -43,9 +44,16 @@ public class CSVLoader implements PCMLoader {
         this.separator = separator;
         this.quote = quote;
         this.productsAsLines = productsAsLines;
+
+        if (this.productsAsLines) {
+            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
+        } else {
+            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
+        }
+
     }
 
-    public static IOMatrix createMatrix(CSVReader reader) throws IOException {
+    public IOMatrix createMatrix(CSVReader reader) throws IOException {
         List<String[]> csvMatrix = reader.readAll();
         IOMatrix matrix = new IOMatrix();
         for (int i = 0; i < csvMatrix.size();i++) {
@@ -81,7 +89,9 @@ public class CSVLoader implements PCMLoader {
     }
 
     public List<PCMContainer> load(IOMatrix matrix) {
-        return new IOMatrixLoader(this.factory, this.productsAsLines).load(matrix);
+        List<PCMContainer> result = new ArrayList<>();
+        result.add(ioMatrixLoader.load(matrix));
+        return result;
     }
 
     public List<PCMContainer> load(Reader reader) throws IOException {

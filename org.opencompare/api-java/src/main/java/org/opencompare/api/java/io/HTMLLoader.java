@@ -22,6 +22,7 @@ public class HTMLLoader implements PCMLoader {
     private PCMFactory factory;
     private boolean productsAsLines;
     private Map<Integer, Feature> features;
+    private IOMatrixLoader ioMatrixLoader;
 
     public HTMLLoader(PCMFactory factory) {
         this(factory, true);
@@ -30,6 +31,12 @@ public class HTMLLoader implements PCMLoader {
     public HTMLLoader(PCMFactory factory, boolean productsAsLines) {
         this.factory = factory;
         this.productsAsLines = productsAsLines;
+
+        if (this.productsAsLines) {
+            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
+        } else {
+            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
+        }
     }
 
     public static List<IOMatrix> createMatrices(Document doc) {
@@ -87,7 +94,9 @@ public class HTMLLoader implements PCMLoader {
     }
 
     public List<PCMContainer> load(IOMatrix matrix) {
-        return new IOMatrixLoader(this.factory, this.productsAsLines).load(matrix);
+        List<PCMContainer> result = new ArrayList<>();
+        result.add(ioMatrixLoader.load(matrix));
+        return result;
     }
 
 }
