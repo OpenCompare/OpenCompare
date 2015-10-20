@@ -73,7 +73,7 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         } else {
           builder ++= "! " // new cell (we can also use !! to separate cells horizontally)
         }
-        
+
         if (exportRawContent) {
           builder ++= cell.getRawContent
         } else {

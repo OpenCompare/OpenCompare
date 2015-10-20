@@ -34,15 +34,21 @@ public class BestBuyMiner {
 
         PCM pcm = this.pcmFactory.createPCM();
 
+        Feature productsKey = pcmFactory.createFeature();
+        pcm.addFeature(productsKey);
+        pcm.setProductsKey(productsKey);
+
         for (BestBuyProduct p : products) {
             Product product = this.pcmFactory.createProduct();
-            product.setName(p.getName());
+
+            Cell productKey = pcmFactory.createCell();
+            productKey.setFeature(productsKey);
+            productKey.setContent(p.getName());
+
             pcm.addProduct(product);
             if (p.getDetails() != null) {
                 for (BestBuyProduct.Detail d : p.getDetails()) {
-                    Feature feature = pcm
-                            .getOrCreateFeature(d
-                                    .getName(), this.pcmFactory);
+                    Feature feature = pcm.getOrCreateFeature(d.getName(), this.pcmFactory);
                     Cell cell = this.pcmFactory.createCell();
                     cell.setContent(d.getValue());
                     cell.setFeature(feature);
