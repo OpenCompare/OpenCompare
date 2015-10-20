@@ -8,9 +8,15 @@ import java.util.Observable;
 public class IOCell implements Cloneable {
 
     private String content;
+    private String rawContent;
 
     public IOCell(String content) {
+        this(content, content);
+    }
+
+    public IOCell(String content, String rawContent) {
         setContent(content);
+        setRawContent(rawContent);
     }
 
     public String getContent() {
@@ -19,9 +25,17 @@ public class IOCell implements Cloneable {
 
     public IOCell setContent(String content) {
         if (content == null) {
-            content = "";
+            this.content = "";
         }
         this.content = content;
+        return this;
+    }
+
+    public IOCell setRawContent(String rawContent) {
+        if (rawContent == null) {
+            this.rawContent = "";
+        }
+        this.rawContent = rawContent;
         return this;
     }
 

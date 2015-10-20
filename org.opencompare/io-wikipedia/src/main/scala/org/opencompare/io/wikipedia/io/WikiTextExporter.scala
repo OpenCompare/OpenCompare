@@ -29,16 +29,18 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
     // Lines (products)
     for (product <- container.getMetadata.getSortedProducts) {
 
-      // Product name header
       builder ++= "|-\n"
-      builder ++= "! "
-      builder ++= product.getName
-      builder ++= "\n"
 
       // Cells
       for (feature <- container.getMetadata.getSortedFeatures) {
         val cell : Cell = product.findCell(feature)
-        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+
+        if (feature == container.getPcm.getProductsKey) {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+        } else {
+          builder ++= "! " // new cell (we can also use !! to separate cells horizontally)
+        }
+
         if (Option(cell).isDefined) {
           if (exportRawContent) {
             builder ++= cell.getRawContent
@@ -53,13 +55,6 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
 
   def exportWithFeatureAsLines(builder : StringBuilder, container : PCMContainer) {
 
-    // columns (product)
-    for (product <- container.getMetadata.getSortedProducts) {
-      builder ++= "! " // new header
-      builder ++= product.getName
-      builder ++= "\n"
-    }
-
     // Lines (feature)
     for (feature <- container.getMetadata.getSortedFeatures) {
 
@@ -72,7 +67,13 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
       // Cells
       for (product <- container.getMetadata.getSortedProducts) {
         val cell : Cell = product.findCell(feature)
-        builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+
+        if (feature == container.getPcm.getProductsKey) {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
+        } else {
+          builder ++= "! " // new cell (we can also use !! to separate cells horizontally)
+        }
+        
         if (exportRawContent) {
           builder ++= cell.getRawContent
         } else {
