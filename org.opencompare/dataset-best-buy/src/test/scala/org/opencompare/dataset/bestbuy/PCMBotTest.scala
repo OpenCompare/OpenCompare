@@ -54,7 +54,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     }
     // c1 substring c2 || c2 substring c1
 
-    override def similarProduct(p1: Product, p2: Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+    override def similarProduct(p1: Product, p2: Product): Boolean = p1.getKeyContent.contains(p2.getKeyContent) || p2.getKeyContent.contains(p1.getKeyContent)
 
     override def disambiguateProduct(product: Product, products: util.List[Product]): Product = products.head
 
@@ -270,16 +270,16 @@ class PCMBotTest extends FlatSpec with Matchers {
           val outputDirCluster = new File(testOutputDir.getAbsolutePath + "/cluster_" + index)
           outputDirCluster.mkdirs()
 
-          val productList = cluster.map(_.getName).mkString("\n")
+          val productList = cluster.map(_.getKeyContent).mkString("\n")
           writeToFile(outputDirCluster.getAbsolutePath + "/products.txt", productList)
 
-          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val clusterCSV = csvExporter.export(new PCMContainer(clusterPCM))
           writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
 
           for (product <- cluster) {
-            val sku = product.getName
+            val sku = product.getKeyContent
             copy(datasetDir, sku + ".txt", outputDirCluster)
             copy(datasetDir, sku + ".csv", outputDirCluster)
             copy(datasetDir, sku + ".xml", outputDirCluster)
@@ -711,7 +711,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         val percentageOfNAThreshold = 0.25
 
         val mergingCondition = Some((c1: List[Product], c2: List[Product]) => {
-          val clusterProductInfo = productsInfo.filter(p => c1.map(_.getName).contains(p.sku) || c2.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => c1.map(_.getKeyContent).contains(p.sku) || c2.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
           percentageOfNA <= percentageOfNAThreshold
@@ -744,7 +744,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         // Export clusters
         for ((cluster, index) <- clusters.zipWithIndex) {
           // Create PCM
-          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
 
 

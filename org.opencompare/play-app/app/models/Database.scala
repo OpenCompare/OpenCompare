@@ -132,7 +132,7 @@ object Database {
         for (dbProductPosition <- dbProductPositions) {
           val dbProductPositionCast = dbProductPosition.asInstanceOf[DBObject]
           val productName = dbProductPositionCast("product").toString
-          val product = pcmContainer.getPcm.getProducts.find(_.getName == productName).get
+          val product = pcmContainer.getPcm.getProducts.find(_.getKeyContent == productName).get
           val position = dbProductPositionCast("position").toString.toInt
           metadata.setProductPosition(product, position)
         }
@@ -183,7 +183,7 @@ object Database {
 
     // Serialize product positions
     val dbProductPositions = for (product <- pcm.getProducts) yield {
-      val productName = product.getName
+      val productName = product.getKeyContent
       val position = metadata.getProductPosition(product)
       MongoDBObject(
         "product" -> productName,

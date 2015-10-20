@@ -67,7 +67,7 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
       val productName = jsonPos("product").as[JsString].value
       val position = jsonPos("position").as[JsNumber].value.toIntExact
 
-      val product = pcm.getProducts.find(_.getName == productName)  // FIXME : equals based on name breaks same name products
+      val product = pcm.getProducts.find(_.getKeyContent == productName)  // FIXME : equals based on name breaks same name products
       if (product.isDefined) {
         metadata.setProductPosition(product.get, position)
       }
@@ -109,7 +109,7 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
   private def serializeMetadata(pcm : PCM, metadata : PCMMetadata) : Future[JsValue] = {
     // Serialize product positions
     val productPositions = JsArray(for (product <- pcm.getProducts) yield {
-      val productName = product.getName
+      val productName = product.getKeyContent
       val position = metadata.getProductPosition(product)
       JsObject(Seq(
         "product" -> JsString(productName),

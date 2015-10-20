@@ -60,7 +60,7 @@ class PCMContainerDAOImpl extends PCMContainerDAO {
       for (dbProductPosition <- dbProductPositions) {
         val dbProductPositionCast = dbProductPosition.asInstanceOf[DBObject]
         val productName = dbProductPositionCast("product").toString
-        val product = pcmContainer.getPcm.getProducts.find(_.getName == productName).get
+        val product = pcmContainer.getPcm.getProducts.find(_.getKeyContent == productName).get
         val position = dbProductPositionCast("position").toString.toInt
         metadata.setProductPosition(product, position)
       }
