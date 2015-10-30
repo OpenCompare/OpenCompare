@@ -74,38 +74,38 @@ public class IOMatrixLoaderOld {
     }
 
     private void parseNodes(FeatureGroup parent, List<IONode> nodes, PCMContainer container) {
-        for (IONode node : nodes) {
-            if (node.isLeaf()) {
-                Feature feature = factory.createFeature();
-                feature.setName(node.getName());
-                if (parent != null) {
-                    parent.addFeature(feature);
-                } else {
-                    // Save feature in PCM only if parent has not been set or null
-                    container.getPcm().addFeature(feature);
-                }
-                // Save features in metadata with position even if FeatureGroup has been set. Mandatory to work
-                container.getMetadata().setFeaturePosition(feature, node.getPosition());
-                // Save feature indice to allow cell to be linked with the desire concrete feature
-                features.put(node.getPosition(), feature);
-            } else {
-                FeatureGroup featureGroup = factory.createFeatureGroup();
-                featureGroup.setName(node.getName());
-                if (parent != null) {
-                    // Parent Feature Group already set, don't have to for this one
-                    parent.addFeature(featureGroup);
-                } else {
-                    // Save features in PCM to allow featureGroups depth calculus (the first FeatureGroup only)
-                    container.getPcm().addFeature(featureGroup);
-                }
-                parseNodes(featureGroup, node.iterable(), container);
-            }
-        }
+//        for (IONode node : nodes) {
+//            if (node.isLeaf()) {
+//                Feature feature = factory.createFeature();
+//                feature.setName(node.getName());
+//                if (parent != null) {
+//                    parent.addFeature(feature);
+//                } else {
+//                    // Save feature in PCM only if parent has not been set or null
+//                    container.getPcm().addFeature(feature);
+//                }
+//                // Save features in metadata with position even if FeatureGroup has been set. Mandatory to work
+//                container.getMetadata().setFeaturePosition(feature, node.getPosition());
+//                // Save feature indice to allow cell to be linked with the desire concrete feature
+//                features.put(node.getPosition(), feature);
+//            } else {
+//                FeatureGroup featureGroup = factory.createFeatureGroup();
+//                featureGroup.setName(node.getName());
+//                if (parent != null) {
+//                    // Parent Feature Group already set, don't have to for this one
+//                    parent.addFeature(featureGroup);
+//                } else {
+//                    // Save features in PCM to allow featureGroups depth calculus (the first FeatureGroup only)
+//                    container.getPcm().addFeature(featureGroup);
+//                }
+//                parseNodes(featureGroup, node.iterable(), container);
+//            }
+//        }
     }
 
     public void createFeatures(MatrixAnalyser detector, PCMContainer container) {
-        this.features = new HashMap<>();
-        parseNodes(null, detector.getHeaderNode().iterable(), container);
+//        this.features = new HashMap<>();
+//        parseNodes(null, detector.getHeaderNode().iterable(), container);
     }
 }
 

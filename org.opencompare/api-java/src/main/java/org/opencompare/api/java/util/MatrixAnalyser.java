@@ -310,41 +310,41 @@ public class MatrixAnalyser {
     }
 
     public IONode getHeaderNode() {
-        IONode root = new IONode("root", true);
-        for (int j = getHeaderColumnOffset(); j < getWidth(); j++) {
-            String name = get(getHeaderOffset(), j).getContent();
-            IONode parentNode = new IONode(name, getHeaderHeight() > 1, j);
-            for (IONode node: root.iterable()) {
-                if (node.getName().equals(name)) {
-                    parentNode = node;
-                }
-            }
-            if (!root.iterable().contains(parentNode)) {
-                root.add(parentNode);
-            }
-
-            if (getHeaderHeight() > 1) {
-                IONode subparentNode = null;
-                for (int i = getHeaderOffset() + 1; i < getHeaderHeight() - 1; i++) {
-                    String subname = get(i, j).getContent();
-                    subparentNode = new IONode(name, true, j);
-                    for (IONode subnode: root.iterable()) {
-                        if (subnode.getName().equals(subname)) {
-                            subparentNode = subnode;
-                        }
-                    }
-                    if (parentNode.isNodeAncestor(subparentNode) || parentNode.isNodeDescendant(subparentNode)) {
-                        continue;
-                    }
-                    parentNode.add(subparentNode);
-                }
-                if (subparentNode != null) {
-                    parentNode = subparentNode;
-                }
-                IONode node = new IONode(get(getHeaderHeight() - 1, j).getContent(), false, j);
-                parentNode.add(node);
-            }
-        }
+        IONode<String> root = new IONode<>("root");
+//        for (int j = getHeaderColumnOffset(); j < getWidth(); j++) {
+//            String name = get(getHeaderOffset(), j).getContent();
+//            IONode parentNode = new IONode(name, getHeaderHeight() > 1, j);
+//            for (IONode node: root.iterable()) {
+//                if (node.getName().equals(name)) {
+//                    parentNode = node;
+//                }
+//            }
+//            if (!root.iterable().contains(parentNode)) {
+//                root.add(parentNode);
+//            }
+//
+//            if (getHeaderHeight() > 1) {
+//                IONode subparentNode = null;
+//                for (int i = getHeaderOffset() + 1; i < getHeaderHeight() - 1; i++) {
+//                    String subname = get(i, j).getContent();
+//                    subparentNode = new IONode(name, true, j);
+//                    for (IONode subnode: root.iterable()) {
+//                        if (subnode.getName().equals(subname)) {
+//                            subparentNode = subnode;
+//                        }
+//                    }
+//                    if (parentNode.isNodeAncestor(subparentNode) || parentNode.isNodeDescendant(subparentNode)) {
+//                        continue;
+//                    }
+//                    parentNode.add(subparentNode);
+//                }
+//                if (subparentNode != null) {
+//                    parentNode = subparentNode;
+//                }
+//                IONode node = new IONode(get(getHeaderHeight() - 1, j).getContent(), false, j);
+//                parentNode.add(node);
+//            }
+//        }
         return root;
     }
 }

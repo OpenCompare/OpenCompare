@@ -31,6 +31,10 @@ public class IOCell implements Cloneable {
         return this;
     }
 
+    public String getRawContent() {
+        return rawContent;
+    }
+
     public IOCell setRawContent(String rawContent) {
         if (rawContent == null) {
             this.rawContent = "";
