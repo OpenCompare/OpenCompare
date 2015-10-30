@@ -11,6 +11,8 @@ import scala.collection.JavaConverters._
 import scala.io.Source
 import scala.reflect.io.{Directory, File}
 
+import scala.collection.JavaConversions._
+
 /**
  * Created by smangin on 01/06/15.
  */
@@ -41,10 +43,6 @@ abstract class PCMCircularTest(
 
           val code = exporter.export(inputContainer)
           val outputContainer = importer.load(code).get(0)
-
-          println("features= " + inputContainer.getPcm.getConcreteFeatures.size())
-          println(inputContainer.getMetadata.getSortedFeatures)
-          println("products= " + inputContainer.getPcm.getProducts.size())
 
           withClue("PCM: ") {
             inputContainer.getPcm.equals(outputContainer.getPcm) shouldBe true
