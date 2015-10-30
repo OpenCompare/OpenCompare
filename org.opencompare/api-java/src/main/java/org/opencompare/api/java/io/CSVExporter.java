@@ -72,7 +72,7 @@ public class CSVExporter implements PCMExporter {
                 }
                 index++;
             }
-
+            csvWriter.writeNext(line);
         }
     }
 

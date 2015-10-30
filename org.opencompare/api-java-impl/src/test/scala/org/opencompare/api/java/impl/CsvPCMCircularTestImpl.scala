@@ -1,9 +1,7 @@
 package org.opencompare.api.java.impl
 
-import java.net.URL
-
-import org.opencompare.api.java.io.{PCMLoader, PCMExporter, CSVExporter, CSVLoader}
-import org.opencompare.api.java.{PCMCircularTest, PCMFactory}
+import org.opencompare.api.java.PCMCircularTest
+import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
 /**
  * Created by smangin on 01/06/15.
  */

@@ -70,7 +70,7 @@ public class IONode<T> {
     public String toString() {
         return "IONode{" +
                 "content=" + content +
-                ", children=" + children +
+//                ", children=" + children +
                 '}';
     }
 }

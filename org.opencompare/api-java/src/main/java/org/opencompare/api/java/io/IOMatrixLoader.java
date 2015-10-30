@@ -84,7 +84,7 @@ public class IOMatrixLoader {
      */
     protected IONode<String> detectFeatures(IOMatrix matrix, PCMDirection detectedDirection, PCMContainer pcmContainer) {
 
-        IONode<String> root = new IONode<>("");
+        IONode<String> root = new IONode<>(null);
         List<IONode<String>> parents = new ArrayList<>();
 
         if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
@@ -95,29 +95,39 @@ public class IOMatrixLoader {
             }
 
             for (int r = 0; r < matrix.getNumberOfRows(); r++) {
+                List<IONode<String>> nextParents = new ArrayList<>(parents);
+
+                System.out.println("parents = " + parents);
+
                 for (int c = 0; c < matrix.getNumberOfColumns(); c++) {
                     IOCell currentCell = matrix.getCell(r, c);
                     IONode<String> parent = parents.get(c);
 
-
-
-                    boolean sameAsParent = parent.getContent().equals(currentCell.getContent());
+                    boolean sameAsParent = currentCell.getContent().equals(parent.getContent());
                     boolean sameAsPrevious = false;
-                    boolean sameParentAsPrevious = false;
+                    boolean sameParentAsPrevious = true;
+
                     if (c > 0) {
                         IOCell previousCell = matrix.getCell(r, c - 1);
-                        sameAsPrevious = previousCell.getContent().equals(currentCell.getContent());
-                        sameParentAsPrevious = parents.get(c - 1).getContent().equals(parent.getContent());
+                        sameAsPrevious = currentCell.getContent().equals(previousCell.getContent());
+
+                        if (parent.getContent() != null) {
+                            sameParentAsPrevious = parent.getContent().equals(parents.get(c - 1).getContent());
+                        }
                     }
 
-                    if (!sameAsParent && (!sameParentAsPrevious || (sameParentAsPrevious && !sameAsPrevious))) {
+                    if (!sameAsParent && (!sameParentAsPrevious || !sameAsPrevious)) {
                         IONode<String> newNode = new IONode<>(currentCell.getContent());
                         newNode.getPositions().add(c);
                         parent.getChildren().add(newNode);
-                        parents.set(c, newNode);
+                        nextParents.set(c, newNode);
+                    } else if (c > 0 && sameParentAsPrevious && sameAsPrevious) {
+                        nextParents.set(c, nextParents.get(c - 1));
                     }
 
                 }
+
+                parents = nextParents;
 
                 // If number of getLeaves == number of rows : break;
                 if (root.getLeaves().size() == matrix.getNumberOfColumns()) {

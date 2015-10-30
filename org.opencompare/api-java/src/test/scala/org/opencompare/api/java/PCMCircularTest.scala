@@ -34,38 +34,28 @@ abstract class PCMCircularTest(
     (file: File) => {
       val name = file.stripExtension
 
-      name should "have equal PCM" in {
+      it should "export -> import " + name  in {
 
         val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
-        for (container: PCMContainer <- containers.asScala) {
+        for (inputContainer: PCMContainer <- containers.asScala) {
 
-          val code = exporter.export(container)
-          val container2 = importer.load(code).get(0)
+          val code = exporter.export(inputContainer)
+          val outputContainer = importer.load(code).get(0)
 
-          container.getPcm.equals(container2.getPcm) shouldBe true
-        }
-      }
-      it should "have equal METADATA" in {
+          println("features= " + inputContainer.getPcm.getConcreteFeatures.size())
+          println(inputContainer.getMetadata.getSortedFeatures)
+          println("products= " + inputContainer.getPcm.getProducts.size())
 
-        val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
+          withClue("PCM: ") {
+            inputContainer.getPcm.equals(outputContainer.getPcm) shouldBe true
+          }
+          withClue("PCM metadata: ") {
+            inputContainer.getMetadata.equals(outputContainer.getMetadata) shouldBe true
+          }
+          withClue("PCM container: ") {
+            inputContainer.equals(outputContainer) shouldBe true
+          }
 
-        for (container: PCMContainer <- containers.asScala) {
-
-          val code = exporter.export(container)
-          val container2 = importer.load(code).get(0)
-
-          container.getMetadata.equals(container2.getMetadata) shouldBe true
-        }
-      }
-      it should "have equal CONTAINER" in {
-
-        val containers = initLoader.load(Source.fromURI(file.toURI).mkString)
-        for (container: PCMContainer <- containers.asScala) {
-
-          val code = exporter.export(container)
-          val container2 = importer.load(code).get(0)
-
-          container.equals(container2) shouldBe true
         }
       }
     }
