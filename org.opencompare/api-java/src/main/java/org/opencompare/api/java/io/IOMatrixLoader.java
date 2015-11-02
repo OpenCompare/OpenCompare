@@ -141,7 +141,7 @@ public class IOMatrixLoader {
                     } else {
                         previousCell = matrix.getCell(y - 1, x);
                     }
-                    
+
                     if (previousCell == null) {
                         previousCell = new IOCell("");
                     }

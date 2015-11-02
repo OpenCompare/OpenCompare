@@ -11,6 +11,7 @@ import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 import scala.io.Source
 import scala.reflect.io.{Directory, File}
+import collection.JavaConversions._
 
 /**
  * Created by smangin on 01/06/15.
@@ -78,13 +79,6 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
         diff.hasDifferences shouldBe false
       }
 
-      it should "be the same as the one created with it's csv representation" in {
-        val container2 = csvLoader.load(csvExporter.export(container1)).get(0)
-        container2.getPcm.setName("From PCM1 Csv")
-
-        val diff = container1.getPcm.diff(container2.getPcm, new SimplePCMElementComparator)
-        diff.hasDifferences shouldBe false
-      }
     }
   }
 }

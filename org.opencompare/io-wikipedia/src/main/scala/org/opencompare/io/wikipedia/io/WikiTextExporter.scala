@@ -94,7 +94,7 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
 
     // Headers
     builder ++= "|-\n" // new row
-    builder ++= "|\n" // empty top left cell
+//    builder ++= "|\n" // empty top left cell
 
     if (container.getMetadata.getProductAsLines) {
       exportWithProductAsLines(builder, container)

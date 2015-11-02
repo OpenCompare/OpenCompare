@@ -35,4 +35,8 @@ public class Pair<A, B> {
         return _1.hashCode() + _2.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return "[" + _1 + ", " + _2 + ']';
+    }
 }

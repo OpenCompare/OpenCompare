@@ -27,7 +27,7 @@ class MediaWikiAPITest extends FlatSpec with Matchers {
     wikitext shouldNot be ("")
   }
 
-  it should "example the template {{yes}}" in {
+  it should "expand the template {{yes}}" in {
     val template = "{{yes}}"
     val expandedTemplate = mediaWikiAPI.expandTemplate(english, template)
 

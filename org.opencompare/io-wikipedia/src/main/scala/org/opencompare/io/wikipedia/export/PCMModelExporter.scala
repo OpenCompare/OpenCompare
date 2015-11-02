@@ -18,11 +18,12 @@ class PCMModelExporter {
 
   def export(page : Page) : util.List[PCMContainer] = {
     val pcmContainers = for (matrix <- page.getMatrices) yield {
+      val normalizedMatrix = normalize(matrix)
       val ioMatrix = new IOMatrix()
-      ioMatrix.setName(matrix.name)
+      ioMatrix.setName(normalizedMatrix.name)
 
-      for (r <- 0 until matrix.getNumberOfRows(); c <- 0 until matrix.getNumberOfColumns()) {
-        val cellOpt = matrix.getCell(r, c)
+      for (r <- 0 until normalizedMatrix.getNumberOfRows(); c <- 0 until normalizedMatrix.getNumberOfColumns()) {
+        val cellOpt = normalizedMatrix.getCell(r, c)
         if (cellOpt.isDefined) {
           val cell = cellOpt.get
           val ioCell = new IOCell(cell.content, cell.rawContent)
