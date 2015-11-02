@@ -5,8 +5,8 @@ import java.util
 
 import org.opencompare.api.java.PCMContainer
 import org.opencompare.api.java.io.PCMLoader
-import org.opencompare.io.wikipedia.export.PCMModelExporter
-import org.opencompare.io.wikipedia.parser.PageVisitor
+import org.opencompare.io.wikipedia.export.{CSVExporter, PCMModelExporter}
+import org.opencompare.io.wikipedia.parser.{PreprocessVisitor, PageVisitor}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
 import org.sweble.wikitext.parser.utils.SimpleParserConfig
@@ -43,7 +43,14 @@ class WikiTextLoader(
 
 
   def mineInternalRepresentation(language : String, code : String, title : String): Page = {
-    val ast = parser.parseArticle(code, title)
+    // Format templates
+    val preprocessorAST = preprocessor.parseArticle(code, title)
+    val templatePreprocessor = new PreprocessVisitor(language, templateProcessor, expandTemplates = false)
+    templatePreprocessor.go(preprocessorAST)
+    val preprocessedCode = templatePreprocessor.getPreprocessedCode()
+
+    // Parse wikitext code
+    val ast = parser.parseArticle(preprocessedCode, title)
     val structuralVisitor = new PageVisitor(language, wikiConfig, preprocessor, templateProcessor, parser)
     val page = structuralVisitor.extractPage(ast, title)
     page

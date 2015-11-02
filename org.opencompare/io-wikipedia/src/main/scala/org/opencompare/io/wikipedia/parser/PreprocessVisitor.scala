@@ -4,7 +4,7 @@ import de.fau.cs.osr.ptk.common.AstVisitor
 import org.opencompare.io.wikipedia.io.WikiTextTemplateProcessor
 import org.sweble.wikitext.parser.nodes._
 
-class PreprocessVisitor(language : String, templateProcessor : WikiTextTemplateProcessor) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
+class PreprocessVisitor(language : String, templateProcessor : WikiTextTemplateProcessor, expandTemplates : Boolean = true) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
   val code = new StringBuilder
 
@@ -66,14 +66,15 @@ class PreprocessVisitor(language : String, templateProcessor : WikiTextTemplateP
 
     template ++= "}}"
 
-    // Call special page on wikipedia to expand the template
-    val expandedTemplate = templateProcessor.expandTemplate(language, template.toString())
-    //    println("-----")
-    //    println(e)
-    //    println(template.toString)
-    //    println(expandedTemplate)
-    //    println("-----")
-    code ++= expandedTemplate
+    if (expandTemplates) {
+      // Call special page on wikipedia to expand the template
+      val expandedTemplate = templateProcessor.expandTemplate(language, template.toString())
+      code ++= expandedTemplate
+    } else {
+      code ++= template.toString()
+    }
+
+
   }
 
   def visit(e: WtTemplateArgument) {

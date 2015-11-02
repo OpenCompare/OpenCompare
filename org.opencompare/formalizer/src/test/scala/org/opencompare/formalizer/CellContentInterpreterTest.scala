@@ -17,15 +17,14 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
 
   "CellContentInterpreter" should "interpret every cell in Wikipedia PCMs" in {
 
-    val path = "../io-wikipedia/input/Comparison_of_AMD_processors.txt"
-    //val path = "../org.diverse.PCM.io.Wikipedia/input/Comparison_of_disk_encryption_software.txt"
+    val input = getClass.getClassLoader.getResource("Comparison_of_AMD_processors.txt")
 
     // Parse
     val language = "en"
     val url = "wikipedia.org"
     val mediaWikiAPI = new MediaWikiAPI(url)
     val miner = new WikiTextLoader(new WikiTextTemplateProcessor(mediaWikiAPI))
-    val pcms = miner.mine(language, Source.fromFile(path).getLines().mkString("\n"), "Comparison of AMD processors")
+    val pcms = miner.mine(language, Source.fromFile(input.getPath).getLines().mkString("\n"), "Comparison of AMD processors")
 
     val interpreter = new CellContentInterpreter
     val serializer = new HTMLExporter

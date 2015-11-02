@@ -46,39 +46,49 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     ("Import test csv", "wiki"), getResources: _*
   )
 
-  forAll(inputs) {
-    (csv: java.io.File, wiki: java.io.File) => {
-      val name = csv.getName.replace(".csv", "")
-      val csvCode = Source.fromFile(csv).mkString
-      val wikiCode = Source.fromFile(wiki).mkString
-      val container1 = try {
-        miner.mine(language, wikiCode, "From Wikitext").get(0)
-      } catch {
-        case e : Exception => {
-          e.printStackTrace()
-          val pcm = pcmFactory.createPCM()
-          val metadata = new PCMMetadata(pcm)
-          new PCMContainer(metadata)
-        }
+  forAll(inputs) { (csv: java.io.File, wiki: java.io.File) => {
+    val name = csv.getName.replace(".csv", "")
+    val csvCode = Source.fromFile(csv).mkString
+    val wikiCode = Source.fromFile(wiki).mkString
+    val container1 = try {
+      miner.mine(language, wikiCode, "From Wikitext").get(0)
+    } catch {
+      case e : Exception => {
+        e.printStackTrace()
+        val pcm = pcmFactory.createPCM()
+        val metadata = new PCMMetadata(pcm)
+        new PCMContainer(metadata)
       }
+    }
 
-      "A " + name + " PCM" should "be identical to the wikitext it came from" in {
-        val container2 = csvLoader.load(csvCode).get(0)
-        val pcm2 = container2.getPcm
-        pcm2.setName("From CSV")
+    "A " + name + " PCM" should "be identical to the wikitext it came from" in {
+      val container2 = csvLoader.load(csvCode).get(0)
+      val pcm2 = container2.getPcm
+      pcm2.setName("From CSV")
 
-        var diff = container1.getPcm.diff(pcm2, new SimplePCMElementComparator)
-        diff.hasDifferences shouldBe false
-      }
+      var diff = container1.getPcm.diff(pcm2, new SimplePCMElementComparator)
+      diff.hasDifferences shouldBe false
+    }
 
-      it should "be the same as the one created with it's wikitext representation" in {
-        val wikiText = wikiTextExporter.export(container1)
-        val container2 = miner.mine(language, wikiText, "From Wikitext").get(0)
+    it should "be the same as the one created with it's wikitext representation" in {
+      val wikiText = wikiTextExporter.export(container1)
+      val container2 = miner.mine(language, wikiText, "From Wikitext").get(0)
 
-        val diff = container1.getPcm.diff(container2.getPcm, new SimplePCMElementComparator)
-        diff.hasDifferences shouldBe false
-      }
+      val diff = container1.getPcm.diff(container2.getPcm, new SimplePCMElementComparator)
+      diff.hasDifferences shouldBe false
+    }
 
+  }}
+
+
+  "WikiTextLoader" should "import a PCM from wikitext" in {
+    val input = getClass.getClassLoader.getResource("wikitext/Comparison_of_AMD_processors.wikitext")
+    val wikitext = Source.fromFile(input.getPath).mkString
+    val containers = miner.mine(language, wikitext, "Comparison of AMD processors")
+
+    for (container <- containers) {
+      container.getPcm.getConcreteFeatures.size() should not be (0)
+      container.getPcm.getProducts.size() should not be (0)
     }
   }
 }

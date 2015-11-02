@@ -234,14 +234,13 @@ public class IOMatrixLoader {
 
             for (int y = initY; y < maxY; y++) {
                 Cell cell = factory.createCell();
+                cell.setFeature(positionToFeature.get(y));
 
                 IOCell ioCell;
                 if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
                     ioCell = matrix.getCell(x, y);
-                    cell.setFeature(positionToFeature.get(y));
                 } else {
                     ioCell = matrix.getCell(y, x);
-                    cell.setFeature(positionToFeature.get(y));
                 }
 
                 if (ioCell == null) {
