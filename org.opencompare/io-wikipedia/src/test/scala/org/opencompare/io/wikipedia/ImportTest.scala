@@ -87,8 +87,10 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     val containers = miner.mine(language, wikitext, "Comparison of AMD processors")
 
     for (container <- containers) {
-      container.getPcm.getConcreteFeatures.size() should not be (0)
-      container.getPcm.getProducts.size() should not be (0)
+      val pcm = container.getPcm
+      withClue("Name")(pcm.getName.size should not be (0))
+      withClue("Features")(pcm.getConcreteFeatures.size() should not be (0))
+      withClue("Products")(pcm.getProducts.size() should not be (0))
     }
   }
 }

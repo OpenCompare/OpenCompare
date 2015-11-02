@@ -45,6 +45,7 @@ class PCMModelExporter {
   def normalize(matrix : Matrix) : Matrix = {
     // Duplicate cells with rowspan or colspan
     val normalizedMatrix = new Matrix
+    normalizedMatrix.name = matrix.name
 
     for (cell <- matrix.cells.map(_._2)) {
       for (
