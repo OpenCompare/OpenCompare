@@ -123,6 +123,11 @@ public class IOMatrixLoader {
                 } else {
                     currentCell = matrix.getCell(y, x);
                 }
+
+                if (currentCell == null) {
+                    currentCell = new IOCell("");
+                }
+
                 IONode<String> parent = parents.get(y);
 
                 boolean sameAsParent = currentCell.getContent().equals(parent.getContent());
@@ -135,6 +140,10 @@ public class IOMatrixLoader {
                         previousCell = matrix.getCell(x, y - 1);
                     } else {
                         previousCell = matrix.getCell(y - 1, x);
+                    }
+                    
+                    if (previousCell == null) {
+                        previousCell = new IOCell("");
                     }
 
                     sameAsPrevious = currentCell.getContent().equals(previousCell.getContent());
@@ -233,6 +242,10 @@ public class IOMatrixLoader {
                 } else {
                     ioCell = matrix.getCell(y, x);
                     cell.setFeature(positionToFeature.get(y));
+                }
+
+                if (ioCell == null) {
+                    ioCell = new IOCell("");
                 }
 
                 cell.setContent(ioCell.getContent());
