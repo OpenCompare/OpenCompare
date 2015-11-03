@@ -14,7 +14,7 @@ scalaVersion := XML.loadFile("../pom.xml").\\("scala.version").text
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.4.0-1",
   "org.webjars" % "bootstrap" % "3.2.0",
-  "org.webjars" % "angularjs" % "1.4.7",
+  "org.webjars" % "angularjs" % "1.3.0",
   "org.webjars" % "angular-ui-bootstrap" % "0.13.0",
   "org.webjars" % "angular-translate" % "2.7.2",
   "org.webjars" % "font-awesome" % "4.4.0",
