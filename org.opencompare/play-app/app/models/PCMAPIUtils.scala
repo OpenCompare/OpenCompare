@@ -67,7 +67,7 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
       val productName = jsonPos("product").as[JsString].value
       val position = jsonPos("position").as[JsNumber].value.toIntExact
 
-      val product = pcm.getProducts.find(_.getKeyContent == productName)  // FIXME : equals based on name breaks same name products
+      val product = pcm.getProducts.find(_.getKeyContent == productName)
       if (product.isDefined) {
         metadata.setProductPosition(product.get, position)
       }
