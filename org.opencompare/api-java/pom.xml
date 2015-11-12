@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.version.minor}</artifactId>
+            <artifactId>scalatest_${scala.binary}</artifactId>
             <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
@@ -58,7 +58,7 @@
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <scalaCompatVersion>${scala.version.minor}</scalaCompatVersion>
+                    <scalaCompatVersion>${scala.binary}</scalaCompatVersion>
                     <scalaVersion>${scala.version}</scalaVersion>
                 </configuration>
                 <executions>
