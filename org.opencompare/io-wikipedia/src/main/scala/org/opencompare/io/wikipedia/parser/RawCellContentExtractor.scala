@@ -23,13 +23,13 @@ class RawCellContentExtractor(val wikiConfig : WikiConfig) {
     if (nestedTableChecker.hasNestedTable(cell)) {
       "" // FIXME : we do not support nested tables for now
     } else {
-      val code = try {
-        wtToStringConverter.convert(cell)
-      } catch {
-        case e : IllegalArgumentException => ""
-      }
+      val code = wtToStringConverter.convert(cell)
 
-      trim(code)
+      if (code.isDefined) {
+        trim(code.get)
+      } else {
+        ""
+      }
     }
 
   }

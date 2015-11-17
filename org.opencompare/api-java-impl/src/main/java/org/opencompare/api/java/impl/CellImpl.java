@@ -62,7 +62,10 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public void setFeature(Feature feature) {
-        kCell.setFeature(((FeatureImpl) feature).getkFeature());
+        FeatureImpl featureImpl = (FeatureImpl) feature;
+        if (featureImpl != null) {
+            kCell.setFeature(featureImpl.getkFeature());
+        }
     }
 
     @Override
