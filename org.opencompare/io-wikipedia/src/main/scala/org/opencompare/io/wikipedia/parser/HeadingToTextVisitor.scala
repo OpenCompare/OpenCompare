@@ -149,4 +149,6 @@ class HeadingToTextVisitor extends AstVisitor[WtNode] with CompleteWikitextVisit
   override def visit(wtXmlAttributeGarbage: WtXmlAttributeGarbage): String = {""}
 
   override def visit(wtTagExtensionBody: WtTagExtensionBody): String = {""}
+
+  def visit(wtLctVarConv: WtLctVarConv): String = {""}
 }

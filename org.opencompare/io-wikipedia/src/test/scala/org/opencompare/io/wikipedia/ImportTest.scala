@@ -80,17 +80,4 @@ class ImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   }}
 
-
-  "WikiTextLoader" should "import a PCM from wikitext" in {
-    val input = getClass.getClassLoader.getResource("wikitext/Comparison_of_AMD_processors.wikitext")
-    val wikitext = Source.fromFile(input.getPath).mkString
-    val containers = miner.mine(language, wikitext, "Comparison of AMD processors")
-
-    for (container <- containers) {
-      val pcm = container.getPcm
-      withClue("Name")(pcm.getName.size should not be (0))
-      withClue("Features")(pcm.getConcreteFeatures.size() should not be (0))
-      withClue("Products")(pcm.getProducts.size() should not be (0))
-    }
-  }
 }
