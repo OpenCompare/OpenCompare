@@ -230,7 +230,6 @@ public class IOMatrixLoader {
 
         for (int x = initX; x < maxX; x++) {
             Product product = factory.createProduct();
-            pcmContainer.getMetadata().setProductPosition(product, x);
 
             for (int y = initY; y < maxY; y++) {
                 Cell cell = factory.createCell();
@@ -254,6 +253,7 @@ public class IOMatrixLoader {
             }
 
             pcmContainer.getPcm().addProduct(product);
+            pcmContainer.getMetadata().setProductPosition(product, x);
         }
 
     }
