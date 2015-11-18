@@ -259,7 +259,12 @@ public class IOMatrixLoader {
     }
 
     protected void setProductsKey(PCMContainer pcmContainer) {
-        for (Feature feature : pcmContainer.getMetadata().getSortedFeatures()) {
+        boolean foundProductsKey = false;
+
+        PCMMetadata metadata = pcmContainer.getMetadata();
+
+        // Find feature that can be the products key
+        for (Feature feature : metadata.getSortedFeatures()) {
             int disctintCells = feature.getCells().stream()
                     .map(cell -> cell.getContent())
                     .distinct()
@@ -267,9 +272,41 @@ public class IOMatrixLoader {
                     .size();
 
             if (disctintCells == feature.getCells().size()) {
+                foundProductsKey = true;
                 pcmContainer.getPcm().setProductsKey(feature);
                 break;
             }
+        }
+
+        // If not feature are products key candidates, create a new feature
+        if (!foundProductsKey) {
+            Feature productsKey = factory.createFeature();
+            productsKey.setName("Products");
+
+            int index = 1;
+            for (Product product : metadata.getSortedProducts()) {
+                int position = metadata.getProductPosition(product);
+                metadata.clearProductPosition(product);
+
+                Cell cell = factory.createCell();
+                cell.setContent("P" + index);
+                cell.setRawContent(cell.getContent());
+                cell.setFeature(productsKey);
+
+                product.addCell(cell);
+
+                metadata.setProductPosition(product, position);
+
+                index++;
+            }
+
+            pcmContainer.getPcm().addFeature(productsKey);
+            pcmContainer.getPcm().setProductsKey(productsKey);
+
+            for (Feature feature : pcmContainer.getPcm().getConcreteFeatures()) {
+                metadata.setFeaturePosition(feature, metadata.getFeaturePosition(feature) + 1);
+            }
+            metadata.setFeaturePosition(productsKey, 0);
         }
     }
 

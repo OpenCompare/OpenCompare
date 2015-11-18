@@ -212,9 +212,18 @@ public class PCMMetadata {
 
     @Override
     public String toString() {
-        String result = "PCMMetadata(";
-        result += productPositions.toString() + ", ";
-        result += featurePositions.toString() + ")";
+        String result = "PCMMetadata(\n";
+        result += "product positions: {\n";
+        for (Product product : productPositions.keySet()) {
+            result += "\t" + product.getKeyContent() + " : " + productPositions.get(product) + ",\n";
+        }
+        result += "}\n";
+        result += "feature positions: {\n";
+        for (AbstractFeature feature : featurePositions.keySet()) {
+            result += "\t" + feature.getName() + " : " + featurePositions.get(feature) + ",\n";
+        }
+        result += "}\n";
+        result += ")";
         return result;
     }
 
@@ -236,5 +245,13 @@ public class PCMMetadata {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public void clearProductPosition(Product product) {
+        productPositions.remove(product);
+    }
+
+    public void clearFeaturePosition(AbstractFeature feature) {
+        featurePositions.remove(feature);
     }
 }
