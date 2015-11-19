@@ -21,7 +21,6 @@ public class HTMLLoader implements PCMLoader {
 
     private PCMFactory factory;
     private boolean productsAsLines;
-    private Map<Integer, Feature> features;
     private IOMatrixLoader ioMatrixLoader;
 
     public HTMLLoader(PCMFactory factory) {
@@ -42,9 +41,9 @@ public class HTMLLoader implements PCMLoader {
     public static List<IOMatrix> createMatrices(Document doc) {
         List<IOMatrix> matrices = new ArrayList<>();
         String pageName = doc.head().getElementsByTag("title").text();
-        int indice = 0;
+        int index = 0;
         for (Element table: doc.getElementsByTag("table")) {
-            IOMatrix matrix = new IOMatrix().setName(pageName + " #" + indice);
+            IOMatrix matrix = new IOMatrix().setName(pageName + " #" + index);
             int i = 0;
             for (Element line: table.getElementsByTag("tr")) {
                 int j = 0;
@@ -56,10 +55,10 @@ public class HTMLLoader implements PCMLoader {
                         }
                         int rowspan = 1;
                         int colspan = 1;
-                        if (column.attributes().get("rowspan") != "") {
+                        if (!column.attributes().get("rowspan").isEmpty()) {
                             rowspan = Integer.valueOf(column.attributes().get("rowspan"));
                         }
-                        if (column.attributes().get("colspan") != "") {
+                        if (!column.attributes().get("colspan").isEmpty()) {
                             colspan = Integer.valueOf(column.attributes().get("colspan"));
                         }
                         matrix.setCell(new IOCell(column.text()), i, j, rowspan, colspan);
@@ -69,17 +68,16 @@ public class HTMLLoader implements PCMLoader {
                 i++;
             }
             matrices.add(matrix);
-            indice++;
+            index++;
         }
         return matrices;
     }
 
     @Override
     public List<PCMContainer> load(String pcm) {
-        List<PCMContainer> containers = new ArrayList<>();
         Document doc = Jsoup.parse(pcm);
         List<IOMatrix> matrices = createMatrices(doc);
-        containers = load(matrices.get(0));
+        List<PCMContainer> containers = load(matrices.get(0));
         return containers;
     }
 
