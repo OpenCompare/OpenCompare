@@ -42,8 +42,15 @@ public class HTMLLoader implements PCMLoader {
         List<IOMatrix> matrices = new ArrayList<>();
         String pageName = doc.head().getElementsByTag("title").text();
         int index = 0;
-        for (Element table: doc.getElementsByTag("table")) {
-            IOMatrix matrix = new IOMatrix().setName(pageName + " #" + index);
+        Elements tables = doc.getElementsByTag("table");
+        for (Element table: tables) {
+            IOMatrix matrix = new IOMatrix();
+            if (tables.size() > 1) {
+                matrix.setName(pageName + " #" + index);
+            } else {
+                matrix.setName(pageName);
+            }
+
             int i = 0;
             for (Element line: table.getElementsByTag("tr")) {
                 int j = 0;

@@ -1,8 +1,7 @@
 package org.opencompare.io.wikipedia
 
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.io.CSVLoader
-import org.opencompare.api.java.PCMCircularTest
+import org.opencompare.api.java.io.{PCMCircularTest, CSVLoader}
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextLoader, WikiTextExporter}
 
 /**

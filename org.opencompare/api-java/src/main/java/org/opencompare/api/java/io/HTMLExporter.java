@@ -1,15 +1,14 @@
 package org.opencompare.api.java.io;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
 import org.opencompare.api.java.*;
-import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.util.Pair;
-import org.opencompare.api.java.value.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by gbecan on 13/10/14.
@@ -66,14 +65,15 @@ public class HTMLExporter implements PCMExporter {
         }
 
         List<Element> lines = new ArrayList<>();
-        boolean noParents = true;
+        boolean noParents = false;
 
-        while(!currentFeatureLevel.isEmpty() && noParents) {
+        while(!currentFeatureLevel.isEmpty() && !noParents) {
 
             List<Pair<AbstractFeature, Pair<Integer, Integer>>> nextFeatureLevel = new ArrayList<>();
             List<Pair<AbstractFeature, Pair<Integer, Integer>>> row = new ArrayList<>();
 
             // Analyze hierarchy of features
+            noParents = true;
             int i = 0;
             while (i < currentFeatureLevel.size()) {
                 Pair<AbstractFeature, Pair<Integer, Integer>> data = currentFeatureLevel.get(i);
