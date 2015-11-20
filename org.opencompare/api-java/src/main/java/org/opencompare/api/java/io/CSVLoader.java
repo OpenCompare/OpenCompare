@@ -53,16 +53,20 @@ public class CSVLoader implements PCMLoader {
 
     }
 
-    public IOMatrix createMatrix(CSVReader reader) throws IOException {
-        List<String[]> csvMatrix = reader.readAll();
+    private IOMatrix createMatrix(CSVReader reader) throws IOException {
         IOMatrix matrix = new IOMatrix();
-        for (int i = 0; i < csvMatrix.size();i++) {
-            for (int j = 0; j < csvMatrix.get(i).length;j++) {
-                String content = csvMatrix.get(i)[j];
-                IOCell cell = new IOCell(content);
-                matrix.setCell(cell, i, j, 1, 1);
+
+        int row = 0;
+
+        String[] line = reader.readNext();
+        while (line != null) {
+            for (int column = 0; column < line.length; column++) {
+                matrix.setCell(new IOCell(line[column]), row, column);
             }
+            row++;
+            line = reader.readNext();
         }
+
         return matrix;
     }
 

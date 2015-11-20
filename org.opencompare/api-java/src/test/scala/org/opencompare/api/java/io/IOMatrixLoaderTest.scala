@@ -69,4 +69,45 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
 
   }
 
+  it should "load a PCM with feature groups" in {
+
+    //    "Products","FG","FG"
+    //    "Products","F1","F2"
+    //    "P1","C11",C12"
+    //    "P2","C21",C22"
+
+
+    val input = new IOMatrix()
+      .setCell(new IOCell("Products"), 0, 0)
+      .setCell(new IOCell("FG"), 0, 1)
+      .setCell(new IOCell("FG"), 0, 2)
+      .setCell(new IOCell("Products"), 1, 0)
+      .setCell(new IOCell("F1"), 1, 1)
+      .setCell(new IOCell("F2"), 1, 2)
+      .setCell(new IOCell("P1"), 2, 0)
+      .setCell(new IOCell("C11"), 2, 1)
+      .setCell(new IOCell("C12"), 2, 2)
+      .setCell(new IOCell("P2"), 3, 0)
+      .setCell(new IOCell("C21"), 3, 1)
+      .setCell(new IOCell("C22"), 3, 2)
+
+    val loader = new IOMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
+    val pcm = loader.load(input).getPcm
+
+
+    withClue("features") (pcm.getFeatures.size() should be (2))
+    withClue("concrete features")(pcm.getConcreteFeatures.size() should be (3))
+
+    for (feature <- pcm.getFeatures) {
+      withClue("top feature name") (Set("Products", "FG") should contain (feature.getName))
+    }
+
+    for (feature <- pcm.getConcreteFeatures) {
+      withClue("feature name") (Set("Products", "F1", "F2") should contain (feature.getName))
+    }
+
+    withClue("products")(pcm.getProducts.size() should be (2))
+
+  }
+
 }
