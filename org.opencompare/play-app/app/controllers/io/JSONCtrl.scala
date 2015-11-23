@@ -7,6 +7,7 @@ import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.impl.io.KMFJSONExporter
+import org.opencompare.formalizer.extractor.CellContentInterpreter
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.MessagesApi
@@ -23,6 +24,7 @@ class JSONCtrl @Inject() (
                            val pcmAPIUtils : PCMAPIUtils) extends IOCtrl("json") {
 
   val jsonExporter = new KMFJSONExporter()
+  val formalizer = new CellContentInterpreter
 
   val outputParametersForm = Form(
     mapping(
@@ -39,7 +41,7 @@ class JSONCtrl @Inject() (
     val pcmJSON = Json.parse(parameters.pcm)
 
     val container = pcmAPIUtils.parsePCMContainers(pcmJSON).head
-
+    formalizer.interpretCells(container.getPcm)
     val json = jsonExporter.export(container)
 
     Ok(json)
