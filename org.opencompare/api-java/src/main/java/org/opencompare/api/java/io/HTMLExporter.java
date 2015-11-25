@@ -53,7 +53,7 @@ public class HTMLExporter implements PCMExporter {
 
 
         // Export to HTML code
-        Document.OutputSettings settings = new Document.OutputSettings().prettyPrint(true);
+        Document.OutputSettings settings = new Document.OutputSettings().prettyPrint(false);
         return doc.outputSettings(settings).outerHtml();
 
     }
@@ -62,7 +62,7 @@ public class HTMLExporter implements PCMExporter {
         List<Pair<AbstractFeature, Pair<Integer, Integer>>> currentFeatureLevel = new ArrayList<>();
 
         for (Feature feature : metadata.getSortedFeatures()) {
-            currentFeatureLevel.add(new Pair<>(feature, new Pair<>(0, 1)));
+            currentFeatureLevel.add(new Pair<>(feature, new Pair<>(1, 1)));
         }
 
         List<Element> lines = new ArrayList<>();
@@ -73,8 +73,15 @@ public class HTMLExporter implements PCMExporter {
             List<Pair<AbstractFeature, Pair<Integer, Integer>>> nextFeatureLevel = new ArrayList<>();
             List<Pair<AbstractFeature, Pair<Integer, Integer>>> row = new ArrayList<>();
 
-            // Analyze hierarchy of features
+            // Detect if current level of features have at least one parent
             noParents = true;
+            for (Pair<AbstractFeature, Pair<Integer, Integer>> data : currentFeatureLevel) {
+                if (data._1.getParentGroup() != null) {
+                    noParents = false;
+                }
+            }
+
+            // Analyze hierarchy of features
             int i = 0;
             while (i < currentFeatureLevel.size()) {
                 Pair<AbstractFeature, Pair<Integer, Integer>> data = currentFeatureLevel.get(i);
@@ -83,7 +90,7 @@ public class HTMLExporter implements PCMExporter {
 
                 // Compute colspan
                 int colspan = 1;
-                while (i > 0 && aFeature.equals(currentFeatureLevel.get(i - 1)._1)) {
+                while ((i + 1) < currentFeatureLevel.size() && aFeature.equals(currentFeatureLevel.get(i + 1)._1)) {
                     i++;
                     colspan++;
                 }
@@ -93,38 +100,34 @@ public class HTMLExporter implements PCMExporter {
                 if (parentGroup == null) {
                     int rowspan = span._1 + 1;
                     nextFeatureLevel.add(new Pair<>(aFeature, new Pair<>(rowspan, colspan)));
+                    if (noParents) {
+                        row.add(new Pair<>(aFeature, new Pair<>(span._1, colspan)));
+                    }
                 } else {
                     row.add(new Pair<>(aFeature, new Pair<>(span._1, colspan)));
-                    noParents = false;
+                    nextFeatureLevel.add(new Pair<>(parentGroup, new Pair<>(1, 1)));
                 }
                 i++;
             }
 
-
-            if (noParents) {
-                row = nextFeatureLevel;
-                nextFeatureLevel = new ArrayList<>();
-            }
-
             // Create HTML elements
             Element line = new Element(Tag.valueOf("tr"), "");
-            if (noParents) {
-                for (Pair<AbstractFeature, Pair<Integer, Integer>> data : row) {
-                    AbstractFeature aFeature = data._1;
-                    Pair<Integer, Integer> span = data._2;
+            for (Pair<AbstractFeature, Pair<Integer, Integer>> data : row) {
+                AbstractFeature aFeature = data._1;
+                Pair<Integer, Integer> span = data._2;
 
-                    Element th = line.appendElement("th");
-                    th.html(textToHTML(aFeature.getName()));
+                Element th = line.appendElement("th")
+                        .attr("style", "white-space: pre;")
+                        .text(textToHTML(aFeature.getName()));
 
-                    if (span._1 > 1) {
-                        th.attr("rowspan", span._1.toString());
-                    }
-
-                    if (span._2 > 1) {
-                        th.attr("colspan", span._2.toString());
-                    }
-
+                if (span._1 > 1) {
+                    th.attr("rowspan", span._1.toString());
                 }
+
+                if (span._2 > 1) {
+                    th.attr("colspan", span._2.toString());
+                }
+
             }
             lines.add(line);
 
@@ -152,13 +155,17 @@ public class HTMLExporter implements PCMExporter {
                     htmlCell = tr.appendElement("td");
                 }
 
-                htmlCell.html(textToHTML(cell.getContent()));
+                htmlCell.attr("style", "white-space: pre;");
+                htmlCell.text(textToHTML(cell.getContent()));
             }
         }
     }
 
     private String textToHTML(String text) {
-        return text.replaceAll("\n", "<br />");
+//        String formattedText = text
+//                .replaceAll("\n", "<br />");
+//        return formattedText;
+        return text;
     }
 
 }

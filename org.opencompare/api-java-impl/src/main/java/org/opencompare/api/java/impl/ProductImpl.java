@@ -96,9 +96,9 @@ public class ProductImpl implements Product {
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append("Product(" + getKeyContent() + ")");
-        result.append("(");
+        result.append("(\n");
         for (Cell cell : this.getCells()) {
-            result.append(cell.toString());
+            result.append(cell.toString() + "\n");
         }
         result.append(")");
         return result.toString();

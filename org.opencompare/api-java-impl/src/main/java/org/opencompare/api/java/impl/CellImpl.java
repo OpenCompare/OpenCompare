@@ -75,7 +75,7 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public String toString() {
-        return "Cell(" + kCell.getContent() + "," + kCell.getRawContent() + "," + this.getFeature() + ")";
+        return "Cell('" + kCell.getContent() + "', '" + kCell.getRawContent() + "', " + this.getFeature() + ")";
     }
 
     @Override
