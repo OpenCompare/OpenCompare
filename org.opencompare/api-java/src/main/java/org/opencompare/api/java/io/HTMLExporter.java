@@ -2,6 +2,8 @@ package org.opencompare.api.java.io;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Entities;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Tag;
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.Pair;
@@ -51,8 +53,7 @@ public class HTMLExporter implements PCMExporter {
 
 
         // Export to HTML code
-        Document.OutputSettings settings = new Document.OutputSettings();
-        settings.prettyPrint();
+        Document.OutputSettings settings = new Document.OutputSettings().prettyPrint(true);
         return doc.outputSettings(settings).outerHtml();
 
     }
@@ -151,7 +152,7 @@ public class HTMLExporter implements PCMExporter {
                     htmlCell = tr.appendElement("td");
                 }
 
-                htmlCell.text(cell.getContent());
+                htmlCell.html(cell.getContent().replaceAll("\n", "<br />"));
             }
         }
     }

@@ -1,18 +1,14 @@
 package org.opencompare.api.java.io;
 
-import com.opencsv.CSVReader;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 import org.opencompare.api.java.*;
-import org.opencompare.api.java.util.MatrixAnalyser;
-import org.opencompare.api.java.util.MatrixComparatorEqualityImpl;
+import org.w3c.dom.Text;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by gbecan on 4/2/15.
@@ -38,7 +34,7 @@ public class HTMLLoader implements PCMLoader {
         }
     }
 
-    public static List<IOMatrix> createMatrices(Document doc) {
+    private List<IOMatrix> createMatrices(Document doc) {
         List<IOMatrix> matrices = new ArrayList<>();
         String pageName = doc.head().getElementsByTag("title").text();
         int index = 0;
@@ -68,7 +64,10 @@ public class HTMLLoader implements PCMLoader {
                         if (!column.attributes().get("colspan").isEmpty()) {
                             colspan = Integer.valueOf(column.attributes().get("colspan"));
                         }
-                        matrix.setCell(new IOCell(column.text()), i, j, rowspan, colspan);
+
+
+
+                        matrix.setCell(new IOCell(cellToText(column)), i, j, rowspan, colspan);
                         j += colspan;
                     }
                 }
@@ -78,6 +77,24 @@ public class HTMLLoader implements PCMLoader {
             index++;
         }
         return matrices;
+    }
+
+    private String cellToText(Element element) {
+        String text = "";
+        for (Node node : element.childNodes()) {
+            switch (node.nodeName()) {
+                case "#text":
+                    TextNode tn = (TextNode) node;
+                    text += tn.getWholeText();
+                    break;
+                case "br":
+                    text += "\n";
+                    break;
+                default:
+            }
+
+        }
+        return text;
     }
 
     @Override
