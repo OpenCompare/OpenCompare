@@ -74,42 +74,42 @@ abstract class PCMCircularTest(
 //            println(thisProductSet)
 //            println(pcmProductSet)
 
-//            println(thisProductSet == pcmProductSet)
-//            println("in : " + thisProductSet.size)
-//            println("out : " + pcmProductSet.size)
-//            println("intersect : " + thisProductSet.intersect(pcmProductSet).size)
-//            println("in - out : " + thisProductSet.diff(pcmProductSet).size)
-//            println("out - in : " + pcmProductSet.diff(thisProductSet).size)
+            println(thisProductSet == pcmProductSet)
+            println("in : " + thisProductSet.size)
+            println("out : " + pcmProductSet.size)
+            println("intersect : " + thisProductSet.intersect(pcmProductSet).size)
+            println("in - out : " + thisProductSet.diff(pcmProductSet).size)
+            println("out - in : " + pcmProductSet.diff(thisProductSet).size)
 
-//            for (weirdProduct <- thisProductSet.diff(pcmProductSet)) {
-//              println("---")
-//              println(weirdProduct)
-//              println()
-//
+            for (weirdProduct <- thisProductSet.diff(pcmProductSet)) {
+              println("---")
+              println(weirdProduct)
+              println()
+
 //              val equivalentIn = thisProductSet.find(_.getKeyContent == weirdProduct.getKeyContent).get
 //              println(equivalentIn)
 //              println()
 //              println("toString : " + (equivalentIn.toString == weirdProduct.toString))
 //              println("equal : " + (equivalentIn == weirdProduct))
 //              println()
-//
-//              val equivalentOut = pcmProductSet.find(_.getKeyContent == weirdProduct.getKeyContent).get
-//              println(equivalentOut)
-//              println()
-//              println("toString : " + (equivalentOut.toString == weirdProduct.toString))
-//              println("equal : " + (equivalentOut == weirdProduct))
-//            }
+
+              val equivalentOut = pcmProductSet.find(_.getKeyContent == weirdProduct.getKeyContent).get
+              println(equivalentOut)
+              println()
+              println("toString : " + (equivalentOut.toString == weirdProduct.toString))
+              println("equal : " + (equivalentOut == weirdProduct))
+            }
 
 ////            println(code)
 //
-//            println("---")
-//            println("features")
-//            println(inputContainer.getPcm.getConcreteFeatures.toSet == outputContainer.getPcm.getConcreteFeatures.toSet)
-//            println("input")
-//            println(inputContainer.getPcm.getConcreteFeatures.size)
+            println("---")
+            println("features")
+            println(inputContainer.getPcm.getConcreteFeatures.toSet == outputContainer.getPcm.getConcreteFeatures.toSet)
+            println("input")
+            println(inputContainer.getPcm.getConcreteFeatures.size)
 //            inputContainer.getPcm.getConcreteFeatures.foreach(println)
-//            println("output")
-//            println(outputContainer.getPcm.getConcreteFeatures.size)
+            println("output")
+            println(outputContainer.getPcm.getConcreteFeatures.size)
 //            outputContainer.getPcm.getConcreteFeatures.foreach(println)
 ////            println("diff")
 ////            for (iFeature <- inputContainer.getPcm.getConcreteFeatures) {
@@ -120,8 +120,8 @@ abstract class PCMCircularTest(
 ////              }
 ////            }
 //
-//            println("products key")
-//            println(inputContainer.getPcm.getProductsKey == outputContainer.getPcm.getProductsKey)
+            println("products key")
+            println(inputContainer.getPcm.getProductsKey == outputContainer.getPcm.getProductsKey)
 //
 //
 //            println("products")

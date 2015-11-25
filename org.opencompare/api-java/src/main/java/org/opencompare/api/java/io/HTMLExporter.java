@@ -114,7 +114,7 @@ public class HTMLExporter implements PCMExporter {
                     Pair<Integer, Integer> span = data._2;
 
                     Element th = line.appendElement("th");
-                    th.text(aFeature.getName());
+                    th.html(textToHTML(aFeature.getName()));
 
                     if (span._1 > 1) {
                         th.attr("rowspan", span._1.toString());
@@ -152,9 +152,13 @@ public class HTMLExporter implements PCMExporter {
                     htmlCell = tr.appendElement("td");
                 }
 
-                htmlCell.html(cell.getContent().replaceAll("\n", "<br />"));
+                htmlCell.html(textToHTML(cell.getContent()));
             }
         }
+    }
+
+    private String textToHTML(String text) {
+        return text.replaceAll("\n", "<br />");
     }
 
 }
