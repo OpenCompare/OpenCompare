@@ -104,7 +104,7 @@ class ParserTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     for ((pcm, index) <- pcms.zipWithIndex) {
       val path = "output/model/" + title.replaceAll(" ", "_") + "_" + index + ".pcm"
       val writer = new FileWriter(path)
-      writer.write(serializer.toJson(pcm.getPcm))
+      writer.write(serializer.export(pcm))
       writer.close()
 
       loader.load(new File(path))

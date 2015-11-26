@@ -28,13 +28,11 @@ public class KMFJSONExporter implements PCMExporter {
 
     @Override
     public String export(PCMContainer container) {
-        return toJson(container.getPcm());
-    }
-
-    public String toJson(PCM pcm) {
         String json = "";
 
-        if (pcm instanceof PCMImpl) {
+        if (container.getPcm() instanceof PCMImpl) {
+
+            PCMImpl pcm = (PCMImpl) container.getPcm();
 
             // Convert all strings to base64 to avoid encoding problems
             if (base64Encoding) {
@@ -42,7 +40,7 @@ public class KMFJSONExporter implements PCMExporter {
             }
 
             // Serialize PCM
-            org.opencompare.model.PCM kPcm = ((PCMImpl) pcm).getKpcm();
+            org.opencompare.model.PCM kPcm = pcm.getKpcm();
             json = serializer.serialize(kPcm);
 
             // Decode PCM
