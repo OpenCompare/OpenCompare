@@ -36,8 +36,8 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
-            <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.binary}</artifactId>
@@ -49,6 +49,18 @@
             <groupId>org.kevoree.modeling</groupId>
             <artifactId>org.kevoree.modeling.microframework</artifactId>
             <version>${kmf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-json_${scala.binary}</artifactId>
+            <version>${play.version}</version>
+            <exclusions>
+                <exclusion> <!-- different version of scala -->
+                    <groupId>org.scala-stm</groupId>
+                    <artifactId>scala-stm_${scala.version.minor}</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 
