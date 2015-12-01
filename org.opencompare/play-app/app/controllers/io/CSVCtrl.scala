@@ -55,13 +55,11 @@ class CSVCtrl @Inject() (
     val quote = parameters.quote.head
 
     // Read input file
-    val file = request.body.asMultipartFormData.get.file("file").get
-    val csvData = Source.fromFile(file.ref.file).getLines().mkString("\n")
+    val file = request.body.asMultipartFormData.get.file("file").get.ref.file
 
     try {
-
       val loader: CSVLoader = new CSVLoader(pcmFactory, separator, quote, parameters.productAsLines)
-      val pcmContainers = loader.load(csvData).toList
+      val pcmContainers = loader.load(file).toList
       val pcmContainer = pcmContainers.head
       pcmContainer.getPcm.setName(parameters.title)
 

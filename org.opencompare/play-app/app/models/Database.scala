@@ -177,10 +177,6 @@ object Database {
     val pcm = pcmContainer.getPcm
     val metadata = pcmContainer.getMetadata
 
-    // Serialize PCM
-    val pcmInJSON = kmfSerializer.export(pcmContainer)
-    val dbPCM = JSON.parse(pcmInJSON).asInstanceOf[DBObject]
-
     // Serialize product positions
     val dbProductPositions = for (product <- pcm.getProducts) yield {
       val productName = product.getKeyContent
@@ -208,6 +204,10 @@ object Database {
       "license" -> metadata.getLicense,
       "creator" -> metadata.getCreator
     )
+
+    // Serialize PCM
+    val pcmInJSON = kmfSerializer.export(pcmContainer)
+    val dbPCM = JSON.parse(pcmInJSON).asInstanceOf[DBObject]
 
     // Encapsulate the PCM and its metadata in a object
     val dbContainer = MongoDBObject(
