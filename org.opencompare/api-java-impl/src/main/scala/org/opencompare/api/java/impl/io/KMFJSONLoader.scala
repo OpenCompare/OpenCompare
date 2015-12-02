@@ -3,14 +3,14 @@ package org.opencompare.api.java.impl.io
 import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
-import java.util
 
-import org.opencompare.api.java.{PCMMetadata, PCMContainer}
 import org.opencompare.api.java.impl.PCMImpl
 import org.opencompare.api.java.io.PCMLoader
+import org.opencompare.api.java.{PCMContainer, PCMMetadata}
 import org.opencompare.model.pcm.factory.DefaultPcmFactory
+import play.api.libs.json.{JsObject, Json}
 
-import collection.JavaConversions._
+import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 12/12/14.
@@ -25,12 +25,20 @@ class KMFJSONLoader(val base64Decoding: Boolean = true) extends PCMLoader {
       this(true)
   }
 
-  override def load(json: String): util.List[PCMContainer] = {
-    val containers = loader.loadModelFromString(json).toList
-    load(containers)
+  override def load(json: String): java.util.List[PCMContainer] = {
+    val jsonPCMContainer = Json.parse(json)
+
+    jsonPCMContainer match {
+      case JsObject(elements) =>
+        val jsonPCM = elements("pcm")
+        val jsonMetadata = elements("metadata")
+        val containers = loader.loadModelFromString(Json.stringify(jsonPCM)).toList
+        load(containers)
+      case _ => Nil
+    }
   }
 
-  override def load(file: File): util.List[PCMContainer] = {
+  override def load(file: File): java.util.List[PCMContainer] = {
     val bytes = Files.readAllBytes(file.toPath())
     val json = new String(bytes, StandardCharsets.UTF_8)
     load(json)

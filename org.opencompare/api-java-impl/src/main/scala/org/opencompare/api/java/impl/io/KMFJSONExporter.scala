@@ -47,7 +47,5 @@ class KMFJSONExporter(val base64Encoding : Boolean = true) extends PCMExporter {
           "pcm" -> jsonPCM,
           "metadata" -> JsObject(Map.empty[String, JsValue])
       )))
-
-      json
   }
 }
