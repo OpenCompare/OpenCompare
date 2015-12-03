@@ -28,63 +28,7 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
     val jsonObject = jsonContent.as[JsObject]
     val jsonPCM = Json.stringify(jsonObject.value("pcm"))
     val containers = jsonLoader.load(jsonPCM).toList
-    val jsonMetadata = jsonObject.value("metadata").as[JsObject]
-    for (container <- containers) {
-      saveMetadatas(container, jsonMetadata)
-    }
     containers
-  }
-
-  /*
-    Insert metadatas inside the container based on the json metadatas
-   */
-  private def saveMetadatas(container : PCMContainer, jsonMetadata : JsObject) {
-    val metadata = container.getMetadata()
-    val pcm = metadata.getPcm()
-
-    val source = jsonMetadata.value.get("source")
-    if (source.isDefined) {
-      metadata.setSource(source.get.as[String])
-    }
-
-    val license = jsonMetadata.value.get("license")
-    if (license.isDefined) {
-      metadata.setLicense(license.get.as[String])
-    }
-
-    val creator = jsonMetadata.value.get("creator")
-    creator match {
-      case Some(JsString(value)) => metadata.setCreator(value)
-      case _ =>
-    }
-
-
-    val jsonProductPositions = jsonMetadata.value("productPositions").as[JsArray]
-    val jsonFeaturePositions = jsonMetadata.value("featurePositions").as[JsArray]
-
-    for (jsonProductPosition <- jsonProductPositions.value) {
-      val jsonPos = jsonProductPosition.as[JsObject].value
-      val productName = jsonPos("product").as[JsString].value
-      val position = jsonPos("position").as[JsNumber].value.toIntExact
-
-      val product = pcm.getProducts.find(_.getKeyContent == productName)
-      if (product.isDefined) {
-        metadata.setProductPosition(product.get, position)
-      }
-
-    }
-
-    for (jsonFeaturePosition <- jsonFeaturePositions.value) {
-      val jsonPos = jsonFeaturePosition.as[JsObject].value
-      val featureName = jsonPos("feature").as[JsString].value
-      val position = jsonPos("position").as[JsNumber].value.toIntExact
-
-      val feature = pcm.getConcreteFeatures.find(_.getName == featureName) // FIXME : equals based on name breaks same name features
-      if (feature.isDefined) {
-        metadata.setFeaturePosition(feature.get, position)
-      }
-
-    }
   }
 
   def serializePCMContainer(pcmContainer : PCMContainer) : Future[JsValue] = {
@@ -92,71 +36,40 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
     val metadata = pcmContainer.getMetadata
 
     // Serialize PCM
-    val jsonPCM = Json.parse(kmfExporter.export(pcmContainer))
-
-    // Serialize metadata
-    val futureJsonMetadata = serializeMetadata(pcm, metadata)
+    val jsonContainer = Json.parse(kmfExporter.export(pcmContainer)).as[JsObject]
 
 
-    futureJsonMetadata map { jsonMetadata =>
-      JsObject(Seq(
-        "pcm" -> jsonPCM,
-        "metadata" -> jsonMetadata
-      ))
-    }
-  }
-
-  private def serializeMetadata(pcm : PCM, metadata : PCMMetadata) : Future[JsValue] = {
-    // Serialize product positions
-    val productPositions = JsArray(for (product <- pcm.getProducts) yield {
-      val productName = product.getKeyContent
-      val position = metadata.getProductPosition(product)
-      JsObject(Seq(
-        "product" -> JsString(productName),
-        "position" -> JsNumber(position)
-      ))
-    })
-
-    // Serialize feature positions
-    val featurePositions = JsArray(for (feature <- pcm.getConcreteFeatures) yield {
-      val featureName = feature.getName
-      val position = metadata.getFeaturePosition(feature)
-      JsObject(Seq(
-        "feature" -> JsString(featureName),
-        "position" -> JsNumber(position)
-      ))
-    })
-
-    val jsonMetadata = JsObject(Seq(
-      "productPositions" -> productPositions,
-      "featurePositions" -> featurePositions,
-      "source" -> JsString(metadata.getSource),
-      "license" -> JsString(metadata.getLicense),
-      "creator" -> JsString(metadata.getCreator)
-    ))
-
+    // Retrieve full name of creator
     val uuid = try {
       Some(UUID.fromString(metadata.getCreator))
     } catch {
       case e : IllegalArgumentException => None
     }
 
-
-    if (uuid.isDefined) {
+    val futureCreatorFullName = if (uuid.isDefined) {
       val futureCreatorInfo = userDAO.find(uuid.get)
 
       futureCreatorInfo map { creatorInfo =>
         if (creatorInfo.isDefined && creatorInfo.get.fullName.isDefined) {
           val fullName = creatorInfo.get.fullName.get
-          jsonMetadata + ("creatorFullName" -> JsString(fullName))
+
+          jsonContainer ++ JsObject(Map(
+            "metadata" -> JsObject(Map(
+              "creatorFullName" -> JsString(fullName)
+            ))
+          ))
         } else {
-          jsonMetadata
+          jsonContainer
         }
       }
     } else {
-      Future.successful(jsonMetadata)
+      Future.successful(jsonContainer)
     }
 
+
+    futureCreatorFullName map { json =>
+      json
+    }
   }
 
 }

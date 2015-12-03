@@ -41,40 +41,12 @@ class PCMContainerDAOImpl extends PCMContainerDAO {
 
   private def convertToPCMContainers(dbObject : DBObject) : DatabasePCM = {
     val id = dbObject("_id").toString
-    val json = JSON.serialize(dbObject("pcm"))
+    val json = JSON.serialize(dbObject)
 
     val pcmContainers = kmfLoader.load(json)
 
     if (pcmContainers.size == 1) {
       val pcmContainer = pcmContainers.head
-      val metadata = pcmContainer.getMetadata
-
-      // Load metadata
-      val dbMetadata = dbObject("metadata").asInstanceOf[DBObject]
-      metadata.setSource(dbMetadata.getOrElse("source", "").toString)
-      metadata.setLicense(dbMetadata.getOrElse("license", "").toString)
-      metadata.setCreator(dbMetadata.getOrElse("creator", "").toString)
-
-      // Load product positions
-      val dbProductPositions = dbMetadata("productPositions").asInstanceOf[BasicDBList]
-      for (dbProductPosition <- dbProductPositions) {
-        val dbProductPositionCast = dbProductPosition.asInstanceOf[DBObject]
-        val productName = dbProductPositionCast("product").toString
-        val product = pcmContainer.getPcm.getProducts.find(_.getKeyContent == productName).get
-        val position = dbProductPositionCast("position").toString.toInt
-        metadata.setProductPosition(product, position)
-      }
-
-      // Load feature positions
-      val dbFeaturePositions = dbMetadata("featurePositions").asInstanceOf[BasicDBList]
-      for (dbFeaturePosition <- dbFeaturePositions) {
-        val dbFeaturePositionCast = dbFeaturePosition.asInstanceOf[DBObject]
-        val featureName = dbFeaturePositionCast("feature").toString
-        val feature = pcmContainer.getPcm.getConcreteFeatures.find(_.getName == featureName).get
-        val position = dbFeaturePositionCast("position").toString.toInt
-        metadata.setFeaturePosition(feature, position)
-      }
-
       new DatabasePCM(Some(id), Some(pcmContainer))
 
     } else {
