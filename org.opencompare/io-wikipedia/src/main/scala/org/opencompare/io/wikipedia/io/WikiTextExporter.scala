@@ -36,9 +36,9 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         val cell : Cell = product.findCell(feature)
 
         if (feature == container.getPcm.getProductsKey) {
-          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-        } else {
           builder ++= "! " // new cell (we can also use !! to separate cells horizontally)
+        } else {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
         }
 
         if (Option(cell).isDefined) {
@@ -69,9 +69,9 @@ class WikiTextExporter(exportRawContent : Boolean = false)  extends PCMExporter 
         val cell : Cell = product.findCell(feature)
 
         if (feature == container.getPcm.getProductsKey) {
-          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
-        } else {
           builder ++= "! " // new cell (we can also use !! to separate cells horizontally)
+        } else {
+          builder ++= "| " // new cell (we can also use || to separate cells horizontally)
         }
 
         if (exportRawContent) {
