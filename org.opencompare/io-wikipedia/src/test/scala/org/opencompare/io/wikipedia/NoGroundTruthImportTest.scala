@@ -12,7 +12,7 @@ import scala.reflect.io.Directory
 /**
   * Created by gbecan on 17/11/15.
   */
-class BasicImportTest extends FlatSpec with Matchers {
+class NoGroundTruthImportTest extends FlatSpec with Matchers {
 
   val language = "en"
   val url = "wikipedia.org"
@@ -35,7 +35,7 @@ class BasicImportTest extends FlatSpec with Matchers {
   forAll(inputs) { file =>
     it should "import " + file.getName in {
       val wikitext = Source.fromFile(file).mkString
-      val containers = miner.mine(language, wikitext, "Comparison of AMD processors")
+      val containers = miner.mine(language, wikitext, file.getName)
 
       for (container <- containers) {
         val pcm = container.getPcm

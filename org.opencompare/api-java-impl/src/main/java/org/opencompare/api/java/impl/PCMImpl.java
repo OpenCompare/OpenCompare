@@ -609,4 +609,13 @@ public class PCMImpl implements PCM {
 
         return copy;
      }
+
+    @Override
+    public String toString() {
+        return "PCMImpl{" +
+                "#features= " + this.getConcreteFeatures().size() +
+                ", #products= " + this.getProducts().size() +
+                ", products' key= " + this.getProductsKey() +
+                "}";
+    }
 }
