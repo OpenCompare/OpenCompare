@@ -2,10 +2,7 @@ package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by smangin on 02/07/15.
@@ -140,6 +137,33 @@ public class IOMatrix {
         this.maxColumn = tempMaxRow;
 
         this.cells = transposedCells;
+    }
+
+    public void removeDuplicatedLines() {
+        LinkedHashSet<List<IOCell>> lines = new LinkedHashSet<>();
+
+        for (int i = 0; i < getNumberOfRows();i++) {
+            List<IOCell> line = new ArrayList<>();
+            for (int j = 0; j < getNumberOfColumns(); j++) {
+                line.add(cells.get(new Pair<>(i, j)));
+            }
+            lines.add(line);
+        }
+
+        cells = new HashMap<>();
+
+        int i = 0;
+        for (List<IOCell> line : lines) {
+            int j = 0;
+
+            for (IOCell cell : line) {
+                cells.put(new Pair<>(i, j), cell);
+                j++;
+            }
+
+            i++;
+        }
+
     }
 
 }

@@ -2,10 +2,7 @@ package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -25,6 +22,8 @@ public class IOMatrixLoader {
 
     public PCMContainer load(IOMatrix matrix) {
 
+        // Compute content of cells
+
         // Detect types and information for each cell
         detectTypes(matrix);
 
@@ -33,6 +32,14 @@ public class IOMatrixLoader {
         if (detectedDirection == PCMDirection.UNKNOWN) {
             detectedDirection = detectDirection(matrix);
         }
+
+        // Transpose matrix
+        if (detectedDirection == PCMDirection.PRODUCTS_AS_COLUMNS) {
+            matrix.transpose();
+        }
+
+        // Remove duplicated lines
+        matrix.removeDuplicatedLines();
 
         // Create PCM
         PCM pcm = factory.createPCM();
@@ -43,7 +50,7 @@ public class IOMatrixLoader {
         pcm.setName(matrix.getName());
 
         // Create features
-        IONode<String> featureTreeRoot = detectFeatures(matrix, detectedDirection, pcmContainer);
+        IONode<String> featureTreeRoot = detectFeatures(matrix, pcmContainer);
         Map<Integer, Feature> positionToFeature = new HashMap<>();
         List<AbstractFeature> topFeatures = createFeatures(featureTreeRoot, positionToFeature);
         topFeatures.forEach(feature -> pcm.addFeature(feature));
@@ -54,13 +61,14 @@ public class IOMatrixLoader {
         }
 
         // Create products
-        createProducts(matrix, detectedDirection, pcmContainer, positionToFeature);
+        createProducts(matrix, pcmContainer, positionToFeature);
 
         // Set products key
         setProductsKey(pcmContainer);
 
         return pcmContainer;
     }
+
 
     /**
      * Detect types of each cell of the matrix
@@ -83,64 +91,37 @@ public class IOMatrixLoader {
     /**
      * Detect features from the information contained in the matrix and the provided direction
      * @param matrix
-     * @param detectedDirection
      * @param pcmContainer
      */
-    protected IONode<String> detectFeatures(IOMatrix matrix, PCMDirection detectedDirection, PCMContainer pcmContainer) {
+    protected IONode<String> detectFeatures(IOMatrix matrix, PCMContainer pcmContainer) {
 
         IONode<String> root = new IONode<>(null);
         List<IONode<String>> parents = new ArrayList<>();
 
-
-        int maxX, maxY;
-
-        if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
-            // X are rows
-            maxX = matrix.getNumberOfRows();
-            // Y are columns
-            maxY = matrix.getNumberOfColumns();
-        } else {
-            // X are columns
-            maxX = matrix.getNumberOfColumns();
-            // Y are rows
-            maxY = matrix.getNumberOfRows();
-        }
-
-
         // Init parents
-        for (int y = 0; y < maxY; y++) {
+        for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
             parents.add(root);
         }
 
         // Detect features
-        for (int x = 0; x < maxX; x++) {
+        for (int row = 0; row < matrix.getNumberOfRows(); row++) {
             List<IONode<String>> nextParents = new ArrayList<>(parents);
 
-            for (int y = 0; y < maxY; y++) {
-                IOCell currentCell;
-                if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
-                    currentCell = matrix.getCell(x, y);
-                } else {
-                    currentCell = matrix.getCell(y, x);
-                }
+            for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
+                IOCell currentCell = matrix.getCell(row, column);
 
                 if (currentCell == null) {
                     currentCell = new IOCell("");
                 }
 
-                IONode<String> parent = parents.get(y);
+                IONode<String> parent = parents.get(column);
 
                 boolean sameAsParent = currentCell.getContent().equals(parent.getContent());
                 boolean sameAsPrevious = false;
                 boolean sameParentAsPrevious = true;
 
-                if (y > 0) {
-                    IOCell previousCell;
-                    if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
-                        previousCell = matrix.getCell(x, y - 1);
-                    } else {
-                        previousCell = matrix.getCell(y - 1, x);
-                    }
+                if (column > 0) {
+                    IOCell previousCell = matrix.getCell(row, column - 1);
 
                     if (previousCell == null) {
                         previousCell = new IOCell("");
@@ -149,19 +130,19 @@ public class IOMatrixLoader {
                     sameAsPrevious = currentCell.getContent().equals(previousCell.getContent());
 
                     if (parent.getContent() != null) {
-                        sameParentAsPrevious = parent.getContent().equals(parents.get(y - 1).getContent());
+                        sameParentAsPrevious = parent.getContent().equals(parents.get(column - 1).getContent());
                     }
                 }
 
                 if (!sameAsParent && (!sameParentAsPrevious || !sameAsPrevious)) {
                     IONode<String> newNode = new IONode<>(currentCell.getContent());
-                    newNode.getPositions().add(y);
+                    newNode.getPositions().add(column);
                     parent.getChildren().add(newNode);
-                    nextParents.set(y, newNode);
-                } else if (y > 0 && sameParentAsPrevious && sameAsPrevious) {
-                    IONode<String> previousNode = nextParents.get(y - 1);
-                    previousNode.getPositions().add(y);
-                    nextParents.set(y, previousNode);
+                    nextParents.set(column, newNode);
+                } else if (column > 0 && sameParentAsPrevious && sameAsPrevious) {
+                    IONode<String> previousNode = nextParents.get(column - 1);
+                    previousNode.getPositions().add(column);
+                    nextParents.set(column, previousNode);
                 }
 
             }
@@ -207,40 +188,20 @@ public class IOMatrixLoader {
     /**
      * Detect and create products from the information contained in the matrix and the provided direction
      * @param matrix
-     * @param detectedDirection
      * @param pcmContainer
      */
-    protected void createProducts(IOMatrix matrix, PCMDirection detectedDirection, PCMContainer pcmContainer, Map<Integer, Feature> positionToFeature) {
+    protected void createProducts(IOMatrix matrix, PCMContainer pcmContainer, Map<Integer, Feature> positionToFeature) {
 
         int featuresDepth = pcmContainer.getPcm().getFeaturesDepth();
 
-        int initX, initY, maxX, maxY;
-
-        if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
-            initX = featuresDepth;
-            maxX = matrix.getNumberOfRows();
-            initY = 0;
-            maxY = matrix.getNumberOfColumns();
-        } else {
-            initX = featuresDepth;
-            maxX = matrix.getNumberOfColumns();
-            initY = 0;
-            maxY = matrix.getNumberOfRows();
-        }
-
-        for (int x = initX; x < maxX; x++) {
+        for (int row = featuresDepth; row < matrix.getNumberOfRows(); row++) {
             Product product = factory.createProduct();
 
-            for (int y = initY; y < maxY; y++) {
+            for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
                 Cell cell = factory.createCell();
-                cell.setFeature(positionToFeature.get(y));
+                cell.setFeature(positionToFeature.get(column));
 
-                IOCell ioCell;
-                if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
-                    ioCell = matrix.getCell(x, y);
-                } else {
-                    ioCell = matrix.getCell(y, x);
-                }
+                IOCell ioCell = matrix.getCell(row, column);
 
                 if (ioCell == null) {
                     ioCell = new IOCell("");
@@ -253,7 +214,7 @@ public class IOMatrixLoader {
             }
 
             pcmContainer.getPcm().addProduct(product);
-            pcmContainer.getMetadata().setProductPosition(product, x);
+            pcmContainer.getMetadata().setProductPosition(product, row);
         }
 
     }

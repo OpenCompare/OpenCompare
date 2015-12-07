@@ -43,19 +43,34 @@ public class IOCell implements Cloneable {
         return this;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj != null &&obj instanceof IOCell) {
-            IOCell cell = (IOCell) obj;
-            return getContent().equals(cell.getContent());
-        }
-        return false;
-    }
-
     public IOCell clone() throws CloneNotSupportedException {
         return (IOCell) super.clone();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        IOCell ioCell = (IOCell) o;
+
+        if (content != null ? !content.equals(ioCell.content) : ioCell.content != null) return false;
+        return !(rawContent != null ? !rawContent.equals(ioCell.rawContent) : ioCell.rawContent != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = content != null ? content.hashCode() : 0;
+        result = 31 * result + (rawContent != null ? rawContent.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "IOCell{" +
+                "content='" + content + '\'' +
+                ", rawContent='" + rawContent + '\'' +
+                '}';
     }
 }
