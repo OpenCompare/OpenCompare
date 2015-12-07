@@ -613,7 +613,8 @@ public class PCMImpl implements PCM {
     @Override
     public String toString() {
         return "PCMImpl{" +
-                "#features= " + this.getConcreteFeatures().size() +
+                "name= " + this.getName() +
+                ",#features= " + this.getConcreteFeatures().size() +
                 ", #products= " + this.getProducts().size() +
                 ", products' key= " + this.getProductsKey() +
                 "}";

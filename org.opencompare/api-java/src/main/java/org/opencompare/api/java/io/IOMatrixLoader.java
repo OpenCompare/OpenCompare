@@ -39,7 +39,7 @@ public class IOMatrixLoader {
         }
 
         // Remove duplicated lines
-//        matrix.removeDuplicatedLines();
+        matrix.removeDuplicatedLines();
 
         // Create PCM
         PCM pcm = factory.createPCM();

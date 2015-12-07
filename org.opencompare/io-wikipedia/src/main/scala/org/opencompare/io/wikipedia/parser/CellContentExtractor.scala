@@ -16,9 +16,8 @@ class CellContentExtractor(
                             val parser : WikitextParser
                             ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
-  private var content : String = ""
   private var cellContent: StringBuilder = new StringBuilder
-  private val trimPattern: Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
+  private val trimPattern: Pattern = Pattern.compile("\\s*(.*?)\\s*", Pattern.DOTALL)
   private var ignoredXMLStack: Stack[Boolean] = new Stack()
 
 
@@ -45,7 +44,7 @@ class CellContentExtractor(
     go(ast)
 
     // Treat special cases for cell content
-    content = if (!ignoredXMLElement) {
+    val content = if (!ignoredXMLElement) {
       if (cellContent.toString().startsWith("||")) {
         cellContent.delete(0, 2)
       }
@@ -54,9 +53,6 @@ class CellContentExtractor(
     } else {
       ""
     }
-
-//    println(ast)
-//    println("content= " +  content)
 
     content
   }
@@ -282,7 +278,9 @@ class CellContentExtractor(
 
   override def visit(e: WtLinkOptionGarbage): Unit = iterate(e)
 
-  override def visit(e: WtNewline): Unit = iterate(e)
+  override def visit(e: WtNewline): Unit = {
+    cellContent += '\n'
+  }
 
   override def visit(e: WtPageName): Unit = iterate(e)
 
