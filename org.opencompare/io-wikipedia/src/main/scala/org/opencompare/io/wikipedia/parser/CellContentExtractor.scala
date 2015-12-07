@@ -348,9 +348,14 @@ class CellContentExtractor(
 
   override def visit(e: WtParagraph): Unit = iterate(e)
 
-  override def visit(e: WtSemiPre): Unit = iterate(e)
+  override def visit(e: WtSemiPre): Unit = {
+    iterate(e)
+  }
 
-  override def visit(e: WtSemiPreLine): Unit = iterate(e)
+  override def visit(e: WtSemiPreLine): Unit = {
+    cellContent += ' '
+    iterate(e)
+  }
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
 
