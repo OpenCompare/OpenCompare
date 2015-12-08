@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class HTMLExporter implements PCMExporter {
 
+    private ExportMatrixExporter exportMatrixExporter = new ExportMatrixExporter();
+
     @Override
     public String export(PCMContainer pcmContainer) {
         PCM pcm = pcmContainer.getPcm();
@@ -45,7 +47,6 @@ public class HTMLExporter implements PCMExporter {
         Element table = body.appendElement("table")
                 .attr("border", "1");
 
-        ExportMatrixExporter exportMatrixExporter = new ExportMatrixExporter();
         ExportMatrix exportMatrix = exportMatrixExporter.export(pcmContainer);
 
         for (int row = 0; row < exportMatrix.getNumberOfRows(); row++) {
