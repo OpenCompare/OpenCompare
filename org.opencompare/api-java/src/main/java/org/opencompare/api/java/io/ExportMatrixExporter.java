@@ -142,10 +142,12 @@ public class ExportMatrixExporter {
             for (Feature feature : metadata.getSortedFeatures()) {
                 Cell cell = product.findCell(feature);
 
-                ExportCell exportCell = new ExportCell(cell.getContent());
-                exportCell.setFeature(false);
-                exportCell.setInProductsKeyColumn(pcm.getProductsKey().equals(feature));
-                matrix.setCell(exportCell, row, column);
+                if (cell != null) {
+                    ExportCell exportCell = new ExportCell(cell.getContent(), cell.getRawContent());
+                    exportCell.setFeature(false);
+                    exportCell.setInProductsKeyColumn(pcm.getProductsKey().equals(feature));
+                    matrix.setCell(exportCell, row, column);
+                }
 
                 column++;
             }
