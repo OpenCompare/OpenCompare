@@ -32,17 +32,9 @@ public class IOMatrix<T extends IOCell> {
     }
 
     public IOMatrix<T> setCell(T cell, int row, int column) {
-        return setCell(cell, row, column, 1, 1);
-    }
-
-    public IOMatrix<T> setCell(T cell, int row, int column, int rowspan, int colspan) {
-        maxRow = (maxRow < (row + rowspan - 1)) ? (row + rowspan - 1) : maxRow;
-        maxColumn = (maxColumn < (column + colspan - 1)) ? (column + colspan - 1) : maxColumn;
-        for (int i = 0; i < rowspan;i++) {
-            for (int j = 0; j < colspan;j++) {
-                cells.put(new Pair<>(row + i, column + j), cell);
-            }
-        }
+        cells.put(new Pair<>(row, column), cell);
+        maxRow = (maxRow < (row + cell.getRowspan() - 1)) ? (row + cell.getRowspan() - 1) : maxRow;
+        maxColumn = (maxColumn < (column + cell.getColspan() - 1)) ? (column + cell.getColspan() - 1) : maxColumn;
         return this;
     }
 
@@ -52,6 +44,42 @@ public class IOMatrix<T extends IOCell> {
 
     public int getNumberOfColumns() {
         return maxColumn + 1;
+    }
+
+    public void transpose() {
+        Map<Pair<Integer, Integer>, T> transposedCells = new HashMap<>();
+
+        for (Map.Entry<Pair<Integer, Integer>, T> entry : cells.entrySet()) {
+            transposedCells.put(new Pair<>(entry.getKey()._2, entry.getKey()._1), entry.getValue());
+        }
+
+        int tempMaxRow = this.maxRow;
+        this.maxRow = maxColumn;
+        this.maxColumn = tempMaxRow;
+
+        this.cells = transposedCells;
+    }
+
+    public void flattenCells() {
+        for (int row = 0; row < getNumberOfRows(); row++) {
+            for (int column = 0; column < getNumberOfColumns(); column++) {
+                T cell = cells.get(new Pair<>(row, column));
+
+                if (cell != null) {
+                    // Copy cell
+                    for (int rowOffset = 0; rowOffset < cell.getRowspan(); rowOffset++) {
+                        for (int columnOffset = 0; columnOffset  < cell.getColspan(); columnOffset ++) {
+                            cells.put(new Pair<>(row + rowOffset, column + columnOffset), cell);
+                        }
+                    }
+
+                    // Reset span
+                    cell.setRowspan(1);
+                    cell.setColspan(1);
+                }
+
+            }
+        }
     }
 
     @Override
@@ -111,19 +139,4 @@ public class IOMatrix<T extends IOCell> {
         }
         return matrix;
     }
-
-    public void transpose() {
-        Map<Pair<Integer, Integer>, T> transposedCells = new HashMap<>();
-
-        for (Map.Entry<Pair<Integer, Integer>, T> entry : cells.entrySet()) {
-            transposedCells.put(new Pair<>(entry.getKey()._2, entry.getKey()._1), entry.getValue());
-        }
-
-        int tempMaxRow = this.maxRow;
-        this.maxRow = maxColumn;
-        this.maxColumn = tempMaxRow;
-
-        this.cells = transposedCells;
-    }
-
 }

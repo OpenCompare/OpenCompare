@@ -38,7 +38,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     for (line <- csvMatrix.iterator) {
       for (column <- line.iterator) {
         val cell = new IOCell(column)
-        matrix.setCell(cell, i, j, 1, 1)
+        matrix.setCell(cell, i, j)
         j+=1
       }
       i+=1
@@ -59,7 +59,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     // From custom values
     cell = new IOCell(content)
     matrix = new IOMatrix()
-    matrix.setCell(cell, row, column, 1, 1)
+    matrix.setCell(cell, row, column)
   }
 
   "A matrix" should "have equal name with the reference matrix" in {
@@ -72,18 +72,8 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
 
   it should "replace a cell with a new cell at same position" in {
     val cell = new IOCell("Glibebluk")
-    matrix.setCell(cell, 1, 1, 1, 1)
+    matrix.setCell(cell, 1, 1)
     matrix.getCell(1, 1).equals(cell) shouldBe true
-  }
-
-  it should "expand a cell with colspan/rowspan" in {
-    val cell = new IOCell("Glibeblok")
-    matrix.setCell(cell, 1, 1, 3, 2)
-    for (i <- 1 to 3) {
-      for (j <- 1 to 2){
-        matrix.getCell(i, j).equals(cell) shouldBe true
-      }
-    }
   }
 
   it should "give null if a cell does not exist" in {

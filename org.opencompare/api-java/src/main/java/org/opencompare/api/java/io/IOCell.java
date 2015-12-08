@@ -7,11 +7,13 @@ import java.util.Observable;
  */
 public class IOCell {
 
-    private String content;
-    private String rawContent;
+    protected String content;
+    protected String rawContent;
+    protected int rowspan;
+    protected int colspan;
 
     public IOCell() {
-
+        this("", "", 1, 1);
     }
 
     public IOCell(String content) {
@@ -19,8 +21,18 @@ public class IOCell {
     }
 
     public IOCell(String content, String rawContent) {
+        this(content, rawContent, 1, 1);
+    }
+
+    public IOCell(String content, int rowspan, int colspan) {
+        this(content, content, rowspan, colspan);
+    }
+
+    public IOCell(String content, String rawContent, int rowspan, int colspan) {
         setContent(content);
         setRawContent(rawContent);
+        setRowspan(rowspan);
+        setColspan(colspan);
     }
 
     public String getContent() {
@@ -45,6 +57,22 @@ public class IOCell {
         }
         this.rawContent = rawContent;
         return this;
+    }
+
+    public int getRowspan() {
+        return rowspan;
+    }
+
+    public void setRowspan(int rowspan) {
+        this.rowspan = rowspan;
+    }
+
+    public int getColspan() {
+        return colspan;
+    }
+
+    public void setColspan(int colspan) {
+        this.colspan = colspan;
     }
 
     @Override

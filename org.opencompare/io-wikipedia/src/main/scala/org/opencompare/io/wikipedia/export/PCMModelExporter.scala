@@ -47,7 +47,7 @@ class PCMModelExporter {
     val normalizedMatrix = new Matrix
     normalizedMatrix.name = matrix.name
 
-    for (cell <- matrix.cells.map(_._2)) {
+    for (cell <- matrix.cells.values) {
       for (
         rowShift <- 0 until cell.rowspan;
         columnShift <- 0 until cell.colspan
@@ -73,7 +73,7 @@ class PCMModelExporter {
   def fillMissingCells(matrix : Matrix) {
 
     for (row <- 0 until matrix.getNumberOfRows(); column <- 0 until matrix.getNumberOfColumns()) {
-      if (!matrix.getCell(row, column).isDefined) {
+      if (matrix.getCell(row, column).isEmpty) {
         val emptyCell = new Cell("", "", false, row, 1, column, 1)
         matrix.setCell(emptyCell, row, column)
       }

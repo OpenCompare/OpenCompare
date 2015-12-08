@@ -27,6 +27,9 @@ public class ImportMatrixLoader {
         // Detect types and information for each cell
         detectTypes(matrix);
 
+        // Expand rowpsan and colspan
+        matrix.flattenCells();
+
         // Detect direction of the matrix
         PCMDirection detectedDirection = direction;
         if (detectedDirection == PCMDirection.UNKNOWN) {

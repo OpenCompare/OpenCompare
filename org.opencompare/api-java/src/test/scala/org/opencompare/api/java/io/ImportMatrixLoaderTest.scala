@@ -28,16 +28,22 @@ abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
     val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
     val output = loader.load(input)
 
-    output.getPcm.getConcreteFeatures.size() should be (3)
-    output.getPcm.getProducts.size() should be (2)
+    withClue("concrete features")(output.getPcm.getConcreteFeatures.size() should be (3))
+    withClue("products")(output.getPcm.getProducts.size() should be (2))
 
-    output.getPcm.getProducts.foreach(_.getCells.size() should be (3))
+    withClue("cells") {
+      output.getPcm.getProducts.foreach(_.getCells.size() should be(3))
+    }
 
-    val featureNames = output.getPcm.getConcreteFeatures.map(_.getName)
-    featureNames.forall(name => name.startsWith("F") || name == "Products") shouldBe true
+    withClue("feature names") {
+      val featureNames = output.getPcm.getConcreteFeatures.map(_.getName)
+      featureNames.forall(name => name.startsWith("F") || name == "Products") shouldBe true
+    }
 
-    val productNames = output.getPcm.getProducts.map(_.getKeyContent)
-    productNames.forall(_.startsWith("P")) shouldBe true
+    withClue("product names") {
+      val productNames = output.getPcm.getProducts.map(_.getKeyContent)
+      productNames.forall(_.startsWith("P")) shouldBe true
+    }
   }
 
 

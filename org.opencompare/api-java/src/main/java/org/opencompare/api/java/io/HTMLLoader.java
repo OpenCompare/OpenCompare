@@ -47,10 +47,17 @@ public class HTMLLoader implements PCMLoader {
             }
 
             int i = 0;
-            for (Element line: table.getElementsByTag("tr")) {
+            for (Element row: table.getElementsByTag("tr")) {
                 int j = 0;
 
-                for (Element column: line.getAllElements()) {
+                // Skip cells created with rowspans before
+                matrix.flattenCells(); // FIXME : it removes any information about rowspan and colspan. It might be a bit aggressive
+                while (matrix.getCell(i, j) != null) {
+                    j++;
+                }
+
+                // Parse row
+                for (Element column: row.getAllElements()) {
                     if (column.tag().getName().equals("th") || column.tag().getName().equals("td")){
                         if (matrix.getCell(i, j) != null) {
                             j++;
@@ -64,10 +71,17 @@ public class HTMLLoader implements PCMLoader {
                             colspan = Integer.valueOf(column.attributes().get("colspan"));
                         }
 
-                        matrix.setCell(new ImportCell(cellToText(column)), i, j, rowspan, colspan);
+                        ImportCell importCell = new ImportCell(cellToText(column), rowspan, colspan);
+                        matrix.setCell(importCell, i, j);
+//                        System.out.println("importCell = " + importCell);
+//                        System.out.println("i = " + i);
+//                        System.out.println("j = " + j);
+//                        System.out.println("rowspan = " + rowspan);
+//                        System.out.println("colspan = " + colspan);
                         j += colspan;
                     }
                 }
+
                 i++;
             }
             matrices.add(matrix);

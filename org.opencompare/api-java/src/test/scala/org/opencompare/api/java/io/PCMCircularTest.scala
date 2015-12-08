@@ -59,6 +59,12 @@ abstract class PCMCircularTest(
           val code = exporter.export(inputContainer)
           val outputContainer = importer.load(code).get(0)
 
+          if (inputContainer != outputContainer) {
+            val baseName = exporter.getClass.getName + "-" + importer.getClass.getName + "_" + name
+            Files.write(Paths.get("/tmp", baseName + "_in"), code.getBytes())
+            Files.write(Paths.get("/tmp", baseName + "_out"), exporter.export(outputContainer).getBytes())
+          }
+
           withClue("PCM: ") {
             inputContainer.getPcm should be(outputContainer.getPcm)
           }

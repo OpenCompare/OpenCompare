@@ -6,6 +6,7 @@ package org.opencompare.api.java.io;
 public class ImportCell extends IOCell {
 
     public ImportCell() {
+
     }
 
     public ImportCell(String content) {
@@ -16,4 +17,11 @@ public class ImportCell extends IOCell {
         super(content, rawContent);
     }
 
+    public ImportCell(String content, int rowspan, int colspan) {
+        super(content, rowspan, colspan);
+    }
+
+    public ImportCell(String content, String rawContent, int rowspan, int colspan) {
+        super(content, rawContent, rowspan, colspan);
+    }
 }
