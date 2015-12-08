@@ -3,7 +3,7 @@ package org.opencompare.io.wikipedia.export
 import java.util
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java._
-import org.opencompare.api.java.io.{PCMDirection, IOMatrixLoader, IOCell, IOMatrix}
+import org.opencompare.api.java.io._
 import org.opencompare.io.wikipedia.io.WikiTextLoader
 import org.opencompare.io.wikipedia.pcm.{Cell, Matrix, Page}
 import scala.collection.JavaConversions._
@@ -14,19 +14,19 @@ import scala.collection.JavaConversions._
 class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
-  private val ioLoader = new IOMatrixLoader(factory, PCMDirection.UNKNOWN)
+  private val ioLoader = new ImportMatrixLoader(factory, PCMDirection.UNKNOWN)
 
   def export(page : Page) : util.List[PCMContainer] = {
     val pcmContainers = for (matrix <- page.getMatrices) yield {
       val normalizedMatrix = normalize(matrix)
-      val ioMatrix = new IOMatrix()
+      val ioMatrix = new ImportMatrix()
       ioMatrix.setName(normalizedMatrix.name)
 
       for (r <- 0 until normalizedMatrix.getNumberOfRows(); c <- 0 until normalizedMatrix.getNumberOfColumns()) {
         val cellOpt = normalizedMatrix.getCell(r, c)
         if (cellOpt.isDefined) {
           val cell = cellOpt.get
-          val ioCell = new IOCell(cell.content, cell.rawContent)
+          val ioCell = new ImportCell(cell.content, cell.rawContent)
           ioMatrix.setCell(ioCell, r, c, cell.rowspan, cell.colspan)
         }
       }

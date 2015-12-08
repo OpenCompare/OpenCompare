@@ -7,6 +7,6 @@ import org.opencompare.api.java.impl.PCMFactoryImpl
 /**
  * Created by gbecan on 10/2/15.
  */
-class IOMatrixLoaderTest extends org.opencompare.api.java.io.IOMatrixLoaderTest{
+class ImportMatrixLoaderTest extends org.opencompare.api.java.io.ImportMatrixLoaderTest{
   override val factory: PCMFactory = new PCMFactoryImpl
 }

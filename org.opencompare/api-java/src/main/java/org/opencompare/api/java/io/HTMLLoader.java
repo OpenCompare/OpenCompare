@@ -4,7 +4,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 import org.opencompare.api.java.*;
-import org.w3c.dom.Text;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class HTMLLoader implements PCMLoader {
 
     private PCMFactory factory;
     private boolean productsAsLines;
-    private IOMatrixLoader ioMatrixLoader;
+    private ImportMatrixLoader importMatrixLoader;
 
     public HTMLLoader(PCMFactory factory) {
         this(factory, true);
@@ -28,19 +27,19 @@ public class HTMLLoader implements PCMLoader {
         this.productsAsLines = productsAsLines;
 
         if (this.productsAsLines) {
-            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
+            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
         } else {
-            ioMatrixLoader = new IOMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
+            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
         }
     }
 
-    private List<IOMatrix> createMatrices(Document doc) {
-        List<IOMatrix> matrices = new ArrayList<>();
+    private List<ImportMatrix> createMatrices(Document doc) {
+        List<ImportMatrix> matrices = new ArrayList<>();
         String pageName = doc.head().getElementsByTag("title").text();
         int index = 0;
         Elements tables = doc.getElementsByTag("table");
         for (Element table: tables) {
-            IOMatrix matrix = new IOMatrix();
+            ImportMatrix matrix = new ImportMatrix();
             if (tables.size() > 1) {
                 matrix.setName(pageName + " #" + index);
             } else {
@@ -65,9 +64,7 @@ public class HTMLLoader implements PCMLoader {
                             colspan = Integer.valueOf(column.attributes().get("colspan"));
                         }
 
-
-
-                        matrix.setCell(new IOCell(cellToText(column)), i, j, rowspan, colspan);
+                        matrix.setCell(new ImportCell(cellToText(column)), i, j, rowspan, colspan);
                         j += colspan;
                     }
                 }
@@ -100,7 +97,7 @@ public class HTMLLoader implements PCMLoader {
     @Override
     public List<PCMContainer> load(String pcm) {
         Document doc = Jsoup.parse(pcm);
-        List<IOMatrix> matrices = createMatrices(doc);
+        List<ImportMatrix> matrices = createMatrices(doc);
         List<PCMContainer> containers = load(matrices.get(0));
         return containers;
     }
@@ -109,15 +106,15 @@ public class HTMLLoader implements PCMLoader {
     public List<PCMContainer> load(File file) throws IOException {
         Document doc = Jsoup.parse(file, "UTF-8");
         List<PCMContainer> containers = new ArrayList<>();
-        for (IOMatrix matrix: createMatrices(doc)) {
+        for (ImportMatrix matrix: createMatrices(doc)) {
             containers.add(load(matrix).get(0));
         }
         return containers;
     }
 
-    public List<PCMContainer> load(IOMatrix matrix) {
+    public List<PCMContainer> load(ImportMatrix matrix) {
         List<PCMContainer> result = new ArrayList<>();
-        result.add(ioMatrixLoader.load(matrix));
+        result.add(importMatrixLoader.load(matrix));
         return result;
     }
 

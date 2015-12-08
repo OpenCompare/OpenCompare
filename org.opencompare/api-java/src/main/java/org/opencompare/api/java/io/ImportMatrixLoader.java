@@ -8,19 +8,19 @@ import java.util.stream.Collectors;
 /**
  * Created by gbecan on 10/16/15.
  */
-public class IOMatrixLoader {
+public class ImportMatrixLoader {
 
     private PCMFactory factory;
     private PCMDirection direction;
 
 
-    public IOMatrixLoader(PCMFactory factory, PCMDirection direction) {
+    public ImportMatrixLoader(PCMFactory factory, PCMDirection direction) {
         this.factory = factory;
         this.direction = direction;
     }
 
 
-    public PCMContainer load(IOMatrix matrix) {
+    public PCMContainer load(ImportMatrix matrix) {
 
         // Compute content of cells
 
@@ -74,7 +74,7 @@ public class IOMatrixLoader {
      * Detect types of each cell of the matrix
      * @param matrix
      */
-    protected void detectTypes(IOMatrix matrix) {
+    protected void detectTypes(ImportMatrix matrix) {
 
     }
 
@@ -83,7 +83,7 @@ public class IOMatrixLoader {
      * @param matrix
      * @return
      */
-    protected PCMDirection detectDirection(IOMatrix matrix) {
+    protected PCMDirection detectDirection(ImportMatrix matrix) {
         return PCMDirection.PRODUCTS_AS_LINES;
     }
 
@@ -93,7 +93,7 @@ public class IOMatrixLoader {
      * @param matrix
      * @param pcmContainer
      */
-    protected IONode<String> detectFeatures(IOMatrix matrix, PCMContainer pcmContainer) {
+    protected IONode<String> detectFeatures(ImportMatrix matrix, PCMContainer pcmContainer) {
 
         IONode<String> root = new IONode<>(null);
         List<IONode<String>> parents = new ArrayList<>();
@@ -190,7 +190,7 @@ public class IOMatrixLoader {
      * @param matrix
      * @param pcmContainer
      */
-    protected void createProducts(IOMatrix matrix, PCMContainer pcmContainer, Map<Integer, Feature> positionToFeature) {
+    protected void createProducts(ImportMatrix matrix, PCMContainer pcmContainer, Map<Integer, Feature> positionToFeature) {
 
         int featuresDepth = pcmContainer.getPcm().getFeaturesDepth();
 

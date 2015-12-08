@@ -5,10 +5,14 @@ import java.util.Observable;
 /**
  * Created by smangin on 02/07/15.
  */
-public class IOCell implements Cloneable {
+public class IOCell {
 
     private String content;
     private String rawContent;
+
+    public IOCell() {
+
+    }
 
     public IOCell(String content) {
         this(content, content);
@@ -41,10 +45,6 @@ public class IOCell implements Cloneable {
         }
         this.rawContent = rawContent;
         return this;
-    }
-
-    public IOCell clone() throws CloneNotSupportedException {
-        return (IOCell) super.clone();
     }
 
     @Override

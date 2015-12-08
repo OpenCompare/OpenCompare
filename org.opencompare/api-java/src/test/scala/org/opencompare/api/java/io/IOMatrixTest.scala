@@ -20,7 +20,7 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   var refHeight = 0
   var refWidth = 0
   var title = "Blah, Blah : Blah"
-  var csvMatrix : IOMatrix = _
+  var csvMatrix : IOMatrix[IOCell] = _
 
   val row = 3
   val column = 5
@@ -28,13 +28,13 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
   val colspan = 3
   val content = "fdgqe÷ýt:!u4i19:u8yus:81ts"
   var cell : IOCell = _
-  var matrix : IOMatrix = _
+  var matrix : IOMatrix[IOCell] = _
 
-  def createMatrix(reader : CSVReader): IOMatrix = {
+  def createMatrix(reader : CSVReader): IOMatrix[IOCell] = {
     val csvMatrix = reader.readAll().asScala
     var i = 0
     var j = 0
-    val matrix = new IOMatrix()
+    val matrix = new IOMatrix[IOCell]()
     for (line <- csvMatrix.iterator) {
       for (column <- line.iterator) {
         val cell = new IOCell(column)
@@ -70,13 +70,13 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     matrix.getCell(row, column).equals(cell) shouldBe true
   }
 
-  it should "proper replace a cell with a new cell at same position" in {
+  it should "replace a cell with a new cell at same position" in {
     val cell = new IOCell("Glibebluk")
     matrix.setCell(cell, 1, 1, 1, 1)
     matrix.getCell(1, 1).equals(cell) shouldBe true
   }
 
-  it should "proper expand a cell with colspan/rowspan" in {
+  it should "expand a cell with colspan/rowspan" in {
     val cell = new IOCell("Glibeblok")
     matrix.setCell(cell, 1, 1, 3, 2)
     for (i <- 1 to 3) {
@@ -86,15 +86,10 @@ class IOMatrixTest extends FlatSpec with Matchers with BeforeAndAfterAll  {
     }
   }
 
-  it should "proper give null if a cell does not exist" in {
+  it should "give null if a cell does not exist" in {
     matrix.getCell(5, 9) shouldBe null
   }
 
-  it should "proper create a new empty cell if it does not exist" in {
-    val cell = new IOCell("")
-    matrix.getOrCreateCell(5, 9).equals(cell) shouldBe true
-    matrix.getCell(5, 9).equals(cell) shouldBe true
-  }
 
   it should "have equal number of rows/columns with the reference matrix" in {
     matrix.getNumberOfRows.equals(row)

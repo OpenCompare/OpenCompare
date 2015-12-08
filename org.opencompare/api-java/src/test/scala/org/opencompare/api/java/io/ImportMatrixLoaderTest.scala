@@ -8,23 +8,24 @@ import collection.JavaConversions._
 /**
  * Created by gbecan on 10/2/15.
  */
-abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
+abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
 
   val factory : PCMFactory
 
   it should "load a PCM with products as lines" in {
-    val input = new IOMatrix()
-      .setCell(new IOCell("Products"), 0, 0)
-      .setCell(new IOCell("F1"), 0, 1)
-      .setCell(new IOCell("F2"), 0, 2)
-      .setCell(new IOCell("P1"), 1, 0)
-      .setCell(new IOCell("C"), 1, 1)
-      .setCell(new IOCell("C"), 1, 2)
-      .setCell(new IOCell("P2"), 2, 0)
-      .setCell(new IOCell("C"), 2, 1)
-      .setCell(new IOCell("C"), 2, 2)
+    val input = new ImportMatrix()
+    input
+      .setCell(new ImportCell("Products"), 0, 0)
+      .setCell(new ImportCell("F1"), 0, 1)
+      .setCell(new ImportCell("F2"), 0, 2)
+      .setCell(new ImportCell("P1"), 1, 0)
+      .setCell(new ImportCell("C"), 1, 1)
+      .setCell(new ImportCell("C"), 1, 2)
+      .setCell(new ImportCell("P2"), 2, 0)
+      .setCell(new ImportCell("C"), 2, 1)
+      .setCell(new ImportCell("C"), 2, 2)
 
-    val loader = new IOMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
+    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
     val output = loader.load(input)
 
     output.getPcm.getConcreteFeatures.size() should be (3)
@@ -42,18 +43,19 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
 
   it should "load a PCM with products as columns" in {
 
-    val input = new IOMatrix()
-      .setCell(new IOCell("Products"), 0, 0)
-      .setCell(new IOCell("P1"), 0, 1)
-      .setCell(new IOCell("P2"), 0, 2)
-      .setCell(new IOCell("F1"), 1, 0)
-      .setCell(new IOCell("C"), 1, 1)
-      .setCell(new IOCell("C"), 1, 2)
-      .setCell(new IOCell("F2"), 2, 0)
-      .setCell(new IOCell("C"), 2, 1)
-      .setCell(new IOCell("C"), 2, 2)
+    val input = new ImportMatrix()
+    input
+      .setCell(new ImportCell("Products"), 0, 0)
+      .setCell(new ImportCell("P1"), 0, 1)
+      .setCell(new ImportCell("P2"), 0, 2)
+      .setCell(new ImportCell("F1"), 1, 0)
+      .setCell(new ImportCell("C"), 1, 1)
+      .setCell(new ImportCell("C"), 1, 2)
+      .setCell(new ImportCell("F2"), 2, 0)
+      .setCell(new ImportCell("C"), 2, 1)
+      .setCell(new ImportCell("C"), 2, 2)
 
-    val loader = new IOMatrixLoader(factory, PCMDirection.PRODUCTS_AS_COLUMNS)
+    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_COLUMNS)
     val output = loader.load(input)
 
     withClue("concrete features")(output.getPcm.getConcreteFeatures.size() should be (3))
@@ -85,21 +87,22 @@ abstract class IOMatrixLoaderTest extends FlatSpec with Matchers {
     //    "P2","C21",C22"
 
 
-    val input = new IOMatrix()
-      .setCell(new IOCell("Products"), 0, 0)
-      .setCell(new IOCell("FG"), 0, 1)
-      .setCell(new IOCell("FG"), 0, 2)
-      .setCell(new IOCell("Products"), 1, 0)
-      .setCell(new IOCell("F1"), 1, 1)
-      .setCell(new IOCell("F2"), 1, 2)
-      .setCell(new IOCell("P1"), 2, 0)
-      .setCell(new IOCell("C11"), 2, 1)
-      .setCell(new IOCell("C12"), 2, 2)
-      .setCell(new IOCell("P2"), 3, 0)
-      .setCell(new IOCell("C21"), 3, 1)
-      .setCell(new IOCell("C22"), 3, 2)
+    val input = new ImportMatrix()
+    input
+      .setCell(new ImportCell("Products"), 0, 0)
+      .setCell(new ImportCell("FG"), 0, 1)
+      .setCell(new ImportCell("FG"), 0, 2)
+      .setCell(new ImportCell("Products"), 1, 0)
+      .setCell(new ImportCell("F1"), 1, 1)
+      .setCell(new ImportCell("F2"), 1, 2)
+      .setCell(new ImportCell("P1"), 2, 0)
+      .setCell(new ImportCell("C11"), 2, 1)
+      .setCell(new ImportCell("C12"), 2, 2)
+      .setCell(new ImportCell("P2"), 3, 0)
+      .setCell(new ImportCell("C21"), 3, 1)
+      .setCell(new ImportCell("C22"), 3, 2)
 
-    val loader = new IOMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
+    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
     val pcm = loader.load(input).getPcm
 
 
