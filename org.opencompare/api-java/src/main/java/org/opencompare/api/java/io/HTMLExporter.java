@@ -45,120 +45,42 @@ public class HTMLExporter implements PCMExporter {
         Element table = body.appendElement("table")
                 .attr("border", "1");
 
-        // Generate HTML code for features
-        exportFeatures(metadata, table);
+        ExportMatrixExporter exportMatrixExporter = new ExportMatrixExporter();
+        ExportMatrix exportMatrix = exportMatrixExporter.export(pcmContainer);
 
-        // Generate HTML code for products
-        exportProducts(pcm, metadata, table);
+        for (int row = 0; row < exportMatrix.getNumberOfRows(); row++) {
+            Element htmlRow = table.appendElement("tr");
 
+            for (int column = 0; column < exportMatrix.getNumberOfColumns(); column++) {
+                ExportCell exportCell = exportMatrix.getCell(row, column);
+
+                if (exportCell != null) {
+                    Element htmlCell;
+                    if (exportCell.isFeature() || exportCell.isInProductsKeyColumn()) {
+                        htmlCell = htmlRow.appendElement("th");
+                    } else {
+                        htmlCell = htmlRow.appendElement("td");
+                    }
+
+                    htmlCell.attr("style", "white-space: pre;");
+                    htmlCell.text(textToHTML(exportCell.getContent()));
+
+                    if (exportCell.getRowspan() > 1) {
+                        htmlCell.attr("rowspan", "" + exportCell.getRowspan());
+                    }
+
+                    if (exportCell.getColspan() > 1) {
+                        htmlCell.attr("colspan", "" + exportCell.getColspan());
+                    }
+                }
+
+            }
+        }
 
         // Export to HTML code
         Document.OutputSettings settings = new Document.OutputSettings().prettyPrint(false);
         return doc.outputSettings(settings).outerHtml();
 
-    }
-
-    private void exportFeatures(PCMMetadata metadata, Element table) {
-        List<Pair<AbstractFeature, Pair<Integer, Integer>>> currentFeatureLevel = new ArrayList<>();
-
-        for (Feature feature : metadata.getSortedFeatures()) {
-            currentFeatureLevel.add(new Pair<>(feature, new Pair<>(1, 1)));
-        }
-
-        List<Element> lines = new ArrayList<>();
-        boolean noParents = false;
-
-        while(!currentFeatureLevel.isEmpty() && !noParents) {
-
-            List<Pair<AbstractFeature, Pair<Integer, Integer>>> nextFeatureLevel = new ArrayList<>();
-            List<Pair<AbstractFeature, Pair<Integer, Integer>>> row = new ArrayList<>();
-
-            // Detect if current level of features have at least one parent
-            noParents = true;
-            for (Pair<AbstractFeature, Pair<Integer, Integer>> data : currentFeatureLevel) {
-                if (data._1.getParentGroup() != null) {
-                    noParents = false;
-                }
-            }
-
-            // Analyze hierarchy of features
-            int i = 0;
-            while (i < currentFeatureLevel.size()) {
-                Pair<AbstractFeature, Pair<Integer, Integer>> data = currentFeatureLevel.get(i);
-                AbstractFeature aFeature = data._1;
-                Pair<Integer, Integer> span = data._2;
-
-                // Compute colspan
-                int colspan = 1;
-                while ((i + 1) < currentFeatureLevel.size() && aFeature.equals(currentFeatureLevel.get(i + 1)._1)) {
-                    i++;
-                    colspan++;
-                }
-
-                // Compute rowspan and prepare for next iteration
-                AbstractFeature parentGroup = aFeature.getParentGroup();
-                if (parentGroup == null) {
-                    int rowspan = span._1 + 1;
-                    nextFeatureLevel.add(new Pair<>(aFeature, new Pair<>(rowspan, colspan)));
-                    if (noParents) {
-                        row.add(new Pair<>(aFeature, new Pair<>(span._1, colspan)));
-                    }
-                } else {
-                    row.add(new Pair<>(aFeature, new Pair<>(span._1, colspan)));
-                    nextFeatureLevel.add(new Pair<>(parentGroup, new Pair<>(1, 1)));
-                }
-                i++;
-            }
-
-            // Create HTML elements
-            Element line = new Element(Tag.valueOf("tr"), "");
-            for (Pair<AbstractFeature, Pair<Integer, Integer>> data : row) {
-                AbstractFeature aFeature = data._1;
-                Pair<Integer, Integer> span = data._2;
-
-                Element th = line.appendElement("th")
-                        .attr("style", "white-space: pre;")
-                        .text(textToHTML(aFeature.getName()));
-
-                if (span._1 > 1) {
-                    th.attr("rowspan", span._1.toString());
-                }
-
-                if (span._2 > 1) {
-                    th.attr("colspan", span._2.toString());
-                }
-
-            }
-            lines.add(line);
-
-            currentFeatureLevel = nextFeatureLevel;
-        }
-
-    // Add rows to table
-        Collections.reverse(lines);
-        for (Element line : lines) {
-            table.appendChild(line);
-        }
-    }
-
-    private void exportProducts(PCM pcm, PCMMetadata metadata, Element table) {
-        for (Product product : metadata.getSortedProducts()) {
-            Element tr = table.appendElement("tr");
-
-            for (Feature feature : metadata.getSortedFeatures()) {
-                Cell cell = product.findCell(feature);
-
-                Element htmlCell;
-                if (pcm.getProductsKey().equals(feature)) {
-                    htmlCell = tr.appendElement("th");
-                } else {
-                    htmlCell = tr.appendElement("td");
-                }
-
-                htmlCell.attr("style", "white-space: pre;");
-                htmlCell.text(textToHTML(cell.getContent()));
-            }
-        }
     }
 
     private String textToHTML(String text) {

@@ -46,6 +46,36 @@ public class IOMatrix<T extends IOCell> {
         return maxColumn + 1;
     }
 
+
+    public boolean isPositionOccupied(int row, int column) {
+
+        if (getCell(row, column) != null) {
+            return true;
+        }
+
+        // Check previous cells with rowspan
+        for (int i = row; i >= 0; i--) {
+            IOCell cell = getCell(i, column);
+            if (cell != null && (i + cell.getRowspan() > row)) {
+                return true;
+            } else if (cell != null) {
+                break;
+            }
+        }
+
+        // Check previous cells with colspan
+        for (int j = column; j >= 0; j--) {
+            IOCell cell = getCell(row, j);
+            if (cell != null && (j + cell.getColspan() > column)) {
+                return true;
+            } else if (cell != null) {
+                break;
+            }
+        }
+
+        return false;
+    }
+
     public void transpose() {
         Map<Pair<Integer, Integer>, T> transposedCells = new HashMap<>();
 
@@ -139,4 +169,5 @@ public class IOMatrix<T extends IOCell> {
         }
         return matrix;
     }
+
 }

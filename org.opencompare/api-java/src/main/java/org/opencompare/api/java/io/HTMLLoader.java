@@ -51,8 +51,7 @@ public class HTMLLoader implements PCMLoader {
                 int j = 0;
 
                 // Skip cells created with rowspans before
-                matrix.flattenCells(); // FIXME : it removes any information about rowspan and colspan. It might be a bit aggressive
-                while (matrix.getCell(i, j) != null) {
+                while (matrix.isPositionOccupied(i, j)) {
                     j++;
                 }
 
@@ -73,11 +72,6 @@ public class HTMLLoader implements PCMLoader {
 
                         ImportCell importCell = new ImportCell(cellToText(column), rowspan, colspan);
                         matrix.setCell(importCell, i, j);
-//                        System.out.println("importCell = " + importCell);
-//                        System.out.println("i = " + i);
-//                        System.out.println("j = " + j);
-//                        System.out.println("rowspan = " + rowspan);
-//                        System.out.println("colspan = " + colspan);
                         j += colspan;
                     }
                 }
@@ -111,8 +105,10 @@ public class HTMLLoader implements PCMLoader {
     @Override
     public List<PCMContainer> load(String pcm) {
         Document doc = Jsoup.parse(pcm);
-        List<ImportMatrix> matrices = createMatrices(doc);
-        List<PCMContainer> containers = load(matrices.get(0));
+        List<PCMContainer> containers = new ArrayList<>();
+        for (ImportMatrix matrix: createMatrices(doc)) {
+            containers.add(load(matrix).get(0));
+        }
         return containers;
     }
 

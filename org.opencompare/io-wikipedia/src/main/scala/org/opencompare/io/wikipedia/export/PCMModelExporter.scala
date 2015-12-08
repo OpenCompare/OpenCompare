@@ -26,8 +26,8 @@ class PCMModelExporter {
         val cellOpt = normalizedMatrix.getCell(r, c)
         if (cellOpt.isDefined) {
           val cell = cellOpt.get
-          val ioCell = new ImportCell(cell.content, cell.rawContent)
-          ioMatrix.setCell(ioCell, r, c, cell.rowspan, cell.colspan)
+          val ioCell = new ImportCell(cell.content, cell.rawContent, cell.rowspan, cell.colspan)
+          ioMatrix.setCell(ioCell, r, c)
         }
       }
 
