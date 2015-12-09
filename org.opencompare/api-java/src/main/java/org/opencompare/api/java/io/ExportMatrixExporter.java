@@ -95,7 +95,7 @@ public class ExportMatrixExporter {
                 i++;
             }
 
-            // Create HTML elements
+            // Create cells
             List<ExportCell> exportCellRow = new ArrayList<>();
             for (Pair<AbstractFeature, Pair<Integer, Integer>> data : row) {
                 AbstractFeature aFeature = data._1;
@@ -115,8 +115,9 @@ public class ExportMatrixExporter {
         // Add rows to table
         Collections.reverse(exportCellRows);
         int row = 0;
-        int column = 0;
         for (List<ExportCell> exportCellRow : exportCellRows) {
+
+            int column = 0;
 
             // Skip cells created by rowspan
             while (matrix.isPositionOccupied(row, column)) {

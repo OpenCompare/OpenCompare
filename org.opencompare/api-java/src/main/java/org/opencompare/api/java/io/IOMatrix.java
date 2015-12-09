@@ -80,6 +80,10 @@ public class IOMatrix<T extends IOCell> {
         Map<Pair<Integer, Integer>, T> transposedCells = new HashMap<>();
 
         for (Map.Entry<Pair<Integer, Integer>, T> entry : cells.entrySet()) {
+            T cell = entry.getValue();
+            int tempRowspan = cell.rowspan;
+            cell.rowspan = cell.colspan;
+            cell.colspan = tempRowspan;
             transposedCells.put(new Pair<>(entry.getKey()._2, entry.getKey()._1), entry.getValue());
         }
 
