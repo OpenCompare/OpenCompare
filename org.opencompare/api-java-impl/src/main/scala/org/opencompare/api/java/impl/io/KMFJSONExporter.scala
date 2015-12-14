@@ -26,20 +26,6 @@ class KMFJSONExporter(val base64Encoding : Boolean = true) extends PCMExporter {
       case pcm: PCMImpl =>
         val metadata = container.getMetadata
 
-        // Convert all strings to base64 to avoid encoding problems
-        if (base64Encoding) {
-          encoder.encode(pcm)
-        }
-
-        // Serialize PCM
-        val kPcm = pcm.getKpcm()
-        val jsonPCM = Json.parse(serializer.serialize(kPcm))
-
-        // Decode PCM
-        if (base64Encoding) {
-          encoder.decode(pcm)
-        }
-
         // Serialize Metadata
 
         // Serialize product positions
@@ -71,10 +57,27 @@ class KMFJSONExporter(val base64Encoding : Boolean = true) extends PCMExporter {
         ))
 
 
-        Json.prettyPrint(JsObject(Map(
-          "pcm" -> jsonPCM,
-          "metadata" -> jsonMetadata
-        )))
+        // Convert all strings to base64 to avoid encoding problems
+        if (base64Encoding) {
+          encoder.encode(pcm)
+        }
+
+        // Serialize PCM
+        val kPcm = pcm.getKpcm()
+
+        val jsonPCM = serializer.serialize(kPcm)
+
+        // Decode PCM
+        if (base64Encoding) {
+          encoder.decode(pcm)
+        }
+
+        List(
+          "{",
+          " \"pcm\" : " + jsonPCM + ",",
+          " \"metadata\" : " + Json.prettyPrint(jsonMetadata),
+          "}"
+        ).mkString("\n")
 
       case _ => ""
     }

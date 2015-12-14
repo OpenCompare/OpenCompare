@@ -57,7 +57,7 @@ abstract class PCMCircularTest(
         for (inputContainer: PCMContainer <- containers) {
 
           val code = exporter.export(inputContainer)
-          val outputContainer = importer.load(code).get(0)
+          val outputContainer = importer.load(code).head
 
           if (inputContainer != outputContainer) {
             val baseName = exporter.getClass.getName + "-" + importer.getClass.getName + "_" + name
