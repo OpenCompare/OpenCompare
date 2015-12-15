@@ -42,4 +42,38 @@ public class ImportMatrix extends IOMatrix<ImportCell> {
 
     }
 
+    public void removeEmptyLines() {
+        int removedLines = 0;
+
+        for (int row = 0; row < getNumberOfRows(); row++) {
+
+            // Detect empty line
+            boolean emptyline = true;
+            for (int column = 0; column < getNumberOfColumns(); column++) {
+                ImportCell cell = cells.get(new Pair<>(row, column));
+                if (cell != null && !cell.content.matches("\\s*")) {
+                    emptyline = false;
+                    break;
+                }
+            }
+
+            if (emptyline) {
+                removedLines++;
+            }
+
+            // Remove empty lines and shift others if necessary
+            if (removedLines > 0) {
+                for (int column = 0; column < getNumberOfColumns(); column++) {
+                    ImportCell cell = cells.get(new Pair<>(row, column));
+                    if (cell != null && !emptyline) {
+                        cells.put(new Pair<>(row - removedLines, column), cell);
+                    }
+                    cells.remove(new Pair<>(row, column));
+                }
+            }
+        }
+
+        maxRow = maxRow - removedLines;
+    }
+
 }

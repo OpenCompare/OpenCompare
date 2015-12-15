@@ -1,6 +1,7 @@
 package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.*;
+import org.opencompare.api.java.util.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -40,6 +41,9 @@ public class ImportMatrixLoader {
         if (detectedDirection == PCMDirection.PRODUCTS_AS_COLUMNS) {
             matrix.transpose();
         }
+
+        // Remove empty lines
+        matrix.removeEmptyLines();
 
         // Remove duplicated lines
         matrix.removeDuplicatedLines();
