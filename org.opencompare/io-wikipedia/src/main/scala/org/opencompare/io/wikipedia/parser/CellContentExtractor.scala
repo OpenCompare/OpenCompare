@@ -29,14 +29,22 @@ class CellContentExtractor(
 
     val title = ""
 
-    // Expand template with preprocessor
+    // Expand template with preprocessor + remove nowiki tags
     val preprocessorAST = preprocessor.parseArticle(code, title)
     val templatePreprocessor = new PreprocessVisitor(language, templateProcessor)
     templatePreprocessor.go(preprocessorAST)
-    val preprocessedCode = templatePreprocessor.getPreprocessedCode()
+    val preprocessedCode = templatePreprocessor
+      .getPreprocessedCode()
+      .replaceAll("<nowiki>", "")
+      .replaceAll("</nowiki>", "")
 
     // Parse content of cell
     val ast = parser.parseArticle(preprocessedCode, title)
+
+    if (rawContent.contains("abbr")) {
+      println(preprocessedCode)
+      println(ast)
+    }
 
     ignoredXMLStack = new Stack()
     cellContent = new StringBuilder()
@@ -85,6 +93,8 @@ class CellContentExtractor(
   def visit(e: WtNodeList) = {
     iterate(e)
   }
+
+  override def visit(e: WtXmlAttributes): Unit = {}
 
   def visit(e: WtXmlAttribute) = {
 
@@ -273,8 +283,6 @@ class CellContentExtractor(
   override def visit(e: WtTemplateArguments): Unit = iterate(e)
 
   override def visit(e: WtValue): Unit = iterate(e)
-
-  override def visit(e: WtXmlAttributes): Unit = iterate(e)
 
   override def visit(e: WtLinkOptionGarbage): Unit = iterate(e)
 
