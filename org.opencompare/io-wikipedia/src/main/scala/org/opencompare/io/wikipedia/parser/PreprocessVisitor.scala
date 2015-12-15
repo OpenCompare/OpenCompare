@@ -60,7 +60,11 @@ class PreprocessVisitor(language : String, templateProcessor : WikiTextTemplateP
       templateArg = new StringBuilder
       dispatch(arg)
 
-      template ++= templateArg
+      if (templateArg.isEmpty) {
+        template ++= " "
+      } else {
+        template ++= templateArg
+      }
     }
     isInTemplateArg = false
 

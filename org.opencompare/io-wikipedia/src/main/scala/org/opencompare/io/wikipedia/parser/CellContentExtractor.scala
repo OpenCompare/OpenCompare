@@ -41,11 +41,6 @@ class CellContentExtractor(
     // Parse content of cell
     val ast = parser.parseArticle(preprocessedCode, title)
 
-    if (rawContent.contains("abbr")) {
-      println(preprocessedCode)
-      println(ast)
-    }
-
     ignoredXMLStack = new Stack()
     cellContent = new StringBuilder()
 
