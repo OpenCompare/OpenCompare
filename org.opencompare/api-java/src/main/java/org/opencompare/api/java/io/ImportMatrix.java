@@ -38,5 +38,8 @@ public class ImportMatrix extends IOMatrix<ImportCell> {
             i++;
         }
 
+        maxRow = lines.size() - 1;
+
     }
+
 }

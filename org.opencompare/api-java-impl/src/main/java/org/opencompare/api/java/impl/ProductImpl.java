@@ -77,9 +77,11 @@ public class ProductImpl implements Product {
 //        System.out.println(query);
 //        System.out.println(kProduct.select(query));
 
-        for (Cell cell : getCells()) {
-            if (cell.getFeature().equals(feature)) {
-                return cell;
+        if (feature != null) {
+            for (Cell cell : getCells()) {
+                if (feature.equals(cell.getFeature())) {
+                    return cell;
+                }
             }
         }
 

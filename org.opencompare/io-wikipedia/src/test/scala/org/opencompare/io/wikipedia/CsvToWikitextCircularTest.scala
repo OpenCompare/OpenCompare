@@ -7,7 +7,7 @@ import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor,
 /**
  * Created by smangin on 01/06/15.
  */
-class WikitextPCMCircularTestImpl extends PCMCircularTest(
+class CsvToWikitextCircularTest extends PCMCircularTest(
   datasetPath = "csv/",
   pcmFactory = new PCMFactoryImpl,
   initLoader = new CSVLoader(new PCMFactoryImpl(), ',', '"'),

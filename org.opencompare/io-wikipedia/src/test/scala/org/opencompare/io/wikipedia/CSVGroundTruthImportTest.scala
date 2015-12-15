@@ -1,9 +1,9 @@
 package org.opencompare.io.wikipedia
 
-import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
+import java.nio.file.{Files, Paths}
 
 import org.opencompare.api.java.impl.PCMFactoryImpl
+import org.opencompare.api.java.impl.io.KMFJSONExporter
 import org.opencompare.api.java.io.CSVLoader
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextLoader, WikiTextTemplateProcessor}
 import org.scalatest.prop.TableDrivenPropertyChecks._
@@ -56,6 +56,10 @@ class CSVGroundTruthImportTest extends FlatSpec with Matchers with BeforeAndAfte
 
       val wikiCode = Source.fromFile(wiki).mkString
       val wikitextContainer = miner.mine(language, wikiCode, name).head
+
+      // FIXME : We cannot compare CSV and wikitext loaders because, wikitext is based on raw content while CSV is based on content
+      // FIXME : Moreover, we loose the Wikipedia nature when using CSV
+
 
       wikitextContainer should be (csvContainer)
     }

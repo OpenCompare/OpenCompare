@@ -57,7 +57,12 @@ public class CellImpl extends PCMElementImpl implements Cell {
 
     @Override
     public Feature getFeature() {
-        return new FeatureImpl(kCell.getFeature());
+        org.opencompare.model.Feature kFeature = kCell.getFeature();
+        if (kFeature != null) {
+            return new FeatureImpl(kFeature);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -93,6 +98,7 @@ public class CellImpl extends PCMElementImpl implements Cell {
             return false;
         }
 
+        // TODO : raw content
         // TODO : interpretation
 
         return true;
