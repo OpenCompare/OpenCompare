@@ -24,7 +24,8 @@ class CellContentExtractor(
   def extractCellContent(rawContent : String): String = {
     val code = "{|\n" +
       "|-\n" +
-      "| " + rawContent + "\n" +
+      "| " +
+      rawContent + "\n" +
       "|}"
 
     val title = ""
