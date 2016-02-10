@@ -1,6 +1,7 @@
 package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.*;
+import org.opencompare.api.java.interpreter.CellContentInterpreter;
 import org.opencompare.api.java.util.Pair;
 
 import java.util.*;
@@ -13,11 +14,13 @@ public class ImportMatrixLoader {
 
     private PCMFactory factory;
     private PCMDirection direction;
+    private CellContentInterpreter cellContentInterpreter;
 
 
-    public ImportMatrixLoader(PCMFactory factory, PCMDirection direction) {
+    public ImportMatrixLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, PCMDirection direction) {
         this.factory = factory;
         this.direction = direction;
+        this.cellContentInterpreter = cellContentInterpreter;
     }
 
 
@@ -81,6 +84,15 @@ public class ImportMatrixLoader {
      * @param matrix
      */
     protected void detectTypes(ImportMatrix matrix) {
+        for (int row = 0; row < matrix.getNumberOfRows(); row++) {
+            for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
+                ImportCell cell = matrix.getCell(row, column);
+                if (cell != null && cell.getInterpretation() == null) {
+                    cell.setInterpretation(cellContentInterpreter.interpretString(cell.getContent()));
+                }
+
+            }
+        }
 
     }
 

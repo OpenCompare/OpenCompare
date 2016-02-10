@@ -9,7 +9,7 @@ import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
 import org.opencompare.api.java.io.{HTMLExporter, CSVExporter}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.io.{WikiTextLoader, WikiTextTemplateProcessor, MediaWikiAPI, WikiTextExporter}
 import org.opencompare.io.wikipedia.parser.CellContentExtractor
 import play.api.data.Form

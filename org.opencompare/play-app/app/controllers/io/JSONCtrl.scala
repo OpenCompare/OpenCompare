@@ -8,7 +8,7 @@ import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONExporter
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.MessagesApi

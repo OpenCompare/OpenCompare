@@ -2,7 +2,7 @@ package org.opencompare.io.bestbuy
 
 import org.opencompare.hac.agglomeration.{CompleteLinkage, AgglomerationMethod}
 import org.opencompare.api.java.Product
-import org.opencompare.formalizer.clustering.HierarchicalClusterer
+import org.opencompare.api.java.clustering.HierarchicalClusterer
 
 import scala.collection.JavaConversions._
 

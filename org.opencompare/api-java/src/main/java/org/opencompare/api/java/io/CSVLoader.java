@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import org.opencompare.api.java.AbstractFeature;
 import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.PCMFactory;
+import org.opencompare.api.java.interpreter.CellContentInterpreter;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,28 +21,28 @@ public class CSVLoader implements PCMLoader {
     private char quote;
     private ImportMatrixLoader importMatrixLoader;
 
-    public CSVLoader(PCMFactory factory) {
-        this(factory, ',');
+    public CSVLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter) {
+        this(factory, cellContentInterpreter, ',');
     }
 
-    public CSVLoader(PCMFactory factory, char separator) {
-        this(factory, separator, '"');
+    public CSVLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, char separator) {
+        this(factory, cellContentInterpreter, separator, '"');
     }
 
-    public CSVLoader(PCMFactory factory, char separator, char quote) {
-        this(factory, separator, quote, PCMDirection.UNKNOWN);
+    public CSVLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, char separator, char quote) {
+        this(factory, cellContentInterpreter, separator, quote, PCMDirection.UNKNOWN);
     }
 
-    public CSVLoader(PCMFactory factory, PCMDirection pcmDirection) {
-        this(factory, ',', '"', pcmDirection);
+    public CSVLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, PCMDirection pcmDirection) {
+        this(factory, cellContentInterpreter, ',', '"', pcmDirection);
     }
 
-    public CSVLoader(PCMFactory factory, char separator, char quote, PCMDirection pcmDirection) {
+    public CSVLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, char separator, char quote, PCMDirection pcmDirection) {
         this.factory = factory;
         this.separator = separator;
         this.quote = quote;
 
-        importMatrixLoader = new ImportMatrixLoader(this.factory, pcmDirection);
+        importMatrixLoader = new ImportMatrixLoader(this.factory, cellContentInterpreter, pcmDirection);
     }
 
     private ImportMatrix createMatrix(CSVReader reader) throws IOException {

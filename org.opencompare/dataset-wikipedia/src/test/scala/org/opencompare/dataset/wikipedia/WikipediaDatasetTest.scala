@@ -9,7 +9,7 @@ import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
 import org.opencompare.api.java.io.CSVExporter
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page

@@ -4,7 +4,7 @@ import controllers._
 import models.Database
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import play.api.Logger
 import play.api.mvc._
 

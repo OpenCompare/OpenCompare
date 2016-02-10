@@ -1,6 +1,7 @@
 package org.opencompare.api.java.io
 
 import org.opencompare.api.java.PCMFactory
+import org.opencompare.api.java.interpreter.CellContentInterpreter
 import org.scalatest.{Matchers, FlatSpec}
 
 import collection.JavaConversions._
@@ -11,6 +12,7 @@ import collection.JavaConversions._
 abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
 
   val factory : PCMFactory
+  val cellContentInterpreter: CellContentInterpreter
 
   it should "load a PCM with products as lines" in {
     val input = new ImportMatrix()
@@ -25,7 +27,7 @@ abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
       .setCell(new ImportCell("C"), 2, 1)
       .setCell(new ImportCell("C"), 2, 2)
 
-    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
+    val loader = new ImportMatrixLoader(factory, cellContentInterpreter, PCMDirection.PRODUCTS_AS_LINES)
     val output = loader.load(input)
 
     withClue("concrete features")(output.getPcm.getConcreteFeatures.size() should be (3))
@@ -61,7 +63,7 @@ abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
       .setCell(new ImportCell("C"), 2, 1)
       .setCell(new ImportCell("C"), 2, 2)
 
-    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_COLUMNS)
+    val loader = new ImportMatrixLoader(factory, cellContentInterpreter, PCMDirection.PRODUCTS_AS_COLUMNS)
     val output = loader.load(input)
 
     withClue("concrete features")(output.getPcm.getConcreteFeatures.size() should be (3))
@@ -108,7 +110,7 @@ abstract class ImportMatrixLoaderTest extends FlatSpec with Matchers {
       .setCell(new ImportCell("C21"), 3, 1)
       .setCell(new ImportCell("C22"), 3, 2)
 
-    val loader = new ImportMatrixLoader(factory, PCMDirection.PRODUCTS_AS_LINES)
+    val loader = new ImportMatrixLoader(factory, cellContentInterpreter, PCMDirection.PRODUCTS_AS_LINES)
     val pcm = loader.load(input).getPcm
 
 

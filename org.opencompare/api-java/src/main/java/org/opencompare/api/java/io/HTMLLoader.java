@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.*;
 import org.jsoup.select.Elements;
 import org.opencompare.api.java.*;
+import org.opencompare.api.java.interpreter.CellContentInterpreter;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,22 +16,16 @@ import java.util.List;
 public class HTMLLoader implements PCMLoader {
 
     private PCMFactory factory;
-    private boolean productsAsLines;
     private ImportMatrixLoader importMatrixLoader;
 
-    public HTMLLoader(PCMFactory factory) {
-        this(factory, true);
+    public HTMLLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter) {
+        this(factory, cellContentInterpreter, PCMDirection.UNKNOWN);
     }
 
-    public HTMLLoader(PCMFactory factory, boolean productsAsLines) {
+    public HTMLLoader(PCMFactory factory, CellContentInterpreter cellContentInterpreter, PCMDirection pcmDirection) {
         this.factory = factory;
-        this.productsAsLines = productsAsLines;
 
-        if (this.productsAsLines) {
-            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
-        } else {
-            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
-        }
+        importMatrixLoader = new ImportMatrixLoader(this.factory, cellContentInterpreter, pcmDirection);
     }
 
     private List<ImportMatrix> createMatrices(Document doc) {
