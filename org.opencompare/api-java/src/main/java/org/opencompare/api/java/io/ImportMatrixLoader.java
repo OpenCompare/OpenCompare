@@ -116,7 +116,7 @@ public class ImportMatrixLoader {
 
             // Get the maximum proportion of a same type
             if (!types.isEmpty()) {
-                double homogeneityOfRow = Collections.max(types.values()) / matrix.getNumberOfColumns();
+                double homogeneityOfRow = Collections.max(types.values()) / (double) matrix.getNumberOfColumns();
                 sumHomogeneityOfRow += homogeneityOfRow;
             }
         }
@@ -132,13 +132,18 @@ public class ImportMatrixLoader {
 
             // Get the maximum proportion of a same type
             if (!types.isEmpty()) {
-                double homogeneityOfColumn = Collections.max(types.values()) / matrix.getNumberOfRows();
+                double homogeneityOfColumn = Collections.max(types.values()) / (double) matrix.getNumberOfRows();
                 homogeneityOfColumns += homogeneityOfColumn;
             }
 
         }
 
-        if (sumHomogeneityOfRow > homogeneityOfColumns) {
+        System.out.println("matrix.getNumberOfRows() = " + matrix.getNumberOfRows());
+        System.out.println("matrix.getNumberOfColumns() = " + matrix.getNumberOfColumns());
+        System.out.println("sumHomogeneityOfRow = " + sumHomogeneityOfRow);
+        System.out.println("homogeneityOfColumns = " + homogeneityOfColumns);
+
+        if (sumHomogeneityOfRow / matrix.getNumberOfRows() > homogeneityOfColumns / matrix.getNumberOfColumns()) {
             return PCMDirection.PRODUCTS_AS_COLUMNS;
         } else {
             return PCMDirection.PRODUCTS_AS_LINES;
