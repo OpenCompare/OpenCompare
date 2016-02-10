@@ -2,22 +2,22 @@ package org.opencompare.formalizer.interpreters
 
 import java.util.regex.Matcher
 
-import org.opencompare.api.java.{Feature, Product, Value}
+import org.opencompare.api.java.{PCMFactory, Feature, Product, Value}
 
 class PartialPatternInterpreter (
-    validHeaders : List[String],
     regex : String,
     parameters : List[String],
-    confident : Boolean)
-    extends RegexPatternInterpreter(validHeaders, regex, parameters, confident) {
+    confident : Boolean,
+    initFactory: PCMFactory)
+    extends RegexPatternInterpreter(regex, parameters, confident, initFactory) {
 
-  override def createValue(s: String, matcher : Matcher, parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+  override def createValue(s: String, matcher : Matcher, parameters : List[String]) : Option[Value] = {
 
     // Interpret value
     val valueInterpretation = if (matcher.groupCount() >= 1) {
       val valueString = matcher.group(1)
-      lastCall = Some(s, product, feature)
-      cellContentInterpreter.findInterpretation(valueString, product, feature)
+      lastCall = Some(s)
+      cellContentInterpreter.interpretString(valueString)
     } else {
       None
     }
@@ -25,8 +25,8 @@ class PartialPatternInterpreter (
     // Interpret condition
     val condInterpretation = if (matcher.groupCount() >= 2) {
       val conditionString = matcher.group(2)
-      lastCall = Some(s, product, feature)
-      cellContentInterpreter.findInterpretation(conditionString, product, feature)
+      lastCall = Some(s)
+      cellContentInterpreter.interpretString(conditionString)
     } else {
       None
     }

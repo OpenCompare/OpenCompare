@@ -1,25 +1,25 @@
 package org.opencompare.formalizer.interpreters
 
-import org.opencompare.api.java.{Value, Feature, Product}
+import org.opencompare.api.java.{PCMFactory, Value, Feature, Product}
 
 /**
  * Created by gbecan on 7/20/15.
  */
 class MultipleSeparatorPatternInterpreter (
-                                   validHeaders : List[String],
                                    separator : String,
                                    parameters : List[String],
-                                   confident : Boolean)
-  extends SeparatorPatternInterpreter(validHeaders, separator, parameters, confident) {
+                                   confident : Boolean,
+                                   initFactory: PCMFactory)
+  extends SeparatorPatternInterpreter(separator, parameters, confident, initFactory) {
 
-  override def createValue(s: String, parts : List[String], parameters : List[String], product : Product, feature : Feature) : Option[Value] = {
+  override def createValue(s: String, parts : List[String], parameters : List[String]) : Option[Value] = {
     val value = factory.createMultiple()
 
     var fullyInterpreted : Boolean = true
 
     for (part <- parts) {
-      lastCall = Some(s, product, feature)
-      val subCInterpretation = cellContentInterpreter.findInterpretation(part, product, feature)
+      lastCall = Some(s)
+      val subCInterpretation = cellContentInterpreter.interpretString(part)
       if (subCInterpretation.isDefined) {
         value.addSubValue(subCInterpretation.get)
       } else {

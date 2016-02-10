@@ -38,7 +38,7 @@ class PCMAPI @Inject() (
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
     private val wikitextTemplateProcessor : WikiTextTemplateProcessor= new WikiTextTemplateProcessor(mediaWikiAPI)
     private val miner : WikiTextLoader= new WikiTextLoader(wikitextTemplateProcessor)
-    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter()
+    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter(pcmFactory)
 
 
     def get(id : String) = Action.async {

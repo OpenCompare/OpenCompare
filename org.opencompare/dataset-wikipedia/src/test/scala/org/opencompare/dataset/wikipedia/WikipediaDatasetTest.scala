@@ -233,11 +233,12 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   it should "interpret the cell of all the Wikipedia PCMs" in {
 
-    val interpreter = new CellContentInterpreter
+
     val loader = new KMFJSONLoader
     val exporter = new KMFJSONExporter
     val csvExporter = new CSVExporter
     val factory = new PCMFactoryImpl
+    val interpreter = new CellContentInterpreter(factory)
 
     val files = new File("output/model").listFiles(new FilenameFilter {
       override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")

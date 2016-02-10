@@ -2,25 +2,25 @@ package org.opencompare.formalizer.interpreters
 
 import java.util.regex.Matcher
 
-import org.opencompare.api.java.{Value, Feature, Product}
+import org.opencompare.api.java.{PCMFactory, Value, Feature, Product}
 
 /**
  * Created by gbecan on 7/20/15.
  */
-abstract class SeparatorPatternInterpreter(initValidHeaders : List[String],
-                                  val separator : String,
+abstract class SeparatorPatternInterpreter(val separator : String,
                                   initParameters : List[String],
-                                  initConfident : Boolean) extends PatternInterpreter(initValidHeaders, initParameters, initConfident) {
+                                  initConfident : Boolean,
+                                   initFactory: PCMFactory) extends PatternInterpreter(initParameters, initConfident, initFactory) {
 
-  override def matchAndCreateValue(s: String, product: Product, feature: Feature): Option[Value] = {
+  override def matchAndCreateValue(s: String): Option[Value] = {
     val parts = s.split(separator).toList
     if (parts.size > 1) {
-      createValue(s, parts, parameters, product, feature)
+      createValue(s, parts, parameters)
     } else {
       None
     }
 
   }
 
-  def createValue(s : String, parts : List[String], parameters : List[String], product : Product, feature : Feature) : Option[Value]
+  def createValue(s : String, parts : List[String], parameters : List[String]) : Option[Value]
 }

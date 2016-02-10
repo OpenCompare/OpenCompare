@@ -14,7 +14,7 @@ import play.api.mvc._
 abstract class IOCtrl(val name : String) extends BaseController {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
-  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter
+  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter(pcmFactory)
 
   def importPCMsAction(format: String) = UserAwareAction { implicit request =>
 

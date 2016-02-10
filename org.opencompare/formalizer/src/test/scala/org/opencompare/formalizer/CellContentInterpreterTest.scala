@@ -2,6 +2,7 @@ package org.opencompare.formalizer
 
 import java.io.{File, FileWriter}
 
+import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.CSVExporter
 import org.opencompare.formalizer.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextLoader, WikiTextTemplateProcessor}
@@ -26,7 +27,7 @@ class CellContentInterpreterTest extends FlatSpec with Matchers {
     val miner = new WikiTextLoader(new WikiTextTemplateProcessor(mediaWikiAPI))
     val pcms = miner.mine(language, Source.fromFile(input.getPath).getLines().mkString("\n"), "Comparison of AMD processors")
 
-    val interpreter = new CellContentInterpreter
+    val interpreter = new CellContentInterpreter(new PCMFactoryImpl)
     val serializer = new CSVExporter
 
     for ((pcmContainer, index) <- pcms.zipWithIndex) {
