@@ -23,8 +23,6 @@ public class ImportMatrixLoader {
 
     public PCMContainer load(ImportMatrix matrix) {
 
-        // Compute content of cells
-
         // Detect types and information for each cell
         detectTypes(matrix);
 
@@ -35,6 +33,7 @@ public class ImportMatrixLoader {
         PCMDirection detectedDirection = direction;
         if (detectedDirection == PCMDirection.UNKNOWN) {
             detectedDirection = detectDirection(matrix);
+            System.out.println("detectedDirection = " + detectedDirection);
         }
 
         // Transpose matrix
@@ -88,10 +87,63 @@ public class ImportMatrixLoader {
     /**
      * Detect if products are represented by a line or a column
      * @param matrix
-     * @return
+     * @return direction of the matrix
      */
     protected PCMDirection detectDirection(ImportMatrix matrix) {
-        return PCMDirection.PRODUCTS_AS_LINES;
+
+        // Compute homogeneity of rows
+        double sumHomogeneityOfRow = 0;
+        for (int row = 0; row < matrix.getNumberOfRows(); row++) {
+
+            Map<String, Integer> types = new HashMap<>();
+
+            // Retrieve types of values
+            for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
+                countType(matrix, row, column, types);
+            }
+
+            // Get the maximum proportion of a same type
+            if (!types.isEmpty()) {
+                double homogeneityOfRow = Collections.max(types.values()) / matrix.getNumberOfColumns();
+                sumHomogeneityOfRow += homogeneityOfRow;
+            }
+        }
+
+        // Compute homogeneity of columns
+        double homogeneityOfColumns = 0;
+        for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
+            Map<String, Integer> types = new HashMap<>();
+
+            for (int row = 0; row < matrix.getNumberOfRows(); row++) {
+                countType(matrix, row, column, types);
+            }
+
+            // Get the maximum proportion of a same type
+            if (!types.isEmpty()) {
+                double homogeneityOfColumn = Collections.max(types.values()) / matrix.getNumberOfRows();
+                homogeneityOfColumns += homogeneityOfColumn;
+            }
+
+        }
+
+        if (sumHomogeneityOfRow > homogeneityOfColumns) {
+            return PCMDirection.PRODUCTS_AS_COLUMNS;
+        } else {
+            return PCMDirection.PRODUCTS_AS_LINES;
+        }
+
+    }
+
+    private void countType(ImportMatrix matrix, int row, int column, Map<String, Integer> types) {
+        ImportCell cell = matrix.getCell(row, column);
+        if (cell != null) {
+            Value value = cell.getInterpretation();
+            if (value != null) {
+                String typeName = value.getClass().getName();
+                Integer previousCount = types.getOrDefault(typeName, 0);
+                types.put(typeName, previousCount + 1);
+            }
+        }
     }
 
 

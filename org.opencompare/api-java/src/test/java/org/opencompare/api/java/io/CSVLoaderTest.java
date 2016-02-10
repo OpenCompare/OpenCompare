@@ -36,7 +36,7 @@ public abstract class CSVLoaderTest {
     @Test
     public void testAMDProcessorsInverted() throws IOException {
         InputStream inputCSVStream = getClass().getResourceAsStream("/csv/Comparison_of_AMD_processors.csv");
-        CSVLoader loader = new CSVLoader(factory, false);
+        CSVLoader loader = new CSVLoader(factory, PCMDirection.PRODUCTS_AS_COLUMNS);
         List<PCMContainer> containers = loader.load(new InputStreamReader(inputCSVStream));
         inputCSVStream.close();
         for (PCMContainer container : containers) {

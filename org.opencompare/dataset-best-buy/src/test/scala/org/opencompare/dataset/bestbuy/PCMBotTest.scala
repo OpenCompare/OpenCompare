@@ -8,7 +8,7 @@ import org.opencompare.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONLoader
-import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
+import org.opencompare.api.java.io.{PCMDirection, CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.PCMElementComparator
 import org.opencompare.api.java._
 import org.opencompare.io.bestbuy._
@@ -120,7 +120,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   ignore should "run on BestBuy overviews" in {
     forAll(bestbuyOverviewPCMs) { (path: String) =>
       if (new File(path).exists()) {
-        val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
+        val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
         val pcm = loader.load(new File(path))(0).getPcm
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
@@ -365,7 +365,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (manualDatasetDir.exists()) {
       // Load specifications
@@ -407,7 +407,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (datasetDir.exists()) {
       for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {
@@ -432,7 +432,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (datasetDir.exists()) {
       for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {

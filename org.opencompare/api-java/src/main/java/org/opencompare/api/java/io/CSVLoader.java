@@ -21,32 +21,27 @@ public class CSVLoader implements PCMLoader {
     private ImportMatrixLoader importMatrixLoader;
 
     public CSVLoader(PCMFactory factory) {
-        this(factory, ',', '"', true);
+        this(factory, ',');
     }
 
     public CSVLoader(PCMFactory factory, char separator) {
-        this(factory, separator, '"', true);
+        this(factory, separator, '"');
     }
 
     public CSVLoader(PCMFactory factory, char separator, char quote) {
-        this(factory, separator, quote, true);
+        this(factory, separator, quote, PCMDirection.UNKNOWN);
     }
 
-    public CSVLoader(PCMFactory factory, boolean productsAsLines) {
-        this(factory, ',', '"', productsAsLines);
+    public CSVLoader(PCMFactory factory, PCMDirection pcmDirection) {
+        this(factory, ',', '"', pcmDirection);
     }
 
-    public CSVLoader(PCMFactory factory, char separator, char quote, boolean productsAsLines) {
+    public CSVLoader(PCMFactory factory, char separator, char quote, PCMDirection pcmDirection) {
         this.factory = factory;
         this.separator = separator;
         this.quote = quote;
 
-        if (productsAsLines) {
-            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_LINES);
-        } else {
-            importMatrixLoader = new ImportMatrixLoader(this.factory, PCMDirection.PRODUCTS_AS_COLUMNS);
-        }
-
+        importMatrixLoader = new ImportMatrixLoader(this.factory, pcmDirection);
     }
 
     private ImportMatrix createMatrix(CSVReader reader) throws IOException {
