@@ -8,6 +8,7 @@ import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{PCMDirection, CSVExporter, CSVLoader}
 import play.api.data.Forms._
@@ -63,7 +64,7 @@ class CSVCtrl @Inject() (
       } else {
         PCMDirection.PRODUCTS_AS_COLUMNS
       }
-      val loader: CSVLoader = new CSVLoader(pcmFactory, separator, quote, pcmDirection)
+      val loader: CSVLoader = new CSVLoader(pcmFactory, new CellContentInterpreter(pcmFactory), separator, quote, pcmDirection)
       val pcmContainers = loader.load(file).toList
       val pcmContainer = pcmContainers.head
       pcmContainer.getPcm.setName(parameters.title)

@@ -1,6 +1,7 @@
 package org.opencompare.io.wikipedia.export
 
 import java.util
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java._
 import org.opencompare.api.java.io._
@@ -14,7 +15,7 @@ import scala.collection.JavaConversions._
 class PCMModelExporter {
 
   private val factory = new PCMFactoryImpl
-  private val ioLoader = new ImportMatrixLoader(factory, PCMDirection.UNKNOWN)
+  private val ioLoader = new ImportMatrixLoader(factory, new CellContentInterpreter(factory), PCMDirection.UNKNOWN)
 
   def export(page : Page) : util.List[PCMContainer] = {
     val pcmContainers = for (matrix <- page.getMatrices) yield {
@@ -39,6 +40,7 @@ class PCMModelExporter {
 
   /**
    * Normalize a matrix
+ *
    * @param matrix
    * @return
    */
@@ -68,6 +70,7 @@ class PCMModelExporter {
 
   /**
    * Detect holes in the matrix and add a cell if necessary
+ *
    * @param matrix
    */
   def fillMissingCells(matrix : Matrix) {

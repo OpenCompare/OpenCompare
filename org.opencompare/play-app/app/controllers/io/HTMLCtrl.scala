@@ -8,8 +8,9 @@ import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import controllers._
 import models.{Database, PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.io.{HTMLExporter, HTMLLoader}
+import org.opencompare.api.java.io.{PCMDirection, HTMLExporter, HTMLLoader}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.MessagesApi
@@ -51,7 +52,13 @@ class HTMLCtrl @Inject() (
       // Parse parameters
       val parameters = inputParametersForm.bindFromRequest.get
 
-      val loader = new HTMLLoader(pcmFactory, parameters.productAsLines)
+      val direction = if (parameters.productAsLines) {
+        PCMDirection.PRODUCTS_AS_LINES
+      } else {
+        PCMDirection.PRODUCTS_AS_COLUMNS
+      }
+
+      val loader = new HTMLLoader(pcmFactory, new CellContentInterpreter(pcmFactory), direction)
       val pcmContainers = loader.load(parameters.content).toList
       normalizeContainers(pcmContainers)
 

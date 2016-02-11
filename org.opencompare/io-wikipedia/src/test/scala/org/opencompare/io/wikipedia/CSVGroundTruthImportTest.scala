@@ -2,6 +2,7 @@ package org.opencompare.io.wikipedia
 
 import java.nio.file.{Files, Paths}
 
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONExporter
 import org.opencompare.api.java.io.CSVLoader
@@ -19,7 +20,7 @@ import scala.reflect.io.{Directory, File}
 class CSVGroundTruthImportTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val pcmFactory = new PCMFactoryImpl
-  val csvLoader = new CSVLoader(pcmFactory, ',', '"')
+  val csvLoader = new CSVLoader(pcmFactory, new CellContentInterpreter(pcmFactory), ',', '"')
 
   val language = "en"
   val url = "wikipedia.org"

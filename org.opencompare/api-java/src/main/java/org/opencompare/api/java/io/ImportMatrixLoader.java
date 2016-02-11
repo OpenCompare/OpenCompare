@@ -36,19 +36,21 @@ public class ImportMatrixLoader {
         PCMDirection detectedDirection = direction;
         if (detectedDirection == PCMDirection.UNKNOWN) {
             detectedDirection = detectDirection(matrix);
-            System.out.println("detectedDirection = " + detectedDirection);
         }
 
-        // Transpose matrix
-        if (detectedDirection == PCMDirection.PRODUCTS_AS_COLUMNS) {
+        // Remove empty and duplicated lines
+        matrix.removeEmptyLines();
+        matrix.removeDuplicatedLines();
+
+        // Remove empty and duplicated columns
+        matrix.transpose();
+        matrix.removeEmptyLines();
+        matrix.removeDuplicatedLines();
+
+        // Transpose matrix if necessary
+        if (detectedDirection == PCMDirection.PRODUCTS_AS_LINES) {
             matrix.transpose();
         }
-
-        // Remove empty lines
-        matrix.removeEmptyLines();
-
-        // Remove duplicated lines
-        matrix.removeDuplicatedLines();
 
         // Create PCM
         PCM pcm = factory.createPCM();
@@ -138,10 +140,10 @@ public class ImportMatrixLoader {
 
         }
 
-        System.out.println("matrix.getNumberOfRows() = " + matrix.getNumberOfRows());
-        System.out.println("matrix.getNumberOfColumns() = " + matrix.getNumberOfColumns());
-        System.out.println("sumHomogeneityOfRow = " + sumHomogeneityOfRow);
-        System.out.println("homogeneityOfColumns = " + homogeneityOfColumns);
+//        System.out.println("matrix.getNumberOfRows() = " + matrix.getNumberOfRows());
+//        System.out.println("matrix.getNumberOfColumns() = " + matrix.getNumberOfColumns());
+//        System.out.println("sumHomogeneityOfRow = " + sumHomogeneityOfRow);
+//        System.out.println("homogeneityOfColumns = " + homogeneityOfColumns);
 
         if (sumHomogeneityOfRow / matrix.getNumberOfRows() > homogeneityOfColumns / matrix.getNumberOfColumns()) {
             return PCMDirection.PRODUCTS_AS_COLUMNS;

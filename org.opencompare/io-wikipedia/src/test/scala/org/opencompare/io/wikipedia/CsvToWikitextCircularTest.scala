@@ -1,5 +1,6 @@
 package org.opencompare.io.wikipedia
 
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.io.{PCMCircularTest, CSVLoader}
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextLoader, WikiTextExporter}
@@ -10,7 +11,7 @@ import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor,
 class CsvToWikitextCircularTest extends PCMCircularTest(
   datasetPath = "csv/",
   pcmFactory = new PCMFactoryImpl,
-  initLoader = new CSVLoader(new PCMFactoryImpl(), ',', '"'),
+  initLoader = new CSVLoader(new PCMFactoryImpl(), new CellContentInterpreter(new PCMFactoryImpl), ',', '"'),
   exporter = new WikiTextExporter,
   importer = new WikiTextLoader(new WikiTextTemplateProcessor(new MediaWikiAPI("wikipedia.org")))
 )
