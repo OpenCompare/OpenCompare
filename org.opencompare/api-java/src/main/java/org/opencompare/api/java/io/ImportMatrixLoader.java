@@ -140,11 +140,6 @@ public class ImportMatrixLoader {
 
         }
 
-//        System.out.println("matrix.getNumberOfRows() = " + matrix.getNumberOfRows());
-//        System.out.println("matrix.getNumberOfColumns() = " + matrix.getNumberOfColumns());
-//        System.out.println("sumHomogeneityOfRow = " + sumHomogeneityOfRow);
-//        System.out.println("homogeneityOfColumns = " + homogeneityOfColumns);
-
         if (sumHomogeneityOfRow / matrix.getNumberOfRows() > homogeneityOfColumns / matrix.getNumberOfColumns()) {
             return PCMDirection.PRODUCTS_AS_COLUMNS;
         } else {
@@ -279,14 +274,15 @@ public class ImportMatrixLoader {
                 Cell cell = factory.createCell();
                 cell.setFeature(positionToFeature.get(column));
 
-                IOCell ioCell = matrix.getCell(row, column);
+                ImportCell ioCell = matrix.getCell(row, column);
 
                 if (ioCell == null) {
-                    ioCell = new IOCell("");
+                    ioCell = new ImportCell("");
                 }
 
                 cell.setContent(ioCell.getContent());
                 cell.setRawContent(ioCell.getRawContent());
+                cell.setInterpretation(ioCell.getInterpretation());
 
                 product.addCell(cell);
             }
