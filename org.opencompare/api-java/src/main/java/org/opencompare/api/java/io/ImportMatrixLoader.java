@@ -2,7 +2,6 @@ package org.opencompare.api.java.io;
 
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.interpreter.CellContentInterpreter;
-import org.opencompare.api.java.util.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -31,6 +30,9 @@ public class ImportMatrixLoader {
 
         // Expand rowpsan and colspan
         matrix.flattenCells();
+
+        // Remove holes in matrix
+        removeHoles(matrix);
 
         // Detect direction of the matrix
         PCMDirection detectedDirection = direction;
@@ -345,4 +347,15 @@ public class ImportMatrixLoader {
         }
     }
 
+
+    protected void removeHoles(ImportMatrix matrix) {
+        for (int row = 0; row < matrix.getNumberOfRows(); row++) {
+            for (int column = 0; column < matrix.getNumberOfColumns(); column++) {
+                ImportCell cell = matrix.getCell(row, column);
+                if (cell == null) {
+                  matrix.setCell(new ImportCell(), row, column);
+                }
+            }
+        }
+    }
 }

@@ -10,7 +10,7 @@ public class ImportCell extends IOCell {
     private Value interpretation;
 
     public ImportCell() {
-
+        super("");
     }
 
     public ImportCell(String content) {

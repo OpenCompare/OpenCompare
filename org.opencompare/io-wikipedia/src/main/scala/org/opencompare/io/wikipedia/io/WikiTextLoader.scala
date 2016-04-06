@@ -4,14 +4,17 @@ import java.io.File
 import java.util
 
 import org.opencompare.api.java.PCMContainer
-import org.opencompare.api.java.io.PCMLoader
+import org.opencompare.api.java.extractor.CellContentInterpreter
+import org.opencompare.api.java.impl.PCMFactoryImpl
+import org.opencompare.api.java.io.{PCMDirection, _}
 import org.opencompare.io.wikipedia.export.{CSVExporter, PCMModelExporter}
-import org.opencompare.io.wikipedia.parser.{PreprocessVisitor, PageVisitor}
+import org.opencompare.io.wikipedia.parser.{PageVisitor, PreprocessVisitor}
 import org.opencompare.io.wikipedia.pcm.Page
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp
 import org.sweble.wikitext.parser.utils.SimpleParserConfig
 import org.sweble.wikitext.parser.{WikitextParser, WikitextPreprocessor}
 
+import scala.collection.JavaConversions._
 import scala.io.Source
 
 /**
@@ -27,7 +30,8 @@ class WikiTextLoader(
 
   private val wikiConfig = DefaultConfigEnWp.generate()
 
-  private val exporter = new PCMModelExporter
+  private val factory = new PCMFactoryImpl
+  private val ioLoader = new ImportMatrixLoader(factory, new CellContentInterpreter(factory), PCMDirection.UNKNOWN)
 
   /**
    * Load PCM from wikitext code with default parameters (english language and empty page title)
@@ -57,8 +61,29 @@ class WikiTextLoader(
   }
 
   def mine(language : String, code : String, title : String) : util.List[PCMContainer] = {
+    val importMatrices = mineImportMatrix(language, code, title)
+    val pcmContainers = importMatrices.map(ioLoader.load)
+    seqAsJavaList(pcmContainers)
+  }
+
+  def mineImportMatrix(language : String, code : String, title : String) : List[ImportMatrix] = {
     val page = mineInternalRepresentation(language, code, title)
-    exporter.export(page)
+
+    for (matrix <- page.getMatrices) yield {
+      val ioMatrix = new ImportMatrix()
+      ioMatrix.setName(matrix.name)
+
+      for (r <- 0 until matrix.getNumberOfRows(); c <- 0 until matrix.getNumberOfColumns()) {
+        val cellOpt = matrix.getCell(r, c)
+        if (cellOpt.isDefined) {
+          val cell = cellOpt.get
+          val ioCell = new ImportCell(cell.content, cell.rawContent, cell.rowspan, cell.colspan)
+          ioMatrix.setCell(ioCell, r, c)
+        }
+      }
+
+      ioMatrix
+    }
   }
 
 }
