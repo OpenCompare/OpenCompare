@@ -11,8 +11,8 @@ public interface PCMExporter {
 
     /**
      * Export PCM from a PCM container
-     * @param container
-     * @return
+     * @param container container to export
+     * @return string representing the PCM
      */
     String export(PCMContainer container);
 

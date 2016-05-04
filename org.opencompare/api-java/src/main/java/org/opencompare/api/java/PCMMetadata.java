@@ -44,7 +44,7 @@ public class PCMMetadata {
 
     /**
      * Returns the absolute position of the product or create if not exists
-     * @param product
+     * @param product product
      * @return the absolution position of 'product' or -1 if it is not specified
      */
     public int getProductPosition(Product product) {
@@ -53,8 +53,8 @@ public class PCMMetadata {
 
     /**
      * Define the absolute position of the product in the PCM
-     * @param product
-     * @param position
+     * @param product  product
+     * @param position position
      */
     public void setProductPosition(Product product, int position) {
         productPositions.put(product, position);
@@ -87,8 +87,8 @@ public class PCMMetadata {
 
     /**
      * Define the absolute position of the feature in the PCM
-     * @param feature
-     * @param position
+     * @param feature feature
+     * @param position position
      */
     public void setFeaturePosition(AbstractFeature feature, int position) {
         featurePositions.put(feature, position);
@@ -133,8 +133,8 @@ public class PCMMetadata {
      * Return the flatten hierarchy of features
      * The features are sorted with respect to the metadata
      * Feature groups are referenced multiple times to respect the hierarchy with the subfeatures
-     * e.g. FG(A,B) => FG, FG; A, B
-     * @return
+     * e.g. FG(A,B) gives FG, FG; A, B
+     * @return flatten hierarchy
      */
     public List<List<AbstractFeature>> getFlattenFeatureHierarchy() {
         List<List<AbstractFeature>> result = new ArrayList<>();

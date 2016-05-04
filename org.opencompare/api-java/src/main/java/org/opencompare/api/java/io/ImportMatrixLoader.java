@@ -85,7 +85,7 @@ public class ImportMatrixLoader {
 
     /**
      * Detect types of each cell of the matrix
-     * @param matrix
+     * @param matrix matrix
      */
     protected void detectTypes(ImportMatrix matrix) {
         for (int row = 0; row < matrix.getNumberOfRows(); row++) {
@@ -102,7 +102,7 @@ public class ImportMatrixLoader {
 
     /**
      * Detect if products are represented by a line or a column
-     * @param matrix
+     * @param matrix matrix
      * @return direction of the matrix
      */
     protected PCMDirection detectDirection(ImportMatrix matrix) {
@@ -165,8 +165,9 @@ public class ImportMatrixLoader {
 
     /**
      * Detect features from the information contained in the matrix and the provided direction
-     * @param matrix
-     * @param pcmContainer
+     * @param matrix matrix
+     * @param pcmContainer PCM container
+     * @return graph representing the hierarchy of features
      */
     protected IONode<String> detectFeatures(ImportMatrix matrix, PCMContainer pcmContainer) {
 
@@ -262,8 +263,9 @@ public class ImportMatrixLoader {
 
     /**
      * Detect and create products from the information contained in the matrix and the provided direction
-     * @param matrix
-     * @param pcmContainer
+     * @param matrix matrix
+     * @param pcmContainer PCM container
+     * @param positionToFeature map between positions and features
      */
     protected void createProducts(ImportMatrix matrix, PCMContainer pcmContainer, Map<Integer, Feature> positionToFeature) {
 
