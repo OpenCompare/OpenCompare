@@ -22,6 +22,7 @@ class CellContentExtractor(
 
 
   def extractCellContent(rawContent : String): String = {
+
     val code = "{|\n" +
       "|-\n" +
       "| " +
@@ -359,6 +360,7 @@ class CellContentExtractor(
   override def visit(e: WtSemiPreLine): Unit = {
     cellContent += ' '
     iterate(e)
+    cellContent += '\n'
   }
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
