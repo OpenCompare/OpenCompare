@@ -4,12 +4,16 @@
 angular.module("openCompare")
     .controller("OCEditorCtrl", function($rootScope, $scope, $modal, pcmApi, openCompareServer) {
 
+
+
+        $scope.pcmContainer = {};
+
         openCompareServer.useLocalServer();
         $scope.config = {
             serverMode: "local"
         };
+
         $scope.state = {};
-        $scope.pcmContainer = {};
 
         $scope.$watch("pcmContainer.metadata.source", function(newSource) {
             if (typeof newSource !== "undefined") {
@@ -66,7 +70,7 @@ angular.module("openCompare")
 
 
         if (typeof data !== 'undefined') {
-            var pcm = pcmApi.loadPCMModelFromString(JSON.stringify(JSON.parse(data).pcm)); // FIXME : mmhh ugly...
+            var pcm = pcmApi.loadPCMModelFromString(JSON.stringify(JSON.parse(data).pcm));
             pcmApi.decodePCM(pcm);
             $scope.pcmContainer.pcm = pcm;
         }
