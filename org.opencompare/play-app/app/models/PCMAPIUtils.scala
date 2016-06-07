@@ -25,10 +25,7 @@ class PCMAPIUtils @Inject() (userDAO : UserDAO) {
     Parse the json file and generate a container
    */
   def parsePCMContainers(jsonContent : JsValue) : List[PCMContainer] = {
-    val jsonObject = jsonContent.as[JsObject]
-    val jsonPCM = Json.stringify(jsonObject.value("pcm"))
-    val containers = jsonLoader.load(jsonPCM).toList
-    containers
+    jsonLoader.load(Json.stringify(jsonContent)).toList
   }
 
   def serializePCMContainer(pcmContainer : PCMContainer) : Future[JsValue] = {

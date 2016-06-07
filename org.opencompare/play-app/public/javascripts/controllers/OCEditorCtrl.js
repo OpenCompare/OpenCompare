@@ -1,6 +1,3 @@
-/**
- * Created by gbecan on 9/16/15.
- */
 angular.module("openCompare")
     .controller("OCEditorCtrl", function($rootScope, $scope, $modal, pcmApi, openCompareServer) {
 
