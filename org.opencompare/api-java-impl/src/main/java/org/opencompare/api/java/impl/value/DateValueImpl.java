@@ -5,21 +5,20 @@ import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.impl.ValueImpl;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.DateValue;
-import pcm.Value;
 
 /**
  * Created by gbecan on 30/01/15.
  */
 public class DateValueImpl extends ValueImpl implements DateValue {
 
-    private pcm.DateValue kDateValue;
+    private org.opencompare.model.DateValue kDateValue;
 
-    public DateValueImpl(pcm.DateValue kDateValue) {
+    public DateValueImpl(org.opencompare.model.DateValue kDateValue) {
         super(kDateValue);
         this.kDateValue = kDateValue;
     }
 
-    public pcm.DateValue getkDateValue() {
+    public org.opencompare.model.DateValue getkDateValue() {
         return kDateValue;
     }
 

@@ -22,9 +22,8 @@ public interface PCMLoader {
 
     /**
      * Return a PCM container from a file
-     * @param file
-     * @return
-     * @throws java.io.FileNotFoundException
+     * @param file file to load
+     * @return loaded PCM
      */
     List<PCMContainer> load(File file) throws IOException;
 }

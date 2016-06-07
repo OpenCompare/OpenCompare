@@ -7,7 +7,7 @@
     <groupId>org.opencompare</groupId>
     <artifactId>opencompare</artifactId>
     <packaging>pom</packaging>
-    <version>0.7-SNAPSHOT</version>
+    <version>0.8-SNAPSHOT</version>
 
     <name>OpenCompare</name>
     <description>
@@ -17,7 +17,7 @@
 
 
     <properties>
-        <metamodel.ecore>./metamodel/model/pcm.mm</metamodel.ecore>
+        <metamodel>./metamodel/model/org.opencompare.model.pcm.mm</metamodel>
         <kmf.version>3.5.12</kmf.version>
         <kmf.plugin.version>3.5.12</kmf.plugin.version>
 
@@ -26,8 +26,8 @@
 
         <play.version>2.4.1</play.version>
 
-        <scala.version.minor>2.11</scala.version.minor>
-        <scala.version>2.11.6</scala.version>
+        <scala.version>2.11.7</scala.version>
+        <scala.binary>2.11</scala.binary>
         <scalatest.version>2.2.5</scalatest.version>
         <scalahttp.version>1.1.4</scalahttp.version>
     </properties>
@@ -37,7 +37,6 @@
         <module>api-java</module>
         <module>api-java-impl</module>
         <module>io</module>
-        <module>formalizer</module>
         <module>play-app</module>
         <module>dataset</module>
     </modules>

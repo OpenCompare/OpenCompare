@@ -8,8 +8,9 @@ import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import controllers.{ResultFormat, ViewContext}
 import models.{PCMAPIUtils, User}
 import org.opencompare.api.java.PCMFactory
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
+import org.opencompare.api.java.io.{PCMDirection, CSVExporter, CSVLoader}
 import play.api.data.Forms._
 import play.api.data._
 import play.api.i18n.MessagesApi
@@ -49,19 +50,22 @@ class CSVCtrl @Inject() (
   )
 
   override def importPCMs(format : ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext) : Result = {
-    // Parse parameters
+    // Parse parametersOC
     val parameters = inputParametersForm.bindFromRequest.get
     val separator = parameters.separator.head
     val quote = parameters.quote.head
 
     // Read input file
-    val file = request.body.asMultipartFormData.get.file("file").get
-    val csvData = Source.fromFile(file.ref.file).getLines().mkString("\n")
+    val file = request.body.asMultipartFormData.get.file("file").get.ref.file
 
     try {
-
-      val loader: CSVLoader = new CSVLoader(pcmFactory, separator, quote, parameters.productAsLines)
-      val pcmContainers = loader.load(csvData).toList
+      val pcmDirection = if (parameters.productAsLines) {
+        PCMDirection.PRODUCTS_AS_LINES
+      } else {
+        PCMDirection.PRODUCTS_AS_COLUMNS
+      }
+      val loader: CSVLoader = new CSVLoader(pcmFactory, new CellContentInterpreter(pcmFactory), separator, quote, pcmDirection)
+      val pcmContainers = loader.load(file).toList
       val pcmContainer = pcmContainers.head
       pcmContainer.getPcm.setName(parameters.title)
 

@@ -69,8 +69,6 @@ public class PCMBase64Encoder implements PCMVisitor {
     @Override
     public void visit(Product product) {
 
-        product.setName(encodeBase64(product.getName()));
-
         for (Cell cell : product.getCells()) {
             cell.accept(this);
         }

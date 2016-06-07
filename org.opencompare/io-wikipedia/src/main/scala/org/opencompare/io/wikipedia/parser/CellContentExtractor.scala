@@ -16,25 +16,29 @@ class CellContentExtractor(
                             val parser : WikitextParser
                             ) extends AstVisitor[WtNode] with CompleteWikitextVisitorNoReturn {
 
-  private var content : String = ""
   private var cellContent: StringBuilder = new StringBuilder
-  private val trimPattern: Pattern = Pattern.compile("\\s*([\\s\\S]*?)\\s*")
+  private val trimPattern: Pattern = Pattern.compile("\\s*(.*?)\\s*", Pattern.DOTALL)
   private var ignoredXMLStack: Stack[Boolean] = new Stack()
 
 
   def extractCellContent(rawContent : String): String = {
+
     val code = "{|\n" +
       "|-\n" +
-      "| " + rawContent + "\n" +
+      "| " +
+      rawContent + "\n" +
       "|}"
 
     val title = ""
 
-    // Expand template with preprocessor
+    // Expand template with preprocessor + remove nowiki tags
     val preprocessorAST = preprocessor.parseArticle(code, title)
     val templatePreprocessor = new PreprocessVisitor(language, templateProcessor)
     templatePreprocessor.go(preprocessorAST)
-    val preprocessedCode = templatePreprocessor.getPreprocessedCode()
+    val preprocessedCode = templatePreprocessor
+      .getPreprocessedCode()
+      .replaceAll("<nowiki>", "")
+      .replaceAll("</nowiki>", "")
 
     // Parse content of cell
     val ast = parser.parseArticle(preprocessedCode, title)
@@ -45,7 +49,7 @@ class CellContentExtractor(
     go(ast)
 
     // Treat special cases for cell content
-    content = if (!ignoredXMLElement) {
+    val content = if (!ignoredXMLElement) {
       if (cellContent.toString().startsWith("||")) {
         cellContent.delete(0, 2)
       }
@@ -54,9 +58,6 @@ class CellContentExtractor(
     } else {
       ""
     }
-
-//    println(ast)
-//    println("content= " +  content)
 
     content
   }
@@ -89,6 +90,8 @@ class CellContentExtractor(
   def visit(e: WtNodeList) = {
     iterate(e)
   }
+
+  override def visit(e: WtXmlAttributes): Unit = {}
 
   def visit(e: WtXmlAttribute) = {
 
@@ -278,11 +281,11 @@ class CellContentExtractor(
 
   override def visit(e: WtValue): Unit = iterate(e)
 
-  override def visit(e: WtXmlAttributes): Unit = iterate(e)
-
   override def visit(e: WtLinkOptionGarbage): Unit = iterate(e)
 
-  override def visit(e: WtNewline): Unit = iterate(e)
+  override def visit(e: WtNewline): Unit = {
+    cellContent += '\n'
+  }
 
   override def visit(e: WtPageName): Unit = iterate(e)
 
@@ -350,9 +353,15 @@ class CellContentExtractor(
 
   override def visit(e: WtParagraph): Unit = iterate(e)
 
-  override def visit(e: WtSemiPre): Unit = iterate(e)
+  override def visit(e: WtSemiPre): Unit = {
+    iterate(e)
+  }
 
-  override def visit(e: WtSemiPreLine): Unit = iterate(e)
+  override def visit(e: WtSemiPreLine): Unit = {
+    cellContent += ' '
+    iterate(e)
+    cellContent += '\n'
+  }
 
   override def visit(e: WtTagExtensionBody): Unit = iterate(e)
 

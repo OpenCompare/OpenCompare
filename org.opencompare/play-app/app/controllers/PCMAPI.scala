@@ -9,7 +9,7 @@ import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
 import org.opencompare.api.java.io.{HTMLExporter, CSVExporter}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.io.{WikiTextLoader, WikiTextTemplateProcessor, MediaWikiAPI, WikiTextExporter}
 import org.opencompare.io.wikipedia.parser.CellContentExtractor
 import play.api.data.Form
@@ -38,7 +38,7 @@ class PCMAPI @Inject() (
     private val mediaWikiAPI : MediaWikiAPI = new MediaWikiAPI("wikipedia.org")
     private val wikitextTemplateProcessor : WikiTextTemplateProcessor= new WikiTextTemplateProcessor(mediaWikiAPI)
     private val miner : WikiTextLoader= new WikiTextLoader(wikitextTemplateProcessor)
-    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter()
+    private val cellContentInterpreter : CellContentInterpreter = new CellContentInterpreter(pcmFactory)
 
 
     def get(id : String) = Action.async {

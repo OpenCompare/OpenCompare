@@ -4,11 +4,12 @@ import java.io.{File, FileWriter, FilenameFilter}
 import java.nio.file.Files
 import java.util
 
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.hac.agglomeration.SingleLinkage
 import com.github.tototoshi.csv.CSVWriter
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.KMFJSONLoader
-import org.opencompare.api.java.io.{CSVExporter, CSVLoader}
+import org.opencompare.api.java.io.{PCMDirection, CSVExporter, CSVLoader}
 import org.opencompare.api.java.util.PCMElementComparator
 import org.opencompare.api.java._
 import org.opencompare.io.bestbuy._
@@ -54,7 +55,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     }
     // c1 substring c2 || c2 substring c1
 
-    override def similarProduct(p1: Product, p2: Product): Boolean = p1.getName.contains(p2.getName) || p2.getName.contains(p1.getName)
+    override def similarProduct(p1: Product, p2: Product): Boolean = p1.getKeyContent.contains(p2.getKeyContent) || p2.getKeyContent.contains(p1.getKeyContent)
 
     override def disambiguateProduct(product: Product, products: util.List[Product]): Product = products.head
 
@@ -120,7 +121,8 @@ class PCMBotTest extends FlatSpec with Matchers {
   ignore should "run on BestBuy overviews" in {
     forAll(bestbuyOverviewPCMs) { (path: String) =>
       if (new File(path).exists()) {
-        val loader = new CSVLoader(new PCMFactoryImpl, ';', '"', false)
+        val factory = new PCMFactoryImpl
+        val loader = new CSVLoader(factory, new CellContentInterpreter(factory), ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
         val pcm = loader.load(new File(path))(0).getPcm
         val (emptyCells, emptyCellsPerFeature, emptyCellsPerProduct) = analyzer.emptyCells(pcm)
         val (booleanFeature, numericFeatures, textualFeature) = analyzer.featureTypes(pcm)
@@ -270,16 +272,16 @@ class PCMBotTest extends FlatSpec with Matchers {
           val outputDirCluster = new File(testOutputDir.getAbsolutePath + "/cluster_" + index)
           outputDirCluster.mkdirs()
 
-          val productList = cluster.map(_.getName).mkString("\n")
+          val productList = cluster.map(_.getKeyContent).mkString("\n")
           writeToFile(outputDirCluster.getAbsolutePath + "/products.txt", productList)
 
-          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val clusterCSV = csvExporter.export(new PCMContainer(clusterPCM))
           writeToFile(outputDirCluster.getAbsolutePath + "/spec.csv", clusterCSV)
 
           for (product <- cluster) {
-            val sku = product.getName
+            val sku = product.getKeyContent
             copy(datasetDir, sku + ".txt", outputDirCluster)
             copy(datasetDir, sku + ".csv", outputDirCluster)
             copy(datasetDir, sku + ".xml", outputDirCluster)
@@ -365,7 +367,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, new CellContentInterpreter(factory), ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (manualDatasetDir.exists()) {
       // Load specifications
@@ -407,7 +409,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, new CellContentInterpreter(factory), ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (datasetDir.exists()) {
       for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {
@@ -432,7 +434,7 @@ class PCMBotTest extends FlatSpec with Matchers {
     val statsWriter = CSVWriter.open(statsFile)
     initStatsFile(statsWriter)
 
-    val loader = new CSVLoader(factory, ';', '"', false)
+    val loader = new CSVLoader(factory, new CellContentInterpreter(factory) , ';', '"', PCMDirection.PRODUCTS_AS_COLUMNS)
 
     if (datasetDir.exists()) {
       for (categoryDir <- datasetDir.listFiles() if categoryDir.isDirectory) {
@@ -508,7 +510,7 @@ class PCMBotTest extends FlatSpec with Matchers {
   def analyzePCM(statsWriter: CSVWriter, loader: CSVLoader, category: String, filter: String, pcmDir: File, pcmFile: File): Unit = {
     val name = pcmDir.getName
     println(pcmFile.getAbsolutePath)
-    val specLoader = new CSVLoader(factory)
+    val specLoader = new CSVLoader(factory, new CellContentInterpreter(factory))
 
     var stats : List[Any] = List(category, filter, name)
 
@@ -711,7 +713,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         val percentageOfNAThreshold = 0.25
 
         val mergingCondition = Some((c1: List[Product], c2: List[Product]) => {
-          val clusterProductInfo = productsInfo.filter(p => c1.map(_.getName).contains(p.sku) || c2.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => c1.map(_.getKeyContent).contains(p.sku) || c2.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
           val percentageOfNA = analyzer.emptyCells(clusterPCM)._1 / (clusterPCM.getConcreteFeatures.size() * clusterPCM.getProducts.size).toDouble
           percentageOfNA <= percentageOfNAThreshold
@@ -744,7 +746,7 @@ class PCMBotTest extends FlatSpec with Matchers {
         // Export clusters
         for ((cluster, index) <- clusters.zipWithIndex) {
           // Create PCM
-          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getName).contains(p.sku))
+          val clusterProductInfo = productsInfo.filter(p => cluster.map(_.getKeyContent).contains(p.sku))
           val clusterPCM = miner.mergeSpecifications(clusterProductInfo)
 
 

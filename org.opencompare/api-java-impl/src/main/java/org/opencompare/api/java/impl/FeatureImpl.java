@@ -5,7 +5,6 @@ import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.PCMElement;
 import org.opencompare.api.java.PCMFactory;
 import org.opencompare.api.java.util.PCMVisitor;
-import pcm.AbstractFeature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +15,14 @@ import java.util.Objects;
  */
 public class FeatureImpl extends AbstractFeatureImpl implements Feature {
 
-    private pcm.Feature kFeature;
+    private org.opencompare.model.Feature kFeature;
 
-    public FeatureImpl(pcm.Feature kFeature) {
+    public FeatureImpl(org.opencompare.model.Feature kFeature) {
         super(kFeature);
         this.kFeature = kFeature;
     }
 
-    public pcm.Feature getkFeature() {
+    public org.opencompare.model.Feature getkFeature() {
         return kFeature;
     }
 
@@ -40,7 +39,7 @@ public class FeatureImpl extends AbstractFeatureImpl implements Feature {
     @Override
     public List<Cell> getCells() {
         List<Cell> cells = new ArrayList<Cell>();
-        for (pcm.Cell kCell : kFeature.getCells()) {
+        for (org.opencompare.model.Cell kCell : kFeature.getCells()) {
             cells.add(new CellImpl(kCell));
         }
         return cells;

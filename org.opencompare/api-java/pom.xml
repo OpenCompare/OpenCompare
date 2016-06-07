@@ -5,7 +5,7 @@
     <parent>
         <artifactId>opencompare</artifactId>
         <groupId>org.opencompare</groupId>
-        <version>0.7-SNAPSHOT</version>
+        <version>0.8-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,6 +18,13 @@
             <artifactId>opencsv</artifactId>
             <version>3.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.opencompare</groupId>
+            <artifactId>hac</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -26,7 +33,7 @@
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.version.minor}</artifactId>
+            <artifactId>scalatest_${scala.binary}</artifactId>
             <version>${scalatest.version}</version>
             <scope>test</scope>
         </dependency>
@@ -58,7 +65,7 @@
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <scalaCompatVersion>${scala.version.minor}</scalaCompatVersion>
+                    <scalaCompatVersion>${scala.binary}</scalaCompatVersion>
                     <scalaVersion>${scala.version}</scalaVersion>
                 </configuration>
                 <executions>

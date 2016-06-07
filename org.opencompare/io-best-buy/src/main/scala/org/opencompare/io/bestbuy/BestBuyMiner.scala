@@ -19,13 +19,21 @@ class BestBuyMiner(factory : PCMFactory) {
   }
 
   def mergeSpecifications(productInfos : List[ProductInfo]): PCM = {
-    val pcm = factory.createPCM();
+    val pcm = factory.createPCM()
+
+    // Create products key feature
+    val skuFeature = factory.createFeature()
+    pcm.addFeature(skuFeature)
+    pcm.setProductsKey(skuFeature)
 
     for (productInfo <- productInfos) {
-      val productName = productInfo.sku
       val product = factory.createProduct()
-      product.setName(productName)
       pcm.addProduct(product)
+
+      val productName = productInfo.sku
+      val skuCell = factory.createCell()
+      skuCell.setFeature(skuFeature)
+      skuCell.setContent(productName)
 
       for ((featureName, value) <- productInfo.details) {
         val feature = pcm.getOrCreateFeature(featureName, factory)

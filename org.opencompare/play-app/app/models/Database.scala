@@ -132,7 +132,7 @@ object Database {
         for (dbProductPosition <- dbProductPositions) {
           val dbProductPositionCast = dbProductPosition.asInstanceOf[DBObject]
           val productName = dbProductPositionCast("product").toString
-          val product = pcmContainer.getPcm.getProducts.find(_.getName == productName).get
+          val product = pcmContainer.getPcm.getProducts.find(_.getKeyContent == productName).get
           val position = dbProductPositionCast("position").toString.toInt
           metadata.setProductPosition(product, position)
         }
@@ -174,46 +174,9 @@ object Database {
   }
 
   def serializePCMContainer(pcmContainer: PCMContainer) : DBObject = {
-    val pcm = pcmContainer.getPcm
-    val metadata = pcmContainer.getMetadata
-
     // Serialize PCM
-    val pcmInJSON = kmfSerializer.export(pcmContainer)
-    val dbPCM = JSON.parse(pcmInJSON).asInstanceOf[DBObject]
-
-    // Serialize product positions
-    val dbProductPositions = for (product <- pcm.getProducts) yield {
-      val productName = product.getName
-      val position = metadata.getProductPosition(product)
-      MongoDBObject(
-        "product" -> productName,
-        "position" -> position
-      )
-    }
-
-    // Serialize feature positions
-    val dbFeaturePositions = for (feature <- pcm.getConcreteFeatures) yield {
-      val featureName = feature.getName
-      val position = metadata.getFeaturePosition(feature)
-      MongoDBObject(
-        "feature" -> featureName,
-        "position" -> position
-      )
-    }
-
-    val dbMetadata = MongoDBObject(
-      "productPositions" -> dbProductPositions,
-      "featurePositions" -> dbFeaturePositions,
-      "source" -> metadata.getSource,
-      "license" -> metadata.getLicense,
-      "creator" -> metadata.getCreator
-    )
-
-    // Encapsulate the PCM and its metadata in a object
-    val dbContainer = MongoDBObject(
-      "pcm" -> dbPCM,
-      "metadata" -> dbMetadata
-    )
+    val jsonContainer = kmfSerializer.export(pcmContainer)
+    val dbContainer = JSON.parse(jsonContainer).asInstanceOf[DBObject]
 
     dbContainer
   }

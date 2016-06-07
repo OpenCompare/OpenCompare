@@ -11,13 +11,13 @@ import org.opencompare.api.java.util.*;
  */
 public class PCMImpl implements PCM {
 
-    private pcm.PCM kpcm;
+    private org.opencompare.model.PCM kpcm;
 
-    public PCMImpl(pcm.PCM kpcm) {
+    public PCMImpl(org.opencompare.model.PCM kpcm) {
         this.kpcm = kpcm;
     }
 
-    public pcm.PCM getKpcm() {
+    public org.opencompare.model.PCM getKpcm() {
         return kpcm;
     }
 
@@ -34,10 +34,21 @@ public class PCMImpl implements PCM {
     @Override
     public List<Product> getProducts() {
         List<Product> products = new ArrayList<Product>();
-        for (pcm.Product kProduct : kpcm.getProducts()) {
+        for (org.opencompare.model.Product kProduct : kpcm.getProducts()) {
             products.add(new ProductImpl(kProduct));
         }
         return products;
+    }
+
+    @Override
+    public Feature getProductsKey() {
+        org.opencompare.model.Feature key = kpcm.getProductsKey();
+        return key == null ? null : new FeatureImpl(key);
+    }
+
+    @Override
+    public void setProductsKey(Feature feature) {
+        kpcm.setProductsKey(((FeatureImpl) feature).getkFeature());
     }
 
     @Override
@@ -53,11 +64,11 @@ public class PCMImpl implements PCM {
     @Override
     public List<AbstractFeature> getFeatures() {
         List<AbstractFeature> features = new ArrayList<AbstractFeature>();
-        for (pcm.AbstractFeature kFeature : kpcm.getFeatures()) {
-            if (kFeature instanceof pcm.Feature) {
-                features.add(new FeatureImpl((pcm.Feature) kFeature));
-            } else if (kFeature instanceof pcm.FeatureGroup) {
-                features.add(new FeatureGroupImpl((pcm.FeatureGroup) kFeature));
+        for (org.opencompare.model.AbstractFeature kFeature : kpcm.getFeatures()) {
+            if (kFeature instanceof org.opencompare.model.Feature) {
+                features.add(new FeatureImpl((org.opencompare.model.Feature) kFeature));
+            } else if (kFeature instanceof org.opencompare.model.FeatureGroup) {
+                features.add(new FeatureGroupImpl((org.opencompare.model.FeatureGroup) kFeature));
             }
         }
         return features;
@@ -124,14 +135,13 @@ public class PCMImpl implements PCM {
         // Return the product if it exists
         List<Product> products = this.getProducts();
         for (Product product : products) {
-            if (product.getName().equals(name)) {
+            if (product.getKeyContent().equals(name)) {
                 return product;
             }
         }
 
         // The product does not exists, we create a new product
         Product newProduct = factory.createProduct();
-        newProduct.setName(name);
         this.addProduct(newProduct);
 
         return newProduct;
@@ -219,7 +229,7 @@ public class PCMImpl implements PCM {
             // Check if the product already exists in this PCM
             boolean existInThis = false;
             for (Product productInThis : this.getProducts()) {
-                if (product.getName().equals(productInThis.getName())) {
+                if (product.getKeyContent().equals(productInThis.getKeyContent())) {
                     existInThis = true;
                     break;
                 }
@@ -228,7 +238,6 @@ public class PCMImpl implements PCM {
             // Copy product from merged PCM if the product is new
             if (!existInThis) {
                 Product newProduct = factory.createProduct();
-                newProduct.setName(product.getName());
                 this.addProduct(newProduct);
             }
 
@@ -284,7 +293,7 @@ public class PCMImpl implements PCM {
 
         // Find corresponding cell
         for (Product productInPCM : pcm.getProducts()) {
-            if (productInPCM.getName().equals(product.getName())) {
+            if (productInPCM.getKeyContent().equals(product.getKeyCell())) {
                 correspondingCell = productInPCM.findCell(correspondingFeature);
                 break;
             }
@@ -467,44 +476,66 @@ public class PCMImpl implements PCM {
 
     @Override
     public void invert(PCMFactory factory) {
-        // FIXME : feature groups ???
-
         // Save original features and products
+        Feature productsKey = this.getProductsKey();
         List<Feature> originalFeatures = this.getConcreteFeatures();
         List<Product> originalProducts = this.getProducts();
 
-        Map<Feature, Product> featureToProduct = new HashMap<Feature, Product>(); // Mapping between original features and new products
+
+        // Clean PCM
+        for (AbstractFeature originalFeature : this.getFeatures()) {
+            this.removeFeature(originalFeature);
+        }
 
         for (Product originalProduct : originalProducts) {
-            // Remove original product
             this.removeProduct(originalProduct);
+        }
 
-            // Create new feature
-            Feature newFeature = factory.createFeature();
-            newFeature.setName(originalProduct.getName());
-            this.addFeature(newFeature);
+        // Restore products' key
+        this.addFeature(productsKey);
 
-            // Bind cells to this new feature and a new product
-            for (Cell cell : originalProduct.getCells()) {
-                Feature originalFeature = cell.getFeature();
-                Product newProduct = featureToProduct.get(originalFeature);
+        // Create new features
+        Map<Product, Feature> productToFeature = new HashMap<>(); // Mapping between original products and new features
+        for (Cell cell : productsKey.getCells()) {
+            Feature feature = factory.createFeature();
+            feature.setName(cell.getContent());
+            this.addFeature(feature);
 
-                if (newProduct == null) {
-                    // Remove original feature
-                    this.removeFeature(originalFeature);
+            productToFeature.put(cell.getProduct(), feature);
+        }
 
-                    // Create new product
-                    newProduct = factory.createProduct();
-                    newProduct.setName(originalFeature.getName());
-                    this.addProduct(newProduct);
+        // Create new products and their corresponding key cell
+        Map<Feature, Product> featureToProduct = new HashMap<>(); // Mapping between original features and new products
+        for (Feature originalFeature : originalFeatures) {
+            if (!originalFeature.equals(productsKey)) {
+                Cell cell = factory.createCell();
+                cell.setContent(originalFeature.getName());
+                cell.setFeature(productsKey);
 
-                    // Update mapping between original features and new products
-                    featureToProduct.put(originalFeature, newProduct);
+                Product product = factory.createProduct();
+                product.addCell(cell);
+                this.addProduct(product);
+
+                featureToProduct.put(originalFeature, product);
+            }
+        }
+
+        // FIXME : feature groups ???
+
+        // Create new cells
+        for (Feature originalFeature : originalFeatures) {
+            if (!originalFeature.equals(productsKey)) {
+                for (Cell cell : originalFeature.getCells()) {
+                    Feature newFeature = productToFeature.get(cell.getProduct());
+                    Product newProduct = featureToProduct.get(cell.getFeature());
+
+                    Cell newCell = factory.createCell();
+                    newCell.setContent(cell.getContent());
+                    newCell.setRawContent(cell.getRawContent());
+                    newCell.setInterpretation(cell.getInterpretation());
+                    newCell.setFeature(newFeature);
+                    newProduct.addCell(newCell);
                 }
-
-                // Bind cell to its new feature and product
-                newProduct.addCell(cell);
-                cell.setFeature(newFeature);
             }
         }
 
@@ -578,4 +609,14 @@ public class PCMImpl implements PCM {
 
         return copy;
      }
+
+    @Override
+    public String toString() {
+        return "PCMImpl{" +
+                "name= " + this.getName() +
+                ",#features= " + this.getConcreteFeatures().size() +
+                ", #products= " + this.getProducts().size() +
+                ", products' key= " + this.getProductsKey() +
+                "}";
+    }
 }

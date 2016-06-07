@@ -4,8 +4,9 @@ import java.util.List;
 
 public interface Product extends PCMElement {
 
-	String getName();
-	void setName(String name);
+    Feature getKey();
+    Cell getKeyCell();
+    String getKeyContent();
 
 	List<Cell> getCells();
     void addCell(Cell cell);
@@ -13,4 +14,5 @@ public interface Product extends PCMElement {
 
     Cell findCell(Feature feature);
 
+    PCM getPCM();
 }

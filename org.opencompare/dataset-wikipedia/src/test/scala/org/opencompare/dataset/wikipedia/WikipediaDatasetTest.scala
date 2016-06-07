@@ -8,7 +8,8 @@ import com.github.tototoshi.csv.{CSVReader, CSVWriter}
 import org.opencompare.api.java.exception.MergeConflictException
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.io.CSVExporter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import org.opencompare.io.wikipedia.export.PCMModelExporter
 import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextTemplateProcessor, WikiTextExporter, WikiTextLoader}
 import org.opencompare.io.wikipedia.pcm.Page
@@ -232,10 +233,12 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
   it should "interpret the cell of all the Wikipedia PCMs" in {
 
-    val interpreter = new CellContentInterpreter
+
     val loader = new KMFJSONLoader
     val exporter = new KMFJSONExporter
+    val csvExporter = new CSVExporter
     val factory = new PCMFactoryImpl
+    val interpreter = new CellContentInterpreter(factory)
 
     val files = new File("output/model").listFiles(new FilenameFilter {
       override def accept(dir: File, name: String): Boolean = name.endsWith(".pcm")
@@ -243,6 +246,7 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
 
     // Create output directory
     new File("output/formalized/model").mkdirs()
+    new File("output/formalized/csv").mkdirs()
 
 
     // Interpret cells for every PCM
@@ -258,8 +262,11 @@ class WikipediaDatasetTest extends FlatSpec with Matchers with BeforeAndAfterAll
         interpreter.interpretCells(pcm)
         val json = exporter.export(pcmContainer)
 
+        val csv = csvExporter.export(pcmContainer)
+
         // Write modified PCM
         writeToFile("output/formalized/model/" + file.getName, json)
+        writeToFile("output/formalized/csv/" + file.getName.replaceAll(".pcm", ".csv"), csv)
       }
 
     }

@@ -22,17 +22,11 @@ This project is released under Apache v2 License.
 This github repository contains several projects :
 
 * api-java: Java interface
-* api-js: Javascript interface
 * api-java-impl: Java implementation of the API
-* api-js-impl: Js implementation of the API
-* model: contain the data model, takes car of the code source generation for the API
-* formalizer: interpret and formalize cells contained in PCMs
-* naiveFrontEnd: a naive website to show how to manipulate model in a browser
-* io-shopping-website: parses shopping.com and creates PCMs
+* model: contain the PCM metamodel, takes car of the code source generation for the API
 * io-wikipedia: parses wikipedia pages and creates PCMs
-* io.BestBuy: parses bestbuy.com and creates PCMs
+* io-best-buy: parses bestbuy.com and creates PCMs
 * play-app: contain OpenCompare website (web editor for PCMs)
-* getting-started: minimal project that shows how to use the API
 
 ### Getting started :
 

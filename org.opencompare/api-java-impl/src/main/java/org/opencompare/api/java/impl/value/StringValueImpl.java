@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.StringValue;
  */
 public class StringValueImpl extends ValueImpl implements StringValue {
 
-    private pcm.StringValue kStringValue;
+    private org.opencompare.model.StringValue kStringValue;
 
-    public StringValueImpl(pcm.StringValue kStringValue) {
+    public StringValueImpl(org.opencompare.model.StringValue kStringValue) {
         super(kStringValue);
         this.kStringValue = kStringValue;
     }
 
-    public pcm.StringValue getkStringValue() {
+    public org.opencompare.model.StringValue getkStringValue() {
         return kStringValue;
     }
 

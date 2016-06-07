@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.NotAvailable;
  */
 public class NotAvailableImpl extends ValueImpl implements NotAvailable {
 
-    private pcm.NotAvailable kNotAvailable;
+    private org.opencompare.model.NotAvailable kNotAvailable;
 
-    public NotAvailableImpl(pcm.NotAvailable kNotAvailable) {
+    public NotAvailableImpl(org.opencompare.model.NotAvailable kNotAvailable) {
         super(kNotAvailable);
         this.kNotAvailable = kNotAvailable;
     }
 
-    public pcm.NotAvailable getkNotAvailable() {
+    public org.opencompare.model.NotAvailable getkNotAvailable() {
         return kNotAvailable;
     }
 

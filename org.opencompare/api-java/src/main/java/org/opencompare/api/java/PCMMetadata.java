@@ -24,26 +24,27 @@ public class PCMMetadata {
         this.featurePositions = new HashMap<>();
         this.source = "";
         this.license = "";
+        this.creator = "";
     }
 
     /**
      * Return the last product index used
      * @return a integer as index
      */
-    public Integer getLastProductIndex() {
+    public int getLastProductIndex() {
         return Collections.max(productPositions.values());
     }
     /**
      * Return the last feature index used
      * @return a integer as index
      */
-    public Integer getLastFeatureIndex() {
+    public int getLastFeatureIndex() {
         return Collections.max(featurePositions.values());
     }
 
     /**
      * Returns the absolute position of the product or create if not exists
-     * @param product
+     * @param product product
      * @return the absolution position of 'product' or -1 if it is not specified
      */
     public int getProductPosition(Product product) {
@@ -52,8 +53,8 @@ public class PCMMetadata {
 
     /**
      * Define the absolute position of the product in the PCM
-     * @param product
-     * @param position
+     * @param product  product
+     * @param position position
      */
     public void setProductPosition(Product product, int position) {
         productPositions.put(product, position);
@@ -86,8 +87,8 @@ public class PCMMetadata {
 
     /**
      * Define the absolute position of the feature in the PCM
-     * @param feature
-     * @param position
+     * @param feature feature
+     * @param position position
      */
     public void setFeaturePosition(AbstractFeature feature, int position) {
         featurePositions.put(feature, position);
@@ -125,6 +126,46 @@ public class PCMMetadata {
                 return fp1.compareTo(fp2);
             }
         });
+        return result;
+    }
+
+    /**
+     * Return the flatten hierarchy of features
+     * The features are sorted with respect to the metadata
+     * Feature groups are referenced multiple times to respect the hierarchy with the subfeatures
+     * e.g. FG(A,B) gives FG, FG; A, B
+     * @return flatten hierarchy
+     */
+    public List<List<AbstractFeature>> getFlattenFeatureHierarchy() {
+        List<List<AbstractFeature>> result = new ArrayList<>();
+
+        List<AbstractFeature> previousLevel = new ArrayList<>(getSortedFeatures());
+        result.add(previousLevel);
+
+        while (!previousLevel.isEmpty()) {
+            List<AbstractFeature> currentLevel = new ArrayList<>();
+            boolean isTopLevel = true;
+
+            for (AbstractFeature feature : previousLevel) {
+                if (feature.getParentGroup() != null) {
+                    isTopLevel = false;
+                    currentLevel.add(feature.getParentGroup());
+                } else {
+                    currentLevel.add(feature);
+                }
+
+            }
+
+            if (!isTopLevel) {
+                result.add(currentLevel);
+                previousLevel = currentLevel;
+            } else {
+                previousLevel = new ArrayList<>();
+            }
+        }
+
+        Collections.reverse(result);
+
         return result;
     }
 
@@ -171,9 +212,18 @@ public class PCMMetadata {
 
     @Override
     public String toString() {
-        String result = "PCMMetadata(";
-        result += productPositions.toString() + ", ";
-        result += featurePositions.toString() + ")";
+        String result = "PCMMetadata(\n";
+        result += "product positions: {\n";
+        for (Product product : productPositions.keySet()) {
+            result += "\t" + product.getKeyContent() + " : " + productPositions.get(product) + ",\n";
+        }
+        result += "}\n";
+        result += "feature positions: {\n";
+        for (AbstractFeature feature : featurePositions.keySet()) {
+            result += "\t" + feature.getName() + " : " + featurePositions.get(feature) + ",\n";
+        }
+        result += "}\n";
+        result += ")";
         return result;
     }
 
@@ -195,5 +245,13 @@ public class PCMMetadata {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    public void clearProductPosition(Product product) {
+        productPositions.remove(product);
+    }
+
+    public void clearFeaturePosition(AbstractFeature feature) {
+        featurePositions.remove(feature);
     }
 }

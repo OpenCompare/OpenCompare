@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.BooleanValue;
  */
 public class BooleanValueImpl extends ValueImpl implements BooleanValue {
 
-    private pcm.BooleanValue kBooleanValue;
+    private org.opencompare.model.BooleanValue kBooleanValue;
 
-    public BooleanValueImpl(pcm.BooleanValue kBooleanValue) {
+    public BooleanValueImpl(org.opencompare.model.BooleanValue kBooleanValue) {
         super(kBooleanValue);
         this.kBooleanValue = kBooleanValue;
     }
 
-    public pcm.BooleanValue getkBooleanValue() {
+    public org.opencompare.model.BooleanValue getkBooleanValue() {
         return kBooleanValue;
     }
 

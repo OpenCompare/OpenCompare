@@ -4,7 +4,7 @@ import controllers._
 import models.Database
 import org.opencompare.api.java.impl.PCMFactoryImpl
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
-import org.opencompare.formalizer.extractor.CellContentInterpreter
+import org.opencompare.api.java.extractor.CellContentInterpreter
 import play.api.Logger
 import play.api.mvc._
 
@@ -14,7 +14,7 @@ import play.api.mvc._
 abstract class IOCtrl(val name : String) extends BaseController {
 
   private val pcmFactory : PCMFactory = new PCMFactoryImpl()
-  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter
+  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter(pcmFactory)
 
   def importPCMsAction(format: String) = UserAwareAction { implicit request =>
 

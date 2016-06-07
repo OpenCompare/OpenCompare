@@ -9,38 +9,38 @@ import org.opencompare.api.java.impl.value.*;
  */
 public abstract class ValueImpl implements Value {
 
-    private pcm.Value kValue;
+    private org.opencompare.model.Value kValue;
 
-    protected ValueImpl(pcm.Value kValue) {
+    protected ValueImpl(org.opencompare.model.Value kValue) {
         this.kValue = kValue;
     }
 
-    public pcm.Value getkValue() {
+    public org.opencompare.model.Value getkValue() {
         return kValue;
     }
 
 
-    public static ValueImpl wrapValue(pcm.Value kValue) {
+    public static ValueImpl wrapValue(org.opencompare.model.Value kValue) {
         if (kValue == null) {
             return null;
-        } else if (kValue instanceof pcm.BooleanValue) {
-            return new BooleanValueImpl((pcm.BooleanValue) kValue);
-        } else if (kValue instanceof pcm.IntegerValue) {
-            return new IntegerValueImpl((pcm.IntegerValue) kValue);
-        } else if (kValue instanceof pcm.StringValue) {
-            return new StringValueImpl((pcm.StringValue) kValue);
-        } else if (kValue instanceof pcm.RealValue) {
-            return new RealValueImpl((pcm.RealValue) kValue);
-        } else if (kValue instanceof pcm.Multiple) {
-            return new MultipleImpl((pcm.Multiple) kValue);
-        } else if (kValue instanceof pcm.NotApplicable) {
-            return new NotApplicableImpl((pcm.NotApplicable) kValue);
-        } else if (kValue instanceof pcm.NotAvailable) {
-            return new NotAvailableImpl((pcm.NotAvailable) kValue);
-        } else if (kValue instanceof pcm.Conditional) {
-            return new ConditionalImpl((pcm.Conditional) kValue);
-        } else if (kValue instanceof pcm.Partial) {
-            return new PartialImpl((pcm.Partial) kValue);
+        } else if (kValue instanceof org.opencompare.model.BooleanValue) {
+            return new BooleanValueImpl((org.opencompare.model.BooleanValue) kValue);
+        } else if (kValue instanceof org.opencompare.model.IntegerValue) {
+            return new IntegerValueImpl((org.opencompare.model.IntegerValue) kValue);
+        } else if (kValue instanceof org.opencompare.model.StringValue) {
+            return new StringValueImpl((org.opencompare.model.StringValue) kValue);
+        } else if (kValue instanceof org.opencompare.model.RealValue) {
+            return new RealValueImpl((org.opencompare.model.RealValue) kValue);
+        } else if (kValue instanceof org.opencompare.model.Multiple) {
+            return new MultipleImpl((org.opencompare.model.Multiple) kValue);
+        } else if (kValue instanceof org.opencompare.model.NotApplicable) {
+            return new NotApplicableImpl((org.opencompare.model.NotApplicable) kValue);
+        } else if (kValue instanceof org.opencompare.model.NotAvailable) {
+            return new NotAvailableImpl((org.opencompare.model.NotAvailable) kValue);
+        } else if (kValue instanceof org.opencompare.model.Conditional) {
+            return new ConditionalImpl((org.opencompare.model.Conditional) kValue);
+        } else if (kValue instanceof org.opencompare.model.Partial) {
+            return new PartialImpl((org.opencompare.model.Partial) kValue);
         } else {
             throw new UnsupportedOperationException(kValue.getClass() + " interpretation type is not yet supported");
         }

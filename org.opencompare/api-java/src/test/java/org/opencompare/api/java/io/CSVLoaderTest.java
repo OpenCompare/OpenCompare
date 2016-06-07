@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
 import org.opencompare.api.java.PCMFactory;
+import org.opencompare.api.java.interpreter.CellContentInterpreter;
 
 import java.io.*;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public abstract class CSVLoaderTest {
 
     protected PCMFactory factory;
+    protected CellContentInterpreter cellContentInterpreter;
 
     @Before
     public abstract void setUp();
@@ -23,7 +25,7 @@ public abstract class CSVLoaderTest {
     @Test
     public void testAMDProcessors() throws IOException {
         InputStream inputCSVStream = getClass().getResourceAsStream("/csv/Comparison_of_AMD_processors.csv");
-        CSVLoader loader = new CSVLoader(factory);
+        CSVLoader loader = new CSVLoader(factory, cellContentInterpreter);
         List<PCMContainer> containers = loader.load(new InputStreamReader(inputCSVStream));
         inputCSVStream.close();
         for (PCMContainer container : containers) {
@@ -36,7 +38,7 @@ public abstract class CSVLoaderTest {
     @Test
     public void testAMDProcessorsInverted() throws IOException {
         InputStream inputCSVStream = getClass().getResourceAsStream("/csv/Comparison_of_AMD_processors.csv");
-        CSVLoader loader = new CSVLoader(factory, false);
+        CSVLoader loader = new CSVLoader(factory, cellContentInterpreter, PCMDirection.PRODUCTS_AS_COLUMNS);
         List<PCMContainer> containers = loader.load(new InputStreamReader(inputCSVStream));
         inputCSVStream.close();
         for (PCMContainer container : containers) {

@@ -11,14 +11,14 @@ import org.opencompare.api.java.value.RealValue;
  */
 public class RealValueImpl extends ValueImpl implements RealValue {
 
-    private pcm.RealValue kRealValue;
+    private org.opencompare.model.RealValue kRealValue;
 
-    public RealValueImpl(pcm.RealValue kRealValue) {
+    public RealValueImpl(org.opencompare.model.RealValue kRealValue) {
         super(kRealValue);
         this.kRealValue = kRealValue;
     }
 
-    public pcm.RealValue getkRealValue() {
+    public org.opencompare.model.RealValue getkRealValue() {
         return kRealValue;
     }
 

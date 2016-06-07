@@ -62,7 +62,7 @@ public class Clusterer {
         int counter = 0;
 
         for(Product product : pcm.getProducts()) {
-            productNames[counter] = product.getName();
+            productNames[counter] = product.getKeyContent();
             counter++;
         }
 

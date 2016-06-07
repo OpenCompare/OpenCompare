@@ -12,14 +12,14 @@ import org.opencompare.api.java.value.Conditional;
  */
 public class ConditionalImpl extends ValueImpl implements Conditional {
 
-    private pcm.Conditional kConditional;
+    private org.opencompare.model.Conditional kConditional;
 
-    public ConditionalImpl(pcm.Conditional kConditional) {
+    public ConditionalImpl(org.opencompare.model.Conditional kConditional) {
         super(kConditional);
         this.kConditional = kConditional;
     }
 
-    public pcm.Conditional getkConditional() {
+    public org.opencompare.model.Conditional getkConditional() {
         return kConditional;
     }
 
