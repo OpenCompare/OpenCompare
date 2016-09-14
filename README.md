@@ -47,6 +47,10 @@ You can also use this option to skip tests:
 
     mvn clean install -DskipTests
 
+You can also permanently set the PLAY2_HOME environment variable by adding the following to the .bashrc file in your /home directory:
+
+	export PLAY2_HOME=/.../OpenCompare/org.opencompare/play-app/
+
 If you wish to use your own installation of Play, export the relevent path in PLAY2_HOME.
 
 ### Start the server
