@@ -4,22 +4,24 @@ OpenCompare
 [![Join the chat at https://gitter.im/gbecan/OpenCompare](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OpenCompare/OpenCompare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/OpenCompare/OpenCompare.svg?branch=master)](https://travis-ci.org/OpenCompare/OpenCompare)
 
-This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the diverse (DIVERsity-centric Software Engineering) research team (http://diverse.irisa.fr/).
+This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the [DiverSE](http://diverse.irisa.fr/) (DIVERsity-centric Software Engineering) research team.
 
 This project is released under Apache v2 License.
 
-### Development tools :
- * [Play](https://www.playframework.com/)
- * Maven
- * MongoDB v2.6 or later
- * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI
- * We use intellij with the KMF plugin for the development
+## Development tools
 
-### Framework(s) :
+ * [Maven](https://maven.apache.org)
+ * [Continous integration](https://ci.inria.fr/) with Jenkins and Travis CI
+ * [IntelliJ](https://www.jetbrains.com/idea/) with the KMF plugin for development
+
+## Frameworks and dependencies
  
- *  Kevoree Modeling Framework aka KMF (https://github.com/dukeboard/kevoree-modeling-framework)
+ * [Play Framewok](https://www.playframework.com)
+ * [KMF](https://github.com/dukeboard/kevoree-modeling-framework) (Kevoree Modeling Framework)
+ * [MongoDB](https://www.mongodb.com/) v2.6 or later
 
-### Projects :
+## Projects
+
 This github repository contains several projects :
 
 * api-java: Java interface
@@ -29,9 +31,9 @@ This github repository contains several projects :
 * io-best-buy: parses bestbuy.com and creates PCMs
 * play-app: contain OpenCompare website (web editor for PCMs)
 
-### Getting started :
+## Getting started
 
-#### Install
+### Install
     git clone https://github.com/OpenCompare/OpenCompare.git
     mvn clean install
 
@@ -45,7 +47,7 @@ You can also use the following command to skip the tests:
 
     mvn clean install -DskipTests
 
-#### Start OpenCompare website
+### Start OpenCompare website
 If you want to run the Play! application (basically the OpenCompare website), change directory to
 _org.opencompare/dataset-wikipedia_
 and execute 
