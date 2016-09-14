@@ -11,6 +11,7 @@ This project is released under Apache v2 License.
 ### Development tools :
  * [Play](https://www.playframework.com/)
  * Maven
+ * MongoDB v2.6 or later
  * Continous integration with Jenkins (https://ci.inria.fr/) and Travis CI
  * We use intellij with the KMF plugin for the development
 
