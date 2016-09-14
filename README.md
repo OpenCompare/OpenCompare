@@ -43,7 +43,7 @@ First, make sure your JAVA_HOME environment variable is set to the location of a
     export PLAY2_HOME=play-app
     mvn clean install
 
-You can also use this option skip tests: 
+You can also use this option to skip tests: 
 
     mvn clean install -DskipTests
 
