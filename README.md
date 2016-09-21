@@ -65,6 +65,10 @@ Then, go to _org.opencompare/play-app_ and execute the following command to popu
 Finally, or if you already have populated the database, you can launch the HTTP server:
 
     ./activator run
+### Use website
+
+Now the server is running, you can connect on 
+ * [localhost:9000](http://localhost:9000/)
 
 ### Reset the database
 To remove all the PCMs from the database, you have to connect to your MongoDB instance and remove all the elements of the _pcms_ collection in the _opencompare_ database, as in the following commands:
