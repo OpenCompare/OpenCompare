@@ -38,7 +38,7 @@ This github repository contains several projects :
 ### Install
 First, make sure your JAVA_HOME environment variable is set to the location of a JDK version 8 or later. Then execute the following:
 
-    git clone https://github.com/OpenCompare/OpenCompare.git
+    git clone https://github.com/OpenCompare/OpenCompare.git (On Windows avoid specials chars from filepath like : C:/Users/François/OpenCompare)
     cd OpenCompare/org.opencompare
     export PLAY2_HOME=play-app
     mvn clean install
