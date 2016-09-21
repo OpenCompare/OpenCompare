@@ -11,7 +11,7 @@ import collection.JavaConversions._
 /**
   * Created by gbecan on 20/11/15.
   */
-abstract class CsvLoaderTest(val factory : PCMFactory, val cellContentInterpreter: CellContentInterpreter) extends FlatSpec with Matchers {
+abstract class CsvScalaLoaderTest(val factory : PCMFactory, val cellContentInterpreter: CellContentInterpreter) extends FlatSpec with Matchers {
 
   it should "load CSV with feature groups" in {
     val csv = Source.fromInputStream(getClass.getClassLoader.getResourceAsStream("csv/Feature-group.csv")).mkString

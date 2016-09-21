@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by gbecan on 5/26/15.
  */
-public abstract class CSVLoaderTest {
+public abstract class CsvLoaderTest {
 
     protected PCMFactory factory;
     protected CellContentInterpreter cellContentInterpreter;
