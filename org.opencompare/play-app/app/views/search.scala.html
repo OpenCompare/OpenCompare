@@ -9,7 +9,7 @@
 
 @main(header, footer, fullSize = false) {
 
-    <h4>@Messages("search.title") "@request"</h4>
+    <h4>@Messages("search.title") @request</h4>
     @results.map{ result =>
         <a class="btn btn-primary btn-flat btn-xs oc-list" href="pcm/@result.id">
             @result.name
