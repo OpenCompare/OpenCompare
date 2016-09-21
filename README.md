@@ -70,5 +70,7 @@ Finally, or if you already have populated the database, you can launch the HTTP 
 To remove all the PCMs from the database, you have to connect to your MongoDB instance and remove all the elements of the _pcms_ collection in the _opencompare_ database, as in the following commands:
 
     mongo
+
     use opencompare
+
     db.pcms.remove({})
