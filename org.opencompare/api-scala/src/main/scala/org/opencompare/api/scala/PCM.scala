@@ -2,12 +2,12 @@ package org.opencompare.api.scala
 
 class PCM {
 
-  private var _products : List[Product] = Nil
+  private var _products : Set[Product] = Set.empty[Product]
 
   var name : String = ""
 
-  def products : List[Product] = _products
-  def products_= (value: List[Product]) = {
+  def products : Set[Product] = _products
+  def products_= (value: Set[Product]) = {
     _products = value
     for (product <- _products if product.pcm != this) {
       product.pcm = this
@@ -16,11 +16,11 @@ class PCM {
 
   var productsKey : Feature = _
 
-  var features : List[AbstractFeature] = Nil
+  var features : Set[AbstractFeature] = Set.empty
 
-  def concreteFeatures : List[Feature] = {
+  def concreteFeatures : Set[Feature] = {
     features.flatMap {
-      case f : Feature => List(f)
+      case f : Feature => Set(f)
       case fg : FeatureGroup => fg.concreteFeatures
     }
   }

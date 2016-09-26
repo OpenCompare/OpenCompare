@@ -10,9 +10,12 @@ class Product {
   def keyContent : Option[String] = keyCell.map(_.content)
 
   def cells : Set[Cell] = _cells
-  def cells_= (value : Set[Cell]) = {
-    _cells = value
-    for (cell <- _cells if cell.product != this) {
+  def cells_= (value : Set[Cell]) : Unit = {
+    _cells = value // Change value
+    for (cell <- _cells if cell.product != this) { // Update other side of the association
+      if (Option(cell.product).isDefined) {
+        cell.product.cells = cell.product.cells - cell
+      }
       cell.product = this
     }
   }

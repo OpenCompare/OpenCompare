@@ -1,10 +1,8 @@
 package org.opencompare.api.scala
 
+import org.opencompare.api.scala.metadata.Position
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
-trait Position {
-  var position : Int
-}
 
 class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
@@ -48,16 +46,16 @@ class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       i -> feature
     }).toMap
 
-    pcm.features = features.values.toList
+    pcm.features = features.values.toSet
 
       // Create products
     pcm.products = (for (i <- 0 until 10) yield {
-      val product = new Product
+      val product = new Product with Position
+      product.position = i
 
       product.cells = (for (j <- 0 until 10) yield {
-        val cell = new Cell with Position {
-          override var position: Int = j
-        }
+        val cell = new Cell with Position
+        cell.position = j
         cell.rawContent = "c" + i + j
         cell.content = cell.rawContent
         cell.feature = features(j)
@@ -65,20 +63,20 @@ class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
       }).toSet
 
       product
-    }).toList
+    }).toSet
 
 
     pcm.productsKey = features(0)
 
-    for ((product, productIndex) <- pcm.products.zipWithIndex) {
-
+    for (product <- pcm.products) {
+      val productPosition = product.asInstanceOf[Product with Position].position
       product.key.name should be ("Feature 0")
 
       for (cell <- product.cells) {
-        val position = cell.asInstanceOf[Cell with Position].position
-        cell.rawContent should be ("c" + productIndex + position)
-        cell.content should be ("c" + productIndex + position)
-        cell.feature.name should be ("Feature " + position)
+        val cellPosition = cell.asInstanceOf[Cell with Position].position
+        cell.rawContent should be ("c" + productPosition + cellPosition)
+        cell.content should be ("c" + productPosition + cellPosition)
+        cell.feature.name should be ("Feature " + cellPosition)
         cell.product should be (product)
       }
     }
