@@ -8,6 +8,7 @@ This project contains development artifacts used to perform research around prod
 
 This project is released under Apache v2 License.
 
+
 ## Development tools
 
  * [Maven](https://maven.apache.org)
@@ -36,7 +37,7 @@ This github repository contains several projects :
 ## Getting started
 
 ### Install
-First, make sure your JAVA_HOME environment variable is set to the location of a JDK version 8 or later. Then execute the following:
+First, make sure your JAVA_HOME environment variable is set to the location of a JDK version 8 or later. Then execute the following (On Windows avoid specials chars from filepath like : C:/Users/François/OpenCompare) :
 
     git clone https://github.com/OpenCompare/OpenCompare.git
     cd OpenCompare/org.opencompare
@@ -65,10 +66,16 @@ Then, go to _org.opencompare/play-app_ and execute the following command to popu
 Finally, or if you already have populated the database, you can launch the HTTP server:
 
     ./activator run
+### Use website
+
+Now the server is running, you can connect on 
+ * [localhost:9000](http://localhost:9000/)
 
 ### Reset the database
 To remove all the PCMs from the database, you have to connect to your MongoDB instance and remove all the elements of the _pcms_ collection in the _opencompare_ database, as in the following commands:
 
     mongo
+
     use opencompare
+
     db.pcms.remove({})
