@@ -6,7 +6,7 @@ class Cell {
   var product : Product = _
   var content : String = ""
   var rawContent : String = ""
-  var interpretation : Value = _
+  var interpretation : Option[Value] = None
 
 
 }

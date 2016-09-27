@@ -36,6 +36,14 @@ class IOMatrix[T <: IOCell] {
     this
   }
 
+  def numberOfRows(): Int = {
+    maxRow + 1
+  }
+
+  def numberOfColumns(): Int = {
+    maxColumn + 1
+  }
+
   def isPositionOccupied(row: Int, column: Int) : Boolean = {
 
     // Check cell is defined
@@ -52,6 +60,47 @@ class IOMatrix[T <: IOCell] {
       .exists { e => e._2.isDefined && (e._1 + e._2.get.colspan > column) }
 
     result
+  }
+
+  def transpose(): Unit = {
+    cells = cells.map { e =>
+      val position = e._1
+      val cell = e._2
+
+      val tempRowspan = cell.rowspan
+      cell.rowspan = cell.colspan
+      cell.colspan = tempRowspan
+
+      (position._2, position._1) -> cell
+    }
+
+    val tempMaxRow = maxRow
+    maxRow = maxColumn
+    maxColumn = tempMaxRow
+  }
+
+  def flattenCells(): Unit = {
+    for (row <- 0 until numberOfRows;
+         column <- 0 until numberOfColumns) {
+      cells.get((row, column))
+        .map { cell =>
+          for (rowOffset <- 0 until cell.rowspan;
+               columnOffset <- 0 until cell.colspan) {
+            cells = cells + ((row + rowOffset, column + columnOffset) -> cell)
+          }
+
+          cell.rowspan = 1
+          cell.colspan = 1
+      }
+    }
+  }
+
+  def rows(): List[List[Option[T]]] = {
+    (for (rowIndex <- 0 until numberOfRows) yield {
+      (for (columnIndex <- 0 until numberOfColumns) yield {
+        cells.get(rowIndex, columnIndex)
+      }).toList
+    }).toList
   }
 
 }
