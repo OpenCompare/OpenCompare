@@ -24,7 +24,7 @@ class DefaultCellContentInterpreter() extends CellContentInterpreter {
     // dimensions
     new MultipleRegexPatternInterpreter( "(\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?)", List("and"), true),
     // date XX/XX/XXXX
-    new VariabilityConceptRefPatternInterpreter("\\d{2}/\\d{2}/\\d{4}", Nil, true),
+    new StringPatternInterpreter("\\d{2}/\\d{2}/\\d{4}", Nil, true),
     // foo (bar)
     new PartialPatternInterpreter("([^,/]+?)\\s*\\((.+)\\)",Nil,false),
     // yes, with some condition
@@ -40,7 +40,7 @@ class DefaultCellContentInterpreter() extends CellContentInterpreter {
     // foo AND bar
     new MultipleRegexPatternInterpreter("(.+)\\sand\\s(.+)", List("and"), false),
     // everything
-    new VariabilityConceptRefPatternInterpreter(".*", Nil, false)
+    new StringPatternInterpreter(".*", Nil, false)
   )
 
   private var patternInterpreters: List[PatternInterpreter] = defaultInterpreters ::: defaultGreedyInterpreters
@@ -65,14 +65,6 @@ class DefaultCellContentInterpreter() extends CellContentInterpreter {
       if cell.interpretation.isEmpty
     ) {
       cell.interpretation = interpretStringOption(cell.content)
-    }
-  }
-
-  override def interpretString(verbatim: String): Value = {
-    val interpretation = interpretStringOption(verbatim)
-    interpretation match {
-      case Some(e) => e
-      case None => null
     }
   }
 

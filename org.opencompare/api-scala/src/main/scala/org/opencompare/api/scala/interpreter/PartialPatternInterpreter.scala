@@ -16,7 +16,7 @@ class PartialPatternInterpreter (
     val valueInterpretation = if (matcher.groupCount() >= 1) {
       val valueString = matcher.group(1)
       lastCall = Some(s)
-      cellContentInterpreter.interpretStringOption(valueString)
+      cellContentInterpreter.interpretString(valueString)
     } else {
       None
     }
@@ -25,7 +25,7 @@ class PartialPatternInterpreter (
     val condInterpretation = if (matcher.groupCount() >= 2) {
       val conditionString = matcher.group(2)
       lastCall = Some(s)
-      cellContentInterpreter.interpretStringOption(conditionString)
+      cellContentInterpreter.interpretString(conditionString)
     } else {
       None
     }

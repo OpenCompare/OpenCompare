@@ -21,7 +21,7 @@ class MultipleRegexPatternInterpreter (
 			  val subConstraint = matcher.group(groupID)
 			  if (subConstraint != null) {
 				  lastCall = Some(s)
-				  val subCInterpretation = cellContentInterpreter.interpretStringOption(subConstraint)
+				  val subCInterpretation = cellContentInterpreter.interpretString(subConstraint)
 				  if (subCInterpretation.isDefined) {
 				    subValues += subCInterpretation.get
 				  } else {

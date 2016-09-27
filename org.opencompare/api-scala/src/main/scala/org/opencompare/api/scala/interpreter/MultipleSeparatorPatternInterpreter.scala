@@ -20,7 +20,7 @@ class MultipleSeparatorPatternInterpreter (
 
     for (part <- parts) {
       lastCall = Some(s)
-      val subCInterpretation = cellContentInterpreter.interpretStringOption(part)
+      val subCInterpretation = cellContentInterpreter.interpretString(part)
       if (subCInterpretation.isDefined) {
         subValues += subCInterpretation.get
       } else {

@@ -5,7 +5,6 @@ import org.opencompare.api.scala.{PCM, Value}
 trait CellContentInterpreter {
 
   def interpretCells(pcm : PCM)
-  def interpretString(content : String) : Value
-  def interpretStringOption(content : String) : Option[Value]
+  def interpretString(content : String) : Option[Value]
 
 }

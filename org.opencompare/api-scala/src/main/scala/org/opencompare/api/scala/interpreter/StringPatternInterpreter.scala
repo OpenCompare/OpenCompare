@@ -4,7 +4,7 @@ import java.util.regex.Matcher
 
 import org.opencompare.api.scala.{StringValue, Value}
 
-class VariabilityConceptRefPatternInterpreter (
+class StringPatternInterpreter(
     regex : String,
     parameters : List[String],
     confident : Boolean)

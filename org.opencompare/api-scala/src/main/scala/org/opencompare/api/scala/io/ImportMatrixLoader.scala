@@ -1,9 +1,10 @@
 package org.opencompare.api.scala.io
 
 import org.opencompare.api.scala.PCM
+import org.opencompare.api.scala.interpreter.CellContentInterpreter
 import org.opencompare.api.scala.metadata.{Orientation, PCMOrientation, Positions}
 
-class ImportMatrixLoader(val orientation : PCMOrientation) {
+class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, orientation : PCMOrientation) {
 
 
   def load(matrix: ImportMatrix) : PCM = {
@@ -11,6 +12,7 @@ class ImportMatrixLoader(val orientation : PCMOrientation) {
 
 
     // Detect types and information for each cell
+    detectTypes(matrix)
 
     // Expand rowpsan and colspan
 
@@ -45,7 +47,14 @@ class ImportMatrixLoader(val orientation : PCMOrientation) {
     * @param matrix matrix
     */
   protected def detectTypes(matrix: ImportMatrix): Unit = {
-
+    for (row <- 0 until matrix.numberOfRows;
+         column <- 0 until matrix.numberOfColumns) {
+      matrix.getCell(row, column).foreach { cell =>
+        if (cell.interpretation.isEmpty) {
+          cell.interpretation = cellContentInterpreter.interpretString(cell.content)
+        }
+      }
+    }
   }
 
 }
