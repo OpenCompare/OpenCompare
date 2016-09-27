@@ -9,3 +9,4 @@ trait Orientation extends PCM {
 trait PCMOrientation
 case class ProductsAsRows() extends PCMOrientation
 case class ProductsAsColumns() extends PCMOrientation
+case class Unknown() extends PCMOrientation

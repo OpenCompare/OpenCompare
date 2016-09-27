@@ -64,7 +64,7 @@ class DefaultCellContentInterpreter() extends CellContentInterpreter {
       cell <- product.cells
       if cell.interpretation.isEmpty
     ) {
-      cell.interpretation = interpretStringOption(cell.content)
+      cell.interpretation = interpretString(cell.content)
     }
   }
 
@@ -73,7 +73,7 @@ class DefaultCellContentInterpreter() extends CellContentInterpreter {
     *
     * @param verbatim : string to analyze
    */
-  def interpretStringOption(verbatim: String): Option[Value] = {
+  def interpretString(verbatim: String): Option[Value] = {
     var interpretation: Option[Value] = None
     for (interpreter <- patternInterpreters if interpretation.isEmpty) {
       interpretation = interpreter.interpret(verbatim)
