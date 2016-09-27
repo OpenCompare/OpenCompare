@@ -80,8 +80,48 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
   }
 
   protected def detectOrientation(matrix: ImportMatrix): PCMOrientation = {
-    // TODO
-    ProductsAsRows()
+
+    // Compute homogeneity of rows
+    val homogeneityOfRows = for (row <- 0 until matrix.numberOfRows) yield {
+      // Get types
+      val types = (for (column <- 0 until matrix.numberOfColumns) yield {
+        matrix.getCell(row, column).flatMap(_.interpretation.map(_.getClass.getName))
+      }).flatten
+
+      // Count the number of cells with the main types
+      val mainType = types.groupBy(identity[String]).map(_._2.size).max
+
+      // Compute homogeneity of the row
+      val homogeneity = mainType.toDouble / matrix.numberOfRows().toDouble
+      homogeneity
+    }
+
+    val globalHomogeneityOfRows = homogeneityOfRows.sum / matrix.numberOfRows
+
+    // Compute homogeneity of columns
+    val homogeneityOfColumns = for (column <- 0 until matrix.numberOfColumns) yield {
+      // Get types
+      val types = (for (row <- 0 until matrix.numberOfRows) yield {
+        matrix.getCell(row, column).flatMap(_.interpretation.map(_.getClass.getName))
+      }).flatten
+
+      // Count the number of cells with the main types
+      val mainType = types.groupBy(identity[String]).map(_._2.size).max
+
+      // Compute homogeneity of the row
+      val homogeneity = mainType.toDouble / matrix.numberOfColumns().toDouble
+      homogeneity
+    }
+
+    val globalHomogeneityOfColumns = homogeneityOfColumns.sum / matrix.numberOfColumns
+
+    if (globalHomogeneityOfRows > globalHomogeneityOfColumns) {
+      ProductsAsColumns()
+    } else {
+      ProductsAsRows()
+    }
+
+
   }
 
 }
