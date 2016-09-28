@@ -2,11 +2,11 @@ package org.opencompare.api.scala
 
 class FeatureGroup extends AbstractFeature {
 
-  var subFeatures : List[AbstractFeature] = Nil
+  var subFeatures : Set[AbstractFeature] = Set.empty[AbstractFeature]
 
-  def concreteFeatures : List[Feature] = {
+  def concreteFeatures : Set[Feature] = {
     subFeatures.flatMap {
-      case f : Feature => List(f)
+      case f : Feature => Set(f)
       case fg : FeatureGroup => fg.concreteFeatures
     }
   }

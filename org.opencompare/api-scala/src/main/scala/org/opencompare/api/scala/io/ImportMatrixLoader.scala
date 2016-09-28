@@ -218,7 +218,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
         featureGroup.name = child.content
 
         val (subFeatures, positionToFeature) = createFeatures(child)
-        featureGroup.subFeatures = subFeatures
+        featureGroup.subFeatures = subFeatures.toSet
         (List(featureGroup), positionToFeature)
       }
     }
