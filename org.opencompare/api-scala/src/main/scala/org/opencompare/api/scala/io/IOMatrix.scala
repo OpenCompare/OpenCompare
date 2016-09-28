@@ -83,7 +83,7 @@ class IOMatrix[T <: IOCell] {
     for (row <- 0 until numberOfRows;
          column <- 0 until numberOfColumns) {
       cells.get((row, column))
-        .map { cell =>
+        .foreach { cell =>
           for (rowOffset <- 0 until cell.rowspan;
                columnOffset <- 0 until cell.colspan) {
             cells = cells + ((row + rowOffset, column + columnOffset) -> cell)
