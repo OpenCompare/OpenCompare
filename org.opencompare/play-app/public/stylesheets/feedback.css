@@ -1,19 +1,28 @@
 #feedbackButton{
-	box-sizing: content-box;
+	box-sizing: border-box;
 	position: fixed;
-	bottom: 10px;
-	left: 10px;
+	bottom: 15px;
+	right: 15px;
 	z-index: 1031;
-	padding: 10px;
-	background-color: rgb(20,20,20);
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	line-height: 40px;
+	text-align: center;
+	background-color: #FF5722;
 	color: white;
-	border-radius: 10px;
+	border-radius: 50%;
 	border: none;
 	cursor: pointer;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+}
+
+#feedbackButton > i{
+	vertical-align: middle;
 }
 
 #feedbackButton:hover{
-	box-shadow: 0 0 10px rgb(0,0,0);
+	background-color: #E64A19;
 }
 
 #feedbackWindowWrap{
