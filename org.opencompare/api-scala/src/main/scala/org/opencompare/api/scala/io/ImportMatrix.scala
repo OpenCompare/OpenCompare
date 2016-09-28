@@ -16,7 +16,7 @@ class ImportMatrix extends IOMatrix[ImportCell] {
   def removeEmptyRows(): Unit = {
     // Remove empty rows
     val nonEmptyRows = rows().filter { cells =>
-        cells.forall { cell =>
+        !cells.forall { cell =>
           cell.isEmpty || cell.get.content.matches("\\s*")
         }
     }

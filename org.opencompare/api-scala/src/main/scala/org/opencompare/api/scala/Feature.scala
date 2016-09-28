@@ -16,4 +16,5 @@ class Feature extends AbstractFeature {
   }
 
 
+  override def toString = s"Feature($name)"
 }

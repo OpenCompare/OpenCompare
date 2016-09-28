@@ -23,4 +23,6 @@ class FeatureGroup extends AbstractFeature {
     case fg : FeatureGroup => 1 + fg.depth
   }.max
 
+
+  override def toString = s"FeatureGroup($name, $subFeatures)"
 }

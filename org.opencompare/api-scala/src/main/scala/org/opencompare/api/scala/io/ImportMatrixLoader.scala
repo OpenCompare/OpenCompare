@@ -4,6 +4,8 @@ import org.opencompare.api.scala._
 import org.opencompare.api.scala.interpreter.CellContentInterpreter
 import org.opencompare.api.scala.metadata._
 
+import scala.collection.mutable.ListBuffer
+
 class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, orientation : PCMOrientation) {
 
 
@@ -45,7 +47,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
     // Create features
     val featureTreeRoot = detectFeatures(matrix)
     val (topFeatures, positionToFeature) = createFeatures(featureTreeRoot)
-    pcm.features = topFeatures.toSet
+    pcm.features = topFeatures
 
     // Set feature positions in metadata
     pcm.featurePositions = positionToFeature.map(e => e._2 -> e._1)
@@ -130,76 +132,68 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
   }
 
 
-  class IONode(var content : String, var children : List[IONode] = List.empty[IONode], var positions : Set[Int] = Set.empty[Int]) {
+  class IONode(var content : String, var children : Set[IONode] = Set.empty[IONode], var positions : Set[Int] = Set.empty[Int]) {
     def isLeaf() : Boolean = children.isEmpty
-    def leaves() : List[IONode] = if (isLeaf()) {
-      List(this)
+    def leaves() : Set[IONode] = if (isLeaf()) {
+      Set(this)
     } else {
       children.flatMap(_.leaves())
     }
+
+    override def toString = s"IONode($content, $children)"
   }
 
+  /**
+    * Detect features from the information contained in the matrix
+    * @param matrix matrix
+    * @return graph representing the hierarchy of features
+    */
   protected def detectFeatures(matrix : ImportMatrix) : IONode = {
 
     val root = new IONode("")
-    var parents = List.empty[IONode]
 
     // Init parents
-    for (column <- 0 until matrix.numberOfColumns()) {
-      parents = root :: parents
-    }
-    parents = parents.reverse
+    var parents = (0 until matrix.numberOfColumns()).map(_ => root).toList
 
-    // Detect features
+    // Create hierarchy of features
     for (row <- 0 until matrix.numberOfRows()) {
-      var nextParents = parents
 
-      for (column <- 0 until matrix.numberOfColumns()) {
-        val currentCell = matrix.getCell(row, column).getOrElse(new IOCell())
+      val nextParents = ListBuffer.empty[IONode]
 
-        val parent = parents(column)
-
-        val sameAsParent = currentCell.content == parent.content
-        var sameAsPrevious = false
-        var sameParentAsPrevious = true
-
-        if (column > 0) {
-          val previousCell = matrix.getCell(row, column - 1).getOrElse(new IOCell())
-
-          sameAsPrevious = currentCell.content == previousCell.content
-
-          // if (parent.content != null) {
-          sameParentAsPrevious = parent.content == parents(column - 1).content
-          // }
+      for ((parent, column) <- parents.zipWithIndex) yield {
+        val cell = matrix.getCell(row, column).getOrElse(new ImportCell())
+        val previousCell = if (column > 0) {
+          Some(matrix.getCell(row, column - 1).getOrElse(new ImportCell()))
+        } else {
+          None
         }
 
-        if (!sameAsParent && (!sameParentAsPrevious || !sameAsPrevious)) {
-
-          val newNode = new IONode(currentCell.content)
-          newNode.positions += column
-          parent.children = parent.children :+ newNode
-          nextParents = nextParents.patch(column, Seq(newNode), 1)
-
-        } else if (column > 0 && sameParentAsPrevious && sameAsPrevious) {
-          val previousNode = nextParents(column - 1)
-          previousNode.positions += column
-          nextParents.patch(column, Seq(previousNode), 1)
+        if (cell.content == parent.content) { // Same feature as the one above
+          parent.positions += column
+          nextParents += parent
+        } else if (previousCell.isDefined && cell.content == previousCell.get.content) { // Same feature as the one on the left
+          val previousCellParent = nextParents.last
+          previousCellParent.positions += column
+          nextParents += previousCellParent
+        } else { // New feature
+          val newParent = new IONode(cell.content)
+          parent.children = parent.children + newParent
+          newParent.positions += column
+          nextParents += newParent
         }
-
       }
 
-      parents = nextParents
+      parents = nextParents.toList
 
       if (root.leaves().size == matrix.numberOfColumns()) {
         return root
       }
-
     }
 
     root
   }
 
-  def createFeatures(parent : IONode) : (List[AbstractFeature], Map[Int, Feature]) = {
+  def createFeatures(parent : IONode) : (Set[AbstractFeature], Map[Int, Feature]) = {
 
     val result = parent.children.map { child =>
       if (child.isLeaf()) {
@@ -230,6 +224,12 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
     (features, featureToPosition)
   }
 
+  /**
+    * Detect and create products from the information contained in the matrix and the provided direction
+    * @param matrix matrix
+    * @param pcm PCM
+    * @param positionToFeature map between positions and features
+    */
   def createProducts(matrix : ImportMatrix, pcm : PCM with Positions, positionToFeature : Map[Int, Feature]): Unit = {
     val depthOfFeatureHierarchy = pcm.depthOfFeatureHierarchy()
 
