@@ -38,7 +38,7 @@ class CSVLoader(cellContentInterpreter: CellContentInterpreter, separator : Char
     val importMatrix = new ImportMatrix
 
     for ((cells, row) <- reader.toStream.zipWithIndex) {
-      for ((cell, column) <- cells) {
+      for ((cell, column) <- cells.zipWithIndex) {
         importMatrix.setCell(new ImportCell(cell, cell), row, column)
       }
 
