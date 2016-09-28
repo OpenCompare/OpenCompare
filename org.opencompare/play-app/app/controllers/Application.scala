@@ -8,6 +8,9 @@ import models.{Database, User}
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
 
+import play.api.Logger
+import forms.FeedbackForm
+
 @Singleton
 class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
 
@@ -23,6 +26,16 @@ class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[
         Ok(views.html.aboutPrivacyPolicy())
     }
 
+    def feedback = UserAwareAction { implicit request =>
+        Logger.debug("PLS LOG\n")
+        FeedbackForm.form.bindFromRequest.fold(
+            form => Ok(views.html.index(Database.getLastHTMLSources(5))),
+            data => {
+                Logger.debug(data.email)
+                Redirect(routes.Application.index()).flashing("info" -> "Merci !")
+            }
+        )
+    }
 
     def list(limit : Int, page : Int) = UserAwareAction { implicit request =>
         val pcms = Database.list(limit, page).toList
