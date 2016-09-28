@@ -25,5 +25,12 @@ class PCM {
     }
   }
 
+  def depthOfFeatureHierarchy() : Int = {
+    features.map {
+      case f : Feature => 1
+      case fg : FeatureGroup => fg.depth
+    }.max
+  }
+
 
 }
