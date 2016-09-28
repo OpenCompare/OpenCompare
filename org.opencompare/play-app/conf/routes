@@ -43,6 +43,9 @@ POST        /api/export/html                          @controllers.io.HTMLCtrl.e
 # JSON import/export
 POST        /api/export/json                          @controllers.io.JSONCtrl.exportPCMAction()
 
+# Feedback
+POST		/feedback 								  @controllers.Application.feedback()
+
 # Auth
 GET         /signIn                                   @controllers.auth.AuthenticationController.signIn
 GET         /signUp                                   @controllers.auth.AuthenticationController.signUp

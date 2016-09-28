@@ -1,3 +1,5 @@
+@()(implicit messages: Messages, context: controllers.ViewContext)
+
 <div id="feedback" ng-controller="FeedbackController">
 	<!-- Button trigger modal -->
 	<button type="button" id="feedbackButton" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
@@ -13,11 +15,13 @@
 		  <div class="modal-body">
 			<form action="/feedback" method="POST">
 				<div class="form-group">
-					<input name="mail" type="text" class="form-control" placeholder="E-mail">
+					<input name="email" type="text" class="form-control" @if(context.user.isDefined) {
+						value="@context.user.get.email" } else {
+						placeholder="Email" }>
 				</div>
 				
 				<div class="form-group">
-					<input name="object" type="text" class="form-control" placeholder="Object">
+					<input name="subject" type="text" class="form-control" placeholder="Subject">
 				</div>
 				
 				<div class="form-group">
