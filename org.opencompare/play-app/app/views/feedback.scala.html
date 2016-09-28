@@ -16,7 +16,6 @@
 		  <div class="modal-body">
 			<form action="/feedback" method="POST">
 				<div class="form-group">
-<<<<<<< HEAD
 					<label>E-mail (Optional) :</label>
 					<input name="mail" type="text" class="form-control" placeholder="E-mail">
 				</div>
@@ -24,7 +23,6 @@
 				<div class="form-group">
 					<label>Object (Is it it about a bug, a new feature, ...) :</label>
 					<input name="object" type="text" class="form-control" placeholder="Object">
-=======
 					<input name="email" type="text" class="form-control" @if(context.user.isDefined) {
 						value="@context.user.get.email" } else {
 						placeholder="Email" }>
@@ -32,7 +30,6 @@
 				
 				<div class="form-group">
 					<input name="subject" type="text" class="form-control" placeholder="Subject">
->>>>>>> origin/master
 				</div>
 				
 				<div class="form-group">
