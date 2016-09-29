@@ -47,4 +47,7 @@ class PCM {
     val state = Seq(name, features, productsKey, _products)
     state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
   }
+
+
+  override def toString = s"PCM($name, $productsKey)"
 }

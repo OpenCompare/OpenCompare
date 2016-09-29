@@ -61,6 +61,20 @@ abstract class CircularTest(
           outputPCM.name = ""
 
           if (inputPCM != outputPCM) {
+
+            println("name: " + (inputPCM.name == outputPCM.name))
+            println("features: " + (inputPCM.features == outputPCM.features))
+            println("concrete features: " + (inputPCM.concreteFeatures == outputPCM.concreteFeatures))
+            println("products: " + (inputPCM.products == outputPCM.products))
+
+//            if (name.contains("dance")) {
+//              println("==============================================")
+//              println(inputPCM.features)
+//              println("==============================================")
+//              println(outputPCM.features)
+//              println("==============================================")
+//            }
+
             val baseName = exporter.getClass.getName + "-" + importer.getClass.getName + "_" + name
             val csvExporter = new CSVExporter
             Files.write(Paths.get("/tmp", baseName + "_in"), code.getBytes())

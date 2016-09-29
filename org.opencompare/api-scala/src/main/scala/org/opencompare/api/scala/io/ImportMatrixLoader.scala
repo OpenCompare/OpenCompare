@@ -132,7 +132,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
   }
 
 
-  class IONode(var content : String, var children : Set[IONode] = Set.empty[IONode], var positions : Set[Int] = Set.empty[Int]) {
+  class IONode(var content : Option[String], var children : Set[IONode] = Set.empty[IONode], var positions : Set[Int] = Set.empty[Int]) {
     def isLeaf() : Boolean = children.isEmpty
     def leaves() : Set[IONode] = if (isLeaf()) {
       Set(this)
@@ -150,7 +150,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
     */
   protected def detectFeatures(matrix : ImportMatrix) : IONode = {
 
-    val root = new IONode("")
+    val root = new IONode(None)
 
     // Init parents
     var parents = (0 until matrix.numberOfColumns()).map(_ => root).toList
@@ -168,7 +168,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
           None
         }
 
-        if (cell.content == parent.content) { // Same feature as the one above
+        if (parent.content.isDefined && cell.content == parent.content.get) { // Same feature as the one above
           parent.positions += column
           nextParents += parent
         } else if (previousCell.isDefined && cell.content == previousCell.get.content) { // Same feature as the one on the left
@@ -176,7 +176,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
           previousCellParent.positions += column
           nextParents += previousCellParent
         } else { // New feature
-          val newParent = new IONode(cell.content)
+          val newParent = new IONode(Some(cell.content))
           parent.children = parent.children + newParent
           newParent.positions += column
           nextParents += newParent
@@ -198,7 +198,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
     val result = parent.children.map { child =>
       if (child.isLeaf()) {
         val feature = new Feature
-        feature.name = child.content
+        feature.name = child.content.getOrElse("")
 
 
         val featureToPosition = (for (position <- child.positions) yield {
@@ -209,7 +209,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
 
       } else {
         val featureGroup = new FeatureGroup
-        featureGroup.name = child.content
+        featureGroup.name = child.content.getOrElse("")
 
         val (subFeatures, positionToFeature) = createFeatures(child)
         featureGroup.subFeatures = subFeatures.toSet
