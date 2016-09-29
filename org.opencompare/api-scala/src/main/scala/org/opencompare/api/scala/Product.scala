@@ -5,8 +5,8 @@ class Product {
   private var _cells : Set[Cell] = Set.empty[Cell]
 
   var pcm : PCM = _
-  def key : Feature = pcm.productsKey
-  def keyCell : Option[Cell] = findCell(key)
+  def key : Option[Feature] = pcm.productsKey
+  def keyCell : Option[Cell] = key.flatMap(findCell(_))
   def keyContent : Option[String] = keyCell.map(_.content)
 
   def cells : Set[Cell] = _cells
@@ -23,6 +23,17 @@ class Product {
   def findCell(feature : Feature) : Option[Cell] = cells.find(_.feature == feature)
 
 
+  def canEqual(other: Any): Boolean = other.isInstanceOf[Product]
 
+  override def equals(other: Any): Boolean = other match {
+    case that: Product =>
+      (that canEqual this) &&
+        _cells == that._cells
+    case _ => false
+  }
 
+  override def hashCode(): Int = {
+    val state = Seq(_cells)
+    state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
+  }
 }

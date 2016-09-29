@@ -257,15 +257,13 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
 
 
   def setProductsKey(pcm : PCM with Positions): Unit = {
-    // TODO
-
     // Find feature that can be the products key
     val productsKey = pcm.sortedFeatures().find { feature =>
       feature.cells.map(_.content).size == feature.cells.size
     }
 
     if (productsKey.isDefined) {
-      pcm.productsKey = productsKey.get
+      pcm.productsKey = productsKey
     } else { // If no feature can be a products key, then we create a new feature
       val arbitraryProductsKey = new Feature
       arbitraryProductsKey.name = "Products"
@@ -293,7 +291,7 @@ class ImportMatrixLoader(val cellContentInterpreter: CellContentInterpreter, ori
       pcm.featurePositions += arbitraryProductsKey -> 0
 
       pcm.features += arbitraryProductsKey
-      pcm.productsKey = arbitraryProductsKey
+      pcm.productsKey = Some(arbitraryProductsKey)
 
     }
 

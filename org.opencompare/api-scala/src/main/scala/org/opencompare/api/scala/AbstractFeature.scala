@@ -1,6 +1,6 @@
 package org.opencompare.api.scala
 
-trait AbstractFeature {
+abstract class AbstractFeature {
 
   var name : String = ""
   var parent : Option[FeatureGroup] = None

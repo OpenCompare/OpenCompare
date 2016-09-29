@@ -67,7 +67,7 @@ class ImportMatrixLoaderTest extends FlatSpec with Matchers {
       pcm.products.foreach(_.cells.size should be (3))
     }
 
-    withClue("products key")(pcm.productsKey.name should be ("Products"))
+    withClue("products key")(pcm.productsKey.map(_.name) should be (Some("Products")))
 
     withClue("feature names") {
       val featureNames = pcm.concreteFeatures.map(_.name)

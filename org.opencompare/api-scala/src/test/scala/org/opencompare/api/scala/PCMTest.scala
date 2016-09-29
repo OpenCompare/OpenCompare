@@ -125,11 +125,11 @@ class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     }).toSet
 
 
-    pcm.productsKey = features(0)
+    pcm.productsKey = features.get(0)
 
     for (product <- pcm.products) {
       val productPosition = product.asInstanceOf[Product with Position].position
-      product.key.name should be ("Feature 0")
+      product.key.map(_.name) should be (Some("Feature 0"))
 
       for (cell <- product.cells) {
         val cellPosition = cell.asInstanceOf[Cell with Position].position
@@ -185,6 +185,48 @@ class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
     pcm.concreteFeatures.size should be (3) // number of concrete features
 
   }
+
+  it should "get cells from feature" in {
+    val pcm = new PCM
+    val feature = createFeature(pcm, "feature")
+
+    val p1 = createProduct(pcm)
+    val p2 = createProduct(pcm)
+
+    createCell(p1, feature, "C1", None)
+    createCell(p2, feature, "C2", None)
+
+    feature.cells.size should be (2)
+
+  }
+
+  it should "test equals and hashCode" in {
+    val pcm1 = new PCM
+    val pcm2 = new PCM
+
+    val f1 = createFeature(pcm1, "feature")
+    val f2 = createFeature(pcm2, "feature")
+
+    // TODO : feature groups
+
+    val p1 = createProduct(pcm1)
+    val p2 = createProduct(pcm2)
+
+    val c1 = createCell(p1, f1, "cell", Some(BooleanValue(true)))
+    val c2 = createCell(p2, f2, "cell", Some(BooleanValue(true)))
+
+    c1 should be (c2)
+    f1 should be (f2)
+    p1 should be (p2)
+    pcm1 should be (pcm2)
+
+    c1.hashCode() should be (c2.hashCode())
+    f1.hashCode() should be (f2.hashCode())
+    p1.hashCode() should be (p2.hashCode())
+    pcm1.hashCode() should be (pcm2.hashCode())
+
+  }
+
 
 //
 //  @Test
@@ -415,52 +457,7 @@ class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 //    }
 //  }
 //
-//  @Test
-//  public void testGetCellsFromFeature() {
-//    PCM pcm = factory.createPCM();
-//    Feature feature = createFeature(pcm, "feature");
-//
-//    Product p1 = createProduct(pcm);
-//    Product p2 = createProduct(pcm);
-//
-//    createCell(p1, feature, "C1", null);
-//    createCell(p2, feature, "C2", null);
-//
-//    List<Cell> cells = feature.getCells();
-//    assertEquals("get cells from feature", 2, cells.size());
-//
-//  }
-//
-//  @Test
-//  public void testEqualsAndHashCode() {
-//    PCM pcm1 = factory.createPCM();
-//    PCM pcm2 = factory.createPCM();
-//
-//    Feature f1 = createFeature(pcm1, "feature");
-//    Feature f2 = createFeature(pcm2, "feature");
-//
-//    // TODO : feature groups
-//
-//    Product p1 = createProduct(pcm1);
-//    Product p2 = createProduct(pcm2);
-//
-//    Cell c1 = createCell(p1, f1, "cell" , null);
-//    Cell c2 = createCell(p2, f2, "cell" , null);
-//
-//    // TODO : interpretation
-//
-//    assertEquals("equals - cell", c1, c2);
-//    assertEquals("equals - feature", f1, f2);
-//    assertEquals("equals - product", p1, p2);
-//    assertEquals("equals - pcm", pcm1, pcm2);
-//
-//    assertEquals("hash code - cell", c1.hashCode(), c2.hashCode());
-//    assertEquals("hash code - feature", f1.hashCode(), f2.hashCode());
-//    assertEquals("hash code - product", p1.hashCode(), p2.hashCode());
-//    assertEquals("hash code - pcm", pcm1.hashCode(), pcm2.hashCode());
-//
-//
-//  }
+
 
 
 }

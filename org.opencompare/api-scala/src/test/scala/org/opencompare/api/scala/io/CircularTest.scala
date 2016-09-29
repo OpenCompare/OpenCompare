@@ -23,7 +23,7 @@ abstract class CircularTest(
   var inputs : TableFor1[File] = _
 
 
-  private def getResources(): List[Path] = {
+  private def getResources: List[Path] = {
     val uri = getClass.getClassLoader.getResource(datasetPath).toURI
     val path = if (uri.getScheme == "jar") {
       val fs = try {
@@ -41,7 +41,7 @@ abstract class CircularTest(
     testPaths
   }
 
-  forAll(Table(("Circular test"), getResources(): _*)) {
+  forAll(Table("Circular test", getResources: _*)) {
     (path: Path) => {
       val name = path.getFileName.toString
 

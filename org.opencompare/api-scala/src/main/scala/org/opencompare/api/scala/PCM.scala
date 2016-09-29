@@ -2,9 +2,11 @@ package org.opencompare.api.scala
 
 class PCM {
 
+  var name : String = ""
+  var features : Set[AbstractFeature] = Set.empty
+  var productsKey : Option[Feature] = None
   private var _products : Set[Product] = Set.empty[Product]
 
-  var name : String = ""
 
   def products : Set[Product] = _products
   def products_= (value: Set[Product]) = {
@@ -13,10 +15,6 @@ class PCM {
       product.pcm = this
     }
   }
-
-  var productsKey : Feature = _
-
-  var features : Set[AbstractFeature] = Set.empty
 
   def concreteFeatures : Set[Feature] = {
     features.flatMap {
@@ -33,4 +31,20 @@ class PCM {
   }
 
 
+  def canEqual(other: Any): Boolean = other.isInstanceOf[PCM]
+
+  override def equals(other: Any): Boolean = other match {
+    case that: PCM =>
+      (that canEqual this) &&
+        name == that.name &&
+        features == that.features &&
+        productsKey == that.productsKey &&
+        _products == that._products
+    case _ => false
+  }
+
+  override def hashCode(): Int = {
+    val state = Seq(name, features, productsKey, _products)
+    state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
+  }
 }
