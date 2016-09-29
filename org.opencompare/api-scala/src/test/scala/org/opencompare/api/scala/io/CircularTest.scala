@@ -54,26 +54,15 @@ abstract class CircularTest(
         for (inputPCM <- pcms) {
 
           val code = exporter.export(inputPCM)
-          val outputPCM = importer.load(code).head.asInstanceOf[PCM with Orientation with Positions]
+          val outputPCMs = importer.load(code).map(_.asInstanceOf[PCM with Orientation with Positions])
+          outputPCMs should not be empty
+          val outputPCM = outputPCMs.head
 
           // Ignore PCM name
           inputPCM.name = ""
           outputPCM.name = ""
 
           if (inputPCM != outputPCM) {
-
-            println("name: " + (inputPCM.name == outputPCM.name))
-            println("features: " + (inputPCM.features == outputPCM.features))
-            println("concrete features: " + (inputPCM.concreteFeatures == outputPCM.concreteFeatures))
-            println("products: " + (inputPCM.products == outputPCM.products))
-
-//            if (name.contains("dance")) {
-//              println("==============================================")
-//              println(inputPCM.features)
-//              println("==============================================")
-//              println(outputPCM.features)
-//              println("==============================================")
-//            }
 
             val baseName = exporter.getClass.getName + "-" + importer.getClass.getName + "_" + name
             val csvExporter = new CSVExporter

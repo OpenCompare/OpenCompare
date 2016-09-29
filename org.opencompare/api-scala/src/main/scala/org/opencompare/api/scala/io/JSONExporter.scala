@@ -34,7 +34,6 @@ class JSONExporter extends PCMExporter {
         )
         case featureGroup : FeatureGroup => Json.obj(
           "name" -> featureGroup.name,
-          "id" -> featureGroup.hashCode(),
           "subFeatures" -> exportFeatures(featureGroup.subFeatures)
         )
       }
