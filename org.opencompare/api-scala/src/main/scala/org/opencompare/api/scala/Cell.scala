@@ -21,18 +21,19 @@ class Cell {
   def canEqual(other: Any): Boolean = other.isInstanceOf[Cell]
 
 
-  override def equals(other: Any): Boolean = other match {
+
+
+  override def equals(other: Any): Boolean = other match { // TODO : interpretation
     case that: Cell =>
       (that canEqual this) &&
-        feature == that.feature &&
+        _feature == that._feature &&
         content == that.content &&
-        rawContent == that.rawContent &&
-        interpretation == that.interpretation
+        rawContent == that.rawContent
     case _ => false
   }
 
-  override def hashCode(): Int = {
-    val state = Seq(feature, content, rawContent, interpretation)
+  override def hashCode(): Int = { // TODO : interpretation
+    val state = Seq(_feature, content, rawContent)
     state.map(_.hashCode()).foldLeft(0)((a, b) => 31 * a + b)
   }
 }
