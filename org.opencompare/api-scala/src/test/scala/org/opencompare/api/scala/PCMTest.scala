@@ -4,39 +4,7 @@ import org.opencompare.api.scala.metadata.Position
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 
 
-class PCMTest extends FlatSpec with Matchers with BeforeAndAfterAll {
-
-
-  // Utils functions
-  def createFeature(pcm : PCM, name : String) : Feature = {
-    val feature = new Feature
-    feature.name = name
-    pcm.features += feature
-    feature
-  }
-
-  def createFeatureGroup(pcm: PCM, name: String) : FeatureGroup = {
-    val featureGroup = new FeatureGroup
-    featureGroup.name = name
-    pcm.features += featureGroup
-    featureGroup
-  }
-
-  def createProduct(pcm : PCM) : Product = {
-    val product = new Product
-    pcm.products += product
-    product
-  }
-
-  def createCell(product : Product, feature : Feature, content : String, interpretation : Option[Value]) : Cell = {
-    val cell = new Cell
-    cell feature = feature
-    cell.content = content
-    cell.interpretation = interpretation
-    product.cells += cell
-    cell
-  }
-
+class PCMTest extends OpenCompareTest {
 
   it should "create a cell" in {
     val cell = new Cell
