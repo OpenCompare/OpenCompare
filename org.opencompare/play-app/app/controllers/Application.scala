@@ -4,7 +4,8 @@ import javax.inject._
 
 import com.mohiva.play.silhouette.api.{Environment, Silhouette}
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import models.{Database, User}
+import models.{Database, User, Feedback}
+import models.services.FeedbackService
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
 
@@ -12,10 +13,14 @@ import play.api.Logger
 import forms.FeedbackForm
 
 @Singleton
-class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
+class Application @Inject() (
+    val messagesApi: MessagesApi,
+    val env: Environment[User, CookieAuthenticator],
+    feedbackService: FeedbackService)
+    extends BaseController {
 
     def index = UserAwareAction { implicit request =>
-      Ok(views.html.index(Database.getLastHTMLSources(5)))
+        Ok(views.html.index(Database.getLastHTMLSources(5)))
     }
 
     def aboutProject = UserAwareAction { implicit request =>
@@ -27,11 +32,11 @@ class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[
     }
 
     def feedback = UserAwareAction { implicit request =>
-        Logger.debug("PLS LOG\n")
         FeedbackForm.form.bindFromRequest.fold(
             form => Ok(views.html.index(Database.getLastHTMLSources(5))),
             data => {
-                Logger.debug(data.email)
+                val feedback = Feedback(email = data.email, subject = data.subject, content = data.content)
+                feedbackService.save(feedback)
                 Redirect(routes.Application.index()).flashing("info" -> "Merci !")
             }
         )

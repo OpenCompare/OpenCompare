@@ -18,7 +18,7 @@
 				<div class="form-group">
 					<label for="inputMail" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">
-						<input id="inputMail" name="email" type="text" class="form-control" @if(context.user.isDefined) {
+						<input id="inputMail" name="email" type="email" class="form-control" @if(context.user.isDefined) {
 							value="@context.user.get.email" } else {
 							placeholder="Email" }>
 					</div>
