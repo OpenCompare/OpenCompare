@@ -8,8 +8,7 @@ import models.{Database, User, Feedback}
 import models.services.FeedbackService
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
-
-import play.api.Logger
+import play.api.libs.json.Json
 import forms.FeedbackForm
 
 @Singleton
@@ -32,12 +31,13 @@ class Application @Inject() (
     }
 
     def feedback = UserAwareAction { implicit request =>
+        val json = Json.obj()
         FeedbackForm.form.bindFromRequest.fold(
-            form => Ok(views.html.index(Database.getLastHTMLSources(5))),
+            form => Ok(Json.obj("error" -> true)),
             data => {
                 val feedback = Feedback(email = data.email, subject = data.subject, content = data.content)
                 feedbackService.save(feedback)
-                Redirect(routes.Application.index()).flashing("info" -> "Merci !")
+                Ok(Json.obj("error" -> false))
             }
         )
     }
