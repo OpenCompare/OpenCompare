@@ -15,7 +15,7 @@
 			<br><br>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal" novalidate>
+			<form class="form-horizontal" name="feedbackForm" novalidate>
 				<!--<div class="form-group">
 					<label for="inputMail" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">
@@ -26,7 +26,7 @@
 				</div>-->
 				<md-input-container class="md-block" flex-gt-sm="">
 					<label>Email</label>
-					<input ng-model="feedback.email" @if(context.user.isDefined) { value="@context.user.get.email" }>
+					<input ng-model="feedback.email" type="email" required="" @if(context.user.isDefined) { value="@context.user.get.email" }>
 				</md-input-container>
 				
 				<!--<div class="form-group">
@@ -37,7 +37,7 @@
 				</div>-->
 				<md-input-container class="md-block" flex-gt-sm="">
 					<label>Subject</label>
-					<input ng-model="feedback.subject">
+					<input ng-model="feedback.subject" required="">
 				</md-input-container>
 				
 				<!--<div class="form-group"><div class="col-sm-12">
@@ -46,11 +46,13 @@
 				
 				<md-input-container class="md-block">
 					<label>Type what you have to say here...</label>
-					<textarea ng-model="feedback.content" md-maxlength="1000" rows="5" md-select-on-focus=""></textarea>
+					<textarea ng-model="feedback.content" md-maxlength="1000" rows="5" md-select-on-focus="" required=""></textarea>
 				</md-input-container>
 				
+				<p class="{{ responseType }}">{{ response }}</p>
+				
 				<div style="text-align: right">
-					<md-button type="submit" class="md-raised md-primary" style="margin-right: 0" ng-click="post(feedback)">Submit feedback</md-button>
+					<md-button type="submit" class="md-raised md-primary" style="margin-right: 0" ng-click="post(feedback)" ng-disabled="feedbackForm.$invalid && formEnable">Submit feedback</md-button>
 				</div>
 			</form>
 		  </div>

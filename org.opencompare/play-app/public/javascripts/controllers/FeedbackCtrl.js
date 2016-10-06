@@ -4,18 +4,30 @@
 
 
 angular.module("openCompare").controller("FeedbackController", ['$scope', '$http', function($scope, $http) {
+	$scope.responseType = "success";
+	$scope.response = "";
+	$scope.formEnable = true;
+	
 	$scope.post = function(feedback) {
-		/*console.log("Email="+feedback.email);
-		console.log("Subject="+feedback.subject);
-		console.log("Content="+feedback.content);*/
+		$scope.formEnable = false;
+		
 		$http({
 			method: 'post',
 			url: '/feedback',
 			data: {email: feedback.email, subject: feedback.subject, content: feedback.content}
 		}).success(function(data){
-			console.log("Success : ");
-			console.log(data);
+			$scope.formEnable = true;
+			if(!data.error){
+				console.log("success");
+				$scope.responseType = "success";
+				$scope.response = "Feedback send";
+			}else{
+				console.log("error");
+				$scope.responseType = "error";
+				$scope.response = "Error";
+			}
 		}).error(function(data){
+			$scope.formEnable = true;
 			console.log("Error : ");
 			console.log(data);
 		});
