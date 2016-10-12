@@ -1,4 +1,4 @@
-@(feedbacks : List[Feedback], limit : Int, page : Int, nbPages : Int)
+@(feedbacks : List[Feedback], limit : Int, page : Int, nbPages : Int)(implicit messages: Messages, context: controllers.ViewContext)
 
 @header = {
     
@@ -10,27 +10,27 @@
 
 @pagination = {
 
-    <!--<div class="row text-center">
+    <div class="row text-center">
         <nav>
             <ul class="pagination">
                 <li @if(page<=1) {class="disabled"}>
-                    <a @if(page>1) {href="/list/@limit/@(page - 1)"}>
+                    <a @if(page>1) {href="/feedback/list/@limit/@(page - 1)"}>
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
                 @for(numPage <- 1 to nbPages) {
-                    <li @if(numPage == page){class="active"}><a href="/list/@limit/@numPage">@numPage</a></li>
+                    <li @if(numPage == page){class="active"}><a href="/feedback/list/@limit/@numPage">@numPage</a></li>
                 }
                 <li @if(page>=nbPages) {class="disabled"}>
-                    <a @if(page<nbPages) {href="/list/@limit/@(page + 1)"}>
+                    <a @if(page<nbPages) {href="/feedback/list/@limit/@(page + 1)"}>
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
                 </li>
             </ul>
         </nav>
-    </div>-->
+    </div>
 
 }
 
@@ -41,8 +41,8 @@
     <div class="feedbacks">
         @for(feedback <- feedbacks) {
 			<div class="feedback">
-				<span>@feedback.subject</span>
-				<span>From : @feedback.email</span>
+				<span class="feedback-subject">@feedback.subject</span>
+				<span class="feedback-email">From : @feedback.email</span>
 				<p>@feedback.content</p>
 			</div>
         }
