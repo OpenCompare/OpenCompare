@@ -44,7 +44,9 @@ POST        /api/export/html                          @controllers.io.HTMLCtrl.e
 POST        /api/export/json                          @controllers.io.JSONCtrl.exportPCMAction()
 
 # Feedback
-POST		/feedback 								  @controllers.Application.feedback()
+POST		/feedback 								  @controllers.FeedbackController.sendFeedback
+GET         /feedback/list                                     @controllers.FeedbackController.list(limit : Int = 50, page : Int = 1)
+GET         /feedback/list/$limit<[0-9]+>/$page<[0-9]+>        @controllers.FeedbackController.list(limit : Int, page : Int)
 
 # Auth
 GET         /signIn                                   @controllers.auth.AuthenticationController.signIn

@@ -4,18 +4,14 @@ import javax.inject._
 
 import com.mohiva.play.silhouette.api.{Environment, Silhouette}
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
-import models.{Database, User, Feedback}
-import models.services.FeedbackService
+import models.{Database, User}
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
-import play.api.libs.json.Json
-import forms.FeedbackForm
 
 @Singleton
 class Application @Inject() (
     val messagesApi: MessagesApi,
-    val env: Environment[User, CookieAuthenticator],
-    feedbackService: FeedbackService)
+    val env: Environment[User, CookieAuthenticator])
     extends BaseController {
 
     def index = UserAwareAction { implicit request =>
@@ -28,18 +24,6 @@ class Application @Inject() (
 
     def aboutPrivacyPolicy = UserAwareAction { implicit request =>
         Ok(views.html.aboutPrivacyPolicy())
-    }
-
-    def feedback = UserAwareAction { implicit request =>
-        val json = Json.obj()
-        FeedbackForm.form.bindFromRequest.fold(
-            form => Ok(Json.obj("error" -> true)),
-            data => {
-                val feedback = Feedback(email = data.email, subject = data.subject, content = data.content)
-                feedbackService.save(feedback)
-                Ok(Json.obj("error" -> false))
-            }
-        )
     }
 
     def list(limit : Int, page : Int) = UserAwareAction { implicit request =>
