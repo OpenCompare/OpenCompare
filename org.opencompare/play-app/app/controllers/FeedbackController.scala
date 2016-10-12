@@ -42,14 +42,14 @@ class FeedbackController @Inject() (
             val email = fb("email").toString
             val subject = fb("subject").toString
             val content = fb("content").toString
+            new Feedback(email=email, subject=subject, content=content)
         }
-        feedbacks.toList
         val count = Database.db("feedbacks").count().toInt
         var nbPages = count / limit
         if (count % limit != 0) {
             nbPages = nbPages + 1
         }
-        Ok(views.html.listFeedbacks(feedbacks, limit, page, nbPages))
+        Ok(views.html.listFeedbacks(feedbacks.toList, limit, page, nbPages))
     }
 
 }
