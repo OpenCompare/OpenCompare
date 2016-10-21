@@ -2,7 +2,8 @@ package modules
 
 import com.google.inject.{Provides, AbstractModule}
 import models.PCMAPIUtils
-import models.daos.{UserDAO, PCMContainerDAO, PCMContainerDAOImpl}
+import models.services.{FeedbackService, FeedbackServiceImpl}
+import models.daos.{UserDAO, PCMContainerDAO, PCMContainerDAOImpl, FeedbackDAO, FeedbackDAOImpl}
 import net.codingwell.scalaguice.ScalaModule
 
 /**
@@ -12,6 +13,8 @@ class OpenCompareModule extends AbstractModule with ScalaModule {
 
 
   override def configure() {
+    bind[FeedbackService].to[FeedbackServiceImpl]
+    bind[FeedbackDAO].to[FeedbackDAOImpl]
     bind[PCMContainerDAO].to[PCMContainerDAOImpl]
   }
 

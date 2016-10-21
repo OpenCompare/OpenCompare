@@ -1,0 +1,59 @@
+#feedbackButton{
+	box-sizing: border-box;
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	z-index: 1031;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	line-height: 40px;
+	text-align: center;
+	background-color: #FF5722;
+	color: white;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+}
+
+#feedbackButton > i{
+	vertical-align: middle;
+}
+
+#feedbackButton:hover{
+	background-color: #E64A19;
+}
+
+.success{
+	color: #4CAF50;
+}
+
+.error{
+	color: #F44336;
+}
+
+.feedbacks{
+	max-width: 40em;
+	margin: auto;
+}
+
+.feedback{
+	width: 100%;
+	border-bottom: 1px solid #3f51b5;
+}
+
+.feedback:last-child{
+	border-bottom: none;
+}
+
+.feedback-subject{
+	display: block;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.feedback-email{
+	display: block;
+	color: rgb(140,140,140);
+}

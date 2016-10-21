@@ -9,10 +9,13 @@ import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
 
 @Singleton
-class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
+class Application @Inject() (
+    val messagesApi: MessagesApi,
+    val env: Environment[User, CookieAuthenticator])
+    extends BaseController {
 
     def index = UserAwareAction { implicit request =>
-      Ok(views.html.index(Database.getLastHTMLSources(5)))
+        Ok(views.html.index(Database.getLastHTMLSources(5)))
     }
 
     def aboutProject = UserAwareAction { implicit request =>
@@ -22,7 +25,6 @@ class Application @Inject() (val messagesApi: MessagesApi, val env: Environment[
     def aboutPrivacyPolicy = UserAwareAction { implicit request =>
         Ok(views.html.aboutPrivacyPolicy())
     }
-
 
     def list(limit : Int, page : Int) = UserAwareAction { implicit request =>
         val pcms = Database.list(limit, page).toList
