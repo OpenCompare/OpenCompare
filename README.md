@@ -1,25 +1,26 @@
+
 OpenCompare
 ===========
 
 [![Join the chat at https://gitter.im/gbecan/OpenCompare](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OpenCompare/OpenCompare?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/OpenCompare/OpenCompare.svg?branch=master)](https://travis-ci.org/OpenCompare/OpenCompare)
 
-This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the [DiverSE](http://diverse.irisa.fr/) (DIVERsity-centric Software Engineering) research team.
+This project contains development artifacts used to perform research around product comparison matrices (PCM). This work is currently involving members of the [DiverSE](http://diverse.irisa.fr/) (DIVERsity-centric Software Engineering) research team as well as students at University of Rennes 1 (ISTIC).
 
 This project is released under Apache v2 License.
 
 
 ## Development tools
 
- * [Maven](https://maven.apache.org)
- * [Continous integration](https://ci.inria.fr/) with Jenkins and Travis CI
- * [IntelliJ](https://www.jetbrains.com/idea/) with the KMF plugin for development
+* [Maven](https://maven.apache.org)
+* [Continous integration](https://ci.inria.fr/) with Jenkins and Travis CI
+* [IntelliJ](https://www.jetbrains.com/idea/) with the KMF plugin for development
 
 ## Frameworks and dependencies
- 
- * [Play Framewok](https://www.playframework.com)
- * [KMF](https://github.com/dukeboard/kevoree-modeling-framework) (Kevoree Modeling Framework)
- * [MongoDB](https://www.mongodb.com/) v2.6 or later
+
+* [Play Framewok](https://www.playframework.com)
+* [KMF](https://github.com/dukeboard/kevoree-modeling-framework) (Kevoree Modeling Framework)
+* [MongoDB](https://www.mongodb.com/) v2.6 or later
 
 ## Projects
 
@@ -69,7 +70,7 @@ Finally, or if you already have populated the database, you can launch the HTTP 
 ### Use website
 
 Now the server is running, you can connect on 
- * [localhost:9000](http://localhost:9000/)
+* [localhost:9000](http://localhost:9000/)
 
 ### Reset the database
 To remove all the PCMs from the database, you have to connect to your MongoDB instance and remove all the elements of the _pcms_ collection in the _opencompare_ database, as in the following commands:
