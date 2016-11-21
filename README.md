@@ -69,7 +69,7 @@ Finally, or if you already have populated the database, you can launch the HTTP 
     ./activator run
 ### Use website
 
-Now the server is running, you can connect on 
+Now the server is running, you can connect on: 
 * [localhost:9000](http://localhost:9000/)
 
 ### Reset the database
