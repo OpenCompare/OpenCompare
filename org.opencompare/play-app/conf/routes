@@ -42,6 +42,7 @@ POST        /api/export/html                          @controllers.io.HTMLCtrl.e
 
 # JSON import/export
 POST        /api/export/json                          @controllers.io.JSONCtrl.exportPCMAction()
+POST        /api/import/json                          @controllers.io.JSONCtrl.importPCMsAction(format ?= "json")
 
 # Feedback
 POST		/feedback 								  @controllers.FeedbackController.sendFeedback
@@ -65,4 +66,3 @@ GET         /admin/load                               @controllers.AdminControll
 # Static resources
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
 GET         /webjars/*file                            controllers.WebJarAssets.at(file)
-

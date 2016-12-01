@@ -1,6 +1,7 @@
 package controllers.io
 
 import javax.inject.Inject
+import java.io.File
 
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
@@ -14,6 +15,9 @@ import play.api.data.Forms._
 import play.api.i18n.MessagesApi
 import play.api.libs.json.Json
 import play.api.mvc.{AnyContent, Request, Result}
+import org.opencompare.api.java.impl.io.KMFJSONLoader
+
+import scala.collection.JavaConversions._
 
 
 /**
@@ -27,6 +31,12 @@ class JSONCtrl @Inject() (
   val jsonExporter = new KMFJSONExporter()
   val formalizer = new CellContentInterpreter(new PCMFactoryImpl)
 
+  val inputParametersForm = Form(
+    mapping(
+      "title" -> nonEmptyText
+    )(JSONImportParameters.apply)(JSONImportParameters.unapply)
+  )
+
   val outputParametersForm = Form(
     mapping(
       "file" -> text
@@ -34,7 +44,29 @@ class JSONCtrl @Inject() (
   )
 
   override def importPCMs(format: ResultFormat)(implicit request: Request[AnyContent], viewContext: ViewContext): Result = {
-    NotFound("JSON import is not implemented yet")
+
+  // Parse parametersOC
+  val parameters = inputParametersForm.bindFromRequest.get
+
+  val title = parameters.title
+  // Read input file
+  val file = request.body.asMultipartFormData.get.file("file").get.ref.file
+
+
+  try {
+
+    val loader = new KMFJSONLoader()
+    val pcmContainers = loader.load(file).toList
+    val pcmContainer = pcmContainers.head
+    pcmContainer.getPcm.setName(title)
+
+    // Serialize result
+    val jsonResult = postprocessContainers(pcmContainers)
+    Ok(jsonResult)
+
+  } catch {
+    case e : Exception => BadRequest("This file is invalid")
+  }
   }
 
   override def exportPCM(implicit request: Request[AnyContent]): Result = {
@@ -49,4 +81,8 @@ class JSONCtrl @Inject() (
   }
 
   case class JSONExportParameters(pcm : String)
+
+  case class JSONImportParameters(
+    title : String
+  )
 }

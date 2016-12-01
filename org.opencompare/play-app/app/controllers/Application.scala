@@ -64,6 +64,7 @@ class Application @Inject() (
             case "csv" => Ok(views.html.edit(null, null, "Csv"))
             case "html" => Ok(views.html.edit(null, null, "Html"))
             case "wikipedia" => Ok(views.html.edit(null, null, "MediaWiki"))
+            case "json" => Ok(views.html.edit(null, null, "Json"))
             case _ => NotFound
         }
     }

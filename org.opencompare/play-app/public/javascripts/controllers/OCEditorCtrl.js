@@ -90,6 +90,13 @@ angular.module("openCompare")
             }
         });
 
+        $scope.$watch("jsonApi", function(api) {
+            if (typeof api !== "undefined" && modal === "Json") {
+                api.open();
+            }
+        });
+
+
         if (typeof user !== 'undefined') {
             $scope.user = user;
         }
