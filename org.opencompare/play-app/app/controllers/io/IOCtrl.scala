@@ -55,6 +55,10 @@ abstract class IOCtrl(val name : String) extends BaseController {
 
     normalizeContainers(pcmContainers)
 
+
+    // by default we save in a database
+    val id = Database.create(pcmContainers.head)
+
     // Serialize result
     val jsonResult: String = Database.serializePCMContainersToJSON(pcmContainers)
 

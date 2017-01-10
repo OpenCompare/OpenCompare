@@ -23,12 +23,6 @@ import scala.io.Source
 import play.Logger
 import models._
 
-import com.mongodb.casbah.Imports._
-import com.mongodb.casbah.MongoClient
-import com.mongodb.util.JSON
-import org.bson.types.ObjectId
-
-import scala.collection.JavaConversions._
 
 /**
  * Created by gbecan on 8/18/15.
@@ -80,13 +74,7 @@ class CSVCtrl @Inject() (
       pcmContainer.getPcm.setName(parameters.title)
 
       // Serialize result
-      val jsonResult = postprocessContainers(pcmContainers)
-
-
-      // by default we save in a database
-      val id = Database.create(pcmContainer)
-      val databasePCM = new DatabasePCM(Some(id), Some(pcmContainer))
-      Database.update(databasePCM)
+      val jsonResult = postprocessContainers(pcmContainers) // normally it also "types" cells (side-effect)
 
       Ok(jsonResult)
 
