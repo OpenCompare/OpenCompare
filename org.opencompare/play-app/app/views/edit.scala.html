@@ -8,77 +8,19 @@
   @editFooter(id, data, modal)
 }
 
-@main(header, footer) {
+@mainneweditor(header, footer) {
 
+  <p>You're using a new editor and you can still use the <a href="/pcmold/@id">old editor</a></p>
+  <div id="pcm"></div>
 
-    <div ng-controller="OCEditorCtrl">
+  <script>
 
-        <div class="row" class="ocEditor">
-            <oc-editor pcm-container="pcmContainer" config="config" state="state">
-                @if(create) {
-                    <oc-creator user="user"></oc-creator>
-                }
+  //      var editor = new Editor("pcm", "erasmus");
+  //      var editor = new Editor("pcm", "euro2016.json");
+  //      var editor = new Editor("pcm", "5835ac7b975ad81a4ab7fa80");
+  //      var editor = new Editor("pcm", "5756d09a975a3c01a5e5b476");
+        var editor = new Editor("pcm", '@id');
 
-                <oc-csv-importer api="csvApi"></oc-csv-importer>
-                <oc-html-importer api="htmlApi"></oc-html-importer>
-                <oc-mediawiki-importer api="mediaWikiApi"></oc-mediawiki-importer>
-
-                <div class="row">
-                    <div class="col-md-8">
-                        <oc-title></oc-title>
-                        <oc-toolbar></oc-toolbar>
-                    </div>
-                    <div class="col-md-4 panel panel-default">
-                        <div class="panel-body" ng-cloak>
-                            <p ng-show="pcmContainer.metadata.creator"><strong>Creator:</strong> {{pcmContainer.metadata.creatorFullName}}</p>
-                            <div ng-show="!state.edit">
-                                <!-- Source -->
-                                <div ng-show="sourceType == 'wikipedia'">
-                                    <p><strong>Source:</strong> <a href="{{pcmContainer.metadata.source}}"><i class="fa fa-wikipedia-w"></i> {{sourceName}}</a></p>
-                                </div>
-                                <div ng-show="sourceType == 'url'">
-                                    <p><strong>Source:</strong> <a href="{{pcmContainer.metadata.source}}"><i class="fa fa-external-link"></i> {{sourceName}}</a></p>
-                                </div>
-                                <div ng-show="sourceType == 'text'">
-                                    <p><strong>Source:</strong> {{pcmContainer.metadata.source}}</p>
-                                </div>
-
-                                <!-- License -->
-                                <div ng-show="licenseType == 'cc'">
-                                    <p><strong>License:</strong> <a href="http://creativecommons.org/"><i class="fa fa-creative-commons"></i> {{pcmContainer.metadata.license}}</a></p>
-                                </div>
-                                <div ng-show="sourceType == 'unknown'">
-                                    <p><strong>License:</strong> {{pcmContainer.metadata.license}}</p>
-                                </div>
-                            </div>
-                            <div ng-show="state.edit">
-                                <form class="form-horizontal" ng-show="state.edit">
-                                    <div class="form-group">
-                                        <label for="pcm-source" class="control-label">{{ "edit.source.placeholder" | translate }}</label>
-                                        <input id="pcm-source" class="form-control" type="text" ng-model="pcmContainer.metadata.source" ng-change="state.saved=false" placeholder='{{ "edit.source.placeholder" | translate }}'>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="pcm-license" class="control-label">{{ "edit.license.placeholder" | translate }}</label>
-                                        <input id="pcm-license" class="form-control" type="text" ng-model="pcmContainer.metadata.license" ng-change="state.saved=false" placeholder='{{ "edit.license.placeholder" | translate }}'>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <oc-grid></oc-grid>
-                </div>
-
-                <div class="row">
-                    <oc-charts></oc-charts>
-                </div>
-
-            </oc-editor>
-        </div>
-
-    </div>
-
+  </script>
 
 }

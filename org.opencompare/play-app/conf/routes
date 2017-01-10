@@ -8,6 +8,7 @@ GET         /list                                     @controllers.Application.l
 GET         /list/$limit<[0-9]+>/$page<[0-9]+>        @controllers.Application.list(limit : Int, page : Int)
 GET         /search                                   @controllers.Application.search(request : String)
 GET         /pcm/:id                                  @controllers.Application.edit(id : String)
+GET         /pcmold/:id                               @controllers.Application.editold(id : String)
 GET         /embed/pcm/:id                            @controllers.Application.embed(id : String)
 GET         /create                                   @controllers.Application.create()
 GET         /import/:ext                              @controllers.Application.importer(ext : String)
@@ -42,6 +43,7 @@ POST        /api/export/html                          @controllers.io.HTMLCtrl.e
 
 # JSON import/export
 POST        /api/export/json                          @controllers.io.JSONCtrl.exportPCMAction()
+POST        /api/import/json                          @controllers.io.JSONCtrl.importPCMsAction(format ?= "json")
 
 # Feedback
 POST		/feedback 								  @controllers.FeedbackController.sendFeedback
@@ -65,4 +67,3 @@ GET         /admin/load                               @controllers.AdminControll
 # Static resources
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
 GET         /webjars/*file                            controllers.WebJarAssets.at(file)
-
