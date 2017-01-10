@@ -23,6 +23,13 @@ import scala.io.Source
 import play.Logger
 import models._
 
+import com.mongodb.casbah.Imports._
+import com.mongodb.casbah.MongoClient
+import com.mongodb.util.JSON
+import org.bson.types.ObjectId
+
+import scala.collection.JavaConversions._
+
 /**
  * Created by gbecan on 8/18/15.
  */
@@ -39,8 +46,7 @@ class CSVCtrl @Inject() (
       "productAsLines" -> boolean,
       "title" -> nonEmptyText,
       "separator" -> nonEmptyText(1, 1),
-      "quote" -> nonEmptyText(1, 1),
-      "saveInDb" -> boolean
+      "quote" -> nonEmptyText(1, 1)
     )(CSVImportParameters.apply)(CSVImportParameters.unapply)
   )
 
@@ -76,12 +82,8 @@ class CSVCtrl @Inject() (
       // Serialize result
       val jsonResult = postprocessContainers(pcmContainers)
 
-      if (parameters.saveInDb) {
-        // TODO (need to fix modalCsvImport.html in editor JS project first)
-      }
 
       // by default we save in a database
-      Logger.info("Save in database... ")
       val id = Database.create(pcmContainer)
       val databasePCM = new DatabasePCM(Some(id), Some(pcmContainer))
       Database.update(databasePCM)
@@ -115,8 +117,7 @@ case class CSVImportParameters(
   productAsLines : Boolean,
   title : String,
   separator : String,
-  quote : String,
-  saveInDb : Boolean
+  quote : String
 )
 
 case class CSVExportParameters(
