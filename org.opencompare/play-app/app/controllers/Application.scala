@@ -71,10 +71,10 @@ class Application @Inject() (
 
     def importer(ext : String) = UserAwareAction { implicit request =>
         ext match {
-            case "csv" => Ok(views.html.edit(null, null, "Csv"))
-            case "html" => Ok(views.html.edit(null, null, "Html"))
-            case "wikipedia" => Ok(views.html.edit(null, null, "MediaWiki"))
-            case "json" => Ok(views.html.edit(null, null, "Json"))
+            case "csv" => Ok(views.html.editold(null, null, "Csv"))
+            case "html" => Ok(views.html.editold(null, null, "Html"))
+            case "wikipedia" => Ok(views.html.editold(null, null, "MediaWiki"))
+            case "json" => Ok(views.html.editold(null, null, "Json"))
             case _ => NotFound
         }
     }
