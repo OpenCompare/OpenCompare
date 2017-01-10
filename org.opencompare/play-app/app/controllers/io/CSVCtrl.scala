@@ -20,6 +20,9 @@ import play.api.mvc._
 import scala.collection.JavaConversions._
 import scala.io.Source
 
+import play.Logger
+import models._
+
 /**
  * Created by gbecan on 8/18/15.
  */
@@ -36,7 +39,8 @@ class CSVCtrl @Inject() (
       "productAsLines" -> boolean,
       "title" -> nonEmptyText,
       "separator" -> nonEmptyText(1, 1),
-      "quote" -> nonEmptyText(1, 1)
+      "quote" -> nonEmptyText(1, 1),
+      "saveInDb" -> boolean
     )(CSVImportParameters.apply)(CSVImportParameters.unapply)
   )
 
@@ -71,10 +75,21 @@ class CSVCtrl @Inject() (
 
       // Serialize result
       val jsonResult = postprocessContainers(pcmContainers)
+
+      if (parameters.saveInDb) {
+        // TODO (need to fix modalCsvImport.html in editor JS project first)
+      }
+
+      // by default we save in a database
+      Logger.info("Save in database... ")
+      val id = Database.create(pcmContainer)
+      val databasePCM = new DatabasePCM(Some(id), Some(pcmContainer))
+      Database.update(databasePCM)
+
       Ok(jsonResult)
 
     } catch {
-      case e : Exception => BadRequest("This file is invalid")
+      case e : Exception => BadRequest("This file is invalid " + e)
     }
 
   }
@@ -100,7 +115,8 @@ case class CSVImportParameters(
   productAsLines : Boolean,
   title : String,
   separator : String,
-  quote : String
+  quote : String,
+  saveInDb : Boolean
 )
 
 case class CSVExportParameters(
