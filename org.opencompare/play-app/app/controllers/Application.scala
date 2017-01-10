@@ -55,6 +55,16 @@ class Application @Inject() (
 
     }
 
+    def editold(id : String) = UserAwareAction { implicit request =>
+        val exists = Database.exists(id)
+        if (exists) {
+            Ok(views.html.editold(id, null, null))
+        } else {
+            Ok(views.html.editold(null, null, null))
+        }
+
+    }
+
     def create = UserAwareAction { implicit request =>
         Ok(views.html.edit(null, null, null, true))
     }

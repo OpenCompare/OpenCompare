@@ -1,0 +1,26 @@
+@(id : String = null, data : play.api.libs.json.JsValue = null, modal : String = null)(implicit context: controllers.ViewContext)
+
+
+<script>
+    var id, data, modal, user;
+    @if(id != null) {
+        id = "@{Html(id)}";
+    }
+
+    @if(data != null) {
+        data = '@{Html(data.toString().replace("'","\\\'"))}';
+    }
+
+    @if(modal != null) {
+     modal = '@{Html(modal)}';
+    }
+
+    @if(context.user.isDefined) {
+        user = "@context.user.get.userID";
+    }
+
+</script>
+
+
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/jsonImporter.js")'></script>
+<script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/JsonImportCtrl.js")'></script>
