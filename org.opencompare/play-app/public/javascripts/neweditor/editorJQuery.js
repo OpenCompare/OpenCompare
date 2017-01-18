@@ -65,6 +65,22 @@ function Editor(divID, pcmID){
   this.showView('pcmDiv');
 }
 
+Object.defineProperty(Editor.prototype, 'checkInterpretation', {
+  get: function(){
+    var n = 0;
+    var max = 0;
+    for(var p in this.products){
+      for(var c in this.products[p].cells.array){
+        max++;
+        if(this.products[p].cells.array[c].interpretation != null){
+          n++;
+        }
+      }
+    }
+    return 'interpretation : '+n+'/'+max+' '+((n==max) ? 'OK' : 'incomplete');
+  }
+});
+
 //Show view
 Editor.prototype.showView = function(view){
   if(typeof view === 'undefined'){
