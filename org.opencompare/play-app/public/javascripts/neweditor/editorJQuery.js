@@ -59,21 +59,8 @@ function Editor(divID, pcmID){
   this.views.pcmDiv = $("<div>").addClass("pcm-table").appendTo(this.pcmWrap);
 
   //Create chart
-  this.chart = null; //Chart object for ChartJS
-  this.chartDataX = null; //feature for x
-  this.chartDataY = null; //feature for y
   this.views.chartDiv = $("<div>").appendTo(this.pcmWrap);
-  this.chartXLabel = $('<label>').html(' x : ').appendTo(this.views.chartDiv);
-  this.chartXselect = $('<select>').appendTo(this.views.chartDiv).change(function(){
-    self.chartDataX = self.getFeatureByID(self.chartXselect.val());
-    self.drawChart();
-  });
-  this.chartYLabel = $('<label>').html(' y : ').appendTo(this.views.chartDiv);
-  this.chartYselect = $('<select>').appendTo(this.views.chartDiv).change(function(){
-    self.chartDataY = self.getFeatureByID(self.chartYselect.val());
-    self.drawChart();
-  });;
-  this.chartCanvas = null;
+  this.chartFactory = new ChartFactory(this, this.views.chartDiv);
 
   this.showView('pcmDiv');
 }
@@ -292,59 +279,7 @@ Editor.prototype.initPCM = function(){
 
 //init chart
 Editor.prototype.initChart = function(){
-  for(var f in this.features){
-    var feature = this.features[f];
-    if(feature.filter.type == 'integer' || feature.filter.type == 'float'){
-      if(this.chartDataX == null){
-        this.chartDataX = feature;
-      }else if(this.chartDataY == null){
-        this.chartDataY = feature;
-      }
-      this.chartXselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
-      this.chartYselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
-    }
-  }
-  this.drawChart();
-}
-
-//Draw chart using this.chartDataX and this.chartDataY
-Editor.prototype.drawChart = function(){
-  if(this.chartDataX != null && this.chartDataY != null){
-    if(this.chartCanvas != null){
-      this.chartCanvas.remove();
-    }
-    this.chartCanvas = $('<canvas>').appendTo(this.views.chartDiv);
-    this.chartData = {
-      type: 'bubble',
-      data: {
-          datasets: []
-      },
-      options:{
-        animation: false,
-        scales: {
-          xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: this.chartDataX.name
-            }
-          }],
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: this.chartDataY.name
-            }
-          }]
-        }
-      }
-    };
-    for(var p in this.products){
-      var product = this.products[p];
-      this.chartData.data.datasets.push(product.newDataset(this.features[0], this.chartDataX, this.chartDataY));
-    }
-    this.chart = new Chart(this.chartCanvas[0], this.chartData);
-  }else{
-    console.log('X or Y features not defined');
-  }
+  this.chartFactory.init();
 }
 
 //Called in pcmLoaded to update the configurator
@@ -397,9 +332,7 @@ Editor.prototype.filterChanged = function(filter){
   }
 
   //Update chart
-  if(this.chart != null){
-    this.chart.update();
-  }
+  this.chartFactory.update();
 }
 
 //Sort products on the feature using quicksort
