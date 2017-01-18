@@ -9,8 +9,34 @@
 }
 
 @mainneweditor(header, footer) {
+  <style>
+    #old-popup{
+      display: inline-block;
+      height: 32px;
+      line-height: 32px;
+      padding-left: 5px;
+      padding-right: 5px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      background-color: white;
+      border-bottom: 1px solid gray;
+      border-left: 1px solid gray;
+    }
 
-  <p>You're using a new editor and you can still use the <a href="/pcmold/@id">old editor</a></p>
+    .popup-button{
+      cursor: pointer;
+    }
+  </style>
+
+  <div id="old-popup">You're using a new editor and you can still use the <a href="/pcmold/@id">old editor</a> <span class='popup-button'>X</span></div>
+
+  <script>
+    $('#old-popup').click(function(){
+      $('#old-popup').remove();
+    });
+  </script>
+
   <div id="pcm"></div>
 
   <script>
