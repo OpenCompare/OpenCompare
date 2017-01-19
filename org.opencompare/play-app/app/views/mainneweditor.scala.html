@@ -15,108 +15,15 @@
 
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top " role="navigation" ng-controller="NavbarController">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#oc-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><img id="navbar-logo" src='@routes.Assets.at("images/logo-inverted.svg")' height="25" width="51" ></a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="oc-navbar">
-                <ul class="nav navbar-nav">
-
-                    <li class="dropdown"  ng-class="{ active: isActive('/create')}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Messages("navbar.start") <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a target="_self" href="/create">@Messages("navbar.create")</a></li>
-                            <li><a target="_self" href="/import/csv">@Messages("navbar.import.csv")</a></li>
-                            <li><a target="_self" href="/import/wikipedia">@Messages("navbar.import.wikipedia")</a></li>
-                            <li><a target="_self" href="/import/html">@Messages("navbar.import.html")</a></li>
-                            <li><a target="_self" href="/import/json">@Messages("navbar.import.json")</a></li>
-                        </ul>
-                    </li>
-
-                    <li ng-class="{ active: isActive('/list')}"><a target="_self" href="/list">@Messages("navbar.list")</a></li>
-
-                    <form class="navbar-form navbar-left" role="search" action="/search" method="GET">
-                        <div class="form-group">
-                            <input name="request" type="text" class="form-control" placeholder='@Messages("button.search.placeholder")'>
-                        </div>
-                    </form>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-
-                    @if(context.user.isDefined) {
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@context.user.get.fullName <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a target="_self" href="/profile">@Messages("navbar.profile")</a></li>
-                                <li><a target="_self" href="/signOut">@Messages("navbar.signOut")</a></li>
-                            </ul>
-                        </li>
-
-                    } else {
-                        <li ng-class="{ active: isActive('/signIn')}"><a target="_self" href="/signIn">@Messages("navbar.signIn")</a></li>
-                    }
-
-                    <li class="dropdown" ng-controller="I18nCtrl">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@messages.lang.code <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><button ng-click='changeLanguage("en")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">English</button></li>
-                            <li><button ng-click='changeLanguage("fr")' class="btn btn-flat btn-default btn-sm btn-lowercase list-group-item">Français</button></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div>
-    </nav>
-
-    @toolbar
-
-
-
     @if(fullSize) {
-        <div id="main-content" class="container-fluid">
+        <div id="main-content" class="container-fluid editor-wrap">
     } else {
-        <div id="main-content" class="container">
+        <div id="main-content" class="container editor-wrap">
     }
         @content
     </div>
 
 	@feedback()
-
-    <div class="container-fluid footer">
-        <footer>
-            <div class="col-sm-6">
-                @Messages("footer.contact") <a href="mailto:contact@@opencompare.org">contact@@opencompare.org</a>
-                <br/>
-                <a href="http://www.apache.org/licenses/LICENSE-2.0">@Messages("footer.license")</a>
-            </div>
-
-            <div class="col-sm-6">
-                <a target="_self" href="/about/project">@Messages("navbar.about.project")</a>
-                <br/>
-                <a target="_self" href="/about/privacy">@Messages("navbar.about.privacy")</a>
-            </div>
-        </footer>
-    </div>
-
-    @mainneweditorFooter()
-    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.bootstrap-autohidingnavbar.min.js"))'></script>
-
-    <script>
-        $("nav.navbar-fixed-top").autoHidingNavbar();
-    </script>
 
     <!-- Piwik -->
     <script type="text/javascript">
