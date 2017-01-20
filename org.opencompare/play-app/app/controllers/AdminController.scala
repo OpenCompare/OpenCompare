@@ -3,16 +3,36 @@ package controllers
 import java.io.File
 import javax.inject.Inject
 
+import models.daos.PCMContainerDAO
+
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import models.{Database, AdminAuthorization, User}
 import org.opencompare.api.java.impl.io.KMFJSONLoader
 import play.api.i18n.MessagesApi
 
+import scala.concurrent._
+import ExecutionContext.Implicits.global
+
+import org.opencompare.api.java.impl.PCMFactoryImpl
+import org.opencompare.api.java.{PCMContainer, PCMFactory}
+import org.opencompare.api.java.extractor.CellContentInterpreter
+import models._
+
+import play.api.Logger
+
 /**
  * Created by gbecan on 10/1/15.
  */
-class AdminController @Inject() (val messagesApi: MessagesApi, val env: Environment[User, CookieAuthenticator]) extends BaseController {
+class AdminController @Inject() (val messagesApi: MessagesApi,
+                                val pcmContainerDAO: PCMContainerDAO,
+                                val pcmAPIUtils : PCMAPIUtils,
+                                val env: Environment[User, CookieAuthenticator])
+                                extends BaseController {
+
+
+  private val pcmFactory : PCMFactory = new PCMFactoryImpl()
+  private val cellContentInterpreter: CellContentInterpreter = new CellContentInterpreter(pcmFactory)
 
   def load(pcmType : String) = SecuredAction(AdminAuthorization()) {
 
@@ -60,4 +80,36 @@ class AdminController @Inject() (val messagesApi: MessagesApi, val env: Environm
 
     Ok(nbOfLoadedPCMs + " pcms successfully loaded.")
   }
+
+
+  // TODO move to PCMAPI
+  // in the long run: provide a procedure to re-type a PCM 
+  def retype(pcmid : String) = UserAwareAction { implicit request =>
+
+    val exists = Database.exists(pcmid)
+    if (exists) {
+        val result = pcmContainerDAO.get(pcmid)
+
+        result foreach { dbPCM =>
+          if (dbPCM.isDefined) {
+            val pcmContainer = dbPCM.get.pcmContainer.get
+            val pcm = pcmContainer.getPcm
+            pcm.normalize(pcmFactory)
+            cellContentInterpreter.interpretCells(pcm)
+
+            val databasePCM = new DatabasePCM(Some(pcmid), Some(pcmContainer))
+            Database.update(databasePCM)
+
+          } else {
+            //
+          }
+        }
+
+        Ok(views.html.edit(pcmid, null, null))
+    } else {
+        Ok(views.html.edit(null, null, null))
+    }
+
+  }
+
 }

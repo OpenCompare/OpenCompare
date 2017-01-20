@@ -63,6 +63,7 @@ GET         /profile                                  @controllers.ProfileContro
 
 # Admin
 GET         /admin/load                               @controllers.AdminController.load(type : String)
+GET         /admin/retype/:pcmid                         @controllers.AdminController.retype(pcmid : String)
 
 # Static resources
 GET         /assets/*file                             controllers.Assets.at(path="/public", file)
