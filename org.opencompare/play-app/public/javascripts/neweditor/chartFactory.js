@@ -5,7 +5,7 @@ function ChartFactory(editor, div){
   this.div = div;
 
   this.chart = null; //Chart object for ChartJS
-  this.chartType = 'pie';
+  this.chartType = 'radar';
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
@@ -43,6 +43,8 @@ ChartFactory.prototype.drawChart = function(){
     this.drawBubble();
   }else if(this.chartType=='pie'){
     this.drawPie();
+  }else if(this.chartType == 'radar') {
+    this.drawRadar();
   }else{
     console.log('Unsupported chart type : '+this.chartType);
   }
@@ -117,6 +119,39 @@ ChartFactory.prototype.drawPie = function(){
   }else{
     console.log('Value undefined');
   }
+}
+
+ChartFactory.prototype.drawRadar = function(){
+  if(this.chartCanvas != null){
+    this.chartCanvas.remove();
+  }
+  this.chartCanvas = $('<canvas>').appendTo(this.div);
+  this.chartData = {
+    type: 'radar',
+    data: {
+      labels: [],
+      datasets: []
+    }
+  };
+  var labels = [];
+  for(var f in this.editor.features) {
+    labels.push(this.editor.features[f].name);
+  }
+  for(var p in this.editor.products){ //currently all products are selected
+    var product = this.editor.products[p];
+    var data = [];
+    for (var f in this.editor.features){
+      var feature = this.editor.features[f];
+      if(feature.filter.type == 'integer' || feature.filter.type == 'float') {
+        var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
+        data.push(cellValue);
+      }
+    }
+    console.log(data);
+    this.chartData.data.labels = labels;
+    this.chartData.data.datasets.push({label: product.getCell(this.editor.features[0]).content, data: data});
+  }
+  this.chart = new Chart(this.chartCanvas[0], this.chartData);
 }
 
 //Update chart when configurator change
