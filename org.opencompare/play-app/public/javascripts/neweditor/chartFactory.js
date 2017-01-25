@@ -5,6 +5,7 @@ function ChartFactory(editor, div){
   this.div = div;
 
   this.chart = null; //Chart object for ChartJS
+  this.chartType = 'pie';
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
@@ -37,8 +38,18 @@ ChartFactory.prototype.init = function(){
   this.drawChart();
 }
 
-//Draw chart using this.chartDataX and this.chartDataY
 ChartFactory.prototype.drawChart = function(){
+  if(this.chartType=='bubble'){
+    this.drawBubble();
+  }else if(this.chartType=='pie'){
+    this.drawPie();
+  }else{
+    console.log('Unsupported chart type : '+this.chartType);
+  }
+}
+
+//Draw chart using this.chartDataX and this.chartDataY
+ChartFactory.prototype.drawBubble = function(){
   if(this.chartDataX != null && this.chartDataY != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
@@ -74,6 +85,37 @@ ChartFactory.prototype.drawChart = function(){
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
     console.log('X or Y features not defined');
+  }
+}
+
+ChartFactory.prototype.drawPie = function(){
+  if(this.chartDataX != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'pie',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            data: []
+          }
+        ]
+      }
+      /*options:{
+
+      }*/
+    };
+    for(var p in this.editor.products){
+      var product = this.editor.products[p];
+      this.chartData.data.labels.push(product.getCell(this.editor.features[0]).content);
+      this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+    }
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.log('Value undefined');
   }
 }
 
