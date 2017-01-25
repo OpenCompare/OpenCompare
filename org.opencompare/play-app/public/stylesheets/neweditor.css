@@ -78,6 +78,7 @@ a:hover{
   padding: 0;
   margin: 0 !important;
   height: 100% !important;
+  overflow: hidden;
 }
 
 /**************************************************************************************************************************************************************************/
@@ -355,21 +356,24 @@ a:hover{
   line-height: 32px;
 }
 
+/* use !important to override bootstrap */
 input[type="checkbox"]{
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
 
-  position: relative;
-  transition: 0.2s;
-  box-sizing: border-box;
-  width: 18px;
-  height: 18px;
+  opacity: 1 !important;
+  position: relative !important;
+  transition: 0.2s !important;
+  box-sizing: border-box !important;
+  width: 18px !important;
+  height: 18px !important;
   border: 2px solid #616161;
-  border-radius: 1px;
-  margin: 7px;
-  cursor: pointer;
-  outline: none;
+  border-radius: 1px !important;
+  margin: 7px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  pointer-events: auto !important; /* Else checkbox.less remove all events */
 }
 
 input[type="checkbox"]:checked{
