@@ -298,18 +298,18 @@ Editor.prototype.pcmLoaded = function(){
   //console.log(this.pcm);
 
   //Name
-  var name = this.pcm.name;
-  if(name.length==0){
-    name = "No name";
+  var name = this.pcm.name
+  if (typeof name === 'undefined' || name.length === 0) {
+    name = 'No name'
   }
-  this.name.html(name);
+  this.name.html(name)
 
   //License
-  var license = this.metadata.license;
-  if(license.length==0){
-    license = "unknown";
+  var license = this.metadata.license
+  if (typeof license === 'undefined' || license.length === 0) {
+    license = 'unknown'
   }
-  this.license.html(license);
+  this.license.html(license)
 
   //Source
   var source = this.metadata.source;
