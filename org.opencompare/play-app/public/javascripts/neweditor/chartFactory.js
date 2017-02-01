@@ -135,19 +135,21 @@ ChartFactory.prototype.drawRadar = function(){
   };
   var labels = [];
   for(var f in this.editor.features) {
-    labels.push(this.editor.features[f].name);
+    var feature = this.editor.features[f]
+    if(feature.isNumber){
+      labels.push(feature.name);
+    }
   }
   for(var p in this.editor.products){ //currently all products are selected
     var product = this.editor.products[p];
     var data = [];
     for (var f in this.editor.features){
       var feature = this.editor.features[f];
-      if(feature.filter.type == 'integer' || feature.filter.type == 'float') {
+      if(feature.isNumber){
         var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
         data.push(cellValue);
       }
     }
-    console.log(data);
     this.chartData.data.labels = labels;
     this.chartData.data.datasets.push({label: product.getCell(this.editor.features[0]).content, data: data});
   }
@@ -157,6 +159,7 @@ ChartFactory.prototype.drawRadar = function(){
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
+    console.log("plop")
     this.chart.update();
   }
 }
