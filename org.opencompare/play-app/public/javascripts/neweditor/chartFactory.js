@@ -133,6 +133,7 @@ ChartFactory.prototype.drawRadar = function(){
       datasets: []
     }
   };
+
   var labels = [];
   for(var f in this.editor.features) {
     var feature = this.editor.features[f]
@@ -147,15 +148,32 @@ ChartFactory.prototype.drawRadar = function(){
       var feature = this.editor.features[f];
       if(feature.isNumber){
         var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
-        data.push(cellValue);
+        data.push(cellValue / feature.filter.max);
       }
     }
     this.chartData.data.labels = labels;
-    this.chartData.data.datasets.push({label: product.getCell(this.editor.features[0]).content, data: data});
+    var label = product.getCell(this.editor.features[0]).content;
+    this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
   }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
 }
 
+/**
+ * Return a color based on a string
+ * @return {string} A color in hexadecimal.
+ */
+String.prototype.toColour = function () {
+   var hash = 0;
+   for (var i = 0; i < this.length; i++) {
+     hash = this.charCodeAt(i) + ((hash << 5) - hash);
+   }
+   var colour = '#';
+   for (var i = 0; i < 3; i++) {
+     var value = (hash >> (i * 8)) & 0xFF;
+     colour += ('00' + value.toString(16)).substr(-2);
+   }
+   return colour;
+ }
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
