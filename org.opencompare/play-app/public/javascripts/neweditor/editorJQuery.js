@@ -164,7 +164,7 @@ Editor.prototype.loadPCM = function (pcmID) {
         cell._type = null
         /**
          * return the type of the content.
-         * @return {string} undefined, integer, float, image, string
+         * @return {string} undefined, integer, float, image, url, string
          */
         Object.defineProperty(cell, 'type', {
           get: function () {
@@ -177,6 +177,8 @@ Editor.prototype.loadPCM = function (pcmID) {
                 this._type = 'float'
               } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico)$/.test(this.content)) {
                 this._type = 'image'
+              } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
+                this._type = 'url'
               } else {
                 this._type = 'string'
               }
@@ -195,12 +197,27 @@ Editor.prototype.loadPCM = function (pcmID) {
         })
 
         product.cellsByFeature[cell.feature.generated_KMF_ID] = cell
-        cell.div = $("<div>").addClass("pcm-cell").html(cell.content)
+        var htmlContent = cell.content
+        if (cell.type === 'image') {
+          htmlContent = "<a target='_blank' href='" + cell.content + "'><img class='cell-img' src='" + cell.content + "'></a>"
+        } else if (cell.type === 'url') {
+          htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
+        }
+        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent)
         cell.match = true
       }
 
-      //Add a function that return the cell corresponding to the feature
-      product.getCell = function(feature){
+      /**
+       * Return the cell for the specified feature
+       * @param {undefined|number|Feature} feature - If undefined return cell for feature at index 0 in editor.features, or at the specified index is feature is a number.
+       * @return {Cell} The cell corresponding to the feature.
+       */
+      product.getCell = function (feature) {
+        if (typeof feature === 'undefined') {
+          feature = that.features[0]
+        } else if (typeof feature === 'number') {
+          feature = that.features[feature]
+        }
         var cell = this.cellsByFeature[feature.generated_KMF_ID];
         if(typeof cell == "undefined"){
           cell = false;
