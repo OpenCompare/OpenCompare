@@ -8,6 +8,18 @@ function ChartFactory(editor, div){
   this.chartType = 'radar';
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
+
+  this.chartTypeLabel = $('<label>').html('Chart : ').appendTo(this.div);
+  this.chartTypeSelect = $('<select>').appendTo(this.div).change(function(){
+    self.chartType = self.chartTypeSelect.val();
+    console.log(self.chartType);
+    self.drawChart();
+  });
+
+  this.chartTypeSelect.append('<option value="radar">Radar</option>');
+  this.chartTypeSelect.append('<option value="bubble">Bubble</option>');
+  this.chartTypeSelect.append('<option value="pie">Pie</option>');
+
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
     self.chartDataX = self.editor.getFeatureByID(self.chartXselect.val());
