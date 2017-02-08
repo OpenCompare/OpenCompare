@@ -171,6 +171,7 @@ ChartFactory.prototype.drawRadar = function(){
     }
     this.chartData.data.labels = labels;
     var label = product.getCell(this.editor.features[0]).content;
+    console.log(label)
     this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
   }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
@@ -200,9 +201,10 @@ ChartFactory.prototype.update = function(){
     setTimeout(function(){
       if(that.chartType !== "bubble") {
         that.drawChart();
+        that.chart.update();
       } else {
         that.chart.update();
-      }     
+      }
     },1000);
   }
 }
