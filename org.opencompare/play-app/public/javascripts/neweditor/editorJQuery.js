@@ -1,134 +1,144 @@
 //********************************************************************************************************************************************************************
 //Editor
-function Editor(divID, pcmID){
-  var that = this;
-  var self = this;
-  this.div = $("#"+divID).addClass("editor");
-  this.pcmID = pcmID;
-  this.loadPCM();
 
-  this.pcm = false;
-  this.metadata = false;
+/**
+ * The jQuery Editor class
+ * @param {string} divID - The id attribute of the tag that will xontain the editor.
+ * @param {string} pcmID - The id of the PCM toloadin the API.
+ */
+function Editor (divID, pcmID) {
+  var that = this
+  var self = this
+  this.api = '/api/get/'
+  this.div = $('#' + divID).addClass('editor')
+  this.pcmID = pcmID
+  this.loadPCM()
 
-  this.views = {};
-  this._view = null;
+  this.pcm = false
+  this.metadata = false
+
+  this.views = {}
+  this._view = null
 
   //Create header
-  this.headerShow = true;
-  this.header = $("<div>").addClass("editor-header").appendTo(this.div);
-  this.name = $("<div>").addClass("pcm-name").html("No pcm loaded").appendTo(this.header);
-  this.licenseDiv = $("<div>").addClass("pcm-param").html("<b>License : </b>").appendTo(this.header);
-  this.license = $("<span>").appendTo(this.licenseDiv);
-  this.sourceDiv = $("<div>").addClass("pcm-param").html("<b>Source : </b>").appendTo(this.header);
-  this.source = $("<span>").appendTo(this.sourceDiv);
+  this.headerShow = true
+  this.header = $("<div>").addClass("editor-header").appendTo(this.div)
+  this.name = $("<div>").addClass("pcm-name").html("No pcm loaded").appendTo(this.header)
+  this.licenseDiv = $("<div>").addClass("pcm-param").html("<b>License : </b>").appendTo(this.header)
+  this.license = $("<span>").appendTo(this.licenseDiv)
+  this.sourceDiv = $("<div>").addClass("pcm-param").html("<b>Source : </b>").appendTo(this.header)
+  this.source = $("<span>").appendTo(this.sourceDiv)
 
   //Create action bar
-  this.actionBar = $("<div>").addClass("editor-action-bar").appendTo(this.div);
-  this.showConfiguratorButton = $("<div>").addClass("button").click(function(){
-    self.showConfigurator();
-  }).appendTo(this.actionBar);
-  this.configuratorArrow = $("<div>").addClass("configurator-arrow").appendTo(this.showConfiguratorButton);
-  this.showConfiguratorButton.append(" ");
-  this.showConfiguratorButtonMessage = $("<span>").html("Hide configurator").appendTo(this.showConfiguratorButton);
+  this.actionBar = $("<div>").addClass("editor-action-bar").appendTo(this.div)
+  this.showConfiguratorButton = $("<div>").addClass("button").click(function () {
+    self.showConfigurator()
+  }).appendTo(this.actionBar)
+  this.configuratorArrow = $("<div>").addClass("configurator-arrow").appendTo(this.showConfiguratorButton)
+  this.showConfiguratorButton.append(" ")
+  this.showConfiguratorButtonMessage = $("<span>").html("Hide configurator").appendTo(this.showConfiguratorButton)
 
-  this.showPCMButton = $('<div>').addClass('button').html('Show pcm').click(function(){
-    self.showView('pcmDiv');
-  }).appendTo(this.actionBar);
+  this.showPCMButton = $('<div>').addClass('button').html('Show pcm').click(function () {
+    self.showView('pcmDiv')
+  }).appendTo(this.actionBar)
 
-  this.showChartButton = $('<div>').addClass('button').html('Show chart').click(function(){
-    self.showView('chartDiv');
-  }).appendTo(this.actionBar);
+  this.showChartButton = $('<div>').addClass('button').html('Show chart').click(function () {
+    self.showView('chartDiv')
+  }).appendTo(this.actionBar)
+
+  this.exportButton = $('<a>').addClass('button').html('Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
 
   //Action bar right pane
-  this.actionBarRightPane = $("<div>").addClass("editor-action-bar-right-pane").appendTo(this.actionBar);
-  this.showHeaderButton = $("<div>").addClass("button").click(function(){
-    self.showHeader();
-  }).html('<i class="material-icons">keyboard_arrow_up</i>').appendTo(this.actionBarRightPane);
+  this.actionBarRightPane = $("<div>").addClass("editor-action-bar-right-pane").appendTo(this.actionBar)
+  this.showHeaderButton = $("<div>").addClass("button").click(function () {
+    self.showHeader()
+  }).html('<i class="material-icons">keyboard_arrow_up</i>').appendTo(this.actionBarRightPane)
 
   //Create content
-  this.content = $("<div>").addClass("editor-content").appendTo(this.div);
+  this.content = $("<div>").addClass("editor-content").appendTo(this.div)
 
   //Create configurator
-  this.configuratorShow = true;
-  this.configurator = $("<div>").addClass("configurator").appendTo(this.content);
+  this.configuratorShow = true
+  this.configurator = $("<div>").addClass("configurator").appendTo(this.content)
 
   //Create pcm wrap
-  this.pcmWrap = $("<div>").addClass("pcm-wrap").appendTo(this.content);
+  this.pcmWrap = $("<div>").addClass("pcm-wrap").appendTo(this.content)
 
   //Create pcmDiv
-  this.views.pcmDiv = $("<div>").addClass("pcm-table").appendTo(this.pcmWrap);
+  this.views.pcmDiv = $("<div>").addClass("pcm-table").appendTo(this.pcmWrap)
 
   //Create chart
-  this.views.chartDiv = $("<div>").appendTo(this.pcmWrap);
-  this.chartFactory = new ChartFactory(this, this.views.chartDiv);
+  this.views.chartDiv = $("<div>").appendTo(this.pcmWrap)
+  this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
-  this.showView('pcmDiv');
+  this.showView('pcmDiv')
 }
 
 Object.defineProperty(Editor.prototype, 'checkInterpretation', {
   get: function(){
-    var n = 0;
-    var max = 0;
+    var n = 0
+    var max = 0
     for(var p in this.products){
       for(var c in this.products[p].cells.array){
-        max++;
+        max++
         if(this.products[p].cells.array[c].interpretation != null){
-          n++;
+          n++
         }
       }
     }
-    return 'interpretation : '+n+'/'+max+' '+((n==max) ? 'OK' : 'incomplete');
+    return 'interpretation : ' + n + '/' + max + ' ' + ((n == max) ? 'OK' : 'incomplete')
   }
-});
+})
 
 //Show view
-Editor.prototype.showView = function(view){
-  if(typeof view === 'undefined'){
-    view = this.views.pcmDiv;
-  }else if(typeof view === 'string'){
-    view = this.views[view];
+Editor.prototype.showView = function (view) {
+  if (typeof view === 'undefined') {
+    view = this.views.pcmDiv
+  } else if (typeof view === 'string') {
+    view = this.views[view]
   }
 
-  if(this._view !== view){
-    if(this._view != null){
-      this._view.hide();
+  if (this._view !== view) {
+    if (this._view != null) {
+      this._view.hide()
     }
 
-    this._view = view;
-    this._view.show();
+    this._view = view
+    this._view.show()
   }
 }
 
 //Some accessors
-Editor.prototype.getFeatureByName = function(name){
-  var feature = false;
-  for(var f in this.features){
-    if(this.features[f].name==name){
-      feature = this.features[f];
-      break;
+Editor.prototype.getFeatureByName = function (name) {
+  var feature = false
+  for (var f in this.features) {
+    if (this.features[f].name == name) {
+      feature = this.features[f]
+      break
     }
   }
-  return feature;
+  return feature
 }
 
 //get feature by generated_KMF_ID
-Editor.prototype.getFeatureByID = function(id){
+Editor.prototype.getFeatureByID = function (id) {
   var feature = false;
-  for(var f in this.features){
-    if(this.features[f].generated_KMF_ID === id){
-      feature = this.features[f];
-      break;
+  for (var f in this.features) {
+    if (this.features[f].generated_KMF_ID === id) {
+      feature = this.features[f]
+      break
     }
   }
-  return feature;
+  return feature
 }
 
 //Load the pcm
-Editor.prototype.loadPCM = function(pcmID=false){
-  var that = this;
-  if(pcmID){
-    this.pcmID = pcmID;
-  }
+Editor.prototype.loadPCM = function (pcmID) {
+  pcmID = typeof pcmID === 'undefined'
+    ? false
+    : pcmID
+  var that = this
+  if (pcmID) this.pcmID = pcmID
 
   //API url : https://opencompare.org/api/get/
   // or relative, local path "/get/"
@@ -136,10 +146,10 @@ Editor.prototype.loadPCM = function(pcmID=false){
   // https://opencompare.org/api/get/
   // "/assets/pcm/"
   // works also with a local opencompare server ()"/api/get/")
-  $.get("/api/get/" + this.pcmID, function(data) {
+  $.get(this.api + this.pcmID, function (data) {
 
     that.metadata = data.metadata; //Get metadata
-    that.pcm = mypcmApi.loadPCMModelFromString(JSON.stringify(data.pcm)); //Load PCM
+    that.pcm = mypcmApi.loadPCMModelFromString(JSON.stringify(data.pcm)) //Load PCM
     mypcmApi.decodePCM(that.pcm); //Decode the PCM with KMF, require pcmApi
 
 
@@ -147,29 +157,78 @@ Editor.prototype.loadPCM = function(pcmID=false){
     that.products = [];
     for (var p in that.pcm.products.array) {
       var product = that.pcm.products.array[p];
-      product.visible = true;
-      product.dataset = null; //dataset for chart
+      product.visible = true
+      product.dataset = null //dataset for chart
 
-      product.cellsByFeature = {};
+      //Iterate on each cells and add property
+      product.cellsByFeature = {}
       for(var c in product.cells.array){
-        var cell = product.cells.array[c];
-        product.cellsByFeature[cell.feature.generated_KMF_ID] = cell;
+        var cell = product.cells.array[c]
+        cell._type = null
+        /**
+         * return the type of the content.
+         * @return {string} undefined, integer, float, image, url, string
+         */
+        Object.defineProperty(cell, 'type', {
+          get: function () {
+            if (this._type == null) {
+              if (this.content.length === 0) {
+                this._type = 'undefined'
+              } else if (/^\d+$/.test(this.content)) {
+                this._type = 'integer'
+              } else if (/^\d+\.\d+$/.test(this.content)) {
+                this._type = 'float'
+              } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico)$/.test(this.content)) {
+                this._type = 'image'
+              } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
+                this._type = 'url'
+              } else {
+                this._type = 'string'
+              }
+            }
+            return this._type
+          }
+        })
+        /**
+         * return if the type of the content id numeric (integer/float).
+         * @return {boolean}
+         */
+        Object.defineProperty(cell, 'isNumber', {
+          get: function () {
+            return this.type === 'integer' || this.type === 'float'
+          }
+        })
+
+        product.cellsByFeature[cell.feature.generated_KMF_ID] = cell
+        var htmlContent = cell.content
+        if (cell.type === 'image') {
+          htmlContent = "<a target='_blank' href='" + cell.content + "'><img class='cell-img' src='" + cell.content + "'></a>"
+        } else if (cell.type === 'url') {
+          htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
+        }
+        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click(function () {
+          console.log(cell.interpretation)
+        })
+        cell.div.cell = cell
+        cell.match = true
       }
 
-      //Add a function that return the cell corresponding to the feature
-      product.getCell = function(feature){
+      /**
+       * Return the cell for the specified feature
+       * @param {undefined|number|Feature} feature - If undefined return cell for feature at index 0 in editor.features, or at the specified index is feature is a number.
+       * @return {Cell} The cell corresponding to the feature.
+       */
+      product.getCell = function (feature) {
+        if (typeof feature === 'undefined') {
+          feature = that.features[0]
+        } else if (typeof feature === 'number') {
+          feature = that.features[feature]
+        }
         var cell = this.cellsByFeature[feature.generated_KMF_ID];
         if(typeof cell == "undefined"){
           cell = false;
         }
         return cell;
-      }
-
-      //Create a div for each cell
-      for(var c in product.cells.array){
-        var cell = product.cells.array[c];
-        cell.div = $("<div>").addClass("pcm-cell").html(cell.content);
-        cell.match = true;
       }
 
       //Add a function that return if all cell.match==true
@@ -210,31 +269,47 @@ Editor.prototype.loadPCM = function(pcmID=false){
              r: 10
            }]
         };
-        return this.dataset;
+        return this.dataset
       }
 
-      that.products.push(product);
+      that.products.push(product)
     }
 
     //Extract features
-    that.features = [];
-    that.addFeaturesFromArray(that.pcm.features.array);
+    that.features = []
+    that.addFeaturesFromArray(that.pcm.features.array)
 
-    that.pcmLoaded();
-  });
+    that.pcmLoaded()
+  })
 }
 
 //Add all feature in the array to this.features
 Editor.prototype.addFeaturesFromArray = function(array){
   for(var i in array){
     var feature = array[i];
-    if(feature.subFeatures){
+    if (feature.subFeatures) {
       this.addFeaturesFromArray(feature.subFeatures.array);
-    }else{
+    } else {
       feature.filter = new Filter(feature, this); //filter is used to filter products on this feature
-      if(this.pcm.productsKey!=null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID){
+      /**
+       * Just a shorthand to feature.filter.type
+       */
+      Object.defineProperty(feature, 'type', {
+        get: function () {
+          return this.filter.type
+        }
+      })
+      /**
+       * Return if feature.filter.type is a number (integer/float)
+       */
+      Object.defineProperty(feature, 'isNumber', {
+        get: function () {
+          return this.type === 'integer' || this.type === 'float'
+        }
+      })
+      if (this.pcm.productsKey != null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID) {
         this.features.splice(0, 0, feature);
-      }else{
+      } else {
         this.features.push(feature);
       }
     }
@@ -246,18 +321,18 @@ Editor.prototype.pcmLoaded = function(){
   //console.log(this.pcm);
 
   //Name
-  var name = this.pcm.name;
-  if(name.length==0){
-    name = "No name";
+  var name = this.pcm.name
+  if (typeof name === 'undefined' || name.length === 0) {
+    name = 'No name'
   }
-  this.name.html(name);
+  this.name.html(name)
 
   //License
-  var license = this.metadata.license;
-  if(license.length==0){
-    license = "unknown";
+  var license = this.metadata.license
+  if (typeof license === 'undefined' || license.length === 0) {
+    license = 'unknown'
   }
-  this.license.html(license);
+  this.license.html(license)
 
   //Source
   var source = this.metadata.source;
@@ -413,6 +488,11 @@ var NO_SORTING = 1;
 var ASCENDING_SORTING = 2;
 var DESCENDING_SORTING = 3;
 
+/**
+ * Filter object used to filter products on a feature.
+ * @param {Feature} feature - The feature for the filter.
+ * @param {Editor} editor - The editor.
+ */
 function Filter(feature, editor){
   var that = this;
   this.feature = feature;
@@ -425,42 +505,32 @@ function Filter(feature, editor){
   this.lower = false; //Minimum value which match filter
   this.upper = false; //Maximum value which match filter
   this.step = 1; //Step for the slider when feature is a numeric value
-  this.type = "undefined"; //Type of the values : integer, float, string
+  this.type = 'undefined'; //Type of the values : integer, float, string
   this.search = ""; //Will contain a regexp entered by the user in a search form, TODO
   this.sorting = NO_SORTING;
 
   //Determine type of feature
-  var integer = 0;
-  var float = 0;
-  var string = 0;
+  this.types = {
+    undefined: 0,
+    integer: 0,
+    float: 0,
+    image: 0,
+    string: 0
+  }
 
   for(var p in this.editor.products){
-    var content = this.editor.products[p].getCell(feature).content;
+    var cell = this.editor.products[p].getCell(feature);
 
-    if(content){
-      /*if(typeof this.values[content] == "undefined"){
-        this.values[content] = 1;
-      }else{
-        this.values[content]++;
-      }*/
-
-      if($.inArray(content, this.values)==-1){
-        this.values.push(content);
+    if(cell.content){
+      if ($.inArray(cell.content, this.values) === -1) {
+        this.values.push(cell.content);
       }
 
-      if(content.length>0){
-        if(/^\d+$/.test(content)){
-          integer++;
-        }else if(/^\d+\.\d+$/.test(content)){
-          float++;
-        }else{
-          string++;
-        }
-      }
+      this.types[cell.type]++
     }
   }
 
-  if(integer>0 && float==0 && string==0){ //Integer
+  if (this.types.integer > 0 && this.types.float === 0 && this.types.string === 0) { //Integer
     this.type = "integer";
 
     for(var v in this.values){
@@ -477,7 +547,7 @@ function Filter(feature, editor){
     this.lower = this.min;
     this.upper = this.max;
     this.step = 1;
-  }else if(float>0 && string==0){ //Float
+  } else if(this.types.float > 0 && this.types.string === 0) { //Float
     this.type = "float";
 
     for(var v in this.values){
@@ -494,12 +564,12 @@ function Filter(feature, editor){
     this.lower = this.min;
     this.upper = this.max;
     this.step = 0.1;
-  }else{ //String
+  } else { //String
     this.type = "string";
 
     this.values.sort();
 
-    if(this.values.length<=20){ //Create checkboxs only if there are les than 20 differents values
+    if(this.values.length <= 20){ //Create checkboxs only if there are les than 20 differents values
       this.hasCheckbox = true;
       for(var v in this.values){
         var value = this.values[v];
@@ -683,12 +753,18 @@ Filter.prototype.setSorting = function(sorting, autoSort=true, resetOther=true){
 //Compare
 Filter.prototype.compare = function(p1, p2){
   var res = 0;
-  if(this.sorting==NO_SORTING){
+  if(this.sorting === NO_SORTING){
     console.log("Try to compare 2 product using a filter without sorting direction");
   }else{
-    if(p1.getCell(this.feature).content>p2.getCell(this.feature).content){
+    var val1 = p1.getCell(this.feature).content
+    var val2 = p2.getCell(this.feature).content
+    if (this.type === 'integer' || this.type === 'float') {
+      val1 = parseFloat(val1)
+      val2 = parseFloat(val2)
+    }
+    if (val1 > val2) {
       res = 1;
-    }else if(p1.getCell(this.feature).content<p2.getCell(this.feature).content){
+    } else if (val1 < val2) {
       res = -1;
     }
   }

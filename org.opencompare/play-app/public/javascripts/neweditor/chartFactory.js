@@ -5,8 +5,20 @@ function ChartFactory(editor, div){
   this.div = div;
 
   this.chart = null; //Chart object for ChartJS
+  this.chartType = 'radar';
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
+
+  this.chartTypeLabel = $('<label>').html('Chart : ').appendTo(this.div);
+  this.chartTypeSelect = $('<select>').appendTo(this.div).change(function(){
+    self.chartType = self.chartTypeSelect.val();
+    self.drawChart();
+  });
+
+  this.chartTypeSelect.append('<option value="radar">Radar</option>');
+  this.chartTypeSelect.append('<option value="bubble">Bubble</option>');
+  this.chartTypeSelect.append('<option value="pie">Pie</option>');
+
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
     self.chartDataX = self.editor.getFeatureByID(self.chartXselect.val());
@@ -37,8 +49,20 @@ ChartFactory.prototype.init = function(){
   this.drawChart();
 }
 
-//Draw chart using this.chartDataX and this.chartDataY
 ChartFactory.prototype.drawChart = function(){
+  if(this.chartType=='bubble'){
+    this.drawBubble();
+  }else if(this.chartType=='pie'){
+    this.drawPie();
+  }else if(this.chartType == 'radar') {
+    this.drawRadar();
+  }else{
+    console.log('Unsupported chart type : '+this.chartType);
+  }
+}
+
+//Draw chart using this.chartDataX and this.chartDataY
+ChartFactory.prototype.drawBubble = function(){
   if(this.chartDataX != null && this.chartDataY != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
@@ -77,9 +101,109 @@ ChartFactory.prototype.drawChart = function(){
   }
 }
 
+ChartFactory.prototype.drawPie = function(){
+  if(this.chartDataX != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'pie',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            data: []
+          }
+        ]
+      },
+      options: {
+        animation: false
+      }
+    };
+    for(var p in this.editor.products){
+      var product = this.editor.products[p];
+      if(product.visible) {
+        this.chartData.data.labels.push(product.getCell(this.editor.features[0]).content);
+        this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+      }
+    }
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.log('Value undefined');
+  }
+}
+
+ChartFactory.prototype.drawRadar = function(){
+  if(this.chartCanvas != null){
+    this.chartCanvas.remove();
+  }
+  this.chartCanvas = $('<canvas>').appendTo(this.div);
+  this.chartData = {
+    type: 'radar',
+    data: {
+      labels: [],
+      datasets: []
+    },
+    options: {
+      animation: false
+    }
+  };
+
+  var labels = [];
+  for(var f in this.editor.features) {
+    var feature = this.editor.features[f]
+    if(feature.isNumber){
+      labels.push(feature.name);
+    }
+  }
+  for(var p in this.editor.products){ //currently all products are selected
+    var product = this.editor.products[p];
+    var data = [];
+    if(product.visible) {
+      for (var f in this.editor.features){
+        var feature = this.editor.features[f];
+        if(feature.isNumber){
+          var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
+          data.push(cellValue / feature.filter.max);
+        }
+      }
+    }
+    this.chartData.data.labels = labels;
+    var label = product.getCell(this.editor.features[0]).content;
+    this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
+  }
+  this.chart = new Chart(this.chartCanvas[0], this.chartData);
+}
+
+/**
+ * Return a color based on a string
+ * @return {string} A color in hexadecimal.
+ */
+String.prototype.toColour = function () {
+   var hash = 0;
+   for (var i = 0; i < this.length; i++) {
+     hash = this.charCodeAt(i) + ((hash << 5) - hash);
+   }
+   var colour = '#';
+   for (var i = 0; i < 3; i++) {
+     var value = (hash >> (i * 8)) & 0xFF;
+     colour += ('00' + value.toString(16)).substr(-2);
+   }
+   return colour;
+ }
+
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
-    this.chart.update();
+    var that = this;
+    setTimeout(function(){
+      if(that.chartType !== "bubble") {
+        that.drawChart();
+        that.chart.update();
+      } else {
+        that.chart.update();
+      }
+    },1000);
   }
 }
