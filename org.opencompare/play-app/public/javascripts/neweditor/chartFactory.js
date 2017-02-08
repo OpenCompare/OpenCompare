@@ -12,7 +12,6 @@ function ChartFactory(editor, div){
   this.chartTypeLabel = $('<label>').html('Chart : ').appendTo(this.div);
   this.chartTypeSelect = $('<select>').appendTo(this.div).change(function(){
     self.chartType = self.chartTypeSelect.val();
-    console.log(self.chartType);
     self.drawChart();
   });
 
@@ -117,15 +116,17 @@ ChartFactory.prototype.drawPie = function(){
             data: []
           }
         ]
+      },
+      options: {
+        animation: false
       }
-      /*options:{
-
-      }*/
     };
     for(var p in this.editor.products){
       var product = this.editor.products[p];
-      this.chartData.data.labels.push(product.getCell(this.editor.features[0]).content);
-      this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+      if(product.visible) {
+        this.chartData.data.labels.push(product.getCell(this.editor.features[0]).content);
+        this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+      }
     }
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
@@ -143,6 +144,9 @@ ChartFactory.prototype.drawRadar = function(){
     data: {
       labels: [],
       datasets: []
+    },
+    options: {
+      animation: false
     }
   };
 
@@ -156,11 +160,13 @@ ChartFactory.prototype.drawRadar = function(){
   for(var p in this.editor.products){ //currently all products are selected
     var product = this.editor.products[p];
     var data = [];
-    for (var f in this.editor.features){
-      var feature = this.editor.features[f];
-      if(feature.isNumber){
-        var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
-        data.push(cellValue / feature.filter.max);
+    if(product.visible) {
+      for (var f in this.editor.features){
+        var feature = this.editor.features[f];
+        if(feature.isNumber){
+          var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
+          data.push(cellValue / feature.filter.max);
+        }
       }
     }
     this.chartData.data.labels = labels;
@@ -186,10 +192,17 @@ String.prototype.toColour = function () {
    }
    return colour;
  }
+
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
-    console.log("plop")
-    this.chart.update();
+    var that = this;
+    setTimeout(function(){
+      if(that.chartType !== "bubble") {
+        that.drawChart();
+      } else {
+        that.chart.update();
+      }     
+    },1000);
   }
 }
