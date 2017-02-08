@@ -9,6 +9,7 @@
 function Editor (divID, pcmID) {
   var that = this
   var self = this
+  this.api = '/api/get/'
   this.div = $('#' + divID).addClass('editor')
   this.pcmID = pcmID
   this.loadPCM()
@@ -44,6 +45,8 @@ function Editor (divID, pcmID) {
   this.showChartButton = $('<div>').addClass('button').html('Show chart').click(function () {
     self.showView('chartDiv')
   }).appendTo(this.actionBar)
+
+  this.exportButton = $('<a>').addClass('button').html('Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
 
   //Action bar right pane
   this.actionBarRightPane = $("<div>").addClass("editor-action-bar-right-pane").appendTo(this.actionBar)
@@ -143,7 +146,7 @@ Editor.prototype.loadPCM = function (pcmID) {
   // https://opencompare.org/api/get/
   // "/assets/pcm/"
   // works also with a local opencompare server ()"/api/get/")
-  $.get("/api/get/" + this.pcmID, function (data) {
+  $.get(this.api + this.pcmID, function (data) {
 
     that.metadata = data.metadata; //Get metadata
     that.pcm = mypcmApi.loadPCMModelFromString(JSON.stringify(data.pcm)) //Load PCM
@@ -203,7 +206,10 @@ Editor.prototype.loadPCM = function (pcmID) {
         } else if (cell.type === 'url') {
           htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
         }
-        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent)
+        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click(function () {
+          console.log(cell.interpretation)
+        })
+        cell.div.cell = cell
         cell.match = true
       }
 
