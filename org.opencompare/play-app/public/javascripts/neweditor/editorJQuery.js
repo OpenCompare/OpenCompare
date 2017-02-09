@@ -172,7 +172,7 @@ Editor.prototype.loadPCM = function (pcmID) {
         Object.defineProperty(cell, 'type', {
           get: function () {
             if (this._type == null) {
-              if (this.content.length === 0) {
+              if (this.content.length === 0 || (this.interpretation != null && this.interpretation.metaClassName() === 'org.opencompare.model.NotAvailable')) {
                 this._type = 'undefined'
               } else if (/^\d+$/.test(this.content)) {
                 this._type = 'integer'
@@ -206,8 +206,10 @@ Editor.prototype.loadPCM = function (pcmID) {
         } else if (cell.type === 'url') {
           htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
         }
-        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click(function () {
-          console.log(cell.interpretation)
+        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click({cell: cell}, function (event) {
+          console.log(event.data.cell.content)
+          console.log(event.data.cell.interpretation.metaClassName())
+          console.log(event.data.cell.interpretation)
         })
         cell.div.cell = cell
         cell.match = true
