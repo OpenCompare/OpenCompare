@@ -178,7 +178,7 @@ Editor.prototype.loadPCM = function (pcmID) {
                 this._type = 'integer'
               } else if (/^\d+\.\d+$/.test(this.content)) {
                 this._type = 'float'
-              } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico)$/.test(this.content)) {
+              } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico|svg)$/.test(this.content)) {
                 this._type = 'image'
               } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
                 this._type = 'url'
