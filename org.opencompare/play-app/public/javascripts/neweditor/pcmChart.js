@@ -1735,7 +1735,6 @@ module.exports = function(Chart) {
 module.exports = function(Chart) {
 
 	Chart.Bubble = function(context, config) {
-		// console.log(config);
 		config.type = 'bubble';
 		return new Chart(context, config);
 	};
@@ -2462,8 +2461,6 @@ module.exports = function(Chart) {
 			var pointElementOptions = me.chart.options.elements.point;
 			var dsIndex = me.index;
 
-			//console.log(data);
-			console.log("updateELement");
 			helpers.extend(point, {
 				// Utility
 				_xScale: xScale,
@@ -3714,7 +3711,6 @@ module.exports = function(Chart) {
 	var helpers = Chart.canvasHelpers = {};
 
 	helpers.drawPoint = function(ctx, pointStyle, radius, x, y) {
-		//console.log("helpers.drawPoint");
 		var type, edgeLength, xOffset, yOffset, height, size;
 
 		if (typeof pointStyle === 'object') {
@@ -3812,10 +3808,10 @@ module.exports = function(Chart) {
 		ctx.stroke();
 	};
 	
-	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl) {
-		console.log("draw image");
+	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl, cropCircle, strokeCircle,strokeStyle) {
 		var type, height;
-
+		
+		
 		if (typeof pointStyle === 'object') {
 			type = pointStyle.toString();
 			if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
@@ -3830,15 +3826,70 @@ module.exports = function(Chart) {
 		ctx.beginPath();
 		ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
 		ctx.closePath();
-		// ctx.fill();
-		// ctx.strokeStyle="black";
-		// ctx.stroke();
 		
-		var img = new Image;
-		img.onload = function(){
-		  ctx.drawImage(img,x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
-		};
-		img.src = imageUrl;
+		if(strokeCircle){
+			ctx.strokeStyle=strokeStyle;
+			ctx.stroke();
+		}
+		
+		if(typeof Chart.cache[imageUrl] == "undefined"){
+			Chart.cache[imageUrl] = document.createElement("canvas");
+			var cacheCtx;
+			
+			cacheCtx = Chart.cache[imageUrl].getContext('2d');
+			var img = new Image;
+			img.src = imageUrl;
+			img.onload = function(){
+				
+			
+				Chart.cache[imageUrl].setAttribute("width",img.naturalWidth);
+				Chart.cache[imageUrl].setAttribute("height",img.naturalHeight);
+				cacheCtx.drawImage(img,0,0);
+				
+		
+				if(cropCircle){
+					ctx.save();
+					
+					ctx.beginPath();
+					ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+					ctx.closePath();
+					ctx.clip();
+				}
+				
+				ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
+				
+				if(cropCircle){
+					ctx.beginPath();
+					ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+					ctx.clip();
+					ctx.closePath();
+					
+					ctx.restore();
+				}
+			}
+		}else{
+			if(cropCircle){
+				ctx.save();
+				
+				ctx.beginPath();
+				ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+				ctx.closePath();
+				ctx.clip();
+			}
+			ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
+			if(cropCircle){
+				ctx.beginPath();
+				ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+				ctx.clip();
+				ctx.closePath();
+				
+				ctx.restore();
+			}
+		}
+		
+		
+		
+		
 	};
 };
 
@@ -3848,7 +3899,10 @@ module.exports = function(Chart) {
 module.exports = function(Chart) {
 
 	var helpers = Chart.helpers;
-
+	
+	//Create a cache for images
+	Chart.cache = {};
+	
 	// Create a dictionary of chart types, to allow for extension of existing types
 	Chart.types = {};
 
@@ -4456,6 +4510,7 @@ module.exports = function(Chart) {
 		getDatasetMeta: function(datasetIndex) {
 			var me = this;
 			var dataset = me.data.datasets[datasetIndex];
+			
 			if (!dataset._meta) {
 				dataset._meta = {};
 			}
@@ -5395,7 +5450,7 @@ module.exports = function(Chart) {
 	};
 	helpers.EPSILON = Number.EPSILON || 1e-14;
 	helpers.splineCurveMonotone = function(points) {
-		// This function calculates Bézier control points in a similar way than |splineCurve|,
+		// This function calculates Bê»©er control points in a similar way than |splineCurve|,
 		// but preserves monotonicity of the provided data and ensures no local extremums are added
 		// between the dataset discrete points due to the interpolation.
 		// See : https://en.wikipedia.org/wiki/Monotone_cubic_interpolation
@@ -8691,6 +8746,7 @@ module.exports = function(Chart) {
 		cornerRadius: 6,
 		multiKeyBackground: '#fff',
 		displayColors: true,
+		delay:0,
 		callbacks: {
 			// Args are: (tooltipItems, data)
 			beforeTitle: helpers.noop,
@@ -9392,24 +9448,55 @@ module.exports = function(Chart) {
 			var opacity = Math.abs(vm.opacity < 1e-3) ? 0 : vm.opacity;
 
 			if (this._options.enabled) {
-				// Draw Background
-				this.drawBackground(pt, vm, ctx, tooltipSize, opacity);
+				
+				if(this._options.delay > 0){
+					
+					var that = this;
+					
+					setTimeout(function () {
+					// Draw Background
+					that.drawBackground(pt, vm, ctx, tooltipSize, opacity);
 
-				// Draw Caret
-				this.drawCaret(pt, tooltipSize, opacity);
+					// Draw Caret
+					that.drawCaret(pt, tooltipSize, opacity);
 
-				// Draw Title, Body, and Footer
-				pt.x += vm.xPadding;
-				pt.y += vm.yPadding;
+					// Draw Title, Body, and Footer
+					pt.x += vm.xPadding;
+					pt.y += vm.yPadding;
 
-				// Titles
-				this.drawTitle(pt, vm, ctx, opacity);
+					// Titles
+					that.drawTitle(pt, vm, ctx, opacity);
 
-				// Body
-				this.drawBody(pt, vm, ctx, opacity);
+					// Body
+					that.drawBody(pt, vm, ctx, opacity);
 
-				// Footer
-				this.drawFooter(pt, vm, ctx, opacity);
+					// Footer
+					that.drawFooter(pt, vm, ctx, opacity);
+					
+					}, this._options.delay);
+				
+				}else{
+					
+					// Draw Background
+					this.drawBackground(pt, vm, ctx, tooltipSize, opacity);
+
+					// Draw Caret
+					this.drawCaret(pt, tooltipSize, opacity);
+
+					// Draw Title, Body, and Footer
+					pt.x += vm.xPadding;
+					pt.y += vm.yPadding;
+
+					// Titles
+					this.drawTitle(pt, vm, ctx, opacity);
+
+					// Body
+					this.drawBody(pt, vm, ctx, opacity);
+
+					// Footer
+					this.drawFooter(pt, vm, ctx, opacity);
+					
+				}
 			}
 		},
 
@@ -11646,7 +11733,7 @@ module.exports = function(Chart) {
 				padding: vm.radius + vm.borderWidth
 			};
 		},
-		draw: function() {//console.log("draw image bubble");
+		draw: function() {
 			var vm = this._view;
 			var ctx = this._chart.ctx;
 			var pointStyle = vm.pointStyle;
@@ -11654,6 +11741,9 @@ module.exports = function(Chart) {
 			var x = vm.x;
 			var y = vm.y;
 			var image = vm.image;
+			var cropCircle = vm.cropCircle;
+			var strokeCircle = vm.strokeCircle;
+			var strokeStyle = vm.strokeStyle;
 
 			if (vm.skip) {
 				return;
@@ -11662,7 +11752,7 @@ module.exports = function(Chart) {
 			ctx.strokeStyle = vm.borderColor || defaultColor;
 			ctx.lineWidth = helpers.getValueOrDefault(vm.borderWidth, globalOpts.elements.point.borderWidth);
 			ctx.fillStyle = vm.backgroundColor || defaultColor;
-			Chart.canvasHelpers.drawImage(ctx, pointStyle, radius, x, y, image);
+			Chart.canvasHelpers.drawImage(ctx, pointStyle, radius, x, y, image, cropCircle, strokeCircle, strokeStyle);
 		}
 	});
 };
@@ -11699,6 +11789,7 @@ module.exports = function(Chart) {
 					return '';
 				},
 				label: function(tooltipItem, data) {
+					// console.log(tooltipItem);
 					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
 					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
 					return datasetLabel + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ', ' + dataPoint.r + ')';
@@ -11715,7 +11806,7 @@ module.exports = function(Chart) {
 			var me = this;
 			var meta = me.getMeta();
 			var points = meta.data;
-			console.log(points);
+			
 			// Update Points
 			helpers.each(points, function(point, index) {
 				me.updateElement(point, index, reset);
@@ -11723,7 +11814,6 @@ module.exports = function(Chart) {
 		},
 
 		updateElement: function(point, index, reset) {
-			//console.log(point);
 			var me = this;
 			var meta = me.getMeta();
 			var xScale = me.getScaleForId(meta.xAxisID);
@@ -11735,8 +11825,6 @@ module.exports = function(Chart) {
 			var pointElementOptions = me.chart.options.elements.point;
 			var dsIndex = me.index;
 
-			console.log(data);
-			//console.log("updateELement");
 			helpers.extend(point, {
 				// Utility
 				_xScale: xScale,
@@ -11751,6 +11839,9 @@ module.exports = function(Chart) {
 					// Appearance
 					radius: reset ? 0 : custom.radius ? custom.radius : me.getRadius(data),
 					image: reset ? "" : data.image,
+					cropCircle: typeof data.cropCircle == "undefined"? false:data.cropCircle,
+					strokeCircle: typeof data.strokeCircle == "undefined"? false:data.strokeCircle,
+					strokeStyle: typeof data.strokeStyle == "undefined"? "black":data.strokeStyle,
 
 					// Tooltip
 					hitRadius: custom.hitRadius ? custom.hitRadius : helpers.getValueAtIndexOrDefault(dataset.hitRadius, index, pointElementOptions.hitRadius)

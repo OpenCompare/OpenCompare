@@ -16,8 +16,10 @@ function ChartFactory(editor, div){
   });
 
   this.chartTypeSelect.append('<option value="radar">Radar</option>');
-  this.chartTypeSelect.append('<option value="bubble">Bubble</option>');
   this.chartTypeSelect.append('<option value="pie">Pie</option>');
+  this.chartTypeSelect.append('<option value="productchart">ProductChart</option>');
+  this.chartTypeSelect.append('<option value="bar">Bar</option>');
+  this.chartTypeSelect.append('<option value="line">Line</option>')
 
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
@@ -50,31 +52,44 @@ ChartFactory.prototype.init = function(){
 }
 
 ChartFactory.prototype.drawChart = function(){
-  if(this.chartType=='bubble'){
-    this.drawBubble();
-  }else if(this.chartType=='pie'){
+  if(this.chartType=='pie'){
     this.drawPie();
   }else if(this.chartType == 'radar') {
     this.drawRadar();
+  }else if(this.chartType == 'productchart') {
+    this.drawProductChart();
+  }else if(this.chartType == 'bar') {
+	this.drawBar();
   }else{
-    console.log('Unsupported chart type : '+this.chartType);
+    console.error('Unsupported chart type : '+this.chartType);
   }
 }
 
+function newProductChartDataset(product,feature,x,y,imageUrl){
+	var dataset = product.newDataset(feature,x,y);
+	dataset.data[0].cropCircle=true;
+	dataset.data[0].strokeCircle=true;
+	dataset.data[0].image=imageUrl;
+	return dataset;
+}
+
 //Draw chart using this.chartDataX and this.chartDataY
-ChartFactory.prototype.drawBubble = function(){
+ChartFactory.prototype.drawProductChart = function(){
   if(this.chartDataX != null && this.chartDataY != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
     }
     this.chartCanvas = $('<canvas>').appendTo(this.div);
     this.chartData = {
-      type: 'bubble',
+      type: 'bubbleImage',
       data: {
           datasets: []
       },
       options:{
         animation: false,
+        legend: {
+          display: true
+        },
         scales: {
           xAxes: [{
             scaleLabel: {
@@ -88,16 +103,40 @@ ChartFactory.prototype.drawBubble = function(){
               labelString: this.chartDataY.name
             }
           }]
+        },
+		tooltips: {
+			delay:200
         }
       }
     };
+    if(this.editor.products.length > 10){
+      this.chartData.options.legend.display = false;
+    }
+	var imageCol;
+	for(var j in this.editor.features)
+		if(this.editor.features[j].filter.types.image > 0)
+			imageCol = parseInt(j)
+
+
     for(var p in this.editor.products){
       var product = this.editor.products[p];
-      this.chartData.data.datasets.push(product.newDataset(this.editor.features[0], this.chartDataX, this.chartDataY));
+	    var imageUrl="";
+
+		imageUrl = product.getCell(imageCol).content;
+      this.chartData.data.datasets.push(
+		newProductChartDataset(
+			product,
+			this.editor.features[0],
+			this.chartDataX,
+			this.chartDataY,
+			imageUrl
+		)
+	  );
     }
+	// console.log(this.chartData);
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
-    console.log('X or Y features not defined');
+    console.error('X or Y features not defined');
   }
 }
 
@@ -118,9 +157,15 @@ ChartFactory.prototype.drawPie = function(){
         ]
       },
       options: {
-        animation: false
+        animation: false,
+        legend: {
+          display: true
+        }
       }
     };
+    if(this.editor.products.length > 10){
+      this.chartData.options.legend.display = false;
+    }
     for(var p in this.editor.products){
       var product = this.editor.products[p];
       if(product.visible) {
@@ -130,7 +175,7 @@ ChartFactory.prototype.drawPie = function(){
     }
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
-    console.log('Value undefined');
+    console.error('Value undefined');
   }
 }
 
@@ -139,6 +184,7 @@ ChartFactory.prototype.drawRadar = function(){
     this.chartCanvas.remove();
   }
   this.chartCanvas = $('<canvas>').appendTo(this.div);
+
   this.chartData = {
     type: 'radar',
     data: {
@@ -146,10 +192,12 @@ ChartFactory.prototype.drawRadar = function(){
       datasets: []
     },
     options: {
-      animation: false
+      animation: false,
+      legend: {
+        display: true
+      }
     }
   };
-
   var labels = [];
   for(var f in this.editor.features) {
     var feature = this.editor.features[f]
@@ -157,7 +205,7 @@ ChartFactory.prototype.drawRadar = function(){
       labels.push(feature.name);
     }
   }
-  for(var p in this.editor.products){ //currently all products are selected
+  for(var p in this.editor.products){
     var product = this.editor.products[p];
     var data = [];
     if(product.visible) {
@@ -173,7 +221,44 @@ ChartFactory.prototype.drawRadar = function(){
     var label = product.getCell(this.editor.features[0]).content;
     this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
   }
+  if(this.chartData.data.datasets.length > 10){
+    this.chartData.options.legend.display = false;
+  }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
+}
+
+ChartFactory.prototype.drawBar = function(){
+  if(this.chartDataX != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [
+          {
+			backgroundColor: [],
+            data: [],
+          }
+        ]
+      }
+      /*options:{
+
+      }*/
+    };
+    for(var p in this.editor.products){
+      var product = this.editor.products[p];
+	  var label = product.getCell(this.editor.features[0]).content;
+      this.chartData.data.labels.push(label);
+      this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+	  this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+    }
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.log('Value undefined');
+  }
 }
 
 /**
@@ -193,17 +278,20 @@ String.prototype.toColour = function () {
    return colour;
  }
 
+ /**
+  * Return a color based on a number using String.toColour()
+  * @return {string} A color in hexadecimal.
+  */
+ Number.prototype.toColour = function () {
+   return ('' + this).toColour()
+ }
+
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
     var that = this;
     setTimeout(function(){
-      if(that.chartType !== "bubble") {
-        that.drawChart();
-        that.chart.update();
-      } else {
-        that.chart.update();
-      }
+      that.drawChart();
     },1000);
   }
 }

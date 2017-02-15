@@ -61,14 +61,16 @@ function Editor (divID, pcmID) {
   this.configuratorShow = true
   this.configurator = $("<div>").addClass("configurator").appendTo(this.content)
 
-  //Create pcm wrap
-  this.pcmWrap = $("<div>").addClass("pcm-wrap").appendTo(this.content)
+  //Create content wrap
+  this.contentWrap = $("<div>").addClass("content-wrap").appendTo(this.content)
 
-  //Create pcmDiv
-  this.views.pcmDiv = $("<div>").addClass("pcm-table").appendTo(this.pcmWrap)
+  //Create pcm
+  this.views.pcmDiv = $('<div>').addClass('pcm-wrap'/*'pcm-wrap cell-edit-visible'*/).appendTo(this.contentWrap)
+  //this.cellEditDiv = $('<div>').addClass('cell-edit').html('Hello world').appendTo(this.views.pcmDiv)
+  this.pcmTable = $("<div>").addClass('pcm-table').appendTo(this.views.pcmDiv)
 
   //Create chart
-  this.views.chartDiv = $("<div>").appendTo(this.pcmWrap)
+  this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
   this.showView('pcmDiv')
@@ -174,10 +176,12 @@ Editor.prototype.loadPCM = function (pcmID) {
             if (this._type == null) {
               if (this.content.length === 0 || (this.interpretation != null && this.interpretation.metaClassName() === 'org.opencompare.model.NotAvailable')) {
                 this._type = 'undefined'
-              } else if (/^\d+$/.test(this.content)) {
+              } else if (/^(\d+|\d{1,3}(\,\d{3})*|\d{1,3}(\ \d{3})*)$/.test(this.content)) {
                 this._type = 'integer'
+                this.content = parseInt(this.content.replace(/[^\d]+/g, ''), 10)
               } else if (/^\d+\.\d+$/.test(this.content)) {
                 this._type = 'float'
+                this.content = parseFloat(this.content)
               } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico|svg)$/.test(this.content)) {
                 this._type = 'image'
               } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
@@ -223,11 +227,11 @@ Editor.prototype.loadPCM = function (pcmID) {
       product.getCell = function (feature) {
         if (typeof feature === 'undefined') {
           feature = that.features[0]
-        } else if (typeof feature === 'number') {
+        } else if (typeof feature === 'number' || typeof feature === 'string') {
           feature = that.features[feature]
         }
         var cell = this.cellsByFeature[feature.generated_KMF_ID];
-        if(typeof cell == "undefined"){
+        if(typeof cell == 'undefined'){
           cell = false;
         }
         return cell;
@@ -266,9 +270,9 @@ Editor.prototype.loadPCM = function (pcmID) {
            label: self.getCell(n).content,
            hidden: !self.visible,
            data: [{
-             x: parseFloat(self.getCell(x).content),
-             y: parseFloat(self.getCell(y).content),
-             r: 10
+             x: self.getCell(x).content,
+             y: self.getCell(y).content,
+             r: 20
            }]
         };
         return this.dataset
@@ -293,6 +297,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
       this.addFeaturesFromArray(feature.subFeatures.array);
     } else {
       feature.filter = new Filter(feature, this); //filter is used to filter products on this feature
+
       /**
        * Just a shorthand to feature.filter.type
        */
@@ -301,6 +306,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.filter.type
         }
       })
+
       /**
        * Return if feature.filter.type is a number (integer/float)
        */
@@ -309,6 +315,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.type === 'integer' || this.type === 'float'
         }
       })
+
       if (this.pcm.productsKey != null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID) {
         this.features.splice(0, 0, feature);
       } else {
@@ -358,11 +365,11 @@ Editor.prototype.pcmLoaded = function(){
 //Called in pcmLoaded to update the pcm
 Editor.prototype.initPCM = function(){
   //init table
-  this.views.pcmDiv.find(".pcm-column-header").detach();
-  this.views.pcmDiv.find(".pcm-cell").detach();
-  this.views.pcmDiv.empty();
+  this.pcmTable.find(".pcm-column-header").detach();
+  this.pcmTable.find(".pcm-cell").detach();
+  //this.views.pcmDiv.empty();
   for(var f in this.features){
-    var col = $("<div>").addClass("pcm-column").addClass(this.features[f].filter.type).appendTo(this.views.pcmDiv);
+    var col = $("<div>").addClass("pcm-column").addClass(this.features[f].filter.type).appendTo(this.pcmTable);
     col.append(this.features[f].filter.columnHeader);
     for(var p in this.products){
       col.append(this.products[p].getCell(this.features[f]).div);
@@ -389,12 +396,12 @@ Editor.prototype.showConfigurator = function(){
 
   if(this.configuratorShow){
     this.configurator.removeClass("hidden");
-    this.pcmWrap.removeClass("full-width");
+    this.contentWrap.removeClass("full-width");
     this.configuratorArrow.removeClass("right");
     this.showConfiguratorButtonMessage.html("Hide configurator");
   }else{
     this.configurator.addClass("hidden");
-    this.pcmWrap.addClass("full-width");
+    this.contentWrap.addClass("full-width");
     this.configuratorArrow.addClass("right");
     this.showConfiguratorButtonMessage.html("Show configurator");
   }
@@ -508,7 +515,7 @@ function Filter(feature, editor){
   this.upper = false; //Maximum value which match filter
   this.step = 1; //Step for the slider when feature is a numeric value
   this.type = 'undefined'; //Type of the values : integer, float, string
-  this.search = ""; //Will contain a regexp entered by the user in a search form, TODO
+  this.search = ''; //Will contain a regexp entered by the user in a search form
   this.sorting = NO_SORTING;
 
   //Determine type of feature
@@ -659,14 +666,12 @@ Filter.prototype.match = function(cell){
   var match = this.matchAll();
 
   if(!match){
-    if(this.type=="integer"){
-      match = parseInt(cell.content, 10)>=this.lower && parseInt(cell.content, 10)<=this.upper;
-    }else if(this.type=="float"){
-      match = parseFloat(cell.content)>=this.lower && parseFloat(cell.content)<=this.upper;
-    }else if(this.type=="string"){
+    if (this.type === 'integer' || this.type === 'float') {
+      match = cell.content >= this.lower && cell.content <= this.upper
+    } else if(this.type=="string"){
       if(this.search.length>0){ //If there is a search regexp we use it and not the checkboxs
         var regexp = new RegExp(this.search, 'i'); //Create a regexp with this.search that isn't case-sensitive
-        match = cell.content.match(regexp)!=null;
+        match = ('' + cell.content).match(regexp) != null;
       }else{ //Else we use checkboxs
         if(typeof this.checkboxs[cell.content] != "undefined"){
           match = this.checkboxs[cell.content].isChecked();
@@ -699,15 +704,24 @@ Filter.prototype.selectUnselectAll = function(){
   this.editor.filterChanged(this);
 }
 
+/**
+ * Scroll to the column's feature in pcm view
+ */
+Filter.prototype.scrollTo = function () {
+  var left = this.editor.pcmTable.scrollLeft() + this.columnHeader.parent().position().left
+  this.editor.pcmTable.animate({scrollLeft: left}, 200)
+}
+
 //Hide/Show the filter form (checkboxs, input, slider, ...)
 Filter.prototype.toggleShow = function(){
   this.show = !this.show;
-  if(this.show){
-    this.contentWrap.css("height", this.content.outerHeight()+"px");
-    this.arrow.addClass("bottom");
-  }else{
-    this.contentWrap.css("height", 0);
-    this.arrow.removeClass("bottom");
+  if (this.show) {
+    this.contentWrap.css("height", this.content.outerHeight()+"px")
+    this.arrow.addClass("bottom")
+    this.scrollTo()
+  } else {
+    this.contentWrap.css("height", 0)
+    this.arrow.removeClass("bottom")
   }
 }
 
@@ -760,10 +774,6 @@ Filter.prototype.compare = function(p1, p2){
   }else{
     var val1 = p1.getCell(this.feature).content
     var val2 = p2.getCell(this.feature).content
-    if (this.type === 'integer' || this.type === 'float') {
-      val1 = parseFloat(val1)
-      val2 = parseFloat(val2)
-    }
     if (val1 > val2) {
       res = 1;
     } else if (val1 < val2) {

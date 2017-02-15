@@ -2,7 +2,7 @@
  * Created by François on 28/09/16.
  */
 
-angular.module("openCompare").controller("FeedbackController", ['$scope', '$http', function($scope, $http) {
+angular.module("openCompare",[]).controller("FeedbackController", ['$scope', '$http', function($scope, $http) {
 	$scope.responseType = "success";
 	$scope.response = "";
 	$scope.formEnable = true;
