@@ -174,7 +174,7 @@ Editor.prototype.loadPCM = function (pcmID) {
             if (this._type == null) {
               if (this.content.length === 0 || (this.interpretation != null && this.interpretation.metaClassName() === 'org.opencompare.model.NotAvailable')) {
                 this._type = 'undefined'
-              } else if (/^(\d+|\d{1,3}(\,\d{3})*)$/.test(this.content)) {
+              } else if (/^(\d+|\d{1,3}(\,\d{3})*|\d{1,3}(\ \d{3})*)$/.test(this.content)) {
                 this._type = 'integer'
                 this.content = parseInt(this.content.replace(/[^\d]+/g, ''), 10)
               } else if (/^\d+\.\d+$/.test(this.content)) {
@@ -225,11 +225,11 @@ Editor.prototype.loadPCM = function (pcmID) {
       product.getCell = function (feature) {
         if (typeof feature === 'undefined') {
           feature = that.features[0]
-        } else if (typeof feature === 'number') {
+        } else if (typeof feature === 'number' || typeof feature === 'string') {
           feature = that.features[feature]
         }
         var cell = this.cellsByFeature[feature.generated_KMF_ID];
-        if(typeof cell == "undefined"){
+        if(typeof cell == 'undefined'){
           cell = false;
         }
         return cell;
@@ -295,6 +295,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
       this.addFeaturesFromArray(feature.subFeatures.array);
     } else {
       feature.filter = new Filter(feature, this); //filter is used to filter products on this feature
+
       /**
        * Just a shorthand to feature.filter.type
        */
@@ -303,6 +304,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.filter.type
         }
       })
+
       /**
        * Return if feature.filter.type is a number (integer/float)
        */
@@ -311,6 +313,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.type === 'integer' || this.type === 'float'
         }
       })
+
       if (this.pcm.productsKey != null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID) {
         this.features.splice(0, 0, feature);
       } else {
