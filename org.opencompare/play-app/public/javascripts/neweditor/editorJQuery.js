@@ -61,14 +61,16 @@ function Editor (divID, pcmID) {
   this.configuratorShow = true
   this.configurator = $("<div>").addClass("configurator").appendTo(this.content)
 
-  //Create pcm wrap
-  this.pcmWrap = $("<div>").addClass("pcm-wrap").appendTo(this.content)
+  //Create content wrap
+  this.contentWrap = $("<div>").addClass("content-wrap").appendTo(this.content)
 
-  //Create pcmDiv
-  this.views.pcmDiv = $("<div>").addClass("pcm-table").appendTo(this.pcmWrap)
+  //Create pcm
+  this.views.pcmDiv = $('<div>').addClass('pcm-wrap'/*'pcm-wrap cell-edit-visible'*/).appendTo(this.contentWrap)
+  //this.cellEditDiv = $('<div>').addClass('cell-edit').html('Hello world').appendTo(this.views.pcmDiv)
+  this.pcmTable = $("<div>").addClass('pcm-table').appendTo(this.views.pcmDiv)
 
   //Create chart
-  this.views.chartDiv = $("<div>").appendTo(this.pcmWrap)
+  this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
   this.showView('pcmDiv')
@@ -363,11 +365,11 @@ Editor.prototype.pcmLoaded = function(){
 //Called in pcmLoaded to update the pcm
 Editor.prototype.initPCM = function(){
   //init table
-  this.views.pcmDiv.find(".pcm-column-header").detach();
-  this.views.pcmDiv.find(".pcm-cell").detach();
-  this.views.pcmDiv.empty();
+  this.pcmTable.find(".pcm-column-header").detach();
+  this.pcmTable.find(".pcm-cell").detach();
+  //this.views.pcmDiv.empty();
   for(var f in this.features){
-    var col = $("<div>").addClass("pcm-column").addClass(this.features[f].filter.type).appendTo(this.views.pcmDiv);
+    var col = $("<div>").addClass("pcm-column").addClass(this.features[f].filter.type).appendTo(this.pcmTable);
     col.append(this.features[f].filter.columnHeader);
     for(var p in this.products){
       col.append(this.products[p].getCell(this.features[f]).div);
@@ -394,12 +396,12 @@ Editor.prototype.showConfigurator = function(){
 
   if(this.configuratorShow){
     this.configurator.removeClass("hidden");
-    this.pcmWrap.removeClass("full-width");
+    this.contentWrap.removeClass("full-width");
     this.configuratorArrow.removeClass("right");
     this.showConfiguratorButtonMessage.html("Hide configurator");
   }else{
     this.configurator.addClass("hidden");
-    this.pcmWrap.addClass("full-width");
+    this.contentWrap.addClass("full-width");
     this.configuratorArrow.addClass("right");
     this.showConfiguratorButtonMessage.html("Show configurator");
   }
@@ -706,8 +708,8 @@ Filter.prototype.selectUnselectAll = function(){
  * Scroll to the column's feature in pcm view
  */
 Filter.prototype.scrollTo = function () {
-  var left = this.editor.views.pcmDiv.scrollLeft() + this.columnHeader.parent().position().left
-  this.editor.views.pcmDiv.animate({scrollLeft: left}, 200)
+  var left = this.editor.pcmTable.scrollLeft() + this.columnHeader.parent().position().left
+  this.editor.pcmTable.animate({scrollLeft: left}, 200)
 }
 
 //Hide/Show the filter form (checkboxs, input, slider, ...)

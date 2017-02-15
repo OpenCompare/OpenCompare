@@ -189,7 +189,7 @@ a:hover{
   height: calc(100% - 35px); /* 100% - configurator-action-bar.height */
 }
 
-.configurator, .pcm-wrap{
+.configurator, .content-wrap{
 	display: inline-block;
 	vertical-align: top;
 }
@@ -210,21 +210,42 @@ a:hover{
   width: 1px;
 }
 
-.pcm-wrap{
+.content-wrap{
 	transition: 0.2s;
 	width: calc(100% - 200px);
 	height: 100%;
 }
 
-.pcm-wrap.full-width{
+.content-wrap.full-width{
   width: calc(100% - 1px);
 }
 
-.pcm-wrap > *{
+.content-wrap > *{
   display: none;
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+
+.pcm-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.pcm-wrap.cell-edit-visible {
+  padding-top: 48px;
+}
+
+.cell-edit {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid #BDBDBD;
+  padding: 0 28px 0 28px;
 }
 
 /**************************************************************************************************************************************************************************/
@@ -473,7 +494,9 @@ input[type="checkbox"]:checked+.checkbox-label{
 /* PCM */
 .pcm-table{
   position: relative;
-  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   white-space: nowrap;
 }
 
