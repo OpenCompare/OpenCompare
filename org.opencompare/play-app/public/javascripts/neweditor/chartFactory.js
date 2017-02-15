@@ -18,6 +18,7 @@ function ChartFactory(editor, div){
   this.chartTypeSelect.append('<option value="radar">Radar</option>');
   this.chartTypeSelect.append('<option value="bubble">Bubble</option>');
   this.chartTypeSelect.append('<option value="pie">Pie</option>');
+  this.chartTypeSelect.append('<option value="productchart">ProductChart</option>');
 
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
@@ -56,8 +57,50 @@ ChartFactory.prototype.drawChart = function(){
     this.drawPie();
   }else if(this.chartType == 'radar') {
     this.drawRadar();
+  }else if(this.chartType == 'productchart') {
+    this.drawProductChart();
   }else{
     console.log('Unsupported chart type : '+this.chartType);
+  }
+}
+
+//Draw chart using this.chartDataX and this.chartDataY
+ChartFactory.prototype.drawProductChart = function(){
+  if(this.chartDataX != null && this.chartDataY != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'bubbleImage',
+      data: {
+          datasets: []
+      },
+      options:{
+        animation: false,
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: this.chartDataX.name
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: this.chartDataY.name
+            }
+          }]
+        }
+      }
+    };
+    for(var p in this.editor.products){
+      var product = this.editor.products[p];
+      this.chartData.data.datasets.push(product.newDataset(this.editor.features[0], this.chartDataX, this.chartDataY));
+    }
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.log('X or Y features not defined');
   }
 }
 
