@@ -3808,9 +3808,10 @@ module.exports = function(Chart) {
 		ctx.stroke();
 	};
 	
-	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl, cropCircle, strokeCircle,strokeStyle) {console.log(cropCircle+ ":"+strokeCircle+":"+strokeStyle);
+	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl, cropCircle, strokeCircle,strokeStyle) {
 		var type, height;
-
+		
+		
 		if (typeof pointStyle === 'object') {
 			type = pointStyle.toString();
 			if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
@@ -3831,10 +3832,42 @@ module.exports = function(Chart) {
 			ctx.stroke();
 		}
 		
-		var img = new Image;
-		img.src = imageUrl;
-			// ctx.globalCompositeOperation="destination-in";
-		img.onload = function(){
+		if(typeof Chart.cache[imageUrl] == "undefined"){
+			Chart.cache[imageUrl] = document.createElement("canvas");
+			var cacheCtx;
+			
+			cacheCtx = Chart.cache[imageUrl].getContext('2d');
+			var img = new Image;
+			img.src = imageUrl;
+			img.onload = function(){
+				
+			
+				Chart.cache[imageUrl].setAttribute("width",img.naturalWidth);
+				Chart.cache[imageUrl].setAttribute("height",img.naturalHeight);
+				cacheCtx.drawImage(img,0,0);
+				
+		
+				if(cropCircle){
+					ctx.save();
+					
+					ctx.beginPath();
+					ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+					ctx.closePath();
+					ctx.clip();
+				}
+				
+				ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
+				
+				if(cropCircle){
+					ctx.beginPath();
+					ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
+					ctx.clip();
+					ctx.closePath();
+					
+					ctx.restore();
+				}
+			}
+		}else{
 			if(cropCircle){
 				ctx.save();
 				
@@ -3843,9 +3876,7 @@ module.exports = function(Chart) {
 				ctx.closePath();
 				ctx.clip();
 			}
-			
-			ctx.drawImage(img,x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
-			
+			ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
 			if(cropCircle){
 				ctx.beginPath();
 				ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
@@ -3854,7 +3885,11 @@ module.exports = function(Chart) {
 				
 				ctx.restore();
 			}
-		};
+		}
+		
+		
+		
+		
 	};
 };
 
@@ -3864,7 +3899,10 @@ module.exports = function(Chart) {
 module.exports = function(Chart) {
 
 	var helpers = Chart.helpers;
-
+	
+	//Create a cache for images
+	Chart.cache = {};
+	
 	// Create a dictionary of chart types, to allow for extension of existing types
 	Chart.types = {};
 
@@ -11751,7 +11789,7 @@ module.exports = function(Chart) {
 					return '';
 				},
 				label: function(tooltipItem, data) {
-					console.log(tooltipItem);
+					// console.log(tooltipItem);
 					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
 					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
 					return datasetLabel + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ', ' + dataPoint.r + ')';
