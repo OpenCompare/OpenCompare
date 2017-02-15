@@ -3,7 +3,7 @@
 @(header : Html = Html(""), footer : Html = Html(""), toolbar : Html = Html(""), fullSize : Boolean = true)(content: Html)(implicit lang: Lang, messages: Messages, context: controllers.ViewContext)
 
 <!DOCTYPE html>
-<html>
+<html ng-app="openCompare">
 <head>
     <title>OpenCompare</title>
 
@@ -15,6 +15,7 @@
 
 </head>
 <body>
+  @feedback()
     @if(fullSize) {
         <div id="main-content" class="container-fluid editor-wrap">
     } else {
@@ -23,7 +24,6 @@
         @content
     </div>
 
-	@feedback()
 
     <!-- Piwik -->
     <script type="text/javascript">
@@ -42,5 +42,47 @@
     <!-- End Piwik Code -->
 
     @footer
+
+    <!--<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.fullPath("jquery-ui","jquery-ui.js"))'></script>-->
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <!--
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-animate.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-aria.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-messages.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-material.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-translate.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-grid.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))'></script>
+    -->
+
+    <!--<script type='text/javascript' src='@routes.Assets.at("javascripts/arrive.min.js")'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("material.min.js"))'></script>-->
+    <!--<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("src/slider.js"))'></script>-->
+    <!--<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-utf8-base64.min.js"))'></script>-->
+    <!--<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("Chart.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-chart.js"))'></script>-->
+    <!--<script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("dist/angular-base64-upload.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-clipboard.js"))'></script>-->
+
+    <!--
+    <script type='text/javascript' src='@routes.Assets.at("editor/org.opencompare.model.pcm.min.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("editor/opencompare-editor.min.js")'></script>
+
+    <script>
+        angular.module("openCompare", ['ngMaterial', 'openCompareEditor']);
+    </script>
+
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/I18nCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/NavbarCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/OCEditorCtrl.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/FeedbackCtrl.js")'></script>-->
+    <!--<script type='text/javascript' src='@routes.Assets.at("editor/org.opencompare.model.pcm.min.js")'></script>-->
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/controllers/FeedbackCtrl.js")'></script>
+
 </body>
 </html>
