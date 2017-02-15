@@ -19,6 +19,8 @@ function ChartFactory(editor, div){
   this.chartTypeSelect.append('<option value="bubble">Bubble</option>');
   this.chartTypeSelect.append('<option value="pie">Pie</option>');
   this.chartTypeSelect.append('<option value="productchart">ProductChart</option>');
+  this.chartTypeSelect.append('<option value="bar">Bar</option>');
+  this.chartTypeSelect.append('<option value="line">Line</option>')
 
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
@@ -59,6 +61,8 @@ ChartFactory.prototype.drawChart = function(){
     this.drawRadar();
   }else if(this.chartType == 'productchart') {
     this.drawProductChart();
+  }else if(this.chartType == 'bar') {
+	this.drawBar();
   }else{
     console.log('Unsupported chart type : '+this.chartType);
   }
@@ -217,6 +221,40 @@ ChartFactory.prototype.drawRadar = function(){
     this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
   }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
+}
+
+ChartFactory.prototype.drawBar = function(){
+  if(this.chartDataX != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [
+          {
+			backgroundColor: [],
+            data: [],
+          }
+        ]
+      }
+      /*options:{
+
+      }*/
+    };
+    for(var p in this.editor.products){
+      var product = this.editor.products[p];
+	  var label = product.getCell(this.editor.features[0]).content;
+      this.chartData.data.labels.push(label);
+      this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+	  this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+    }
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.log('Value undefined');
+  }
 }
 
 /**
