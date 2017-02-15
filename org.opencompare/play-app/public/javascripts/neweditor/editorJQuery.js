@@ -513,7 +513,7 @@ function Filter(feature, editor){
   this.upper = false; //Maximum value which match filter
   this.step = 1; //Step for the slider when feature is a numeric value
   this.type = 'undefined'; //Type of the values : integer, float, string
-  this.search = ""; //Will contain a regexp entered by the user in a search form, TODO
+  this.search = ''; //Will contain a regexp entered by the user in a search form
   this.sorting = NO_SORTING;
 
   //Determine type of feature
@@ -669,7 +669,7 @@ Filter.prototype.match = function(cell){
     } else if(this.type=="string"){
       if(this.search.length>0){ //If there is a search regexp we use it and not the checkboxs
         var regexp = new RegExp(this.search, 'i'); //Create a regexp with this.search that isn't case-sensitive
-        match = cell.content.match(regexp)!=null;
+        match = ('' + cell.content).match(regexp) != null;
       }else{ //Else we use checkboxs
         if(typeof this.checkboxs[cell.content] != "undefined"){
           match = this.checkboxs[cell.content].isChecked();
@@ -702,15 +702,24 @@ Filter.prototype.selectUnselectAll = function(){
   this.editor.filterChanged(this);
 }
 
+/**
+ * Scroll to the column's feature in pcm view
+ */
+Filter.prototype.scrollTo = function () {
+  var left = this.editor.views.pcmDiv.scrollLeft() + this.columnHeader.parent().position().left
+  this.editor.views.pcmDiv.animate({scrollLeft: left}, 200)
+}
+
 //Hide/Show the filter form (checkboxs, input, slider, ...)
 Filter.prototype.toggleShow = function(){
   this.show = !this.show;
-  if(this.show){
-    this.contentWrap.css("height", this.content.outerHeight()+"px");
-    this.arrow.addClass("bottom");
-  }else{
-    this.contentWrap.css("height", 0);
-    this.arrow.removeClass("bottom");
+  if (this.show) {
+    this.contentWrap.css("height", this.content.outerHeight()+"px")
+    this.arrow.addClass("bottom")
+    this.scrollTo()
+  } else {
+    this.contentWrap.css("height", 0)
+    this.arrow.removeClass("bottom")
   }
 }
 
