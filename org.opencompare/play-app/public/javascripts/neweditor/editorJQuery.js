@@ -174,10 +174,12 @@ Editor.prototype.loadPCM = function (pcmID) {
             if (this._type == null) {
               if (this.content.length === 0 || (this.interpretation != null && this.interpretation.metaClassName() === 'org.opencompare.model.NotAvailable')) {
                 this._type = 'undefined'
-              } else if (/^\d+$/.test(this.content)) {
+              } else if (/^(\d+|\d{1,3}(\,\d{3})*|\d{1,3}(\ \d{3})*)$/.test(this.content)) {
                 this._type = 'integer'
+                this.content = parseInt(this.content.replace(/[^\d]+/g, ''), 10)
               } else if (/^\d+\.\d+$/.test(this.content)) {
                 this._type = 'float'
+                this.content = parseFloat(this.content)
               } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico|svg)$/.test(this.content)) {
                 this._type = 'image'
               } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
@@ -223,11 +225,11 @@ Editor.prototype.loadPCM = function (pcmID) {
       product.getCell = function (feature) {
         if (typeof feature === 'undefined') {
           feature = that.features[0]
-        } else if (typeof feature === 'number') {
+        } else if (typeof feature === 'number' || typeof feature === 'string') {
           feature = that.features[feature]
         }
         var cell = this.cellsByFeature[feature.generated_KMF_ID];
-        if(typeof cell == "undefined"){
+        if(typeof cell == 'undefined'){
           cell = false;
         }
         return cell;
@@ -266,8 +268,8 @@ Editor.prototype.loadPCM = function (pcmID) {
            label: self.getCell(n).content,
            hidden: !self.visible,
            data: [{
-             x: parseFloat(self.getCell(x).content),
-             y: parseFloat(self.getCell(y).content),
+             x: self.getCell(x).content,
+             y: self.getCell(y).content,
              r: 20
            }]
         };
@@ -293,6 +295,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
       this.addFeaturesFromArray(feature.subFeatures.array);
     } else {
       feature.filter = new Filter(feature, this); //filter is used to filter products on this feature
+
       /**
        * Just a shorthand to feature.filter.type
        */
@@ -301,6 +304,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.filter.type
         }
       })
+
       /**
        * Return if feature.filter.type is a number (integer/float)
        */
@@ -309,6 +313,7 @@ Editor.prototype.addFeaturesFromArray = function(array){
           return this.type === 'integer' || this.type === 'float'
         }
       })
+
       if (this.pcm.productsKey != null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID) {
         this.features.splice(0, 0, feature);
       } else {
@@ -659,11 +664,9 @@ Filter.prototype.match = function(cell){
   var match = this.matchAll();
 
   if(!match){
-    if(this.type=="integer"){
-      match = parseInt(cell.content, 10)>=this.lower && parseInt(cell.content, 10)<=this.upper;
-    }else if(this.type=="float"){
-      match = parseFloat(cell.content)>=this.lower && parseFloat(cell.content)<=this.upper;
-    }else if(this.type=="string"){
+    if (this.type === 'integer' || this.type === 'float') {
+      match = cell.content >= this.lower && cell.content <= this.upper
+    } else if(this.type=="string"){
       if(this.search.length>0){ //If there is a search regexp we use it and not the checkboxs
         var regexp = new RegExp(this.search, 'i'); //Create a regexp with this.search that isn't case-sensitive
         match = cell.content.match(regexp)!=null;
@@ -760,10 +763,6 @@ Filter.prototype.compare = function(p1, p2){
   }else{
     var val1 = p1.getCell(this.feature).content
     var val2 = p2.getCell(this.feature).content
-    if (this.type === 'integer' || this.type === 'float') {
-      val1 = parseFloat(val1)
-      val2 = parseFloat(val2)
-    }
     if (val1 > val2) {
       res = 1;
     } else if (val1 < val2) {
