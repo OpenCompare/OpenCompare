@@ -236,6 +236,14 @@ String.prototype.toColour = function () {
    return colour;
  }
 
+ /**
+  * Return a color based on a number using String.toColour()
+  * @return {string} A color in hexadecimal.
+  */
+ Number.prototype.toColour = function () {
+   return ('' + this).toColour()
+ }
+
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){
   if(this.chart != null){
