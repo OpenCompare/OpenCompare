@@ -212,10 +212,12 @@ ChartFactory.prototype.drawPie = function(){
 }
 
 ChartFactory.prototype.drawRadar = function(){
-  if(this.chartCanvas != null){
+  /*if(this.chartCanvas != null){
     this.chartCanvas.remove();
+  }*/
+  if(this.chartCanvas == null) {
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
   }
-  this.chartCanvas = $('<canvas>').appendTo(this.div);
   this.chartData = {
     type: 'radar',
     data: {
@@ -234,7 +236,7 @@ ChartFactory.prototype.drawRadar = function(){
       labels.push(feature.name);
     }
   }
-  for(var p in this.editor.products){ //currently all products are selected
+  for(var p in this.editor.products){
     var product = this.editor.products[p];
     var data = [];
     if(product.visible) {
@@ -249,6 +251,9 @@ ChartFactory.prototype.drawRadar = function(){
     this.chartData.data.labels = labels;
     var label = product.getCell(this.editor.features[0]).content;
     this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
+  }
+  if(this.chart != null) {
+    this.chart.destroy();
   }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
 }
@@ -317,12 +322,8 @@ ChartFactory.prototype.update = function(){
   if(this.chart != null){
     var that = this;
     setTimeout(function(){
-      if(that.chartType !== "bubble") {
-        that.drawChart();
-        that.chart.update();
-      } else {
-        that.chart.update();
-      }
+      that.drawChart();
+      that.chart.update();
     },1000);
   }
 }
