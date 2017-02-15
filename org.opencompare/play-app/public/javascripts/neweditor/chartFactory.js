@@ -109,23 +109,23 @@ ChartFactory.prototype.drawProductChart = function(){
         }
       }
     };
-	
+
 	var imageCol;
 	for(var j in this.editor.features)
 		if(this.editor.features[j].filter.types.image > 0)
 			imageCol = parseInt(j)
-		
-	
+
+
     for(var p in this.editor.products){
       var product = this.editor.products[p];
 	    var imageUrl="";
-		
+
 		imageUrl = product.getCell(imageCol).content;
       this.chartData.data.datasets.push(
 		newProductChartDataset(
 			product,
-			this.editor.features[0], 
-			this.chartDataX, 
+			this.editor.features[0],
+			this.chartDataX,
 			this.chartDataY,
 			imageUrl
 		)
@@ -212,12 +212,11 @@ ChartFactory.prototype.drawPie = function(){
 }
 
 ChartFactory.prototype.drawRadar = function(){
-  /*if(this.chartCanvas != null){
+  if(this.chartCanvas != null){
     this.chartCanvas.remove();
-  }*/
-  if(this.chartCanvas == null) {
-    this.chartCanvas = $('<canvas>').appendTo(this.div);
   }
+  this.chartCanvas = $('<canvas>').appendTo(this.div);
+
   this.chartData = {
     type: 'radar',
     data: {
@@ -251,9 +250,6 @@ ChartFactory.prototype.drawRadar = function(){
     this.chartData.data.labels = labels;
     var label = product.getCell(this.editor.features[0]).content;
     this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
-  }
-  if(this.chart != null) {
-    this.chart.destroy();
   }
   this.chart = new Chart(this.chartCanvas[0], this.chartData);
 }
@@ -323,7 +319,6 @@ ChartFactory.prototype.update = function(){
     var that = this;
     setTimeout(function(){
       that.drawChart();
-      that.chart.update();
     },1000);
   }
 }
