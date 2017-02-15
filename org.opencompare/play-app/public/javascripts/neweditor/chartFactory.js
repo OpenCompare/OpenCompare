@@ -60,8 +60,16 @@ ChartFactory.prototype.drawChart = function(){
   }else if(this.chartType == 'productchart') {
     this.drawProductChart();
   }else{
-    console.log('Unsupported chart type : '+this.chartType);
+    console.error('Unsupported chart type : '+this.chartType);
   }
+}
+
+function newProductChartDataset(product,feature,x,y,imageUrl){
+	var dataset = product.newDataset(feature,x,y);
+	dataset.data[0].cropCircle=true;
+	dataset.data[0].strokeCircle=true;
+	dataset.data[0].image=imageUrl;
+	return dataset;
 }
 
 //Draw chart using this.chartDataX and this.chartDataY
@@ -91,16 +99,38 @@ ChartFactory.prototype.drawProductChart = function(){
               labelString: this.chartDataY.name
             }
           }]
+        },
+		tooltips: {
+			delay:200
         }
       }
     };
+	
+	var imageCol;
+	for(var j in this.editor.features)
+		if(this.editor.features[j].filter.types.image > 0)
+			imageCol = parseInt(j)
+		
+	
     for(var p in this.editor.products){
       var product = this.editor.products[p];
-      this.chartData.data.datasets.push(product.newDataset(this.editor.features[0], this.chartDataX, this.chartDataY));
+	    var imageUrl="";
+		
+		imageUrl = product.getCell(imageCol).content;
+      this.chartData.data.datasets.push(
+		newProductChartDataset(
+			product,
+			this.editor.features[0], 
+			this.chartDataX, 
+			this.chartDataY,
+			imageUrl
+		)
+	  );
     }
+	// console.log(this.chartData);
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
-    console.log('X or Y features not defined');
+    console.error('X or Y features not defined');
   }
 }
 
@@ -140,7 +170,7 @@ ChartFactory.prototype.drawBubble = function(){
     }
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
-    console.log('X or Y features not defined');
+    console.error('X or Y features not defined');
   }
 }
 
@@ -173,7 +203,7 @@ ChartFactory.prototype.drawPie = function(){
     }
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
-    console.log('Value undefined');
+    console.error('Value undefined');
   }
 }
 

@@ -268,7 +268,7 @@ Editor.prototype.loadPCM = function (pcmID) {
            data: [{
              x: parseFloat(self.getCell(x).content),
              y: parseFloat(self.getCell(y).content),
-             r: 10
+             r: 20
            }]
         };
         return this.dataset

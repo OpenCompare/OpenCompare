@@ -3808,7 +3808,7 @@ module.exports = function(Chart) {
 		ctx.stroke();
 	};
 	
-	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl, cropCircle, strokeCircle,strokeStyle) {
+	helpers.drawImage = function(ctx, pointStyle, radius, x, y, imageUrl, cropCircle, strokeCircle,strokeStyle) {console.log(cropCircle+ ":"+strokeCircle+":"+strokeStyle);
 		var type, height;
 
 		if (typeof pointStyle === 'object') {
