@@ -60,6 +60,8 @@ ChartFactory.prototype.drawChart = function(){
     this.drawProductChart();
   }else if(this.chartType == 'bar') {
 	this.drawBar();
+  }else if(this.chartType == 'line'){
+	  this.drawLine();
   }else{
     console.error('Unsupported chart type : '+this.chartType);
   }
@@ -259,6 +261,45 @@ ChartFactory.prototype.drawBar = function(){
   }else{
     console.log('Value undefined');
   }
+}
+
+ChartFactory.prototype.drawLine = function() {
+	if(this.chartDataX != null){
+		if(this.chartCanvas != null){
+			this.chartCanvas.remove();
+		}
+		this.chartCanvas = $('<canvas>').appendTo(this.div);
+		this.chartData = {
+			type: 'line',
+			data: {
+				labels: [],
+				datasets: [
+				{
+					data: [],
+				}
+				]
+			},
+			options:{
+				scales: {
+					yAxes: [{
+						scaleLabel: {
+						display: true,
+						labelString: this.chartDataX.name
+						}
+					}]
+				}
+			}
+		};
+		for(var p in this.editor.products){
+			var product = this.editor.products[p];
+			var label = product.getCell(this.editor.features[0]).content;
+			this.chartData.data.labels.push(label);
+			this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+		}
+		this.chart = new Chart(this.chartCanvas[0], this.chartData);
+	}else{
+		console.log('Value undefined');
+	}
 }
 
 /**
