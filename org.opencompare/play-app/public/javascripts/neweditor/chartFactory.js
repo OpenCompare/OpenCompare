@@ -303,41 +303,47 @@ ChartFactory.prototype.drawBar = function(){
 		}
 	  }
     };
-
-	// create two arrays
+	
+	// create 4 arrays
 	var arr = [0];
 	var arr2 = [0];
-
+	var arr3 = [0];
+	var arr4 = [];
+	
 	// for each product
     for(var p in this.editor.products){
-
+		
 	  var product = this.editor.products[p];
 	  // we see if the product is visible
 	  if(product.visible) {
-
+		
 		// we recover the value of the product and parse in int
 		var label = product.getCell(this.editor.features[0]).content;
 		var value = parseFloat(product.getCell(this.chartDataX).content);
-
+		
 		// push only if the value is numerical value
 		if (!isNaN(value)){
 			this.chartData.data.datasets[0].data.push(value);
-
-			// we create a map, in the first array is the values
+			
+			// we create a map, in the first array is the values 
 			// and the labels is in the second array with the same index
 			arr.push(parseFloat(product.getCell(this.chartDataX).content));
 			arr2.push(label);
+			if (this.charDataX != this.chartDataY){
+				arr3.push(parseFloat(product.getCell(this.chartDataY).content));
+			}
+			
 		}
-
+		
 	  }
     }
-
+	
 	// we sort directly the array of number
 	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
-
+	
 	var i = 0;
 	while (i < this.chartData.data.datasets[0].data.length) {
-
+		
 		// we recover the value of the first case in the array data
 		var nb = this.chartData.data.datasets[0].data[i];
 		// we recover the index in the first array with the value
@@ -349,11 +355,22 @@ ChartFactory.prototype.drawBar = function(){
 		this.chartData.data.labels.push(label);
 		// we add a color thanks the label
 		this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
-
+		
+		// if chartDataY is different of chartDataX
+		if (this.chartDataX != this.chartDataY){
+			arr4.push(arr3[p]);
+		}
+		
 		i++;
 	}
-
+	
+	// we add the second array to the datasets with same  array of color
+	if (this.chartDataX != this.chartDataY){
+		this.chartData.data.datasets.push({backgroundColor:this.chartData.data.datasets[0].backgroundColor,data:arr4});
+	}
+	
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
+	                                      
   }else{
     console.log('Value undefined');
   }
