@@ -65,8 +65,13 @@ function Editor (divID, pcmID) {
   this.contentWrap = $("<div>").addClass("content-wrap").appendTo(this.content)
 
   //Create pcm
-  this.views.pcmDiv = $('<div>').addClass('pcm-wrap'/*'pcm-wrap cell-edit-visible'*/).appendTo(this.contentWrap)
-  //this.cellEditDiv = $('<div>').addClass('cell-edit').html('Hello world').appendTo(this.views.pcmDiv)
+  this.views.pcmDiv = $('<div>').addClass('pcm-wrap').appendTo(this.contentWrap)
+
+  //Create cell edition
+  this.cellEdit = null
+  this.cellEditDiv = $('<div>').addClass('cell-edit').appendTo(this.views.pcmDiv)
+  this.cellEditType = $('<div>').addClass('cell-edit-type').appendTo(this.cellEditDiv)
+  this.cellEditContent = $('<div>').addClass('cell-edit-content').appendTo(this.cellEditDiv)
   this.pcmTable = $("<div>").addClass('pcm-table').appendTo(this.views.pcmDiv)
 
   //Create chart
@@ -91,6 +96,16 @@ Object.defineProperty(Editor.prototype, 'checkInterpretation', {
     return 'interpretation : ' + n + '/' + max + ' ' + ((n == max) ? 'OK' : 'incomplete')
   }
 })
+
+//Show cell edit
+Editor.prototype.setCellEdit = function (cell) {
+  if (this.cellEdit != null) this.cellEdit.div.removeClass('selected')
+  this.cellEdit = cell
+  this.cellEdit.div.addClass('selected')
+  this.views.pcmDiv.addClass('cell-edit-visible')
+  this.cellEditType.html(this.cellEdit.type)
+  this.cellEditContent.html(this.cellEdit.content)
+}
 
 //Show view
 Editor.prototype.showView = function (view) {
@@ -139,7 +154,8 @@ Editor.prototype.loadPCM = function (pcmID) {
   pcmID = typeof pcmID === 'undefined'
     ? false
     : pcmID
-  var that = this
+  var that = this //deprecated
+  var self = this
   if (pcmID) this.pcmID = pcmID
 
   //API url : https://opencompare.org/api/get/
@@ -211,9 +227,7 @@ Editor.prototype.loadPCM = function (pcmID) {
           htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
         }
         cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click({cell: cell}, function (event) {
-          console.log(event.data.cell.content)
-          console.log(event.data.cell.interpretation.metaClassName())
-          console.log(event.data.cell.interpretation)
+          self.setCellEdit(event.data.cell)
         })
         cell.div.cell = cell
         cell.match = true

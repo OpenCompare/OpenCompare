@@ -129,7 +129,7 @@ a:hover{
 	line-height: 34px;
 	border-bottom: 1px solid #BDBDBD;
 	background-color: #EEEEEE;
-	box-shadow: 0 2px 4px #BDBDBD;
+	/*box-shadow: 0 2px 4px #BDBDBD;*/
 }
 
 .editor-action-bar-right-pane{
@@ -203,7 +203,7 @@ a:hover{
 	overflow: auto;
 	border-right: 1px solid #BDBDBD;
 	background-color: #EEEEEE;
-  box-shadow: 2px 1px 4px #BDBDBD;
+  /*box-shadow: 2px 1px 4px #BDBDBD;*/
 }
 
 .configurator.hidden{
@@ -228,6 +228,7 @@ a:hover{
 }
 
 .pcm-wrap {
+  transition: 0.2s;
   position: relative;
   overflow: hidden;
 }
@@ -237,15 +238,34 @@ a:hover{
 }
 
 .cell-edit {
+  transition: 0.2s;
   box-sizing: border-box;
   position: absolute;
-  top: 0;
+  top: -48px;
   left: 0;
   width: 100%;
   height: 48px;
   line-height: 48px;
   border-bottom: 1px solid #BDBDBD;
-  padding: 0 28px 0 28px;
+  padding: 0 24px 0 24px;
+}
+
+.cell-edit-type {
+  display: inline-block;
+  background-color: #26a69a;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+  line-height: 1em;
+  margin-right: 5px;
+}
+
+.cell-edit-content {
+  display: inline-block;
+}
+
+.pcm-wrap.cell-edit-visible .cell-edit {
+  top: 0;
 }
 
 /**************************************************************************************************************************************************************************/
@@ -498,6 +518,7 @@ input[type="checkbox"]:checked+.checkbox-label{
   height: 100%;
   overflow: auto;
   white-space: nowrap;
+  box-shadow: 0 0 8px #BDBDBD inset;
 }
 
 .pcm-column{
@@ -590,6 +611,7 @@ input[type="checkbox"]:checked+.checkbox-label{
 }
 
 .pcm-cell{
+  transition: 0.2s;
   height: 48px;
   max-width: 80em;
   overflow: hidden;
@@ -597,6 +619,12 @@ input[type="checkbox"]:checked+.checkbox-label{
   line-height: 48px;
   font-size: 1.1em;
   color: #212121;
+  cursor: pointer;
+}
+
+.pcm-cell.selected {
+  background-color: #26a69a;
+  color: white;
 }
 
 .pcm-cell.hidden{
