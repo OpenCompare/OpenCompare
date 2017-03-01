@@ -165,16 +165,58 @@ ChartFactory.prototype.drawPie = function(){
         }
       }
     };
-    if(this.editor.products.length > 10){
-      this.chartData.options.legend.display = false;
-    }
+	
+    var feat = this.chartDataX;
+	
+    // create two arrays
+	var arr = [0];
+	var arr2 = [0];
+	
+	// for each product
     for(var p in this.editor.products){
-      var product = this.editor.products[p];
-      if(product.visible) {
-        this.chartData.data.labels.push(product.getCell(this.editor.features[0]).content);
-        this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
-      }
+		
+	  var product = this.editor.products[p];
+	  // we see if the product is visible
+	  if(product.visible) {
+		
+		// we recover the value of the product and parse in int
+		var label = product.getCell(this.editor.features[0]).content;
+		var value = parseFloat(product.getCell(feat).content);
+		
+		// push only if the value is numerical value
+		if (!isNaN(value)){
+			this.chartData.data.datasets[0].data.push(value);
+			
+			// we create a map, in the first array is the values 
+			// and the labels is in the second array with the same index
+			arr.push(parseFloat(product.getCell(feat).content));
+			arr2.push(label);
+		}
+		
+	  }
     }
+	
+	// we sort directly the array of number
+	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
+	
+	var i = 0;
+	while (i < this.chartData.data.datasets[0].data.length) {
+		
+		// we recover the value of the first case in the array data
+		var nb = this.chartData.data.datasets[0].data[i];
+		// we recover the index in the first array with the value
+		var p = arr.indexOf(nb);
+		// thanks the index, we recover the label associate to the value in the second array
+		arr[p] = null;
+		// we push the label in the array of labels
+		var label = arr2[p];
+		this.chartData.data.labels.push(label);
+		// we add a color thanks the label
+		this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+		
+		i++;
+	}
+
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
     console.error('Value undefined');
