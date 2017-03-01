@@ -157,6 +157,7 @@ ChartFactory.prototype.drawPie = function(){
         labels: [],
         datasets: [
           {
+			backgroundColor: [],
             data: []
           }
         ]
