@@ -110,7 +110,8 @@ ChartFactory.prototype.drawProductChart = function(){
           }]
         },
 		tooltips: {
-			delay:200
+			displayColors:false,
+			displayImages:true
         }
       }
     };
