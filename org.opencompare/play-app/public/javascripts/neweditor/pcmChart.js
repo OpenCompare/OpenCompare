@@ -8746,6 +8746,7 @@ module.exports = function(Chart) {
 		cornerRadius: 6,
 		multiKeyBackground: '#fff',
 		displayColors: true,
+		displayImages: false,
 		delay:0,
 		callbacks: {
 			// Args are: (tooltipItems, data)
@@ -8880,7 +8881,8 @@ module.exports = function(Chart) {
 			backgroundColor: tooltipOpts.backgroundColor,
 			opacity: 0,
 			legendColorBackground: tooltipOpts.multiKeyBackground,
-			displayColors: tooltipOpts.displayColors
+			displayColors: tooltipOpts.displayColors,
+			displayImages: tooltipOpts.displayImages
 		};
 	}
 
@@ -8896,9 +8898,13 @@ module.exports = function(Chart) {
 		// Count of all lines in the body
 		var body = model.body;
 		var combinedBodyLength = body.reduce(function(count, bodyItem) {
-			return count + bodyItem.before.length + bodyItem.lines.length + bodyItem.after.length;
+			if(typeof bodyItem.lines[0]=="object")
+				return count + bodyItem.before.length + bodyItem.lines[0].label.split('\n').length + bodyItem.after.length;
+			else
+				return count + bodyItem.before.length + bodyItem.lines.length + bodyItem.after.length;
 		}, 0);
 		combinedBodyLength += model.beforeBody.length + model.afterBody.length;
+		// console.log(combinedBodyLength)
 
 		var titleLineCount = model.title.length;
 		var footerLineCount = model.footer.length;
@@ -8914,11 +8920,17 @@ module.exports = function(Chart) {
 		height += footerLineCount ? model.footerMarginTop : 0; // Footer Margin
 		height += footerLineCount * (footerFontSize); // Footer Lines
 		height += footerLineCount ? (footerLineCount - 1) * model.footerSpacing : 0; // Footer Line Spacing
+		
+		if(height < 50 + model.yPadding * 2 && model.displayImages)
+			height = 50 + model.yPadding * 2;
 
 		// Title width
 		var widthPadding = 0;
 		var maxLineWidth = function(line) {
-			width = Math.max(width, ctx.measureText(line).width + widthPadding);
+			if(typeof line == "object")
+				width = Math.max(width, ctx.measureText(line.label.split('\n').reduce(function(a,b){ return ctx.measureText(a).width > ctx.measureText(b).width ? a : b })).width + widthPadding);
+			else
+				width = Math.max(width, ctx.measureText(line).width + widthPadding);
 		};
 
 		ctx.font = helpers.fontString(titleFontSize, model._titleFontStyle, model._titleFontFamily);
@@ -8929,7 +8941,16 @@ module.exports = function(Chart) {
 		helpers.each(model.beforeBody.concat(model.afterBody), maxLineWidth);
 
 		// Body lines may include some extra width due to the color box
-		widthPadding = model.displayColors ? (bodyFontSize + 2) : 0;
+		//widthPadding = model.displayColors ? (bodyFontSize + 2) : 0;
+		
+		if(model.displayImages)
+			widthPadding = 50 + 4;
+		else if(model.displayColors)
+			widthPadding = bodyFontSize + 2;
+		else
+			widthPadding = 0;
+			
+			
 		helpers.each(body, function(bodyItem) {
 			helpers.each(bodyItem.before, maxLineWidth);
 			helpers.each(bodyItem.lines, maxLineWidth);
@@ -9118,6 +9139,7 @@ module.exports = function(Chart) {
 				pushOrConcat(bodyItem.before, callbacks.beforeLabel.call(me, tooltipItem, data));
 				pushOrConcat(bodyItem.lines, callbacks.label.call(me, tooltipItem, data));
 				pushOrConcat(bodyItem.after, callbacks.afterLabel.call(me, tooltipItem, data));
+				
 
 				bodyItems.push(bodyItem);
 			});
@@ -9345,6 +9367,7 @@ module.exports = function(Chart) {
 			}
 		},
 		drawBody: function(pt, vm, ctx, opacity) {
+			
 			var bodyFontSize = vm.bodyFontSize;
 			var bodySpacing = vm.bodySpacing;
 			var body = vm.body;
@@ -9367,31 +9390,65 @@ module.exports = function(Chart) {
 			helpers.each(vm.beforeBody, fillLineOfText);
 
 			var drawColorBoxes = vm.displayColors;
-			xLinePadding = drawColorBoxes ? (bodyFontSize + 2) : 0;
+			var drawImage = vm.displayImages;
+			if(drawImage)
+				xLinePadding = 50 + 2;
+			else if(drawColorBoxes)
+				xLinePadding = bodyFontSize + 2;
+			else
+				xLinePadding = 0;
+			
 
 			// Draw body lines now
 			helpers.each(body, function(bodyItem, i) {
 				helpers.each(bodyItem.before, fillLineOfText);
 
 				helpers.each(bodyItem.lines, function(line) {
-					// Draw Legend-like boxes if needed
-					if (drawColorBoxes) {
-						// Fill a white rect so that colours merge nicely if the opacity is < 1
-						ctx.fillStyle = mergeOpacity(vm.legendColorBackground, opacity);
-						ctx.fillRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
+					
+					if(typeof line == "object"){
+						
+						if(drawImage)
+							ctx.drawImage(Chart.cache[line.image],pt.x,pt.y,50,50);
+						
+						else
+						if (drawColorBoxes) {
+							// Fill a white rect so that colours merge nicely if the opacity is < 1
+							ctx.fillStyle = mergeOpacity(vm.legendColorBackground, opacity);
+							ctx.fillRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
 
-						// Border
-						ctx.strokeStyle = mergeOpacity(vm.labelColors[i].borderColor, opacity);
-						ctx.strokeRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
+							// Border
+							ctx.strokeStyle = mergeOpacity(vm.labelColors[i].borderColor, opacity);
+							ctx.strokeRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
 
-						// Inner square
-						ctx.fillStyle = mergeOpacity(vm.labelColors[i].backgroundColor, opacity);
-						ctx.fillRect(pt.x + 1, pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
+							// Inner square
+							ctx.fillStyle = mergeOpacity(vm.labelColors[i].backgroundColor, opacity);
+							ctx.fillRect(pt.x + 1, pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
 
-						ctx.fillStyle = textColor;
+							ctx.fillStyle = textColor;
+						}
+						var lines = line.label.split("\n");
+						for(var i in lines)
+							fillLineOfText(lines[i]);
 					}
+					else{
+						// Draw Legend-like boxes if needed
+						if (drawColorBoxes) {
+							// Fill a white rect so that colours merge nicely if the opacity is < 1
+							ctx.fillStyle = mergeOpacity(vm.legendColorBackground, opacity);
+							ctx.fillRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
 
-					fillLineOfText(line);
+							// Border
+							ctx.strokeStyle = mergeOpacity(vm.labelColors[i].borderColor, opacity);
+							ctx.strokeRect(pt.x, pt.y, bodyFontSize, bodyFontSize);
+
+							// Inner square
+							ctx.fillStyle = mergeOpacity(vm.labelColors[i].backgroundColor, opacity);
+							ctx.fillRect(pt.x + 1, pt.y + 1, bodyFontSize - 2, bodyFontSize - 2);
+
+							ctx.fillStyle = textColor;
+						}
+						fillLineOfText(line);
+					}
 				});
 
 				helpers.each(bodyItem.after, fillLineOfText);
@@ -11784,15 +11841,17 @@ module.exports = function(Chart) {
 
 		tooltips: {
 			callbacks: {
-				title: function() {
+				title: function(tooltipItem, data) {
 					// Title doesn't make sense for scatter since we format the data as a point
 					return '';
+					
 				},
 				label: function(tooltipItem, data) {
-					// console.log(tooltipItem);
 					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
 					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-					return datasetLabel + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ', ' + dataPoint.r + ')';
+					return {
+						image:data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].image,
+						label:datasetLabel + ': \n '+ this._chartInstance.config.options.scales.xAxes[0].scaleLabel.labelString + ': ' + tooltipItem.xLabel + '\n '+ this._chartInstance.config.options.scales.yAxes[0].scaleLabel.labelString + ': ' + tooltipItem.yLabel}
 				}
 			}
 		}
