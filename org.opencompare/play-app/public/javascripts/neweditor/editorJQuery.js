@@ -78,7 +78,10 @@ function Editor (divID, pcmID) {
   this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
-  this.showView('pcmDiv')
+  //Display view
+  var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
+  if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
+  this.showView(view)
 }
 
 Object.defineProperty(Editor.prototype, 'checkInterpretation', {
