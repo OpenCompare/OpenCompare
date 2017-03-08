@@ -85,6 +85,8 @@ ChartFactory.prototype.drawChart = function(){
     this.drawBar();
   }else if(this.chartType == 'line'){
     this.chartXLabel.html('&nbsp;y&nbsp:&nbsp');
+    this.chartXLabel.show();
+    this.chartXselect.show();
     this.chartYselect.hide();
     this.chartYLabel.hide();
 	  this.drawLine();
