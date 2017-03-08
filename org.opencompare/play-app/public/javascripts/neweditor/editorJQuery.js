@@ -78,7 +78,10 @@ function Editor (divID, pcmID) {
   this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
-  this.showView('pcmDiv')
+  //Display view
+  var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
+  if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
+  this.showView(view)
 }
 
 Object.defineProperty(Editor.prototype, 'checkInterpretation', {
@@ -103,7 +106,11 @@ Editor.prototype.setCellEdit = function (cell) {
   this.cellEdit = cell
   this.cellEdit.div.addClass('selected')
   this.views.pcmDiv.addClass('cell-edit-visible')
-  this.cellEditType.html(this.cellEdit.type)
+  var type = this.cellEdit.type
+  if (this.cellEdit.interpretation != null) {
+    type += ' (' + this.cellEdit.interpretation.metaClassName() + ')'
+  }
+  this.cellEditType.html(type)
   this.cellEditContent.html(this.cellEdit.content)
 }
 

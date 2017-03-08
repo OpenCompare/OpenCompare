@@ -1,0 +1,45 @@
+possible type :
+  boolean
+  real
+  integer
+  string
+  date
+  version
+  undefined // when the value is undefined
+  multiple
+  url
+  image
+
+
+pcm : {
+  name : string // name of the pcm
+  license : string // license of the pcm
+  source :  string // source of the pcm (website, creator, ...)
+  primaryFeatureID : string // the id the primary feature (ex: name of the country, title of the movie, id, ...)
+  features : { // an associative array that contains every feature
+    id : { // The key is the id of the feature (F0, F1, F2, ...)
+      name : string // the name of the feature
+      type : string // the type of the feature
+    }
+    ...
+  }
+  products : { // an associative array that contains every product
+    id : { // The key is the id of the product (P0, P1, P2, ...)
+      cells : { // an array that contains every cell of the product
+        id : { // The key is the id of the cell (C0, C1, C2, ...)
+          productID : string // the id of the corresponding product
+          featureID : string // the id of the corresponding feature
+          type : string // the type of the feature
+          isPartial : boolean // at true id the information is partial (ex: a date of birth but just with the year)
+          unit : string // the unit of the value (undefined, centimeter, meter, second, ...)
+          value :
+            boolean // for a boolean value
+            number // for an integer or a real value
+            string // for a string, a date, a version (21.7.33...), an url, an image (must be an url to the image)
+            array of string // for a multiple value (['mario', 'peach', 'bowser', ...])
+        }
+        ...
+      }
+    }
+  }
+}
