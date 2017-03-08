@@ -106,7 +106,11 @@ Editor.prototype.setCellEdit = function (cell) {
   this.cellEdit = cell
   this.cellEdit.div.addClass('selected')
   this.views.pcmDiv.addClass('cell-edit-visible')
-  this.cellEditType.html(this.cellEdit.type)
+  var type = this.cellEdit.type
+  if (this.cellEdit.interpretation != null) {
+    type += ' (' + this.cellEdit.interpretation.metaClassName() + ')'
+  }
+  this.cellEditType.html(type)
   this.cellEditContent.html(this.cellEdit.content)
 }
 
