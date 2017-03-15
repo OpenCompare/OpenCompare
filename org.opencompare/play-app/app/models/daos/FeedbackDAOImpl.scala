@@ -27,7 +27,9 @@ class FeedbackDAOImpl extends FeedbackDAO {
     MongoDBObject(
       "email" -> feedback.email,
       "subject" -> feedback.subject,
-      "content" -> feedback.content
+      "content" -> feedback.content,
+      "pcmid" -> feedback.pcmid,
+      "date" -> feedback.date
     )
   }
 }

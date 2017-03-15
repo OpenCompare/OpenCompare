@@ -13,7 +13,7 @@ angular.module("openCompare",[]).controller("FeedbackController", ['$scope', '$h
 		$http({
 			method: 'post',
 			url: '/feedback',
-			data: {email: feedback.email, subject: feedback.subject, content: feedback.content}
+			data: {email: feedback.email, subject: feedback.subject, content: feedback.content, pcmid: feedback.pcmid}
 		}).success(function(data){
 			$scope.formEnable = true;
 			if(!data.error){
