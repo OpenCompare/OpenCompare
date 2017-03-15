@@ -1,5 +1,6 @@
 package models
 
+import java.util.Date
 import java.util.UUID
 
 /**
@@ -12,4 +13,6 @@ import java.util.UUID
 case class Feedback(
   email: String,
   subject : String,
-  content: String)
+  content: String,
+  pcmid: String,
+  date : Date)

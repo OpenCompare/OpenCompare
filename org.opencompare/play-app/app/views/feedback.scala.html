@@ -51,6 +51,12 @@
 					<textarea ng-model="feedback.content" md-maxlength="1000" rows="5" md-select-on-focus="" required=""></textarea>
 				</md-input-container>
 
+				<md-input-container class="md-block">
+					<label>PCM identifier:</label>
+					<textarea ng-model="feedback.pcmid" md-maxlength="1000" rows="5" md-select-on-focus="" required=""></textarea>
+				</md-input-container>
+
+
 				<p class="{{ responseType }}">{{ response }}</p>
 
 				<div style="text-align: right">
