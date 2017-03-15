@@ -9407,10 +9407,10 @@ module.exports = function(Chart) {
 					
 					if(typeof line == "object"){
 						
-						if(drawImage)
+						if(drawImage){
 							ctx.drawImage(Chart.cache[line.image],pt.x,pt.y,50,50);
-						
-						else
+							console.log(Chart.cache[line.image].width);
+						}else
 						if (drawColorBoxes) {
 							// Fill a white rect so that colours merge nicely if the opacity is < 1
 							ctx.fillStyle = mergeOpacity(vm.legendColorBackground, opacity);
@@ -9427,8 +9427,8 @@ module.exports = function(Chart) {
 							ctx.fillStyle = textColor;
 						}
 						var lines = line.label.split("\n");
-						for(var i in lines)
-							fillLineOfText(lines[i]);
+						for(var j in lines)
+							fillLineOfText(lines[j]);
 					}
 					else{
 						// Draw Legend-like boxes if needed
