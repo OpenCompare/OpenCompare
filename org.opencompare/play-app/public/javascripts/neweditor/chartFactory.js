@@ -243,7 +243,6 @@ ChartFactory.prototype.drawPie = function(){
 		// we push the label in the array of labels
 		var label = arr2[p];
 		this.chartData.data.labels.push(label);
-    this.chartData.data.datasets[0].
 		// we add a color thanks the label
 		this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
 		i++;
