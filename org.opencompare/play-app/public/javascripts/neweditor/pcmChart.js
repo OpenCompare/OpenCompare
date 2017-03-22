@@ -3846,6 +3846,20 @@ module.exports = function(Chart) {
 				Chart.cache[imageUrl].setAttribute("height",img.naturalHeight);
 				cacheCtx.drawImage(img,0,0);
 				
+				var imageSize = radius*2
+				var scaleWidth = 1
+				var offsetWidth  = 0
+				var scaleHeight = 1
+				var offsetHeight  = 0
+				
+				if(Chart.cache[imageUrl].width > Chart.cache[imageUrl].height){
+					scaleHeight = Chart.cache[imageUrl].height/Chart.cache[imageUrl].width
+					offsetHeight = (imageSize - imageSize*scaleHeight)/2
+				}else{
+					scaleWidth = Chart.cache[imageUrl].width/Chart.cache[imageUrl].height
+					offsetWidth = (imageSize - imageSize*scaleWidth)/2
+				}
+				
 		
 				if(cropCircle){
 					ctx.save();
@@ -3856,7 +3870,7 @@ module.exports = function(Chart) {
 					ctx.clip();
 				}
 				
-				ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
+				ctx.drawImage(Chart.cache[imageUrl],x-radius+offsetWidth,y-radius+offsetHeight,imageSize*scaleWidth,imageSize*scaleHeight); // Or at whatever offset you like
 				
 				if(cropCircle){
 					ctx.beginPath();
@@ -3868,6 +3882,21 @@ module.exports = function(Chart) {
 				}
 			}
 		}else{
+			
+			var imageSize = radius*2
+			var scaleWidth = 1
+			var offsetWidth  = 0
+			var scaleHeight = 1
+			var offsetHeight  = 0
+			
+			if(Chart.cache[imageUrl].width > Chart.cache[imageUrl].height){
+				scaleHeight = Chart.cache[imageUrl].height/Chart.cache[imageUrl].width
+				offsetHeight = (imageSize - imageSize*scaleHeight)/2
+			}else{
+				scaleWidth = Chart.cache[imageUrl].width/Chart.cache[imageUrl].height
+				offsetWidth = (imageSize - imageSize*scaleWidth)/2
+			}
+				
 			if(cropCircle){
 				ctx.save();
 				
@@ -3876,7 +3905,8 @@ module.exports = function(Chart) {
 				ctx.closePath();
 				ctx.clip();
 			}
-			ctx.drawImage(Chart.cache[imageUrl],x-radius,y-radius, radius*2, radius*2); // Or at whatever offset you like
+			ctx.drawImage(Chart.cache[imageUrl],x-radius+offsetWidth,y-radius+offsetHeight,imageSize*scaleWidth,imageSize*scaleHeight); // Or at whatever offset you like
+				
 			if(cropCircle){
 				ctx.beginPath();
 				ctx.arc(x, y, radius*1.2, 0, Math.PI * 2);
@@ -8747,6 +8777,7 @@ module.exports = function(Chart) {
 		multiKeyBackground: '#fff',
 		displayColors: true,
 		displayImages: false,
+		imageSize: 50,
 		delay:0,
 		callbacks: {
 			// Args are: (tooltipItems, data)
@@ -8882,7 +8913,8 @@ module.exports = function(Chart) {
 			opacity: 0,
 			legendColorBackground: tooltipOpts.multiKeyBackground,
 			displayColors: tooltipOpts.displayColors,
-			displayImages: tooltipOpts.displayImages
+			displayImages: tooltipOpts.displayImages,
+			tooltipsImageSize: tooltipOpts.imageSize
 		};
 	}
 
@@ -8891,9 +8923,10 @@ module.exports = function(Chart) {
 	 */
 	function getTooltipSize(tooltip, model) {
 		var ctx = tooltip._chart.ctx;
-
+		
 		var height = model.yPadding * 2; // Tooltip Padding
 		var width = 0;
+		var imageSize = model.tooltipsImageSize;
 
 		// Count of all lines in the body
 		var body = model.body;
@@ -8921,8 +8954,8 @@ module.exports = function(Chart) {
 		height += footerLineCount * (footerFontSize); // Footer Lines
 		height += footerLineCount ? (footerLineCount - 1) * model.footerSpacing : 0; // Footer Line Spacing
 		
-		if(height < 50 + model.yPadding * 2 && model.displayImages)
-			height = 50 + model.yPadding * 2;
+		if(height < imageSize + model.yPadding * 2 && model.displayImages)
+			height = imageSize + model.yPadding * 2;
 
 		// Title width
 		var widthPadding = 0;
@@ -8944,7 +8977,7 @@ module.exports = function(Chart) {
 		//widthPadding = model.displayColors ? (bodyFontSize + 2) : 0;
 		
 		if(model.displayImages)
-			widthPadding = 50 + 4;
+			widthPadding = imageSize + 4;
 		else if(model.displayColors)
 			widthPadding = bodyFontSize + 2;
 		else
@@ -9391,8 +9424,9 @@ module.exports = function(Chart) {
 
 			var drawColorBoxes = vm.displayColors;
 			var drawImage = vm.displayImages;
+			var imageSize = vm.tooltipsImageSize;
 			if(drawImage)
-				xLinePadding = 50 + 2;
+				xLinePadding = imageSize + 2;
 			else if(drawColorBoxes)
 				xLinePadding = bodyFontSize + 2;
 			else
@@ -9408,8 +9442,21 @@ module.exports = function(Chart) {
 					if(typeof line == "object"){
 						
 						if(drawImage){
-							ctx.drawImage(Chart.cache[line.image],pt.x,pt.y,50,50);
-							console.log(Chart.cache[line.image].width);
+							var scaleWidth = 1
+							var offsetWidth  = 0
+							var scaleHeight = 1
+							var offsetHeight  = 0
+							if(typeof Chart.cache[line.image] != "undefined"){
+								if(Chart.cache[line.image].width > Chart.cache[line.image].height){
+									scaleHeight = Chart.cache[line.image].height/Chart.cache[line.image].width
+									offsetHeight = (imageSize - imageSize*scaleHeight)/2
+								}else{
+									scaleWidth = Chart.cache[line.image].width/Chart.cache[line.image].height
+									offsetWidth = (imageSize - imageSize*scaleWidth)/2
+								}
+							}
+							ctx.drawImage(Chart.cache[line.image],pt.x+offsetWidth,pt.y+offsetHeight,imageSize*scaleWidth,imageSize*scaleHeight);
+							
 						}else
 						if (drawColorBoxes) {
 							// Fill a white rect so that colours merge nicely if the opacity is < 1

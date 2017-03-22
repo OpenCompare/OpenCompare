@@ -1,21 +1,21 @@
 package JSONformating.model;
 
 public class JStringValue extends JValue {
-	private String value;
+	private String strValue;
 
 	public String getValue() {
-		return value;
+		return strValue;
 	}
 
 	public void setValue(String value) {
-		this.value = value;
+		this.strValue = value;
 	}
 	
 	public String toString(){
-		return value;
+		return strValue;
 	}
 	
 	public String export(){
-		return "\"" + value + "\"";
+		return "\"" + strValue + "\"";
 	}
 }

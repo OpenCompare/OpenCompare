@@ -1,5 +1,6 @@
 package data_off;
 
+/*
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -22,7 +23,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.opencsv.CSVWriter;
+import com.opencsv.CSVWriter;*/
 
 public class OFFactsCSVCreator {
 
@@ -30,7 +31,7 @@ public class OFFactsCSVCreator {
 	 *  ps -ef | grep mongo
 	 */
 
-	public static ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+	/*public static ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 	public static boolean MAX_ON = false;
 	public static int MAX_PRODUCTS = 100;
 	private MongoClient mongo;
@@ -68,7 +69,7 @@ public class OFFactsCSVCreator {
 		System.out.println("Writing to file " + fileName);
 //		DateFormat dateFormat = new SimpleDateFormat("-ddMMyyyy-HHmmss");
 //		Date date = new Date();
-		String newFileName = "off_output/" + fileName /* + dateFormat.format(date)*/ + ".csv";
+		String newFileName = "off_output/" + fileName *//* + dateFormat.format(date)*//* + ".csv";
 		File file = new File(newFileName);
 
 		try {
@@ -219,6 +220,6 @@ public class OFFactsCSVCreator {
 
 	public void close(){
 		mongo.close();
-	}
+	}*/
 
 }

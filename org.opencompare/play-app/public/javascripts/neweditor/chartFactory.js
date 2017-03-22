@@ -6,6 +6,7 @@ function ChartFactory(editor, div){
   
   this.taboption = [];
   this.taboptionNonNumerique = [];
+  this.taboption2 = [];
   
   this.tabSelect = [];
 
@@ -65,6 +66,7 @@ function ChartFactory(editor, div){
 
 }
 
+//Called when pcm is loaded to init chart
 ChartFactory.prototype.init = function(){
   for(var f in this.editor.features){
     var feature = this.editor.features[f];
@@ -79,8 +81,8 @@ ChartFactory.prototype.init = function(){
 	else {
 		this.taboptionNonNumerique.push(feature);
 	}
+	this.taboption2.push(feature);
   }
-  console.log(this.taboptionNonNumerique);
   this.drawChart();
 }
 
@@ -100,17 +102,17 @@ ChartFactory.prototype.drawChart = function(){
 		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
 		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
 			var a = $('#x option:selected').val();
-			self.chartDataX = self.taboption[a];
+			self.chartDataX = self.taboption2[a];
 			self.drawChart();
 		});
 	
 		// we put all choice in the select we have created
-		for(var i in this.taboption) {
-			this.chartXselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+		for(var i in this.taboption2) {
+			this.chartXselect.append('<option value="'+i+'">'+this.taboption2[i].name+'</option>');
 		}
 		
 		// we take the first option to begin
-		this.chartDataX = this.taboption[0];
+		this.chartDataX = this.taboption2[0];
 	}
 	
 	// the last type become pie
@@ -437,36 +439,50 @@ ChartFactory.prototype.drawPie = function(){
       }
     };
 
-  var feat = this.chartDataX;
+	if(this.taboption.includes(this.chartDataX)){
+		this.pieNumeric();
+	}
+	else{
+		this.pieNonNumeric();
+	}
+
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+  }else{
+    console.error('Value undefined');
+  }
+}
+
+ChartFactory.prototype.pieNumeric = function (){
+	
+	var feat = this.chartDataX;
 
     // create two arrays
 	var arr = [0];
 	var arr2 = [0];
 
-  var num = 0;
-
 	// for each product
-  for(var p in this.editor.products){
+    for(var p in this.editor.products){
 
 	  var product = this.editor.products[p];
 	  // we see if the product is visible
 	  if(product.visible) {
 
-  		// we recover the value of the product and parse in int
-  		var label = product.getCell(this.editor.features[0]).content;
-  		var value = parseFloat(product.getCell(feat).content);
+		// we recover the value of the product and parse in int
+		var label = product.getCell(this.editor.features[0]).content;
+		var value = parseFloat(product.getCell(feat).content);
 
-  		// push only if the value is numerical value
-  		if (!isNaN(value)){
-  			this.chartData.data.datasets[0].data.push(value);
+		// push only if the value is numerical value
+		if (!isNaN(value)){
+			this.chartData.data.datasets[0].data.push(value);
 
-  			// we create a map, in the first array is the values
-  			// and the labels is in the second array with the same index
-  			arr.push(parseFloat(product.getCell(feat).content));
-  			arr2.push(label);
-  		}
+			// we create a map, in the first array is the values
+			// and the labels is in the second array with the same index
+			arr.push(parseFloat(product.getCell(feat).content));
+			arr2.push(label);
+		}
+
 	  }
-  }
+    }
 
 	// we sort directly the array of number
 	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
@@ -485,15 +501,69 @@ ChartFactory.prototype.drawPie = function(){
 		this.chartData.data.labels.push(label);
 		// we add a color thanks the label
 		this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+
 		i++;
 	}
-
-    this.chart = new Chart(this.chartCanvas[0], this.chartData);
-  }else{
-    console.error('Value undefined');
-  }
+	
 }
 
+ChartFactory.prototype.pieNonNumeric = function (){
+	
+	// boolean who serve to 
+	var bool = true;
+	
+	// first array of label
+	var tabLabel = [];
+	// second array of number which represent values of label
+	var tabNombre = [];
+	
+	// we recover 2 features
+	var feat = this.chartDataX;
+	
+	if(bool){
+		for(var p in this.editor.products){
+		
+			var product = this.editor.products[p];
+			// we see if the product is visible
+			if(product.visible) {
+			
+				// we see the values in the first array and search the index in the array label to obtain the label
+				var prod = product.getCell(feat).content;
+				var index = tabLabel.indexOf(prod);
+		
+				// the work if the constraint is not activated
+				if(index == -1){
+					// if the label is not yet in the array
+					tabLabel.push(prod);
+					tabNombre.push(1);
+				}
+				else{
+					// if the label is in the table
+					tabNombre[index] = tabNombre[index] + 1;
+				}
+			}
+		}
+	
+		
+		// we fill the canvas if the constraint is not activated
+		for(var lab in tabLabel){
+		
+			// we recover the label of the first element and push into the canvas
+			var label = tabLabel[lab];
+			this.chartData.data.labels.push(label);
+		
+			// with the index lab, we recover the values and push into the canvas with the color of the label
+			var nb = tabNombre[lab];
+			this.chartData.data.datasets[0].data.push(nb);
+			this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+		}
+		// we add the name of label in the canvas
+		this.chartData.data.datasets[0].label = feat.name;
+	}
+	else{
+		console.error("too much constraint");
+	}
+}
 
 
 ChartFactory.prototype.drawRadar = function(){

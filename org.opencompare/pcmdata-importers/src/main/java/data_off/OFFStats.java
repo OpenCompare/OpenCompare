@@ -3,7 +3,7 @@ package data_off;
 public class OFFStats {
 
 
-	public static int TOTAL_PRODUCTS;
+	/*public static int TOTAL_PRODUCTS;
 	public static int PRODUCTS_NOT_FOUND_THROUGH_API;
 	public static int IMAGES_NOT_FOUND;
 	public static int NULL_NUTRIMENTS;
@@ -40,7 +40,7 @@ public class OFFStats {
 			print = "\n#######\n\nTotal Products = " + TOTAL_PRODUCTS;;
 		}
 		System.out.println(print);
-	}
+	}*/
 
 	/*
 	 * Total = 6995
