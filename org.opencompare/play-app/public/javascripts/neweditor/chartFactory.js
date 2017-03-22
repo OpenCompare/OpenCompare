@@ -734,6 +734,175 @@ ChartFactory.prototype.drawLine = function() {
 	}
 }
 
+// -----------------------------------------------------------------------------------------------------------------
+// en cours de test
+// -----------------------------------------------------------------------------------------------------------------
+
+ChartFactory.prototype.drawAutre = function(){
+	
+  if(this.chartDataX != null){
+    if(this.chartCanvas != null){
+      this.chartCanvas.remove();
+    }
+    this.chartCanvas = $('<canvas>').appendTo(this.div);
+    this.chartData = {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [
+          {
+			label:String,
+			backgroundColor: [],
+            data: [],
+          }
+        ]
+      },
+      options:{
+		scales: {
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: this.chartDataX.name
+				}
+			}]
+		}
+	  }
+    };
+	
+	// boolean who serve to 
+	var bool = true;
+	
+	// first array of label
+	var tabLabel = [];
+	// second array of number which represent values of label
+	var tabNombre = [];
+	// third array who represent label constraint
+	var tabConstraint = [];
+	
+	// we recover 2 features
+	var feat = this.chartDataX;
+	var feat2 = this.chartDataY;
+	
+	// if constraint are activated
+	if (this.compAutre){
+		for(var p in this.editor.products){
+		
+			// we create the array of constraint with label
+			var product = this.editor.products[p];
+			var prod = product.getCell(feat2).content;
+			var index = tabConstraint.indexOf(prod);
+			if(index == -1){
+				tabConstraint.push(prod);
+			}	
+		}
+	}
+	
+	// if the array of constraint is more than 10, we do anything
+	if(tabConstraint.length > 10){
+		bool = false;
+	}
+	
+	
+	if(bool){
+		for(var p in this.editor.products){
+		
+			var product = this.editor.products[p];
+			// we see if the product is visible
+			if(product.visible) {
+			
+				// we see the values in the first array and search the index in the array label to obtain the label
+				var prod = product.getCell(feat).content;
+				var index = tabLabel.indexOf(prod);
+			
+				if(!this.compAutre){
+					// the work if the constraint is not activated
+					if(index == -1){
+						// if the label is not yet in the array
+						tabLabel.push(prod);
+						tabNombre.push(1);
+					}
+					else{
+						// if the label is in the table
+						tabNombre[index] = tabNombre[index] + 1;
+					}
+				}
+				else {
+					// the work if the constraint is activated
+					var prod2 = product.getCell(feat2).content;
+					var j = tabConstraint.indexOf(prod2);
+					if(index == -1){
+						tabLabel.push(prod);
+						tabNombre.push(new Array());
+						var index = tabLabel.indexOf(prod);
+						for(var i=1 ; i<=tabConstraint.length ; i++){
+							tabNombre[index].push(0);
+						}
+						tabNombre[index][j] = tabNombre[index][j] + 1;
+					}
+					else {
+						var index = tabLabel.indexOf(prod);
+						tabNombre[index][j] = tabNombre[index][j] + 1;
+					}
+				}
+			}
+		}
+	
+		
+		if(!this.compAutre){
+			// we fill the canvas if the constraint is not activated
+			for(var lab in tabLabel){
+		
+				// we recover the label of the first element and push into the canvas
+				var label = tabLabel[lab];
+				this.chartData.data.labels.push(label);
+		
+				// with the index lab, we recover the values and push into the canvas with the color of the label
+				var nb = tabNombre[lab];
+				this.chartData.data.datasets[0].data.push(nb);
+				this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
+			}
+			// we add the name of label in the canvas
+			this.chartData.data.datasets[0].label = feat.name;
+		}else {
+			// we fill the canvas if the constraint is activated
+			// for each values in the constraint, we create a new object in the array
+			for(var i=2 ; i<=tabConstraint.length ; i++){
+				this.chartData.data.datasets.push({backgroundColor:new Array(),data:new Array(),label:tabConstraint[i-1]});
+			}
+			// we recover the value of the constraint and put in the canvas
+			this.chartData.data.datasets[0].label = tabConstraint[0];
+			for(var lab in tabLabel){
+			
+				// we recover the label of the first element and push into the canvas
+				var label = tabLabel[lab];
+				this.chartData.data.labels.push(label);
+			
+				// for each value in tabConstraint, we recover the value affiliate and push in the canvas
+				for(var i=1 ; i<= tabConstraint.length ; i++){
+				
+					var nb = tabNombre[lab][i-1];
+				
+					this.chartData.data.datasets[i-1].data.push(nb);
+					this.chartData.data.datasets[i-1].backgroundColor.push(tabConstraint[i-1].toColour());
+				}
+			}
+		}
+	}
+	else{
+		console.error("too much constraint");
+	}
+	
+    this.chart = new Chart(this.chartCanvas[0], this.chartData);
+	                                      
+  }else{
+    console.log('Value undefined');
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------------------
+// fin de la partie test
+// -----------------------------------------------------------------------------------------------------------------
+
 /**
  * Return a color based on a string
  * @return {string} A color in hexadecimal.
