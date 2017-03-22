@@ -3,37 +3,65 @@ function ChartFactory(editor, div){
   var self = this;
   this.editor = editor;
   this.div = div;
+  
+  this.taboption = [];
+  this.taboptionNonNumerique = [];
+  
+  this.tabSelect = [];
 
   this.chart = null; //Chart object for ChartJS
-  this.chartType = 'radar';
+  this.chartType = 'productchart'; // this is the type of current vizualisation
+  this.cartTypeA = 'radar'; // this is the type of last vizualisation
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
-
-  this.chartTypeLabel = $('<label>').html('&nbsp;Chart&nbsp;:&nbsp;').appendTo(this.div);
-  this.chartTypeSelect = $('<select>').appendTo(this.div).change(function(){
-    self.chartType = self.chartTypeSelect.val();
+  
+  // the image of the Visualization in Bar, and the fonction to call it
+  this.chartImgBar = $('<img id="clickBar" src="http://img4.hostingpics.net/pics/227950stat11.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "bar";
     self.drawChart();
   });
-
-  this.chartTypeSelect.append('<option value="radar">Radar</option>');
-  this.chartTypeSelect.append('<option value="pie">Pie</option>');
-  this.chartTypeSelect.append('<option value="productchart">ProductChart</option>');
-  this.chartTypeSelect.append('<option value="bar">Bar</option>');
-  this.chartTypeSelect.append('<option value="line">Line</option>')
-
-  this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.div);
-  this.chartXselect = $('<select>').appendTo(this.div).change(function(){
-    self.chartDataX = self.editor.getFeatureByID(self.chartXselect.val());
+  
+  // the image of the Visualization in Pie, and the fonction to call it
+  this.chartImgPie = $('<img id="clickPie" src="http://img4.hostingpics.net/pics/212411stat21.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "pie";
     self.drawChart();
   });
-  this.chartYLabel = $('<label>').html('&nbsp;y&nbsp:&nbsp').appendTo(this.div);
-  this.chartYselect = $('<select>').appendTo(this.div).change(function(){
-    self.chartDataY = self.editor.getFeatureByID(self.chartYselect.val());
+  
+  // the image of the Visualization in Line, and the fonction to call it
+  this.chartImgLine = $('<img id="clickLine" src="http://img4.hostingpics.net/pics/199610stat31.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "line";
     self.drawChart();
   });
+  
+  // the image of the Visualization in Radar, and the fonction to call it
+  this.chartImgRadar = $('<img id="clickRadar" src="http://img4.hostingpics.net/pics/915174stat41.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "radar";
+    self.drawChart();
+  });
+  
+  // the image of the Visualization in ProductChart, and the fonction to call it
+  this.chartImgPC = $('<img id="clickPC" src="http://img4.hostingpics.net/pics/557345stat51.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "productchart";
+    self.drawChart();
+  });
+  
+  // the image of the Visualization in Other, and the fonction to call it
+  this.chartImgPC = $('<img id="clickPC" src="http://img4.hostingpics.net/pics/415060stat61.png" width="40px" />').appendTo(this.div).click(function(){
+    self.chartType = "autre";
+    self.drawChart();
+  });
+ 
+  this.div.append("</br></br>");
+  
+  this.listSelect = $('<div>',{id:'listSelect'}).appendTo(this.div);
+  
   this.chartCanvas = null;
 
   this.timeout = null;
+  
+  this.nbBar = 1; // the number of choice for the vizualisation in Bar
+  this.nbLine = 1; // the number of choice for the vizualisation in Line
+  this.compAutre =false; // the boolean to know if the constraint is activated for the vizualisation Other
 
 }
 
