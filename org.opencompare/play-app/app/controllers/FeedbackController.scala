@@ -40,9 +40,9 @@ class FeedbackController @Inject() (
             .skip(limit * (page-1))
             .limit(limit)
         val feedbacks = for (fb <- cursor) yield {
-            val email = fb("email").toString
-            val subject = fb("subject").toString
-            val content = fb("content").toString
+            val email = fb.getAs[String]("email")
+            val subject = fb.getAs[String]("subject")
+            val content = fb.getAs[String]("content").getOrElse("") // strange, normally content is required
             val pcmid = fb.getAs[String]("pcmid").getOrElse("Unknown ID")
             val date = fb.getAs[Date]("date").getOrElse(new Date())
             new Feedback(email=email, subject=subject, content=content, pcmid=pcmid, date=date)

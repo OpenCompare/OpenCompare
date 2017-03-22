@@ -1,4 +1,4 @@
-@()(implicit messages: Messages, context: controllers.ViewContext)
+@(id: String)(implicit messages: Messages, context: controllers.ViewContext)
 
 
 <div id="feedback" ng-controller="FeedbackController">
@@ -11,11 +11,10 @@
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h2 class="modal-title" id="myModalLabel">Feedback</h2>
-			Feedback helps us to improve OpenCompare. Don't hesitate to tell us what you think!<br>
-			<a href="/feedback/list">Check feedbacks</a>
-			<br><br>
-		  </div>
+			<h2 class="modal-title" id="myModalLabel">Feedbacks</h2>
+			<p>... help us to improve OpenCompare. Feel free to tell us what you think!</p>
+			  <p>Your comments apply specifically to the comparison matrix @id</p>
+		   </div>
 		  <div class="modal-body">
 			<form class="form-horizontal" name="feedbackForm" novalidate>
 				<!--<div class="form-group">
@@ -28,7 +27,7 @@
 				</div>-->
 				<md-input-container class="md-block" flex-gt-sm="">
 					<label>Email</label>
-					<input ng-model="feedback.email" type="email" required="" @if(context.user.isDefined) { value="@context.user.get.email" }>
+					<input ng-model="feedback.email" type="email" @if(context.user.isDefined) { value="@context.user.get.email" }>
 				</md-input-container>
 
 				<!--<div class="form-group">
@@ -39,7 +38,7 @@
 				</div>-->
 				<md-input-container class="md-block" flex-gt-sm="">
 					<label>Subject</label>
-					<input ng-model="feedback.subject" required="">
+					<input ng-model="feedback.subject">
 				</md-input-container>
 
 				<!--<div class="form-group"><div class="col-sm-12">
@@ -48,20 +47,19 @@
 
 				<md-input-container class="md-block">
 					<label>Type what you have to say here...</label>
-					<textarea ng-model="feedback.content" md-maxlength="1000" rows="5" md-select-on-focus="" required=""></textarea>
-				</md-input-container>
-
-				<md-input-container class="md-block">
-					<label>PCM identifier:</label>
-					<textarea ng-model="feedback.pcmid" md-maxlength="1000" rows="5" md-select-on-focus="" required=""></textarea>
+					<textarea ng-model="feedback.content" md-maxlength="1000" rows="5" md-select-on-focus="" required="true"></textarea>
 				</md-input-container>
 
 
 				<p class="{{ responseType }}">{{ response }}</p>
 
+
 				<div style="text-align: right">
-					<md-button type="submit" class="md-raised md-primary" style="margin-right: 0" ng-click="post(feedback)" ng-disabled="feedbackForm.$invalid && formEnable">Submit feedback</md-button>
+					<md-button type="submit" class="md-raised md-primary" style="margin-right: 0" ng-click="post(feedback, '@id')" ng-disabled="feedbackForm.$invalid && formEnable">Submit feedback</md-button>
 				</div>
+
+
+				<p>You can browse all feedbacks of opencompare users <a href="/feedback/list">here</a></p>
 			</form>
 		  </div>
 		</div>

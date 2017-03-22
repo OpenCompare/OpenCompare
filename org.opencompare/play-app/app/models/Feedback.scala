@@ -11,8 +11,8 @@ import java.util.UUID
  * @param content
  */
 case class Feedback(
-  email: String,
-  subject : String,
+  email: Option[String],
+  subject : Option[String],
   content: String,
   pcmid: String,
   date : Date)

@@ -13,8 +13,8 @@ object FeedbackForm {
    */
   val form = Form(
     mapping(
-      "email" -> email,
-      "subject" -> nonEmptyText,
+      "email" -> optional(email),
+      "subject" -> optional(text),
       "content" -> nonEmptyText,
       "pcmid" -> nonEmptyText
     )(Data.apply)(Data.unapply)
@@ -29,8 +29,8 @@ object FeedbackForm {
     * @param pcmid PCM identifier (a feedback applies to a PCM)
    */
   case class Data(
-    email: String,
-    subject: String,
+    email: Option[String],
+    subject: Option[String],
     content: String,
     pcmid: String)
 }
