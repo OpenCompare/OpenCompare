@@ -23,7 +23,7 @@ import collection.JavaConversions._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 import scala.concurrent.Future
-import JSONformating._
+// import JSONformating._
 
 /**
  * Created by gbecan on 08/01/15.
@@ -60,7 +60,7 @@ class PCMAPI @Inject() (
       }
     }
 
-    def getnewjson(id : String) = Action.async {
+   /* def getnewjson(id : String) = Action.async {
         val result = pcmContainerDAO.get(id)
         result flatMap { dbPCM =>
             if (dbPCM.isDefined) {
@@ -74,7 +74,7 @@ class PCMAPI @Inject() (
                 Future.successful(NotFound(id))
             }
         }
-    }
+    }*/
 
     def save(id : String) = Action { request =>
         val json = request.body.asJson.get
