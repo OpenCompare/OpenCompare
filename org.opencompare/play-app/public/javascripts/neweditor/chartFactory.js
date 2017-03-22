@@ -65,7 +65,6 @@ function ChartFactory(editor, div){
 
 }
 
-//Called when pcm is loaded to init chart
 ChartFactory.prototype.init = function(){
   for(var f in this.editor.features){
     var feature = this.editor.features[f];
@@ -75,50 +74,263 @@ ChartFactory.prototype.init = function(){
       }else if(this.chartDataY == null){
         this.chartDataY = feature;
       }
-      this.chartXselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
-      this.chartYselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
+      this.taboption.push(feature);
     }
+	else {
+		this.taboptionNonNumerique.push(feature);
+	}
   }
+  console.log(this.taboptionNonNumerique);
   this.drawChart();
 }
 
 ChartFactory.prototype.drawChart = function(){
+	
+  var self=this;
+	
   if(this.chartType=='pie'){
-    this.chartXLabel.html('&nbsp;Value&nbsp:&nbsp');
-    this.chartXLabel.show();
-    this.chartXselect.show();
-    this.chartYselect.hide();
-    this.chartYLabel.hide();
+	  
+	// if the last type of vizualisation is yet pie, we do anything
+    if(this.chartTypeA!="pie") {
+	
+		// we remove all select of the listSelect
+		this.listSelect.html("");
+	
+		// we create the select for the vizualisation in line
+		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#x option:selected').val();
+			self.chartDataX = self.taboption[a];
+			self.drawChart();
+		});
+	
+		// we put all choice in the select we have created
+		for(var i in this.taboption) {
+			this.chartXselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+		}
+		
+		// we take the first option to begin
+		this.chartDataX = this.taboption[0];
+	}
+	
+	// the last type become pie
+	this.chartTypeA = "pie";
+	// we draw pie
     this.drawPie();
-  }else if(this.chartType == 'radar') {
-    this.chartYselect.hide();
-    this.chartYLabel.hide();
-    this.chartXselect.hide();
-    this.chartXLabel.hide();
+  }
+  else if(this.chartType == 'radar') {
+	
+	// we remove all select of the listSelect
+	this.listSelect.html("");
+	// the last type become radar
+	this.chartTypeA = "radar";
+	// we draw radar
     this.drawRadar();
-  }else if(this.chartType == 'productchart') {
-    this.chartYselect.show();
-    this.chartYLabel.show();
-    this.chartYLabel.html('&nbsp;y&nbsp:&nbsp');
-    this.chartXselect.show();
-    this.chartXLabel.show();
-    this.chartXLabel.html('&nbsp;x&nbsp:&nbsp');
+  }
+  else if(this.chartType == 'productchart') {
+	
+	// if the last type of vizualisation is yet pc, we do anything
+	if(this.chartTypeA!="productchart") {
+	
+		// we remove all select of the listSelect
+		this.listSelect.html("");
+	
+		// we create the select X for the vizualisation in pc
+		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#x option:selected').val();
+			self.chartDataX = self.taboption[a];
+			self.drawChart();
+		});
+  
+		// we create the select Y for the vizualisation in pc
+		this.chartYLabel = $('<label>').html('&nbsp;y&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartYselect = $('<select id="y" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#y option:selected').val();
+			self.chartDataY = self.taboption[a];
+			self.drawChart();
+		});
+	
+		// we put all choice in the select we have created
+		for(var i in this.taboption) {
+			this.chartXselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+			this.chartYselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+		}
+		
+		// we take the first option to begin
+		this.chartDataX = this.taboption[0];
+		this.chartDataY = this.taboption[0];
+	}
+	
+	// the last type become productChart and we draw productChart
+	this.chartTypeA = "productchart";
     this.drawProductChart();
-  }else if(this.chartType == 'bar') {
-    this.chartXLabel.html('&nbsp;y&nbsp:&nbsp');
-    this.chartXLabel.show();
-    this.chartXselect.show();
-    this.chartYselect.hide();
-    this.chartYLabel.hide();
+  }
+  else if(this.chartType == 'bar') {
+	
+	// if the last type of vizualisation is yet bar, we do anything
+    if(this.chartTypeA!="bar"){
+	
+		// we recover the number of choice for the Bar
+		var nb = this.nbBar;
+		// we create a array with all select
+		this.tabSelect = [];
+	
+		// we remove all select of the listSelect
+		this.listSelect.html("");
+
+		// we create nb select for the vizualisation in Bar
+		for (var j=1 ; j<=nb ; j++){
+			var cl = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
+			var cs = $('<select id="choix'+j+'" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+				self.drawChart();
+			});
+		
+			for(var i in this.taboption) {
+				cs.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+			}
+		
+			this.tabSelect.push(cs);
+		}
+		
+		// we create a picture plus for add a new choice for the vizualisation
+		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(self.nbBar < self.taboption.length){
+				self.nbBar = self.nbBar + 1;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+		// we create a picture minus for sub a new choice for the vizualisation
+		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(self.nbBar > 1){
+				self.nbBar = self.nbBar - 1;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+	}
+	
+	// the last type become bar and we draw the vizualisation Bar
+	this.chartTypeA = "bar";
     this.drawBar();
-  }else if(this.chartType == 'line'){
-    this.chartXLabel.html('&nbsp;y&nbsp:&nbsp');
-    this.chartXLabel.show();
-    this.chartXselect.show();
-    this.chartYselect.hide();
-    this.chartYLabel.hide();
-	  this.drawLine();
-  }else{
+  }
+  else if(this.chartType == 'line'){
+	
+	// if the last type of vizualisation is yet Line, we do anything
+    if(this.chartTypeA!="line"){
+	
+		// we recover the number of choice for the Line
+		var nb = this.nbLine;
+		// we create a array with all select
+		this.tabSelect = [];
+	
+		// we remove all select of the listSelect
+		this.listSelect.html("");
+
+		// we create nb select for the vizualisation in Line
+		for (var j=1 ; j<=nb ; j++){
+			var cl = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
+			var cs = $('<select id="choix'+j+'" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+				self.drawChart();
+			});
+		
+			for(var i in this.taboption) {
+				cs.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+			}
+		
+			this.tabSelect.push(cs);
+		}
+		
+		// we create a picture plus for add a new choice for the vizualisation
+		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(self.nbLine < self.taboption.length){
+				self.nbLine = self.nbLine + 1;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+		// we create a picture minus for sub a new choice for the vizualisation
+		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(self.nbLine > 1){
+				self.nbLine = self.nbLine - 1;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+	}
+	
+	// the last type become Line and we draw the vizualisation Line
+	this.chartTypeA = "line";
+	this.drawLine();
+  }
+  else if(this.chartType=='autre'){
+	
+	// if the last type of vizualisation is yet Autre, we do anything
+    if(this.chartTypeA!="autre") {
+	
+		// we remove all select of the listSelect
+		this.listSelect.html("");
+	
+		// we create the select X for the vizualisation Autre
+		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#x option:selected').val();
+			self.chartDataX = self.taboptionNonNumerique[a];
+			self.drawChart();
+		});
+	
+		// we put all non-digital choice in the select we have created
+		for(var i in this.taboptionNonNumerique) {
+			this.chartXselect.append('<option value="'+i+'">'+this.taboptionNonNumerique[i].name+'</option>');
+		}
+		
+		// if the constraint is activated, we create the select Y for choose the constraint in the non-digital option
+		if(this.compAutre){
+			this.chartYLabel = $('<label>').html('&nbsp;y&nbsp:&nbsp').appendTo(this.listSelect);
+			this.chartYselect = $('<select id="y" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+				var a = $('#y option:selected').val();
+				self.chartDataY = self.taboptionNonNumerique[a];
+				self.drawChart();
+			});
+	
+			// we put all non-digital choice in the select we have created
+			for(var i in this.taboptionNonNumerique) {
+				this.chartYselect.append('<option value="'+i+'">'+this.taboptionNonNumerique[i].name+'</option>');
+			}
+		}
+		
+		// we create a picture plus for add the constraint to the vizualisation
+		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(!self.compAutre){
+				self.compAutre = true;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+		// we create a picture plus for remove the constraint to the vizualisation
+		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+			if(self.compAutre){
+				self.compAutre = false;
+				self.chartTypeA = null;
+				self.drawChart();
+			}
+		});
+		
+		// we take the first non-digital option to begin
+		this.chartDataX = this.taboptionNonNumerique[0];
+	}
+	
+	// the last type become Autre and we draw the vizualisation Autre
+	this.chartTypeA = "autre";
+    this.drawAutre();
+  }
+  else{
     console.error('Unsupported chart type : '+this.chartType);
   }
 }
@@ -336,6 +548,7 @@ ChartFactory.prototype.drawRadar = function(){
 
 
 ChartFactory.prototype.drawBar = function(){
+	
   if(this.chartDataX != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
@@ -363,74 +576,86 @@ ChartFactory.prototype.drawBar = function(){
 		}
 	  }
     };
-
-	// create 4 arrays
-	var arr = [0];
-	var arr2 = [0];
-	var arr3 = [0];
-	var arr4 = [];
-
+	
+	var nb_choix = this.nbBar;
+	
+	var tabSup = [];
+	
+	// création de la map
+	tabSup.push(new Array());
+	tabSup.push(new Array());
+	
+	for (var j=2 ; j<= nb_choix ; j++){
+		
+		tabSup.push(new Array());
+		this.chartData.data.datasets.push({backgroundColor:new Array(),data:new Array()});
+	}
+	
+	var fea = $('#choix1 option:selected').val();
+			
+	var c1 = this.taboption[fea];
+	
 	// for each product
     for(var p in this.editor.products){
-
+		
 	  var product = this.editor.products[p];
 	  // we see if the product is visible
 	  if(product.visible) {
-
+		
 		// we recover the value of the product and parse in int
 		var label = product.getCell(this.editor.features[0]).content;
-		var value = parseFloat(product.getCell(this.chartDataX).content);
-
+		var value = parseFloat(product.getCell(c1).content);
+		
 		// push only if the value is numerical value
 		if (!isNaN(value)){
 			this.chartData.data.datasets[0].data.push(value);
-
-			// we create a map, in the first array is the values
+			
+			// we create a map, in the first array is the values 
 			// and the labels is in the second array with the same index
-			arr.push(parseFloat(product.getCell(this.chartDataX).content));
-			arr2.push(label);
-			if (this.charDataX != this.chartDataY){
-				arr3.push(parseFloat(product.getCell(this.chartDataY).content));
+			tabSup[0].push(parseFloat(product.getCell(c1).content));
+			tabSup[1].push(label);
+			
+			for (var j=2 ; j <= nb_choix ; j++){
+				
+				var fea2 = $('#choix'+j+' option:selected').val();
+				var c2 = this.taboption[fea2];
+				tabSup[j].push(parseFloat(product.getCell(c2).content));
 			}
-
+			
 		}
-
+		
 	  }
     }
-
+	
 	// we sort directly the array of number
 	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
-
+	
 	var i = 0;
 	while (i < this.chartData.data.datasets[0].data.length) {
-
+		
 		// we recover the value of the first case in the array data
 		var nb = this.chartData.data.datasets[0].data[i];
 		// we recover the index in the first array with the value
-		var p = arr.indexOf(nb);
+		var p = tabSup[0].indexOf(nb);
 		// thanks the index, we recover the label associate to the value in the second array
-		arr[p] = null;
+		tabSup[0][p] = null;
 		// we push the label in the array of labels
-		var label = arr2[p];
+		var label = tabSup[1][p];
 		this.chartData.data.labels.push(label);
 		// we add a color thanks the label
 		this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
-
-		// if chartDataY is different of chartDataX
-		if (this.chartDataX != this.chartDataY){
-			arr4.push(arr3[p]);
+		
+		for (var j=2 ; j<= nb_choix ; j++){
+			
+			this.chartData.data.datasets[j-1].backgroundColor.push(label.toColour());
+			this.chartData.data.datasets[j-1].data.push(tabSup[j][p]);
 		}
-
+		
 		i++;
 	}
-
-	// we add the second array to the datasets with same  array of color
-	if (this.chartDataX != this.chartDataY){
-		this.chartData.data.datasets.push({backgroundColor:this.chartData.data.datasets[0].backgroundColor,data:arr4});
-	}
-
+	
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
-
+	                                      
   }else{
     console.log('Value undefined');
   }
@@ -448,7 +673,9 @@ ChartFactory.prototype.drawLine = function() {
 				labels: [],
 				datasets: [
 				{
+					label:String,
 					data: [],
+					borderColor:String
 				}
 				]
 			},
@@ -463,12 +690,44 @@ ChartFactory.prototype.drawLine = function() {
 				}
 			}
 		};
-		for(var p in this.editor.products){
-			var product = this.editor.products[p];
-			var label = product.getCell(this.editor.features[0]).content;
-			this.chartData.data.labels.push(label);
-			this.chartData.data.datasets[0].data.push(parseFloat(product.getCell(this.chartDataX).content));
+		
+		// we recover the number of choice we have
+		var nb = this.nbLine;
+		
+		// for each choice
+		for(var j=1 ; j<=nb ; j++){
+			
+			// we recover the index feature selected in the choice i, and find the feature in the taboption
+			var fea = $('#choix'+j+' option:selected').val();
+			var c1 = this.taboption[fea];
+			// a array 
+			var tmp = [];
+			
+			// for each product
+			for(var p in this.editor.products){
+				var product = this.editor.products[p];
+				var label = product.getCell(this.editor.features[0]).content;
+				// in the first turn of the for, we push labels in the canvas
+				if (j==1){
+					this.chartData.data.labels.push(label);
+				}
+				// we push the value j in the array tmp
+				tmp.push(parseFloat(product.getCell(c1).content));
+			}
+			
+			// we push the array tmp in the canvas, with a backgroundcolor
+			if(j==1){
+				this.chartData.data.datasets[0] = {borderColor:c1.name.toColour(),data:tmp,label:c1.name};
+			}
+			else {
+				this.chartData.data.datasets.push({borderColor:c1.name.toColour(),data:tmp,label:c1.name});
+			}
+			
+			// we remove all data of the array to start again with the next choice
+			tmp = [];
+			
 		}
+		
 		this.chart = new Chart(this.chartCanvas[0], this.chartData);
 	}else{
 		console.log('Value undefined');
