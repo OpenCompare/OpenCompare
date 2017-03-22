@@ -1,21 +1,21 @@
 package JSONformating.model;
 
 public class JNumberValue extends JValue{
-	private float value;
+	private float numValue;
 
 	public Float getValue() {
-		return value;
+		return numValue;
 	}
 
 	public void setValue(float value) {
-		this.value = value;
+		this.numValue = value;
 	}
 	
 	public String toString(){
-		return String.valueOf(value);
+		return String.valueOf(numValue);
 	}
 	
 	public String export(){
-		return String.valueOf(value);
+		return String.valueOf(numValue);
 	}
 }
