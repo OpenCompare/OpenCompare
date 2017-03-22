@@ -1,6 +1,6 @@
 package data_off;
 
-import java.io.BufferedReader;
+/*import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -12,11 +12,11 @@ import org.bson.Document;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoCursor;*/
 
 public class OFFToProduct {
 
-	private static boolean GET_IMAGE_URL = false;
+	/*private static boolean GET_IMAGE_URL = false;
 
 
 	public static void setGetImageUrl(boolean getImageUrl){
@@ -118,5 +118,5 @@ public class OFFToProduct {
 			}
 		}
 		return "https://upload.wikimedia.org/wikipedia/commons/f/f8/Question_mark_alternate.svg";
-	}
+	}*/
 }
