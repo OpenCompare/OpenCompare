@@ -1,16 +1,18 @@
 package controllers
 
-import javax.inject.{Singleton, Inject}
+import java.util.UUID
+import javax.inject.{Inject, Singleton}
+
 import com.mohiva.play.silhouette.api.Environment
 import com.mohiva.play.silhouette.impl.authenticators.CookieAuthenticator
 import models._
 import models.daos.PCMContainerDAO
 import org.opencompare.api.java.{PCMContainer, PCMFactory}
 import org.opencompare.api.java.impl.PCMFactoryImpl
-import org.opencompare.api.java.impl.io.{KMFJSONLoader, KMFJSONExporter}
-import org.opencompare.api.java.io.{HTMLExporter, CSVExporter}
+import org.opencompare.api.java.impl.io.{KMFJSONExporter, KMFJSONLoader}
+import org.opencompare.api.java.io.{CSVExporter, HTMLExporter}
 import org.opencompare.api.java.extractor.CellContentInterpreter
-import org.opencompare.io.wikipedia.io.{WikiTextLoader, WikiTextTemplateProcessor, MediaWikiAPI, WikiTextExporter}
+import org.opencompare.io.wikipedia.io.{MediaWikiAPI, WikiTextExporter, WikiTextLoader, WikiTextTemplateProcessor}
 import org.opencompare.io.wikipedia.parser.CellContentExtractor
 import play.api.data.Form
 import play.api.i18n.{I18nSupport, MessagesApi}
@@ -21,6 +23,7 @@ import collection.JavaConversions._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 
 import scala.concurrent.Future
+// import JSONformating._
 
 /**
  * Created by gbecan on 08/01/15.
@@ -56,6 +59,22 @@ class PCMAPI @Inject() (
         }
       }
     }
+
+   /* def getnewjson(id : String) = Action.async {
+        val result = pcmContainerDAO.get(id)
+        result flatMap { dbPCM =>
+            if (dbPCM.isDefined) {
+                val pcmC = dbPCM.get.pcmContainer.get
+                val jsonContainer = Json.parse(PCMtonewJSON.mkNewJSONFormatFromPCM(pcmC).export()).as[JsObject]
+                Future.successful(Ok(jsonContainer).withHeaders(
+                    "Access-Control-Allow-Origin" -> "*"
+                ))
+
+            } else {
+                Future.successful(NotFound(id))
+            }
+        }
+    }*/
 
     def save(id : String) = Action { request =>
         val json = request.body.asJson.get

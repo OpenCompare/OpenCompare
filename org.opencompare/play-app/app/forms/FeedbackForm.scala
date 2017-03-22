@@ -13,9 +13,10 @@ object FeedbackForm {
    */
   val form = Form(
     mapping(
-      "email" -> email,
-      "subject" -> nonEmptyText,
-      "content" -> nonEmptyText
+      "email" -> optional(email),
+      "subject" -> optional(text),
+      "content" -> nonEmptyText,
+      "pcmid" -> nonEmptyText
     )(Data.apply)(Data.unapply)
   )
 
@@ -25,9 +26,11 @@ object FeedbackForm {
    * @param email The email of the user.
    * @param password The password of the user.
    * @param rememberMe Indicates if the user should stay logged in on the next visit.
+    * @param pcmid PCM identifier (a feedback applies to a PCM)
    */
   case class Data(
-    email: String,
-    subject: String,
-    content: String)
+    email: Option[String],
+    subject: Option[String],
+    content: String,
+    pcmid: String)
 }

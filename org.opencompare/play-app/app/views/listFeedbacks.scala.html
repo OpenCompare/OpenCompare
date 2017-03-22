@@ -41,8 +41,19 @@
     <div class="feedbacks">
         @for(feedback <- feedbacks) {
 			<div class="feedback">
-				<span class="feedback-subject">@feedback.subject</span>
-				<span class="feedback-email">From : @feedback.email</span>
+
+                @if(feedback.subject.isEmpty) {
+                    <span class="feedback-subject">Unknown subject</span>
+                } else {
+                    <span class="feedback-subject">@feedback.subject</span>
+                }
+                <span class="feedback-email">For comparison matrix <a href="/pcm/@feedback.pcmid">@feedback.pcmid</a></span>
+                @if(feedback.email.isEmpty) {
+                    <!-- <span class="feedback-email">Unknown email</span>-->
+                } else {
+                <span class="feedback-email">(from : @feedback.email)</span>
+                }
+                <span class="feedback-email">(date: @feedback.date)</span>
 				<p>@feedback.content</p>
 			</div>
         }
