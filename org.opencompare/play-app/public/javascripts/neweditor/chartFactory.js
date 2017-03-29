@@ -445,6 +445,10 @@ ChartFactory.prototype.drawPie = function(){
 	else{
 		this.pieNonNumeric();
 	}
+	
+	if(this.chartData.data.datasets[0].data.length > 15){
+		this.chartData.options.legend.display = false;
+	}
 
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
