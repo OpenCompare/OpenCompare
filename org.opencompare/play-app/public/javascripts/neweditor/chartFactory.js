@@ -627,7 +627,7 @@ ChartFactory.prototype.drawRadar = function(){
     this.chartData.data.labels = labels;
   }
 
-	if(this.chartData.data.datasets[0].data.length > this.maxLegendDisplay){
+	if(this.chartData.data.datasets.length > this.maxLegendDisplay){
 		this.chartData.options.legend.display = false;
 	}
 
