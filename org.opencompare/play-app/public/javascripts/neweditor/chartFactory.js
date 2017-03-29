@@ -693,6 +693,10 @@ ChartFactory.prototype.drawBar = function(){
 				
 				var fea2 = $('#choix'+j+' option:selected').val();
 				var c2 = this.taboption[fea2];
+				
+				// we add the name in the legend
+				this.chartData.data.datasets[j-1].label = c2.name;
+				
 				tabSup[j].push(parseFloat(product.getCell(c2).content));
 			}
 			
@@ -703,6 +707,9 @@ ChartFactory.prototype.drawBar = function(){
 	
 	// we sort directly the array of number
 	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
+	
+	// we add the name of the first feature in the legend
+	this.chartData.data.datasets[0].label = this.taboption[fea].name;
 	
 	var i = 0;
 	while (i < this.chartData.data.datasets[0].data.length) {
