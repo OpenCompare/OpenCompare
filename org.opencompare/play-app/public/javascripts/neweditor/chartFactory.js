@@ -1,5 +1,9 @@
 //Object to generate chart
 function ChartFactory(editor, div){
+	
+  this.maxLengthLabel = 40;
+  this.maxLegendDisplay = 20;	
+	
   var self = this;
   this.editor = editor;
   this.div = div;
@@ -446,7 +450,7 @@ ChartFactory.prototype.drawPie = function(){
 		this.pieNonNumeric();
 	}
 	
-	if(this.chartData.data.datasets[0].data.length > 15){
+	if(this.chartData.data.datasets[0].data.length > this.maxLegendDisplay){
 		this.chartData.options.legend.display = false;
 	}
 
@@ -482,6 +486,11 @@ ChartFactory.prototype.pieNumeric = function (){
 			// we create a map, in the first array is the values
 			// and the labels is in the second array with the same index
 			arr.push(parseFloat(product.getCell(feat).content));
+			
+			// we cut the label if its length is too big
+			if (label.length > this.maxLengthLabel){
+				label = label.substring(this.maxLengthLabel);
+			}
 			arr2.push(label);
 		}
 
@@ -562,7 +571,12 @@ ChartFactory.prototype.pieNonNumeric = function (){
 			this.chartData.data.datasets[0].backgroundColor.push(label.toColour());
 		}
 		// we add the name of label in the canvas
-		this.chartData.data.datasets[0].label = feat.name;
+		// we cut the label if its length is too big
+		var label = feat.name;
+		if (label.length > this.maxLengthLabel){
+			label = label.substring(this.maxLengthLabel);
+		}
+		this.chartData.data.datasets[0].label = label;
 	}
 	else{
 		console.error("too much constraint");
