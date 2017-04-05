@@ -488,7 +488,7 @@ ChartFactory.prototype.pieNumeric = function (){
 			arr.push(parseFloat(product.getCell(feat).content));
 			
 			// we cut the label if its length is too big
-			label = label.toCut(this.maxLengthLabel);
+			label = String(label).toCut(this.maxLengthLabel);
 			arr2.push(label);
 		}
 
@@ -560,7 +560,7 @@ ChartFactory.prototype.pieNonNumeric = function (){
 		
 			// we recover the label of the first element and push into the canvas
 			var label = tabLabel[lab];
-			label = label.toCut(this.maxLengthLabel);
+			label = String(label).toCut(this.maxLengthLabel);
 			this.chartData.data.labels.push(label);
 			
 			// with the index lab, we recover the values and push into the canvas with the color of the label
@@ -617,7 +617,7 @@ ChartFactory.prototype.drawRadar = function(){
         }
       }
 		var label = product.getCell(this.editor.features[0]).content;
-		label = label.toCut(this.maxLengthLabel);
+		label = String(label).toCut(this.maxLengthLabel);
 		this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
     }
     this.chartData.data.labels = labels;
@@ -692,7 +692,7 @@ ChartFactory.prototype.drawBar = function(){
 		var label = product.getCell(this.editor.features[0]).content;
 		var value = parseFloat(product.getCell(c1).content);
 		
-		label = label.toCut(this.maxLengthLabel);
+		label = String(label).toCut(this.maxLengthLabel);
 
 		// push only if the value is numerical value
 		if (!isNaN(value)){
@@ -803,7 +803,7 @@ ChartFactory.prototype.drawLine = function() {
 				var product = this.editor.products[p];
 				var label = product.getCell(this.editor.features[0]).content;
 				
-				label = label.toCut(this.maxLengthLabel);
+				label = String(label).toCut(this.maxLengthLabel);
 				var value = parseFloat(product.getCell(c1).content);
 				
 				if(!isNaN(value)){
@@ -956,7 +956,7 @@ ChartFactory.prototype.drawAutre = function(){
 		
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
-				label = label.toCut(this.maxLengthLabel);
+				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
 		
 				// with the index lab, we recover the values and push into the canvas with the color of the label
@@ -978,7 +978,7 @@ ChartFactory.prototype.drawAutre = function(){
 			
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
-				label = label.toCut(this.maxLengthLabel);
+				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
 			
 				// for each value in tabConstraint, we recover the value affiliate and push in the canvas
