@@ -1,6 +1,8 @@
 package JSONformating.model;
 
-public class JValue {
+import java.util.Collection;
+
+public abstract class JValue {
 	
 	private Object value;
 	
@@ -16,7 +18,11 @@ public class JValue {
 		return "";
 	}
 
-	public String export() {
+	public Object export() {
 		return "";
+	}
+
+	public boolean sameValue(JValue value) {
+		return this.equals(value);
 	}
 }
