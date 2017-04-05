@@ -1,16 +1,17 @@
 package data_off;
 
+/*
 import java.io.IOException;
 import java.util.Set;
 
 import org.bson.Document;
 import org.json.JSONException;
 
-import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoCursor;*/
 
 public class Run {
 
-	public static void main(String[] arg0) throws IOException, JSONException{
+	/*public static void main(String[] arg0) throws IOException, JSONException{
 
 		OFFactsCSVCreator creator = new OFFactsCSVCreator();
 
@@ -32,5 +33,5 @@ public class Run {
 
 		creator.close();
 
-	}
+	}*/
 }

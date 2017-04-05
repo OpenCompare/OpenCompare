@@ -1,21 +1,21 @@
 package JSONformating.model;
 
 public class JBooleanValue extends JValue {
-	private boolean value;
+	private boolean boolValue;
 
 	public boolean isValue() {
-		return value;
+		return boolValue;
 	}
 
 	public void setValue(boolean value) {
-		this.value = value;
+		this.boolValue = value;
 	}
 	
 	public String toString(){
-		return String.valueOf(value);
+		return String.valueOf(boolValue);
 	}
 	
 	public String export(){
-		return String.valueOf(value);
+		return String.valueOf(boolValue);
 	}
 }

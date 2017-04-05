@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import org.bson.Document;
+// import org.bson.Document;
 
 /**
  * OFFProduct class
@@ -20,7 +20,7 @@ import org.bson.Document;
  */
 public class OFFProduct {
 
-	public static String separator = ",";
+	/*public static String separator = ",";
 
 	private final Logger _log = Logger.getLogger(OFFProduct.class.getName());
 
@@ -227,6 +227,6 @@ public class OFFProduct {
 		}
 		return (str.isEmpty())?str:str.substring(0, str.length() - separator.length());
 	}
-
+*/
 
 }

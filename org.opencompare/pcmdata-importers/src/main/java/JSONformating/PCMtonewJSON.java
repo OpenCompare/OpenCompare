@@ -191,42 +191,19 @@ public class PCMtonewJSON {
 
 	public static void main(String[] args) throws IOException {
 
-		String inFilename = "input-pcm/euro2016.pcm";
-		String outFilename = "input-pcm/euro2016.new.pcm";
+		String inFilename = "off_output/pcms/fr_biscottes-pauvres-en-sel.pcm";
+		String outFilename = "off_output/pcms/fr_biscottes-pauvres-en-sel.test";
 		PCMContainer pcmC = PCMUtil.loadPCMContainer(inFilename);
 		System.out.println("PCM loaded");
 		newJSONFormat nf = mkNewJSONFormatFromPCM(pcmC);
 		System.out.println("new format created");
 		String jsonRes = nf.export();
-		nf.exportToFile(outFilename);
-		System.out.println("exported");
-		//PCMInterpreter.writeToFile("off_output/pcms/new_en_beverages.pcm", jsonRes);
-		System.out.println("written");
+		System.out.println(jsonRes);
+		PCMInterpreter.writeToFile(outFilename, jsonRes);
 
-		System.out.println("" + jsonRes);
-
-
-		// a fictive example to show how GSON works
-		/*
-		String jsonExample = "{\n" +
-				"\t\t\t\"data\": {\n" +
-				"\t\t\t\"translations\": [\n" +
-				"\t\t\t{\n" +
-				"\t\t\t\t\"translatedText\": \"Hello world\"\n" +
-				"\t\t\t}\n" +
-				"\t\t\t]\n" +
-				"\t\t}\n" +
-				"\t\t}";
-
-		System.out.println("" + new JsonParser().parse(jsonExample));
-		*/
-		// error
-		// does not work
 		JsonElement jelement = new JsonParser().parse(jsonRes);
-
-
-
-
+		System.out.println(jelement.toString());
 	}
 
 }
+

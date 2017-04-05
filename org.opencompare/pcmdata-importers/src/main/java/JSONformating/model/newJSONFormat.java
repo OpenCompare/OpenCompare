@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.gson.Gson;
+
 public class newJSONFormat {
 
 	private String name;
@@ -67,43 +69,49 @@ public class newJSONFormat {
 	public void addProduct(JProduct p){
 		products.add(p);
 	}
+	
+	public String exportGson(){
+		Gson gson = new Gson();
+
+		return gson.toJson(this);
+	}
 
 	public String export(){
 		System.out.println("Exporting...");
 
-		String res = "pcm:{"; //open pcm
+		String res = "{"; //open pcm
 
-		res += "name:\"" + name;
-		res += "\",license:\"" + license;
-		res += "\",source:\"" + source;
-		res += "\",creator:\"" + creator;
-		res += "\",primaryFeatureID:\"" + primaryFeatureID;
-		res += "\",features:{"; //open features
+		res += "\"name\":\"" + name;
+		res += "\",\"license\":\"" + license;
+		res += "\",\"source\":\"" + source;
+		res += "\",\"creator\":\"" + creator;
+		res += "\",\"primaryFeatureID\":\"" + primaryFeatureID;
+		res += "\",\"features\":{"; //open features
 
 		for(JFeature f : features){
-			res += f.getId() + ":{"; //open feature f
-			res += "id:\"" + f.getId();
-			res += "\",name:\"" + f.getName();
-			res += "\",type:\"" + f.getType().toString();
+			res += "\"" + f.getId() + "\":{"; //open feature f
+			res += "\"id\":\"" + f.getId();
+			res += "\",\"name\":\"" + f.getName();
+			res += "\",\"type\":\"" + f.getType().toString();
 			res += "\"},"; //close feature f
 		}
 
 		res = features.isEmpty() ? res : res.substring(0, res.length() - 1);
 		System.out.println("Features exported");
 		res += "},"; //close features
-		res += "products:{"; //open products
+		res += "\"products\":{"; //open products
 
 		for(JProduct p : products){
-			res += p.getId() + ":{"; //open product
-			res += "cells:{"; //open cells
+			res += "\"" + p.getId() + "\":{"; //open product
+			res += "\"cells\":{"; //open cells
 			for(JCell c : p.getCells()){
-				res += c.getId() + ":{"; //open cell
-				res += "productID:\"" + c.getProductID();
-				res += "\",featureID:\"" + c.getFeatureID();
-				res += "\",type:\"" + c.getType();
-				res += "\",isPartial:\"" + "false"; //FIXME temp isPartial value
-				res += "\",unit:\"" + "undefined"; //FIXME temp isPartial value
-				res += "\",value:" + (c.getValue() == null ? "undefined" : c.getValue().export());
+				res += "\"" + c.getId() + "\":{"; //open cell
+				res += "\"productID\":\"" + c.getProductID();
+				res += "\",\"featureID\":\"" + c.getFeatureID();
+				res += "\",\"type\":\"" + c.getType();
+				res += "\",\"isPartial\":\"" + "false"; //FIXME temp isPartial value
+				res += "\",\"unit\":\"" + "undefined"; //FIXME temp unit value
+				res += "\",\"value\":" + (c.getValue() == null ? "\"undefined\"" : c.getValue().export());
 				res += "},";//close cell
 			}
 			res = p.getCells().isEmpty() ? res : res.substring(0, res.length() - 1);
@@ -131,20 +139,20 @@ public class newJSONFormat {
 			bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
 
-			String res = "pcm:{"; //open pcm
+			String res = "{"; //open pcm
 
-			res += "name:\"" + name;
-			res += "\",license:\"" + license;
-			res += "\",source:\"" + source;
-			res += "\",creator:\"" + creator;
-			res += "\",primaryFeatureID:\"" + primaryFeatureID;
-			res += "\",features:{"; //open features
+			res += "\"name\":\"" + name;
+			res += "\",\"license\":\"" + license;
+			res += "\",\"source\":\"" + source;
+			res += "\",\"creator\":\"" + creator;
+			res += "\",\"primaryFeatureID\":\"" + primaryFeatureID;
+			res += "\",\"features\":{"; //open features
 
 			for(JFeature f : features){
-				res += f.getId() + ":{"; //open feature f
-				res += "id:\"" + f.getId();
-				res += "\",name:\"" + f.getName();
-				res += "\",type:\"" + f.getType().toString();
+				res += "\"" + f.getId() + "\":{"; //open feature f
+				res += "\"id\":\"" + f.getId();
+				res += "\",\"name\":\"" + f.getName();
+				res += "\",\"type\":\"" + f.getType().toString();
 				res += "\"},"; //close feature f
 			}
 
@@ -154,19 +162,19 @@ public class newJSONFormat {
 			out.print(res); //print features
 			res = ""; //reset string
 
-			res += "products:{"; //open products
+			res += "\"products\":{"; //open products
 
 			for(JProduct p : products){
-				res += p.getId() + ":{"; //open product
-				res += "cells:{"; //open cells
+				res += "\"" + p.getId() + "\":{"; //open product
+				res += "\"cells\":{"; //open cells
 				for(JCell c : p.getCells()){
-					res += c.getId() + ":{"; //open cell
-					res += "productID:\"" + c.getProductID();
-					res += "\",featureID:\"" + c.getFeatureID();
-					res += "\",type:\"" + c.getType();
-					res += "\",isPartial:\"" + "false"; //FIXME temp isPartial value
-					res += "\",unit:\"" + "undefined"; //FIXME temp isPartial value
-					res += "\",value:" + (c.getValue() == null ? "undefined" : c.getValue().export());
+					res += "\"" + c.getId() + "\":{"; //open cell
+					res += "\"productID\":\"" + c.getProductID();
+					res += "\",\"featureID\":\"" + c.getFeatureID();
+					res += "\",\"type\":\"" + c.getType();
+					res += "\",\"isPartial\":\"" + "false"; //FIXME temp isPartial value
+					res += "\",\"unit\":\"" + "undefined"; //FIXME temp unit value
+					res += "\",\"value\":" + (c.getValue() == null ? "\"undefined\"" : c.getValue().export());
 					res += "},";//close cell
 				}
 				res = p.getCells().isEmpty() ? res : res.substring(0, res.length() - 1);

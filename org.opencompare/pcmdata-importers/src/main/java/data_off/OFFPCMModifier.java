@@ -103,7 +103,7 @@ public class OFFPCMModifier {
 	private static Multiple toMultipleValue(String content) {
 		PCMFactory f = new PCMFactoryImpl();
 		Multiple multiple = f.createMultiple();
-		for(String s : content.split(OFFProduct.separator)){
+		for(String s : content.split(",")){ // OFFProduct.separator
 			if(!s.isEmpty()){
 				StringValue val = f.createStringValue();
 				val.setValue(s);
