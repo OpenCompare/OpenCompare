@@ -171,10 +171,13 @@ ChartFactory.prototype.drawChart = function(){
 		this.chartColorLabel = $('<label>').html('&nbsp;color&nbsp:&nbsp').appendTo(this.listSelect);
 		this.chartColorselect = $('<select id="c" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
 			var a = $('#c option:selected').val();
+			console.log(a);
 			self.chartDataColor = self.taboption[a];
 			self.drawChart();
 		});
 
+		this.chartRadiusselect.append('<option value=""><empty></option>');
+		this.chartColorselect.append('<option value=""><empty></option>');
 		// we put all choice in the select we have created
 		for(var i in this.taboption) {
 			this.chartXselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
@@ -186,8 +189,8 @@ ChartFactory.prototype.drawChart = function(){
 		// we take the first option to begin
 		this.chartDataX = this.taboption[0];
 		this.chartDataY = this.taboption[0];
-		this.chartDataRadius = this.taboption[0];
-		this.chartDataColor = this.taboption[0];
+		this.chartDataRadius = null;
+		this.chartDataColor = null;
 	}
 
 	// the last type become productChart and we draw productChart
@@ -364,10 +367,8 @@ ChartFactory.prototype.drawChart = function(){
 }
 
 function newProductChartDataset(product,feature,x,y,r,c,imageUrl){
-	console.log(x)
 	var dataset = product.newDataset(feature,x,y,r,c);
 	dataset.data[0].image=imageUrl;
-	// console.log(dataset);
 	return dataset;
 }
 

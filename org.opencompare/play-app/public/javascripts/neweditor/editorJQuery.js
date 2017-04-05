@@ -293,8 +293,8 @@ Editor.prototype.loadPCM = function (pcmID) {
            data: [{
              x: self.getCell(x).content,
              y: self.getCell(y).content,
-             r: self.getCell(r).content,
-             c: self.getCell(c).content
+             r: r?self.getCell(r).content : 0,
+             c: c?self.getCell(c).content : 0
            }]
         };
         return this.dataset
