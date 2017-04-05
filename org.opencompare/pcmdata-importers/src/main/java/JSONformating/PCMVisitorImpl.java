@@ -20,16 +20,16 @@ import org.opencompare.api.java.value.StringValue;
 import org.opencompare.api.java.value.Unit;
 import org.opencompare.api.java.value.Version;
 
-import JSONformating.model.newJSONFormat;
+import JSONformating.model.JSONFormat;
 
 
 
 
 public class PCMVisitorImpl implements PCMVisitor {
 
-	private newJSONFormat nJSONf;
+	private JSONFormat nJSONf;
 	
-	public PCMVisitorImpl(newJSONFormat nJf) {
+	public PCMVisitorImpl(JSONFormat nJf) {
 		nJSONf = nJf;
 	}
 	

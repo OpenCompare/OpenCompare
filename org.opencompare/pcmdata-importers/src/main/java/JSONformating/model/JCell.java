@@ -1,10 +1,12 @@
 package JSONformating.model;
 
+import java.util.Map;
+
 public class JCell{
 	private String id;
 	private String productID;
 	private String featureID;
-	private newJSONFormatType type;
+	private JSONFormatType type;
 	private boolean isPartial;
 	private String unit;
 	private JValue value;
@@ -26,10 +28,10 @@ public class JCell{
 	public void setFeatureID(String featureID) {
 		this.featureID = featureID;
 	}
-	public newJSONFormatType getType() {
+	public JSONFormatType getType() {
 		return type;
 	}
-	public void setType(newJSONFormatType type) {
+	public void setType(JSONFormatType type) {
 		this.type = type;
 	}
 	public boolean isPartial() {
@@ -49,5 +51,18 @@ public class JCell{
 	}
 	public void setValue(JValue value) {
 		this.value = value;
+	}
+	public boolean sameCell(JCell pC, Map<String, String> featLinks){
+		String featIDbis = featLinks.get(featureID);
+		if(this.value == null){
+			if(pC.value == null){
+				return true;
+			}else{
+				return false;
+			}
+		}
+//		System.out.println(pC.getFeatureID() + " " + featIDbis);
+		return pC.getFeatureID().equals(featIDbis) && this.type.equals(pC.getType()) &&
+				this.value.sameValue(pC.value);
 	}
 }

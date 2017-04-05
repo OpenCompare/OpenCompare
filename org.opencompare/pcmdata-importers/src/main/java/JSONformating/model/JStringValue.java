@@ -1,5 +1,7 @@
 package JSONformating.model;
 
+import org.json.JSONObject;
+
 public class JStringValue extends JValue {
 	private String strValue;
 
@@ -16,6 +18,11 @@ public class JStringValue extends JValue {
 	}
 	
 	public String export(){
-		return "\"" + strValue + "\"";
+		return strValue;
+	}
+	
+	public boolean sameValue(JValue value){
+		return value instanceof JStringValue;// && this.strValue.equals(((JStringValue) value).getValue());
+//		return true;
 	}
 }

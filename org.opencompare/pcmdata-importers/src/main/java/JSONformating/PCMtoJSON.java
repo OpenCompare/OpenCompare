@@ -1,10 +1,12 @@
 package JSONformating;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.google.gson.JsonElement;
@@ -17,12 +19,12 @@ import JSONformating.model.*;
 import data_off.PCMInterpreter;
 import data_off.PCMUtil;
 
-public class PCMtonewJSON {
+public class PCMtoJSON {
 
-	public static newJSONFormat mkNewJSONFormatFromPCM(PCMContainer pcmC){
+	public static JSONFormat mkNewJSONFormatFromPCM(PCMContainer pcmC) throws IOException{
 
 		PCM pcm = pcmC.getPcm();
-		newJSONFormat nJSONf = new newJSONFormat();
+		JSONFormat nJSONf = new JSONFormat();
 
 		nJSONf.setName(pcm.getName());
 		nJSONf.setCreator(pcmC.getMetadata().getCreator());
@@ -37,7 +39,7 @@ public class PCMtonewJSON {
 			jf = new JFeature();
 			jf.setId("F" + fCount);
 			jf.setName(f.getName());
-			jf.setType(newJSONFormatType.UNDEFINED);//TODO
+			jf.setType(JSONFormatType.UNDEFINED);//TODO
 			nJSONf.addFeature(jf);
 			features.put(f, jf.getId());
 			fCount++;
@@ -77,46 +79,46 @@ public class PCMtonewJSON {
 
 	}
 
-	private static void addTypesToFeatures(newJSONFormat nJSONf) {
+	private static void addTypesToFeatures(JSONFormat nJSONf) {
 		for(JFeature jf : nJSONf.getFeatures()){
 			jf.setType(nJSONf.getTypeForFeature(jf.getId()));
 		}
 
 	}
 
-	public static JValue createJValueFromCellForJCell(Cell c, JCell jc){
+	public static JValue createJValueFromCellForJCell(Cell c, JCell jc) throws IOException{
 		Value value =  c.getInterpretation();
 		if(value instanceof BooleanValueImpl){
 
-			jc.setType(newJSONFormatType.BOOLEAN);
+			jc.setType(JSONFormatType.BOOLEAN);
 			JBooleanValue bool = new JBooleanValue();
-			bool.setValue(((BooleanValue) c.getInterpretation()).getValue());
+			bool.setValue(((BooleanValue) value).getValue());
 			return bool;
 
 		}else if(value instanceof DateValueImpl){
 
-			jc.setType(newJSONFormatType.DATE);
+			jc.setType(JSONFormatType.DATE);
 			JStringValue stringValue = new JStringValue();
-			stringValue.setValue(((DateValue) c.getInterpretation()).getValue());
+			stringValue.setValue(((DateValue) value).getValue());
 			return stringValue;
 
 		}else if(value instanceof IntegerValueImpl){
 
-			jc.setType(newJSONFormatType.INTEGER);
+			jc.setType(JSONFormatType.INTEGER);
 			JNumberValue numValue = new JNumberValue();
-			numValue.setValue(((IntegerValue) c.getInterpretation()).getValue());
+			numValue.setValue(((IntegerValue) value).getValue());
 			return numValue;
 
 		}else if(value instanceof RealValueImpl){
 
-			jc.setType(newJSONFormatType.REAL);
+			jc.setType(JSONFormatType.REAL);
 			JNumberValue numValue = new JNumberValue();
-			numValue.setValue(((RealValue) c.getInterpretation()).getValue());
+			numValue.setValue(((RealValue) value).getValue());
 			return numValue;
 
 		}else if(value instanceof StringValueImpl){
 
-			StringValue sv = (StringValue) c.getInterpretation();
+			StringValue sv = (StringValue) value;
 			if(Pattern.matches("^\\s*http:\\/\\/.*"
 					+ "|^\\s*https:\\/\\/.*", sv.getValue())
 			&& Pattern.matches(".*\\.jpg\\s*$"
@@ -125,27 +127,31 @@ public class PCMtonewJSON {
 					+ "|.*\\.bmp\\s*$"
 					+ "|.*\\.png\\s*$"
 					+ "|.*\\.gif\\s*$", sv.getValue())){
-				jc.setType(newJSONFormatType.IMAGE);
+				jc.setType(JSONFormatType.IMAGE);
 			}else if(Pattern.matches("^\\s*http:\\/\\/.*"
 					+ "|^\\s*https:\\/\\/.*", sv.getValue())){
-				jc.setType(newJSONFormatType.URL);
+				jc.setType(JSONFormatType.URL);
 			}else{
-				jc.setType(newJSONFormatType.STRING);
+				jc.setType(JSONFormatType.STRING);
 			}
 			JStringValue stringValue = new JStringValue();
-			stringValue.setValue(((StringValue) c.getInterpretation()).getValue());
+			stringValue.setValue(((StringValue) value).getValue());
 			return stringValue;
 		}else if(value instanceof MultipleImpl){
-			jc.setType(newJSONFormatType.MULTIPLE);
+			jc.setType(JSONFormatType.MULTIPLE);
 			JMultipleValue mulvalue = new JMultipleValue();
-			mulvalue.setValue(createJValuesForMultiple(((Multiple) c.getInterpretation()).getSubValues()));
+			mulvalue.setValue(createJValuesForMultiple(((Multiple) value).getSubValues()));
 			return mulvalue;
 		}else if(value instanceof VersionImpl){
-			jc.setType(newJSONFormatType.VERSION);
+			jc.setType(JSONFormatType.VERSION);
+			JStringValue stringValue = new JStringValue();
+			stringValue.setValue(""); //FIXME Version ? .api ? .model ?
+			return stringValue;
+			
 		}else if(value instanceof NotApplicableImpl){
-			jc.setType(newJSONFormatType.UNDEFINED);
+			jc.setType(JSONFormatType.UNDEFINED);
 		}else{
-			jc.setType(newJSONFormatType.UNDEFINED);
+			jc.setType(JSONFormatType.UNDEFINED);
 		}
 		return null;
 	}
@@ -189,20 +195,29 @@ public class PCMtonewJSON {
 		return jvalues;
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException  {
 
-		String inFilename = "off_output/pcms/fr_biscottes-pauvres-en-sel.pcm";
-		String outFilename = "off_output/pcms/fr_biscottes-pauvres-en-sel.test";
+		String inFilename = "off_output/pcms/en_french-blue-veined-cheeses.pcm";
+		String outFilename = "off_output/pcms/en_french-blue-veined-cheeses.new.pcm";
 		PCMContainer pcmC = PCMUtil.loadPCMContainer(inFilename);
 		System.out.println("PCM loaded");
-		newJSONFormat nf = mkNewJSONFormatFromPCM(pcmC);
+		JSONFormat nf = mkNewJSONFormatFromPCM(pcmC);
 		System.out.println("new format created");
-		String jsonRes = nf.export();
-		System.out.println(jsonRes);
-		PCMInterpreter.writeToFile(outFilename, jsonRes);
+//		String jsonRes = nf.export();
+//		System.out.println(jsonRes);
+		nf.exportToFile(outFilename);
+//		PCMInterpreter.writeToFile(outFilename, jsonRes);
 
-		JsonElement jelement = new JsonParser().parse(jsonRes);
-		System.out.println(jelement.toString());
+//		JsonElement jelement = new JsonParser().parse(jsonRes);
+		System.out.println("EXPORT OK");
+		
+		Scanner scanner = new Scanner(new File(outFilename));
+		String json = scanner.useDelimiter("\\Z").next();
+		scanner.close();
+//		System.out.println(json);
+		JsonElement jelement = new JsonParser().parse(json);
+		System.out.println("IMPORT OK");
+//		System.out.println(jelement.toString());
 	}
 
 }

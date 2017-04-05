@@ -17,21 +17,24 @@ import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.io.CSVLoader;
 import org.opencompare.api.java.io.PCMDirection;
 
-import JSONformating.PCMtonewJSON;
-import JSONformating.model.newJSONFormat;
+import JSONformating.PCMtoJSON;
+import JSONformating.model.JSONFormat;
 
 
 public class PCMInterpreter {
 
 	public static void CSVToPCM(String filename) throws IOException{
-		_serializeToPCMJSON(mkPCMInterpreted(filename),filename.replace("off_output/", "off_output/pcms/").replace(".csv", ".pcm"));
+		PCMContainer pcmC = mkPCMInterpreted(filename);
+		PCM pcm = OFFPCMModifier.computeMultiples(pcmC.getPcm());
+		pcmC = new PCMContainer(pcm);
+		_serializeToPCMJSON(pcmC,filename.replace("off_output/", "off_output/pcms/").replace(".csv", ".pcm"));
 	}
 	
 	public static void CSVTonewPCM(String filename) throws IOException{
 		PCMContainer pcmC = mkPCMInterpreted(filename);
 		PCM pcm = OFFPCMModifier.computeMultiples(pcmC.getPcm());
 		pcmC = new PCMContainer(pcm);
-		newJSONFormat nf = PCMtonewJSON.mkNewJSONFormatFromPCM(pcmC);
+		JSONFormat nf = PCMtoJSON.mkNewJSONFormatFromPCM(pcmC);
 		System.out.println("new format created");
 		nf.exportToFile(filename.replace("off_output/", "off_output/pcms/").replace(".csv", ".new.pcm"));
 	}

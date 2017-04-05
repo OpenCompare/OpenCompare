@@ -484,7 +484,7 @@ ChartFactory.prototype.drawPie = function(){
 }
 
 ChartFactory.prototype.pieNumeric = function (){
-
+	
 	var feat = this.chartDataX;
 
     // create two arrays
@@ -509,11 +509,9 @@ ChartFactory.prototype.pieNumeric = function (){
 			// we create a map, in the first array is the values
 			// and the labels is in the second array with the same index
 			arr.push(parseFloat(product.getCell(feat).content));
-
+			
 			// we cut the label if its length is too big
-			if (label.length > this.maxLengthLabel){
-				label = label.substring(this.maxLengthLabel);
-			}
+			label = String(label).toCut(this.maxLengthLabel);
 			arr2.push(label);
 		}
 
@@ -540,33 +538,32 @@ ChartFactory.prototype.pieNumeric = function (){
 
 		i++;
 	}
-
 }
 
 ChartFactory.prototype.pieNonNumeric = function (){
-
-	// boolean who serve to
+	
+	// boolean who serve to 
 	var bool = true;
-
+	
 	// first array of label
 	var tabLabel = [];
 	// second array of number which represent values of label
 	var tabNombre = [];
-
+	
 	// we recover 2 features
 	var feat = this.chartDataX;
-
+	
 	if(bool){
 		for(var p in this.editor.products){
-
+		
 			var product = this.editor.products[p];
 			// we see if the product is visible
 			if(product.visible) {
-
+			
 				// we see the values in the first array and search the index in the array label to obtain the label
 				var prod = product.getCell(feat).content;
 				var index = tabLabel.indexOf(prod);
-
+		
 				// the work if the constraint is not activated
 				if(index == -1){
 					// if the label is not yet in the array
@@ -579,15 +576,16 @@ ChartFactory.prototype.pieNonNumeric = function (){
 				}
 			}
 		}
-
-
+	
+		
 		// we fill the canvas if the constraint is not activated
 		for(var lab in tabLabel){
-
+		
 			// we recover the label of the first element and push into the canvas
 			var label = tabLabel[lab];
+			label = String(label).toCut(this.maxLengthLabel);
 			this.chartData.data.labels.push(label);
-
+			
 			// with the index lab, we recover the values and push into the canvas with the color of the label
 			var nb = tabNombre[lab];
 			this.chartData.data.datasets[0].data.push(nb);
@@ -595,10 +593,7 @@ ChartFactory.prototype.pieNonNumeric = function (){
 		}
 		// we add the name of label in the canvas
 		// we cut the label if its length is too big
-		var label = feat.name;
-		if (label.length > this.maxLengthLabel){
-			label = label.substring(this.maxLengthLabel);
-		}
+		var label = feat.name.toCut(this.maxLengthLabel);
 		this.chartData.data.datasets[0].label = label;
 	}
 	else{
@@ -644,8 +639,9 @@ ChartFactory.prototype.drawRadar = function(){
           data.push(cellValue / feature.filter.max);
         }
       }
-			var label = product.getCell(this.editor.features[0]).content;
-			this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
+		var label = product.getCell(this.editor.features[0]).content;
+		label = String(label).toCut(this.maxLengthLabel);
+		this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
     }
     this.chartData.data.labels = labels;
   }
@@ -718,6 +714,8 @@ ChartFactory.prototype.drawBar = function(){
 		// we recover the value of the product and parse in int
 		var label = product.getCell(this.editor.features[0]).content;
 		var value = parseFloat(product.getCell(c1).content);
+		
+		label = String(label).toCut(this.maxLengthLabel);
 
 		// push only if the value is numerical value
 		if (!isNaN(value)){
@@ -810,31 +808,38 @@ ChartFactory.prototype.drawLine = function() {
 				}
 			}
 		};
-
+		
 		// we recover the number of choice we have
 		var nb = this.nbLine;
-
+		
 		// for each choice
 		for(var j=1 ; j<=nb ; j++){
-
+			
 			// we recover the index feature selected in the choice i, and find the feature in the taboption
 			var fea = $('#choix'+j+' option:selected').val();
 			var c1 = this.taboption[fea];
-			// a array
+			// a array 
 			var tmp = [];
-
+			
 			// for each product
 			for(var p in this.editor.products){
 				var product = this.editor.products[p];
 				var label = product.getCell(this.editor.features[0]).content;
-				// in the first turn of the for, we push labels in the canvas
-				if (j==1){
-					this.chartData.data.labels.push(label);
+				
+				label = String(label).toCut(this.maxLengthLabel);
+				var value = parseFloat(product.getCell(c1).content);
+				
+				if(!isNaN(value)){
+					// in the first turn of the for, we push labels in the canvas
+					if (j==1){
+						this.chartData.data.labels.push(label);
+					}
+				
+					// we push the value j in the array tmp
+					tmp.push(value);
 				}
-				// we push the value j in the array tmp
-				tmp.push(parseFloat(product.getCell(c1).content));
 			}
-
+			
 			// we push the array tmp in the canvas, with a backgroundcolor
 			if(j==1){
 				this.chartData.data.datasets[0] = {borderColor:c1.name.toColour(),data:tmp,label:c1.name};
@@ -842,12 +847,12 @@ ChartFactory.prototype.drawLine = function() {
 			else {
 				this.chartData.data.datasets.push({borderColor:c1.name.toColour(),data:tmp,label:c1.name});
 			}
-
+			
 			// we remove all data of the array to start again with the next choice
 			tmp = [];
-
+			
 		}
-
+		
 		this.chart = new Chart(this.chartCanvas[0], this.chartData);
 	}else{
 		console.log('Value undefined');
@@ -859,7 +864,7 @@ ChartFactory.prototype.drawLine = function() {
 // -----------------------------------------------------------------------------------------------------------------
 
 ChartFactory.prototype.drawAutre = function(){
-
+	
   if(this.chartDataX != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
@@ -888,52 +893,52 @@ ChartFactory.prototype.drawAutre = function(){
 		}
 	  }
     };
-
-	// boolean who serve to
+	
+	// boolean who serve to 
 	var bool = true;
-
+	
 	// first array of label
 	var tabLabel = [];
 	// second array of number which represent values of label
 	var tabNombre = [];
 	// third array who represent label constraint
 	var tabConstraint = [];
-
+	
 	// we recover 2 features
 	var feat = this.chartDataX;
 	var feat2 = this.chartDataY;
-
+	
 	// if constraint are activated
 	if (this.compAutre){
 		for(var p in this.editor.products){
-
+		
 			// we create the array of constraint with label
 			var product = this.editor.products[p];
 			var prod = product.getCell(feat2).content;
 			var index = tabConstraint.indexOf(prod);
 			if(index == -1){
 				tabConstraint.push(prod);
-			}
+			}	
 		}
 	}
-
+	
 	// if the array of constraint is more than 10, we do anything
 	if(tabConstraint.length > 10){
 		bool = false;
 	}
-
-
+	
+	
 	if(bool){
 		for(var p in this.editor.products){
-
+		
 			var product = this.editor.products[p];
 			// we see if the product is visible
 			if(product.visible) {
-
+			
 				// we see the values in the first array and search the index in the array label to obtain the label
 				var prod = product.getCell(feat).content;
 				var index = tabLabel.indexOf(prod);
-
+			
 				if(!this.compAutre){
 					// the work if the constraint is not activated
 					if(index == -1){
@@ -966,16 +971,17 @@ ChartFactory.prototype.drawAutre = function(){
 				}
 			}
 		}
-
-
+	
+		
 		if(!this.compAutre){
 			// we fill the canvas if the constraint is not activated
 			for(var lab in tabLabel){
-
+		
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
+				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
-
+		
 				// with the index lab, we recover the values and push into the canvas with the color of the label
 				var nb = tabNombre[lab];
 				this.chartData.data.datasets[0].data.push(nb);
@@ -992,16 +998,17 @@ ChartFactory.prototype.drawAutre = function(){
 			// we recover the value of the constraint and put in the canvas
 			this.chartData.data.datasets[0].label = tabConstraint[0];
 			for(var lab in tabLabel){
-
+			
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
+				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
-
+			
 				// for each value in tabConstraint, we recover the value affiliate and push in the canvas
 				for(var i=1 ; i<= tabConstraint.length ; i++){
-
+				
 					var nb = tabNombre[lab][i-1];
-
+				
 					this.chartData.data.datasets[i-1].data.push(nb);
 					this.chartData.data.datasets[i-1].backgroundColor.push(tabConstraint[i-1].toColour());
 				}
@@ -1011,9 +1018,9 @@ ChartFactory.prototype.drawAutre = function(){
 	else{
 		console.error("too much constraint");
 	}
-
+	
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
-
+	                                      
   }else{
     console.log('Value undefined');
   }
@@ -1047,6 +1054,18 @@ String.prototype.toColour = function () {
  Number.prototype.toColour = function () {
    return ('' + this).toColour()
  }
+ 
+ /**
+ * return the same string if the length is less than the fixed maxLength
+ * or we returned a cut string
+ */
+ String.prototype.toCut = function (maxLengthLabel){
+	var ret = this;
+	if (this.length > maxLengthLabel){
+		ret = this.substring(0,maxLengthLabel);
+	}
+	return ret;
+}
 
 //Update chart when configurator change
 ChartFactory.prototype.update = function(){

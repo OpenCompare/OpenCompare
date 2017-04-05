@@ -32,8 +32,9 @@ public class StatPcm {
 	private int nbFeaturesHomog;
 	private double ratioFeaturesHomog;
 	private int nbFeaturesHomogNumeric;
-	
+
 	public StatPcm(PCM _pcm) {
+		pcm = _pcm;
 		setNbRows();
 		setNbFeatures();
 		setNbCells();
@@ -125,21 +126,25 @@ public class StatPcm {
 			List<Cell> cells = feat.getCells();
 			for (Cell cell : cells) {
 				Value v = cell.getInterpretation();
-				String cl = v.getClass().toString();
-				if (v instanceof RealValue || v instanceof IntegerValue)
-					cl = "Numeric";
-
-				if (!mapMetrics2.containsKey(cl))
-					mapMetrics2.put(cl, 0);
-				else
-					mapMetrics2.put(cl, mapMetrics2.get(cl) + 1);
+				if(v != null) {
+					String cl = v.getClass().toString();
+					if (v instanceof RealValue || v instanceof IntegerValue)
+						cl = "Numeric";
+	
+					if (!mapMetrics2.containsKey(cl))
+						mapMetrics2.put(cl, 0);
+					else
+						mapMetrics2.put(cl, mapMetrics2.get(cl) + 1);
+				}
 
 			} // end for cells
 			Double tauxHomogeneity = tauxHomg(feat, mapMetrics2);
-			System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" + tauxHomogeneity);
+			// System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" +
+			// tauxHomogeneity);
 			if (tauxHomogeneity >= THRESHOLD_HOMOGENEOUS) {
 				nbFeaturesHomog++;
-				System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" + tauxHomogeneity);
+				// System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" +
+				// tauxHomogeneity);
 			}
 		} // end for features
 
@@ -156,10 +161,13 @@ public class StatPcm {
 			ratioFeaturesHomog = 0.0;
 
 		}
+		if (getNbFeatures() == 1) {
+			this.ratioFeaturesHomog = 0.0;
+		} else {
+			ratioFeaturesHomog = (double) ((getNbFeaturesHomog() * 100) / (getNbFeatures() - 1));
 
-		ratioFeaturesHomog = (double) ((getNbFeaturesHomog() * 100) / (getNbFeatures() - 1));
-
-		this.ratioFeaturesHomog = ratioFeaturesHomog;
+			this.ratioFeaturesHomog = ratioFeaturesHomog;
+		}
 	}
 
 	public int getNbFeaturesHomogNumeric() {
@@ -178,23 +186,26 @@ public class StatPcm {
 			List<Cell> cells = feat.getCells();
 			for (Cell cell : cells) {
 				Value v = cell.getInterpretation();
-
-				String cl = v.getClass().toString();
-				if (v instanceof RealValue || v instanceof IntegerValue)
-					cl = "Numeric";
-
-				if (!mapMetrics2.containsKey(cl))
-					mapMetrics2.put(cl, 0);
-				else
-					mapMetrics2.put(cl, mapMetrics2.get(cl) + 1);
-
+				if( v != null){
+					String cl = v.getClass().toString();
+					
+					if (v instanceof RealValue || v instanceof IntegerValue)
+						cl = "Numeric";
+	
+					if (!mapMetrics2.containsKey(cl))
+						mapMetrics2.put(cl, 0);
+					else
+						mapMetrics2.put(cl, mapMetrics2.get(cl) + 1);
+				}
 			} // end for cells
 			Double tauxHomogeneity = tauxHomg(feat, mapMetrics2);
-			System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" + tauxHomogeneity);
+			// System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" +
+			// tauxHomogeneity);
 			if (tauxHomogeneity >= THRESHOLD_HOMOGENEOUS) {
 				if (isFeatureNumeric(feat)) {
 					nbFeaturesHomogNumeric++;
-					System.err.println("mapMetrics2: " + mapMetrics2 + " taux=" + tauxHomogeneity);
+					// System.err.println("mapMetrics2: " + mapMetrics2 + "
+					// taux=" + tauxHomogeneity);
 				}
 			}
 		} // end for features
@@ -248,8 +259,9 @@ public class StatPcm {
 
 	/**
 	 * 
-	 * @param f feature homogeneous
-	 *            
+	 * @param f
+	 *            feature homogeneous
+	 * 
 	 * @return if the feature is numeric or not
 	 */
 	public boolean isFeatureNumeric(Feature f) {
