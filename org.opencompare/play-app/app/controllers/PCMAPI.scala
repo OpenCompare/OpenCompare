@@ -65,7 +65,7 @@ class PCMAPI @Inject() (
         result flatMap { dbPCM =>
             if (dbPCM.isDefined) {
                 val pcmC = dbPCM.get.pcmContainer.get
-                val jsonContainer = Json.parse(PCMtonewJSON.mkNewJSONFormatFromPCM(pcmC).export()).as[JsObject]
+                val jsonContainer = Json.parse(PCMtoJSON.mkNewJSONFormatFromPCM(pcmC).export()).as[JsObject]
                 Future.successful(Ok(jsonContainer).withHeaders(
                     "Access-Control-Allow-Origin" -> "*"
                 ))

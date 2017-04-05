@@ -1,30 +1,20 @@
 package pcm_Export_Mongo;
 
-import java.util.List;
-import java.util.Set;
-import java.util.TreeMap;
-
-import org.opencompare.api.java.Cell;
-import org.opencompare.api.java.Feature;
 import org.opencompare.api.java.PCM;
-import org.opencompare.api.java.Product;
-import org.opencompare.api.java.Value;
-import org.opencompare.api.java.value.IntegerValue;
-import org.opencompare.api.java.value.RealValue;
+import org.opencompare.api.java.PCMContainer;
 
 public class PCMInfoContainer {
 
-	private static final double THRESHOLD_HOMOGENEOUS = 90;
 	private StatPcm _statPcm;
-	private PCM _pcm;
+	private PCMContainer _pcm;
 
-	public PCMInfoContainer(PCM pcm) {
+	public PCMInfoContainer(PCMContainer pcm) {
 		_pcm = pcm;
-		preCompute(pcm);
+		preCompute(_pcm.getPcm());
 	}
 
 	private void preCompute(PCM pcm) {
-		/*StatPcm*/ _statPcm = new StatPcm(_pcm);
+		_statPcm = new StatPcm(_pcm.getPcm());
 
 	}
 
@@ -33,7 +23,7 @@ public class PCMInfoContainer {
 			return true;
 		else
 			return false;
-
+		
 	}
 	
 }
