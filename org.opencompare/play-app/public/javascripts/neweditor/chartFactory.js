@@ -342,6 +342,7 @@ function newProductChartDataset(product,feature,x,y,imageUrl){
 	dataset.data[0].cropCircle=true;
 	dataset.data[0].strokeCircle=true;
 	dataset.data[0].image=imageUrl;
+	// console.log(dataset);
 	return dataset;
 }
 
@@ -406,7 +407,6 @@ ChartFactory.prototype.drawProductChart = function(){
 		)
 	  );
     }
-	// console.log(this.chartData);
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
     console.error('X or Y features not defined');
