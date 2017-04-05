@@ -285,7 +285,7 @@ Editor.prototype.loadPCM = function (pcmID) {
         }
       }
 
-      product.newDataset = function(n, x, y){
+      product.newDataset = function(n, x, y, r, c){
         var self = this;
         this.dataset = {
            label: self.getCell(n).content,
@@ -293,7 +293,8 @@ Editor.prototype.loadPCM = function (pcmID) {
            data: [{
              x: self.getCell(x).content,
              y: self.getCell(y).content,
-             r: 20
+             r: self.getCell(r).content,
+             c: self.getCell(c).content
            }]
         };
         return this.dataset
