@@ -1,4 +1,47 @@
 //********************************************************************************************************************************************************************
+//Some function
+
+/**
+ * get the cell and return a string representation of the value
+ */
+function valueToString (cell) {
+  var string = ''
+
+  if (cell.type === 'multiple') {
+    for (var i in cell.value) {
+      if (i > 0) string += ', '
+      string += cell.value[i]
+    }
+  } else {
+    string = '' + cell.value
+  }
+
+  return string
+}
+
+/**
+ * get the cell and return a html representation of the value
+ */
+function valueToHtml (cell) {
+  var html = ''
+
+  if (cell.type === 'multiple') {
+    for (var i in cell.value) {
+      if (i > 0) html += ', '
+      html += cell.value[i]
+    }
+  } else if (cell.type === 'image') {
+    html = '<a target="_blank" href="' + cell.value + '"><img class="cell-img" src="' + cell.value + '"></a>'
+  } else if (cell.type === 'url') {
+    html = '<a target="_blank" href="' + cell.value + '">' + cell.value + '</a>'
+  } else {
+    html = '' + cell.value
+  }
+
+  return html
+}
+
+//********************************************************************************************************************************************************************
 //Editor
 
 /**
@@ -9,7 +52,7 @@
 function Editor (divID, pcmID) {
   var that = this
   var self = this
-  this.api = '/api/get/'
+  this.api = '/api/getnewjson/'
   this.div = $('#' + divID).addClass('editor')
   this.pcmID = pcmID
   this.loadPCM()
@@ -107,11 +150,8 @@ Editor.prototype.setCellEdit = function (cell) {
   this.cellEdit.div.addClass('selected')
   this.views.pcmDiv.addClass('cell-edit-visible')
   var type = this.cellEdit.type
-  if (this.cellEdit.interpretation != null) {
-    type += ' (' + this.cellEdit.interpretation.metaClassName() + ')'
-  }
   this.cellEditType.html(type)
-  this.cellEditContent.html(this.cellEdit.content)
+  this.cellEditContent.html(valueToString(this.cellEdit))
 }
 
 //Show view
@@ -172,72 +212,28 @@ Editor.prototype.loadPCM = function (pcmID) {
   // "/assets/pcm/"
   // works also with a local opencompare server ()"/api/get/")
   $.get(this.api + this.pcmID, function (data) {
+    console.log(data)
+    self.pcm = data
+    self.pcm.productsSorted = []
 
-    that.metadata = data.metadata; //Get metadata
-    that.pcm = mypcmApi.loadPCMModelFromString(JSON.stringify(data.pcm)) //Load PCM
-    mypcmApi.decodePCM(that.pcm); //Decode the PCM with KMF, require pcmApi
-
-
-    //Extract products
-    that.products = [];
-    for (var p in that.pcm.products.array) {
-      var product = that.pcm.products.array[p];
+    //Add some attributes and functions to products
+    for (var p in self.pcm.products) {
+      var product = self.pcm.products[p]
+      self.pcm.productsSorted.push(product)
       product.visible = true
-      product.dataset = null //dataset for chart
-
-      //Iterate on each cells and add property
+      product.dataset = null
       product.cellsByFeature = {}
-      for(var c in product.cells.array){
-        var cell = product.cells.array[c]
-        cell._type = null
-        /**
-         * return the type of the content.
-         * @return {string} undefined, integer, float, image, url, string
-         */
-        Object.defineProperty(cell, 'type', {
-          get: function () {
-            if (this._type == null) {
-              if (this.content.length === 0 || (this.interpretation != null && this.interpretation.metaClassName() === 'org.opencompare.model.NotAvailable')) {
-                this._type = 'undefined'
-              } else if (/^(\d+|\d{1,3}(\,\d{3})*|\d{1,3}(\ \d{3})*)$/.test(this.content)) {
-                this._type = 'integer'
-                this.content = parseInt(this.content.replace(/[^\d]+/g, ''), 10)
-              } else if (/^\d+\.\d+$/.test(this.content)) {
-                this._type = 'float'
-                this.content = parseFloat(this.content)
-              } else if (/^.+\.(jpg|jpeg|JPG|JPEG|gif|png|bmp|ico|svg)$/.test(this.content)) {
-                this._type = 'image'
-              } else if (/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w?=\.-]*)*\/?$/.test(this.content)) {
-                this._type = 'url'
-              } else {
-                this._type = 'string'
-              }
-            }
-            return this._type
-          }
-        })
-        /**
-         * return if the type of the content id numeric (integer/float).
-         * @return {boolean}
-         */
-        Object.defineProperty(cell, 'isNumber', {
-          get: function () {
-            return this.type === 'integer' || this.type === 'float'
-          }
-        })
 
-        product.cellsByFeature[cell.feature.generated_KMF_ID] = cell
-        var htmlContent = cell.content
-        if (cell.type === 'image') {
-          htmlContent = "<a target='_blank' href='" + cell.content + "'><img class='cell-img' src='" + cell.content + "'></a>"
-        } else if (cell.type === 'url') {
-          htmlContent = "<a target='_blank' href='" + cell.content + "'>" + cell.content + "</a>"
-        }
-        cell.div = $('<div>').addClass('pcm-cell').html(htmlContent).click({cell: cell}, function (event) {
+      //Add some attributes and functions to cells
+      for (var c in product.cells) {
+        var cell = product.cells[c]
+        product.cellsByFeature[cell.featureID] = cell
+        cell.match = true
+
+        cell.div = $('<div>').addClass('pcm-cell').html(valueToHtml(cell)).click({cell: cell}, function (event) {
           self.setCellEdit(event.data.cell)
         })
         cell.div.cell = cell
-        cell.match = true
       }
 
       /**
@@ -247,71 +243,85 @@ Editor.prototype.loadPCM = function (pcmID) {
        */
       product.getCell = function (feature) {
         if (typeof feature === 'undefined') {
-          feature = that.features[0]
-        } else if (typeof feature === 'number' || typeof feature === 'string') {
-          feature = that.features[feature]
+          feature = self.pcm.features[self.pcm.primaryFeatureID]
+        } else if (typeof feature === 'string') {
+          feature = self.pcm.features[feature]
         }
-        var cell = this.cellsByFeature[feature.generated_KMF_ID];
-        if(typeof cell == 'undefined'){
-          cell = false;
+
+        var cell = this.cellsByFeature[feature.id]
+        if (typeof cell === 'undefined') {
+          cell = false
         }
-        return cell;
+        return cell
       }
 
       //Add a function that return if all cell.match==true
-      product.match = function(){
-        var match = true;
-        for(var c in this.cells.array){
-          if(this.cells.array[c].match==false){
-            match = false;
-            break;
+      product.match = function () {
+        var match = true
+        for (var c in this.cells) {
+          if (this.cells[c].match === false) {
+            match = false
+            break
           }
         }
-        return match;
+        return match
       }
 
       //Add a function that hide/show cells (used to hide products that doesn't match configurator)
-      product.setVisible = function(visible){
-        this.visible = visible;
-        for(var c in this.cells.array){
-          if(visible){
-            this.cells.array[c].div.removeClass("hidden");
-          }else{
-            this.cells.array[c].div.addClass("hidden");
+      product.setVisible = function (visible) {
+        this.visible = visible
+        for (var c in this.cells) {
+          if (visible) {
+            this.cells[c].div.removeClass('hidden')
+          } else {
+            this.cells[c].div.addClass('hidden')
           }
         }
-        if(this.dataset != null){
-          this.dataset.hidden = !this.visible;
+        if (this.dataset != null) {
+          this.dataset.hidden = !this.visible
         }
       }
 
-      product.newDataset = function(n, x, y){
+      product.newDataset = function(n, x, y, r, c){
         var self = this;
         this.dataset = {
-           label: self.getCell(n).content,
+           label: self.getCell(n).value,
            hidden: !self.visible,
            data: [{
              x: self.getCell(x).content,
              y: self.getCell(y).content,
-             r: 20
+             r: r
+                ? self.getCell(r).content
+                : 0,
+             c: c
+                ? self.getCell(c).content
+                : 0
            }]
-        };
+        }
         return this.dataset
       }
-
-      that.products.push(product)
     }
 
-    //Extract features
-    that.features = []
-    that.addFeaturesFromArray(that.pcm.features.array)
+    //add filter to all features
+    for (var f in self.pcm.features) {
+      var feature = self.pcm.features[f]
+      feature.filter = new Filter(feature, self)
+    }
 
-    that.pcmLoaded()
+    self.pcmLoaded()
   })
+}
+
+/**
+ * Return if obj (product or feature) is of number type (integer/real)
+ */
+function isNumber (obj) {
+  return obj.type === 'integer' || obj.type === 'real'
 }
 
 //Add all feature in the array to this.features
 Editor.prototype.addFeaturesFromArray = function(array){
+  console.error('Don\'t use this function anymore')
   for(var i in array){
     var feature = array[i];
     if (feature.subFeatures) {
@@ -329,11 +339,11 @@ Editor.prototype.addFeaturesFromArray = function(array){
       })
 
       /**
-       * Return if feature.filter.type is a number (integer/float)
+       * Return if feature.filter.type is a number (integer/real)
        */
       Object.defineProperty(feature, 'isNumber', {
         get: function () {
-          return this.type === 'integer' || this.type === 'float'
+          return this.type === 'integer' || this.type === 'real'
         }
       })
 
@@ -358,56 +368,66 @@ Editor.prototype.pcmLoaded = function(){
   this.name.html(name)
 
   //License
-  var license = this.metadata.license
+  var license = this.pcm.license
   if (typeof license === 'undefined' || license.length === 0) {
     license = 'unknown'
   }
   this.license.html(license)
 
   //Source
-  var source = this.metadata.source;
-  if(source.length==0){
-    source = "unknown";
-  }else{
-    source = "<a href='"+source+"' target='_blank'>"+source+"</a>";
+  var source = this.pcm.source
+  if (source.length === 0) {
+    source = 'unknown'
+  } else {
+    source = "<a href='" + source + "' target='_blank'>" + source + "</a>"
   }
-  this.source.html(source);
+  this.source.html(source)
 
   //Init configurator
-  this.initConfigurator();
+  this.initConfigurator()
 
   //Sort products on first feature (display inside by calling Editor.initPCM())
-  this.features[0].filter.setSorting(ASCENDING_SORTING);
+  this.pcm.features[this.pcm.primaryFeatureID].filter.setSorting(ASCENDING_SORTING)
 
   //init the chart
-  this.initChart();
+  this.initChart()
 }
 
 //Called in pcmLoaded to update the pcm
 Editor.prototype.initPCM = function(){
   //init table
-  this.pcmTable.find(".pcm-column-header").detach();
-  this.pcmTable.find(".pcm-cell").detach();
-  //this.views.pcmDiv.empty();
-  for(var f in this.features){
-    var col = $("<div>").addClass("pcm-column").addClass(this.features[f].filter.type).appendTo(this.pcmTable);
-    col.append(this.features[f].filter.columnHeader);
-    for(var p in this.products){
-      col.append(this.products[p].getCell(this.features[f]).div);
+  this.pcmTable.find(".pcm-column-header").detach()
+  this.pcmTable.find(".pcm-cell").detach()
+
+  this.addFeatureToDOM(this.pcm.primaryFeatureID)
+  for (var f in this.pcm.features) {
+    if (f !== this.pcm.primaryFeatureID) {
+      this.addFeatureToDOM(f)
     }
+  }
+}
+
+/**
+ * Append the feature in the DOM (into pcmTable)
+ */
+Editor.prototype.addFeatureToDOM = function (id) {
+  var col = $("<div>").addClass("pcm-column").addClass(this.pcm.features[id].type).appendTo(this.pcmTable)
+  col.append(this.pcm.features[id].filter.columnHeader)
+  for (var p in this.pcm.productsSorted) {
+    col.append(this.pcm.productsSorted[p].getCell(this.pcm.features[id]).div)
   }
 }
 
 //init chart
 Editor.prototype.initChart = function(){
-  this.chartFactory.init();
+  this.chartFactory.init()
 }
 
 //Called in pcmLoaded to update the configurator
 Editor.prototype.initConfigurator = function(){
-  this.configurator.empty();
-  for(var f in this.features){
-    this.configurator.append(this.features[f].filter.div);
+  this.configurator.empty()
+  for(var f in this.pcm.features){
+    this.configurator.append(this.pcm.features[f].filter.div)
   }
 }
 
@@ -444,72 +464,72 @@ Editor.prototype.showHeader = function(){
 }
 
 //Called when a filter changed
-Editor.prototype.filterChanged = function(filter){
-  //console.log("Filter changed for feature : "+filter.feature.name);
-  for(var p in this.products){
-    var product = this.products[p]; // get the product
+Editor.prototype.filterChanged = function(filter) {
+  //console.log("Filter changed for feature : " + filter.feature.name);
+  for (var p in this.pcm.products) {
+    var product = this.pcm.products[p] // get the product
     // chech if the product match all filters (product.match() is not evaluated if filter.match(product.getCell(filter.feature))==false, it's better for perf)
-    product.setVisible(filter.match(product.getCell(filter.feature)) && product.match());
+    product.setVisible(filter.match(product.getCell(filter.feature)) && product.match())
   }
 
   //Update chart
-  this.chartFactory.update();
+  this.chartFactory.update()
 }
 
 //Sort products on the feature using quicksort
-Editor.prototype.sortProducts = function(feature=false){
-  if(!feature){
-    feature = this.features[0];
+Editor.prototype.sortProducts = function (feature=false) {
+  if (!feature) {
+    feature = this.pcm.features[this.pcm.primaryFeatureID]
   }
 
   //Sort products using quicksort
   //console.time("quicksortProducts");
-  this.quicksortProducts(feature);
+  this.quicksortProducts(feature)
   //console.timeEnd("quicksortProducts");
 
   //Update pcm
   //console.time("initPCM");
-  editor.initPCM();
+  editor.initPCM()
   //console.timeEnd("initPCM");
 }
 
 //sort products on feature f
-Editor.prototype.quicksortProducts = function(f){
-  var stack = [];
-  stack.push(0);
-  stack.push(this.products.length-1);
-  while(stack.length>0){
-    var h = stack.pop();
-    var l = stack.pop();
-    var p = this.partitionProducts(l, h, f);
+Editor.prototype.quicksortProducts = function (f) {
+  var stack = []
+  stack.push(0)
+  stack.push(this.pcm.productsSorted.length - 1)
+  while (stack.length > 0) {
+    var h = stack.pop()
+    var l = stack.pop()
+    var p = this.partitionProducts(l, h, f)
 
-    if(p-1>l){
-      stack.push(l);
-      stack.push(p-1);
+    if (p - 1 > l) {
+      stack.push(l)
+      stack.push(p - 1)
     }
 
-    if(p+1<h){
-      stack.push(p+1);
-      stack.push(h);
+    if (p + 1 < h) {
+      stack.push(p + 1)
+      stack.push(h)
     }
   }
 }
 
-Editor.prototype.partitionProducts = function(l, h, f){
-  var pivot = this.products[h];
-  var i = l;
-  for(var j=l;j<h;j++){
-    if(f.filter.compare(this.products[j], pivot)<=0){
-      var temp = this.products[i];
-      this.products[i] = this.products[j];
-      this.products[j] = temp;
-      i++;
+Editor.prototype.partitionProducts = function (l, h, f) {
+  var pivot = this.pcm.productsSorted[h]
+  var i = l
+  for (var j = l; j < h; j++) {
+    if (f.filter.compare(this.pcm.productsSorted[j], pivot) <= 0) {
+      var temp = this.pcm.productsSorted[i]
+      this.pcm.productsSorted[i] = this.pcm.productsSorted[j]
+      this.pcm.productsSorted[j] = temp
+      i++
     }
   }
-  var temp = this.products[i];
-  this.products[i] = this.products[h];
-  this.products[h] = temp;
-  return i;
+  var temp = this.pcm.productsSorted[i];
+  this.pcm.productsSorted[i] = this.pcm.productsSorted[h]
+  this.pcm.productsSorted[h] = temp
+  return i
 }
 
 //********************************************************************************************************************************************************************
@@ -525,96 +545,90 @@ var DESCENDING_SORTING = 3;
  */
 function Filter(feature, editor){
   var that = this;
-  this.feature = feature;
-  this.editor = editor;
-  this.values = []; //Contains all different values for this feature
-  this.hasCheckbox = false; //Set at true is checkbox are used
-  this.checkboxs = {}; //For each value associate a checkbox that say if the value match the filter
-  this.min = false; //Minimum value in all values
-  this.max = false; //Maximum value in all values
-  this.lower = false; //Minimum value which match filter
-  this.upper = false; //Maximum value which match filter
-  this.step = 1; //Step for the slider when feature is a numeric value
-  this.type = 'undefined'; //Type of the values : integer, float, string
-  this.search = ''; //Will contain a regexp entered by the user in a search form
-  this.sorting = NO_SORTING;
+  this.feature = feature
+  this.editor = editor
+  this.values = [] //Contains all different values for this feature
+  this.occurrences = {} // key is a value from values and value is the number of occurrences (this.occurrences['toto'] = number of occurrences of toto)
+  this.hasCheckbox = false //Set at true is checkbox are used
+  this.checkboxs = {} //For each value associate a checkbox that say if the value match the filter
+  this.operator = 'and' //Operator for multiple value matching (and/or)
+  this.min = false //Minimum value in all values
+  this.max = false //Maximum value in all values
+  this.lower = false //Minimum value which match filter
+  this.upper = false //Maximum value which match filter
+  this.step = 1 //Step for the slider when feature is a numeric value
+  this.search = '' //Will contain a regexp entered by the user in a search form
+  this.sorting = NO_SORTING
 
-  //Determine type of feature
-  this.types = {
-    undefined: 0,
-    integer: 0,
-    float: 0,
-    image: 0,
-    string: 0
+  // Extract all different values
+  for (var p in this.editor.pcm.products) {
+    var cell = this.editor.pcm.products[p].getCell(feature)
+    if (this.type === 'multiple') {
+      for (var i in cell.value) {
+        var value = cell.value[i]
+        if ($.inArray(value, this.values) === -1) {
+          this.values.push(value)
+          this.occurrences[value] = 1
+        } else {
+          this.occurrences[value]++
+        }
+      }
+    } else {
+      if ($.inArray(cell.value, this.values) === -1) {
+        this.values.push(cell.value)
+        this.occurrences[cell.value] = 1
+
+        if (feature.type === 'integer' || feature.type === 'real') {
+          if (!this.min && !this.max) {
+            this.min = cell.value
+            this.max = cell.value
+          } else if (cell.value < this.min) {
+            this.min = cell.value
+          } else if (cell.value > this.max) {
+            this.max = cell.value
+          }
+        }
+      } else {
+        this.occurrences[cell.value]++
+      }
+    }
   }
 
-  for(var p in this.editor.products){
-    var cell = this.editor.products[p].getCell(feature);
-
-    if(cell.content){
-      if ($.inArray(cell.content, this.values) === -1) {
-        this.values.push(cell.content);
+  this.lower = this.min
+  this.upper = this.max
+  if (feature.type === 'integer') { //Integer
+    this.step = 1
+  } else if (feature.type === 'real') { //Real
+    this.step = 0.1
+  } else {
+    //Sort values on number of occurrences
+    this.values.sort(function (v1, v2) {
+      if (that.occurrences[v1] <= that.occurrences[v2]) {
+        return 1
+      } else if (that.occurrences[v1] >= that.occurrences[v2]) {
+        return -1
+      } else {
+        return v1.toLowerCase().localeCompare(v2.toLowerCase)
       }
+    })
 
-      this.types[cell.type]++
-    }
-  }
-
-  if (this.types.integer > 0 && this.types.float === 0 && this.types.string === 0) { //Integer
-    this.type = "integer";
-
-    for(var v in this.values){
-      var value = parseInt(this.values[v], 10);
-      if(!this.min && !this.max){
-        this.min = value;
-        this.max = value;
-      }else if(value<this.min){
-        this.min = value;
-      }else if(value>this.max){
-        this.max = value;
-      }
-    }
-    this.lower = this.min;
-    this.upper = this.max;
-    this.step = 1;
-  } else if(this.types.float > 0 && this.types.string === 0) { //Float
-    this.type = "float";
-
-    for(var v in this.values){
-      var value = parseFloat(this.values[v]);
-      if(!this.min && !this.max){
-        this.min = value;
-        this.max = value;
-      }else if(value<this.min){
-        this.min = value;
-      }else if(value>this.max){
-        this.max = value;
-      }
-    }
-    this.lower = this.min;
-    this.upper = this.max;
-    this.step = 0.1;
-  } else { //String
-    this.type = "string";
-
-    this.values.sort();
-
-    if(this.values.length <= 20){ //Create checkboxs only if there are les than 20 differents values
+    //Create checkboxs only if there are les than 20 differents values or it's a multiple value
+    if (this.type === 'multiple' || this.values.length <= 20) {
       this.hasCheckbox = true;
-      for(var v in this.values){
-        var value = this.values[v];
-        this.checkboxs[value] = new Checkbox(value, function(){
-          that.editor.filterChanged(that);
-        });
+      for (var v in this.values) {
+        var value = this.values[v]
+        this.checkboxs[value] = new Checkbox(value + ' (' + this.occurrences[value] + ')' , function () {
+          that.editor.filterChanged(that)
+        })
       }
     }
   }
 
   //Create div for column header
-  this.columnHeader = $("<div>").addClass("pcm-column-header").click(function(event){
-    that.swapSorting();
-    event.stopImmediatePropagation();
-  }).html(this.feature.name);
+  this.columnHeader = $("<div>").addClass("pcm-column-header").click(function (event) {
+    that.swapSorting()
+    event.stopImmediatePropagation()
+  }).html(this.feature.name)
 
   //Create div for configurator
   this.show = false;
@@ -630,26 +644,38 @@ function Filter(feature, editor){
 
   this.content = $("<div>").addClass("feature-content").appendTo(this.contentWrap);
 
-  if(this.values.length==1 || (this.type=="integer" || this.type=="float") && this.min==this.max){ //If there is only one value
-    this.content.append(this.values[0]);
-  }else if(this.type=="integer" || this.type=="float"){ //If type is a number
+  if (this.values.length == 1 || (this.type == "integer" || this.type == "real") && this.min == this.max) { //If there is only one value
+    this.content.append(this.values[0])
+    //console.log(this.feature.name + ' ' + this.type + ' min=' + this.min + ' max=' + this.max)
+  } else if (this.type == "integer" || this.type == "real") { //If type is a number
     //Create the slider
-    this.slider = new Slider(this.min, this.max, this.lower, this.upper, this.step, function(slider){
+    this.slider = new Slider(this.min, this.max, this.lower, this.upper, this.step, function (slider) {
       that.lower = slider.lower;
       that.upper = slider.upper;
-      that.editor.filterChanged(that);
+      //console.log(that.feature.name + ' lower=' + that.lower + ' upper=' + that.upper)
+      that.editor.filterChanged(that)
     });
 
     //Add the slider
     this.content.append(this.slider.div);
-  }else{ //Else, type is a string with multiple values
+  } else {
     //Create and add the search input
-    this.searchInput = $("<input>").addClass("search-input").attr("placeholder", "Search").keyup(function(){
-      if(that.searchInput.val()!=that.search){
-        that.search = that.searchInput.val();
-        that.editor.filterChanged(that);
-      }
-    }).appendTo(this.content);
+    if (this.type === 'multiple') {
+      this.operatorSelect = $('<select>').html(
+        '<option value="and">AND</option>' +
+        '<option value="or">OR</option>'
+      ).change(function () {
+        that.operator = that.operatorSelect.val()
+        that.editor.filterChanged(that)
+      }).appendTo(this.content)
+    } else {
+      this.searchInput = $("<input>").addClass("search-input").attr("placeholder", "Search").keyup(function () {
+        if (that.searchInput.val() != that.search) {
+          that.search = that.searchInput.val();
+          that.editor.filterChanged(that);
+        }
+      }).appendTo(this.content)
+    }
 
     if(this.hasCheckbox){
       this.buttonSelectUnselectAll = $("<div>").addClass("button").click(function(){
@@ -664,38 +690,66 @@ function Filter(feature, editor){
   }
 }
 
+Object.defineProperty(Filter.prototype, 'type', {
+  get: function() {
+    return this.feature.type;
+  }
+})
+
 //Check if all value are matched
 Filter.prototype.matchAll = function(){
   var res = true;
-  if(this.type=="integer" || this.type=="float"){
-    res = (this.lower==this.min && this.upper==this.max);
-  }else if(this.search.length>0){
+  if(this.type === "integer" || this.type === "real"){
+    res = (this.lower <= this.min && this.upper >= this.max)
+  } else if (this.search.length > 0) {
     res = false;
-  }else if(this.hasCheckbox){
-    for(var c in this.checkboxs){
-      if(this.checkboxs[c].notChecked()){
-        res = false;
-        break;
+  } else if (this.hasCheckbox) {
+    for (var c in this.checkboxs) {
+      if (this.checkboxs[c].notChecked()) {
+        res = false
+        break
       }
     }
   }
-  return res;
+  return res
 }
 
 //Check if the cell match this filter
-Filter.prototype.match = function(cell){
-  var match = this.matchAll();
+Filter.prototype.match = function (cell) {
+  var match = this.matchAll()
 
-  if(!match){
-    if (this.type === 'integer' || this.type === 'float') {
-      match = cell.content >= this.lower && cell.content <= this.upper
-    } else if(this.type=="string"){
-      if(this.search.length>0){ //If there is a search regexp we use it and not the checkboxs
+  if (!match) {
+    if (this.type === 'integer' || this.type === 'real') {
+      //console.log('value=' + cell.value + ' lower=' + this.lower + ' upper=' + this.upper)
+      match = cell.value >= this.lower && cell.value <= this.upper
+    } else if (this.type === 'multiple') { // if there is at least one value that match filter the cell match
+      if (this.operator === 'or') {
+        for (var i in cell.value) {
+          if ((match = this.checkboxs[cell.value[i]].isChecked())) break
+        }
+      } else if (this.operator === 'and') {
+        for (var value in this.checkboxs) {
+          if (this.checkboxs[value].isChecked()) {
+            var present = false
+            for (var i in cell.value) {
+              if (cell.value[i] == value) {
+                present = true
+                break
+              }
+            }
+            if (!(match = present)) break
+          }
+        }
+      } else {
+        console.error('unknown operator ' + this.operator)
+      }
+    } else {
+      if (this.search.length > 0) { //If there is a search regexp we use it and not the checkboxs
         var regexp = new RegExp(this.search, 'i'); //Create a regexp with this.search that isn't case-sensitive
-        match = ('' + cell.content).match(regexp) != null;
-      }else{ //Else we use checkboxs
-        if(typeof this.checkboxs[cell.content] != "undefined"){
-          match = this.checkboxs[cell.content].isChecked();
+        match = ('' + cell.value).match(regexp) != null;
+      } else { //Else we use checkboxs
+        if (typeof this.checkboxs[cell.value] !== "undefined") {
+          match = this.checkboxs[cell.value].isChecked();
         }
       }
     }
@@ -749,25 +803,25 @@ Filter.prototype.toggleShow = function(){
 //Change sorting
 Filter.prototype.swapSorting = function(){
   //console.log("Swap sorting for feature : "+this.feature.name);
-  if(this.sorting==ASCENDING_SORTING){
+  if (this.sorting === ASCENDING_SORTING) {
     this.setSorting(DESCENDING_SORTING);
-  }else{
+  } else {
     this.setSorting(ASCENDING_SORTING);
   }
 }
 
 Filter.prototype.setSorting = function(sorting, autoSort=true, resetOther=true){
   //Reset all other filter
-  if(resetOther){
-    for(var f in this.editor.features){
-      this.editor.features[f].filter.setSorting(NO_SORTING, false, false);
+  if (resetOther) {
+    for (var f in this.editor.pcm.features) {
+      this.editor.pcm.features[f].filter.setSorting(NO_SORTING, false, false);
     }
   }
 
   //remove old class
-  if(this.sorting==ASCENDING_SORTING){
+  if (this.sorting === ASCENDING_SORTING) {
     this.columnHeader.removeClass("ascending");
-  }else if(this.sorting==DESCENDING_SORTING){
+  } else if (this.sorting === DESCENDING_SORTING) {
     this.columnHeader.removeClass("descending");
   }
 
@@ -775,14 +829,14 @@ Filter.prototype.setSorting = function(sorting, autoSort=true, resetOther=true){
   this.sorting = sorting;
 
   //add new class
-  if(this.sorting==ASCENDING_SORTING){
+  if (this.sorting === ASCENDING_SORTING) {
     this.columnHeader.addClass("ascending");
-  }else if(this.sorting==DESCENDING_SORTING){
+  } else if (this.sorting === DESCENDING_SORTING) {
     this.columnHeader.addClass("descending");
   }
 
   //sort
-  if(autoSort){
+  if (autoSort) {
     this.editor.sortProducts(this.feature);
   }
 }
@@ -793,8 +847,8 @@ Filter.prototype.compare = function(p1, p2){
   if(this.sorting === NO_SORTING){
     console.log("Try to compare 2 product using a filter without sorting direction");
   }else{
-    var val1 = p1.getCell(this.feature).content
-    var val2 = p2.getCell(this.feature).content
+    var val1 = p1.getCell(this.feature).value
+    var val2 = p2.getCell(this.feature).value
     if (val1 > val2) {
       res = 1;
     } else if (val1 < val2) {
@@ -802,7 +856,7 @@ Filter.prototype.compare = function(p1, p2){
     }
   }
 
-  if(this.sorting==DESCENDING_SORTING){
+  if (this.sorting === DESCENDING_SORTING) {
     res = res * -1;
   }
 
@@ -913,7 +967,7 @@ Slider.prototype.getLowerRatio = function(){
 //lower is the value to set lower, correct is if we can correct the value if out of bound (if the false value is rejected)
 Slider.prototype.setLower = function(lower, correct=true){
   if(!isNaN(lower)){
-    lower -= lower%this.step;
+    lower -= lower % this.step;
     if(lower<this.min){
       if(correct){
         lower = this.min;
@@ -991,7 +1045,7 @@ Slider.prototype.mousemove = function(event){
 }
 
 Slider.prototype.triggerOnChange = function(){
-  if(this.onChange){
-    this.onChange(this);
+  if (this.onChange) {
+    this.onChange(this)
   }
 }

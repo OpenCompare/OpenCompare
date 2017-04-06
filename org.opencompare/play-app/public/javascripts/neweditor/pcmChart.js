@@ -1696,6 +1696,8 @@ require(45)(Chart);
 require(46)(Chart);
 require(47)(Chart);
 require(48)(Chart);
+require(49)(Chart);
+require(50)(Chart);
 
 // Controllers must be loaded after elements
 // See Chart.core.datasetController.dataElementType
@@ -3829,7 +3831,11 @@ module.exports = function(Chart) {
 		
 		if(strokeCircle){
 			ctx.strokeStyle=strokeStyle;
+			ctx.fillStyle=strokeStyle;
 			ctx.stroke();
+			ctx.globalAlpha = 0.2
+			ctx.fill();
+			ctx.globalAlpha = 1
 		}
 		
 		if(typeof Chart.cache[imageUrl] == "undefined"){
@@ -3869,7 +3875,6 @@ module.exports = function(Chart) {
 					ctx.closePath();
 					ctx.clip();
 				}
-				
 				ctx.drawImage(Chart.cache[imageUrl],x-radius+offsetWidth,y-radius+offsetHeight,imageSize*scaleWidth,imageSize*scaleHeight); // Or at whatever offset you like
 				
 				if(cropCircle){
@@ -4858,6 +4863,19 @@ module.exports = function(Chart) {
 			return this.chart.data.datasets[this.index];
 		},
 
+		getAllDatasetsMinMax: function(value) {
+			var min
+			var max
+			helpers.each(this.chart.data.datasets, function(dataset){
+				helpers.each(dataset.data, function(data){
+					if(data[value] > max || typeof max === "undefined")max = data[value]
+					if(data[value] < min || typeof min === "undefined")min = data[value]
+				});
+			})
+			return {"min":min,"max":max}
+			// return this.chart.data.datasets[this.index];
+		},
+
 		getMeta: function() {
 			return this.chart.getDatasetMeta(this.index);
 		},
@@ -5606,6 +5624,10 @@ module.exports = function(Chart) {
 		}
 
 		return niceFraction * Math.pow(10, exponent);
+	};
+	helpers.hexDouble = function(num) {
+		var str = num.toString(16).toUpperCase();
+		return (str.length < 2) ? "0" + str : str;
 	};
 	// Easing functions adapted from Robert Penner's easing equations
 	// http://www.robertpenner.com/easing/
@@ -10481,6 +10503,8 @@ module.exports = function(Chart) {
 					var meta = chart.getDatasetMeta(datasetIndex);
 					if (chart.isDatasetVisible(datasetIndex) && IDMatches(meta)) {
 						helpers.each(dataset.data, function(rawValue, index) {
+							// console.log(rawValue);
+							// console.log(me.getRightValue(rawValue));
 							var value = +me.getRightValue(rawValue);
 							if (isNaN(value) || meta.data[index].hidden) {
 								return;
@@ -11788,7 +11812,7 @@ module.exports = function(Chart) {
 		defaultColor = globalOpts.defaultColor;
 
 	globalOpts.elements.imagePoint = {
-		radius: 3,
+		radius: 20,
 		pointStyle: 'circle',
 		backgroundColor: defaultColor,
 		borderWidth: 1,
@@ -11868,7 +11892,7 @@ module.exports = function(Chart) {
 
 	var helpers = Chart.helpers;
 
-	Chart.defaults.bubbleImage = {
+	Chart.defaults.imageChart = {
 		hover: {
 			mode: 'single'
 		},
@@ -11904,7 +11928,7 @@ module.exports = function(Chart) {
 		}
 	};
 
-	Chart.controllers.bubbleImage = Chart.DatasetController.extend({
+	Chart.controllers.imageChart = Chart.DatasetController.extend({
 
 		dataElementType: Chart.elements.ImagePoint,
 
@@ -11928,6 +11952,7 @@ module.exports = function(Chart) {
 			var custom = point.custom || {};
 			var dataset = me.getDataset();
 			var data = dataset.data[index];
+			// console.log(data);
 			var pointElementOptions = me.chart.options.elements.point;
 			var dsIndex = me.index;
 
@@ -11965,6 +11990,314 @@ module.exports = function(Chart) {
 
 		getRadius: function(value) {
 			return value.r || this.chart.options.elements.imagePoint.radius;
+		},
+
+		setHoverStyle: function(point) {
+			var me = this;
+			Chart.DatasetController.prototype.setHoverStyle.call(me, point);
+
+			// Radius
+			var dataset = me.chart.data.datasets[point._datasetIndex];
+			var index = point._index;
+			var custom = point.custom || {};
+			var model = point._model;
+			model.radius = custom.hoverRadius ? custom.hoverRadius : (helpers.getValueAtIndexOrDefault(dataset.hoverRadius, index, me.chart.options.elements.point.hoverRadius)) + me.getRadius(dataset.data[index]);
+		},
+
+		removeHoverStyle: function(point) {
+			var me = this;
+			Chart.DatasetController.prototype.removeHoverStyle.call(me, point, me.chart.options.elements.point);
+
+			var dataVal = me.chart.data.datasets[point._datasetIndex].data[point._index];
+			var custom = point.custom || {};
+			var model = point._model;
+
+			model.radius = custom.radius ? custom.radius : me.getRadius(dataVal);
+		}
+	});
+};
+
+},{}],49:[function(require,module,exports){
+'use strict';
+
+module.exports = function(Chart) {
+
+	var helpers = Chart.helpers;
+
+	Chart.defaults.imageBubbleChart = {
+		hover: {
+			mode: 'single'
+		},
+
+		scales: {
+			xAxes: [{
+				type: 'linear', // bubble should probably use a linear scale by default
+				position: 'bottom',
+				id: 'x-axis-0' // need an ID so datasets can reference the scale
+			}],
+			yAxes: [{
+				type: 'linear',
+				position: 'left',
+				id: 'y-axis-0'
+			}]
+		},
+
+		tooltips: {
+			callbacks: {
+				title: function(tooltipItem, data) {
+					// Title doesn't make sense for scatter since we format the data as a point
+					return '';
+					
+				},
+				label: function(tooltipItem, data) {
+					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					return {
+						image:data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].image,
+						label:datasetLabel + ': \n '+ this._chartInstance.config.options.scales.xAxes[0].scaleLabel.labelString + ': ' + tooltipItem.xLabel + '\n '+ this._chartInstance.config.options.scales.yAxes[0].scaleLabel.labelString + ': ' + tooltipItem.yLabel}
+				}
+			}
+		},
+			
+		//Default settings for image bubble chart
+		maxRadius:30,
+		minRadius:10
+	};
+
+	Chart.controllers.imageBubbleChart = Chart.DatasetController.extend({
+
+		dataElementType: Chart.elements.ImagePoint,
+
+		update: function(reset) {
+			var me = this;
+			var meta = me.getMeta();
+			var points = meta.data;
+			
+			// Update Points
+			helpers.each(points, function(point, index) {
+				me.updateElement(point, index, reset);
+			});
+		},
+
+		updateElement: function(point, index, reset) {
+			var me = this;
+			var meta = me.getMeta();
+			var xScale = me.getScaleForId(meta.xAxisID);
+			var yScale = me.getScaleForId(meta.yAxisID);
+
+			var custom = point.custom || {};
+			var dataset = me.getDataset();
+			var minmaxr = me.getAllDatasetsMinMax("r")
+			var minmaxc = me.getAllDatasetsMinMax("c")
+			var data = dataset.data[index];
+			var pointElementOptions = me.chart.options.elements.point;
+			var dsIndex = me.index;
+
+			helpers.extend(point, {
+				// Utility
+				_xScale: xScale,
+				_yScale: yScale,
+				_datasetIndex: dsIndex,
+				_index: index,
+
+				// Desired view properties
+				_model: {
+					x: reset ? xScale.getPixelForDecimal(0.5) : xScale.getPixelForValue(typeof data === 'object' ? data : NaN, index, dsIndex, me.chart.isCombo),
+					y: reset ? yScale.getBasePixel() : yScale.getPixelForValue(data, index, dsIndex),
+					// Appearance
+					radius: reset ? 0 : custom.radius ? custom.radius : me.getRadius(data,minmaxr),
+					image: reset ? "" : data.image,
+					cropCircle: typeof data.cropCircle == "undefined"? true:data.cropCircle,
+					strokeCircle: typeof data.strokeCircle == "undefined"? true:data.strokeCircle,
+					strokeStyle: typeof data.strokeStyle == "undefined"? me.getBubbleColor(data,minmaxc):data.strokeStyle,
+
+					// Tooltip
+					hitRadius: custom.hitRadius ? custom.hitRadius : helpers.getValueAtIndexOrDefault(dataset.hitRadius, index, pointElementOptions.hitRadius)
+				}
+			});
+
+			// Trick to reset the styles of the point
+			Chart.DatasetController.prototype.removeHoverStyle.call(me, point, pointElementOptions);
+
+			var model = point._model;
+			model.skip = custom.skip ? custom.skip : (isNaN(model.x) || isNaN(model.y));
+
+			point.pivot();
+		},
+
+		getRadius: function(value,minmax) {
+			var minRadius = Chart.defaults.imageBubbleChart.minRadius
+			var maxRadius = Chart.defaults.imageBubbleChart.maxRadius
+			
+			return ((value.r-minmax.min)/(minmax.max-minmax.min)) *  (maxRadius-minRadius) + minRadius|| this.chart.options.elements.imagePoint.radius;
+		},
+		
+		getBubbleColor: function(data,minmax) {
+			if(typeof data.c == "undefined")
+				return "black";
+			
+			var aR = 0
+			var aG = 255
+			var aB = 0
+			var bR = 255
+			var bG = 0
+			var bB = 0
+			
+			var value = (data.c-minmax.min)/(minmax.max-minmax.min)
+			
+			var red = (bR - aR) * value + aR
+			var green = (bG - aG) * value + aG
+			var blue = (bB - aB) * value + aB
+			
+			return "#" + helpers.hexDouble(Math.round(red)) + helpers.hexDouble(Math.round(green)) + helpers.hexDouble(Math.round(blue));
+		},
+
+		setHoverStyle: function(point) {
+			var me = this;
+			Chart.DatasetController.prototype.setHoverStyle.call(me, point);
+
+			// Radius
+			var dataset = me.chart.data.datasets[point._datasetIndex];
+			var minmax = me.getAllDatasetsMinMax("z")
+			var index = point._index;
+			var custom = point.custom || {};
+			var model = point._model;
+			model.radius = custom.hoverRadius ? custom.hoverRadius : (helpers.getValueAtIndexOrDefault(dataset.hoverRadius, index, me.chart.options.elements.point.hoverRadius)) + me.getRadius(dataset.data[index],minmax);
+		},
+
+		removeHoverStyle: function(point) {
+			var me = this;
+			Chart.DatasetController.prototype.removeHoverStyle.call(me, point, me.chart.options.elements.point);
+
+			var dataVal = me.chart.data.datasets[point._datasetIndex].data[point._index];
+			var minmax = me.getAllDatasetsMinMax("z")
+			var custom = point.custom || {};
+			var model = point._model;
+
+			model.radius = custom.radius ? custom.radius : me.getRadius(dataVal,minmax);
+		}
+	});
+};
+
+},{}],50:[function(require,module,exports){
+'use strict';
+
+module.exports = function(Chart) {
+
+	var helpers = Chart.helpers;
+
+	Chart.defaults.bubbleColor = {
+		hover: {
+			mode: 'single'
+		},
+
+		scales: {
+			xAxes: [{
+				type: 'linear', // bubble should probably use a linear scale by default
+				position: 'bottom',
+				id: 'x-axis-0' // need an ID so datasets can reference the scale
+			}],
+			yAxes: [{
+				type: 'linear',
+				position: 'left',
+				id: 'y-axis-0'
+			}]
+		},
+
+		tooltips: {
+			callbacks: {
+				title: function() {
+					// Title doesn't make sense for scatter since we format the data as a point
+					return '';
+				},
+				label: function(tooltipItem, data) {
+					var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+					var dataPoint = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					return datasetLabel + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ', ' + dataPoint.r + ')';
+				}
+			}
+		}
+	};
+
+	Chart.controllers.bubbleColor = Chart.DatasetController.extend({
+
+		dataElementType: Chart.elements.ImagePoint,
+
+		update: function(reset) {
+			var me = this;
+			var meta = me.getMeta();
+			var points = meta.data;
+
+			// Update Points
+			helpers.each(points, function(point, index) {
+				me.updateElement(point, index, reset);
+			});
+		},
+
+		updateElement: function(point, index, reset) {
+			var me = this;
+			var meta = me.getMeta();
+			var xScale = me.getScaleForId(meta.xAxisID);
+			var yScale = me.getScaleForId(meta.yAxisID);
+			console.log(me);
+			var custom = point.custom || {};
+			var dataset = me.getDataset();
+			var minmax = me.getAllDatasetsMinMax("z")
+			var data = dataset.data[index];
+			var pointElementOptions = me.chart.options.elements.point;
+			var dsIndex = me.index;
+
+			helpers.extend(point, {
+				// Utility
+				_xScale: xScale,
+				_yScale: yScale,
+				_datasetIndex: dsIndex,
+				_index: index,
+
+				// Desired view properties
+				_model: {
+					x: reset ? xScale.getPixelForDecimal(0.5) : xScale.getPixelForValue(typeof data === 'object' ? data : NaN, index, dsIndex, me.chart.isCombo),
+					y: reset ? yScale.getBasePixel() : yScale.getPixelForValue(data, index, dsIndex),
+					// Appearance
+					radius: reset ? 0 : custom.radius ? custom.radius : me.getRadius(data),
+					image: "",
+					cropCircle: false,
+					strokeCircle: true,
+					strokeStyle: reset ? 0 : custom.color ? custom.color : me.getBubbleColor(data,minmax),
+
+					// Tooltip
+					hitRadius: custom.hitRadius ? custom.hitRadius : helpers.getValueAtIndexOrDefault(dataset.hitRadius, index, pointElementOptions.hitRadius)
+				}
+			});
+
+			// Trick to reset the styles of the point
+			Chart.DatasetController.prototype.removeHoverStyle.call(me, point, pointElementOptions);
+
+			var model = point._model;
+			model.skip = custom.skip ? custom.skip : (isNaN(model.x) || isNaN(model.y));
+
+			point.pivot();
+		},
+
+		getRadius: function(value) {
+			return value.r || this.chart.options.elements.point.radius;
+		},
+		
+		getBubbleColor: function(data,minmax) {
+			var aR = 0
+			var aG = 255
+			var aB = 0
+			var bR = 255
+			var bG = 0
+			var bB = 0
+			
+			var value = (data.c-minmax.min)/(minmax.max-minmax.min)
+			
+			var red = (bR - aR) * value + aR
+			var green = (bG - aG) * value + aG
+			var blue = (bB - aB) * value + aB
+			
+			return "#" + helpers.hexDouble(Math.round(red)) + helpers.hexDouble(Math.round(green)) + helpers.hexDouble(Math.round(blue));
 		},
 
 		setHoverStyle: function(point) {

@@ -19,6 +19,8 @@ function ChartFactory(editor, div){
   this.cartTypeA = 'radar'; // this is the type of last vizualisation
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
+  this.chartDataRadius = null; //feature for radius
+  this.chartDataColor = null; //feature for color
 
   // the image of the Visualization in Bar, and the fonction to call it
   this.chartImgBar = $('<img id="clickBar" src="http://img4.hostingpics.net/pics/227950stat11.png" width="40px" />').appendTo(this.div).click(function(){
@@ -157,15 +159,38 @@ ChartFactory.prototype.drawChart = function(){
 			self.drawChart();
 		});
 
+		// we create the select Radius for the vizualisation in pc
+		this.chartRadiusLabel = $('<label>').html('&nbsp;radius&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartRadiusselect = $('<select id="r" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#r option:selected').val();
+			self.chartDataRadius = self.taboption[a];
+			self.drawChart();
+		});
+
+		// we create the select Y for the vizualisation in pc
+		this.chartColorLabel = $('<label>').html('&nbsp;color&nbsp:&nbsp').appendTo(this.listSelect);
+		this.chartColorselect = $('<select id="c" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var a = $('#c option:selected').val();
+			console.log(a);
+			self.chartDataColor = self.taboption[a];
+			self.drawChart();
+		});
+
+		this.chartRadiusselect.append('<option value=""><empty></option>');
+		this.chartColorselect.append('<option value=""><empty></option>');
 		// we put all choice in the select we have created
 		for(var i in this.taboption) {
 			this.chartXselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
 			this.chartYselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+			this.chartRadiusselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
+			this.chartColorselect.append('<option value="'+i+'">'+this.taboption[i].name+'</option>');
 		}
 
 		// we take the first option to begin
 		this.chartDataX = this.taboption[0];
 		this.chartDataY = this.taboption[0];
+		this.chartDataRadius = null;
+		this.chartDataColor = null;
 	}
 
 	// the last type become productChart and we draw productChart
@@ -341,10 +366,8 @@ ChartFactory.prototype.drawChart = function(){
   }
 }
 
-function newProductChartDataset(product,feature,x,y,imageUrl){
-	var dataset = product.newDataset(feature,x,y);
-	dataset.data[0].cropCircle=true;
-	dataset.data[0].strokeCircle=true;
+function newProductChartDataset(product,feature,x,y,r,c,imageUrl){
+	var dataset = product.newDataset(feature,x,y,r,c);
 	dataset.data[0].image=imageUrl;
 	return dataset;
 }
@@ -357,7 +380,7 @@ ChartFactory.prototype.drawProductChart = function(){
     }
     this.chartCanvas = $('<canvas>').appendTo(this.div);
     this.chartData = {
-      type: 'bubbleImage',
+      type: 'imageBubbleChart',
       data: {
           datasets: []
       },
@@ -406,11 +429,12 @@ ChartFactory.prototype.drawProductChart = function(){
 			this.editor.features[0],
 			this.chartDataX,
 			this.chartDataY,
+			this.chartDataRadius,
+			this.chartDataColor,
 			imageUrl
 		)
 	  );
     }
-	// console.log(this.chartData);
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
   }else{
     console.error('X or Y features not defined');

@@ -5,24 +5,36 @@
   this.editor = editor;
   this.div = div;
 
-  this.chartType = 'radar';
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
   this.map = null;
+  this.position = null
+  this.markerLayer = null
+  this.marker = null
 
 
   this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
   this.chartXselect = $('<select>').appendTo(this.div).change(function(){
     self.chartDataX = self.editor.getFeatureByID(self.chartXselect.val());
-    console.log(self.chartDataX)
-    this.mapTypeLabel = $('<div id="map">').addClass('map').appendTo(this.mapTypeLabel);
+    self.mapTypeLabel = $('<div id="map">').addClass('map').appendTo(this.mapTypeLabel);
     if(self.map !== null)
-      self.map.remove();
-    self.map = L.map('map');
-    self.init();
+      //self.map.remove();
+      self.markerLayer.remove()
+    //self.map = L.map('map');
+    self.drawMap();
   });
 
-  this.chartCanvas = null;
+  this.chartYLabel = $('<label>').html(' x : ').appendTo(this.div);
+  this.chartYselect = $('<select>').appendTo(this.div).change(function(){
+    self.chartDataY = self.editor.getFeatureByID(self.chartYselect.val());
+    self.mapTypeLabel = $('<div id="map">').addClass('map').appendTo(this.mapTypeLabel);
+    if(self.map !== null)
+      //self.map.remove();
+      self.markerLayer.remove()
+    //self.map = L.map('map');
+    self.drawMap();
+  });
+  //this.chartCanvas = null;
 
 
   this.mapTypeLabel = $('<div id="map">').addClass('map').html("map : ").appendTo(this.div);
@@ -37,13 +49,15 @@ MapFactory.prototype.init = function(){
     var feature = this.editor.features[f];
       if(this.chartDataX == null){
         this.chartDataX = feature;
-        console.log(this.chartDataX)
+        this.chartDataY = feature;
       }
+
       this.chartXselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
-      //this.chartYselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
+      this.chartYselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
   }
   this.drawMap()
 }
+
 MapFactory.prototype.drawMap = function(){
 //  var map = L.map('map');
   this.map.createPane('labels');
@@ -53,28 +67,28 @@ MapFactory.prototype.drawMap = function(){
 
   // Layers in this pane are non-interactive and do not obscure mouse/touch events
   this.map.getPane('labels').style.pointerEvents = 'none';
+  this.markerLayer = L.layerGroup().addTo(this.map)
 
 
   var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
-  var position = L.tileLayer('http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {
+   this.position = L.tileLayer('http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {
     attribution: cartodbAttribution
   }).addTo(this.map);
-  position.addTo(this.map);
+  //this.position.addTo(this.map);
   this.map.setView({ lat: 47.040182144806664, lng: 9.667968750000002 }, 4);
-
-  addAllMarker(this.map)
+  this.addAllMarker()
 }
 
 //add marker from city
-locationCity = function (city, product, data, map){
+MapFactory.prototype.locationCity = function (city, product, data, map, layer){
   var latLon =[]
   for(var i in data){
     if(data[i].city === city){
       latLon.push(data[i].lat)
       latLon.push(data[i].lng)
       //console.log(latLon)
-      addMarker(latLon, product, map)
+      this.addMarker(latLon, product)
 
     }
     var latLon =[]
@@ -89,26 +103,24 @@ locationCity = function (city, product, data, map){
   })*/
 }
 
-function addMarker(latLon, product, map){
-  var marker = L.marker(latLon);
-
-  marker.addTo(map)
-  //console.log(product.getCell(this.chartDataX).content)
-  marker.bindTooltip(product.getCell(this.chartDataX).content);
+MapFactory.prototype.addMarker = function (latLon, product){
+ this.marker = L.marker(latLon).addTo(this.markerLayer);
+ this.marker.bindTooltip("<dt>"+this.chartDataX.name+" :"+product.getCell(this.chartDataX).content
+  +"<dt>"+this.chartDataY.name+" :"+product.getCell(this.chartDataY).content);
+ this.markerLayer.addLayer(this.marker)
 
 }
 
-function addAllMarker(map){
+MapFactory.prototype.addAllMarker = function (){
   var f = this.isCity();
   var citiesData = cities
   for(var p in this.editor.products){
     var product = this.editor.products[p];
-    var city  = this.editor.features[f];
-    city = product.getCell(city).content
-    locationCity(city, product, citiesData, map);
+    this.locationCity(product.getCell(this.editor.features[f]).content,
+      product, citiesData);
   }
 }
-isCity = function(){
+MapFactory.prototype.isCity = function(){
   for(var f in this.editor.features) {
     var feature = this.editor.features[f]
     //console.log(feature.name)
