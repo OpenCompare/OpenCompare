@@ -74,8 +74,8 @@ function ChartFactory(editor, div){
 
 //Called when pcm is loaded to init chart
 ChartFactory.prototype.init = function(){
-  for(var f in this.editor.features){
-    var feature = this.editor.features[f];
+  for(var f in this.editor.pcm.features){
+    var feature = this.editor.pcm.features[f];
     if(feature.filter.type == 'integer' || feature.filter.type == 'float'){
       if(this.chartDataX == null){
         this.chartDataX = feature;
@@ -409,24 +409,24 @@ ChartFactory.prototype.drawProductChart = function(){
         }
       }
     };
-    if(this.editor.products.length > 10){
+    if(this.editor.pcm.products.length > 10){
       this.chartData.options.legend.display = false;
     }
 	var imageCol;
-	for(var j in this.editor.features)
-		if(this.editor.features[j].filter.types.image > 0)
-			imageCol = parseInt(j)
+	for(var j in this.editor.pcm.features)
+		if(this.editor.pcm.features[j].type === "image")
+			imageCol = j
 
 
-    for(var p in this.editor.products){
-      var product = this.editor.products[p];
+    for(var p in this.editor.pcm.products){
+      var product = this.editor.pcm.products[p];
 	    var imageUrl="";
 
-		imageUrl = product.getCell(imageCol).content;
+		imageUrl = product.getCell(imageCol).value;
       this.chartData.data.datasets.push(
 		newProductChartDataset(
 			product,
-			this.editor.features[0],
+			this.editor.pcm.features[0],
 			this.chartDataX,
 			this.chartDataY,
 			this.chartDataRadius,
@@ -485,7 +485,7 @@ ChartFactory.prototype.drawPie = function(){
 }
 
 ChartFactory.prototype.pieNumeric = function (){
-	
+
 	var feat = this.chartDataX;
 
     // create two arrays
@@ -493,15 +493,15 @@ ChartFactory.prototype.pieNumeric = function (){
 	var arr2 = [0];
 
 	// for each product
-    for(var p in this.editor.products){
+    for(var p in this.editor.pcm.products){
 
-	  var product = this.editor.products[p];
+	  var product = this.editor.pcm.products[p];
 	  // we see if the product is visible
 	  if(product.visible) {
 
 		// we recover the value of the product and parse in int
-		var label = product.getCell(this.editor.features[0]).content;
-		var value = parseFloat(product.getCell(feat).content);
+		var label = product.getCell(this.editor.pcm.features[0]).value;
+		var value = product.getCell(feat).value;
 
 		// push only if the value is numerical value
 		if (!isNaN(value)){
@@ -509,8 +509,8 @@ ChartFactory.prototype.pieNumeric = function (){
 
 			// we create a map, in the first array is the values
 			// and the labels is in the second array with the same index
-			arr.push(parseFloat(product.getCell(feat).content));
-			
+			arr.push(product.getCell(feat).value);
+
 			// we cut the label if its length is too big
 			label = String(label).toCut(this.maxLengthLabel);
 			arr2.push(label);
@@ -542,29 +542,29 @@ ChartFactory.prototype.pieNumeric = function (){
 }
 
 ChartFactory.prototype.pieNonNumeric = function (){
-	
-	// boolean who serve to 
+
+	// boolean who serve to
 	var bool = true;
-	
+
 	// first array of label
 	var tabLabel = [];
 	// second array of number which represent values of label
 	var tabNombre = [];
-	
+
 	// we recover 2 features
 	var feat = this.chartDataX;
-	
+
 	if(bool){
-		for(var p in this.editor.products){
-		
-			var product = this.editor.products[p];
+		for(var p in this.editor.pcm.products){
+
+			var product = this.editor.pcm.products[p];
 			// we see if the product is visible
 			if(product.visible) {
-			
+
 				// we see the values in the first array and search the index in the array label to obtain the label
-				var prod = product.getCell(feat).content;
+				var prod = product.getCell(feat).value;
 				var index = tabLabel.indexOf(prod);
-		
+
 				// the work if the constraint is not activated
 				if(index == -1){
 					// if the label is not yet in the array
@@ -577,16 +577,16 @@ ChartFactory.prototype.pieNonNumeric = function (){
 				}
 			}
 		}
-	
-		
+
+
 		// we fill the canvas if the constraint is not activated
 		for(var lab in tabLabel){
-		
+
 			// we recover the label of the first element and push into the canvas
 			var label = tabLabel[lab];
 			label = String(label).toCut(this.maxLengthLabel);
 			this.chartData.data.labels.push(label);
-			
+
 			// with the index lab, we recover the values and push into the canvas with the color of the label
 			var nb = tabNombre[lab];
 			this.chartData.data.datasets[0].data.push(nb);
@@ -623,24 +623,24 @@ ChartFactory.prototype.drawRadar = function(){
     }
   };
   var labels = [];
-  for(var f in this.editor.features) {
-    var feature = this.editor.features[f]
-    if(feature.isNumber){
+  for(var f in this.editor.pcm.features) {
+    var feature = this.editor.pcm.features[f]
+    if(isNumber(feature)){
       labels.push(feature.name);
     }
   }
-  for(var p in this.editor.products){
-    var product = this.editor.products[p];
+  for(var p in this.editor.pcm.products){
+    var product = this.editor.pcm.products[p];
     var data = [];
     if(product.visible) {
-      for (var f in this.editor.features){
-        var feature = this.editor.features[f];
-        if(feature.isNumber){
-          var cellValue = parseFloat(product.getCell(this.editor.features[f]).content);
+      for (var f in this.editor.pcm.features){
+        var feature = this.editor.pcm.features[f];
+        if(isNumber(feature)){
+          var cellValue = product.getCell(this.editor.pcm.features[f]).value;
           data.push(cellValue / feature.filter.max);
         }
       }
-		var label = product.getCell(this.editor.features[0]).content;
+		var label = product.getCell(this.editor.pcm.features[0]).value;
 		label = String(label).toCut(this.maxLengthLabel);
 		this.chartData.data.datasets.push({label: label, borderColor:label.toColour(), data: data});
     }
@@ -706,16 +706,16 @@ ChartFactory.prototype.drawBar = function(){
 	var c1 = this.taboption[fea];
 
 	// for each product
-    for(var p in this.editor.products){
+    for(var p in this.editor.pcm.products){
 
-	  var product = this.editor.products[p];
+	  var product = this.editor.pcm.products[p];
 	  // we see if the product is visible
 	  if(product.visible) {
 
 		// we recover the value of the product and parse in int
-		var label = product.getCell(this.editor.features[0]).content;
-		var value = parseFloat(product.getCell(c1).content);
-		
+		var label = product.getCell(this.editor.pcm.features[0]).value;
+		var value = product.getCell(c1).value;
+
 		label = String(label).toCut(this.maxLengthLabel);
 
 		// push only if the value is numerical value
@@ -724,7 +724,7 @@ ChartFactory.prototype.drawBar = function(){
 
 			// we create a map, in the first array is the values
 			// and the labels is in the second array with the same index
-			tabSup[0].push(parseFloat(product.getCell(c1).content));
+			tabSup[0].push(product.getCell(c1).value);
 			tabSup[1].push(label);
 
 			for (var j=2 ; j <= nb_choix ; j++){
@@ -735,7 +735,7 @@ ChartFactory.prototype.drawBar = function(){
 				// we add the name in the legend
 				this.chartData.data.datasets[j-1].label = c2.name;
 
-				tabSup[j].push(parseFloat(product.getCell(c2).content));
+				tabSup[j].push(product.getCell(c2).value);
 			}
 
 		}
@@ -809,38 +809,38 @@ ChartFactory.prototype.drawLine = function() {
 				}
 			}
 		};
-		
+
 		// we recover the number of choice we have
 		var nb = this.nbLine;
-		
+
 		// for each choice
 		for(var j=1 ; j<=nb ; j++){
-			
+
 			// we recover the index feature selected in the choice i, and find the feature in the taboption
 			var fea = $('#choix'+j+' option:selected').val();
 			var c1 = this.taboption[fea];
-			// a array 
+			// a array
 			var tmp = [];
-			
+
 			// for each product
-			for(var p in this.editor.products){
-				var product = this.editor.products[p];
-				var label = product.getCell(this.editor.features[0]).content;
-				
+			for(var p in this.editor.pcm.products){
+				var product = this.editor.pcm.products[p];
+				var label = product.getCell(this.editor.pcm.features[0]).value;
+
 				label = String(label).toCut(this.maxLengthLabel);
-				var value = parseFloat(product.getCell(c1).content);
-				
+				var value = product.getCell(c1).value;
+
 				if(!isNaN(value)){
 					// in the first turn of the for, we push labels in the canvas
 					if (j==1){
 						this.chartData.data.labels.push(label);
 					}
-				
+
 					// we push the value j in the array tmp
 					tmp.push(value);
 				}
 			}
-			
+
 			// we push the array tmp in the canvas, with a backgroundcolor
 			if(j==1){
 				this.chartData.data.datasets[0] = {borderColor:c1.name.toColour(),data:tmp,label:c1.name};
@@ -848,12 +848,12 @@ ChartFactory.prototype.drawLine = function() {
 			else {
 				this.chartData.data.datasets.push({borderColor:c1.name.toColour(),data:tmp,label:c1.name});
 			}
-			
+
 			// we remove all data of the array to start again with the next choice
 			tmp = [];
-			
+
 		}
-		
+
 		this.chart = new Chart(this.chartCanvas[0], this.chartData);
 	}else{
 		console.log('Value undefined');
@@ -865,7 +865,7 @@ ChartFactory.prototype.drawLine = function() {
 // -----------------------------------------------------------------------------------------------------------------
 
 ChartFactory.prototype.drawAutre = function(){
-	
+
   if(this.chartDataX != null){
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
@@ -894,52 +894,52 @@ ChartFactory.prototype.drawAutre = function(){
 		}
 	  }
     };
-	
-	// boolean who serve to 
+
+	// boolean who serve to
 	var bool = true;
-	
+
 	// first array of label
 	var tabLabel = [];
 	// second array of number which represent values of label
 	var tabNombre = [];
 	// third array who represent label constraint
 	var tabConstraint = [];
-	
+
 	// we recover 2 features
 	var feat = this.chartDataX;
 	var feat2 = this.chartDataY;
-	
+
 	// if constraint are activated
 	if (this.compAutre){
-		for(var p in this.editor.products){
-		
+		for(var p in this.editor.pcm.products){
+
 			// we create the array of constraint with label
-			var product = this.editor.products[p];
-			var prod = product.getCell(feat2).content;
+			var product = this.editor.pcm.products[p];
+			var prod = product.getCell(feat2).value;
 			var index = tabConstraint.indexOf(prod);
 			if(index == -1){
 				tabConstraint.push(prod);
-			}	
+			}
 		}
 	}
-	
+
 	// if the array of constraint is more than 10, we do anything
 	if(tabConstraint.length > 10){
 		bool = false;
 	}
-	
-	
+
+
 	if(bool){
-		for(var p in this.editor.products){
-		
-			var product = this.editor.products[p];
+		for(var p in this.editor.pcm.products){
+
+			var product = this.editor.pcm.products[p];
 			// we see if the product is visible
 			if(product.visible) {
-			
+
 				// we see the values in the first array and search the index in the array label to obtain the label
-				var prod = product.getCell(feat).content;
+				var prod = product.getCell(feat).value;
 				var index = tabLabel.indexOf(prod);
-			
+
 				if(!this.compAutre){
 					// the work if the constraint is not activated
 					if(index == -1){
@@ -954,7 +954,7 @@ ChartFactory.prototype.drawAutre = function(){
 				}
 				else {
 					// the work if the constraint is activated
-					var prod2 = product.getCell(feat2).content;
+					var prod2 = product.getCell(feat2).value;
 					var j = tabConstraint.indexOf(prod2);
 					if(index == -1){
 						tabLabel.push(prod);
@@ -972,17 +972,17 @@ ChartFactory.prototype.drawAutre = function(){
 				}
 			}
 		}
-	
-		
+
+
 		if(!this.compAutre){
 			// we fill the canvas if the constraint is not activated
 			for(var lab in tabLabel){
-		
+
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
 				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
-		
+
 				// with the index lab, we recover the values and push into the canvas with the color of the label
 				var nb = tabNombre[lab];
 				this.chartData.data.datasets[0].data.push(nb);
@@ -999,17 +999,17 @@ ChartFactory.prototype.drawAutre = function(){
 			// we recover the value of the constraint and put in the canvas
 			this.chartData.data.datasets[0].label = tabConstraint[0];
 			for(var lab in tabLabel){
-			
+
 				// we recover the label of the first element and push into the canvas
 				var label = tabLabel[lab];
 				label = String(label).toCut(this.maxLengthLabel);
 				this.chartData.data.labels.push(label);
-			
+
 				// for each value in tabConstraint, we recover the value affiliate and push in the canvas
 				for(var i=1 ; i<= tabConstraint.length ; i++){
-				
+
 					var nb = tabNombre[lab][i-1];
-				
+
 					this.chartData.data.datasets[i-1].data.push(nb);
 					this.chartData.data.datasets[i-1].backgroundColor.push(tabConstraint[i-1].toColour());
 				}
@@ -1019,9 +1019,9 @@ ChartFactory.prototype.drawAutre = function(){
 	else{
 		console.error("too much constraint");
 	}
-	
+
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
-	                                      
+
   }else{
     console.log('Value undefined');
   }
@@ -1055,7 +1055,7 @@ String.prototype.toColour = function () {
  Number.prototype.toColour = function () {
    return ('' + this).toColour()
  }
- 
+
  /**
  * return the same string if the length is less than the fixed maxLength
  * or we returned a cut string

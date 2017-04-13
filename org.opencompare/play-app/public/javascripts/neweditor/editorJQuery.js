@@ -2,7 +2,9 @@
 //Some function
 
 /**
- * get the cell and return a string representation of the value
+ * return a string representation of the value of the given cell
+ * @param {Cell} cell - The cell
+ * @return {string} a string representation of cell.value
  */
 function valueToString (cell) {
   var string = ''
@@ -20,7 +22,9 @@ function valueToString (cell) {
 }
 
 /**
- * get the cell and return a html representation of the value
+ * return a html representation of the value of the given cell
+ * @param {Cell} cell - The cell
+ * @return {string} a html representation of cell.value
  */
 function valueToHtml (cell) {
   var html = ''
@@ -45,9 +49,9 @@ function valueToHtml (cell) {
 //Editor
 
 /**
- * The jQuery Editor class
- * @param {string} divID - The id attribute of the tag that will xontain the editor.
- * @param {string} pcmID - The id of the PCM toloadin the API.
+ * The Editor class
+ * @param {string} divID - The id attribute of the tag that will contain the editor.
+ * @param {string} pcmID - The id of the PCM to load from the API.
  */
 function Editor (divID, pcmID) {
   var that = this
@@ -89,6 +93,10 @@ function Editor (divID, pcmID) {
     self.showView('chartDiv')
   }).appendTo(this.actionBar)
 
+  this.showMapButton = $('<div>').addClass('button').html('Show Map').click(function () {
+    self.showView('mapDiv')
+  }).appendTo(this.actionBar)
+
   this.exportButton = $('<a>').addClass('button').html('Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
 
   //Action bar right pane
@@ -121,6 +129,8 @@ function Editor (divID, pcmID) {
   this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
+  //create map
+  this.views.mapDiv = $("<div>").appendTo(this.pcmWrap)
   //Display view
   var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
   if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
@@ -169,6 +179,9 @@ Editor.prototype.showView = function (view) {
 
     this._view = view
     this._view.show()
+    if (view === this.views.mapDiv){
+      this.initMap()
+    }
   }
 }
 
@@ -421,6 +434,14 @@ Editor.prototype.addFeatureToDOM = function (id) {
 //init chart
 Editor.prototype.initChart = function(){
   this.chartFactory.init()
+}
+
+//init Map
+Editor.prototype.initMap = function(){
+  if (typeof this.mapFactory === 'undefined') {
+    this.mapFactory = new MapFactory(this, this.views.mapDiv)
+  }
+  this.mapFactory.init();
 }
 
 //Called in pcmLoaded to update the configurator
