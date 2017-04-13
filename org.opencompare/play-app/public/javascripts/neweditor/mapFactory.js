@@ -107,8 +107,14 @@ MapFactory.prototype.locationCity = function (city, product, data, map, layer){
 
 MapFactory.prototype.addMarker = function (latLon, product){
  this.marker = L.marker(latLon).addTo(this.markerLayer);
- this.marker.bindTooltip("<dt>"+this.chartDataX.name+" :"+product.getCell(this.chartDataX).value
-  +"<dt>"+this.chartDataY.name+" :"+product.getCell(this.chartDataY).value);
+ string1 = product.getCell(this.chartDataX).value
+if (string1 == "undefined")
+  string1 = "N/A"
+string2 = product.getCell(this.chartDataY).value
+if (string2 == "undefined")
+   string2 = "N/A"
+ this.marker.bindTooltip("<dt>"+this.chartDataX.name+" :"+string1
+  +"<dt>"+this.chartDataY.name+" :"+string2);
  this.markerLayer.addLayer(this.marker)
 
 }
