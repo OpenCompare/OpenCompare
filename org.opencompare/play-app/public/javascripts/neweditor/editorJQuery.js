@@ -227,12 +227,13 @@ Editor.prototype.loadPCM = function (pcmID) {
       product.dataset = null
       product.cellsByFeature = {}
 
-      //Add some attributes and functions to cells
+      // Add some attributes and functions to cells
       for (var c in product.cells) {
         var cell = product.cells[c]
         product.cellsByFeature[cell.featureID] = cell
         cell.match = true
 
+        // The div used to display the cell
         cell.div = $('<div>').addClass('pcm-cell').html(valueToHtml(cell)).click({cell: cell}, function (event) {
           self.setCellEdit(event.data.cell)
         })
@@ -258,7 +259,11 @@ Editor.prototype.loadPCM = function (pcmID) {
         return cell
       }
 
-      //Add a function that return if all cell.match==true
+      /**
+       * Return if the product match the configurator
+       * The product match the configurator if every cell of the product got his match attribute equals to true
+       * @return {boolean} the product match the configurator
+       */
       product.match = function () {
         var match = true
         for (var c in this.cells) {
@@ -270,7 +275,11 @@ Editor.prototype.loadPCM = function (pcmID) {
         return match
       }
 
-      //Add a function that hide/show cells (used to hide products that doesn't match configurator)
+      /**
+       * Hide/show the product
+       * Used to hide products that doesn't match configurator
+       * @param {boolean} visible - true to show, false to hide
+       */
       product.setVisible = function (visible) {
         this.visible = visible
         for (var c in this.cells) {
@@ -285,7 +294,17 @@ Editor.prototype.loadPCM = function (pcmID) {
         }
       }
 
-      product.newDataset = function(n, x, y, r, c){
+      /**
+       * Return a dataset
+       * Used in chartFactory for chartjs
+       * @param {Feature|string} n - the feature or the feature id corresponding to the cell we want to use as label
+       * @param {Feature|string} x - the feature or the feature id corresponding to the cell we want to use as 1st dimension
+       * @param {Feature|string} y - ... 2nd dimension
+       * @param {Feature|string|null} r - ... 3rd dimension (optional)
+       * @param {Feature|string|null} c - ... 4th dimension (optional)
+       * @return {Object} a dataset matching chartjs format
+       */
+      product.newDataset = function (n, x, y, r, c) {
         var self = this;
         this.dataset = {
            label: self.getCell(n).value,
@@ -305,12 +324,13 @@ Editor.prototype.loadPCM = function (pcmID) {
       }
     }
 
-    //add filter to all features
+    // add a filter to all features
     for (var f in self.pcm.features) {
       var feature = self.pcm.features[f]
       feature.filter = new Filter(feature, self)
     }
 
+    // The callback when the pcm is loaded
     self.pcmLoaded()
   })
 }
