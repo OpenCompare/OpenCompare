@@ -89,6 +89,10 @@ function Editor (divID, pcmID) {
     self.showView('chartDiv')
   }).appendTo(this.actionBar)
 
+  this.showMapButton = $('<div>').addClass('button').html('Show Map').click(function () {
+    self.showView('mapDiv')
+  }).appendTo(this.actionBar)
+
   this.exportButton = $('<a>').addClass('button').html('Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
 
   //Action bar right pane
@@ -121,6 +125,8 @@ function Editor (divID, pcmID) {
   this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
+  //create map
+  this.views.mapDiv = $("<div>").appendTo(this.pcmWrap)
   //Display view
   var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
   if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
@@ -169,6 +175,9 @@ Editor.prototype.showView = function (view) {
 
     this._view = view
     this._view.show()
+    if (view === this.views.mapDiv){
+      this.initMap()
+    }
   }
 }
 
@@ -421,6 +430,14 @@ Editor.prototype.addFeatureToDOM = function (id) {
 //init chart
 Editor.prototype.initChart = function(){
   this.chartFactory.init()
+}
+
+//init Map
+Editor.prototype.initMap = function(){
+  if (typeof this.mapFactory === 'undefined') {
+    this.mapFactory = new MapFactory(this, this.views.mapDiv)
+  }
+  this.mapFactory.init();
 }
 
 //Called in pcmLoaded to update the configurator
