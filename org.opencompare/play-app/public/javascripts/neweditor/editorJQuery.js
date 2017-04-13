@@ -204,16 +204,10 @@ Editor.prototype.loadPCM = function (pcmID) {
   pcmID = typeof pcmID === 'undefined'
     ? false
     : pcmID
-  var that = this //deprecated
+  var that = this //deprecated use self instead
   var self = this
   if (pcmID) this.pcmID = pcmID
 
-  //API url : https://opencompare.org/api/get/
-  // or relative, local path "/get/"
-  // I propose to change pcmID as pcmLocation; as such the user can specify an opencompare ID or a local file
-  // https://opencompare.org/api/get/
-  // "/assets/pcm/"
-  // works also with a local opencompare server ()"/api/get/")
   $.get(this.api + this.pcmID, function (data) {
     console.log(data)
     self.pcm = data
@@ -336,53 +330,20 @@ Editor.prototype.loadPCM = function (pcmID) {
 }
 
 /**
- * Return if obj (product or feature) is of number type (integer/real)
+ * Return if obj is of type number (integer/real)
+ * @param {Product|Feature|Cell|Filter} obj - the object that we want to know if it's of type number
+ * @return {boolean} - if obj is of type number
  */
 function isNumber (obj) {
   return obj.type === 'integer' || obj.type === 'real'
 }
 
-//Add all feature in the array to this.features
-Editor.prototype.addFeaturesFromArray = function(array){
-  console.error('Don\'t use this function anymore')
-  for(var i in array){
-    var feature = array[i];
-    if (feature.subFeatures) {
-      this.addFeaturesFromArray(feature.subFeatures.array);
-    } else {
-      feature.filter = new Filter(feature, this); //filter is used to filter products on this feature
-
-      /**
-       * Just a shorthand to feature.filter.type
-       */
-      Object.defineProperty(feature, 'type', {
-        get: function () {
-          return this.filter.type
-        }
-      })
-
-      /**
-       * Return if feature.filter.type is a number (integer/real)
-       */
-      Object.defineProperty(feature, 'isNumber', {
-        get: function () {
-          return this.type === 'integer' || this.type === 'real'
-        }
-      })
-
-      if (this.pcm.productsKey != null && this.pcm.productsKey.generated_KMF_ID == feature.generated_KMF_ID) {
-        this.features.splice(0, 0, feature);
-      } else {
-        this.features.push(feature);
-      }
-    }
-  }
-}
-
-//Called when the pcm is loaded to update the UI
-Editor.prototype.pcmLoaded = function(){
-  //console.log(this.pcm);
-
+/**
+ * The callback when the pcm is loaded
+ * It updates the UI et call some init methods
+ * Don't init map here, it will cause a bug because the div that is supposed to contain the map is hidden !!!
+ */
+Editor.prototype.pcmLoaded = function () {
   //Name
   var name = this.pcm.name
   if (typeof name === 'undefined' || name.length === 0) {
@@ -416,24 +377,30 @@ Editor.prototype.pcmLoaded = function(){
   this.initChart()
 }
 
-//Called in pcmLoaded to update the pcm
-Editor.prototype.initPCM = function(){
-  //init table
+/**
+ * Update the pcm in the view
+ */
+Editor.prototype.initPCM = function () {
+  // Init view (detach every element)
   this.pcmTable.find(".pcm-column-header").detach()
   this.pcmTable.find(".pcm-cell").detach()
 
-  this.addFeatureToDOM(this.pcm.primaryFeatureID)
+  // Append the primary feature to the view
+  this.addFeatureToView(this.pcm.primaryFeatureID)
+
+  // Append every other features to the view
   for (var f in this.pcm.features) {
     if (f !== this.pcm.primaryFeatureID) {
-      this.addFeatureToDOM(f)
+      this.addFeatureToView(f)
     }
   }
 }
 
 /**
- * Append the feature in the DOM (into pcmTable)
+ * Append the feature to the view (into pcmTable)
+ * @param {string} id - The id of the feature to append to the view
  */
-Editor.prototype.addFeatureToDOM = function (id) {
+Editor.prototype.addFeatureToView = function (id) {
   var col = $("<div>").addClass("pcm-column").addClass(this.pcm.features[id].type).appendTo(this.pcmTable)
   col.append(this.pcm.features[id].filter.columnHeader)
   for (var p in this.pcm.productsSorted) {
