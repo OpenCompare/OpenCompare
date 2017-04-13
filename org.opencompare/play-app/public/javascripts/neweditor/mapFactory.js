@@ -13,9 +13,11 @@
   this.marker = null
 
 
-  this.chartXLabel = $('<label>').html(' x : ').appendTo(this.div);
-  this.chartXselect = $('<select>').appendTo(this.div).change(function(){
-    self.chartDataX = self.editor.getFeatureByID(self.chartXselect.val());
+  this.configDiv = $('<div class="mapConfig">').appendTo(this.div)
+
+  this.chartXLabel = $('<label>').html(' x : ').appendTo(this.configDiv);
+  this.chartXselect = $('<select>').appendTo(this.configDiv).change(function () {
+    self.chartDataX = self.editor.pcm.features[self.chartXselect.val()]
     self.mapTypeLabel = $('<div id="map">').addClass('map').appendTo(this.mapTypeLabel);
     if(self.map !== null)
       //self.map.remove();
@@ -24,9 +26,9 @@
     self.drawMap();
   });
 
-  this.chartYLabel = $('<label>').html(' x : ').appendTo(this.div);
-  this.chartYselect = $('<select>').appendTo(this.div).change(function(){
-    self.chartDataY = self.editor.getFeatureByID(self.chartYselect.val());
+  this.chartYLabel = $('<label>').html(' x : ').appendTo(this.configDiv);
+  this.chartYselect = $('<select>').appendTo(this.configDiv).change(function(){
+    self.chartDataY = self.editor.pcm.features[self.chartYselect.val()]
     self.mapTypeLabel = $('<div id="map">').addClass('map').appendTo(this.mapTypeLabel);
     if(self.map !== null)
       //self.map.remove();
@@ -45,15 +47,15 @@
 
 //Called when pcm is loaded to init chart
 MapFactory.prototype.init = function(){
-  for(var f in this.editor.features){
-    var feature = this.editor.features[f];
+  for(var f in this.editor.pcm.features){
+    var feature = this.editor.pcm.features[f];
       if(this.chartDataX == null){
         this.chartDataX = feature;
         this.chartDataY = feature;
       }
 
-      this.chartXselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
-      this.chartYselect.append('<option value="'+feature.generated_KMF_ID+'">'+feature.name+'</option>');
+      this.chartXselect.append('<option value="'+f+'">'+feature.name+'</option>');
+      this.chartYselect.append('<option value="'+f+'">'+feature.name+'</option>');
   }
   this.drawMap()
 }
@@ -105,8 +107,8 @@ MapFactory.prototype.locationCity = function (city, product, data, map, layer){
 
 MapFactory.prototype.addMarker = function (latLon, product){
  this.marker = L.marker(latLon).addTo(this.markerLayer);
- this.marker.bindTooltip("<dt>"+this.chartDataX.name+" :"+product.getCell(this.chartDataX).content
-  +"<dt>"+this.chartDataY.name+" :"+product.getCell(this.chartDataY).content);
+ this.marker.bindTooltip("<dt>"+this.chartDataX.name+" :"+product.getCell(this.chartDataX).value
+  +"<dt>"+this.chartDataY.name+" :"+product.getCell(this.chartDataY).value);
  this.markerLayer.addLayer(this.marker)
 
 }
@@ -114,15 +116,15 @@ MapFactory.prototype.addMarker = function (latLon, product){
 MapFactory.prototype.addAllMarker = function (){
   var f = this.isCity();
   var citiesData = cities
-  for(var p in this.editor.products){
-    var product = this.editor.products[p];
-    this.locationCity(product.getCell(this.editor.features[f]).content,
+  for(var p in this.editor.pcm.products){
+    var product = this.editor.pcm.products[p];
+    this.locationCity(product.getCell(this.editor.pcm.features[f]).value,
       product, citiesData);
   }
 }
 MapFactory.prototype.isCity = function(){
-  for(var f in this.editor.features) {
-    var feature = this.editor.features[f]
+  for(var f in this.editor.pcm.features) {
+    var feature = this.editor.pcm.features[f]
     //console.log(feature.name)
     if(feature.name === "City" ||feature.name === "Ville" ){
     return f

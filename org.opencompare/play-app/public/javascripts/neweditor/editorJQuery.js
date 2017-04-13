@@ -130,7 +130,8 @@ function Editor (divID, pcmID) {
   this.chartFactory = new ChartFactory(this, this.views.chartDiv)
 
   //create map
-  this.views.mapDiv = $("<div>").appendTo(this.pcmWrap)
+  this.views.mapDiv = $("<div>").appendTo(this.contentWrap)
+
   //Display view
   var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
   if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
@@ -179,6 +180,7 @@ Editor.prototype.showView = function (view) {
 
     this._view = view
     this._view.show()
+
     if (view === this.views.mapDiv){
       this.initMap()
     }
@@ -188,21 +190,9 @@ Editor.prototype.showView = function (view) {
 //Some accessors
 Editor.prototype.getFeatureByName = function (name) {
   var feature = false
-  for (var f in this.features) {
-    if (this.features[f].name == name) {
-      feature = this.features[f]
-      break
-    }
-  }
-  return feature
-}
-
-//get feature by generated_KMF_ID
-Editor.prototype.getFeatureByID = function (id) {
-  var feature = false;
-  for (var f in this.features) {
-    if (this.features[f].generated_KMF_ID === id) {
-      feature = this.features[f]
+  for (var f in this.pcm.features) {
+    if (this.pcm.features[f].name == name) {
+      feature = this.pcm.features[f]
       break
     }
   }
@@ -437,11 +427,11 @@ Editor.prototype.initChart = function(){
 }
 
 //init Map
-Editor.prototype.initMap = function(){
+Editor.prototype.initMap = function () {
   if (typeof this.mapFactory === 'undefined') {
     this.mapFactory = new MapFactory(this, this.views.mapDiv)
+    this.mapFactory.init()
   }
-  this.mapFactory.init();
 }
 
 //Called in pcmLoaded to update the configurator
