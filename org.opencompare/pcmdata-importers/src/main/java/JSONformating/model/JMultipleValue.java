@@ -43,7 +43,11 @@ public class JMultipleValue extends JValue{
 	}
 	
 	public JSONArray export(){
-		JSONArray array = new JSONArray(mulValue);
+		JSONArray array = new JSONArray();
+		for (JValue jv : mulValue) {
+			array.put(jv.export());
+		}
+		//JSONArray array = new JSONArray(mulValue);
 		return array;
 	}
 	
