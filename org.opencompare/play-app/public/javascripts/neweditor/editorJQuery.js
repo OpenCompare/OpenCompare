@@ -2,7 +2,9 @@
 //Some function
 
 /**
- * get the cell and return a string representation of the value
+ * return a string representation of the value of the given cell
+ * @param {Cell} cell - The cell
+ * @return {string} a string representation of cell.value
  */
 function valueToString (cell) {
   var string = ''
@@ -20,7 +22,9 @@ function valueToString (cell) {
 }
 
 /**
- * get the cell and return a html representation of the value
+ * return a html representation of the value of the given cell
+ * @param {Cell} cell - The cell
+ * @return {string} a html representation of cell.value
  */
 function valueToHtml (cell) {
   var html = ''
@@ -45,9 +49,9 @@ function valueToHtml (cell) {
 //Editor
 
 /**
- * The jQuery Editor class
- * @param {string} divID - The id attribute of the tag that will xontain the editor.
- * @param {string} pcmID - The id of the PCM toloadin the API.
+ * The Editor class
+ * @param {string} divID - The id attribute of the tag that will contain the editor.
+ * @param {string} pcmID - The id of the PCM to load from the API.
  */
 function Editor (divID, pcmID) {
   var that = this
