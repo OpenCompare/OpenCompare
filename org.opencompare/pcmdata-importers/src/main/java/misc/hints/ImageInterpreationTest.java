@@ -24,7 +24,8 @@ public class ImageInterpreationTest {
     public void testPCM1() throws IOException {
 
         // Load a PCM
-        File pcmFile = new File("input-pcm/eras2.pcm");
+        // File pcmFile = new File("input-pcm/eras2.pcm");
+        File pcmFile = new File("input-pcm/euro2016bis.pcm");
         PCMLoader loader = new KMFJSONLoader();
         PCM pcm = loader.load(pcmFile).get(0).getPcm();
         assertNotNull(pcm);
