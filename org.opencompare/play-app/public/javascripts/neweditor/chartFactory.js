@@ -23,37 +23,37 @@ function ChartFactory(editor, div){
   this.chartDataColor = null; //feature for color
 
   // the image of the Visualization in Bar, and the fonction to call it
-  this.chartImgBar = $('<img id="clickBar" src="http://img4.hostingpics.net/pics/227950stat11.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgBar = $('<img id="clickBar" src="/assets/images/chartBar.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "bar";
     self.drawChart();
   });
 
   // the image of the Visualization in Pie, and the fonction to call it
-  this.chartImgPie = $('<img id="clickPie" src="http://img4.hostingpics.net/pics/212411stat21.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgPie = $('<img id="clickPie" src="/assets/images/chartPie.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "pie";
     self.drawChart();
   });
 
   // the image of the Visualization in Line, and the fonction to call it
-  this.chartImgLine = $('<img id="clickLine" src="http://img4.hostingpics.net/pics/199610stat31.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgLine = $('<img id="clickLine" src="/assets/images/chartLine.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "line";
     self.drawChart();
   });
 
   // the image of the Visualization in Radar, and the fonction to call it
-  this.chartImgRadar = $('<img id="clickRadar" src="http://img4.hostingpics.net/pics/915174stat41.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgRadar = $('<img id="clickRadar" src="/assets/images/chartRadar.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "radar";
     self.drawChart();
   });
 
   // the image of the Visualization in ProductChart, and the fonction to call it
-  this.chartImgPC = $('<img id="clickPC" src="http://img4.hostingpics.net/pics/557345stat51.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgPC = $('<img id="clickPC" src="/assets/images/chartPC.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "productchart";
     self.drawChart();
   });
 
   // the image of the Visualization in Other, and the fonction to call it
-  this.chartImgPC = $('<img id="clickPC" src="http://img4.hostingpics.net/pics/415060stat61.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImgOtherPC = $('<img id="clickPC" src="/assets/images/chartOPC.png" width="40px" />').appendTo(this.div).click(function(){
     self.chartType = "autre";
     self.drawChart();
   });
