@@ -89,6 +89,10 @@ class org.opencompare.model.Dimension : org.opencompare.model.Value {
 class org.opencompare.model.NotApplicable : org.opencompare.model.Value {
 }
 
+class org.opencompare.model.ImageValue : org.opencompare.model.Value {
+        url : String[0,1]
+}
+
 class org.opencompare.model.Unit : org.opencompare.model.Value {
     unit : String[0,1]
     @contained

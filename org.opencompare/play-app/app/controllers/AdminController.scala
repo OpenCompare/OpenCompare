@@ -95,7 +95,8 @@ class AdminController @Inject() (val messagesApi: MessagesApi,
             val pcmContainer = dbPCM.get.pcmContainer.get
             val pcm = pcmContainer.getPcm
             pcm.normalize(pcmFactory)
-            cellContentInterpreter.interpretCells(pcm)
+           // cellContentInterpreter.interpretCells(pcm)
+            cellContentInterpreter.interpretCellsFromScratch(pcm)
 
             val databasePCM = new DatabasePCM(Some(pcmid), Some(pcmContainer))
             Database.update(databasePCM)

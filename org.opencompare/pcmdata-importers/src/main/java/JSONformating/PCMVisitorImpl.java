@@ -6,19 +6,7 @@ import org.opencompare.api.java.FeatureGroup;
 import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.Product;
 import org.opencompare.api.java.util.PCMVisitor;
-import org.opencompare.api.java.value.BooleanValue;
-import org.opencompare.api.java.value.Conditional;
-import org.opencompare.api.java.value.DateValue;
-import org.opencompare.api.java.value.Dimension;
-import org.opencompare.api.java.value.IntegerValue;
-import org.opencompare.api.java.value.Multiple;
-import org.opencompare.api.java.value.NotApplicable;
-import org.opencompare.api.java.value.NotAvailable;
-import org.opencompare.api.java.value.Partial;
-import org.opencompare.api.java.value.RealValue;
-import org.opencompare.api.java.value.StringValue;
-import org.opencompare.api.java.value.Unit;
-import org.opencompare.api.java.value.Version;
+import org.opencompare.api.java.value.*;
 
 import JSONformating.model.JSONFormat;
 
@@ -147,6 +135,11 @@ public class PCMVisitorImpl implements PCMVisitor {
 	public void visit(Version version) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void visit(Image image) {
+		// TODO Auto-generated method stub
 	}
 
 }

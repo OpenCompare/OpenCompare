@@ -41,7 +41,11 @@ public abstract class ValueImpl implements Value {
             return new ConditionalImpl((org.opencompare.model.Conditional) kValue);
         } else if (kValue instanceof org.opencompare.model.Partial) {
             return new PartialImpl((org.opencompare.model.Partial) kValue);
-        } else {
+        }
+        else if (kValue instanceof org.opencompare.model.ImageValue) {
+            return new ImageImpl((org.opencompare.model.ImageValue) kValue);
+        }
+        else {
             throw new UnsupportedOperationException(kValue.getClass() + " interpretation type is not yet supported");
         }
         // TODO : continue

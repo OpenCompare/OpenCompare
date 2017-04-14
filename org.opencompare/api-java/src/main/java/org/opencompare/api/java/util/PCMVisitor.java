@@ -26,6 +26,7 @@ public interface PCMVisitor {
     void visit(StringValue stringValue);
     void visit(Unit unit);
     void visit(Version version);
+    void visit(Image image);
 
 
 }

@@ -10,6 +10,8 @@ public interface CellContentInterpreter {
 
     void interpretCells(PCM pcm);
 
+    void interpretCellsFromScratch(PCM pcm);
+
     Value interpretString(String content);
 
 }

@@ -103,4 +103,9 @@ public class PCMFactoryImpl implements PCMFactory {
         return new VersionImpl(kFactory.createVersion());
     }
 
+    @Override
+    public Image createImageValue() {
+        return new ImageImpl(kFactory.createImageValue());
+    }
+
 }
