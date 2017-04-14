@@ -106,7 +106,6 @@ public class JSONmetamorphTest {
 		return PCMtoJSON.mkNewJSONFormatFromPCM(pcmC).export();
 	}
 
-	/*
 	@Test
 	public void UnknowToNewparsable() {
 		for (PCMContainer pcmContainer : listPcmC1) {
@@ -120,7 +119,7 @@ public class JSONmetamorphTest {
 			}
 		}
 		assert (true);
-	}*/
+	}
 
 	@Test
 	public void firstPCMequalsToSecondPCM() {
