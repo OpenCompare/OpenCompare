@@ -2,8 +2,7 @@ package pcm_Filter.simple.pcm_predicate;
 
 import org.opencompare.model.PCM;
 
-import pcm_Filter.PCMInfoContainer;
-
+import pcm_InfoContainer.*;
 
 public class PCMPredicateMinRowProduct implements PCMPredicateFilter {
 
@@ -11,8 +10,7 @@ public class PCMPredicateMinRowProduct implements PCMPredicateFilter {
 	
 	@Override
 	public boolean isSatisfiable(PCMInfoContainer pcmic) {
-		pcmic.computeRows();
-		if(pcmic.getRows()>minimumRows){
+		if(pcmic.getStatPcm().getNbProducts()>minimumRows){
 			return true;
 		}
 		return false;

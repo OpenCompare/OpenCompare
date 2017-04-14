@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.opencompare.api.java.PCMContainer;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -16,6 +17,8 @@ import JSONformating.model.JNumberValue;
 import JSONformating.model.JProduct;
 import JSONformating.model.JStringValue;
 import JSONformating.model.JValue;
+import JSONformating.reader.JSONReader;
+import JSONformating.reader.JSONtoPCM;
 import JSONformating.model.JSONFormat;
 import JSONformating.model.JSONFormatType;
 
@@ -44,5 +47,7 @@ public class Dummy {
 //		JSONFormat nf = new JSONFormat();
 //		nf.addProduct(prod);
 //		System.out.println(nf.export());
+		
+		PCMContainer pcmC = JSONtoPCM.JSONFormatToPCM(JSONReader.importJSON("off_output/pcms/en_french-blue-veined-cheeses.new.pcm"));
 	}
 }

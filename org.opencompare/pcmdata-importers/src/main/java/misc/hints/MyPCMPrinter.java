@@ -1,4 +1,4 @@
-package pcm_Filter.hints;
+package misc.hints;
 
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;

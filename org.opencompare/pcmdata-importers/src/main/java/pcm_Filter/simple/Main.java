@@ -16,7 +16,7 @@ import org.opencompare.api.java.impl.io.KMFJSONLoader;
 
 import org.opencompare.api.java.io.PCMLoader;
 
-import pcm_Filter.PCMInfoContainer;
+import pcm_InfoContainer.*;
 import pcm_Filter.simple.pcm_predicate.*;
 
 
@@ -26,7 +26,7 @@ public class Main {
 
 	public static final boolean writefile = false;
 
-	public static final String inputpath = "input-pcm";
+	public static final String inputpath = "input-pcm/oldformat";
 	public static final String outputpath = "../../output-model/";
 
 	// "input-pcm" testing inputs
@@ -59,9 +59,8 @@ public class Main {
 
 				for (PCMContainer pcmContainer : pcmContainers) {
 					// Get the PCM
-					PCM pcm = pcmContainer.getPcm();
-
-					PCMInfoContainer pcmic = new PCMInfoContainer(pcm);
+					
+					PCMInfoContainer pcmic = new PCMInfoContainer(pcmContainer);
 
 					// for using multiple filters
 					PCMCompositeFilter pFilter = new PCMCompositeFilter();

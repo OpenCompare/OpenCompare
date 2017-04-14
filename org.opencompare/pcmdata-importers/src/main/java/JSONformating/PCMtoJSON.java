@@ -106,14 +106,20 @@ public class PCMtoJSON {
 
 			jc.setType(JSONFormatType.INTEGER);
 			JNumberValue numValue = new JNumberValue();
-			numValue.setValue(((IntegerValue) value).getValue());
+			double i = ((IntegerValue) value).getValue();
+			numValue.setValue(i);
+//			System.out.println("int: " + i);
+//			System.out.println("new val: "+numValue.getValue());
 			return numValue;
 
 		}else if(value instanceof RealValueImpl){
 
 			jc.setType(JSONFormatType.REAL);
 			JNumberValue numValue = new JNumberValue();
-			numValue.setValue(((RealValue) value).getValue());
+			Double d = ((RealValue) value).getValue();
+			numValue.setValue(d);
+//			System.out.println("real: " + d);
+//			System.out.println("new val: "+numValue.getValue());
 			return numValue;
 
 		}else if(value instanceof StringValueImpl){
@@ -152,6 +158,8 @@ public class PCMtoJSON {
 			jc.setType(JSONFormatType.UNDEFINED);
 		}else{
 			jc.setType(JSONFormatType.UNDEFINED);
+			System.out.println("Cell has no interpretation");
+			System.out.println(c.getRawContent());
 		}
 		return null;
 	}
@@ -181,7 +189,7 @@ public class PCMtoJSON {
 				value.setValue(((StringValue) val).getValue());
 				jvalues.add(value);
 			}else if(val instanceof MultipleImpl){
-				
+
 			}else if(val instanceof VersionImpl){
 				
 			}else if(val instanceof NotApplicableImpl){

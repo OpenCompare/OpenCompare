@@ -145,13 +145,13 @@ public class JSONtoPCM {
 				newVal = factory.createStringValue();
 				((StringValue) newVal).setValue(((JStringValue) v).getValue());
 			}else if( v instanceof JNumberValue){
-				Float f = ((JNumberValue) v).getValue();
-				if(f.intValue() == f){
+				Double d = ((JNumberValue) v).getValue();
+				if(d.intValue() == d){
 					newVal = factory.createIntegerValue();
-					((IntegerValue) newVal).setValue(f.intValue());
+					((IntegerValue) newVal).setValue(d.intValue());
 				}else{
 					newVal = factory.createRealValue();
-					((RealValue) newVal).setValue(f);
+					((RealValue) newVal).setValue(d);
 				}
 			}else{
 				newVal = factory.createNotAvailable();				
