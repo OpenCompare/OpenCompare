@@ -31,7 +31,7 @@ class CellContentInterpreter(factory: PCMFactory) extends org.opencompare.api.ja
     // int
    new IntegerPatternInterpreter("\\d+",Nil, true, factory),
     // double
-    new DoublePatternInterpreter("^[0-9,;]+$",Nil, true, factory),
+    new DoublePatternInterpreter("^[0-9.,;]+$",Nil, true, factory),
    // new DoublePatternInterpreter("\\d+(\\.\\d+)?",Nil, true, factory),
    // dimensions
     new MultipleRegexPatternInterpreter( "(\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?)", List("and"), true, factory),
