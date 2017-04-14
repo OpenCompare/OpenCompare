@@ -2,7 +2,7 @@ package pcm_Filter.simple.pcm_predicate;
 
 import org.opencompare.model.PCM;
 
-import pcm_Filter.PCMInfoContainer;
+import pcm_InfoContainer.*;
 
 
 public interface PCMPredicateFilter {

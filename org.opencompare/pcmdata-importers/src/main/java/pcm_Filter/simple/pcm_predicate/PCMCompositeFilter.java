@@ -3,7 +3,7 @@ package pcm_Filter.simple.pcm_predicate;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import pcm_Filter.PCMInfoContainer;
+import pcm_InfoContainer.*;
 
 
 

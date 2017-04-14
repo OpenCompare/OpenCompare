@@ -19,10 +19,12 @@ import org.opencompare.api.java.io.PCMLoader;
 
 import com.opencsv.CSVWriter;
 
-public class PCMInfoTest {
+import pcm_InfoContainer.*;
 
-	public static final String inputpath = "../../New_Model/output114";
-	public static final String outputpath = "../../New_Model/output114";
+public class PCMMetricMain {
+
+	public static final String inputpath = "input-pcm/oldformat";
+	public static final String outputpath = "input-pcm/oldformat";
 
 	// "../../input-model"
 	// "input-pcm"
@@ -31,7 +33,7 @@ public class PCMInfoTest {
 
 		Stream<Path> paths = Files.walk(Paths.get(inputpath));
 
-		File outputcsv = new File("./metrics/metrics114.csv");
+		File outputcsv = new File("./metrics/metrictest.csv");
 
 		try {
 			outputcsv.createNewFile();
@@ -62,21 +64,24 @@ public class PCMInfoTest {
 
 					for (PCMContainer pcmContainer : pcmContainers) {
 						// Get the PCM
-						PCM pcm = pcmContainer.getPcm();
-						PCMInfoContainerPreComputation pcmic = null;
+						PCMInfoContainer pcmic = null;
 
 						try {
-							pcmic = new PCMInfoContainerPreComputation(pcm);
+							pcmic = new PCMInfoContainer(pcmContainer);
 						} catch (Exception e) {
 						}
 
 						if (pcmic != null) {
-							String[] str = { filePath.getFileName().toString(), pcmic.nbFeatures().toString(),
-									pcmic.nbRows().toString(), pcmic.nbCells().toString(),
-									pcmic.nbEmptyCells().toString(), pcmic.ratioEmptyCells().toString(),
-									pcmic.nbFeaturesHomog().toString(), pcmic.ratioFeatureHomog().toString(),
-									pcmic.nbFeaturesHomogNumeric().toString(), pcmic.isProductChartable().toString(),
-									pcmic.score().toString() };
+							String[] str = { filePath.getFileName().toString(),
+									pcmic.getStatPcm().getNbFeatures().toString(),
+									pcmic.getStatPcm().getNbProducts().toString(),
+									pcmic.getStatPcm().getNbCells().toString(),
+									pcmic.getStatPcm().getNbEmptyCells().toString(),
+									pcmic.getStatPcm().getRatioEmptyCells().toString(),
+									pcmic.getStatPcm().getNbFeaturesHomog().toString(),
+									pcmic.getStatPcm().getRatioFeaturesHomog().toString(),
+									pcmic.getStatPcm().getNbFeaturesHomogNumeric().toString(),
+									pcmic.isProductChartable().toString(), };
 
 							csvwriter.writeNext(str);
 

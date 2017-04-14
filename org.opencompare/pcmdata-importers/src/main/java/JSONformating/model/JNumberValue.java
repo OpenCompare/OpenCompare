@@ -1,17 +1,17 @@
 package JSONformating.model;
 
 public class JNumberValue extends JValue{
-	private float numValue;
+	private Double numValue;
 
-	public Float getValue() {
+	public Double getValue() {
 		return numValue;
 	}
 	
 	public Integer getAsInteger(){
-		return ((Float) numValue).intValue();
+		return numValue.intValue();
 	}
 
-	public void setValue(float value) {
+	public void setValue(Double value) {
 		this.numValue = value;
 	}
 	
@@ -19,8 +19,8 @@ public class JNumberValue extends JValue{
 		return String.valueOf(numValue);
 	}
 	
-	public String export(){
-		return String.valueOf(numValue);
+	public Double export(){
+		return numValue;
 	}
 	
 	public boolean sameValue(JValue value){

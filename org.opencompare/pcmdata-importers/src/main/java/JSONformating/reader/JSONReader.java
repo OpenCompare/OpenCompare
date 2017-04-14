@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -36,21 +37,24 @@ public class JSONReader {
 			Scanner scanner = new Scanner(new File(filename));
 			String json = scanner.useDelimiter("\\Z").next();
 			scanner.close();
-//			System.out.println(json);
-			JsonElement jelement = new JsonParser().parse(json);
-			return createJSONFormat(jelement);
+			return importJSONString(json);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
 	
 		return null;
 	}
+	
+	public static JSONFormat importJSONString(String json) throws IOException{
+		JsonElement jelement = new JsonParser().parse(json);
+		return createJSONFormat(jelement);
+	}
 
 	private static JSONFormat createJSONFormat(JsonElement jelement) throws IOException {
 		JFeature feature;
 		JProduct product;
 		JCell cell;
-		JsonObject jo, jC, jV, features, obj, products, cells;
+		JsonObject jo, jC, features, obj, products, cells;
 		JSONFormat jf = new JSONFormat();
 		obj = jelement.getAsJsonObject();
 		jf.setName(obj.get("name").getAsString());
@@ -111,7 +115,11 @@ public class JSONReader {
 			JMultipleValue mulValue = new JMultipleValue();
 			JsonArray array = value.getAsJsonArray();
 			for(JsonElement j : array){
-				mulValue.addValue(getJValueForMultiple(j));
+				if(j instanceof JsonNull){
+					System.out.println("coucou");
+				}else{
+					mulValue.addValue(getJValueForMultiple(j));
+				}
 			}
 			return mulValue;
 		case UNDEFINED:
