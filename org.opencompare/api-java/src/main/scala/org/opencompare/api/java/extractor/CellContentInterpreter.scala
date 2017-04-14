@@ -1,5 +1,7 @@
 package org.opencompare.api.java.extractor
 
+import java.util.regex.Pattern
+
 import org.opencompare.api.java._
 import org.opencompare.api.java.interpreters._
 
@@ -17,15 +19,21 @@ class CellContentInterpreter(factory: PCMFactory) extends org.opencompare.api.ja
     new UnknownPatternInterpreter("unknown",Nil, true, factory),
     new UnknownPatternInterpreter("(-)+",Nil, true, factory),
     new UnknownPatternInterpreter("(—)+",Nil, true, factory),
-    new PartialPatternInterpreter("(partial)",Nil, true, factory)
+    new PartialPatternInterpreter("(partial)",Nil, true, factory),
+    // images
+    new ImagePatternInterpreter("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", Nil, true, factory)
+    //new ImagePatternInterpreter(".*\\.jpg\\s*$" + "|.*\\.svg\\s*$" + "|.*\\.jpeg\\s*$" + "|.*\\.bmp\\s*$" + "|.*\\.png\\s*$" + "|.*\\.gif\\s*$", Nil, true, factory)
+    // if (Pattern.matches("^\\s*http:\\/\\/.*" + "|^\\s*https:\\/\\/.*", sv.getValue) && Pattern.matches(".*\\.jpg\\s*$" + "|.*\\.svg\\s*$" + "|.*\\.jpeg\\s*$" + "|.*\\.bmp\\s*$" + "|.*\\.png\\s*$" + "|.*\\.gif\\s*$", sv.getValue)) {
+    //
 
   )
   val defaultGreedyInterpreters : List[PatternInterpreter] =  List(
     // int
-    new IntegerPatternInterpreter("\\d+",Nil, true, factory),
+   new IntegerPatternInterpreter("\\d+",Nil, true, factory),
     // double
-    new DoublePatternInterpreter("\\d+(\\.\\d+)?",Nil, true, factory),
-    // dimensions
+    new DoublePatternInterpreter("^[0-9,;]+$",Nil, true, factory),
+   // new DoublePatternInterpreter("\\d+(\\.\\d+)?",Nil, true, factory),
+   // dimensions
     new MultipleRegexPatternInterpreter( "(\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?) (?:×|x) (\\d+(?:\\.\\d+)?)", List("and"), true, factory),
     // date XX/XX/XXXX
     new VariabilityConceptRefPatternInterpreter("\\d{2}/\\d{2}/\\d{4}", Nil, true, factory),
@@ -45,7 +53,7 @@ class CellContentInterpreter(factory: PCMFactory) extends org.opencompare.api.ja
     new MultipleRegexPatternInterpreter("(.+)\\sand\\s(.+)", List("and"), false, factory),
     // everything
     new VariabilityConceptRefPatternInterpreter(".*", Nil, false, factory)
-  )
+   )
 
   private var patternInterpreters: List[PatternInterpreter] = defaultInterpreters ::: defaultGreedyInterpreters
   patternInterpreters.foreach(_.setCellContentInterpreter(this))
@@ -57,6 +65,7 @@ class CellContentInterpreter(factory: PCMFactory) extends org.opencompare.api.ja
 
   /**
    * Interpret each cell and specify its product and feature headers
+    * whenever we did not find a type, we compute and add it (types of the past are the same)
     *
     * @param pcm : model of PCM
    */
@@ -78,6 +87,29 @@ class CellContentInterpreter(factory: PCMFactory) extends org.opencompare.api.ja
       }
 
     }
+  }
+
+  /**
+    * Interpret each cell and specify its product and feature headers
+    * we try to type from scratch, whatever have been made in the past
+    * @param pcm : model of PCM
+    */
+  override def interpretCellsFromScratch(pcm: PCM) {
+
+    // Interpret every uninterpreted cells
+    for (
+      product <- pcm.getProducts;
+      cell <- product.getCells
+    ) {
+      // Find interpretation
+      val interpretation = interpretStringOption(cell.getContent)
+
+      // Set interpretation
+      if (interpretation.isDefined) {
+        cell.setInterpretation(interpretation.get)
+      }
+    }
+
   }
 
   override def interpretString(verbatim: String): Value = {

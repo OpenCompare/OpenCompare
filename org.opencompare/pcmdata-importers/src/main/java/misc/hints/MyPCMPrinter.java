@@ -4,6 +4,8 @@ import org.opencompare.api.java.*;
 import org.opencompare.api.java.util.PCMVisitor;
 import org.opencompare.api.java.value.*;
 
+import java.util.List;
+
 /**
  * Created by gbecan on 02/02/15.
  */
@@ -24,7 +26,7 @@ public class MyPCMPrinter implements PCMVisitor {
         }
 
         // Then, we use a visitor to print the content of the cells that represent a boolean value
-        System.out.println("--- Boolean values ---");
+       // System.out.println("--- Boolean values ---");
         pcm.accept(this);
 
     }
@@ -94,12 +96,16 @@ public class MyPCMPrinter implements PCMVisitor {
 
     @Override
     public void visit(IntegerValue integerValue) {
-
+        System.out.println("Integer " + integerValue.getValue());
     }
 
     @Override
     public void visit(Multiple multiple) {
-
+        List<Value> subs = multiple.getSubValues();
+        System.out.println("(begin multiple)");
+        for (Value v : subs)
+            v.accept(this);
+        System.out.println("(end multiple)");
     }
 
     @Override
@@ -119,12 +125,12 @@ public class MyPCMPrinter implements PCMVisitor {
 
     @Override
     public void visit(RealValue realValue) {
-
+        System.out.println("REAL " + realValue.getValue());
     }
 
     @Override
     public void visit(StringValue stringValue) {
-
+        System.out.println("String: " + stringValue.getValue());
     }
 
     @Override
@@ -136,4 +142,11 @@ public class MyPCMPrinter implements PCMVisitor {
     public void visit(Version version) {
 
     }
+
+    @Override
+    public void visit(Image image) {
+        System.out.println("\tIMAGE " + image.getUrl());
+    }
+
+
 }

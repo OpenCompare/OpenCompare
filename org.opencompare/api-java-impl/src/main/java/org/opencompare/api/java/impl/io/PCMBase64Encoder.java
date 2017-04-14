@@ -151,4 +151,9 @@ public class PCMBase64Encoder implements PCMVisitor {
     public void visit(Version version) {
 
     }
+
+    @Override
+    public void visit(Image image) {
+
+    }
 }

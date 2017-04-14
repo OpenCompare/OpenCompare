@@ -26,4 +26,5 @@ public interface PCMFactory {
     StringValue createStringValue();
     Unit createUnit();
     Version createVersion();
+    Image createImageValue();
 }
