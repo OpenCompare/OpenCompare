@@ -225,7 +225,7 @@ ChartFactory.prototype.drawChart = function(){
 		}
 
 		// we create a picture plus for add a new choice for the vizualisation
-		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(self.nbBar < self.taboption.length){
 				self.nbBar = self.nbBar + 1;
 				self.chartTypeA = null;
@@ -234,7 +234,7 @@ ChartFactory.prototype.drawChart = function(){
 		});
 
 		// we create a picture minus for sub a new choice for the vizualisation
-		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(self.nbBar > 1){
 				self.nbBar = self.nbBar - 1;
 				self.chartTypeA = null;
@@ -276,7 +276,7 @@ ChartFactory.prototype.drawChart = function(){
 		}
 
 		// we create a picture plus for add a new choice for the vizualisation
-		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(self.nbLine < self.taboption.length){
 				self.nbLine = self.nbLine + 1;
 				self.chartTypeA = null;
@@ -285,7 +285,7 @@ ChartFactory.prototype.drawChart = function(){
 		});
 
 		// we create a picture minus for sub a new choice for the vizualisation
-		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(self.nbLine > 1){
 				self.nbLine = self.nbLine - 1;
 				self.chartTypeA = null;
@@ -336,7 +336,7 @@ ChartFactory.prototype.drawChart = function(){
 		}
 
 		// we create a picture plus for add the constraint to the vizualisation
-		var d = $('<img src="http://img4.hostingpics.net/pics/755501plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(!self.compAutre){
 				self.compAutre = true;
 				self.chartTypeA = null;
@@ -345,7 +345,7 @@ ChartFactory.prototype.drawChart = function(){
 		});
 
 		// we create a picture plus for remove the constraint to the vizualisation
-		var b = $('<img src="http://img4.hostingpics.net/pics/836557moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
 			if(self.compAutre){
 				self.compAutre = false;
 				self.chartTypeA = null;
