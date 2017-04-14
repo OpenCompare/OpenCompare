@@ -8,15 +8,15 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.bson.Document;
+// import org.bson.Document;
 
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.io.KMFJSONExporter;
 import org.opencompare.api.java.impl.io.KMFJSONLoader;
 import org.opencompare.api.java.io.PCMLoader;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
+// import com.mongodb.MongoClient;
+// import com.mongodb.client.MongoCollection;
 
 import JSONformating.PCMtoJSON;
 import JSONformating.model.JSONFormat;
@@ -37,6 +37,7 @@ public class Main {
 		//inputpath = "input-pcm/";
 		//inputpath = "../../New_Model/output114/";
 
+		/*
 		try {
 			MongoClient mongoClient = new MongoClient();
 			MongoCollection<Document> collection =
@@ -103,5 +104,6 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 }
