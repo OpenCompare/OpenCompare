@@ -147,9 +147,6 @@ public class JSONtoPCM {
 				((StringValue) newVal).setValue(((JStringValue) v).getValue());
 			}else if( v instanceof JNumberValue){
 				Double d = ((JNumberValue) v).getValue();
-				if(d == null){
-					System.out.println();
-				}
 				if(d.intValue() == d){
 					newVal = factory.createIntegerValue();
 					((IntegerValue) newVal).setValue(d.intValue());
@@ -165,7 +162,7 @@ public class JSONtoPCM {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String filename = "output-pcm/tests/muted_Comparison_of_VoIP_software_0.new.pcm";
+		String filename = "off_output/pcms/en_beers.new.pcm";
 		String filename2 = "off_output/pcms/fr_biscottes-pauvres-en-sel.new.pcm";
 		
 		JSONFormat jf = JSONReader.importJSON(filename);
@@ -194,7 +191,7 @@ public class JSONtoPCM {
 //		System.out.println(pcmC.getPcm().getProductsKey().getName());
 //		jf.exportToFile("off_output/pcms/test.pcm");
 //		jf2.exportToFile("off_output/pcms/test2.pcm");
-		System.out.println("\n" + jf.sameJSONFormat(jf2));
+		System.out.println("\n" + jf.equals(jf2));
 	}
 
 }

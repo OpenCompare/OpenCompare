@@ -23,4 +23,8 @@ public abstract class JValue {
 	public boolean sameValue(JValue value) {
 		return this.equals(value);
 	}
+
+	public boolean exactValue(JValue value) {
+		return this.equals(value);
+	}
 }

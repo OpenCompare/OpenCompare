@@ -67,7 +67,8 @@ public class Dummy {
 //		JSONFormat jf = PCMtoJSON.mkNewJSONFormatFromPCM(pcmC);
 //		
 //		jf.exportToFile(outFilename);
-		
-		System.out.println(Double.valueOf("e"));
+		Double d1 = 8.;
+		Double d2 = 8.;
+		System.out.println(d1.equals(d2));
 	}
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
-// import org.bson.Document;
+import org.bson.Document;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -106,7 +106,6 @@ public class JSONmetamorphTest {
 		return PCMtoJSON.mkNewJSONFormatFromPCM(pcmC).export();
 	}
 
-    /*
 	@Test
 	public void UnknowToNewparsable() {
 		for (PCMContainer pcmContainer : listPcmC1) {
@@ -120,7 +119,7 @@ public class JSONmetamorphTest {
 			}
 		}
 		assert (true);
-	}*/
+	}
 
 	@Test
 	public void firstPCMequalsToSecondPCM() {
@@ -143,7 +142,7 @@ public class JSONmetamorphTest {
 		}
 		int i;
 		for (i = 0; i < listJson2.size(); i++) {
-			if (!listJson2.get(i).sameJSONFormat(listJson4.get(i))) {
+			if (!listJson2.get(i).equals(listJson4.get(i))) {
 				assert (false);
 			}
 		}
