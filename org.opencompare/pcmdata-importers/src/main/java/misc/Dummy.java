@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.opencompare.api.java.PCM;
 import org.opencompare.api.java.PCMContainer;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import JSONformating.PCMtoJSON;
 import JSONformating.model.JBooleanValue;
 import JSONformating.model.JCell;
 import JSONformating.model.JMultipleValue;
@@ -19,6 +21,8 @@ import JSONformating.model.JStringValue;
 import JSONformating.model.JValue;
 import JSONformating.reader.JSONReader;
 import JSONformating.reader.JSONtoPCM;
+import data_off.OFFPCMModifier;
+import data_off.PCMUtil;
 import JSONformating.model.JSONFormat;
 import JSONformating.model.JSONFormatType;
 
@@ -48,6 +52,22 @@ public class Dummy {
 //		nf.addProduct(prod);
 //		System.out.println(nf.export());
 		
-		PCMContainer pcmC = JSONtoPCM.JSONFormatToPCM(JSONReader.importJSON("off_output/pcms/en_french-blue-veined-cheeses.new.pcm"));
+//		String inFilename = "off_output/pcms/en_french-blue-veined-cheeses.pcm";
+//		String outFilename = "off_output/pcms/en_french-blue-veined-cheeses.new.pcm";
+//		
+//		PCMContainer pcmC = PCMUtil.loadPCMContainer(inFilename);
+//		
+//		PCM pcm = pcmC.getPcm();
+//		
+//		//pcm = 
+//				OFFPCMModifier.computeMultiples(pcm);
+//				
+//		//pcmC.setPcm(pcm);
+//		data_off.PCMInterpreter._serializeToPCMJSON(pcmC, inFilename);
+//		JSONFormat jf = PCMtoJSON.mkNewJSONFormatFromPCM(pcmC);
+//		
+//		jf.exportToFile(outFilename);
+		
+		System.out.println(Double.valueOf("e"));
 	}
 }

@@ -1,7 +1,5 @@
 package JSONformating.model;
 
-import java.util.Collection;
-
 public abstract class JValue {
 	
 	private Object value;
