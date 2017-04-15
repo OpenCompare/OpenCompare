@@ -15,7 +15,7 @@ import java.util.Set;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
-// import com.mongodb.util.JSON;
+import com.mongodb.util.JSON;
 
 //import kotlin.deprecated;
 
@@ -346,7 +346,7 @@ public class JSONFormat {
 		return tempFeat.isEmpty();
 	}
 
-	public boolean sameProducts(JSONFormat jf, Map<String, String> featLinks) {
+	public boolean sameProducts(JSONFormat jf, Map<String, String> featLinks, boolean exactContent) {
 		List<JProduct> tempProd = new ArrayList<>(this.products);
 		if(jf.getProducts().size() != this.products.size()){
 			System.out.println("Different number of products");
@@ -355,7 +355,7 @@ public class JSONFormat {
 		for(JProduct jfP : jf.getProducts()){
 			for(JProduct thisP : this.products){
 				if(tempProd.contains(thisP)){
-					if(thisP.sameProduct(jfP, featLinks)){
+					if(thisP.sameProduct(jfP, featLinks, exactContent)){
 						tempProd.remove(thisP);
 					}	
 				}
@@ -373,6 +373,25 @@ public class JSONFormat {
 	 * @param jf the format to compare
 	 * @return true if this and jf are the same, omits ids
 	 */
+	public boolean equals(JSONFormat jf){ 
+		Map<String,String> featLinks = new HashMap<>();
+		if(!this.name.equals(jf.name) || !this.creator.equals(jf.creator) || !this.license.equals(jf.license) || !this.source.equals(jf.source)){
+			return false;
+		}else if(!this.sameFeatures(jf, featLinks)){
+			System.out.println("\nDifferences in features");
+			return false;
+		}else if(!this.sameProducts(jf, featLinks, true)){
+			System.out.println("\nDifferences in products");
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Checks if the JSONFormat in parameter is the same as this, omitting ids and jcell.jvalue.value content
+	 * @param jf the format to compare
+	 * @return true if this and jf are the same, omits ids
+	 */
 	public boolean sameJSONFormat(JSONFormat jf){ 
 		Map<String,String> featLinks = new HashMap<>();
 		if(!this.name.equals(jf.name) || !this.creator.equals(jf.creator) || !this.license.equals(jf.license) || !this.source.equals(jf.source)){
@@ -380,12 +399,11 @@ public class JSONFormat {
 		}else if(!this.sameFeatures(jf, featLinks)){
 			System.out.println("\nDifferences in features");
 			return false;
-		}else if(!this.sameProducts(jf, featLinks)){
+		}else if(!this.sameProducts(jf, featLinks, false)){
 			System.out.println("\nDifferences in products");
 			return false;
 		}
 		return true;
 	}
-
-
+	
 }

@@ -52,7 +52,7 @@ public class JCell{
 	public void setValue(JValue value) {
 		this.value = value;
 	}
-	public boolean sameCell(JCell pC, Map<String, String> featLinks){
+	public boolean sameCell(JCell pC, Map<String, String> featLinks, boolean exactContent){
 		String featIDbis = featLinks.get(featureID);
 		if(this.value == null){
 			if(pC.value == null){
@@ -63,6 +63,6 @@ public class JCell{
 		}
 //		System.out.println(pC.getFeatureID() + " " + featIDbis);
 		return pC.getFeatureID().equals(featIDbis) && this.type.equals(pC.getType()) &&
-				this.value.sameValue(pC.value);
+				(exactContent ? this.value.exactValue(pC.value) : this.value.sameValue(pC.value));
 	}
 }

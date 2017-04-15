@@ -28,9 +28,10 @@ public class JProduct {
 	 * Compares cells of both products omitting ids
 	 * @param p the product to compare
 	 * @param featLinks the links between the features of the 2 JSONFormat objects
+	 * @param exactContent 
 	 * @return true if cells of both products are the same, omits ids
 	 */
-	public boolean sameProduct(JProduct p, Map<String, String> featLinks) {
+	public boolean sameProduct(JProduct p, Map<String, String> featLinks, boolean exactContent) {
 		List<JCell> tempCells = new ArrayList<>(this.cells);
 		if(p.getCells().size() != this.cells.size()){
 			return false;
@@ -38,7 +39,7 @@ public class JProduct {
 		for(JCell pC : p.getCells()){
 			for(JCell thisC: this.cells){
 				if(tempCells.contains(thisC)){
-					if(thisC.sameCell(pC, featLinks)){
+					if(thisC.sameCell(pC, featLinks, exactContent)){
 						tempCells.remove(thisC);
 					}
 				}

@@ -24,10 +24,12 @@ public class JNumberValue extends JValue{
 	}
 	
 	public boolean sameValue(JValue value){
-//		if(value instanceof JNumberValue && this.numValue != ((JNumberValue) value).getValue()){
-//			System.out.println(numValue + " " + ((JNumberValue) value).getValue());
-//		}
-		return value instanceof JNumberValue;// && this.numValue == ((JNumberValue) value).getValue();
-//		return true;
+		return value instanceof JNumberValue;
 	}
+	
+	public boolean exactValue(JValue value) {
+		return value instanceof JNumberValue && this.numValue.equals(((JNumberValue) value).getValue());
+	}
+	
+	
 }

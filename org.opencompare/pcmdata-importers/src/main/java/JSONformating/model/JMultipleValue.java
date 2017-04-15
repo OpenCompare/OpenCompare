@@ -52,6 +52,10 @@ public class JMultipleValue extends JValue{
 	}
 	
 	public boolean sameValue(JValue value){
+		return value instanceof JMultipleValue;
+	}
+	
+	public boolean exactValue(JValue value){ //TODO
 //		if(! (value instanceof JMultipleValue) || (mulValue.size() != ((JMultipleValue) value).getValue().size())){
 //			return false;
 //		}
@@ -67,6 +71,5 @@ public class JMultipleValue extends JValue{
 //		}
 //		return tempValues.isEmpty();
 		return value instanceof JMultipleValue;
-//		return true;
 	}
 }

@@ -22,7 +22,10 @@ public class JStringValue extends JValue {
 	}
 	
 	public boolean sameValue(JValue value){
-		return value instanceof JStringValue;// && this.strValue.equals(((JStringValue) value).getValue());
-//		return true;
+		return value instanceof JStringValue;
+	}
+	
+	public boolean exactValue(JValue value) {
+		return value instanceof JStringValue && this.strValue.equals(((JStringValue) value).getValue());
 	}
 }
