@@ -15,7 +15,7 @@ import java.util.Set;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
-//import com.mongodb.util.JSON;
+// import com.mongodb.util.JSON;
 
 //import kotlin.deprecated;
 
@@ -23,7 +23,7 @@ public class JSONFormat {
 	private String quote = "\"";
 	private String qcq = quote + ":" + quote;
 	private String commaquo = "," + quote;
-	
+
 	private String name;
 	private String license;
 	private String source;
@@ -79,18 +79,18 @@ public class JSONFormat {
 	public void addProduct(JProduct p){
 		products.add(p);
 	}
-	
+
 	public boolean isPrimaryFeature(JFeature f) {
 		return f.getId().equals(primaryFeatureID);
 	}
 
-	
+
 	public String exportGson(){
 		Gson gson = new Gson();
 
 		return gson.toJson(this);
 	}
-	
+
 	public String exportHeader(){
 		String header = quote + "name" + qcq + name + quote;
 		header += commaquo + "license" + qcq + license + quote;
@@ -99,7 +99,7 @@ public class JSONFormat {
 		header += commaquo + "primaryFeatureID" + qcq + primaryFeatureID + quote;
 		return header;
 	}
-	
+
 	public JSONObject exportFeature(JFeature f){
 		JSONObject feature = new JSONObject();
 		feature.put("id", f.getId());
@@ -107,7 +107,7 @@ public class JSONFormat {
 		feature.put("type", f.getType().toString());
 		return feature;
 	}
-	
+
 	@Deprecated
 	public String exportFeatureOLD(JFeature f){
 		String feature = quote + f.getId() + quote + ":{"; //open feature f
@@ -117,20 +117,20 @@ public class JSONFormat {
 		feature += "}"; //close feature f
 		return feature;
 	}
-	
+
 	public String exportFeatures(){
 		JSONObject features = new JSONObject();
 		for(JFeature f : this.features){
 			features.put(f.getId(), exportFeature(f));
 		}
-//		String features = quote + "features" + quote + ":{"; //open features
-//		for(JFeature f : this.features){
-//			features += exportFeature(f) + (this.features.indexOf(f) == this.features.size()-1 ? "" : ",");
-//		}
-//		features += "}"; //close features
+		//		String features = quote + "features" + quote + ":{"; //open features
+		//		for(JFeature f : this.features){
+		//			features += exportFeature(f) + (this.features.indexOf(f) == this.features.size()-1 ? "" : ",");
+		//		}
+		//		features += "}"; //close features
 		return quote + "features" + quote + ":" + features.toString();
 	}
-	
+
 	@Deprecated
 	public String exportFeaturesOLD(){
 		String features = quote + "features" + quote + ":{"; //open features
@@ -140,31 +140,31 @@ public class JSONFormat {
 		features += "}"; //close features
 		return features;
 	}
-	
+
 	public JSONObject exportCell(JCell c){
 		JSONObject cell = new JSONObject();
 		cell.put("productID", c.getProductID());
 		cell.put("featureID", c.getFeatureID());
 		cell.put("type", c.getType());
-//		cell.put("isPartial", false);
-//		cell.put("unit", "undefined");
+		//		cell.put("isPartial", false);
+		//		cell.put("unit", "undefined");
 		cell.put("value", (c.getValue() == null ? "undefined" : c.getValue().export()));
 		return cell;
 	}
-	
+
 	@Deprecated
 	public String exportCellOLD(JCell c){
 		String cell = quote + c.getId() + quote + ":{"; //open cell
 		cell += quote + "productID" + qcq + c.getProductID() + quote;
 		cell += commaquo + "featureID" + qcq + c.getFeatureID() + quote;
 		cell += commaquo + "type" + qcq + c.getType() + quote;
-//		cell += commaquo + "isPartial" + qcq + "false" + quote; //FIXME temp isPartial value
-//		cell += commaquo + "unit" + qcq + "undefined" + quote; //FIXME temp unit value
+		//		cell += commaquo + "isPartial" + qcq + "false" + quote; //FIXME temp isPartial value
+		//		cell += commaquo + "unit" + qcq + "undefined" + quote; //FIXME temp unit value
 		cell += commaquo + "value" + quote + ":" + (c.getValue() == null ? quote + "undefined" + quote : c.getValue().export());
 		cell += "}";//close cell
 		return cell;
 	}
-	
+
 	public String exportProduct(JProduct p){
 		JSONObject prod = new JSONObject();
 		JSONObject cells = new JSONObject();
@@ -174,7 +174,7 @@ public class JSONFormat {
 		prod.put("cells", cells);
 		return quote + p.getId() + "\":" + prod.toString();
 	}
-	
+
 	@Deprecated
 	public String exportProductOLD(JProduct p){
 		String sProduct = quote + p.getId() + quote + ":{"; //open product
@@ -186,7 +186,7 @@ public class JSONFormat {
 				+ "}"; //close product
 		return sProduct;
 	}
-	
+
 	public String exportProducts(PrintWriter out){
 		String sProducts = quote + "products"+ quote + ":{"; //open products
 		for(JProduct p : products){
@@ -225,7 +225,7 @@ public class JSONFormat {
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter out = new PrintWriter(bw);
-			
+
 			String res = "{" + exportHeader() + ",";
 			out.print(res);
 			res = exportFeatures() + ",";
@@ -234,7 +234,7 @@ public class JSONFormat {
 			res = "}";
 			out.print(res);
 			bw.close();
-			
+
 		} catch (IOException e) {
 			System.err.println("ERROR exporting to " + filename);
 		}
@@ -271,7 +271,7 @@ public class JSONFormat {
 	public List<JFeature> getFeatures() {
 		return features;
 	}
-	
+
 	public List<JProduct> getProducts() {
 		return products;
 	}
@@ -320,8 +320,8 @@ public class JSONFormat {
 		}
 		return true;
 	}
-	
-	
+
+
 	public boolean sameFeatures(JSONFormat jf, Map<String, String> featLinks){
 		List<JFeature> tempFeat = new ArrayList<>(this.features);
 		if(jf.getFeatures().size() != this.features.size()){
@@ -329,16 +329,15 @@ public class JSONFormat {
 		}
 		for(JFeature jfF : jf.getFeatures()){
 			for(JFeature thisF : this.features){
-				if(this.isPrimaryFeature(thisF) == jf.isPrimaryFeature(jfF) && jfF.sameFeature(thisF)){
-					featLinks.put(thisF.getId(), jfF.getId());
-//					System.out.println(thisF.getName() + " " + jfF.getName());
-					if(!tempFeat.remove(thisF)){
-						return false;
+				if(tempFeat.contains(thisF)){
+					if(this.isPrimaryFeature(thisF) == jf.isPrimaryFeature(jfF) && jfF.sameFeature(thisF)){
+						featLinks.put(thisF.getId(), jfF.getId());
+						tempFeat.remove(thisF);
 					}
 				}
 			}
 		}
-		
+
 		System.out.println(featLinks.toString());
 		System.out.println(tempFeat.size() + " features are different : ");
 		for(JFeature p : tempFeat){
@@ -346,7 +345,7 @@ public class JSONFormat {
 		}
 		return tempFeat.isEmpty();
 	}
-	
+
 	public boolean sameProducts(JSONFormat jf, Map<String, String> featLinks) {
 		List<JProduct> tempProd = new ArrayList<>(this.products);
 		if(jf.getProducts().size() != this.products.size()){
@@ -355,34 +354,34 @@ public class JSONFormat {
 		}
 		for(JProduct jfP : jf.getProducts()){
 			for(JProduct thisP : this.products){
-				if(thisP.sameProduct(jfP, featLinks)){ //FIXME
-					if(!tempProd.remove(thisP)){
-//						return false;
-					}
+				if(tempProd.contains(thisP)){
+					if(thisP.sameProduct(jfP, featLinks)){
+						tempProd.remove(thisP);
+					}	
 				}
 			}
 		}
-		System.out.println(tempProd.size() + " products are different : ");
+		System.out.println("The following " + tempProd.size() + "/" + this.products.size() + " products from 'this' are not found in JSONFormat in parameter : ");
 		for(JProduct p : tempProd){
 			System.out.print(p.getId() + ", ");
 		}
 		return tempProd.isEmpty();
 	}
-	
+
 	/**
 	 * Checks if the JSONFormat in parameter is the same as this, omitting ids
 	 * @param jf the format to compare
 	 * @return true if this and jf are the same, omits ids
 	 */
-	public boolean equals(JSONFormat jf){
+	public boolean sameJSONFormat(JSONFormat jf){ 
 		Map<String,String> featLinks = new HashMap<>();
 		if(!this.name.equals(jf.name) || !this.creator.equals(jf.creator) || !this.license.equals(jf.license) || !this.source.equals(jf.source)){
 			return false;
 		}else if(!this.sameFeatures(jf, featLinks)){
-			System.out.println("Differences in features");
+			System.out.println("\nDifferences in features");
 			return false;
 		}else if(!this.sameProducts(jf, featLinks)){
-			System.out.println("Differences in products");
+			System.out.println("\nDifferences in products");
 			return false;
 		}
 		return true;

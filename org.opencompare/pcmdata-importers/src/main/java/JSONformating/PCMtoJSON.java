@@ -7,15 +7,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+
+import JSONformating.model.JBooleanValue;
+import JSONformating.model.JCell;
+import JSONformating.model.JFeature;
+import JSONformating.model.JMultipleValue;
+import JSONformating.model.JNumberValue;
+import JSONformating.model.JProduct;
+import JSONformating.model.JSONFormat;
+import JSONformating.model.JSONFormatType;
+import JSONformating.model.JStringValue;
+import JSONformating.model.JValue;
+
 import org.opencompare.api.java.*;
 import org.opencompare.api.java.impl.value.*;
 import org.opencompare.api.java.value.*;
 
-import JSONformating.model.*;
 import data_off.PCMInterpreter;
 import data_off.PCMUtil;
 
@@ -157,11 +169,43 @@ public class PCMtoJSON {
 		}else if(value instanceof NotApplicableImpl){
 			jc.setType(JSONFormatType.UNDEFINED);
 		}else{
-			jc.setType(JSONFormatType.UNDEFINED);
-			System.out.println("Cell has no interpretation");
-			System.out.println(c.getRawContent());
+//			jc.setType(JSONFormatType.UNDEFINED);
+//			System.out.println("Cell has no interpretation");
+//			System.out.println(c.getRawContent());
+			return getJValueFromRawContent(c.getRawContent(), jc);
 		}
 		return null;
+	}
+
+	private static JValue getJValueFromRawContent(String rawContent, JCell jc) {
+		if(rawContent == null || rawContent.equals("")){
+			//Logger.getGlobal().info(rawContent == null ? "RawContent is null" : "RawContent is empty");
+			jc.setType(JSONFormatType.UNDEFINED);
+			return null;
+		}
+		try{
+			Double d = Double.valueOf(rawContent);
+			JNumberValue numberValue = new JNumberValue();
+			numberValue.setValue(d);
+			if(d.doubleValue() == d.intValue()){
+				jc.setType(JSONFormatType.INTEGER);
+			}else{
+				jc.setType(JSONFormatType.REAL);
+			}
+			return numberValue;
+		}catch(java.lang.NumberFormatException e){
+			if(rawContent.equals("true") || rawContent.equals("false")){
+				JBooleanValue booleanValue = new JBooleanValue();
+				booleanValue.setValue(Boolean.valueOf(rawContent));
+				jc.setType(JSONFormatType.BOOLEAN);
+				return booleanValue;
+			}else{
+				JStringValue stringValue = new JStringValue();
+				stringValue.setValue(rawContent);
+				jc.setType(JSONFormatType.STRING); //TODO maybe specify URL and IMAGE
+				return stringValue;
+			}
+		}
 	}
 
 	public static List<JValue> createJValuesForMultiple(List<Value> values){
@@ -170,7 +214,8 @@ public class PCMtoJSON {
 		for(Value val : values){
 			if(val instanceof BooleanValueImpl){
 				JBooleanValue value = new JBooleanValue();
-				value.setValue(((BooleanValue) val).getValue());
+				Boolean b = ((BooleanValue) val).getValue();
+				value.setValue(b);
 				jvalues.add(value);
 			}else if(val instanceof DateValueImpl){
 				JStringValue value = new JStringValue();
@@ -178,11 +223,13 @@ public class PCMtoJSON {
 				jvalues.add(value);
 			}else if(val instanceof IntegerValueImpl){
 				JNumberValue value = new JNumberValue();
-				value.setValue(((IntegerValue) val).getValue());
+				Double d = Double.valueOf(((IntegerValue) val).getValue());
+				value.setValue(d);
 				jvalues.add(value);
 			}else if(val instanceof RealValueImpl){
 				JNumberValue value = new JNumberValue();
-				value.setValue(((RealValue) val).getValue());
+				Double d = Double.valueOf(((RealValue) val).getValue());
+				value.setValue(d);
 				jvalues.add(value);
 			}else if(val instanceof StringValueImpl){
 				JStringValue value = new JStringValue();

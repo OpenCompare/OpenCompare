@@ -37,9 +37,9 @@ public class JProduct {
 		}
 		for(JCell pC : p.getCells()){
 			for(JCell thisC: this.cells){
-				if(thisC.sameCell(pC, featLinks)){
-					if(!tempCells.remove(thisC)){
-						return false;
+				if(tempCells.contains(thisC)){
+					if(thisC.sameCell(pC, featLinks)){
+						tempCells.remove(thisC);
 					}
 				}
 			}

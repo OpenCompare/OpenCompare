@@ -109,14 +109,15 @@ public class JSONReader {
 			return stringValue;
 		case INTEGER:case REAL:
 			JNumberValue numValue = new JNumberValue();
-			numValue.setValue(value.getAsFloat());
+			numValue.setValue(value.getAsDouble());
 			return numValue;
 		case MULTIPLE:
 			JMultipleValue mulValue = new JMultipleValue();
 			JsonArray array = value.getAsJsonArray();
 			for(JsonElement j : array){
 				if(j instanceof JsonNull){
-					System.out.println("coucou");
+					System.out.println("JsonNull in JSONReader.getJValue(...)");
+					System.out.println(value.toString());
 				}else{
 					mulValue.addValue(getJValueForMultiple(j));
 				}
@@ -130,9 +131,9 @@ public class JSONReader {
 
 	private static JValue getJValueForMultiple(JsonElement j) {
 		try{
-			float f = j.getAsFloat();
+			Double d = j.getAsDouble();
 			JNumberValue numberValue = new JNumberValue();
-			numberValue.setValue(f);
+			numberValue.setValue(d);
 			return numberValue;
 		}catch(java.lang.NumberFormatException e){
 			String str = j.getAsString();

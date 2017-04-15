@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import org.opencompare.api.java.AbstractFeature;
 import org.opencompare.api.java.Cell;
@@ -58,7 +59,7 @@ public class JSONtoPCM {
 		pcm.setName(jf.getName());
 		
 		importFeatures(jf, pcm, factory);
-		
+		Logger.getGlobal().info("Features imported from JSONFormat to PCM");
 		importProducts(jf, pcm, factory);
 		
 		return pcmC;
@@ -81,6 +82,7 @@ public class JSONtoPCM {
 	private static void importProducts(JSONFormat jf, PCM pcm, PCMFactoryImpl factory) {
 		Product product;
 		Cell cell;
+		int temp = 0;
 		for(JProduct p : jf.getProducts()){
 			product = factory.createProduct();
 			for(JCell c : p.getCells()){
@@ -90,7 +92,6 @@ public class JSONtoPCM {
 				product.addCell(cell);
 			}
 			pcm.addProduct(product);
-			
 		}
 		
 	}
@@ -146,6 +147,9 @@ public class JSONtoPCM {
 				((StringValue) newVal).setValue(((JStringValue) v).getValue());
 			}else if( v instanceof JNumberValue){
 				Double d = ((JNumberValue) v).getValue();
+				if(d == null){
+					System.out.println();
+				}
 				if(d.intValue() == d){
 					newVal = factory.createIntegerValue();
 					((IntegerValue) newVal).setValue(d.intValue());
@@ -161,7 +165,7 @@ public class JSONtoPCM {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String filename = "off_output/pcms/en_french-blue-veined-cheeses.new.pcm";
+		String filename = "output-pcm/tests/muted_Comparison_of_VoIP_software_0.new.pcm";
 		String filename2 = "off_output/pcms/fr_biscottes-pauvres-en-sel.new.pcm";
 		
 		JSONFormat jf = JSONReader.importJSON(filename);
@@ -171,18 +175,18 @@ public class JSONtoPCM {
 		JSONFormat jf2 = PCMtoJSON.mkNewJSONFormatFromPCM(pcmC);
 
 //		JSONFormat jf3 = JSONReader.importJSON(filename2);
-//		
-//		PCMContainer pcmC2 = JSONFormatToPCM(jf2);
-//		
+		
+		PCMContainer pcmC2 = JSONFormatToPCM(jf2);
+		
 //		PCMContainer pcmC3 = JSONFormatToPCM(jf3);
-//		
-//		DiffResult res = pcmC.getPcm().diff(pcmC2.getPcm(), new ComplexePCMElementComparator());
-//
-//		System.out.println(res.toString());
-//		
-//		DiffResult res2 = pcmC.getPcm().diff(pcmC3.getPcm(), new ComplexePCMElementComparator());
-//		
-//		System.out.println(res2.toString());
+		
+		DiffResult res = pcmC.getPcm().diff(pcmC2.getPcm(), new ComplexePCMElementComparator());
+
+		System.out.println(res.toString());
+		
+		DiffResult res2 = pcmC2.getPcm().diff(pcmC.getPcm(), new ComplexePCMElementComparator());
+		
+		System.out.println(res2.toString());
 		
 //		System.out.println("1."+jf.exportProducts(null));
 //		System.out.println("2."+jf2.exportProducts(null));
@@ -190,7 +194,7 @@ public class JSONtoPCM {
 //		System.out.println(pcmC.getPcm().getProductsKey().getName());
 //		jf.exportToFile("off_output/pcms/test.pcm");
 //		jf2.exportToFile("off_output/pcms/test2.pcm");
-		System.out.println("\n" + jf.equals(jf2));
+		System.out.println("\n" + jf.sameJSONFormat(jf2));
 	}
 
 }
