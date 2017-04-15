@@ -19,6 +19,7 @@ import org.opencompare.api.java.value.RealValue;
 import org.opencompare.api.java.value.StringValue;
 import org.opencompare.api.java.value.Unit;
 import org.opencompare.api.java.value.Version;
+import org.opencompare.api.java.value.Image;
 
 import JSONformating.model.JSONFormat;
 
@@ -148,5 +149,10 @@ public class PCMVisitorImpl implements PCMVisitor {
 		// TODO Auto-generated method stub
 
 	}
+    
+    @Override
+    public void visit(Image image) {
+    	// TODO Auto-generated method stub
+    }
 
 }

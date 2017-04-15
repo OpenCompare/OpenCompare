@@ -2,12 +2,13 @@ package data_off;
 
 import java.io.IOException;
 
-import org.json.JSONException;
+// import org.json.JSONException;
 
 public class Run2 {
 
+    /*
 public static void main(String[] arg0) throws IOException, JSONException{
-		
+	
 		OFFactsCSVCreator creator = new OFFactsCSVCreator();
 		String category = "en:beers";
 //		creator.createCSVFromCategory("en:beers", false);
@@ -21,6 +22,6 @@ public static void main(String[] arg0) throws IOException, JSONException{
 		OFFStats.printStats();
 		
 		creator.close();
-	}
+	}*/
 
 }
