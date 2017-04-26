@@ -14,7 +14,7 @@ function valueToString (cell) {
       if (i > 0) string += ', '
       string += cell.value[i]
     }
-  } else {
+  } else if (cell.type !== 'undefined') {
     string = '' + cell.value
   }
 
@@ -38,7 +38,7 @@ function valueToHtml (cell) {
     html = '<a target="_blank" href="' + cell.value + '"><img class="cell-img" src="' + cell.value + '"></a>'
   } else if (cell.type === 'url') {
     html = '<a target="_blank" href="' + cell.value + '">' + cell.value + '</a>'
-  } else {
+  } else if (cell.type !== 'undefined') {
     html = '' + cell.value
   }
 
@@ -62,7 +62,6 @@ function Editor (divID, pcmID) {
   this.loadPCM()
 
   this.pcm = false
-  this.metadata = false
 
   this.views = {}
   this._view = null
