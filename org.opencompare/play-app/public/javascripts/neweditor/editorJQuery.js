@@ -487,7 +487,7 @@ Editor.prototype.sortProducts = function (feature=false) {
 
   //Update pcm
   //console.time("initPCM");
-  editor.initPCM()
+  this.initPCM()
   //console.timeEnd("initPCM");
 }
 
