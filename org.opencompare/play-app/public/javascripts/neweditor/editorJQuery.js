@@ -14,7 +14,7 @@ function valueToString (cell) {
       if (i > 0) string += ', '
       string += cell.value[i]
     }
-  } else {
+  } else if (cell.type !== 'undefined') {
     string = '' + cell.value
   }
 
@@ -38,11 +38,21 @@ function valueToHtml (cell) {
     html = '<a target="_blank" href="' + cell.value + '"><img class="cell-img" src="' + cell.value + '"></a>'
   } else if (cell.type === 'url') {
     html = '<a target="_blank" href="' + cell.value + '">' + cell.value + '</a>'
-  } else {
+  } else if (cell.type !== 'undefined') {
     html = '' + cell.value
   }
 
   return html
+}
+
+
+/**
+ * Return if obj is of type number (integer/real)
+ * @param {Product|Feature|Cell|Filter} obj - the object that we want to know if it's of type number
+ * @return {boolean} - if obj is of type number
+ */
+function isNumber (obj) {
+  return obj.type === 'integer' || obj.type === 'real'
 }
 
 //********************************************************************************************************************************************************************
@@ -59,10 +69,7 @@ function Editor (divID, pcmID) {
   this.api = '/api/getnewjson/'
   this.div = $('#' + divID).addClass('editor')
   this.pcmID = pcmID
-  this.loadPCM()
-
   this.pcm = false
-  this.metadata = false
 
   this.views = {}
   this._view = null
@@ -136,6 +143,9 @@ function Editor (divID, pcmID) {
   var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
   if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
   this.showView(view)
+
+  //Finally load the pcmDiv
+  this.loadPCM()
 }
 
 Object.defineProperty(Editor.prototype, 'checkInterpretation', {
@@ -154,7 +164,10 @@ Object.defineProperty(Editor.prototype, 'checkInterpretation', {
   }
 })
 
-//Show cell edit
+/**
+ * Show the cell edit div
+ * @param {Cell} cell - the cell to edit.=
+ */
 Editor.prototype.setCellEdit = function (cell) {
   if (this.cellEdit != null) this.cellEdit.div.removeClass('selected')
   this.cellEdit = cell
@@ -165,7 +178,10 @@ Editor.prototype.setCellEdit = function (cell) {
   this.cellEditContent.html(valueToString(this.cellEdit))
 }
 
-//Show view
+/**
+ * Show a view
+ * @param {undefined|string|object} view - the view or the name of the view to show, if undefined show the pcm view
+ */
 Editor.prototype.showView = function (view) {
   if (typeof view === 'undefined') {
     view = this.views.pcmDiv
@@ -187,7 +203,11 @@ Editor.prototype.showView = function (view) {
   }
 }
 
-//Some accessors
+/**
+ * Return the feature wuth the specified name
+ * @param {string} name - the name of the desired feature
+ * @return {Feature} - the desired feature, or false if not found
+ */
 Editor.prototype.getFeatureByName = function (name) {
   var feature = false
   for (var f in this.pcm.features) {
@@ -199,7 +219,10 @@ Editor.prototype.getFeatureByName = function (name) {
   return feature
 }
 
-//Load the pcm
+/**
+ * Load the pcm from the API
+ * @param {string} pcmID - The id of the pcm to load, if undefined load the pcm with the current id (editor.pcmID)
+ */
 Editor.prototype.loadPCM = function (pcmID) {
   pcmID = typeof pcmID === 'undefined'
     ? false
@@ -330,15 +353,6 @@ Editor.prototype.loadPCM = function (pcmID) {
 }
 
 /**
- * Return if obj is of type number (integer/real)
- * @param {Product|Feature|Cell|Filter} obj - the object that we want to know if it's of type number
- * @return {boolean} - if obj is of type number
- */
-function isNumber (obj) {
-  return obj.type === 'integer' || obj.type === 'real'
-}
-
-/**
  * The callback when the pcm is loaded
  * It updates the UI et call some init methods
  * Don't init map here, it will cause a bug because the div that is supposed to contain the map is hidden !!!
@@ -408,12 +422,16 @@ Editor.prototype.addFeatureToView = function (id) {
   }
 }
 
-//init chart
-Editor.prototype.initChart = function(){
+/**
+ * init the chartFactory
+ */
+Editor.prototype.initChart = function () {
   this.chartFactory.init()
 }
 
-//init Map
+/**
+ * create (if needed) and init mapFactory
+ */
 Editor.prototype.initMap = function () {
   if (typeof this.mapFactory === 'undefined') {
     this.mapFactory = new MapFactory(this, this.views.mapDiv)
@@ -421,16 +439,20 @@ Editor.prototype.initMap = function () {
   }
 }
 
-//Called in pcmLoaded to update the configurator
-Editor.prototype.initConfigurator = function(){
+/**
+ * Append every filter div to the configurator
+ */
+Editor.prototype.initConfigurator = function () {
   this.configurator.empty()
   for(var f in this.pcm.features){
     this.configurator.append(this.pcm.features[f].filter.div)
   }
 }
 
-//Hide or show the configurator
-Editor.prototype.showConfigurator = function(){
+/**
+ * Hide or show the configurator
+ */
+Editor.prototype.showConfigurator = function () {
   this.configuratorShow = !this.configuratorShow;
 
   if(this.configuratorShow){
@@ -446,8 +468,10 @@ Editor.prototype.showConfigurator = function(){
   }
 }
 
-//Hide or show the header
-Editor.prototype.showHeader = function(){
+/**
+ * Hide or show the header
+ */
+Editor.prototype.showHeader = function () {
   this.headerShow = !this.headerShow;
 
   if(this.headerShow){
@@ -461,8 +485,11 @@ Editor.prototype.showHeader = function(){
   }
 }
 
-//Called when a filter changed
-Editor.prototype.filterChanged = function(filter) {
+/**
+ * Called when a filter changed to update views
+ * @param {Filter} filter - The filter which changed
+ */
+Editor.prototype.filterChanged = function (filter) {
   //console.log("Filter changed for feature : " + filter.feature.name);
   for (var p in this.pcm.products) {
     var product = this.pcm.products[p] // get the product
@@ -474,8 +501,11 @@ Editor.prototype.filterChanged = function(filter) {
   this.chartFactory.update()
 }
 
-//Sort products on the feature using quicksort
-Editor.prototype.sortProducts = function (feature=false) {
+/**
+ * Sort products on the specified feature using a quicksort
+ * @param {undefined|Feature} feature - the ferature, if undefined use the primary feature
+ */
+Editor.prototype.sortProducts = function (feature = false) {
   if (!feature) {
     feature = this.pcm.features[this.pcm.primaryFeatureID]
   }
@@ -487,19 +517,22 @@ Editor.prototype.sortProducts = function (feature=false) {
 
   //Update pcm
   //console.time("initPCM");
-  editor.initPCM()
+  this.initPCM()
   //console.timeEnd("initPCM");
 }
 
-//sort products on feature f
-Editor.prototype.quicksortProducts = function (f) {
+/**
+ * Perform a quicksort on products on the specified feature
+ * @param {Feature} feature - The feature used for the quicksort
+ */
+Editor.prototype.quicksortProducts = function (feature) {
   var stack = []
   stack.push(0)
   stack.push(this.pcm.productsSorted.length - 1)
   while (stack.length > 0) {
     var h = stack.pop()
     var l = stack.pop()
-    var p = this.partitionProducts(l, h, f)
+    var p = this.partitionProducts(l, h, feature)
 
     if (p - 1 > l) {
       stack.push(l)
@@ -513,11 +546,18 @@ Editor.prototype.quicksortProducts = function (f) {
   }
 }
 
-Editor.prototype.partitionProducts = function (l, h, f) {
+/**
+ * Partition products between l and h using feature
+ * @param {number} l - the lower limit
+ * @param {number} h - the upper limit
+ * @param {Feature} feature - the feature used to sort products
+ * @return {number} - the pivot for the quicksort
+ */
+Editor.prototype.partitionProducts = function (l, h, feature) {
   var pivot = this.pcm.productsSorted[h]
   var i = l
   for (var j = l; j < h; j++) {
-    if (f.filter.compare(this.pcm.productsSorted[j], pivot) <= 0) {
+    if (feature.filter.compare(this.pcm.productsSorted[j], pivot) <= 0) {
       var temp = this.pcm.productsSorted[i]
       this.pcm.productsSorted[i] = this.pcm.productsSorted[j]
       this.pcm.productsSorted[j] = temp

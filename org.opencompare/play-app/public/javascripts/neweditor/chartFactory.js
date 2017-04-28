@@ -73,30 +73,29 @@ function ChartFactory(editor, div){
 }
 
 //Called when pcm is loaded to init chart
-ChartFactory.prototype.init = function(){
-  for(var f in this.editor.pcm.features){
+ChartFactory.prototype.init = function () {
+  for (var f in this.editor.pcm.features) {
     var feature = this.editor.pcm.features[f];
-    if(feature.filter.type == 'integer' || feature.filter.type == 'float'){
+    if (isNumber(feature)) {
       if(this.chartDataX == null){
         this.chartDataX = feature;
       }else if(this.chartDataY == null){
         this.chartDataY = feature;
       }
       this.taboption.push(feature);
-    }
-	else {
+  } else {
 		this.taboptionNonNumerique.push(feature);
 	}
-	this.taboption2.push(feature);
+	 this.taboption2.push(feature);
   }
   this.drawChart();
 }
 
-ChartFactory.prototype.drawChart = function(){
+ChartFactory.prototype.drawChart = function () {
 
-  var self=this;
+  var self = this;
 
-  if(this.chartType=='pie'){
+  if (this.chartType == 'pie') {
 
 	// if the last type of vizualisation is yet pie, we do anything
     if(this.chartTypeA!="pie") {
@@ -436,7 +435,7 @@ ChartFactory.prototype.drawProductChart = function(){
 	  );
     }
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
-  }else{
+  } else {
     console.error('X or Y features not defined');
   }
 }
@@ -657,9 +656,9 @@ ChartFactory.prototype.drawRadar = function(){
 
 
 
-ChartFactory.prototype.drawBar = function(){
+ChartFactory.prototype.drawBar = function (){
 
-  if(this.chartDataX != null){
+  if (this.chartDataX != null) {
     if(this.chartCanvas != null){
       this.chartCanvas.remove();
     }
@@ -747,7 +746,11 @@ ChartFactory.prototype.drawBar = function(){
 	this.chartData.data.datasets[0].data=this.chartData.data.datasets[0].data.sort((a,b)=>a-b);
 
 	// we add the name of the first feature in the legend
-	this.chartData.data.datasets[0].label = this.taboption[fea].name;
+	if (typeof this.taboption[fea] !== 'undefined') {
+    this.chartData.data.datasets[0].label = this.taboption[fea].name
+  } else {
+    error.log('this.taboption[fea] is undefined')
+  }
 
 	var i = 0;
 	while (i < this.chartData.data.datasets[0].data.length) {
@@ -775,7 +778,7 @@ ChartFactory.prototype.drawBar = function(){
 
     this.chart = new Chart(this.chartCanvas[0], this.chartData);
 
-  }else{
+  } else {
     console.log('Value undefined');
   }
 }
