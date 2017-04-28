@@ -76,7 +76,7 @@ function ChartFactory(editor, div){
 ChartFactory.prototype.init = function () {
   for (var f in this.editor.pcm.features) {
     var feature = this.editor.pcm.features[f];
-    if (feature.filter.type == 'integer' || feature.filter.type == 'real') {
+    if (isNumber(feature)) {
       if(this.chartDataX == null){
         this.chartDataX = feature;
       }else if(this.chartDataY == null){
