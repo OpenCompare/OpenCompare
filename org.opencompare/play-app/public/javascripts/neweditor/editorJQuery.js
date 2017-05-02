@@ -327,13 +327,13 @@ Editor.prototype.loadPCM = function (pcmID) {
            label: self.getCell(n).value,
            hidden: !self.visible,
            data: [{
-             x: self.getCell(x).content,
-             y: self.getCell(y).content,
+             x: self.getCell(x).value,
+             y: self.getCell(y).value,
              r: r
-                ? self.getCell(r).content
+                ? self.getCell(r).value
                 : 0,
              c: c
-                ? self.getCell(c).content
+                ? self.getCell(c).value
                 : 0
            }]
         }
