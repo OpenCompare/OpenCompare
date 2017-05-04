@@ -15,7 +15,7 @@ function ChartFactory(editor, div){
   this.tabSelect = [];
 
   this.chart = null; //Chart object for ChartJS
-  this.chartType = 'productchart'; // this is the type of current vizualisation
+  this._chartType = null // NEVER CHANGE THIS VALUE DIRECTLY !!!! use chartType to change it
   this.cartTypeA = 'radar'; // this is the type of last vizualisation
   this.chartDataX = null; //feature for x
   this.chartDataY = null; //feature for y
@@ -23,42 +23,46 @@ function ChartFactory(editor, div){
   this.chartDataColor = null; //feature for color
 
   // the image of the Visualization in Bar, and the fonction to call it
-  this.chartImgBar = $('<img id="clickBar" src="/assets/images/chartBar.png" width="40px" />').appendTo(this.div).click(function(){
+  this.listChart = $('<div>').addClass('listChart').appendTo(this.div)
+
+  this.chartImg = {}
+
+  this.chartImg.bar = $('<img id="clickBar" src="/assets/images/chartBar.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "bar";
     self.drawChart();
   });
 
   // the image of the Visualization in Pie, and the fonction to call it
-  this.chartImgPie = $('<img id="clickPie" src="/assets/images/chartPie.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImg.pie = $('<img id="clickPie" src="/assets/images/chartPie.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "pie";
     self.drawChart();
   });
 
   // the image of the Visualization in Line, and the fonction to call it
-  this.chartImgLine = $('<img id="clickLine" src="/assets/images/chartLine.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImg.line = $('<img id="clickLine" src="/assets/images/chartLine.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "line";
     self.drawChart();
   });
 
   // the image of the Visualization in Radar, and the fonction to call it
-  this.chartImgRadar = $('<img id="clickRadar" src="/assets/images/chartRadar.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImg.radar = $('<img id="clickRadar" src="/assets/images/chartRadar.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "radar";
     self.drawChart();
   });
 
   // the image of the Visualization in ProductChart, and the fonction to call it
-  this.chartImgPC = $('<img id="clickPC" src="/assets/images/chartPC.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImg.productchart = $('<img id="clickPC" src="/assets/images/chartPC.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "productchart";
     self.drawChart();
   });
 
   // the image of the Visualization in Other, and the fonction to call it
-  this.chartImgOtherPC = $('<img id="clickPC" src="/assets/images/chartOPC.png" width="40px" />').appendTo(this.div).click(function(){
+  this.chartImg.autre = $('<img id="clickPC" src="/assets/images/chartOPC.png" />').appendTo(this.listChart).click(function(){
     self.chartType = "autre";
     self.drawChart();
   });
 
-  this.div.append("</br></br>");
+  this.chartType = 'productchart'; // this is the type of current vizualisation
 
   this.listSelect = $('<div>',{id:'listSelect'}).appendTo(this.div);
 
@@ -71,6 +75,22 @@ function ChartFactory(editor, div){
   this.compAutre =false; // the boolean to know if the constraint is activated for the vizualisation Other
 
 }
+
+/**
+ * The property chartType is the accessor to _chartType
+ */
+Object.defineProperty(ChartFactory.prototype, 'chartType', {
+  get: function () {
+    return this._chartType
+  },
+  set: function (v) {
+    if (this._chartType !== v) {
+      if (this._chartType != null) this.chartImg[this._chartType].removeClass('selected')
+      this._chartType = v
+      this.chartImg[this._chartType].addClass('selected')
+    }
+  }
+})
 
 //Called when pcm is loaded to init chart
 ChartFactory.prototype.init = function () {
@@ -105,7 +125,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select for the vizualisation in line
 		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartXselect = $('<select id="x">').appendTo(this.listSelect).change(function(){
 			var a = $('#x option:selected').val();
 			self.chartDataX = self.taboption2[a];
 			self.drawChart();
@@ -144,7 +164,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select X for the vizualisation in pc
 		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartXselect = $('<select id="x">').appendTo(this.listSelect).change(function(){
 			var a = $('#x option:selected').val();
 			self.chartDataX = self.taboption[a];
 			self.drawChart();
@@ -152,7 +172,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select Y for the vizualisation in pc
 		this.chartYLabel = $('<label>').html('&nbsp;y&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartYselect = $('<select id="y" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartYselect = $('<select id="y">').appendTo(this.listSelect).change(function(){
 			var a = $('#y option:selected').val();
 			self.chartDataY = self.taboption[a];
 			self.drawChart();
@@ -160,7 +180,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select Radius for the vizualisation in pc
 		this.chartRadiusLabel = $('<label>').html('&nbsp;radius&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartRadiusselect = $('<select id="r" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartRadiusselect = $('<select id="r">').appendTo(this.listSelect).change(function(){
 			var a = $('#r option:selected').val();
 			self.chartDataRadius = self.taboption[a];
 			self.drawChart();
@@ -168,7 +188,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select Y for the vizualisation in pc
 		this.chartColorLabel = $('<label>').html('&nbsp;color&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartColorselect = $('<select id="c" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartColorselect = $('<select id="c">').appendTo(this.listSelect).change(function(){
 			var a = $('#c option:selected').val();
 			console.log(a);
 			self.chartDataColor = self.taboption[a];
@@ -212,7 +232,7 @@ ChartFactory.prototype.drawChart = function () {
 		// we create nb select for the vizualisation in Bar
 		for (var j=1 ; j<=nb ; j++){
 			var cl = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
-			var cs = $('<select id="choix'+j+'" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var cs = $('<select id="choix'+j+'">').appendTo(this.listSelect).change(function(){
 				self.drawChart();
 			});
 
@@ -224,7 +244,7 @@ ChartFactory.prototype.drawChart = function () {
 		}
 
 		// we create a picture plus for add a new choice for the vizualisation
-		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<div>').html('+').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(self.nbBar < self.taboption.length){
 				self.nbBar = self.nbBar + 1;
 				self.chartTypeA = null;
@@ -233,7 +253,7 @@ ChartFactory.prototype.drawChart = function () {
 		});
 
 		// we create a picture minus for sub a new choice for the vizualisation
-		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<div>').html('-').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(self.nbBar > 1){
 				self.nbBar = self.nbBar - 1;
 				self.chartTypeA = null;
@@ -263,7 +283,7 @@ ChartFactory.prototype.drawChart = function () {
 		// we create nb select for the vizualisation in Line
 		for (var j=1 ; j<=nb ; j++){
 			var cl = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
-			var cs = $('<select id="choix'+j+'" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			var cs = $('<select id="choix'+j+'">').appendTo(this.listSelect).change(function(){
 				self.drawChart();
 			});
 
@@ -275,7 +295,7 @@ ChartFactory.prototype.drawChart = function () {
 		}
 
 		// we create a picture plus for add a new choice for the vizualisation
-		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<div>').html('+').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(self.nbLine < self.taboption.length){
 				self.nbLine = self.nbLine + 1;
 				self.chartTypeA = null;
@@ -284,7 +304,7 @@ ChartFactory.prototype.drawChart = function () {
 		});
 
 		// we create a picture minus for sub a new choice for the vizualisation
-		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<div>').html('-').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(self.nbLine > 1){
 				self.nbLine = self.nbLine - 1;
 				self.chartTypeA = null;
@@ -308,7 +328,7 @@ ChartFactory.prototype.drawChart = function () {
 
 		// we create the select X for the vizualisation Autre
 		this.chartXLabel = $('<label>').html('&nbsp;x&nbsp:&nbsp').appendTo(this.listSelect);
-		this.chartXselect = $('<select id="x" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+		this.chartXselect = $('<select id="x">').appendTo(this.listSelect).change(function(){
 			var a = $('#x option:selected').val();
 			self.chartDataX = self.taboptionNonNumerique[a];
 			self.drawChart();
@@ -322,7 +342,7 @@ ChartFactory.prototype.drawChart = function () {
 		// if the constraint is activated, we create the select Y for choose the constraint in the non-digital option
 		if(this.compAutre){
 			this.chartYLabel = $('<label>').html('&nbsp;y&nbsp:&nbsp').appendTo(this.listSelect);
-			this.chartYselect = $('<select id="y" class=\"styled-select blue semi-square\">').appendTo(this.listSelect).change(function(){
+			this.chartYselect = $('<select id="y">').appendTo(this.listSelect).change(function(){
 				var a = $('#y option:selected').val();
 				self.chartDataY = self.taboptionNonNumerique[a];
 				self.drawChart();
@@ -335,7 +355,7 @@ ChartFactory.prototype.drawChart = function () {
 		}
 
 		// we create a picture plus for add the constraint to the vizualisation
-		var d = $('<img src="/assets/images/plus.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var d = $('<div>').html('+').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(!self.compAutre){
 				self.compAutre = true;
 				self.chartTypeA = null;
@@ -344,7 +364,7 @@ ChartFactory.prototype.drawChart = function () {
 		});
 
 		// we create a picture plus for remove the constraint to the vizualisation
-		var b = $('<img src="/assets/images/moins.png" width="20px" />').appendTo(this.listSelect).click(function(){
+		var b = $('<div>').html('-').addClass('imgButton').appendTo(this.listSelect).click(function(){
 			if(self.compAutre){
 				self.compAutre = false;
 				self.chartTypeA = null;
