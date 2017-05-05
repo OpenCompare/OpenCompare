@@ -55,6 +55,17 @@ function isNumber (obj) {
   return obj.type === 'integer' || obj.type === 'real'
 }
 
+/**
+ * Return the class of the column for the specified feature
+ * @param {Feature} feature - feature
+ * @return {string} - the class
+ */
+function columnClass (feature) {
+  return isNumber(feature)
+    ? 'number'
+    : 'other'
+}
+
 //********************************************************************************************************************************************************************
 //Editor
 
@@ -74,6 +85,10 @@ function Editor (divID, pcmID) {
   this.views = {}
   this._view = null
 
+  //Create loading div
+  this.loadingDiv = $('<div>').addClass('loadingDiv').html('<svg class="loader" width="32" height="32"><circle class="path" cx="16" cy="16" r="12" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg>').appendTo(this.div)
+  this.loadingMessage = $('<div>').addClass('loadingMessage').html('loading').appendTo(this.loadingDiv)
+
   //Create header
   this.headerShow = true
   this.header = $("<div>").addClass("editor-header").appendTo(this.div)
@@ -92,19 +107,29 @@ function Editor (divID, pcmID) {
   this.showConfiguratorButton.append(" ")
   this.showConfiguratorButtonMessage = $("<span>").html("Hide configurator").appendTo(this.showConfiguratorButton)
 
-  this.showPCMButton = $('<div>').addClass('button').html('Show pcm').click(function () {
-    self.showView('pcmDiv')
+  this.actionBar.append('<div class="separator"></div>')
+
+  this.showButton = {}
+
+  this.showButton.pcm = $('<div>').addClass('button').html('<i class="material-icons">reorder</i> PCM').click(function () {
+    self.showView('pcm')
   }).appendTo(this.actionBar)
 
-  this.showChartButton = $('<div>').addClass('button').html('Show chart').click(function () {
-    self.showView('chartDiv')
+  this.showButton.chart = $('<div>').addClass('button').html('<i class="material-icons">show_chart</i> Chart').click(function () {
+    self.showView('chart')
   }).appendTo(this.actionBar)
 
-  this.showMapButton = $('<div>').addClass('button').html('Show Map').click(function () {
-    self.showView('mapDiv')
+  this.showButton.map = $('<div>').addClass('button').html('<i class="material-icons">map</i> Map').click(function () {
+    self.showView('map')
   }).appendTo(this.actionBar)
 
-  this.exportButton = $('<a>').addClass('button').html('Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
+  this.actionBar.append('<div class="separator"></div>')
+
+  this.exportButton = $('<a>').addClass('button').html('<i class="material-icons">file_download</i>  Download').attr('href', this.api + this.pcmID).attr('download', this.pcmID + '.json').appendTo(this.actionBar)
+
+  this.retypeButton = $('<div>').addClass('button').html('<i class="material-icons">refresh</i> Retype').click(function () {
+    self.retype()
+  }).appendTo(this.actionBar)
 
   //Action bar right pane
   this.actionBarRightPane = $("<div>").addClass("editor-action-bar-right-pane").appendTo(this.actionBar)
@@ -123,28 +148,28 @@ function Editor (divID, pcmID) {
   this.contentWrap = $("<div>").addClass("content-wrap").appendTo(this.content)
 
   //Create pcm
-  this.views.pcmDiv = $('<div>').addClass('pcm-wrap').appendTo(this.contentWrap)
+  this.views.pcm = $('<div>').addClass('pcm-wrap').appendTo(this.contentWrap)
 
   //Create cell edition
   this.cellEdit = null
-  this.cellEditDiv = $('<div>').addClass('cell-edit').appendTo(this.views.pcmDiv)
+  this.cellEditDiv = $('<div>').addClass('cell-edit').appendTo(this.views.pcm)
   this.cellEditType = $('<div>').addClass('cell-edit-type').appendTo(this.cellEditDiv)
   this.cellEditContent = $('<div>').addClass('cell-edit-content').appendTo(this.cellEditDiv)
-  this.pcmTable = $("<div>").addClass('pcm-table').appendTo(this.views.pcmDiv)
+  this.pcmTable = $("<div>").addClass('pcm-table').appendTo(this.views.pcm)
 
   //Create chart
-  this.views.chartDiv = $("<div>").appendTo(this.contentWrap)
-  this.chartFactory = new ChartFactory(this, this.views.chartDiv)
+  this.views.chart = $("<div>").appendTo(this.contentWrap)
+  this.chartFactory = new ChartFactory(this, this.views.chart)
 
   //create map
-  this.views.mapDiv = $("<div>").appendTo(this.contentWrap)
+  this.views.map = $("<div>").appendTo(this.contentWrap)
 
   //Display view
-  var view = window.location.href.match(/[^\?]+$/g)[0] + 'Div'
-  if (typeof this.views[view] === 'undefined') view = 'pcmDiv'
+  var view = window.location.href.match(/[^\?]+$/g)[0]
+  if (typeof this.views[view] === 'undefined') view = 'pcm'
   this.showView(view)
 
-  //Finally load the pcmDiv
+  //Finally load the pcm view
   this.loadPCM()
 }
 
@@ -165,6 +190,20 @@ Object.defineProperty(Editor.prototype, 'checkInterpretation', {
 })
 
 /**
+ * Show/Hide the loading div
+ * @param {boolean} loading - true to showloading div, false to hide
+ * @param {string} message - the loading message to display
+ */
+Editor.prototype.loading = function (loading = true, message = 'loading') {
+  if (loading) {
+    this.loadingMessage.html(message)
+    this.loadingDiv.addClass('visible')
+  } else {
+    this.loadingDiv.removeClass('visible')
+  }
+}
+
+/**
  * Show the cell edit div
  * @param {Cell} cell - the cell to edit.=
  */
@@ -172,7 +211,7 @@ Editor.prototype.setCellEdit = function (cell) {
   if (this.cellEdit != null) this.cellEdit.div.removeClass('selected')
   this.cellEdit = cell
   this.cellEdit.div.addClass('selected')
-  this.views.pcmDiv.addClass('cell-edit-visible')
+  this.views.pcm.addClass('cell-edit-visible')
   var type = this.cellEdit.type
   this.cellEditType.html(type)
   this.cellEditContent.html(valueToString(this.cellEdit))
@@ -180,24 +219,24 @@ Editor.prototype.setCellEdit = function (cell) {
 
 /**
  * Show a view
- * @param {undefined|string|object} view - the view or the name of the view to show, if undefined show the pcm view
+ * @param {undefined|string} view - the view or the name of the view to show, if undefined show the pcm view
  */
 Editor.prototype.showView = function (view) {
   if (typeof view === 'undefined') {
-    view = this.views.pcmDiv
-  } else if (typeof view === 'string') {
-    view = this.views[view]
+    view = 'pcm'
   }
 
   if (this._view !== view) {
     if (this._view != null) {
-      this._view.hide()
+      this.views[this._view].hide()
+      this.showButton[this._view].removeClass('active')
     }
 
     this._view = view
-    this._view.show()
+    this.views[this._view].show()
+    this.showButton[this._view].addClass('active')
 
-    if (view === this.views.mapDiv){
+    if (view === 'map'){
       this.initMap()
     }
   }
@@ -230,6 +269,8 @@ Editor.prototype.loadPCM = function (pcmID) {
   var that = this //deprecated use self instead
   var self = this
   if (pcmID) this.pcmID = pcmID
+
+  this.loading(true, 'loading pcm from api')
 
   $.get(this.api + this.pcmID, function (data) {
     console.log(data)
@@ -358,6 +399,8 @@ Editor.prototype.loadPCM = function (pcmID) {
  * Don't init map here, it will cause a bug because the div that is supposed to contain the map is hidden !!!
  */
 Editor.prototype.pcmLoaded = function () {
+  this.loading(false)
+
   //Name
   var name = this.pcm.name
   if (typeof name === 'undefined' || name.length === 0) {
@@ -415,7 +458,7 @@ Editor.prototype.initPCM = function () {
  * @param {string} id - The id of the feature to append to the view
  */
 Editor.prototype.addFeatureToView = function (id) {
-  var col = $("<div>").addClass("pcm-column").addClass(this.pcm.features[id].type).appendTo(this.pcmTable)
+  var col = $("<div>").addClass("pcm-column").addClass(columnClass(this.pcm.features[id])).appendTo(this.pcmTable)
   col.append(this.pcm.features[id].filter.columnHeader)
   for (var p in this.pcm.productsSorted) {
     col.append(this.pcm.productsSorted[p].getCell(this.pcm.features[id]).div)
@@ -434,7 +477,7 @@ Editor.prototype.initChart = function () {
  */
 Editor.prototype.initMap = function () {
   if (typeof this.mapFactory === 'undefined') {
-    this.mapFactory = new MapFactory(this, this.views.mapDiv)
+    this.mapFactory = new MapFactory(this, this.views.map)
     this.mapFactory.init()
   }
 }
@@ -444,8 +487,13 @@ Editor.prototype.initMap = function () {
  */
 Editor.prototype.initConfigurator = function () {
   this.configurator.empty()
-  for(var f in this.pcm.features){
-    this.configurator.append(this.pcm.features[f].filter.div)
+
+  for (var f in this.pcm.features) {
+    if (f == this.pcm.primaryFeatureID) {
+      this.configurator.prepend(this.pcm.features[f].filter.div)
+    } else {
+      this.configurator.append(this.pcm.features[f].filter.div)
+    }
   }
 }
 
@@ -483,6 +531,20 @@ Editor.prototype.showHeader = function () {
     this.content.addClass("full-height");
     this.showHeaderButton.html('<i class="material-icons">keyboard_arrow_down</i>');
   }
+}
+
+/**
+ * Retype the pcm
+ */
+Editor.prototype.retype = function () {
+ var self = this
+
+  this.loading(true, 'retype the pcm')
+
+  $.get('/admin/retype/' + this.pcmID, function (data) {
+    self.loading(false)
+    location.reload()
+  })
 }
 
 /**
