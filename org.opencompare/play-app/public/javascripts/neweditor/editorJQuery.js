@@ -55,6 +55,17 @@ function isNumber (obj) {
   return obj.type === 'integer' || obj.type === 'real'
 }
 
+/**
+ * Return the class of the column for the specified feature
+ * @param {Feature} feature - feature
+ * @return {string} - the class
+ */
+function columnClass (feature) {
+  return isNumber(feature)
+    ? 'number'
+    : 'other'
+}
+
 //********************************************************************************************************************************************************************
 //Editor
 
@@ -447,7 +458,7 @@ Editor.prototype.initPCM = function () {
  * @param {string} id - The id of the feature to append to the view
  */
 Editor.prototype.addFeatureToView = function (id) {
-  var col = $("<div>").addClass("pcm-column").addClass(this.pcm.features[id].type).appendTo(this.pcmTable)
+  var col = $("<div>").addClass("pcm-column").addClass(columnClass(this.pcm.features[id])).appendTo(this.pcmTable)
   col.append(this.pcm.features[id].filter.columnHeader)
   for (var p in this.pcm.productsSorted) {
     col.append(this.pcm.productsSorted[p].getCell(this.pcm.features[id]).div)
