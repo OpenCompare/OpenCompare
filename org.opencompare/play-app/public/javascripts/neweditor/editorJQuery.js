@@ -466,8 +466,13 @@ Editor.prototype.initMap = function () {
  */
 Editor.prototype.initConfigurator = function () {
   this.configurator.empty()
-  for(var f in this.pcm.features){
-    this.configurator.append(this.pcm.features[f].filter.div)
+
+  for (var f in this.pcm.features) {
+    if (f == this.pcm.primaryFeatureID) {
+      this.configurator.prepend(this.pcm.features[f].filter.div)
+    } else {
+      this.configurator.append(this.pcm.features[f].filter.div)
+    }
   }
 }
 
