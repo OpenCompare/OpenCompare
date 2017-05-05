@@ -74,6 +74,10 @@ function Editor (divID, pcmID) {
   this.views = {}
   this._view = null
 
+  //Create loading div
+  this.loadingDiv = $('<div>').addClass('loadingDiv').html('<svg class="loader" width="32" height="32"><circle class="path" cx="16" cy="16" r="12" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg>').appendTo(this.div)
+  this.loadingMessage = $('<div>').addClass('loadingMessage').html('loading').appendTo(this.loadingDiv)
+
   //Create header
   this.headerShow = true
   this.header = $("<div>").addClass("editor-header").appendTo(this.div)
@@ -165,6 +169,20 @@ Object.defineProperty(Editor.prototype, 'checkInterpretation', {
 })
 
 /**
+ * Show/Hide the loading div
+ * @param {boolean} loading - true to showloading div, false to hide
+ * @param {string} message - the loading message to display
+ */
+Editor.prototype.loading = function (loading = true, message = 'loading') {
+  if (loading) {
+    this.loadingMessage.html(message)
+    this.loadingDiv.addClass('visible')
+  } else {
+    this.loadingDiv.removeClass('visible')
+  }
+}
+
+/**
  * Show the cell edit div
  * @param {Cell} cell - the cell to edit.=
  */
@@ -230,6 +248,8 @@ Editor.prototype.loadPCM = function (pcmID) {
   var that = this //deprecated use self instead
   var self = this
   if (pcmID) this.pcmID = pcmID
+
+  this.loading(true, 'loading pcm from api')
 
   $.get(this.api + this.pcmID, function (data) {
     console.log(data)
@@ -358,6 +378,8 @@ Editor.prototype.loadPCM = function (pcmID) {
  * Don't init map here, it will cause a bug because the div that is supposed to contain the map is hidden !!!
  */
 Editor.prototype.pcmLoaded = function () {
+  this.loading(false)
+
   //Name
   var name = this.pcm.name
   if (typeof name === 'undefined' || name.length === 0) {

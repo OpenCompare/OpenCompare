@@ -89,6 +89,67 @@ select {
 }
 
 /**************************************************************************************************************************************************************************/
+/* loading */
+.loadingDiv {
+  transition: 0.2s;
+  position: fixed;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 42px;
+  line-height: 32px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.loadingDiv.visible {
+  top: 10px;
+}
+
+.loadingMessage {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.loader {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader .path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: dash 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+  stroke: #26a69a;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+/**************************************************************************************************************************************************************************/
 /* header */
 .editor-header{
   transition: 0.2s;
