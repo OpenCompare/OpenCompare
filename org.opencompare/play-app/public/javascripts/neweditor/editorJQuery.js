@@ -561,6 +561,7 @@ Editor.prototype.filterChanged = function (filter) {
 
   //Update chart
   this.chartFactory.update()
+  this.mapFactory.update()
 }
 
 /**
