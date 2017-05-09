@@ -72,6 +72,7 @@ MapFactory.prototype.drawMap = function(){
   this.markerLayer = L.layerGroup().addTo(this.map)
 
 
+
   var cartodbAttribution = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 
    this.position = L.tileLayer('http://{s}.tile2.opencyclemap.org/transport/{z}/{x}/{y}.png', {
@@ -83,15 +84,17 @@ MapFactory.prototype.drawMap = function(){
 }
 
 //add marker from city
-MapFactory.prototype.locationCity = function (city, product, data, map, layer){
+MapFactory.prototype.locationCity = function (cityCountry, product, data, map, layer){
   var latLon =[]
+  city = product.getCell(this.editor.pcm.features[cityCountry[0]]).value
+  country = product.getCell(this.editor.pcm.features[cityCountry[1]]).value
   for(var i in data){
-    if(data[i].city === city){
+    if(data[i].city === city && data[i].country === country){
       latLon.push(data[i].lat)
       latLon.push(data[i].lng)
-      //console.log(latLon)
+     if(product.visible){
       this.addMarker(latLon, product)
-
+    }
     }
     var latLon =[]
 
@@ -106,6 +109,7 @@ MapFactory.prototype.locationCity = function (city, product, data, map, layer){
 }
 
 MapFactory.prototype.addMarker = function (latLon, product){
+
  this.marker = L.marker(latLon).addTo(this.markerLayer);
  string1 = product.getCell(this.chartDataX).value
 if (string1 == "undefined")
@@ -120,20 +124,42 @@ if (string2 == "undefined")
 }
 
 MapFactory.prototype.addAllMarker = function (){
-  var f = this.isCity();
+  var cityCountry = this.isCity();
   var citiesData = cities
   for(var p in this.editor.pcm.products){
     var product = this.editor.pcm.products[p];
-    this.locationCity(product.getCell(this.editor.pcm.features[f]).value,
+    this.locationCity(cityCountry,//product.getCell(this.editor.pcm.features[f]).value,
       product, citiesData);
   }
 }
 MapFactory.prototype.isCity = function(){
+  cityCountry = []
   for(var f in this.editor.pcm.features) {
     var feature = this.editor.pcm.features[f]
-    //console.log(feature.name)
+
     if(feature.name === "City" ||feature.name === "Ville" ){
-    return f
+      cityCountry[0]=f
     }
+    if(feature.name === "Pays" ||feature.name === "Country" ){
+      cityCountry[1]=f
+    }
+
+  }
+  return cityCountry
+}
+
+//Update chart when configurator change
+MapFactory.prototype.update = function(){
+  if(this.map != null){
+    var that = this;
+    if(this.timeout != null) {
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(function(){
+        //self.map.remove();
+      that.markerLayer.remove()
+      //self.map = L.map('map');
+      that.drawMap();
+    },500);
   }
 }
