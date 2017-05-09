@@ -406,7 +406,7 @@ ChartFactory.prototype.drawProductChart = function(){
       options:{
         animation: false,
         legend: {
-          display: true
+          display: false //Hide the icon of the dataset
         },
         scales: {
           xAxes: [{
