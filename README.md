@@ -85,6 +85,6 @@ To remove all the PCMs from the database, you have to connect to your MongoDB in
 We have other repositories and sub-projects:
 
 * [getting-started](https://github.com/OpenCompare/getting-started) (for using the Java API)
-* [editor](https://github.com/OpenCompare/editor) (JavaScript)
+* [editor](https://github.com/OpenCompare/editor) (JavaScript, deprecated, now integrated)
 * [data-importers](https://github.com/OpenCompare/pcmdata-importers) (for importing PCMs from various sources: opendata API, tabular data, unstructured data, etc.)
 
